@@ -461,6 +461,18 @@ __all__ = [
     'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgsDict',
     'CxTestCaseTestConfigArgs',
     'CxTestCaseTestConfigArgsDict',
+    'CxToolConnectorSpecArgs',
+    'CxToolConnectorSpecArgsDict',
+    'CxToolConnectorSpecActionArgs',
+    'CxToolConnectorSpecActionArgsDict',
+    'CxToolConnectorSpecActionEntityOperationArgs',
+    'CxToolConnectorSpecActionEntityOperationArgsDict',
+    'CxToolConnectorSpecEndUserAuthConfigArgs',
+    'CxToolConnectorSpecEndUserAuthConfigArgsDict',
+    'CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs',
+    'CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict',
+    'CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs',
+    'CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict',
     'CxToolDataStoreSpecArgs',
     'CxToolDataStoreSpecArgsDict',
     'CxToolDataStoreSpecDataStoreConnectionArgs',
@@ -511,6 +523,28 @@ __all__ = [
     'FulfillmentFeatureArgsDict',
     'FulfillmentGenericWebServiceArgs',
     'FulfillmentGenericWebServiceArgsDict',
+    'GeneratorInferenceParameterArgs',
+    'GeneratorInferenceParameterArgsDict',
+    'GeneratorSummarizationContextArgs',
+    'GeneratorSummarizationContextArgsDict',
+    'GeneratorSummarizationContextFewShotExampleArgs',
+    'GeneratorSummarizationContextFewShotExampleArgsDict',
+    'GeneratorSummarizationContextFewShotExampleConversationContextArgs',
+    'GeneratorSummarizationContextFewShotExampleConversationContextArgsDict',
+    'GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs',
+    'GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict',
+    'GeneratorSummarizationContextFewShotExampleOutputArgs',
+    'GeneratorSummarizationContextFewShotExampleOutputArgsDict',
+    'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs',
+    'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict',
+    'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs',
+    'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict',
+    'GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs',
+    'GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict',
+    'GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs',
+    'GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict',
+    'GeneratorSummarizationContextSummarizationSectionArgs',
+    'GeneratorSummarizationContextSummarizationSectionArgsDict',
     'IntentFollowupIntentInfoArgs',
     'IntentFollowupIntentInfoArgsDict',
 ]
@@ -17302,6 +17336,421 @@ class CxTestCaseTestConfigArgs:
 
 
 if not MYPY:
+    class CxToolConnectorSpecArgsDict(TypedDict):
+        actions: pulumi.Input[Sequence[pulumi.Input['CxToolConnectorSpecActionArgsDict']]]
+        """
+        Actions for the tool to use.
+        Structure is documented below.
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        The full resource name of the referenced Integration Connectors Connection.
+        Format: projects/*/locations/*/connections/*
+        """
+        end_user_auth_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigArgsDict']]
+        """
+        Integration Connectors end-user authentication configuration.
+        If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+        and override the admin, default authentication configured for the Connection.
+        Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+        the ConnectorTool creation will fail.
+        See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+        Structure is documented below.
+        """
+elif False:
+    CxToolConnectorSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxToolConnectorSpecArgs:
+    def __init__(__self__, *,
+                 actions: pulumi.Input[Sequence[pulumi.Input['CxToolConnectorSpecActionArgs']]],
+                 name: pulumi.Input[_builtins.str],
+                 end_user_auth_config: Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CxToolConnectorSpecActionArgs']]] actions: Actions for the tool to use.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] name: The full resource name of the referenced Integration Connectors Connection.
+               Format: projects/*/locations/*/connections/*
+        :param pulumi.Input['CxToolConnectorSpecEndUserAuthConfigArgs'] end_user_auth_config: Integration Connectors end-user authentication configuration.
+               If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+               and override the admin, default authentication configured for the Connection.
+               Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+               the ConnectorTool creation will fail.
+               See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "name", name)
+        if end_user_auth_config is not None:
+            pulumi.set(__self__, "end_user_auth_config", end_user_auth_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> pulumi.Input[Sequence[pulumi.Input['CxToolConnectorSpecActionArgs']]]:
+        """
+        Actions for the tool to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: pulumi.Input[Sequence[pulumi.Input['CxToolConnectorSpecActionArgs']]]):
+        pulumi.set(self, "actions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The full resource name of the referenced Integration Connectors Connection.
+        Format: projects/*/locations/*/connections/*
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endUserAuthConfig")
+    def end_user_auth_config(self) -> Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigArgs']]:
+        """
+        Integration Connectors end-user authentication configuration.
+        If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+        and override the admin, default authentication configured for the Connection.
+        Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+        the ConnectorTool creation will fail.
+        See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_user_auth_config")
+
+    @end_user_auth_config.setter
+    def end_user_auth_config(self, value: Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigArgs']]):
+        pulumi.set(self, "end_user_auth_config", value)
+
+
+if not MYPY:
+    class CxToolConnectorSpecActionArgsDict(TypedDict):
+        connection_action_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        """
+        entity_operation: NotRequired[pulumi.Input['CxToolConnectorSpecActionEntityOperationArgsDict']]
+        """
+        Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+        Structure is documented below.
+        """
+        input_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Entity fields to use as inputs for the operation.
+        If no fields are specified, all fields of the Entity will be used.
+        """
+        output_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Entity fields to return from the operation.
+        If no fields are specified, all fields of the Entity will be returned.
+        """
+elif False:
+    CxToolConnectorSpecActionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxToolConnectorSpecActionArgs:
+    def __init__(__self__, *,
+                 connection_action_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_operation: Optional[pulumi.Input['CxToolConnectorSpecActionEntityOperationArgs']] = None,
+                 input_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection_action_id: ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        :param pulumi.Input['CxToolConnectorSpecActionEntityOperationArgs'] entity_operation: Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_fields: Entity fields to use as inputs for the operation.
+               If no fields are specified, all fields of the Entity will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_fields: Entity fields to return from the operation.
+               If no fields are specified, all fields of the Entity will be returned.
+        """
+        if connection_action_id is not None:
+            pulumi.set(__self__, "connection_action_id", connection_action_id)
+        if entity_operation is not None:
+            pulumi.set(__self__, "entity_operation", entity_operation)
+        if input_fields is not None:
+            pulumi.set(__self__, "input_fields", input_fields)
+        if output_fields is not None:
+            pulumi.set(__self__, "output_fields", output_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionActionId")
+    def connection_action_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        """
+        return pulumi.get(self, "connection_action_id")
+
+    @connection_action_id.setter
+    def connection_action_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "connection_action_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityOperation")
+    def entity_operation(self) -> Optional[pulumi.Input['CxToolConnectorSpecActionEntityOperationArgs']]:
+        """
+        Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entity_operation")
+
+    @entity_operation.setter
+    def entity_operation(self, value: Optional[pulumi.Input['CxToolConnectorSpecActionEntityOperationArgs']]):
+        pulumi.set(self, "entity_operation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputFields")
+    def input_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity fields to use as inputs for the operation.
+        If no fields are specified, all fields of the Entity will be used.
+        """
+        return pulumi.get(self, "input_fields")
+
+    @input_fields.setter
+    def input_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputFields")
+    def output_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity fields to return from the operation.
+        If no fields are specified, all fields of the Entity will be returned.
+        """
+        return pulumi.get(self, "output_fields")
+
+    @output_fields.setter
+    def output_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "output_fields", value)
+
+
+if not MYPY:
+    class CxToolConnectorSpecActionEntityOperationArgsDict(TypedDict):
+        entity_id: pulumi.Input[_builtins.str]
+        """
+        ID of the entity.
+        """
+        operation: pulumi.Input[_builtins.str]
+        """
+        The operation to perform on the entity.
+        Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+        """
+elif False:
+    CxToolConnectorSpecActionEntityOperationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxToolConnectorSpecActionEntityOperationArgs:
+    def __init__(__self__, *,
+                 entity_id: pulumi.Input[_builtins.str],
+                 operation: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] entity_id: ID of the entity.
+        :param pulumi.Input[_builtins.str] operation: The operation to perform on the entity.
+               Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "operation", operation)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "entity_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[_builtins.str]:
+        """
+        The operation to perform on the entity.
+        Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operation", value)
+
+
+if not MYPY:
+    class CxToolConnectorSpecEndUserAuthConfigArgsDict(TypedDict):
+        oauth2_auth_code_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict']]
+        """
+        Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+        """
+        oauth2_jwt_bearer_config: NotRequired[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict']]
+        """
+        JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+
+
+        <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+elif False:
+    CxToolConnectorSpecEndUserAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxToolConnectorSpecEndUserAuthConfigArgs:
+    def __init__(__self__, *,
+                 oauth2_auth_code_config: Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs']] = None,
+                 oauth2_jwt_bearer_config: Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs']] = None):
+        """
+        :param pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs'] oauth2_auth_code_config: Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+               Structure is documented below.
+        :param pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs'] oauth2_jwt_bearer_config: JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+               Structure is documented below.
+               
+               
+               <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        if oauth2_auth_code_config is not None:
+            pulumi.set(__self__, "oauth2_auth_code_config", oauth2_auth_code_config)
+        if oauth2_jwt_bearer_config is not None:
+            pulumi.set(__self__, "oauth2_jwt_bearer_config", oauth2_jwt_bearer_config)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2AuthCodeConfig")
+    def oauth2_auth_code_config(self) -> Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs']]:
+        """
+        Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_auth_code_config")
+
+    @oauth2_auth_code_config.setter
+    def oauth2_auth_code_config(self, value: Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs']]):
+        pulumi.set(self, "oauth2_auth_code_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2JwtBearerConfig")
+    def oauth2_jwt_bearer_config(self) -> Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs']]:
+        """
+        JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+
+
+        <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        return pulumi.get(self, "oauth2_jwt_bearer_config")
+
+    @oauth2_jwt_bearer_config.setter
+    def oauth2_jwt_bearer_config(self, value: Optional[pulumi.Input['CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs']]):
+        pulumi.set(self, "oauth2_jwt_bearer_config", value)
+
+
+if not MYPY:
+    class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict(TypedDict):
+        oauth_token: pulumi.Input[_builtins.str]
+        """
+        Oauth token value or parameter name to pass it through.
+        """
+elif False:
+    CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs:
+    def __init__(__self__, *,
+                 oauth_token: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] oauth_token: Oauth token value or parameter name to pass it through.
+        """
+        pulumi.set(__self__, "oauth_token", oauth_token)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> pulumi.Input[_builtins.str]:
+        """
+        Oauth token value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "oauth_token")
+
+    @oauth_token.setter
+    def oauth_token(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "oauth_token", value)
+
+
+if not MYPY:
+    class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict(TypedDict):
+        client_key: pulumi.Input[_builtins.str]
+        """
+        Client key value or parameter name to pass it through.
+        """
+        issuer: pulumi.Input[_builtins.str]
+        """
+        Issuer value or parameter name to pass it through.
+        """
+        subject: pulumi.Input[_builtins.str]
+        """
+        Subject value or parameter name to pass it through.
+        """
+elif False:
+    CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs:
+    def __init__(__self__, *,
+                 client_key: pulumi.Input[_builtins.str],
+                 issuer: pulumi.Input[_builtins.str],
+                 subject: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] client_key: Client key value or parameter name to pass it through.
+        :param pulumi.Input[_builtins.str] issuer: Issuer value or parameter name to pass it through.
+        :param pulumi.Input[_builtins.str] subject: Subject value or parameter name to pass it through.
+        """
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        Client key value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "client_key")
+
+    @client_key.setter
+    def client_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> pulumi.Input[_builtins.str]:
+        """
+        Issuer value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "issuer", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input[_builtins.str]:
+        """
+        Subject value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "subject", value)
+
+
+if not MYPY:
     class CxToolDataStoreSpecArgsDict(TypedDict):
         data_store_connections: pulumi.Input[Sequence[pulumi.Input['CxToolDataStoreSpecDataStoreConnectionArgsDict']]]
         """
@@ -19593,6 +20042,730 @@ class FulfillmentGenericWebServiceArgs:
     @username.setter
     def username(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class GeneratorInferenceParameterArgsDict(TypedDict):
+        max_output_tokens: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Optional. Maximum number of the output tokens for the generator.
+        """
+        temperature: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+        """
+        top_k: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+        """
+        top_p: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+        """
+elif False:
+    GeneratorInferenceParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorInferenceParameterArgs:
+    def __init__(__self__, *,
+                 max_output_tokens: Optional[pulumi.Input[_builtins.int]] = None,
+                 temperature: Optional[pulumi.Input[_builtins.float]] = None,
+                 top_k: Optional[pulumi.Input[_builtins.int]] = None,
+                 top_p: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_output_tokens: Optional. Maximum number of the output tokens for the generator.
+        :param pulumi.Input[_builtins.float] temperature: Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+        :param pulumi.Input[_builtins.int] top_k: Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+        :param pulumi.Input[_builtins.float] top_p: Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+        """
+        if max_output_tokens is not None:
+            pulumi.set(__self__, "max_output_tokens", max_output_tokens)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+        if top_k is not None:
+            pulumi.set(__self__, "top_k", top_k)
+        if top_p is not None:
+            pulumi.set(__self__, "top_p", top_p)
+
+    @_builtins.property
+    @pulumi.getter(name="maxOutputTokens")
+    def max_output_tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Optional. Maximum number of the output tokens for the generator.
+        """
+        return pulumi.get(self, "max_output_tokens")
+
+    @max_output_tokens.setter
+    def max_output_tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_output_tokens", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+        """
+        return pulumi.get(self, "temperature")
+
+    @temperature.setter
+    def temperature(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "temperature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topK")
+    def top_k(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+        """
+        return pulumi.get(self, "top_k")
+
+    @top_k.setter
+    def top_k(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "top_k", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topP")
+    def top_p(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+        """
+        return pulumi.get(self, "top_p")
+
+    @top_p.setter
+    def top_p(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "top_p", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextArgsDict(TypedDict):
+        few_shot_examples: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleArgsDict']]]]
+        """
+        Optional. List of few shot examples.
+        Structure is documented below.
+        """
+        output_language_code: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+        """
+        summarization_sections: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextSummarizationSectionArgsDict']]]]
+        """
+        Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+        Structure is documented below.
+        """
+        version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        """
+elif False:
+    GeneratorSummarizationContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextArgs:
+    def __init__(__self__, *,
+                 few_shot_examples: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleArgs']]]] = None,
+                 output_language_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 summarization_sections: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextSummarizationSectionArgs']]]] = None,
+                 version: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleArgs']]] few_shot_examples: Optional. List of few shot examples.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] output_language_code: Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextSummarizationSectionArgs']]] summarization_sections: Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] version: Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        """
+        if few_shot_examples is not None:
+            pulumi.set(__self__, "few_shot_examples", few_shot_examples)
+        if output_language_code is not None:
+            pulumi.set(__self__, "output_language_code", output_language_code)
+        if summarization_sections is not None:
+            pulumi.set(__self__, "summarization_sections", summarization_sections)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="fewShotExamples")
+    def few_shot_examples(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleArgs']]]]:
+        """
+        Optional. List of few shot examples.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "few_shot_examples")
+
+    @few_shot_examples.setter
+    def few_shot_examples(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleArgs']]]]):
+        pulumi.set(self, "few_shot_examples", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputLanguageCode")
+    def output_language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+        """
+        return pulumi.get(self, "output_language_code")
+
+    @output_language_code.setter
+    def output_language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "output_language_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="summarizationSections")
+    def summarization_sections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextSummarizationSectionArgs']]]]:
+        """
+        Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_sections")
+
+    @summarization_sections.setter
+    def summarization_sections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextSummarizationSectionArgs']]]]):
+        pulumi.set(self, "summarization_sections", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleArgsDict(TypedDict):
+        output: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputArgsDict']
+        """
+        Required. Example output of the model.
+        Structure is documented below.
+        """
+        conversation_context: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextArgsDict']]
+        """
+        Optional. Conversation transcripts.
+        Structure is documented below.
+        """
+        extra_info: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+        """
+        summarization_section_list: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict']]
+        """
+        Summarization sections.
+        Structure is documented below.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleArgs:
+    def __init__(__self__, *,
+                 output: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputArgs'],
+                 conversation_context: Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextArgs']] = None,
+                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 summarization_section_list: Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs']] = None):
+        """
+        :param pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputArgs'] output: Required. Example output of the model.
+               Structure is documented below.
+        :param pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextArgs'] conversation_context: Optional. Conversation transcripts.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_info: Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+        :param pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs'] summarization_section_list: Summarization sections.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "output", output)
+        if conversation_context is not None:
+            pulumi.set(__self__, "conversation_context", conversation_context)
+        if extra_info is not None:
+            pulumi.set(__self__, "extra_info", extra_info)
+        if summarization_section_list is not None:
+            pulumi.set(__self__, "summarization_section_list", summarization_section_list)
+
+    @_builtins.property
+    @pulumi.getter
+    def output(self) -> pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputArgs']:
+        """
+        Required. Example output of the model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output")
+
+    @output.setter
+    def output(self, value: pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputArgs']):
+        pulumi.set(self, "output", value)
+
+    @_builtins.property
+    @pulumi.getter(name="conversationContext")
+    def conversation_context(self) -> Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextArgs']]:
+        """
+        Optional. Conversation transcripts.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_context")
+
+    @conversation_context.setter
+    def conversation_context(self, value: Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextArgs']]):
+        pulumi.set(self, "conversation_context", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extraInfo")
+    def extra_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+        """
+        return pulumi.get(self, "extra_info")
+
+    @extra_info.setter
+    def extra_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "extra_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="summarizationSectionList")
+    def summarization_section_list(self) -> Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs']]:
+        """
+        Summarization sections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_section_list")
+
+    @summarization_section_list.setter
+    def summarization_section_list(self, value: Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs']]):
+        pulumi.set(self, "summarization_section_list", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleConversationContextArgsDict(TypedDict):
+        message_entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict']]]]
+        """
+        Optional. List of message transcripts in the conversation.
+        Structure is documented below.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleConversationContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleConversationContextArgs:
+    def __init__(__self__, *,
+                 message_entries: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs']]] message_entries: Optional. List of message transcripts in the conversation.
+               Structure is documented below.
+        """
+        if message_entries is not None:
+            pulumi.set(__self__, "message_entries", message_entries)
+
+    @_builtins.property
+    @pulumi.getter(name="messageEntries")
+    def message_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs']]]]:
+        """
+        Optional. List of message transcripts in the conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_entries")
+
+    @message_entries.setter
+    def message_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs']]]]):
+        pulumi.set(self, "message_entries", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict(TypedDict):
+        create_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Create time of the message entry.
+        """
+        language_code: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. The language of the text.
+        """
+        role: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Participant role of the message.
+        Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+        """
+        text: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Transcript content of the message.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 text: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create_time: Optional. Create time of the message entry.
+        :param pulumi.Input[_builtins.str] language_code: Optional. The language of the text.
+        :param pulumi.Input[_builtins.str] role: Optional. Participant role of the message.
+               Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+        :param pulumi.Input[_builtins.str] text: Optional. Transcript content of the message.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Create time of the message entry.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The language of the text.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "language_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Participant role of the message.
+        Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "role", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Transcript content of the message.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleOutputArgsDict(TypedDict):
+        summary_suggestion: NotRequired[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict']]
+        """
+        Optional. Suggested summary.
+        Structure is documented below.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleOutputArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleOutputArgs:
+    def __init__(__self__, *,
+                 summary_suggestion: Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs']] = None):
+        """
+        :param pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs'] summary_suggestion: Optional. Suggested summary.
+               Structure is documented below.
+        """
+        if summary_suggestion is not None:
+            pulumi.set(__self__, "summary_suggestion", summary_suggestion)
+
+    @_builtins.property
+    @pulumi.getter(name="summarySuggestion")
+    def summary_suggestion(self) -> Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs']]:
+        """
+        Optional. Suggested summary.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summary_suggestion")
+
+    @summary_suggestion.setter
+    def summary_suggestion(self, value: Optional[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs']]):
+        pulumi.set(self, "summary_suggestion", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict(TypedDict):
+        summary_sections: pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict']]]
+        """
+        Required. All the parts of generated summary.
+        Structure is documented below.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs:
+    def __init__(__self__, *,
+                 summary_sections: pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs']]] summary_sections: Required. All the parts of generated summary.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "summary_sections", summary_sections)
+
+    @_builtins.property
+    @pulumi.getter(name="summarySections")
+    def summary_sections(self) -> pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs']]]:
+        """
+        Required. All the parts of generated summary.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summary_sections")
+
+    @summary_sections.setter
+    def summary_sections(self, value: pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs']]]):
+        pulumi.set(self, "summary_sections", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict(TypedDict):
+        section: pulumi.Input[_builtins.str]
+        """
+        Required. Name of the section.
+        """
+        summary: pulumi.Input[_builtins.str]
+        """
+        Required. Summary text for the section.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs:
+    def __init__(__self__, *,
+                 section: pulumi.Input[_builtins.str],
+                 summary: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] section: Required. Name of the section.
+        :param pulumi.Input[_builtins.str] summary: Required. Summary text for the section.
+        """
+        pulumi.set(__self__, "section", section)
+        pulumi.set(__self__, "summary", summary)
+
+    @_builtins.property
+    @pulumi.getter
+    def section(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Name of the section.
+        """
+        return pulumi.get(self, "section")
+
+    @section.setter
+    def section(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "section", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def summary(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Summary text for the section.
+        """
+        return pulumi.get(self, "summary")
+
+    @summary.setter
+    def summary(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "summary", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict(TypedDict):
+        summarization_sections: NotRequired[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict']]]]
+        """
+        Optional. Summarization sections.
+        Structure is documented below.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs:
+    def __init__(__self__, *,
+                 summarization_sections: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs']]] summarization_sections: Optional. Summarization sections.
+               Structure is documented below.
+        """
+        if summarization_sections is not None:
+            pulumi.set(__self__, "summarization_sections", summarization_sections)
+
+    @_builtins.property
+    @pulumi.getter(name="summarizationSections")
+    def summarization_sections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs']]]]:
+        """
+        Optional. Summarization sections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_sections")
+
+    @summarization_sections.setter
+    def summarization_sections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs']]]]):
+        pulumi.set(self, "summarization_sections", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict(TypedDict):
+        definition: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Name of the section, for example, "situation".
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Type of the summarization section.
+        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+elif False:
+    GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs:
+    def __init__(__self__, *,
+                 definition: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] definition: Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        :param pulumi.Input[_builtins.str] key: Optional. Name of the section, for example, "situation".
+        :param pulumi.Input[_builtins.str] type: Optional. Type of the summarization section.
+               Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "definition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Name of the section, for example, "situation".
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Type of the summarization section.
+        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class GeneratorSummarizationContextSummarizationSectionArgsDict(TypedDict):
+        definition: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Name of the section, for example, "situation".
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. Type of the summarization section.
+        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+elif False:
+    GeneratorSummarizationContextSummarizationSectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GeneratorSummarizationContextSummarizationSectionArgs:
+    def __init__(__self__, *,
+                 definition: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] definition: Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        :param pulumi.Input[_builtins.str] key: Optional. Name of the section, for example, "situation".
+        :param pulumi.Input[_builtins.str] type: Optional. Type of the summarization section.
+               Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        """
+        return pulumi.get(self, "definition")
+
+    @definition.setter
+    def definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "definition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Name of the section, for example, "situation".
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Type of the summarization section.
+        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

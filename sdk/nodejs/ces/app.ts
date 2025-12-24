@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     location: "us",
  *     description: "Basic CES App example",
  *     displayName: "my-app",
+ *     pinned: true,
  *     languageSettings: {
  *         defaultLanguageCode: "en-US",
  *         supportedLanguageCodes: [
@@ -116,6 +117,7 @@ import * as utilities from "../utilities";
  *         schema: {
  *             description: "schema description",
  *             type: "ARRAY",
+ *             title: "title",
  *             nullable: true,
  *             requireds: ["some_property"],
  *             enums: [
@@ -482,6 +484,10 @@ export class App extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * Whether the app is pinned in the app list.
+     */
+    declare public readonly pinned: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -538,6 +544,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["modelSettings"] = state?.modelSettings;
             resourceInputs["name"] = state?.name;
+            resourceInputs["pinned"] = state?.pinned;
             resourceInputs["project"] = state?.project;
             resourceInputs["rootAgent"] = state?.rootAgent;
             resourceInputs["timeZoneSettings"] = state?.timeZoneSettings;
@@ -569,6 +576,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["loggingSettings"] = args?.loggingSettings;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["modelSettings"] = args?.modelSettings;
+            resourceInputs["pinned"] = args?.pinned;
             resourceInputs["project"] = args?.project;
             resourceInputs["rootAgent"] = args?.rootAgent;
             resourceInputs["timeZoneSettings"] = args?.timeZoneSettings;
@@ -685,6 +693,10 @@ export interface AppState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Whether the app is pinned in the app list.
+     */
+    pinned?: pulumi.Input<boolean>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -791,6 +803,10 @@ export interface AppArgs {
      * Structure is documented below.
      */
     modelSettings?: pulumi.Input<inputs.ces.AppModelSettings>;
+    /**
+     * Whether the app is pinned in the app list.
+     */
+    pinned?: pulumi.Input<boolean>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

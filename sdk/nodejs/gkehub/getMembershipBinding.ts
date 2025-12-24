@@ -6,6 +6,25 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+ *
+ * A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = gcp.gkehub.getMembershipBinding({
+ *     location: "global",
+ *     membershipId: "my-membership-id",
+ *     membershipBindingId: "my-membership-binding-id",
+ *     project: "my-project-id",
+ * });
+ * ```
+ */
 export function getMembershipBinding(args: GetMembershipBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetMembershipBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:gkehub/getMembershipBinding:getMembershipBinding", {
@@ -20,9 +39,23 @@ export function getMembershipBinding(args: GetMembershipBindingArgs, opts?: pulu
  * A collection of arguments for invoking getMembershipBinding.
  */
 export interface GetMembershipBindingArgs {
+    /**
+     * The location for the GKE Hub Membership Binding.
+     * Currently only `global` is supported.
+     */
     location: string;
+    /**
+     * The ID of the membership binding.
+     */
     membershipBindingId: string;
+    /**
+     * The ID of the membership that this binding applies to.
+     */
     membershipId: string;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: string;
 }
 
@@ -49,6 +82,25 @@ export interface GetMembershipBindingResult {
     readonly uid: string;
     readonly updateTime: string;
 }
+/**
+ * Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+ *
+ * A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = gcp.gkehub.getMembershipBinding({
+ *     location: "global",
+ *     membershipId: "my-membership-id",
+ *     membershipBindingId: "my-membership-binding-id",
+ *     project: "my-project-id",
+ * });
+ * ```
+ */
 export function getMembershipBindingOutput(args: GetMembershipBindingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMembershipBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkehub/getMembershipBinding:getMembershipBinding", {
@@ -63,8 +115,22 @@ export function getMembershipBindingOutput(args: GetMembershipBindingOutputArgs,
  * A collection of arguments for invoking getMembershipBinding.
  */
 export interface GetMembershipBindingOutputArgs {
+    /**
+     * The location for the GKE Hub Membership Binding.
+     * Currently only `global` is supported.
+     */
     location: pulumi.Input<string>;
+    /**
+     * The ID of the membership binding.
+     */
     membershipBindingId: pulumi.Input<string>;
+    /**
+     * The ID of the membership that this binding applies to.
+     */
     membershipId: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

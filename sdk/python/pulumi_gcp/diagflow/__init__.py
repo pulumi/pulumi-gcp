@@ -25,6 +25,8 @@ from .cx_webhook import *
 from .encryption_spec import *
 from .entity_type import *
 from .fulfillment import *
+from .generator import *
 from .intent import *
+from .version import *
 from ._inputs import *
 from . import outputs

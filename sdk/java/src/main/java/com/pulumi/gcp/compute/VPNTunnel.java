@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  *     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
  * 
  * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sharedSecretWo`.
- * Read more about Write-only Attributes.
+ * Read more about Write-only Arguments.
  * 
  * ## Example Usage
  * 
@@ -241,17 +241,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * ## Ephemeral Attributes Reference
- * 
- * The following write-only attributes are supported:
- * 
- * * `sharedSecretWo` -
- *   (Optional)
- *   Shared secret used to set the secure session between the Cloud VPN
- *   gateway and the peer VPN gateway.
- *    Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
- *   **Note**: This property is write-only and will not be read from the API.
  * 
  * ## Import
  * 
@@ -646,9 +635,12 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
-     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
      * 
      */
     @Export(name="sharedSecretWo", refs={String.class}, tree="[0]")
@@ -656,23 +648,26 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
-     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
      * 
      */
     public Output<Optional<String>> sharedSecretWo() {
         return Codegen.optional(this.sharedSecretWo);
     }
     /**
-     * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     @Export(name="sharedSecretWoVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sharedSecretWoVersion;
 
     /**
-     * @return Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     public Output<Optional<String>> sharedSecretWoVersion() {

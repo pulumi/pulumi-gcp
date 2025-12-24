@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,6 +24,11 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
@@ -53,6 +59,13 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      */
     public Optional<NodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfig() {
         return Optional.ofNullable(this.hugepagesConfig);
+    }
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    public Optional<NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoading() {
+        return Optional.ofNullable(this.nodeKernelModuleLoading);
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -87,6 +100,7 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     public static final class Builder {
         private @Nullable String cgroupMode;
         private @Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
+        private @Nullable NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
         private @Nullable Map<String,String> sysctls;
         private @Nullable String transparentHugepageDefrag;
         private @Nullable String transparentHugepageEnabled;
@@ -95,6 +109,7 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfig = defaults.hugepagesConfig;
+    	      this.nodeKernelModuleLoading = defaults.nodeKernelModuleLoading;
     	      this.sysctls = defaults.sysctls;
     	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
     	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
@@ -110,6 +125,12 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
         public Builder hugepagesConfig(@Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig) {
 
             this.hugepagesConfig = hugepagesConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeKernelModuleLoading(@Nullable NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading) {
+
+            this.nodeKernelModuleLoading = nodeKernelModuleLoading;
             return this;
         }
         @CustomType.Setter
@@ -134,6 +155,7 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
             final var _resultValue = new NodePoolNodeConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfig = hugepagesConfig;
+            _resultValue.nodeKernelModuleLoading = nodeKernelModuleLoading;
             _resultValue.sysctls = sysctls;
             _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
             _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;

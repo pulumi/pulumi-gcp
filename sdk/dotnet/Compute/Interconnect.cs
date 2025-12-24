@@ -267,6 +267,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> OperationalStatus { get; private set; } = null!;
 
         /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InterconnectParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// IP address configured on the customer side of the Interconnect link.
         /// The customer should configure this IP address during turnup when prompted by Google NOC.
         /// This can be used only for ping tests.
@@ -508,6 +515,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("nocContactEmail")]
         public Input<string>? NocContactEmail { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InterconnectParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -792,6 +806,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("operationalStatus")]
         public Input<string>? OperationalStatus { get; set; }
+
+        /// <summary>
+        /// Additional params passed with the request, but not persisted as part of resource payload
+        /// Structure is documented below.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InterconnectParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// IP address configured on the customer side of the Interconnect link.

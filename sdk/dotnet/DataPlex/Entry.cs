@@ -227,6 +227,221 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// ### Dataplex Entry Bigquery Table
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var aspect_type_full_one = new Gcp.DataPlex.AspectType("aspect-type-full-one", new()
+    ///     {
+    ///         AspectTypeId = "aspect-type-one",
+    ///         Location = "us-central1",
+    ///         Project = "1111111111111",
+    ///         MetadataTemplate = @"{
+    ///   \""name\"": \""tf-test-template\"",
+    ///   \""type\"": \""record\"",
+    ///   \""recordFields\"": [
+    ///     {
+    ///       \""name\"": \""type\"",
+    ///       \""type\"": \""enum\"",
+    ///       \""annotations\"": {
+    ///         \""displayName\"": \""Type\"",
+    ///         \""description\"": \""Specifies the type of view represented by the entry.\""
+    ///       },
+    ///       \""index\"": 1,
+    ///       \""constraints\"": {
+    ///         \""required\"": true
+    ///       },
+    ///       \""enumValues\"": [
+    ///         {
+    ///           \""name\"": \""VIEW\"",
+    ///           \""index\"": 1
+    ///         }
+    ///       ]
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///     });
+    /// 
+    ///     var aspect_type_full_two = new Gcp.DataPlex.AspectType("aspect-type-full-two", new()
+    ///     {
+    ///         AspectTypeId = "aspect-type-two",
+    ///         Location = "us-central1",
+    ///         Project = "1111111111111",
+    ///         MetadataTemplate = @"{
+    ///   \""name\"": \""tf-test-template\"",
+    ///   \""type\"": \""record\"",
+    ///   \""recordFields\"": [
+    ///     {
+    ///       \""name\"": \""story\"",
+    ///       \""type\"": \""enum\"",
+    ///       \""annotations\"": {
+    ///         \""displayName\"": \""Story\"",
+    ///         \""description\"": \""Specifies the story of an entry.\""
+    ///       },
+    ///       \""index\"": 1,
+    ///       \""constraints\"": {
+    ///         \""required\"": true
+    ///       },
+    ///       \""enumValues\"": [
+    ///         {
+    ///           \""name\"": \""SEQUENCE\"",
+    ///           \""index\"": 1
+    ///         }
+    ///       ]
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///     });
+    /// 
+    ///     var example_dataset = new Gcp.BigQuery.Dataset("example-dataset", new()
+    ///     {
+    ///         DatasetId = "dataset-basic",
+    ///         FriendlyName = "Example Dataset",
+    ///         Location = "us-central1",
+    ///         DeleteContentsOnDestroy = true,
+    ///     });
+    /// 
+    ///     var example_table = new Gcp.BigQuery.Table("example-table", new()
+    ///     {
+    ///         DatasetId = example_dataset.DatasetId,
+    ///         TableId = "table-basic",
+    ///         DeletionProtection = false,
+    ///         Schema = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["name"] = "event_time",
+    ///                 ["type"] = "TIMESTAMP",
+    ///                 ["mode"] = "REQUIRED",
+    ///             },
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["name"] = "user_id",
+    ///                 ["type"] = "STRING",
+    ///                 ["mode"] = "NULLABLE",
+    ///             },
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["name"] = "event_type",
+    ///                 ["type"] = "STRING",
+    ///                 ["mode"] = "NULLABLE",
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    ///     var tfTestTable = new Gcp.DataPlex.Entry("tf_test_table", new()
+    ///     {
+    ///         EntryGroupId = "@bigquery",
+    ///         Project = "1111111111111",
+    ///         Location = "us-central1",
+    ///         EntryId = Output.Tuple(example_dataset.DatasetId, example_table.TableId).Apply(values =&gt;
+    ///         {
+    ///             var datasetId = values.Item1;
+    ///             var tableId = values.Item2;
+    ///             return $"bigquery.googleapis.com/projects/my-project-name/datasets/{datasetId}/tables/{tableId}";
+    ///         }),
+    ///         EntryType = "projects/655216118709/locations/global/entryTypes/bigquery-table",
+    ///         FullyQualifiedName = Output.Tuple(example_dataset.DatasetId, example_table.TableId).Apply(values =&gt;
+    ///         {
+    ///             var datasetId = values.Item1;
+    ///             var tableId = values.Item2;
+    ///             return $"bigquery:my-project-name.{datasetId}.{tableId}";
+    ///         }),
+    ///         ParentEntry = example_dataset.DatasetId.Apply(datasetId =&gt; $"projects/1111111111111/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/my-project-name/datasets/{datasetId}"),
+    ///         Aspects = new[]
+    ///         {
+    ///             new Gcp.DataPlex.Inputs.EntryAspectArgs
+    ///             {
+    ///                 AspectKey = "1111111111111.us-central1.aspect-type-one",
+    ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
+    ///                 {
+    ///                     Data = @"          {\""type\"": \""VIEW\""    }
+    /// ",
+    ///                 },
+    ///             },
+    ///             new Gcp.DataPlex.Inputs.EntryAspectArgs
+    ///             {
+    ///                 AspectKey = "1111111111111.us-central1.aspect-type-two@Schema.event_type",
+    ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
+    ///                 {
+    ///                     Data = @"          {\""story\"": \""SEQUENCE\""    }
+    /// ",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             aspect_type_full_two,
+    ///             aspect_type_full_one,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Entry Glossary Term
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example_glossary = new Gcp.DataPlex.Glossary("example-glossary", new()
+    ///     {
+    ///         GlossaryId = "glossary-basic",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var example_glossary_term = new Gcp.DataPlex.GlossaryTerm("example-glossary-term", new()
+    ///     {
+    ///         Parent = example_glossary.GlossaryId.Apply(glossaryId =&gt; $"projects/my-project-name/locations/us-central1/glossaries/{glossaryId}"),
+    ///         GlossaryId = example_glossary.GlossaryId,
+    ///         Location = "us-central1",
+    ///         TermId = "glossary-term",
+    ///     });
+    /// 
+    ///     var tfTestGlossaryTerm = new Gcp.DataPlex.Entry("tf_test_glossary_term", new()
+    ///     {
+    ///         EntryGroupId = "@dataplex",
+    ///         Project = "1111111111111",
+    ///         Location = "us-central1",
+    ///         EntryId = Output.Tuple(example_glossary.GlossaryId, example_glossary_term.TermId).Apply(values =&gt;
+    ///         {
+    ///             var glossaryId = values.Item1;
+    ///             var termId = values.Item2;
+    ///             return $"projects/1111111111111/locations/us-central1/glossaries/{glossaryId}/terms/{termId}";
+    ///         }),
+    ///         EntryType = "projects/655216118709/locations/global/entryTypes/glossary-term",
+    ///         ParentEntry = example_glossary.GlossaryId.Apply(glossaryId =&gt; $"projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/{glossaryId}"),
+    ///         Aspects = new[]
+    ///         {
+    ///             new Gcp.DataPlex.Inputs.EntryAspectArgs
+    ///             {
+    ///                 AspectKey = "655216118709.global.overview",
+    ///                 Aspect = new Gcp.DataPlex.Inputs.EntryAspectAspectArgs
+    ///                 {
+    ///                     Data = @"           {\""content\"": \""Term Content\""    }
+    /// ",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

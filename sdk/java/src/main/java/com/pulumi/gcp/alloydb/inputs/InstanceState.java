@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.InstanceClientConnectionConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstanceConnectionPoolConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceObservabilityConfigArgs;
@@ -134,6 +135,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> cluster() {
         return Optional.ofNullable(this.cluster);
+    }
+
+    /**
+     * Configuration for Managed Connection Pool.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="connectionPoolConfig")
+    private @Nullable Output<InstanceConnectionPoolConfigArgs> connectionPoolConfig;
+
+    /**
+     * @return Configuration for Managed Connection Pool.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceConnectionPoolConfigArgs>> connectionPoolConfig() {
+        return Optional.ofNullable(this.connectionPoolConfig);
     }
 
     /**
@@ -514,6 +532,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.availabilityType = $.availabilityType;
         this.clientConnectionConfig = $.clientConnectionConfig;
         this.cluster = $.cluster;
+        this.connectionPoolConfig = $.connectionPoolConfig;
         this.createTime = $.createTime;
         this.databaseFlags = $.databaseFlags;
         this.displayName = $.displayName;
@@ -697,6 +716,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cluster(String cluster) {
             return cluster(Output.of(cluster));
+        }
+
+        /**
+         * @param connectionPoolConfig Configuration for Managed Connection Pool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionPoolConfig(@Nullable Output<InstanceConnectionPoolConfigArgs> connectionPoolConfig) {
+            $.connectionPoolConfig = connectionPoolConfig;
+            return this;
+        }
+
+        /**
+         * @param connectionPoolConfig Configuration for Managed Connection Pool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionPoolConfig(InstanceConnectionPoolConfigArgs connectionPoolConfig) {
+            return connectionPoolConfig(Output.of(connectionPoolConfig));
         }
 
         /**

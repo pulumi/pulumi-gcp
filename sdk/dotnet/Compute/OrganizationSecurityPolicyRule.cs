@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         DisplayName = "tf-test",
     ///         Parent = "organizations/123456789",
+    ///         Type = "FIREWALL",
     ///     });
     /// 
     ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policy", new()

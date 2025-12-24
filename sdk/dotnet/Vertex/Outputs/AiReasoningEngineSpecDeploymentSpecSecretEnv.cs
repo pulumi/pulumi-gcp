@@ -14,11 +14,13 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecDeploymentSpecSecretEnv
     {
         /// <summary>
-        /// The name of the environment variable. Must be a valid C identifier.
+        /// The name of the environment variable. Must be a valid C
+        /// identifier.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+        /// Reference to a secret stored in the Cloud Secret Manager
+        /// that will provide the value for this environment variable.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef SecretRef;

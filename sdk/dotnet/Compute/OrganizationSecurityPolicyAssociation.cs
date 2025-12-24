@@ -41,41 +41,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         DisplayName = "tf-test",
     ///         Parent = securityPolicyTarget.Name,
-    ///     });
-    /// 
-    ///     var policyOrganizationSecurityPolicyRule = new Gcp.Compute.OrganizationSecurityPolicyRule("policy", new()
-    ///     {
-    ///         PolicyId = policy.Id,
-    ///         Action = "allow",
-    ///         Direction = "INGRESS",
-    ///         EnableLogging = true,
-    ///         Match = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchArgs
-    ///         {
-    ///             Config = new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigArgs
-    ///             {
-    ///                 SrcIpRanges = new[]
-    ///                 {
-    ///                     "192.168.0.0/16",
-    ///                     "10.0.0.0/8",
-    ///                 },
-    ///                 Layer4Configs = new[]
-    ///                 {
-    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
-    ///                     {
-    ///                         IpProtocol = "tcp",
-    ///                         Ports = new[]
-    ///                         {
-    ///                             "22",
-    ///                         },
-    ///                     },
-    ///                     new Gcp.Compute.Inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs
-    ///                     {
-    ///                         IpProtocol = "icmp",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Priority = 100,
+    ///         Type = "FIREWALL",
     ///     });
     /// 
     ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policy", new()

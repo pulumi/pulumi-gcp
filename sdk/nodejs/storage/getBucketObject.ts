@@ -76,6 +76,7 @@ export interface GetBucketObjectResult {
      * (Computed) [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
     readonly contentType: string;
+    readonly contexts: outputs.storage.GetBucketObjectContext[];
     /**
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */

@@ -6,6 +6,7 @@ package com.pulumi.gcp.colab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionDataformRepositorySourceArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionGcsNotebookSourceArgs;
@@ -18,6 +19,23 @@ import javax.annotation.Nullable;
 public final class NotebookExecutionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NotebookExecutionArgs Empty = new NotebookExecutionArgs();
+
+    /**
+     * Compute configuration to use for an execution job
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customEnvironmentSpec")
+    private @Nullable Output<NotebookExecutionCustomEnvironmentSpecArgs> customEnvironmentSpec;
+
+    /**
+     * @return Compute configuration to use for an execution job
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<NotebookExecutionCustomEnvironmentSpecArgs>> customEnvironmentSpec() {
+        return Optional.ofNullable(this.customEnvironmentSpec);
+    }
 
     /**
      * The Dataform Repository containing the input notebook.
@@ -210,6 +228,7 @@ public final class NotebookExecutionArgs extends com.pulumi.resources.ResourceAr
     private NotebookExecutionArgs() {}
 
     private NotebookExecutionArgs(NotebookExecutionArgs $) {
+        this.customEnvironmentSpec = $.customEnvironmentSpec;
         this.dataformRepositorySource = $.dataformRepositorySource;
         this.directNotebookSource = $.directNotebookSource;
         this.displayName = $.displayName;
@@ -240,6 +259,29 @@ public final class NotebookExecutionArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(NotebookExecutionArgs defaults) {
             $ = new NotebookExecutionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customEnvironmentSpec Compute configuration to use for an execution job
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customEnvironmentSpec(@Nullable Output<NotebookExecutionCustomEnvironmentSpecArgs> customEnvironmentSpec) {
+            $.customEnvironmentSpec = customEnvironmentSpec;
+            return this;
+        }
+
+        /**
+         * @param customEnvironmentSpec Compute configuration to use for an execution job
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customEnvironmentSpec(NotebookExecutionCustomEnvironmentSpecArgs customEnvironmentSpec) {
+            return customEnvironmentSpec(Output.of(customEnvironmentSpec));
         }
 
         /**

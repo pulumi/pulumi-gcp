@@ -21744,7 +21744,10 @@ if not MYPY:
         """
         publish_findings_to_cloud_data_catalog: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict']]
         """
+        (Optional, Deprecated)
         Publish findings of a DlpJob to Data Catalog.
+
+        > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
         """
         publish_findings_to_dataplex_catalog: NotRequired[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict']]
         """
@@ -21783,7 +21786,10 @@ class PreventionJobTriggerInspectJobActionArgs:
         :param pulumi.Input['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs'] job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPubSubArgs'] pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
-        :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs'] publish_findings_to_cloud_data_catalog: Publish findings of a DlpJob to Data Catalog.
+        :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs'] publish_findings_to_cloud_data_catalog: (Optional, Deprecated)
+               Publish findings of a DlpJob to Data Catalog.
+               
+               > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs'] publish_findings_to_dataplex_catalog: Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs'] publish_summary_to_cscc: Publish the result summary of a DlpJob to the Cloud Security Command Center.
         :param pulumi.Input['PreventionJobTriggerInspectJobActionPublishToStackdriverArgs'] publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/findingCount.
@@ -21796,6 +21802,9 @@ class PreventionJobTriggerInspectJobActionArgs:
             pulumi.set(__self__, "job_notification_emails", job_notification_emails)
         if pub_sub is not None:
             pulumi.set(__self__, "pub_sub", pub_sub)
+        if publish_findings_to_cloud_data_catalog is not None:
+            warnings.warn("""`publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""", DeprecationWarning)
+            pulumi.log.warn("""publish_findings_to_cloud_data_catalog is deprecated: `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""")
         if publish_findings_to_cloud_data_catalog is not None:
             pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
         if publish_findings_to_dataplex_catalog is not None:
@@ -21847,9 +21856,13 @@ class PreventionJobTriggerInspectJobActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="publishFindingsToCloudDataCatalog")
+    @_utilities.deprecated("""`publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.""")
     def publish_findings_to_cloud_data_catalog(self) -> Optional[pulumi.Input['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]:
         """
+        (Optional, Deprecated)
         Publish findings of a DlpJob to Data Catalog.
+
+        > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
         """
         return pulumi.get(self, "publish_findings_to_cloud_data_catalog")
 

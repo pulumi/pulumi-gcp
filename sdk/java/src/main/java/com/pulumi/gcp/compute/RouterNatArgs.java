@@ -88,7 +88,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enable endpoint independent mapping.
-     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      * 
      */
     @Import(name="enableEndpointIndependentMapping")
@@ -96,7 +96,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enable endpoint independent mapping.
-     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      * 
      */
     public Optional<Output<Boolean>> enableEndpointIndependentMapping() {
@@ -662,7 +662,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableEndpointIndependentMapping Enable endpoint independent mapping.
-         * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+         * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableEndpointIndependentMapping Enable endpoint independent mapping.
-         * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+         * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
          * 
          * @return builder
          * 

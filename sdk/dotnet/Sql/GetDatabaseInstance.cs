@@ -161,6 +161,8 @@ namespace Pulumi.Gcp.Sql
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceReplicationClusterResult> ReplicationClusters;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceRestoreBackupContextResult> RestoreBackupContexts;
         public readonly string RootPassword;
+        public readonly string RootPasswordWo;
+        public readonly string RootPasswordWoVersion;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceServerCaCertResult> ServerCaCerts;
         public readonly string ServiceAccountEmailAddress;
@@ -226,6 +228,10 @@ namespace Pulumi.Gcp.Sql
 
             string rootPassword,
 
+            string rootPasswordWo,
+
+            string rootPasswordWoVersion,
+
             string selfLink,
 
             ImmutableArray<Outputs.GetDatabaseInstanceServerCaCertResult> serverCaCerts,
@@ -263,6 +269,8 @@ namespace Pulumi.Gcp.Sql
             ReplicationClusters = replicationClusters;
             RestoreBackupContexts = restoreBackupContexts;
             RootPassword = rootPassword;
+            RootPasswordWo = rootPasswordWo;
+            RootPasswordWoVersion = rootPasswordWoVersion;
             SelfLink = selfLink;
             ServerCaCerts = serverCaCerts;
             ServiceAccountEmailAddress = serviceAccountEmailAddress;

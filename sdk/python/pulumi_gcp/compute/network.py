@@ -25,6 +25,7 @@ class NetworkArgs:
                  bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -49,6 +50,8 @@ class NetworkArgs:
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[_builtins.str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
                Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        :param pulumi.Input[_builtins.bool] delete_bgp_always_compare_med: If set to `true`, the `bgp_always_compare_med` field will be cleared.
+               If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
@@ -99,6 +102,8 @@ class NetworkArgs:
             pulumi.set(__self__, "bgp_best_path_selection_mode", bgp_best_path_selection_mode)
         if bgp_inter_region_cost is not None:
             pulumi.set(__self__, "bgp_inter_region_cost", bgp_inter_region_cost)
+        if delete_bgp_always_compare_med is not None:
+            pulumi.set(__self__, "delete_bgp_always_compare_med", delete_bgp_always_compare_med)
         if delete_default_routes_on_create is not None:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
@@ -176,6 +181,19 @@ class NetworkArgs:
     @bgp_inter_region_cost.setter
     def bgp_inter_region_cost(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bgp_inter_region_cost", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteBgpAlwaysCompareMed")
+    def delete_bgp_always_compare_med(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to `true`, the `bgp_always_compare_med` field will be cleared.
+        If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
+        """
+        return pulumi.get(self, "delete_bgp_always_compare_med")
+
+    @delete_bgp_always_compare_med.setter
+    def delete_bgp_always_compare_med(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_bgp_always_compare_med", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")
@@ -347,6 +365,7 @@ class _NetworkState:
                  bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -375,6 +394,8 @@ class _NetworkState:
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[_builtins.str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
                Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        :param pulumi.Input[_builtins.bool] delete_bgp_always_compare_med: If set to `true`, the `bgp_always_compare_med` field will be cleared.
+               If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
@@ -431,6 +452,8 @@ class _NetworkState:
             pulumi.set(__self__, "bgp_best_path_selection_mode", bgp_best_path_selection_mode)
         if bgp_inter_region_cost is not None:
             pulumi.set(__self__, "bgp_inter_region_cost", bgp_inter_region_cost)
+        if delete_bgp_always_compare_med is not None:
+            pulumi.set(__self__, "delete_bgp_always_compare_med", delete_bgp_always_compare_med)
         if delete_default_routes_on_create is not None:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
@@ -519,6 +542,19 @@ class _NetworkState:
     @bgp_inter_region_cost.setter
     def bgp_inter_region_cost(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bgp_inter_region_cost", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteBgpAlwaysCompareMed")
+    def delete_bgp_always_compare_med(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to `true`, the `bgp_always_compare_med` field will be cleared.
+        If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
+        """
+        return pulumi.get(self, "delete_bgp_always_compare_med")
+
+    @delete_bgp_always_compare_med.setter
+    def delete_bgp_always_compare_med(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_bgp_always_compare_med", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")
@@ -744,6 +780,7 @@ class Network(pulumi.CustomResource):
                  bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -836,6 +873,21 @@ class Network(pulumi.CustomResource):
             bgp_always_compare_med=True,
             bgp_inter_region_cost="ADD_COST_TO_MED")
         ```
+        ### Network Bgp Standard Mode Delete Med
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            name="vpc-network",
+            auto_create_subnetworks=False,
+            routing_mode="GLOBAL",
+            project="my-project-name",
+            bgp_best_path_selection_mode="LEGACY",
+            bgp_always_compare_med=False,
+            delete_bgp_always_compare_med=True)
+        ```
 
         ## Import
 
@@ -874,6 +926,8 @@ class Network(pulumi.CustomResource):
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[_builtins.str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
                Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        :param pulumi.Input[_builtins.bool] delete_bgp_always_compare_med: If set to `true`, the `bgp_always_compare_med` field will be cleared.
+               If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
@@ -1002,6 +1056,21 @@ class Network(pulumi.CustomResource):
             bgp_always_compare_med=True,
             bgp_inter_region_cost="ADD_COST_TO_MED")
         ```
+        ### Network Bgp Standard Mode Delete Med
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            name="vpc-network",
+            auto_create_subnetworks=False,
+            routing_mode="GLOBAL",
+            project="my-project-name",
+            bgp_best_path_selection_mode="LEGACY",
+            bgp_always_compare_med=False,
+            delete_bgp_always_compare_med=True)
+        ```
 
         ## Import
 
@@ -1046,6 +1115,7 @@ class Network(pulumi.CustomResource):
                  bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1070,6 +1140,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["bgp_always_compare_med"] = bgp_always_compare_med
             __props__.__dict__["bgp_best_path_selection_mode"] = bgp_best_path_selection_mode
             __props__.__dict__["bgp_inter_region_cost"] = bgp_inter_region_cost
+            __props__.__dict__["delete_bgp_always_compare_med"] = delete_bgp_always_compare_med
             __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
@@ -1099,6 +1170,7 @@ class Network(pulumi.CustomResource):
             bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
             bgp_best_path_selection_mode: Optional[pulumi.Input[_builtins.str]] = None,
             bgp_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
+            delete_bgp_always_compare_med: Optional[pulumi.Input[_builtins.bool]] = None,
             delete_default_routes_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             enable_ula_internal_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1132,6 +1204,8 @@ class Network(pulumi.CustomResource):
                Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[_builtins.str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
                Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        :param pulumi.Input[_builtins.bool] delete_bgp_always_compare_med: If set to `true`, the `bgp_always_compare_med` field will be cleared.
+               If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
@@ -1188,6 +1262,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["bgp_always_compare_med"] = bgp_always_compare_med
         __props__.__dict__["bgp_best_path_selection_mode"] = bgp_best_path_selection_mode
         __props__.__dict__["bgp_inter_region_cost"] = bgp_inter_region_cost
+        __props__.__dict__["delete_bgp_always_compare_med"] = delete_bgp_always_compare_med
         __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
@@ -1243,6 +1318,15 @@ class Network(pulumi.CustomResource):
         Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
         """
         return pulumi.get(self, "bgp_inter_region_cost")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteBgpAlwaysCompareMed")
+    def delete_bgp_always_compare_med(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to `true`, the `bgp_always_compare_med` field will be cleared.
+        If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
+        """
+        return pulumi.get(self, "delete_bgp_always_compare_med")
 
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")

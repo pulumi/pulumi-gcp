@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceFailoverPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceHaPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceLogConfig;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceParam;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceStrongSessionAffinityCooky;
@@ -60,6 +61,7 @@ public final class GetRegionBackendServiceResult {
     private List<GetRegionBackendServiceLogConfig> logConfigs;
     private String name;
     private String network;
+    private List<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
     private List<GetRegionBackendServiceOutlierDetection> outlierDetections;
     private List<GetRegionBackendServiceParam> params;
     private String portName;
@@ -154,6 +156,9 @@ public final class GetRegionBackendServiceResult {
     public String network() {
         return this.network;
     }
+    public List<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies() {
+        return this.networkPassThroughLbTrafficPolicies;
+    }
     public List<GetRegionBackendServiceOutlierDetection> outlierDetections() {
         return this.outlierDetections;
     }
@@ -228,6 +233,7 @@ public final class GetRegionBackendServiceResult {
         private List<GetRegionBackendServiceLogConfig> logConfigs;
         private String name;
         private String network;
+        private List<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
         private List<GetRegionBackendServiceOutlierDetection> outlierDetections;
         private List<GetRegionBackendServiceParam> params;
         private String portName;
@@ -269,6 +275,7 @@ public final class GetRegionBackendServiceResult {
     	      this.logConfigs = defaults.logConfigs;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkPassThroughLbTrafficPolicies = defaults.networkPassThroughLbTrafficPolicies;
     	      this.outlierDetections = defaults.outlierDetections;
     	      this.params = defaults.params;
     	      this.portName = defaults.portName;
@@ -521,6 +528,17 @@ public final class GetRegionBackendServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder networkPassThroughLbTrafficPolicies(List<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies) {
+            if (networkPassThroughLbTrafficPolicies == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "networkPassThroughLbTrafficPolicies");
+            }
+            this.networkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
+            return this;
+        }
+        public Builder networkPassThroughLbTrafficPolicies(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy... networkPassThroughLbTrafficPolicies) {
+            return networkPassThroughLbTrafficPolicies(List.of(networkPassThroughLbTrafficPolicies));
+        }
+        @CustomType.Setter
         public Builder outlierDetections(List<GetRegionBackendServiceOutlierDetection> outlierDetections) {
             if (outlierDetections == null) {
               throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "outlierDetections");
@@ -662,6 +680,7 @@ public final class GetRegionBackendServiceResult {
             _resultValue.logConfigs = logConfigs;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.networkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
             _resultValue.outlierDetections = outlierDetections;
             _resultValue.params = params;
             _resultValue.portName = portName;

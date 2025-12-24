@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// The initial password for the user.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// The database username.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
         [OutputConstructor]
         private ClusterInitialUser(
-            string password,
+            string? password,
 
             string? user)
         {

@@ -23,7 +23,9 @@ class UserArgs:
                  user_id: pulumi.Input[_builtins.str],
                  user_type: pulumi.Input[_builtins.str],
                  database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
@@ -34,6 +36,13 @@ class UserArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[_builtins.str] password: Password for this database user.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Password for this database user.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "user_id", user_id)
@@ -42,6 +51,10 @@ class UserArgs:
             pulumi.set(__self__, "database_roles", database_roles)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
 
     @_builtins.property
     @pulumi.getter
@@ -106,6 +119,35 @@ class UserArgs:
     def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
 
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        Password for this database user.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
+
 
 @pulumi.input_type
 class _UserState:
@@ -114,6 +156,8 @@ class _UserState:
                  database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -124,6 +168,13 @@ class _UserState:
         :param pulumi.Input[_builtins.str] name: Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
         :param pulumi.Input[_builtins.str] password: Password for this database user.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Password for this database user.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
         :param pulumi.Input[_builtins.str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
@@ -136,6 +187,10 @@ class _UserState:
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
         if user_type is not None:
@@ -192,6 +247,35 @@ class _UserState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        Password for this database user.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -226,6 +310,8 @@ class User(pulumi.CustomResource):
                  cluster: Optional[pulumi.Input[_builtins.str]] = None,
                  database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -237,6 +323,9 @@ class User(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.users/create)
         * How-to Guides
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `password_wo`.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -353,6 +442,13 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[_builtins.str] password: Password for this database user.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Password for this database user.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
         :param pulumi.Input[_builtins.str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
@@ -371,6 +467,9 @@ class User(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.users/create)
         * How-to Guides
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `password_wo`.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -498,6 +597,8 @@ class User(pulumi.CustomResource):
                  cluster: Optional[pulumi.Input[_builtins.str]] = None,
                  database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -514,6 +615,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["cluster"] = cluster
             __props__.__dict__["database_roles"] = database_roles
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
+            __props__.__dict__["password_wo_version"] = password_wo_version
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
@@ -521,7 +624,7 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'user_type'")
             __props__.__dict__["user_type"] = user_type
             __props__.__dict__["name"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'gcp:alloydb/user:User',
@@ -537,6 +640,8 @@ class User(pulumi.CustomResource):
             database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
+            password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+            password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
             user_id: Optional[pulumi.Input[_builtins.str]] = None,
             user_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
         """
@@ -552,6 +657,13 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
         :param pulumi.Input[_builtins.str] password: Password for this database user.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               Password for this database user.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `password` or `password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] password_wo_version: Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] user_id: The database role name of the user.
         :param pulumi.Input[_builtins.str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
@@ -564,6 +676,8 @@ class User(pulumi.CustomResource):
         __props__.__dict__["database_roles"] = database_roles
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo"] = password_wo
+        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["user_id"] = user_id
         __props__.__dict__["user_type"] = user_type
         return User(resource_name, opts=opts, __props__=__props__)
@@ -601,6 +715,27 @@ class User(pulumi.CustomResource):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        Password for this database user.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `password` or `password_wo` can only be set.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="userId")

@@ -26,6 +26,19 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        [Input("natIps")]
+        private InputList<string>? _natIps;
+
+        /// <summary>
+        /// (Output)
+        /// The nat IPs of the connected endpoint.
+        /// </summary>
+        public InputList<string> NatIps
+        {
+            get => _natIps ?? (_natIps = new InputList<string>());
+            set => _natIps = value;
+        }
+
         /// <summary>
         /// (Output)
         /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.

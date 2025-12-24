@@ -6,25 +6,70 @@ package com.pulumi.gcp.networksecurity.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityProfileCustomMirroringProfile {
     /**
-     * @return The Mirroring Endpoint Group to which matching traffic should be mirrored.
+     * @return The target downstream Mirroring Deployment Groups.
+     * This field is used for Packet Broker mirroring endpoint groups to specify
+     * the deployment groups that the packet should be mirrored to by the broker.
+     * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+     * 
+     */
+    private @Nullable List<String> mirroringDeploymentGroups;
+    /**
+     * @return The target Mirroring Endpoint Group.
+     * When a mirroring rule with this security profile attached matches a packet,
+     * a replica will be mirrored to the location-local target in this group.
      * Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
      * 
      */
     private String mirroringEndpointGroup;
+    /**
+     * @return (Output, Beta)
+     * The type of the mirroring endpoint group this profile is attached to.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    private @Nullable String mirroringEndpointGroupType;
 
     private SecurityProfileCustomMirroringProfile() {}
     /**
-     * @return The Mirroring Endpoint Group to which matching traffic should be mirrored.
+     * @return The target downstream Mirroring Deployment Groups.
+     * This field is used for Packet Broker mirroring endpoint groups to specify
+     * the deployment groups that the packet should be mirrored to by the broker.
+     * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+     * 
+     */
+    public List<String> mirroringDeploymentGroups() {
+        return this.mirroringDeploymentGroups == null ? List.of() : this.mirroringDeploymentGroups;
+    }
+    /**
+     * @return The target Mirroring Endpoint Group.
+     * When a mirroring rule with this security profile attached matches a packet,
+     * a replica will be mirrored to the location-local target in this group.
      * Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
      * 
      */
     public String mirroringEndpointGroup() {
         return this.mirroringEndpointGroup;
+    }
+    /**
+     * @return (Output, Beta)
+     * The type of the mirroring endpoint group this profile is attached to.
+     * Possible values:
+     * DIRECT
+     * BROKER
+     * 
+     */
+    public Optional<String> mirroringEndpointGroupType() {
+        return Optional.ofNullable(this.mirroringEndpointGroupType);
     }
 
     public static Builder builder() {
@@ -36,13 +81,26 @@ public final class SecurityProfileCustomMirroringProfile {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> mirroringDeploymentGroups;
         private String mirroringEndpointGroup;
+        private @Nullable String mirroringEndpointGroupType;
         public Builder() {}
         public Builder(SecurityProfileCustomMirroringProfile defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.mirroringDeploymentGroups = defaults.mirroringDeploymentGroups;
     	      this.mirroringEndpointGroup = defaults.mirroringEndpointGroup;
+    	      this.mirroringEndpointGroupType = defaults.mirroringEndpointGroupType;
         }
 
+        @CustomType.Setter
+        public Builder mirroringDeploymentGroups(@Nullable List<String> mirroringDeploymentGroups) {
+
+            this.mirroringDeploymentGroups = mirroringDeploymentGroups;
+            return this;
+        }
+        public Builder mirroringDeploymentGroups(String... mirroringDeploymentGroups) {
+            return mirroringDeploymentGroups(List.of(mirroringDeploymentGroups));
+        }
         @CustomType.Setter
         public Builder mirroringEndpointGroup(String mirroringEndpointGroup) {
             if (mirroringEndpointGroup == null) {
@@ -51,9 +109,17 @@ public final class SecurityProfileCustomMirroringProfile {
             this.mirroringEndpointGroup = mirroringEndpointGroup;
             return this;
         }
+        @CustomType.Setter
+        public Builder mirroringEndpointGroupType(@Nullable String mirroringEndpointGroupType) {
+
+            this.mirroringEndpointGroupType = mirroringEndpointGroupType;
+            return this;
+        }
         public SecurityProfileCustomMirroringProfile build() {
             final var _resultValue = new SecurityProfileCustomMirroringProfile();
+            _resultValue.mirroringDeploymentGroups = mirroringDeploymentGroups;
             _resultValue.mirroringEndpointGroup = mirroringEndpointGroup;
+            _resultValue.mirroringEndpointGroupType = mirroringEndpointGroupType;
             return _resultValue;
         }
     }

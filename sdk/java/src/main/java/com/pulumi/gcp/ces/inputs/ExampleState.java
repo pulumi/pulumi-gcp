@@ -79,6 +79,25 @@ public final class ExampleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The agent that initially handles the conversation. If not specified, the
+     * example represents a conversation that is handled by the root agent.
+     * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     * 
+     */
+    @Import(name="entryAgent")
+    private @Nullable Output<String> entryAgent;
+
+    /**
+     * @return The agent that initially handles the conversation. If not specified, the
+     * example represents a conversation that is handled by the root agent.
+     * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     * 
+     */
+    public Optional<Output<String>> entryAgent() {
+        return Optional.ofNullable(this.entryAgent);
+    }
+
+    /**
      * Etag used to ensure the object hasn&#39;t changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
@@ -211,6 +230,7 @@ public final class ExampleState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.entryAgent = $.entryAgent;
         this.etag = $.etag;
         this.exampleId = $.exampleId;
         this.invalid = $.invalid;
@@ -321,6 +341,31 @@ public final class ExampleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param entryAgent The agent that initially handles the conversation. If not specified, the
+         * example represents a conversation that is handled by the root agent.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entryAgent(@Nullable Output<String> entryAgent) {
+            $.entryAgent = entryAgent;
+            return this;
+        }
+
+        /**
+         * @param entryAgent The agent that initially handles the conversation. If not specified, the
+         * example represents a conversation that is handled by the root agent.
+         * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder entryAgent(String entryAgent) {
+            return entryAgent(Output.of(entryAgent));
         }
 
         /**

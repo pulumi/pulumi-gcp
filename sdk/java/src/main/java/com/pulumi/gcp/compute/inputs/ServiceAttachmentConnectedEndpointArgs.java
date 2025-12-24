@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,6 +49,23 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
      */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
+    }
+
+    /**
+     * (Output)
+     * The nat IPs of the connected endpoint.
+     * 
+     */
+    @Import(name="natIps")
+    private @Nullable Output<List<String>> natIps;
+
+    /**
+     * @return (Output)
+     * The nat IPs of the connected endpoint.
+     * 
+     */
+    public Optional<Output<List<String>>> natIps() {
+        return Optional.ofNullable(this.natIps);
     }
 
     /**
@@ -108,6 +126,7 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     private ServiceAttachmentConnectedEndpointArgs(ServiceAttachmentConnectedEndpointArgs $) {
         this.consumerNetwork = $.consumerNetwork;
         this.endpoint = $.endpoint;
+        this.natIps = $.natIps;
         this.propagatedConnectionCount = $.propagatedConnectionCount;
         this.pscConnectionId = $.pscConnectionId;
         this.status = $.status;
@@ -175,6 +194,40 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param natIps (Output)
+         * The nat IPs of the connected endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder natIps(@Nullable Output<List<String>> natIps) {
+            $.natIps = natIps;
+            return this;
+        }
+
+        /**
+         * @param natIps (Output)
+         * The nat IPs of the connected endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder natIps(List<String> natIps) {
+            return natIps(Output.of(natIps));
+        }
+
+        /**
+         * @param natIps (Output)
+         * The nat IPs of the connected endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder natIps(String... natIps) {
+            return natIps(List.of(natIps));
         }
 
         /**

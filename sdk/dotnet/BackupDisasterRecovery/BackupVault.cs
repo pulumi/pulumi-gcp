@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     /// 
     /// ## Example Usage
     /// 
-    /// ### Backup Dr Backup Vault Full
+    /// ### Backup Dr Backup Vault Simple
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,6 +39,51 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         {
     ///             { "foo", "bar1" },
     ///             { "bar", "baz1" },
+    ///         },
+    ///         ForceUpdate = true,
+    ///         AccessRestriction = "WITHIN_ORGANIZATION",
+    ///         BackupRetentionInheritance = "INHERIT_VAULT_RETENTION",
+    ///         IgnoreInactiveDatasources = true,
+    ///         IgnoreBackupPlanReferences = true,
+    ///         AllowMissing = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Backup Dr Backup Vault Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testProject = Gcp.Organizations.GetProject.Invoke(new()
+    ///     {
+    ///         ProjectId = "my-project-name",
+    ///     });
+    /// 
+    ///     var backup_vault_cmek = new Gcp.BackupDisasterRecovery.BackupVault("backup-vault-cmek", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         BackupVaultId = "backup-vault-cmek",
+    ///         Description = "This is a second backup vault built by Terraform.",
+    ///         BackupMinimumEnforcedRetentionDuration = "100000s",
+    ///         Annotations = 
+    ///         {
+    ///             { "annotations1", "bar1" },
+    ///             { "annotations2", "baz1" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar1" },
+    ///             { "bar", "baz1" },
+    ///         },
+    ///         EncryptionConfig = new Gcp.BackupDisasterRecovery.Inputs.BackupVaultEncryptionConfigArgs
+    ///         {
+    ///             KmsKeyName = "bkpvault-key",
     ///         },
     ///         ForceUpdate = true,
     ///         AccessRestriction = "WITHIN_ORGANIZATION",
@@ -158,6 +203,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Output("effectiveTime")]
         public Output<string?> EffectiveTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Encryption configuration for the backup vault.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.BackupVaultEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
@@ -381,6 +433,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
+        /// Encryption configuration for the backup vault.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.BackupVaultEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
         /// (Optional, Deprecated)
         /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
         /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
@@ -550,6 +609,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
+        /// Encryption configuration for the backup vault.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.BackupVaultEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
         /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.

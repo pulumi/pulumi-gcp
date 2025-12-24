@@ -17,7 +17,7 @@ import (
 //
 // To get more information about Namespace, see:
 //
-// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
+// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1/projects.locations.namespaces)
 // * How-to Guides
 //   - [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 //
@@ -90,8 +90,6 @@ type Namespace struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the Namespace.
-	// A full list of valid locations can be found by running
-	// `gcloud beta service-directory locations list`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the namespace
 	// in the format `projects/*/locations/*/namespaces/*`.
@@ -158,8 +156,6 @@ type namespaceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the Namespace.
-	// A full list of valid locations can be found by running
-	// `gcloud beta service-directory locations list`.
 	Location *string `pulumi:"location"`
 	// The resource name for the namespace
 	// in the format `projects/*/locations/*/namespaces/*`.
@@ -186,8 +182,6 @@ type NamespaceState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the Namespace.
-	// A full list of valid locations can be found by running
-	// `gcloud beta service-directory locations list`.
 	Location pulumi.StringPtrInput
 	// The resource name for the namespace
 	// in the format `projects/*/locations/*/namespaces/*`.
@@ -216,8 +210,6 @@ type namespaceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the Namespace.
-	// A full list of valid locations can be found by running
-	// `gcloud beta service-directory locations list`.
 	Location string `pulumi:"location"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
@@ -237,8 +229,6 @@ type NamespaceArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the Namespace.
-	// A full list of valid locations can be found by running
-	// `gcloud beta service-directory locations list`.
 	Location pulumi.StringInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
@@ -351,8 +341,6 @@ func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location for the Namespace.
-// A full list of valid locations can be found by running
-// `gcloud beta service-directory locations list`.
 func (o NamespaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

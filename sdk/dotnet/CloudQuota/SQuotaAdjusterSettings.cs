@@ -55,13 +55,17 @@ namespace Pulumi.Gcp.CloudQuota
     public partial class SQuotaAdjusterSettings : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Deprecated)
         /// The resource container that determines if the quota adjuster is set for this project.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveContainer")]
         public Output<string> EffectiveContainer { get; private set; } = null!;
 
         /// <summary>
+        /// (Deprecated)
         /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Output("effectiveEnablement")]
         public Output<string> EffectiveEnablement { get; private set; } = null!;
@@ -161,13 +165,17 @@ namespace Pulumi.Gcp.CloudQuota
     public sealed class SQuotaAdjusterSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Deprecated)
         /// The resource container that determines if the quota adjuster is set for this project.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveContainer")]
         public Input<string>? EffectiveContainer { get; set; }
 
         /// <summary>
+        /// (Deprecated)
         /// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        /// Expect this field to be empty currently.
         /// </summary>
         [Input("effectiveEnablement")]
         public Input<string>? EffectiveEnablement { get; set; }

@@ -575,84 +575,94 @@ class Tool(pulumi.CustomResource):
                 "name": "ces_tool_client_function_basic",
                 "description": "example-description",
                 "parameters": {
-                    "description": "schema description",
-                    "type": "ARRAY",
-                    "nullable": True,
-                    "requireds": ["some_property"],
-                    "enums": [
-                        "VALUE_A",
-                        "VALUE_B",
-                    ],
-                    "ref": "#/defs/MyDefinition",
-                    "unique_items": True,
-                    "defs": json.dumps({
-                        "SimpleString": {
-                            "type": "STRING",
-                            "description": "A simple string definition",
-                        },
+                    "additional_properties": json.dumps({
+                        "type": "BOOLEAN",
                     }),
                     "any_of": json.dumps([{
                         "type": "STRING",
                         "description": "any_of option 1: string",
                     }]),
                     "default": json.dumps(False),
+                    "defs": json.dumps({
+                        "SimpleString": {
+                            "type": "STRING",
+                            "description": "A simple string definition",
+                        },
+                    }),
+                    "description": "schema description",
+                    "enums": [
+                        "VALUE_A",
+                        "VALUE_B",
+                    ],
+                    "items": json.dumps({
+                        "type": "ARRAY",
+                        "description": "An array",
+                    }),
+                    "max_items": 32,
+                    "maximum": 64,
+                    "min_items": 1,
+                    "minimum": 2,
+                    "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
                         "description": "prefix item 1",
                     }]),
-                    "additional_properties": json.dumps({
-                        "type": "BOOLEAN",
-                    }),
                     "properties": json.dumps({
                         "name": {
                             "type": "STRING",
                             "description": "A name",
                         },
                     }),
-                    "items": json.dumps({
-                        "type": "ARRAY",
-                        "description": "An array",
-                    }),
+                    "ref": "#/defs/MyDefinition",
+                    "requireds": ["some_property"],
+                    "title": "Title",
+                    "type": "ARRAY",
+                    "unique_items": True,
                 },
                 "response": {
-                    "description": "schema description",
-                    "type": "ARRAY",
-                    "nullable": True,
-                    "requireds": ["some_property"],
-                    "enums": [
-                        "VALUE_A",
-                        "VALUE_B",
-                    ],
-                    "ref": "#/defs/MyDefinition",
-                    "unique_items": True,
-                    "defs": json.dumps({
-                        "SimpleString": {
-                            "type": "STRING",
-                            "description": "A simple string definition",
-                        },
+                    "additional_properties": json.dumps({
+                        "type": "BOOLEAN",
                     }),
                     "any_of": json.dumps([{
                         "type": "STRING",
                         "description": "any_of option 1: string",
                     }]),
                     "default": json.dumps(False),
+                    "defs": json.dumps({
+                        "SimpleString": {
+                            "type": "STRING",
+                            "description": "A simple string definition",
+                        },
+                    }),
+                    "description": "schema description",
+                    "enums": [
+                        "VALUE_A",
+                        "VALUE_B",
+                    ],
+                    "items": json.dumps({
+                        "type": "ARRAY",
+                        "description": "An array",
+                    }),
+                    "max_items": 32,
+                    "maximum": 64,
+                    "min_items": 1,
+                    "minimum": 2,
+                    "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
                         "description": "prefix item 1",
                     }]),
-                    "additional_properties": json.dumps({
-                        "type": "BOOLEAN",
-                    }),
                     "properties": json.dumps({
                         "name": {
                             "type": "STRING",
                             "description": "A name",
                         },
                     }),
-                    "items": json.dumps({
-                        "type": "ARRAY",
-                        "description": "An array",
-                    }),
+                    "ref": "#/defs/MyDefinition",
+                    "requireds": ["some_property"],
+                    "title": "Title",
+                    "type": "ARRAY",
+                    "unique_items": True,
                 },
             })
         ```
@@ -766,10 +776,18 @@ class Tool(pulumi.CustomResource):
             execution_type="SYNCHRONOUS",
             google_search_tool={
                 "name": "example-tool",
+                "context_urls": [
+                    "example.com",
+                    "example2.com",
+                ],
                 "description": "example-description",
                 "exclude_domains": [
                     "example.com",
                     "example2.com",
+                ],
+                "preferred_domains": [
+                    "example3.com",
+                    "example4.com",
                 ],
             })
         ```
@@ -884,84 +902,94 @@ class Tool(pulumi.CustomResource):
                 "name": "ces_tool_client_function_basic",
                 "description": "example-description",
                 "parameters": {
-                    "description": "schema description",
-                    "type": "ARRAY",
-                    "nullable": True,
-                    "requireds": ["some_property"],
-                    "enums": [
-                        "VALUE_A",
-                        "VALUE_B",
-                    ],
-                    "ref": "#/defs/MyDefinition",
-                    "unique_items": True,
-                    "defs": json.dumps({
-                        "SimpleString": {
-                            "type": "STRING",
-                            "description": "A simple string definition",
-                        },
+                    "additional_properties": json.dumps({
+                        "type": "BOOLEAN",
                     }),
                     "any_of": json.dumps([{
                         "type": "STRING",
                         "description": "any_of option 1: string",
                     }]),
                     "default": json.dumps(False),
+                    "defs": json.dumps({
+                        "SimpleString": {
+                            "type": "STRING",
+                            "description": "A simple string definition",
+                        },
+                    }),
+                    "description": "schema description",
+                    "enums": [
+                        "VALUE_A",
+                        "VALUE_B",
+                    ],
+                    "items": json.dumps({
+                        "type": "ARRAY",
+                        "description": "An array",
+                    }),
+                    "max_items": 32,
+                    "maximum": 64,
+                    "min_items": 1,
+                    "minimum": 2,
+                    "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
                         "description": "prefix item 1",
                     }]),
-                    "additional_properties": json.dumps({
-                        "type": "BOOLEAN",
-                    }),
                     "properties": json.dumps({
                         "name": {
                             "type": "STRING",
                             "description": "A name",
                         },
                     }),
-                    "items": json.dumps({
-                        "type": "ARRAY",
-                        "description": "An array",
-                    }),
+                    "ref": "#/defs/MyDefinition",
+                    "requireds": ["some_property"],
+                    "title": "Title",
+                    "type": "ARRAY",
+                    "unique_items": True,
                 },
                 "response": {
-                    "description": "schema description",
-                    "type": "ARRAY",
-                    "nullable": True,
-                    "requireds": ["some_property"],
-                    "enums": [
-                        "VALUE_A",
-                        "VALUE_B",
-                    ],
-                    "ref": "#/defs/MyDefinition",
-                    "unique_items": True,
-                    "defs": json.dumps({
-                        "SimpleString": {
-                            "type": "STRING",
-                            "description": "A simple string definition",
-                        },
+                    "additional_properties": json.dumps({
+                        "type": "BOOLEAN",
                     }),
                     "any_of": json.dumps([{
                         "type": "STRING",
                         "description": "any_of option 1: string",
                     }]),
                     "default": json.dumps(False),
+                    "defs": json.dumps({
+                        "SimpleString": {
+                            "type": "STRING",
+                            "description": "A simple string definition",
+                        },
+                    }),
+                    "description": "schema description",
+                    "enums": [
+                        "VALUE_A",
+                        "VALUE_B",
+                    ],
+                    "items": json.dumps({
+                        "type": "ARRAY",
+                        "description": "An array",
+                    }),
+                    "max_items": 32,
+                    "maximum": 64,
+                    "min_items": 1,
+                    "minimum": 2,
+                    "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
                         "description": "prefix item 1",
                     }]),
-                    "additional_properties": json.dumps({
-                        "type": "BOOLEAN",
-                    }),
                     "properties": json.dumps({
                         "name": {
                             "type": "STRING",
                             "description": "A name",
                         },
                     }),
-                    "items": json.dumps({
-                        "type": "ARRAY",
-                        "description": "An array",
-                    }),
+                    "ref": "#/defs/MyDefinition",
+                    "requireds": ["some_property"],
+                    "title": "Title",
+                    "type": "ARRAY",
+                    "unique_items": True,
                 },
             })
         ```
@@ -1075,10 +1103,18 @@ class Tool(pulumi.CustomResource):
             execution_type="SYNCHRONOUS",
             google_search_tool={
                 "name": "example-tool",
+                "context_urls": [
+                    "example.com",
+                    "example2.com",
+                ],
                 "description": "example-description",
                 "exclude_domains": [
                     "example.com",
                     "example2.com",
+                ],
+                "preferred_domains": [
+                    "example3.com",
+                    "example4.com",
                 ],
             })
         ```

@@ -131,6 +131,17 @@ public final class GetDatabaseInstancesInstance {
      */
     private String rootPassword;
     /**
+     * @return Initial root password. Required for MS SQL Server.
+     * 				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private String rootPasswordWo;
+    /**
+     * @return Triggers update of rootPasswordWo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private String rootPasswordWoVersion;
+    /**
      * @return The URI of the created resource.
      * 
      */
@@ -313,6 +324,21 @@ public final class GetDatabaseInstancesInstance {
         return this.rootPassword;
     }
     /**
+     * @return Initial root password. Required for MS SQL Server.
+     * 				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public String rootPasswordWo() {
+        return this.rootPasswordWo;
+    }
+    /**
+     * @return Triggers update of rootPasswordWo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public String rootPasswordWoVersion() {
+        return this.rootPasswordWoVersion;
+    }
+    /**
      * @return The URI of the created resource.
      * 
      */
@@ -374,6 +400,8 @@ public final class GetDatabaseInstancesInstance {
         private List<GetDatabaseInstancesInstanceReplicationCluster> replicationClusters;
         private List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts;
         private String rootPassword;
+        private String rootPasswordWo;
+        private String rootPasswordWoVersion;
         private String selfLink;
         private List<GetDatabaseInstancesInstanceServerCaCert> serverCaCerts;
         private String serviceAccountEmailAddress;
@@ -409,6 +437,8 @@ public final class GetDatabaseInstancesInstance {
     	      this.replicationClusters = defaults.replicationClusters;
     	      this.restoreBackupContexts = defaults.restoreBackupContexts;
     	      this.rootPassword = defaults.rootPassword;
+    	      this.rootPasswordWo = defaults.rootPasswordWo;
+    	      this.rootPasswordWoVersion = defaults.rootPasswordWoVersion;
     	      this.selfLink = defaults.selfLink;
     	      this.serverCaCerts = defaults.serverCaCerts;
     	      this.serviceAccountEmailAddress = defaults.serviceAccountEmailAddress;
@@ -667,6 +697,22 @@ public final class GetDatabaseInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder rootPasswordWo(String rootPasswordWo) {
+            if (rootPasswordWo == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "rootPasswordWo");
+            }
+            this.rootPasswordWo = rootPasswordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rootPasswordWoVersion(String rootPasswordWoVersion) {
+            if (rootPasswordWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "rootPasswordWoVersion");
+            }
+            this.rootPasswordWoVersion = rootPasswordWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             if (selfLink == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "selfLink");
@@ -734,6 +780,8 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.replicationClusters = replicationClusters;
             _resultValue.restoreBackupContexts = restoreBackupContexts;
             _resultValue.rootPassword = rootPassword;
+            _resultValue.rootPasswordWo = rootPasswordWo;
+            _resultValue.rootPasswordWoVersion = rootPasswordWoVersion;
             _resultValue.selfLink = selfLink;
             _resultValue.serverCaCerts = serverCaCerts;
             _resultValue.serviceAccountEmailAddress = serviceAccountEmailAddress;

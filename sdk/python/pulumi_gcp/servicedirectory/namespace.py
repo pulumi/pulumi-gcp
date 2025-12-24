@@ -26,8 +26,6 @@ class NamespaceArgs:
         """
         The set of arguments for constructing a Namespace resource.
         :param pulumi.Input[_builtins.str] location: The location for the Namespace.
-               A full list of valid locations can be found by running
-               `gcloud beta service-directory locations list`.
         :param pulumi.Input[_builtins.str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels associated with this Namespace. No more than 64 user
@@ -51,8 +49,6 @@ class NamespaceArgs:
     def location(self) -> pulumi.Input[_builtins.str]:
         """
         The location for the Namespace.
-        A full list of valid locations can be found by running
-        `gcloud beta service-directory locations list`.
         """
         return pulumi.get(self, "location")
 
@@ -124,8 +120,6 @@ class _NamespaceState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the Namespace.
-               A full list of valid locations can be found by running
-               `gcloud beta service-directory locations list`.
         :param pulumi.Input[_builtins.str] name: The resource name for the namespace
                in the format `projects/*/locations/*/namespaces/*`.
         :param pulumi.Input[_builtins.str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
@@ -184,8 +178,6 @@ class _NamespaceState:
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The location for the Namespace.
-        A full list of valid locations can be found by running
-        `gcloud beta service-directory locations list`.
         """
         return pulumi.get(self, "location")
 
@@ -263,7 +255,7 @@ class Namespace(pulumi.CustomResource):
 
         To get more information about Namespace, see:
 
-        * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
+        * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1/projects.locations.namespaces)
         * How-to Guides
             * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
@@ -317,8 +309,6 @@ class Namespace(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the Namespace.
-               A full list of valid locations can be found by running
-               `gcloud beta service-directory locations list`.
         :param pulumi.Input[_builtins.str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -336,7 +326,7 @@ class Namespace(pulumi.CustomResource):
 
         To get more information about Namespace, see:
 
-        * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
+        * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1/projects.locations.namespaces)
         * How-to Guides
             * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
@@ -454,8 +444,6 @@ class Namespace(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The location for the Namespace.
-               A full list of valid locations can be found by running
-               `gcloud beta service-directory locations list`.
         :param pulumi.Input[_builtins.str] name: The resource name for the namespace
                in the format `projects/*/locations/*/namespaces/*`.
         :param pulumi.Input[_builtins.str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
@@ -504,8 +492,6 @@ class Namespace(pulumi.CustomResource):
     def location(self) -> pulumi.Output[_builtins.str]:
         """
         The location for the Namespace.
-        A full list of valid locations can be found by running
-        `gcloud beta service-directory locations list`.
         """
         return pulumi.get(self, "location")
 

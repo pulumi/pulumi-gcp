@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkforcePoolProviderScimTenantArgs Empty = new WorkforcePoolProviderScimTenantArgs();
+
+    /**
+     * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+     * 
+     */
+    @Import(name="claimMapping")
+    private @Nullable Output<Map<String,String>> claimMapping;
+
+    /**
+     * @return Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> claimMapping() {
+        return Optional.ofNullable(this.claimMapping);
+    }
 
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
@@ -109,6 +125,7 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
     private WorkforcePoolProviderScimTenantArgs() {}
 
     private WorkforcePoolProviderScimTenantArgs(WorkforcePoolProviderScimTenantArgs $) {
+        this.claimMapping = $.claimMapping;
         this.description = $.description;
         this.displayName = $.displayName;
         this.location = $.location;
@@ -133,6 +150,27 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
 
         public Builder(WorkforcePoolProviderScimTenantArgs defaults) {
             $ = new WorkforcePoolProviderScimTenantArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param claimMapping Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder claimMapping(@Nullable Output<Map<String,String>> claimMapping) {
+            $.claimMapping = claimMapping;
+            return this;
+        }
+
+        /**
+         * @param claimMapping Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder claimMapping(Map<String,String> claimMapping) {
+            return claimMapping(Output.of(claimMapping));
         }
 
         /**

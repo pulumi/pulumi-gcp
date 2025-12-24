@@ -27,7 +27,7 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, zone=None):
+    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, snapshot_type=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, zone=None):
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
@@ -79,6 +79,9 @@ class GetSnapshotResult:
         if snapshot_id and not isinstance(snapshot_id, int):
             raise TypeError("Expected argument 'snapshot_id' to be a int")
         pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if snapshot_type and not isinstance(snapshot_type, str):
+            raise TypeError("Expected argument 'snapshot_type' to be a str")
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
         if source_disk and not isinstance(source_disk, str):
             raise TypeError("Expected argument 'source_disk' to be a str")
         pulumi.set(__self__, "source_disk", source_disk)
@@ -184,6 +187,11 @@ class GetSnapshotResult:
         return pulumi.get(self, "snapshot_id")
 
     @_builtins.property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> _builtins.str:
+        return pulumi.get(self, "snapshot_type")
+
+    @_builtins.property
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> _builtins.str:
         return pulumi.get(self, "source_disk")
@@ -232,6 +240,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             self_link=self.self_link,
             snapshot_encryption_keys=self.snapshot_encryption_keys,
             snapshot_id=self.snapshot_id,
+            snapshot_type=self.snapshot_type,
             source_disk=self.source_disk,
             source_disk_encryption_keys=self.source_disk_encryption_keys,
             storage_bytes=self.storage_bytes,
@@ -302,6 +311,7 @@ def get_snapshot(filter: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         snapshot_encryption_keys=pulumi.get(__ret__, 'snapshot_encryption_keys'),
         snapshot_id=pulumi.get(__ret__, 'snapshot_id'),
+        snapshot_type=pulumi.get(__ret__, 'snapshot_type'),
         source_disk=pulumi.get(__ret__, 'source_disk'),
         source_disk_encryption_keys=pulumi.get(__ret__, 'source_disk_encryption_keys'),
         storage_bytes=pulumi.get(__ret__, 'storage_bytes'),
@@ -369,6 +379,7 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] 
         self_link=pulumi.get(__response__, 'self_link'),
         snapshot_encryption_keys=pulumi.get(__response__, 'snapshot_encryption_keys'),
         snapshot_id=pulumi.get(__response__, 'snapshot_id'),
+        snapshot_type=pulumi.get(__response__, 'snapshot_type'),
         source_disk=pulumi.get(__response__, 'source_disk'),
         source_disk_encryption_keys=pulumi.get(__response__, 'source_disk_encryption_keys'),
         storage_bytes=pulumi.get(__response__, 'storage_bytes'),

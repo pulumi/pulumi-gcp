@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about OrganizationSecurityPolicy, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies)
  * * How-to Guides
  *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
  * 
@@ -50,8 +50,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .displayName("tf-test")
+ *             .shortName("my-short-name")
  *             .parent("organizations/123456789")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
  *     }
@@ -170,21 +171,21 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
     }
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-     * Default value is `FIREWALL`.
+     * **NOTE** : &#39;FIREWALL&#39; type is deprecated and will be removed in a future major release. Please use &#39;google_compute_firewall_policy&#39; instead.&#34;
      * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
      * @return The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-     * Default value is `FIREWALL`.
+     * **NOTE** : &#39;FIREWALL&#39; type is deprecated and will be removed in a future major release. Please use &#39;google_compute_firewall_policy&#39; instead.&#34;
      * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

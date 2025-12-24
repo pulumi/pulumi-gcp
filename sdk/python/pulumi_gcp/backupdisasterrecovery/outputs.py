@@ -22,6 +22,7 @@ __all__ = [
     'BackupPlanBackupRuleStandardSchedule',
     'BackupPlanBackupRuleStandardScheduleBackupWindow',
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonth',
+    'BackupVaultEncryptionConfig',
     'ManagementServerManagementUri',
     'ManagementServerNetwork',
     'GetBackupBackupResult',
@@ -34,6 +35,7 @@ __all__ = [
     'GetBackupPlanBackupRuleStandardScheduleResult',
     'GetBackupPlanBackupRuleStandardScheduleBackupWindowResult',
     'GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult',
+    'GetBackupVaultEncryptionConfigResult',
     'GetDataSourceBackupConfigInfoResult',
     'GetDataSourceBackupConfigInfoBackupApplianceBackupConfigResult',
     'GetDataSourceBackupConfigInfoGcpBackupConfigResult',
@@ -460,6 +462,42 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonth(dict):
         Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class BackupVaultEncryptionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupVaultEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupVaultEncryptionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupVaultEncryptionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str kms_key_name: The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[_builtins.str]:
+        """
+        The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type
@@ -1053,6 +1091,24 @@ class GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult(dict):
         WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class GetBackupVaultEncryptionConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: _builtins.str):
+        """
+        :param _builtins.str kms_key_name: The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> _builtins.str:
+        """
+        The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type

@@ -63,6 +63,42 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
+    /// Example creating an contexts for an object.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucketObject = new Gcp.Storage.BucketObject("bucket_object", new()
+    ///     {
+    ///         Bucket = "test-bucket",
+    ///         Name = "test-object",
+    ///         Content = "test-content",
+    ///         Contexts = new Gcp.Storage.Inputs.BucketObjectContextsArgs
+    ///         {
+    ///             Customs = new[]
+    ///             {
+    ///                 new Gcp.Storage.Inputs.BucketObjectContextsCustomArgs
+    ///                 {
+    ///                     Key = "testKey",
+    ///                     Value = "test",
+    ///                 },
+    ///                 new Gcp.Storage.Inputs.BucketObjectContextsCustomArgs
+    ///                 {
+    ///                     Key = "testKeyTwo",
+    ///                     Value = "test",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.
@@ -112,6 +148,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
+
+        /// <summary>
+        /// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        /// </summary>
+        [Output("contexts")]
+        public Output<Outputs.BucketObjectContexts?> Contexts { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) Base 64 CRC32 hash of the uploaded data.
@@ -340,6 +382,12 @@ namespace Pulumi.Gcp.Storage
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
+        /// <summary>
+        /// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        /// </summary>
+        [Input("contexts")]
+        public Input<Inputs.BucketObjectContextsArgs>? Contexts { get; set; }
+
         [Input("customerEncryption")]
         private Input<Inputs.BucketObjectCustomerEncryptionArgs>? _customerEncryption;
 
@@ -496,6 +544,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
+
+        /// <summary>
+        /// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        /// </summary>
+        [Input("contexts")]
+        public Input<Inputs.BucketObjectContextsGetArgs>? Contexts { get; set; }
 
         /// <summary>
         /// (Computed) Base 64 CRC32 hash of the uploaded data.

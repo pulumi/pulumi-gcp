@@ -568,7 +568,7 @@ class Intent(pulumi.CustomResource):
 
         To get more information about Intent, see:
 
-        * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
+        * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent.intents)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
@@ -686,7 +686,7 @@ class Intent(pulumi.CustomResource):
 
         To get more information about Intent, see:
 
-        * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.intents)
+        * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent.intents)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 

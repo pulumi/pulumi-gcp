@@ -345,6 +345,8 @@ __all__ = [
     'ClusterNodeConfigLinuxNodeConfigArgsDict',
     'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs',
     'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs',
+    'ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'ClusterNodeConfigReservationAffinityArgs',
@@ -371,6 +373,8 @@ __all__ = [
     'ClusterNodePoolAutoConfigArgsDict',
     'ClusterNodePoolAutoConfigLinuxNodeConfigArgs',
     'ClusterNodePoolAutoConfigLinuxNodeConfigArgsDict',
+    'ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs',
+    'ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict',
     'ClusterNodePoolAutoConfigNetworkTagsArgs',
     'ClusterNodePoolAutoConfigNetworkTagsArgsDict',
     'ClusterNodePoolAutoConfigNodeKubeletConfigArgs',
@@ -459,6 +463,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict',
     'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'ClusterNodePoolNodeConfigReservationAffinityArgs',
@@ -487,6 +493,8 @@ __all__ = [
     'ClusterNodePoolUpgradeSettingsArgsDict',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgsDict',
+    'ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs',
+    'ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict',
     'ClusterNotificationConfigArgs',
@@ -605,6 +613,8 @@ __all__ = [
     'NodePoolNodeConfigLinuxNodeConfigArgsDict',
     'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
     'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs',
+    'NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'NodePoolNodeConfigReservationAffinityArgs',
@@ -633,6 +643,8 @@ __all__ = [
     'NodePoolUpgradeSettingsArgsDict',
     'NodePoolUpgradeSettingsBlueGreenSettingsArgs',
     'NodePoolUpgradeSettingsBlueGreenSettingsArgsDict',
+    'NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs',
+    'NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict',
     'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs',
     'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict',
 ]
@@ -12068,6 +12080,10 @@ if not MYPY:
         """
         Amounts for 2M and 1G hugepages. Structure is documented below.
         """
+        node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
+        """
+        The settings for kernel module loading.
+        """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         The Linux kernel parameters to be applied to the nodes
@@ -12091,6 +12107,7 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
                  cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  hugepages_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
+                 node_kernel_module_loading: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transparent_hugepage_defrag: Optional[pulumi.Input[_builtins.str]] = None,
                  transparent_hugepage_enabled: Optional[pulumi.Input[_builtins.str]] = None):
@@ -12101,6 +12118,7 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -12112,6 +12130,8 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
+        if node_kernel_module_loading is not None:
+            pulumi.set(__self__, "node_kernel_module_loading", node_kernel_module_loading)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
         if transparent_hugepage_defrag is not None:
@@ -12146,6 +12166,18 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
     @hugepages_config.setter
     def hugepages_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs']]):
         pulumi.set(self, "hugepages_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeKernelModuleLoading")
+    def node_kernel_module_loading(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]:
+        """
+        The settings for kernel module loading.
+        """
+        return pulumi.get(self, "node_kernel_module_loading")
+
+    @node_kernel_module_loading.setter
+    def node_kernel_module_loading(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]):
+        pulumi.set(self, "node_kernel_module_loading", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12237,6 +12269,38 @@ class ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs:
     @hugepage_size2m.setter
     def hugepage_size2m(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hugepage_size2m", value)
+
+
+if not MYPY:
+    class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The policy for kernel module loading.
+        """
+elif False:
+    ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The policy for kernel module loading.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The policy for kernel module loading.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
 
 
 if not MYPY:
@@ -13280,22 +13344,30 @@ if not MYPY:
         * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
         * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         """
+        node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
+        """
+        The settings for kernel module loading.
+        """
 elif False:
     ClusterNodePoolAutoConfigLinuxNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterNodePoolAutoConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
-                 cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_kernel_module_loading: Optional[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] cgroup_mode: Possible cgroup modes that can be used.
                Accepted values are:
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        :param pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if node_kernel_module_loading is not None:
+            pulumi.set(__self__, "node_kernel_module_loading", node_kernel_module_loading)
 
     @_builtins.property
     @pulumi.getter(name="cgroupMode")
@@ -13312,6 +13384,50 @@ class ClusterNodePoolAutoConfigLinuxNodeConfigArgs:
     @cgroup_mode.setter
     def cgroup_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cgroup_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeKernelModuleLoading")
+    def node_kernel_module_loading(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]:
+        """
+        The settings for kernel module loading.
+        """
+        return pulumi.get(self, "node_kernel_module_loading")
+
+    @node_kernel_module_loading.setter
+    def node_kernel_module_loading(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]):
+        pulumi.set(self, "node_kernel_module_loading", value)
+
+
+if not MYPY:
+    class ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The policy for kernel module loading.
+        """
+elif False:
+    ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The policy for kernel module loading.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The policy for kernel module loading.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
 
 
 if not MYPY:
@@ -17329,6 +17445,10 @@ if not MYPY:
         """
         Amounts for 2M and 1G hugepages. Structure is documented below.
         """
+        node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
+        """
+        The settings for kernel module loading.
+        """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         The Linux kernel parameters to be applied to the nodes
@@ -17352,6 +17472,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
                  cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  hugepages_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
+                 node_kernel_module_loading: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transparent_hugepage_defrag: Optional[pulumi.Input[_builtins.str]] = None,
                  transparent_hugepage_enabled: Optional[pulumi.Input[_builtins.str]] = None):
@@ -17362,6 +17483,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -17373,6 +17495,8 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
+        if node_kernel_module_loading is not None:
+            pulumi.set(__self__, "node_kernel_module_loading", node_kernel_module_loading)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
         if transparent_hugepage_defrag is not None:
@@ -17407,6 +17531,18 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     @hugepages_config.setter
     def hugepages_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]):
         pulumi.set(self, "hugepages_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeKernelModuleLoading")
+    def node_kernel_module_loading(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]:
+        """
+        The settings for kernel module loading.
+        """
+        return pulumi.get(self, "node_kernel_module_loading")
+
+    @node_kernel_module_loading.setter
+    def node_kernel_module_loading(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]):
+        pulumi.set(self, "node_kernel_module_loading", value)
 
     @_builtins.property
     @pulumi.getter
@@ -17498,6 +17634,38 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs:
     @hugepage_size2m.setter
     def hugepage_size2m(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hugepage_size2m", value)
+
+
+if not MYPY:
+    class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The policy for kernel module loading.
+        """
+elif False:
+    ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The policy for kernel module loading.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The policy for kernel module loading.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
 
 
 if not MYPY:
@@ -18241,13 +18409,17 @@ class ClusterNodePoolUpgradeSettingsArgs:
 
 if not MYPY:
     class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgsDict(TypedDict):
-        standard_rollout_policy: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict']
+        autoscaled_rollout_policy: NotRequired[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict']]
         """
-        Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        Autoscaled rollout policy for blue-green upgrade.
         """
         node_pool_soak_duration: NotRequired[pulumi.Input[_builtins.str]]
         """
         Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        standard_rollout_policy: NotRequired[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict']]
+        """
+        Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
 elif False:
     ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgsDict: TypeAlias = Mapping[str, Any]
@@ -18255,27 +18427,32 @@ elif False:
 @pulumi.input_type
 class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs:
     def __init__(__self__, *,
-                 standard_rollout_policy: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'],
-                 node_pool_soak_duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoscaled_rollout_policy: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']] = None,
+                 node_pool_soak_duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 standard_rollout_policy: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']] = None):
         """
-        :param pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'] standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs'] autoscaled_rollout_policy: Autoscaled rollout policy for blue-green upgrade.
         :param pulumi.Input[_builtins.str] node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'] standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
-        pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
+        if autoscaled_rollout_policy is not None:
+            pulumi.set(__self__, "autoscaled_rollout_policy", autoscaled_rollout_policy)
         if node_pool_soak_duration is not None:
             pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
+        if standard_rollout_policy is not None:
+            pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
 
     @_builtins.property
-    @pulumi.getter(name="standardRolloutPolicy")
-    def standard_rollout_policy(self) -> pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']:
+    @pulumi.getter(name="autoscaledRolloutPolicy")
+    def autoscaled_rollout_policy(self) -> Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']]:
         """
-        Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        Autoscaled rollout policy for blue-green upgrade.
         """
-        return pulumi.get(self, "standard_rollout_policy")
+        return pulumi.get(self, "autoscaled_rollout_policy")
 
-    @standard_rollout_policy.setter
-    def standard_rollout_policy(self, value: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']):
-        pulumi.set(self, "standard_rollout_policy", value)
+    @autoscaled_rollout_policy.setter
+    def autoscaled_rollout_policy(self, value: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']]):
+        pulumi.set(self, "autoscaled_rollout_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolSoakDuration")
@@ -18288,6 +18465,50 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs:
     @node_pool_soak_duration.setter
     def node_pool_soak_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "node_pool_soak_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="standardRolloutPolicy")
+    def standard_rollout_policy(self) -> Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]:
+        """
+        Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        """
+        return pulumi.get(self, "standard_rollout_policy")
+
+    @standard_rollout_policy.setter
+    def standard_rollout_policy(self, value: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]):
+        pulumi.set(self, "standard_rollout_policy", value)
+
+
+if not MYPY:
+    class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict(TypedDict):
+        wait_for_drain_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Time in seconds to wait after cordoning the blue pool before draining the nodes.
+        """
+elif False:
+    ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs:
+    def __init__(__self__, *,
+                 wait_for_drain_duration: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] wait_for_drain_duration: Time in seconds to wait after cordoning the blue pool before draining the nodes.
+        """
+        if wait_for_drain_duration is not None:
+            pulumi.set(__self__, "wait_for_drain_duration", wait_for_drain_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="waitForDrainDuration")
+    def wait_for_drain_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time in seconds to wait after cordoning the blue pool before draining the nodes.
+        """
+        return pulumi.get(self, "wait_for_drain_duration")
+
+    @wait_for_drain_duration.setter
+    def wait_for_drain_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "wait_for_drain_duration", value)
 
 
 if not MYPY:
@@ -23073,6 +23294,10 @@ if not MYPY:
         """
         Amounts for 2M and 1G hugepages.
         """
+        node_kernel_module_loading: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
+        """
+        The settings for kernel module loading.
+        """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -23093,12 +23318,14 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
                  cgroup_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  hugepages_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
+                 node_kernel_module_loading: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  transparent_hugepage_defrag: Optional[pulumi.Input[_builtins.str]] = None,
                  transparent_hugepage_enabled: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
         :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages.
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         :param pulumi.Input[_builtins.str] transparent_hugepage_defrag: The Linux kernel transparent hugepage defrag setting.
         :param pulumi.Input[_builtins.str] transparent_hugepage_enabled: The Linux kernel transparent hugepage setting.
@@ -23107,6 +23334,8 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
+        if node_kernel_module_loading is not None:
+            pulumi.set(__self__, "node_kernel_module_loading", node_kernel_module_loading)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
         if transparent_hugepage_defrag is not None:
@@ -23137,6 +23366,18 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
     @hugepages_config.setter
     def hugepages_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]):
         pulumi.set(self, "hugepages_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeKernelModuleLoading")
+    def node_kernel_module_loading(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]:
+        """
+        The settings for kernel module loading.
+        """
+        return pulumi.get(self, "node_kernel_module_loading")
+
+    @node_kernel_module_loading.setter
+    def node_kernel_module_loading(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]):
+        pulumi.set(self, "node_kernel_module_loading", value)
 
     @_builtins.property
     @pulumi.getter
@@ -23225,6 +23466,38 @@ class NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs:
     @hugepage_size2m.setter
     def hugepage_size2m(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hugepage_size2m", value)
+
+
+if not MYPY:
+    class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict(TypedDict):
+        policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The policy for kernel module loading.
+        """
+elif False:
+    NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: The policy for kernel module loading.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The policy for kernel module loading.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "policy", value)
 
 
 if not MYPY:
@@ -23962,14 +24235,18 @@ class NodePoolUpgradeSettingsArgs:
 
 if not MYPY:
     class NodePoolUpgradeSettingsBlueGreenSettingsArgsDict(TypedDict):
-        standard_rollout_policy: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict']
+        autoscaled_rollout_policy: NotRequired[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict']]
         """
-        Specifies the standard policy settings for blue-green upgrades.
+        Autoscaled rollout policy for blue-green upgrade.
         """
         node_pool_soak_duration: NotRequired[pulumi.Input[_builtins.str]]
         """
         Time needed after draining the entire blue pool.
         After this period, the blue pool will be cleaned up.
+        """
+        standard_rollout_policy: NotRequired[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict']]
+        """
+        Specifies the standard policy settings for blue-green upgrades.
         """
 elif False:
     NodePoolUpgradeSettingsBlueGreenSettingsArgsDict: TypeAlias = Mapping[str, Any]
@@ -23977,28 +24254,33 @@ elif False:
 @pulumi.input_type
 class NodePoolUpgradeSettingsBlueGreenSettingsArgs:
     def __init__(__self__, *,
-                 standard_rollout_policy: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'],
-                 node_pool_soak_duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoscaled_rollout_policy: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']] = None,
+                 node_pool_soak_duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 standard_rollout_policy: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']] = None):
         """
-        :param pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'] standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
+        :param pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs'] autoscaled_rollout_policy: Autoscaled rollout policy for blue-green upgrade.
         :param pulumi.Input[_builtins.str] node_pool_soak_duration: Time needed after draining the entire blue pool.
                After this period, the blue pool will be cleaned up.
+        :param pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'] standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
         """
-        pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
+        if autoscaled_rollout_policy is not None:
+            pulumi.set(__self__, "autoscaled_rollout_policy", autoscaled_rollout_policy)
         if node_pool_soak_duration is not None:
             pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
+        if standard_rollout_policy is not None:
+            pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
 
     @_builtins.property
-    @pulumi.getter(name="standardRolloutPolicy")
-    def standard_rollout_policy(self) -> pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']:
+    @pulumi.getter(name="autoscaledRolloutPolicy")
+    def autoscaled_rollout_policy(self) -> Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']]:
         """
-        Specifies the standard policy settings for blue-green upgrades.
+        Autoscaled rollout policy for blue-green upgrade.
         """
-        return pulumi.get(self, "standard_rollout_policy")
+        return pulumi.get(self, "autoscaled_rollout_policy")
 
-    @standard_rollout_policy.setter
-    def standard_rollout_policy(self, value: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']):
-        pulumi.set(self, "standard_rollout_policy", value)
+    @autoscaled_rollout_policy.setter
+    def autoscaled_rollout_policy(self, value: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']]):
+        pulumi.set(self, "autoscaled_rollout_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolSoakDuration")
@@ -24012,6 +24294,50 @@ class NodePoolUpgradeSettingsBlueGreenSettingsArgs:
     @node_pool_soak_duration.setter
     def node_pool_soak_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "node_pool_soak_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="standardRolloutPolicy")
+    def standard_rollout_policy(self) -> Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]:
+        """
+        Specifies the standard policy settings for blue-green upgrades.
+        """
+        return pulumi.get(self, "standard_rollout_policy")
+
+    @standard_rollout_policy.setter
+    def standard_rollout_policy(self, value: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]):
+        pulumi.set(self, "standard_rollout_policy", value)
+
+
+if not MYPY:
+    class NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict(TypedDict):
+        wait_for_drain_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Time in seconds to wait after cordoning the blue pool before draining the nodes.
+        """
+elif False:
+    NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs:
+    def __init__(__self__, *,
+                 wait_for_drain_duration: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] wait_for_drain_duration: Time in seconds to wait after cordoning the blue pool before draining the nodes.
+        """
+        if wait_for_drain_duration is not None:
+            pulumi.set(__self__, "wait_for_drain_duration", wait_for_drain_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="waitForDrainDuration")
+    def wait_for_drain_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time in seconds to wait after cordoning the blue pool before draining the nodes.
+        """
+        return pulumi.get(self, "wait_for_drain_duration")
+
+    @wait_for_drain_duration.setter
+    def wait_for_drain_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "wait_for_drain_duration", value)
 
 
 if not MYPY:

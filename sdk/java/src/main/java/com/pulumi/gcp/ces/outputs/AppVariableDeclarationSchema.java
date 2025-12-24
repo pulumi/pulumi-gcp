@@ -102,6 +102,11 @@ public final class AppVariableDeclarationSchema {
      */
     private @Nullable List<String> requireds;
     /**
+     * @return The title of the schema.
+     * 
+     */
+    private @Nullable String title;
+    /**
      * @return The type of the data.
      * Possible values:
      * STRING
@@ -232,6 +237,13 @@ public final class AppVariableDeclarationSchema {
         return this.requireds == null ? List.of() : this.requireds;
     }
     /**
+     * @return The title of the schema.
+     * 
+     */
+    public Optional<String> title() {
+        return Optional.ofNullable(this.title);
+    }
+    /**
      * @return The type of the data.
      * Possible values:
      * STRING
@@ -274,6 +286,7 @@ public final class AppVariableDeclarationSchema {
         private @Nullable String properties;
         private @Nullable String ref;
         private @Nullable List<String> requireds;
+        private @Nullable String title;
         private String type;
         private @Nullable Boolean uniqueItems;
         public Builder() {}
@@ -291,6 +304,7 @@ public final class AppVariableDeclarationSchema {
     	      this.properties = defaults.properties;
     	      this.ref = defaults.ref;
     	      this.requireds = defaults.requireds;
+    	      this.title = defaults.title;
     	      this.type = defaults.type;
     	      this.uniqueItems = defaults.uniqueItems;
         }
@@ -374,6 +388,12 @@ public final class AppVariableDeclarationSchema {
             return requireds(List.of(requireds));
         }
         @CustomType.Setter
+        public Builder title(@Nullable String title) {
+
+            this.title = title;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("AppVariableDeclarationSchema", "type");
@@ -401,6 +421,7 @@ public final class AppVariableDeclarationSchema {
             _resultValue.properties = properties;
             _resultValue.ref = ref;
             _resultValue.requireds = requireds;
+            _resultValue.title = title;
             _resultValue.type = type;
             _resultValue.uniqueItems = uniqueItems;
             return _resultValue;

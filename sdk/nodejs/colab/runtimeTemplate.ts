@@ -108,6 +108,17 @@ import * as utilities from "../utilities";
  *     encryptionSpec: {
  *         kmsKeyName: "my-crypto-key",
  *     },
+ *     softwareConfig: {
+ *         envs: [{
+ *             name: "TEST",
+ *             value: "1",
+ *         }],
+ *         postStartupScriptConfig: {
+ *             postStartupScript: "echo 'hello world'",
+ *             postStartupScriptUrl: "gs://colab-enterprise-pss-secure/secure_pss.sh",
+ *             postStartupScriptBehavior: "RUN_ONCE",
+ *         },
+ *     },
  * });
  * ```
  *

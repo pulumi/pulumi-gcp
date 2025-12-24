@@ -21,11 +21,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         /// </summary>
         public readonly string? CgroupMode;
+        /// <summary>
+        /// The settings for kernel module loading.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading? NodeKernelModuleLoading;
 
         [OutputConstructor]
-        private ClusterNodePoolAutoConfigLinuxNodeConfig(string? cgroupMode)
+        private ClusterNodePoolAutoConfigLinuxNodeConfig(
+            string? cgroupMode,
+
+            Outputs.ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading? nodeKernelModuleLoading)
         {
             CgroupMode = cgroupMode;
+            NodeKernelModuleLoading = nodeKernelModuleLoading;
         }
     }
 }

@@ -105,10 +105,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = @default.Id,
     ///         },
-    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
-    ///         {
-    ///             Password = "alloydb-primary-cluster",
-    ///         },
     ///         DeletionProtection = false,
     ///     });
     /// 
@@ -271,6 +267,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for Managed Connection Pool.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("connectionPoolConfig")]
+        public Output<Outputs.InstanceConnectionPoolConfig?> ConnectionPoolConfig { get; private set; } = null!;
 
         /// <summary>
         /// Time the Instance was created in UTC.
@@ -528,6 +531,13 @@ namespace Pulumi.Gcp.Alloydb
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
+        /// <summary>
+        /// Configuration for Managed Connection Pool.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectionPoolConfig")]
+        public Input<Inputs.InstanceConnectionPoolConfigArgs>? ConnectionPoolConfig { get; set; }
+
         [Input("databaseFlags")]
         private InputMap<string>? _databaseFlags;
 
@@ -678,6 +688,13 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
+
+        /// <summary>
+        /// Configuration for Managed Connection Pool.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectionPoolConfig")]
+        public Input<Inputs.InstanceConnectionPoolConfigGetArgs>? ConnectionPoolConfig { get; set; }
 
         /// <summary>
         /// Time the Instance was created in UTC.

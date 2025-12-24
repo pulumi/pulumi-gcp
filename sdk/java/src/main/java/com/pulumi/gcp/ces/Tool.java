@@ -75,21 +75,9 @@ import javax.annotation.Nullable;
  *                 .name("ces_tool_client_function_basic")
  *                 .description("example-description")
  *                 .parameters(ToolClientFunctionParametersArgs.builder()
- *                     .description("schema description")
- *                     .type("ARRAY")
- *                     .nullable(true)
- *                     .requireds("some_property")
- *                     .enums(                    
- *                         "VALUE_A",
- *                         "VALUE_B")
- *                     .ref("#/defs/MyDefinition")
- *                     .uniqueItems(true)
- *                     .defs(serializeJson(
+ *                     .additionalProperties(serializeJson(
  *                         jsonObject(
- *                             jsonProperty("SimpleString", jsonObject(
- *                                 jsonProperty("type", "STRING"),
- *                                 jsonProperty("description", "A simple string definition")
- *                             ))
+ *                             jsonProperty("type", "BOOLEAN")
  *                         )))
  *                     .anyOf(serializeJson(
  *                         jsonArray(jsonObject(
@@ -98,15 +86,32 @@ import javax.annotation.Nullable;
  *                         ))))
  *                     .default_(serializeJson(
  *                         false))
+ *                     .defs(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("SimpleString", jsonObject(
+ *                                 jsonProperty("type", "STRING"),
+ *                                 jsonProperty("description", "A simple string definition")
+ *                             ))
+ *                         )))
+ *                     .description("schema description")
+ *                     .enums(                    
+ *                         "VALUE_A",
+ *                         "VALUE_B")
+ *                     .items(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("type", "ARRAY"),
+ *                             jsonProperty("description", "An array")
+ *                         )))
+ *                     .maxItems(32)
+ *                     .maximum(64.0)
+ *                     .minItems(1)
+ *                     .minimum(2.0)
+ *                     .nullable(true)
  *                     .prefixItems(serializeJson(
  *                         jsonArray(jsonObject(
  *                             jsonProperty("type", "ARRAY"),
  *                             jsonProperty("description", "prefix item 1")
  *                         ))))
- *                     .additionalProperties(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("type", "BOOLEAN")
- *                         )))
  *                     .properties(serializeJson(
  *                         jsonObject(
  *                             jsonProperty("name", jsonObject(
@@ -114,28 +119,16 @@ import javax.annotation.Nullable;
  *                                 jsonProperty("description", "A name")
  *                             ))
  *                         )))
- *                     .items(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("type", "ARRAY"),
- *                             jsonProperty("description", "An array")
- *                         )))
+ *                     .ref("#/defs/MyDefinition")
+ *                     .requireds("some_property")
+ *                     .title("Title")
+ *                     .type("ARRAY")
+ *                     .uniqueItems(true)
  *                     .build())
  *                 .response(ToolClientFunctionResponseArgs.builder()
- *                     .description("schema description")
- *                     .type("ARRAY")
- *                     .nullable(true)
- *                     .requireds("some_property")
- *                     .enums(                    
- *                         "VALUE_A",
- *                         "VALUE_B")
- *                     .ref("#/defs/MyDefinition")
- *                     .uniqueItems(true)
- *                     .defs(serializeJson(
+ *                     .additionalProperties(serializeJson(
  *                         jsonObject(
- *                             jsonProperty("SimpleString", jsonObject(
- *                                 jsonProperty("type", "STRING"),
- *                                 jsonProperty("description", "A simple string definition")
- *                             ))
+ *                             jsonProperty("type", "BOOLEAN")
  *                         )))
  *                     .anyOf(serializeJson(
  *                         jsonArray(jsonObject(
@@ -144,15 +137,32 @@ import javax.annotation.Nullable;
  *                         ))))
  *                     .default_(serializeJson(
  *                         false))
+ *                     .defs(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("SimpleString", jsonObject(
+ *                                 jsonProperty("type", "STRING"),
+ *                                 jsonProperty("description", "A simple string definition")
+ *                             ))
+ *                         )))
+ *                     .description("schema description")
+ *                     .enums(                    
+ *                         "VALUE_A",
+ *                         "VALUE_B")
+ *                     .items(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("type", "ARRAY"),
+ *                             jsonProperty("description", "An array")
+ *                         )))
+ *                     .maxItems(32)
+ *                     .maximum(64.0)
+ *                     .minItems(1)
+ *                     .minimum(2.0)
+ *                     .nullable(true)
  *                     .prefixItems(serializeJson(
  *                         jsonArray(jsonObject(
  *                             jsonProperty("type", "ARRAY"),
  *                             jsonProperty("description", "prefix item 1")
  *                         ))))
- *                     .additionalProperties(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("type", "BOOLEAN")
- *                         )))
  *                     .properties(serializeJson(
  *                         jsonObject(
  *                             jsonProperty("name", jsonObject(
@@ -160,11 +170,11 @@ import javax.annotation.Nullable;
  *                                 jsonProperty("description", "A name")
  *                             ))
  *                         )))
- *                     .items(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("type", "ARRAY"),
- *                             jsonProperty("description", "An array")
- *                         )))
+ *                     .ref("#/defs/MyDefinition")
+ *                     .requireds("some_property")
+ *                     .title("Title")
+ *                     .type("ARRAY")
+ *                     .uniqueItems(true)
  *                     .build())
  *                 .build())
  *             .build());
@@ -347,10 +357,16 @@ import javax.annotation.Nullable;
  *             .executionType("SYNCHRONOUS")
  *             .googleSearchTool(ToolGoogleSearchToolArgs.builder()
  *                 .name("example-tool")
+ *                 .contextUrls(                
+ *                     "example.com",
+ *                     "example2.com")
  *                 .description("example-description")
  *                 .excludeDomains(                
  *                     "example.com",
  *                     "example2.com")
+ *                 .preferredDomains(                
+ *                     "example3.com",
+ *                     "example4.com")
  *                 .build())
  *             .build());
  * 

@@ -111,7 +111,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
 
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-     * Default value is `FIREWALL`.
+     * **NOTE** : &#39;FIREWALL&#39; type is deprecated and will be removed in a future major release. Please use &#39;google_compute_firewall_policy&#39; instead.&#34;
      * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
@@ -120,7 +120,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
 
     /**
      * @return The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-     * Default value is `FIREWALL`.
+     * **NOTE** : &#39;FIREWALL&#39; type is deprecated and will be removed in a future major release. Please use &#39;google_compute_firewall_policy&#39; instead.&#34;
      * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
@@ -290,7 +290,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
 
         /**
          * @param type The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-         * Default value is `FIREWALL`.
+         * **NOTE** : &#39;FIREWALL&#39; type is deprecated and will be removed in a future major release. Please use &#39;google_compute_firewall_policy&#39; instead.&#34;
          * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
          * 
          * @return builder
@@ -303,7 +303,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
 
         /**
          * @param type The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-         * Default value is `FIREWALL`.
+         * **NOTE** : &#39;FIREWALL&#39; type is deprecated and will be removed in a future major release. Please use &#39;google_compute_firewall_policy&#39; instead.&#34;
          * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
          * 
          * @return builder

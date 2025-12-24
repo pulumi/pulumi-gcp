@@ -184,6 +184,9 @@ type Interconnect struct {
 	// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
 	//   attachments may be provisioned or updated on this Interconnect.
 	OperationalStatus pulumi.StringOutput `pulumi:"operationalStatus"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InterconnectParamsPtrOutput `pulumi:"params"`
 	// IP address configured on the customer side of the Interconnect link.
 	// The customer should configure this IP address during turnup when prompted by Google NOC.
 	// This can be used only for ping tests.
@@ -367,6 +370,9 @@ type interconnectState struct {
 	// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
 	//   attachments may be provisioned or updated on this Interconnect.
 	OperationalStatus *string `pulumi:"operationalStatus"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *InterconnectParams `pulumi:"params"`
 	// IP address configured on the customer side of the Interconnect link.
 	// The customer should configure this IP address during turnup when prompted by Google NOC.
 	// This can be used only for ping tests.
@@ -504,6 +510,9 @@ type InterconnectState struct {
 	// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
 	//   attachments may be provisioned or updated on this Interconnect.
 	OperationalStatus pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InterconnectParamsPtrInput
 	// IP address configured on the customer side of the Interconnect link.
 	// The customer should configure this IP address during turnup when prompted by Google NOC.
 	// This can be used only for ping tests.
@@ -605,6 +614,9 @@ type interconnectArgs struct {
 	// This field is required for users who sign up for Cloud Interconnect using workforce identity
 	// federation.
 	NocContactEmail *string `pulumi:"nocContactEmail"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *InterconnectParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -681,6 +693,9 @@ type InterconnectArgs struct {
 	// This field is required for users who sign up for Cloud Interconnect using workforce identity
 	// federation.
 	NocContactEmail pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params InterconnectParamsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -954,6 +969,12 @@ func (o InterconnectOutput) NocContactEmail() pulumi.StringPtrOutput {
 //     attachments may be provisioned or updated on this Interconnect.
 func (o InterconnectOutput) OperationalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.OperationalStatus }).(pulumi.StringOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o InterconnectOutput) Params() InterconnectParamsPtrOutput {
+	return o.ApplyT(func(v *Interconnect) InterconnectParamsPtrOutput { return v.Params }).(InterconnectParamsPtrOutput)
 }
 
 // IP address configured on the customer side of the Interconnect link.

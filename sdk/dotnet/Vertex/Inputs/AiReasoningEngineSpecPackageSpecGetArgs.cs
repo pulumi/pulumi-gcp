@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecPackageSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+        /// Optional. The Cloud Storage URI of the dependency files in tar.gz
+        /// format.
         /// </summary>
         [Input("dependencyFilesGcsUri")]
         public Input<string>? DependencyFilesGcsUri { get; set; }
@@ -25,13 +26,14 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<string>? PickleObjectGcsUri { get; set; }
 
         /// <summary>
-        /// Optional. The Python version.
+        /// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+        /// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
         /// </summary>
         [Input("pythonVersion")]
         public Input<string>? PythonVersion { get; set; }
 
         /// <summary>
-        /// Optional. The Cloud Storage URI of the requirements.txt file
+        /// Optional. The Cloud Storage URI of the requirements.txtfile
         /// </summary>
         [Input("requirementsGcsUri")]
         public Input<string>? RequirementsGcsUri { get; set; }

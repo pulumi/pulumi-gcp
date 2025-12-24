@@ -88,6 +88,8 @@ type LookupDatabaseInstanceResult struct {
 	ReplicationClusters        []GetDatabaseInstanceReplicationCluster        `pulumi:"replicationClusters"`
 	RestoreBackupContexts      []GetDatabaseInstanceRestoreBackupContext      `pulumi:"restoreBackupContexts"`
 	RootPassword               string                                         `pulumi:"rootPassword"`
+	RootPasswordWo             string                                         `pulumi:"rootPasswordWo"`
+	RootPasswordWoVersion      string                                         `pulumi:"rootPasswordWoVersion"`
 	SelfLink                   string                                         `pulumi:"selfLink"`
 	ServerCaCerts              []GetDatabaseInstanceServerCaCert              `pulumi:"serverCaCerts"`
 	ServiceAccountEmailAddress string                                         `pulumi:"serviceAccountEmailAddress"`
@@ -253,6 +255,14 @@ func (o LookupDatabaseInstanceResultOutput) RestoreBackupContexts() GetDatabaseI
 
 func (o LookupDatabaseInstanceResultOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) RootPasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.RootPasswordWo }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) RootPasswordWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.RootPasswordWoVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) SelfLink() pulumi.StringOutput {

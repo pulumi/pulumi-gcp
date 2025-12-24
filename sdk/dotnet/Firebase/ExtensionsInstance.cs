@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ## Example Usage
     /// 
-    /// ### Firebase Extentions Instance Resize Image
+    /// ### Firebase Extensions Instance Resize Image
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Firebase
     ///         Config = new Gcp.Firebase.Inputs.ExtensionsInstanceConfigArgs
     ///         {
     ///             ExtensionRef = "firebase/storage-resize-images",
-    ///             ExtensionVersion = "0.2.2",
+    ///             ExtensionVersion = "0.2.10",
     ///             Params = 
     ///             {
     ///                 { "DELETE_ORIGINAL_FILE", "false" },
@@ -55,6 +55,9 @@ namespace Pulumi.Gcp.Firebase
     ///                 { "DO_BACKFILL", "false" },
     ///                 { "IMG_SIZES", "200x200" },
     ///                 { "IMG_BUCKET", images.Name },
+    ///                 { "BACKFILL_BATCH_SIZE", "3" },
+    ///                 { "CONTENT_FILTER_LEVEL", "OFF" },
+    ///                 { "REGENERATE_TOKEN", "true" },
     ///             },
     ///             SystemParams = 
     ///             {

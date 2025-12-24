@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about OrganizationSecurityPolicy, see:
  *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies)
  * * How-to Guides
  *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
  *
@@ -22,8 +22,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     displayName: "tf-test",
+ *     shortName: "my-short-name",
  *     parent: "organizations/123456789",
+ *     type: "CLOUD_ARMOR",
  * });
  * ```
  *
@@ -101,10 +102,10 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     declare public readonly shortName: pulumi.Output<string | undefined>;
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-     * Default value is `FIREWALL`.
+     * **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
      * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a OrganizationSecurityPolicy resource with the given unique name, arguments, and options.
@@ -176,7 +177,7 @@ export interface OrganizationSecurityPolicyState {
     shortName?: pulumi.Input<string>;
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-     * Default value is `FIREWALL`.
+     * **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
      * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      */
     type?: pulumi.Input<string>;
@@ -205,7 +206,7 @@ export interface OrganizationSecurityPolicyArgs {
     shortName?: pulumi.Input<string>;
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-     * Default value is `FIREWALL`.
+     * **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
      * Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
      */
     type?: pulumi.Input<string>;

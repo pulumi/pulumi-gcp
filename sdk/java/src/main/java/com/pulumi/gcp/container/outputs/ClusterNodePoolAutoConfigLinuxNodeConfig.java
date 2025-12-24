@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +21,11 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfig {
      * 
      */
     private @Nullable String cgroupMode;
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    private @Nullable ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
 
     private ClusterNodePoolAutoConfigLinuxNodeConfig() {}
     /**
@@ -33,6 +39,13 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfig {
     public Optional<String> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
     }
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    public Optional<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoading() {
+        return Optional.ofNullable(this.nodeKernelModuleLoading);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -44,10 +57,12 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String cgroupMode;
+        private @Nullable ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
         public Builder() {}
         public Builder(ClusterNodePoolAutoConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.nodeKernelModuleLoading = defaults.nodeKernelModuleLoading;
         }
 
         @CustomType.Setter
@@ -56,9 +71,16 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfig {
             this.cgroupMode = cgroupMode;
             return this;
         }
+        @CustomType.Setter
+        public Builder nodeKernelModuleLoading(@Nullable ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading) {
+
+            this.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            return this;
+        }
         public ClusterNodePoolAutoConfigLinuxNodeConfig build() {
             final var _resultValue = new ClusterNodePoolAutoConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.nodeKernelModuleLoading = nodeKernelModuleLoading;
             return _resultValue;
         }
     }

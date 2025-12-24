@@ -184,6 +184,13 @@ import javax.annotation.Nullable;
  *                     classMethods))
  *                 .serviceAccount(serviceAccount.email())
  *                 .deploymentSpec(AiReasoningEngineSpecDeploymentSpecArgs.builder()
+ *                     .minInstances(1)
+ *                     .maxInstances(3)
+ *                     .containerConcurrency(5)
+ *                     .resourceLimits(Map.ofEntries(
+ *                         Map.entry("cpu", "4"),
+ *                         Map.entry("memory", "4Gi")
+ *                     ))
  *                     .envs(                    
  *                         AiReasoningEngineSpecDeploymentSpecEnvArgs.builder()
  *                             .name("var_1")
@@ -316,7 +323,8 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      * 
      */
@@ -325,7 +333,8 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      * 
      */
@@ -334,7 +343,7 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The generated name of the ReasoningEngine, in the format
-     * &#39;projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}&#39;
+     * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -342,7 +351,7 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The generated name of the ReasoningEngine, in the format
-     * &#39;projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}&#39;
+     * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
      * 
      */
     public Output<String> name() {
@@ -395,16 +404,16 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spec);
     }
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format,
-     * with nanosecond resolution and up to nine fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
+     * format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format,
-     * with nanosecond resolution and up to nine fractional digits.
+     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
+     * format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> updateTime() {

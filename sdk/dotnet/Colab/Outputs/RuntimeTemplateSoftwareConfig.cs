@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.Colab.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RuntimeTemplateSoftwareConfigEnv> Envs;
+        /// <summary>
+        /// Post startup script config.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig? PostStartupScriptConfig;
 
         [OutputConstructor]
-        private RuntimeTemplateSoftwareConfig(ImmutableArray<Outputs.RuntimeTemplateSoftwareConfigEnv> envs)
+        private RuntimeTemplateSoftwareConfig(
+            ImmutableArray<Outputs.RuntimeTemplateSoftwareConfigEnv> envs,
+
+            Outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig? postStartupScriptConfig)
         {
             Envs = envs;
+            PostStartupScriptConfig = postStartupScriptConfig;
         }
     }
 }

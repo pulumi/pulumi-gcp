@@ -105,6 +105,8 @@ import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
@@ -131,8 +133,10 @@ import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
 import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetStoragePoolIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetStoragePoolPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetStoragePoolTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetStoragePoolTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
@@ -196,6 +200,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSSLPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetRegionSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
 import com.pulumi.gcp.compute.outputs.GetReservationBlockResult;
@@ -210,6 +215,7 @@ import com.pulumi.gcp.compute.outputs.GetSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
 import com.pulumi.gcp.compute.outputs.GetStoragePoolIamPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetStoragePoolResult;
 import com.pulumi.gcp.compute.outputs.GetStoragePoolTypesResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkResult;
@@ -13751,6 +13757,211 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", TypeShape.of(GetRegionSSLPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get information about a Compute Region Security Policy. For more details, see the [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionSecurityPolicy(GetRegionSecurityPolicyArgs.builder()
+     *             .name("my-region-security-policy")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicy(GetRegionSecurityPolicyArgs args) {
+        return getRegionSecurityPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Compute Region Security Policy. For more details, see the [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionSecurityPolicy(GetRegionSecurityPolicyArgs.builder()
+     *             .name("my-region-security-policy")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionSecurityPolicyResult> getRegionSecurityPolicyPlain(GetRegionSecurityPolicyPlainArgs args) {
+        return getRegionSecurityPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a Compute Region Security Policy. For more details, see the [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionSecurityPolicy(GetRegionSecurityPolicyArgs.builder()
+     *             .name("my-region-security-policy")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicy(GetRegionSecurityPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy", TypeShape.of(GetRegionSecurityPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Compute Region Security Policy. For more details, see the [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionSecurityPolicy(GetRegionSecurityPolicyArgs.builder()
+     *             .name("my-region-security-policy")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicy(GetRegionSecurityPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy", TypeShape.of(GetRegionSecurityPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Compute Region Security Policy. For more details, see the [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSecurityPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getRegionSecurityPolicy(GetRegionSecurityPolicyArgs.builder()
+     *             .name("my-region-security-policy")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionSecurityPolicyResult> getRegionSecurityPolicyPlain(GetRegionSecurityPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionSecurityPolicy:getRegionSecurityPolicy", TypeShape.of(GetRegionSecurityPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get info about a Region Google Compute SSL Certificate from its name.
      * 
      * ## Example Usage
@@ -15218,7 +15429,7 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRouter:getRouter", TypeShape.of(GetRouterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * To get more information about Snapshot, see:
+     * To get more information about RouterNat, see:
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
@@ -15263,7 +15474,7 @@ public final class ComputeFunctions {
         return getRouterNat(args, InvokeOptions.Empty);
     }
     /**
-     * To get more information about Snapshot, see:
+     * To get more information about RouterNat, see:
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
@@ -15308,7 +15519,7 @@ public final class ComputeFunctions {
         return getRouterNatPlain(args, InvokeOptions.Empty);
     }
     /**
-     * To get more information about Snapshot, see:
+     * To get more information about RouterNat, see:
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
@@ -15353,7 +15564,7 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getRouterNat:getRouterNat", TypeShape.of(GetRouterNatResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * To get more information about Snapshot, see:
+     * To get more information about RouterNat, see:
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
@@ -15398,7 +15609,7 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getRouterNat:getRouterNat", TypeShape.of(GetRouterNatResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * To get more information about Snapshot, see:
+     * To get more information about RouterNat, see:
      * 
      * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
      * * How-to Guides
@@ -16776,6 +16987,246 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSnapshotIamPolicyResult> getSnapshotIamPolicyPlain(GetSnapshotIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", TypeShape.of(GetSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available Google Compute Storage Pool resources for a given project and zone.
+     * See more about [Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools) in the upstream docs.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPool = ComputeFunctions.getStoragePool(GetStoragePoolArgs.builder()
+     *             .name("my-storage-pool")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("poolCapacity", myPool.poolProvisionedCapacityGb());
+     *         ctx.export("poolType", myPool.storagePoolType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Note
+     * 
+     * * `deletionProtection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
+     * 
+     */
+    public static Output<GetStoragePoolResult> getStoragePool(GetStoragePoolArgs args) {
+        return getStoragePool(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute Storage Pool resources for a given project and zone.
+     * See more about [Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools) in the upstream docs.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPool = ComputeFunctions.getStoragePool(GetStoragePoolArgs.builder()
+     *             .name("my-storage-pool")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("poolCapacity", myPool.poolProvisionedCapacityGb());
+     *         ctx.export("poolType", myPool.storagePoolType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Note
+     * 
+     * * `deletionProtection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
+     * 
+     */
+    public static CompletableFuture<GetStoragePoolResult> getStoragePoolPlain(GetStoragePoolPlainArgs args) {
+        return getStoragePoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute Storage Pool resources for a given project and zone.
+     * See more about [Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools) in the upstream docs.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPool = ComputeFunctions.getStoragePool(GetStoragePoolArgs.builder()
+     *             .name("my-storage-pool")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("poolCapacity", myPool.poolProvisionedCapacityGb());
+     *         ctx.export("poolType", myPool.storagePoolType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Note
+     * 
+     * * `deletionProtection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
+     * 
+     */
+    public static Output<GetStoragePoolResult> getStoragePool(GetStoragePoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getStoragePool:getStoragePool", TypeShape.of(GetStoragePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available Google Compute Storage Pool resources for a given project and zone.
+     * See more about [Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools) in the upstream docs.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPool = ComputeFunctions.getStoragePool(GetStoragePoolArgs.builder()
+     *             .name("my-storage-pool")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("poolCapacity", myPool.poolProvisionedCapacityGb());
+     *         ctx.export("poolType", myPool.storagePoolType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Note
+     * 
+     * * `deletionProtection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
+     * 
+     */
+    public static Output<GetStoragePoolResult> getStoragePool(GetStoragePoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getStoragePool:getStoragePool", TypeShape.of(GetStoragePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available Google Compute Storage Pool resources for a given project and zone.
+     * See more about [Hyperdisk Storage Pools](https://cloud.google.com/compute/docs/disks/storage-pools) in the upstream docs.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetStoragePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myPool = ComputeFunctions.getStoragePool(GetStoragePoolArgs.builder()
+     *             .name("my-storage-pool")
+     *             .zone("us-central1-a")
+     *             .build());
+     * 
+     *         ctx.export("poolCapacity", myPool.poolProvisionedCapacityGb());
+     *         ctx.export("poolType", myPool.storagePoolType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Note
+     * 
+     * * `deletionProtection` is always set to false on the data source and will not be represetative of the actual value on `gcp.compute.StoragePool` reaosure being read
+     * 
+     */
+    public static CompletableFuture<GetStoragePoolResult> getStoragePoolPlain(GetStoragePoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getStoragePool:getStoragePool", TypeShape.of(GetStoragePoolResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for storagepool

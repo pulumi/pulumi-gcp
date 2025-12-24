@@ -5,10 +5,11 @@ package com.pulumi.gcp.ces.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.inputs.ToolOpenApiToolTlsConfigCaCertArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ToolOpenApiToolTlsConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,22 +17,24 @@ public final class ToolOpenApiToolTlsConfigArgs extends com.pulumi.resources.Res
     public static final ToolOpenApiToolTlsConfigArgs Empty = new ToolOpenApiToolTlsConfigArgs();
 
     /**
+     * (Output)
      * Specifies a list of allowed custom CA certificates for HTTPS
      * verification.
      * Structure is documented below.
      * 
      */
-    @Import(name="caCerts", required=true)
-    private Output<List<ToolOpenApiToolTlsConfigCaCertArgs>> caCerts;
+    @Import(name="caCerts")
+    private @Nullable Output<List<ToolOpenApiToolTlsConfigCaCertArgs>> caCerts;
 
     /**
-     * @return Specifies a list of allowed custom CA certificates for HTTPS
+     * @return (Output)
+     * Specifies a list of allowed custom CA certificates for HTTPS
      * verification.
      * Structure is documented below.
      * 
      */
-    public Output<List<ToolOpenApiToolTlsConfigCaCertArgs>> caCerts() {
-        return this.caCerts;
+    public Optional<Output<List<ToolOpenApiToolTlsConfigCaCertArgs>>> caCerts() {
+        return Optional.ofNullable(this.caCerts);
     }
 
     private ToolOpenApiToolTlsConfigArgs() {}
@@ -59,20 +62,22 @@ public final class ToolOpenApiToolTlsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param caCerts Specifies a list of allowed custom CA certificates for HTTPS
+         * @param caCerts (Output)
+         * Specifies a list of allowed custom CA certificates for HTTPS
          * verification.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder caCerts(Output<List<ToolOpenApiToolTlsConfigCaCertArgs>> caCerts) {
+        public Builder caCerts(@Nullable Output<List<ToolOpenApiToolTlsConfigCaCertArgs>> caCerts) {
             $.caCerts = caCerts;
             return this;
         }
 
         /**
-         * @param caCerts Specifies a list of allowed custom CA certificates for HTTPS
+         * @param caCerts (Output)
+         * Specifies a list of allowed custom CA certificates for HTTPS
          * verification.
          * Structure is documented below.
          * 
@@ -84,7 +89,8 @@ public final class ToolOpenApiToolTlsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param caCerts Specifies a list of allowed custom CA certificates for HTTPS
+         * @param caCerts (Output)
+         * Specifies a list of allowed custom CA certificates for HTTPS
          * verification.
          * Structure is documented below.
          * 
@@ -96,9 +102,6 @@ public final class ToolOpenApiToolTlsConfigArgs extends com.pulumi.resources.Res
         }
 
         public ToolOpenApiToolTlsConfigArgs build() {
-            if ($.caCerts == null) {
-                throw new MissingRequiredPropertyException("ToolOpenApiToolTlsConfigArgs", "caCerts");
-            }
             return $;
         }
     }

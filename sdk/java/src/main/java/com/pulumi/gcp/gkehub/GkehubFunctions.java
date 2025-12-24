@@ -655,18 +655,228 @@ public final class GkehubFunctions {
     public static CompletableFuture<GetMembershipResult> getMembershipPlain(GetMembershipPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:gkehub/getMembership:getMembership", TypeShape.of(GetMembershipResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding&#39;s configuration and state.
+     * 
+     * A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembershipBinding(GetMembershipBindingArgs.builder()
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .membershipBindingId("my-membership-binding-id")
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMembershipBindingResult> getMembershipBinding(GetMembershipBindingArgs args) {
         return getMembershipBinding(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding&#39;s configuration and state.
+     * 
+     * A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembershipBinding(GetMembershipBindingArgs.builder()
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .membershipBindingId("my-membership-binding-id")
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetMembershipBindingResult> getMembershipBindingPlain(GetMembershipBindingPlainArgs args) {
         return getMembershipBindingPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding&#39;s configuration and state.
+     * 
+     * A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembershipBinding(GetMembershipBindingArgs.builder()
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .membershipBindingId("my-membership-binding-id")
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMembershipBindingResult> getMembershipBinding(GetMembershipBindingArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:gkehub/getMembershipBinding:getMembershipBinding", TypeShape.of(GetMembershipBindingResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding&#39;s configuration and state.
+     * 
+     * A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembershipBinding(GetMembershipBindingArgs.builder()
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .membershipBindingId("my-membership-binding-id")
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetMembershipBindingResult> getMembershipBinding(GetMembershipBindingArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:gkehub/getMembershipBinding:getMembershipBinding", TypeShape.of(GetMembershipBindingResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding&#39;s configuration and state.
+     * 
+     * A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GkehubFunctions.getMembershipBinding(GetMembershipBindingArgs.builder()
+     *             .location("global")
+     *             .membershipId("my-membership-id")
+     *             .membershipBindingId("my-membership-binding-id")
+     *             .project("my-project-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetMembershipBindingResult> getMembershipBindingPlain(GetMembershipBindingPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:gkehub/getMembershipBinding:getMembershipBinding", TypeShape.of(GetMembershipBindingResult.class), args, Utilities.withVersion(options));
     }

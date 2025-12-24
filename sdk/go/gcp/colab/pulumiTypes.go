@@ -13,6 +13,705 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type NotebookExecutionCustomEnvironmentSpec struct {
+	// 'The machine configuration of the runtime.'
+	// Structure is documented below.
+	MachineSpec *NotebookExecutionCustomEnvironmentSpecMachineSpec `pulumi:"machineSpec"`
+	// The network configuration for the runtime.
+	// Structure is documented below.
+	NetworkSpec *NotebookExecutionCustomEnvironmentSpecNetworkSpec `pulumi:"networkSpec"`
+	// The configuration for the data disk of the runtime.
+	// Structure is documented below.
+	PersistentDiskSpec *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec `pulumi:"persistentDiskSpec"`
+}
+
+// NotebookExecutionCustomEnvironmentSpecInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecArgs and NotebookExecutionCustomEnvironmentSpecOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecInput` via:
+//
+//	NotebookExecutionCustomEnvironmentSpecArgs{...}
+type NotebookExecutionCustomEnvironmentSpecInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecOutput() NotebookExecutionCustomEnvironmentSpecOutput
+	ToNotebookExecutionCustomEnvironmentSpecOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecOutput
+}
+
+type NotebookExecutionCustomEnvironmentSpecArgs struct {
+	// 'The machine configuration of the runtime.'
+	// Structure is documented below.
+	MachineSpec NotebookExecutionCustomEnvironmentSpecMachineSpecPtrInput `pulumi:"machineSpec"`
+	// The network configuration for the runtime.
+	// Structure is documented below.
+	NetworkSpec NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrInput `pulumi:"networkSpec"`
+	// The configuration for the data disk of the runtime.
+	// Structure is documented below.
+	PersistentDiskSpec NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput `pulumi:"persistentDiskSpec"`
+}
+
+func (NotebookExecutionCustomEnvironmentSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecArgs) ToNotebookExecutionCustomEnvironmentSpecOutput() NotebookExecutionCustomEnvironmentSpecOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecArgs) ToNotebookExecutionCustomEnvironmentSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecOutput)
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecArgs) ToNotebookExecutionCustomEnvironmentSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecArgs) ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecOutput).ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionCustomEnvironmentSpecPtrInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecArgs, NotebookExecutionCustomEnvironmentSpecPtr and NotebookExecutionCustomEnvironmentSpecPtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecPtrInput` via:
+//
+//	        NotebookExecutionCustomEnvironmentSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionCustomEnvironmentSpecPtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPtrOutput
+	ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecPtrOutput
+}
+
+type notebookExecutionCustomEnvironmentSpecPtrType NotebookExecutionCustomEnvironmentSpecArgs
+
+func NotebookExecutionCustomEnvironmentSpecPtr(v *NotebookExecutionCustomEnvironmentSpecArgs) NotebookExecutionCustomEnvironmentSpecPtrInput {
+	return (*notebookExecutionCustomEnvironmentSpecPtrType)(v)
+}
+
+func (*notebookExecutionCustomEnvironmentSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecOutput) ToNotebookExecutionCustomEnvironmentSpecOutput() NotebookExecutionCustomEnvironmentSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecOutput) ToNotebookExecutionCustomEnvironmentSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecOutput) ToNotebookExecutionCustomEnvironmentSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return o.ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecOutput) ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpec {
+		return &v
+	}).(NotebookExecutionCustomEnvironmentSpecPtrOutput)
+}
+
+// 'The machine configuration of the runtime.'
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecOutput) MachineSpec() NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecMachineSpec {
+		return v.MachineSpec
+	}).(NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+// The network configuration for the runtime.
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecOutput) NetworkSpec() NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecNetworkSpec {
+		return v.NetworkSpec
+	}).(NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+// The configuration for the data disk of the runtime.
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecOutput) PersistentDiskSpec() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec {
+		return v.PersistentDiskSpec
+	}).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) Elem() NotebookExecutionCustomEnvironmentSpecOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpec) NotebookExecutionCustomEnvironmentSpec {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionCustomEnvironmentSpec
+		return ret
+	}).(NotebookExecutionCustomEnvironmentSpecOutput)
+}
+
+// 'The machine configuration of the runtime.'
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) MachineSpec() NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecMachineSpec {
+		if v == nil {
+			return nil
+		}
+		return v.MachineSpec
+	}).(NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+// The network configuration for the runtime.
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) NetworkSpec() NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecNetworkSpec {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkSpec
+	}).(NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+// The configuration for the data disk of the runtime.
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) PersistentDiskSpec() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentDiskSpec
+	}).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecMachineSpec struct {
+	// The number of accelerators used by the runtime.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The Compute Engine machine type selected for the runtime.
+	MachineType *string `pulumi:"machineType"`
+}
+
+// NotebookExecutionCustomEnvironmentSpecMachineSpecInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecMachineSpecArgs and NotebookExecutionCustomEnvironmentSpecMachineSpecOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecMachineSpecInput` via:
+//
+//	NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{...}
+type NotebookExecutionCustomEnvironmentSpecMachineSpecInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecMachineSpecOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecOutput
+	ToNotebookExecutionCustomEnvironmentSpecMachineSpecOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecOutput
+}
+
+type NotebookExecutionCustomEnvironmentSpecMachineSpecArgs struct {
+	// The number of accelerators used by the runtime.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The Compute Engine machine type selected for the runtime.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (NotebookExecutionCustomEnvironmentSpecMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecMachineSpecArgs) ToNotebookExecutionCustomEnvironmentSpecMachineSpecOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecMachineSpecOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecMachineSpecArgs) ToNotebookExecutionCustomEnvironmentSpecMachineSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecMachineSpecOutput)
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecMachineSpecArgs) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecMachineSpecArgs) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecMachineSpecOutput).ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionCustomEnvironmentSpecMachineSpecPtrInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecMachineSpecArgs, NotebookExecutionCustomEnvironmentSpecMachineSpecPtr and NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecMachineSpecPtrInput` via:
+//
+//	        NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionCustomEnvironmentSpecMachineSpecPtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput
+	ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput
+}
+
+type notebookExecutionCustomEnvironmentSpecMachineSpecPtrType NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+
+func NotebookExecutionCustomEnvironmentSpecMachineSpecPtr(v *NotebookExecutionCustomEnvironmentSpecMachineSpecArgs) NotebookExecutionCustomEnvironmentSpecMachineSpecPtrInput {
+	return (*notebookExecutionCustomEnvironmentSpecMachineSpecPtrType)(v)
+}
+
+func (*notebookExecutionCustomEnvironmentSpecMachineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecMachineSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecMachineSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) ToNotebookExecutionCustomEnvironmentSpecMachineSpecOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) ToNotebookExecutionCustomEnvironmentSpecMachineSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionCustomEnvironmentSpecMachineSpec) *NotebookExecutionCustomEnvironmentSpecMachineSpec {
+		return &v
+	}).(NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput)
+}
+
+// The number of accelerators used by the runtime.
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecMachineSpec) *int { return v.AcceleratorCount }).(pulumi.IntPtrOutput)
+}
+
+// The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecMachineSpec) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine machine type selected for the runtime.
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecMachineSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput) Elem() NotebookExecutionCustomEnvironmentSpecMachineSpecOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecMachineSpec) NotebookExecutionCustomEnvironmentSpecMachineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionCustomEnvironmentSpecMachineSpec
+		return ret
+	}).(NotebookExecutionCustomEnvironmentSpecMachineSpecOutput)
+}
+
+// The number of accelerators used by the runtime.
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecMachineSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine machine type selected for the runtime.
+func (o NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecMachineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecNetworkSpec struct {
+	// Enable public internet access for the runtime.
+	EnableInternetAccess *bool `pulumi:"enableInternetAccess"`
+	// The name of the VPC that this runtime is in.
+	Network *string `pulumi:"network"`
+	// The name of the subnetwork that this runtime is in.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// NotebookExecutionCustomEnvironmentSpecNetworkSpecInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs and NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecNetworkSpecInput` via:
+//
+//	NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{...}
+type NotebookExecutionCustomEnvironmentSpecNetworkSpecInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecNetworkSpecOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput
+	ToNotebookExecutionCustomEnvironmentSpecNetworkSpecOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput
+}
+
+type NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs struct {
+	// Enable public internet access for the runtime.
+	EnableInternetAccess pulumi.BoolPtrInput `pulumi:"enableInternetAccess"`
+	// The name of the VPC that this runtime is in.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The name of the subnetwork that this runtime is in.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecNetworkSpecOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput)
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput).ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs, NotebookExecutionCustomEnvironmentSpecNetworkSpecPtr and NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrInput` via:
+//
+//	        NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput
+	ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput
+}
+
+type notebookExecutionCustomEnvironmentSpecNetworkSpecPtrType NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs
+
+func NotebookExecutionCustomEnvironmentSpecNetworkSpecPtr(v *NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs) NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrInput {
+	return (*notebookExecutionCustomEnvironmentSpecNetworkSpecPtrType)(v)
+}
+
+func (*notebookExecutionCustomEnvironmentSpecNetworkSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecNetworkSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecNetworkSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionCustomEnvironmentSpecNetworkSpec) *NotebookExecutionCustomEnvironmentSpecNetworkSpec {
+		return &v
+	}).(NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput)
+}
+
+// Enable public internet access for the runtime.
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) EnableInternetAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecNetworkSpec) *bool { return v.EnableInternetAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the VPC that this runtime is in.
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecNetworkSpec) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnetwork that this runtime is in.
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecNetworkSpec) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecNetworkSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput) Elem() NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecNetworkSpec) NotebookExecutionCustomEnvironmentSpecNetworkSpec {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionCustomEnvironmentSpecNetworkSpec
+		return ret
+	}).(NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput)
+}
+
+// Enable public internet access for the runtime.
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput) EnableInternetAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecNetworkSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInternetAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the VPC that this runtime is in.
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecNetworkSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the subnetwork that this runtime is in.
+func (o NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecNetworkSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec struct {
+	// The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+	DiskSizeGb *string `pulumi:"diskSizeGb"`
+	// The type of the persistent disk.
+	DiskType *string `pulumi:"diskType"`
+}
+
+// NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs and NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecInput` via:
+//
+//	NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{...}
+type NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput
+	ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput
+}
+
+type NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs struct {
+	// The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
+	// The type of the persistent disk.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+}
+
+func (NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput)
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput).ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs, NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtr and NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput` via:
+//
+//	        NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput
+	ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput
+}
+
+type notebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrType NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+
+func NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtr(v *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput {
+	return (*notebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrType)(v)
+}
+
+func (*notebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrType) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec) *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec {
+		return &v
+	}).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+// The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
+}
+
+// The type of the persistent disk.
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput) ToNotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput) Elem() NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec) NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec
+		return ret
+	}).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput)
+}
+
+// The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the persistent disk.
+func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
 type NotebookExecutionDataformRepositorySource struct {
 	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
 	CommitSha *string `pulumi:"commitSha"`
@@ -1983,6 +2682,9 @@ type RuntimeTemplateSoftwareConfig struct {
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs []RuntimeTemplateSoftwareConfigEnv `pulumi:"envs"`
+	// Post startup script config.
+	// Structure is documented below.
+	PostStartupScriptConfig *RuntimeTemplateSoftwareConfigPostStartupScriptConfig `pulumi:"postStartupScriptConfig"`
 }
 
 // RuntimeTemplateSoftwareConfigInput is an input type that accepts RuntimeTemplateSoftwareConfigArgs and RuntimeTemplateSoftwareConfigOutput values.
@@ -2000,6 +2702,9 @@ type RuntimeTemplateSoftwareConfigArgs struct {
 	// Environment variables to be passed to the container.
 	// Structure is documented below.
 	Envs RuntimeTemplateSoftwareConfigEnvArrayInput `pulumi:"envs"`
+	// Post startup script config.
+	// Structure is documented below.
+	PostStartupScriptConfig RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput `pulumi:"postStartupScriptConfig"`
 }
 
 func (RuntimeTemplateSoftwareConfigArgs) ElementType() reflect.Type {
@@ -2085,6 +2790,14 @@ func (o RuntimeTemplateSoftwareConfigOutput) Envs() RuntimeTemplateSoftwareConfi
 	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) []RuntimeTemplateSoftwareConfigEnv { return v.Envs }).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
 }
 
+// Post startup script config.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		return v.PostStartupScriptConfig
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
 type RuntimeTemplateSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (RuntimeTemplateSoftwareConfigPtrOutput) ElementType() reflect.Type {
@@ -2118,6 +2831,17 @@ func (o RuntimeTemplateSoftwareConfigPtrOutput) Envs() RuntimeTemplateSoftwareCo
 		}
 		return v.Envs
 	}).(RuntimeTemplateSoftwareConfigEnvArrayOutput)
+}
+
+// Post startup script config.
+// Structure is documented below.
+func (o RuntimeTemplateSoftwareConfigPtrOutput) PostStartupScriptConfig() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptConfig
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
 }
 
 type RuntimeTemplateSoftwareConfigEnv struct {
@@ -2224,6 +2948,187 @@ func (o RuntimeTemplateSoftwareConfigEnvArrayOutput) Index(i pulumi.IntInput) Ru
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuntimeTemplateSoftwareConfigEnv {
 		return vs[0].([]RuntimeTemplateSoftwareConfigEnv)[vs[1].(int)]
 	}).(RuntimeTemplateSoftwareConfigEnvOutput)
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfig struct {
+	// Post startup script to run after runtime is started.
+	PostStartupScript *string `pulumi:"postStartupScript"`
+	// Post startup script behavior that defines download and execution behavior.
+	// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior *string `pulumi:"postStartupScriptBehavior"`
+	// Post startup script url to download. Example: https://bucket/script.sh.
+	PostStartupScriptUrl *string `pulumi:"postStartupScriptUrl"`
+}
+
+// RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput is an input type that accepts RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs and RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput` via:
+//
+//	RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{...}
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs struct {
+	// Post startup script to run after runtime is started.
+	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
+	// Post startup script behavior that defines download and execution behavior.
+	// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+	PostStartupScriptBehavior pulumi.StringPtrInput `pulumi:"postStartupScriptBehavior"`
+	// Post startup script url to download. Example: https://bucket/script.sh.
+	PostStartupScriptUrl pulumi.StringPtrInput `pulumi:"postStartupScriptUrl"`
+}
+
+func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput)
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput).ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput is an input type that accepts RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs, RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtr and RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput` via:
+//
+//	        RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput
+	ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput
+}
+
+type runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs
+
+func RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtr(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput {
+	return (*runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType)(v)
+}
+
+func (*runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (i *runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return i.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeTemplateSoftwareConfigPostStartupScriptConfigPtrType) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		return &v
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput)
+}
+
+// Post startup script to run after runtime is started.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string { return v.PostStartupScript }).(pulumi.StringPtrOutput)
+}
+
+// Post startup script behavior that defines download and execution behavior.
+// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		return v.PostStartupScriptBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post startup script url to download. Example: https://bucket/script.sh.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput) PostStartupScriptUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string { return v.PostStartupScriptUrl }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeTemplateSoftwareConfigPostStartupScriptConfig)(nil)).Elem()
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput() RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) ToRuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutputWithContext(ctx context.Context) RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) Elem() RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeTemplateSoftwareConfigPostStartupScriptConfig
+		return ret
+	}).(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput)
+}
+
+// Post startup script to run after runtime is started.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScript
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post startup script behavior that defines download and execution behavior.
+// Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Post startup script url to download. Example: https://bucket/script.sh.
+func (o RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput) PostStartupScriptUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeTemplateSoftwareConfigPostStartupScriptConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostStartupScriptUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type ScheduleCreateNotebookExecutionJobRequest struct {
@@ -2976,6 +3881,14 @@ func (o ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebook
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecPtrInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecMachineSpecInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecMachineSpecPtrInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecNetworkSpecInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDataformRepositorySourceInput)(nil)).Elem(), NotebookExecutionDataformRepositorySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDataformRepositorySourcePtrInput)(nil)).Elem(), NotebookExecutionDataformRepositorySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDirectNotebookSourceInput)(nil)).Elem(), NotebookExecutionDirectNotebookSourceArgs{})
@@ -3006,6 +3919,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigEnvArrayInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfigInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrInput)(nil)).Elem(), RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestPtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{})
@@ -3014,6 +3929,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourcePtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourcePtrInput)(nil)).Elem(), ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecPtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecMachineSpecOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecMachineSpecPtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecNetworkSpecOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionDataformRepositorySourceOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionDataformRepositorySourcePtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionDirectNotebookSourceOutput{})
@@ -3044,6 +3967,8 @@ func init() {
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigEnvArrayOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPostStartupScriptConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeTemplateSoftwareConfigPostStartupScriptConfigPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestOutput{})
 	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput{})

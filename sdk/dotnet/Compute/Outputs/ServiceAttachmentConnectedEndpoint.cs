@@ -25,6 +25,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? Endpoint;
         /// <summary>
         /// (Output)
+        /// The nat IPs of the connected endpoint.
+        /// </summary>
+        public readonly ImmutableArray<string> NatIps;
+        /// <summary>
+        /// (Output)
         /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
         /// </summary>
         public readonly int? PropagatedConnectionCount;
@@ -46,6 +51,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? endpoint,
 
+            ImmutableArray<string> natIps,
+
             int? propagatedConnectionCount,
 
             string? pscConnectionId,
@@ -54,6 +61,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             ConsumerNetwork = consumerNetwork;
             Endpoint = endpoint;
+            NatIps = natIps;
             PropagatedConnectionCount = propagatedConnectionCount;
             PscConnectionId = pscConnectionId;
             Status = status;

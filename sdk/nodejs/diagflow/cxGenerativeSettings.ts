@@ -116,7 +116,6 @@ export class CxGenerativeSettings extends pulumi.CustomResource {
     declare public readonly fallbackSettings: pulumi.Output<outputs.diagflow.CxGenerativeSettingsFallbackSettings | undefined>;
     /**
      * Settings for Generative Safety.
-     * w
      * Structure is documented below.
      */
     declare public readonly generativeSafetySettings: pulumi.Output<outputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings | undefined>;
@@ -194,7 +193,6 @@ export interface CxGenerativeSettingsState {
     fallbackSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsFallbackSettings>;
     /**
      * Settings for Generative Safety.
-     * w
      * Structure is documented below.
      */
     generativeSafetySettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings>;
@@ -235,7 +233,6 @@ export interface CxGenerativeSettingsArgs {
     fallbackSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsFallbackSettings>;
     /**
      * Settings for Generative Safety.
-     * w
      * Structure is documented below.
      */
     generativeSafetySettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings>;

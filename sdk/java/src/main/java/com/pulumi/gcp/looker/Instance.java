@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.looker.InstanceArgs;
 import com.pulumi.gcp.looker.inputs.InstanceState;
 import com.pulumi.gcp.looker.outputs.InstanceAdminSettings;
+import com.pulumi.gcp.looker.outputs.InstanceControlledEgressConfig;
 import com.pulumi.gcp.looker.outputs.InstanceCustomDomain;
 import com.pulumi.gcp.looker.outputs.InstanceDenyMaintenancePeriod;
 import com.pulumi.gcp.looker.outputs.InstanceEncryptionConfig;
@@ -517,6 +518,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.consumerNetwork);
     }
     /**
+     * Controlled egress configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="controlledEgressConfig", refs={InstanceControlledEgressConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceControlledEgressConfig> controlledEgressConfig;
+
+    /**
+     * @return Controlled egress configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceControlledEgressConfig>> controlledEgressConfig() {
+        return Codegen.optional(this.controlledEgressConfig);
+    }
+    /**
+     * Whether controlled egress is enabled on the Looker instance.
+     * 
+     */
+    @Export(name="controlledEgressEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> controlledEgressEnabled;
+
+    /**
+     * @return Whether controlled egress is enabled on the Looker instance.
+     * 
+     */
+    public Output<Optional<Boolean>> controlledEgressEnabled() {
+        return Codegen.optional(this.controlledEgressEnabled);
+    }
+    /**
      * The time the instance was created in RFC3339 UTC &#34;Zulu&#34; format,
      * accurate to nanoseconds.
      * 
@@ -830,15 +861,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pscConfig", refs={InstancePscConfig.class}, tree="[0]")
-    private Output</* @Nullable */ InstancePscConfig> pscConfig;
+    private Output<InstancePscConfig> pscConfig;
 
     /**
      * @return Information for Private Service Connect (PSC) setup for a Looker instance.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<InstancePscConfig>> pscConfig() {
-        return Codegen.optional(this.pscConfig);
+    public Output<InstancePscConfig> pscConfig() {
+        return this.pscConfig;
     }
     /**
      * Whether Public Service Connect (PSC) is enabled on the Looker instance

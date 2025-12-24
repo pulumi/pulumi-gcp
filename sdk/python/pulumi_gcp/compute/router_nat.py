@@ -74,7 +74,7 @@ class RouterNatArgs:
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[_builtins.bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
-               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+               For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
                Supported values include:
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
@@ -264,7 +264,7 @@ class RouterNatArgs:
     def enable_endpoint_independent_mapping(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Enable endpoint independent mapping.
-        For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         """
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 
@@ -590,7 +590,7 @@ class _RouterNatState:
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[_builtins.bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
-               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+               For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
                Supported values include:
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
@@ -760,7 +760,7 @@ class _RouterNatState:
     def enable_endpoint_independent_mapping(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Enable endpoint independent mapping.
-        For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         """
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 
@@ -1304,7 +1304,7 @@ class RouterNat(pulumi.CustomResource):
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[_builtins.bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
-               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+               For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
                Supported values include:
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
@@ -1693,7 +1693,7 @@ class RouterNat(pulumi.CustomResource):
                If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
                Mutually exclusive with enableEndpointIndependentMapping.
         :param pulumi.Input[_builtins.bool] enable_endpoint_independent_mapping: Enable endpoint independent mapping.
-               For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+               For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] endpoint_types: Specifies the endpoint Types supported by the NAT Gateway.
                Supported values include:
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
@@ -1830,7 +1830,7 @@ class RouterNat(pulumi.CustomResource):
     def enable_endpoint_independent_mapping(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable endpoint independent mapping.
-        For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         """
         return pulumi.get(self, "enable_endpoint_independent_mapping")
 

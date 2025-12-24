@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, activation_policy=None, annotations=None, availability_type=None, client_connection_configs=None, cluster=None, cluster_id=None, create_time=None, database_flags=None, display_name=None, effective_annotations=None, effective_labels=None, gce_zone=None, id=None, instance_id=None, instance_type=None, ip_address=None, labels=None, location=None, machine_configs=None, name=None, network_configs=None, observability_configs=None, outbound_public_ip_addresses=None, project=None, psc_instance_configs=None, public_ip_address=None, pulumi_labels=None, query_insights_configs=None, read_pool_configs=None, reconciling=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, activation_policy=None, annotations=None, availability_type=None, client_connection_configs=None, cluster=None, cluster_id=None, connection_pool_configs=None, create_time=None, database_flags=None, display_name=None, effective_annotations=None, effective_labels=None, gce_zone=None, id=None, instance_id=None, instance_type=None, ip_address=None, labels=None, location=None, machine_configs=None, name=None, network_configs=None, observability_configs=None, outbound_public_ip_addresses=None, project=None, psc_instance_configs=None, public_ip_address=None, pulumi_labels=None, query_insights_configs=None, read_pool_configs=None, reconciling=None, state=None, uid=None, update_time=None):
         if activation_policy and not isinstance(activation_policy, str):
             raise TypeError("Expected argument 'activation_policy' to be a str")
         pulumi.set(__self__, "activation_policy", activation_policy)
@@ -46,6 +46,9 @@ class GetInstanceResult:
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
+        if connection_pool_configs and not isinstance(connection_pool_configs, list):
+            raise TypeError("Expected argument 'connection_pool_configs' to be a list")
+        pulumi.set(__self__, "connection_pool_configs", connection_pool_configs)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -157,6 +160,11 @@ class GetInstanceResult:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> _builtins.str:
         return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionPoolConfigs")
+    def connection_pool_configs(self) -> Sequence['outputs.GetInstanceConnectionPoolConfigResult']:
+        return pulumi.get(self, "connection_pool_configs")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -309,6 +317,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             client_connection_configs=self.client_connection_configs,
             cluster=self.cluster,
             cluster_id=self.cluster_id,
+            connection_pool_configs=self.connection_pool_configs,
             create_time=self.create_time,
             database_flags=self.database_flags,
             display_name=self.display_name,
@@ -380,6 +389,7 @@ def get_instance(cluster_id: Optional[_builtins.str] = None,
         client_connection_configs=pulumi.get(__ret__, 'client_connection_configs'),
         cluster=pulumi.get(__ret__, 'cluster'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        connection_pool_configs=pulumi.get(__ret__, 'connection_pool_configs'),
         create_time=pulumi.get(__ret__, 'create_time'),
         database_flags=pulumi.get(__ret__, 'database_flags'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -448,6 +458,7 @@ def get_instance_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None
         client_connection_configs=pulumi.get(__response__, 'client_connection_configs'),
         cluster=pulumi.get(__response__, 'cluster'),
         cluster_id=pulumi.get(__response__, 'cluster_id'),
+        connection_pool_configs=pulumi.get(__response__, 'connection_pool_configs'),
         create_time=pulumi.get(__response__, 'create_time'),
         database_flags=pulumi.get(__response__, 'database_flags'),
         display_name=pulumi.get(__response__, 'display_name'),

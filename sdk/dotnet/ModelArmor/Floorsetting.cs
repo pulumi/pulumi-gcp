@@ -172,6 +172,13 @@ namespace Pulumi.Gcp.ModelArmor
         public Output<Outputs.FloorsettingFloorSettingMetadata?> FloorSettingMetadata { get; private set; } = null!;
 
         /// <summary>
+        /// Google MCP Server floor setting.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("googleMcpServerFloorSetting")]
+        public Output<Outputs.FloorsettingGoogleMcpServerFloorSetting?> GoogleMcpServerFloorSetting { get; private set; } = null!;
+
+        /// <summary>
         /// List of integrated services for which the floor setting is applicable.
         /// </summary>
         [Output("integratedServices")]
@@ -277,6 +284,13 @@ namespace Pulumi.Gcp.ModelArmor
         [Input("floorSettingMetadata")]
         public Input<Inputs.FloorsettingFloorSettingMetadataArgs>? FloorSettingMetadata { get; set; }
 
+        /// <summary>
+        /// Google MCP Server floor setting.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("googleMcpServerFloorSetting")]
+        public Input<Inputs.FloorsettingGoogleMcpServerFloorSettingArgs>? GoogleMcpServerFloorSetting { get; set; }
+
         [Input("integratedServices")]
         private InputList<string>? _integratedServices;
 
@@ -344,6 +358,13 @@ namespace Pulumi.Gcp.ModelArmor
         /// </summary>
         [Input("floorSettingMetadata")]
         public Input<Inputs.FloorsettingFloorSettingMetadataGetArgs>? FloorSettingMetadata { get; set; }
+
+        /// <summary>
+        /// Google MCP Server floor setting.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("googleMcpServerFloorSetting")]
+        public Input<Inputs.FloorsettingGoogleMcpServerFloorSettingGetArgs>? GoogleMcpServerFloorSetting { get; set; }
 
         [Input("integratedServices")]
         private InputList<string>? _integratedServices;

@@ -332,7 +332,7 @@ type RouterNat struct {
 	// Mutually exclusive with enableEndpointIndependentMapping.
 	EnableDynamicPortAllocation pulumi.BoolOutput `pulumi:"enableDynamicPortAllocation"`
 	// Enable endpoint independent mapping.
-	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolOutput `pulumi:"enableEndpointIndependentMapping"`
 	// Specifies the endpoint Types supported by the NAT Gateway.
 	// Supported values include:
@@ -475,7 +475,7 @@ type routerNatState struct {
 	// Mutually exclusive with enableEndpointIndependentMapping.
 	EnableDynamicPortAllocation *bool `pulumi:"enableDynamicPortAllocation"`
 	// Enable endpoint independent mapping.
-	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
 	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
 	// Specifies the endpoint Types supported by the NAT Gateway.
 	// Supported values include:
@@ -583,7 +583,7 @@ type RouterNatState struct {
 	// Mutually exclusive with enableEndpointIndependentMapping.
 	EnableDynamicPortAllocation pulumi.BoolPtrInput
 	// Enable endpoint independent mapping.
-	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolPtrInput
 	// Specifies the endpoint Types supported by the NAT Gateway.
 	// Supported values include:
@@ -695,7 +695,7 @@ type routerNatArgs struct {
 	// Mutually exclusive with enableEndpointIndependentMapping.
 	EnableDynamicPortAllocation *bool `pulumi:"enableDynamicPortAllocation"`
 	// Enable endpoint independent mapping.
-	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
 	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
 	// Specifies the endpoint Types supported by the NAT Gateway.
 	// Supported values include:
@@ -804,7 +804,7 @@ type RouterNatArgs struct {
 	// Mutually exclusive with enableEndpointIndependentMapping.
 	EnableDynamicPortAllocation pulumi.BoolPtrInput
 	// Enable endpoint independent mapping.
-	// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
 	EnableEndpointIndependentMapping pulumi.BoolPtrInput
 	// Specifies the endpoint Types supported by the NAT Gateway.
 	// Supported values include:
@@ -1007,7 +1007,7 @@ func (o RouterNatOutput) EnableDynamicPortAllocation() pulumi.BoolOutput {
 }
 
 // Enable endpoint independent mapping.
-// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
 func (o RouterNatOutput) EnableEndpointIndependentMapping() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.BoolOutput { return v.EnableEndpointIndependentMapping }).(pulumi.BoolOutput)
 }

@@ -160,6 +160,38 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Security Security Profile Broker
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultMirroringDeploymentGroup = new gcp.networksecurity.MirroringDeploymentGroup("default", {
+ *     mirroringDeploymentGroupId: "my-dg",
+ *     location: "global",
+ *     network: _default.id,
+ * });
+ * const defaultMirroringEndpointGroup = new gcp.networksecurity.MirroringEndpointGroup("default", {
+ *     mirroringEndpointGroupId: "my-eg",
+ *     location: "global",
+ *     type: "BROKER",
+ *     mirroringDeploymentGroups: [defaultMirroringDeploymentGroup.id],
+ * });
+ * const defaultSecurityProfile = new gcp.networksecurity.SecurityProfile("default", {
+ *     name: "my-security-profile",
+ *     parent: "organizations/123456789",
+ *     description: "my description",
+ *     type: "CUSTOM_MIRRORING",
+ *     customMirroringProfile: {
+ *         mirroringEndpointGroup: defaultMirroringEndpointGroup.id,
+ *         mirroringDeploymentGroups: [defaultMirroringDeploymentGroup.id],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

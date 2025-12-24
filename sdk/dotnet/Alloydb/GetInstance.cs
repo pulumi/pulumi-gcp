@@ -158,6 +158,7 @@ namespace Pulumi.Gcp.Alloydb
         public readonly ImmutableArray<Outputs.GetInstanceClientConnectionConfigResult> ClientConnectionConfigs;
         public readonly string Cluster;
         public readonly string ClusterId;
+        public readonly ImmutableArray<Outputs.GetInstanceConnectionPoolConfigResult> ConnectionPoolConfigs;
         public readonly string CreateTime;
         public readonly ImmutableDictionary<string, string> DatabaseFlags;
         public readonly string DisplayName;
@@ -202,6 +203,8 @@ namespace Pulumi.Gcp.Alloydb
             string cluster,
 
             string clusterId,
+
+            ImmutableArray<Outputs.GetInstanceConnectionPoolConfigResult> connectionPoolConfigs,
 
             string createTime,
 
@@ -263,6 +266,7 @@ namespace Pulumi.Gcp.Alloydb
             ClientConnectionConfigs = clientConnectionConfigs;
             Cluster = cluster;
             ClusterId = clusterId;
+            ConnectionPoolConfigs = connectionPoolConfigs;
             CreateTime = createTime;
             DatabaseFlags = databaseFlags;
             DisplayName = displayName;

@@ -25,7 +25,7 @@ public final class GetAncestryResult {
      */
     private String id;
     /**
-     * @return The optional user-assigned display name of the project.
+     * @return The organization id.
      * 
      */
     private String orgId;
@@ -57,7 +57,7 @@ public final class GetAncestryResult {
         return this.id;
     }
     /**
-     * @return The optional user-assigned display name of the project.
+     * @return The organization id.
      * 
      */
     public String orgId() {

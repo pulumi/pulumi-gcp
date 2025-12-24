@@ -6,6 +6,7 @@ package com.pulumi.gcp.looker.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.looker.inputs.InstanceAdminSettingsArgs;
+import com.pulumi.gcp.looker.inputs.InstanceControlledEgressConfigArgs;
 import com.pulumi.gcp.looker.inputs.InstanceCustomDomainArgs;
 import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodArgs;
 import com.pulumi.gcp.looker.inputs.InstanceEncryptionConfigArgs;
@@ -58,6 +59,38 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> consumerNetwork() {
         return Optional.ofNullable(this.consumerNetwork);
+    }
+
+    /**
+     * Controlled egress configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="controlledEgressConfig")
+    private @Nullable Output<InstanceControlledEgressConfigArgs> controlledEgressConfig;
+
+    /**
+     * @return Controlled egress configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceControlledEgressConfigArgs>> controlledEgressConfig() {
+        return Optional.ofNullable(this.controlledEgressConfig);
+    }
+
+    /**
+     * Whether controlled egress is enabled on the Looker instance.
+     * 
+     */
+    @Import(name="controlledEgressEnabled")
+    private @Nullable Output<Boolean> controlledEgressEnabled;
+
+    /**
+     * @return Whether controlled egress is enabled on the Looker instance.
+     * 
+     */
+    public Optional<Output<Boolean>> controlledEgressEnabled() {
+        return Optional.ofNullable(this.controlledEgressEnabled);
     }
 
     /**
@@ -516,6 +549,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.adminSettings = $.adminSettings;
         this.consumerNetwork = $.consumerNetwork;
+        this.controlledEgressConfig = $.controlledEgressConfig;
+        this.controlledEgressEnabled = $.controlledEgressEnabled;
         this.createTime = $.createTime;
         this.customDomain = $.customDomain;
         this.deletionPolicy = $.deletionPolicy;
@@ -607,6 +642,50 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder consumerNetwork(String consumerNetwork) {
             return consumerNetwork(Output.of(consumerNetwork));
+        }
+
+        /**
+         * @param controlledEgressConfig Controlled egress configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlledEgressConfig(@Nullable Output<InstanceControlledEgressConfigArgs> controlledEgressConfig) {
+            $.controlledEgressConfig = controlledEgressConfig;
+            return this;
+        }
+
+        /**
+         * @param controlledEgressConfig Controlled egress configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlledEgressConfig(InstanceControlledEgressConfigArgs controlledEgressConfig) {
+            return controlledEgressConfig(Output.of(controlledEgressConfig));
+        }
+
+        /**
+         * @param controlledEgressEnabled Whether controlled egress is enabled on the Looker instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlledEgressEnabled(@Nullable Output<Boolean> controlledEgressEnabled) {
+            $.controlledEgressEnabled = controlledEgressEnabled;
+            return this;
+        }
+
+        /**
+         * @param controlledEgressEnabled Whether controlled egress is enabled on the Looker instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlledEgressEnabled(Boolean controlledEgressEnabled) {
+            return controlledEgressEnabled(Output.of(controlledEgressEnabled));
         }
 
         /**

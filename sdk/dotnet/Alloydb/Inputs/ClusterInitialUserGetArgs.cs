@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Alloydb.Inputs
 
     public sealed class ClusterInitialUserGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>

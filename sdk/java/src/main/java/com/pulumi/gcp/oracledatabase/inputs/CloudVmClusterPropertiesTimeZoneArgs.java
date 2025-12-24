@@ -30,10 +30,26 @@ public final class CloudVmClusterPropertiesTimeZoneArgs extends com.pulumi.resou
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private CloudVmClusterPropertiesTimeZoneArgs() {}
 
     private CloudVmClusterPropertiesTimeZoneArgs(CloudVmClusterPropertiesTimeZoneArgs $) {
         this.id = $.id;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class CloudVmClusterPropertiesTimeZoneArgs extends com.pulumi.resou
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param version IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public CloudVmClusterPropertiesTimeZoneArgs build() {

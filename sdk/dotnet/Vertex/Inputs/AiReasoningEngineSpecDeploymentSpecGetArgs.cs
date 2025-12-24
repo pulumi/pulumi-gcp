@@ -12,11 +12,19 @@ namespace Pulumi.Gcp.Vertex.Inputs
 
     public sealed class AiReasoningEngineSpecDeploymentSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Concurrency for each container and agent server.
+        /// Recommended value: 2 * cpu + 1. Defaults to 9.
+        /// </summary>
+        [Input("containerConcurrency")]
+        public Input<int>? ContainerConcurrency { get; set; }
+
         [Input("envs")]
         private InputList<Inputs.AiReasoningEngineSpecDeploymentSpecEnvGetArgs>? _envs;
 
         /// <summary>
-        /// Optional. Environment variables to be set with the Reasoning Engine deployment.
+        /// Optional. Environment variables to be set with the Reasoning
+        /// Engine deployment.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiReasoningEngineSpecDeploymentSpecEnvGetArgs> Envs
@@ -25,11 +33,50 @@ namespace Pulumi.Gcp.Vertex.Inputs
             set => _envs = value;
         }
 
+        /// <summary>
+        /// Optional. The minimum number of application instances that will be
+        /// kept running at all times. Defaults to 1. Range: [0, 10].
+        /// </summary>
+        [Input("maxInstances")]
+        public Input<int>? MaxInstances { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of application instances that can be
+        /// launched to handle increased traffic. Defaults to 100.
+        /// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+        /// range is [1, 100].
+        /// </summary>
+        [Input("minInstances")]
+        public Input<int>? MinInstances { get; set; }
+
+        [Input("resourceLimits")]
+        private InputMap<string>? _resourceLimits;
+
+        /// <summary>
+        /// Optional. Resource limits for each container.
+        /// Only 'cpu' and 'memory' keys are supported.
+        /// Defaults to {"cpu": "4", "memory": "4Gi"}.
+        /// The only supported values for CPU are '1', '2', '4', '6' and '8'.
+        /// For more information, go to
+        /// https://cloud.google.com/run/docs/configuring/cpu.
+        /// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+        /// For more information, go to
+        /// https://cloud.google.com/run/docs/configuring/memory-limits.
+        /// </summary>
+        public InputMap<string> ResourceLimits
+        {
+            get => _resourceLimits ?? (_resourceLimits = new InputMap<string>());
+            set => _resourceLimits = value;
+        }
+
         [Input("secretEnvs")]
         private InputList<Inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvGetArgs>? _secretEnvs;
 
         /// <summary>
-        /// Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+        /// Optional. Environment variables where the value is a secret in
+        /// Cloud Secret Manager. To use this feature, add 'Secret Manager
+        /// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+        /// Platform Reasoning Engine service Agent.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvGetArgs> SecretEnvs

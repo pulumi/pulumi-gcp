@@ -21,5 +21,6 @@ from .serving_config import *
 from .sitemap import *
 from .target_site import *
 from .user_store import *
+from .widget_config import *
 from ._inputs import *
 from . import outputs

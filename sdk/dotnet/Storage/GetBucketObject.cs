@@ -173,6 +173,7 @@ namespace Pulumi.Gcp.Storage
         /// (Computed) [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         /// </summary>
         public readonly string ContentType;
+        public readonly ImmutableArray<Outputs.GetBucketObjectContextResult> Contexts;
         /// <summary>
         /// (Computed) Base 64 CRC32 hash of the uploaded data.
         /// </summary>
@@ -240,6 +241,8 @@ namespace Pulumi.Gcp.Storage
 
             string contentType,
 
+            ImmutableArray<Outputs.GetBucketObjectContextResult> contexts,
+
             string crc32c,
 
             ImmutableArray<Outputs.GetBucketObjectCustomerEncryptionResult> customerEncryptions,
@@ -289,6 +292,7 @@ namespace Pulumi.Gcp.Storage
             ContentEncoding = contentEncoding;
             ContentLanguage = contentLanguage;
             ContentType = contentType;
+            Contexts = contexts;
             Crc32c = crc32c;
             CustomerEncryptions = customerEncryptions;
             DeletionPolicy = deletionPolicy;

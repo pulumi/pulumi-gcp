@@ -224,6 +224,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
+     * The KMS key id to use for encryption of the Lustre instance.
+     * 
+     */
+    @Export(name="kmsKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKey;
+
+    /**
+     * @return The KMS key id to use for encryption of the Lustre instance.
+     * 
+     */
+    public Output<Optional<String>> kmsKey() {
+        return Codegen.optional(this.kmsKey);
+    }
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -367,14 +381,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The state of the instance.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * ACTIVE
-     * CREATING
-     * DELETING
-     * UPGRADING
-     * REPAIRING
-     * STOPPED
+     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -382,18 +389,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The state of the instance.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * ACTIVE
-     * CREATING
-     * DELETING
-     * UPGRADING
-     * REPAIRING
-     * STOPPED
+     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
      * 
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The reason why the instance is in a certain state.
+     * 
+     */
+    @Export(name="stateReason", refs={String.class}, tree="[0]")
+    private Output<String> stateReason;
+
+    /**
+     * @return The reason why the instance is in a certain state.
+     * 
+     */
+    public Output<String> stateReason() {
+        return this.stateReason;
     }
     /**
      * Timestamp when the instance was last updated.

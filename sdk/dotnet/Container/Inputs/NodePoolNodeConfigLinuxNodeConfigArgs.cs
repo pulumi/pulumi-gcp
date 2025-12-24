@@ -24,6 +24,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("hugepagesConfig")]
         public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs>? HugepagesConfig { get; set; }
 
+        /// <summary>
+        /// The settings for kernel module loading.
+        /// </summary>
+        [Input("nodeKernelModuleLoading")]
+        public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs>? NodeKernelModuleLoading { get; set; }
+
         [Input("sysctls")]
         private InputMap<string>? _sysctls;
 

@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.Compute
     ///         WorkloadPolicy = new Gcp.Compute.Inputs.ResourcePolicyWorkloadPolicyArgs
     ///         {
     ///             Type = "HIGH_THROUGHPUT",
-    ///             AcceleratorTopology = "SOME NEW TOPOLOGY",
+    ///             AcceleratorTopology = "2x2",
     ///         },
     ///     });
     /// 

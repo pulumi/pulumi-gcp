@@ -139,6 +139,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The KMS key id to use for encryption of the Lustre instance.
+     * 
+     */
+    @Import(name="kmsKey")
+    private @Nullable Output<String> kmsKey;
+
+    /**
+     * @return The KMS key id to use for encryption of the Lustre instance.
+     * 
+     */
+    public Optional<Output<String>> kmsKey() {
+        return Optional.ofNullable(this.kmsKey);
+    }
+
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -291,14 +306,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The state of the instance.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * ACTIVE
-     * CREATING
-     * DELETING
-     * UPGRADING
-     * REPAIRING
-     * STOPPED
+     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
      * 
      */
     @Import(name="state")
@@ -306,18 +314,26 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The state of the instance.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * ACTIVE
-     * CREATING
-     * DELETING
-     * UPGRADING
-     * REPAIRING
-     * STOPPED
+     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * The reason why the instance is in a certain state.
+     * 
+     */
+    @Import(name="stateReason")
+    private @Nullable Output<String> stateReason;
+
+    /**
+     * @return The reason why the instance is in a certain state.
+     * 
+     */
+    public Optional<Output<String>> stateReason() {
+        return Optional.ofNullable(this.stateReason);
     }
 
     /**
@@ -345,6 +361,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.filesystem = $.filesystem;
         this.gkeSupportEnabled = $.gkeSupportEnabled;
         this.instanceId = $.instanceId;
+        this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.location = $.location;
         this.mountPoint = $.mountPoint;
@@ -355,6 +372,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.state = $.state;
+        this.stateReason = $.stateReason;
         this.updateTime = $.updateTime;
     }
 
@@ -537,6 +555,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param kmsKey The KMS key id to use for encryption of the Lustre instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(@Nullable Output<String> kmsKey) {
+            $.kmsKey = kmsKey;
+            return this;
+        }
+
+        /**
+         * @param kmsKey The KMS key id to use for encryption of the Lustre instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(String kmsKey) {
+            return kmsKey(Output.of(kmsKey));
         }
 
         /**
@@ -746,14 +785,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param state The state of the instance.
-         * Possible values:
-         * STATE_UNSPECIFIED
-         * ACTIVE
-         * CREATING
-         * DELETING
-         * UPGRADING
-         * REPAIRING
-         * STOPPED
+         * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
          * 
          * @return builder
          * 
@@ -765,20 +797,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param state The state of the instance.
-         * Possible values:
-         * STATE_UNSPECIFIED
-         * ACTIVE
-         * CREATING
-         * DELETING
-         * UPGRADING
-         * REPAIRING
-         * STOPPED
+         * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
          * 
          * @return builder
          * 
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param stateReason The reason why the instance is in a certain state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReason(@Nullable Output<String> stateReason) {
+            $.stateReason = stateReason;
+            return this;
+        }
+
+        /**
+         * @param stateReason The reason why the instance is in a certain state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReason(String stateReason) {
+            return stateReason(Output.of(stateReason));
         }
 
         /**

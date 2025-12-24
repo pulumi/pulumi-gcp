@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Backup Dr Backup Vault Full
+// ### Backup Dr Backup Vault Simple
 //
 // ```go
 // package main
@@ -42,6 +42,58 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar1"),
 //					"bar": pulumi.String("baz1"),
+//				},
+//				ForceUpdate:                pulumi.Bool(true),
+//				AccessRestriction:          pulumi.String("WITHIN_ORGANIZATION"),
+//				BackupRetentionInheritance: pulumi.String("INHERIT_VAULT_RETENTION"),
+//				IgnoreInactiveDatasources:  pulumi.Bool(true),
+//				IgnoreBackupPlanReferences: pulumi.Bool(true),
+//				AllowMissing:               pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Backup Dr Backup Vault Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
+//				ProjectId: pulumi.StringRef("my-project-name"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = backupdisasterrecovery.NewBackupVault(ctx, "backup-vault-cmek", &backupdisasterrecovery.BackupVaultArgs{
+//				Location:                               pulumi.String("us-central1"),
+//				BackupVaultId:                          pulumi.String("backup-vault-cmek"),
+//				Description:                            pulumi.String("This is a second backup vault built by Terraform."),
+//				BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
+//				Annotations: pulumi.StringMap{
+//					"annotations1": pulumi.String("bar1"),
+//					"annotations2": pulumi.String("baz1"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar1"),
+//					"bar": pulumi.String("baz1"),
+//				},
+//				EncryptionConfig: &backupdisasterrecovery.BackupVaultEncryptionConfigArgs{
+//					KmsKeyName: pulumi.String("bkpvault-key"),
 //				},
 //				ForceUpdate:                pulumi.Bool(true),
 //				AccessRestriction:          pulumi.String("WITHIN_ORGANIZATION"),
@@ -116,6 +168,9 @@ type BackupVault struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. Time after which the BackupVault resource is locked.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
+	// Encryption configuration for the backup vault.
+	// Structure is documented below.
+	EncryptionConfig BackupVaultEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
 	// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// (Optional, Deprecated)
@@ -245,6 +300,9 @@ type backupVaultState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. Time after which the BackupVault resource is locked.
 	EffectiveTime *string `pulumi:"effectiveTime"`
+	// Encryption configuration for the backup vault.
+	// Structure is documented below.
+	EncryptionConfig *BackupVaultEncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
 	Etag *string `pulumi:"etag"`
 	// (Optional, Deprecated)
@@ -331,6 +389,9 @@ type BackupVaultState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Optional. Time after which the BackupVault resource is locked.
 	EffectiveTime pulumi.StringPtrInput
+	// Encryption configuration for the backup vault.
+	// Structure is documented below.
+	EncryptionConfig BackupVaultEncryptionConfigPtrInput
 	// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
 	Etag pulumi.StringPtrInput
 	// (Optional, Deprecated)
@@ -412,6 +473,9 @@ type backupVaultArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Time after which the BackupVault resource is locked.
 	EffectiveTime *string `pulumi:"effectiveTime"`
+	// Encryption configuration for the backup vault.
+	// Structure is documented below.
+	EncryptionConfig *BackupVaultEncryptionConfig `pulumi:"encryptionConfig"`
 	// (Optional, Deprecated)
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
@@ -467,6 +531,9 @@ type BackupVaultArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Time after which the BackupVault resource is locked.
 	EffectiveTime pulumi.StringPtrInput
+	// Encryption configuration for the backup vault.
+	// Structure is documented below.
+	EncryptionConfig BackupVaultEncryptionConfigPtrInput
 	// (Optional, Deprecated)
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
@@ -653,6 +720,12 @@ func (o BackupVaultOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Optional. Time after which the BackupVault resource is locked.
 func (o BackupVaultOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// Encryption configuration for the backup vault.
+// Structure is documented below.
+func (o BackupVaultOutput) EncryptionConfig() BackupVaultEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *BackupVault) BackupVaultEncryptionConfigPtrOutput { return v.EncryptionConfig }).(BackupVaultEncryptionConfigPtrOutput)
 }
 
 // Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.

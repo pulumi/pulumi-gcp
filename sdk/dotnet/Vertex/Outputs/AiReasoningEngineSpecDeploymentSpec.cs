@@ -14,23 +14,68 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecDeploymentSpec
     {
         /// <summary>
-        /// Optional. Environment variables to be set with the Reasoning Engine deployment.
+        /// Optional. Concurrency for each container and agent server.
+        /// Recommended value: 2 * cpu + 1. Defaults to 9.
+        /// </summary>
+        public readonly int? ContainerConcurrency;
+        /// <summary>
+        /// Optional. Environment variables to be set with the Reasoning
+        /// Engine deployment.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecEnv> Envs;
         /// <summary>
-        /// Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+        /// Optional. The minimum number of application instances that will be
+        /// kept running at all times. Defaults to 1. Range: [0, 10].
+        /// </summary>
+        public readonly int? MaxInstances;
+        /// <summary>
+        /// Optional. The maximum number of application instances that can be
+        /// launched to handle increased traffic. Defaults to 100.
+        /// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+        /// range is [1, 100].
+        /// </summary>
+        public readonly int? MinInstances;
+        /// <summary>
+        /// Optional. Resource limits for each container.
+        /// Only 'cpu' and 'memory' keys are supported.
+        /// Defaults to {"cpu": "4", "memory": "4Gi"}.
+        /// The only supported values for CPU are '1', '2', '4', '6' and '8'.
+        /// For more information, go to
+        /// https://cloud.google.com/run/docs/configuring/cpu.
+        /// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+        /// For more information, go to
+        /// https://cloud.google.com/run/docs/configuring/memory-limits.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ResourceLimits;
+        /// <summary>
+        /// Optional. Environment variables where the value is a secret in
+        /// Cloud Secret Manager. To use this feature, add 'Secret Manager
+        /// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+        /// Platform Reasoning Engine service Agent.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv> SecretEnvs;
 
         [OutputConstructor]
         private AiReasoningEngineSpecDeploymentSpec(
+            int? containerConcurrency,
+
             ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecEnv> envs,
+
+            int? maxInstances,
+
+            int? minInstances,
+
+            ImmutableDictionary<string, string>? resourceLimits,
 
             ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv> secretEnvs)
         {
+            ContainerConcurrency = containerConcurrency;
             Envs = envs;
+            MaxInstances = maxInstances;
+            MinInstances = minInstances;
+            ResourceLimits = resourceLimits;
             SecretEnvs = secretEnvs;
         }
     }

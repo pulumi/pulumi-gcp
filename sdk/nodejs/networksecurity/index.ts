@@ -120,6 +120,16 @@ export type MirroringEndpointGroupAssociation = import("./mirroringEndpointGroup
 export const MirroringEndpointGroupAssociation: typeof import("./mirroringEndpointGroupAssociation").MirroringEndpointGroupAssociation = null as any;
 utilities.lazyLoad(exports, ["MirroringEndpointGroupAssociation"], () => require("./mirroringEndpointGroupAssociation"));
 
+export { SacAttachmentArgs, SacAttachmentState } from "./sacAttachment";
+export type SacAttachment = import("./sacAttachment").SacAttachment;
+export const SacAttachment: typeof import("./sacAttachment").SacAttachment = null as any;
+utilities.lazyLoad(exports, ["SacAttachment"], () => require("./sacAttachment"));
+
+export { SacRealmArgs, SacRealmState } from "./sacRealm";
+export type SacRealm = import("./sacRealm").SacRealm;
+export const SacRealm: typeof import("./sacRealm").SacRealm = null as any;
+utilities.lazyLoad(exports, ["SacRealm"], () => require("./sacRealm"));
+
 export { SecurityProfileArgs, SecurityProfileState } from "./securityProfile";
 export type SecurityProfile = import("./securityProfile").SecurityProfile;
 export const SecurityProfile: typeof import("./securityProfile").SecurityProfile = null as any;
@@ -194,6 +204,10 @@ const _module = {
                 return new MirroringEndpointGroup(name, <any>undefined, { urn })
             case "gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation":
                 return new MirroringEndpointGroupAssociation(name, <any>undefined, { urn })
+            case "gcp:networksecurity/sacAttachment:SacAttachment":
+                return new SacAttachment(name, <any>undefined, { urn })
+            case "gcp:networksecurity/sacRealm:SacRealm":
+                return new SacRealm(name, <any>undefined, { urn })
             case "gcp:networksecurity/securityProfile:SecurityProfile":
                 return new SecurityProfile(name, <any>undefined, { urn })
             case "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup":
@@ -231,6 +245,8 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringDeploymen
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringEndpointGroupAssociation", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/sacAttachment", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/sacRealm", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfile", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfileGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/serverTlsPolicy", _module)

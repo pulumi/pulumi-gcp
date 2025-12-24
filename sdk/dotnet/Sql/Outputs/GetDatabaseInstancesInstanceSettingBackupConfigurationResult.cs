@@ -15,6 +15,10 @@ namespace Pulumi.Gcp.Sql.Outputs
     {
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult> BackupRetentionSettings;
         /// <summary>
+        /// Backup tier that manages the backups for the instance.
+        /// </summary>
+        public readonly string BackupTier;
+        /// <summary>
         /// True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
         /// </summary>
         public readonly bool BinaryLogEnabled;
@@ -43,6 +47,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstancesInstanceSettingBackupConfigurationResult(
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult> backupRetentionSettings,
 
+            string backupTier,
+
             bool binaryLogEnabled,
 
             bool enabled,
@@ -56,6 +62,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             int transactionLogRetentionDays)
         {
             BackupRetentionSettings = backupRetentionSettings;
+            BackupTier = backupTier;
             BinaryLogEnabled = binaryLogEnabled;
             Enabled = enabled;
             Location = location;

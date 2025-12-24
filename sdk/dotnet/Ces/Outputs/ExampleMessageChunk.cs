@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Ces.Outputs
     public sealed class ExampleMessageChunk
     {
         /// <summary>
+        /// Represents an event indicating the transfer of a conversation to a different
+        /// agent.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ExampleMessageChunkAgentTransfer? AgentTransfer;
+        /// <summary>
         /// Represents an image input or output in the conversation.
         /// Structure is documented below.
         /// </summary>
@@ -23,6 +29,16 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly string? Text;
         /// <summary>
+        /// Request for the client or the agent to execute the specified tool.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ExampleMessageChunkToolCall? ToolCall;
+        /// <summary>
+        /// The execution result of a specific tool from the client or the agent.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ExampleMessageChunkToolResponse? ToolResponse;
+        /// <summary>
         /// A struct represents variables that were updated in the conversation,
         /// keyed by variable names.
         /// </summary>
@@ -30,14 +46,23 @@ namespace Pulumi.Gcp.Ces.Outputs
 
         [OutputConstructor]
         private ExampleMessageChunk(
+            Outputs.ExampleMessageChunkAgentTransfer? agentTransfer,
+
             Outputs.ExampleMessageChunkImage? image,
 
             string? text,
 
+            Outputs.ExampleMessageChunkToolCall? toolCall,
+
+            Outputs.ExampleMessageChunkToolResponse? toolResponse,
+
             string? updatedVariables)
         {
+            AgentTransfer = agentTransfer;
             Image = image;
             Text = text;
+            ToolCall = toolCall;
+            ToolResponse = toolResponse;
             UpdatedVariables = updatedVariables;
         }
     }

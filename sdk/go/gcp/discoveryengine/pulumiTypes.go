@@ -7965,6 +7965,2014 @@ func (o TargetSiteSiteVerificationInfoArrayOutput) Index(i pulumi.IntInput) Targ
 	}).(TargetSiteSiteVerificationInfoOutput)
 }
 
+type WidgetConfigAccessSettings struct {
+	// Whether public unauthenticated access is allowed.
+	AllowPublicAccess *bool `pulumi:"allowPublicAccess"`
+	// List of domains that are allowed to integrate the search widget.
+	AllowlistedDomains []string `pulumi:"allowlistedDomains"`
+	// Whether web app access is enabled.
+	EnableWebApp *bool `pulumi:"enableWebApp"`
+	// Language code for user interface. Use language tags defined by
+	// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+	// default language code is "en-US".
+	LanguageCode *string `pulumi:"languageCode"`
+	// The workforce identity pool provider used to access the widget.
+	WorkforceIdentityPoolProvider *string `pulumi:"workforceIdentityPoolProvider"`
+}
+
+// WidgetConfigAccessSettingsInput is an input type that accepts WidgetConfigAccessSettingsArgs and WidgetConfigAccessSettingsOutput values.
+// You can construct a concrete instance of `WidgetConfigAccessSettingsInput` via:
+//
+//	WidgetConfigAccessSettingsArgs{...}
+type WidgetConfigAccessSettingsInput interface {
+	pulumi.Input
+
+	ToWidgetConfigAccessSettingsOutput() WidgetConfigAccessSettingsOutput
+	ToWidgetConfigAccessSettingsOutputWithContext(context.Context) WidgetConfigAccessSettingsOutput
+}
+
+type WidgetConfigAccessSettingsArgs struct {
+	// Whether public unauthenticated access is allowed.
+	AllowPublicAccess pulumi.BoolPtrInput `pulumi:"allowPublicAccess"`
+	// List of domains that are allowed to integrate the search widget.
+	AllowlistedDomains pulumi.StringArrayInput `pulumi:"allowlistedDomains"`
+	// Whether web app access is enabled.
+	EnableWebApp pulumi.BoolPtrInput `pulumi:"enableWebApp"`
+	// Language code for user interface. Use language tags defined by
+	// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+	// default language code is "en-US".
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// The workforce identity pool provider used to access the widget.
+	WorkforceIdentityPoolProvider pulumi.StringPtrInput `pulumi:"workforceIdentityPoolProvider"`
+}
+
+func (WidgetConfigAccessSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigAccessSettings)(nil)).Elem()
+}
+
+func (i WidgetConfigAccessSettingsArgs) ToWidgetConfigAccessSettingsOutput() WidgetConfigAccessSettingsOutput {
+	return i.ToWidgetConfigAccessSettingsOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigAccessSettingsArgs) ToWidgetConfigAccessSettingsOutputWithContext(ctx context.Context) WidgetConfigAccessSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigAccessSettingsOutput)
+}
+
+func (i WidgetConfigAccessSettingsArgs) ToWidgetConfigAccessSettingsPtrOutput() WidgetConfigAccessSettingsPtrOutput {
+	return i.ToWidgetConfigAccessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigAccessSettingsArgs) ToWidgetConfigAccessSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigAccessSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigAccessSettingsOutput).ToWidgetConfigAccessSettingsPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigAccessSettingsPtrInput is an input type that accepts WidgetConfigAccessSettingsArgs, WidgetConfigAccessSettingsPtr and WidgetConfigAccessSettingsPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigAccessSettingsPtrInput` via:
+//
+//	        WidgetConfigAccessSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigAccessSettingsPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigAccessSettingsPtrOutput() WidgetConfigAccessSettingsPtrOutput
+	ToWidgetConfigAccessSettingsPtrOutputWithContext(context.Context) WidgetConfigAccessSettingsPtrOutput
+}
+
+type widgetConfigAccessSettingsPtrType WidgetConfigAccessSettingsArgs
+
+func WidgetConfigAccessSettingsPtr(v *WidgetConfigAccessSettingsArgs) WidgetConfigAccessSettingsPtrInput {
+	return (*widgetConfigAccessSettingsPtrType)(v)
+}
+
+func (*widgetConfigAccessSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigAccessSettings)(nil)).Elem()
+}
+
+func (i *widgetConfigAccessSettingsPtrType) ToWidgetConfigAccessSettingsPtrOutput() WidgetConfigAccessSettingsPtrOutput {
+	return i.ToWidgetConfigAccessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigAccessSettingsPtrType) ToWidgetConfigAccessSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigAccessSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigAccessSettingsPtrOutput)
+}
+
+type WidgetConfigAccessSettingsOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigAccessSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigAccessSettings)(nil)).Elem()
+}
+
+func (o WidgetConfigAccessSettingsOutput) ToWidgetConfigAccessSettingsOutput() WidgetConfigAccessSettingsOutput {
+	return o
+}
+
+func (o WidgetConfigAccessSettingsOutput) ToWidgetConfigAccessSettingsOutputWithContext(ctx context.Context) WidgetConfigAccessSettingsOutput {
+	return o
+}
+
+func (o WidgetConfigAccessSettingsOutput) ToWidgetConfigAccessSettingsPtrOutput() WidgetConfigAccessSettingsPtrOutput {
+	return o.ToWidgetConfigAccessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigAccessSettingsOutput) ToWidgetConfigAccessSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigAccessSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigAccessSettings) *WidgetConfigAccessSettings {
+		return &v
+	}).(WidgetConfigAccessSettingsPtrOutput)
+}
+
+// Whether public unauthenticated access is allowed.
+func (o WidgetConfigAccessSettingsOutput) AllowPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigAccessSettings) *bool { return v.AllowPublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+// List of domains that are allowed to integrate the search widget.
+func (o WidgetConfigAccessSettingsOutput) AllowlistedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WidgetConfigAccessSettings) []string { return v.AllowlistedDomains }).(pulumi.StringArrayOutput)
+}
+
+// Whether web app access is enabled.
+func (o WidgetConfigAccessSettingsOutput) EnableWebApp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigAccessSettings) *bool { return v.EnableWebApp }).(pulumi.BoolPtrOutput)
+}
+
+// Language code for user interface. Use language tags defined by
+// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+// default language code is "en-US".
+func (o WidgetConfigAccessSettingsOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigAccessSettings) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// The workforce identity pool provider used to access the widget.
+func (o WidgetConfigAccessSettingsOutput) WorkforceIdentityPoolProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigAccessSettings) *string { return v.WorkforceIdentityPoolProvider }).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigAccessSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigAccessSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigAccessSettings)(nil)).Elem()
+}
+
+func (o WidgetConfigAccessSettingsPtrOutput) ToWidgetConfigAccessSettingsPtrOutput() WidgetConfigAccessSettingsPtrOutput {
+	return o
+}
+
+func (o WidgetConfigAccessSettingsPtrOutput) ToWidgetConfigAccessSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigAccessSettingsPtrOutput {
+	return o
+}
+
+func (o WidgetConfigAccessSettingsPtrOutput) Elem() WidgetConfigAccessSettingsOutput {
+	return o.ApplyT(func(v *WidgetConfigAccessSettings) WidgetConfigAccessSettings {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigAccessSettings
+		return ret
+	}).(WidgetConfigAccessSettingsOutput)
+}
+
+// Whether public unauthenticated access is allowed.
+func (o WidgetConfigAccessSettingsPtrOutput) AllowPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigAccessSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPublicAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of domains that are allowed to integrate the search widget.
+func (o WidgetConfigAccessSettingsPtrOutput) AllowlistedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WidgetConfigAccessSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowlistedDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether web app access is enabled.
+func (o WidgetConfigAccessSettingsPtrOutput) EnableWebApp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigAccessSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableWebApp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Language code for user interface. Use language tags defined by
+// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+// default language code is "en-US".
+func (o WidgetConfigAccessSettingsPtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigAccessSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The workforce identity pool provider used to access the widget.
+func (o WidgetConfigAccessSettingsPtrOutput) WorkforceIdentityPoolProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigAccessSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkforceIdentityPoolProvider
+	}).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigHomepageSetting struct {
+	// The shortcuts to display on the homepage.
+	// Structure is documented below.
+	Shortcuts []WidgetConfigHomepageSettingShortcut `pulumi:"shortcuts"`
+}
+
+// WidgetConfigHomepageSettingInput is an input type that accepts WidgetConfigHomepageSettingArgs and WidgetConfigHomepageSettingOutput values.
+// You can construct a concrete instance of `WidgetConfigHomepageSettingInput` via:
+//
+//	WidgetConfigHomepageSettingArgs{...}
+type WidgetConfigHomepageSettingInput interface {
+	pulumi.Input
+
+	ToWidgetConfigHomepageSettingOutput() WidgetConfigHomepageSettingOutput
+	ToWidgetConfigHomepageSettingOutputWithContext(context.Context) WidgetConfigHomepageSettingOutput
+}
+
+type WidgetConfigHomepageSettingArgs struct {
+	// The shortcuts to display on the homepage.
+	// Structure is documented below.
+	Shortcuts WidgetConfigHomepageSettingShortcutArrayInput `pulumi:"shortcuts"`
+}
+
+func (WidgetConfigHomepageSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigHomepageSetting)(nil)).Elem()
+}
+
+func (i WidgetConfigHomepageSettingArgs) ToWidgetConfigHomepageSettingOutput() WidgetConfigHomepageSettingOutput {
+	return i.ToWidgetConfigHomepageSettingOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigHomepageSettingArgs) ToWidgetConfigHomepageSettingOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingOutput)
+}
+
+func (i WidgetConfigHomepageSettingArgs) ToWidgetConfigHomepageSettingPtrOutput() WidgetConfigHomepageSettingPtrOutput {
+	return i.ToWidgetConfigHomepageSettingPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigHomepageSettingArgs) ToWidgetConfigHomepageSettingPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingOutput).ToWidgetConfigHomepageSettingPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigHomepageSettingPtrInput is an input type that accepts WidgetConfigHomepageSettingArgs, WidgetConfigHomepageSettingPtr and WidgetConfigHomepageSettingPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigHomepageSettingPtrInput` via:
+//
+//	        WidgetConfigHomepageSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigHomepageSettingPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigHomepageSettingPtrOutput() WidgetConfigHomepageSettingPtrOutput
+	ToWidgetConfigHomepageSettingPtrOutputWithContext(context.Context) WidgetConfigHomepageSettingPtrOutput
+}
+
+type widgetConfigHomepageSettingPtrType WidgetConfigHomepageSettingArgs
+
+func WidgetConfigHomepageSettingPtr(v *WidgetConfigHomepageSettingArgs) WidgetConfigHomepageSettingPtrInput {
+	return (*widgetConfigHomepageSettingPtrType)(v)
+}
+
+func (*widgetConfigHomepageSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigHomepageSetting)(nil)).Elem()
+}
+
+func (i *widgetConfigHomepageSettingPtrType) ToWidgetConfigHomepageSettingPtrOutput() WidgetConfigHomepageSettingPtrOutput {
+	return i.ToWidgetConfigHomepageSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigHomepageSettingPtrType) ToWidgetConfigHomepageSettingPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingPtrOutput)
+}
+
+type WidgetConfigHomepageSettingOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigHomepageSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigHomepageSetting)(nil)).Elem()
+}
+
+func (o WidgetConfigHomepageSettingOutput) ToWidgetConfigHomepageSettingOutput() WidgetConfigHomepageSettingOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingOutput) ToWidgetConfigHomepageSettingOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingOutput) ToWidgetConfigHomepageSettingPtrOutput() WidgetConfigHomepageSettingPtrOutput {
+	return o.ToWidgetConfigHomepageSettingPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigHomepageSettingOutput) ToWidgetConfigHomepageSettingPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigHomepageSetting) *WidgetConfigHomepageSetting {
+		return &v
+	}).(WidgetConfigHomepageSettingPtrOutput)
+}
+
+// The shortcuts to display on the homepage.
+// Structure is documented below.
+func (o WidgetConfigHomepageSettingOutput) Shortcuts() WidgetConfigHomepageSettingShortcutArrayOutput {
+	return o.ApplyT(func(v WidgetConfigHomepageSetting) []WidgetConfigHomepageSettingShortcut { return v.Shortcuts }).(WidgetConfigHomepageSettingShortcutArrayOutput)
+}
+
+type WidgetConfigHomepageSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigHomepageSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigHomepageSetting)(nil)).Elem()
+}
+
+func (o WidgetConfigHomepageSettingPtrOutput) ToWidgetConfigHomepageSettingPtrOutput() WidgetConfigHomepageSettingPtrOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingPtrOutput) ToWidgetConfigHomepageSettingPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingPtrOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingPtrOutput) Elem() WidgetConfigHomepageSettingOutput {
+	return o.ApplyT(func(v *WidgetConfigHomepageSetting) WidgetConfigHomepageSetting {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigHomepageSetting
+		return ret
+	}).(WidgetConfigHomepageSettingOutput)
+}
+
+// The shortcuts to display on the homepage.
+// Structure is documented below.
+func (o WidgetConfigHomepageSettingPtrOutput) Shortcuts() WidgetConfigHomepageSettingShortcutArrayOutput {
+	return o.ApplyT(func(v *WidgetConfigHomepageSetting) []WidgetConfigHomepageSettingShortcut {
+		if v == nil {
+			return nil
+		}
+		return v.Shortcuts
+	}).(WidgetConfigHomepageSettingShortcutArrayOutput)
+}
+
+type WidgetConfigHomepageSettingShortcut struct {
+	// Destination URL of shortcut.
+	DestinationUri *string `pulumi:"destinationUri"`
+	// Icon URL of shortcut.
+	// Structure is documented below.
+	Icon *WidgetConfigHomepageSettingShortcutIcon `pulumi:"icon"`
+	// Title of the shortcut.
+	Title *string `pulumi:"title"`
+}
+
+// WidgetConfigHomepageSettingShortcutInput is an input type that accepts WidgetConfigHomepageSettingShortcutArgs and WidgetConfigHomepageSettingShortcutOutput values.
+// You can construct a concrete instance of `WidgetConfigHomepageSettingShortcutInput` via:
+//
+//	WidgetConfigHomepageSettingShortcutArgs{...}
+type WidgetConfigHomepageSettingShortcutInput interface {
+	pulumi.Input
+
+	ToWidgetConfigHomepageSettingShortcutOutput() WidgetConfigHomepageSettingShortcutOutput
+	ToWidgetConfigHomepageSettingShortcutOutputWithContext(context.Context) WidgetConfigHomepageSettingShortcutOutput
+}
+
+type WidgetConfigHomepageSettingShortcutArgs struct {
+	// Destination URL of shortcut.
+	DestinationUri pulumi.StringPtrInput `pulumi:"destinationUri"`
+	// Icon URL of shortcut.
+	// Structure is documented below.
+	Icon WidgetConfigHomepageSettingShortcutIconPtrInput `pulumi:"icon"`
+	// Title of the shortcut.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (WidgetConfigHomepageSettingShortcutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigHomepageSettingShortcut)(nil)).Elem()
+}
+
+func (i WidgetConfigHomepageSettingShortcutArgs) ToWidgetConfigHomepageSettingShortcutOutput() WidgetConfigHomepageSettingShortcutOutput {
+	return i.ToWidgetConfigHomepageSettingShortcutOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigHomepageSettingShortcutArgs) ToWidgetConfigHomepageSettingShortcutOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingShortcutOutput)
+}
+
+// WidgetConfigHomepageSettingShortcutArrayInput is an input type that accepts WidgetConfigHomepageSettingShortcutArray and WidgetConfigHomepageSettingShortcutArrayOutput values.
+// You can construct a concrete instance of `WidgetConfigHomepageSettingShortcutArrayInput` via:
+//
+//	WidgetConfigHomepageSettingShortcutArray{ WidgetConfigHomepageSettingShortcutArgs{...} }
+type WidgetConfigHomepageSettingShortcutArrayInput interface {
+	pulumi.Input
+
+	ToWidgetConfigHomepageSettingShortcutArrayOutput() WidgetConfigHomepageSettingShortcutArrayOutput
+	ToWidgetConfigHomepageSettingShortcutArrayOutputWithContext(context.Context) WidgetConfigHomepageSettingShortcutArrayOutput
+}
+
+type WidgetConfigHomepageSettingShortcutArray []WidgetConfigHomepageSettingShortcutInput
+
+func (WidgetConfigHomepageSettingShortcutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigHomepageSettingShortcut)(nil)).Elem()
+}
+
+func (i WidgetConfigHomepageSettingShortcutArray) ToWidgetConfigHomepageSettingShortcutArrayOutput() WidgetConfigHomepageSettingShortcutArrayOutput {
+	return i.ToWidgetConfigHomepageSettingShortcutArrayOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigHomepageSettingShortcutArray) ToWidgetConfigHomepageSettingShortcutArrayOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingShortcutArrayOutput)
+}
+
+type WidgetConfigHomepageSettingShortcutOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigHomepageSettingShortcutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigHomepageSettingShortcut)(nil)).Elem()
+}
+
+func (o WidgetConfigHomepageSettingShortcutOutput) ToWidgetConfigHomepageSettingShortcutOutput() WidgetConfigHomepageSettingShortcutOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingShortcutOutput) ToWidgetConfigHomepageSettingShortcutOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutOutput {
+	return o
+}
+
+// Destination URL of shortcut.
+func (o WidgetConfigHomepageSettingShortcutOutput) DestinationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigHomepageSettingShortcut) *string { return v.DestinationUri }).(pulumi.StringPtrOutput)
+}
+
+// Icon URL of shortcut.
+// Structure is documented below.
+func (o WidgetConfigHomepageSettingShortcutOutput) Icon() WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return o.ApplyT(func(v WidgetConfigHomepageSettingShortcut) *WidgetConfigHomepageSettingShortcutIcon { return v.Icon }).(WidgetConfigHomepageSettingShortcutIconPtrOutput)
+}
+
+// Title of the shortcut.
+func (o WidgetConfigHomepageSettingShortcutOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigHomepageSettingShortcut) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigHomepageSettingShortcutArrayOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigHomepageSettingShortcutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigHomepageSettingShortcut)(nil)).Elem()
+}
+
+func (o WidgetConfigHomepageSettingShortcutArrayOutput) ToWidgetConfigHomepageSettingShortcutArrayOutput() WidgetConfigHomepageSettingShortcutArrayOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingShortcutArrayOutput) ToWidgetConfigHomepageSettingShortcutArrayOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutArrayOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingShortcutArrayOutput) Index(i pulumi.IntInput) WidgetConfigHomepageSettingShortcutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WidgetConfigHomepageSettingShortcut {
+		return vs[0].([]WidgetConfigHomepageSettingShortcut)[vs[1].(int)]
+	}).(WidgetConfigHomepageSettingShortcutOutput)
+}
+
+type WidgetConfigHomepageSettingShortcutIcon struct {
+	// Image URL.
+	Url *string `pulumi:"url"`
+}
+
+// WidgetConfigHomepageSettingShortcutIconInput is an input type that accepts WidgetConfigHomepageSettingShortcutIconArgs and WidgetConfigHomepageSettingShortcutIconOutput values.
+// You can construct a concrete instance of `WidgetConfigHomepageSettingShortcutIconInput` via:
+//
+//	WidgetConfigHomepageSettingShortcutIconArgs{...}
+type WidgetConfigHomepageSettingShortcutIconInput interface {
+	pulumi.Input
+
+	ToWidgetConfigHomepageSettingShortcutIconOutput() WidgetConfigHomepageSettingShortcutIconOutput
+	ToWidgetConfigHomepageSettingShortcutIconOutputWithContext(context.Context) WidgetConfigHomepageSettingShortcutIconOutput
+}
+
+type WidgetConfigHomepageSettingShortcutIconArgs struct {
+	// Image URL.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (WidgetConfigHomepageSettingShortcutIconArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigHomepageSettingShortcutIcon)(nil)).Elem()
+}
+
+func (i WidgetConfigHomepageSettingShortcutIconArgs) ToWidgetConfigHomepageSettingShortcutIconOutput() WidgetConfigHomepageSettingShortcutIconOutput {
+	return i.ToWidgetConfigHomepageSettingShortcutIconOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigHomepageSettingShortcutIconArgs) ToWidgetConfigHomepageSettingShortcutIconOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutIconOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingShortcutIconOutput)
+}
+
+func (i WidgetConfigHomepageSettingShortcutIconArgs) ToWidgetConfigHomepageSettingShortcutIconPtrOutput() WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return i.ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigHomepageSettingShortcutIconArgs) ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingShortcutIconOutput).ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigHomepageSettingShortcutIconPtrInput is an input type that accepts WidgetConfigHomepageSettingShortcutIconArgs, WidgetConfigHomepageSettingShortcutIconPtr and WidgetConfigHomepageSettingShortcutIconPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigHomepageSettingShortcutIconPtrInput` via:
+//
+//	        WidgetConfigHomepageSettingShortcutIconArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigHomepageSettingShortcutIconPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigHomepageSettingShortcutIconPtrOutput() WidgetConfigHomepageSettingShortcutIconPtrOutput
+	ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(context.Context) WidgetConfigHomepageSettingShortcutIconPtrOutput
+}
+
+type widgetConfigHomepageSettingShortcutIconPtrType WidgetConfigHomepageSettingShortcutIconArgs
+
+func WidgetConfigHomepageSettingShortcutIconPtr(v *WidgetConfigHomepageSettingShortcutIconArgs) WidgetConfigHomepageSettingShortcutIconPtrInput {
+	return (*widgetConfigHomepageSettingShortcutIconPtrType)(v)
+}
+
+func (*widgetConfigHomepageSettingShortcutIconPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigHomepageSettingShortcutIcon)(nil)).Elem()
+}
+
+func (i *widgetConfigHomepageSettingShortcutIconPtrType) ToWidgetConfigHomepageSettingShortcutIconPtrOutput() WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return i.ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigHomepageSettingShortcutIconPtrType) ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigHomepageSettingShortcutIconPtrOutput)
+}
+
+type WidgetConfigHomepageSettingShortcutIconOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigHomepageSettingShortcutIconOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigHomepageSettingShortcutIcon)(nil)).Elem()
+}
+
+func (o WidgetConfigHomepageSettingShortcutIconOutput) ToWidgetConfigHomepageSettingShortcutIconOutput() WidgetConfigHomepageSettingShortcutIconOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingShortcutIconOutput) ToWidgetConfigHomepageSettingShortcutIconOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutIconOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingShortcutIconOutput) ToWidgetConfigHomepageSettingShortcutIconPtrOutput() WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return o.ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigHomepageSettingShortcutIconOutput) ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigHomepageSettingShortcutIcon) *WidgetConfigHomepageSettingShortcutIcon {
+		return &v
+	}).(WidgetConfigHomepageSettingShortcutIconPtrOutput)
+}
+
+// Image URL.
+func (o WidgetConfigHomepageSettingShortcutIconOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigHomepageSettingShortcutIcon) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigHomepageSettingShortcutIconPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigHomepageSettingShortcutIconPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigHomepageSettingShortcutIcon)(nil)).Elem()
+}
+
+func (o WidgetConfigHomepageSettingShortcutIconPtrOutput) ToWidgetConfigHomepageSettingShortcutIconPtrOutput() WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingShortcutIconPtrOutput) ToWidgetConfigHomepageSettingShortcutIconPtrOutputWithContext(ctx context.Context) WidgetConfigHomepageSettingShortcutIconPtrOutput {
+	return o
+}
+
+func (o WidgetConfigHomepageSettingShortcutIconPtrOutput) Elem() WidgetConfigHomepageSettingShortcutIconOutput {
+	return o.ApplyT(func(v *WidgetConfigHomepageSettingShortcutIcon) WidgetConfigHomepageSettingShortcutIcon {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigHomepageSettingShortcutIcon
+		return ret
+	}).(WidgetConfigHomepageSettingShortcutIconOutput)
+}
+
+// Image URL.
+func (o WidgetConfigHomepageSettingShortcutIconPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigHomepageSettingShortcutIcon) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigUiBranding struct {
+	// Logo image.
+	// Structure is documented below.
+	Logo *WidgetConfigUiBrandingLogo `pulumi:"logo"`
+}
+
+// WidgetConfigUiBrandingInput is an input type that accepts WidgetConfigUiBrandingArgs and WidgetConfigUiBrandingOutput values.
+// You can construct a concrete instance of `WidgetConfigUiBrandingInput` via:
+//
+//	WidgetConfigUiBrandingArgs{...}
+type WidgetConfigUiBrandingInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiBrandingOutput() WidgetConfigUiBrandingOutput
+	ToWidgetConfigUiBrandingOutputWithContext(context.Context) WidgetConfigUiBrandingOutput
+}
+
+type WidgetConfigUiBrandingArgs struct {
+	// Logo image.
+	// Structure is documented below.
+	Logo WidgetConfigUiBrandingLogoPtrInput `pulumi:"logo"`
+}
+
+func (WidgetConfigUiBrandingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiBranding)(nil)).Elem()
+}
+
+func (i WidgetConfigUiBrandingArgs) ToWidgetConfigUiBrandingOutput() WidgetConfigUiBrandingOutput {
+	return i.ToWidgetConfigUiBrandingOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiBrandingArgs) ToWidgetConfigUiBrandingOutputWithContext(ctx context.Context) WidgetConfigUiBrandingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiBrandingOutput)
+}
+
+func (i WidgetConfigUiBrandingArgs) ToWidgetConfigUiBrandingPtrOutput() WidgetConfigUiBrandingPtrOutput {
+	return i.ToWidgetConfigUiBrandingPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiBrandingArgs) ToWidgetConfigUiBrandingPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiBrandingOutput).ToWidgetConfigUiBrandingPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigUiBrandingPtrInput is an input type that accepts WidgetConfigUiBrandingArgs, WidgetConfigUiBrandingPtr and WidgetConfigUiBrandingPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigUiBrandingPtrInput` via:
+//
+//	        WidgetConfigUiBrandingArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigUiBrandingPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiBrandingPtrOutput() WidgetConfigUiBrandingPtrOutput
+	ToWidgetConfigUiBrandingPtrOutputWithContext(context.Context) WidgetConfigUiBrandingPtrOutput
+}
+
+type widgetConfigUiBrandingPtrType WidgetConfigUiBrandingArgs
+
+func WidgetConfigUiBrandingPtr(v *WidgetConfigUiBrandingArgs) WidgetConfigUiBrandingPtrInput {
+	return (*widgetConfigUiBrandingPtrType)(v)
+}
+
+func (*widgetConfigUiBrandingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiBranding)(nil)).Elem()
+}
+
+func (i *widgetConfigUiBrandingPtrType) ToWidgetConfigUiBrandingPtrOutput() WidgetConfigUiBrandingPtrOutput {
+	return i.ToWidgetConfigUiBrandingPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigUiBrandingPtrType) ToWidgetConfigUiBrandingPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiBrandingPtrOutput)
+}
+
+type WidgetConfigUiBrandingOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiBrandingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiBranding)(nil)).Elem()
+}
+
+func (o WidgetConfigUiBrandingOutput) ToWidgetConfigUiBrandingOutput() WidgetConfigUiBrandingOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingOutput) ToWidgetConfigUiBrandingOutputWithContext(ctx context.Context) WidgetConfigUiBrandingOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingOutput) ToWidgetConfigUiBrandingPtrOutput() WidgetConfigUiBrandingPtrOutput {
+	return o.ToWidgetConfigUiBrandingPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigUiBrandingOutput) ToWidgetConfigUiBrandingPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigUiBranding) *WidgetConfigUiBranding {
+		return &v
+	}).(WidgetConfigUiBrandingPtrOutput)
+}
+
+// Logo image.
+// Structure is documented below.
+func (o WidgetConfigUiBrandingOutput) Logo() WidgetConfigUiBrandingLogoPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiBranding) *WidgetConfigUiBrandingLogo { return v.Logo }).(WidgetConfigUiBrandingLogoPtrOutput)
+}
+
+type WidgetConfigUiBrandingPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiBrandingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiBranding)(nil)).Elem()
+}
+
+func (o WidgetConfigUiBrandingPtrOutput) ToWidgetConfigUiBrandingPtrOutput() WidgetConfigUiBrandingPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingPtrOutput) ToWidgetConfigUiBrandingPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingPtrOutput) Elem() WidgetConfigUiBrandingOutput {
+	return o.ApplyT(func(v *WidgetConfigUiBranding) WidgetConfigUiBranding {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigUiBranding
+		return ret
+	}).(WidgetConfigUiBrandingOutput)
+}
+
+// Logo image.
+// Structure is documented below.
+func (o WidgetConfigUiBrandingPtrOutput) Logo() WidgetConfigUiBrandingLogoPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiBranding) *WidgetConfigUiBrandingLogo {
+		if v == nil {
+			return nil
+		}
+		return v.Logo
+	}).(WidgetConfigUiBrandingLogoPtrOutput)
+}
+
+type WidgetConfigUiBrandingLogo struct {
+	// Image URL.
+	Url *string `pulumi:"url"`
+}
+
+// WidgetConfigUiBrandingLogoInput is an input type that accepts WidgetConfigUiBrandingLogoArgs and WidgetConfigUiBrandingLogoOutput values.
+// You can construct a concrete instance of `WidgetConfigUiBrandingLogoInput` via:
+//
+//	WidgetConfigUiBrandingLogoArgs{...}
+type WidgetConfigUiBrandingLogoInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiBrandingLogoOutput() WidgetConfigUiBrandingLogoOutput
+	ToWidgetConfigUiBrandingLogoOutputWithContext(context.Context) WidgetConfigUiBrandingLogoOutput
+}
+
+type WidgetConfigUiBrandingLogoArgs struct {
+	// Image URL.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (WidgetConfigUiBrandingLogoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiBrandingLogo)(nil)).Elem()
+}
+
+func (i WidgetConfigUiBrandingLogoArgs) ToWidgetConfigUiBrandingLogoOutput() WidgetConfigUiBrandingLogoOutput {
+	return i.ToWidgetConfigUiBrandingLogoOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiBrandingLogoArgs) ToWidgetConfigUiBrandingLogoOutputWithContext(ctx context.Context) WidgetConfigUiBrandingLogoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiBrandingLogoOutput)
+}
+
+func (i WidgetConfigUiBrandingLogoArgs) ToWidgetConfigUiBrandingLogoPtrOutput() WidgetConfigUiBrandingLogoPtrOutput {
+	return i.ToWidgetConfigUiBrandingLogoPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiBrandingLogoArgs) ToWidgetConfigUiBrandingLogoPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingLogoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiBrandingLogoOutput).ToWidgetConfigUiBrandingLogoPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigUiBrandingLogoPtrInput is an input type that accepts WidgetConfigUiBrandingLogoArgs, WidgetConfigUiBrandingLogoPtr and WidgetConfigUiBrandingLogoPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigUiBrandingLogoPtrInput` via:
+//
+//	        WidgetConfigUiBrandingLogoArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigUiBrandingLogoPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiBrandingLogoPtrOutput() WidgetConfigUiBrandingLogoPtrOutput
+	ToWidgetConfigUiBrandingLogoPtrOutputWithContext(context.Context) WidgetConfigUiBrandingLogoPtrOutput
+}
+
+type widgetConfigUiBrandingLogoPtrType WidgetConfigUiBrandingLogoArgs
+
+func WidgetConfigUiBrandingLogoPtr(v *WidgetConfigUiBrandingLogoArgs) WidgetConfigUiBrandingLogoPtrInput {
+	return (*widgetConfigUiBrandingLogoPtrType)(v)
+}
+
+func (*widgetConfigUiBrandingLogoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiBrandingLogo)(nil)).Elem()
+}
+
+func (i *widgetConfigUiBrandingLogoPtrType) ToWidgetConfigUiBrandingLogoPtrOutput() WidgetConfigUiBrandingLogoPtrOutput {
+	return i.ToWidgetConfigUiBrandingLogoPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigUiBrandingLogoPtrType) ToWidgetConfigUiBrandingLogoPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingLogoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiBrandingLogoPtrOutput)
+}
+
+type WidgetConfigUiBrandingLogoOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiBrandingLogoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiBrandingLogo)(nil)).Elem()
+}
+
+func (o WidgetConfigUiBrandingLogoOutput) ToWidgetConfigUiBrandingLogoOutput() WidgetConfigUiBrandingLogoOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingLogoOutput) ToWidgetConfigUiBrandingLogoOutputWithContext(ctx context.Context) WidgetConfigUiBrandingLogoOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingLogoOutput) ToWidgetConfigUiBrandingLogoPtrOutput() WidgetConfigUiBrandingLogoPtrOutput {
+	return o.ToWidgetConfigUiBrandingLogoPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigUiBrandingLogoOutput) ToWidgetConfigUiBrandingLogoPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingLogoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigUiBrandingLogo) *WidgetConfigUiBrandingLogo {
+		return &v
+	}).(WidgetConfigUiBrandingLogoPtrOutput)
+}
+
+// Image URL.
+func (o WidgetConfigUiBrandingLogoOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiBrandingLogo) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigUiBrandingLogoPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiBrandingLogoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiBrandingLogo)(nil)).Elem()
+}
+
+func (o WidgetConfigUiBrandingLogoPtrOutput) ToWidgetConfigUiBrandingLogoPtrOutput() WidgetConfigUiBrandingLogoPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingLogoPtrOutput) ToWidgetConfigUiBrandingLogoPtrOutputWithContext(ctx context.Context) WidgetConfigUiBrandingLogoPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiBrandingLogoPtrOutput) Elem() WidgetConfigUiBrandingLogoOutput {
+	return o.ApplyT(func(v *WidgetConfigUiBrandingLogo) WidgetConfigUiBrandingLogo {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigUiBrandingLogo
+		return ret
+	}).(WidgetConfigUiBrandingLogoOutput)
+}
+
+// Image URL.
+func (o WidgetConfigUiBrandingLogoPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiBrandingLogo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigUiSettings struct {
+	// Per data store configuration.
+	// Structure is documented below.
+	DataStoreUiConfigs []WidgetConfigUiSettingsDataStoreUiConfig `pulumi:"dataStoreUiConfigs"`
+	// The default ordering for search results if specified.
+	// Used to set SearchRequest#orderBy on applicable requests.
+	DefaultSearchRequestOrderBy *string `pulumi:"defaultSearchRequestOrderBy"`
+	// If set to true, the widget will not collect user events.
+	DisableUserEventsCollection *bool `pulumi:"disableUserEventsCollection"`
+	// Whether or not to enable autocomplete.
+	EnableAutocomplete *bool `pulumi:"enableAutocomplete"`
+	// If set to true, the widget will enable the create agent button.
+	EnableCreateAgentButton *bool `pulumi:"enableCreateAgentButton"`
+	// If set to true, the widget will enable people search.
+	EnablePeopleSearch *bool `pulumi:"enablePeopleSearch"`
+	// Turn on or off collecting the search result quality feedback from end users.
+	EnableQualityFeedback *bool `pulumi:"enableQualityFeedback"`
+	// Whether to enable safe search.
+	EnableSafeSearch *bool `pulumi:"enableSafeSearch"`
+	// Whether to enable search-as-you-type behavior for the search widget.
+	EnableSearchAsYouType *bool `pulumi:"enableSearchAsYouType"`
+	// If set to true, the widget will enable visual content summary on applicable
+	// search requests. Only used by healthcare search.
+	EnableVisualContentSummary *bool `pulumi:"enableVisualContentSummary"`
+	// Describes generative answer configuration.
+	// Structure is documented below.
+	GenerativeAnswerConfig *WidgetConfigUiSettingsGenerativeAnswerConfig `pulumi:"generativeAnswerConfig"`
+	// Describes widget (or web app) interaction type
+	// Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+	InteractionType *string `pulumi:"interactionType"`
+	// Controls whether result extract is display and how (snippet or extractive answer).
+	// Default to no result if unspecified.
+	// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+	ResultDescriptionType *string `pulumi:"resultDescriptionType"`
+}
+
+// WidgetConfigUiSettingsInput is an input type that accepts WidgetConfigUiSettingsArgs and WidgetConfigUiSettingsOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsInput` via:
+//
+//	WidgetConfigUiSettingsArgs{...}
+type WidgetConfigUiSettingsInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsOutput() WidgetConfigUiSettingsOutput
+	ToWidgetConfigUiSettingsOutputWithContext(context.Context) WidgetConfigUiSettingsOutput
+}
+
+type WidgetConfigUiSettingsArgs struct {
+	// Per data store configuration.
+	// Structure is documented below.
+	DataStoreUiConfigs WidgetConfigUiSettingsDataStoreUiConfigArrayInput `pulumi:"dataStoreUiConfigs"`
+	// The default ordering for search results if specified.
+	// Used to set SearchRequest#orderBy on applicable requests.
+	DefaultSearchRequestOrderBy pulumi.StringPtrInput `pulumi:"defaultSearchRequestOrderBy"`
+	// If set to true, the widget will not collect user events.
+	DisableUserEventsCollection pulumi.BoolPtrInput `pulumi:"disableUserEventsCollection"`
+	// Whether or not to enable autocomplete.
+	EnableAutocomplete pulumi.BoolPtrInput `pulumi:"enableAutocomplete"`
+	// If set to true, the widget will enable the create agent button.
+	EnableCreateAgentButton pulumi.BoolPtrInput `pulumi:"enableCreateAgentButton"`
+	// If set to true, the widget will enable people search.
+	EnablePeopleSearch pulumi.BoolPtrInput `pulumi:"enablePeopleSearch"`
+	// Turn on or off collecting the search result quality feedback from end users.
+	EnableQualityFeedback pulumi.BoolPtrInput `pulumi:"enableQualityFeedback"`
+	// Whether to enable safe search.
+	EnableSafeSearch pulumi.BoolPtrInput `pulumi:"enableSafeSearch"`
+	// Whether to enable search-as-you-type behavior for the search widget.
+	EnableSearchAsYouType pulumi.BoolPtrInput `pulumi:"enableSearchAsYouType"`
+	// If set to true, the widget will enable visual content summary on applicable
+	// search requests. Only used by healthcare search.
+	EnableVisualContentSummary pulumi.BoolPtrInput `pulumi:"enableVisualContentSummary"`
+	// Describes generative answer configuration.
+	// Structure is documented below.
+	GenerativeAnswerConfig WidgetConfigUiSettingsGenerativeAnswerConfigPtrInput `pulumi:"generativeAnswerConfig"`
+	// Describes widget (or web app) interaction type
+	// Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+	InteractionType pulumi.StringPtrInput `pulumi:"interactionType"`
+	// Controls whether result extract is display and how (snippet or extractive answer).
+	// Default to no result if unspecified.
+	// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+	ResultDescriptionType pulumi.StringPtrInput `pulumi:"resultDescriptionType"`
+}
+
+func (WidgetConfigUiSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettings)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsArgs) ToWidgetConfigUiSettingsOutput() WidgetConfigUiSettingsOutput {
+	return i.ToWidgetConfigUiSettingsOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsArgs) ToWidgetConfigUiSettingsOutputWithContext(ctx context.Context) WidgetConfigUiSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsOutput)
+}
+
+func (i WidgetConfigUiSettingsArgs) ToWidgetConfigUiSettingsPtrOutput() WidgetConfigUiSettingsPtrOutput {
+	return i.ToWidgetConfigUiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsArgs) ToWidgetConfigUiSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsOutput).ToWidgetConfigUiSettingsPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigUiSettingsPtrInput is an input type that accepts WidgetConfigUiSettingsArgs, WidgetConfigUiSettingsPtr and WidgetConfigUiSettingsPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsPtrInput` via:
+//
+//	        WidgetConfigUiSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigUiSettingsPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsPtrOutput() WidgetConfigUiSettingsPtrOutput
+	ToWidgetConfigUiSettingsPtrOutputWithContext(context.Context) WidgetConfigUiSettingsPtrOutput
+}
+
+type widgetConfigUiSettingsPtrType WidgetConfigUiSettingsArgs
+
+func WidgetConfigUiSettingsPtr(v *WidgetConfigUiSettingsArgs) WidgetConfigUiSettingsPtrInput {
+	return (*widgetConfigUiSettingsPtrType)(v)
+}
+
+func (*widgetConfigUiSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiSettings)(nil)).Elem()
+}
+
+func (i *widgetConfigUiSettingsPtrType) ToWidgetConfigUiSettingsPtrOutput() WidgetConfigUiSettingsPtrOutput {
+	return i.ToWidgetConfigUiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigUiSettingsPtrType) ToWidgetConfigUiSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsPtrOutput)
+}
+
+type WidgetConfigUiSettingsOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettings)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsOutput) ToWidgetConfigUiSettingsOutput() WidgetConfigUiSettingsOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsOutput) ToWidgetConfigUiSettingsOutputWithContext(ctx context.Context) WidgetConfigUiSettingsOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsOutput) ToWidgetConfigUiSettingsPtrOutput() WidgetConfigUiSettingsPtrOutput {
+	return o.ToWidgetConfigUiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigUiSettingsOutput) ToWidgetConfigUiSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigUiSettings) *WidgetConfigUiSettings {
+		return &v
+	}).(WidgetConfigUiSettingsPtrOutput)
+}
+
+// Per data store configuration.
+// Structure is documented below.
+func (o WidgetConfigUiSettingsOutput) DataStoreUiConfigs() WidgetConfigUiSettingsDataStoreUiConfigArrayOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) []WidgetConfigUiSettingsDataStoreUiConfig { return v.DataStoreUiConfigs }).(WidgetConfigUiSettingsDataStoreUiConfigArrayOutput)
+}
+
+// The default ordering for search results if specified.
+// Used to set SearchRequest#orderBy on applicable requests.
+func (o WidgetConfigUiSettingsOutput) DefaultSearchRequestOrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *string { return v.DefaultSearchRequestOrderBy }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the widget will not collect user events.
+func (o WidgetConfigUiSettingsOutput) DisableUserEventsCollection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.DisableUserEventsCollection }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not to enable autocomplete.
+func (o WidgetConfigUiSettingsOutput) EnableAutocomplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.EnableAutocomplete }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the widget will enable the create agent button.
+func (o WidgetConfigUiSettingsOutput) EnableCreateAgentButton() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.EnableCreateAgentButton }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the widget will enable people search.
+func (o WidgetConfigUiSettingsOutput) EnablePeopleSearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.EnablePeopleSearch }).(pulumi.BoolPtrOutput)
+}
+
+// Turn on or off collecting the search result quality feedback from end users.
+func (o WidgetConfigUiSettingsOutput) EnableQualityFeedback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.EnableQualityFeedback }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable safe search.
+func (o WidgetConfigUiSettingsOutput) EnableSafeSearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.EnableSafeSearch }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable search-as-you-type behavior for the search widget.
+func (o WidgetConfigUiSettingsOutput) EnableSearchAsYouType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.EnableSearchAsYouType }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the widget will enable visual content summary on applicable
+// search requests. Only used by healthcare search.
+func (o WidgetConfigUiSettingsOutput) EnableVisualContentSummary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *bool { return v.EnableVisualContentSummary }).(pulumi.BoolPtrOutput)
+}
+
+// Describes generative answer configuration.
+// Structure is documented below.
+func (o WidgetConfigUiSettingsOutput) GenerativeAnswerConfig() WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *WidgetConfigUiSettingsGenerativeAnswerConfig {
+		return v.GenerativeAnswerConfig
+	}).(WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput)
+}
+
+// Describes widget (or web app) interaction type
+// Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+func (o WidgetConfigUiSettingsOutput) InteractionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *string { return v.InteractionType }).(pulumi.StringPtrOutput)
+}
+
+// Controls whether result extract is display and how (snippet or extractive answer).
+// Default to no result if unspecified.
+// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+func (o WidgetConfigUiSettingsOutput) ResultDescriptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettings) *string { return v.ResultDescriptionType }).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigUiSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiSettings)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsPtrOutput) ToWidgetConfigUiSettingsPtrOutput() WidgetConfigUiSettingsPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsPtrOutput) ToWidgetConfigUiSettingsPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsPtrOutput) Elem() WidgetConfigUiSettingsOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) WidgetConfigUiSettings {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigUiSettings
+		return ret
+	}).(WidgetConfigUiSettingsOutput)
+}
+
+// Per data store configuration.
+// Structure is documented below.
+func (o WidgetConfigUiSettingsPtrOutput) DataStoreUiConfigs() WidgetConfigUiSettingsDataStoreUiConfigArrayOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) []WidgetConfigUiSettingsDataStoreUiConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataStoreUiConfigs
+	}).(WidgetConfigUiSettingsDataStoreUiConfigArrayOutput)
+}
+
+// The default ordering for search results if specified.
+// Used to set SearchRequest#orderBy on applicable requests.
+func (o WidgetConfigUiSettingsPtrOutput) DefaultSearchRequestOrderBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultSearchRequestOrderBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the widget will not collect user events.
+func (o WidgetConfigUiSettingsPtrOutput) DisableUserEventsCollection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableUserEventsCollection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not to enable autocomplete.
+func (o WidgetConfigUiSettingsPtrOutput) EnableAutocomplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutocomplete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the widget will enable the create agent button.
+func (o WidgetConfigUiSettingsPtrOutput) EnableCreateAgentButton() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCreateAgentButton
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the widget will enable people search.
+func (o WidgetConfigUiSettingsPtrOutput) EnablePeopleSearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePeopleSearch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Turn on or off collecting the search result quality feedback from end users.
+func (o WidgetConfigUiSettingsPtrOutput) EnableQualityFeedback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableQualityFeedback
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable safe search.
+func (o WidgetConfigUiSettingsPtrOutput) EnableSafeSearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSafeSearch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable search-as-you-type behavior for the search widget.
+func (o WidgetConfigUiSettingsPtrOutput) EnableSearchAsYouType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSearchAsYouType
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the widget will enable visual content summary on applicable
+// search requests. Only used by healthcare search.
+func (o WidgetConfigUiSettingsPtrOutput) EnableVisualContentSummary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVisualContentSummary
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Describes generative answer configuration.
+// Structure is documented below.
+func (o WidgetConfigUiSettingsPtrOutput) GenerativeAnswerConfig() WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *WidgetConfigUiSettingsGenerativeAnswerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GenerativeAnswerConfig
+	}).(WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput)
+}
+
+// Describes widget (or web app) interaction type
+// Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+func (o WidgetConfigUiSettingsPtrOutput) InteractionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InteractionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether result extract is display and how (snippet or extractive answer).
+// Default to no result if unspecified.
+// Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+func (o WidgetConfigUiSettingsPtrOutput) ResultDescriptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResultDescriptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfig struct {
+	// Structure is documented below.
+	FacetFields []WidgetConfigUiSettingsDataStoreUiConfigFacetField `pulumi:"facetFields"`
+	// 'The key is the UI component. Currently supported `title`, `thumbnail`,
+	// `url`, `custom1`, `custom2`, `custom3`. The value is the name of
+	// the field along with its device visibility. The 3 custom fields are optional
+	// and can be added or removed.
+	// `title`, `thumbnail`, `url` are required UI components that cannot be removed.
+	// Structure is documented below.
+	FieldsUiComponentsMaps []WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap `pulumi:"fieldsUiComponentsMaps"`
+	// The name of the data store. It should be data store resource name. Format:
+	// `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
+	// For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
+	// the project number and location part is erased in this field.
+	Name *string `pulumi:"name"`
+}
+
+// WidgetConfigUiSettingsDataStoreUiConfigInput is an input type that accepts WidgetConfigUiSettingsDataStoreUiConfigArgs and WidgetConfigUiSettingsDataStoreUiConfigOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsDataStoreUiConfigInput` via:
+//
+//	WidgetConfigUiSettingsDataStoreUiConfigArgs{...}
+type WidgetConfigUiSettingsDataStoreUiConfigInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsDataStoreUiConfigOutput() WidgetConfigUiSettingsDataStoreUiConfigOutput
+	ToWidgetConfigUiSettingsDataStoreUiConfigOutputWithContext(context.Context) WidgetConfigUiSettingsDataStoreUiConfigOutput
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigArgs struct {
+	// Structure is documented below.
+	FacetFields WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayInput `pulumi:"facetFields"`
+	// 'The key is the UI component. Currently supported `title`, `thumbnail`,
+	// `url`, `custom1`, `custom2`, `custom3`. The value is the name of
+	// the field along with its device visibility. The 3 custom fields are optional
+	// and can be added or removed.
+	// `title`, `thumbnail`, `url` are required UI components that cannot be removed.
+	// Structure is documented below.
+	FieldsUiComponentsMaps WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayInput `pulumi:"fieldsUiComponentsMaps"`
+	// The name of the data store. It should be data store resource name. Format:
+	// `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
+	// For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
+	// the project number and location part is erased in this field.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (WidgetConfigUiSettingsDataStoreUiConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfig)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigArgs) ToWidgetConfigUiSettingsDataStoreUiConfigOutput() WidgetConfigUiSettingsDataStoreUiConfigOutput {
+	return i.ToWidgetConfigUiSettingsDataStoreUiConfigOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigArgs) ToWidgetConfigUiSettingsDataStoreUiConfigOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsDataStoreUiConfigOutput)
+}
+
+// WidgetConfigUiSettingsDataStoreUiConfigArrayInput is an input type that accepts WidgetConfigUiSettingsDataStoreUiConfigArray and WidgetConfigUiSettingsDataStoreUiConfigArrayOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsDataStoreUiConfigArrayInput` via:
+//
+//	WidgetConfigUiSettingsDataStoreUiConfigArray{ WidgetConfigUiSettingsDataStoreUiConfigArgs{...} }
+type WidgetConfigUiSettingsDataStoreUiConfigArrayInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsDataStoreUiConfigArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigArrayOutput
+	ToWidgetConfigUiSettingsDataStoreUiConfigArrayOutputWithContext(context.Context) WidgetConfigUiSettingsDataStoreUiConfigArrayOutput
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigArray []WidgetConfigUiSettingsDataStoreUiConfigInput
+
+func (WidgetConfigUiSettingsDataStoreUiConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigUiSettingsDataStoreUiConfig)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigArray) ToWidgetConfigUiSettingsDataStoreUiConfigArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigArrayOutput {
+	return i.ToWidgetConfigUiSettingsDataStoreUiConfigArrayOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigArray) ToWidgetConfigUiSettingsDataStoreUiConfigArrayOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsDataStoreUiConfigArrayOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsDataStoreUiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfig)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigOutput) ToWidgetConfigUiSettingsDataStoreUiConfigOutput() WidgetConfigUiSettingsDataStoreUiConfigOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigOutput) ToWidgetConfigUiSettingsDataStoreUiConfigOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigOutput {
+	return o
+}
+
+// Structure is documented below.
+func (o WidgetConfigUiSettingsDataStoreUiConfigOutput) FacetFields() WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfig) []WidgetConfigUiSettingsDataStoreUiConfigFacetField {
+		return v.FacetFields
+	}).(WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput)
+}
+
+// 'The key is the UI component. Currently supported `title`, `thumbnail`,
+// `url`, `custom1`, `custom2`, `custom3`. The value is the name of
+// the field along with its device visibility. The 3 custom fields are optional
+// and can be added or removed.
+// `title`, `thumbnail`, `url` are required UI components that cannot be removed.
+// Structure is documented below.
+func (o WidgetConfigUiSettingsDataStoreUiConfigOutput) FieldsUiComponentsMaps() WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfig) []WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
+		return v.FieldsUiComponentsMaps
+	}).(WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput)
+}
+
+// The name of the data store. It should be data store resource name. Format:
+// `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
+// For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
+// the project number and location part is erased in this field.
+func (o WidgetConfigUiSettingsDataStoreUiConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsDataStoreUiConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigUiSettingsDataStoreUiConfig)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigArrayOutput) ToWidgetConfigUiSettingsDataStoreUiConfigArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigArrayOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigArrayOutput) ToWidgetConfigUiSettingsDataStoreUiConfigArrayOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigArrayOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigArrayOutput) Index(i pulumi.IntInput) WidgetConfigUiSettingsDataStoreUiConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WidgetConfigUiSettingsDataStoreUiConfig {
+		return vs[0].([]WidgetConfigUiSettingsDataStoreUiConfig)[vs[1].(int)]
+	}).(WidgetConfigUiSettingsDataStoreUiConfigOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFacetField struct {
+	// The field name that end users will see.
+	DisplayName *string `pulumi:"displayName"`
+	// Registered field name. The format is `field.abc`.
+	Field string `pulumi:"field"`
+}
+
+// WidgetConfigUiSettingsDataStoreUiConfigFacetFieldInput is an input type that accepts WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs and WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsDataStoreUiConfigFacetFieldInput` via:
+//
+//	WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs{...}
+type WidgetConfigUiSettingsDataStoreUiConfigFacetFieldInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput() WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput
+	ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutputWithContext(context.Context) WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs struct {
+	// The field name that end users will see.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Registered field name. The format is `field.abc`.
+	Field pulumi.StringInput `pulumi:"field"`
+}
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFacetField)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput() WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput {
+	return i.ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput)
+}
+
+// WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayInput is an input type that accepts WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArray and WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayInput` via:
+//
+//	WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArray{ WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs{...} }
+type WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput
+	ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutputWithContext(context.Context) WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArray []WidgetConfigUiSettingsDataStoreUiConfigFacetFieldInput
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigUiSettingsDataStoreUiConfigFacetField)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArray) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput {
+	return i.ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArray) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFacetField)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput() WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput {
+	return o
+}
+
+// The field name that end users will see.
+func (o WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfigFacetField) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Registered field name. The format is `field.abc`.
+func (o WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfigFacetField) string { return v.Field }).(pulumi.StringOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigUiSettingsDataStoreUiConfigFacetField)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput) Index(i pulumi.IntInput) WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WidgetConfigUiSettingsDataStoreUiConfigFacetField {
+		return vs[0].([]WidgetConfigUiSettingsDataStoreUiConfigFacetField)[vs[1].(int)]
+	}).(WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap struct {
+	// Each value may be one of: `MOBILE`, `DESKTOP`.
+	DeviceVisibilities []string `pulumi:"deviceVisibilities"`
+	// The template to customize how the field is displayed.
+	// An example value would be a string that looks like: "Price: {value}".
+	DisplayTemplate *string `pulumi:"displayTemplate"`
+	// Registered field name. The format is `field.abc`.
+	Field string `pulumi:"field"`
+	// The identifier for this object. Format specified above.
+	UiComponent string `pulumi:"uiComponent"`
+}
+
+// WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapInput is an input type that accepts WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap and WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapInput` via:
+//
+//	WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap{ "key": WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsArgs{...} }
+type WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput() WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput
+	ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutputWithContext(context.Context) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs struct {
+	// Each value may be one of: `MOBILE`, `DESKTOP`.
+	DeviceVisibilities pulumi.StringArrayInput `pulumi:"deviceVisibilities"`
+	// The template to customize how the field is displayed.
+	// An example value would be a string that looks like: "Price: {value}".
+	DisplayTemplate pulumi.StringPtrInput `pulumi:"displayTemplate"`
+	// Registered field name. The format is `field.abc`.
+	Field pulumi.StringInput `pulumi:"field"`
+	// The identifier for this object. Format specified above.
+	UiComponent pulumi.StringInput `pulumi:"uiComponent"`
+}
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput() WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput {
+	return i.ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput)
+}
+
+// WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayInput is an input type that accepts WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray and WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayInput` via:
+//
+//	WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray{ WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs{...} }
+type WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput
+	ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutputWithContext(context.Context) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray []WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapInput
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput {
+	return i.ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput() WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput {
+	return o
+}
+
+// Each value may be one of: `MOBILE`, `DESKTOP`.
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput) DeviceVisibilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap) []string {
+		return v.DeviceVisibilities
+	}).(pulumi.StringArrayOutput)
+}
+
+// The template to customize how the field is displayed.
+// An example value would be a string that looks like: "Price: {value}".
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput) DisplayTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap) *string { return v.DisplayTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Registered field name. The format is `field.abc`.
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput) UiComponent() pulumi.StringOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap) string { return v.UiComponent }).(pulumi.StringOutput)
+}
+
+type WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput() WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput) ToWidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutputWithContext(ctx context.Context) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput) Index(i pulumi.IntInput) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
+		return vs[0].([]WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap)[vs[1].(int)]
+	}).(WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput)
+}
+
+type WidgetConfigUiSettingsGenerativeAnswerConfig struct {
+	// Whether generated answer contains suggested related questions.
+	DisableRelatedQuestions *bool `pulumi:"disableRelatedQuestions"`
+	// Specifies whether to filter out queries that are adversarial.
+	IgnoreAdversarialQuery *bool `pulumi:"ignoreAdversarialQuery"`
+	// Specifies whether to filter out queries that are not relevant to the content.
+	IgnoreLowRelevantContent *bool `pulumi:"ignoreLowRelevantContent"`
+	// Specifies whether to filter out queries that are not answer-seeking.
+	// The default value is `false`. No answer is returned if the search query
+	// is classified as a non-answer seeking query.
+	// If this field is set to `true`, we skip generating answers for
+	// non-answer seeking queries and return fallback messages instead.
+	IgnoreNonAnswerSeekingQuery *bool `pulumi:"ignoreNonAnswerSeekingQuery"`
+	// Source of image returned in the answer.
+	// Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+	ImageSource *string `pulumi:"imageSource"`
+	// Language code for Summary. Use language tags defined by
+	// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+	// is an experimental feature.
+	LanguageCode *string `pulumi:"languageCode"`
+	// Max rephrase steps. The max number is 5 steps. If not set or
+	// set to < 1, it will be set to 1 by default.
+	MaxRephraseSteps *int `pulumi:"maxRephraseSteps"`
+	// Text at the beginning of the prompt that instructs the model that generates the answer.
+	ModelPromptPreamble *string `pulumi:"modelPromptPreamble"`
+	// The model version used to generate the answer.
+	ModelVersion *string `pulumi:"modelVersion"`
+	// The number of top results to generate the answer from. Up to 10.
+	ResultCount *int `pulumi:"resultCount"`
+}
+
+// WidgetConfigUiSettingsGenerativeAnswerConfigInput is an input type that accepts WidgetConfigUiSettingsGenerativeAnswerConfigArgs and WidgetConfigUiSettingsGenerativeAnswerConfigOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsGenerativeAnswerConfigInput` via:
+//
+//	WidgetConfigUiSettingsGenerativeAnswerConfigArgs{...}
+type WidgetConfigUiSettingsGenerativeAnswerConfigInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsGenerativeAnswerConfigOutput() WidgetConfigUiSettingsGenerativeAnswerConfigOutput
+	ToWidgetConfigUiSettingsGenerativeAnswerConfigOutputWithContext(context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigOutput
+}
+
+type WidgetConfigUiSettingsGenerativeAnswerConfigArgs struct {
+	// Whether generated answer contains suggested related questions.
+	DisableRelatedQuestions pulumi.BoolPtrInput `pulumi:"disableRelatedQuestions"`
+	// Specifies whether to filter out queries that are adversarial.
+	IgnoreAdversarialQuery pulumi.BoolPtrInput `pulumi:"ignoreAdversarialQuery"`
+	// Specifies whether to filter out queries that are not relevant to the content.
+	IgnoreLowRelevantContent pulumi.BoolPtrInput `pulumi:"ignoreLowRelevantContent"`
+	// Specifies whether to filter out queries that are not answer-seeking.
+	// The default value is `false`. No answer is returned if the search query
+	// is classified as a non-answer seeking query.
+	// If this field is set to `true`, we skip generating answers for
+	// non-answer seeking queries and return fallback messages instead.
+	IgnoreNonAnswerSeekingQuery pulumi.BoolPtrInput `pulumi:"ignoreNonAnswerSeekingQuery"`
+	// Source of image returned in the answer.
+	// Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+	ImageSource pulumi.StringPtrInput `pulumi:"imageSource"`
+	// Language code for Summary. Use language tags defined by
+	// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+	// is an experimental feature.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// Max rephrase steps. The max number is 5 steps. If not set or
+	// set to < 1, it will be set to 1 by default.
+	MaxRephraseSteps pulumi.IntPtrInput `pulumi:"maxRephraseSteps"`
+	// Text at the beginning of the prompt that instructs the model that generates the answer.
+	ModelPromptPreamble pulumi.StringPtrInput `pulumi:"modelPromptPreamble"`
+	// The model version used to generate the answer.
+	ModelVersion pulumi.StringPtrInput `pulumi:"modelVersion"`
+	// The number of top results to generate the answer from. Up to 10.
+	ResultCount pulumi.IntPtrInput `pulumi:"resultCount"`
+}
+
+func (WidgetConfigUiSettingsGenerativeAnswerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsGenerativeAnswerConfig)(nil)).Elem()
+}
+
+func (i WidgetConfigUiSettingsGenerativeAnswerConfigArgs) ToWidgetConfigUiSettingsGenerativeAnswerConfigOutput() WidgetConfigUiSettingsGenerativeAnswerConfigOutput {
+	return i.ToWidgetConfigUiSettingsGenerativeAnswerConfigOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsGenerativeAnswerConfigArgs) ToWidgetConfigUiSettingsGenerativeAnswerConfigOutputWithContext(ctx context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsGenerativeAnswerConfigOutput)
+}
+
+func (i WidgetConfigUiSettingsGenerativeAnswerConfigArgs) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput() WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return i.ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WidgetConfigUiSettingsGenerativeAnswerConfigArgs) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsGenerativeAnswerConfigOutput).ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(ctx)
+}
+
+// WidgetConfigUiSettingsGenerativeAnswerConfigPtrInput is an input type that accepts WidgetConfigUiSettingsGenerativeAnswerConfigArgs, WidgetConfigUiSettingsGenerativeAnswerConfigPtr and WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput values.
+// You can construct a concrete instance of `WidgetConfigUiSettingsGenerativeAnswerConfigPtrInput` via:
+//
+//	        WidgetConfigUiSettingsGenerativeAnswerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WidgetConfigUiSettingsGenerativeAnswerConfigPtrInput interface {
+	pulumi.Input
+
+	ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput() WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput
+	ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput
+}
+
+type widgetConfigUiSettingsGenerativeAnswerConfigPtrType WidgetConfigUiSettingsGenerativeAnswerConfigArgs
+
+func WidgetConfigUiSettingsGenerativeAnswerConfigPtr(v *WidgetConfigUiSettingsGenerativeAnswerConfigArgs) WidgetConfigUiSettingsGenerativeAnswerConfigPtrInput {
+	return (*widgetConfigUiSettingsGenerativeAnswerConfigPtrType)(v)
+}
+
+func (*widgetConfigUiSettingsGenerativeAnswerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiSettingsGenerativeAnswerConfig)(nil)).Elem()
+}
+
+func (i *widgetConfigUiSettingsGenerativeAnswerConfigPtrType) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput() WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return i.ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *widgetConfigUiSettingsGenerativeAnswerConfigPtrType) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput)
+}
+
+type WidgetConfigUiSettingsGenerativeAnswerConfigOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetConfigUiSettingsGenerativeAnswerConfig)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ToWidgetConfigUiSettingsGenerativeAnswerConfigOutput() WidgetConfigUiSettingsGenerativeAnswerConfigOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ToWidgetConfigUiSettingsGenerativeAnswerConfigOutputWithContext(ctx context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput() WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return o.ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WidgetConfigUiSettingsGenerativeAnswerConfig) *WidgetConfigUiSettingsGenerativeAnswerConfig {
+		return &v
+	}).(WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput)
+}
+
+// Whether generated answer contains suggested related questions.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) DisableRelatedQuestions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *bool { return v.DisableRelatedQuestions }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to filter out queries that are adversarial.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) IgnoreAdversarialQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *bool { return v.IgnoreAdversarialQuery }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to filter out queries that are not relevant to the content.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) IgnoreLowRelevantContent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *bool { return v.IgnoreLowRelevantContent }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to filter out queries that are not answer-seeking.
+// The default value is `false`. No answer is returned if the search query
+// is classified as a non-answer seeking query.
+// If this field is set to `true`, we skip generating answers for
+// non-answer seeking queries and return fallback messages instead.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) IgnoreNonAnswerSeekingQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *bool { return v.IgnoreNonAnswerSeekingQuery }).(pulumi.BoolPtrOutput)
+}
+
+// Source of image returned in the answer.
+// Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ImageSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *string { return v.ImageSource }).(pulumi.StringPtrOutput)
+}
+
+// Language code for Summary. Use language tags defined by
+// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+// is an experimental feature.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// Max rephrase steps. The max number is 5 steps. If not set or
+// set to < 1, it will be set to 1 by default.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) MaxRephraseSteps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *int { return v.MaxRephraseSteps }).(pulumi.IntPtrOutput)
+}
+
+// Text at the beginning of the prompt that instructs the model that generates the answer.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ModelPromptPreamble() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *string { return v.ModelPromptPreamble }).(pulumi.StringPtrOutput)
+}
+
+// The model version used to generate the answer.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *string { return v.ModelVersion }).(pulumi.StringPtrOutput)
+}
+
+// The number of top results to generate the answer from. Up to 10.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigOutput) ResultCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WidgetConfigUiSettingsGenerativeAnswerConfig) *int { return v.ResultCount }).(pulumi.IntPtrOutput)
+}
+
+type WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WidgetConfigUiSettingsGenerativeAnswerConfig)(nil)).Elem()
+}
+
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput() WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ToWidgetConfigUiSettingsGenerativeAnswerConfigPtrOutputWithContext(ctx context.Context) WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput {
+	return o
+}
+
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) Elem() WidgetConfigUiSettingsGenerativeAnswerConfigOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) WidgetConfigUiSettingsGenerativeAnswerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WidgetConfigUiSettingsGenerativeAnswerConfig
+		return ret
+	}).(WidgetConfigUiSettingsGenerativeAnswerConfigOutput)
+}
+
+// Whether generated answer contains suggested related questions.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) DisableRelatedQuestions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRelatedQuestions
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to filter out queries that are adversarial.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) IgnoreAdversarialQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreAdversarialQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to filter out queries that are not relevant to the content.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) IgnoreLowRelevantContent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreLowRelevantContent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to filter out queries that are not answer-seeking.
+// The default value is `false`. No answer is returned if the search query
+// is classified as a non-answer seeking query.
+// If this field is set to `true`, we skip generating answers for
+// non-answer seeking queries and return fallback messages instead.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) IgnoreNonAnswerSeekingQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreNonAnswerSeekingQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Source of image returned in the answer.
+// Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ImageSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Language code for Summary. Use language tags defined by
+// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+// is an experimental feature.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max rephrase steps. The max number is 5 steps. If not set or
+// set to < 1, it will be set to 1 by default.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) MaxRephraseSteps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRephraseSteps
+	}).(pulumi.IntPtrOutput)
+}
+
+// Text at the beginning of the prompt that instructs the model that generates the answer.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ModelPromptPreamble() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelPromptPreamble
+	}).(pulumi.StringPtrOutput)
+}
+
+// The model version used to generate the answer.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ModelVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of top results to generate the answer from. Up to 10.
+func (o WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput) ResultCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WidgetConfigUiSettingsGenerativeAnswerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ResultCount
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigInput)(nil)).Elem(), AclConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AclConfigIdpConfigPtrInput)(nil)).Elem(), AclConfigIdpConfigArgs{})
@@ -8066,6 +10074,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteFailureReasonQuotaFailurePtrInput)(nil)).Elem(), TargetSiteFailureReasonQuotaFailureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteSiteVerificationInfoInput)(nil)).Elem(), TargetSiteSiteVerificationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteSiteVerificationInfoArrayInput)(nil)).Elem(), TargetSiteSiteVerificationInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigAccessSettingsInput)(nil)).Elem(), WidgetConfigAccessSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigAccessSettingsPtrInput)(nil)).Elem(), WidgetConfigAccessSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigHomepageSettingInput)(nil)).Elem(), WidgetConfigHomepageSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigHomepageSettingPtrInput)(nil)).Elem(), WidgetConfigHomepageSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigHomepageSettingShortcutInput)(nil)).Elem(), WidgetConfigHomepageSettingShortcutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigHomepageSettingShortcutArrayInput)(nil)).Elem(), WidgetConfigHomepageSettingShortcutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigHomepageSettingShortcutIconInput)(nil)).Elem(), WidgetConfigHomepageSettingShortcutIconArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigHomepageSettingShortcutIconPtrInput)(nil)).Elem(), WidgetConfigHomepageSettingShortcutIconArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiBrandingInput)(nil)).Elem(), WidgetConfigUiBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiBrandingPtrInput)(nil)).Elem(), WidgetConfigUiBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiBrandingLogoInput)(nil)).Elem(), WidgetConfigUiBrandingLogoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiBrandingLogoPtrInput)(nil)).Elem(), WidgetConfigUiBrandingLogoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsInput)(nil)).Elem(), WidgetConfigUiSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsPtrInput)(nil)).Elem(), WidgetConfigUiSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigInput)(nil)).Elem(), WidgetConfigUiSettingsDataStoreUiConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigArrayInput)(nil)).Elem(), WidgetConfigUiSettingsDataStoreUiConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFacetFieldInput)(nil)).Elem(), WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayInput)(nil)).Elem(), WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapInput)(nil)).Elem(), WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayInput)(nil)).Elem(), WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsGenerativeAnswerConfigInput)(nil)).Elem(), WidgetConfigUiSettingsGenerativeAnswerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WidgetConfigUiSettingsGenerativeAnswerConfigPtrInput)(nil)).Elem(), WidgetConfigUiSettingsGenerativeAnswerConfigArgs{})
 	pulumi.RegisterOutputType(AclConfigIdpConfigOutput{})
 	pulumi.RegisterOutputType(AclConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(AclConfigIdpConfigExternalIdpConfigOutput{})
@@ -8166,4 +10196,26 @@ func init() {
 	pulumi.RegisterOutputType(TargetSiteFailureReasonQuotaFailurePtrOutput{})
 	pulumi.RegisterOutputType(TargetSiteSiteVerificationInfoOutput{})
 	pulumi.RegisterOutputType(TargetSiteSiteVerificationInfoArrayOutput{})
+	pulumi.RegisterOutputType(WidgetConfigAccessSettingsOutput{})
+	pulumi.RegisterOutputType(WidgetConfigAccessSettingsPtrOutput{})
+	pulumi.RegisterOutputType(WidgetConfigHomepageSettingOutput{})
+	pulumi.RegisterOutputType(WidgetConfigHomepageSettingPtrOutput{})
+	pulumi.RegisterOutputType(WidgetConfigHomepageSettingShortcutOutput{})
+	pulumi.RegisterOutputType(WidgetConfigHomepageSettingShortcutArrayOutput{})
+	pulumi.RegisterOutputType(WidgetConfigHomepageSettingShortcutIconOutput{})
+	pulumi.RegisterOutputType(WidgetConfigHomepageSettingShortcutIconPtrOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiBrandingOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiBrandingPtrOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiBrandingLogoOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiBrandingLogoPtrOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsPtrOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsDataStoreUiConfigOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsDataStoreUiConfigArrayOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsDataStoreUiConfigFacetFieldOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArrayOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArrayOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsGenerativeAnswerConfigOutput{})
+	pulumi.RegisterOutputType(WidgetConfigUiSettingsGenerativeAnswerConfigPtrOutput{})
 }

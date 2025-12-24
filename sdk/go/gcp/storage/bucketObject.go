@@ -83,6 +83,46 @@ import (
 //
 // ```
 //
+// Example creating an contexts for an object.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucketObject(ctx, "bucket_object", &storage.BucketObjectArgs{
+//				Bucket:  pulumi.String("test-bucket"),
+//				Name:    pulumi.String("test-object"),
+//				Content: pulumi.String("test-content"),
+//				Contexts: &storage.BucketObjectContextsArgs{
+//					Customs: storage.BucketObjectContextsCustomArray{
+//						&storage.BucketObjectContextsCustomArgs{
+//							Key:   pulumi.String("testKey"),
+//							Value: pulumi.String("test"),
+//						},
+//						&storage.BucketObjectContextsCustomArgs{
+//							Key:   pulumi.String("testKeyTwo"),
+//							Value: pulumi.String("test"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource does not support import.
@@ -104,6 +144,8 @@ type BucketObject struct {
 	ContentLanguage pulumi.StringPtrOutput `pulumi:"contentLanguage"`
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
+	// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+	Contexts BucketObjectContextsPtrOutput `pulumi:"contexts"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c pulumi.StringOutput `pulumi:"crc32c"`
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
@@ -212,6 +254,8 @@ type bucketObjectState struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType *string `pulumi:"contentType"`
+	// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+	Contexts *BucketObjectContexts `pulumi:"contexts"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c *string `pulumi:"crc32c"`
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
@@ -277,6 +321,8 @@ type BucketObjectState struct {
 	ContentLanguage pulumi.StringPtrInput
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringPtrInput
+	// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+	Contexts BucketObjectContextsPtrInput
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c pulumi.StringPtrInput
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
@@ -346,6 +392,8 @@ type bucketObjectArgs struct {
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType *string `pulumi:"contentType"`
+	// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+	Contexts *BucketObjectContexts `pulumi:"contexts"`
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption *BucketObjectCustomerEncryption `pulumi:"customerEncryption"`
@@ -397,6 +445,8 @@ type BucketObjectArgs struct {
 	ContentLanguage pulumi.StringPtrInput
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType pulumi.StringPtrInput
+	// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+	Contexts BucketObjectContextsPtrInput
 	// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
 	// Structure is documented below.
 	CustomerEncryption BucketObjectCustomerEncryptionPtrInput
@@ -552,6 +602,11 @@ func (o BucketObjectOutput) ContentLanguage() pulumi.StringPtrOutput {
 // [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 func (o BucketObjectOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+func (o BucketObjectOutput) Contexts() BucketObjectContextsPtrOutput {
+	return o.ApplyT(func(v *BucketObject) BucketObjectContextsPtrOutput { return v.Contexts }).(BucketObjectContextsPtrOutput)
 }
 
 // (Computed) Base 64 CRC32 hash of the uploaded data.

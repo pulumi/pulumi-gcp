@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.ces.outputs.ToolOpenApiToolApiAuthenticationApiKeyConfig;
+import com.pulumi.gcp.ces.outputs.ToolOpenApiToolApiAuthenticationBearerTokenConfig;
 import com.pulumi.gcp.ces.outputs.ToolOpenApiToolApiAuthenticationOauthConfig;
 import com.pulumi.gcp.ces.outputs.ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig;
 import com.pulumi.gcp.ces.outputs.ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig;
@@ -21,6 +22,13 @@ public final class ToolOpenApiToolApiAuthentication {
      * 
      */
     private @Nullable List<ToolOpenApiToolApiAuthenticationApiKeyConfig> apiKeyConfigs;
+    /**
+     * @return (Output)
+     * Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ToolOpenApiToolApiAuthenticationBearerTokenConfig> bearerTokenConfigs;
     /**
      * @return (Output)
      * Configurations for authentication with OAuth.
@@ -53,6 +61,15 @@ public final class ToolOpenApiToolApiAuthentication {
      */
     public List<ToolOpenApiToolApiAuthenticationApiKeyConfig> apiKeyConfigs() {
         return this.apiKeyConfigs == null ? List.of() : this.apiKeyConfigs;
+    }
+    /**
+     * @return (Output)
+     * Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    public List<ToolOpenApiToolApiAuthenticationBearerTokenConfig> bearerTokenConfigs() {
+        return this.bearerTokenConfigs == null ? List.of() : this.bearerTokenConfigs;
     }
     /**
      * @return (Output)
@@ -93,6 +110,7 @@ public final class ToolOpenApiToolApiAuthentication {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ToolOpenApiToolApiAuthenticationApiKeyConfig> apiKeyConfigs;
+        private @Nullable List<ToolOpenApiToolApiAuthenticationBearerTokenConfig> bearerTokenConfigs;
         private @Nullable List<ToolOpenApiToolApiAuthenticationOauthConfig> oauthConfigs;
         private @Nullable List<ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig> serviceAccountAuthConfigs;
         private @Nullable List<ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig> serviceAgentIdTokenAuthConfigs;
@@ -100,6 +118,7 @@ public final class ToolOpenApiToolApiAuthentication {
         public Builder(ToolOpenApiToolApiAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiKeyConfigs = defaults.apiKeyConfigs;
+    	      this.bearerTokenConfigs = defaults.bearerTokenConfigs;
     	      this.oauthConfigs = defaults.oauthConfigs;
     	      this.serviceAccountAuthConfigs = defaults.serviceAccountAuthConfigs;
     	      this.serviceAgentIdTokenAuthConfigs = defaults.serviceAgentIdTokenAuthConfigs;
@@ -113,6 +132,15 @@ public final class ToolOpenApiToolApiAuthentication {
         }
         public Builder apiKeyConfigs(ToolOpenApiToolApiAuthenticationApiKeyConfig... apiKeyConfigs) {
             return apiKeyConfigs(List.of(apiKeyConfigs));
+        }
+        @CustomType.Setter
+        public Builder bearerTokenConfigs(@Nullable List<ToolOpenApiToolApiAuthenticationBearerTokenConfig> bearerTokenConfigs) {
+
+            this.bearerTokenConfigs = bearerTokenConfigs;
+            return this;
+        }
+        public Builder bearerTokenConfigs(ToolOpenApiToolApiAuthenticationBearerTokenConfig... bearerTokenConfigs) {
+            return bearerTokenConfigs(List.of(bearerTokenConfigs));
         }
         @CustomType.Setter
         public Builder oauthConfigs(@Nullable List<ToolOpenApiToolApiAuthenticationOauthConfig> oauthConfigs) {
@@ -144,6 +172,7 @@ public final class ToolOpenApiToolApiAuthentication {
         public ToolOpenApiToolApiAuthentication build() {
             final var _resultValue = new ToolOpenApiToolApiAuthentication();
             _resultValue.apiKeyConfigs = apiKeyConfigs;
+            _resultValue.bearerTokenConfigs = bearerTokenConfigs;
             _resultValue.oauthConfigs = oauthConfigs;
             _resultValue.serviceAccountAuthConfigs = serviceAccountAuthConfigs;
             _resultValue.serviceAgentIdTokenAuthConfigs = serviceAgentIdTokenAuthConfigs;

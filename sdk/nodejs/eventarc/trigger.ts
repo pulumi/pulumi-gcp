@@ -65,6 +65,9 @@ import * as utilities from "../utilities";
  *             topic: foo.id,
  *         },
  *     },
+ *     retryPolicy: {
+ *         maxAttempts: 1,
+ *     },
  * });
  * ```
  *
@@ -179,6 +182,12 @@ export class Trigger extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * The retry policy configuration for the Trigger.
+     * Can only be set with Cloud Run destinations.
+     * Structure is documented below.
+     */
+    declare public readonly retryPolicy: pulumi.Output<outputs.eventarc.TriggerRetryPolicy | undefined>;
+    /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      */
     declare public readonly serviceAccount: pulumi.Output<string | undefined>;
@@ -222,6 +231,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["retryPolicy"] = state?.retryPolicy;
             resourceInputs["serviceAccount"] = state?.serviceAccount;
             resourceInputs["transport"] = state?.transport;
             resourceInputs["uid"] = state?.uid;
@@ -245,6 +255,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["matchingCriterias"] = args?.matchingCriterias;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
+            resourceInputs["retryPolicy"] = args?.retryPolicy;
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["transport"] = args?.transport;
             resourceInputs["conditions"] = undefined /*out*/;
@@ -325,6 +336,12 @@ export interface TriggerState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The retry policy configuration for the Trigger.
+     * Can only be set with Cloud Run destinations.
+     * Structure is documented below.
+     */
+    retryPolicy?: pulumi.Input<inputs.eventarc.TriggerRetryPolicy>;
+    /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      */
     serviceAccount?: pulumi.Input<string>;
@@ -384,6 +401,12 @@ export interface TriggerArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The retry policy configuration for the Trigger.
+     * Can only be set with Cloud Run destinations.
+     * Structure is documented below.
+     */
+    retryPolicy?: pulumi.Input<inputs.eventarc.TriggerRetryPolicy>;
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      */

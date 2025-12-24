@@ -15,6 +15,11 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
+export { AppVersionArgs, AppVersionState } from "./appVersion";
+export type AppVersion = import("./appVersion").AppVersion;
+export const AppVersion: typeof import("./appVersion").AppVersion = null as any;
+utilities.lazyLoad(exports, ["AppVersion"], () => require("./appVersion"));
+
 export { DeploymentArgs, DeploymentState } from "./deployment";
 export type Deployment = import("./deployment").Deployment;
 export const Deployment: typeof import("./deployment").Deployment = null as any;
@@ -49,6 +54,8 @@ const _module = {
                 return new Agent(name, <any>undefined, { urn })
             case "gcp:ces/app:App":
                 return new App(name, <any>undefined, { urn })
+            case "gcp:ces/appVersion:AppVersion":
+                return new AppVersion(name, <any>undefined, { urn })
             case "gcp:ces/deployment:Deployment":
                 return new Deployment(name, <any>undefined, { urn })
             case "gcp:ces/example:Example":
@@ -66,6 +73,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "ces/agent", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/app", _module)
+pulumi.runtime.registerResourceModule("gcp", "ces/appVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/deployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/example", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/guardrail", _module)

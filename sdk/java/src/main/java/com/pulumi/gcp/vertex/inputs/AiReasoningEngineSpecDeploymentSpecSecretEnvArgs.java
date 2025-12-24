@@ -16,14 +16,16 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs extends com.
     public static final AiReasoningEngineSpecDeploymentSpecSecretEnvArgs Empty = new AiReasoningEngineSpecDeploymentSpecSecretEnvArgs();
 
     /**
-     * The name of the environment variable. Must be a valid C identifier.
+     * The name of the environment variable. Must be a valid C
+     * identifier.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the environment variable. Must be a valid C identifier.
+     * @return The name of the environment variable. Must be a valid C
+     * identifier.
      * 
      */
     public Output<String> name() {
@@ -31,7 +33,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs extends com.
     }
 
     /**
-     * Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+     * Reference to a secret stored in the Cloud Secret Manager
+     * that will provide the value for this environment variable.
      * Structure is documented below.
      * 
      */
@@ -39,7 +42,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs extends com.
     private Output<AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs> secretRef;
 
     /**
-     * @return Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+     * @return Reference to a secret stored in the Cloud Secret Manager
+     * that will provide the value for this environment variable.
      * Structure is documented below.
      * 
      */
@@ -73,7 +77,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs extends com.
         }
 
         /**
-         * @param name The name of the environment variable. Must be a valid C identifier.
+         * @param name The name of the environment variable. Must be a valid C
+         * identifier.
          * 
          * @return builder
          * 
@@ -84,7 +89,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs extends com.
         }
 
         /**
-         * @param name The name of the environment variable. Must be a valid C identifier.
+         * @param name The name of the environment variable. Must be a valid C
+         * identifier.
          * 
          * @return builder
          * 
@@ -94,7 +100,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs extends com.
         }
 
         /**
-         * @param secretRef Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+         * @param secretRef Reference to a secret stored in the Cloud Secret Manager
+         * that will provide the value for this environment variable.
          * Structure is documented below.
          * 
          * @return builder
@@ -106,7 +113,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs extends com.
         }
 
         /**
-         * @param secretRef Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+         * @param secretRef Reference to a secret stored in the Cloud Secret Manager
+         * that will provide the value for this environment variable.
          * Structure is documented below.
          * 
          * @return builder

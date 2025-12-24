@@ -64,6 +64,7 @@ export interface GetInstanceResult {
     readonly clientConnectionConfigs: outputs.alloydb.GetInstanceClientConnectionConfig[];
     readonly cluster: string;
     readonly clusterId: string;
+    readonly connectionPoolConfigs: outputs.alloydb.GetInstanceConnectionPoolConfig[];
     readonly createTime: string;
     readonly databaseFlags: {[key: string]: string};
     readonly displayName: string;

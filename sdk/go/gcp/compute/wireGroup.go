@@ -16,7 +16,7 @@ import (
 //
 // To get more information about WireGroup, see:
 //
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/wireGroups)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/wireGroups)
 // * How-to Guides
 //   - [Create a WireGroup](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/modify-network#add-wire-group)
 //
@@ -52,6 +52,53 @@ import (
 //				Name:             pulumi.String("test-wire-group"),
 //				Description:      pulumi.String("Example Wire Group"),
 //				CrossSiteNetwork: pulumi.String("test-cross-site-network"),
+//				WireProperties: &compute.WireGroupWirePropertiesArgs{
+//					BandwidthUnmetered:  pulumi.Int(10),
+//					FaultResponse:       pulumi.String("NONE"),
+//					BandwidthAllocation: pulumi.String("ALLOCATE_PER_WIRE"),
+//				},
+//				AdminEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example_cross_site_network,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute Wire Group Basic Beta
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example_cross_site_network, err := compute.NewCrossSiteNetwork(ctx, "example-cross-site-network", &compute.CrossSiteNetworkArgs{
+//				Name:        pulumi.String("test-cross-site-network-beta"),
+//				Description: pulumi.String("Example cross site network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewWireGroup(ctx, "example-test-wire-group-beta", &compute.WireGroupArgs{
+//				Name:             pulumi.String("test-wire-group-beta"),
+//				Description:      pulumi.String("Example Wire Group Beta"),
+//				CrossSiteNetwork: pulumi.String("test-cross-site-network-beta"),
 //				WireProperties: &compute.WireGroupWirePropertiesArgs{
 //					BandwidthUnmetered:  pulumi.Int(10),
 //					FaultResponse:       pulumi.String("NONE"),

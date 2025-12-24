@@ -813,67 +813,6 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Edgecontainer Cluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        default = gcp.edgecontainer.Cluster("default",
-            name="basic-cluster",
-            location="us-central1",
-            authorization={
-                "admin_users": {
-                    "username": "admin@hashicorptest.com",
-                },
-            },
-            networking={
-                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
-                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
-            },
-            fleet={
-                "project": f"projects/{project.number}",
-            },
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            })
-        ```
-        ### Edgecontainer Cluster With Maintenance Window
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        default = gcp.edgecontainer.Cluster("default",
-            name="cluster-with-maintenance",
-            location="us-central1",
-            authorization={
-                "admin_users": {
-                    "username": "admin@hashicorptest.com",
-                },
-            },
-            networking={
-                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
-                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
-            },
-            fleet={
-                "project": f"projects/{project.number}",
-            },
-            maintenance_policy={
-                "window": {
-                    "recurring_window": {
-                        "window": {
-                            "start_time": "2023-01-01T08:00:00Z",
-                            "end_time": "2023-01-01T17:00:00Z",
-                        },
-                        "recurrence": "FREQ=WEEKLY;BYDAY=SA",
-                    },
-                },
-            })
-        ```
         ### Edgecontainer Local Control Plane Cluster
 
         ```python
@@ -986,67 +925,6 @@ class Cluster(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Edgecontainer Cluster
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        default = gcp.edgecontainer.Cluster("default",
-            name="basic-cluster",
-            location="us-central1",
-            authorization={
-                "admin_users": {
-                    "username": "admin@hashicorptest.com",
-                },
-            },
-            networking={
-                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
-                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
-            },
-            fleet={
-                "project": f"projects/{project.number}",
-            },
-            labels={
-                "my_key": "my_val",
-                "other_key": "other_val",
-            })
-        ```
-        ### Edgecontainer Cluster With Maintenance Window
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        default = gcp.edgecontainer.Cluster("default",
-            name="cluster-with-maintenance",
-            location="us-central1",
-            authorization={
-                "admin_users": {
-                    "username": "admin@hashicorptest.com",
-                },
-            },
-            networking={
-                "cluster_ipv4_cidr_blocks": ["10.0.0.0/16"],
-                "services_ipv4_cidr_blocks": ["10.1.0.0/16"],
-            },
-            fleet={
-                "project": f"projects/{project.number}",
-            },
-            maintenance_policy={
-                "window": {
-                    "recurring_window": {
-                        "window": {
-                            "start_time": "2023-01-01T08:00:00Z",
-                            "end_time": "2023-01-01T17:00:00Z",
-                        },
-                        "recurrence": "FREQ=WEEKLY;BYDAY=SA",
-                    },
-                },
-            })
-        ```
         ### Edgecontainer Local Control Plane Cluster
 
         ```python

@@ -14,6 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ToolGoogleSearchTool {
     /**
+     * @return Content will be fetched directly from these URLs for context and grounding.
+     * More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+     * Example: &#34;https://example.com/path.html&#34;. A maximum of 20 URLs are allowed.
+     * 
+     */
+    private @Nullable List<String> contextUrls;
+    /**
      * @return Description of the tool&#39;s purpose.
      * 
      */
@@ -30,8 +37,28 @@ public final class ToolGoogleSearchTool {
      * 
      */
     private String name;
+    /**
+     * @return Specifies domain names to guide the search.
+     * The model will be instructed to prioritize these domains
+     * when formulating queries for google search.
+     * This is a best-effort hint and these domains may or may
+     * not be exclusively reflected in the final search results.
+     * Example: &#34;example.com&#34;, &#34;another.site&#34;.
+     * A maximum of 20 domains can be specified.
+     * 
+     */
+    private @Nullable List<String> preferredDomains;
 
     private ToolGoogleSearchTool() {}
+    /**
+     * @return Content will be fetched directly from these URLs for context and grounding.
+     * More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+     * Example: &#34;https://example.com/path.html&#34;. A maximum of 20 URLs are allowed.
+     * 
+     */
+    public List<String> contextUrls() {
+        return this.contextUrls == null ? List.of() : this.contextUrls;
+    }
     /**
      * @return Description of the tool&#39;s purpose.
      * 
@@ -55,6 +82,19 @@ public final class ToolGoogleSearchTool {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Specifies domain names to guide the search.
+     * The model will be instructed to prioritize these domains
+     * when formulating queries for google search.
+     * This is a best-effort hint and these domains may or may
+     * not be exclusively reflected in the final search results.
+     * Example: &#34;example.com&#34;, &#34;another.site&#34;.
+     * A maximum of 20 domains can be specified.
+     * 
+     */
+    public List<String> preferredDomains() {
+        return this.preferredDomains == null ? List.of() : this.preferredDomains;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,17 +105,30 @@ public final class ToolGoogleSearchTool {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> contextUrls;
         private @Nullable String description;
         private @Nullable List<String> excludeDomains;
         private String name;
+        private @Nullable List<String> preferredDomains;
         public Builder() {}
         public Builder(ToolGoogleSearchTool defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.contextUrls = defaults.contextUrls;
     	      this.description = defaults.description;
     	      this.excludeDomains = defaults.excludeDomains;
     	      this.name = defaults.name;
+    	      this.preferredDomains = defaults.preferredDomains;
         }
 
+        @CustomType.Setter
+        public Builder contextUrls(@Nullable List<String> contextUrls) {
+
+            this.contextUrls = contextUrls;
+            return this;
+        }
+        public Builder contextUrls(String... contextUrls) {
+            return contextUrls(List.of(contextUrls));
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -99,11 +152,22 @@ public final class ToolGoogleSearchTool {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder preferredDomains(@Nullable List<String> preferredDomains) {
+
+            this.preferredDomains = preferredDomains;
+            return this;
+        }
+        public Builder preferredDomains(String... preferredDomains) {
+            return preferredDomains(List.of(preferredDomains));
+        }
         public ToolGoogleSearchTool build() {
             final var _resultValue = new ToolGoogleSearchTool();
+            _resultValue.contextUrls = contextUrls;
             _resultValue.description = description;
             _resultValue.excludeDomains = excludeDomains;
             _resultValue.name = name;
+            _resultValue.preferredDomains = preferredDomains;
             return _resultValue;
         }
     }

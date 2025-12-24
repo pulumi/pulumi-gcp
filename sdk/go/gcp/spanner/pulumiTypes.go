@@ -1994,6 +1994,11 @@ type InstanceAutoscalingConfigAutoscalingTargets struct {
 	// should be trying to achieve for the instance.
 	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
 	StorageUtilizationPercent *int `pulumi:"storageUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+	// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+	// The value should be higher than highPriorityCpuUtilizationPercent if present.
+	TotalCpuUtilizationPercent *int `pulumi:"totalCpuUtilizationPercent"`
 }
 
 // InstanceAutoscalingConfigAutoscalingTargetsInput is an input type that accepts InstanceAutoscalingConfigAutoscalingTargetsArgs and InstanceAutoscalingConfigAutoscalingTargetsOutput values.
@@ -2016,6 +2021,11 @@ type InstanceAutoscalingConfigAutoscalingTargetsArgs struct {
 	// should be trying to achieve for the instance.
 	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
 	StorageUtilizationPercent pulumi.IntPtrInput `pulumi:"storageUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+	// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+	// The value should be higher than highPriorityCpuUtilizationPercent if present.
+	TotalCpuUtilizationPercent pulumi.IntPtrInput `pulumi:"totalCpuUtilizationPercent"`
 }
 
 func (InstanceAutoscalingConfigAutoscalingTargetsArgs) ElementType() reflect.Type {
@@ -2109,6 +2119,14 @@ func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) StorageUtilizationPer
 	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingTargets) *int { return v.StorageUtilizationPercent }).(pulumi.IntPtrOutput)
 }
 
+// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+// The value should be higher than highPriorityCpuUtilizationPercent if present.
+func (o InstanceAutoscalingConfigAutoscalingTargetsOutput) TotalCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingTargets) *int { return v.TotalCpuUtilizationPercent }).(pulumi.IntPtrOutput)
+}
+
 type InstanceAutoscalingConfigAutoscalingTargetsPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) ElementType() reflect.Type {
@@ -2154,6 +2172,19 @@ func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) StorageUtilization
 			return nil
 		}
 		return v.StorageUtilizationPercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+// The value should be higher than highPriorityCpuUtilizationPercent if present.
+func (o InstanceAutoscalingConfigAutoscalingTargetsPtrOutput) TotalCpuUtilizationPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingTargets) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalCpuUtilizationPercent
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -3427,6 +3458,11 @@ type GetInstanceAutoscalingConfigAutoscalingTarget struct {
 	// should be trying to achieve for the instance.
 	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
 	StorageUtilizationPercent int `pulumi:"storageUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+	// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+	// The value should be higher than highPriorityCpuUtilizationPercent if present.
+	TotalCpuUtilizationPercent int `pulumi:"totalCpuUtilizationPercent"`
 }
 
 // GetInstanceAutoscalingConfigAutoscalingTargetInput is an input type that accepts GetInstanceAutoscalingConfigAutoscalingTargetArgs and GetInstanceAutoscalingConfigAutoscalingTargetOutput values.
@@ -3449,6 +3485,11 @@ type GetInstanceAutoscalingConfigAutoscalingTargetArgs struct {
 	// should be trying to achieve for the instance.
 	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
 	StorageUtilizationPercent pulumi.IntInput `pulumi:"storageUtilizationPercent"`
+	// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+	// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+	// The value should be higher than highPriorityCpuUtilizationPercent if present.
+	TotalCpuUtilizationPercent pulumi.IntInput `pulumi:"totalCpuUtilizationPercent"`
 }
 
 func (GetInstanceAutoscalingConfigAutoscalingTargetArgs) ElementType() reflect.Type {
@@ -3514,6 +3555,14 @@ func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) HighPriorityCpuUtil
 // This number is on a scale from 0 (no utilization) to 100 (full utilization).
 func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) StorageUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingTarget) int { return v.StorageUtilizationPercent }).(pulumi.IntOutput)
+}
+
+// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+// The value should be higher than highPriorityCpuUtilizationPercent if present.
+func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) TotalCpuUtilizationPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingTarget) int { return v.TotalCpuUtilizationPercent }).(pulumi.IntOutput)
 }
 
 type GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput struct{ *pulumi.OutputState }

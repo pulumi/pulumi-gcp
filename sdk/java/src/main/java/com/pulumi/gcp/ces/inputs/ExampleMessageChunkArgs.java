@@ -5,7 +5,10 @@ package com.pulumi.gcp.ces.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.ces.inputs.ExampleMessageChunkAgentTransferArgs;
 import com.pulumi.gcp.ces.inputs.ExampleMessageChunkImageArgs;
+import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolCallArgs;
+import com.pulumi.gcp.ces.inputs.ExampleMessageChunkToolResponseArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +18,25 @@ import javax.annotation.Nullable;
 public final class ExampleMessageChunkArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ExampleMessageChunkArgs Empty = new ExampleMessageChunkArgs();
+
+    /**
+     * Represents an event indicating the transfer of a conversation to a different
+     * agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="agentTransfer")
+    private @Nullable Output<ExampleMessageChunkAgentTransferArgs> agentTransfer;
+
+    /**
+     * @return Represents an event indicating the transfer of a conversation to a different
+     * agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ExampleMessageChunkAgentTransferArgs>> agentTransfer() {
+        return Optional.ofNullable(this.agentTransfer);
+    }
 
     /**
      * Represents an image input or output in the conversation.
@@ -49,6 +71,40 @@ public final class ExampleMessageChunkArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Request for the client or the agent to execute the specified tool.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="toolCall")
+    private @Nullable Output<ExampleMessageChunkToolCallArgs> toolCall;
+
+    /**
+     * @return Request for the client or the agent to execute the specified tool.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ExampleMessageChunkToolCallArgs>> toolCall() {
+        return Optional.ofNullable(this.toolCall);
+    }
+
+    /**
+     * The execution result of a specific tool from the client or the agent.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="toolResponse")
+    private @Nullable Output<ExampleMessageChunkToolResponseArgs> toolResponse;
+
+    /**
+     * @return The execution result of a specific tool from the client or the agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ExampleMessageChunkToolResponseArgs>> toolResponse() {
+        return Optional.ofNullable(this.toolResponse);
+    }
+
+    /**
      * A struct represents variables that were updated in the conversation,
      * keyed by variable names.
      * 
@@ -68,8 +124,11 @@ public final class ExampleMessageChunkArgs extends com.pulumi.resources.Resource
     private ExampleMessageChunkArgs() {}
 
     private ExampleMessageChunkArgs(ExampleMessageChunkArgs $) {
+        this.agentTransfer = $.agentTransfer;
         this.image = $.image;
         this.text = $.text;
+        this.toolCall = $.toolCall;
+        this.toolResponse = $.toolResponse;
         this.updatedVariables = $.updatedVariables;
     }
 
@@ -89,6 +148,31 @@ public final class ExampleMessageChunkArgs extends com.pulumi.resources.Resource
 
         public Builder(ExampleMessageChunkArgs defaults) {
             $ = new ExampleMessageChunkArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param agentTransfer Represents an event indicating the transfer of a conversation to a different
+         * agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentTransfer(@Nullable Output<ExampleMessageChunkAgentTransferArgs> agentTransfer) {
+            $.agentTransfer = agentTransfer;
+            return this;
+        }
+
+        /**
+         * @param agentTransfer Represents an event indicating the transfer of a conversation to a different
+         * agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentTransfer(ExampleMessageChunkAgentTransferArgs agentTransfer) {
+            return agentTransfer(Output.of(agentTransfer));
         }
 
         /**
@@ -133,6 +217,52 @@ public final class ExampleMessageChunkArgs extends com.pulumi.resources.Resource
          */
         public Builder text(String text) {
             return text(Output.of(text));
+        }
+
+        /**
+         * @param toolCall Request for the client or the agent to execute the specified tool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolCall(@Nullable Output<ExampleMessageChunkToolCallArgs> toolCall) {
+            $.toolCall = toolCall;
+            return this;
+        }
+
+        /**
+         * @param toolCall Request for the client or the agent to execute the specified tool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolCall(ExampleMessageChunkToolCallArgs toolCall) {
+            return toolCall(Output.of(toolCall));
+        }
+
+        /**
+         * @param toolResponse The execution result of a specific tool from the client or the agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolResponse(@Nullable Output<ExampleMessageChunkToolResponseArgs> toolResponse) {
+            $.toolResponse = toolResponse;
+            return this;
+        }
+
+        /**
+         * @param toolResponse The execution result of a specific tool from the client or the agent.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolResponse(ExampleMessageChunkToolResponseArgs toolResponse) {
+            return toolResponse(Output.of(toolResponse));
         }
 
         /**

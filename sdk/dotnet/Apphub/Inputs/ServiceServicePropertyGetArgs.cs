@@ -47,6 +47,20 @@ namespace Pulumi.Gcp.Apphub.Inputs
         [Input("gcpProject")]
         public Input<string>? GcpProject { get; set; }
 
+        [Input("identities")]
+        private InputList<Inputs.ServiceServicePropertyIdentityGetArgs>? _identities;
+
+        /// <summary>
+        /// (Output)
+        /// The identity associated with the service.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceServicePropertyIdentityGetArgs> Identities
+        {
+            get => _identities ?? (_identities = new InputList<Inputs.ServiceServicePropertyIdentityGetArgs>());
+            set => _identities = value;
+        }
+
         /// <summary>
         /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>

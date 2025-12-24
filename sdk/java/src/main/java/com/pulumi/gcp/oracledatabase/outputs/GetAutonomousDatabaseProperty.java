@@ -92,6 +92,11 @@ public final class GetAutonomousDatabaseProperty {
      */
     private List<GetAutonomousDatabasePropertyConnectionUrl> connectionUrls;
     /**
+     * @return The number of CPU cores to be made available to the database.
+     * 
+     */
+    private Integer cpuCoreCount;
+    /**
      * @return The list of customer contacts.
      * 
      */
@@ -360,6 +365,11 @@ public final class GetAutonomousDatabaseProperty {
      */
     private List<GetAutonomousDatabasePropertyScheduledOperationDetail> scheduledOperationDetails;
     /**
+     * @return The ID of the Oracle Cloud Infrastructure vault secret.
+     * 
+     */
+    private String secretId;
+    /**
      * @return The SQL Web Developer URL for the Autonomous Database.
      * 
      */
@@ -408,6 +418,11 @@ public final class GetAutonomousDatabaseProperty {
      * 
      */
     private Integer usedDataStorageSizeTbs;
+    /**
+     * @return The ID of the Oracle Cloud Infrastructure vault.
+     * 
+     */
+    private String vaultId;
 
     private GetAutonomousDatabaseProperty() {}
     /**
@@ -502,6 +517,13 @@ public final class GetAutonomousDatabaseProperty {
      */
     public List<GetAutonomousDatabasePropertyConnectionUrl> connectionUrls() {
         return this.connectionUrls;
+    }
+    /**
+     * @return The number of CPU cores to be made available to the database.
+     * 
+     */
+    public Integer cpuCoreCount() {
+        return this.cpuCoreCount;
     }
     /**
      * @return The list of customer contacts.
@@ -848,6 +870,13 @@ public final class GetAutonomousDatabaseProperty {
         return this.scheduledOperationDetails;
     }
     /**
+     * @return The ID of the Oracle Cloud Infrastructure vault secret.
+     * 
+     */
+    public String secretId() {
+        return this.secretId;
+    }
+    /**
      * @return The SQL Web Developer URL for the Autonomous Database.
      * 
      */
@@ -906,6 +935,13 @@ public final class GetAutonomousDatabaseProperty {
     public Integer usedDataStorageSizeTbs() {
         return this.usedDataStorageSizeTbs;
     }
+    /**
+     * @return The ID of the Oracle Cloud Infrastructure vault.
+     * 
+     */
+    public String vaultId() {
+        return this.vaultId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -927,6 +963,7 @@ public final class GetAutonomousDatabaseProperty {
         private Double computeCount;
         private List<GetAutonomousDatabasePropertyConnectionString> connectionStrings;
         private List<GetAutonomousDatabasePropertyConnectionUrl> connectionUrls;
+        private Integer cpuCoreCount;
         private List<GetAutonomousDatabasePropertyCustomerContact> customerContacts;
         private String dataSafeState;
         private Integer dataStorageSizeGb;
@@ -965,11 +1002,13 @@ public final class GetAutonomousDatabaseProperty {
         private String refreshableState;
         private String role;
         private List<GetAutonomousDatabasePropertyScheduledOperationDetail> scheduledOperationDetails;
+        private String secretId;
         private String sqlWebDeveloperUrl;
         private String state;
         private List<String> supportedCloneRegions;
         private Double totalAutoBackupStorageSizeGbs;
         private Integer usedDataStorageSizeTbs;
+        private String vaultId;
         public Builder() {}
         public Builder(GetAutonomousDatabaseProperty defaults) {
     	      Objects.requireNonNull(defaults);
@@ -984,6 +1023,7 @@ public final class GetAutonomousDatabaseProperty {
     	      this.computeCount = defaults.computeCount;
     	      this.connectionStrings = defaults.connectionStrings;
     	      this.connectionUrls = defaults.connectionUrls;
+    	      this.cpuCoreCount = defaults.cpuCoreCount;
     	      this.customerContacts = defaults.customerContacts;
     	      this.dataSafeState = defaults.dataSafeState;
     	      this.dataStorageSizeGb = defaults.dataStorageSizeGb;
@@ -1022,11 +1062,13 @@ public final class GetAutonomousDatabaseProperty {
     	      this.refreshableState = defaults.refreshableState;
     	      this.role = defaults.role;
     	      this.scheduledOperationDetails = defaults.scheduledOperationDetails;
+    	      this.secretId = defaults.secretId;
     	      this.sqlWebDeveloperUrl = defaults.sqlWebDeveloperUrl;
     	      this.state = defaults.state;
     	      this.supportedCloneRegions = defaults.supportedCloneRegions;
     	      this.totalAutoBackupStorageSizeGbs = defaults.totalAutoBackupStorageSizeGbs;
     	      this.usedDataStorageSizeTbs = defaults.usedDataStorageSizeTbs;
+    	      this.vaultId = defaults.vaultId;
         }
 
         @CustomType.Setter
@@ -1128,6 +1170,14 @@ public final class GetAutonomousDatabaseProperty {
         }
         public Builder connectionUrls(GetAutonomousDatabasePropertyConnectionUrl... connectionUrls) {
             return connectionUrls(List.of(connectionUrls));
+        }
+        @CustomType.Setter
+        public Builder cpuCoreCount(Integer cpuCoreCount) {
+            if (cpuCoreCount == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabaseProperty", "cpuCoreCount");
+            }
+            this.cpuCoreCount = cpuCoreCount;
+            return this;
         }
         @CustomType.Setter
         public Builder customerContacts(List<GetAutonomousDatabasePropertyCustomerContact> customerContacts) {
@@ -1446,6 +1496,14 @@ public final class GetAutonomousDatabaseProperty {
             return scheduledOperationDetails(List.of(scheduledOperationDetails));
         }
         @CustomType.Setter
+        public Builder secretId(String secretId) {
+            if (secretId == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabaseProperty", "secretId");
+            }
+            this.secretId = secretId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlWebDeveloperUrl(String sqlWebDeveloperUrl) {
             if (sqlWebDeveloperUrl == null) {
               throw new MissingRequiredPropertyException("GetAutonomousDatabaseProperty", "sqlWebDeveloperUrl");
@@ -1488,6 +1546,14 @@ public final class GetAutonomousDatabaseProperty {
             this.usedDataStorageSizeTbs = usedDataStorageSizeTbs;
             return this;
         }
+        @CustomType.Setter
+        public Builder vaultId(String vaultId) {
+            if (vaultId == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabaseProperty", "vaultId");
+            }
+            this.vaultId = vaultId;
+            return this;
+        }
         public GetAutonomousDatabaseProperty build() {
             final var _resultValue = new GetAutonomousDatabaseProperty();
             _resultValue.actualUsedDataStorageSizeTb = actualUsedDataStorageSizeTb;
@@ -1501,6 +1567,7 @@ public final class GetAutonomousDatabaseProperty {
             _resultValue.computeCount = computeCount;
             _resultValue.connectionStrings = connectionStrings;
             _resultValue.connectionUrls = connectionUrls;
+            _resultValue.cpuCoreCount = cpuCoreCount;
             _resultValue.customerContacts = customerContacts;
             _resultValue.dataSafeState = dataSafeState;
             _resultValue.dataStorageSizeGb = dataStorageSizeGb;
@@ -1539,11 +1606,13 @@ public final class GetAutonomousDatabaseProperty {
             _resultValue.refreshableState = refreshableState;
             _resultValue.role = role;
             _resultValue.scheduledOperationDetails = scheduledOperationDetails;
+            _resultValue.secretId = secretId;
             _resultValue.sqlWebDeveloperUrl = sqlWebDeveloperUrl;
             _resultValue.state = state;
             _resultValue.supportedCloneRegions = supportedCloneRegions;
             _resultValue.totalAutoBackupStorageSizeGbs = totalAutoBackupStorageSizeGbs;
             _resultValue.usedDataStorageSizeTbs = usedDataStorageSizeTbs;
+            _resultValue.vaultId = vaultId;
             return _resultValue;
         }
     }

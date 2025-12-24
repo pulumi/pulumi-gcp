@@ -237,6 +237,241 @@ import (
 //	}
 //
 // ```
+// ### Dataplex Entry Bigquery Table
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			aspect_type_full_one, err := dataplex.NewAspectType(ctx, "aspect-type-full-one", &dataplex.AspectTypeArgs{
+//				AspectTypeId: pulumi.String("aspect-type-one"),
+//				Location:     pulumi.String("us-central1"),
+//				Project:      pulumi.String("1111111111111"),
+//				MetadataTemplate: pulumi.String(`{
+//	  \"name\": \"tf-test-template\",
+//	  \"type\": \"record\",
+//	  \"recordFields\": [
+//	    {
+//	      \"name\": \"type\",
+//	      \"type\": \"enum\",
+//	      \"annotations\": {
+//	        \"displayName\": \"Type\",
+//	        \"description\": \"Specifies the type of view represented by the entry.\"
+//	      },
+//	      \"index\": 1,
+//	      \"constraints\": {
+//	        \"required\": true
+//	      },
+//	      \"enumValues\": [
+//	        {
+//	          \"name\": \"VIEW\",
+//	          \"index\": 1
+//	        }
+//	      ]
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			aspect_type_full_two, err := dataplex.NewAspectType(ctx, "aspect-type-full-two", &dataplex.AspectTypeArgs{
+//				AspectTypeId: pulumi.String("aspect-type-two"),
+//				Location:     pulumi.String("us-central1"),
+//				Project:      pulumi.String("1111111111111"),
+//				MetadataTemplate: pulumi.String(`{
+//	  \"name\": \"tf-test-template\",
+//	  \"type\": \"record\",
+//	  \"recordFields\": [
+//	    {
+//	      \"name\": \"story\",
+//	      \"type\": \"enum\",
+//	      \"annotations\": {
+//	        \"displayName\": \"Story\",
+//	        \"description\": \"Specifies the story of an entry.\"
+//	      },
+//	      \"index\": 1,
+//	      \"constraints\": {
+//	        \"required\": true
+//	      },
+//	      \"enumValues\": [
+//	        {
+//	          \"name\": \"SEQUENCE\",
+//	          \"index\": 1
+//	        }
+//	      ]
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example_dataset, err := bigquery.NewDataset(ctx, "example-dataset", &bigquery.DatasetArgs{
+//				DatasetId:               pulumi.String("dataset-basic"),
+//				FriendlyName:            pulumi.String("Example Dataset"),
+//				Location:                pulumi.String("us-central1"),
+//				DeleteContentsOnDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
+//				map[string]interface{}{
+//					"name": "event_time",
+//					"type": "TIMESTAMP",
+//					"mode": "REQUIRED",
+//				},
+//				map[string]interface{}{
+//					"name": "user_id",
+//					"type": "STRING",
+//					"mode": "NULLABLE",
+//				},
+//				map[string]interface{}{
+//					"name": "event_type",
+//					"type": "STRING",
+//					"mode": "NULLABLE",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			example_table, err := bigquery.NewTable(ctx, "example-table", &bigquery.TableArgs{
+//				DatasetId:          example_dataset.DatasetId,
+//				TableId:            pulumi.String("table-basic"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Schema:             pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewEntry(ctx, "tf_test_table", &dataplex.EntryArgs{
+//				EntryGroupId: pulumi.String("@bigquery"),
+//				Project:      pulumi.String("1111111111111"),
+//				Location:     pulumi.String("us-central1"),
+//				EntryId: pulumi.All(example_dataset.DatasetId, example_table.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//					datasetId := _args[0].(string)
+//					tableId := _args[1].(string)
+//					return fmt.Sprintf("bigquery.googleapis.com/projects/my-project-name/datasets/%v/tables/%v", datasetId, tableId), nil
+//				}).(pulumi.StringOutput),
+//				EntryType: pulumi.String("projects/655216118709/locations/global/entryTypes/bigquery-table"),
+//				FullyQualifiedName: pulumi.All(example_dataset.DatasetId, example_table.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//					datasetId := _args[0].(string)
+//					tableId := _args[1].(string)
+//					return fmt.Sprintf("bigquery:my-project-name.%v.%v", datasetId, tableId), nil
+//				}).(pulumi.StringOutput),
+//				ParentEntry: example_dataset.DatasetId.ApplyT(func(datasetId string) (string, error) {
+//					return fmt.Sprintf("projects/1111111111111/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/my-project-name/datasets/%v", datasetId), nil
+//				}).(pulumi.StringOutput),
+//				Aspects: dataplex.EntryAspectArray{
+//					&dataplex.EntryAspectArgs{
+//						AspectKey: pulumi.String("1111111111111.us-central1.aspect-type-one"),
+//						Aspect: &dataplex.EntryAspectAspectArgs{
+//							Data: pulumi.String("          {\\\"type\\\": \\\"VIEW\\\"    }\n"),
+//						},
+//					},
+//					&dataplex.EntryAspectArgs{
+//						AspectKey: pulumi.String("1111111111111.us-central1.aspect-type-two@Schema.event_type"),
+//						Aspect: &dataplex.EntryAspectAspectArgs{
+//							Data: pulumi.String("          {\\\"story\\\": \\\"SEQUENCE\\\"    }\n"),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				aspect_type_full_two,
+//				aspect_type_full_one,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Entry Glossary Term
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example_glossary, err := dataplex.NewGlossary(ctx, "example-glossary", &dataplex.GlossaryArgs{
+//				GlossaryId: pulumi.String("glossary-basic"),
+//				Location:   pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example_glossary_term, err := dataplex.NewGlossaryTerm(ctx, "example-glossary-term", &dataplex.GlossaryTermArgs{
+//				Parent: example_glossary.GlossaryId.ApplyT(func(glossaryId string) (string, error) {
+//					return fmt.Sprintf("projects/my-project-name/locations/us-central1/glossaries/%v", glossaryId), nil
+//				}).(pulumi.StringOutput),
+//				GlossaryId: example_glossary.GlossaryId,
+//				Location:   pulumi.String("us-central1"),
+//				TermId:     pulumi.String("glossary-term"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewEntry(ctx, "tf_test_glossary_term", &dataplex.EntryArgs{
+//				EntryGroupId: pulumi.String("@dataplex"),
+//				Project:      pulumi.String("1111111111111"),
+//				Location:     pulumi.String("us-central1"),
+//				EntryId: pulumi.All(example_glossary.GlossaryId, example_glossary_term.TermId).ApplyT(func(_args []interface{}) (string, error) {
+//					glossaryId := _args[0].(string)
+//					termId := _args[1].(*string)
+//					return fmt.Sprintf("projects/1111111111111/locations/us-central1/glossaries/%v/terms/%v", glossaryId, termId), nil
+//				}).(pulumi.StringOutput),
+//				EntryType: pulumi.String("projects/655216118709/locations/global/entryTypes/glossary-term"),
+//				ParentEntry: example_glossary.GlossaryId.ApplyT(func(glossaryId string) (string, error) {
+//					return fmt.Sprintf("projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/%v", glossaryId), nil
+//				}).(pulumi.StringOutput),
+//				Aspects: dataplex.EntryAspectArray{
+//					&dataplex.EntryAspectArgs{
+//						AspectKey: pulumi.String("655216118709.global.overview"),
+//						Aspect: &dataplex.EntryAspectAspectArgs{
+//							Data: pulumi.String("           {\\\"content\\\": \\\"Term Content\\\"    }\n"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

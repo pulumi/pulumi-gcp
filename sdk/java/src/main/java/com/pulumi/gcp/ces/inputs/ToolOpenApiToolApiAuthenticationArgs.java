@@ -6,6 +6,7 @@ package com.pulumi.gcp.ces.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.ToolOpenApiToolApiAuthenticationApiKeyConfigArgs;
+import com.pulumi.gcp.ces.inputs.ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolOpenApiToolApiAuthenticationOauthConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
@@ -36,6 +37,25 @@ public final class ToolOpenApiToolApiAuthenticationArgs extends com.pulumi.resou
      */
     public Optional<Output<List<ToolOpenApiToolApiAuthenticationApiKeyConfigArgs>>> apiKeyConfigs() {
         return Optional.ofNullable(this.apiKeyConfigs);
+    }
+
+    /**
+     * (Output)
+     * Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bearerTokenConfigs")
+    private @Nullable Output<List<ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs>> bearerTokenConfigs;
+
+    /**
+     * @return (Output)
+     * Configurations for authentication with a bearer token.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs>>> bearerTokenConfigs() {
+        return Optional.ofNullable(this.bearerTokenConfigs);
     }
 
     /**
@@ -101,6 +121,7 @@ public final class ToolOpenApiToolApiAuthenticationArgs extends com.pulumi.resou
 
     private ToolOpenApiToolApiAuthenticationArgs(ToolOpenApiToolApiAuthenticationArgs $) {
         this.apiKeyConfigs = $.apiKeyConfigs;
+        this.bearerTokenConfigs = $.bearerTokenConfigs;
         this.oauthConfigs = $.oauthConfigs;
         this.serviceAccountAuthConfigs = $.serviceAccountAuthConfigs;
         this.serviceAgentIdTokenAuthConfigs = $.serviceAgentIdTokenAuthConfigs;
@@ -159,6 +180,43 @@ public final class ToolOpenApiToolApiAuthenticationArgs extends com.pulumi.resou
          */
         public Builder apiKeyConfigs(ToolOpenApiToolApiAuthenticationApiKeyConfigArgs... apiKeyConfigs) {
             return apiKeyConfigs(List.of(apiKeyConfigs));
+        }
+
+        /**
+         * @param bearerTokenConfigs (Output)
+         * Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenConfigs(@Nullable Output<List<ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs>> bearerTokenConfigs) {
+            $.bearerTokenConfigs = bearerTokenConfigs;
+            return this;
+        }
+
+        /**
+         * @param bearerTokenConfigs (Output)
+         * Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenConfigs(List<ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs> bearerTokenConfigs) {
+            return bearerTokenConfigs(Output.of(bearerTokenConfigs));
+        }
+
+        /**
+         * @param bearerTokenConfigs (Output)
+         * Configurations for authentication with a bearer token.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenConfigs(ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs... bearerTokenConfigs) {
+            return bearerTokenConfigs(List.of(bearerTokenConfigs));
         }
 
         /**

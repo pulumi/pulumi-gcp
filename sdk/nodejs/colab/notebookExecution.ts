@@ -93,6 +93,93 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Colab Notebook Execution Custom Env
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const myNetwork = new gcp.compute.Network("my_network", {
+ *     name: "colab-test-default",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const mySubnetwork = new gcp.compute.Subnetwork("my_subnetwork", {
+ *     name: "colab-test-default",
+ *     network: myNetwork.id,
+ *     region: "us-central1",
+ *     ipCidrRange: "10.0.1.0/24",
+ * });
+ * const outputBucket = new gcp.storage.Bucket("output_bucket", {
+ *     name: "my_bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const notebook_execution = new gcp.colab.NotebookExecution("notebook-execution", {
+ *     displayName: "Notebook execution basic",
+ *     location: "us-central1",
+ *     directNotebookSource: {
+ *         content: std.base64encode({
+ *             input: `    {
+ *       \\"cells\\": [
+ *         {
+ *           \\"cell_type\\": \\"code\\",
+ *           \\"execution_count\\": null,
+ *           \\"metadata\\": {},
+ *           \\"outputs\\": [],
+ *           \\"source\\": [
+ *             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+ *           ]
+ *         }
+ *       ],
+ *       \\"metadata\\": {
+ *         \\"kernelspec\\": {
+ *           \\"display_name\\": \\"Python 3\\",
+ *           \\"language\\": \\"python\\",
+ *           \\"name\\": \\"python3\\"
+ *         },
+ *         \\"language_info\\": {
+ *           \\"codemirror_mode\\": {
+ *             \\"name\\": \\"ipython\\",
+ *             \\"version\\": 3
+ *           },
+ *           \\"file_extension\\": \\".py\\",
+ *           \\"mimetype\\": \\"text/x-python\\",
+ *           \\"name\\": \\"python\\",
+ *           \\"nbconvert_exporter\\": \\"python\\",
+ *           \\"pygments_lexer\\": \\"ipython3\\",
+ *           \\"version\\": \\"3.8.5\\"
+ *         }
+ *       },
+ *       \\"nbformat\\": 4,
+ *       \\"nbformat_minor\\": 4
+ *     }
+ * `,
+ *         }).then(invoke => invoke.result),
+ *     },
+ *     customEnvironmentSpec: {
+ *         machineSpec: {
+ *             machineType: "n1-standard-2",
+ *             acceleratorType: "NVIDIA_TESLA_T4",
+ *             acceleratorCount: 1,
+ *         },
+ *         persistentDiskSpec: {
+ *             diskType: "pd-standard",
+ *             diskSizeGb: "200",
+ *         },
+ *         networkSpec: {
+ *             enableInternetAccess: true,
+ *             network: myNetwork.id,
+ *             subnetwork: mySubnetwork.id,
+ *         },
+ *     },
+ *     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
+ *     serviceAccount: "my@service-account.com",
+ * }, {
+ *     dependsOn: [outputBucket],
+ * });
+ * ```
  * ### Colab Notebook Execution Full
  *
  * ```typescript
@@ -301,6 +388,11 @@ export class NotebookExecution extends pulumi.CustomResource {
     }
 
     /**
+     * Compute configuration to use for an execution job
+     * Structure is documented below.
+     */
+    declare public readonly customEnvironmentSpec: pulumi.Output<outputs.colab.NotebookExecutionCustomEnvironmentSpec | undefined>;
+    /**
      * The Dataform Repository containing the input notebook.
      * Structure is documented below.
      */
@@ -366,6 +458,7 @@ export class NotebookExecution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotebookExecutionState | undefined;
+            resourceInputs["customEnvironmentSpec"] = state?.customEnvironmentSpec;
             resourceInputs["dataformRepositorySource"] = state?.dataformRepositorySource;
             resourceInputs["directNotebookSource"] = state?.directNotebookSource;
             resourceInputs["displayName"] = state?.displayName;
@@ -389,6 +482,7 @@ export class NotebookExecution extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["customEnvironmentSpec"] = args?.customEnvironmentSpec;
             resourceInputs["dataformRepositorySource"] = args?.dataformRepositorySource;
             resourceInputs["directNotebookSource"] = args?.directNotebookSource;
             resourceInputs["displayName"] = args?.displayName;
@@ -411,6 +505,11 @@ export class NotebookExecution extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NotebookExecution resources.
  */
 export interface NotebookExecutionState {
+    /**
+     * Compute configuration to use for an execution job
+     * Structure is documented below.
+     */
+    customEnvironmentSpec?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpec>;
     /**
      * The Dataform Repository containing the input notebook.
      * Structure is documented below.
@@ -469,6 +568,11 @@ export interface NotebookExecutionState {
  * The set of arguments for constructing a NotebookExecution resource.
  */
 export interface NotebookExecutionArgs {
+    /**
+     * Compute configuration to use for an execution job
+     * Structure is documented below.
+     */
+    customEnvironmentSpec?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpec>;
     /**
      * The Dataform Repository containing the input notebook.
      * Structure is documented below.

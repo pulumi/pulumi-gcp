@@ -290,7 +290,7 @@ def get_router_nat(name: Optional[_builtins.str] = None,
                    router: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterNatResult:
     """
-    To get more information about Snapshot, see:
+    To get more information about RouterNat, see:
 
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     * How-to Guides
@@ -358,7 +358,7 @@ def get_router_nat_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                           router: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterNatResult]:
     """
-    To get more information about Snapshot, see:
+    To get more information about RouterNat, see:
 
     * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
     * How-to Guides

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.diagflow.CxToolArgs;
 import com.pulumi.gcp.diagflow.inputs.CxToolState;
+import com.pulumi.gcp.diagflow.outputs.CxToolConnectorSpec;
 import com.pulumi.gcp.diagflow.outputs.CxToolDataStoreSpec;
 import com.pulumi.gcp.diagflow.outputs.CxToolFunctionSpec;
 import com.pulumi.gcp.diagflow.outputs.CxToolOpenApiSpec;
@@ -296,6 +297,135 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dialogflowcx Tool Connector
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.integrationconnectors.Connection;
+ * import com.pulumi.gcp.integrationconnectors.ConnectionArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionConfigVariableArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamMember;
+ * import com.pulumi.gcp.bigquery.DatasetIamMemberArgs;
+ * import com.pulumi.gcp.diagflow.CxTool;
+ * import com.pulumi.gcp.diagflow.CxToolArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxToolConnectorSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
+ *             .displayName("dialogflowcx-agent-connector")
+ *             .location("us-central1")
+ *             .defaultLanguageCode("en")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .deleteChatEngineOnDestroy(true)
+ *             .build());
+ * 
+ *         var bqDataset = new Dataset("bqDataset", DatasetArgs.builder()
+ *             .datasetId("terraformdatasetdfcxtool")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("us-central1")
+ *             .deleteContentsOnDestroy(true)
+ *             .build());
+ * 
+ *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var integrationConnector = new Connection("integrationConnector", ConnectionArgs.builder()
+ *             .name("terraform-df-cx-tool-connection")
+ *             .location("us-central1")
+ *             .connectorVersion(agent.project().applyValue(_project -> String.format("projects/%s/locations/global/providers/gcp/connectors/bigquery/versions/1", _project)))
+ *             .description("tf created description")
+ *             .configVariables(            
+ *                 ConnectionConfigVariableArgs.builder()
+ *                     .key("dataset_id")
+ *                     .stringValue(bqDataset.datasetId())
+ *                     .build(),
+ *                 ConnectionConfigVariableArgs.builder()
+ *                     .key("project_id")
+ *                     .stringValue(agent.project())
+ *                     .build(),
+ *                 ConnectionConfigVariableArgs.builder()
+ *                     .key("support_native_data_type")
+ *                     .booleanValue(false)
+ *                     .build(),
+ *                 ConnectionConfigVariableArgs.builder()
+ *                     .key("proxy_enabled")
+ *                     .booleanValue(false)
+ *                     .build())
+ *             .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.number()))
+ *             .authConfig(ConnectionAuthConfigArgs.builder()
+ *                 .authType("AUTH_TYPE_UNSPECIFIED")
+ *                 .build())
+ *             .build());
+ * 
+ *         var bqTable = new Table("bqTable", TableArgs.builder()
+ *             .deletionProtection(false)
+ *             .datasetId(bqDataset.datasetId())
+ *             .tableId("terraformdatasetdfcxtooltable")
+ *             .build());
+ * 
+ *         var connectorSaDatasetPerms = new DatasetIamMember("connectorSaDatasetPerms", DatasetIamMemberArgs.builder()
+ *             .project(testProject.projectId())
+ *             .datasetId(bqDataset.datasetId())
+ *             .role("roles/bigquery.dataEditor")
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", testProject.number()))
+ *             .build());
+ * 
+ *         var connectorTool = new CxTool("connectorTool", CxToolArgs.builder()
+ *             .parent(agent.id())
+ *             .displayName("Example Connector Tool")
+ *             .description("Example Description")
+ *             .connectorSpec(CxToolConnectorSpecArgs.builder()
+ *                 .name(Output.tuple(agent.project(), integrationConnector.name()).applyValue(values -> }{{@code
+ *                     var project = values.t1;
+ *                     var name = values.t2;
+ *                     return String.format("projects/%s/locations/us-central1/connections/%s", project,name);
+ *                 }}{@code ))
+ *                 .actions(                
+ *                     CxToolConnectorSpecActionArgs.builder()
+ *                         .connectionActionId("ExecuteCustomQuery")
+ *                         .inputFields("test1")
+ *                         .outputFields("test1")
+ *                         .build(),
+ *                     CxToolConnectorSpecActionArgs.builder()
+ *                         .entityOperation(CxToolConnectorSpecActionEntityOperationArgs.builder()
+ *                             .entityId(bqTable.tableId())
+ *                             .operation("LIST")
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -318,6 +448,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:diagflow/cxTool:CxTool")
 public class CxTool extends com.pulumi.resources.CustomResource {
+    /**
+     * Integration connectors tool specification.
+     * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="connectorSpec", refs={CxToolConnectorSpec.class}, tree="[0]")
+    private Output</* @Nullable */ CxToolConnectorSpec> connectorSpec;
+
+    /**
+     * @return Integration connectors tool specification.
+     * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<CxToolConnectorSpec>> connectorSpec() {
+        return Codegen.optional(this.connectorSpec);
+    }
     /**
      * Data store search tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.

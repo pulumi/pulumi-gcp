@@ -4,7 +4,6 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,7 +16,7 @@ public final class ClusterInitialUser {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String password;
+    private @Nullable String password;
     /**
      * @return The database username.
      * 
@@ -30,8 +29,8 @@ public final class ClusterInitialUser {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     /**
      * @return The database username.
@@ -50,7 +49,7 @@ public final class ClusterInitialUser {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String password;
+        private @Nullable String password;
         private @Nullable String user;
         public Builder() {}
         public Builder(ClusterInitialUser defaults) {
@@ -60,10 +59,8 @@ public final class ClusterInitialUser {
         }
 
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("ClusterInitialUser", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }

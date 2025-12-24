@@ -83,6 +83,7 @@ from .get_region_instance_group import *
 from .get_region_instance_group_manager import *
 from .get_region_instance_template import *
 from .get_region_network_endpoint_group import *
+from .get_region_security_policy import *
 from .get_region_ssl_certificate import *
 from .get_region_ssl_policy import *
 from .get_regions import *
@@ -97,6 +98,7 @@ from .get_security_policy import *
 from .get_snapshot import *
 from .get_snapshot_iam_policy import *
 from .get_ssl_policy import *
+from .get_storage_pool import *
 from .get_storage_pool_iam_policy import *
 from .get_storage_pool_types import *
 from .get_subnetwork import *
@@ -185,6 +187,7 @@ from .region_disk_iam_policy import *
 from .region_disk_resource_policy_attachment import *
 from .region_health_aggregation_policy import *
 from .region_health_check import *
+from .region_health_source import *
 from .region_instance_group_manager import *
 from .region_instance_template import *
 from .region_network_endpoint import *

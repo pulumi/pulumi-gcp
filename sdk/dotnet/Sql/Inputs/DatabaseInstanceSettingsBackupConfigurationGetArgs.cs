@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<Inputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs>? BackupRetentionSettings { get; set; }
 
         /// <summary>
+        /// The backup tier that manages the backups for the instance.
+        /// </summary>
+        [Input("backupTier")]
+        public Input<string>? BackupTier { get; set; }
+
+        /// <summary>
         /// True if binary logging is enabled.
         /// Can only be used with MySQL.
         /// </summary>

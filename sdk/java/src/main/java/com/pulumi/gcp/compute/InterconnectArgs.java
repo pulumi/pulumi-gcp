@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InterconnectApplicationAwareInterconnectArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectMacsecArgs;
+import com.pulumi.gcp.compute.inputs.InterconnectParamsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -280,6 +281,23 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InterconnectParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InterconnectParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -369,6 +387,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         this.macsecEnabled = $.macsecEnabled;
         this.name = $.name;
         this.nocContactEmail = $.nocContactEmail;
+        this.params = $.params;
         this.project = $.project;
         this.remoteLocation = $.remoteLocation;
         this.requestedFeatures = $.requestedFeatures;
@@ -726,6 +745,29 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nocContactEmail(String nocContactEmail) {
             return nocContactEmail(Output.of(nocContactEmail));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InterconnectParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InterconnectParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

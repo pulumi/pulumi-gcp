@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,10 +39,26 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfigArgs extends com.pulu
         return Optional.ofNullable(this.cgroupMode);
     }
 
+    /**
+     * The settings for kernel module loading.
+     * 
+     */
+    @Import(name="nodeKernelModuleLoading")
+    private @Nullable Output<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs> nodeKernelModuleLoading;
+
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs>> nodeKernelModuleLoading() {
+        return Optional.ofNullable(this.nodeKernelModuleLoading);
+    }
+
     private ClusterNodePoolAutoConfigLinuxNodeConfigArgs() {}
 
     private ClusterNodePoolAutoConfigLinuxNodeConfigArgs(ClusterNodePoolAutoConfigLinuxNodeConfigArgs $) {
         this.cgroupMode = $.cgroupMode;
+        this.nodeKernelModuleLoading = $.nodeKernelModuleLoading;
     }
 
     public static Builder builder() {
@@ -89,6 +106,27 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfigArgs extends com.pulu
          */
         public Builder cgroupMode(String cgroupMode) {
             return cgroupMode(Output.of(cgroupMode));
+        }
+
+        /**
+         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeKernelModuleLoading(@Nullable Output<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs> nodeKernelModuleLoading) {
+            $.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            return this;
+        }
+
+        /**
+         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeKernelModuleLoading(ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs nodeKernelModuleLoading) {
+            return nodeKernelModuleLoading(Output.of(nodeKernelModuleLoading));
         }
 
         public ClusterNodePoolAutoConfigLinuxNodeConfigArgs build() {

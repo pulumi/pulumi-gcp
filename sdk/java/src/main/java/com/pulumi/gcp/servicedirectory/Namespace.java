@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Namespace, see:
  * 
- * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
+ * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1/projects.locations.namespaces)
  * * How-to Guides
  *     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
  * 
@@ -133,8 +133,6 @@ public class Namespace extends com.pulumi.resources.CustomResource {
     }
     /**
      * The location for the Namespace.
-     * A full list of valid locations can be found by running
-     * `gcloud beta service-directory locations list`.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
@@ -142,8 +140,6 @@ public class Namespace extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The location for the Namespace.
-     * A full list of valid locations can be found by running
-     * `gcloud beta service-directory locations list`.
      * 
      */
     public Output<String> location() {

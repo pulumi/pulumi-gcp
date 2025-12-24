@@ -38,7 +38,6 @@ public final class CxGenerativeSettingsState extends com.pulumi.resources.Resour
 
     /**
      * Settings for Generative Safety.
-     * w
      * Structure is documented below.
      * 
      */
@@ -47,7 +46,6 @@ public final class CxGenerativeSettingsState extends com.pulumi.resources.Resour
 
     /**
      * @return Settings for Generative Safety.
-     * w
      * Structure is documented below.
      * 
      */
@@ -193,7 +191,6 @@ public final class CxGenerativeSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param generativeSafetySettings Settings for Generative Safety.
-         * w
          * Structure is documented below.
          * 
          * @return builder
@@ -206,7 +203,6 @@ public final class CxGenerativeSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param generativeSafetySettings Settings for Generative Safety.
-         * w
          * Structure is documented below.
          * 
          * @return builder

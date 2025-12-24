@@ -27,6 +27,7 @@ from .workforce_pool_iam_policy import *
 from .workforce_pool_provider import *
 from .workforce_pool_provider_key import *
 from .workforce_pool_provider_scim_tenant import *
+from .workforce_pool_provider_scim_token import *
 from .workload_identity_pool import *
 from .workload_identity_pool_iam_binding import *
 from .workload_identity_pool_iam_member import *

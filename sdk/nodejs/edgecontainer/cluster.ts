@@ -17,69 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Edgecontainer Cluster
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const _default = new gcp.edgecontainer.Cluster("default", {
- *     name: "basic-cluster",
- *     location: "us-central1",
- *     authorization: {
- *         adminUsers: {
- *             username: "admin@hashicorptest.com",
- *         },
- *     },
- *     networking: {
- *         clusterIpv4CidrBlocks: ["10.0.0.0/16"],
- *         servicesIpv4CidrBlocks: ["10.1.0.0/16"],
- *     },
- *     fleet: {
- *         project: project.then(project => `projects/${project.number}`),
- *     },
- *     labels: {
- *         my_key: "my_val",
- *         other_key: "other_val",
- *     },
- * });
- * ```
- * ### Edgecontainer Cluster With Maintenance Window
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const project = gcp.organizations.getProject({});
- * const _default = new gcp.edgecontainer.Cluster("default", {
- *     name: "cluster-with-maintenance",
- *     location: "us-central1",
- *     authorization: {
- *         adminUsers: {
- *             username: "admin@hashicorptest.com",
- *         },
- *     },
- *     networking: {
- *         clusterIpv4CidrBlocks: ["10.0.0.0/16"],
- *         servicesIpv4CidrBlocks: ["10.1.0.0/16"],
- *     },
- *     fleet: {
- *         project: project.then(project => `projects/${project.number}`),
- *     },
- *     maintenancePolicy: {
- *         window: {
- *             recurringWindow: {
- *                 window: {
- *                     startTime: "2023-01-01T08:00:00Z",
- *                     endTime: "2023-01-01T17:00:00Z",
- *                 },
- *                 recurrence: "FREQ=WEEKLY;BYDAY=SA",
- *             },
- *         },
- *     },
- * });
- * ```
  * ### Edgecontainer Local Control Plane Cluster
  *
  * ```typescript

@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string EffectiveTime;
+        public readonly ImmutableArray<Outputs.GetBackupVaultEncryptionConfigResult> EncryptionConfigs;
         public readonly string Etag;
         public readonly bool ForceDelete;
         public readonly bool ForceUpdate;
@@ -211,6 +212,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string effectiveTime,
 
+            ImmutableArray<Outputs.GetBackupVaultEncryptionConfigResult> encryptionConfigs,
+
             string etag,
 
             bool forceDelete,
@@ -256,6 +259,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;
             EffectiveTime = effectiveTime;
+            EncryptionConfigs = encryptionConfigs;
             Etag = etag;
             ForceDelete = forceDelete;
             ForceUpdate = forceUpdate;

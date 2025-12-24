@@ -14,11 +14,14 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef
     {
         /// <summary>
-        /// The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+        /// The name of the secret in Cloud Secret Manager.
+        /// Format: {secret_name}.
         /// </summary>
         public readonly string Secret;
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
+        /// The Cloud Secret Manager secret version. Can be 'latest'
+        /// for the latest version, an integer for a specific
+        /// version, or a version alias.
         /// </summary>
         public readonly string? Version;
 

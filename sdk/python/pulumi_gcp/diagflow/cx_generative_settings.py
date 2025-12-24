@@ -33,7 +33,6 @@ class CxGenerativeSettingsArgs:
         :param pulumi.Input['CxGenerativeSettingsFallbackSettingsArgs'] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
         :param pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsArgs'] generative_safety_settings: Settings for Generative Safety.
-               w
                Structure is documented below.
         :param pulumi.Input['CxGenerativeSettingsKnowledgeConnectorSettingsArgs'] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
@@ -84,7 +83,6 @@ class CxGenerativeSettingsArgs:
     def generative_safety_settings(self) -> Optional[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsArgs']]:
         """
         Settings for Generative Safety.
-        w
         Structure is documented below.
         """
         return pulumi.get(self, "generative_safety_settings")
@@ -148,7 +146,6 @@ class _CxGenerativeSettingsState:
         :param pulumi.Input['CxGenerativeSettingsFallbackSettingsArgs'] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
         :param pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsArgs'] generative_safety_settings: Settings for Generative Safety.
-               w
                Structure is documented below.
         :param pulumi.Input['CxGenerativeSettingsKnowledgeConnectorSettingsArgs'] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
@@ -193,7 +190,6 @@ class _CxGenerativeSettingsState:
     def generative_safety_settings(self) -> Optional[pulumi.Input['CxGenerativeSettingsGenerativeSafetySettingsArgs']]:
         """
         Settings for Generative Safety.
-        w
         Structure is documented below.
         """
         return pulumi.get(self, "generative_safety_settings")
@@ -358,7 +354,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
         :param pulumi.Input[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
         :param pulumi.Input[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict']] generative_safety_settings: Settings for Generative Safety.
-               w
                Structure is documented below.
         :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
@@ -513,7 +508,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
         :param pulumi.Input[Union['CxGenerativeSettingsFallbackSettingsArgs', 'CxGenerativeSettingsFallbackSettingsArgsDict']] fallback_settings: Settings for Generative Fallback.
                Structure is documented below.
         :param pulumi.Input[Union['CxGenerativeSettingsGenerativeSafetySettingsArgs', 'CxGenerativeSettingsGenerativeSafetySettingsArgsDict']] generative_safety_settings: Settings for Generative Safety.
-               w
                Structure is documented below.
         :param pulumi.Input[Union['CxGenerativeSettingsKnowledgeConnectorSettingsArgs', 'CxGenerativeSettingsKnowledgeConnectorSettingsArgsDict']] knowledge_connector_settings: Settings for knowledge connector.
                Structure is documented below.
@@ -552,7 +546,6 @@ class CxGenerativeSettings(pulumi.CustomResource):
     def generative_safety_settings(self) -> pulumi.Output[Optional['outputs.CxGenerativeSettingsGenerativeSafetySettings']]:
         """
         Settings for Generative Safety.
-        w
         Structure is documented below.
         """
         return pulumi.get(self, "generative_safety_settings")

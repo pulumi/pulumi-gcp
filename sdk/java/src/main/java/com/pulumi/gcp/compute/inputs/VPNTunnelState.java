@@ -401,9 +401,12 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
-     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
      * 
      */
     @Import(name="sharedSecretWo")
@@ -411,9 +414,12 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
      * Shared secret used to set the secure session between the Cloud VPN
      * gateway and the peer VPN gateway.
-     *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
      * 
      */
     public Optional<Output<String>> sharedSecretWo() {
@@ -421,14 +427,14 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     @Import(name="sharedSecretWoVersion")
     private @Nullable Output<String> sharedSecretWoVersion;
 
     /**
-     * @return Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     public Optional<Output<String>> sharedSecretWoVersion() {
@@ -1092,9 +1098,12 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sharedSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * Shared secret used to set the secure session between the Cloud VPN
          * gateway and the peer VPN gateway.
-         *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
          * 
          * @return builder
          * 
@@ -1106,9 +1115,12 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sharedSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
          * Shared secret used to set the secure session between the Cloud VPN
          * gateway and the peer VPN gateway.
-         *  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
          * 
          * @return builder
          * 
@@ -1118,7 +1130,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedSecretWoVersion Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param sharedSecretWoVersion Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 
@@ -1129,7 +1141,7 @@ public final class VPNTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sharedSecretWoVersion Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param sharedSecretWoVersion Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 

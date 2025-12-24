@@ -28,6 +28,7 @@ class BucketObjectArgs:
                  content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
                  content_language: Optional[pulumi.Input[_builtins.str]] = None,
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 contexts: Optional[pulumi.Input['BucketObjectContextsArgs']] = None,
                  customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
@@ -51,6 +52,7 @@ class BucketObjectArgs:
         :param pulumi.Input[_builtins.str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[_builtins.str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[_builtins.str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input['BucketObjectContextsArgs'] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -84,6 +86,8 @@ class BucketObjectArgs:
             pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if contexts is not None:
+            pulumi.set(__self__, "contexts", contexts)
         if customer_encryption is not None:
             pulumi.set(__self__, "customer_encryption", customer_encryption)
         if deletion_policy is not None:
@@ -195,6 +199,18 @@ class BucketObjectArgs:
     @content_type.setter
     def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "content_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def contexts(self) -> Optional[pulumi.Input['BucketObjectContextsArgs']]:
+        """
+        Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        """
+        return pulumi.get(self, "contexts")
+
+    @contexts.setter
+    def contexts(self, value: Optional[pulumi.Input['BucketObjectContextsArgs']]):
+        pulumi.set(self, "contexts", value)
 
     @_builtins.property
     @pulumi.getter(name="customerEncryption")
@@ -365,6 +381,7 @@ class _BucketObjectState:
                  content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
                  content_language: Optional[pulumi.Input[_builtins.str]] = None,
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 contexts: Optional[pulumi.Input['BucketObjectContextsArgs']] = None,
                  crc32c: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_encryption: Optional[pulumi.Input['BucketObjectCustomerEncryptionArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -395,6 +412,7 @@ class _BucketObjectState:
         :param pulumi.Input[_builtins.str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[_builtins.str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[_builtins.str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input['BucketObjectContextsArgs'] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         :param pulumi.Input[_builtins.str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input['BucketObjectCustomerEncryptionArgs'] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
@@ -437,6 +455,8 @@ class _BucketObjectState:
             pulumi.set(__self__, "content_language", content_language)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if contexts is not None:
+            pulumi.set(__self__, "contexts", contexts)
         if crc32c is not None:
             pulumi.set(__self__, "crc32c", crc32c)
         if customer_encryption is not None:
@@ -562,6 +582,18 @@ class _BucketObjectState:
     @content_type.setter
     def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "content_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def contexts(self) -> Optional[pulumi.Input['BucketObjectContextsArgs']]:
+        """
+        Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        """
+        return pulumi.get(self, "contexts")
+
+    @contexts.setter
+    def contexts(self, value: Optional[pulumi.Input['BucketObjectContextsArgs']]):
+        pulumi.set(self, "contexts", value)
 
     @_builtins.property
     @pulumi.getter
@@ -820,6 +852,7 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
                  content_language: Optional[pulumi.Input[_builtins.str]] = None,
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 contexts: Optional[pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
                  customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
@@ -872,6 +905,30 @@ class BucketObject(pulumi.CustomResource):
             bucket="image-store")
         ```
 
+        Example creating an contexts for an object.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket_object = gcp.storage.BucketObject("bucket_object",
+            bucket="test-bucket",
+            name="test-object",
+            content="test-content",
+            contexts={
+                "customs": [
+                    {
+                        "key": "testKey",
+                        "value": "test",
+                    },
+                    {
+                        "key": "testKeyTwo",
+                        "value": "test",
+                    },
+                ],
+            })
+        ```
+
         ## Import
 
         This resource does not support import.
@@ -886,6 +943,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[_builtins.str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[_builtins.str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
@@ -950,6 +1008,30 @@ class BucketObject(pulumi.CustomResource):
             bucket="image-store")
         ```
 
+        Example creating an contexts for an object.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket_object = gcp.storage.BucketObject("bucket_object",
+            bucket="test-bucket",
+            name="test-object",
+            content="test-content",
+            contexts={
+                "customs": [
+                    {
+                        "key": "testKey",
+                        "value": "test",
+                    },
+                    {
+                        "key": "testKeyTwo",
+                        "value": "test",
+                    },
+                ],
+            })
+        ```
+
         ## Import
 
         This resource does not support import.
@@ -976,6 +1058,7 @@ class BucketObject(pulumi.CustomResource):
                  content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
                  content_language: Optional[pulumi.Input[_builtins.str]] = None,
                  content_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 contexts: Optional[pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
                  customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_md5hash: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1007,6 +1090,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["content_encoding"] = content_encoding
             __props__.__dict__["content_language"] = content_language
             __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["contexts"] = contexts
             __props__.__dict__["customer_encryption"] = None if customer_encryption is None else pulumi.Output.secret(customer_encryption)
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["detect_md5hash"] = detect_md5hash
@@ -1046,6 +1130,7 @@ class BucketObject(pulumi.CustomResource):
             content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
             content_language: Optional[pulumi.Input[_builtins.str]] = None,
             content_type: Optional[pulumi.Input[_builtins.str]] = None,
+            contexts: Optional[pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']]] = None,
             crc32c: Optional[pulumi.Input[_builtins.str]] = None,
             customer_encryption: Optional[pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']]] = None,
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1081,6 +1166,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[_builtins.str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[_builtins.str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input[Union['BucketObjectContextsArgs', 'BucketObjectContextsArgsDict']] contexts: Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
         :param pulumi.Input[_builtins.str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
         :param pulumi.Input[Union['BucketObjectCustomerEncryptionArgs', 'BucketObjectCustomerEncryptionArgsDict']] customer_encryption: Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
                Structure is documented below.
@@ -1120,6 +1206,7 @@ class BucketObject(pulumi.CustomResource):
         __props__.__dict__["content_encoding"] = content_encoding
         __props__.__dict__["content_language"] = content_language
         __props__.__dict__["content_type"] = content_type
+        __props__.__dict__["contexts"] = contexts
         __props__.__dict__["crc32c"] = crc32c
         __props__.__dict__["customer_encryption"] = customer_encryption
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1198,6 +1285,14 @@ class BucketObject(pulumi.CustomResource):
         [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         """
         return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def contexts(self) -> pulumi.Output[Optional['outputs.BucketObjectContexts']]:
+        """
+        Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+        """
+        return pulumi.get(self, "contexts")
 
     @_builtins.property
     @pulumi.getter

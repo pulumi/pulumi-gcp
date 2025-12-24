@@ -277,6 +277,137 @@ import (
 //	}
 //
 // ```
+// ### Dialogflowcx Tool Connector
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/integrationconnectors"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:               pulumi.String("dialogflowcx-agent-connector"),
+//				Location:                  pulumi.String("us-central1"),
+//				DefaultLanguageCode:       pulumi.String("en"),
+//				TimeZone:                  pulumi.String("America/New_York"),
+//				Description:               pulumi.String("Example description."),
+//				DeleteChatEngineOnDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bqDataset, err := bigquery.NewDataset(ctx, "bq_dataset", &bigquery.DatasetArgs{
+//				DatasetId:               pulumi.String("terraformdatasetdfcxtool"),
+//				FriendlyName:            pulumi.String("test"),
+//				Description:             pulumi.String("This is a test description"),
+//				Location:                pulumi.String("us-central1"),
+//				DeleteContentsOnDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testProject, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			integrationConnector, err := integrationconnectors.NewConnection(ctx, "integration_connector", &integrationconnectors.ConnectionArgs{
+//				Name:     pulumi.String("terraform-df-cx-tool-connection"),
+//				Location: pulumi.String("us-central1"),
+//				ConnectorVersion: agent.Project.ApplyT(func(project string) (string, error) {
+//					return fmt.Sprintf("projects/%v/locations/global/providers/gcp/connectors/bigquery/versions/1", project), nil
+//				}).(pulumi.StringOutput),
+//				Description: pulumi.String("tf created description"),
+//				ConfigVariables: integrationconnectors.ConnectionConfigVariableArray{
+//					&integrationconnectors.ConnectionConfigVariableArgs{
+//						Key:         pulumi.String("dataset_id"),
+//						StringValue: bqDataset.DatasetId,
+//					},
+//					&integrationconnectors.ConnectionConfigVariableArgs{
+//						Key:         pulumi.String("project_id"),
+//						StringValue: agent.Project,
+//					},
+//					&integrationconnectors.ConnectionConfigVariableArgs{
+//						Key:          pulumi.String("support_native_data_type"),
+//						BooleanValue: pulumi.Bool(false),
+//					},
+//					&integrationconnectors.ConnectionConfigVariableArgs{
+//						Key:          pulumi.String("proxy_enabled"),
+//						BooleanValue: pulumi.Bool(false),
+//					},
+//				},
+//				ServiceAccount: pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", testProject.Number),
+//				AuthConfig: &integrationconnectors.ConnectionAuthConfigArgs{
+//					AuthType: pulumi.String("AUTH_TYPE_UNSPECIFIED"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bqTable, err := bigquery.NewTable(ctx, "bq_table", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          bqDataset.DatasetId,
+//				TableId:            pulumi.String("terraformdatasetdfcxtooltable"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamMember(ctx, "connector_sa_dataset_perms", &bigquery.DatasetIamMemberArgs{
+//				Project:   pulumi.String(testProject.ProjectId),
+//				DatasetId: bqDataset.DatasetId,
+//				Role:      pulumi.String("roles/bigquery.dataEditor"),
+//				Member:    pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", testProject.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxTool(ctx, "connector_tool", &diagflow.CxToolArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("Example Connector Tool"),
+//				Description: pulumi.String("Example Description"),
+//				ConnectorSpec: &diagflow.CxToolConnectorSpecArgs{
+//					Name: pulumi.All(agent.Project, integrationConnector.Name).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						name := _args[1].(string)
+//						return fmt.Sprintf("projects/%v/locations/us-central1/connections/%v", project, name), nil
+//					}).(pulumi.StringOutput),
+//					Actions: diagflow.CxToolConnectorSpecActionArray{
+//						&diagflow.CxToolConnectorSpecActionArgs{
+//							ConnectionActionId: pulumi.String("ExecuteCustomQuery"),
+//							InputFields: pulumi.StringArray{
+//								pulumi.String("test1"),
+//							},
+//							OutputFields: pulumi.StringArray{
+//								pulumi.String("test1"),
+//							},
+//						},
+//						&diagflow.CxToolConnectorSpecActionArgs{
+//							EntityOperation: &diagflow.CxToolConnectorSpecActionEntityOperationArgs{
+//								EntityId:  bqTable.TableId,
+//								Operation: pulumi.String("LIST"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -298,6 +429,10 @@ import (
 type CxTool struct {
 	pulumi.CustomResourceState
 
+	// Integration connectors tool specification.
+	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+	// Structure is documented below.
+	ConnectorSpec CxToolConnectorSpecPtrOutput `pulumi:"connectorSpec"`
 	// Data store search tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
 	// Structure is documented below.
@@ -360,6 +495,10 @@ func GetCxTool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxTool resources.
 type cxToolState struct {
+	// Integration connectors tool specification.
+	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+	// Structure is documented below.
+	ConnectorSpec *CxToolConnectorSpec `pulumi:"connectorSpec"`
 	// Data store search tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
 	// Structure is documented below.
@@ -387,6 +526,10 @@ type cxToolState struct {
 }
 
 type CxToolState struct {
+	// Integration connectors tool specification.
+	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+	// Structure is documented below.
+	ConnectorSpec CxToolConnectorSpecPtrInput
 	// Data store search tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
 	// Structure is documented below.
@@ -418,6 +561,10 @@ func (CxToolState) ElementType() reflect.Type {
 }
 
 type cxToolArgs struct {
+	// Integration connectors tool specification.
+	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+	// Structure is documented below.
+	ConnectorSpec *CxToolConnectorSpec `pulumi:"connectorSpec"`
 	// Data store search tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
 	// Structure is documented below.
@@ -441,6 +588,10 @@ type cxToolArgs struct {
 
 // The set of arguments for constructing a CxTool resource.
 type CxToolArgs struct {
+	// Integration connectors tool specification.
+	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+	// Structure is documented below.
+	ConnectorSpec CxToolConnectorSpecPtrInput
 	// Data store search tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
 	// Structure is documented below.
@@ -547,6 +698,13 @@ func (o CxToolOutput) ToCxToolOutput() CxToolOutput {
 
 func (o CxToolOutput) ToCxToolOutputWithContext(ctx context.Context) CxToolOutput {
 	return o
+}
+
+// Integration connectors tool specification.
+// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+// Structure is documented below.
+func (o CxToolOutput) ConnectorSpec() CxToolConnectorSpecPtrOutput {
+	return o.ApplyT(func(v *CxTool) CxToolConnectorSpecPtrOutput { return v.ConnectorSpec }).(CxToolConnectorSpecPtrOutput)
 }
 
 // Data store search tool specification.

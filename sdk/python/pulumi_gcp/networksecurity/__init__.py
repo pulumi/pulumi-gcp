@@ -29,6 +29,8 @@ from .mirroring_deployment_group import *
 from .mirroring_endpoint import *
 from .mirroring_endpoint_group import *
 from .mirroring_endpoint_group_association import *
+from .sac_attachment import *
+from .sac_realm import *
 from .security_profile import *
 from .security_profile_group import *
 from .server_tls_policy import *

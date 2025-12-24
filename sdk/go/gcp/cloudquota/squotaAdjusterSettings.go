@@ -63,9 +63,17 @@ import (
 type SQuotaAdjusterSettings struct {
 	pulumi.CustomResourceState
 
+	// (Deprecated)
 	// The resource container that determines if the quota adjuster is set for this project.
+	// Expect this field to be empty currently.
+	//
+	// Deprecated: `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
 	EffectiveContainer pulumi.StringOutput `pulumi:"effectiveContainer"`
+	// (Deprecated)
 	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+	// Expect this field to be empty currently.
+	//
+	// Deprecated: `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
 	EffectiveEnablement pulumi.StringOutput `pulumi:"effectiveEnablement"`
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
@@ -113,9 +121,17 @@ func GetSQuotaAdjusterSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
 type squotaAdjusterSettingsState struct {
+	// (Deprecated)
 	// The resource container that determines if the quota adjuster is set for this project.
+	// Expect this field to be empty currently.
+	//
+	// Deprecated: `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
 	EffectiveContainer *string `pulumi:"effectiveContainer"`
+	// (Deprecated)
 	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+	// Expect this field to be empty currently.
+	//
+	// Deprecated: `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
 	EffectiveEnablement *string `pulumi:"effectiveEnablement"`
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
@@ -131,9 +147,17 @@ type squotaAdjusterSettingsState struct {
 }
 
 type SQuotaAdjusterSettingsState struct {
+	// (Deprecated)
 	// The resource container that determines if the quota adjuster is set for this project.
+	// Expect this field to be empty currently.
+	//
+	// Deprecated: `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
 	EffectiveContainer pulumi.StringPtrInput
+	// (Deprecated)
 	// Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+	// Expect this field to be empty currently.
+	//
+	// Deprecated: `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
 	EffectiveEnablement pulumi.StringPtrInput
 	// Required. The configured value of the enablement at the given resource.
 	// Possible values are: `ENABLED`, `DISABLED`.
@@ -256,12 +280,20 @@ func (o SQuotaAdjusterSettingsOutput) ToSQuotaAdjusterSettingsOutputWithContext(
 	return o
 }
 
+// (Deprecated)
 // The resource container that determines if the quota adjuster is set for this project.
+// Expect this field to be empty currently.
+//
+// Deprecated: `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
 func (o SQuotaAdjusterSettingsOutput) EffectiveContainer() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.EffectiveContainer }).(pulumi.StringOutput)
 }
 
+// (Deprecated)
 // Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+// Expect this field to be empty currently.
+//
+// Deprecated: `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
 func (o SQuotaAdjusterSettingsOutput) EffectiveEnablement() pulumi.StringOutput {
 	return o.ApplyT(func(v *SQuotaAdjusterSettings) pulumi.StringOutput { return v.EffectiveEnablement }).(pulumi.StringOutput)
 }

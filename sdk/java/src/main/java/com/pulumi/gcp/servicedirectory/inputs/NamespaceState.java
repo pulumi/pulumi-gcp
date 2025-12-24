@@ -58,8 +58,6 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The location for the Namespace.
-     * A full list of valid locations can be found by running
-     * `gcloud beta service-directory locations list`.
      * 
      */
     @Import(name="location")
@@ -67,8 +65,6 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The location for the Namespace.
-     * A full list of valid locations can be found by running
-     * `gcloud beta service-directory locations list`.
      * 
      */
     public Optional<Output<String>> location() {
@@ -227,8 +223,6 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the Namespace.
-         * A full list of valid locations can be found by running
-         * `gcloud beta service-directory locations list`.
          * 
          * @return builder
          * 
@@ -240,8 +234,6 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the Namespace.
-         * A full list of valid locations can be found by running
-         * `gcloud beta service-directory locations list`.
          * 
          * @return builder
          * 

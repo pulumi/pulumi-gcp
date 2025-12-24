@@ -27,6 +27,7 @@ class InstanceArgs:
                  per_unit_storage_throughput: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  placement_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
@@ -51,6 +52,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input[_builtins.bool] gke_support_enabled: Indicates whether you want to enable support for GKE clients. By default,
                GKE clients are not supported.
+        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -69,6 +71,8 @@ class InstanceArgs:
             pulumi.set(__self__, "description", description)
         if gke_support_enabled is not None:
             pulumi.set(__self__, "gke_support_enabled", gke_support_enabled)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if placement_policy is not None:
@@ -184,6 +188,18 @@ class InstanceArgs:
         pulumi.set(self, "gke_support_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The KMS key id to use for encryption of the Lustre instance.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -234,6 +250,7 @@ class _InstanceState:
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  mount_point: Optional[pulumi.Input[_builtins.str]] = None,
@@ -244,6 +261,7 @@ class _InstanceState:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 state_reason: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
@@ -262,6 +280,7 @@ class _InstanceState:
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
+        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -280,14 +299,8 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of the instance.
-               Possible values:
-               STATE_UNSPECIFIED
-               ACTIVE
-               CREATING
-               DELETING
-               UPGRADING
-               REPAIRING
-               STOPPED
+               Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+        :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the instance was last updated.
         """
         if capacity_gib is not None:
@@ -304,6 +317,8 @@ class _InstanceState:
             pulumi.set(__self__, "gke_support_enabled", gke_support_enabled)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -324,6 +339,8 @@ class _InstanceState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if state_reason is not None:
+            pulumi.set(__self__, "state_reason", state_reason)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -418,6 +435,18 @@ class _InstanceState:
     @instance_id.setter
     def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The KMS key id to use for encryption of the Lustre instance.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
@@ -540,20 +569,25 @@ class _InstanceState:
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The state of the instance.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        CREATING
-        DELETING
-        UPGRADING
-        REPAIRING
-        STOPPED
+        Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The reason why the instance is in a certain state.
+        """
+        return pulumi.get(self, "state_reason")
+
+    @state_reason.setter
+    def state_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
@@ -579,6 +613,7 @@ class Instance(pulumi.CustomResource):
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
@@ -664,6 +699,7 @@ class Instance(pulumi.CustomResource):
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
+        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -767,6 +803,7 @@ class Instance(pulumi.CustomResource):
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
@@ -793,6 +830,7 @@ class Instance(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -811,6 +849,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["state_reason"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -831,6 +870,7 @@ class Instance(pulumi.CustomResource):
             filesystem: Optional[pulumi.Input[_builtins.str]] = None,
             gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+            kms_key: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             mount_point: Optional[pulumi.Input[_builtins.str]] = None,
@@ -841,6 +881,7 @@ class Instance(pulumi.CustomResource):
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            state_reason: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -864,6 +905,7 @@ class Instance(pulumi.CustomResource):
                * Must start with a letter.
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
+        :param pulumi.Input[_builtins.str] kms_key: The KMS key id to use for encryption of the Lustre instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -882,14 +924,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: The state of the instance.
-               Possible values:
-               STATE_UNSPECIFIED
-               ACTIVE
-               CREATING
-               DELETING
-               UPGRADING
-               REPAIRING
-               STOPPED
+               Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
+        :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the instance was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -903,6 +939,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["filesystem"] = filesystem
         __props__.__dict__["gke_support_enabled"] = gke_support_enabled
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["mount_point"] = mount_point
@@ -913,6 +950,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
+        __props__.__dict__["state_reason"] = state_reason
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -979,6 +1017,14 @@ class Instance(pulumi.CustomResource):
         * Must end with a number or a letter.
         """
         return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The KMS key id to use for encryption of the Lustre instance.
+        """
+        return pulumi.get(self, "kms_key")
 
     @_builtins.property
     @pulumi.getter
@@ -1065,16 +1111,17 @@ class Instance(pulumi.CustomResource):
     def state(self) -> pulumi.Output[_builtins.str]:
         """
         The state of the instance.
-        Possible values:
-        STATE_UNSPECIFIED
-        ACTIVE
-        CREATING
-        DELETING
-        UPGRADING
-        REPAIRING
-        STOPPED
+        Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> pulumi.Output[_builtins.str]:
+        """
+        The reason why the instance is in a certain state.
+        """
+        return pulumi.get(self, "state_reason")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

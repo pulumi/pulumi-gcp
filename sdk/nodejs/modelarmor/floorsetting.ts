@@ -150,6 +150,11 @@ export class Floorsetting extends pulumi.CustomResource {
      */
     declare public readonly floorSettingMetadata: pulumi.Output<outputs.modelarmor.FloorsettingFloorSettingMetadata | undefined>;
     /**
+     * Google MCP Server floor setting.
+     * Structure is documented below.
+     */
+    declare public readonly googleMcpServerFloorSetting: pulumi.Output<outputs.modelarmor.FloorsettingGoogleMcpServerFloorSetting | undefined>;
+    /**
      * List of integrated services for which the floor setting is applicable.
      */
     declare public readonly integratedServices: pulumi.Output<string[] | undefined>;
@@ -191,6 +196,7 @@ export class Floorsetting extends pulumi.CustomResource {
             resourceInputs["enableFloorSettingEnforcement"] = state?.enableFloorSettingEnforcement;
             resourceInputs["filterConfig"] = state?.filterConfig;
             resourceInputs["floorSettingMetadata"] = state?.floorSettingMetadata;
+            resourceInputs["googleMcpServerFloorSetting"] = state?.googleMcpServerFloorSetting;
             resourceInputs["integratedServices"] = state?.integratedServices;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -211,6 +217,7 @@ export class Floorsetting extends pulumi.CustomResource {
             resourceInputs["enableFloorSettingEnforcement"] = args?.enableFloorSettingEnforcement;
             resourceInputs["filterConfig"] = args?.filterConfig;
             resourceInputs["floorSettingMetadata"] = args?.floorSettingMetadata;
+            resourceInputs["googleMcpServerFloorSetting"] = args?.googleMcpServerFloorSetting;
             resourceInputs["integratedServices"] = args?.integratedServices;
             resourceInputs["location"] = args?.location;
             resourceInputs["parent"] = args?.parent;
@@ -250,6 +257,11 @@ export interface FloorsettingState {
      * Structure is documented below.
      */
     floorSettingMetadata?: pulumi.Input<inputs.modelarmor.FloorsettingFloorSettingMetadata>;
+    /**
+     * Google MCP Server floor setting.
+     * Structure is documented below.
+     */
+    googleMcpServerFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingGoogleMcpServerFloorSetting>;
     /**
      * List of integrated services for which the floor setting is applicable.
      */
@@ -298,6 +310,11 @@ export interface FloorsettingArgs {
      * Structure is documented below.
      */
     floorSettingMetadata?: pulumi.Input<inputs.modelarmor.FloorsettingFloorSettingMetadata>;
+    /**
+     * Google MCP Server floor setting.
+     * Structure is documented below.
+     */
+    googleMcpServerFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingGoogleMcpServerFloorSetting>;
     /**
      * List of integrated services for which the floor setting is applicable.
      */

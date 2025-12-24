@@ -833,98 +833,6 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Service Function
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
-    ///     {
-    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-gcf-source",
-    ///         Location = "US",
-    ///         UniformBucketLevelAccess = true,
-    ///     });
-    /// 
-    ///     var @object = new Gcp.Storage.BucketObject("object", new()
-    ///     {
-    ///         Name = "function-source.zip",
-    ///         Bucket = bucket.Name,
-    ///         Source = new FileAsset("function_source.zip"),
-    ///     });
-    /// 
-    ///     var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuild_service_account", new()
-    ///     {
-    ///         AccountId = "build-sa",
-    ///     });
-    /// 
-    ///     var actAs = new Gcp.Projects.IAMMember("act_as", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/iam.serviceAccountUser",
-    ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     });
-    /// 
-    ///     var logsWriter = new Gcp.Projects.IAMMember("logs_writer", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/logging.logWriter",
-    ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///     });
-    /// 
-    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
-    ///     {
-    ///         Name = "cloudrun-service",
-    ///         Location = "us-central1",
-    ///         DeletionProtection = false,
-    ///         Ingress = "INGRESS_TRAFFIC_ALL",
-    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
-    ///         {
-    ///             Containers = new[]
-    ///             {
-    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
-    ///                 {
-    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
-    ///                     BaseImageUri = "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
-    ///                 },
-    ///             },
-    ///         },
-    ///         BuildConfig = new Gcp.CloudRunV2.Inputs.ServiceBuildConfigArgs
-    ///         {
-    ///             SourceLocation = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
-    ///             {
-    ///                 var bucketName = values.Item1;
-    ///                 var objectName = values.Item2;
-    ///                 return $"gs://{bucketName}/{objectName}";
-    ///             }),
-    ///             FunctionTarget = "helloHttp",
-    ///             ImageUri = "us-docker.pkg.dev/cloudrun/container/hello",
-    ///             BaseImage = "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
-    ///             EnableAutomaticUpdates = true,
-    ///             EnvironmentVariables = 
-    ///             {
-    ///                 { "FOO_KEY", "FOO_VALUE" },
-    ///                 { "BAR_KEY", "BAR_VALUE" },
-    ///             },
-    ///             ServiceAccount = cloudbuildServiceAccount.Id,
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             actAs,
-    ///             logsWriter,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Cloudrunv2 Service Iap
     /// 
     /// ```csharp
@@ -1206,7 +1114,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// Structure is documented below.
         /// </summary>
         [Output("scaling")]
-        public Output<Outputs.ServiceScaling?> Scaling { get; private set; } = null!;
+        public Output<Outputs.ServiceScaling> Scaling { get; private set; } = null!;
 
         /// <summary>
         /// The template used to create revisions for this Service.

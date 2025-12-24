@@ -246,6 +246,21 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
     }
 
     /**
+     * The number of CPU cores to be made available to the database.
+     * 
+     */
+    @Import(name="cpuCoreCount")
+    private @Nullable Output<Integer> cpuCoreCount;
+
+    /**
+     * @return The number of CPU cores to be made available to the database.
+     * 
+     */
+    public Optional<Output<Integer>> cpuCoreCount() {
+        return Optional.ofNullable(this.cpuCoreCount);
+    }
+
+    /**
      * The list of customer contacts.
      * Structure is documented below.
      * 
@@ -1024,6 +1039,21 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
     }
 
     /**
+     * The ID of the Oracle Cloud Infrastructure vault secret.
+     * 
+     */
+    @Import(name="secretId")
+    private @Nullable Output<String> secretId;
+
+    /**
+     * @return The ID of the Oracle Cloud Infrastructure vault secret.
+     * 
+     */
+    public Optional<Output<String>> secretId() {
+        return Optional.ofNullable(this.secretId);
+    }
+
+    /**
      * (Output)
      * The SQL Web Developer URL for the Autonomous Database.
      * 
@@ -1156,6 +1186,21 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.usedDataStorageSizeTbs);
     }
 
+    /**
+     * The ID of the Oracle Cloud Infrastructure vault.
+     * 
+     */
+    @Import(name="vaultId")
+    private @Nullable Output<String> vaultId;
+
+    /**
+     * @return The ID of the Oracle Cloud Infrastructure vault.
+     * 
+     */
+    public Optional<Output<String>> vaultId() {
+        return Optional.ofNullable(this.vaultId);
+    }
+
     private AutonomousDatabasePropertiesArgs() {}
 
     private AutonomousDatabasePropertiesArgs(AutonomousDatabasePropertiesArgs $) {
@@ -1170,6 +1215,7 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
         this.computeCount = $.computeCount;
         this.connectionStrings = $.connectionStrings;
         this.connectionUrls = $.connectionUrls;
+        this.cpuCoreCount = $.cpuCoreCount;
         this.customerContacts = $.customerContacts;
         this.dataSafeState = $.dataSafeState;
         this.dataStorageSizeGb = $.dataStorageSizeGb;
@@ -1208,11 +1254,13 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
         this.refreshableState = $.refreshableState;
         this.role = $.role;
         this.scheduledOperationDetails = $.scheduledOperationDetails;
+        this.secretId = $.secretId;
         this.sqlWebDeveloperUrl = $.sqlWebDeveloperUrl;
         this.state = $.state;
         this.supportedCloneRegions = $.supportedCloneRegions;
         this.totalAutoBackupStorageSizeGbs = $.totalAutoBackupStorageSizeGbs;
         this.usedDataStorageSizeTbs = $.usedDataStorageSizeTbs;
+        this.vaultId = $.vaultId;
     }
 
     public static Builder builder() {
@@ -1568,6 +1616,27 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
          */
         public Builder connectionUrls(AutonomousDatabasePropertiesConnectionUrlArgs... connectionUrls) {
             return connectionUrls(List.of(connectionUrls));
+        }
+
+        /**
+         * @param cpuCoreCount The number of CPU cores to be made available to the database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuCoreCount(@Nullable Output<Integer> cpuCoreCount) {
+            $.cpuCoreCount = cpuCoreCount;
+            return this;
+        }
+
+        /**
+         * @param cpuCoreCount The number of CPU cores to be made available to the database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuCoreCount(Integer cpuCoreCount) {
+            return cpuCoreCount(Output.of(cpuCoreCount));
         }
 
         /**
@@ -2626,6 +2695,27 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
         }
 
         /**
+         * @param secretId The ID of the Oracle Cloud Infrastructure vault secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretId(@Nullable Output<String> secretId) {
+            $.secretId = secretId;
+            return this;
+        }
+
+        /**
+         * @param secretId The ID of the Oracle Cloud Infrastructure vault secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretId(String secretId) {
+            return secretId(Output.of(secretId));
+        }
+
+        /**
          * @param sqlWebDeveloperUrl (Output)
          * The SQL Web Developer URL for the Autonomous Database.
          * 
@@ -2798,6 +2888,27 @@ public final class AutonomousDatabasePropertiesArgs extends com.pulumi.resources
          */
         public Builder usedDataStorageSizeTbs(Integer usedDataStorageSizeTbs) {
             return usedDataStorageSizeTbs(Output.of(usedDataStorageSizeTbs));
+        }
+
+        /**
+         * @param vaultId The ID of the Oracle Cloud Infrastructure vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vaultId(@Nullable Output<String> vaultId) {
+            $.vaultId = vaultId;
+            return this;
+        }
+
+        /**
+         * @param vaultId The ID of the Oracle Cloud Infrastructure vault.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vaultId(String vaultId) {
+            return vaultId(Output.of(vaultId));
         }
 
         public AutonomousDatabasePropertiesArgs build() {

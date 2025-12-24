@@ -3402,6 +3402,273 @@ func (o BucketLoggingPtrOutput) LogObjectPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketObjectContexts struct {
+	// A list of custom context key-value pairs.
+	Customs []BucketObjectContextsCustom `pulumi:"customs"`
+}
+
+// BucketObjectContextsInput is an input type that accepts BucketObjectContextsArgs and BucketObjectContextsOutput values.
+// You can construct a concrete instance of `BucketObjectContextsInput` via:
+//
+//	BucketObjectContextsArgs{...}
+type BucketObjectContextsInput interface {
+	pulumi.Input
+
+	ToBucketObjectContextsOutput() BucketObjectContextsOutput
+	ToBucketObjectContextsOutputWithContext(context.Context) BucketObjectContextsOutput
+}
+
+type BucketObjectContextsArgs struct {
+	// A list of custom context key-value pairs.
+	Customs BucketObjectContextsCustomArrayInput `pulumi:"customs"`
+}
+
+func (BucketObjectContextsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectContexts)(nil)).Elem()
+}
+
+func (i BucketObjectContextsArgs) ToBucketObjectContextsOutput() BucketObjectContextsOutput {
+	return i.ToBucketObjectContextsOutputWithContext(context.Background())
+}
+
+func (i BucketObjectContextsArgs) ToBucketObjectContextsOutputWithContext(ctx context.Context) BucketObjectContextsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectContextsOutput)
+}
+
+func (i BucketObjectContextsArgs) ToBucketObjectContextsPtrOutput() BucketObjectContextsPtrOutput {
+	return i.ToBucketObjectContextsPtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectContextsArgs) ToBucketObjectContextsPtrOutputWithContext(ctx context.Context) BucketObjectContextsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectContextsOutput).ToBucketObjectContextsPtrOutputWithContext(ctx)
+}
+
+// BucketObjectContextsPtrInput is an input type that accepts BucketObjectContextsArgs, BucketObjectContextsPtr and BucketObjectContextsPtrOutput values.
+// You can construct a concrete instance of `BucketObjectContextsPtrInput` via:
+//
+//	        BucketObjectContextsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketObjectContextsPtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectContextsPtrOutput() BucketObjectContextsPtrOutput
+	ToBucketObjectContextsPtrOutputWithContext(context.Context) BucketObjectContextsPtrOutput
+}
+
+type bucketObjectContextsPtrType BucketObjectContextsArgs
+
+func BucketObjectContextsPtr(v *BucketObjectContextsArgs) BucketObjectContextsPtrInput {
+	return (*bucketObjectContextsPtrType)(v)
+}
+
+func (*bucketObjectContextsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectContexts)(nil)).Elem()
+}
+
+func (i *bucketObjectContextsPtrType) ToBucketObjectContextsPtrOutput() BucketObjectContextsPtrOutput {
+	return i.ToBucketObjectContextsPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectContextsPtrType) ToBucketObjectContextsPtrOutputWithContext(ctx context.Context) BucketObjectContextsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectContextsPtrOutput)
+}
+
+type BucketObjectContextsOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectContextsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectContexts)(nil)).Elem()
+}
+
+func (o BucketObjectContextsOutput) ToBucketObjectContextsOutput() BucketObjectContextsOutput {
+	return o
+}
+
+func (o BucketObjectContextsOutput) ToBucketObjectContextsOutputWithContext(ctx context.Context) BucketObjectContextsOutput {
+	return o
+}
+
+func (o BucketObjectContextsOutput) ToBucketObjectContextsPtrOutput() BucketObjectContextsPtrOutput {
+	return o.ToBucketObjectContextsPtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectContextsOutput) ToBucketObjectContextsPtrOutputWithContext(ctx context.Context) BucketObjectContextsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectContexts) *BucketObjectContexts {
+		return &v
+	}).(BucketObjectContextsPtrOutput)
+}
+
+// A list of custom context key-value pairs.
+func (o BucketObjectContextsOutput) Customs() BucketObjectContextsCustomArrayOutput {
+	return o.ApplyT(func(v BucketObjectContexts) []BucketObjectContextsCustom { return v.Customs }).(BucketObjectContextsCustomArrayOutput)
+}
+
+type BucketObjectContextsPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectContextsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectContexts)(nil)).Elem()
+}
+
+func (o BucketObjectContextsPtrOutput) ToBucketObjectContextsPtrOutput() BucketObjectContextsPtrOutput {
+	return o
+}
+
+func (o BucketObjectContextsPtrOutput) ToBucketObjectContextsPtrOutputWithContext(ctx context.Context) BucketObjectContextsPtrOutput {
+	return o
+}
+
+func (o BucketObjectContextsPtrOutput) Elem() BucketObjectContextsOutput {
+	return o.ApplyT(func(v *BucketObjectContexts) BucketObjectContexts {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectContexts
+		return ret
+	}).(BucketObjectContextsOutput)
+}
+
+// A list of custom context key-value pairs.
+func (o BucketObjectContextsPtrOutput) Customs() BucketObjectContextsCustomArrayOutput {
+	return o.ApplyT(func(v *BucketObjectContexts) []BucketObjectContextsCustom {
+		if v == nil {
+			return nil
+		}
+		return v.Customs
+	}).(BucketObjectContextsCustomArrayOutput)
+}
+
+type BucketObjectContextsCustom struct {
+	// The time when context was first added to the storage object in RFC 3399 format.
+	CreateTime *string `pulumi:"createTime"`
+	// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+	Key string `pulumi:"key"`
+	// The time when context was last updated in RFC 3399 format.
+	//
+	// <a name>
+	UpdateTime *string `pulumi:"updateTime"`
+	// The value associated with this context. This field holds the primary information for the given context key.
+	Value string `pulumi:"value"`
+}
+
+// BucketObjectContextsCustomInput is an input type that accepts BucketObjectContextsCustomArgs and BucketObjectContextsCustomOutput values.
+// You can construct a concrete instance of `BucketObjectContextsCustomInput` via:
+//
+//	BucketObjectContextsCustomArgs{...}
+type BucketObjectContextsCustomInput interface {
+	pulumi.Input
+
+	ToBucketObjectContextsCustomOutput() BucketObjectContextsCustomOutput
+	ToBucketObjectContextsCustomOutputWithContext(context.Context) BucketObjectContextsCustomOutput
+}
+
+type BucketObjectContextsCustomArgs struct {
+	// The time when context was first added to the storage object in RFC 3399 format.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The time when context was last updated in RFC 3399 format.
+	//
+	// <a name>
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	// The value associated with this context. This field holds the primary information for the given context key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (BucketObjectContextsCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectContextsCustom)(nil)).Elem()
+}
+
+func (i BucketObjectContextsCustomArgs) ToBucketObjectContextsCustomOutput() BucketObjectContextsCustomOutput {
+	return i.ToBucketObjectContextsCustomOutputWithContext(context.Background())
+}
+
+func (i BucketObjectContextsCustomArgs) ToBucketObjectContextsCustomOutputWithContext(ctx context.Context) BucketObjectContextsCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectContextsCustomOutput)
+}
+
+// BucketObjectContextsCustomArrayInput is an input type that accepts BucketObjectContextsCustomArray and BucketObjectContextsCustomArrayOutput values.
+// You can construct a concrete instance of `BucketObjectContextsCustomArrayInput` via:
+//
+//	BucketObjectContextsCustomArray{ BucketObjectContextsCustomArgs{...} }
+type BucketObjectContextsCustomArrayInput interface {
+	pulumi.Input
+
+	ToBucketObjectContextsCustomArrayOutput() BucketObjectContextsCustomArrayOutput
+	ToBucketObjectContextsCustomArrayOutputWithContext(context.Context) BucketObjectContextsCustomArrayOutput
+}
+
+type BucketObjectContextsCustomArray []BucketObjectContextsCustomInput
+
+func (BucketObjectContextsCustomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketObjectContextsCustom)(nil)).Elem()
+}
+
+func (i BucketObjectContextsCustomArray) ToBucketObjectContextsCustomArrayOutput() BucketObjectContextsCustomArrayOutput {
+	return i.ToBucketObjectContextsCustomArrayOutputWithContext(context.Background())
+}
+
+func (i BucketObjectContextsCustomArray) ToBucketObjectContextsCustomArrayOutputWithContext(ctx context.Context) BucketObjectContextsCustomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectContextsCustomArrayOutput)
+}
+
+type BucketObjectContextsCustomOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectContextsCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectContextsCustom)(nil)).Elem()
+}
+
+func (o BucketObjectContextsCustomOutput) ToBucketObjectContextsCustomOutput() BucketObjectContextsCustomOutput {
+	return o
+}
+
+func (o BucketObjectContextsCustomOutput) ToBucketObjectContextsCustomOutputWithContext(ctx context.Context) BucketObjectContextsCustomOutput {
+	return o
+}
+
+// The time when context was first added to the storage object in RFC 3399 format.
+func (o BucketObjectContextsCustomOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectContextsCustom) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+func (o BucketObjectContextsCustomOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectContextsCustom) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The time when context was last updated in RFC 3399 format.
+//
+// <a name>
+func (o BucketObjectContextsCustomOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectContextsCustom) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+// The value associated with this context. This field holds the primary information for the given context key.
+func (o BucketObjectContextsCustomOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectContextsCustom) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type BucketObjectContextsCustomArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectContextsCustomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketObjectContextsCustom)(nil)).Elem()
+}
+
+func (o BucketObjectContextsCustomArrayOutput) ToBucketObjectContextsCustomArrayOutput() BucketObjectContextsCustomArrayOutput {
+	return o
+}
+
+func (o BucketObjectContextsCustomArrayOutput) ToBucketObjectContextsCustomArrayOutputWithContext(ctx context.Context) BucketObjectContextsCustomArrayOutput {
+	return o
+}
+
+func (o BucketObjectContextsCustomArrayOutput) Index(i pulumi.IntInput) BucketObjectContextsCustomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketObjectContextsCustom {
+		return vs[0].([]BucketObjectContextsCustom)[vs[1].(int)]
+	}).(BucketObjectContextsCustomOutput)
+}
+
 type BucketObjectCustomerEncryption struct {
 	// Encryption algorithm. Default: AES256
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
@@ -3563,7 +3830,7 @@ type BucketObjectRetention struct {
 	Mode string `pulumi:"mode"`
 	// The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
 	//
-	// <a name>
+	// <a name="nestedContexts"></a> The `contexts` block supports -
 	RetainUntilTime string `pulumi:"retainUntilTime"`
 }
 
@@ -3583,7 +3850,7 @@ type BucketObjectRetentionArgs struct {
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
 	//
-	// <a name>
+	// <a name="nestedContexts"></a> The `contexts` block supports -
 	RetainUntilTime pulumi.StringInput `pulumi:"retainUntilTime"`
 }
 
@@ -3671,7 +3938,7 @@ func (o BucketObjectRetentionOutput) Mode() pulumi.StringOutput {
 
 // The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
 //
-// <a name>
+// <a name="nestedContexts"></a> The `contexts` block supports -
 func (o BucketObjectRetentionOutput) RetainUntilTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketObjectRetention) string { return v.RetainUntilTime }).(pulumi.StringOutput)
 }
@@ -3712,7 +3979,7 @@ func (o BucketObjectRetentionPtrOutput) Mode() pulumi.StringPtrOutput {
 
 // The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
 //
-// <a name>
+// <a name="nestedContexts"></a> The `contexts` block supports -
 func (o BucketObjectRetentionPtrOutput) RetainUntilTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObjectRetention) *string {
 		if v == nil {
@@ -18065,6 +18332,227 @@ func (o GetBucketLoggingArrayOutput) Index(i pulumi.IntInput) GetBucketLoggingOu
 	}).(GetBucketLoggingOutput)
 }
 
+type GetBucketObjectContentContext struct {
+	// A list of custom context key-value pairs.
+	Customs []GetBucketObjectContentContextCustom `pulumi:"customs"`
+}
+
+// GetBucketObjectContentContextInput is an input type that accepts GetBucketObjectContentContextArgs and GetBucketObjectContentContextOutput values.
+// You can construct a concrete instance of `GetBucketObjectContentContextInput` via:
+//
+//	GetBucketObjectContentContextArgs{...}
+type GetBucketObjectContentContextInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContentContextOutput() GetBucketObjectContentContextOutput
+	ToGetBucketObjectContentContextOutputWithContext(context.Context) GetBucketObjectContentContextOutput
+}
+
+type GetBucketObjectContentContextArgs struct {
+	// A list of custom context key-value pairs.
+	Customs GetBucketObjectContentContextCustomArrayInput `pulumi:"customs"`
+}
+
+func (GetBucketObjectContentContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContentContext)(nil)).Elem()
+}
+
+func (i GetBucketObjectContentContextArgs) ToGetBucketObjectContentContextOutput() GetBucketObjectContentContextOutput {
+	return i.ToGetBucketObjectContentContextOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContentContextArgs) ToGetBucketObjectContentContextOutputWithContext(ctx context.Context) GetBucketObjectContentContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContentContextOutput)
+}
+
+// GetBucketObjectContentContextArrayInput is an input type that accepts GetBucketObjectContentContextArray and GetBucketObjectContentContextArrayOutput values.
+// You can construct a concrete instance of `GetBucketObjectContentContextArrayInput` via:
+//
+//	GetBucketObjectContentContextArray{ GetBucketObjectContentContextArgs{...} }
+type GetBucketObjectContentContextArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContentContextArrayOutput() GetBucketObjectContentContextArrayOutput
+	ToGetBucketObjectContentContextArrayOutputWithContext(context.Context) GetBucketObjectContentContextArrayOutput
+}
+
+type GetBucketObjectContentContextArray []GetBucketObjectContentContextInput
+
+func (GetBucketObjectContentContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContentContext)(nil)).Elem()
+}
+
+func (i GetBucketObjectContentContextArray) ToGetBucketObjectContentContextArrayOutput() GetBucketObjectContentContextArrayOutput {
+	return i.ToGetBucketObjectContentContextArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContentContextArray) ToGetBucketObjectContentContextArrayOutputWithContext(ctx context.Context) GetBucketObjectContentContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContentContextArrayOutput)
+}
+
+type GetBucketObjectContentContextOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContentContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContentContext)(nil)).Elem()
+}
+
+func (o GetBucketObjectContentContextOutput) ToGetBucketObjectContentContextOutput() GetBucketObjectContentContextOutput {
+	return o
+}
+
+func (o GetBucketObjectContentContextOutput) ToGetBucketObjectContentContextOutputWithContext(ctx context.Context) GetBucketObjectContentContextOutput {
+	return o
+}
+
+// A list of custom context key-value pairs.
+func (o GetBucketObjectContentContextOutput) Customs() GetBucketObjectContentContextCustomArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectContentContext) []GetBucketObjectContentContextCustom { return v.Customs }).(GetBucketObjectContentContextCustomArrayOutput)
+}
+
+type GetBucketObjectContentContextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContentContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContentContext)(nil)).Elem()
+}
+
+func (o GetBucketObjectContentContextArrayOutput) ToGetBucketObjectContentContextArrayOutput() GetBucketObjectContentContextArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContentContextArrayOutput) ToGetBucketObjectContentContextArrayOutputWithContext(ctx context.Context) GetBucketObjectContentContextArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContentContextArrayOutput) Index(i pulumi.IntInput) GetBucketObjectContentContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectContentContext {
+		return vs[0].([]GetBucketObjectContentContext)[vs[1].(int)]
+	}).(GetBucketObjectContentContextOutput)
+}
+
+type GetBucketObjectContentContextCustom struct {
+	// The time when context was first added to the storage#object in RFC 3339 format.
+	CreateTime string `pulumi:"createTime"`
+	// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+	Key string `pulumi:"key"`
+	// The time when context was last updated in RFC 3339 format.
+	UpdateTime string `pulumi:"updateTime"`
+	// The value associated with this context. This field holds the primary information for the given context key.
+	Value string `pulumi:"value"`
+}
+
+// GetBucketObjectContentContextCustomInput is an input type that accepts GetBucketObjectContentContextCustomArgs and GetBucketObjectContentContextCustomOutput values.
+// You can construct a concrete instance of `GetBucketObjectContentContextCustomInput` via:
+//
+//	GetBucketObjectContentContextCustomArgs{...}
+type GetBucketObjectContentContextCustomInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContentContextCustomOutput() GetBucketObjectContentContextCustomOutput
+	ToGetBucketObjectContentContextCustomOutputWithContext(context.Context) GetBucketObjectContentContextCustomOutput
+}
+
+type GetBucketObjectContentContextCustomArgs struct {
+	// The time when context was first added to the storage#object in RFC 3339 format.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The time when context was last updated in RFC 3339 format.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The value associated with this context. This field holds the primary information for the given context key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetBucketObjectContentContextCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContentContextCustom)(nil)).Elem()
+}
+
+func (i GetBucketObjectContentContextCustomArgs) ToGetBucketObjectContentContextCustomOutput() GetBucketObjectContentContextCustomOutput {
+	return i.ToGetBucketObjectContentContextCustomOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContentContextCustomArgs) ToGetBucketObjectContentContextCustomOutputWithContext(ctx context.Context) GetBucketObjectContentContextCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContentContextCustomOutput)
+}
+
+// GetBucketObjectContentContextCustomArrayInput is an input type that accepts GetBucketObjectContentContextCustomArray and GetBucketObjectContentContextCustomArrayOutput values.
+// You can construct a concrete instance of `GetBucketObjectContentContextCustomArrayInput` via:
+//
+//	GetBucketObjectContentContextCustomArray{ GetBucketObjectContentContextCustomArgs{...} }
+type GetBucketObjectContentContextCustomArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContentContextCustomArrayOutput() GetBucketObjectContentContextCustomArrayOutput
+	ToGetBucketObjectContentContextCustomArrayOutputWithContext(context.Context) GetBucketObjectContentContextCustomArrayOutput
+}
+
+type GetBucketObjectContentContextCustomArray []GetBucketObjectContentContextCustomInput
+
+func (GetBucketObjectContentContextCustomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContentContextCustom)(nil)).Elem()
+}
+
+func (i GetBucketObjectContentContextCustomArray) ToGetBucketObjectContentContextCustomArrayOutput() GetBucketObjectContentContextCustomArrayOutput {
+	return i.ToGetBucketObjectContentContextCustomArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContentContextCustomArray) ToGetBucketObjectContentContextCustomArrayOutputWithContext(ctx context.Context) GetBucketObjectContentContextCustomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContentContextCustomArrayOutput)
+}
+
+type GetBucketObjectContentContextCustomOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContentContextCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContentContextCustom)(nil)).Elem()
+}
+
+func (o GetBucketObjectContentContextCustomOutput) ToGetBucketObjectContentContextCustomOutput() GetBucketObjectContentContextCustomOutput {
+	return o
+}
+
+func (o GetBucketObjectContentContextCustomOutput) ToGetBucketObjectContentContextCustomOutputWithContext(ctx context.Context) GetBucketObjectContentContextCustomOutput {
+	return o
+}
+
+// The time when context was first added to the storage#object in RFC 3339 format.
+func (o GetBucketObjectContentContextCustomOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentContextCustom) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+func (o GetBucketObjectContentContextCustomOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentContextCustom) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The time when context was last updated in RFC 3339 format.
+func (o GetBucketObjectContentContextCustomOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentContextCustom) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The value associated with this context. This field holds the primary information for the given context key.
+func (o GetBucketObjectContentContextCustomOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContentContextCustom) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetBucketObjectContentContextCustomArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContentContextCustomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContentContextCustom)(nil)).Elem()
+}
+
+func (o GetBucketObjectContentContextCustomArrayOutput) ToGetBucketObjectContentContextCustomArrayOutput() GetBucketObjectContentContextCustomArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContentContextCustomArrayOutput) ToGetBucketObjectContentContextCustomArrayOutputWithContext(ctx context.Context) GetBucketObjectContentContextCustomArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContentContextCustomArrayOutput) Index(i pulumi.IntInput) GetBucketObjectContentContextCustomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectContentContextCustom {
+		return vs[0].([]GetBucketObjectContentContextCustom)[vs[1].(int)]
+	}).(GetBucketObjectContentContextCustomOutput)
+}
+
 type GetBucketObjectContentCustomerEncryption struct {
 	// The encryption algorithm. Default: AES256
 	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
@@ -18275,6 +18763,227 @@ func (o GetBucketObjectContentRetentionArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectContentRetention {
 		return vs[0].([]GetBucketObjectContentRetention)[vs[1].(int)]
 	}).(GetBucketObjectContentRetentionOutput)
+}
+
+type GetBucketObjectContext struct {
+	// A list of custom context key-value pairs.
+	Customs []GetBucketObjectContextCustom `pulumi:"customs"`
+}
+
+// GetBucketObjectContextInput is an input type that accepts GetBucketObjectContextArgs and GetBucketObjectContextOutput values.
+// You can construct a concrete instance of `GetBucketObjectContextInput` via:
+//
+//	GetBucketObjectContextArgs{...}
+type GetBucketObjectContextInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContextOutput() GetBucketObjectContextOutput
+	ToGetBucketObjectContextOutputWithContext(context.Context) GetBucketObjectContextOutput
+}
+
+type GetBucketObjectContextArgs struct {
+	// A list of custom context key-value pairs.
+	Customs GetBucketObjectContextCustomArrayInput `pulumi:"customs"`
+}
+
+func (GetBucketObjectContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContext)(nil)).Elem()
+}
+
+func (i GetBucketObjectContextArgs) ToGetBucketObjectContextOutput() GetBucketObjectContextOutput {
+	return i.ToGetBucketObjectContextOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContextArgs) ToGetBucketObjectContextOutputWithContext(ctx context.Context) GetBucketObjectContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContextOutput)
+}
+
+// GetBucketObjectContextArrayInput is an input type that accepts GetBucketObjectContextArray and GetBucketObjectContextArrayOutput values.
+// You can construct a concrete instance of `GetBucketObjectContextArrayInput` via:
+//
+//	GetBucketObjectContextArray{ GetBucketObjectContextArgs{...} }
+type GetBucketObjectContextArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContextArrayOutput() GetBucketObjectContextArrayOutput
+	ToGetBucketObjectContextArrayOutputWithContext(context.Context) GetBucketObjectContextArrayOutput
+}
+
+type GetBucketObjectContextArray []GetBucketObjectContextInput
+
+func (GetBucketObjectContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContext)(nil)).Elem()
+}
+
+func (i GetBucketObjectContextArray) ToGetBucketObjectContextArrayOutput() GetBucketObjectContextArrayOutput {
+	return i.ToGetBucketObjectContextArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContextArray) ToGetBucketObjectContextArrayOutputWithContext(ctx context.Context) GetBucketObjectContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContextArrayOutput)
+}
+
+type GetBucketObjectContextOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContext)(nil)).Elem()
+}
+
+func (o GetBucketObjectContextOutput) ToGetBucketObjectContextOutput() GetBucketObjectContextOutput {
+	return o
+}
+
+func (o GetBucketObjectContextOutput) ToGetBucketObjectContextOutputWithContext(ctx context.Context) GetBucketObjectContextOutput {
+	return o
+}
+
+// A list of custom context key-value pairs.
+func (o GetBucketObjectContextOutput) Customs() GetBucketObjectContextCustomArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectContext) []GetBucketObjectContextCustom { return v.Customs }).(GetBucketObjectContextCustomArrayOutput)
+}
+
+type GetBucketObjectContextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContext)(nil)).Elem()
+}
+
+func (o GetBucketObjectContextArrayOutput) ToGetBucketObjectContextArrayOutput() GetBucketObjectContextArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContextArrayOutput) ToGetBucketObjectContextArrayOutputWithContext(ctx context.Context) GetBucketObjectContextArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContextArrayOutput) Index(i pulumi.IntInput) GetBucketObjectContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectContext {
+		return vs[0].([]GetBucketObjectContext)[vs[1].(int)]
+	}).(GetBucketObjectContextOutput)
+}
+
+type GetBucketObjectContextCustom struct {
+	// The time when context was first added to the storage#object in RFC 3339 format.
+	CreateTime string `pulumi:"createTime"`
+	// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+	Key string `pulumi:"key"`
+	// The time when context was last updated in RFC 3339 format.
+	UpdateTime string `pulumi:"updateTime"`
+	// The value associated with this context. This field holds the primary information for the given context key.
+	Value string `pulumi:"value"`
+}
+
+// GetBucketObjectContextCustomInput is an input type that accepts GetBucketObjectContextCustomArgs and GetBucketObjectContextCustomOutput values.
+// You can construct a concrete instance of `GetBucketObjectContextCustomInput` via:
+//
+//	GetBucketObjectContextCustomArgs{...}
+type GetBucketObjectContextCustomInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContextCustomOutput() GetBucketObjectContextCustomOutput
+	ToGetBucketObjectContextCustomOutputWithContext(context.Context) GetBucketObjectContextCustomOutput
+}
+
+type GetBucketObjectContextCustomArgs struct {
+	// The time when context was first added to the storage#object in RFC 3339 format.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The time when context was last updated in RFC 3339 format.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The value associated with this context. This field holds the primary information for the given context key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetBucketObjectContextCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContextCustom)(nil)).Elem()
+}
+
+func (i GetBucketObjectContextCustomArgs) ToGetBucketObjectContextCustomOutput() GetBucketObjectContextCustomOutput {
+	return i.ToGetBucketObjectContextCustomOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContextCustomArgs) ToGetBucketObjectContextCustomOutputWithContext(ctx context.Context) GetBucketObjectContextCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContextCustomOutput)
+}
+
+// GetBucketObjectContextCustomArrayInput is an input type that accepts GetBucketObjectContextCustomArray and GetBucketObjectContextCustomArrayOutput values.
+// You can construct a concrete instance of `GetBucketObjectContextCustomArrayInput` via:
+//
+//	GetBucketObjectContextCustomArray{ GetBucketObjectContextCustomArgs{...} }
+type GetBucketObjectContextCustomArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketObjectContextCustomArrayOutput() GetBucketObjectContextCustomArrayOutput
+	ToGetBucketObjectContextCustomArrayOutputWithContext(context.Context) GetBucketObjectContextCustomArrayOutput
+}
+
+type GetBucketObjectContextCustomArray []GetBucketObjectContextCustomInput
+
+func (GetBucketObjectContextCustomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContextCustom)(nil)).Elem()
+}
+
+func (i GetBucketObjectContextCustomArray) ToGetBucketObjectContextCustomArrayOutput() GetBucketObjectContextCustomArrayOutput {
+	return i.ToGetBucketObjectContextCustomArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketObjectContextCustomArray) ToGetBucketObjectContextCustomArrayOutputWithContext(ctx context.Context) GetBucketObjectContextCustomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketObjectContextCustomArrayOutput)
+}
+
+type GetBucketObjectContextCustomOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContextCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketObjectContextCustom)(nil)).Elem()
+}
+
+func (o GetBucketObjectContextCustomOutput) ToGetBucketObjectContextCustomOutput() GetBucketObjectContextCustomOutput {
+	return o
+}
+
+func (o GetBucketObjectContextCustomOutput) ToGetBucketObjectContextCustomOutputWithContext(ctx context.Context) GetBucketObjectContextCustomOutput {
+	return o
+}
+
+// The time when context was first added to the storage#object in RFC 3339 format.
+func (o GetBucketObjectContextCustomOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContextCustom) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+func (o GetBucketObjectContextCustomOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContextCustom) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The time when context was last updated in RFC 3339 format.
+func (o GetBucketObjectContextCustomOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContextCustom) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The value associated with this context. This field holds the primary information for the given context key.
+func (o GetBucketObjectContextCustomOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBucketObjectContextCustom) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetBucketObjectContextCustomArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketObjectContextCustomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketObjectContextCustom)(nil)).Elem()
+}
+
+func (o GetBucketObjectContextCustomArrayOutput) ToGetBucketObjectContextCustomArrayOutput() GetBucketObjectContextCustomArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContextCustomArrayOutput) ToGetBucketObjectContextCustomArrayOutputWithContext(ctx context.Context) GetBucketObjectContextCustomArrayOutput {
+	return o
+}
+
+func (o GetBucketObjectContextCustomArrayOutput) Index(i pulumi.IntInput) GetBucketObjectContextCustomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketObjectContextCustom {
+		return vs[0].([]GetBucketObjectContextCustom)[vs[1].(int)]
+	}).(GetBucketObjectContextCustomOutput)
 }
 
 type GetBucketObjectCustomerEncryption struct {
@@ -22454,6 +23163,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleConditionInput)(nil)).Elem(), BucketLifecycleRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingInput)(nil)).Elem(), BucketLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingPtrInput)(nil)).Elem(), BucketLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectContextsInput)(nil)).Elem(), BucketObjectContextsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectContextsPtrInput)(nil)).Elem(), BucketObjectContextsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectContextsCustomInput)(nil)).Elem(), BucketObjectContextsCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectContextsCustomArrayInput)(nil)).Elem(), BucketObjectContextsCustomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectCustomerEncryptionInput)(nil)).Elem(), BucketObjectCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectCustomerEncryptionPtrInput)(nil)).Elem(), BucketObjectCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectRetentionInput)(nil)).Elem(), BucketObjectRetentionArgs{})
@@ -22640,10 +23353,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleConditionArrayInput)(nil)).Elem(), GetBucketLifecycleRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLoggingInput)(nil)).Elem(), GetBucketLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLoggingArrayInput)(nil)).Elem(), GetBucketLoggingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentContextInput)(nil)).Elem(), GetBucketObjectContentContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentContextArrayInput)(nil)).Elem(), GetBucketObjectContentContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentContextCustomInput)(nil)).Elem(), GetBucketObjectContentContextCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentContextCustomArrayInput)(nil)).Elem(), GetBucketObjectContentContextCustomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentCustomerEncryptionInput)(nil)).Elem(), GetBucketObjectContentCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentCustomerEncryptionArrayInput)(nil)).Elem(), GetBucketObjectContentCustomerEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentRetentionInput)(nil)).Elem(), GetBucketObjectContentRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContentRetentionArrayInput)(nil)).Elem(), GetBucketObjectContentRetentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContextInput)(nil)).Elem(), GetBucketObjectContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContextArrayInput)(nil)).Elem(), GetBucketObjectContextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContextCustomInput)(nil)).Elem(), GetBucketObjectContextCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectContextCustomArrayInput)(nil)).Elem(), GetBucketObjectContextCustomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectCustomerEncryptionInput)(nil)).Elem(), GetBucketObjectCustomerEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectCustomerEncryptionArrayInput)(nil)).Elem(), GetBucketObjectCustomerEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectRetentionInput)(nil)).Elem(), GetBucketObjectRetentionArgs{})
@@ -22764,6 +23485,10 @@ func init() {
 	pulumi.RegisterOutputType(BucketLifecycleRuleConditionOutput{})
 	pulumi.RegisterOutputType(BucketLoggingOutput{})
 	pulumi.RegisterOutputType(BucketLoggingPtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectContextsOutput{})
+	pulumi.RegisterOutputType(BucketObjectContextsPtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectContextsCustomOutput{})
+	pulumi.RegisterOutputType(BucketObjectContextsCustomArrayOutput{})
 	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(BucketObjectRetentionOutput{})
@@ -22950,10 +23675,18 @@ func init() {
 	pulumi.RegisterOutputType(GetBucketLifecycleRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketLoggingOutput{})
 	pulumi.RegisterOutputType(GetBucketLoggingArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContentContextOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContentContextArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContentContextCustomOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContentContextCustomArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectContentCustomerEncryptionOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectContentCustomerEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectContentRetentionOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectContentRetentionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContextOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContextArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContextCustomOutput{})
+	pulumi.RegisterOutputType(GetBucketObjectContextCustomArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectCustomerEncryptionOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectCustomerEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectRetentionOutput{})

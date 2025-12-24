@@ -50,9 +50,6 @@ import (
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: defaultNetwork.ID(),
 //				},
-//				InitialUser: &alloydb.ClusterInitialUserArgs{
-//					Password: pulumi.String("alloydb-cluster"),
-//				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -130,9 +127,6 @@ import (
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: defaultNetwork.ID(),
-//				},
-//				InitialUser: &alloydb.ClusterInitialUserArgs{
-//					Password: pulumi.String("alloydb-cluster"),
 //				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})

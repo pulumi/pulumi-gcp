@@ -37,6 +37,89 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///     });
     /// 
+    ///     var cesTool = new Gcp.Ces.Tool("ces_tool", new()
+    ///     {
+    ///         Location = "us",
+    ///         App = my_app.AppId,
+    ///         ToolId = "tool-1",
+    ///         ExecutionType = "SYNCHRONOUS",
+    ///         PythonFunction = new Gcp.Ces.Inputs.ToolPythonFunctionArgs
+    ///         {
+    ///             Name = "example_function",
+    ///             PythonCode = "def example_function() -&gt; int: return 0",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesToolset = new Gcp.Ces.Toolset("ces_toolset", new()
+    ///     {
+    ///         ToolsetId = "toolset-id",
+    ///         Location = "us",
+    ///         App = my_app.AppId,
+    ///         DisplayName = "Basic toolset display name",
+    ///         OpenApiToolset = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetArgs
+    ///         {
+    ///             OpenApiSchema = @"openapi: 3.0.0
+    /// info:
+    ///     title: My Sample API
+    ///     version: 1.0.0
+    ///     description: A simple API example
+    /// servers:
+    ///     - url: https://api.example.com/v1
+    /// paths: {}
+    /// ",
+    ///             IgnoreUnknownFields = false,
+    ///             TlsConfig = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetTlsConfigArgs
+    ///             {
+    ///                 CaCerts = new[]
+    ///                 {
+    ///                     new Gcp.Ces.Inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs
+    ///                     {
+    ///                         DisplayName = "example",
+    ///                         Cert = "ZXhhbXBsZQ==",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ServiceDirectoryConfig = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs
+    ///             {
+    ///                 Service = "projects/example/locations/us/namespaces/namespace/services/service",
+    ///             },
+    ///             ApiAuthentication = new Gcp.Ces.Inputs.ToolsetOpenApiToolsetApiAuthenticationArgs
+    ///             {
+    ///                 ServiceAgentIdTokenAuthConfig = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cesBaseAgent = new Gcp.Ces.Agent("ces_base_agent", new()
+    ///     {
+    ///         AgentId = "base-agent-id",
+    ///         Location = "us",
+    ///         App = my_app.AppId,
+    ///         DisplayName = "base agent",
+    ///         Instruction = "You are a helpful assistant for this example.",
+    ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
+    ///         {
+    ///             Model = "gemini-2.5-flash",
+    ///             Temperature = 0.5,
+    ///         },
+    ///         LlmAgent = null,
+    ///     });
+    /// 
+    ///     var cesChildAgent = new Gcp.Ces.Agent("ces_child_agent", new()
+    ///     {
+    ///         AgentId = "child-agent-id",
+    ///         Location = "us",
+    ///         App = my_app.AppId,
+    ///         DisplayName = "child agent",
+    ///         Instruction = "You are a helpful assistant for this example.",
+    ///         ModelSettings = new Gcp.Ces.Inputs.AgentModelSettingsArgs
+    ///         {
+    ///             Model = "gemini-2.5-flash",
+    ///             Temperature = 0.5,
+    ///         },
+    ///         LlmAgent = null,
+    ///     });
+    /// 
     ///     var my_example = new Gcp.Ces.Example("my-example", new()
     ///     {
     ///         Location = "us",
@@ -44,12 +127,32 @@ namespace Pulumi.Gcp.Ces
     ///         App = my_app.Name,
     ///         ExampleId = "example-id",
     ///         Description = "example description",
+    ///         EntryAgent = Output.Tuple(my_app.Project, my_app.AppId, cesBaseAgent.AgentId).Apply(values =&gt;
+    ///         {
+    ///             var project = values.Item1;
+    ///             var appId = values.Item2;
+    ///             var agentId = values.Item3;
+    ///             return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
+    ///         }),
     ///         Messages = new[]
     ///         {
     ///             new Gcp.Ces.Inputs.ExampleMessageArgs
     ///             {
     ///                 Chunks = new[]
     ///                 {
+    ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
+    ///                     {
+    ///                         AgentTransfer = new Gcp.Ces.Inputs.ExampleMessageChunkAgentTransferArgs
+    ///                         {
+    ///                             TargetAgent = Output.Tuple(my_app.Project, my_app.AppId, cesChildAgent.AgentId).Apply(values =&gt;
+    ///                             {
+    ///                                 var project = values.Item1;
+    ///                                 var appId = values.Item2;
+    ///                                 var agentId = values.Item3;
+    ///                                 return $"projects/{project}/locations/us/apps/{appId}/agents/{agentId}";
+    ///                             }),
+    ///                         },
+    ///                     },
     ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
     ///                     {
     ///                         Image = new Gcp.Ces.Inputs.ExampleMessageChunkImageArgs
@@ -64,6 +167,88 @@ namespace Pulumi.Gcp.Ces
     ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
     ///                     {
     ///                         Text = "text_data",
+    ///                     },
+    ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
+    ///                     {
+    ///                         ToolCall = new Gcp.Ces.Inputs.ExampleMessageChunkToolCallArgs
+    ///                         {
+    ///                             Args = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["arg1"] = "val1",
+    ///                                 ["arg2"] = "val2",
+    ///                             }),
+    ///                             Id = "tool_call_id",
+    ///                             Tool = Output.Tuple(my_app.Project, my_app.AppId, cesTool.ToolId).Apply(values =&gt;
+    ///                             {
+    ///                                 var project = values.Item1;
+    ///                                 var appId = values.Item2;
+    ///                                 var toolId = values.Item3;
+    ///                                 return $"projects/{project}/locations/us/apps/{appId}/tools/{toolId}";
+    ///                             }),
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
+    ///                     {
+    ///                         ToolCall = new Gcp.Ces.Inputs.ExampleMessageChunkToolCallArgs
+    ///                         {
+    ///                             Args = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["arg1"] = "val1",
+    ///                                 ["arg2"] = "val2",
+    ///                             }),
+    ///                             Id = "tool_call_id2",
+    ///                             ToolsetTool = new Gcp.Ces.Inputs.ExampleMessageChunkToolCallToolsetToolArgs
+    ///                             {
+    ///                                 Toolset = Output.Tuple(my_app.Project, my_app.AppId, cesToolset.ToolsetId).Apply(values =&gt;
+    ///                                 {
+    ///                                     var project = values.Item1;
+    ///                                     var appId = values.Item2;
+    ///                                     var toolsetId = values.Item3;
+    ///                                     return $"projects/{project}/locations/us/apps/{appId}/toolsets/{toolsetId}";
+    ///                                 }),
+    ///                                 ToolId = "example-id",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
+    ///                     {
+    ///                         ToolResponse = new Gcp.Ces.Inputs.ExampleMessageChunkToolResponseArgs
+    ///                         {
+    ///                             Id = "tool_call_id",
+    ///                             Response = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["output"] = "example-output",
+    ///                             }),
+    ///                             Tool = Output.Tuple(my_app.Project, my_app.AppId, cesTool.ToolId).Apply(values =&gt;
+    ///                             {
+    ///                                 var project = values.Item1;
+    ///                                 var appId = values.Item2;
+    ///                                 var toolId = values.Item3;
+    ///                                 return $"projects/{project}/locations/us/apps/{appId}/tools/{toolId}";
+    ///                             }),
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
+    ///                     {
+    ///                         ToolResponse = new Gcp.Ces.Inputs.ExampleMessageChunkToolResponseArgs
+    ///                         {
+    ///                             Id = "tool_call_id2",
+    ///                             Response = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["output"] = "example-output",
+    ///                             }),
+    ///                             ToolsetTool = new Gcp.Ces.Inputs.ExampleMessageChunkToolResponseToolsetToolArgs
+    ///                             {
+    ///                                 Toolset = Output.Tuple(my_app.Project, my_app.AppId, cesToolset.ToolsetId).Apply(values =&gt;
+    ///                                 {
+    ///                                     var project = values.Item1;
+    ///                                     var appId = values.Item2;
+    ///                                     var toolsetId = values.Item3;
+    ///                                     return $"projects/{project}/locations/us/apps/{appId}/toolsets/{toolsetId}";
+    ///                                 }),
+    ///                                 ToolId = "example-id",
+    ///                             },
+    ///                         },
     ///                     },
     ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
     ///                     {
@@ -132,6 +317,14 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The agent that initially handles the conversation. If not specified, the
+        /// example represents a conversation that is handled by the root agent.
+        /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        /// </summary>
+        [Output("entryAgent")]
+        public Output<string?> EntryAgent { get; private set; } = null!;
 
         /// <summary>
         /// Etag used to ensure the object hasn't changed during a read-modify-write
@@ -249,6 +442,14 @@ namespace Pulumi.Gcp.Ces
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// The agent that initially handles the conversation. If not specified, the
+        /// example represents a conversation that is handled by the root agent.
+        /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        /// </summary>
+        [Input("entryAgent")]
+        public Input<string>? EntryAgent { get; set; }
+
         [Input("exampleId", required: true)]
         public Input<string> ExampleId { get; set; } = null!;
 
@@ -309,6 +510,14 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The agent that initially handles the conversation. If not specified, the
+        /// example represents a conversation that is handled by the root agent.
+        /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        /// </summary>
+        [Input("entryAgent")]
+        public Input<string>? EntryAgent { get; set; }
 
         /// <summary>
         /// Etag used to ensure the object hasn't changed during a read-modify-write

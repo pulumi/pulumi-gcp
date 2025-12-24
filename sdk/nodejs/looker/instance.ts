@@ -305,6 +305,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly consumerNetwork: pulumi.Output<string | undefined>;
     /**
+     * Controlled egress configuration.
+     * Structure is documented below.
+     */
+    declare public readonly controlledEgressConfig: pulumi.Output<outputs.looker.InstanceControlledEgressConfig | undefined>;
+    /**
+     * Whether controlled egress is enabled on the Looker instance.
+     */
+    declare public readonly controlledEgressEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * The time the instance was created in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds.
      */
@@ -408,7 +417,7 @@ export class Instance extends pulumi.CustomResource {
      * Information for Private Service Connect (PSC) setup for a Looker instance.
      * Structure is documented below.
      */
-    declare public readonly pscConfig: pulumi.Output<outputs.looker.InstancePscConfig | undefined>;
+    declare public readonly pscConfig: pulumi.Output<outputs.looker.InstancePscConfig>;
     /**
      * Whether Public Service Connect (PSC) is enabled on the Looker instance
      */
@@ -458,6 +467,8 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["adminSettings"] = state?.adminSettings;
             resourceInputs["consumerNetwork"] = state?.consumerNetwork;
+            resourceInputs["controlledEgressConfig"] = state?.controlledEgressConfig;
+            resourceInputs["controlledEgressEnabled"] = state?.controlledEgressEnabled;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customDomain"] = state?.customDomain;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -490,6 +501,8 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["adminSettings"] = args?.adminSettings;
             resourceInputs["consumerNetwork"] = args?.consumerNetwork;
+            resourceInputs["controlledEgressConfig"] = args?.controlledEgressConfig;
+            resourceInputs["controlledEgressEnabled"] = args?.controlledEgressEnabled;
             resourceInputs["customDomain"] = args?.customDomain;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["denyMaintenancePeriod"] = args?.denyMaintenancePeriod;
@@ -536,6 +549,15 @@ export interface InstanceState {
      * project that is hosting the Looker Instance.
      */
     consumerNetwork?: pulumi.Input<string>;
+    /**
+     * Controlled egress configuration.
+     * Structure is documented below.
+     */
+    controlledEgressConfig?: pulumi.Input<inputs.looker.InstanceControlledEgressConfig>;
+    /**
+     * Whether controlled egress is enabled on the Looker instance.
+     */
+    controlledEgressEnabled?: pulumi.Input<boolean>;
     /**
      * The time the instance was created in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds.
@@ -691,6 +713,15 @@ export interface InstanceArgs {
      * project that is hosting the Looker Instance.
      */
     consumerNetwork?: pulumi.Input<string>;
+    /**
+     * Controlled egress configuration.
+     * Structure is documented below.
+     */
+    controlledEgressConfig?: pulumi.Input<inputs.looker.InstanceControlledEgressConfig>;
+    /**
+     * Whether controlled egress is enabled on the Looker instance.
+     */
+    controlledEgressEnabled?: pulumi.Input<boolean>;
     /**
      * Custom domain settings for a Looker instance.
      * Structure is documented below.

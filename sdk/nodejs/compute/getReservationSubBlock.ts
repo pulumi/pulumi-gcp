@@ -54,6 +54,8 @@ export interface GetReservationSubBlockArgs {
     project?: string;
     /**
      * The name of the parent reservation.
+     *
+     * - - -
      */
     reservation: string;
     /**
@@ -62,8 +64,6 @@ export interface GetReservationSubBlockArgs {
     reservationBlock: string;
     /**
      * The zone where the reservation sub-block resides.
-     *
-     * - - -
      */
     zone?: string;
 }
@@ -174,6 +174,8 @@ export interface GetReservationSubBlockOutputArgs {
     project?: pulumi.Input<string>;
     /**
      * The name of the parent reservation.
+     *
+     * - - -
      */
     reservation: pulumi.Input<string>;
     /**
@@ -182,8 +184,6 @@ export interface GetReservationSubBlockOutputArgs {
     reservationBlock: pulumi.Input<string>;
     /**
      * The zone where the reservation sub-block resides.
-     *
-     * - - -
      */
     zone?: pulumi.Input<string>;
 }

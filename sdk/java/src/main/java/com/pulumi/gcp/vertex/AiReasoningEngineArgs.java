@@ -50,7 +50,8 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      * 
      */
@@ -59,7 +60,8 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      * 
      */
@@ -189,7 +191,8 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param encryptionSpec Optional. Customer-managed encryption key spec for a ReasoningEngine.
-         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+         * will be secured by this key.
          * Structure is documented below.
          * 
          * @return builder
@@ -202,7 +205,8 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param encryptionSpec Optional. Customer-managed encryption key spec for a ReasoningEngine.
-         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+         * will be secured by this key.
          * Structure is documented below.
          * 
          * @return builder

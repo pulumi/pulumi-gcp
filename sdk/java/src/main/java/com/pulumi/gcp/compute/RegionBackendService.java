@@ -21,6 +21,7 @@ import com.pulumi.gcp.compute.outputs.RegionBackendServiceFailoverPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceHaPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceIap;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceLogConfig;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceParams;
 import com.pulumi.gcp.compute.outputs.RegionBackendServiceStrongSessionAffinityCookie;
@@ -1612,6 +1613,22 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> network() {
         return Codegen.optional(this.network);
+    }
+    /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkPassThroughLbTrafficPolicy", refs={RegionBackendServiceNetworkPassThroughLbTrafficPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ RegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicy;
+
+    /**
+     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionBackendServiceNetworkPassThroughLbTrafficPolicy>> networkPassThroughLbTrafficPolicy() {
+        return Codegen.optional(this.networkPassThroughLbTrafficPolicy);
     }
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.

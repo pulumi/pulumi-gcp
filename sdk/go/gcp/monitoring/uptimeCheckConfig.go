@@ -373,10 +373,6 @@ import (
 //
 // ```
 //
-// ## Ephemeral Attributes Reference
-//
-// The following write-only attributes are supported:
-//
 // ## Import
 //
 // UptimeCheckConfig can be imported using any of these accepted formats:

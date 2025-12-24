@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs Empty = new RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs();
+
+    /**
+     * List of disks to be attached to the instances created from this selection.
+     * 
+     */
+    @Import(name="disks")
+    private @Nullable Output<List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs>> disks;
+
+    /**
+     * @return List of disks to be attached to the instances created from this selection.
+     * 
+     */
+    public Optional<Output<List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs>>> disks() {
+        return Optional.ofNullable(this.disks);
+    }
 
     /**
      * Full machine-type names, e.g. &#34;n1-standard-16&#34;
@@ -31,6 +47,21 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
      */
     public Output<List<String>> machineTypes() {
         return this.machineTypes;
+    }
+
+    /**
+     * Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+     * 
+     */
+    @Import(name="minCpuPlatform")
+    private @Nullable Output<String> minCpuPlatform;
+
+    /**
+     * @return Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+     * 
+     */
+    public Optional<Output<String>> minCpuPlatform() {
+        return Optional.ofNullable(this.minCpuPlatform);
     }
 
     /**
@@ -72,7 +103,9 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
     private RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs() {}
 
     private RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs(RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs $) {
+        this.disks = $.disks;
         this.machineTypes = $.machineTypes;
+        this.minCpuPlatform = $.minCpuPlatform;
         this.name = $.name;
         this.rank = $.rank;
     }
@@ -93,6 +126,37 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
 
         public Builder(RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs defaults) {
             $ = new RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param disks List of disks to be attached to the instances created from this selection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disks(@Nullable Output<List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs>> disks) {
+            $.disks = disks;
+            return this;
+        }
+
+        /**
+         * @param disks List of disks to be attached to the instances created from this selection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disks(List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs> disks) {
+            return disks(Output.of(disks));
+        }
+
+        /**
+         * @param disks List of disks to be attached to the instances created from this selection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disks(RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs... disks) {
+            return disks(List.of(disks));
         }
 
         /**
@@ -124,6 +188,27 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
          */
         public Builder machineTypes(String... machineTypes) {
             return machineTypes(List.of(machineTypes));
+        }
+
+        /**
+         * @param minCpuPlatform Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minCpuPlatform(@Nullable Output<String> minCpuPlatform) {
+            $.minCpuPlatform = minCpuPlatform;
+            return this;
+        }
+
+        /**
+         * @param minCpuPlatform Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minCpuPlatform(String minCpuPlatform) {
+            return minCpuPlatform(Output.of(minCpuPlatform));
         }
 
         /**

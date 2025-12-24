@@ -180,6 +180,160 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Dataplex Entry Bigquery Table
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const aspect_type_full_one = new gcp.dataplex.AspectType("aspect-type-full-one", {
+ *     aspectTypeId: "aspect-type-one",
+ *     location: "us-central1",
+ *     project: "1111111111111",
+ *     metadataTemplate: `{
+ *   \\"name\\": \\"tf-test-template\\",
+ *   \\"type\\": \\"record\\",
+ *   \\"recordFields\\": [
+ *     {
+ *       \\"name\\": \\"type\\",
+ *       \\"type\\": \\"enum\\",
+ *       \\"annotations\\": {
+ *         \\"displayName\\": \\"Type\\",
+ *         \\"description\\": \\"Specifies the type of view represented by the entry.\\"
+ *       },
+ *       \\"index\\": 1,
+ *       \\"constraints\\": {
+ *         \\"required\\": true
+ *       },
+ *       \\"enumValues\\": [
+ *         {
+ *           \\"name\\": \\"VIEW\\",
+ *           \\"index\\": 1
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * `,
+ * });
+ * const aspect_type_full_two = new gcp.dataplex.AspectType("aspect-type-full-two", {
+ *     aspectTypeId: "aspect-type-two",
+ *     location: "us-central1",
+ *     project: "1111111111111",
+ *     metadataTemplate: `{
+ *   \\"name\\": \\"tf-test-template\\",
+ *   \\"type\\": \\"record\\",
+ *   \\"recordFields\\": [
+ *     {
+ *       \\"name\\": \\"story\\",
+ *       \\"type\\": \\"enum\\",
+ *       \\"annotations\\": {
+ *         \\"displayName\\": \\"Story\\",
+ *         \\"description\\": \\"Specifies the story of an entry.\\"
+ *       },
+ *       \\"index\\": 1,
+ *       \\"constraints\\": {
+ *         \\"required\\": true
+ *       },
+ *       \\"enumValues\\": [
+ *         {
+ *           \\"name\\": \\"SEQUENCE\\",
+ *           \\"index\\": 1
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * }
+ * `,
+ * });
+ * const example_dataset = new gcp.bigquery.Dataset("example-dataset", {
+ *     datasetId: "dataset-basic",
+ *     friendlyName: "Example Dataset",
+ *     location: "us-central1",
+ *     deleteContentsOnDestroy: true,
+ * });
+ * const example_table = new gcp.bigquery.Table("example-table", {
+ *     datasetId: example_dataset.datasetId,
+ *     tableId: "table-basic",
+ *     deletionProtection: false,
+ *     schema: JSON.stringify([
+ *         {
+ *             name: "event_time",
+ *             type: "TIMESTAMP",
+ *             mode: "REQUIRED",
+ *         },
+ *         {
+ *             name: "user_id",
+ *             type: "STRING",
+ *             mode: "NULLABLE",
+ *         },
+ *         {
+ *             name: "event_type",
+ *             type: "STRING",
+ *             mode: "NULLABLE",
+ *         },
+ *     ]),
+ * });
+ * const tfTestTable = new gcp.dataplex.Entry("tf_test_table", {
+ *     entryGroupId: "@bigquery",
+ *     project: "1111111111111",
+ *     location: "us-central1",
+ *     entryId: pulumi.interpolate`bigquery.googleapis.com/projects/my-project-name/datasets/${example_dataset.datasetId}/tables/${example_table.tableId}`,
+ *     entryType: "projects/655216118709/locations/global/entryTypes/bigquery-table",
+ *     fullyQualifiedName: pulumi.interpolate`bigquery:my-project-name.${example_dataset.datasetId}.${example_table.tableId}`,
+ *     parentEntry: pulumi.interpolate`projects/1111111111111/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/my-project-name/datasets/${example_dataset.datasetId}`,
+ *     aspects: [
+ *         {
+ *             aspectKey: "1111111111111.us-central1.aspect-type-one",
+ *             aspect: {
+ *                 data: "          {\\\"type\\\": \\\"VIEW\\\"    }\n",
+ *             },
+ *         },
+ *         {
+ *             aspectKey: "1111111111111.us-central1.aspect-type-two@Schema.event_type",
+ *             aspect: {
+ *                 data: "          {\\\"story\\\": \\\"SEQUENCE\\\"    }\n",
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [
+ *         aspect_type_full_two,
+ *         aspect_type_full_one,
+ *     ],
+ * });
+ * ```
+ * ### Dataplex Entry Glossary Term
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example_glossary = new gcp.dataplex.Glossary("example-glossary", {
+ *     glossaryId: "glossary-basic",
+ *     location: "us-central1",
+ * });
+ * const example_glossary_term = new gcp.dataplex.GlossaryTerm("example-glossary-term", {
+ *     parent: pulumi.interpolate`projects/my-project-name/locations/us-central1/glossaries/${example_glossary.glossaryId}`,
+ *     glossaryId: example_glossary.glossaryId,
+ *     location: "us-central1",
+ *     termId: "glossary-term",
+ * });
+ * const tfTestGlossaryTerm = new gcp.dataplex.Entry("tf_test_glossary_term", {
+ *     entryGroupId: "@dataplex",
+ *     project: "1111111111111",
+ *     location: "us-central1",
+ *     entryId: pulumi.all([example_glossary.glossaryId, example_glossary_term.termId]).apply(([glossaryId, termId]) => `projects/1111111111111/locations/us-central1/glossaries/${glossaryId}/terms/${termId}`),
+ *     entryType: "projects/655216118709/locations/global/entryTypes/glossary-term",
+ *     parentEntry: pulumi.interpolate`projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/${example_glossary.glossaryId}`,
+ *     aspects: [{
+ *         aspectKey: "655216118709.global.overview",
+ *         aspect: {
+ *             data: "           {\\\"content\\\": \\\"Term Content\\\"    }\n",
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

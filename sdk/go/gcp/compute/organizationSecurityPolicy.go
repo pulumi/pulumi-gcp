@@ -16,7 +16,7 @@ import (
 //
 // To get more information about OrganizationSecurityPolicy, see:
 //
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies)
 // * How-to Guides
 //   - [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 //
@@ -37,8 +37,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				DisplayName: pulumi.String("tf-test"),
-//				Parent:      pulumi.String("organizations/123456789"),
+//				ShortName: pulumi.String("my-short-name"),
+//				Parent:    pulumi.String("organizations/123456789"),
+//				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
 //			if err != nil {
 //				return err
@@ -84,9 +85,9 @@ type OrganizationSecurityPolicy struct {
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
 	ShortName pulumi.StringPtrOutput `pulumi:"shortName"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// Default value is `FIREWALL`.
+	// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
 	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewOrganizationSecurityPolicy registers a new resource with the given unique name, arguments, and options.
@@ -137,7 +138,7 @@ type organizationSecurityPolicyState struct {
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
 	ShortName *string `pulumi:"shortName"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// Default value is `FIREWALL`.
+	// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
 	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type *string `pulumi:"type"`
 }
@@ -158,7 +159,7 @@ type OrganizationSecurityPolicyState struct {
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
 	ShortName pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// Default value is `FIREWALL`.
+	// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
 	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrInput
 }
@@ -178,7 +179,7 @@ type organizationSecurityPolicyArgs struct {
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
 	ShortName *string `pulumi:"shortName"`
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// Default value is `FIREWALL`.
+	// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
 	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type *string `pulumi:"type"`
 }
@@ -195,7 +196,7 @@ type OrganizationSecurityPolicyArgs struct {
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
 	ShortName pulumi.StringPtrInput
 	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// Default value is `FIREWALL`.
+	// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
 	// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrInput
 }
@@ -320,10 +321,10 @@ func (o OrganizationSecurityPolicyOutput) ShortName() pulumi.StringPtrOutput {
 }
 
 // The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-// Default value is `FIREWALL`.
+// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
 // Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
-func (o OrganizationSecurityPolicyOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+func (o OrganizationSecurityPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type OrganizationSecurityPolicyArrayOutput struct{ *pulumi.OutputState }

@@ -566,6 +566,164 @@ class Entry(pulumi.CustomResource):
                     aspect_type_full_one,
                 ]))
         ```
+        ### Dataplex Entry Bigquery Table
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        aspect_type_full_one = gcp.dataplex.AspectType("aspect-type-full-one",
+            aspect_type_id="aspect-type-one",
+            location="us-central1",
+            project="1111111111111",
+            metadata_template=\"\"\"{
+          \\"name\\": \\"tf-test-template\\",
+          \\"type\\": \\"record\\",
+          \\"recordFields\\": [
+            {
+              \\"name\\": \\"type\\",
+              \\"type\\": \\"enum\\",
+              \\"annotations\\": {
+                \\"displayName\\": \\"Type\\",
+                \\"description\\": \\"Specifies the type of view represented by the entry.\\"
+              },
+              \\"index\\": 1,
+              \\"constraints\\": {
+                \\"required\\": true
+              },
+              \\"enumValues\\": [
+                {
+                  \\"name\\": \\"VIEW\\",
+                  \\"index\\": 1
+                }
+              ]
+            }
+          ]
+        }
+        \"\"\")
+        aspect_type_full_two = gcp.dataplex.AspectType("aspect-type-full-two",
+            aspect_type_id="aspect-type-two",
+            location="us-central1",
+            project="1111111111111",
+            metadata_template=\"\"\"{
+          \\"name\\": \\"tf-test-template\\",
+          \\"type\\": \\"record\\",
+          \\"recordFields\\": [
+            {
+              \\"name\\": \\"story\\",
+              \\"type\\": \\"enum\\",
+              \\"annotations\\": {
+                \\"displayName\\": \\"Story\\",
+                \\"description\\": \\"Specifies the story of an entry.\\"
+              },
+              \\"index\\": 1,
+              \\"constraints\\": {
+                \\"required\\": true
+              },
+              \\"enumValues\\": [
+                {
+                  \\"name\\": \\"SEQUENCE\\",
+                  \\"index\\": 1
+                }
+              ]
+            }
+          ]
+        }
+        \"\"\")
+        example_dataset = gcp.bigquery.Dataset("example-dataset",
+            dataset_id="dataset-basic",
+            friendly_name="Example Dataset",
+            location="us-central1",
+            delete_contents_on_destroy=True)
+        example_table = gcp.bigquery.Table("example-table",
+            dataset_id=example_dataset.dataset_id,
+            table_id="table-basic",
+            deletion_protection=False,
+            schema=json.dumps([
+                {
+                    "name": "event_time",
+                    "type": "TIMESTAMP",
+                    "mode": "REQUIRED",
+                },
+                {
+                    "name": "user_id",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                },
+                {
+                    "name": "event_type",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                },
+            ]))
+        tf_test_table = gcp.dataplex.Entry("tf_test_table",
+            entry_group_id="@bigquery",
+            project="1111111111111",
+            location="us-central1",
+            entry_id=pulumi.Output.all(
+                dataset_id=example_dataset.dataset_id,
+                table_id=example_table.table_id
+        ).apply(lambda resolved_outputs: f"bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            entry_type="projects/655216118709/locations/global/entryTypes/bigquery-table",
+            fully_qualified_name=pulumi.Output.all(
+                dataset_id=example_dataset.dataset_id,
+                table_id=example_table.table_id
+        ).apply(lambda resolved_outputs: f"bigquery:my-project-name.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
+            parent_entry=example_dataset.dataset_id.apply(lambda dataset_id: f"projects/1111111111111/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/my-project-name/datasets/{dataset_id}"),
+            aspects=[
+                {
+                    "aspect_key": "1111111111111.us-central1.aspect-type-one",
+                    "aspect": {
+                        "data": "          {\\\\\\"type\\\\\\": \\\\\\"VIEW\\\\\\"    }\\n",
+                    },
+                },
+                {
+                    "aspect_key": "1111111111111.us-central1.aspect-type-two@Schema.event_type",
+                    "aspect": {
+                        "data": "          {\\\\\\"story\\\\\\": \\\\\\"SEQUENCE\\\\\\"    }\\n",
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    aspect_type_full_two,
+                    aspect_type_full_one,
+                ]))
+        ```
+        ### Dataplex Entry Glossary Term
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_glossary = gcp.dataplex.Glossary("example-glossary",
+            glossary_id="glossary-basic",
+            location="us-central1")
+        example_glossary_term = gcp.dataplex.GlossaryTerm("example-glossary-term",
+            parent=example_glossary.glossary_id.apply(lambda glossary_id: f"projects/my-project-name/locations/us-central1/glossaries/{glossary_id}"),
+            glossary_id=example_glossary.glossary_id,
+            location="us-central1",
+            term_id="glossary-term")
+        tf_test_glossary_term = gcp.dataplex.Entry("tf_test_glossary_term",
+            entry_group_id="@dataplex",
+            project="1111111111111",
+            location="us-central1",
+            entry_id=pulumi.Output.all(
+                glossary_id=example_glossary.glossary_id,
+                term_id=example_glossary_term.term_id
+        ).apply(lambda resolved_outputs: f"projects/1111111111111/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}/terms/{resolved_outputs['term_id']}")
+        ,
+            entry_type="projects/655216118709/locations/global/entryTypes/glossary-term",
+            parent_entry=example_glossary.glossary_id.apply(lambda glossary_id: f"projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/{glossary_id}"),
+            aspects=[{
+                "aspect_key": "655216118709.global.overview",
+                "aspect": {
+                    "data": "           {\\\\\\"content\\\\\\": \\\\\\"Term Content\\\\\\"    }\\n",
+                },
+            }])
+        ```
 
         ## Import
 
@@ -777,6 +935,164 @@ class Entry(pulumi.CustomResource):
                     aspect_type_full_two,
                     aspect_type_full_one,
                 ]))
+        ```
+        ### Dataplex Entry Bigquery Table
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        aspect_type_full_one = gcp.dataplex.AspectType("aspect-type-full-one",
+            aspect_type_id="aspect-type-one",
+            location="us-central1",
+            project="1111111111111",
+            metadata_template=\"\"\"{
+          \\"name\\": \\"tf-test-template\\",
+          \\"type\\": \\"record\\",
+          \\"recordFields\\": [
+            {
+              \\"name\\": \\"type\\",
+              \\"type\\": \\"enum\\",
+              \\"annotations\\": {
+                \\"displayName\\": \\"Type\\",
+                \\"description\\": \\"Specifies the type of view represented by the entry.\\"
+              },
+              \\"index\\": 1,
+              \\"constraints\\": {
+                \\"required\\": true
+              },
+              \\"enumValues\\": [
+                {
+                  \\"name\\": \\"VIEW\\",
+                  \\"index\\": 1
+                }
+              ]
+            }
+          ]
+        }
+        \"\"\")
+        aspect_type_full_two = gcp.dataplex.AspectType("aspect-type-full-two",
+            aspect_type_id="aspect-type-two",
+            location="us-central1",
+            project="1111111111111",
+            metadata_template=\"\"\"{
+          \\"name\\": \\"tf-test-template\\",
+          \\"type\\": \\"record\\",
+          \\"recordFields\\": [
+            {
+              \\"name\\": \\"story\\",
+              \\"type\\": \\"enum\\",
+              \\"annotations\\": {
+                \\"displayName\\": \\"Story\\",
+                \\"description\\": \\"Specifies the story of an entry.\\"
+              },
+              \\"index\\": 1,
+              \\"constraints\\": {
+                \\"required\\": true
+              },
+              \\"enumValues\\": [
+                {
+                  \\"name\\": \\"SEQUENCE\\",
+                  \\"index\\": 1
+                }
+              ]
+            }
+          ]
+        }
+        \"\"\")
+        example_dataset = gcp.bigquery.Dataset("example-dataset",
+            dataset_id="dataset-basic",
+            friendly_name="Example Dataset",
+            location="us-central1",
+            delete_contents_on_destroy=True)
+        example_table = gcp.bigquery.Table("example-table",
+            dataset_id=example_dataset.dataset_id,
+            table_id="table-basic",
+            deletion_protection=False,
+            schema=json.dumps([
+                {
+                    "name": "event_time",
+                    "type": "TIMESTAMP",
+                    "mode": "REQUIRED",
+                },
+                {
+                    "name": "user_id",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                },
+                {
+                    "name": "event_type",
+                    "type": "STRING",
+                    "mode": "NULLABLE",
+                },
+            ]))
+        tf_test_table = gcp.dataplex.Entry("tf_test_table",
+            entry_group_id="@bigquery",
+            project="1111111111111",
+            location="us-central1",
+            entry_id=pulumi.Output.all(
+                dataset_id=example_dataset.dataset_id,
+                table_id=example_table.table_id
+        ).apply(lambda resolved_outputs: f"bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            entry_type="projects/655216118709/locations/global/entryTypes/bigquery-table",
+            fully_qualified_name=pulumi.Output.all(
+                dataset_id=example_dataset.dataset_id,
+                table_id=example_table.table_id
+        ).apply(lambda resolved_outputs: f"bigquery:my-project-name.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
+        ,
+            parent_entry=example_dataset.dataset_id.apply(lambda dataset_id: f"projects/1111111111111/locations/us-central1/entryGroups/@bigquery/entries/bigquery.googleapis.com/projects/my-project-name/datasets/{dataset_id}"),
+            aspects=[
+                {
+                    "aspect_key": "1111111111111.us-central1.aspect-type-one",
+                    "aspect": {
+                        "data": "          {\\\\\\"type\\\\\\": \\\\\\"VIEW\\\\\\"    }\\n",
+                    },
+                },
+                {
+                    "aspect_key": "1111111111111.us-central1.aspect-type-two@Schema.event_type",
+                    "aspect": {
+                        "data": "          {\\\\\\"story\\\\\\": \\\\\\"SEQUENCE\\\\\\"    }\\n",
+                    },
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    aspect_type_full_two,
+                    aspect_type_full_one,
+                ]))
+        ```
+        ### Dataplex Entry Glossary Term
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_glossary = gcp.dataplex.Glossary("example-glossary",
+            glossary_id="glossary-basic",
+            location="us-central1")
+        example_glossary_term = gcp.dataplex.GlossaryTerm("example-glossary-term",
+            parent=example_glossary.glossary_id.apply(lambda glossary_id: f"projects/my-project-name/locations/us-central1/glossaries/{glossary_id}"),
+            glossary_id=example_glossary.glossary_id,
+            location="us-central1",
+            term_id="glossary-term")
+        tf_test_glossary_term = gcp.dataplex.Entry("tf_test_glossary_term",
+            entry_group_id="@dataplex",
+            project="1111111111111",
+            location="us-central1",
+            entry_id=pulumi.Output.all(
+                glossary_id=example_glossary.glossary_id,
+                term_id=example_glossary_term.term_id
+        ).apply(lambda resolved_outputs: f"projects/1111111111111/locations/us-central1/glossaries/{resolved_outputs['glossary_id']}/terms/{resolved_outputs['term_id']}")
+        ,
+            entry_type="projects/655216118709/locations/global/entryTypes/glossary-term",
+            parent_entry=example_glossary.glossary_id.apply(lambda glossary_id: f"projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/{glossary_id}"),
+            aspects=[{
+                "aspect_key": "655216118709.global.overview",
+                "aspect": {
+                    "data": "           {\\\\\\"content\\\\\\": \\\\\\"Term Content\\\\\\"    }\\n",
+                },
+            }])
         ```
 
         ## Import

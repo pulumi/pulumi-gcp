@@ -240,6 +240,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Routine Python Function
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
+ * const pythonFunction = new gcp.bigquery.Routine("python_function", {
+ *     datasetId: test.datasetId,
+ *     routineId: "routine_id",
+ *     routineType: "SCALAR_FUNCTION",
+ *     language: "PYTHON",
+ *     arguments: [
+ *         {
+ *             name: "x",
+ *             dataType: "{\"typeKind\" :  \"FLOAT64\"}",
+ *         },
+ *         {
+ *             name: "y",
+ *             dataType: "{\"typeKind\" :  \"FLOAT64\"}",
+ *         },
+ *     ],
+ *     definitionBody: `def multiply(x, y):
+ *   return x * y
+ * `,
+ *     returnType: "{\"typeKind\" :  \"FLOAT64\"}",
+ *     pythonOptions: {
+ *         entryPoint: "multiply",
+ *     },
+ *     externalRuntimeOptions: {
+ *         containerMemory: "512Mi",
+ *         containerCpu: 0.5,
+ *         runtimeVersion: "python-3.11",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -327,6 +363,12 @@ export class Routine extends pulumi.CustomResource {
      */
     declare public readonly determinismLevel: pulumi.Output<string | undefined>;
     /**
+     * Options for the runtime of the external system.
+     * This field is only applicable for Python UDFs.
+     * Structure is documented below.
+     */
+    declare public readonly externalRuntimeOptions: pulumi.Output<outputs.bigquery.RoutineExternalRuntimeOptions | undefined>;
+    /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
@@ -346,6 +388,11 @@ export class Routine extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * Options for a user-defined Python function.
+     * Structure is documented below.
+     */
+    declare public readonly pythonOptions: pulumi.Output<outputs.bigquery.RoutinePythonOptions | undefined>;
     /**
      * Remote function specific options.
      * Structure is documented below.
@@ -410,10 +457,12 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["definitionBody"] = state?.definitionBody;
             resourceInputs["description"] = state?.description;
             resourceInputs["determinismLevel"] = state?.determinismLevel;
+            resourceInputs["externalRuntimeOptions"] = state?.externalRuntimeOptions;
             resourceInputs["importedLibraries"] = state?.importedLibraries;
             resourceInputs["language"] = state?.language;
             resourceInputs["lastModifiedTime"] = state?.lastModifiedTime;
             resourceInputs["project"] = state?.project;
+            resourceInputs["pythonOptions"] = state?.pythonOptions;
             resourceInputs["remoteFunctionOptions"] = state?.remoteFunctionOptions;
             resourceInputs["returnTableType"] = state?.returnTableType;
             resourceInputs["returnType"] = state?.returnType;
@@ -441,9 +490,11 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["definitionBody"] = args?.definitionBody;
             resourceInputs["description"] = args?.description;
             resourceInputs["determinismLevel"] = args?.determinismLevel;
+            resourceInputs["externalRuntimeOptions"] = args?.externalRuntimeOptions;
             resourceInputs["importedLibraries"] = args?.importedLibraries;
             resourceInputs["language"] = args?.language;
             resourceInputs["project"] = args?.project;
+            resourceInputs["pythonOptions"] = args?.pythonOptions;
             resourceInputs["remoteFunctionOptions"] = args?.remoteFunctionOptions;
             resourceInputs["returnTableType"] = args?.returnTableType;
             resourceInputs["returnType"] = args?.returnType;
@@ -497,6 +548,12 @@ export interface RoutineState {
      */
     determinismLevel?: pulumi.Input<string>;
     /**
+     * Options for the runtime of the external system.
+     * This field is only applicable for Python UDFs.
+     * Structure is documented below.
+     */
+    externalRuntimeOptions?: pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptions>;
+    /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
@@ -516,6 +573,11 @@ export interface RoutineState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Options for a user-defined Python function.
+     * Structure is documented below.
+     */
+    pythonOptions?: pulumi.Input<inputs.bigquery.RoutinePythonOptions>;
     /**
      * Remote function specific options.
      * Structure is documented below.
@@ -594,6 +656,12 @@ export interface RoutineArgs {
      */
     determinismLevel?: pulumi.Input<string>;
     /**
+     * Options for the runtime of the external system.
+     * This field is only applicable for Python UDFs.
+     * Structure is documented below.
+     */
+    externalRuntimeOptions?: pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptions>;
+    /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
@@ -608,6 +676,11 @@ export interface RoutineArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Options for a user-defined Python function.
+     * Structure is documented below.
+     */
+    pythonOptions?: pulumi.Input<inputs.bigquery.RoutinePythonOptions>;
     /**
      * Remote function specific options.
      * Structure is documented below.

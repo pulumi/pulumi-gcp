@@ -6,6 +6,7 @@ package com.pulumi.gcp.backupdisasterrecovery;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupVaultEncryptionConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -148,6 +149,23 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> effectiveTime() {
         return Optional.ofNullable(this.effectiveTime);
+    }
+
+    /**
+     * Encryption configuration for the backup vault.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionConfig")
+    private @Nullable Output<BackupVaultEncryptionConfigArgs> encryptionConfig;
+
+    /**
+     * @return Encryption configuration for the backup vault.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupVaultEncryptionConfigArgs>> encryptionConfig() {
+        return Optional.ofNullable(this.encryptionConfig);
     }
 
     /**
@@ -300,6 +318,7 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
         this.backupVaultId = $.backupVaultId;
         this.description = $.description;
         this.effectiveTime = $.effectiveTime;
+        this.encryptionConfig = $.encryptionConfig;
         this.forceDelete = $.forceDelete;
         this.forceUpdate = $.forceUpdate;
         this.ignoreBackupPlanReferences = $.ignoreBackupPlanReferences;
@@ -505,6 +524,29 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveTime(String effectiveTime) {
             return effectiveTime(Output.of(effectiveTime));
+        }
+
+        /**
+         * @param encryptionConfig Encryption configuration for the backup vault.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(@Nullable Output<BackupVaultEncryptionConfigArgs> encryptionConfig) {
+            $.encryptionConfig = encryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfig Encryption configuration for the backup vault.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(BackupVaultEncryptionConfigArgs encryptionConfig) {
+            return encryptionConfig(Output.of(encryptionConfig));
         }
 
         /**

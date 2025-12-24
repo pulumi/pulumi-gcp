@@ -17,31 +17,55 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
     public static final SQuotaAdjusterSettingsState Empty = new SQuotaAdjusterSettingsState();
 
     /**
+     * (Deprecated)
      * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
+     * 
+     * @deprecated
+     * `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
      * 
      */
+    @Deprecated /* `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead. */
     @Import(name="effectiveContainer")
     private @Nullable Output<String> effectiveContainer;
 
     /**
-     * @return The resource container that determines if the quota adjuster is set for this project.
+     * @return (Deprecated)
+     * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
+     * 
+     * @deprecated
+     * `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
      * 
      */
+    @Deprecated /* `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead. */
     public Optional<Output<String>> effectiveContainer() {
         return Optional.ofNullable(this.effectiveContainer);
     }
 
     /**
+     * (Deprecated)
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
+     * 
+     * @deprecated
+     * `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
      * 
      */
+    @Deprecated /* `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead. */
     @Import(name="effectiveEnablement")
     private @Nullable Output<String> effectiveEnablement;
 
     /**
-     * @return Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * @return (Deprecated)
+     * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
+     * 
+     * @deprecated
+     * `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
      * 
      */
+    @Deprecated /* `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead. */
     public Optional<Output<String>> effectiveEnablement() {
         return Optional.ofNullable(this.effectiveEnablement);
     }
@@ -142,43 +166,67 @@ public final class SQuotaAdjusterSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param effectiveContainer The resource container that determines if the quota adjuster is set for this project.
+         * @param effectiveContainer (Deprecated)
+         * The resource container that determines if the quota adjuster is set for this project.
+         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
+         * 
          */
+        @Deprecated /* `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead. */
         public Builder effectiveContainer(@Nullable Output<String> effectiveContainer) {
             $.effectiveContainer = effectiveContainer;
             return this;
         }
 
         /**
-         * @param effectiveContainer The resource container that determines if the quota adjuster is set for this project.
+         * @param effectiveContainer (Deprecated)
+         * The resource container that determines if the quota adjuster is set for this project.
+         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
+         * 
          */
+        @Deprecated /* `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead. */
         public Builder effectiveContainer(String effectiveContainer) {
             return effectiveContainer(Output.of(effectiveContainer));
         }
 
         /**
-         * @param effectiveEnablement Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+         * @param effectiveEnablement (Deprecated)
+         * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
+         * 
          */
+        @Deprecated /* `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead. */
         public Builder effectiveEnablement(@Nullable Output<String> effectiveEnablement) {
             $.effectiveEnablement = effectiveEnablement;
             return this;
         }
 
         /**
-         * @param effectiveEnablement Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+         * @param effectiveEnablement (Deprecated)
+         * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+         * Expect this field to be empty currently.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
+         * 
          */
+        @Deprecated /* `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead. */
         public Builder effectiveEnablement(String effectiveEnablement) {
             return effectiveEnablement(Output.of(effectiveEnablement));
         }

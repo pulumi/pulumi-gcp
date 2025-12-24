@@ -75,28 +75,44 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings")
 public class SQuotaAdjusterSettings extends com.pulumi.resources.CustomResource {
     /**
+     * (Deprecated)
      * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
+     * 
+     * @deprecated
+     * `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
      * 
      */
+    @Deprecated /* `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead. */
     @Export(name="effectiveContainer", refs={String.class}, tree="[0]")
     private Output<String> effectiveContainer;
 
     /**
-     * @return The resource container that determines if the quota adjuster is set for this project.
+     * @return (Deprecated)
+     * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
      * 
      */
     public Output<String> effectiveContainer() {
         return this.effectiveContainer;
     }
     /**
+     * (Deprecated)
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
+     * 
+     * @deprecated
+     * `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
      * 
      */
+    @Deprecated /* `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead. */
     @Export(name="effectiveEnablement", refs={String.class}, tree="[0]")
     private Output<String> effectiveEnablement;
 
     /**
-     * @return Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * @return (Deprecated)
+     * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
      * 
      */
     public Output<String> effectiveEnablement() {

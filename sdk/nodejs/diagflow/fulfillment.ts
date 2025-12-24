@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Fulfillment, see:
  *
- * * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent/getFulfillment)
+ * * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent/getFulfillment)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/es/docs/fulfillment-overview)
  *

@@ -23,6 +23,7 @@ class CxToolArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
+                 connector_spec: Optional[pulumi.Input['CxToolConnectorSpecArgs']] = None,
                  data_store_spec: Optional[pulumi.Input['CxToolDataStoreSpecArgs']] = None,
                  function_spec: Optional[pulumi.Input['CxToolFunctionSpecArgs']] = None,
                  open_api_spec: Optional[pulumi.Input['CxToolOpenApiSpecArgs']] = None,
@@ -31,6 +32,9 @@ class CxToolArgs:
         The set of arguments for constructing a CxTool resource.
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
+        :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: Integration connectors tool specification.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+               Structure is documented below.
         :param pulumi.Input['CxToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
@@ -45,6 +49,8 @@ class CxToolArgs:
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
+        if connector_spec is not None:
+            pulumi.set(__self__, "connector_spec", connector_spec)
         if data_store_spec is not None:
             pulumi.set(__self__, "data_store_spec", data_store_spec)
         if function_spec is not None:
@@ -77,6 +83,20 @@ class CxToolArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorSpec")
+    def connector_spec(self) -> Optional[pulumi.Input['CxToolConnectorSpecArgs']]:
+        """
+        Integration connectors tool specification.
+        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_spec")
+
+    @connector_spec.setter
+    def connector_spec(self, value: Optional[pulumi.Input['CxToolConnectorSpecArgs']]):
+        pulumi.set(self, "connector_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreSpec")
@@ -137,6 +157,7 @@ class CxToolArgs:
 @pulumi.input_type
 class _CxToolState:
     def __init__(__self__, *,
+                 connector_spec: Optional[pulumi.Input['CxToolConnectorSpecArgs']] = None,
                  data_store_spec: Optional[pulumi.Input['CxToolDataStoreSpecArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -147,6 +168,9 @@ class _CxToolState:
                  tool_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxTool resources.
+        :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: Integration connectors tool specification.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+               Structure is documented below.
         :param pulumi.Input['CxToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
@@ -164,6 +188,8 @@ class _CxToolState:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[_builtins.str] tool_type: The tool type.
         """
+        if connector_spec is not None:
+            pulumi.set(__self__, "connector_spec", connector_spec)
         if data_store_spec is not None:
             pulumi.set(__self__, "data_store_spec", data_store_spec)
         if description is not None:
@@ -180,6 +206,20 @@ class _CxToolState:
             pulumi.set(__self__, "parent", parent)
         if tool_type is not None:
             pulumi.set(__self__, "tool_type", tool_type)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorSpec")
+    def connector_spec(self) -> Optional[pulumi.Input['CxToolConnectorSpecArgs']]:
+        """
+        Integration connectors tool specification.
+        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_spec")
+
+    @connector_spec.setter
+    def connector_spec(self, value: Optional[pulumi.Input['CxToolConnectorSpecArgs']]):
+        pulumi.set(self, "connector_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreSpec")
@@ -292,6 +332,7 @@ class CxTool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 connector_spec: Optional[pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
                  data_store_spec: Optional[pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -472,6 +513,87 @@ class CxTool(pulumi.CustomResource):
         \"\"\",
             })
         ```
+        ### Dialogflowcx Tool Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent-connector",
+            location="us-central1",
+            default_language_code="en",
+            time_zone="America/New_York",
+            description="Example description.",
+            delete_chat_engine_on_destroy=True)
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
+            dataset_id="terraformdatasetdfcxtool",
+            friendly_name="test",
+            description="This is a test description",
+            location="us-central1",
+            delete_contents_on_destroy=True)
+        test_project = gcp.organizations.get_project()
+        integration_connector = gcp.integrationconnectors.Connection("integration_connector",
+            name="terraform-df-cx-tool-connection",
+            location="us-central1",
+            connector_version=agent.project.apply(lambda project: f"projects/{project}/locations/global/providers/gcp/connectors/bigquery/versions/1"),
+            description="tf created description",
+            config_variables=[
+                {
+                    "key": "dataset_id",
+                    "string_value": bq_dataset.dataset_id,
+                },
+                {
+                    "key": "project_id",
+                    "string_value": agent.project,
+                },
+                {
+                    "key": "support_native_data_type",
+                    "boolean_value": False,
+                },
+                {
+                    "key": "proxy_enabled",
+                    "boolean_value": False,
+                },
+            ],
+            service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",
+            auth_config={
+                "auth_type": "AUTH_TYPE_UNSPECIFIED",
+            })
+        bq_table = gcp.bigquery.Table("bq_table",
+            deletion_protection=False,
+            dataset_id=bq_dataset.dataset_id,
+            table_id="terraformdatasetdfcxtooltable")
+        connector_sa_dataset_perms = gcp.bigquery.DatasetIamMember("connector_sa_dataset_perms",
+            project=test_project.project_id,
+            dataset_id=bq_dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com")
+        connector_tool = gcp.diagflow.CxTool("connector_tool",
+            parent=agent.id,
+            display_name="Example Connector Tool",
+            description="Example Description",
+            connector_spec={
+                "name": pulumi.Output.all(
+                    project=agent.project,
+                    name=integration_connector.name
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us-central1/connections/{resolved_outputs['name']}")
+        ,
+                "actions": [
+                    {
+                        "connection_action_id": "ExecuteCustomQuery",
+                        "input_fields": ["test1"],
+                        "output_fields": ["test1"],
+                    },
+                    {
+                        "entity_operation": {
+                            "entity_id": bq_table.table_id,
+                            "operation": "LIST",
+                        },
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -493,6 +615,9 @@ class CxTool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: Integration connectors tool specification.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+               Structure is documented below.
         :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
@@ -686,6 +811,87 @@ class CxTool(pulumi.CustomResource):
         \"\"\",
             })
         ```
+        ### Dialogflowcx Tool Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent-connector",
+            location="us-central1",
+            default_language_code="en",
+            time_zone="America/New_York",
+            description="Example description.",
+            delete_chat_engine_on_destroy=True)
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
+            dataset_id="terraformdatasetdfcxtool",
+            friendly_name="test",
+            description="This is a test description",
+            location="us-central1",
+            delete_contents_on_destroy=True)
+        test_project = gcp.organizations.get_project()
+        integration_connector = gcp.integrationconnectors.Connection("integration_connector",
+            name="terraform-df-cx-tool-connection",
+            location="us-central1",
+            connector_version=agent.project.apply(lambda project: f"projects/{project}/locations/global/providers/gcp/connectors/bigquery/versions/1"),
+            description="tf created description",
+            config_variables=[
+                {
+                    "key": "dataset_id",
+                    "string_value": bq_dataset.dataset_id,
+                },
+                {
+                    "key": "project_id",
+                    "string_value": agent.project,
+                },
+                {
+                    "key": "support_native_data_type",
+                    "boolean_value": False,
+                },
+                {
+                    "key": "proxy_enabled",
+                    "boolean_value": False,
+                },
+            ],
+            service_account=f"{test_project.number}-compute@developer.gserviceaccount.com",
+            auth_config={
+                "auth_type": "AUTH_TYPE_UNSPECIFIED",
+            })
+        bq_table = gcp.bigquery.Table("bq_table",
+            deletion_protection=False,
+            dataset_id=bq_dataset.dataset_id,
+            table_id="terraformdatasetdfcxtooltable")
+        connector_sa_dataset_perms = gcp.bigquery.DatasetIamMember("connector_sa_dataset_perms",
+            project=test_project.project_id,
+            dataset_id=bq_dataset.dataset_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:{test_project.number}-compute@developer.gserviceaccount.com")
+        connector_tool = gcp.diagflow.CxTool("connector_tool",
+            parent=agent.id,
+            display_name="Example Connector Tool",
+            description="Example Description",
+            connector_spec={
+                "name": pulumi.Output.all(
+                    project=agent.project,
+                    name=integration_connector.name
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us-central1/connections/{resolved_outputs['name']}")
+        ,
+                "actions": [
+                    {
+                        "connection_action_id": "ExecuteCustomQuery",
+                        "input_fields": ["test1"],
+                        "output_fields": ["test1"],
+                    },
+                    {
+                        "entity_operation": {
+                            "entity_id": bq_table.table_id,
+                            "operation": "LIST",
+                        },
+                    },
+                ],
+            })
+        ```
 
         ## Import
 
@@ -720,6 +926,7 @@ class CxTool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 connector_spec: Optional[pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
                  data_store_spec: Optional[pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -735,6 +942,7 @@ class CxTool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CxToolArgs.__new__(CxToolArgs)
 
+            __props__.__dict__["connector_spec"] = connector_spec
             __props__.__dict__["data_store_spec"] = data_store_spec
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -757,6 +965,7 @@ class CxTool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            connector_spec: Optional[pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
             data_store_spec: Optional[pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -772,6 +981,9 @@ class CxTool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: Integration connectors tool specification.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+               Structure is documented below.
         :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
@@ -793,6 +1005,7 @@ class CxTool(pulumi.CustomResource):
 
         __props__ = _CxToolState.__new__(_CxToolState)
 
+        __props__.__dict__["connector_spec"] = connector_spec
         __props__.__dict__["data_store_spec"] = data_store_spec
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -802,6 +1015,16 @@ class CxTool(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         __props__.__dict__["tool_type"] = tool_type
         return CxTool(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorSpec")
+    def connector_spec(self) -> pulumi.Output[Optional['outputs.CxToolConnectorSpec']]:
+        """
+        Integration connectors tool specification.
+        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_spec")
 
     @_builtins.property
     @pulumi.getter(name="dataStoreSpec")

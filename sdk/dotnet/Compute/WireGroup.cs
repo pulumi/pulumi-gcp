@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// To get more information about WireGroup, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/wireGroups)
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/wireGroups)
     /// * How-to Guides
     ///     * [Create a WireGroup](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/modify-network#add-wire-group)
     /// 
@@ -43,6 +43,46 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "test-wire-group",
     ///         Description = "Example Wire Group",
     ///         CrossSiteNetwork = "test-cross-site-network",
+    ///         WireProperties = new Gcp.Compute.Inputs.WireGroupWirePropertiesArgs
+    ///         {
+    ///             BandwidthUnmetered = 10,
+    ///             FaultResponse = "NONE",
+    ///             BandwidthAllocation = "ALLOCATE_PER_WIRE",
+    ///         },
+    ///         AdminEnabled = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example_cross_site_network,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute Wire Group Basic Beta
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example_cross_site_network = new Gcp.Compute.CrossSiteNetwork("example-cross-site-network", new()
+    ///     {
+    ///         Name = "test-cross-site-network-beta",
+    ///         Description = "Example cross site network",
+    ///     });
+    /// 
+    ///     var example_test_wire_group_beta = new Gcp.Compute.WireGroup("example-test-wire-group-beta", new()
+    ///     {
+    ///         Name = "test-wire-group-beta",
+    ///         Description = "Example Wire Group Beta",
+    ///         CrossSiteNetwork = "test-cross-site-network-beta",
     ///         WireProperties = new Gcp.Compute.Inputs.WireGroupWirePropertiesArgs
     ///         {
     ///             BandwidthUnmetered = 10,

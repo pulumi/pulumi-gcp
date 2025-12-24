@@ -18,6 +18,25 @@ public final class ToolGoogleSearchToolArgs extends com.pulumi.resources.Resourc
     public static final ToolGoogleSearchToolArgs Empty = new ToolGoogleSearchToolArgs();
 
     /**
+     * Content will be fetched directly from these URLs for context and grounding.
+     * More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+     * Example: &#34;https://example.com/path.html&#34;. A maximum of 20 URLs are allowed.
+     * 
+     */
+    @Import(name="contextUrls")
+    private @Nullable Output<List<String>> contextUrls;
+
+    /**
+     * @return Content will be fetched directly from these URLs for context and grounding.
+     * More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+     * Example: &#34;https://example.com/path.html&#34;. A maximum of 20 URLs are allowed.
+     * 
+     */
+    public Optional<Output<List<String>>> contextUrls() {
+        return Optional.ofNullable(this.contextUrls);
+    }
+
+    /**
      * Description of the tool&#39;s purpose.
      * 
      */
@@ -66,12 +85,41 @@ public final class ToolGoogleSearchToolArgs extends com.pulumi.resources.Resourc
         return this.name;
     }
 
+    /**
+     * Specifies domain names to guide the search.
+     * The model will be instructed to prioritize these domains
+     * when formulating queries for google search.
+     * This is a best-effort hint and these domains may or may
+     * not be exclusively reflected in the final search results.
+     * Example: &#34;example.com&#34;, &#34;another.site&#34;.
+     * A maximum of 20 domains can be specified.
+     * 
+     */
+    @Import(name="preferredDomains")
+    private @Nullable Output<List<String>> preferredDomains;
+
+    /**
+     * @return Specifies domain names to guide the search.
+     * The model will be instructed to prioritize these domains
+     * when formulating queries for google search.
+     * This is a best-effort hint and these domains may or may
+     * not be exclusively reflected in the final search results.
+     * Example: &#34;example.com&#34;, &#34;another.site&#34;.
+     * A maximum of 20 domains can be specified.
+     * 
+     */
+    public Optional<Output<List<String>>> preferredDomains() {
+        return Optional.ofNullable(this.preferredDomains);
+    }
+
     private ToolGoogleSearchToolArgs() {}
 
     private ToolGoogleSearchToolArgs(ToolGoogleSearchToolArgs $) {
+        this.contextUrls = $.contextUrls;
         this.description = $.description;
         this.excludeDomains = $.excludeDomains;
         this.name = $.name;
+        this.preferredDomains = $.preferredDomains;
     }
 
     public static Builder builder() {
@@ -90,6 +138,43 @@ public final class ToolGoogleSearchToolArgs extends com.pulumi.resources.Resourc
 
         public Builder(ToolGoogleSearchToolArgs defaults) {
             $ = new ToolGoogleSearchToolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param contextUrls Content will be fetched directly from these URLs for context and grounding.
+         * More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+         * Example: &#34;https://example.com/path.html&#34;. A maximum of 20 URLs are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextUrls(@Nullable Output<List<String>> contextUrls) {
+            $.contextUrls = contextUrls;
+            return this;
+        }
+
+        /**
+         * @param contextUrls Content will be fetched directly from these URLs for context and grounding.
+         * More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+         * Example: &#34;https://example.com/path.html&#34;. A maximum of 20 URLs are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextUrls(List<String> contextUrls) {
+            return contextUrls(Output.of(contextUrls));
+        }
+
+        /**
+         * @param contextUrls Content will be fetched directly from these URLs for context and grounding.
+         * More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
+         * Example: &#34;https://example.com/path.html&#34;. A maximum of 20 URLs are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextUrls(String... contextUrls) {
+            return contextUrls(List.of(contextUrls));
         }
 
         /**
@@ -169,6 +254,55 @@ public final class ToolGoogleSearchToolArgs extends com.pulumi.resources.Resourc
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param preferredDomains Specifies domain names to guide the search.
+         * The model will be instructed to prioritize these domains
+         * when formulating queries for google search.
+         * This is a best-effort hint and these domains may or may
+         * not be exclusively reflected in the final search results.
+         * Example: &#34;example.com&#34;, &#34;another.site&#34;.
+         * A maximum of 20 domains can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredDomains(@Nullable Output<List<String>> preferredDomains) {
+            $.preferredDomains = preferredDomains;
+            return this;
+        }
+
+        /**
+         * @param preferredDomains Specifies domain names to guide the search.
+         * The model will be instructed to prioritize these domains
+         * when formulating queries for google search.
+         * This is a best-effort hint and these domains may or may
+         * not be exclusively reflected in the final search results.
+         * Example: &#34;example.com&#34;, &#34;another.site&#34;.
+         * A maximum of 20 domains can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredDomains(List<String> preferredDomains) {
+            return preferredDomains(Output.of(preferredDomains));
+        }
+
+        /**
+         * @param preferredDomains Specifies domain names to guide the search.
+         * The model will be instructed to prioritize these domains
+         * when formulating queries for google search.
+         * This is a best-effort hint and these domains may or may
+         * not be exclusively reflected in the final search results.
+         * Example: &#34;example.com&#34;, &#34;another.site&#34;.
+         * A maximum of 20 domains can be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredDomains(String... preferredDomains) {
+            return preferredDomains(List.of(preferredDomains));
         }
 
         public ToolGoogleSearchToolArgs build() {

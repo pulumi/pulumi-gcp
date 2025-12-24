@@ -37,14 +37,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GrpcRoute{}
 	case "gcp:networkservices/httpRoute:HttpRoute":
 		r = &HttpRoute{}
+	case "gcp:networkservices/lbEdgeExtension:LbEdgeExtension":
+		r = &LbEdgeExtension{}
 	case "gcp:networkservices/lbRouteExtension:LbRouteExtension":
 		r = &LbRouteExtension{}
 	case "gcp:networkservices/lbTrafficExtension:LbTrafficExtension":
 		r = &LbTrafficExtension{}
 	case "gcp:networkservices/mesh:Mesh":
 		r = &Mesh{}
+	case "gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation":
+		r = &MulticastConsumerAssociation{}
 	case "gcp:networkservices/multicastDomain:MulticastDomain":
 		r = &MulticastDomain{}
+	case "gcp:networkservices/multicastDomainActivation:MulticastDomainActivation":
+		r = &MulticastDomainActivation{}
+	case "gcp:networkservices/multicastDomainGroup:MulticastDomainGroup":
+		r = &MulticastDomainGroup{}
+	case "gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation":
+		r = &MulticastGroupConsumerActivation{}
+	case "gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation":
+		r = &MulticastGroupProducerActivation{}
+	case "gcp:networkservices/multicastGroupRange:MulticastGroupRange":
+		r = &MulticastGroupRange{}
+	case "gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation":
+		r = &MulticastGroupRangeActivation{}
+	case "gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation":
+		r = &MulticastProducerAssociation{}
 	case "gcp:networkservices/serviceBinding:ServiceBinding":
 		r = &ServiceBinding{}
 	case "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies":
@@ -110,6 +128,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networkservices/lbEdgeExtension",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networkservices/lbRouteExtension",
 		&module{version},
 	)
@@ -125,7 +148,47 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networkservices/multicastConsumerAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networkservices/multicastDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/multicastDomainActivation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/multicastDomainGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/multicastGroupConsumerActivation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/multicastGroupProducerActivation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/multicastGroupRange",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/multicastGroupRangeActivation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/multicastProducerAssociation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

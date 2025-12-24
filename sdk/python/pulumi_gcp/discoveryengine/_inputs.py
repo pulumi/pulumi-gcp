@@ -115,6 +115,28 @@ __all__ = [
     'TargetSiteFailureReasonQuotaFailureArgsDict',
     'TargetSiteSiteVerificationInfoArgs',
     'TargetSiteSiteVerificationInfoArgsDict',
+    'WidgetConfigAccessSettingsArgs',
+    'WidgetConfigAccessSettingsArgsDict',
+    'WidgetConfigHomepageSettingArgs',
+    'WidgetConfigHomepageSettingArgsDict',
+    'WidgetConfigHomepageSettingShortcutArgs',
+    'WidgetConfigHomepageSettingShortcutArgsDict',
+    'WidgetConfigHomepageSettingShortcutIconArgs',
+    'WidgetConfigHomepageSettingShortcutIconArgsDict',
+    'WidgetConfigUiBrandingArgs',
+    'WidgetConfigUiBrandingArgsDict',
+    'WidgetConfigUiBrandingLogoArgs',
+    'WidgetConfigUiBrandingLogoArgsDict',
+    'WidgetConfigUiSettingsArgs',
+    'WidgetConfigUiSettingsArgsDict',
+    'WidgetConfigUiSettingsDataStoreUiConfigArgs',
+    'WidgetConfigUiSettingsDataStoreUiConfigArgsDict',
+    'WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs',
+    'WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict',
+    'WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs',
+    'WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict',
+    'WidgetConfigUiSettingsGenerativeAnswerConfigArgs',
+    'WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict',
 ]
 
 MYPY = False
@@ -3294,5 +3316,1101 @@ class TargetSiteSiteVerificationInfoArgs:
     @verify_time.setter
     def verify_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "verify_time", value)
+
+
+if not MYPY:
+    class WidgetConfigAccessSettingsArgsDict(TypedDict):
+        allow_public_access: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether public unauthenticated access is allowed.
+        """
+        allowlisted_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of domains that are allowed to integrate the search widget.
+        """
+        enable_web_app: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether web app access is enabled.
+        """
+        language_code: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Language code for user interface. Use language tags defined by
+        [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+        default language code is "en-US".
+        """
+        workforce_identity_pool_provider: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The workforce identity pool provider used to access the widget.
+        """
+elif False:
+    WidgetConfigAccessSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigAccessSettingsArgs:
+    def __init__(__self__, *,
+                 allow_public_access: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allowlisted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable_web_app: Optional[pulumi.Input[_builtins.bool]] = None,
+                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 workforce_identity_pool_provider: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] allow_public_access: Whether public unauthenticated access is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlisted_domains: List of domains that are allowed to integrate the search widget.
+        :param pulumi.Input[_builtins.bool] enable_web_app: Whether web app access is enabled.
+        :param pulumi.Input[_builtins.str] language_code: Language code for user interface. Use language tags defined by
+               [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+               default language code is "en-US".
+        :param pulumi.Input[_builtins.str] workforce_identity_pool_provider: The workforce identity pool provider used to access the widget.
+        """
+        if allow_public_access is not None:
+            pulumi.set(__self__, "allow_public_access", allow_public_access)
+        if allowlisted_domains is not None:
+            pulumi.set(__self__, "allowlisted_domains", allowlisted_domains)
+        if enable_web_app is not None:
+            pulumi.set(__self__, "enable_web_app", enable_web_app)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if workforce_identity_pool_provider is not None:
+            pulumi.set(__self__, "workforce_identity_pool_provider", workforce_identity_pool_provider)
+
+    @_builtins.property
+    @pulumi.getter(name="allowPublicAccess")
+    def allow_public_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether public unauthenticated access is allowed.
+        """
+        return pulumi.get(self, "allow_public_access")
+
+    @allow_public_access.setter
+    def allow_public_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_public_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowlistedDomains")
+    def allowlisted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of domains that are allowed to integrate the search widget.
+        """
+        return pulumi.get(self, "allowlisted_domains")
+
+    @allowlisted_domains.setter
+    def allowlisted_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowlisted_domains", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableWebApp")
+    def enable_web_app(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether web app access is enabled.
+        """
+        return pulumi.get(self, "enable_web_app")
+
+    @enable_web_app.setter
+    def enable_web_app(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_web_app", value)
+
+    @_builtins.property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Language code for user interface. Use language tags defined by
+        [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the
+        default language code is "en-US".
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "language_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workforceIdentityPoolProvider")
+    def workforce_identity_pool_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The workforce identity pool provider used to access the widget.
+        """
+        return pulumi.get(self, "workforce_identity_pool_provider")
+
+    @workforce_identity_pool_provider.setter
+    def workforce_identity_pool_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workforce_identity_pool_provider", value)
+
+
+if not MYPY:
+    class WidgetConfigHomepageSettingArgsDict(TypedDict):
+        shortcuts: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgsDict']]]]
+        """
+        The shortcuts to display on the homepage.
+        Structure is documented below.
+        """
+elif False:
+    WidgetConfigHomepageSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigHomepageSettingArgs:
+    def __init__(__self__, *,
+                 shortcuts: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgs']]] shortcuts: The shortcuts to display on the homepage.
+               Structure is documented below.
+        """
+        if shortcuts is not None:
+            pulumi.set(__self__, "shortcuts", shortcuts)
+
+    @_builtins.property
+    @pulumi.getter
+    def shortcuts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgs']]]]:
+        """
+        The shortcuts to display on the homepage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shortcuts")
+
+    @shortcuts.setter
+    def shortcuts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgs']]]]):
+        pulumi.set(self, "shortcuts", value)
+
+
+if not MYPY:
+    class WidgetConfigHomepageSettingShortcutArgsDict(TypedDict):
+        destination_uri: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Destination URL of shortcut.
+        """
+        icon: NotRequired[pulumi.Input['WidgetConfigHomepageSettingShortcutIconArgsDict']]
+        """
+        Icon URL of shortcut.
+        Structure is documented below.
+        """
+        title: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Title of the shortcut.
+        """
+elif False:
+    WidgetConfigHomepageSettingShortcutArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigHomepageSettingShortcutArgs:
+    def __init__(__self__, *,
+                 destination_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 icon: Optional[pulumi.Input['WidgetConfigHomepageSettingShortcutIconArgs']] = None,
+                 title: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] destination_uri: Destination URL of shortcut.
+        :param pulumi.Input['WidgetConfigHomepageSettingShortcutIconArgs'] icon: Icon URL of shortcut.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] title: Title of the shortcut.
+        """
+        if destination_uri is not None:
+            pulumi.set(__self__, "destination_uri", destination_uri)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationUri")
+    def destination_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Destination URL of shortcut.
+        """
+        return pulumi.get(self, "destination_uri")
+
+    @destination_uri.setter
+    def destination_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "destination_uri", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input['WidgetConfigHomepageSettingShortcutIconArgs']]:
+        """
+        Icon URL of shortcut.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input['WidgetConfigHomepageSettingShortcutIconArgs']]):
+        pulumi.set(self, "icon", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Title of the shortcut.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class WidgetConfigHomepageSettingShortcutIconArgsDict(TypedDict):
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Image URL.
+        """
+elif False:
+    WidgetConfigHomepageSettingShortcutIconArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigHomepageSettingShortcutIconArgs:
+    def __init__(__self__, *,
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] url: Image URL.
+        """
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Image URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class WidgetConfigUiBrandingArgsDict(TypedDict):
+        logo: NotRequired[pulumi.Input['WidgetConfigUiBrandingLogoArgsDict']]
+        """
+        Logo image.
+        Structure is documented below.
+        """
+elif False:
+    WidgetConfigUiBrandingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigUiBrandingArgs:
+    def __init__(__self__, *,
+                 logo: Optional[pulumi.Input['WidgetConfigUiBrandingLogoArgs']] = None):
+        """
+        :param pulumi.Input['WidgetConfigUiBrandingLogoArgs'] logo: Logo image.
+               Structure is documented below.
+        """
+        if logo is not None:
+            pulumi.set(__self__, "logo", logo)
+
+    @_builtins.property
+    @pulumi.getter
+    def logo(self) -> Optional[pulumi.Input['WidgetConfigUiBrandingLogoArgs']]:
+        """
+        Logo image.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logo")
+
+    @logo.setter
+    def logo(self, value: Optional[pulumi.Input['WidgetConfigUiBrandingLogoArgs']]):
+        pulumi.set(self, "logo", value)
+
+
+if not MYPY:
+    class WidgetConfigUiBrandingLogoArgsDict(TypedDict):
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Image URL.
+        """
+elif False:
+    WidgetConfigUiBrandingLogoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigUiBrandingLogoArgs:
+    def __init__(__self__, *,
+                 url: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] url: Image URL.
+        """
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Image URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class WidgetConfigUiSettingsArgsDict(TypedDict):
+        data_store_ui_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgsDict']]]]
+        """
+        Per data store configuration.
+        Structure is documented below.
+        """
+        default_search_request_order_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The default ordering for search results if specified.
+        Used to set SearchRequest#orderBy on applicable requests.
+        """
+        disable_user_events_collection: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the widget will not collect user events.
+        """
+        enable_autocomplete: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether or not to enable autocomplete.
+        """
+        enable_create_agent_button: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the widget will enable the create agent button.
+        """
+        enable_people_search: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the widget will enable people search.
+        """
+        enable_quality_feedback: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Turn on or off collecting the search result quality feedback from end users.
+        """
+        enable_safe_search: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable safe search.
+        """
+        enable_search_as_you_type: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable search-as-you-type behavior for the search widget.
+        """
+        enable_visual_content_summary: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the widget will enable visual content summary on applicable
+        search requests. Only used by healthcare search.
+        """
+        generative_answer_config: NotRequired[pulumi.Input['WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict']]
+        """
+        Describes generative answer configuration.
+        Structure is documented below.
+        """
+        interaction_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Describes widget (or web app) interaction type
+        Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+        """
+        result_description_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Controls whether result extract is display and how (snippet or extractive answer).
+        Default to no result if unspecified.
+        Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+        """
+elif False:
+    WidgetConfigUiSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigUiSettingsArgs:
+    def __init__(__self__, *,
+                 data_store_ui_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgs']]]] = None,
+                 default_search_request_order_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_user_events_collection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_autocomplete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_create_agent_button: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_people_search: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_quality_feedback: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_safe_search: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_search_as_you_type: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_visual_content_summary: Optional[pulumi.Input[_builtins.bool]] = None,
+                 generative_answer_config: Optional[pulumi.Input['WidgetConfigUiSettingsGenerativeAnswerConfigArgs']] = None,
+                 interaction_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 result_description_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgs']]] data_store_ui_configs: Per data store configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] default_search_request_order_by: The default ordering for search results if specified.
+               Used to set SearchRequest#orderBy on applicable requests.
+        :param pulumi.Input[_builtins.bool] disable_user_events_collection: If set to true, the widget will not collect user events.
+        :param pulumi.Input[_builtins.bool] enable_autocomplete: Whether or not to enable autocomplete.
+        :param pulumi.Input[_builtins.bool] enable_create_agent_button: If set to true, the widget will enable the create agent button.
+        :param pulumi.Input[_builtins.bool] enable_people_search: If set to true, the widget will enable people search.
+        :param pulumi.Input[_builtins.bool] enable_quality_feedback: Turn on or off collecting the search result quality feedback from end users.
+        :param pulumi.Input[_builtins.bool] enable_safe_search: Whether to enable safe search.
+        :param pulumi.Input[_builtins.bool] enable_search_as_you_type: Whether to enable search-as-you-type behavior for the search widget.
+        :param pulumi.Input[_builtins.bool] enable_visual_content_summary: If set to true, the widget will enable visual content summary on applicable
+               search requests. Only used by healthcare search.
+        :param pulumi.Input['WidgetConfigUiSettingsGenerativeAnswerConfigArgs'] generative_answer_config: Describes generative answer configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] interaction_type: Describes widget (or web app) interaction type
+               Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+        :param pulumi.Input[_builtins.str] result_description_type: Controls whether result extract is display and how (snippet or extractive answer).
+               Default to no result if unspecified.
+               Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+        """
+        if data_store_ui_configs is not None:
+            pulumi.set(__self__, "data_store_ui_configs", data_store_ui_configs)
+        if default_search_request_order_by is not None:
+            pulumi.set(__self__, "default_search_request_order_by", default_search_request_order_by)
+        if disable_user_events_collection is not None:
+            pulumi.set(__self__, "disable_user_events_collection", disable_user_events_collection)
+        if enable_autocomplete is not None:
+            pulumi.set(__self__, "enable_autocomplete", enable_autocomplete)
+        if enable_create_agent_button is not None:
+            pulumi.set(__self__, "enable_create_agent_button", enable_create_agent_button)
+        if enable_people_search is not None:
+            pulumi.set(__self__, "enable_people_search", enable_people_search)
+        if enable_quality_feedback is not None:
+            pulumi.set(__self__, "enable_quality_feedback", enable_quality_feedback)
+        if enable_safe_search is not None:
+            pulumi.set(__self__, "enable_safe_search", enable_safe_search)
+        if enable_search_as_you_type is not None:
+            pulumi.set(__self__, "enable_search_as_you_type", enable_search_as_you_type)
+        if enable_visual_content_summary is not None:
+            pulumi.set(__self__, "enable_visual_content_summary", enable_visual_content_summary)
+        if generative_answer_config is not None:
+            pulumi.set(__self__, "generative_answer_config", generative_answer_config)
+        if interaction_type is not None:
+            pulumi.set(__self__, "interaction_type", interaction_type)
+        if result_description_type is not None:
+            pulumi.set(__self__, "result_description_type", result_description_type)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStoreUiConfigs")
+    def data_store_ui_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgs']]]]:
+        """
+        Per data store configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_store_ui_configs")
+
+    @data_store_ui_configs.setter
+    def data_store_ui_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgs']]]]):
+        pulumi.set(self, "data_store_ui_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultSearchRequestOrderBy")
+    def default_search_request_order_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default ordering for search results if specified.
+        Used to set SearchRequest#orderBy on applicable requests.
+        """
+        return pulumi.get(self, "default_search_request_order_by")
+
+    @default_search_request_order_by.setter
+    def default_search_request_order_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_search_request_order_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disableUserEventsCollection")
+    def disable_user_events_collection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the widget will not collect user events.
+        """
+        return pulumi.get(self, "disable_user_events_collection")
+
+    @disable_user_events_collection.setter
+    def disable_user_events_collection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_user_events_collection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutocomplete")
+    def enable_autocomplete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether or not to enable autocomplete.
+        """
+        return pulumi.get(self, "enable_autocomplete")
+
+    @enable_autocomplete.setter
+    def enable_autocomplete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_autocomplete", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableCreateAgentButton")
+    def enable_create_agent_button(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the widget will enable the create agent button.
+        """
+        return pulumi.get(self, "enable_create_agent_button")
+
+    @enable_create_agent_button.setter
+    def enable_create_agent_button(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_create_agent_button", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enablePeopleSearch")
+    def enable_people_search(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the widget will enable people search.
+        """
+        return pulumi.get(self, "enable_people_search")
+
+    @enable_people_search.setter
+    def enable_people_search(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_people_search", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableQualityFeedback")
+    def enable_quality_feedback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Turn on or off collecting the search result quality feedback from end users.
+        """
+        return pulumi.get(self, "enable_quality_feedback")
+
+    @enable_quality_feedback.setter
+    def enable_quality_feedback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_quality_feedback", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSafeSearch")
+    def enable_safe_search(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable safe search.
+        """
+        return pulumi.get(self, "enable_safe_search")
+
+    @enable_safe_search.setter
+    def enable_safe_search(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_safe_search", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSearchAsYouType")
+    def enable_search_as_you_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable search-as-you-type behavior for the search widget.
+        """
+        return pulumi.get(self, "enable_search_as_you_type")
+
+    @enable_search_as_you_type.setter
+    def enable_search_as_you_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_search_as_you_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableVisualContentSummary")
+    def enable_visual_content_summary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the widget will enable visual content summary on applicable
+        search requests. Only used by healthcare search.
+        """
+        return pulumi.get(self, "enable_visual_content_summary")
+
+    @enable_visual_content_summary.setter
+    def enable_visual_content_summary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_visual_content_summary", value)
+
+    @_builtins.property
+    @pulumi.getter(name="generativeAnswerConfig")
+    def generative_answer_config(self) -> Optional[pulumi.Input['WidgetConfigUiSettingsGenerativeAnswerConfigArgs']]:
+        """
+        Describes generative answer configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generative_answer_config")
+
+    @generative_answer_config.setter
+    def generative_answer_config(self, value: Optional[pulumi.Input['WidgetConfigUiSettingsGenerativeAnswerConfigArgs']]):
+        pulumi.set(self, "generative_answer_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="interactionType")
+    def interaction_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Describes widget (or web app) interaction type
+        Possible values are: `SEARCH_ONLY`, `SEARCH_WITH_ANSWER`, `SEARCH_WITH_FOLLOW_UPS`.
+        """
+        return pulumi.get(self, "interaction_type")
+
+    @interaction_type.setter
+    def interaction_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interaction_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resultDescriptionType")
+    def result_description_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Controls whether result extract is display and how (snippet or extractive answer).
+        Default to no result if unspecified.
+        Possible values are: `SNIPPET`, `EXTRACTIVE_ANSWER`.
+        """
+        return pulumi.get(self, "result_description_type")
+
+    @result_description_type.setter
+    def result_description_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "result_description_type", value)
+
+
+if not MYPY:
+    class WidgetConfigUiSettingsDataStoreUiConfigArgsDict(TypedDict):
+        facet_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict']]]]
+        """
+        Structure is documented below.
+        """
+        fields_ui_components_maps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict']]]]
+        """
+        'The key is the UI component. Currently supported `title`, `thumbnail`,
+        `url`, `custom1`, `custom2`, `custom3`. The value is the name of
+        the field along with its device visibility. The 3 custom fields are optional
+        and can be added or removed.
+        `title`, `thumbnail`, `url` are required UI components that cannot be removed.
+        Structure is documented below.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the data store. It should be data store resource name. Format:
+        `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
+        For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
+        the project number and location part is erased in this field.
+        """
+elif False:
+    WidgetConfigUiSettingsDataStoreUiConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigUiSettingsDataStoreUiConfigArgs:
+    def __init__(__self__, *,
+                 facet_fields: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs']]]] = None,
+                 fields_ui_components_maps: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs']]]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs']]] facet_fields: Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs']]] fields_ui_components_maps: 'The key is the UI component. Currently supported `title`, `thumbnail`,
+               `url`, `custom1`, `custom2`, `custom3`. The value is the name of
+               the field along with its device visibility. The 3 custom fields are optional
+               and can be added or removed.
+               `title`, `thumbnail`, `url` are required UI components that cannot be removed.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] name: The name of the data store. It should be data store resource name. Format:
+               `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
+               For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
+               the project number and location part is erased in this field.
+        """
+        if facet_fields is not None:
+            pulumi.set(__self__, "facet_fields", facet_fields)
+        if fields_ui_components_maps is not None:
+            pulumi.set(__self__, "fields_ui_components_maps", fields_ui_components_maps)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="facetFields")
+    def facet_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "facet_fields")
+
+    @facet_fields.setter
+    def facet_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs']]]]):
+        pulumi.set(self, "facet_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldsUiComponentsMaps")
+    def fields_ui_components_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs']]]]:
+        """
+        'The key is the UI component. Currently supported `title`, `thumbnail`,
+        `url`, `custom1`, `custom2`, `custom3`. The value is the name of
+        the field along with its device visibility. The 3 custom fields are optional
+        and can be added or removed.
+        `title`, `thumbnail`, `url` are required UI components that cannot be removed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields_ui_components_maps")
+
+    @fields_ui_components_maps.setter
+    def fields_ui_components_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs']]]]):
+        pulumi.set(self, "fields_ui_components_maps", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the data store. It should be data store resource name. Format:
+        `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
+        For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
+        the project number and location part is erased in this field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict(TypedDict):
+        field: pulumi.Input[_builtins.str]
+        """
+        Registered field name. The format is `field.abc`.
+        """
+        display_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The field name that end users will see.
+        """
+elif False:
+    WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[_builtins.str],
+                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Registered field name. The format is `field.abc`.
+        :param pulumi.Input[_builtins.str] display_name: The field name that end users will see.
+        """
+        pulumi.set(__self__, "field", field)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        Registered field name. The format is `field.abc`.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The field name that end users will see.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+
+if not MYPY:
+    class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict(TypedDict):
+        field: pulumi.Input[_builtins.str]
+        """
+        Registered field name. The format is `field.abc`.
+        """
+        ui_component: pulumi.Input[_builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        device_visibilities: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Each value may be one of: `MOBILE`, `DESKTOP`.
+        """
+        display_template: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The template to customize how the field is displayed.
+        An example value would be a string that looks like: "Price: {value}".
+        """
+elif False:
+    WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[_builtins.str],
+                 ui_component: pulumi.Input[_builtins.str],
+                 device_visibilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_template: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: Registered field name. The format is `field.abc`.
+        :param pulumi.Input[_builtins.str] ui_component: The identifier for this object. Format specified above.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] device_visibilities: Each value may be one of: `MOBILE`, `DESKTOP`.
+        :param pulumi.Input[_builtins.str] display_template: The template to customize how the field is displayed.
+               An example value would be a string that looks like: "Price: {value}".
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "ui_component", ui_component)
+        if device_visibilities is not None:
+            pulumi.set(__self__, "device_visibilities", device_visibilities)
+        if display_template is not None:
+            pulumi.set(__self__, "display_template", display_template)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        Registered field name. The format is `field.abc`.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uiComponent")
+    def ui_component(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "ui_component")
+
+    @ui_component.setter
+    def ui_component(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ui_component", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deviceVisibilities")
+    def device_visibilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Each value may be one of: `MOBILE`, `DESKTOP`.
+        """
+        return pulumi.get(self, "device_visibilities")
+
+    @device_visibilities.setter
+    def device_visibilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "device_visibilities", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayTemplate")
+    def display_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The template to customize how the field is displayed.
+        An example value would be a string that looks like: "Price: {value}".
+        """
+        return pulumi.get(self, "display_template")
+
+    @display_template.setter
+    def display_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "display_template", value)
+
+
+if not MYPY:
+    class WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict(TypedDict):
+        disable_related_questions: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether generated answer contains suggested related questions.
+        """
+        ignore_adversarial_query: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether to filter out queries that are adversarial.
+        """
+        ignore_low_relevant_content: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether to filter out queries that are not relevant to the content.
+        """
+        ignore_non_answer_seeking_query: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether to filter out queries that are not answer-seeking.
+        The default value is `false`. No answer is returned if the search query
+        is classified as a non-answer seeking query.
+        If this field is set to `true`, we skip generating answers for
+        non-answer seeking queries and return fallback messages instead.
+        """
+        image_source: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Source of image returned in the answer.
+        Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+        """
+        language_code: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Language code for Summary. Use language tags defined by
+        [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+        is an experimental feature.
+        """
+        max_rephrase_steps: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Max rephrase steps. The max number is 5 steps. If not set or
+        set to < 1, it will be set to 1 by default.
+        """
+        model_prompt_preamble: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Text at the beginning of the prompt that instructs the model that generates the answer.
+        """
+        model_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The model version used to generate the answer.
+        """
+        result_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of top results to generate the answer from. Up to 10.
+        """
+elif False:
+    WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WidgetConfigUiSettingsGenerativeAnswerConfigArgs:
+    def __init__(__self__, *,
+                 disable_related_questions: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ignore_adversarial_query: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ignore_low_relevant_content: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ignore_non_answer_seeking_query: Optional[pulumi.Input[_builtins.bool]] = None,
+                 image_source: Optional[pulumi.Input[_builtins.str]] = None,
+                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_rephrase_steps: Optional[pulumi.Input[_builtins.int]] = None,
+                 model_prompt_preamble: Optional[pulumi.Input[_builtins.str]] = None,
+                 model_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 result_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] disable_related_questions: Whether generated answer contains suggested related questions.
+        :param pulumi.Input[_builtins.bool] ignore_adversarial_query: Specifies whether to filter out queries that are adversarial.
+        :param pulumi.Input[_builtins.bool] ignore_low_relevant_content: Specifies whether to filter out queries that are not relevant to the content.
+        :param pulumi.Input[_builtins.bool] ignore_non_answer_seeking_query: Specifies whether to filter out queries that are not answer-seeking.
+               The default value is `false`. No answer is returned if the search query
+               is classified as a non-answer seeking query.
+               If this field is set to `true`, we skip generating answers for
+               non-answer seeking queries and return fallback messages instead.
+        :param pulumi.Input[_builtins.str] image_source: Source of image returned in the answer.
+               Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+        :param pulumi.Input[_builtins.str] language_code: Language code for Summary. Use language tags defined by
+               [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+               is an experimental feature.
+        :param pulumi.Input[_builtins.int] max_rephrase_steps: Max rephrase steps. The max number is 5 steps. If not set or
+               set to < 1, it will be set to 1 by default.
+        :param pulumi.Input[_builtins.str] model_prompt_preamble: Text at the beginning of the prompt that instructs the model that generates the answer.
+        :param pulumi.Input[_builtins.str] model_version: The model version used to generate the answer.
+        :param pulumi.Input[_builtins.int] result_count: The number of top results to generate the answer from. Up to 10.
+        """
+        if disable_related_questions is not None:
+            pulumi.set(__self__, "disable_related_questions", disable_related_questions)
+        if ignore_adversarial_query is not None:
+            pulumi.set(__self__, "ignore_adversarial_query", ignore_adversarial_query)
+        if ignore_low_relevant_content is not None:
+            pulumi.set(__self__, "ignore_low_relevant_content", ignore_low_relevant_content)
+        if ignore_non_answer_seeking_query is not None:
+            pulumi.set(__self__, "ignore_non_answer_seeking_query", ignore_non_answer_seeking_query)
+        if image_source is not None:
+            pulumi.set(__self__, "image_source", image_source)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if max_rephrase_steps is not None:
+            pulumi.set(__self__, "max_rephrase_steps", max_rephrase_steps)
+        if model_prompt_preamble is not None:
+            pulumi.set(__self__, "model_prompt_preamble", model_prompt_preamble)
+        if model_version is not None:
+            pulumi.set(__self__, "model_version", model_version)
+        if result_count is not None:
+            pulumi.set(__self__, "result_count", result_count)
+
+    @_builtins.property
+    @pulumi.getter(name="disableRelatedQuestions")
+    def disable_related_questions(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether generated answer contains suggested related questions.
+        """
+        return pulumi.get(self, "disable_related_questions")
+
+    @disable_related_questions.setter
+    def disable_related_questions(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_related_questions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreAdversarialQuery")
+    def ignore_adversarial_query(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to filter out queries that are adversarial.
+        """
+        return pulumi.get(self, "ignore_adversarial_query")
+
+    @ignore_adversarial_query.setter
+    def ignore_adversarial_query(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_adversarial_query", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreLowRelevantContent")
+    def ignore_low_relevant_content(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to filter out queries that are not relevant to the content.
+        """
+        return pulumi.get(self, "ignore_low_relevant_content")
+
+    @ignore_low_relevant_content.setter
+    def ignore_low_relevant_content(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_low_relevant_content", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreNonAnswerSeekingQuery")
+    def ignore_non_answer_seeking_query(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to filter out queries that are not answer-seeking.
+        The default value is `false`. No answer is returned if the search query
+        is classified as a non-answer seeking query.
+        If this field is set to `true`, we skip generating answers for
+        non-answer seeking queries and return fallback messages instead.
+        """
+        return pulumi.get(self, "ignore_non_answer_seeking_query")
+
+    @ignore_non_answer_seeking_query.setter
+    def ignore_non_answer_seeking_query(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_non_answer_seeking_query", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageSource")
+    def image_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Source of image returned in the answer.
+        Possible values are: `ALL_AVAILABLE_SOURCES`, `CORPUS_IMAGE_ONLY`, `FIGURE_GENERATION_ONLY`.
+        """
+        return pulumi.get(self, "image_source")
+
+    @image_source.setter
+    def image_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Language code for Summary. Use language tags defined by
+        [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This
+        is an experimental feature.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "language_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxRephraseSteps")
+    def max_rephrase_steps(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Max rephrase steps. The max number is 5 steps. If not set or
+        set to < 1, it will be set to 1 by default.
+        """
+        return pulumi.get(self, "max_rephrase_steps")
+
+    @max_rephrase_steps.setter
+    def max_rephrase_steps(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_rephrase_steps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelPromptPreamble")
+    def model_prompt_preamble(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Text at the beginning of the prompt that instructs the model that generates the answer.
+        """
+        return pulumi.get(self, "model_prompt_preamble")
+
+    @model_prompt_preamble.setter
+    def model_prompt_preamble(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model_prompt_preamble", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelVersion")
+    def model_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The model version used to generate the answer.
+        """
+        return pulumi.get(self, "model_version")
+
+    @model_version.setter
+    def model_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resultCount")
+    def result_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of top results to generate the answer from. Up to 10.
+        """
+        return pulumi.get(self, "result_count")
+
+    @result_count.setter
+    def result_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "result_count", value)
 
 

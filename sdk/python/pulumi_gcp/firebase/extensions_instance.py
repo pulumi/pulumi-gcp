@@ -333,7 +333,7 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Firebase Extentions Instance Resize Image
+        ### Firebase Extensions Instance Resize Image
 
         ```python
         import pulumi
@@ -350,7 +350,7 @@ class ExtensionsInstance(pulumi.CustomResource):
             instance_id="storage-resize-images",
             config={
                 "extension_ref": "firebase/storage-resize-images",
-                "extension_version": "0.2.2",
+                "extension_version": "0.2.10",
                 "params": {
                     "DELETE_ORIGINAL_FILE": "false",
                     "MAKE_PUBLIC": "false",
@@ -360,6 +360,9 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "DO_BACKFILL": "false",
                     "IMG_SIZES": "200x200",
                     "IMG_BUCKET": images.name,
+                    "BACKFILL_BATCH_SIZE": "3",
+                    "CONTENT_FILTER_LEVEL": "OFF",
+                    "REGENERATE_TOKEN": "true",
                 },
                 "system_params": {
                     "firebaseextensions.v1beta.function/location": "us-central1",
@@ -420,7 +423,7 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Firebase Extentions Instance Resize Image
+        ### Firebase Extensions Instance Resize Image
 
         ```python
         import pulumi
@@ -437,7 +440,7 @@ class ExtensionsInstance(pulumi.CustomResource):
             instance_id="storage-resize-images",
             config={
                 "extension_ref": "firebase/storage-resize-images",
-                "extension_version": "0.2.2",
+                "extension_version": "0.2.10",
                 "params": {
                     "DELETE_ORIGINAL_FILE": "false",
                     "MAKE_PUBLIC": "false",
@@ -447,6 +450,9 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "DO_BACKFILL": "false",
                     "IMG_SIZES": "200x200",
                     "IMG_BUCKET": images.name,
+                    "BACKFILL_BATCH_SIZE": "3",
+                    "CONTENT_FILTER_LEVEL": "OFF",
+                    "REGENERATE_TOKEN": "true",
                 },
                 "system_params": {
                     "firebaseextensions.v1beta.function/location": "us-central1",

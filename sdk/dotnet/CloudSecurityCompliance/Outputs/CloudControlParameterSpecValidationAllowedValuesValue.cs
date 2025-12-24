@@ -22,6 +22,11 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
         /// </summary>
         public readonly double? NumberValue;
         /// <summary>
+        /// Sub-parameter values.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CloudControlParameterSpecValidationAllowedValuesValueOneofValue? OneofValue;
+        /// <summary>
         /// A list of strings.
         /// Structure is documented below.
         /// </summary>
@@ -37,12 +42,15 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
 
             double? numberValue,
 
+            Outputs.CloudControlParameterSpecValidationAllowedValuesValueOneofValue? oneofValue,
+
             Outputs.CloudControlParameterSpecValidationAllowedValuesValueStringListValue? stringListValue,
 
             string? stringValue)
         {
             BoolValue = boolValue;
             NumberValue = numberValue;
+            OneofValue = oneofValue;
             StringListValue = stringListValue;
             StringValue = stringValue;
         }

@@ -4787,7 +4787,7 @@ class Cluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableL4IlbSubsetting")
-    def enable_l4_ilb_subsetting(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_l4_ilb_subsetting(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether L4ILB Subsetting is enabled for this cluster.
         """

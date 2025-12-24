@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.storage.outputs.GetBucketObjectContentContext;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentCustomerEncryption;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentRetention;
 import java.lang.Boolean;
@@ -43,6 +44,7 @@ public final class GetBucketObjectContentResult {
     private String contentHexsha512;
     private String contentLanguage;
     private String contentType;
+    private List<GetBucketObjectContentContext> contexts;
     private String crc32c;
     private List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
     private String deletionPolicy;
@@ -116,6 +118,9 @@ public final class GetBucketObjectContentResult {
     }
     public String contentType() {
         return this.contentType;
+    }
+    public List<GetBucketObjectContentContext> contexts() {
+        return this.contexts;
     }
     public String crc32c() {
         return this.crc32c;
@@ -204,6 +209,7 @@ public final class GetBucketObjectContentResult {
         private String contentHexsha512;
         private String contentLanguage;
         private String contentType;
+        private List<GetBucketObjectContentContext> contexts;
         private String crc32c;
         private List<GetBucketObjectContentCustomerEncryption> customerEncryptions;
         private String deletionPolicy;
@@ -238,6 +244,7 @@ public final class GetBucketObjectContentResult {
     	      this.contentHexsha512 = defaults.contentHexsha512;
     	      this.contentLanguage = defaults.contentLanguage;
     	      this.contentType = defaults.contentType;
+    	      this.contexts = defaults.contexts;
     	      this.crc32c = defaults.crc32c;
     	      this.customerEncryptions = defaults.customerEncryptions;
     	      this.deletionPolicy = defaults.deletionPolicy;
@@ -340,6 +347,17 @@ public final class GetBucketObjectContentResult {
             }
             this.contentType = contentType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder contexts(List<GetBucketObjectContentContext> contexts) {
+            if (contexts == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectContentResult", "contexts");
+            }
+            this.contexts = contexts;
+            return this;
+        }
+        public Builder contexts(GetBucketObjectContentContext... contexts) {
+            return contexts(List.of(contexts));
         }
         @CustomType.Setter
         public Builder crc32c(String crc32c) {
@@ -527,6 +545,7 @@ public final class GetBucketObjectContentResult {
             _resultValue.contentHexsha512 = contentHexsha512;
             _resultValue.contentLanguage = contentLanguage;
             _resultValue.contentType = contentType;
+            _resultValue.contexts = contexts;
             _resultValue.crc32c = crc32c;
             _resultValue.customerEncryptions = customerEncryptions;
             _resultValue.deletionPolicy = deletionPolicy;

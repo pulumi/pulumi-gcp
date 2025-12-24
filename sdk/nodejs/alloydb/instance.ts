@@ -64,9 +64,6 @@ import * as utilities from "../utilities";
  *     networkConfig: {
  *         network: _default.id,
  *     },
- *     initialUser: {
- *         password: "alloydb-primary-cluster",
- *     },
  *     deletionProtection: false,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
@@ -213,6 +210,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly cluster: pulumi.Output<string>;
     /**
+     * Configuration for Managed Connection Pool.
+     * Structure is documented below.
+     */
+    declare public readonly connectionPoolConfig: pulumi.Output<outputs.alloydb.InstanceConnectionPoolConfig | undefined>;
+    /**
      * Time the Instance was created in UTC.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -334,6 +336,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["availabilityType"] = state?.availabilityType;
             resourceInputs["clientConnectionConfig"] = state?.clientConnectionConfig;
             resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["connectionPoolConfig"] = state?.connectionPoolConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["databaseFlags"] = state?.databaseFlags;
             resourceInputs["displayName"] = state?.displayName;
@@ -374,6 +377,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["availabilityType"] = args?.availabilityType;
             resourceInputs["clientConnectionConfig"] = args?.clientConnectionConfig;
             resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["connectionPoolConfig"] = args?.connectionPoolConfig;
             resourceInputs["databaseFlags"] = args?.databaseFlags;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["gceZone"] = args?.gceZone;
@@ -448,6 +452,11 @@ export interface InstanceState {
      * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
      */
     cluster?: pulumi.Input<string>;
+    /**
+     * Configuration for Managed Connection Pool.
+     * Structure is documented below.
+     */
+    connectionPoolConfig?: pulumi.Input<inputs.alloydb.InstanceConnectionPoolConfig>;
     /**
      * Time the Instance was created in UTC.
      */
@@ -595,6 +604,11 @@ export interface InstanceArgs {
      * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
      */
     cluster: pulumi.Input<string>;
+    /**
+     * Configuration for Managed Connection Pool.
+     * Structure is documented below.
+     */
+    connectionPoolConfig?: pulumi.Input<inputs.alloydb.InstanceConnectionPoolConfig>;
     /**
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      */

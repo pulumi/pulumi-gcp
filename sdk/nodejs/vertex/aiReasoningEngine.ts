@@ -109,6 +109,13 @@ import * as utilities from "../utilities";
  *         classMethods: JSON.stringify(classMethods),
  *         serviceAccount: serviceAccount.email,
  *         deploymentSpec: {
+ *             minInstances: 1,
+ *             maxInstances: 3,
+ *             containerConcurrency: 5,
+ *             resourceLimits: {
+ *                 cpu: "4",
+ *                 memory: "4Gi",
+ *             },
  *             envs: [
  *                 {
  *                     name: "var_1",
@@ -221,13 +228,14 @@ export class AiReasoningEngine extends pulumi.CustomResource {
     declare public readonly displayName: pulumi.Output<string>;
     /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      */
     declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiReasoningEngineEncryptionSpec | undefined>;
     /**
      * The generated name of the ReasoningEngine, in the format
-     * 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+     * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -245,8 +253,8 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      */
     declare public readonly spec: pulumi.Output<outputs.vertex.AiReasoningEngineSpec | undefined>;
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-     * with nanosecond resolution and up to nine fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+     * format, with nanosecond resolution and up to nine fractional digits.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
@@ -311,13 +319,14 @@ export interface AiReasoningEngineState {
     displayName?: pulumi.Input<string>;
     /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec>;
     /**
      * The generated name of the ReasoningEngine, in the format
-     * 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+     * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
      */
     name?: pulumi.Input<string>;
     /**
@@ -335,8 +344,8 @@ export interface AiReasoningEngineState {
      */
     spec?: pulumi.Input<inputs.vertex.AiReasoningEngineSpec>;
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-     * with nanosecond resolution and up to nine fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+     * format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -355,7 +364,8 @@ export interface AiReasoningEngineArgs {
     displayName: pulumi.Input<string>;
     /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineEncryptionSpec>;

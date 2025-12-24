@@ -26,14 +26,84 @@ import * as utilities from "../utilities";
  *         timeZone: "America/Los_Angeles",
  *     },
  * });
+ * const cesTool = new gcp.ces.Tool("ces_tool", {
+ *     location: "us",
+ *     app: my_app.appId,
+ *     toolId: "tool-1",
+ *     executionType: "SYNCHRONOUS",
+ *     pythonFunction: {
+ *         name: "example_function",
+ *         pythonCode: "def example_function() -> int: return 0",
+ *     },
+ * });
+ * const cesToolset = new gcp.ces.Toolset("ces_toolset", {
+ *     toolsetId: "toolset-id",
+ *     location: "us",
+ *     app: my_app.appId,
+ *     displayName: "Basic toolset display name",
+ *     openApiToolset: {
+ *         openApiSchema: `openapi: 3.0.0
+ * info:
+ *     title: My Sample API
+ *     version: 1.0.0
+ *     description: A simple API example
+ * servers:
+ *     - url: https://api.example.com/v1
+ * paths: {}
+ * `,
+ *         ignoreUnknownFields: false,
+ *         tlsConfig: {
+ *             caCerts: [{
+ *                 displayName: "example",
+ *                 cert: "ZXhhbXBsZQ==",
+ *             }],
+ *         },
+ *         serviceDirectoryConfig: {
+ *             service: "projects/example/locations/us/namespaces/namespace/services/service",
+ *         },
+ *         apiAuthentication: {
+ *             serviceAgentIdTokenAuthConfig: {},
+ *         },
+ *     },
+ * });
+ * const cesBaseAgent = new gcp.ces.Agent("ces_base_agent", {
+ *     agentId: "base-agent-id",
+ *     location: "us",
+ *     app: my_app.appId,
+ *     displayName: "base agent",
+ *     instruction: "You are a helpful assistant for this example.",
+ *     modelSettings: {
+ *         model: "gemini-2.5-flash",
+ *         temperature: 0.5,
+ *     },
+ *     llmAgent: {},
+ * });
+ * const cesChildAgent = new gcp.ces.Agent("ces_child_agent", {
+ *     agentId: "child-agent-id",
+ *     location: "us",
+ *     app: my_app.appId,
+ *     displayName: "child agent",
+ *     instruction: "You are a helpful assistant for this example.",
+ *     modelSettings: {
+ *         model: "gemini-2.5-flash",
+ *         temperature: 0.5,
+ *     },
+ *     llmAgent: {},
+ * });
  * const my_example = new gcp.ces.Example("my-example", {
  *     location: "us",
  *     displayName: "my-example",
  *     app: my_app.name,
  *     exampleId: "example-id",
  *     description: "example description",
+ *     entryAgent: pulumi.all([my_app.project, my_app.appId, cesBaseAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
  *     messages: [{
  *         chunks: [
+ *             {
+ *                 agentTransfer: {
+ *                     targetAgent: pulumi.all([my_app.project, my_app.appId, cesChildAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
+ *                 },
+ *             },
  *             {
  *                 image: {
  *                     mimeType: "image/png",
@@ -44,6 +114,50 @@ import * as utilities from "../utilities";
  *             },
  *             {
  *                 text: "text_data",
+ *             },
+ *             {
+ *                 toolCall: {
+ *                     args: JSON.stringify({
+ *                         arg1: "val1",
+ *                         arg2: "val2",
+ *                     }),
+ *                     id: "tool_call_id",
+ *                     tool: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/tools/${cesTool.toolId}`,
+ *                 },
+ *             },
+ *             {
+ *                 toolCall: {
+ *                     args: JSON.stringify({
+ *                         arg1: "val1",
+ *                         arg2: "val2",
+ *                     }),
+ *                     id: "tool_call_id2",
+ *                     toolsetTool: {
+ *                         toolset: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/toolsets/${cesToolset.toolsetId}`,
+ *                         toolId: "example-id",
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 toolResponse: {
+ *                     id: "tool_call_id",
+ *                     response: JSON.stringify({
+ *                         output: "example-output",
+ *                     }),
+ *                     tool: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/tools/${cesTool.toolId}`,
+ *                 },
+ *             },
+ *             {
+ *                 toolResponse: {
+ *                     id: "tool_call_id2",
+ *                     response: JSON.stringify({
+ *                         output: "example-output",
+ *                     }),
+ *                     toolsetTool: {
+ *                         toolset: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/toolsets/${cesToolset.toolsetId}`,
+ *                         toolId: "example-id",
+ *                     },
+ *                 },
  *             },
  *             {
  *                 updatedVariables: JSON.stringify({
@@ -126,6 +240,12 @@ export class Example extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
+     * The agent that initially handles the conversation. If not specified, the
+     * example represents a conversation that is handled by the root agent.
+     * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     */
+    declare public readonly entryAgent: pulumi.Output<string | undefined>;
+    /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
@@ -179,6 +299,7 @@ export class Example extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["entryAgent"] = state?.entryAgent;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["exampleId"] = state?.exampleId;
             resourceInputs["invalid"] = state?.invalid;
@@ -204,6 +325,7 @@ export class Example extends pulumi.CustomResource {
             resourceInputs["app"] = args?.app;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["entryAgent"] = args?.entryAgent;
             resourceInputs["exampleId"] = args?.exampleId;
             resourceInputs["location"] = args?.location;
             resourceInputs["messages"] = args?.messages;
@@ -239,6 +361,12 @@ export interface ExampleState {
      * Display name of the example.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The agent that initially handles the conversation. If not specified, the
+     * example represents a conversation that is handled by the root agent.
+     * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     */
+    entryAgent?: pulumi.Input<string>;
     /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
@@ -293,6 +421,12 @@ export interface ExampleArgs {
      * Display name of the example.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * The agent that initially handles the conversation. If not specified, the
+     * example represents a conversation that is handled by the root agent.
+     * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     */
+    entryAgent?: pulumi.Input<string>;
     exampleId: pulumi.Input<string>;
     /**
      * Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.

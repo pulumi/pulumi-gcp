@@ -38,6 +38,8 @@ __all__ = [
     'BucketLifecycleRuleAction',
     'BucketLifecycleRuleCondition',
     'BucketLogging',
+    'BucketObjectContexts',
+    'BucketObjectContextsCustom',
     'BucketObjectCustomerEncryption',
     'BucketObjectRetention',
     'BucketRetentionPolicy',
@@ -131,8 +133,12 @@ __all__ = [
     'GetBucketLifecycleRuleActionResult',
     'GetBucketLifecycleRuleConditionResult',
     'GetBucketLoggingResult',
+    'GetBucketObjectContentContextResult',
+    'GetBucketObjectContentContextCustomResult',
     'GetBucketObjectContentCustomerEncryptionResult',
     'GetBucketObjectContentRetentionResult',
+    'GetBucketObjectContextResult',
+    'GetBucketObjectContextCustomResult',
     'GetBucketObjectCustomerEncryptionResult',
     'GetBucketObjectRetentionResult',
     'GetBucketObjectsBucketObjectResult',
@@ -1440,6 +1446,100 @@ class BucketLogging(dict):
 
 
 @pulumi.output_type
+class BucketObjectContexts(dict):
+    def __init__(__self__, *,
+                 customs: Sequence['outputs.BucketObjectContextsCustom']):
+        """
+        :param Sequence['BucketObjectContextsCustomArgs'] customs: A list of custom context key-value pairs.
+        """
+        pulumi.set(__self__, "customs", customs)
+
+    @_builtins.property
+    @pulumi.getter
+    def customs(self) -> Sequence['outputs.BucketObjectContextsCustom']:
+        """
+        A list of custom context key-value pairs.
+        """
+        return pulumi.get(self, "customs")
+
+
+@pulumi.output_type
+class BucketObjectContextsCustom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketObjectContextsCustom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketObjectContextsCustom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketObjectContextsCustom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str,
+                 create_time: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+        :param _builtins.str value: The value associated with this context. This field holds the primary information for the given context key.
+        :param _builtins.str create_time: The time when context was first added to the storage object in RFC 3399 format.
+        :param _builtins.str update_time: The time when context was last updated in RFC 3399 format.
+               
+               <a name>
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value associated with this context. This field holds the primary information for the given context key.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        The time when context was first added to the storage object in RFC 3399 format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        The time when context was last updated in RFC 3399 format.
+
+        <a name>
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
 class BucketObjectCustomerEncryption(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1514,7 +1614,7 @@ class BucketObjectRetention(dict):
         :param _builtins.str mode: The retention policy mode. Either `Locked` or `Unlocked`.
         :param _builtins.str retain_until_time: The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
                
-               <a name>
+               <a name="nested_contexts"></a> The `contexts` block supports -
         """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "retain_until_time", retain_until_time)
@@ -1533,7 +1633,7 @@ class BucketObjectRetention(dict):
         """
         The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
 
-        <a name>
+        <a name="nested_contexts"></a> The `contexts` block supports -
         """
         return pulumi.get(self, "retain_until_time")
 
@@ -6191,6 +6291,75 @@ class GetBucketLoggingResult(dict):
 
 
 @pulumi.output_type
+class GetBucketObjectContentContextResult(dict):
+    def __init__(__self__, *,
+                 customs: Sequence['outputs.GetBucketObjectContentContextCustomResult']):
+        """
+        :param Sequence['GetBucketObjectContentContextCustomArgs'] customs: A list of custom context key-value pairs.
+        """
+        pulumi.set(__self__, "customs", customs)
+
+    @_builtins.property
+    @pulumi.getter
+    def customs(self) -> Sequence['outputs.GetBucketObjectContentContextCustomResult']:
+        """
+        A list of custom context key-value pairs.
+        """
+        return pulumi.get(self, "customs")
+
+
+@pulumi.output_type
+class GetBucketObjectContentContextCustomResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 key: _builtins.str,
+                 update_time: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str create_time: The time when context was first added to the storage#object in RFC 3339 format.
+        :param _builtins.str key: An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+        :param _builtins.str update_time: The time when context was last updated in RFC 3339 format.
+        :param _builtins.str value: The value associated with this context. This field holds the primary information for the given context key.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when context was first added to the storage#object in RFC 3339 format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time when context was last updated in RFC 3339 format.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value associated with this context. This field holds the primary information for the given context key.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetBucketObjectContentCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: _builtins.str,
@@ -6246,6 +6415,75 @@ class GetBucketObjectContentRetentionResult(dict):
         Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
         """
         return pulumi.get(self, "retain_until_time")
+
+
+@pulumi.output_type
+class GetBucketObjectContextResult(dict):
+    def __init__(__self__, *,
+                 customs: Sequence['outputs.GetBucketObjectContextCustomResult']):
+        """
+        :param Sequence['GetBucketObjectContextCustomArgs'] customs: A list of custom context key-value pairs.
+        """
+        pulumi.set(__self__, "customs", customs)
+
+    @_builtins.property
+    @pulumi.getter
+    def customs(self) -> Sequence['outputs.GetBucketObjectContextCustomResult']:
+        """
+        A list of custom context key-value pairs.
+        """
+        return pulumi.get(self, "customs")
+
+
+@pulumi.output_type
+class GetBucketObjectContextCustomResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 key: _builtins.str,
+                 update_time: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str create_time: The time when context was first added to the storage#object in RFC 3339 format.
+        :param _builtins.str key: An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+        :param _builtins.str update_time: The time when context was last updated in RFC 3339 format.
+        :param _builtins.str value: The value associated with this context. This field holds the primary information for the given context key.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when context was first added to the storage#object in RFC 3339 format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        An individual object context. Context keys and their corresponding values must start with an alphanumeric character.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time when context was last updated in RFC 3339 format.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value associated with this context. This field holds the primary information for the given context key.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

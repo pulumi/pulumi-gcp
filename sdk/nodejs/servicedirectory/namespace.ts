@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Namespace, see:
  *
- * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
+ * * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1/projects.locations.namespaces)
  * * How-to Guides
  *     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
  *
@@ -99,8 +99,6 @@ export class Namespace extends pulumi.CustomResource {
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the Namespace.
-     * A full list of valid locations can be found by running
-     * `gcloud beta service-directory locations list`.
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -186,8 +184,6 @@ export interface NamespaceState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the Namespace.
-     * A full list of valid locations can be found by running
-     * `gcloud beta service-directory locations list`.
      */
     location?: pulumi.Input<string>;
     /**
@@ -227,8 +223,6 @@ export interface NamespaceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the Namespace.
-     * A full list of valid locations can be found by running
-     * `gcloud beta service-directory locations list`.
      */
     location: pulumi.Input<string>;
     /**

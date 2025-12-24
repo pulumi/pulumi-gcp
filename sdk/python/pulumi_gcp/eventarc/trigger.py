@@ -29,6 +29,7 @@ class TriggerArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 retry_policy: Optional[pulumi.Input['TriggerRetryPolicyArgs']] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  transport: Optional[pulumi.Input['TriggerTransportArgs']] = None):
         """
@@ -46,6 +47,9 @@ class TriggerArgs:
         :param pulumi.Input[_builtins.str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['TriggerRetryPolicyArgs'] retry_policy: The retry policy configuration for the Trigger.
+               Can only be set with Cloud Run destinations.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input['TriggerTransportArgs'] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
                Structure is documented below.
@@ -63,6 +67,8 @@ class TriggerArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if transport is not None:
@@ -170,6 +176,20 @@ class TriggerArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional[pulumi.Input['TriggerRetryPolicyArgs']]:
+        """
+        The retry policy configuration for the Trigger.
+        Can only be set with Cloud Run destinations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: Optional[pulumi.Input['TriggerRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -211,6 +231,7 @@ class _TriggerState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 retry_policy: Optional[pulumi.Input['TriggerRetryPolicyArgs']] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  transport: Optional[pulumi.Input['TriggerTransportArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -236,6 +257,9 @@ class _TriggerState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input['TriggerRetryPolicyArgs'] retry_policy: The retry policy configuration for the Trigger.
+               Can only be set with Cloud Run destinations.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input['TriggerTransportArgs'] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
                Structure is documented below.
@@ -268,6 +292,8 @@ class _TriggerState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if transport is not None:
@@ -440,6 +466,20 @@ class _TriggerState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional[pulumi.Input['TriggerRetryPolicyArgs']]:
+        """
+        The retry policy configuration for the Trigger.
+        Can only be set with Cloud Run destinations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: Optional[pulumi.Input['TriggerRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -503,6 +543,7 @@ class Trigger(pulumi.CustomResource):
                  matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 retry_policy: Optional[pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
                  __props__=None):
@@ -563,6 +604,9 @@ class Trigger(pulumi.CustomResource):
                 "pubsub": {
                     "topic": foo.id,
                 },
+            },
+            retry_policy={
+                "max_attempts": 1,
             })
         ```
 
@@ -605,6 +649,9 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']] retry_policy: The retry policy configuration for the Trigger.
+               Can only be set with Cloud Run destinations.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
                Structure is documented below.
@@ -672,6 +719,9 @@ class Trigger(pulumi.CustomResource):
                 "pubsub": {
                     "topic": foo.id,
                 },
+            },
+            retry_policy={
+                "max_attempts": 1,
             })
         ```
 
@@ -722,6 +772,7 @@ class Trigger(pulumi.CustomResource):
                  matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 retry_policy: Optional[pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
                  service_account: Optional[pulumi.Input[_builtins.str]] = None,
                  transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
                  __props__=None):
@@ -747,6 +798,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["matching_criterias"] = matching_criterias
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["retry_policy"] = retry_policy
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["transport"] = transport
             __props__.__dict__["conditions"] = None
@@ -781,6 +833,7 @@ class Trigger(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            retry_policy: Optional[pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
             service_account: Optional[pulumi.Input[_builtins.str]] = None,
             transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -811,6 +864,9 @@ class Trigger(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']] retry_policy: The retry policy configuration for the Trigger.
+               Can only be set with Cloud Run destinations.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
                Structure is documented below.
@@ -834,6 +890,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["retry_policy"] = retry_policy
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["transport"] = transport
         __props__.__dict__["uid"] = uid
@@ -949,6 +1006,16 @@ class Trigger(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> pulumi.Output[Optional['outputs.TriggerRetryPolicy']]:
+        """
+        The retry policy configuration for the Trigger.
+        Can only be set with Cloud Run destinations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")

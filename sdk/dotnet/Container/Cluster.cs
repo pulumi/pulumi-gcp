@@ -363,7 +363,7 @@ namespace Pulumi.Gcp.Container
         /// Whether L4ILB Subsetting is enabled for this cluster.
         /// </summary>
         [Output("enableL4IlbSubsetting")]
-        public Output<bool?> EnableL4IlbSubsetting { get; private set; } = null!;
+        public Output<bool> EnableL4IlbSubsetting { get; private set; } = null!;
 
         /// <summary>
         /// Whether the ABAC authorizer is enabled for this cluster.

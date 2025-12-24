@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Ces.Outputs
     public sealed class ToolOpenApiToolTlsConfig
     {
         /// <summary>
+        /// (Output)
         /// Specifies a list of allowed custom CA certificates for HTTPS
         /// verification.
         /// Structure is documented below.

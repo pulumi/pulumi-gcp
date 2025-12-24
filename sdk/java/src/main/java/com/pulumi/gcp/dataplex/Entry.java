@@ -257,6 +257,245 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dataplex Entry Bigquery Table
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataplex.AspectType;
+ * import com.pulumi.gcp.dataplex.AspectTypeArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.dataplex.Entry;
+ * import com.pulumi.gcp.dataplex.EntryArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var aspect_type_full_one = new AspectType("aspect-type-full-one", AspectTypeArgs.builder()
+ *             .aspectTypeId("aspect-type-one")
+ *             .location("us-central1")
+ *             .project("1111111111111")
+ *             .metadataTemplate("""
+ * }{{@code
+ *   \"name\": \"tf-test-template\",
+ *   \"type\": \"record\",
+ *   \"recordFields\": [
+ *     }{{@code
+ *       \"name\": \"type\",
+ *       \"type\": \"enum\",
+ *       \"annotations\": }{{@code
+ *         \"displayName\": \"Type\",
+ *         \"description\": \"Specifies the type of view represented by the entry.\"
+ *       }}{@code ,
+ *       \"index\": 1,
+ *       \"constraints\": }{{@code
+ *         \"required\": true
+ *       }}{@code ,
+ *       \"enumValues\": [
+ *         }{{@code
+ *           \"name\": \"VIEW\",
+ *           \"index\": 1
+ *         }}{@code
+ *       ]
+ *     }}{@code
+ *   ]
+ * }}{@code
+ *             """)
+ *             .build());
+ * 
+ *         var aspect_type_full_two = new AspectType("aspect-type-full-two", AspectTypeArgs.builder()
+ *             .aspectTypeId("aspect-type-two")
+ *             .location("us-central1")
+ *             .project("1111111111111")
+ *             .metadataTemplate("""
+ * }{{@code
+ *   \"name\": \"tf-test-template\",
+ *   \"type\": \"record\",
+ *   \"recordFields\": [
+ *     }{{@code
+ *       \"name\": \"story\",
+ *       \"type\": \"enum\",
+ *       \"annotations\": }{{@code
+ *         \"displayName\": \"Story\",
+ *         \"description\": \"Specifies the story of an entry.\"
+ *       }}{@code ,
+ *       \"index\": 1,
+ *       \"constraints\": }{{@code
+ *         \"required\": true
+ *       }}{@code ,
+ *       \"enumValues\": [
+ *         }{{@code
+ *           \"name\": \"SEQUENCE\",
+ *           \"index\": 1
+ *         }}{@code
+ *       ]
+ *     }}{@code
+ *   ]
+ * }}{@code
+ *             """)
+ *             .build());
+ * 
+ *         var example_dataset = new Dataset("example-dataset", DatasetArgs.builder()
+ *             .datasetId("dataset-basic")
+ *             .friendlyName("Example Dataset")
+ *             .location("us-central1")
+ *             .deleteContentsOnDestroy(true)
+ *             .build());
+ * 
+ *         var example_table = new Table("example-table", TableArgs.builder()
+ *             .datasetId(example_dataset.datasetId())
+ *             .tableId("table-basic")
+ *             .deletionProtection(false)
+ *             .schema(serializeJson(
+ *                 jsonArray(
+ *                     jsonObject(
+ *                         jsonProperty("name", "event_time"),
+ *                         jsonProperty("type", "TIMESTAMP"),
+ *                         jsonProperty("mode", "REQUIRED")
+ *                     ), 
+ *                     jsonObject(
+ *                         jsonProperty("name", "user_id"),
+ *                         jsonProperty("type", "STRING"),
+ *                         jsonProperty("mode", "NULLABLE")
+ *                     ), 
+ *                     jsonObject(
+ *                         jsonProperty("name", "event_type"),
+ *                         jsonProperty("type", "STRING"),
+ *                         jsonProperty("mode", "NULLABLE")
+ *                     )
+ *                 )))
+ *             .build());
+ * 
+ *         var tfTestTable = new Entry("tfTestTable", EntryArgs.builder()
+ *             .entryGroupId("}{@literal @}{@code bigquery")
+ *             .project("1111111111111")
+ *             .location("us-central1")
+ *             .entryId(Output.tuple(example_dataset.datasetId(), example_table.tableId()).applyValue(values -> }{{@code
+ *                 var datasetId = values.t1;
+ *                 var tableId = values.t2;
+ *                 return String.format("bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
+ *             }}{@code ))
+ *             .entryType("projects/655216118709/locations/global/entryTypes/bigquery-table")
+ *             .fullyQualifiedName(Output.tuple(example_dataset.datasetId(), example_table.tableId()).applyValue(values -> }{{@code
+ *                 var datasetId = values.t1;
+ *                 var tableId = values.t2;
+ *                 return String.format("bigquery:my-project-name.%s.%s", datasetId,tableId);
+ *             }}{@code ))
+ *             .parentEntry(example_dataset.datasetId().applyValue(_datasetId -> String.format("projects/1111111111111/locations/us-central1/entryGroups/}{@literal @}{@code bigquery/entries/bigquery.googleapis.com/projects/my-project-name/datasets/%s", _datasetId)))
+ *             .aspects(            
+ *                 EntryAspectArgs.builder()
+ *                     .aspectKey("1111111111111.us-central1.aspect-type-one")
+ *                     .aspect(EntryAspectAspectArgs.builder()
+ *                         .data("""
+ *           }{{@code \"type\": \"VIEW\"    }}{@code
+ *                         """)
+ *                         .build())
+ *                     .build(),
+ *                 EntryAspectArgs.builder()
+ *                     .aspectKey("1111111111111.us-central1.aspect-type-two}{@literal @}{@code Schema.event_type")
+ *                     .aspect(EntryAspectAspectArgs.builder()
+ *                         .data("""
+ *           }{{@code \"story\": \"SEQUENCE\"    }}{@code
+ *                         """)
+ *                         .build())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     aspect_type_full_two,
+ *                     aspect_type_full_one)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Dataplex Entry Glossary Term
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataplex.Glossary;
+ * import com.pulumi.gcp.dataplex.GlossaryArgs;
+ * import com.pulumi.gcp.dataplex.GlossaryTerm;
+ * import com.pulumi.gcp.dataplex.GlossaryTermArgs;
+ * import com.pulumi.gcp.dataplex.Entry;
+ * import com.pulumi.gcp.dataplex.EntryArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example_glossary = new Glossary("example-glossary", GlossaryArgs.builder()
+ *             .glossaryId("glossary-basic")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var example_glossary_term = new GlossaryTerm("example-glossary-term", GlossaryTermArgs.builder()
+ *             .parent(example_glossary.glossaryId().applyValue(_glossaryId -> String.format("projects/my-project-name/locations/us-central1/glossaries/%s", _glossaryId)))
+ *             .glossaryId(example_glossary.glossaryId())
+ *             .location("us-central1")
+ *             .termId("glossary-term")
+ *             .build());
+ * 
+ *         var tfTestGlossaryTerm = new Entry("tfTestGlossaryTerm", EntryArgs.builder()
+ *             .entryGroupId("}{@literal @}{@code dataplex")
+ *             .project("1111111111111")
+ *             .location("us-central1")
+ *             .entryId(Output.tuple(example_glossary.glossaryId(), example_glossary_term.termId()).applyValue(values -> }{{@code
+ *                 var glossaryId = values.t1;
+ *                 var termId = values.t2;
+ *                 return String.format("projects/1111111111111/locations/us-central1/glossaries/%s/terms/%s", glossaryId,termId);
+ *             }}{@code ))
+ *             .entryType("projects/655216118709/locations/global/entryTypes/glossary-term")
+ *             .parentEntry(example_glossary.glossaryId().applyValue(_glossaryId -> String.format("projects/1111111111111/locations/us-central1/entryGroups/}{@literal @}{@code dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/%s", _glossaryId)))
+ *             .aspects(EntryAspectArgs.builder()
+ *                 .aspectKey("655216118709.global.overview")
+ *                 .aspect(EntryAspectAspectArgs.builder()
+ *                     .data("""
+ *            }{{@code \"content\": \"Term Content\"    }}{@code
+ *                     """)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 

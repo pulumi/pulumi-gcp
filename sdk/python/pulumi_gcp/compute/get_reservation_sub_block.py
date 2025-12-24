@@ -258,10 +258,10 @@ def get_reservation_sub_block(name: Optional[_builtins.str] = None,
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str reservation: The name of the parent reservation.
-    :param _builtins.str reservation_block: The name of the parent reservation block.
-    :param _builtins.str zone: The zone where the reservation sub-block resides.
            
            - - -
+    :param _builtins.str reservation_block: The name of the parent reservation block.
+    :param _builtins.str zone: The zone where the reservation sub-block resides.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -321,10 +321,10 @@ def get_reservation_sub_block_output(name: Optional[pulumi.Input[_builtins.str]]
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str reservation: The name of the parent reservation.
-    :param _builtins.str reservation_block: The name of the parent reservation block.
-    :param _builtins.str zone: The zone where the reservation sub-block resides.
            
            - - -
+    :param _builtins.str reservation_block: The name of the parent reservation block.
+    :param _builtins.str zone: The zone where the reservation sub-block resides.
     """
     __args__ = dict()
     __args__['name'] = name

@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// IANA Time Zone Database time zone, e.g. "America/New_York".
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// IANA Time Zone Database version number, e.g. "2019a".
+        /// </summary>
+        public readonly string Version;
 
         [OutputConstructor]
-        private GetCloudVmClusterPropertyTimeZoneResult(string id)
+        private GetCloudVmClusterPropertyTimeZoneResult(
+            string id,
+
+            string version)
         {
             Id = id;
+            Version = version;
         }
     }
 }

@@ -320,8 +320,6 @@ type Reservation struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// (Output)
 	// The number of reservation blocks associated with this reservation.
@@ -419,8 +417,6 @@ type reservationState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project *string `pulumi:"project"`
 	// (Output)
 	// The number of reservation blocks associated with this reservation.
@@ -483,8 +479,6 @@ type ReservationState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project pulumi.StringPtrInput
 	// (Output)
 	// The number of reservation blocks associated with this reservation.
@@ -540,8 +534,6 @@ type reservationArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project *string `pulumi:"project"`
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
@@ -582,8 +574,6 @@ type ReservationArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
-	//
-	// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 	Project pulumi.StringPtrInput
 	// Sharing policy for reservations with Google Cloud managed services.
 	// Structure is documented below.
@@ -750,8 +740,6 @@ func (o ReservationOutput) Name() pulumi.StringOutput {
 
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
-//
-// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
 func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

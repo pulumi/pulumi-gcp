@@ -13,6 +13,1287 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionBackendServiceStrongSessionAffinityCooky struct {
+	// The name of the regional backend service.
+	Name string `pulumi:"name"`
+	// Path to set for the cookie.
+	Path string `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls []GetRegionBackendServiceStrongSessionAffinityCookyTtl `pulumi:"ttls"`
+}
+
+// GetRegionBackendServiceStrongSessionAffinityCookyInput is an input type that accepts GetRegionBackendServiceStrongSessionAffinityCookyArgs and GetRegionBackendServiceStrongSessionAffinityCookyOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceStrongSessionAffinityCookyInput` via:
+//
+//	GetRegionBackendServiceStrongSessionAffinityCookyArgs{...}
+type GetRegionBackendServiceStrongSessionAffinityCookyInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceStrongSessionAffinityCookyOutput() GetRegionBackendServiceStrongSessionAffinityCookyOutput
+	ToGetRegionBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Context) GetRegionBackendServiceStrongSessionAffinityCookyOutput
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyArgs struct {
+	// The name of the regional backend service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path to set for the cookie.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayInput `pulumi:"ttls"`
+}
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyArgs) ToGetRegionBackendServiceStrongSessionAffinityCookyOutput() GetRegionBackendServiceStrongSessionAffinityCookyOutput {
+	return i.ToGetRegionBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyArgs) ToGetRegionBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceStrongSessionAffinityCookyOutput)
+}
+
+// GetRegionBackendServiceStrongSessionAffinityCookyArrayInput is an input type that accepts GetRegionBackendServiceStrongSessionAffinityCookyArray and GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceStrongSessionAffinityCookyArrayInput` via:
+//
+//	GetRegionBackendServiceStrongSessionAffinityCookyArray{ GetRegionBackendServiceStrongSessionAffinityCookyArgs{...} }
+type GetRegionBackendServiceStrongSessionAffinityCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceStrongSessionAffinityCookyArrayOutput() GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput
+	ToGetRegionBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Context) GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyArray []GetRegionBackendServiceStrongSessionAffinityCookyInput
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyArray) ToGetRegionBackendServiceStrongSessionAffinityCookyArrayOutput() GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return i.ToGetRegionBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyArray) ToGetRegionBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput)
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyOutput() GetRegionBackendServiceStrongSessionAffinityCookyOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyOutput {
+	return o
+}
+
+// The name of the regional backend service.
+func (o GetRegionBackendServiceStrongSessionAffinityCookyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceStrongSessionAffinityCooky) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path to set for the cookie.
+func (o GetRegionBackendServiceStrongSessionAffinityCookyOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceStrongSessionAffinityCooky) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Lifetime of the cookie.
+func (o GetRegionBackendServiceStrongSessionAffinityCookyOutput) Ttls() GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceStrongSessionAffinityCooky) []GetRegionBackendServiceStrongSessionAffinityCookyTtl {
+		return v.Ttls
+	}).(GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyArrayOutput() GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceStrongSessionAffinityCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceStrongSessionAffinityCooky {
+		return vs[0].([]GetRegionBackendServiceStrongSessionAffinityCooky)[vs[1].(int)]
+	}).(GetRegionBackendServiceStrongSessionAffinityCookyOutput)
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyTtl struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionBackendServiceStrongSessionAffinityCookyTtlInput is an input type that accepts GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs and GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceStrongSessionAffinityCookyTtlInput` via:
+//
+//	GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs{...}
+type GetRegionBackendServiceStrongSessionAffinityCookyTtlInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceStrongSessionAffinityCookyTtlOutput() GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput
+	ToGetRegionBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Context) GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlOutput() GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return i.ToGetRegionBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput)
+}
+
+// GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayInput is an input type that accepts GetRegionBackendServiceStrongSessionAffinityCookyTtlArray and GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayInput` via:
+//
+//	GetRegionBackendServiceStrongSessionAffinityCookyTtlArray{ GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs{...} }
+type GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput
+	ToGetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Context) GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyTtlArray []GetRegionBackendServiceStrongSessionAffinityCookyTtlInput
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyTtlArray) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return i.ToGetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceStrongSessionAffinityCookyTtlArray) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlOutput() GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceStrongSessionAffinityCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceStrongSessionAffinityCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceStrongSessionAffinityCookyTtl {
+		return vs[0].([]GetRegionBackendServiceStrongSessionAffinityCookyTtl)[vs[1].(int)]
+	}).(GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput)
+}
+
+type GetRegionBackendServiceSubsetting struct {
+	// The algorithm used for subsetting. Possible values: ["CONSISTENT_HASH_SUBSETTING"]
+	Policy string `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client.
+	// An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+	// CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+	// subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+	// If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+	// of proxies/clients visible to each backend and vice versa.
+	// Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize int `pulumi:"subsetSize"`
+}
+
+// GetRegionBackendServiceSubsettingInput is an input type that accepts GetRegionBackendServiceSubsettingArgs and GetRegionBackendServiceSubsettingOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceSubsettingInput` via:
+//
+//	GetRegionBackendServiceSubsettingArgs{...}
+type GetRegionBackendServiceSubsettingInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceSubsettingOutput() GetRegionBackendServiceSubsettingOutput
+	ToGetRegionBackendServiceSubsettingOutputWithContext(context.Context) GetRegionBackendServiceSubsettingOutput
+}
+
+type GetRegionBackendServiceSubsettingArgs struct {
+	// The algorithm used for subsetting. Possible values: ["CONSISTENT_HASH_SUBSETTING"]
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// The number of backends per backend group assigned to each proxy instance or each service mesh client.
+	// An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+	// CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+	// subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+	// If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+	// of proxies/clients visible to each backend and vice versa.
+	// Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+	SubsetSize pulumi.IntInput `pulumi:"subsetSize"`
+}
+
+func (GetRegionBackendServiceSubsettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceSubsetting)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceSubsettingArgs) ToGetRegionBackendServiceSubsettingOutput() GetRegionBackendServiceSubsettingOutput {
+	return i.ToGetRegionBackendServiceSubsettingOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceSubsettingArgs) ToGetRegionBackendServiceSubsettingOutputWithContext(ctx context.Context) GetRegionBackendServiceSubsettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceSubsettingOutput)
+}
+
+// GetRegionBackendServiceSubsettingArrayInput is an input type that accepts GetRegionBackendServiceSubsettingArray and GetRegionBackendServiceSubsettingArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceSubsettingArrayInput` via:
+//
+//	GetRegionBackendServiceSubsettingArray{ GetRegionBackendServiceSubsettingArgs{...} }
+type GetRegionBackendServiceSubsettingArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceSubsettingArrayOutput() GetRegionBackendServiceSubsettingArrayOutput
+	ToGetRegionBackendServiceSubsettingArrayOutputWithContext(context.Context) GetRegionBackendServiceSubsettingArrayOutput
+}
+
+type GetRegionBackendServiceSubsettingArray []GetRegionBackendServiceSubsettingInput
+
+func (GetRegionBackendServiceSubsettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceSubsetting)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceSubsettingArray) ToGetRegionBackendServiceSubsettingArrayOutput() GetRegionBackendServiceSubsettingArrayOutput {
+	return i.ToGetRegionBackendServiceSubsettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceSubsettingArray) ToGetRegionBackendServiceSubsettingArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceSubsettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceSubsettingArrayOutput)
+}
+
+type GetRegionBackendServiceSubsettingOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceSubsettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceSubsetting)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceSubsettingOutput) ToGetRegionBackendServiceSubsettingOutput() GetRegionBackendServiceSubsettingOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceSubsettingOutput) ToGetRegionBackendServiceSubsettingOutputWithContext(ctx context.Context) GetRegionBackendServiceSubsettingOutput {
+	return o
+}
+
+// The algorithm used for subsetting. Possible values: ["CONSISTENT_HASH_SUBSETTING"]
+func (o GetRegionBackendServiceSubsettingOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceSubsetting) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// The number of backends per backend group assigned to each proxy instance or each service mesh client.
+// An input parameter to the CONSISTENT_HASH_SUBSETTING algorithm. Can only be set if policy is set to
+// CONSISTENT_HASH_SUBSETTING. Can only be set if load balancing scheme is INTERNAL_MANAGED or INTERNAL_SELF_MANAGED.
+// subsetSize is optional for Internal HTTP(S) load balancing and required for Traffic Director.
+// If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
+// of proxies/clients visible to each backend and vice versa.
+// Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
+func (o GetRegionBackendServiceSubsettingOutput) SubsetSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceSubsetting) int { return v.SubsetSize }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceSubsettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceSubsettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceSubsetting)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceSubsettingArrayOutput) ToGetRegionBackendServiceSubsettingArrayOutput() GetRegionBackendServiceSubsettingArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceSubsettingArrayOutput) ToGetRegionBackendServiceSubsettingArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceSubsettingArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceSubsettingArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceSubsettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceSubsetting {
+		return vs[0].([]GetRegionBackendServiceSubsetting)[vs[1].(int)]
+	}).(GetRegionBackendServiceSubsettingOutput)
+}
+
+type GetRegionBackendServiceTlsSetting struct {
+	// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+	// Can only be specified if authenticationMode is not NONE.
+	AuthenticationConfig string `pulumi:"authenticationConfig"`
+	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+	// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+	Sni string `pulumi:"sni"`
+	// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+	// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+	// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+	// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+	// subjectAltNames.
+	SubjectAltNames []GetRegionBackendServiceTlsSettingSubjectAltName `pulumi:"subjectAltNames"`
+}
+
+// GetRegionBackendServiceTlsSettingInput is an input type that accepts GetRegionBackendServiceTlsSettingArgs and GetRegionBackendServiceTlsSettingOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceTlsSettingInput` via:
+//
+//	GetRegionBackendServiceTlsSettingArgs{...}
+type GetRegionBackendServiceTlsSettingInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceTlsSettingOutput() GetRegionBackendServiceTlsSettingOutput
+	ToGetRegionBackendServiceTlsSettingOutputWithContext(context.Context) GetRegionBackendServiceTlsSettingOutput
+}
+
+type GetRegionBackendServiceTlsSettingArgs struct {
+	// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+	// Can only be specified if authenticationMode is not NONE.
+	AuthenticationConfig pulumi.StringInput `pulumi:"authenticationConfig"`
+	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+	// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+	Sni pulumi.StringInput `pulumi:"sni"`
+	// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+	// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+	// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+	// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+	// subjectAltNames.
+	SubjectAltNames GetRegionBackendServiceTlsSettingSubjectAltNameArrayInput `pulumi:"subjectAltNames"`
+}
+
+func (GetRegionBackendServiceTlsSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceTlsSettingArgs) ToGetRegionBackendServiceTlsSettingOutput() GetRegionBackendServiceTlsSettingOutput {
+	return i.ToGetRegionBackendServiceTlsSettingOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceTlsSettingArgs) ToGetRegionBackendServiceTlsSettingOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceTlsSettingOutput)
+}
+
+// GetRegionBackendServiceTlsSettingArrayInput is an input type that accepts GetRegionBackendServiceTlsSettingArray and GetRegionBackendServiceTlsSettingArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceTlsSettingArrayInput` via:
+//
+//	GetRegionBackendServiceTlsSettingArray{ GetRegionBackendServiceTlsSettingArgs{...} }
+type GetRegionBackendServiceTlsSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceTlsSettingArrayOutput() GetRegionBackendServiceTlsSettingArrayOutput
+	ToGetRegionBackendServiceTlsSettingArrayOutputWithContext(context.Context) GetRegionBackendServiceTlsSettingArrayOutput
+}
+
+type GetRegionBackendServiceTlsSettingArray []GetRegionBackendServiceTlsSettingInput
+
+func (GetRegionBackendServiceTlsSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceTlsSettingArray) ToGetRegionBackendServiceTlsSettingArrayOutput() GetRegionBackendServiceTlsSettingArrayOutput {
+	return i.ToGetRegionBackendServiceTlsSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceTlsSettingArray) ToGetRegionBackendServiceTlsSettingArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceTlsSettingArrayOutput)
+}
+
+type GetRegionBackendServiceTlsSettingOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceTlsSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceTlsSettingOutput) ToGetRegionBackendServiceTlsSettingOutput() GetRegionBackendServiceTlsSettingOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceTlsSettingOutput) ToGetRegionBackendServiceTlsSettingOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingOutput {
+	return o
+}
+
+// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+// Can only be specified if authenticationMode is not NONE.
+func (o GetRegionBackendServiceTlsSettingOutput) AuthenticationConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceTlsSetting) string { return v.AuthenticationConfig }).(pulumi.StringOutput)
+}
+
+// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+func (o GetRegionBackendServiceTlsSettingOutput) Sni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceTlsSetting) string { return v.Sni }).(pulumi.StringOutput)
+}
+
+// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+// subjectAltNames.
+func (o GetRegionBackendServiceTlsSettingOutput) SubjectAltNames() GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceTlsSetting) []GetRegionBackendServiceTlsSettingSubjectAltName {
+		return v.SubjectAltNames
+	}).(GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput)
+}
+
+type GetRegionBackendServiceTlsSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceTlsSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceTlsSettingArrayOutput) ToGetRegionBackendServiceTlsSettingArrayOutput() GetRegionBackendServiceTlsSettingArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceTlsSettingArrayOutput) ToGetRegionBackendServiceTlsSettingArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceTlsSettingArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceTlsSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceTlsSetting {
+		return vs[0].([]GetRegionBackendServiceTlsSetting)[vs[1].(int)]
+	}).(GetRegionBackendServiceTlsSettingOutput)
+}
+
+type GetRegionBackendServiceTlsSettingSubjectAltName struct {
+	// The SAN specified as a DNS Name.
+	DnsName string `pulumi:"dnsName"`
+	// The SAN specified as a URI.
+	UniformResourceIdentifier string `pulumi:"uniformResourceIdentifier"`
+}
+
+// GetRegionBackendServiceTlsSettingSubjectAltNameInput is an input type that accepts GetRegionBackendServiceTlsSettingSubjectAltNameArgs and GetRegionBackendServiceTlsSettingSubjectAltNameOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceTlsSettingSubjectAltNameInput` via:
+//
+//	GetRegionBackendServiceTlsSettingSubjectAltNameArgs{...}
+type GetRegionBackendServiceTlsSettingSubjectAltNameInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceTlsSettingSubjectAltNameOutput() GetRegionBackendServiceTlsSettingSubjectAltNameOutput
+	ToGetRegionBackendServiceTlsSettingSubjectAltNameOutputWithContext(context.Context) GetRegionBackendServiceTlsSettingSubjectAltNameOutput
+}
+
+type GetRegionBackendServiceTlsSettingSubjectAltNameArgs struct {
+	// The SAN specified as a DNS Name.
+	DnsName pulumi.StringInput `pulumi:"dnsName"`
+	// The SAN specified as a URI.
+	UniformResourceIdentifier pulumi.StringInput `pulumi:"uniformResourceIdentifier"`
+}
+
+func (GetRegionBackendServiceTlsSettingSubjectAltNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceTlsSettingSubjectAltNameArgs) ToGetRegionBackendServiceTlsSettingSubjectAltNameOutput() GetRegionBackendServiceTlsSettingSubjectAltNameOutput {
+	return i.ToGetRegionBackendServiceTlsSettingSubjectAltNameOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceTlsSettingSubjectAltNameArgs) ToGetRegionBackendServiceTlsSettingSubjectAltNameOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingSubjectAltNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceTlsSettingSubjectAltNameOutput)
+}
+
+// GetRegionBackendServiceTlsSettingSubjectAltNameArrayInput is an input type that accepts GetRegionBackendServiceTlsSettingSubjectAltNameArray and GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceTlsSettingSubjectAltNameArrayInput` via:
+//
+//	GetRegionBackendServiceTlsSettingSubjectAltNameArray{ GetRegionBackendServiceTlsSettingSubjectAltNameArgs{...} }
+type GetRegionBackendServiceTlsSettingSubjectAltNameArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput() GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput
+	ToGetRegionBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(context.Context) GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput
+}
+
+type GetRegionBackendServiceTlsSettingSubjectAltNameArray []GetRegionBackendServiceTlsSettingSubjectAltNameInput
+
+func (GetRegionBackendServiceTlsSettingSubjectAltNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceTlsSettingSubjectAltNameArray) ToGetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput() GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return i.ToGetRegionBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceTlsSettingSubjectAltNameArray) ToGetRegionBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput)
+}
+
+type GetRegionBackendServiceTlsSettingSubjectAltNameOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceTlsSettingSubjectAltNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceTlsSettingSubjectAltNameOutput) ToGetRegionBackendServiceTlsSettingSubjectAltNameOutput() GetRegionBackendServiceTlsSettingSubjectAltNameOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceTlsSettingSubjectAltNameOutput) ToGetRegionBackendServiceTlsSettingSubjectAltNameOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingSubjectAltNameOutput {
+	return o
+}
+
+// The SAN specified as a DNS Name.
+func (o GetRegionBackendServiceTlsSettingSubjectAltNameOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceTlsSettingSubjectAltName) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// The SAN specified as a URI.
+func (o GetRegionBackendServiceTlsSettingSubjectAltNameOutput) UniformResourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceTlsSettingSubjectAltName) string { return v.UniformResourceIdentifier }).(pulumi.StringOutput)
+}
+
+type GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput) ToGetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput() GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput) ToGetRegionBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceTlsSettingSubjectAltNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceTlsSettingSubjectAltName {
+		return vs[0].([]GetRegionBackendServiceTlsSettingSubjectAltName)[vs[1].(int)]
+	}).(GetRegionBackendServiceTlsSettingSubjectAltNameOutput)
+}
+
+type GetRegionDiskAsyncPrimaryDisk struct {
+	// Primary disk for asynchronous disk replication.
+	Disk string `pulumi:"disk"`
+}
+
+// GetRegionDiskAsyncPrimaryDiskInput is an input type that accepts GetRegionDiskAsyncPrimaryDiskArgs and GetRegionDiskAsyncPrimaryDiskOutput values.
+// You can construct a concrete instance of `GetRegionDiskAsyncPrimaryDiskInput` via:
+//
+//	GetRegionDiskAsyncPrimaryDiskArgs{...}
+type GetRegionDiskAsyncPrimaryDiskInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskAsyncPrimaryDiskOutput() GetRegionDiskAsyncPrimaryDiskOutput
+	ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(context.Context) GetRegionDiskAsyncPrimaryDiskOutput
+}
+
+type GetRegionDiskAsyncPrimaryDiskArgs struct {
+	// Primary disk for asynchronous disk replication.
+	Disk pulumi.StringInput `pulumi:"disk"`
+}
+
+func (GetRegionDiskAsyncPrimaryDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArgs) ToGetRegionDiskAsyncPrimaryDiskOutput() GetRegionDiskAsyncPrimaryDiskOutput {
+	return i.ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArgs) ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskAsyncPrimaryDiskOutput)
+}
+
+// GetRegionDiskAsyncPrimaryDiskArrayInput is an input type that accepts GetRegionDiskAsyncPrimaryDiskArray and GetRegionDiskAsyncPrimaryDiskArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskAsyncPrimaryDiskArrayInput` via:
+//
+//	GetRegionDiskAsyncPrimaryDiskArray{ GetRegionDiskAsyncPrimaryDiskArgs{...} }
+type GetRegionDiskAsyncPrimaryDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskAsyncPrimaryDiskArrayOutput() GetRegionDiskAsyncPrimaryDiskArrayOutput
+	ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(context.Context) GetRegionDiskAsyncPrimaryDiskArrayOutput
+}
+
+type GetRegionDiskAsyncPrimaryDiskArray []GetRegionDiskAsyncPrimaryDiskInput
+
+func (GetRegionDiskAsyncPrimaryDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArray) ToGetRegionDiskAsyncPrimaryDiskArrayOutput() GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return i.ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArray) ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskAsyncPrimaryDiskArrayOutput)
+}
+
+type GetRegionDiskAsyncPrimaryDiskOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskAsyncPrimaryDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskOutput) ToGetRegionDiskAsyncPrimaryDiskOutput() GetRegionDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskOutput) ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+// Primary disk for asynchronous disk replication.
+func (o GetRegionDiskAsyncPrimaryDiskOutput) Disk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskAsyncPrimaryDisk) string { return v.Disk }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskAsyncPrimaryDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskAsyncPrimaryDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) ToGetRegionDiskAsyncPrimaryDiskArrayOutput() GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetRegionDiskAsyncPrimaryDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskAsyncPrimaryDisk {
+		return vs[0].([]GetRegionDiskAsyncPrimaryDisk)[vs[1].(int)]
+	}).(GetRegionDiskAsyncPrimaryDiskOutput)
+}
+
+type GetRegionDiskDiskEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
+}
+
+// GetRegionDiskDiskEncryptionKeyInput is an input type that accepts GetRegionDiskDiskEncryptionKeyArgs and GetRegionDiskDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionDiskDiskEncryptionKeyInput` via:
+//
+//	GetRegionDiskDiskEncryptionKeyArgs{...}
+type GetRegionDiskDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskDiskEncryptionKeyOutput() GetRegionDiskDiskEncryptionKeyOutput
+	ToGetRegionDiskDiskEncryptionKeyOutputWithContext(context.Context) GetRegionDiskDiskEncryptionKeyOutput
+}
+
+type GetRegionDiskDiskEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetRegionDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArgs) ToGetRegionDiskDiskEncryptionKeyOutput() GetRegionDiskDiskEncryptionKeyOutput {
+	return i.ToGetRegionDiskDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArgs) ToGetRegionDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskDiskEncryptionKeyOutput)
+}
+
+// GetRegionDiskDiskEncryptionKeyArrayInput is an input type that accepts GetRegionDiskDiskEncryptionKeyArray and GetRegionDiskDiskEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskDiskEncryptionKeyArrayInput` via:
+//
+//	GetRegionDiskDiskEncryptionKeyArray{ GetRegionDiskDiskEncryptionKeyArgs{...} }
+type GetRegionDiskDiskEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskDiskEncryptionKeyArrayOutput() GetRegionDiskDiskEncryptionKeyArrayOutput
+	ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(context.Context) GetRegionDiskDiskEncryptionKeyArrayOutput
+}
+
+type GetRegionDiskDiskEncryptionKeyArray []GetRegionDiskDiskEncryptionKeyInput
+
+func (GetRegionDiskDiskEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArray) ToGetRegionDiskDiskEncryptionKeyArrayOutput() GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return i.ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArray) ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskDiskEncryptionKeyArrayOutput)
+}
+
+type GetRegionDiskDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskDiskEncryptionKeyOutput) ToGetRegionDiskDiskEncryptionKeyOutput() GetRegionDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionDiskDiskEncryptionKeyOutput) ToGetRegionDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o GetRegionDiskDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+func (o GetRegionDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+// customer-supplied encryption key to either encrypt or decrypt
+// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+func (o GetRegionDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
+}
+
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
+func (o GetRegionDiskDiskEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskDiskEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskDiskEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskDiskEncryptionKeyArrayOutput) ToGetRegionDiskDiskEncryptionKeyArrayOutput() GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskDiskEncryptionKeyArrayOutput) ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionDiskDiskEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskDiskEncryptionKey {
+		return vs[0].([]GetRegionDiskDiskEncryptionKey)[vs[1].(int)]
+	}).(GetRegionDiskDiskEncryptionKeyOutput)
+}
+
+type GetRegionDiskGuestOsFeature struct {
+	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE"]
+	Type string `pulumi:"type"`
+}
+
+// GetRegionDiskGuestOsFeatureInput is an input type that accepts GetRegionDiskGuestOsFeatureArgs and GetRegionDiskGuestOsFeatureOutput values.
+// You can construct a concrete instance of `GetRegionDiskGuestOsFeatureInput` via:
+//
+//	GetRegionDiskGuestOsFeatureArgs{...}
+type GetRegionDiskGuestOsFeatureInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskGuestOsFeatureOutput() GetRegionDiskGuestOsFeatureOutput
+	ToGetRegionDiskGuestOsFeatureOutputWithContext(context.Context) GetRegionDiskGuestOsFeatureOutput
+}
+
+type GetRegionDiskGuestOsFeatureArgs struct {
+	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE"]
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRegionDiskGuestOsFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i GetRegionDiskGuestOsFeatureArgs) ToGetRegionDiskGuestOsFeatureOutput() GetRegionDiskGuestOsFeatureOutput {
+	return i.ToGetRegionDiskGuestOsFeatureOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskGuestOsFeatureArgs) ToGetRegionDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskGuestOsFeatureOutput)
+}
+
+// GetRegionDiskGuestOsFeatureArrayInput is an input type that accepts GetRegionDiskGuestOsFeatureArray and GetRegionDiskGuestOsFeatureArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskGuestOsFeatureArrayInput` via:
+//
+//	GetRegionDiskGuestOsFeatureArray{ GetRegionDiskGuestOsFeatureArgs{...} }
+type GetRegionDiskGuestOsFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskGuestOsFeatureArrayOutput() GetRegionDiskGuestOsFeatureArrayOutput
+	ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(context.Context) GetRegionDiskGuestOsFeatureArrayOutput
+}
+
+type GetRegionDiskGuestOsFeatureArray []GetRegionDiskGuestOsFeatureInput
+
+func (GetRegionDiskGuestOsFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i GetRegionDiskGuestOsFeatureArray) ToGetRegionDiskGuestOsFeatureArrayOutput() GetRegionDiskGuestOsFeatureArrayOutput {
+	return i.ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskGuestOsFeatureArray) ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskGuestOsFeatureArrayOutput)
+}
+
+type GetRegionDiskGuestOsFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskGuestOsFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o GetRegionDiskGuestOsFeatureOutput) ToGetRegionDiskGuestOsFeatureOutput() GetRegionDiskGuestOsFeatureOutput {
+	return o
+}
+
+func (o GetRegionDiskGuestOsFeatureOutput) ToGetRegionDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureOutput {
+	return o
+}
+
+// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE"]
+func (o GetRegionDiskGuestOsFeatureOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskGuestOsFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskGuestOsFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o GetRegionDiskGuestOsFeatureArrayOutput) ToGetRegionDiskGuestOsFeatureArrayOutput() GetRegionDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskGuestOsFeatureArrayOutput) ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetRegionDiskGuestOsFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskGuestOsFeature {
+		return vs[0].([]GetRegionDiskGuestOsFeature)[vs[1].(int)]
+	}).(GetRegionDiskGuestOsFeatureOutput)
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
+}
+
+// GetRegionDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetRegionDiskSourceSnapshotEncryptionKeyArgs and GetRegionDiskSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionDiskSourceSnapshotEncryptionKeyInput` via:
+//
+//	GetRegionDiskSourceSnapshotEncryptionKeyArgs{...}
+type GetRegionDiskSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskSourceSnapshotEncryptionKeyOutput() GetRegionDiskSourceSnapshotEncryptionKeyOutput
+	ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetRegionDiskSourceSnapshotEncryptionKeyOutput
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionDiskSourceSnapshotEncryptionKeyOutput() GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return i.ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+// GetRegionDiskSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetRegionDiskSourceSnapshotEncryptionKeyArray and GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskSourceSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetRegionDiskSourceSnapshotEncryptionKeyArray{ GetRegionDiskSourceSnapshotEncryptionKeyArgs{...} }
+type GetRegionDiskSourceSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput
+	ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyArray []GetRegionDiskSourceSnapshotEncryptionKeyInput
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArray) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArray) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyOutput() GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskSourceSnapshotEncryptionKey {
+		return vs[0].([]GetRegionDiskSourceSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetRegionDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+type GetRegionInstanceGroupInstance struct {
+	// URL to the instance.
+	Instance string `pulumi:"instance"`
+	// List of named ports in the group, as a list of resources, each containing:
+	NamedPorts []GetRegionInstanceGroupInstanceNamedPort `pulumi:"namedPorts"`
+	// String description of current state of the instance.
+	Status string `pulumi:"status"`
+}
+
+// GetRegionInstanceGroupInstanceInput is an input type that accepts GetRegionInstanceGroupInstanceArgs and GetRegionInstanceGroupInstanceOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupInstanceInput` via:
+//
+//	GetRegionInstanceGroupInstanceArgs{...}
+type GetRegionInstanceGroupInstanceInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupInstanceOutput() GetRegionInstanceGroupInstanceOutput
+	ToGetRegionInstanceGroupInstanceOutputWithContext(context.Context) GetRegionInstanceGroupInstanceOutput
+}
+
+type GetRegionInstanceGroupInstanceArgs struct {
+	// URL to the instance.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// List of named ports in the group, as a list of resources, each containing:
+	NamedPorts GetRegionInstanceGroupInstanceNamedPortArrayInput `pulumi:"namedPorts"`
+	// String description of current state of the instance.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRegionInstanceGroupInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupInstance)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupInstanceArgs) ToGetRegionInstanceGroupInstanceOutput() GetRegionInstanceGroupInstanceOutput {
+	return i.ToGetRegionInstanceGroupInstanceOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupInstanceArgs) ToGetRegionInstanceGroupInstanceOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupInstanceOutput)
+}
+
+// GetRegionInstanceGroupInstanceArrayInput is an input type that accepts GetRegionInstanceGroupInstanceArray and GetRegionInstanceGroupInstanceArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupInstanceArrayInput` via:
+//
+//	GetRegionInstanceGroupInstanceArray{ GetRegionInstanceGroupInstanceArgs{...} }
+type GetRegionInstanceGroupInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupInstanceArrayOutput() GetRegionInstanceGroupInstanceArrayOutput
+	ToGetRegionInstanceGroupInstanceArrayOutputWithContext(context.Context) GetRegionInstanceGroupInstanceArrayOutput
+}
+
+type GetRegionInstanceGroupInstanceArray []GetRegionInstanceGroupInstanceInput
+
+func (GetRegionInstanceGroupInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupInstance)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupInstanceArray) ToGetRegionInstanceGroupInstanceArrayOutput() GetRegionInstanceGroupInstanceArrayOutput {
+	return i.ToGetRegionInstanceGroupInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupInstanceArray) ToGetRegionInstanceGroupInstanceArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupInstanceArrayOutput)
+}
+
+type GetRegionInstanceGroupInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupInstance)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupInstanceOutput) ToGetRegionInstanceGroupInstanceOutput() GetRegionInstanceGroupInstanceOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupInstanceOutput) ToGetRegionInstanceGroupInstanceOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceOutput {
+	return o
+}
+
+// URL to the instance.
+func (o GetRegionInstanceGroupInstanceOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupInstance) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// List of named ports in the group, as a list of resources, each containing:
+func (o GetRegionInstanceGroupInstanceOutput) NamedPorts() GetRegionInstanceGroupInstanceNamedPortArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupInstance) []GetRegionInstanceGroupInstanceNamedPort { return v.NamedPorts }).(GetRegionInstanceGroupInstanceNamedPortArrayOutput)
+}
+
+// String description of current state of the instance.
+func (o GetRegionInstanceGroupInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupInstance)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupInstanceArrayOutput) ToGetRegionInstanceGroupInstanceArrayOutput() GetRegionInstanceGroupInstanceArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupInstanceArrayOutput) ToGetRegionInstanceGroupInstanceArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupInstanceArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupInstance {
+		return vs[0].([]GetRegionInstanceGroupInstance)[vs[1].(int)]
+	}).(GetRegionInstanceGroupInstanceOutput)
+}
+
+type GetRegionInstanceGroupInstanceNamedPort struct {
+	// The name of the instance group.  One of `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// Integer port number
+	Port int `pulumi:"port"`
+}
+
+// GetRegionInstanceGroupInstanceNamedPortInput is an input type that accepts GetRegionInstanceGroupInstanceNamedPortArgs and GetRegionInstanceGroupInstanceNamedPortOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupInstanceNamedPortInput` via:
+//
+//	GetRegionInstanceGroupInstanceNamedPortArgs{...}
+type GetRegionInstanceGroupInstanceNamedPortInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupInstanceNamedPortOutput() GetRegionInstanceGroupInstanceNamedPortOutput
+	ToGetRegionInstanceGroupInstanceNamedPortOutputWithContext(context.Context) GetRegionInstanceGroupInstanceNamedPortOutput
+}
+
+type GetRegionInstanceGroupInstanceNamedPortArgs struct {
+	// The name of the instance group.  One of `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Integer port number
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetRegionInstanceGroupInstanceNamedPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupInstanceNamedPort)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupInstanceNamedPortArgs) ToGetRegionInstanceGroupInstanceNamedPortOutput() GetRegionInstanceGroupInstanceNamedPortOutput {
+	return i.ToGetRegionInstanceGroupInstanceNamedPortOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupInstanceNamedPortArgs) ToGetRegionInstanceGroupInstanceNamedPortOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceNamedPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupInstanceNamedPortOutput)
+}
+
+// GetRegionInstanceGroupInstanceNamedPortArrayInput is an input type that accepts GetRegionInstanceGroupInstanceNamedPortArray and GetRegionInstanceGroupInstanceNamedPortArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupInstanceNamedPortArrayInput` via:
+//
+//	GetRegionInstanceGroupInstanceNamedPortArray{ GetRegionInstanceGroupInstanceNamedPortArgs{...} }
+type GetRegionInstanceGroupInstanceNamedPortArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupInstanceNamedPortArrayOutput() GetRegionInstanceGroupInstanceNamedPortArrayOutput
+	ToGetRegionInstanceGroupInstanceNamedPortArrayOutputWithContext(context.Context) GetRegionInstanceGroupInstanceNamedPortArrayOutput
+}
+
+type GetRegionInstanceGroupInstanceNamedPortArray []GetRegionInstanceGroupInstanceNamedPortInput
+
+func (GetRegionInstanceGroupInstanceNamedPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupInstanceNamedPort)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupInstanceNamedPortArray) ToGetRegionInstanceGroupInstanceNamedPortArrayOutput() GetRegionInstanceGroupInstanceNamedPortArrayOutput {
+	return i.ToGetRegionInstanceGroupInstanceNamedPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupInstanceNamedPortArray) ToGetRegionInstanceGroupInstanceNamedPortArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceNamedPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupInstanceNamedPortArrayOutput)
+}
+
+type GetRegionInstanceGroupInstanceNamedPortOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupInstanceNamedPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupInstanceNamedPort)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupInstanceNamedPortOutput) ToGetRegionInstanceGroupInstanceNamedPortOutput() GetRegionInstanceGroupInstanceNamedPortOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupInstanceNamedPortOutput) ToGetRegionInstanceGroupInstanceNamedPortOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceNamedPortOutput {
+	return o
+}
+
+// The name of the instance group.  One of `name` or `selfLink` must be provided.
+func (o GetRegionInstanceGroupInstanceNamedPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupInstanceNamedPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Integer port number
+func (o GetRegionInstanceGroupInstanceNamedPortOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupInstanceNamedPort) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceGroupInstanceNamedPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupInstanceNamedPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupInstanceNamedPort)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupInstanceNamedPortArrayOutput) ToGetRegionInstanceGroupInstanceNamedPortArrayOutput() GetRegionInstanceGroupInstanceNamedPortArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupInstanceNamedPortArrayOutput) ToGetRegionInstanceGroupInstanceNamedPortArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupInstanceNamedPortArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupInstanceNamedPortArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupInstanceNamedPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupInstanceNamedPort {
+		return vs[0].([]GetRegionInstanceGroupInstanceNamedPort)[vs[1].(int)]
+	}).(GetRegionInstanceGroupInstanceNamedPortOutput)
+}
+
 type GetRegionInstanceGroupManagerAllInstancesConfig struct {
 	// The label key-value pairs that you want to patch onto the instance,
 	Labels map[string]string `pulumi:"labels"`
@@ -325,8 +1606,12 @@ func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput) Index
 }
 
 type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection struct {
+	// List of disks to be attached to the instances created from this selection.
+	Disks []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk `pulumi:"disks"`
 	// Full machine-type names, e.g. "n1-standard-16"
 	MachineTypes []string `pulumi:"machineTypes"`
+	// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
 	// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
@@ -345,8 +1630,12 @@ type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInpu
 }
 
 type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs struct {
+	// List of disks to be attached to the instances created from this selection.
+	Disks GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayInput `pulumi:"disks"`
 	// Full machine-type names, e.g. "n1-standard-16"
 	MachineTypes pulumi.StringArrayInput `pulumi:"machineTypes"`
+	// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
@@ -404,11 +1693,25 @@ func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionO
 	return o
 }
 
+// List of disks to be attached to the instances created from this selection.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) Disks() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
+		return v.Disks
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput)
+}
+
 // Full machine-type names, e.g. "n1-standard-16"
 func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) MachineTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) []string {
 		return v.MachineTypes
 	}).(pulumi.StringArrayOutput)
+}
+
+// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection) string {
+		return v.MinCpuPlatform
+	}).(pulumi.StringOutput)
 }
 
 // The name of the instance group. Either `name` or `selfLink` must be provided.
@@ -439,6 +1742,952 @@ func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection)[vs[1].(int)]
 	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk struct {
+	// The architecture of the image. Allowed values are ARM64 or X86_64.
+	Architecture string `pulumi:"architecture"`
+	// Whether or not the disk should be auto-deleted. This defaults to true.
+	AutoDelete bool `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk. This defaults to false.
+	Boot bool `pulumi:"boot"`
+	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
+	DeviceName string `pulumi:"deviceName"`
+	// Encrypts or decrypts a disk using a customer-supplied encryption key.
+	DiskEncryptionKeys []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	// Name of the disk. When not provided, this defaults to the name of the instance.
+	DiskName string `pulumi:"diskName"`
+	// The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
+	DiskType string `pulumi:"diskType"`
+	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	GuestOsFeatures []string `pulumi:"guestOsFeatures"`
+	// Specifies the disk interface to use for attaching this disk.
+	Interface string `pulumi:"interface"`
+	// A set of key/value label pairs to assign to disks.
+	Labels []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel `pulumi:"labels"`
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
+	Mode string `pulumi:"mode"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag `pulumi:"resourceManagerTags"`
+	// A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or sourceImage is required when creating a new instance except for when creating a local SSD.
+	Source string `pulumi:"source"`
+	// The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or sourceImage is required when creating a new instance except for when creating a local SSD.
+	SourceImage string `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+	SourceImageEncryptionKeys []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKeys"`
+	// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot.
+	SourceSnapshotEncryptionKeys []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
+	// The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+	Type string `pulumi:"type"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs struct {
+	// The architecture of the image. Allowed values are ARM64 or X86_64.
+	Architecture pulumi.StringInput `pulumi:"architecture"`
+	// Whether or not the disk should be auto-deleted. This defaults to true.
+	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk. This defaults to false.
+	Boot pulumi.BoolInput `pulumi:"boot"`
+	// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// Encrypts or decrypts a disk using a customer-supplied encryption key.
+	DiskEncryptionKeys GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayInput `pulumi:"diskEncryptionKeys"`
+	// Name of the disk. When not provided, this defaults to the name of the instance.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// A list of features to enable on the guest operating system. Applicable only for bootable images.
+	GuestOsFeatures pulumi.StringArrayInput `pulumi:"guestOsFeatures"`
+	// Specifies the disk interface to use for attaching this disk.
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// A set of key/value label pairs to assign to disks.
+	Labels GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayInput `pulumi:"labels"`
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayInput `pulumi:"resourceManagerTags"`
+	// A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
+	// The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or sourceImage is required when creating a new instance except for when creating a local SSD.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or sourceImage is required when creating a new instance except for when creating a local SSD.
+	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+	SourceImageEncryptionKeys GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayInput `pulumi:"sourceImageEncryptionKeys"`
+	// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
+	SourceSnapshot pulumi.StringInput `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot.
+	SourceSnapshotEncryptionKeys GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayInput `pulumi:"sourceSnapshotEncryptionKeys"`
+	// The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput {
+	return o
+}
+
+// The architecture of the image. Allowed values are ARM64 or X86_64.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.Architecture
+	}).(pulumi.StringOutput)
+}
+
+// Whether or not the disk should be auto-deleted. This defaults to true.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) AutoDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) bool {
+		return v.AutoDelete
+	}).(pulumi.BoolOutput)
+}
+
+// Indicates that this is a boot disk. This defaults to false.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) Boot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) bool {
+		return v.Boot
+	}).(pulumi.BoolOutput)
+}
+
+// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.DeviceName
+	}).(pulumi.StringOutput)
+}
+
+// Encrypts or decrypts a disk using a customer-supplied encryption key.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) DiskEncryptionKeys() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey {
+		return v.DiskEncryptionKeys
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput)
+}
+
+// Name of the disk. When not provided, this defaults to the name of the instance.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.DiskName
+	}).(pulumi.StringOutput)
+}
+
+// The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) int {
+		return v.DiskSizeGb
+	}).(pulumi.IntOutput)
+}
+
+// The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.DiskType
+	}).(pulumi.StringOutput)
+}
+
+// A list of features to enable on the guest operating system. Applicable only for bootable images.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) GuestOsFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) []string {
+		return v.GuestOsFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the disk interface to use for attaching this disk.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.Interface
+	}).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs to assign to disks.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) Labels() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel {
+		return v.Labels
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput)
+}
+
+// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.Mode
+	}).(pulumi.StringOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) int {
+		return v.ProvisionedIops
+	}).(pulumi.IntOutput)
+}
+
+// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) ResourceManagerTags() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag {
+		return v.ResourceManagerTags
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput)
+}
+
+// A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) []string {
+		return v.ResourcePolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or sourceImage is required when creating a new instance except for when creating a local SSD.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.Source
+	}).(pulumi.StringOutput)
+}
+
+// The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or sourceImage is required when creating a new instance except for when creating a local SSD.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) SourceImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.SourceImage
+	}).(pulumi.StringOutput)
+}
+
+// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) SourceImageEncryptionKeys() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey {
+		return v.SourceImageEncryptionKeys
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput)
+}
+
+// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) SourceSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.SourceSnapshot
+	}).(pulumi.StringOutput)
+}
+
+// The customer-supplied encryption key of the source snapshot.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) SourceSnapshotEncryptionKeys() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey {
+		return v.SourceSnapshotEncryptionKeys
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+// The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey) string {
+		return v.KmsKeySelfLink
+	}).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey) string {
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey) string {
+		return v.RawKey
+	}).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey) string {
+		return v.RsaEncryptedKey
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel struct {
+	// The unique key of the label to assign to disks.
+	Key string `pulumi:"key"`
+	// The value of the label to assign to disks.
+	Value string `pulumi:"value"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs struct {
+	// The unique key of the label to assign to disks.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the label to assign to disks.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput {
+	return o
+}
+
+// The unique key of the label to assign to disks.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// The value of the label to assign to disks.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag struct {
+	// The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
+	Key string `pulumi:"key"`
+	// The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
+	Value string `pulumi:"value"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs struct {
+	// The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput {
+	return o
+}
+
+// The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey) string {
+		return v.KmsKeySelfLink
+	}).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey) string {
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey) string {
+		return v.RawKey
+	}).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey) string {
+		return v.RsaEncryptedKey
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs{...}
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArray and GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArray{ GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs{...} }
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArray []GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyInput
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArray) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey) string {
+		return v.KmsKeySelfLink
+	}).(pulumi.StringOutput)
+}
+
+// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey) string {
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey) string {
+		return v.RawKey
+	}).(pulumi.StringOutput)
+}
+
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsaEncryptedKey and rawKey may be set.
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey) string {
+		return v.RsaEncryptedKey
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput)
 }
 
 type GetRegionInstanceGroupManagerInstanceLifecyclePolicy struct {
@@ -6173,6 +8422,2664 @@ func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupServerlessDeployment {
 		return vs[0].([]GetRegionNetworkEndpointGroupServerlessDeployment)[vs[1].(int)]
 	}).(GetRegionNetworkEndpointGroupServerlessDeploymentOutput)
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfig struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+	JsonCustomConfigs []GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfigs"`
+	// JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL". Possible values: ["DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL"]
+	JsonParsing string `pulumi:"jsonParsing"`
+	// Logging level. Supported values include: "NORMAL", "VERBOSE". Possible values: ["NORMAL", "VERBOSE"]
+	LogLevel string `pulumi:"logLevel"`
+	// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+	// Values are case insensitive. Possible values: ["8KB", "16KB", "32KB", "48KB", "64KB"]
+	RequestBodyInspectionSize string `pulumi:"requestBodyInspectionSize"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
+}
+
+// GetRegionSecurityPolicyAdvancedOptionsConfigInput is an input type that accepts GetRegionSecurityPolicyAdvancedOptionsConfigArgs and GetRegionSecurityPolicyAdvancedOptionsConfigOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyAdvancedOptionsConfigInput` via:
+//
+//	GetRegionSecurityPolicyAdvancedOptionsConfigArgs{...}
+type GetRegionSecurityPolicyAdvancedOptionsConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigOutput() GetRegionSecurityPolicyAdvancedOptionsConfigOutput
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigOutput
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigArgs struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+	JsonCustomConfigs GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput `pulumi:"jsonCustomConfigs"`
+	// JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL". Possible values: ["DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL"]
+	JsonParsing pulumi.StringInput `pulumi:"jsonParsing"`
+	// Logging level. Supported values include: "NORMAL", "VERBOSE". Possible values: ["NORMAL", "VERBOSE"]
+	LogLevel pulumi.StringInput `pulumi:"logLevel"`
+	// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+	// Values are case insensitive. Possible values: ["8KB", "16KB", "32KB", "48KB", "64KB"]
+	RequestBodyInspectionSize pulumi.StringInput `pulumi:"requestBodyInspectionSize"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders pulumi.StringArrayInput `pulumi:"userIpRequestHeaders"`
+}
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigArgs) ToGetRegionSecurityPolicyAdvancedOptionsConfigOutput() GetRegionSecurityPolicyAdvancedOptionsConfigOutput {
+	return i.ToGetRegionSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigArgs) ToGetRegionSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+// GetRegionSecurityPolicyAdvancedOptionsConfigArrayInput is an input type that accepts GetRegionSecurityPolicyAdvancedOptionsConfigArray and GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyAdvancedOptionsConfigArrayInput` via:
+//
+//	GetRegionSecurityPolicyAdvancedOptionsConfigArray{ GetRegionSecurityPolicyAdvancedOptionsConfigArgs{...} }
+type GetRegionSecurityPolicyAdvancedOptionsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput() GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigArray []GetRegionSecurityPolicyAdvancedOptionsConfigInput
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigArray) ToGetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput() GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return i.ToGetRegionSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigArray) ToGetRegionSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput)
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigOutput() GetRegionSecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigOutput) JsonCustomConfigs() GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyAdvancedOptionsConfig) []GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return v.JsonCustomConfigs
+	}).(GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput)
+}
+
+// JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL". Possible values: ["DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL"]
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigOutput) JsonParsing() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyAdvancedOptionsConfig) string { return v.JsonParsing }).(pulumi.StringOutput)
+}
+
+// Logging level. Supported values include: "NORMAL", "VERBOSE". Possible values: ["NORMAL", "VERBOSE"]
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigOutput) LogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyAdvancedOptionsConfig) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+// Values are case insensitive. Possible values: ["8KB", "16KB", "32KB", "48KB", "64KB"]
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigOutput) RequestBodyInspectionSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyAdvancedOptionsConfig) string { return v.RequestBodyInspectionSize }).(pulumi.StringOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyAdvancedOptionsConfig) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput() GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyAdvancedOptionsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyAdvancedOptionsConfig {
+		return vs[0].([]GetRegionSecurityPolicyAdvancedOptionsConfig)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
+	// A list of custom Content-Type header values to apply the JSON parsing.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+// GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput is an input type that accepts GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs and GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput` via:
+//
+//	GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+type GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs struct {
+	// A list of custom Content-Type header values to apply the JSON parsing.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+}
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return i.ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+// GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput is an input type that accepts GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray and GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput` via:
+//
+//	GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray{ GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...} }
+type GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput
+	ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray []GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return i.ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput)
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing.
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput() GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) ToGetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return vs[0].([]GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+type GetRegionSecurityPolicyDdosProtectionConfig struct {
+	// Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+	// - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+	// - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+	// - ADVANCED_PREVIEW: flag to enable the security policy in preview mode. Possible values: ["ADVANCED", "ADVANCED_PREVIEW", "STANDARD"]
+	DdosProtection string `pulumi:"ddosProtection"`
+}
+
+// GetRegionSecurityPolicyDdosProtectionConfigInput is an input type that accepts GetRegionSecurityPolicyDdosProtectionConfigArgs and GetRegionSecurityPolicyDdosProtectionConfigOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyDdosProtectionConfigInput` via:
+//
+//	GetRegionSecurityPolicyDdosProtectionConfigArgs{...}
+type GetRegionSecurityPolicyDdosProtectionConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyDdosProtectionConfigOutput() GetRegionSecurityPolicyDdosProtectionConfigOutput
+	ToGetRegionSecurityPolicyDdosProtectionConfigOutputWithContext(context.Context) GetRegionSecurityPolicyDdosProtectionConfigOutput
+}
+
+type GetRegionSecurityPolicyDdosProtectionConfigArgs struct {
+	// Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+	// - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+	// - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+	// - ADVANCED_PREVIEW: flag to enable the security policy in preview mode. Possible values: ["ADVANCED", "ADVANCED_PREVIEW", "STANDARD"]
+	DdosProtection pulumi.StringInput `pulumi:"ddosProtection"`
+}
+
+func (GetRegionSecurityPolicyDdosProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyDdosProtectionConfigArgs) ToGetRegionSecurityPolicyDdosProtectionConfigOutput() GetRegionSecurityPolicyDdosProtectionConfigOutput {
+	return i.ToGetRegionSecurityPolicyDdosProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyDdosProtectionConfigArgs) ToGetRegionSecurityPolicyDdosProtectionConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyDdosProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyDdosProtectionConfigOutput)
+}
+
+// GetRegionSecurityPolicyDdosProtectionConfigArrayInput is an input type that accepts GetRegionSecurityPolicyDdosProtectionConfigArray and GetRegionSecurityPolicyDdosProtectionConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyDdosProtectionConfigArrayInput` via:
+//
+//	GetRegionSecurityPolicyDdosProtectionConfigArray{ GetRegionSecurityPolicyDdosProtectionConfigArgs{...} }
+type GetRegionSecurityPolicyDdosProtectionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyDdosProtectionConfigArrayOutput() GetRegionSecurityPolicyDdosProtectionConfigArrayOutput
+	ToGetRegionSecurityPolicyDdosProtectionConfigArrayOutputWithContext(context.Context) GetRegionSecurityPolicyDdosProtectionConfigArrayOutput
+}
+
+type GetRegionSecurityPolicyDdosProtectionConfigArray []GetRegionSecurityPolicyDdosProtectionConfigInput
+
+func (GetRegionSecurityPolicyDdosProtectionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyDdosProtectionConfigArray) ToGetRegionSecurityPolicyDdosProtectionConfigArrayOutput() GetRegionSecurityPolicyDdosProtectionConfigArrayOutput {
+	return i.ToGetRegionSecurityPolicyDdosProtectionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyDdosProtectionConfigArray) ToGetRegionSecurityPolicyDdosProtectionConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyDdosProtectionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyDdosProtectionConfigArrayOutput)
+}
+
+type GetRegionSecurityPolicyDdosProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyDdosProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyDdosProtectionConfigOutput) ToGetRegionSecurityPolicyDdosProtectionConfigOutput() GetRegionSecurityPolicyDdosProtectionConfigOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyDdosProtectionConfigOutput) ToGetRegionSecurityPolicyDdosProtectionConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyDdosProtectionConfigOutput {
+	return o
+}
+
+// Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+// - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+// - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+// - ADVANCED_PREVIEW: flag to enable the security policy in preview mode. Possible values: ["ADVANCED", "ADVANCED_PREVIEW", "STANDARD"]
+func (o GetRegionSecurityPolicyDdosProtectionConfigOutput) DdosProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyDdosProtectionConfig) string { return v.DdosProtection }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyDdosProtectionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyDdosProtectionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyDdosProtectionConfigArrayOutput) ToGetRegionSecurityPolicyDdosProtectionConfigArrayOutput() GetRegionSecurityPolicyDdosProtectionConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyDdosProtectionConfigArrayOutput) ToGetRegionSecurityPolicyDdosProtectionConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyDdosProtectionConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyDdosProtectionConfigArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyDdosProtectionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyDdosProtectionConfig {
+		return vs[0].([]GetRegionSecurityPolicyDdosProtectionConfig)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyDdosProtectionConfigOutput)
+}
+
+type GetRegionSecurityPolicyRuleType struct {
+	// The Action to perform when the rule is matched. The following are the valid actions:
+	//
+	// * allow: allow access to target.
+	//
+	// * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+	//
+	// * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+	//
+	// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+	//
+	// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+	Action string `pulumi:"action"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description string `pulumi:"description"`
+	// A match condition that incoming traffic is evaluated against.
+	// If it evaluates to true, the corresponding 'action' is enforced.
+	Matches []GetRegionSecurityPolicyRuleMatch `pulumi:"matches"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+	// The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+	// Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+	// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+	// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+	// Example:
+	// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
+	// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
+	NetworkMatches []GetRegionSecurityPolicyRuleNetworkMatch `pulumi:"networkMatches"`
+	// Preconfigured WAF configuration to be applied for the rule.
+	// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfigs []GetRegionSecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfigs"`
+	// If set to true, the specified action is not enforced.
+	Preview bool `pulumi:"preview"`
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+	Priority int `pulumi:"priority"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions []GetRegionSecurityPolicyRuleRateLimitOption `pulumi:"rateLimitOptions"`
+}
+
+// GetRegionSecurityPolicyRuleTypeInput is an input type that accepts GetRegionSecurityPolicyRuleTypeArgs and GetRegionSecurityPolicyRuleTypeOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleTypeInput` via:
+//
+//	GetRegionSecurityPolicyRuleTypeArgs{...}
+type GetRegionSecurityPolicyRuleTypeInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleTypeOutput() GetRegionSecurityPolicyRuleTypeOutput
+	ToGetRegionSecurityPolicyRuleTypeOutputWithContext(context.Context) GetRegionSecurityPolicyRuleTypeOutput
+}
+
+type GetRegionSecurityPolicyRuleTypeArgs struct {
+	// The Action to perform when the rule is matched. The following are the valid actions:
+	//
+	// * allow: allow access to target.
+	//
+	// * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+	//
+	// * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+	//
+	// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+	//
+	// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+	Action pulumi.StringInput `pulumi:"action"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A match condition that incoming traffic is evaluated against.
+	// If it evaluates to true, the corresponding 'action' is enforced.
+	Matches GetRegionSecurityPolicyRuleMatchArrayInput `pulumi:"matches"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+	// The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+	// Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+	// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+	// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+	// Example:
+	// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
+	// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
+	NetworkMatches GetRegionSecurityPolicyRuleNetworkMatchArrayInput `pulumi:"networkMatches"`
+	// Preconfigured WAF configuration to be applied for the rule.
+	// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfigs GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayInput `pulumi:"preconfiguredWafConfigs"`
+	// If set to true, the specified action is not enforced.
+	Preview pulumi.BoolInput `pulumi:"preview"`
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions GetRegionSecurityPolicyRuleRateLimitOptionArrayInput `pulumi:"rateLimitOptions"`
+}
+
+func (GetRegionSecurityPolicyRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleTypeArgs) ToGetRegionSecurityPolicyRuleTypeOutput() GetRegionSecurityPolicyRuleTypeOutput {
+	return i.ToGetRegionSecurityPolicyRuleTypeOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleTypeArgs) ToGetRegionSecurityPolicyRuleTypeOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleTypeOutput)
+}
+
+// GetRegionSecurityPolicyRuleTypeArrayInput is an input type that accepts GetRegionSecurityPolicyRuleTypeArray and GetRegionSecurityPolicyRuleTypeArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleTypeArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleTypeArray{ GetRegionSecurityPolicyRuleTypeArgs{...} }
+type GetRegionSecurityPolicyRuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleTypeArrayOutput() GetRegionSecurityPolicyRuleTypeArrayOutput
+	ToGetRegionSecurityPolicyRuleTypeArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleTypeArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleTypeArray []GetRegionSecurityPolicyRuleTypeInput
+
+func (GetRegionSecurityPolicyRuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleTypeArray) ToGetRegionSecurityPolicyRuleTypeArrayOutput() GetRegionSecurityPolicyRuleTypeArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleTypeArray) ToGetRegionSecurityPolicyRuleTypeArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleTypeArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleTypeOutput) ToGetRegionSecurityPolicyRuleTypeOutput() GetRegionSecurityPolicyRuleTypeOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleTypeOutput) ToGetRegionSecurityPolicyRuleTypeOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleTypeOutput {
+	return o
+}
+
+// The Action to perform when the rule is matched. The following are the valid actions:
+//
+// * allow: allow access to target.
+//
+// * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+//
+// * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+//
+// * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+//
+// * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+func (o GetRegionSecurityPolicyRuleTypeOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o GetRegionSecurityPolicyRuleTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A match condition that incoming traffic is evaluated against.
+// If it evaluates to true, the corresponding 'action' is enforced.
+func (o GetRegionSecurityPolicyRuleTypeOutput) Matches() GetRegionSecurityPolicyRuleMatchArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) []GetRegionSecurityPolicyRuleMatch { return v.Matches }).(GetRegionSecurityPolicyRuleMatchArrayOutput)
+}
+
+// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+// The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+// Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+// Example:
+// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
+// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
+func (o GetRegionSecurityPolicyRuleTypeOutput) NetworkMatches() GetRegionSecurityPolicyRuleNetworkMatchArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) []GetRegionSecurityPolicyRuleNetworkMatch {
+		return v.NetworkMatches
+	}).(GetRegionSecurityPolicyRuleNetworkMatchArrayOutput)
+}
+
+// Preconfigured WAF configuration to be applied for the rule.
+// If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+func (o GetRegionSecurityPolicyRuleTypeOutput) PreconfiguredWafConfigs() GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) []GetRegionSecurityPolicyRulePreconfiguredWafConfig {
+		return v.PreconfiguredWafConfigs
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput)
+}
+
+// If set to true, the specified action is not enforced.
+func (o GetRegionSecurityPolicyRuleTypeOutput) Preview() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) bool { return v.Preview }).(pulumi.BoolOutput)
+}
+
+// An integer indicating the priority of a rule in the list.
+// The priority must be a positive value between 0 and 2147483647.
+// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+func (o GetRegionSecurityPolicyRuleTypeOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+func (o GetRegionSecurityPolicyRuleTypeOutput) RateLimitOptions() GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleType) []GetRegionSecurityPolicyRuleRateLimitOption {
+		return v.RateLimitOptions
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleType)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleTypeArrayOutput) ToGetRegionSecurityPolicyRuleTypeArrayOutput() GetRegionSecurityPolicyRuleTypeArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleTypeArrayOutput) ToGetRegionSecurityPolicyRuleTypeArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleTypeArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleTypeArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleType {
+		return vs[0].([]GetRegionSecurityPolicyRuleType)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleTypeOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatch struct {
+	// The configuration options available when specifying versionedExpr.
+	// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+	Configs []GetRegionSecurityPolicyRuleMatchConfig `pulumi:"configs"`
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
+	Exprs []GetRegionSecurityPolicyRuleMatchExpr `pulumi:"exprs"`
+	// Preconfigured versioned expression. If this field is specified, config must also be specified.
+	// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. Possible values: ["SRC_IPS_V1"]
+	VersionedExpr string `pulumi:"versionedExpr"`
+}
+
+// GetRegionSecurityPolicyRuleMatchInput is an input type that accepts GetRegionSecurityPolicyRuleMatchArgs and GetRegionSecurityPolicyRuleMatchOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleMatchInput` via:
+//
+//	GetRegionSecurityPolicyRuleMatchArgs{...}
+type GetRegionSecurityPolicyRuleMatchInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleMatchOutput() GetRegionSecurityPolicyRuleMatchOutput
+	ToGetRegionSecurityPolicyRuleMatchOutputWithContext(context.Context) GetRegionSecurityPolicyRuleMatchOutput
+}
+
+type GetRegionSecurityPolicyRuleMatchArgs struct {
+	// The configuration options available when specifying versionedExpr.
+	// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+	Configs GetRegionSecurityPolicyRuleMatchConfigArrayInput `pulumi:"configs"`
+	// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
+	Exprs GetRegionSecurityPolicyRuleMatchExprArrayInput `pulumi:"exprs"`
+	// Preconfigured versioned expression. If this field is specified, config must also be specified.
+	// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. Possible values: ["SRC_IPS_V1"]
+	VersionedExpr pulumi.StringInput `pulumi:"versionedExpr"`
+}
+
+func (GetRegionSecurityPolicyRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleMatchArgs) ToGetRegionSecurityPolicyRuleMatchOutput() GetRegionSecurityPolicyRuleMatchOutput {
+	return i.ToGetRegionSecurityPolicyRuleMatchOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleMatchArgs) ToGetRegionSecurityPolicyRuleMatchOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleMatchOutput)
+}
+
+// GetRegionSecurityPolicyRuleMatchArrayInput is an input type that accepts GetRegionSecurityPolicyRuleMatchArray and GetRegionSecurityPolicyRuleMatchArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleMatchArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleMatchArray{ GetRegionSecurityPolicyRuleMatchArgs{...} }
+type GetRegionSecurityPolicyRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleMatchArrayOutput() GetRegionSecurityPolicyRuleMatchArrayOutput
+	ToGetRegionSecurityPolicyRuleMatchArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleMatchArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleMatchArray []GetRegionSecurityPolicyRuleMatchInput
+
+func (GetRegionSecurityPolicyRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleMatchArray) ToGetRegionSecurityPolicyRuleMatchArrayOutput() GetRegionSecurityPolicyRuleMatchArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleMatchArray) ToGetRegionSecurityPolicyRuleMatchArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleMatchArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleMatchOutput) ToGetRegionSecurityPolicyRuleMatchOutput() GetRegionSecurityPolicyRuleMatchOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchOutput) ToGetRegionSecurityPolicyRuleMatchOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchOutput {
+	return o
+}
+
+// The configuration options available when specifying versionedExpr.
+// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+func (o GetRegionSecurityPolicyRuleMatchOutput) Configs() GetRegionSecurityPolicyRuleMatchConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleMatch) []GetRegionSecurityPolicyRuleMatchConfig { return v.Configs }).(GetRegionSecurityPolicyRuleMatchConfigArrayOutput)
+}
+
+// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
+func (o GetRegionSecurityPolicyRuleMatchOutput) Exprs() GetRegionSecurityPolicyRuleMatchExprArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleMatch) []GetRegionSecurityPolicyRuleMatchExpr { return v.Exprs }).(GetRegionSecurityPolicyRuleMatchExprArrayOutput)
+}
+
+// Preconfigured versioned expression. If this field is specified, config must also be specified.
+// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. Possible values: ["SRC_IPS_V1"]
+func (o GetRegionSecurityPolicyRuleMatchOutput) VersionedExpr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleMatch) string { return v.VersionedExpr }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleMatch)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleMatchArrayOutput) ToGetRegionSecurityPolicyRuleMatchArrayOutput() GetRegionSecurityPolicyRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchArrayOutput) ToGetRegionSecurityPolicyRuleMatchArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleMatch {
+		return vs[0].([]GetRegionSecurityPolicyRuleMatch)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleMatchOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchConfig struct {
+	// CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+}
+
+// GetRegionSecurityPolicyRuleMatchConfigInput is an input type that accepts GetRegionSecurityPolicyRuleMatchConfigArgs and GetRegionSecurityPolicyRuleMatchConfigOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleMatchConfigInput` via:
+//
+//	GetRegionSecurityPolicyRuleMatchConfigArgs{...}
+type GetRegionSecurityPolicyRuleMatchConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleMatchConfigOutput() GetRegionSecurityPolicyRuleMatchConfigOutput
+	ToGetRegionSecurityPolicyRuleMatchConfigOutputWithContext(context.Context) GetRegionSecurityPolicyRuleMatchConfigOutput
+}
+
+type GetRegionSecurityPolicyRuleMatchConfigArgs struct {
+	// CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+}
+
+func (GetRegionSecurityPolicyRuleMatchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleMatchConfigArgs) ToGetRegionSecurityPolicyRuleMatchConfigOutput() GetRegionSecurityPolicyRuleMatchConfigOutput {
+	return i.ToGetRegionSecurityPolicyRuleMatchConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleMatchConfigArgs) ToGetRegionSecurityPolicyRuleMatchConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleMatchConfigOutput)
+}
+
+// GetRegionSecurityPolicyRuleMatchConfigArrayInput is an input type that accepts GetRegionSecurityPolicyRuleMatchConfigArray and GetRegionSecurityPolicyRuleMatchConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleMatchConfigArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleMatchConfigArray{ GetRegionSecurityPolicyRuleMatchConfigArgs{...} }
+type GetRegionSecurityPolicyRuleMatchConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleMatchConfigArrayOutput() GetRegionSecurityPolicyRuleMatchConfigArrayOutput
+	ToGetRegionSecurityPolicyRuleMatchConfigArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleMatchConfigArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleMatchConfigArray []GetRegionSecurityPolicyRuleMatchConfigInput
+
+func (GetRegionSecurityPolicyRuleMatchConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleMatchConfigArray) ToGetRegionSecurityPolicyRuleMatchConfigArrayOutput() GetRegionSecurityPolicyRuleMatchConfigArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleMatchConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleMatchConfigArray) ToGetRegionSecurityPolicyRuleMatchConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleMatchConfigArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleMatchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleMatchConfigOutput) ToGetRegionSecurityPolicyRuleMatchConfigOutput() GetRegionSecurityPolicyRuleMatchConfigOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchConfigOutput) ToGetRegionSecurityPolicyRuleMatchConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchConfigOutput {
+	return o
+}
+
+// CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+func (o GetRegionSecurityPolicyRuleMatchConfigOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleMatchConfig) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleMatchConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleMatchConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleMatchConfigArrayOutput) ToGetRegionSecurityPolicyRuleMatchConfigArrayOutput() GetRegionSecurityPolicyRuleMatchConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchConfigArrayOutput) ToGetRegionSecurityPolicyRuleMatchConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchConfigArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleMatchConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleMatchConfig {
+		return vs[0].([]GetRegionSecurityPolicyRuleMatchConfig)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleMatchConfigOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchExpr struct {
+	// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+	Expression string `pulumi:"expression"`
+}
+
+// GetRegionSecurityPolicyRuleMatchExprInput is an input type that accepts GetRegionSecurityPolicyRuleMatchExprArgs and GetRegionSecurityPolicyRuleMatchExprOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleMatchExprInput` via:
+//
+//	GetRegionSecurityPolicyRuleMatchExprArgs{...}
+type GetRegionSecurityPolicyRuleMatchExprInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleMatchExprOutput() GetRegionSecurityPolicyRuleMatchExprOutput
+	ToGetRegionSecurityPolicyRuleMatchExprOutputWithContext(context.Context) GetRegionSecurityPolicyRuleMatchExprOutput
+}
+
+type GetRegionSecurityPolicyRuleMatchExprArgs struct {
+	// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+	Expression pulumi.StringInput `pulumi:"expression"`
+}
+
+func (GetRegionSecurityPolicyRuleMatchExprArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleMatchExprArgs) ToGetRegionSecurityPolicyRuleMatchExprOutput() GetRegionSecurityPolicyRuleMatchExprOutput {
+	return i.ToGetRegionSecurityPolicyRuleMatchExprOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleMatchExprArgs) ToGetRegionSecurityPolicyRuleMatchExprOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchExprOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleMatchExprOutput)
+}
+
+// GetRegionSecurityPolicyRuleMatchExprArrayInput is an input type that accepts GetRegionSecurityPolicyRuleMatchExprArray and GetRegionSecurityPolicyRuleMatchExprArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleMatchExprArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleMatchExprArray{ GetRegionSecurityPolicyRuleMatchExprArgs{...} }
+type GetRegionSecurityPolicyRuleMatchExprArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleMatchExprArrayOutput() GetRegionSecurityPolicyRuleMatchExprArrayOutput
+	ToGetRegionSecurityPolicyRuleMatchExprArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleMatchExprArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleMatchExprArray []GetRegionSecurityPolicyRuleMatchExprInput
+
+func (GetRegionSecurityPolicyRuleMatchExprArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleMatchExprArray) ToGetRegionSecurityPolicyRuleMatchExprArrayOutput() GetRegionSecurityPolicyRuleMatchExprArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleMatchExprArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleMatchExprArray) ToGetRegionSecurityPolicyRuleMatchExprArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchExprArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleMatchExprArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchExprOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleMatchExprOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleMatchExprOutput) ToGetRegionSecurityPolicyRuleMatchExprOutput() GetRegionSecurityPolicyRuleMatchExprOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchExprOutput) ToGetRegionSecurityPolicyRuleMatchExprOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchExprOutput {
+	return o
+}
+
+// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+func (o GetRegionSecurityPolicyRuleMatchExprOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleMatchExpr) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRuleMatchExprArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleMatchExprArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleMatchExpr)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleMatchExprArrayOutput) ToGetRegionSecurityPolicyRuleMatchExprArrayOutput() GetRegionSecurityPolicyRuleMatchExprArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchExprArrayOutput) ToGetRegionSecurityPolicyRuleMatchExprArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleMatchExprArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleMatchExprArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleMatchExprOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleMatchExpr {
+		return vs[0].([]GetRegionSecurityPolicyRuleMatchExpr)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleMatchExprOutput)
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatch struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts []string `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols []string `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns []int `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts []string `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields []GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField `pulumi:"userDefinedFields"`
+}
+
+// GetRegionSecurityPolicyRuleNetworkMatchInput is an input type that accepts GetRegionSecurityPolicyRuleNetworkMatchArgs and GetRegionSecurityPolicyRuleNetworkMatchOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleNetworkMatchInput` via:
+//
+//	GetRegionSecurityPolicyRuleNetworkMatchArgs{...}
+type GetRegionSecurityPolicyRuleNetworkMatchInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleNetworkMatchOutput() GetRegionSecurityPolicyRuleNetworkMatchOutput
+	ToGetRegionSecurityPolicyRuleNetworkMatchOutputWithContext(context.Context) GetRegionSecurityPolicyRuleNetworkMatchOutput
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchArgs struct {
+	// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	DestPorts pulumi.StringArrayInput `pulumi:"destPorts"`
+	// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
+	// BGP Autonomous System Number associated with the source IP address.
+	SrcAsns pulumi.IntArrayInput `pulumi:"srcAsns"`
+	// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+	// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+	SrcPorts pulumi.StringArrayInput `pulumi:"srcPorts"`
+	// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+	SrcRegionCodes pulumi.StringArrayInput `pulumi:"srcRegionCodes"`
+	// User-defined fields. Each element names a defined field and lists the matching values for that field.
+	UserDefinedFields GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayInput `pulumi:"userDefinedFields"`
+}
+
+func (GetRegionSecurityPolicyRuleNetworkMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatch)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchArgs) ToGetRegionSecurityPolicyRuleNetworkMatchOutput() GetRegionSecurityPolicyRuleNetworkMatchOutput {
+	return i.ToGetRegionSecurityPolicyRuleNetworkMatchOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchArgs) ToGetRegionSecurityPolicyRuleNetworkMatchOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleNetworkMatchOutput)
+}
+
+// GetRegionSecurityPolicyRuleNetworkMatchArrayInput is an input type that accepts GetRegionSecurityPolicyRuleNetworkMatchArray and GetRegionSecurityPolicyRuleNetworkMatchArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleNetworkMatchArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleNetworkMatchArray{ GetRegionSecurityPolicyRuleNetworkMatchArgs{...} }
+type GetRegionSecurityPolicyRuleNetworkMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleNetworkMatchArrayOutput() GetRegionSecurityPolicyRuleNetworkMatchArrayOutput
+	ToGetRegionSecurityPolicyRuleNetworkMatchArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleNetworkMatchArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchArray []GetRegionSecurityPolicyRuleNetworkMatchInput
+
+func (GetRegionSecurityPolicyRuleNetworkMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleNetworkMatch)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchArray) ToGetRegionSecurityPolicyRuleNetworkMatchArrayOutput() GetRegionSecurityPolicyRuleNetworkMatchArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleNetworkMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchArray) ToGetRegionSecurityPolicyRuleNetworkMatchArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleNetworkMatchArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleNetworkMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatch)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) ToGetRegionSecurityPolicyRuleNetworkMatchOutput() GetRegionSecurityPolicyRuleNetworkMatchOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) ToGetRegionSecurityPolicyRuleNetworkMatchOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchOutput {
+	return o
+}
+
+// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) DestPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []string { return v.DestPorts }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) IpProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []string { return v.IpProtocols }).(pulumi.StringArrayOutput)
+}
+
+// BGP Autonomous System Number associated with the source IP address.
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) SrcAsns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []int { return v.SrcAsns }).(pulumi.IntArrayOutput)
+}
+
+// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) SrcPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []string { return v.SrcPorts }).(pulumi.StringArrayOutput)
+}
+
+// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// User-defined fields. Each element names a defined field and lists the matching values for that field.
+func (o GetRegionSecurityPolicyRuleNetworkMatchOutput) UserDefinedFields() GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatch) []GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField {
+		return v.UserDefinedFields
+	}).(GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleNetworkMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleNetworkMatch)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchArrayOutput) ToGetRegionSecurityPolicyRuleNetworkMatchArrayOutput() GetRegionSecurityPolicyRuleNetworkMatchArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchArrayOutput) ToGetRegionSecurityPolicyRuleNetworkMatchArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleNetworkMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleNetworkMatch {
+		return vs[0].([]GetRegionSecurityPolicyRuleNetworkMatch)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleNetworkMatchOutput)
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField struct {
+	// The name of the Region Security Policy.
+	Name string `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values []string `pulumi:"values"`
+}
+
+// GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldInput is an input type that accepts GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs and GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldInput` via:
+//
+//	GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs{...}
+type GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput() GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput
+	ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutputWithContext(context.Context) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs struct {
+	// The name of the Region Security Policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput() GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput {
+	return i.ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput)
+}
+
+// GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayInput is an input type that accepts GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArray and GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArray{ GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs{...} }
+type GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput() GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput
+	ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArray []GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldInput
+
+func (GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArray) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput() GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArray) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput() GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput {
+	return o
+}
+
+// The name of the Region Security Policy.
+func (o GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+func (o GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput() GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput) ToGetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField {
+		return vs[0].([]GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfig struct {
+	// An exclusion to apply during preconfigured WAF evaluation.
+	Exclusions []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion `pulumi:"exclusions"`
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs and GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs{...}
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs struct {
+	// An exclusion to apply during preconfigured WAF evaluation.
+	Exclusions GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput `pulumi:"exclusions"`
+}
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigArray and GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigArray{ GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs{...} }
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigArray []GetRegionSecurityPolicyRulePreconfiguredWafConfigInput
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+// An exclusion to apply during preconfigured WAF evaluation.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput) Exclusions() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfig) []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return v.Exclusions
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfig {
+		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfig)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion struct {
+	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookies []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky `pulumi:"requestCookies"`
+	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeaders []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader `pulumi:"requestHeaders"`
+	// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+	// Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParams []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam `pulumi:"requestQueryParams"`
+	// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+	// When specifying this field, the query or fragment part should be excluded.
+	RequestUris []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri `pulumi:"requestUris"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+	// If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds []string `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet string `pulumi:"targetRuleSet"`
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...}
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
+	// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookies GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput `pulumi:"requestCookies"`
+	// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeaders GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput `pulumi:"requestHeaders"`
+	// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+	// Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParams GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput `pulumi:"requestQueryParams"`
+	// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+	// When specifying this field, the query or fragment part should be excluded.
+	RequestUris GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput `pulumi:"requestUris"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+	// If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds pulumi.StringArrayInput `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet pulumi.StringInput `pulumi:"targetRuleSet"`
+}
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray{ GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...} }
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookies() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
+		return v.RequestCookies
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput)
+}
+
+// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestHeaders() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
+		return v.RequestHeaders
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput)
+}
+
+// Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+// Note that the parameter can be in the query string or in the POST body.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestQueryParams() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
+		return v.RequestQueryParams
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput)
+}
+
+// Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+// When specifying this field, the query or fragment part should be excluded.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestUris() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
+		return v.RequestUris
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput)
+}
+
+// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+// If omitted, it refers to all the rule IDs under the WAF rule set.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Target WAF rule set to apply the preconfigured WAF exclusion.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleSet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion) string { return v.TargetRuleSet }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{...}
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput)
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray{ GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{...} }
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value.
+// Available options:
+// EQUALS: The operator matches if the field value equals the specified value.
+// STARTS_WITH: The operator matches if the field value starts with the specified value.
+// ENDS_WITH: The operator matches if the field value ends with the specified value.
+// CONTAINS: The operator matches if the field value contains the specified value.
+// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
+		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{...}
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput)
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray{ GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{...} }
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value.
+// Available options:
+// EQUALS: The operator matches if the field value equals the specified value.
+// STARTS_WITH: The operator matches if the field value starts with the specified value.
+// ENDS_WITH: The operator matches if the field value ends with the specified value.
+// CONTAINS: The operator matches if the field value contains the specified value.
+// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
+		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{...}
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput)
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray{ GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{...} }
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value.
+// Available options:
+// EQUALS: The operator matches if the field value equals the specified value.
+// STARTS_WITH: The operator matches if the field value starts with the specified value.
+// ENDS_WITH: The operator matches if the field value ends with the specified value.
+// CONTAINS: The operator matches if the field value contains the specified value.
+// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
+		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator string `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value string `pulumi:"value"`
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{...}
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs struct {
+	// You can specify an exact match or a partial match by using a field operator and a field value.
+	// Available options:
+	// EQUALS: The operator matches if the field value equals the specified value.
+	// STARTS_WITH: The operator matches if the field value starts with the specified value.
+	// ENDS_WITH: The operator matches if the field value ends with the specified value.
+	// CONTAINS: The operator matches if the field value contains the specified value.
+	// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+	// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput)
+}
+
+// GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput is an input type that accepts GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray and GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput` via:
+//
+//	GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray{ GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{...} }
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput
+	ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray []GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return i.ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return o
+}
+
+// You can specify an exact match or a partial match by using a field operator and a field value.
+// Available options:
+// EQUALS: The operator matches if the field value equals the specified value.
+// STARTS_WITH: The operator matches if the field value starts with the specified value.
+// ENDS_WITH: The operator matches if the field value ends with the specified value.
+// CONTAINS: The operator matches if the field value contains the specified value.
+// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput() GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) ToGetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
+		return vs[0].([]GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOption struct {
+	// Can only be specified if the action for the rule is "rateBasedBan".
+	// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec int `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rateBasedBan".
+	// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+	BanThresholds []GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold `pulumi:"banThresholds"`
+	// Action to take for requests that are under the configured rate limit threshold.
+	// Valid option is "allow" only.
+	ConformAction string `pulumi:"conformAction"`
+	// Determines the key to enforce the rateLimitThreshold on. Possible values are:
+	// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+	// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+	// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+	// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+	// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+	// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+	// * REGION_CODE: The country/region from which the request originates.
+	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+	EnforceOnKey string `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+	// You can specify up to 3 enforceOnKeyConfigs.
+	// If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+	EnforceOnKeyConfigs []GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types:
+	// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+	// Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+	ExceedAction string `pulumi:"exceedAction"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThresholds []GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold `pulumi:"rateLimitThresholds"`
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionArgs and GetRegionSecurityPolicyRuleRateLimitOptionOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionArgs{...}
+type GetRegionSecurityPolicyRuleRateLimitOptionInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionOutput() GetRegionSecurityPolicyRuleRateLimitOptionOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionArgs struct {
+	// Can only be specified if the action for the rule is "rateBasedBan".
+	// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec pulumi.IntInput `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rateBasedBan".
+	// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+	BanThresholds GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput `pulumi:"banThresholds"`
+	// Action to take for requests that are under the configured rate limit threshold.
+	// Valid option is "allow" only.
+	ConformAction pulumi.StringInput `pulumi:"conformAction"`
+	// Determines the key to enforce the rateLimitThreshold on. Possible values are:
+	// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+	// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+	// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+	// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+	// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+	// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+	// * REGION_CODE: The country/region from which the request originates.
+	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+	EnforceOnKey pulumi.StringInput `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+	// You can specify up to 3 enforceOnKeyConfigs.
+	// If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+	EnforceOnKeyConfigs GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types:
+	// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringInput `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+	// Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+	ExceedAction pulumi.StringInput `pulumi:"exceedAction"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThresholds GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput `pulumi:"rateLimitThresholds"`
+}
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionOutput() GetRegionSecurityPolicyRuleRateLimitOptionOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionOutput)
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionArrayInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionArray and GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionArray{ GetRegionSecurityPolicyRuleRateLimitOptionArgs{...} }
+type GetRegionSecurityPolicyRuleRateLimitOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionArray []GetRegionSecurityPolicyRuleRateLimitOptionInput
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionArray) ToGetRegionSecurityPolicyRuleRateLimitOptionArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionArray) ToGetRegionSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionOutput() GetRegionSecurityPolicyRuleRateLimitOptionOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionOutput {
+	return o
+}
+
+// Can only be specified if the action for the rule is "rateBasedBan".
+// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) BanDurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) int { return v.BanDurationSec }).(pulumi.IntOutput)
+}
+
+// Can only be specified if the action for the rule is "rateBasedBan".
+// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) BanThresholds() GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) []GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold {
+		return v.BanThresholds
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold.
+// Valid option is "allow" only.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) ConformAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) string { return v.ConformAction }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rateLimitThreshold on. Possible values are:
+// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+// * REGION_CODE: The country/region from which the request originates.
+// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) EnforceOnKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) string { return v.EnforceOnKey }).(pulumi.StringOutput)
+}
+
+// If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+// You can specify up to 3 enforceOnKeyConfigs.
+// If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) EnforceOnKeyConfigs() GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) []GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
+		return v.EnforceOnKeyConfigs
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput)
+}
+
+// Rate limit key name applicable only for the following key types:
+// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+// Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) ExceedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) string { return v.ExceedAction }).(pulumi.StringOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionOutput) RateLimitThresholds() GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOption) []GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold {
+		return v.RateLimitThresholds
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOption)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleRateLimitOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleRateLimitOption {
+		return vs[0].([]GetRegionSecurityPolicyRuleRateLimitOption)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec int `pulumi:"intervalSec"`
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs and GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs{...}
+type GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput() GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec pulumi.IntInput `pulumi:"intervalSec"`
+}
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput() GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput)
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArray and GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArray{ GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs{...} }
+type GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArray []GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdInput
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArray) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArray) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput() GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return o
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput) IntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold) int { return v.IntervalSec }).(pulumi.IntOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold {
+		return vs[0].([]GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig struct {
+	// Rate limit key name applicable only for the following key types:
+	// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rateLimitThreshold on. Possible values are:
+	// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+	// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+	// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+	// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+	// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+	// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+	// * REGION_CODE: The country/region from which the request originates.
+	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs and GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs{...}
+type GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput() GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs struct {
+	// Rate limit key name applicable only for the following key types:
+	// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+	// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName pulumi.StringInput `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rateLimitThreshold on. Possible values are:
+	// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+	// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+	// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+	// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+	// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+	// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+	// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+	// * REGION_CODE: The country/region from which the request originates.
+	// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+	// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+	EnforceOnKeyType pulumi.StringInput `pulumi:"enforceOnKeyType"`
+}
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput() GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput)
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray and GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray{ GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs{...} }
+type GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray []GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput() GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return o
+}
+
+// Rate limit key name applicable only for the following key types:
+// HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+// HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rateLimitThreshold on. Possible values are:
+// * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+// * REGION_CODE: The country/region from which the request originates.
+// * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+// * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+// * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+func (o GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput) EnforceOnKeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
+		return vs[0].([]GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec int `pulumi:"intervalSec"`
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs and GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs{...}
+type GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput() GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec pulumi.IntInput `pulumi:"intervalSec"`
+}
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput() GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput)
+}
+
+// GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput is an input type that accepts GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray and GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput` via:
+//
+//	GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray{ GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs{...} }
+type GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput
+	ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(context.Context) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray []GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return i.ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput() GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return o
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput) IntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold) int { return v.IntervalSec }).(pulumi.IntOutput)
+}
+
+type GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput() GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) ToGetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold {
+		return vs[0].([]GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThreshold)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput)
+}
+
+type GetRegionSecurityPolicyUserDefinedField struct {
+	// The base relative to which 'offset' is measured. Possible values are:
+	// - IPV4: Points to the beginning of the IPv4 header.
+	// - IPV6: Points to the beginning of the IPv6 header.
+	// - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+	// - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. Possible values: ["IPV4", "IPV6", "TCP", "UDP"]
+	Base string `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+	// Encoded as a hexadecimal number (starting with "0x").
+	// The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask string `pulumi:"mask"`
+	// The name of the Region Security Policy.
+	Name string `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset int `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size int `pulumi:"size"`
+}
+
+// GetRegionSecurityPolicyUserDefinedFieldInput is an input type that accepts GetRegionSecurityPolicyUserDefinedFieldArgs and GetRegionSecurityPolicyUserDefinedFieldOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyUserDefinedFieldInput` via:
+//
+//	GetRegionSecurityPolicyUserDefinedFieldArgs{...}
+type GetRegionSecurityPolicyUserDefinedFieldInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyUserDefinedFieldOutput() GetRegionSecurityPolicyUserDefinedFieldOutput
+	ToGetRegionSecurityPolicyUserDefinedFieldOutputWithContext(context.Context) GetRegionSecurityPolicyUserDefinedFieldOutput
+}
+
+type GetRegionSecurityPolicyUserDefinedFieldArgs struct {
+	// The base relative to which 'offset' is measured. Possible values are:
+	// - IPV4: Points to the beginning of the IPv4 header.
+	// - IPV6: Points to the beginning of the IPv6 header.
+	// - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+	// - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. Possible values: ["IPV4", "IPV6", "TCP", "UDP"]
+	Base pulumi.StringInput `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+	// Encoded as a hexadecimal number (starting with "0x").
+	// The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask pulumi.StringInput `pulumi:"mask"`
+	// The name of the Region Security Policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset pulumi.IntInput `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size pulumi.IntInput `pulumi:"size"`
+}
+
+func (GetRegionSecurityPolicyUserDefinedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyUserDefinedFieldArgs) ToGetRegionSecurityPolicyUserDefinedFieldOutput() GetRegionSecurityPolicyUserDefinedFieldOutput {
+	return i.ToGetRegionSecurityPolicyUserDefinedFieldOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyUserDefinedFieldArgs) ToGetRegionSecurityPolicyUserDefinedFieldOutputWithContext(ctx context.Context) GetRegionSecurityPolicyUserDefinedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyUserDefinedFieldOutput)
+}
+
+// GetRegionSecurityPolicyUserDefinedFieldArrayInput is an input type that accepts GetRegionSecurityPolicyUserDefinedFieldArray and GetRegionSecurityPolicyUserDefinedFieldArrayOutput values.
+// You can construct a concrete instance of `GetRegionSecurityPolicyUserDefinedFieldArrayInput` via:
+//
+//	GetRegionSecurityPolicyUserDefinedFieldArray{ GetRegionSecurityPolicyUserDefinedFieldArgs{...} }
+type GetRegionSecurityPolicyUserDefinedFieldArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionSecurityPolicyUserDefinedFieldArrayOutput() GetRegionSecurityPolicyUserDefinedFieldArrayOutput
+	ToGetRegionSecurityPolicyUserDefinedFieldArrayOutputWithContext(context.Context) GetRegionSecurityPolicyUserDefinedFieldArrayOutput
+}
+
+type GetRegionSecurityPolicyUserDefinedFieldArray []GetRegionSecurityPolicyUserDefinedFieldInput
+
+func (GetRegionSecurityPolicyUserDefinedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (i GetRegionSecurityPolicyUserDefinedFieldArray) ToGetRegionSecurityPolicyUserDefinedFieldArrayOutput() GetRegionSecurityPolicyUserDefinedFieldArrayOutput {
+	return i.ToGetRegionSecurityPolicyUserDefinedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionSecurityPolicyUserDefinedFieldArray) ToGetRegionSecurityPolicyUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyUserDefinedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionSecurityPolicyUserDefinedFieldArrayOutput)
+}
+
+type GetRegionSecurityPolicyUserDefinedFieldOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyUserDefinedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionSecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyUserDefinedFieldOutput) ToGetRegionSecurityPolicyUserDefinedFieldOutput() GetRegionSecurityPolicyUserDefinedFieldOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyUserDefinedFieldOutput) ToGetRegionSecurityPolicyUserDefinedFieldOutputWithContext(ctx context.Context) GetRegionSecurityPolicyUserDefinedFieldOutput {
+	return o
+}
+
+// The base relative to which 'offset' is measured. Possible values are:
+// - IPV4: Points to the beginning of the IPv4 header.
+// - IPV6: Points to the beginning of the IPv6 header.
+// - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+// - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. Possible values: ["IPV4", "IPV6", "TCP", "UDP"]
+func (o GetRegionSecurityPolicyUserDefinedFieldOutput) Base() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyUserDefinedField) string { return v.Base }).(pulumi.StringOutput)
+}
+
+// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+// Encoded as a hexadecimal number (starting with "0x").
+// The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+func (o GetRegionSecurityPolicyUserDefinedFieldOutput) Mask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyUserDefinedField) string { return v.Mask }).(pulumi.StringOutput)
+}
+
+// The name of the Region Security Policy.
+func (o GetRegionSecurityPolicyUserDefinedFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyUserDefinedField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Offset of the first byte of the field (in network byte order) relative to 'base'.
+func (o GetRegionSecurityPolicyUserDefinedFieldOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyUserDefinedField) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// Size of the field in bytes. Valid values: 1-4.
+func (o GetRegionSecurityPolicyUserDefinedFieldOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionSecurityPolicyUserDefinedField) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type GetRegionSecurityPolicyUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionSecurityPolicyUserDefinedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionSecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (o GetRegionSecurityPolicyUserDefinedFieldArrayOutput) ToGetRegionSecurityPolicyUserDefinedFieldArrayOutput() GetRegionSecurityPolicyUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyUserDefinedFieldArrayOutput) ToGetRegionSecurityPolicyUserDefinedFieldArrayOutputWithContext(ctx context.Context) GetRegionSecurityPolicyUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o GetRegionSecurityPolicyUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) GetRegionSecurityPolicyUserDefinedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionSecurityPolicyUserDefinedField {
+		return vs[0].([]GetRegionSecurityPolicyUserDefinedField)[vs[1].(int)]
+	}).(GetRegionSecurityPolicyUserDefinedFieldOutput)
 }
 
 type GetReservationBlockHealthInfo struct {
@@ -16751,6 +21658,389 @@ func (o GetSnapshotSourceDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetSnapshotSourceDiskEncryptionKeyOutput)
 }
 
+type GetStoragePoolResourceStatus struct {
+	// Number of disks used.
+	DiskCount string `pulumi:"diskCount"`
+	// Timestamp of the last successful resize in RFC3339 text format.
+	LastResizeTimestamp string `pulumi:"lastResizeTimestamp"`
+	// Maximum allowed aggregate disk size in gigabytes.
+	MaxTotalProvisionedDiskCapacityGb string `pulumi:"maxTotalProvisionedDiskCapacityGb"`
+	// Space used by data stored in disks within the storage pool (in bytes).
+	// This will reflect the total number of bytes written to the disks in the pool,
+	// in contrast to the capacity of those disks.
+	PoolUsedCapacityBytes string `pulumi:"poolUsedCapacityBytes"`
+	// Sum of all the disks' provisioned IOPS, minus some amount
+	// that is allowed per disk that is not counted towards pool's IOPS capacity.
+	// For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+	PoolUsedIops string `pulumi:"poolUsedIops"`
+	// Sum of all the disks' provisioned throughput in MB/s.
+	PoolUsedThroughput string `pulumi:"poolUsedThroughput"`
+	// Amount of data written into the pool, before it is compacted.
+	PoolUserWrittenBytes string `pulumi:"poolUserWrittenBytes"`
+	// Sum of all the capacity provisioned in disks in this storage pool.
+	// A disk's provisioned capacity is the same as its total capacity.
+	TotalProvisionedDiskCapacityGb string `pulumi:"totalProvisionedDiskCapacityGb"`
+	// Sum of all the disks' provisioned IOPS.
+	TotalProvisionedDiskIops string `pulumi:"totalProvisionedDiskIops"`
+	// Sum of all the disks' provisioned throughput in MB/s,
+	// minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+	TotalProvisionedDiskThroughput string `pulumi:"totalProvisionedDiskThroughput"`
+}
+
+// GetStoragePoolResourceStatusInput is an input type that accepts GetStoragePoolResourceStatusArgs and GetStoragePoolResourceStatusOutput values.
+// You can construct a concrete instance of `GetStoragePoolResourceStatusInput` via:
+//
+//	GetStoragePoolResourceStatusArgs{...}
+type GetStoragePoolResourceStatusInput interface {
+	pulumi.Input
+
+	ToGetStoragePoolResourceStatusOutput() GetStoragePoolResourceStatusOutput
+	ToGetStoragePoolResourceStatusOutputWithContext(context.Context) GetStoragePoolResourceStatusOutput
+}
+
+type GetStoragePoolResourceStatusArgs struct {
+	// Number of disks used.
+	DiskCount pulumi.StringInput `pulumi:"diskCount"`
+	// Timestamp of the last successful resize in RFC3339 text format.
+	LastResizeTimestamp pulumi.StringInput `pulumi:"lastResizeTimestamp"`
+	// Maximum allowed aggregate disk size in gigabytes.
+	MaxTotalProvisionedDiskCapacityGb pulumi.StringInput `pulumi:"maxTotalProvisionedDiskCapacityGb"`
+	// Space used by data stored in disks within the storage pool (in bytes).
+	// This will reflect the total number of bytes written to the disks in the pool,
+	// in contrast to the capacity of those disks.
+	PoolUsedCapacityBytes pulumi.StringInput `pulumi:"poolUsedCapacityBytes"`
+	// Sum of all the disks' provisioned IOPS, minus some amount
+	// that is allowed per disk that is not counted towards pool's IOPS capacity.
+	// For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+	PoolUsedIops pulumi.StringInput `pulumi:"poolUsedIops"`
+	// Sum of all the disks' provisioned throughput in MB/s.
+	PoolUsedThroughput pulumi.StringInput `pulumi:"poolUsedThroughput"`
+	// Amount of data written into the pool, before it is compacted.
+	PoolUserWrittenBytes pulumi.StringInput `pulumi:"poolUserWrittenBytes"`
+	// Sum of all the capacity provisioned in disks in this storage pool.
+	// A disk's provisioned capacity is the same as its total capacity.
+	TotalProvisionedDiskCapacityGb pulumi.StringInput `pulumi:"totalProvisionedDiskCapacityGb"`
+	// Sum of all the disks' provisioned IOPS.
+	TotalProvisionedDiskIops pulumi.StringInput `pulumi:"totalProvisionedDiskIops"`
+	// Sum of all the disks' provisioned throughput in MB/s,
+	// minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+	TotalProvisionedDiskThroughput pulumi.StringInput `pulumi:"totalProvisionedDiskThroughput"`
+}
+
+func (GetStoragePoolResourceStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragePoolResourceStatus)(nil)).Elem()
+}
+
+func (i GetStoragePoolResourceStatusArgs) ToGetStoragePoolResourceStatusOutput() GetStoragePoolResourceStatusOutput {
+	return i.ToGetStoragePoolResourceStatusOutputWithContext(context.Background())
+}
+
+func (i GetStoragePoolResourceStatusArgs) ToGetStoragePoolResourceStatusOutputWithContext(ctx context.Context) GetStoragePoolResourceStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragePoolResourceStatusOutput)
+}
+
+// GetStoragePoolResourceStatusArrayInput is an input type that accepts GetStoragePoolResourceStatusArray and GetStoragePoolResourceStatusArrayOutput values.
+// You can construct a concrete instance of `GetStoragePoolResourceStatusArrayInput` via:
+//
+//	GetStoragePoolResourceStatusArray{ GetStoragePoolResourceStatusArgs{...} }
+type GetStoragePoolResourceStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetStoragePoolResourceStatusArrayOutput() GetStoragePoolResourceStatusArrayOutput
+	ToGetStoragePoolResourceStatusArrayOutputWithContext(context.Context) GetStoragePoolResourceStatusArrayOutput
+}
+
+type GetStoragePoolResourceStatusArray []GetStoragePoolResourceStatusInput
+
+func (GetStoragePoolResourceStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragePoolResourceStatus)(nil)).Elem()
+}
+
+func (i GetStoragePoolResourceStatusArray) ToGetStoragePoolResourceStatusArrayOutput() GetStoragePoolResourceStatusArrayOutput {
+	return i.ToGetStoragePoolResourceStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetStoragePoolResourceStatusArray) ToGetStoragePoolResourceStatusArrayOutputWithContext(ctx context.Context) GetStoragePoolResourceStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragePoolResourceStatusArrayOutput)
+}
+
+type GetStoragePoolResourceStatusOutput struct{ *pulumi.OutputState }
+
+func (GetStoragePoolResourceStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragePoolResourceStatus)(nil)).Elem()
+}
+
+func (o GetStoragePoolResourceStatusOutput) ToGetStoragePoolResourceStatusOutput() GetStoragePoolResourceStatusOutput {
+	return o
+}
+
+func (o GetStoragePoolResourceStatusOutput) ToGetStoragePoolResourceStatusOutputWithContext(ctx context.Context) GetStoragePoolResourceStatusOutput {
+	return o
+}
+
+// Number of disks used.
+func (o GetStoragePoolResourceStatusOutput) DiskCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.DiskCount }).(pulumi.StringOutput)
+}
+
+// Timestamp of the last successful resize in RFC3339 text format.
+func (o GetStoragePoolResourceStatusOutput) LastResizeTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.LastResizeTimestamp }).(pulumi.StringOutput)
+}
+
+// Maximum allowed aggregate disk size in gigabytes.
+func (o GetStoragePoolResourceStatusOutput) MaxTotalProvisionedDiskCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.MaxTotalProvisionedDiskCapacityGb }).(pulumi.StringOutput)
+}
+
+// Space used by data stored in disks within the storage pool (in bytes).
+// This will reflect the total number of bytes written to the disks in the pool,
+// in contrast to the capacity of those disks.
+func (o GetStoragePoolResourceStatusOutput) PoolUsedCapacityBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.PoolUsedCapacityBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned IOPS, minus some amount
+// that is allowed per disk that is not counted towards pool's IOPS capacity.
+// For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+func (o GetStoragePoolResourceStatusOutput) PoolUsedIops() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.PoolUsedIops }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned throughput in MB/s.
+func (o GetStoragePoolResourceStatusOutput) PoolUsedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.PoolUsedThroughput }).(pulumi.StringOutput)
+}
+
+// Amount of data written into the pool, before it is compacted.
+func (o GetStoragePoolResourceStatusOutput) PoolUserWrittenBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.PoolUserWrittenBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the capacity provisioned in disks in this storage pool.
+// A disk's provisioned capacity is the same as its total capacity.
+func (o GetStoragePoolResourceStatusOutput) TotalProvisionedDiskCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.TotalProvisionedDiskCapacityGb }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned IOPS.
+func (o GetStoragePoolResourceStatusOutput) TotalProvisionedDiskIops() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.TotalProvisionedDiskIops }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned throughput in MB/s,
+// minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+func (o GetStoragePoolResourceStatusOutput) TotalProvisionedDiskThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolResourceStatus) string { return v.TotalProvisionedDiskThroughput }).(pulumi.StringOutput)
+}
+
+type GetStoragePoolResourceStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStoragePoolResourceStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragePoolResourceStatus)(nil)).Elem()
+}
+
+func (o GetStoragePoolResourceStatusArrayOutput) ToGetStoragePoolResourceStatusArrayOutput() GetStoragePoolResourceStatusArrayOutput {
+	return o
+}
+
+func (o GetStoragePoolResourceStatusArrayOutput) ToGetStoragePoolResourceStatusArrayOutputWithContext(ctx context.Context) GetStoragePoolResourceStatusArrayOutput {
+	return o
+}
+
+func (o GetStoragePoolResourceStatusArrayOutput) Index(i pulumi.IntInput) GetStoragePoolResourceStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStoragePoolResourceStatus {
+		return vs[0].([]GetStoragePoolResourceStatus)[vs[1].(int)]
+	}).(GetStoragePoolResourceStatusOutput)
+}
+
+type GetStoragePoolStatus struct {
+	// Number of disks used.
+	DiskCount string `pulumi:"diskCount"`
+	// Timestamp of the last successful resize in RFC3339 text format.
+	LastResizeTimestamp string `pulumi:"lastResizeTimestamp"`
+	// Maximum allowed aggregate disk size in gigabytes.
+	MaxTotalProvisionedDiskCapacityGb string `pulumi:"maxTotalProvisionedDiskCapacityGb"`
+	// Space used by data stored in disks within the storage pool (in bytes).
+	// This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+	PoolUsedCapacityBytes string `pulumi:"poolUsedCapacityBytes"`
+	// Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+	PoolUsedIops string `pulumi:"poolUsedIops"`
+	// Sum of all the disks' provisioned throughput in MB/s.
+	PoolUsedThroughput string `pulumi:"poolUsedThroughput"`
+	// Amount of data written into the pool, before it is compacted.
+	PoolUserWrittenBytes string `pulumi:"poolUserWrittenBytes"`
+	// Sum of all the capacity provisioned in disks in this storage pool.
+	// A disk's provisioned capacity is the same as its total capacity.
+	TotalProvisionedDiskCapacityGb string `pulumi:"totalProvisionedDiskCapacityGb"`
+	// Sum of all the disks' provisioned IOPS.
+	TotalProvisionedDiskIops string `pulumi:"totalProvisionedDiskIops"`
+	// Sum of all the disks' provisioned throughput in MB/s,
+	// minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+	TotalProvisionedDiskThroughput string `pulumi:"totalProvisionedDiskThroughput"`
+}
+
+// GetStoragePoolStatusInput is an input type that accepts GetStoragePoolStatusArgs and GetStoragePoolStatusOutput values.
+// You can construct a concrete instance of `GetStoragePoolStatusInput` via:
+//
+//	GetStoragePoolStatusArgs{...}
+type GetStoragePoolStatusInput interface {
+	pulumi.Input
+
+	ToGetStoragePoolStatusOutput() GetStoragePoolStatusOutput
+	ToGetStoragePoolStatusOutputWithContext(context.Context) GetStoragePoolStatusOutput
+}
+
+type GetStoragePoolStatusArgs struct {
+	// Number of disks used.
+	DiskCount pulumi.StringInput `pulumi:"diskCount"`
+	// Timestamp of the last successful resize in RFC3339 text format.
+	LastResizeTimestamp pulumi.StringInput `pulumi:"lastResizeTimestamp"`
+	// Maximum allowed aggregate disk size in gigabytes.
+	MaxTotalProvisionedDiskCapacityGb pulumi.StringInput `pulumi:"maxTotalProvisionedDiskCapacityGb"`
+	// Space used by data stored in disks within the storage pool (in bytes).
+	// This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+	PoolUsedCapacityBytes pulumi.StringInput `pulumi:"poolUsedCapacityBytes"`
+	// Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+	PoolUsedIops pulumi.StringInput `pulumi:"poolUsedIops"`
+	// Sum of all the disks' provisioned throughput in MB/s.
+	PoolUsedThroughput pulumi.StringInput `pulumi:"poolUsedThroughput"`
+	// Amount of data written into the pool, before it is compacted.
+	PoolUserWrittenBytes pulumi.StringInput `pulumi:"poolUserWrittenBytes"`
+	// Sum of all the capacity provisioned in disks in this storage pool.
+	// A disk's provisioned capacity is the same as its total capacity.
+	TotalProvisionedDiskCapacityGb pulumi.StringInput `pulumi:"totalProvisionedDiskCapacityGb"`
+	// Sum of all the disks' provisioned IOPS.
+	TotalProvisionedDiskIops pulumi.StringInput `pulumi:"totalProvisionedDiskIops"`
+	// Sum of all the disks' provisioned throughput in MB/s,
+	// minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+	TotalProvisionedDiskThroughput pulumi.StringInput `pulumi:"totalProvisionedDiskThroughput"`
+}
+
+func (GetStoragePoolStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragePoolStatus)(nil)).Elem()
+}
+
+func (i GetStoragePoolStatusArgs) ToGetStoragePoolStatusOutput() GetStoragePoolStatusOutput {
+	return i.ToGetStoragePoolStatusOutputWithContext(context.Background())
+}
+
+func (i GetStoragePoolStatusArgs) ToGetStoragePoolStatusOutputWithContext(ctx context.Context) GetStoragePoolStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragePoolStatusOutput)
+}
+
+// GetStoragePoolStatusArrayInput is an input type that accepts GetStoragePoolStatusArray and GetStoragePoolStatusArrayOutput values.
+// You can construct a concrete instance of `GetStoragePoolStatusArrayInput` via:
+//
+//	GetStoragePoolStatusArray{ GetStoragePoolStatusArgs{...} }
+type GetStoragePoolStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetStoragePoolStatusArrayOutput() GetStoragePoolStatusArrayOutput
+	ToGetStoragePoolStatusArrayOutputWithContext(context.Context) GetStoragePoolStatusArrayOutput
+}
+
+type GetStoragePoolStatusArray []GetStoragePoolStatusInput
+
+func (GetStoragePoolStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragePoolStatus)(nil)).Elem()
+}
+
+func (i GetStoragePoolStatusArray) ToGetStoragePoolStatusArrayOutput() GetStoragePoolStatusArrayOutput {
+	return i.ToGetStoragePoolStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetStoragePoolStatusArray) ToGetStoragePoolStatusArrayOutputWithContext(ctx context.Context) GetStoragePoolStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStoragePoolStatusArrayOutput)
+}
+
+type GetStoragePoolStatusOutput struct{ *pulumi.OutputState }
+
+func (GetStoragePoolStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStoragePoolStatus)(nil)).Elem()
+}
+
+func (o GetStoragePoolStatusOutput) ToGetStoragePoolStatusOutput() GetStoragePoolStatusOutput {
+	return o
+}
+
+func (o GetStoragePoolStatusOutput) ToGetStoragePoolStatusOutputWithContext(ctx context.Context) GetStoragePoolStatusOutput {
+	return o
+}
+
+// Number of disks used.
+func (o GetStoragePoolStatusOutput) DiskCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.DiskCount }).(pulumi.StringOutput)
+}
+
+// Timestamp of the last successful resize in RFC3339 text format.
+func (o GetStoragePoolStatusOutput) LastResizeTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.LastResizeTimestamp }).(pulumi.StringOutput)
+}
+
+// Maximum allowed aggregate disk size in gigabytes.
+func (o GetStoragePoolStatusOutput) MaxTotalProvisionedDiskCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.MaxTotalProvisionedDiskCapacityGb }).(pulumi.StringOutput)
+}
+
+// Space used by data stored in disks within the storage pool (in bytes).
+// This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+func (o GetStoragePoolStatusOutput) PoolUsedCapacityBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.PoolUsedCapacityBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+func (o GetStoragePoolStatusOutput) PoolUsedIops() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.PoolUsedIops }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned throughput in MB/s.
+func (o GetStoragePoolStatusOutput) PoolUsedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.PoolUsedThroughput }).(pulumi.StringOutput)
+}
+
+// Amount of data written into the pool, before it is compacted.
+func (o GetStoragePoolStatusOutput) PoolUserWrittenBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.PoolUserWrittenBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the capacity provisioned in disks in this storage pool.
+// A disk's provisioned capacity is the same as its total capacity.
+func (o GetStoragePoolStatusOutput) TotalProvisionedDiskCapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.TotalProvisionedDiskCapacityGb }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned IOPS.
+func (o GetStoragePoolStatusOutput) TotalProvisionedDiskIops() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.TotalProvisionedDiskIops }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' provisioned throughput in MB/s,
+// minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+func (o GetStoragePoolStatusOutput) TotalProvisionedDiskThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStoragePoolStatus) string { return v.TotalProvisionedDiskThroughput }).(pulumi.StringOutput)
+}
+
+type GetStoragePoolStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStoragePoolStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStoragePoolStatus)(nil)).Elem()
+}
+
+func (o GetStoragePoolStatusArrayOutput) ToGetStoragePoolStatusArrayOutput() GetStoragePoolStatusArrayOutput {
+	return o
+}
+
+func (o GetStoragePoolStatusArrayOutput) ToGetStoragePoolStatusArrayOutputWithContext(ctx context.Context) GetStoragePoolStatusArrayOutput {
+	return o
+}
+
+func (o GetStoragePoolStatusArrayOutput) Index(i pulumi.IntInput) GetStoragePoolStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStoragePoolStatus {
+		return vs[0].([]GetStoragePoolStatus)[vs[1].(int)]
+	}).(GetStoragePoolStatusOutput)
+}
+
 type GetStoragePoolTypesDeprecated struct {
 	// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED.
 	// This is only informational and the status will not change unless the client explicitly changes it.
@@ -17187,6 +22477,28 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyInput)(nil)).Elem(), GetRegionBackendServiceStrongSessionAffinityCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyArrayInput)(nil)).Elem(), GetRegionBackendServiceStrongSessionAffinityCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyTtlInput)(nil)).Elem(), GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayInput)(nil)).Elem(), GetRegionBackendServiceStrongSessionAffinityCookyTtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceSubsettingInput)(nil)).Elem(), GetRegionBackendServiceSubsettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceSubsettingArrayInput)(nil)).Elem(), GetRegionBackendServiceSubsettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceTlsSettingInput)(nil)).Elem(), GetRegionBackendServiceTlsSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceTlsSettingArrayInput)(nil)).Elem(), GetRegionBackendServiceTlsSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceTlsSettingSubjectAltNameInput)(nil)).Elem(), GetRegionBackendServiceTlsSettingSubjectAltNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceTlsSettingSubjectAltNameArrayInput)(nil)).Elem(), GetRegionBackendServiceTlsSettingSubjectAltNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetRegionDiskAsyncPrimaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetRegionDiskAsyncPrimaryDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskDiskEncryptionKeyInput)(nil)).Elem(), GetRegionDiskDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetRegionDiskDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskGuestOsFeatureInput)(nil)).Elem(), GetRegionDiskGuestOsFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskGuestOsFeatureArrayInput)(nil)).Elem(), GetRegionDiskGuestOsFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetRegionDiskSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetRegionDiskSourceSnapshotEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceInput)(nil)).Elem(), GetRegionInstanceGroupInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceArrayInput)(nil)).Elem(), GetRegionInstanceGroupInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceNamedPortInput)(nil)).Elem(), GetRegionInstanceGroupInstanceNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceNamedPortArrayInput)(nil)).Elem(), GetRegionInstanceGroupInstanceNamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerAllInstancesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerAllInstancesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerAutoHealingPolicyArgs{})
@@ -17195,6 +22507,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs{})
@@ -17283,6 +22607,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupPscDataArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupPscDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), GetRegionSecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfigArrayInput)(nil)).Elem(), GetRegionSecurityPolicyAdvancedOptionsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayInput)(nil)).Elem(), GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyDdosProtectionConfigInput)(nil)).Elem(), GetRegionSecurityPolicyDdosProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyDdosProtectionConfigArrayInput)(nil)).Elem(), GetRegionSecurityPolicyDdosProtectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleTypeInput)(nil)).Elem(), GetRegionSecurityPolicyRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleTypeArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchInput)(nil)).Elem(), GetRegionSecurityPolicyRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchConfigInput)(nil)).Elem(), GetRegionSecurityPolicyRuleMatchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchConfigArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleMatchConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchExprInput)(nil)).Elem(), GetRegionSecurityPolicyRuleMatchExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleMatchExprArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleMatchExprArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatchInput)(nil)).Elem(), GetRegionSecurityPolicyRuleNetworkMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatchArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleNetworkMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldInput)(nil)).Elem(), GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayInput)(nil)).Elem(), GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyUserDefinedFieldInput)(nil)).Elem(), GetRegionSecurityPolicyUserDefinedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionSecurityPolicyUserDefinedFieldArrayInput)(nil)).Elem(), GetRegionSecurityPolicyUserDefinedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockHealthInfoInput)(nil)).Elem(), GetReservationBlockHealthInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockHealthInfoArrayInput)(nil)).Elem(), GetReservationBlockHealthInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationBlockPhysicalTopologyInput)(nil)).Elem(), GetReservationBlockPhysicalTopologyArgs{})
@@ -17447,12 +22811,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolResourceStatusInput)(nil)).Elem(), GetStoragePoolResourceStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolResourceStatusArrayInput)(nil)).Elem(), GetStoragePoolResourceStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolStatusInput)(nil)).Elem(), GetStoragePoolStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolStatusArrayInput)(nil)).Elem(), GetStoragePoolStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolTypesDeprecatedInput)(nil)).Elem(), GetStoragePoolTypesDeprecatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStoragePoolTypesDeprecatedArrayInput)(nil)).Elem(), GetStoragePoolTypesDeprecatedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceStrongSessionAffinityCookyOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceStrongSessionAffinityCookyTtlArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceSubsettingOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceSubsettingArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceTlsSettingOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceTlsSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceTlsSettingSubjectAltNameOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceTlsSettingSubjectAltNameArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskAsyncPrimaryDiskOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskAsyncPrimaryDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskGuestOsFeatureOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskGuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAllInstancesConfigOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAutoHealingPolicyOutput{})
@@ -17461,6 +22851,18 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairOutput{})
@@ -17549,6 +22951,46 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupPscDataArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyAdvancedOptionsConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyAdvancedOptionsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyDdosProtectionConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyDdosProtectionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleTypeOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleMatchOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleMatchConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleMatchConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleMatchExprOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleMatchExprArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleNetworkMatchOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleNetworkMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyUserDefinedFieldOutput{})
+	pulumi.RegisterOutputType(GetRegionSecurityPolicyUserDefinedFieldArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationBlockHealthInfoOutput{})
 	pulumi.RegisterOutputType(GetReservationBlockHealthInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationBlockPhysicalTopologyOutput{})
@@ -17713,6 +23155,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSnapshotSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetSnapshotSourceDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetStoragePoolResourceStatusOutput{})
+	pulumi.RegisterOutputType(GetStoragePoolResourceStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetStoragePoolStatusOutput{})
+	pulumi.RegisterOutputType(GetStoragePoolStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetStoragePoolTypesDeprecatedOutput{})
 	pulumi.RegisterOutputType(GetStoragePoolTypesDeprecatedArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetworkSecondaryIpRangeOutput{})

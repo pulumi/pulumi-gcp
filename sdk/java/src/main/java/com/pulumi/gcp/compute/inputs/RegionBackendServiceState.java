@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.inputs.RegionBackendServiceFailoverPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceHaPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceLogConfigArgs;
+import com.pulumi.gcp.compute.inputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceOutlierDetectionArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceParamsArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceStrongSessionAffinityCookieArgs;
@@ -607,6 +608,23 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkPassThroughLbTrafficPolicy")
+    private @Nullable Output<RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy;
+
+    /**
+     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs>> networkPassThroughLbTrafficPolicy() {
+        return Optional.ofNullable(this.networkPassThroughLbTrafficPolicy);
+    }
+
+    /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -876,6 +894,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         this.logConfig = $.logConfig;
         this.name = $.name;
         this.network = $.network;
+        this.networkPassThroughLbTrafficPolicy = $.networkPassThroughLbTrafficPolicy;
         this.outlierDetection = $.outlierDetection;
         this.params = $.params;
         this.portName = $.portName;
@@ -1645,6 +1664,29 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPassThroughLbTrafficPolicy(@Nullable Output<RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy) {
+            $.networkPassThroughLbTrafficPolicy = networkPassThroughLbTrafficPolicy;
+            return this;
+        }
+
+        /**
+         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPassThroughLbTrafficPolicy(RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs networkPassThroughLbTrafficPolicy) {
+            return networkPassThroughLbTrafficPolicy(Output.of(networkPassThroughLbTrafficPolicy));
         }
 
         /**

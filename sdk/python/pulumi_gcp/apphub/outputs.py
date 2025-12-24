@@ -33,6 +33,7 @@ __all__ = [
     'ServiceServicePropertyExtendedMetadata',
     'ServiceServicePropertyExtendedMetadataValue',
     'ServiceServicePropertyFunctionalType',
+    'ServiceServicePropertyIdentity',
     'ServiceServicePropertyRegistrationType',
     'ServiceServiceReference',
     'WorkloadAttributes',
@@ -45,6 +46,7 @@ __all__ = [
     'WorkloadWorkloadPropertyExtendedMetadata',
     'WorkloadWorkloadPropertyExtendedMetadataValue',
     'WorkloadWorkloadPropertyFunctionalType',
+    'WorkloadWorkloadPropertyIdentity',
     'WorkloadWorkloadReference',
     'GetApplicationAttributeResult',
     'GetApplicationAttributeBusinessOwnerResult',
@@ -672,6 +674,7 @@ class ServiceServiceProperty(dict):
                  extended_metadatas: Optional[Sequence['outputs.ServiceServicePropertyExtendedMetadata']] = None,
                  functional_types: Optional[Sequence['outputs.ServiceServicePropertyFunctionalType']] = None,
                  gcp_project: Optional[_builtins.str] = None,
+                 identities: Optional[Sequence['outputs.ServiceServicePropertyIdentity']] = None,
                  location: Optional[_builtins.str] = None,
                  registration_types: Optional[Sequence['outputs.ServiceServicePropertyRegistrationType']] = None,
                  zone: Optional[_builtins.str] = None):
@@ -684,6 +687,9 @@ class ServiceServiceProperty(dict):
                Structure is documented below.
         :param _builtins.str gcp_project: (Output)
                Output only. The service project identifier that the underlying cloud resource resides in.
+        :param Sequence['ServiceServicePropertyIdentityArgs'] identities: (Output)
+               The identity associated with the service.
+               Structure is documented below.
         :param _builtins.str location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param Sequence['ServiceServicePropertyRegistrationTypeArgs'] registration_types: (Output)
                Output only. The registration type of the service.
@@ -697,6 +703,8 @@ class ServiceServiceProperty(dict):
             pulumi.set(__self__, "functional_types", functional_types)
         if gcp_project is not None:
             pulumi.set(__self__, "gcp_project", gcp_project)
+        if identities is not None:
+            pulumi.set(__self__, "identities", identities)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if registration_types is not None:
@@ -732,6 +740,16 @@ class ServiceServiceProperty(dict):
         Output only. The service project identifier that the underlying cloud resource resides in.
         """
         return pulumi.get(self, "gcp_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def identities(self) -> Optional[Sequence['outputs.ServiceServicePropertyIdentity']]:
+        """
+        (Output)
+        The identity associated with the service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identities")
 
     @_builtins.property
     @pulumi.getter
@@ -871,6 +889,27 @@ class ServiceServicePropertyFunctionalType(dict):
         Output only. The registration type of a service.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ServiceServicePropertyIdentity(dict):
+    def __init__(__self__, *,
+                 principal: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str principal: (Output)
+               The principal of the identity.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The principal of the identity.
+        """
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type
@@ -1223,6 +1262,7 @@ class WorkloadWorkloadProperty(dict):
                  extended_metadatas: Optional[Sequence['outputs.WorkloadWorkloadPropertyExtendedMetadata']] = None,
                  functional_types: Optional[Sequence['outputs.WorkloadWorkloadPropertyFunctionalType']] = None,
                  gcp_project: Optional[_builtins.str] = None,
+                 identities: Optional[Sequence['outputs.WorkloadWorkloadPropertyIdentity']] = None,
                  location: Optional[_builtins.str] = None,
                  zone: Optional[_builtins.str] = None):
         """
@@ -1234,6 +1274,9 @@ class WorkloadWorkloadProperty(dict):
                Structure is documented below.
         :param _builtins.str gcp_project: (Output)
                Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
+        :param Sequence['WorkloadWorkloadPropertyIdentityArgs'] identities: (Output)
+               The identity associated with the workload.
+               Structure is documented below.
         :param _builtins.str location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param _builtins.str zone: (Output)
                Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
@@ -1244,6 +1287,8 @@ class WorkloadWorkloadProperty(dict):
             pulumi.set(__self__, "functional_types", functional_types)
         if gcp_project is not None:
             pulumi.set(__self__, "gcp_project", gcp_project)
+        if identities is not None:
+            pulumi.set(__self__, "identities", identities)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if zone is not None:
@@ -1277,6 +1322,16 @@ class WorkloadWorkloadProperty(dict):
         Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
         """
         return pulumi.get(self, "gcp_project")
+
+    @_builtins.property
+    @pulumi.getter
+    def identities(self) -> Optional[Sequence['outputs.WorkloadWorkloadPropertyIdentity']]:
+        """
+        (Output)
+        The identity associated with the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identities")
 
     @_builtins.property
     @pulumi.getter
@@ -1406,6 +1461,27 @@ class WorkloadWorkloadPropertyFunctionalType(dict):
         Output only. The functional type of a service or workload.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class WorkloadWorkloadPropertyIdentity(dict):
+    def __init__(__self__, *,
+                 principal: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str principal: (Output)
+               The principal of the identity.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The principal of the identity.
+        """
+        return pulumi.get(self, "principal")
 
 
 @pulumi.output_type

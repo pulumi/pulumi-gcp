@@ -147,6 +147,23 @@ namespace Pulumi.Gcp.Colab
     ///         {
     ///             KmsKeyName = "my-crypto-key",
     ///         },
+    ///         SoftwareConfig = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigArgs
+    ///         {
+    ///             Envs = new[]
+    ///             {
+    ///                 new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigEnvArgs
+    ///                 {
+    ///                     Name = "TEST",
+    ///                     Value = "1",
+    ///                 },
+    ///             },
+    ///             PostStartupScriptConfig = new Gcp.Colab.Inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs
+    ///             {
+    ///                 PostStartupScript = "echo 'hello world'",
+    ///                 PostStartupScriptUrl = "gs://colab-enterprise-pss-secure/secure_pss.sh",
+    ///                 PostStartupScriptBehavior = "RUN_ONCE",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

@@ -430,7 +430,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            type="FIREWALL")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
             policy_id=policy.id,
             action="allow",
@@ -517,7 +518,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent="organizations/123456789")
+            parent="organizations/123456789",
+            type="FIREWALL")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
             policy_id=policy.id,
             action="allow",

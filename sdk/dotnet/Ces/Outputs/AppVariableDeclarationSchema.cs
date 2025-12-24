@@ -89,6 +89,10 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Requireds;
         /// <summary>
+        /// The title of the schema.
+        /// </summary>
+        public readonly string? Title;
+        /// <summary>
         /// The type of the data.
         /// Possible values:
         /// STRING
@@ -130,6 +134,8 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             ImmutableArray<string> requireds,
 
+            string? title,
+
             string type,
 
             bool? uniqueItems)
@@ -146,6 +152,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             Properties = properties;
             Ref = @ref;
             Requireds = requireds;
+            Title = title;
             Type = type;
             UniqueItems = uniqueItems;
         }

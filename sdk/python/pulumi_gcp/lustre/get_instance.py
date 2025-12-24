@@ -26,7 +26,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, labels=None, location=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, update_time=None, zone=None):
+    def __init__(__self__, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, update_time=None, zone=None):
         if capacity_gib and not isinstance(capacity_gib, str):
             raise TypeError("Expected argument 'capacity_gib' to be a str")
         pulumi.set(__self__, "capacity_gib", capacity_gib)
@@ -51,6 +51,9 @@ class GetInstanceResult:
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key and not isinstance(kms_key, str):
+            raise TypeError("Expected argument 'kms_key' to be a str")
+        pulumi.set(__self__, "kms_key", kms_key)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -81,6 +84,9 @@ class GetInstanceResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if state_reason and not isinstance(state_reason, str):
+            raise TypeError("Expected argument 'state_reason' to be a str")
+        pulumi.set(__self__, "state_reason", state_reason)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -130,6 +136,11 @@ class GetInstanceResult:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> _builtins.str:
+        return pulumi.get(self, "kms_key")
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +193,11 @@ class GetInstanceResult:
         return pulumi.get(self, "state")
 
     @_builtins.property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> _builtins.str:
+        return pulumi.get(self, "state_reason")
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         return pulumi.get(self, "update_time")
@@ -206,6 +222,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             gke_support_enabled=self.gke_support_enabled,
             id=self.id,
             instance_id=self.instance_id,
+            kms_key=self.kms_key,
             labels=self.labels,
             location=self.location,
             mount_point=self.mount_point,
@@ -216,6 +233,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             project=self.project,
             pulumi_labels=self.pulumi_labels,
             state=self.state,
+            state_reason=self.state_reason,
             update_time=self.update_time,
             zone=self.zone)
 
@@ -250,6 +268,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         gke_support_enabled=pulumi.get(__ret__, 'gke_support_enabled'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
+        kms_key=pulumi.get(__ret__, 'kms_key'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         mount_point=pulumi.get(__ret__, 'mount_point'),
@@ -260,6 +279,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         state=pulumi.get(__ret__, 'state'),
+        state_reason=pulumi.get(__ret__, 'state_reason'),
         update_time=pulumi.get(__ret__, 'update_time'),
         zone=pulumi.get(__ret__, 'zone'))
 def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -291,6 +311,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         gke_support_enabled=pulumi.get(__response__, 'gke_support_enabled'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
+        kms_key=pulumi.get(__response__, 'kms_key'),
         labels=pulumi.get(__response__, 'labels'),
         location=pulumi.get(__response__, 'location'),
         mount_point=pulumi.get(__response__, 'mount_point'),
@@ -301,5 +322,6 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
         project=pulumi.get(__response__, 'project'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         state=pulumi.get(__response__, 'state'),
+        state_reason=pulumi.get(__response__, 'state_reason'),
         update_time=pulumi.get(__response__, 'update_time'),
         zone=pulumi.get(__response__, 'zone')))

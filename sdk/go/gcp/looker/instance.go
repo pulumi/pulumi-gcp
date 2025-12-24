@@ -415,6 +415,11 @@ type Instance struct {
 	// Note that the consumer network may be in a different GCP project than the consumer
 	// project that is hosting the Looker Instance.
 	ConsumerNetwork pulumi.StringPtrOutput `pulumi:"consumerNetwork"`
+	// Controlled egress configuration.
+	// Structure is documented below.
+	ControlledEgressConfig InstanceControlledEgressConfigPtrOutput `pulumi:"controlledEgressConfig"`
+	// Whether controlled egress is enabled on the Looker instance.
+	ControlledEgressEnabled pulumi.BoolPtrOutput `pulumi:"controlledEgressEnabled"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -481,7 +486,7 @@ type Instance struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Information for Private Service Connect (PSC) setup for a Looker instance.
 	// Structure is documented below.
-	PscConfig InstancePscConfigPtrOutput `pulumi:"pscConfig"`
+	PscConfig InstancePscConfigOutput `pulumi:"pscConfig"`
 	// Whether Public Service Connect (PSC) is enabled on the Looker instance
 	PscEnabled pulumi.BoolPtrOutput `pulumi:"pscEnabled"`
 	// Whether public IP is enabled on the Looker instance.
@@ -545,6 +550,11 @@ type instanceState struct {
 	// Note that the consumer network may be in a different GCP project than the consumer
 	// project that is hosting the Looker Instance.
 	ConsumerNetwork *string `pulumi:"consumerNetwork"`
+	// Controlled egress configuration.
+	// Structure is documented below.
+	ControlledEgressConfig *InstanceControlledEgressConfig `pulumi:"controlledEgressConfig"`
+	// Whether controlled egress is enabled on the Looker instance.
+	ControlledEgressEnabled *bool `pulumi:"controlledEgressEnabled"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
@@ -643,6 +653,11 @@ type InstanceState struct {
 	// Note that the consumer network may be in a different GCP project than the consumer
 	// project that is hosting the Looker Instance.
 	ConsumerNetwork pulumi.StringPtrInput
+	// Controlled egress configuration.
+	// Structure is documented below.
+	ControlledEgressConfig InstanceControlledEgressConfigPtrInput
+	// Whether controlled egress is enabled on the Looker instance.
+	ControlledEgressEnabled pulumi.BoolPtrInput
 	// The time the instance was created in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
@@ -745,6 +760,11 @@ type instanceArgs struct {
 	// Note that the consumer network may be in a different GCP project than the consumer
 	// project that is hosting the Looker Instance.
 	ConsumerNetwork *string `pulumi:"consumerNetwork"`
+	// Controlled egress configuration.
+	// Structure is documented below.
+	ControlledEgressConfig *InstanceControlledEgressConfig `pulumi:"controlledEgressConfig"`
+	// Whether controlled egress is enabled on the Looker instance.
+	ControlledEgressEnabled *bool `pulumi:"controlledEgressEnabled"`
 	// Custom domain settings for a Looker instance.
 	// Structure is documented below.
 	CustomDomain *InstanceCustomDomain `pulumi:"customDomain"`
@@ -828,6 +848,11 @@ type InstanceArgs struct {
 	// Note that the consumer network may be in a different GCP project than the consumer
 	// project that is hosting the Looker Instance.
 	ConsumerNetwork pulumi.StringPtrInput
+	// Controlled egress configuration.
+	// Structure is documented below.
+	ControlledEgressConfig InstanceControlledEgressConfigPtrInput
+	// Whether controlled egress is enabled on the Looker instance.
+	ControlledEgressEnabled pulumi.BoolPtrInput
 	// Custom domain settings for a Looker instance.
 	// Structure is documented below.
 	CustomDomain InstanceCustomDomainPtrInput
@@ -1002,6 +1027,17 @@ func (o InstanceOutput) ConsumerNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConsumerNetwork }).(pulumi.StringPtrOutput)
 }
 
+// Controlled egress configuration.
+// Structure is documented below.
+func (o InstanceOutput) ControlledEgressConfig() InstanceControlledEgressConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceControlledEgressConfigPtrOutput { return v.ControlledEgressConfig }).(InstanceControlledEgressConfigPtrOutput)
+}
+
+// Whether controlled egress is enabled on the Looker instance.
+func (o InstanceOutput) ControlledEgressEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ControlledEgressEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // The time the instance was created in RFC3339 UTC "Zulu" format,
 // accurate to nanoseconds.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
@@ -1122,8 +1158,8 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 
 // Information for Private Service Connect (PSC) setup for a Looker instance.
 // Structure is documented below.
-func (o InstanceOutput) PscConfig() InstancePscConfigPtrOutput {
-	return o.ApplyT(func(v *Instance) InstancePscConfigPtrOutput { return v.PscConfig }).(InstancePscConfigPtrOutput)
+func (o InstanceOutput) PscConfig() InstancePscConfigOutput {
+	return o.ApplyT(func(v *Instance) InstancePscConfigOutput { return v.PscConfig }).(InstancePscConfigOutput)
 }
 
 // Whether Public Service Connect (PSC) is enabled on the Looker instance

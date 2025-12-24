@@ -11,12 +11,90 @@ namespace Pulumi.Gcp.GkeHub
 {
     public static class GetMembershipBinding
     {
+        /// <summary>
+        /// Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+        /// 
+        /// A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.GkeHub.GetMembershipBinding.Invoke(new()
+        ///     {
+        ///         Location = "global",
+        ///         MembershipId = "my-membership-id",
+        ///         MembershipBindingId = "my-membership-binding-id",
+        ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetMembershipBindingResult> InvokeAsync(GetMembershipBindingArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMembershipBindingResult>("gcp:gkehub/getMembershipBinding:getMembershipBinding", args ?? new GetMembershipBindingArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+        /// 
+        /// A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.GkeHub.GetMembershipBinding.Invoke(new()
+        ///     {
+        ///         Location = "global",
+        ///         MembershipId = "my-membership-id",
+        ///         MembershipBindingId = "my-membership-binding-id",
+        ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMembershipBindingResult> Invoke(GetMembershipBindingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMembershipBindingResult>("gcp:gkehub/getMembershipBinding:getMembershipBinding", args ?? new GetMembershipBindingInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+        /// 
+        /// A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.GkeHub.GetMembershipBinding.Invoke(new()
+        ///     {
+        ///         Location = "global",
+        ///         MembershipId = "my-membership-id",
+        ///         MembershipBindingId = "my-membership-binding-id",
+        ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetMembershipBindingResult> Invoke(GetMembershipBindingInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMembershipBindingResult>("gcp:gkehub/getMembershipBinding:getMembershipBinding", args ?? new GetMembershipBindingInvokeArgs(), options.WithDefaults());
     }
@@ -24,15 +102,29 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class GetMembershipBindingArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The location for the GKE Hub Membership Binding.
+        /// Currently only `Global` is supported.
+        /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the membership binding.
+        /// </summary>
         [Input("membershipBindingId", required: true)]
         public string MembershipBindingId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the membership that this binding applies to.
+        /// </summary>
         [Input("membershipId", required: true)]
         public string MembershipId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -44,15 +136,29 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class GetMembershipBindingInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The location for the GKE Hub Membership Binding.
+        /// Currently only `Global` is supported.
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the membership binding.
+        /// </summary>
         [Input("membershipBindingId", required: true)]
         public Input<string> MembershipBindingId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the membership that this binding applies to.
+        /// </summary>
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

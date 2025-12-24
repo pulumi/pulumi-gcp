@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -13,10 +14,20 @@ import java.util.Objects;
 @CustomType
 public final class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
     /**
+     * @return List of disks to be attached to the instances created from this selection.
+     * 
+     */
+    private List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks;
+    /**
      * @return Full machine-type names, e.g. &#34;n1-standard-16&#34;
      * 
      */
     private List<String> machineTypes;
+    /**
+     * @return Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+     * 
+     */
+    private String minCpuPlatform;
     /**
      * @return The name of the instance group. Either `name` or `selfLink` must be provided.
      * 
@@ -30,11 +41,25 @@ public final class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanc
 
     private GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection() {}
     /**
+     * @return List of disks to be attached to the instances created from this selection.
+     * 
+     */
+    public List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks() {
+        return this.disks;
+    }
+    /**
      * @return Full machine-type names, e.g. &#34;n1-standard-16&#34;
      * 
      */
     public List<String> machineTypes() {
         return this.machineTypes;
+    }
+    /**
+     * @return Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+     * 
+     */
+    public String minCpuPlatform() {
+        return this.minCpuPlatform;
     }
     /**
      * @return The name of the instance group. Either `name` or `selfLink` must be provided.
@@ -60,17 +85,32 @@ public final class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanc
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks;
         private List<String> machineTypes;
+        private String minCpuPlatform;
         private String name;
         private Integer rank;
         public Builder() {}
         public Builder(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disks = defaults.disks;
     	      this.machineTypes = defaults.machineTypes;
+    	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.name = defaults.name;
     	      this.rank = defaults.rank;
         }
 
+        @CustomType.Setter
+        public Builder disks(List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks) {
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection", "disks");
+            }
+            this.disks = disks;
+            return this;
+        }
+        public Builder disks(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk... disks) {
+            return disks(List.of(disks));
+        }
         @CustomType.Setter
         public Builder machineTypes(List<String> machineTypes) {
             if (machineTypes == null) {
@@ -81,6 +121,14 @@ public final class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanc
         }
         public Builder machineTypes(String... machineTypes) {
             return machineTypes(List.of(machineTypes));
+        }
+        @CustomType.Setter
+        public Builder minCpuPlatform(String minCpuPlatform) {
+            if (minCpuPlatform == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection", "minCpuPlatform");
+            }
+            this.minCpuPlatform = minCpuPlatform;
+            return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -100,7 +148,9 @@ public final class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanc
         }
         public GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection build() {
             final var _resultValue = new GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection();
+            _resultValue.disks = disks;
             _resultValue.machineTypes = machineTypes;
+            _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.name = name;
             _resultValue.rank = rank;
             return _resultValue;

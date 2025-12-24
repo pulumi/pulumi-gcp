@@ -11143,6 +11143,365 @@ func (o HttpRouteRuleMatchQueryParameterArrayOutput) Index(i pulumi.IntInput) Ht
 	}).(HttpRouteRuleMatchQueryParameterOutput)
 }
 
+type LbEdgeExtensionExtensionChain struct {
+	// A set of extensions to execute for the matching request.
+	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Structure is documented below.
+	Extensions []LbEdgeExtensionExtensionChainExtension `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	// Structure is documented below.
+	MatchCondition LbEdgeExtensionExtensionChainMatchCondition `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last character must be a letter or a number.
+	Name string `pulumi:"name"`
+}
+
+// LbEdgeExtensionExtensionChainInput is an input type that accepts LbEdgeExtensionExtensionChainArgs and LbEdgeExtensionExtensionChainOutput values.
+// You can construct a concrete instance of `LbEdgeExtensionExtensionChainInput` via:
+//
+//	LbEdgeExtensionExtensionChainArgs{...}
+type LbEdgeExtensionExtensionChainInput interface {
+	pulumi.Input
+
+	ToLbEdgeExtensionExtensionChainOutput() LbEdgeExtensionExtensionChainOutput
+	ToLbEdgeExtensionExtensionChainOutputWithContext(context.Context) LbEdgeExtensionExtensionChainOutput
+}
+
+type LbEdgeExtensionExtensionChainArgs struct {
+	// A set of extensions to execute for the matching request.
+	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Structure is documented below.
+	Extensions LbEdgeExtensionExtensionChainExtensionArrayInput `pulumi:"extensions"`
+	// Conditions under which this chain is invoked for a request.
+	// Structure is documented below.
+	MatchCondition LbEdgeExtensionExtensionChainMatchConditionInput `pulumi:"matchCondition"`
+	// The name for this extension chain. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last character must be a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LbEdgeExtensionExtensionChainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (i LbEdgeExtensionExtensionChainArgs) ToLbEdgeExtensionExtensionChainOutput() LbEdgeExtensionExtensionChainOutput {
+	return i.ToLbEdgeExtensionExtensionChainOutputWithContext(context.Background())
+}
+
+func (i LbEdgeExtensionExtensionChainArgs) ToLbEdgeExtensionExtensionChainOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbEdgeExtensionExtensionChainOutput)
+}
+
+// LbEdgeExtensionExtensionChainArrayInput is an input type that accepts LbEdgeExtensionExtensionChainArray and LbEdgeExtensionExtensionChainArrayOutput values.
+// You can construct a concrete instance of `LbEdgeExtensionExtensionChainArrayInput` via:
+//
+//	LbEdgeExtensionExtensionChainArray{ LbEdgeExtensionExtensionChainArgs{...} }
+type LbEdgeExtensionExtensionChainArrayInput interface {
+	pulumi.Input
+
+	ToLbEdgeExtensionExtensionChainArrayOutput() LbEdgeExtensionExtensionChainArrayOutput
+	ToLbEdgeExtensionExtensionChainArrayOutputWithContext(context.Context) LbEdgeExtensionExtensionChainArrayOutput
+}
+
+type LbEdgeExtensionExtensionChainArray []LbEdgeExtensionExtensionChainInput
+
+func (LbEdgeExtensionExtensionChainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (i LbEdgeExtensionExtensionChainArray) ToLbEdgeExtensionExtensionChainArrayOutput() LbEdgeExtensionExtensionChainArrayOutput {
+	return i.ToLbEdgeExtensionExtensionChainArrayOutputWithContext(context.Background())
+}
+
+func (i LbEdgeExtensionExtensionChainArray) ToLbEdgeExtensionExtensionChainArrayOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbEdgeExtensionExtensionChainArrayOutput)
+}
+
+type LbEdgeExtensionExtensionChainOutput struct{ *pulumi.OutputState }
+
+func (LbEdgeExtensionExtensionChainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (o LbEdgeExtensionExtensionChainOutput) ToLbEdgeExtensionExtensionChainOutput() LbEdgeExtensionExtensionChainOutput {
+	return o
+}
+
+func (o LbEdgeExtensionExtensionChainOutput) ToLbEdgeExtensionExtensionChainOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainOutput {
+	return o
+}
+
+// A set of extensions to execute for the matching request.
+// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+// Structure is documented below.
+func (o LbEdgeExtensionExtensionChainOutput) Extensions() LbEdgeExtensionExtensionChainExtensionArrayOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChain) []LbEdgeExtensionExtensionChainExtension { return v.Extensions }).(LbEdgeExtensionExtensionChainExtensionArrayOutput)
+}
+
+// Conditions under which this chain is invoked for a request.
+// Structure is documented below.
+func (o LbEdgeExtensionExtensionChainOutput) MatchCondition() LbEdgeExtensionExtensionChainMatchConditionOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChain) LbEdgeExtensionExtensionChainMatchCondition {
+		return v.MatchCondition
+	}).(LbEdgeExtensionExtensionChainMatchConditionOutput)
+}
+
+// The name for this extension chain. The name is logged as part of the HTTP request logs.
+// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+// and the last character must be a letter or a number.
+func (o LbEdgeExtensionExtensionChainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChain) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LbEdgeExtensionExtensionChainArrayOutput struct{ *pulumi.OutputState }
+
+func (LbEdgeExtensionExtensionChainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbEdgeExtensionExtensionChain)(nil)).Elem()
+}
+
+func (o LbEdgeExtensionExtensionChainArrayOutput) ToLbEdgeExtensionExtensionChainArrayOutput() LbEdgeExtensionExtensionChainArrayOutput {
+	return o
+}
+
+func (o LbEdgeExtensionExtensionChainArrayOutput) ToLbEdgeExtensionExtensionChainArrayOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainArrayOutput {
+	return o
+}
+
+func (o LbEdgeExtensionExtensionChainArrayOutput) Index(i pulumi.IntInput) LbEdgeExtensionExtensionChainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LbEdgeExtensionExtensionChain {
+		return vs[0].([]LbEdgeExtensionExtensionChain)[vs[1].(int)]
+	}).(LbEdgeExtensionExtensionChainOutput)
+}
+
+type LbEdgeExtensionExtensionChainExtension struct {
+	// Determines how the proxy behaves if the call to the extension fails or times out.
+	// When set to TRUE, request or response processing continues without error.
+	// Any subsequent extensions in the extension chain are also executed.
+	// When set to FALSE: * If response headers have not been delivered to the downstream client,
+	// a generic 500 error is returned to the client. The error response can be tailored by
+	// configuring a custom error response in the load balancer.
+	FailOpen *bool `pulumi:"failOpen"`
+	// List of the HTTP headers to forward to the extension (from the client or backend).
+	// If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders []string `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name string `pulumi:"name"`
+	// The reference to the service that runs the extension.
+	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+	Service string `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+	SupportedEvents []string `pulumi:"supportedEvents"`
+}
+
+// LbEdgeExtensionExtensionChainExtensionInput is an input type that accepts LbEdgeExtensionExtensionChainExtensionArgs and LbEdgeExtensionExtensionChainExtensionOutput values.
+// You can construct a concrete instance of `LbEdgeExtensionExtensionChainExtensionInput` via:
+//
+//	LbEdgeExtensionExtensionChainExtensionArgs{...}
+type LbEdgeExtensionExtensionChainExtensionInput interface {
+	pulumi.Input
+
+	ToLbEdgeExtensionExtensionChainExtensionOutput() LbEdgeExtensionExtensionChainExtensionOutput
+	ToLbEdgeExtensionExtensionChainExtensionOutputWithContext(context.Context) LbEdgeExtensionExtensionChainExtensionOutput
+}
+
+type LbEdgeExtensionExtensionChainExtensionArgs struct {
+	// Determines how the proxy behaves if the call to the extension fails or times out.
+	// When set to TRUE, request or response processing continues without error.
+	// Any subsequent extensions in the extension chain are also executed.
+	// When set to FALSE: * If response headers have not been delivered to the downstream client,
+	// a generic 500 error is returned to the client. The error response can be tailored by
+	// configuring a custom error response in the load balancer.
+	FailOpen pulumi.BoolPtrInput `pulumi:"failOpen"`
+	// List of the HTTP headers to forward to the extension (from the client or backend).
+	// If omitted, all headers are sent. Each element is a string indicating the header name.
+	ForwardHeaders pulumi.StringArrayInput `pulumi:"forwardHeaders"`
+	// The name for this extension. The name is logged as part of the HTTP request logs.
+	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+	// and the last a letter or a number.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The reference to the service that runs the extension.
+	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+	Service pulumi.StringInput `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+	SupportedEvents pulumi.StringArrayInput `pulumi:"supportedEvents"`
+}
+
+func (LbEdgeExtensionExtensionChainExtensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (i LbEdgeExtensionExtensionChainExtensionArgs) ToLbEdgeExtensionExtensionChainExtensionOutput() LbEdgeExtensionExtensionChainExtensionOutput {
+	return i.ToLbEdgeExtensionExtensionChainExtensionOutputWithContext(context.Background())
+}
+
+func (i LbEdgeExtensionExtensionChainExtensionArgs) ToLbEdgeExtensionExtensionChainExtensionOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainExtensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbEdgeExtensionExtensionChainExtensionOutput)
+}
+
+// LbEdgeExtensionExtensionChainExtensionArrayInput is an input type that accepts LbEdgeExtensionExtensionChainExtensionArray and LbEdgeExtensionExtensionChainExtensionArrayOutput values.
+// You can construct a concrete instance of `LbEdgeExtensionExtensionChainExtensionArrayInput` via:
+//
+//	LbEdgeExtensionExtensionChainExtensionArray{ LbEdgeExtensionExtensionChainExtensionArgs{...} }
+type LbEdgeExtensionExtensionChainExtensionArrayInput interface {
+	pulumi.Input
+
+	ToLbEdgeExtensionExtensionChainExtensionArrayOutput() LbEdgeExtensionExtensionChainExtensionArrayOutput
+	ToLbEdgeExtensionExtensionChainExtensionArrayOutputWithContext(context.Context) LbEdgeExtensionExtensionChainExtensionArrayOutput
+}
+
+type LbEdgeExtensionExtensionChainExtensionArray []LbEdgeExtensionExtensionChainExtensionInput
+
+func (LbEdgeExtensionExtensionChainExtensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (i LbEdgeExtensionExtensionChainExtensionArray) ToLbEdgeExtensionExtensionChainExtensionArrayOutput() LbEdgeExtensionExtensionChainExtensionArrayOutput {
+	return i.ToLbEdgeExtensionExtensionChainExtensionArrayOutputWithContext(context.Background())
+}
+
+func (i LbEdgeExtensionExtensionChainExtensionArray) ToLbEdgeExtensionExtensionChainExtensionArrayOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainExtensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbEdgeExtensionExtensionChainExtensionArrayOutput)
+}
+
+type LbEdgeExtensionExtensionChainExtensionOutput struct{ *pulumi.OutputState }
+
+func (LbEdgeExtensionExtensionChainExtensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (o LbEdgeExtensionExtensionChainExtensionOutput) ToLbEdgeExtensionExtensionChainExtensionOutput() LbEdgeExtensionExtensionChainExtensionOutput {
+	return o
+}
+
+func (o LbEdgeExtensionExtensionChainExtensionOutput) ToLbEdgeExtensionExtensionChainExtensionOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainExtensionOutput {
+	return o
+}
+
+// Determines how the proxy behaves if the call to the extension fails or times out.
+// When set to TRUE, request or response processing continues without error.
+// Any subsequent extensions in the extension chain are also executed.
+// When set to FALSE: * If response headers have not been delivered to the downstream client,
+// a generic 500 error is returned to the client. The error response can be tailored by
+// configuring a custom error response in the load balancer.
+func (o LbEdgeExtensionExtensionChainExtensionOutput) FailOpen() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChainExtension) *bool { return v.FailOpen }).(pulumi.BoolPtrOutput)
+}
+
+// List of the HTTP headers to forward to the extension (from the client or backend).
+// If omitted, all headers are sent. Each element is a string indicating the header name.
+func (o LbEdgeExtensionExtensionChainExtensionOutput) ForwardHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChainExtension) []string { return v.ForwardHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The name for this extension. The name is logged as part of the HTTP request logs.
+// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+// and the last a letter or a number.
+func (o LbEdgeExtensionExtensionChainExtensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The reference to the service that runs the extension.
+// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+func (o LbEdgeExtensionExtensionChainExtensionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// A set of events during request or response processing for which this extension is called.
+// This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+func (o LbEdgeExtensionExtensionChainExtensionOutput) SupportedEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChainExtension) []string { return v.SupportedEvents }).(pulumi.StringArrayOutput)
+}
+
+type LbEdgeExtensionExtensionChainExtensionArrayOutput struct{ *pulumi.OutputState }
+
+func (LbEdgeExtensionExtensionChainExtensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LbEdgeExtensionExtensionChainExtension)(nil)).Elem()
+}
+
+func (o LbEdgeExtensionExtensionChainExtensionArrayOutput) ToLbEdgeExtensionExtensionChainExtensionArrayOutput() LbEdgeExtensionExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o LbEdgeExtensionExtensionChainExtensionArrayOutput) ToLbEdgeExtensionExtensionChainExtensionArrayOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainExtensionArrayOutput {
+	return o
+}
+
+func (o LbEdgeExtensionExtensionChainExtensionArrayOutput) Index(i pulumi.IntInput) LbEdgeExtensionExtensionChainExtensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LbEdgeExtensionExtensionChainExtension {
+		return vs[0].([]LbEdgeExtensionExtensionChainExtension)[vs[1].(int)]
+	}).(LbEdgeExtensionExtensionChainExtensionOutput)
+}
+
+type LbEdgeExtensionExtensionChainMatchCondition struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression string `pulumi:"celExpression"`
+}
+
+// LbEdgeExtensionExtensionChainMatchConditionInput is an input type that accepts LbEdgeExtensionExtensionChainMatchConditionArgs and LbEdgeExtensionExtensionChainMatchConditionOutput values.
+// You can construct a concrete instance of `LbEdgeExtensionExtensionChainMatchConditionInput` via:
+//
+//	LbEdgeExtensionExtensionChainMatchConditionArgs{...}
+type LbEdgeExtensionExtensionChainMatchConditionInput interface {
+	pulumi.Input
+
+	ToLbEdgeExtensionExtensionChainMatchConditionOutput() LbEdgeExtensionExtensionChainMatchConditionOutput
+	ToLbEdgeExtensionExtensionChainMatchConditionOutputWithContext(context.Context) LbEdgeExtensionExtensionChainMatchConditionOutput
+}
+
+type LbEdgeExtensionExtensionChainMatchConditionArgs struct {
+	// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+	CelExpression pulumi.StringInput `pulumi:"celExpression"`
+}
+
+func (LbEdgeExtensionExtensionChainMatchConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbEdgeExtensionExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (i LbEdgeExtensionExtensionChainMatchConditionArgs) ToLbEdgeExtensionExtensionChainMatchConditionOutput() LbEdgeExtensionExtensionChainMatchConditionOutput {
+	return i.ToLbEdgeExtensionExtensionChainMatchConditionOutputWithContext(context.Background())
+}
+
+func (i LbEdgeExtensionExtensionChainMatchConditionArgs) ToLbEdgeExtensionExtensionChainMatchConditionOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainMatchConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LbEdgeExtensionExtensionChainMatchConditionOutput)
+}
+
+type LbEdgeExtensionExtensionChainMatchConditionOutput struct{ *pulumi.OutputState }
+
+func (LbEdgeExtensionExtensionChainMatchConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LbEdgeExtensionExtensionChainMatchCondition)(nil)).Elem()
+}
+
+func (o LbEdgeExtensionExtensionChainMatchConditionOutput) ToLbEdgeExtensionExtensionChainMatchConditionOutput() LbEdgeExtensionExtensionChainMatchConditionOutput {
+	return o
+}
+
+func (o LbEdgeExtensionExtensionChainMatchConditionOutput) ToLbEdgeExtensionExtensionChainMatchConditionOutputWithContext(ctx context.Context) LbEdgeExtensionExtensionChainMatchConditionOutput {
+	return o
+}
+
+// A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+func (o LbEdgeExtensionExtensionChainMatchConditionOutput) CelExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v LbEdgeExtensionExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
+}
+
 type LbRouteExtensionExtensionChain struct {
 	// A set of extensions to execute for the matching request.
 	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
@@ -11917,6 +12276,363 @@ func (o LbTrafficExtensionExtensionChainMatchConditionOutput) CelExpression() pu
 	return o.ApplyT(func(v LbTrafficExtensionExtensionChainMatchCondition) string { return v.CelExpression }).(pulumi.StringOutput)
 }
 
+type MulticastConsumerAssociationStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastConsumerAssociationStateTypeInput is an input type that accepts MulticastConsumerAssociationStateTypeArgs and MulticastConsumerAssociationStateTypeOutput values.
+// You can construct a concrete instance of `MulticastConsumerAssociationStateTypeInput` via:
+//
+//	MulticastConsumerAssociationStateTypeArgs{...}
+type MulticastConsumerAssociationStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastConsumerAssociationStateTypeOutput() MulticastConsumerAssociationStateTypeOutput
+	ToMulticastConsumerAssociationStateTypeOutputWithContext(context.Context) MulticastConsumerAssociationStateTypeOutput
+}
+
+type MulticastConsumerAssociationStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastConsumerAssociationStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastConsumerAssociationStateType)(nil)).Elem()
+}
+
+func (i MulticastConsumerAssociationStateTypeArgs) ToMulticastConsumerAssociationStateTypeOutput() MulticastConsumerAssociationStateTypeOutput {
+	return i.ToMulticastConsumerAssociationStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastConsumerAssociationStateTypeArgs) ToMulticastConsumerAssociationStateTypeOutputWithContext(ctx context.Context) MulticastConsumerAssociationStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastConsumerAssociationStateTypeOutput)
+}
+
+// MulticastConsumerAssociationStateTypeArrayInput is an input type that accepts MulticastConsumerAssociationStateTypeArray and MulticastConsumerAssociationStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastConsumerAssociationStateTypeArrayInput` via:
+//
+//	MulticastConsumerAssociationStateTypeArray{ MulticastConsumerAssociationStateTypeArgs{...} }
+type MulticastConsumerAssociationStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastConsumerAssociationStateTypeArrayOutput() MulticastConsumerAssociationStateTypeArrayOutput
+	ToMulticastConsumerAssociationStateTypeArrayOutputWithContext(context.Context) MulticastConsumerAssociationStateTypeArrayOutput
+}
+
+type MulticastConsumerAssociationStateTypeArray []MulticastConsumerAssociationStateTypeInput
+
+func (MulticastConsumerAssociationStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastConsumerAssociationStateType)(nil)).Elem()
+}
+
+func (i MulticastConsumerAssociationStateTypeArray) ToMulticastConsumerAssociationStateTypeArrayOutput() MulticastConsumerAssociationStateTypeArrayOutput {
+	return i.ToMulticastConsumerAssociationStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastConsumerAssociationStateTypeArray) ToMulticastConsumerAssociationStateTypeArrayOutputWithContext(ctx context.Context) MulticastConsumerAssociationStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastConsumerAssociationStateTypeArrayOutput)
+}
+
+type MulticastConsumerAssociationStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastConsumerAssociationStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastConsumerAssociationStateType)(nil)).Elem()
+}
+
+func (o MulticastConsumerAssociationStateTypeOutput) ToMulticastConsumerAssociationStateTypeOutput() MulticastConsumerAssociationStateTypeOutput {
+	return o
+}
+
+func (o MulticastConsumerAssociationStateTypeOutput) ToMulticastConsumerAssociationStateTypeOutputWithContext(ctx context.Context) MulticastConsumerAssociationStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastConsumerAssociationStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastConsumerAssociationStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastConsumerAssociationStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastConsumerAssociationStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastConsumerAssociationStateType)(nil)).Elem()
+}
+
+func (o MulticastConsumerAssociationStateTypeArrayOutput) ToMulticastConsumerAssociationStateTypeArrayOutput() MulticastConsumerAssociationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastConsumerAssociationStateTypeArrayOutput) ToMulticastConsumerAssociationStateTypeArrayOutputWithContext(ctx context.Context) MulticastConsumerAssociationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastConsumerAssociationStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastConsumerAssociationStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastConsumerAssociationStateType {
+		return vs[0].([]MulticastConsumerAssociationStateType)[vs[1].(int)]
+	}).(MulticastConsumerAssociationStateTypeOutput)
+}
+
+type MulticastDomainActivationTrafficSpec struct {
+	// Aggregated egress Packet-Per-Second for all multicast groups in the domain
+	// in this zone.
+	AggrEgressPps *string `pulumi:"aggrEgressPps"`
+	// Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+	// in this zone. Default to (aggregated_egress_pps /
+	// max_per_group_subscribers) * 2.
+	AggrIngressPps *string `pulumi:"aggrIngressPps"`
+	// Average packet size (Default to 512 bytes).
+	AvgPacketSize *int `pulumi:"avgPacketSize"`
+	// Maximum ingress Packet-Per-Second for a single multicast group in this
+	// zone. Default to aggregatedIngressPps / 2.
+	MaxPerGroupIngressPps *string `pulumi:"maxPerGroupIngressPps"`
+	// Maximum number of subscribers for a single multicast group in this zone.
+	// Default to max(50, aggregatedEgressPps / aggregated_ingress_pps).
+	MaxPerGroupSubscribers *string `pulumi:"maxPerGroupSubscribers"`
+}
+
+// MulticastDomainActivationTrafficSpecInput is an input type that accepts MulticastDomainActivationTrafficSpecArgs and MulticastDomainActivationTrafficSpecOutput values.
+// You can construct a concrete instance of `MulticastDomainActivationTrafficSpecInput` via:
+//
+//	MulticastDomainActivationTrafficSpecArgs{...}
+type MulticastDomainActivationTrafficSpecInput interface {
+	pulumi.Input
+
+	ToMulticastDomainActivationTrafficSpecOutput() MulticastDomainActivationTrafficSpecOutput
+	ToMulticastDomainActivationTrafficSpecOutputWithContext(context.Context) MulticastDomainActivationTrafficSpecOutput
+}
+
+type MulticastDomainActivationTrafficSpecArgs struct {
+	// Aggregated egress Packet-Per-Second for all multicast groups in the domain
+	// in this zone.
+	AggrEgressPps pulumi.StringPtrInput `pulumi:"aggrEgressPps"`
+	// Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+	// in this zone. Default to (aggregated_egress_pps /
+	// max_per_group_subscribers) * 2.
+	AggrIngressPps pulumi.StringPtrInput `pulumi:"aggrIngressPps"`
+	// Average packet size (Default to 512 bytes).
+	AvgPacketSize pulumi.IntPtrInput `pulumi:"avgPacketSize"`
+	// Maximum ingress Packet-Per-Second for a single multicast group in this
+	// zone. Default to aggregatedIngressPps / 2.
+	MaxPerGroupIngressPps pulumi.StringPtrInput `pulumi:"maxPerGroupIngressPps"`
+	// Maximum number of subscribers for a single multicast group in this zone.
+	// Default to max(50, aggregatedEgressPps / aggregated_ingress_pps).
+	MaxPerGroupSubscribers pulumi.StringPtrInput `pulumi:"maxPerGroupSubscribers"`
+}
+
+func (MulticastDomainActivationTrafficSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainActivationTrafficSpec)(nil)).Elem()
+}
+
+func (i MulticastDomainActivationTrafficSpecArgs) ToMulticastDomainActivationTrafficSpecOutput() MulticastDomainActivationTrafficSpecOutput {
+	return i.ToMulticastDomainActivationTrafficSpecOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainActivationTrafficSpecArgs) ToMulticastDomainActivationTrafficSpecOutputWithContext(ctx context.Context) MulticastDomainActivationTrafficSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainActivationTrafficSpecOutput)
+}
+
+func (i MulticastDomainActivationTrafficSpecArgs) ToMulticastDomainActivationTrafficSpecPtrOutput() MulticastDomainActivationTrafficSpecPtrOutput {
+	return i.ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainActivationTrafficSpecArgs) ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(ctx context.Context) MulticastDomainActivationTrafficSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainActivationTrafficSpecOutput).ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(ctx)
+}
+
+// MulticastDomainActivationTrafficSpecPtrInput is an input type that accepts MulticastDomainActivationTrafficSpecArgs, MulticastDomainActivationTrafficSpecPtr and MulticastDomainActivationTrafficSpecPtrOutput values.
+// You can construct a concrete instance of `MulticastDomainActivationTrafficSpecPtrInput` via:
+//
+//	        MulticastDomainActivationTrafficSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type MulticastDomainActivationTrafficSpecPtrInput interface {
+	pulumi.Input
+
+	ToMulticastDomainActivationTrafficSpecPtrOutput() MulticastDomainActivationTrafficSpecPtrOutput
+	ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(context.Context) MulticastDomainActivationTrafficSpecPtrOutput
+}
+
+type multicastDomainActivationTrafficSpecPtrType MulticastDomainActivationTrafficSpecArgs
+
+func MulticastDomainActivationTrafficSpecPtr(v *MulticastDomainActivationTrafficSpecArgs) MulticastDomainActivationTrafficSpecPtrInput {
+	return (*multicastDomainActivationTrafficSpecPtrType)(v)
+}
+
+func (*multicastDomainActivationTrafficSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastDomainActivationTrafficSpec)(nil)).Elem()
+}
+
+func (i *multicastDomainActivationTrafficSpecPtrType) ToMulticastDomainActivationTrafficSpecPtrOutput() MulticastDomainActivationTrafficSpecPtrOutput {
+	return i.ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *multicastDomainActivationTrafficSpecPtrType) ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(ctx context.Context) MulticastDomainActivationTrafficSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainActivationTrafficSpecPtrOutput)
+}
+
+type MulticastDomainActivationTrafficSpecOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainActivationTrafficSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainActivationTrafficSpec)(nil)).Elem()
+}
+
+func (o MulticastDomainActivationTrafficSpecOutput) ToMulticastDomainActivationTrafficSpecOutput() MulticastDomainActivationTrafficSpecOutput {
+	return o
+}
+
+func (o MulticastDomainActivationTrafficSpecOutput) ToMulticastDomainActivationTrafficSpecOutputWithContext(ctx context.Context) MulticastDomainActivationTrafficSpecOutput {
+	return o
+}
+
+func (o MulticastDomainActivationTrafficSpecOutput) ToMulticastDomainActivationTrafficSpecPtrOutput() MulticastDomainActivationTrafficSpecPtrOutput {
+	return o.ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(context.Background())
+}
+
+func (o MulticastDomainActivationTrafficSpecOutput) ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(ctx context.Context) MulticastDomainActivationTrafficSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MulticastDomainActivationTrafficSpec) *MulticastDomainActivationTrafficSpec {
+		return &v
+	}).(MulticastDomainActivationTrafficSpecPtrOutput)
+}
+
+// Aggregated egress Packet-Per-Second for all multicast groups in the domain
+// in this zone.
+func (o MulticastDomainActivationTrafficSpecOutput) AggrEgressPps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainActivationTrafficSpec) *string { return v.AggrEgressPps }).(pulumi.StringPtrOutput)
+}
+
+// Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+// in this zone. Default to (aggregated_egress_pps /
+// max_per_group_subscribers) * 2.
+func (o MulticastDomainActivationTrafficSpecOutput) AggrIngressPps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainActivationTrafficSpec) *string { return v.AggrIngressPps }).(pulumi.StringPtrOutput)
+}
+
+// Average packet size (Default to 512 bytes).
+func (o MulticastDomainActivationTrafficSpecOutput) AvgPacketSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MulticastDomainActivationTrafficSpec) *int { return v.AvgPacketSize }).(pulumi.IntPtrOutput)
+}
+
+// Maximum ingress Packet-Per-Second for a single multicast group in this
+// zone. Default to aggregatedIngressPps / 2.
+func (o MulticastDomainActivationTrafficSpecOutput) MaxPerGroupIngressPps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainActivationTrafficSpec) *string { return v.MaxPerGroupIngressPps }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of subscribers for a single multicast group in this zone.
+// Default to max(50, aggregatedEgressPps / aggregated_ingress_pps).
+func (o MulticastDomainActivationTrafficSpecOutput) MaxPerGroupSubscribers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainActivationTrafficSpec) *string { return v.MaxPerGroupSubscribers }).(pulumi.StringPtrOutput)
+}
+
+type MulticastDomainActivationTrafficSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainActivationTrafficSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastDomainActivationTrafficSpec)(nil)).Elem()
+}
+
+func (o MulticastDomainActivationTrafficSpecPtrOutput) ToMulticastDomainActivationTrafficSpecPtrOutput() MulticastDomainActivationTrafficSpecPtrOutput {
+	return o
+}
+
+func (o MulticastDomainActivationTrafficSpecPtrOutput) ToMulticastDomainActivationTrafficSpecPtrOutputWithContext(ctx context.Context) MulticastDomainActivationTrafficSpecPtrOutput {
+	return o
+}
+
+func (o MulticastDomainActivationTrafficSpecPtrOutput) Elem() MulticastDomainActivationTrafficSpecOutput {
+	return o.ApplyT(func(v *MulticastDomainActivationTrafficSpec) MulticastDomainActivationTrafficSpec {
+		if v != nil {
+			return *v
+		}
+		var ret MulticastDomainActivationTrafficSpec
+		return ret
+	}).(MulticastDomainActivationTrafficSpecOutput)
+}
+
+// Aggregated egress Packet-Per-Second for all multicast groups in the domain
+// in this zone.
+func (o MulticastDomainActivationTrafficSpecPtrOutput) AggrEgressPps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainActivationTrafficSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AggrEgressPps
+	}).(pulumi.StringPtrOutput)
+}
+
+// Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+// in this zone. Default to (aggregated_egress_pps /
+// max_per_group_subscribers) * 2.
+func (o MulticastDomainActivationTrafficSpecPtrOutput) AggrIngressPps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainActivationTrafficSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AggrIngressPps
+	}).(pulumi.StringPtrOutput)
+}
+
+// Average packet size (Default to 512 bytes).
+func (o MulticastDomainActivationTrafficSpecPtrOutput) AvgPacketSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainActivationTrafficSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AvgPacketSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum ingress Packet-Per-Second for a single multicast group in this
+// zone. Default to aggregatedIngressPps / 2.
+func (o MulticastDomainActivationTrafficSpecPtrOutput) MaxPerGroupIngressPps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainActivationTrafficSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPerGroupIngressPps
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of subscribers for a single multicast group in this zone.
+// Default to max(50, aggregatedEgressPps / aggregated_ingress_pps).
+func (o MulticastDomainActivationTrafficSpecPtrOutput) MaxPerGroupSubscribers() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MulticastDomainActivationTrafficSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPerGroupSubscribers
+	}).(pulumi.StringPtrOutput)
+}
+
 type MulticastDomainConnectionConfig struct {
 	// The VPC connection type.
 	// Possible values:
@@ -12095,6 +12811,1161 @@ func (o MulticastDomainConnectionConfigPtrOutput) NccHub() pulumi.StringPtrOutpu
 		}
 		return v.NccHub
 	}).(pulumi.StringPtrOutput)
+}
+
+type MulticastDomainGroupStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastDomainGroupStateTypeInput is an input type that accepts MulticastDomainGroupStateTypeArgs and MulticastDomainGroupStateTypeOutput values.
+// You can construct a concrete instance of `MulticastDomainGroupStateTypeInput` via:
+//
+//	MulticastDomainGroupStateTypeArgs{...}
+type MulticastDomainGroupStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastDomainGroupStateTypeOutput() MulticastDomainGroupStateTypeOutput
+	ToMulticastDomainGroupStateTypeOutputWithContext(context.Context) MulticastDomainGroupStateTypeOutput
+}
+
+type MulticastDomainGroupStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastDomainGroupStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainGroupStateType)(nil)).Elem()
+}
+
+func (i MulticastDomainGroupStateTypeArgs) ToMulticastDomainGroupStateTypeOutput() MulticastDomainGroupStateTypeOutput {
+	return i.ToMulticastDomainGroupStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainGroupStateTypeArgs) ToMulticastDomainGroupStateTypeOutputWithContext(ctx context.Context) MulticastDomainGroupStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainGroupStateTypeOutput)
+}
+
+// MulticastDomainGroupStateTypeArrayInput is an input type that accepts MulticastDomainGroupStateTypeArray and MulticastDomainGroupStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastDomainGroupStateTypeArrayInput` via:
+//
+//	MulticastDomainGroupStateTypeArray{ MulticastDomainGroupStateTypeArgs{...} }
+type MulticastDomainGroupStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastDomainGroupStateTypeArrayOutput() MulticastDomainGroupStateTypeArrayOutput
+	ToMulticastDomainGroupStateTypeArrayOutputWithContext(context.Context) MulticastDomainGroupStateTypeArrayOutput
+}
+
+type MulticastDomainGroupStateTypeArray []MulticastDomainGroupStateTypeInput
+
+func (MulticastDomainGroupStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastDomainGroupStateType)(nil)).Elem()
+}
+
+func (i MulticastDomainGroupStateTypeArray) ToMulticastDomainGroupStateTypeArrayOutput() MulticastDomainGroupStateTypeArrayOutput {
+	return i.ToMulticastDomainGroupStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainGroupStateTypeArray) ToMulticastDomainGroupStateTypeArrayOutputWithContext(ctx context.Context) MulticastDomainGroupStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainGroupStateTypeArrayOutput)
+}
+
+type MulticastDomainGroupStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainGroupStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainGroupStateType)(nil)).Elem()
+}
+
+func (o MulticastDomainGroupStateTypeOutput) ToMulticastDomainGroupStateTypeOutput() MulticastDomainGroupStateTypeOutput {
+	return o
+}
+
+func (o MulticastDomainGroupStateTypeOutput) ToMulticastDomainGroupStateTypeOutputWithContext(ctx context.Context) MulticastDomainGroupStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastDomainGroupStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainGroupStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastDomainGroupStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainGroupStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastDomainGroupStateType)(nil)).Elem()
+}
+
+func (o MulticastDomainGroupStateTypeArrayOutput) ToMulticastDomainGroupStateTypeArrayOutput() MulticastDomainGroupStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastDomainGroupStateTypeArrayOutput) ToMulticastDomainGroupStateTypeArrayOutputWithContext(ctx context.Context) MulticastDomainGroupStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastDomainGroupStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastDomainGroupStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastDomainGroupStateType {
+		return vs[0].([]MulticastDomainGroupStateType)[vs[1].(int)]
+	}).(MulticastDomainGroupStateTypeOutput)
+}
+
+type MulticastGroupConsumerActivationLogConfig struct {
+	// Whether to enable logging or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MulticastGroupConsumerActivationLogConfigInput is an input type that accepts MulticastGroupConsumerActivationLogConfigArgs and MulticastGroupConsumerActivationLogConfigOutput values.
+// You can construct a concrete instance of `MulticastGroupConsumerActivationLogConfigInput` via:
+//
+//	MulticastGroupConsumerActivationLogConfigArgs{...}
+type MulticastGroupConsumerActivationLogConfigInput interface {
+	pulumi.Input
+
+	ToMulticastGroupConsumerActivationLogConfigOutput() MulticastGroupConsumerActivationLogConfigOutput
+	ToMulticastGroupConsumerActivationLogConfigOutputWithContext(context.Context) MulticastGroupConsumerActivationLogConfigOutput
+}
+
+type MulticastGroupConsumerActivationLogConfigArgs struct {
+	// Whether to enable logging or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MulticastGroupConsumerActivationLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupConsumerActivationLogConfig)(nil)).Elem()
+}
+
+func (i MulticastGroupConsumerActivationLogConfigArgs) ToMulticastGroupConsumerActivationLogConfigOutput() MulticastGroupConsumerActivationLogConfigOutput {
+	return i.ToMulticastGroupConsumerActivationLogConfigOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupConsumerActivationLogConfigArgs) ToMulticastGroupConsumerActivationLogConfigOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupConsumerActivationLogConfigOutput)
+}
+
+func (i MulticastGroupConsumerActivationLogConfigArgs) ToMulticastGroupConsumerActivationLogConfigPtrOutput() MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return i.ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupConsumerActivationLogConfigArgs) ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupConsumerActivationLogConfigOutput).ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(ctx)
+}
+
+// MulticastGroupConsumerActivationLogConfigPtrInput is an input type that accepts MulticastGroupConsumerActivationLogConfigArgs, MulticastGroupConsumerActivationLogConfigPtr and MulticastGroupConsumerActivationLogConfigPtrOutput values.
+// You can construct a concrete instance of `MulticastGroupConsumerActivationLogConfigPtrInput` via:
+//
+//	        MulticastGroupConsumerActivationLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MulticastGroupConsumerActivationLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToMulticastGroupConsumerActivationLogConfigPtrOutput() MulticastGroupConsumerActivationLogConfigPtrOutput
+	ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(context.Context) MulticastGroupConsumerActivationLogConfigPtrOutput
+}
+
+type multicastGroupConsumerActivationLogConfigPtrType MulticastGroupConsumerActivationLogConfigArgs
+
+func MulticastGroupConsumerActivationLogConfigPtr(v *MulticastGroupConsumerActivationLogConfigArgs) MulticastGroupConsumerActivationLogConfigPtrInput {
+	return (*multicastGroupConsumerActivationLogConfigPtrType)(v)
+}
+
+func (*multicastGroupConsumerActivationLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastGroupConsumerActivationLogConfig)(nil)).Elem()
+}
+
+func (i *multicastGroupConsumerActivationLogConfigPtrType) ToMulticastGroupConsumerActivationLogConfigPtrOutput() MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return i.ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *multicastGroupConsumerActivationLogConfigPtrType) ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupConsumerActivationLogConfigPtrOutput)
+}
+
+type MulticastGroupConsumerActivationLogConfigOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupConsumerActivationLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupConsumerActivationLogConfig)(nil)).Elem()
+}
+
+func (o MulticastGroupConsumerActivationLogConfigOutput) ToMulticastGroupConsumerActivationLogConfigOutput() MulticastGroupConsumerActivationLogConfigOutput {
+	return o
+}
+
+func (o MulticastGroupConsumerActivationLogConfigOutput) ToMulticastGroupConsumerActivationLogConfigOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationLogConfigOutput {
+	return o
+}
+
+func (o MulticastGroupConsumerActivationLogConfigOutput) ToMulticastGroupConsumerActivationLogConfigPtrOutput() MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return o.ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MulticastGroupConsumerActivationLogConfigOutput) ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MulticastGroupConsumerActivationLogConfig) *MulticastGroupConsumerActivationLogConfig {
+		return &v
+	}).(MulticastGroupConsumerActivationLogConfigPtrOutput)
+}
+
+// Whether to enable logging or not.
+func (o MulticastGroupConsumerActivationLogConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MulticastGroupConsumerActivationLogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MulticastGroupConsumerActivationLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupConsumerActivationLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastGroupConsumerActivationLogConfig)(nil)).Elem()
+}
+
+func (o MulticastGroupConsumerActivationLogConfigPtrOutput) ToMulticastGroupConsumerActivationLogConfigPtrOutput() MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return o
+}
+
+func (o MulticastGroupConsumerActivationLogConfigPtrOutput) ToMulticastGroupConsumerActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationLogConfigPtrOutput {
+	return o
+}
+
+func (o MulticastGroupConsumerActivationLogConfigPtrOutput) Elem() MulticastGroupConsumerActivationLogConfigOutput {
+	return o.ApplyT(func(v *MulticastGroupConsumerActivationLogConfig) MulticastGroupConsumerActivationLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MulticastGroupConsumerActivationLogConfig
+		return ret
+	}).(MulticastGroupConsumerActivationLogConfigOutput)
+}
+
+// Whether to enable logging or not.
+func (o MulticastGroupConsumerActivationLogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MulticastGroupConsumerActivationLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type MulticastGroupConsumerActivationStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastGroupConsumerActivationStateTypeInput is an input type that accepts MulticastGroupConsumerActivationStateTypeArgs and MulticastGroupConsumerActivationStateTypeOutput values.
+// You can construct a concrete instance of `MulticastGroupConsumerActivationStateTypeInput` via:
+//
+//	MulticastGroupConsumerActivationStateTypeArgs{...}
+type MulticastGroupConsumerActivationStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastGroupConsumerActivationStateTypeOutput() MulticastGroupConsumerActivationStateTypeOutput
+	ToMulticastGroupConsumerActivationStateTypeOutputWithContext(context.Context) MulticastGroupConsumerActivationStateTypeOutput
+}
+
+type MulticastGroupConsumerActivationStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastGroupConsumerActivationStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupConsumerActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupConsumerActivationStateTypeArgs) ToMulticastGroupConsumerActivationStateTypeOutput() MulticastGroupConsumerActivationStateTypeOutput {
+	return i.ToMulticastGroupConsumerActivationStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupConsumerActivationStateTypeArgs) ToMulticastGroupConsumerActivationStateTypeOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupConsumerActivationStateTypeOutput)
+}
+
+// MulticastGroupConsumerActivationStateTypeArrayInput is an input type that accepts MulticastGroupConsumerActivationStateTypeArray and MulticastGroupConsumerActivationStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastGroupConsumerActivationStateTypeArrayInput` via:
+//
+//	MulticastGroupConsumerActivationStateTypeArray{ MulticastGroupConsumerActivationStateTypeArgs{...} }
+type MulticastGroupConsumerActivationStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastGroupConsumerActivationStateTypeArrayOutput() MulticastGroupConsumerActivationStateTypeArrayOutput
+	ToMulticastGroupConsumerActivationStateTypeArrayOutputWithContext(context.Context) MulticastGroupConsumerActivationStateTypeArrayOutput
+}
+
+type MulticastGroupConsumerActivationStateTypeArray []MulticastGroupConsumerActivationStateTypeInput
+
+func (MulticastGroupConsumerActivationStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupConsumerActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupConsumerActivationStateTypeArray) ToMulticastGroupConsumerActivationStateTypeArrayOutput() MulticastGroupConsumerActivationStateTypeArrayOutput {
+	return i.ToMulticastGroupConsumerActivationStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupConsumerActivationStateTypeArray) ToMulticastGroupConsumerActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupConsumerActivationStateTypeArrayOutput)
+}
+
+type MulticastGroupConsumerActivationStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupConsumerActivationStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupConsumerActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupConsumerActivationStateTypeOutput) ToMulticastGroupConsumerActivationStateTypeOutput() MulticastGroupConsumerActivationStateTypeOutput {
+	return o
+}
+
+func (o MulticastGroupConsumerActivationStateTypeOutput) ToMulticastGroupConsumerActivationStateTypeOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastGroupConsumerActivationStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastGroupConsumerActivationStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastGroupConsumerActivationStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupConsumerActivationStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupConsumerActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupConsumerActivationStateTypeArrayOutput) ToMulticastGroupConsumerActivationStateTypeArrayOutput() MulticastGroupConsumerActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupConsumerActivationStateTypeArrayOutput) ToMulticastGroupConsumerActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupConsumerActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupConsumerActivationStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastGroupConsumerActivationStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastGroupConsumerActivationStateType {
+		return vs[0].([]MulticastGroupConsumerActivationStateType)[vs[1].(int)]
+	}).(MulticastGroupConsumerActivationStateTypeOutput)
+}
+
+type MulticastGroupProducerActivationStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastGroupProducerActivationStateTypeInput is an input type that accepts MulticastGroupProducerActivationStateTypeArgs and MulticastGroupProducerActivationStateTypeOutput values.
+// You can construct a concrete instance of `MulticastGroupProducerActivationStateTypeInput` via:
+//
+//	MulticastGroupProducerActivationStateTypeArgs{...}
+type MulticastGroupProducerActivationStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastGroupProducerActivationStateTypeOutput() MulticastGroupProducerActivationStateTypeOutput
+	ToMulticastGroupProducerActivationStateTypeOutputWithContext(context.Context) MulticastGroupProducerActivationStateTypeOutput
+}
+
+type MulticastGroupProducerActivationStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastGroupProducerActivationStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupProducerActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupProducerActivationStateTypeArgs) ToMulticastGroupProducerActivationStateTypeOutput() MulticastGroupProducerActivationStateTypeOutput {
+	return i.ToMulticastGroupProducerActivationStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupProducerActivationStateTypeArgs) ToMulticastGroupProducerActivationStateTypeOutputWithContext(ctx context.Context) MulticastGroupProducerActivationStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupProducerActivationStateTypeOutput)
+}
+
+// MulticastGroupProducerActivationStateTypeArrayInput is an input type that accepts MulticastGroupProducerActivationStateTypeArray and MulticastGroupProducerActivationStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastGroupProducerActivationStateTypeArrayInput` via:
+//
+//	MulticastGroupProducerActivationStateTypeArray{ MulticastGroupProducerActivationStateTypeArgs{...} }
+type MulticastGroupProducerActivationStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastGroupProducerActivationStateTypeArrayOutput() MulticastGroupProducerActivationStateTypeArrayOutput
+	ToMulticastGroupProducerActivationStateTypeArrayOutputWithContext(context.Context) MulticastGroupProducerActivationStateTypeArrayOutput
+}
+
+type MulticastGroupProducerActivationStateTypeArray []MulticastGroupProducerActivationStateTypeInput
+
+func (MulticastGroupProducerActivationStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupProducerActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupProducerActivationStateTypeArray) ToMulticastGroupProducerActivationStateTypeArrayOutput() MulticastGroupProducerActivationStateTypeArrayOutput {
+	return i.ToMulticastGroupProducerActivationStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupProducerActivationStateTypeArray) ToMulticastGroupProducerActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupProducerActivationStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupProducerActivationStateTypeArrayOutput)
+}
+
+type MulticastGroupProducerActivationStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupProducerActivationStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupProducerActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupProducerActivationStateTypeOutput) ToMulticastGroupProducerActivationStateTypeOutput() MulticastGroupProducerActivationStateTypeOutput {
+	return o
+}
+
+func (o MulticastGroupProducerActivationStateTypeOutput) ToMulticastGroupProducerActivationStateTypeOutputWithContext(ctx context.Context) MulticastGroupProducerActivationStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastGroupProducerActivationStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastGroupProducerActivationStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastGroupProducerActivationStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupProducerActivationStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupProducerActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupProducerActivationStateTypeArrayOutput) ToMulticastGroupProducerActivationStateTypeArrayOutput() MulticastGroupProducerActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupProducerActivationStateTypeArrayOutput) ToMulticastGroupProducerActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupProducerActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupProducerActivationStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastGroupProducerActivationStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastGroupProducerActivationStateType {
+		return vs[0].([]MulticastGroupProducerActivationStateType)[vs[1].(int)]
+	}).(MulticastGroupProducerActivationStateTypeOutput)
+}
+
+type MulticastGroupRangeActivationLogConfig struct {
+	// Whether to enable logging or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MulticastGroupRangeActivationLogConfigInput is an input type that accepts MulticastGroupRangeActivationLogConfigArgs and MulticastGroupRangeActivationLogConfigOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeActivationLogConfigInput` via:
+//
+//	MulticastGroupRangeActivationLogConfigArgs{...}
+type MulticastGroupRangeActivationLogConfigInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeActivationLogConfigOutput() MulticastGroupRangeActivationLogConfigOutput
+	ToMulticastGroupRangeActivationLogConfigOutputWithContext(context.Context) MulticastGroupRangeActivationLogConfigOutput
+}
+
+type MulticastGroupRangeActivationLogConfigArgs struct {
+	// Whether to enable logging or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MulticastGroupRangeActivationLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeActivationLogConfig)(nil)).Elem()
+}
+
+func (i MulticastGroupRangeActivationLogConfigArgs) ToMulticastGroupRangeActivationLogConfigOutput() MulticastGroupRangeActivationLogConfigOutput {
+	return i.ToMulticastGroupRangeActivationLogConfigOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeActivationLogConfigArgs) ToMulticastGroupRangeActivationLogConfigOutputWithContext(ctx context.Context) MulticastGroupRangeActivationLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeActivationLogConfigOutput)
+}
+
+func (i MulticastGroupRangeActivationLogConfigArgs) ToMulticastGroupRangeActivationLogConfigPtrOutput() MulticastGroupRangeActivationLogConfigPtrOutput {
+	return i.ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeActivationLogConfigArgs) ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeActivationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeActivationLogConfigOutput).ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(ctx)
+}
+
+// MulticastGroupRangeActivationLogConfigPtrInput is an input type that accepts MulticastGroupRangeActivationLogConfigArgs, MulticastGroupRangeActivationLogConfigPtr and MulticastGroupRangeActivationLogConfigPtrOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeActivationLogConfigPtrInput` via:
+//
+//	        MulticastGroupRangeActivationLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MulticastGroupRangeActivationLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeActivationLogConfigPtrOutput() MulticastGroupRangeActivationLogConfigPtrOutput
+	ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(context.Context) MulticastGroupRangeActivationLogConfigPtrOutput
+}
+
+type multicastGroupRangeActivationLogConfigPtrType MulticastGroupRangeActivationLogConfigArgs
+
+func MulticastGroupRangeActivationLogConfigPtr(v *MulticastGroupRangeActivationLogConfigArgs) MulticastGroupRangeActivationLogConfigPtrInput {
+	return (*multicastGroupRangeActivationLogConfigPtrType)(v)
+}
+
+func (*multicastGroupRangeActivationLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastGroupRangeActivationLogConfig)(nil)).Elem()
+}
+
+func (i *multicastGroupRangeActivationLogConfigPtrType) ToMulticastGroupRangeActivationLogConfigPtrOutput() MulticastGroupRangeActivationLogConfigPtrOutput {
+	return i.ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *multicastGroupRangeActivationLogConfigPtrType) ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeActivationLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeActivationLogConfigPtrOutput)
+}
+
+type MulticastGroupRangeActivationLogConfigOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeActivationLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeActivationLogConfig)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeActivationLogConfigOutput) ToMulticastGroupRangeActivationLogConfigOutput() MulticastGroupRangeActivationLogConfigOutput {
+	return o
+}
+
+func (o MulticastGroupRangeActivationLogConfigOutput) ToMulticastGroupRangeActivationLogConfigOutputWithContext(ctx context.Context) MulticastGroupRangeActivationLogConfigOutput {
+	return o
+}
+
+func (o MulticastGroupRangeActivationLogConfigOutput) ToMulticastGroupRangeActivationLogConfigPtrOutput() MulticastGroupRangeActivationLogConfigPtrOutput {
+	return o.ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MulticastGroupRangeActivationLogConfigOutput) ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeActivationLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MulticastGroupRangeActivationLogConfig) *MulticastGroupRangeActivationLogConfig {
+		return &v
+	}).(MulticastGroupRangeActivationLogConfigPtrOutput)
+}
+
+// Whether to enable logging or not.
+func (o MulticastGroupRangeActivationLogConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MulticastGroupRangeActivationLogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MulticastGroupRangeActivationLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeActivationLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastGroupRangeActivationLogConfig)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeActivationLogConfigPtrOutput) ToMulticastGroupRangeActivationLogConfigPtrOutput() MulticastGroupRangeActivationLogConfigPtrOutput {
+	return o
+}
+
+func (o MulticastGroupRangeActivationLogConfigPtrOutput) ToMulticastGroupRangeActivationLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeActivationLogConfigPtrOutput {
+	return o
+}
+
+func (o MulticastGroupRangeActivationLogConfigPtrOutput) Elem() MulticastGroupRangeActivationLogConfigOutput {
+	return o.ApplyT(func(v *MulticastGroupRangeActivationLogConfig) MulticastGroupRangeActivationLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MulticastGroupRangeActivationLogConfig
+		return ret
+	}).(MulticastGroupRangeActivationLogConfigOutput)
+}
+
+// Whether to enable logging or not.
+func (o MulticastGroupRangeActivationLogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MulticastGroupRangeActivationLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type MulticastGroupRangeActivationStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastGroupRangeActivationStateTypeInput is an input type that accepts MulticastGroupRangeActivationStateTypeArgs and MulticastGroupRangeActivationStateTypeOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeActivationStateTypeInput` via:
+//
+//	MulticastGroupRangeActivationStateTypeArgs{...}
+type MulticastGroupRangeActivationStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeActivationStateTypeOutput() MulticastGroupRangeActivationStateTypeOutput
+	ToMulticastGroupRangeActivationStateTypeOutputWithContext(context.Context) MulticastGroupRangeActivationStateTypeOutput
+}
+
+type MulticastGroupRangeActivationStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastGroupRangeActivationStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupRangeActivationStateTypeArgs) ToMulticastGroupRangeActivationStateTypeOutput() MulticastGroupRangeActivationStateTypeOutput {
+	return i.ToMulticastGroupRangeActivationStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeActivationStateTypeArgs) ToMulticastGroupRangeActivationStateTypeOutputWithContext(ctx context.Context) MulticastGroupRangeActivationStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeActivationStateTypeOutput)
+}
+
+// MulticastGroupRangeActivationStateTypeArrayInput is an input type that accepts MulticastGroupRangeActivationStateTypeArray and MulticastGroupRangeActivationStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeActivationStateTypeArrayInput` via:
+//
+//	MulticastGroupRangeActivationStateTypeArray{ MulticastGroupRangeActivationStateTypeArgs{...} }
+type MulticastGroupRangeActivationStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeActivationStateTypeArrayOutput() MulticastGroupRangeActivationStateTypeArrayOutput
+	ToMulticastGroupRangeActivationStateTypeArrayOutputWithContext(context.Context) MulticastGroupRangeActivationStateTypeArrayOutput
+}
+
+type MulticastGroupRangeActivationStateTypeArray []MulticastGroupRangeActivationStateTypeInput
+
+func (MulticastGroupRangeActivationStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupRangeActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupRangeActivationStateTypeArray) ToMulticastGroupRangeActivationStateTypeArrayOutput() MulticastGroupRangeActivationStateTypeArrayOutput {
+	return i.ToMulticastGroupRangeActivationStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeActivationStateTypeArray) ToMulticastGroupRangeActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupRangeActivationStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeActivationStateTypeArrayOutput)
+}
+
+type MulticastGroupRangeActivationStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeActivationStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeActivationStateTypeOutput) ToMulticastGroupRangeActivationStateTypeOutput() MulticastGroupRangeActivationStateTypeOutput {
+	return o
+}
+
+func (o MulticastGroupRangeActivationStateTypeOutput) ToMulticastGroupRangeActivationStateTypeOutputWithContext(ctx context.Context) MulticastGroupRangeActivationStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastGroupRangeActivationStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastGroupRangeActivationStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastGroupRangeActivationStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeActivationStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupRangeActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeActivationStateTypeArrayOutput) ToMulticastGroupRangeActivationStateTypeArrayOutput() MulticastGroupRangeActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupRangeActivationStateTypeArrayOutput) ToMulticastGroupRangeActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupRangeActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupRangeActivationStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastGroupRangeActivationStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastGroupRangeActivationStateType {
+		return vs[0].([]MulticastGroupRangeActivationStateType)[vs[1].(int)]
+	}).(MulticastGroupRangeActivationStateTypeOutput)
+}
+
+type MulticastGroupRangeLogConfig struct {
+	// Whether to enable logging or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// MulticastGroupRangeLogConfigInput is an input type that accepts MulticastGroupRangeLogConfigArgs and MulticastGroupRangeLogConfigOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeLogConfigInput` via:
+//
+//	MulticastGroupRangeLogConfigArgs{...}
+type MulticastGroupRangeLogConfigInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeLogConfigOutput() MulticastGroupRangeLogConfigOutput
+	ToMulticastGroupRangeLogConfigOutputWithContext(context.Context) MulticastGroupRangeLogConfigOutput
+}
+
+type MulticastGroupRangeLogConfigArgs struct {
+	// Whether to enable logging or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (MulticastGroupRangeLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeLogConfig)(nil)).Elem()
+}
+
+func (i MulticastGroupRangeLogConfigArgs) ToMulticastGroupRangeLogConfigOutput() MulticastGroupRangeLogConfigOutput {
+	return i.ToMulticastGroupRangeLogConfigOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeLogConfigArgs) ToMulticastGroupRangeLogConfigOutputWithContext(ctx context.Context) MulticastGroupRangeLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeLogConfigOutput)
+}
+
+func (i MulticastGroupRangeLogConfigArgs) ToMulticastGroupRangeLogConfigPtrOutput() MulticastGroupRangeLogConfigPtrOutput {
+	return i.ToMulticastGroupRangeLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeLogConfigArgs) ToMulticastGroupRangeLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeLogConfigOutput).ToMulticastGroupRangeLogConfigPtrOutputWithContext(ctx)
+}
+
+// MulticastGroupRangeLogConfigPtrInput is an input type that accepts MulticastGroupRangeLogConfigArgs, MulticastGroupRangeLogConfigPtr and MulticastGroupRangeLogConfigPtrOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeLogConfigPtrInput` via:
+//
+//	        MulticastGroupRangeLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MulticastGroupRangeLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeLogConfigPtrOutput() MulticastGroupRangeLogConfigPtrOutput
+	ToMulticastGroupRangeLogConfigPtrOutputWithContext(context.Context) MulticastGroupRangeLogConfigPtrOutput
+}
+
+type multicastGroupRangeLogConfigPtrType MulticastGroupRangeLogConfigArgs
+
+func MulticastGroupRangeLogConfigPtr(v *MulticastGroupRangeLogConfigArgs) MulticastGroupRangeLogConfigPtrInput {
+	return (*multicastGroupRangeLogConfigPtrType)(v)
+}
+
+func (*multicastGroupRangeLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastGroupRangeLogConfig)(nil)).Elem()
+}
+
+func (i *multicastGroupRangeLogConfigPtrType) ToMulticastGroupRangeLogConfigPtrOutput() MulticastGroupRangeLogConfigPtrOutput {
+	return i.ToMulticastGroupRangeLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *multicastGroupRangeLogConfigPtrType) ToMulticastGroupRangeLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeLogConfigPtrOutput)
+}
+
+type MulticastGroupRangeLogConfigOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeLogConfig)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeLogConfigOutput) ToMulticastGroupRangeLogConfigOutput() MulticastGroupRangeLogConfigOutput {
+	return o
+}
+
+func (o MulticastGroupRangeLogConfigOutput) ToMulticastGroupRangeLogConfigOutputWithContext(ctx context.Context) MulticastGroupRangeLogConfigOutput {
+	return o
+}
+
+func (o MulticastGroupRangeLogConfigOutput) ToMulticastGroupRangeLogConfigPtrOutput() MulticastGroupRangeLogConfigPtrOutput {
+	return o.ToMulticastGroupRangeLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MulticastGroupRangeLogConfigOutput) ToMulticastGroupRangeLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MulticastGroupRangeLogConfig) *MulticastGroupRangeLogConfig {
+		return &v
+	}).(MulticastGroupRangeLogConfigPtrOutput)
+}
+
+// Whether to enable logging or not.
+func (o MulticastGroupRangeLogConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MulticastGroupRangeLogConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type MulticastGroupRangeLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MulticastGroupRangeLogConfig)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeLogConfigPtrOutput) ToMulticastGroupRangeLogConfigPtrOutput() MulticastGroupRangeLogConfigPtrOutput {
+	return o
+}
+
+func (o MulticastGroupRangeLogConfigPtrOutput) ToMulticastGroupRangeLogConfigPtrOutputWithContext(ctx context.Context) MulticastGroupRangeLogConfigPtrOutput {
+	return o
+}
+
+func (o MulticastGroupRangeLogConfigPtrOutput) Elem() MulticastGroupRangeLogConfigOutput {
+	return o.ApplyT(func(v *MulticastGroupRangeLogConfig) MulticastGroupRangeLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MulticastGroupRangeLogConfig
+		return ret
+	}).(MulticastGroupRangeLogConfigOutput)
+}
+
+// Whether to enable logging or not.
+func (o MulticastGroupRangeLogConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MulticastGroupRangeLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type MulticastGroupRangeStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastGroupRangeStateTypeInput is an input type that accepts MulticastGroupRangeStateTypeArgs and MulticastGroupRangeStateTypeOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeStateTypeInput` via:
+//
+//	MulticastGroupRangeStateTypeArgs{...}
+type MulticastGroupRangeStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeStateTypeOutput() MulticastGroupRangeStateTypeOutput
+	ToMulticastGroupRangeStateTypeOutputWithContext(context.Context) MulticastGroupRangeStateTypeOutput
+}
+
+type MulticastGroupRangeStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastGroupRangeStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupRangeStateTypeArgs) ToMulticastGroupRangeStateTypeOutput() MulticastGroupRangeStateTypeOutput {
+	return i.ToMulticastGroupRangeStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeStateTypeArgs) ToMulticastGroupRangeStateTypeOutputWithContext(ctx context.Context) MulticastGroupRangeStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeStateTypeOutput)
+}
+
+// MulticastGroupRangeStateTypeArrayInput is an input type that accepts MulticastGroupRangeStateTypeArray and MulticastGroupRangeStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastGroupRangeStateTypeArrayInput` via:
+//
+//	MulticastGroupRangeStateTypeArray{ MulticastGroupRangeStateTypeArgs{...} }
+type MulticastGroupRangeStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastGroupRangeStateTypeArrayOutput() MulticastGroupRangeStateTypeArrayOutput
+	ToMulticastGroupRangeStateTypeArrayOutputWithContext(context.Context) MulticastGroupRangeStateTypeArrayOutput
+}
+
+type MulticastGroupRangeStateTypeArray []MulticastGroupRangeStateTypeInput
+
+func (MulticastGroupRangeStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupRangeStateType)(nil)).Elem()
+}
+
+func (i MulticastGroupRangeStateTypeArray) ToMulticastGroupRangeStateTypeArrayOutput() MulticastGroupRangeStateTypeArrayOutput {
+	return i.ToMulticastGroupRangeStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastGroupRangeStateTypeArray) ToMulticastGroupRangeStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupRangeStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastGroupRangeStateTypeArrayOutput)
+}
+
+type MulticastGroupRangeStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastGroupRangeStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeStateTypeOutput) ToMulticastGroupRangeStateTypeOutput() MulticastGroupRangeStateTypeOutput {
+	return o
+}
+
+func (o MulticastGroupRangeStateTypeOutput) ToMulticastGroupRangeStateTypeOutputWithContext(ctx context.Context) MulticastGroupRangeStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastGroupRangeStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastGroupRangeStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastGroupRangeStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastGroupRangeStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastGroupRangeStateType)(nil)).Elem()
+}
+
+func (o MulticastGroupRangeStateTypeArrayOutput) ToMulticastGroupRangeStateTypeArrayOutput() MulticastGroupRangeStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupRangeStateTypeArrayOutput) ToMulticastGroupRangeStateTypeArrayOutputWithContext(ctx context.Context) MulticastGroupRangeStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastGroupRangeStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastGroupRangeStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastGroupRangeStateType {
+		return vs[0].([]MulticastGroupRangeStateType)[vs[1].(int)]
+	}).(MulticastGroupRangeStateTypeOutput)
+}
+
+type MulticastProducerAssociationStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastProducerAssociationStateTypeInput is an input type that accepts MulticastProducerAssociationStateTypeArgs and MulticastProducerAssociationStateTypeOutput values.
+// You can construct a concrete instance of `MulticastProducerAssociationStateTypeInput` via:
+//
+//	MulticastProducerAssociationStateTypeArgs{...}
+type MulticastProducerAssociationStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastProducerAssociationStateTypeOutput() MulticastProducerAssociationStateTypeOutput
+	ToMulticastProducerAssociationStateTypeOutputWithContext(context.Context) MulticastProducerAssociationStateTypeOutput
+}
+
+type MulticastProducerAssociationStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastProducerAssociationStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastProducerAssociationStateType)(nil)).Elem()
+}
+
+func (i MulticastProducerAssociationStateTypeArgs) ToMulticastProducerAssociationStateTypeOutput() MulticastProducerAssociationStateTypeOutput {
+	return i.ToMulticastProducerAssociationStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastProducerAssociationStateTypeArgs) ToMulticastProducerAssociationStateTypeOutputWithContext(ctx context.Context) MulticastProducerAssociationStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastProducerAssociationStateTypeOutput)
+}
+
+// MulticastProducerAssociationStateTypeArrayInput is an input type that accepts MulticastProducerAssociationStateTypeArray and MulticastProducerAssociationStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastProducerAssociationStateTypeArrayInput` via:
+//
+//	MulticastProducerAssociationStateTypeArray{ MulticastProducerAssociationStateTypeArgs{...} }
+type MulticastProducerAssociationStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastProducerAssociationStateTypeArrayOutput() MulticastProducerAssociationStateTypeArrayOutput
+	ToMulticastProducerAssociationStateTypeArrayOutputWithContext(context.Context) MulticastProducerAssociationStateTypeArrayOutput
+}
+
+type MulticastProducerAssociationStateTypeArray []MulticastProducerAssociationStateTypeInput
+
+func (MulticastProducerAssociationStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastProducerAssociationStateType)(nil)).Elem()
+}
+
+func (i MulticastProducerAssociationStateTypeArray) ToMulticastProducerAssociationStateTypeArrayOutput() MulticastProducerAssociationStateTypeArrayOutput {
+	return i.ToMulticastProducerAssociationStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastProducerAssociationStateTypeArray) ToMulticastProducerAssociationStateTypeArrayOutputWithContext(ctx context.Context) MulticastProducerAssociationStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastProducerAssociationStateTypeArrayOutput)
+}
+
+type MulticastProducerAssociationStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastProducerAssociationStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastProducerAssociationStateType)(nil)).Elem()
+}
+
+func (o MulticastProducerAssociationStateTypeOutput) ToMulticastProducerAssociationStateTypeOutput() MulticastProducerAssociationStateTypeOutput {
+	return o
+}
+
+func (o MulticastProducerAssociationStateTypeOutput) ToMulticastProducerAssociationStateTypeOutputWithContext(ctx context.Context) MulticastProducerAssociationStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastProducerAssociationStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastProducerAssociationStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastProducerAssociationStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastProducerAssociationStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastProducerAssociationStateType)(nil)).Elem()
+}
+
+func (o MulticastProducerAssociationStateTypeArrayOutput) ToMulticastProducerAssociationStateTypeArrayOutput() MulticastProducerAssociationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastProducerAssociationStateTypeArrayOutput) ToMulticastProducerAssociationStateTypeArrayOutputWithContext(ctx context.Context) MulticastProducerAssociationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastProducerAssociationStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastProducerAssociationStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastProducerAssociationStateType {
+		return vs[0].([]MulticastProducerAssociationStateType)[vs[1].(int)]
+	}).(MulticastProducerAssociationStateTypeOutput)
 }
 
 type ServiceLbPoliciesAutoCapacityDrain struct {
@@ -13975,6 +15846,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchHeaderRangeMatchPtrInput)(nil)).Elem(), HttpRouteRuleMatchHeaderRangeMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchQueryParameterInput)(nil)).Elem(), HttpRouteRuleMatchQueryParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchQueryParameterArrayInput)(nil)).Elem(), HttpRouteRuleMatchQueryParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbEdgeExtensionExtensionChainInput)(nil)).Elem(), LbEdgeExtensionExtensionChainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbEdgeExtensionExtensionChainArrayInput)(nil)).Elem(), LbEdgeExtensionExtensionChainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbEdgeExtensionExtensionChainExtensionInput)(nil)).Elem(), LbEdgeExtensionExtensionChainExtensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbEdgeExtensionExtensionChainExtensionArrayInput)(nil)).Elem(), LbEdgeExtensionExtensionChainExtensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LbEdgeExtensionExtensionChainMatchConditionInput)(nil)).Elem(), LbEdgeExtensionExtensionChainMatchConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbRouteExtensionExtensionChainInput)(nil)).Elem(), LbRouteExtensionExtensionChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbRouteExtensionExtensionChainArrayInput)(nil)).Elem(), LbRouteExtensionExtensionChainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbRouteExtensionExtensionChainExtensionInput)(nil)).Elem(), LbRouteExtensionExtensionChainExtensionArgs{})
@@ -13985,8 +15861,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainExtensionArrayInput)(nil)).Elem(), LbTrafficExtensionExtensionChainExtensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainMatchConditionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainMatchConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastConsumerAssociationStateTypeInput)(nil)).Elem(), MulticastConsumerAssociationStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastConsumerAssociationStateTypeArrayInput)(nil)).Elem(), MulticastConsumerAssociationStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainActivationTrafficSpecInput)(nil)).Elem(), MulticastDomainActivationTrafficSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainActivationTrafficSpecPtrInput)(nil)).Elem(), MulticastDomainActivationTrafficSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainConnectionConfigInput)(nil)).Elem(), MulticastDomainConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainConnectionConfigPtrInput)(nil)).Elem(), MulticastDomainConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainGroupStateTypeInput)(nil)).Elem(), MulticastDomainGroupStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainGroupStateTypeArrayInput)(nil)).Elem(), MulticastDomainGroupStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationLogConfigInput)(nil)).Elem(), MulticastGroupConsumerActivationLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationLogConfigPtrInput)(nil)).Elem(), MulticastGroupConsumerActivationLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationStateTypeInput)(nil)).Elem(), MulticastGroupConsumerActivationStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationStateTypeArrayInput)(nil)).Elem(), MulticastGroupConsumerActivationStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupProducerActivationStateTypeInput)(nil)).Elem(), MulticastGroupProducerActivationStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupProducerActivationStateTypeArrayInput)(nil)).Elem(), MulticastGroupProducerActivationStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeActivationLogConfigInput)(nil)).Elem(), MulticastGroupRangeActivationLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeActivationLogConfigPtrInput)(nil)).Elem(), MulticastGroupRangeActivationLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeActivationStateTypeInput)(nil)).Elem(), MulticastGroupRangeActivationStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeActivationStateTypeArrayInput)(nil)).Elem(), MulticastGroupRangeActivationStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeLogConfigInput)(nil)).Elem(), MulticastGroupRangeLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeLogConfigPtrInput)(nil)).Elem(), MulticastGroupRangeLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeStateTypeInput)(nil)).Elem(), MulticastGroupRangeStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupRangeStateTypeArrayInput)(nil)).Elem(), MulticastGroupRangeStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastProducerAssociationStateTypeInput)(nil)).Elem(), MulticastProducerAssociationStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastProducerAssociationStateTypeArrayInput)(nil)).Elem(), MulticastProducerAssociationStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrainInput)(nil)).Elem(), ServiceLbPoliciesAutoCapacityDrainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesAutoCapacityDrainPtrInput)(nil)).Elem(), ServiceLbPoliciesAutoCapacityDrainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLbPoliciesFailoverConfigInput)(nil)).Elem(), ServiceLbPoliciesFailoverConfigArgs{})
@@ -14141,6 +16039,11 @@ func init() {
 	pulumi.RegisterOutputType(HttpRouteRuleMatchHeaderRangeMatchPtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleMatchQueryParameterOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleMatchQueryParameterArrayOutput{})
+	pulumi.RegisterOutputType(LbEdgeExtensionExtensionChainOutput{})
+	pulumi.RegisterOutputType(LbEdgeExtensionExtensionChainArrayOutput{})
+	pulumi.RegisterOutputType(LbEdgeExtensionExtensionChainExtensionOutput{})
+	pulumi.RegisterOutputType(LbEdgeExtensionExtensionChainExtensionArrayOutput{})
+	pulumi.RegisterOutputType(LbEdgeExtensionExtensionChainMatchConditionOutput{})
 	pulumi.RegisterOutputType(LbRouteExtensionExtensionChainOutput{})
 	pulumi.RegisterOutputType(LbRouteExtensionExtensionChainArrayOutput{})
 	pulumi.RegisterOutputType(LbRouteExtensionExtensionChainExtensionOutput{})
@@ -14151,8 +16054,30 @@ func init() {
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainExtensionArrayOutput{})
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainMatchConditionOutput{})
+	pulumi.RegisterOutputType(MulticastConsumerAssociationStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastConsumerAssociationStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastDomainActivationTrafficSpecOutput{})
+	pulumi.RegisterOutputType(MulticastDomainActivationTrafficSpecPtrOutput{})
 	pulumi.RegisterOutputType(MulticastDomainConnectionConfigOutput{})
 	pulumi.RegisterOutputType(MulticastDomainConnectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(MulticastDomainGroupStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastDomainGroupStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastGroupConsumerActivationLogConfigOutput{})
+	pulumi.RegisterOutputType(MulticastGroupConsumerActivationLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(MulticastGroupConsumerActivationStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastGroupConsumerActivationStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastGroupProducerActivationStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastGroupProducerActivationStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeActivationLogConfigOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeActivationLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeActivationStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeActivationStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeLogConfigOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastGroupRangeStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastProducerAssociationStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastProducerAssociationStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesAutoCapacityDrainOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesAutoCapacityDrainPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLbPoliciesFailoverConfigOutput{})

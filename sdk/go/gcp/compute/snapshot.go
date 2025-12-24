@@ -221,6 +221,9 @@ type Snapshot struct {
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrOutput `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntOutput `pulumi:"snapshotId"`
+	// Indicates the type of the snapshot.
+	// Possible values are: `ARCHIVE`, `STANDARD`.
+	SnapshotType pulumi.StringPtrOutput `pulumi:"snapshotType"`
 	// A reference to the disk used to create this snapshot.
 	SourceDisk pulumi.StringOutput `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
@@ -333,6 +336,9 @@ type snapshotState struct {
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
 	// The unique identifier for the resource.
 	SnapshotId *int `pulumi:"snapshotId"`
+	// Indicates the type of the snapshot.
+	// Possible values are: `ARCHIVE`, `STANDARD`.
+	SnapshotType *string `pulumi:"snapshotType"`
 	// A reference to the disk used to create this snapshot.
 	SourceDisk *string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
@@ -408,6 +414,9 @@ type SnapshotState struct {
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
 	// The unique identifier for the resource.
 	SnapshotId pulumi.IntPtrInput
+	// Indicates the type of the snapshot.
+	// Possible values are: `ARCHIVE`, `STANDARD`.
+	SnapshotType pulumi.StringPtrInput
 	// A reference to the disk used to create this snapshot.
 	SourceDisk pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
@@ -466,6 +475,9 @@ type snapshotArgs struct {
 	// key and you do not need to provide a key to use the snapshot later.
 	// Structure is documented below.
 	SnapshotEncryptionKey *SnapshotSnapshotEncryptionKey `pulumi:"snapshotEncryptionKey"`
+	// Indicates the type of the snapshot.
+	// Possible values are: `ARCHIVE`, `STANDARD`.
+	SnapshotType *string `pulumi:"snapshotType"`
 	// A reference to the disk used to create this snapshot.
 	SourceDisk string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
@@ -517,6 +529,9 @@ type SnapshotArgs struct {
 	// key and you do not need to provide a key to use the snapshot later.
 	// Structure is documented below.
 	SnapshotEncryptionKey SnapshotSnapshotEncryptionKeyPtrInput
+	// Indicates the type of the snapshot.
+	// Possible values are: `ARCHIVE`, `STANDARD`.
+	SnapshotType pulumi.StringPtrInput
 	// A reference to the disk used to create this snapshot.
 	SourceDisk pulumi.StringInput
 	// The customer-supplied encryption key of the source snapshot. Required
@@ -714,6 +729,12 @@ func (o SnapshotOutput) SnapshotEncryptionKey() SnapshotSnapshotEncryptionKeyPtr
 // The unique identifier for the resource.
 func (o SnapshotOutput) SnapshotId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.SnapshotId }).(pulumi.IntOutput)
+}
+
+// Indicates the type of the snapshot.
+// Possible values are: `ARCHIVE`, `STANDARD`.
+func (o SnapshotOutput) SnapshotType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SnapshotType }).(pulumi.StringPtrOutput)
 }
 
 // A reference to the disk used to create this snapshot.

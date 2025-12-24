@@ -139,6 +139,12 @@ namespace Pulumi.Gcp.Lustre
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// The KMS key id to use for encryption of the Lustre instance.
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string?> KmsKey { get; private set; } = null!;
+
+        /// <summary>
         /// Labels as key value pairs.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
@@ -202,17 +208,16 @@ namespace Pulumi.Gcp.Lustre
 
         /// <summary>
         /// The state of the instance.
-        /// Possible values:
-        /// STATE_UNSPECIFIED
-        /// ACTIVE
-        /// CREATING
-        /// DELETING
-        /// UPGRADING
-        /// REPAIRING
-        /// STOPPED
+        /// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason why the instance is in a certain state.
+        /// </summary>
+        [Output("stateReason")]
+        public Output<string> StateReason { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp when the instance was last updated.
@@ -308,6 +313,12 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// The KMS key id to use for encryption of the Lustre instance.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -426,6 +437,12 @@ namespace Pulumi.Gcp.Lustre
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// The KMS key id to use for encryption of the Lustre instance.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -506,17 +523,16 @@ namespace Pulumi.Gcp.Lustre
 
         /// <summary>
         /// The state of the instance.
-        /// Possible values:
-        /// STATE_UNSPECIFIED
-        /// ACTIVE
-        /// CREATING
-        /// DELETING
-        /// UPGRADING
-        /// REPAIRING
-        /// STOPPED
+        /// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The reason why the instance is in a certain state.
+        /// </summary>
+        [Input("stateReason")]
+        public Input<string>? StateReason { get; set; }
 
         /// <summary>
         /// Timestamp when the instance was last updated.

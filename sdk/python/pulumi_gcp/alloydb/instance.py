@@ -28,6 +28,7 @@ class InstanceArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  availability_type: Optional[pulumi.Input[_builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input['InstanceClientConnectionConfigArgs']] = None,
+                 connection_pool_config: Optional[pulumi.Input['InstanceConnectionPoolConfigArgs']] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  gce_zone: Optional[pulumi.Input[_builtins.str]] = None,
@@ -64,6 +65,8 @@ class InstanceArgs:
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input['InstanceClientConnectionConfigArgs'] client_connection_config: Client connection specific configurations.
                Structure is documented below.
+        :param pulumi.Input['InstanceConnectionPoolConfigArgs'] connection_pool_config: Configuration for Managed Connection Pool.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[_builtins.str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
@@ -94,6 +97,8 @@ class InstanceArgs:
             pulumi.set(__self__, "availability_type", availability_type)
         if client_connection_config is not None:
             pulumi.set(__self__, "client_connection_config", client_connection_config)
+        if connection_pool_config is not None:
+            pulumi.set(__self__, "connection_pool_config", connection_pool_config)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if display_name is not None:
@@ -213,6 +218,19 @@ class InstanceArgs:
     @client_connection_config.setter
     def client_connection_config(self, value: Optional[pulumi.Input['InstanceClientConnectionConfigArgs']]):
         pulumi.set(self, "client_connection_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionPoolConfig")
+    def connection_pool_config(self) -> Optional[pulumi.Input['InstanceConnectionPoolConfigArgs']]:
+        """
+        Configuration for Managed Connection Pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_pool_config")
+
+    @connection_pool_config.setter
+    def connection_pool_config(self, value: Optional[pulumi.Input['InstanceConnectionPoolConfigArgs']]):
+        pulumi.set(self, "connection_pool_config", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseFlags")
@@ -351,6 +369,7 @@ class _InstanceState:
                  availability_type: Optional[pulumi.Input[_builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input['InstanceClientConnectionConfigArgs']] = None,
                  cluster: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_pool_config: Optional[pulumi.Input['InstanceConnectionPoolConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -400,6 +419,8 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        :param pulumi.Input['InstanceConnectionPoolConfigArgs'] connection_pool_config: Configuration for Managed Connection Pool.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Instance.
@@ -446,6 +467,8 @@ class _InstanceState:
             pulumi.set(__self__, "client_connection_config", client_connection_config)
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
+        if connection_pool_config is not None:
+            pulumi.set(__self__, "connection_pool_config", connection_pool_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if database_flags is not None:
@@ -572,6 +595,19 @@ class _InstanceState:
     @cluster.setter
     def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cluster", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionPoolConfig")
+    def connection_pool_config(self) -> Optional[pulumi.Input['InstanceConnectionPoolConfigArgs']]:
+        """
+        Configuration for Managed Connection Pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_pool_config")
+
+    @connection_pool_config.setter
+    def connection_pool_config(self, value: Optional[pulumi.Input['InstanceConnectionPoolConfigArgs']]):
+        pulumi.set(self, "connection_pool_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -880,6 +916,7 @@ class Instance(pulumi.CustomResource):
                  availability_type: Optional[pulumi.Input[_builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_pool_config: Optional[pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']]] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  gce_zone: Optional[pulumi.Input[_builtins.str]] = None,
@@ -945,9 +982,6 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
-            },
-            initial_user={
-                "password": "alloydb-primary-cluster",
             },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
@@ -1044,6 +1078,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        :param pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']] connection_pool_config: Configuration for Managed Connection Pool.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[_builtins.str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
@@ -1122,9 +1158,6 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             network_config={
                 "network": default.id,
-            },
-            initial_user={
-                "password": "alloydb-primary-cluster",
             },
             deletion_protection=False)
         private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
@@ -1216,6 +1249,7 @@ class Instance(pulumi.CustomResource):
                  availability_type: Optional[pulumi.Input[_builtins.str]] = None,
                  client_connection_config: Optional[pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_pool_config: Optional[pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']]] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  gce_zone: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1244,6 +1278,7 @@ class Instance(pulumi.CustomResource):
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
+            __props__.__dict__["connection_pool_config"] = connection_pool_config
             __props__.__dict__["database_flags"] = database_flags
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["gce_zone"] = gce_zone
@@ -1289,6 +1324,7 @@ class Instance(pulumi.CustomResource):
             availability_type: Optional[pulumi.Input[_builtins.str]] = None,
             client_connection_config: Optional[pulumi.Input[Union['InstanceClientConnectionConfigArgs', 'InstanceClientConnectionConfigArgsDict']]] = None,
             cluster: Optional[pulumi.Input[_builtins.str]] = None,
+            connection_pool_config: Optional[pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1343,6 +1379,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        :param pulumi.Input[Union['InstanceConnectionPoolConfigArgs', 'InstanceConnectionPoolConfigArgsDict']] connection_pool_config: Configuration for Managed Connection Pool.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[_builtins.str] display_name: User-settable and human-readable display name for the Instance.
@@ -1388,6 +1426,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["availability_type"] = availability_type
         __props__.__dict__["client_connection_config"] = client_connection_config
         __props__.__dict__["cluster"] = cluster
+        __props__.__dict__["connection_pool_config"] = connection_pool_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["database_flags"] = database_flags
         __props__.__dict__["display_name"] = display_name
@@ -1471,6 +1510,15 @@ class Instance(pulumi.CustomResource):
         'projects/{project}/locations/{location}/clusters/{cluster_id}'
         """
         return pulumi.get(self, "cluster")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionPoolConfig")
+    def connection_pool_config(self) -> pulumi.Output[Optional['outputs.InstanceConnectionPoolConfig']]:
+        """
+        Configuration for Managed Connection Pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connection_pool_config")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

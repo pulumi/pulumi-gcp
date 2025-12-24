@@ -132,14 +132,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the parent reservation.
+        /// 
+        /// - - -
         /// </summary>
         [Input("reservation", required: true)]
         public string Reservation { get; set; } = null!;
 
         /// <summary>
         /// The zone where the reservation block resides.
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public string? Zone { get; set; }
@@ -167,14 +167,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the parent reservation.
+        /// 
+        /// - - -
         /// </summary>
         [Input("reservation", required: true)]
         public Input<string> Reservation { get; set; } = null!;
 
         /// <summary>
         /// The zone where the reservation block resides.
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

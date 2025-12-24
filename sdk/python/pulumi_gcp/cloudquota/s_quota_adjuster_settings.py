@@ -68,8 +68,12 @@ class _SQuotaAdjusterSettingsState:
                  parent: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SQuotaAdjusterSettings resources.
-        :param pulumi.Input[_builtins.str] effective_container: The resource container that determines if the quota adjuster is set for this project.
-        :param pulumi.Input[_builtins.str] effective_enablement: Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        :param pulumi.Input[_builtins.str] effective_container: (Deprecated)
+               The resource container that determines if the quota adjuster is set for this project.
+               Expect this field to be empty currently.
+        :param pulumi.Input[_builtins.str] effective_enablement: (Deprecated)
+               Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+               Expect this field to be empty currently.
         :param pulumi.Input[_builtins.str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[_builtins.bool] inherited: Indicates whether the setting is inherited or explicitly specified.
@@ -79,7 +83,13 @@ class _SQuotaAdjusterSettingsState:
         :param pulumi.Input[_builtins.str] parent: The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
         """
         if effective_container is not None:
+            warnings.warn("""`effectiveContainer` is deprecated and will be removed in a future major release. Use `inherited_from` instead.""", DeprecationWarning)
+            pulumi.log.warn("""effective_container is deprecated: `effectiveContainer` is deprecated and will be removed in a future major release. Use `inherited_from` instead.""")
+        if effective_container is not None:
             pulumi.set(__self__, "effective_container", effective_container)
+        if effective_enablement is not None:
+            warnings.warn("""`effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.""", DeprecationWarning)
+            pulumi.log.warn("""effective_enablement is deprecated: `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.""")
         if effective_enablement is not None:
             pulumi.set(__self__, "effective_enablement", effective_enablement)
         if enablement is not None:
@@ -93,9 +103,12 @@ class _SQuotaAdjusterSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="effectiveContainer")
+    @_utilities.deprecated("""`effectiveContainer` is deprecated and will be removed in a future major release. Use `inherited_from` instead.""")
     def effective_container(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Deprecated)
         The resource container that determines if the quota adjuster is set for this project.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_container")
 
@@ -105,9 +118,12 @@ class _SQuotaAdjusterSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="effectiveEnablement")
+    @_utilities.deprecated("""`effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.""")
     def effective_enablement(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Deprecated)
         Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_enablement")
 
@@ -313,8 +329,12 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] effective_container: The resource container that determines if the quota adjuster is set for this project.
-        :param pulumi.Input[_builtins.str] effective_enablement: Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        :param pulumi.Input[_builtins.str] effective_container: (Deprecated)
+               The resource container that determines if the quota adjuster is set for this project.
+               Expect this field to be empty currently.
+        :param pulumi.Input[_builtins.str] effective_enablement: (Deprecated)
+               Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+               Expect this field to be empty currently.
         :param pulumi.Input[_builtins.str] enablement: Required. The configured value of the enablement at the given resource.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[_builtins.bool] inherited: Indicates whether the setting is inherited or explicitly specified.
@@ -337,17 +357,23 @@ class SQuotaAdjusterSettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="effectiveContainer")
+    @_utilities.deprecated("""`effectiveContainer` is deprecated and will be removed in a future major release. Use `inherited_from` instead.""")
     def effective_container(self) -> pulumi.Output[_builtins.str]:
         """
+        (Deprecated)
         The resource container that determines if the quota adjuster is set for this project.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_container")
 
     @_builtins.property
     @pulumi.getter(name="effectiveEnablement")
+    @_utilities.deprecated("""`effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.""")
     def effective_enablement(self) -> pulumi.Output[_builtins.str]:
         """
+        (Deprecated)
         Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+        Expect this field to be empty currently.
         """
         return pulumi.get(self, "effective_enablement")
 

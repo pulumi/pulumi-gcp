@@ -146,6 +146,166 @@ func (o InstanceAdminSettingsPtrOutput) AllowedEmailDomains() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+type InstanceControlledEgressConfig struct {
+	// List of fully qualified domain names to be added to the allowlist for
+	// outbound traffic.
+	EgressFqdns []string `pulumi:"egressFqdns"`
+	// Whether the Looker Marketplace is enabled.
+	MarketplaceEnabled *bool `pulumi:"marketplaceEnabled"`
+}
+
+// InstanceControlledEgressConfigInput is an input type that accepts InstanceControlledEgressConfigArgs and InstanceControlledEgressConfigOutput values.
+// You can construct a concrete instance of `InstanceControlledEgressConfigInput` via:
+//
+//	InstanceControlledEgressConfigArgs{...}
+type InstanceControlledEgressConfigInput interface {
+	pulumi.Input
+
+	ToInstanceControlledEgressConfigOutput() InstanceControlledEgressConfigOutput
+	ToInstanceControlledEgressConfigOutputWithContext(context.Context) InstanceControlledEgressConfigOutput
+}
+
+type InstanceControlledEgressConfigArgs struct {
+	// List of fully qualified domain names to be added to the allowlist for
+	// outbound traffic.
+	EgressFqdns pulumi.StringArrayInput `pulumi:"egressFqdns"`
+	// Whether the Looker Marketplace is enabled.
+	MarketplaceEnabled pulumi.BoolPtrInput `pulumi:"marketplaceEnabled"`
+}
+
+func (InstanceControlledEgressConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceControlledEgressConfig)(nil)).Elem()
+}
+
+func (i InstanceControlledEgressConfigArgs) ToInstanceControlledEgressConfigOutput() InstanceControlledEgressConfigOutput {
+	return i.ToInstanceControlledEgressConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceControlledEgressConfigArgs) ToInstanceControlledEgressConfigOutputWithContext(ctx context.Context) InstanceControlledEgressConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceControlledEgressConfigOutput)
+}
+
+func (i InstanceControlledEgressConfigArgs) ToInstanceControlledEgressConfigPtrOutput() InstanceControlledEgressConfigPtrOutput {
+	return i.ToInstanceControlledEgressConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceControlledEgressConfigArgs) ToInstanceControlledEgressConfigPtrOutputWithContext(ctx context.Context) InstanceControlledEgressConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceControlledEgressConfigOutput).ToInstanceControlledEgressConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceControlledEgressConfigPtrInput is an input type that accepts InstanceControlledEgressConfigArgs, InstanceControlledEgressConfigPtr and InstanceControlledEgressConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceControlledEgressConfigPtrInput` via:
+//
+//	        InstanceControlledEgressConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceControlledEgressConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceControlledEgressConfigPtrOutput() InstanceControlledEgressConfigPtrOutput
+	ToInstanceControlledEgressConfigPtrOutputWithContext(context.Context) InstanceControlledEgressConfigPtrOutput
+}
+
+type instanceControlledEgressConfigPtrType InstanceControlledEgressConfigArgs
+
+func InstanceControlledEgressConfigPtr(v *InstanceControlledEgressConfigArgs) InstanceControlledEgressConfigPtrInput {
+	return (*instanceControlledEgressConfigPtrType)(v)
+}
+
+func (*instanceControlledEgressConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceControlledEgressConfig)(nil)).Elem()
+}
+
+func (i *instanceControlledEgressConfigPtrType) ToInstanceControlledEgressConfigPtrOutput() InstanceControlledEgressConfigPtrOutput {
+	return i.ToInstanceControlledEgressConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceControlledEgressConfigPtrType) ToInstanceControlledEgressConfigPtrOutputWithContext(ctx context.Context) InstanceControlledEgressConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceControlledEgressConfigPtrOutput)
+}
+
+type InstanceControlledEgressConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceControlledEgressConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceControlledEgressConfig)(nil)).Elem()
+}
+
+func (o InstanceControlledEgressConfigOutput) ToInstanceControlledEgressConfigOutput() InstanceControlledEgressConfigOutput {
+	return o
+}
+
+func (o InstanceControlledEgressConfigOutput) ToInstanceControlledEgressConfigOutputWithContext(ctx context.Context) InstanceControlledEgressConfigOutput {
+	return o
+}
+
+func (o InstanceControlledEgressConfigOutput) ToInstanceControlledEgressConfigPtrOutput() InstanceControlledEgressConfigPtrOutput {
+	return o.ToInstanceControlledEgressConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceControlledEgressConfigOutput) ToInstanceControlledEgressConfigPtrOutputWithContext(ctx context.Context) InstanceControlledEgressConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceControlledEgressConfig) *InstanceControlledEgressConfig {
+		return &v
+	}).(InstanceControlledEgressConfigPtrOutput)
+}
+
+// List of fully qualified domain names to be added to the allowlist for
+// outbound traffic.
+func (o InstanceControlledEgressConfigOutput) EgressFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceControlledEgressConfig) []string { return v.EgressFqdns }).(pulumi.StringArrayOutput)
+}
+
+// Whether the Looker Marketplace is enabled.
+func (o InstanceControlledEgressConfigOutput) MarketplaceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceControlledEgressConfig) *bool { return v.MarketplaceEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceControlledEgressConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceControlledEgressConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceControlledEgressConfig)(nil)).Elem()
+}
+
+func (o InstanceControlledEgressConfigPtrOutput) ToInstanceControlledEgressConfigPtrOutput() InstanceControlledEgressConfigPtrOutput {
+	return o
+}
+
+func (o InstanceControlledEgressConfigPtrOutput) ToInstanceControlledEgressConfigPtrOutputWithContext(ctx context.Context) InstanceControlledEgressConfigPtrOutput {
+	return o
+}
+
+func (o InstanceControlledEgressConfigPtrOutput) Elem() InstanceControlledEgressConfigOutput {
+	return o.ApplyT(func(v *InstanceControlledEgressConfig) InstanceControlledEgressConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceControlledEgressConfig
+		return ret
+	}).(InstanceControlledEgressConfigOutput)
+}
+
+// List of fully qualified domain names to be added to the allowlist for
+// outbound traffic.
+func (o InstanceControlledEgressConfigPtrOutput) EgressFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceControlledEgressConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the Looker Marketplace is enabled.
+func (o InstanceControlledEgressConfigPtrOutput) MarketplaceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceControlledEgressConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceCustomDomain struct {
 	// Domain name
 	Domain *string `pulumi:"domain"`
@@ -2265,6 +2425,8 @@ func (o InstanceUserMetadataPtrOutput) AdditionalViewerUserCount() pulumi.IntPtr
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdminSettingsInput)(nil)).Elem(), InstanceAdminSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAdminSettingsPtrInput)(nil)).Elem(), InstanceAdminSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceControlledEgressConfigInput)(nil)).Elem(), InstanceControlledEgressConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceControlledEgressConfigPtrInput)(nil)).Elem(), InstanceControlledEgressConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCustomDomainInput)(nil)).Elem(), InstanceCustomDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCustomDomainPtrInput)(nil)).Elem(), InstanceCustomDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDenyMaintenancePeriodInput)(nil)).Elem(), InstanceDenyMaintenancePeriodArgs{})
@@ -2291,6 +2453,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUserMetadataPtrInput)(nil)).Elem(), InstanceUserMetadataArgs{})
 	pulumi.RegisterOutputType(InstanceAdminSettingsOutput{})
 	pulumi.RegisterOutputType(InstanceAdminSettingsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceControlledEgressConfigOutput{})
+	pulumi.RegisterOutputType(InstanceControlledEgressConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceCustomDomainOutput{})
 	pulumi.RegisterOutputType(InstanceCustomDomainPtrOutput{})
 	pulumi.RegisterOutputType(InstanceDenyMaintenancePeriodOutput{})

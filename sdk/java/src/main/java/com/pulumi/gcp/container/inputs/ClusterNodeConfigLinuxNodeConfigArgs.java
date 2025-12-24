@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -53,6 +54,21 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
      */
     public Optional<Output<ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs>> hugepagesConfig() {
         return Optional.ofNullable(this.hugepagesConfig);
+    }
+
+    /**
+     * The settings for kernel module loading.
+     * 
+     */
+    @Import(name="nodeKernelModuleLoading")
+    private @Nullable Output<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs> nodeKernelModuleLoading;
+
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs>> nodeKernelModuleLoading() {
+        return Optional.ofNullable(this.nodeKernelModuleLoading);
     }
 
     /**
@@ -111,6 +127,7 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
     private ClusterNodeConfigLinuxNodeConfigArgs(ClusterNodeConfigLinuxNodeConfigArgs $) {
         this.cgroupMode = $.cgroupMode;
         this.hugepagesConfig = $.hugepagesConfig;
+        this.nodeKernelModuleLoading = $.nodeKernelModuleLoading;
         this.sysctls = $.sysctls;
         this.transparentHugepageDefrag = $.transparentHugepageDefrag;
         this.transparentHugepageEnabled = $.transparentHugepageEnabled;
@@ -182,6 +199,27 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
          */
         public Builder hugepagesConfig(ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs hugepagesConfig) {
             return hugepagesConfig(Output.of(hugepagesConfig));
+        }
+
+        /**
+         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeKernelModuleLoading(@Nullable Output<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs> nodeKernelModuleLoading) {
+            $.nodeKernelModuleLoading = nodeKernelModuleLoading;
+            return this;
+        }
+
+        /**
+         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeKernelModuleLoading(ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs nodeKernelModuleLoading) {
+            return nodeKernelModuleLoading(Output.of(nodeKernelModuleLoading));
         }
 
         /**

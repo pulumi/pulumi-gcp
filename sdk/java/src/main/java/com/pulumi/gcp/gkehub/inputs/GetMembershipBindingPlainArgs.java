@@ -15,30 +15,66 @@ public final class GetMembershipBindingPlainArgs extends com.pulumi.resources.In
 
     public static final GetMembershipBindingPlainArgs Empty = new GetMembershipBindingPlainArgs();
 
+    /**
+     * The location for the GKE Hub Membership Binding.
+     * Currently only `global` is supported.
+     * 
+     */
     @Import(name="location", required=true)
     private String location;
 
+    /**
+     * @return The location for the GKE Hub Membership Binding.
+     * Currently only `global` is supported.
+     * 
+     */
     public String location() {
         return this.location;
     }
 
+    /**
+     * The ID of the membership binding.
+     * 
+     */
     @Import(name="membershipBindingId", required=true)
     private String membershipBindingId;
 
+    /**
+     * @return The ID of the membership binding.
+     * 
+     */
     public String membershipBindingId() {
         return this.membershipBindingId;
     }
 
+    /**
+     * The ID of the membership that this binding applies to.
+     * 
+     */
     @Import(name="membershipId", required=true)
     private String membershipId;
 
+    /**
+     * @return The ID of the membership that this binding applies to.
+     * 
+     */
     public String membershipId() {
         return this.membershipId;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -70,21 +106,47 @@ public final class GetMembershipBindingPlainArgs extends com.pulumi.resources.In
             $ = new GetMembershipBindingPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param location The location for the GKE Hub Membership Binding.
+         * Currently only `global` is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param membershipBindingId The ID of the membership binding.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipBindingId(String membershipBindingId) {
             $.membershipBindingId = membershipBindingId;
             return this;
         }
 
+        /**
+         * @param membershipId The ID of the membership that this binding applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipId(String membershipId) {
             $.membershipId = membershipId;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

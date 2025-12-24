@@ -2305,7 +2305,7 @@ func (o ClusterEncryptionInfoArrayOutput) Index(i pulumi.IntInput) ClusterEncryp
 type ClusterInitialUser struct {
 	// The initial password for the user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// The database username.
 	User *string `pulumi:"user"`
 }
@@ -2324,7 +2324,7 @@ type ClusterInitialUserInput interface {
 type ClusterInitialUserArgs struct {
 	// The initial password for the user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The database username.
 	User pulumi.StringPtrInput `pulumi:"user"`
 }
@@ -2408,8 +2408,8 @@ func (o ClusterInitialUserOutput) ToClusterInitialUserPtrOutputWithContext(ctx c
 
 // The initial password for the user.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ClusterInitialUserOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterInitialUser) string { return v.Password }).(pulumi.StringOutput)
+func (o ClusterInitialUserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterInitialUser) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The database username.
@@ -2448,7 +2448,7 @@ func (o ClusterInitialUserPtrOutput) Password() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4098,6 +4098,181 @@ func (o InstanceClientConnectionConfigSslConfigPtrOutput) SslMode() pulumi.Strin
 		}
 		return v.SslMode
 	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceConnectionPoolConfig struct {
+	// Whether to enabled Managed Connection Pool.
+	Enabled bool              `pulumi:"enabled"`
+	Flags   map[string]string `pulumi:"flags"`
+	// (Output)
+	// The number of running poolers per instance.
+	PoolerCount *int `pulumi:"poolerCount"`
+}
+
+// InstanceConnectionPoolConfigInput is an input type that accepts InstanceConnectionPoolConfigArgs and InstanceConnectionPoolConfigOutput values.
+// You can construct a concrete instance of `InstanceConnectionPoolConfigInput` via:
+//
+//	InstanceConnectionPoolConfigArgs{...}
+type InstanceConnectionPoolConfigInput interface {
+	pulumi.Input
+
+	ToInstanceConnectionPoolConfigOutput() InstanceConnectionPoolConfigOutput
+	ToInstanceConnectionPoolConfigOutputWithContext(context.Context) InstanceConnectionPoolConfigOutput
+}
+
+type InstanceConnectionPoolConfigArgs struct {
+	// Whether to enabled Managed Connection Pool.
+	Enabled pulumi.BoolInput      `pulumi:"enabled"`
+	Flags   pulumi.StringMapInput `pulumi:"flags"`
+	// (Output)
+	// The number of running poolers per instance.
+	PoolerCount pulumi.IntPtrInput `pulumi:"poolerCount"`
+}
+
+func (InstanceConnectionPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i InstanceConnectionPoolConfigArgs) ToInstanceConnectionPoolConfigOutput() InstanceConnectionPoolConfigOutput {
+	return i.ToInstanceConnectionPoolConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceConnectionPoolConfigArgs) ToInstanceConnectionPoolConfigOutputWithContext(ctx context.Context) InstanceConnectionPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConnectionPoolConfigOutput)
+}
+
+func (i InstanceConnectionPoolConfigArgs) ToInstanceConnectionPoolConfigPtrOutput() InstanceConnectionPoolConfigPtrOutput {
+	return i.ToInstanceConnectionPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceConnectionPoolConfigArgs) ToInstanceConnectionPoolConfigPtrOutputWithContext(ctx context.Context) InstanceConnectionPoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConnectionPoolConfigOutput).ToInstanceConnectionPoolConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceConnectionPoolConfigPtrInput is an input type that accepts InstanceConnectionPoolConfigArgs, InstanceConnectionPoolConfigPtr and InstanceConnectionPoolConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceConnectionPoolConfigPtrInput` via:
+//
+//	        InstanceConnectionPoolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceConnectionPoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceConnectionPoolConfigPtrOutput() InstanceConnectionPoolConfigPtrOutput
+	ToInstanceConnectionPoolConfigPtrOutputWithContext(context.Context) InstanceConnectionPoolConfigPtrOutput
+}
+
+type instanceConnectionPoolConfigPtrType InstanceConnectionPoolConfigArgs
+
+func InstanceConnectionPoolConfigPtr(v *InstanceConnectionPoolConfigArgs) InstanceConnectionPoolConfigPtrInput {
+	return (*instanceConnectionPoolConfigPtrType)(v)
+}
+
+func (*instanceConnectionPoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i *instanceConnectionPoolConfigPtrType) ToInstanceConnectionPoolConfigPtrOutput() InstanceConnectionPoolConfigPtrOutput {
+	return i.ToInstanceConnectionPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceConnectionPoolConfigPtrType) ToInstanceConnectionPoolConfigPtrOutputWithContext(ctx context.Context) InstanceConnectionPoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceConnectionPoolConfigPtrOutput)
+}
+
+type InstanceConnectionPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceConnectionPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o InstanceConnectionPoolConfigOutput) ToInstanceConnectionPoolConfigOutput() InstanceConnectionPoolConfigOutput {
+	return o
+}
+
+func (o InstanceConnectionPoolConfigOutput) ToInstanceConnectionPoolConfigOutputWithContext(ctx context.Context) InstanceConnectionPoolConfigOutput {
+	return o
+}
+
+func (o InstanceConnectionPoolConfigOutput) ToInstanceConnectionPoolConfigPtrOutput() InstanceConnectionPoolConfigPtrOutput {
+	return o.ToInstanceConnectionPoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConnectionPoolConfigOutput) ToInstanceConnectionPoolConfigPtrOutputWithContext(ctx context.Context) InstanceConnectionPoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConnectionPoolConfig) *InstanceConnectionPoolConfig {
+		return &v
+	}).(InstanceConnectionPoolConfigPtrOutput)
+}
+
+// Whether to enabled Managed Connection Pool.
+func (o InstanceConnectionPoolConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceConnectionPoolConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o InstanceConnectionPoolConfigOutput) Flags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceConnectionPoolConfig) map[string]string { return v.Flags }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The number of running poolers per instance.
+func (o InstanceConnectionPoolConfigOutput) PoolerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceConnectionPoolConfig) *int { return v.PoolerCount }).(pulumi.IntPtrOutput)
+}
+
+type InstanceConnectionPoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceConnectionPoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o InstanceConnectionPoolConfigPtrOutput) ToInstanceConnectionPoolConfigPtrOutput() InstanceConnectionPoolConfigPtrOutput {
+	return o
+}
+
+func (o InstanceConnectionPoolConfigPtrOutput) ToInstanceConnectionPoolConfigPtrOutputWithContext(ctx context.Context) InstanceConnectionPoolConfigPtrOutput {
+	return o
+}
+
+func (o InstanceConnectionPoolConfigPtrOutput) Elem() InstanceConnectionPoolConfigOutput {
+	return o.ApplyT(func(v *InstanceConnectionPoolConfig) InstanceConnectionPoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceConnectionPoolConfig
+		return ret
+	}).(InstanceConnectionPoolConfigOutput)
+}
+
+// Whether to enabled Managed Connection Pool.
+func (o InstanceConnectionPoolConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceConnectionPoolConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o InstanceConnectionPoolConfigPtrOutput) Flags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceConnectionPoolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// The number of running poolers per instance.
+func (o InstanceConnectionPoolConfigPtrOutput) PoolerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceConnectionPoolConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PoolerCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type InstanceMachineConfig struct {
@@ -8587,6 +8762,118 @@ func (o GetInstanceClientConnectionConfigSslConfigArrayOutput) Index(i pulumi.In
 	}).(GetInstanceClientConnectionConfigSslConfigOutput)
 }
 
+type GetInstanceConnectionPoolConfig struct {
+	// Whether to enabled Managed Connection Pool.
+	Enabled bool              `pulumi:"enabled"`
+	Flags   map[string]string `pulumi:"flags"`
+	// The number of running poolers per instance.
+	PoolerCount int `pulumi:"poolerCount"`
+}
+
+// GetInstanceConnectionPoolConfigInput is an input type that accepts GetInstanceConnectionPoolConfigArgs and GetInstanceConnectionPoolConfigOutput values.
+// You can construct a concrete instance of `GetInstanceConnectionPoolConfigInput` via:
+//
+//	GetInstanceConnectionPoolConfigArgs{...}
+type GetInstanceConnectionPoolConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceConnectionPoolConfigOutput() GetInstanceConnectionPoolConfigOutput
+	ToGetInstanceConnectionPoolConfigOutputWithContext(context.Context) GetInstanceConnectionPoolConfigOutput
+}
+
+type GetInstanceConnectionPoolConfigArgs struct {
+	// Whether to enabled Managed Connection Pool.
+	Enabled pulumi.BoolInput      `pulumi:"enabled"`
+	Flags   pulumi.StringMapInput `pulumi:"flags"`
+	// The number of running poolers per instance.
+	PoolerCount pulumi.IntInput `pulumi:"poolerCount"`
+}
+
+func (GetInstanceConnectionPoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConnectionPoolConfigArgs) ToGetInstanceConnectionPoolConfigOutput() GetInstanceConnectionPoolConfigOutput {
+	return i.ToGetInstanceConnectionPoolConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConnectionPoolConfigArgs) ToGetInstanceConnectionPoolConfigOutputWithContext(ctx context.Context) GetInstanceConnectionPoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConnectionPoolConfigOutput)
+}
+
+// GetInstanceConnectionPoolConfigArrayInput is an input type that accepts GetInstanceConnectionPoolConfigArray and GetInstanceConnectionPoolConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceConnectionPoolConfigArrayInput` via:
+//
+//	GetInstanceConnectionPoolConfigArray{ GetInstanceConnectionPoolConfigArgs{...} }
+type GetInstanceConnectionPoolConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceConnectionPoolConfigArrayOutput() GetInstanceConnectionPoolConfigArrayOutput
+	ToGetInstanceConnectionPoolConfigArrayOutputWithContext(context.Context) GetInstanceConnectionPoolConfigArrayOutput
+}
+
+type GetInstanceConnectionPoolConfigArray []GetInstanceConnectionPoolConfigInput
+
+func (GetInstanceConnectionPoolConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (i GetInstanceConnectionPoolConfigArray) ToGetInstanceConnectionPoolConfigArrayOutput() GetInstanceConnectionPoolConfigArrayOutput {
+	return i.ToGetInstanceConnectionPoolConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceConnectionPoolConfigArray) ToGetInstanceConnectionPoolConfigArrayOutputWithContext(ctx context.Context) GetInstanceConnectionPoolConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceConnectionPoolConfigArrayOutput)
+}
+
+type GetInstanceConnectionPoolConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConnectionPoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConnectionPoolConfigOutput) ToGetInstanceConnectionPoolConfigOutput() GetInstanceConnectionPoolConfigOutput {
+	return o
+}
+
+func (o GetInstanceConnectionPoolConfigOutput) ToGetInstanceConnectionPoolConfigOutputWithContext(ctx context.Context) GetInstanceConnectionPoolConfigOutput {
+	return o
+}
+
+// Whether to enabled Managed Connection Pool.
+func (o GetInstanceConnectionPoolConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceConnectionPoolConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceConnectionPoolConfigOutput) Flags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceConnectionPoolConfig) map[string]string { return v.Flags }).(pulumi.StringMapOutput)
+}
+
+// The number of running poolers per instance.
+func (o GetInstanceConnectionPoolConfigOutput) PoolerCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceConnectionPoolConfig) int { return v.PoolerCount }).(pulumi.IntOutput)
+}
+
+type GetInstanceConnectionPoolConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceConnectionPoolConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceConnectionPoolConfig)(nil)).Elem()
+}
+
+func (o GetInstanceConnectionPoolConfigArrayOutput) ToGetInstanceConnectionPoolConfigArrayOutput() GetInstanceConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConnectionPoolConfigArrayOutput) ToGetInstanceConnectionPoolConfigArrayOutputWithContext(ctx context.Context) GetInstanceConnectionPoolConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceConnectionPoolConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceConnectionPoolConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceConnectionPoolConfig {
+		return vs[0].([]GetInstanceConnectionPoolConfig)[vs[1].(int)]
+	}).(GetInstanceConnectionPoolConfigOutput)
+}
+
 type GetInstanceMachineConfig struct {
 	// The number of CPU's in the VM instance.
 	CpuCount int `pulumi:"cpuCount"`
@@ -10206,6 +10493,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientConnectionConfigPtrInput)(nil)).Elem(), InstanceClientConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientConnectionConfigSslConfigInput)(nil)).Elem(), InstanceClientConnectionConfigSslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientConnectionConfigSslConfigPtrInput)(nil)).Elem(), InstanceClientConnectionConfigSslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectionPoolConfigInput)(nil)).Elem(), InstanceConnectionPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConnectionPoolConfigPtrInput)(nil)).Elem(), InstanceConnectionPoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigInput)(nil)).Elem(), InstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigPtrInput)(nil)).Elem(), InstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
@@ -10276,6 +10565,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigArrayInput)(nil)).Elem(), GetInstanceClientConnectionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigSslConfigInput)(nil)).Elem(), GetInstanceClientConnectionConfigSslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceClientConnectionConfigSslConfigArrayInput)(nil)).Elem(), GetInstanceClientConnectionConfigSslConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConnectionPoolConfigInput)(nil)).Elem(), GetInstanceConnectionPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceConnectionPoolConfigArrayInput)(nil)).Elem(), GetInstanceConnectionPoolConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMachineConfigInput)(nil)).Elem(), GetInstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceMachineConfigArrayInput)(nil)).Elem(), GetInstanceMachineConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkConfigInput)(nil)).Elem(), GetInstanceNetworkConfigArgs{})
@@ -10357,6 +10648,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceClientConnectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceClientConnectionConfigSslConfigOutput{})
 	pulumi.RegisterOutputType(InstanceClientConnectionConfigSslConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceConnectionPoolConfigOutput{})
+	pulumi.RegisterOutputType(InstanceConnectionPoolConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
@@ -10427,6 +10720,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigSslConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceClientConnectionConfigSslConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceConnectionPoolConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceConnectionPoolConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceMachineConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceMachineConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkConfigOutput{})

@@ -110,6 +110,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The KMS key id to use for encryption of the Lustre instance.
+     * 
+     */
+    @Import(name="kmsKey")
+    private @Nullable Output<String> kmsKey;
+
+    /**
+     * @return The KMS key id to use for encryption of the Lustre instance.
+     * 
+     */
+    public Optional<Output<String>> kmsKey() {
+        return Optional.ofNullable(this.kmsKey);
+    }
+
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -221,6 +236,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.filesystem = $.filesystem;
         this.gkeSupportEnabled = $.gkeSupportEnabled;
         this.instanceId = $.instanceId;
+        this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.location = $.location;
         this.network = $.network;
@@ -366,6 +382,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param kmsKey The KMS key id to use for encryption of the Lustre instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(@Nullable Output<String> kmsKey) {
+            $.kmsKey = kmsKey;
+            return this;
+        }
+
+        /**
+         * @param kmsKey The KMS key id to use for encryption of the Lustre instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(String kmsKey) {
+            return kmsKey(Output.of(kmsKey));
         }
 
         /**

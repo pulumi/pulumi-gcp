@@ -5060,6 +5060,147 @@ func (o TriggerMatchingCriteriaArrayOutput) Index(i pulumi.IntInput) TriggerMatc
 	}).(TriggerMatchingCriteriaOutput)
 }
 
+type TriggerRetryPolicy struct {
+	// The maximum number of delivery attempts for any message. The only valid
+	// value is 1.
+	MaxAttempts *int `pulumi:"maxAttempts"`
+}
+
+// TriggerRetryPolicyInput is an input type that accepts TriggerRetryPolicyArgs and TriggerRetryPolicyOutput values.
+// You can construct a concrete instance of `TriggerRetryPolicyInput` via:
+//
+//	TriggerRetryPolicyArgs{...}
+type TriggerRetryPolicyInput interface {
+	pulumi.Input
+
+	ToTriggerRetryPolicyOutput() TriggerRetryPolicyOutput
+	ToTriggerRetryPolicyOutputWithContext(context.Context) TriggerRetryPolicyOutput
+}
+
+type TriggerRetryPolicyArgs struct {
+	// The maximum number of delivery attempts for any message. The only valid
+	// value is 1.
+	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
+}
+
+func (TriggerRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRetryPolicy)(nil)).Elem()
+}
+
+func (i TriggerRetryPolicyArgs) ToTriggerRetryPolicyOutput() TriggerRetryPolicyOutput {
+	return i.ToTriggerRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i TriggerRetryPolicyArgs) ToTriggerRetryPolicyOutputWithContext(ctx context.Context) TriggerRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRetryPolicyOutput)
+}
+
+func (i TriggerRetryPolicyArgs) ToTriggerRetryPolicyPtrOutput() TriggerRetryPolicyPtrOutput {
+	return i.ToTriggerRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerRetryPolicyArgs) ToTriggerRetryPolicyPtrOutputWithContext(ctx context.Context) TriggerRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRetryPolicyOutput).ToTriggerRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// TriggerRetryPolicyPtrInput is an input type that accepts TriggerRetryPolicyArgs, TriggerRetryPolicyPtr and TriggerRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `TriggerRetryPolicyPtrInput` via:
+//
+//	        TriggerRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTriggerRetryPolicyPtrOutput() TriggerRetryPolicyPtrOutput
+	ToTriggerRetryPolicyPtrOutputWithContext(context.Context) TriggerRetryPolicyPtrOutput
+}
+
+type triggerRetryPolicyPtrType TriggerRetryPolicyArgs
+
+func TriggerRetryPolicyPtr(v *TriggerRetryPolicyArgs) TriggerRetryPolicyPtrInput {
+	return (*triggerRetryPolicyPtrType)(v)
+}
+
+func (*triggerRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRetryPolicy)(nil)).Elem()
+}
+
+func (i *triggerRetryPolicyPtrType) ToTriggerRetryPolicyPtrOutput() TriggerRetryPolicyPtrOutput {
+	return i.ToTriggerRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerRetryPolicyPtrType) ToTriggerRetryPolicyPtrOutputWithContext(ctx context.Context) TriggerRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerRetryPolicyPtrOutput)
+}
+
+type TriggerRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (TriggerRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerRetryPolicy)(nil)).Elem()
+}
+
+func (o TriggerRetryPolicyOutput) ToTriggerRetryPolicyOutput() TriggerRetryPolicyOutput {
+	return o
+}
+
+func (o TriggerRetryPolicyOutput) ToTriggerRetryPolicyOutputWithContext(ctx context.Context) TriggerRetryPolicyOutput {
+	return o
+}
+
+func (o TriggerRetryPolicyOutput) ToTriggerRetryPolicyPtrOutput() TriggerRetryPolicyPtrOutput {
+	return o.ToTriggerRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerRetryPolicyOutput) ToTriggerRetryPolicyPtrOutputWithContext(ctx context.Context) TriggerRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerRetryPolicy) *TriggerRetryPolicy {
+		return &v
+	}).(TriggerRetryPolicyPtrOutput)
+}
+
+// The maximum number of delivery attempts for any message. The only valid
+// value is 1.
+func (o TriggerRetryPolicyOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TriggerRetryPolicy) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
+}
+
+type TriggerRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerRetryPolicy)(nil)).Elem()
+}
+
+func (o TriggerRetryPolicyPtrOutput) ToTriggerRetryPolicyPtrOutput() TriggerRetryPolicyPtrOutput {
+	return o
+}
+
+func (o TriggerRetryPolicyPtrOutput) ToTriggerRetryPolicyPtrOutputWithContext(ctx context.Context) TriggerRetryPolicyPtrOutput {
+	return o
+}
+
+func (o TriggerRetryPolicyPtrOutput) Elem() TriggerRetryPolicyOutput {
+	return o.ApplyT(func(v *TriggerRetryPolicy) TriggerRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerRetryPolicy
+		return ret
+	}).(TriggerRetryPolicyOutput)
+}
+
+// The maximum number of delivery attempts for any message. The only valid
+// value is 1.
+func (o TriggerRetryPolicyPtrOutput) MaxAttempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TriggerRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAttempts
+	}).(pulumi.IntPtrOutput)
+}
+
 type TriggerTransport struct {
 	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
 	// Structure is documented below.
@@ -5414,6 +5555,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationNetworkConfigPtrInput)(nil)).Elem(), TriggerDestinationNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaInput)(nil)).Elem(), TriggerMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaArrayInput)(nil)).Elem(), TriggerMatchingCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRetryPolicyInput)(nil)).Elem(), TriggerRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerRetryPolicyPtrInput)(nil)).Elem(), TriggerRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportInput)(nil)).Elem(), TriggerTransportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPtrInput)(nil)).Elem(), TriggerTransportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
@@ -5470,6 +5613,8 @@ func init() {
 	pulumi.RegisterOutputType(TriggerDestinationNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(TriggerRetryPolicyOutput{})
+	pulumi.RegisterOutputType(TriggerRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTransportOutput{})
 	pulumi.RegisterOutputType(TriggerTransportPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTransportPubsubOutput{})

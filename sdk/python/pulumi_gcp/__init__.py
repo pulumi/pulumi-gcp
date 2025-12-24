@@ -2050,6 +2050,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "ces/appVersion",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/appVersion:AppVersion": "AppVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "ces/deployment",
   "fqn": "pulumi_gcp.ces",
   "classes": {
@@ -3614,6 +3622,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionHealthCheck:RegionHealthCheck": "RegionHealthCheck"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionHealthSource",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionHealthSource:RegionHealthSource": "RegionHealthSource"
   }
  },
  {
@@ -5314,10 +5330,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/generator",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/generator:Generator": "Generator"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/intent",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
    "gcp:diagflow/intent:Intent": "Intent"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/version",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/version:Version": "Version"
   }
  },
  {
@@ -5438,6 +5470,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/userStore:UserStore": "UserStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/widgetConfig",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/widgetConfig:WidgetConfig": "WidgetConfig"
   }
  },
  {
@@ -6738,6 +6778,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/workforcePoolProviderScimToken",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken": "WorkforcePoolProviderScimToken"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/workloadIdentityPool",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -7842,6 +7890,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkconnectivity/gatewayAdvertisedRoute",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute": "GatewayAdvertisedRoute"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkconnectivity/group",
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
@@ -8098,6 +8154,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/sacAttachment",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/sacAttachment:SacAttachment": "SacAttachment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/sacRealm",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/sacRealm:SacRealm": "SacRealm"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/securityProfile",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -8202,6 +8274,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/lbEdgeExtension",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/lbEdgeExtension:LbEdgeExtension": "LbEdgeExtension"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/lbRouteExtension",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
@@ -8226,10 +8306,74 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/multicastConsumerAssociation",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation": "MulticastConsumerAssociation"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/multicastDomain",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/multicastDomain:MulticastDomain": "MulticastDomain"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastDomainActivation",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastDomainActivation:MulticastDomainActivation": "MulticastDomainActivation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastDomainGroup",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastDomainGroup:MulticastDomainGroup": "MulticastDomainGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastGroupConsumerActivation",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation": "MulticastGroupConsumerActivation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastGroupProducerActivation",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation": "MulticastGroupProducerActivation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastGroupRange",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastGroupRange:MulticastGroupRange": "MulticastGroupRange"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastGroupRangeActivation",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation": "MulticastGroupRangeActivation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/multicastProducerAssociation",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation": "MulticastProducerAssociation"
   }
  },
  {

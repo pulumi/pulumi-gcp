@@ -12,6 +12,7 @@ import com.pulumi.gcp.eventarc.TriggerArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerState;
 import com.pulumi.gcp.eventarc.outputs.TriggerDestination;
 import com.pulumi.gcp.eventarc.outputs.TriggerMatchingCriteria;
+import com.pulumi.gcp.eventarc.outputs.TriggerRetryPolicy;
 import com.pulumi.gcp.eventarc.outputs.TriggerTransport;
 import java.lang.String;
 import java.util.List;
@@ -53,6 +54,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.eventarc.inputs.TriggerDestinationCloudRunServiceArgs;
  * import com.pulumi.gcp.eventarc.inputs.TriggerTransportArgs;
  * import com.pulumi.gcp.eventarc.inputs.TriggerTransportPubsubArgs;
+ * import com.pulumi.gcp.eventarc.inputs.TriggerRetryPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -109,6 +111,9 @@ import javax.annotation.Nullable;
  *                 .pubsub(TriggerTransportPubsubArgs.builder()
  *                     .topic(foo.id())
  *                     .build())
+ *                 .build())
+ *             .retryPolicy(TriggerRetryPolicyArgs.builder()
+ *                 .maxAttempts(1)
  *                 .build())
  *             .build());
  * 
@@ -337,6 +342,24 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * The retry policy configuration for the Trigger.
+     * Can only be set with Cloud Run destinations.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="retryPolicy", refs={TriggerRetryPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ TriggerRetryPolicy> retryPolicy;
+
+    /**
+     * @return The retry policy configuration for the Trigger.
+     * Can only be set with Cloud Run destinations.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<TriggerRetryPolicy>> retryPolicy() {
+        return Codegen.optional(this.retryPolicy);
     }
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.

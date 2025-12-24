@@ -46,6 +46,31 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Example creating an contexts for an object.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucketObject = new gcp.storage.BucketObject("bucket_object", {
+ *     bucket: "test-bucket",
+ *     name: "test-object",
+ *     content: "test-content",
+ *     contexts: {
+ *         customs: [
+ *             {
+ *                 key: "testKey",
+ *                 value: "test",
+ *             },
+ *             {
+ *                 key: "testKeyTwo",
+ *                 value: "test",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource does not support import.
@@ -107,6 +132,10 @@ export class BucketObject extends pulumi.CustomResource {
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
     declare public readonly contentType: pulumi.Output<string>;
+    /**
+     * Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+     */
+    declare public readonly contexts: pulumi.Output<outputs.storage.BucketObjectContexts | undefined>;
     /**
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
@@ -211,6 +240,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["contentEncoding"] = state?.contentEncoding;
             resourceInputs["contentLanguage"] = state?.contentLanguage;
             resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["contexts"] = state?.contexts;
             resourceInputs["crc32c"] = state?.crc32c;
             resourceInputs["customerEncryption"] = state?.customerEncryption;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
@@ -243,6 +273,7 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["contentEncoding"] = args?.contentEncoding;
             resourceInputs["contentLanguage"] = args?.contentLanguage;
             resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["contexts"] = args?.contexts;
             resourceInputs["customerEncryption"] = args?.customerEncryption ? pulumi.secret(args.customerEncryption) : undefined;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["detectMd5hash"] = args?.detectMd5hash;
@@ -304,6 +335,10 @@ export interface BucketObjectState {
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
     contentType?: pulumi.Input<string>;
+    /**
+     * Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+     */
+    contexts?: pulumi.Input<inputs.storage.BucketObjectContexts>;
     /**
      * (Computed) Base 64 CRC32 hash of the uploaded data.
      */
@@ -422,6 +457,10 @@ export interface BucketObjectArgs {
      * [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
      */
     contentType?: pulumi.Input<string>;
+    /**
+     * Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+     */
+    contexts?: pulumi.Input<inputs.storage.BucketObjectContexts>;
     /**
      * Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
      * Structure is documented below.

@@ -603,6 +603,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     declare public readonly sendPropagatedConnectionLimitIfZero: pulumi.Output<boolean | undefined>;
     /**
+     * If true, show NAT IPs of all connected endpoints.
+     */
+    declare public readonly showNatIps: pulumi.Output<boolean | undefined>;
+    /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     declare public readonly targetService: pulumi.Output<string>;
@@ -642,6 +646,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["sendPropagatedConnectionLimitIfZero"] = state?.sendPropagatedConnectionLimitIfZero;
+            resourceInputs["showNatIps"] = state?.showNatIps;
             resourceInputs["targetService"] = state?.targetService;
             resourceInputs["tunnelingConfig"] = state?.tunnelingConfig;
         } else {
@@ -671,6 +676,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["reconcileConnections"] = args?.reconcileConnections;
             resourceInputs["region"] = args?.region;
             resourceInputs["sendPropagatedConnectionLimitIfZero"] = args?.sendPropagatedConnectionLimitIfZero;
+            resourceInputs["showNatIps"] = args?.showNatIps;
             resourceInputs["targetService"] = args?.targetService;
             resourceInputs["tunnelingConfig"] = args?.tunnelingConfig;
             resourceInputs["connectedEndpoints"] = undefined /*out*/;
@@ -784,6 +790,10 @@ export interface ServiceAttachmentState {
      */
     sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
     /**
+     * If true, show NAT IPs of all connected endpoints.
+     */
+    showNatIps?: pulumi.Input<boolean>;
+    /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */
     targetService?: pulumi.Input<string>;
@@ -874,6 +884,10 @@ export interface ServiceAttachmentArgs {
      * Defaults to false.
      */
     sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
+    /**
+     * If true, show NAT IPs of all connected endpoints.
+     */
+    showNatIps?: pulumi.Input<boolean>;
     /**
      * The URL of a service serving the endpoint identified by this service attachment.
      */

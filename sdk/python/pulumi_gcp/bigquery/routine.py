@@ -29,9 +29,11 @@ class RoutineArgs:
                  data_governance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  determinism_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_runtime_options: Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  language: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 python_options: Optional[pulumi.Input['RoutinePythonOptionsArgs']] = None,
                  remote_function_options: Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']] = None,
                  return_table_type: Optional[pulumi.Input[_builtins.str]] = None,
                  return_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -52,12 +54,17 @@ class RoutineArgs:
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
+        :param pulumi.Input['RoutineExternalRuntimeOptionsArgs'] external_runtime_options: Options for the runtime of the external system.
+               This field is only applicable for Python UDFs.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[_builtins.str] language: The language of the routine.
                Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RoutinePythonOptionsArgs'] python_options: Options for a user-defined Python function.
+               Structure is documented below.
         :param pulumi.Input['RoutineRemoteFunctionOptionsArgs'] remote_function_options: Remote function specific options.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -90,12 +97,16 @@ class RoutineArgs:
             pulumi.set(__self__, "description", description)
         if determinism_level is not None:
             pulumi.set(__self__, "determinism_level", determinism_level)
+        if external_runtime_options is not None:
+            pulumi.set(__self__, "external_runtime_options", external_runtime_options)
         if imported_libraries is not None:
             pulumi.set(__self__, "imported_libraries", imported_libraries)
         if language is not None:
             pulumi.set(__self__, "language", language)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if python_options is not None:
+            pulumi.set(__self__, "python_options", python_options)
         if remote_function_options is not None:
             pulumi.set(__self__, "remote_function_options", remote_function_options)
         if return_table_type is not None:
@@ -209,6 +220,20 @@ class RoutineArgs:
         pulumi.set(self, "determinism_level", value)
 
     @_builtins.property
+    @pulumi.getter(name="externalRuntimeOptions")
+    def external_runtime_options(self) -> Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']]:
+        """
+        Options for the runtime of the external system.
+        This field is only applicable for Python UDFs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external_runtime_options")
+
+    @external_runtime_options.setter
+    def external_runtime_options(self, value: Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']]):
+        pulumi.set(self, "external_runtime_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="importedLibraries")
     def imported_libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -246,6 +271,19 @@ class RoutineArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonOptions")
+    def python_options(self) -> Optional[pulumi.Input['RoutinePythonOptionsArgs']]:
+        """
+        Options for a user-defined Python function.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_options")
+
+    @python_options.setter
+    def python_options(self, value: Optional[pulumi.Input['RoutinePythonOptionsArgs']]):
+        pulumi.set(self, "python_options", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteFunctionOptions")
@@ -332,10 +370,12 @@ class _RoutineState:
                  definition_body: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  determinism_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_runtime_options: Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  language: Optional[pulumi.Input[_builtins.str]] = None,
                  last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 python_options: Optional[pulumi.Input['RoutinePythonOptionsArgs']] = None,
                  remote_function_options: Optional[pulumi.Input['RoutineRemoteFunctionOptionsArgs']] = None,
                  return_table_type: Optional[pulumi.Input[_builtins.str]] = None,
                  return_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -357,6 +397,9 @@ class _RoutineState:
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
+        :param pulumi.Input['RoutineExternalRuntimeOptionsArgs'] external_runtime_options: Options for the runtime of the external system.
+               This field is only applicable for Python UDFs.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[_builtins.str] language: The language of the routine.
@@ -365,6 +408,8 @@ class _RoutineState:
                epoch.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RoutinePythonOptionsArgs'] python_options: Options for a user-defined Python function.
+               Structure is documented below.
         :param pulumi.Input['RoutineRemoteFunctionOptionsArgs'] remote_function_options: Remote function specific options.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -402,6 +447,8 @@ class _RoutineState:
             pulumi.set(__self__, "description", description)
         if determinism_level is not None:
             pulumi.set(__self__, "determinism_level", determinism_level)
+        if external_runtime_options is not None:
+            pulumi.set(__self__, "external_runtime_options", external_runtime_options)
         if imported_libraries is not None:
             pulumi.set(__self__, "imported_libraries", imported_libraries)
         if language is not None:
@@ -410,6 +457,8 @@ class _RoutineState:
             pulumi.set(__self__, "last_modified_time", last_modified_time)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if python_options is not None:
+            pulumi.set(__self__, "python_options", python_options)
         if remote_function_options is not None:
             pulumi.set(__self__, "remote_function_options", remote_function_options)
         if return_table_type is not None:
@@ -515,6 +564,20 @@ class _RoutineState:
         pulumi.set(self, "determinism_level", value)
 
     @_builtins.property
+    @pulumi.getter(name="externalRuntimeOptions")
+    def external_runtime_options(self) -> Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']]:
+        """
+        Options for the runtime of the external system.
+        This field is only applicable for Python UDFs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external_runtime_options")
+
+    @external_runtime_options.setter
+    def external_runtime_options(self, value: Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']]):
+        pulumi.set(self, "external_runtime_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="importedLibraries")
     def imported_libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -565,6 +628,19 @@ class _RoutineState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pythonOptions")
+    def python_options(self) -> Optional[pulumi.Input['RoutinePythonOptionsArgs']]:
+        """
+        Options for a user-defined Python function.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_options")
+
+    @python_options.setter
+    def python_options(self, value: Optional[pulumi.Input['RoutinePythonOptionsArgs']]):
+        pulumi.set(self, "python_options", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteFunctionOptions")
@@ -678,9 +754,11 @@ class Routine(pulumi.CustomResource):
                  definition_body: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  determinism_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_runtime_options: Optional[pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']]] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  language: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 python_options: Optional[pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']]] = None,
                  remote_function_options: Optional[pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']]] = None,
                  return_table_type: Optional[pulumi.Input[_builtins.str]] = None,
                  return_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -912,6 +990,41 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Bigquery Routine Python Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        python_function = gcp.bigquery.Routine("python_function",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="SCALAR_FUNCTION",
+            language="PYTHON",
+            arguments=[
+                {
+                    "name": "x",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
+                {
+                    "name": "y",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
+            ],
+            definition_body=\"\"\"def multiply(x, y):
+          return x * y
+        \"\"\",
+            return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
+            python_options={
+                "entry_point": "multiply",
+            },
+            external_runtime_options={
+                "container_memory": "512Mi",
+                "container_cpu": 0.5,
+                "runtime_version": "python-3.11",
+            })
+        ```
 
         ## Import
 
@@ -949,12 +1062,17 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
+        :param pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']] external_runtime_options: Options for the runtime of the external system.
+               This field is only applicable for Python UDFs.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[_builtins.str] language: The language of the routine.
                Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']] python_options: Options for a user-defined Python function.
+               Structure is documented below.
         :param pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']] remote_function_options: Remote function specific options.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -1207,6 +1325,41 @@ class Routine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Bigquery Routine Python Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        python_function = gcp.bigquery.Routine("python_function",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="SCALAR_FUNCTION",
+            language="PYTHON",
+            arguments=[
+                {
+                    "name": "x",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
+                {
+                    "name": "y",
+                    "data_type": "{\\"typeKind\\" :  \\"FLOAT64\\"}",
+                },
+            ],
+            definition_body=\"\"\"def multiply(x, y):
+          return x * y
+        \"\"\",
+            return_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
+            python_options={
+                "entry_point": "multiply",
+            },
+            external_runtime_options={
+                "container_memory": "512Mi",
+                "container_cpu": 0.5,
+                "runtime_version": "python-3.11",
+            })
+        ```
 
         ## Import
 
@@ -1253,9 +1406,11 @@ class Routine(pulumi.CustomResource):
                  definition_body: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  determinism_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_runtime_options: Optional[pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']]] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  language: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 python_options: Optional[pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']]] = None,
                  remote_function_options: Optional[pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']]] = None,
                  return_table_type: Optional[pulumi.Input[_builtins.str]] = None,
                  return_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1282,9 +1437,11 @@ class Routine(pulumi.CustomResource):
             __props__.__dict__["definition_body"] = definition_body
             __props__.__dict__["description"] = description
             __props__.__dict__["determinism_level"] = determinism_level
+            __props__.__dict__["external_runtime_options"] = external_runtime_options
             __props__.__dict__["imported_libraries"] = imported_libraries
             __props__.__dict__["language"] = language
             __props__.__dict__["project"] = project
+            __props__.__dict__["python_options"] = python_options
             __props__.__dict__["remote_function_options"] = remote_function_options
             __props__.__dict__["return_table_type"] = return_table_type
             __props__.__dict__["return_type"] = return_type
@@ -1315,10 +1472,12 @@ class Routine(pulumi.CustomResource):
             definition_body: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             determinism_level: Optional[pulumi.Input[_builtins.str]] = None,
+            external_runtime_options: Optional[pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']]] = None,
             imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             language: Optional[pulumi.Input[_builtins.str]] = None,
             last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
+            python_options: Optional[pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']]] = None,
             remote_function_options: Optional[pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']]] = None,
             return_table_type: Optional[pulumi.Input[_builtins.str]] = None,
             return_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1345,6 +1504,9 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
+        :param pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']] external_runtime_options: Options for the runtime of the external system.
+               This field is only applicable for Python UDFs.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[_builtins.str] language: The language of the routine.
@@ -1353,6 +1515,8 @@ class Routine(pulumi.CustomResource):
                epoch.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']] python_options: Options for a user-defined Python function.
+               Structure is documented below.
         :param pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']] remote_function_options: Remote function specific options.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -1387,10 +1551,12 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["definition_body"] = definition_body
         __props__.__dict__["description"] = description
         __props__.__dict__["determinism_level"] = determinism_level
+        __props__.__dict__["external_runtime_options"] = external_runtime_options
         __props__.__dict__["imported_libraries"] = imported_libraries
         __props__.__dict__["language"] = language
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["project"] = project
+        __props__.__dict__["python_options"] = python_options
         __props__.__dict__["remote_function_options"] = remote_function_options
         __props__.__dict__["return_table_type"] = return_table_type
         __props__.__dict__["return_type"] = return_type
@@ -1462,6 +1628,16 @@ class Routine(pulumi.CustomResource):
         return pulumi.get(self, "determinism_level")
 
     @_builtins.property
+    @pulumi.getter(name="externalRuntimeOptions")
+    def external_runtime_options(self) -> pulumi.Output[Optional['outputs.RoutineExternalRuntimeOptions']]:
+        """
+        Options for the runtime of the external system.
+        This field is only applicable for Python UDFs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external_runtime_options")
+
+    @_builtins.property
     @pulumi.getter(name="importedLibraries")
     def imported_libraries(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
@@ -1496,6 +1672,15 @@ class Routine(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="pythonOptions")
+    def python_options(self) -> pulumi.Output[Optional['outputs.RoutinePythonOptions']]:
+        """
+        Options for a user-defined Python function.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_options")
 
     @_builtins.property
     @pulumi.getter(name="remoteFunctionOptions")

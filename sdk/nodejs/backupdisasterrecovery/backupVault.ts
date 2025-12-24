@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -9,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Backup Dr Backup Vault Full
+ * ### Backup Dr Backup Vault Simple
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +29,39 @@ import * as utilities from "../utilities";
  *     labels: {
  *         foo: "bar1",
  *         bar: "baz1",
+ *     },
+ *     forceUpdate: true,
+ *     accessRestriction: "WITHIN_ORGANIZATION",
+ *     backupRetentionInheritance: "INHERIT_VAULT_RETENTION",
+ *     ignoreInactiveDatasources: true,
+ *     ignoreBackupPlanReferences: true,
+ *     allowMissing: true,
+ * });
+ * ```
+ * ### Backup Dr Backup Vault Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testProject = gcp.organizations.getProject({
+ *     projectId: "my-project-name",
+ * });
+ * const backup_vault_cmek = new gcp.backupdisasterrecovery.BackupVault("backup-vault-cmek", {
+ *     location: "us-central1",
+ *     backupVaultId: "backup-vault-cmek",
+ *     description: "This is a second backup vault built by Terraform.",
+ *     backupMinimumEnforcedRetentionDuration: "100000s",
+ *     annotations: {
+ *         annotations1: "bar1",
+ *         annotations2: "baz1",
+ *     },
+ *     labels: {
+ *         foo: "bar1",
+ *         bar: "baz1",
+ *     },
+ *     encryptionConfig: {
+ *         kmsKeyName: "bkpvault-key",
  *     },
  *     forceUpdate: true,
  *     accessRestriction: "WITHIN_ORGANIZATION",
@@ -145,6 +180,11 @@ export class BackupVault extends pulumi.CustomResource {
      */
     declare public readonly effectiveTime: pulumi.Output<string | undefined>;
     /**
+     * Encryption configuration for the backup vault.
+     * Structure is documented below.
+     */
+    declare public readonly encryptionConfig: pulumi.Output<outputs.backupdisasterrecovery.BackupVaultEncryptionConfig | undefined>;
+    /**
      * Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
@@ -253,6 +293,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["effectiveTime"] = state?.effectiveTime;
+            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["forceDelete"] = state?.forceDelete;
             resourceInputs["forceUpdate"] = state?.forceUpdate;
@@ -287,6 +328,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["backupVaultId"] = args?.backupVaultId;
             resourceInputs["description"] = args?.description;
             resourceInputs["effectiveTime"] = args?.effectiveTime;
+            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
             resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["forceUpdate"] = args?.forceUpdate;
             resourceInputs["ignoreBackupPlanReferences"] = args?.ignoreBackupPlanReferences;
@@ -374,6 +416,11 @@ export interface BackupVaultState {
      * Optional. Time after which the BackupVault resource is locked.
      */
     effectiveTime?: pulumi.Input<string>;
+    /**
+     * Encryption configuration for the backup vault.
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.backupdisasterrecovery.BackupVaultEncryptionConfig>;
     /**
      * Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
      */
@@ -500,6 +547,11 @@ export interface BackupVaultArgs {
      * Optional. Time after which the BackupVault resource is locked.
      */
     effectiveTime?: pulumi.Input<string>;
+    /**
+     * Encryption configuration for the backup vault.
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.backupdisasterrecovery.BackupVaultEncryptionConfig>;
     /**
      * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:

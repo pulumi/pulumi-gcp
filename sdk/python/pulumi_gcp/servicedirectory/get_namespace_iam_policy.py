@@ -86,6 +86,8 @@ class AwaitableGetNamespaceIamPolicyResult(GetNamespaceIamPolicyResult):
 def get_namespace_iam_policy(name: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceIamPolicyResult:
     """
+    Retrieves the current IAM policy data for namespace
+
     ## Example Usage
 
     ```python
@@ -111,6 +113,8 @@ def get_namespace_iam_policy(name: Optional[_builtins.str] = None,
 def get_namespace_iam_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamespaceIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for namespace
+
     ## Example Usage
 
     ```python

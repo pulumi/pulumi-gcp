@@ -135,6 +135,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
+     * The KMS key id to use for encryption of the Lustre instance.
+     */
+    declare public readonly kmsKey: pulumi.Output<string | undefined>;
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -180,16 +184,13 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The state of the instance.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * ACTIVE
-     * CREATING
-     * DELETING
-     * UPGRADING
-     * REPAIRING
-     * STOPPED
+     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * The reason why the instance is in a certain state.
+     */
+    declare public /*out*/ readonly stateReason: pulumi.Output<string>;
     /**
      * Timestamp when the instance was last updated.
      */
@@ -215,6 +216,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["filesystem"] = state?.filesystem;
             resourceInputs["gkeSupportEnabled"] = state?.gkeSupportEnabled;
             resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsKey"] = state?.kmsKey;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["mountPoint"] = state?.mountPoint;
@@ -225,6 +227,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["state"] = state?.state;
+            resourceInputs["stateReason"] = state?.stateReason;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -251,6 +254,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["filesystem"] = args?.filesystem;
             resourceInputs["gkeSupportEnabled"] = args?.gkeSupportEnabled;
             resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["kmsKey"] = args?.kmsKey;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["network"] = args?.network;
@@ -263,6 +267,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateReason"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -313,6 +318,10 @@ export interface InstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
+     * The KMS key id to use for encryption of the Lustre instance.
+     */
+    kmsKey?: pulumi.Input<string>;
+    /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -358,16 +367,13 @@ export interface InstanceState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The state of the instance.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * ACTIVE
-     * CREATING
-     * DELETING
-     * UPGRADING
-     * REPAIRING
-     * STOPPED
+     * Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
      */
     state?: pulumi.Input<string>;
+    /**
+     * The reason why the instance is in a certain state.
+     */
+    stateReason?: pulumi.Input<string>;
     /**
      * Timestamp when the instance was last updated.
      */
@@ -406,6 +412,10 @@ export interface InstanceArgs {
      * * Must end with a number or a letter.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The KMS key id to use for encryption of the Lustre instance.
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

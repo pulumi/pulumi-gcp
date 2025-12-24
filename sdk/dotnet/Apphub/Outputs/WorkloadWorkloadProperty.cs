@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Apphub.Outputs
         /// </summary>
         public readonly string? GcpProject;
         /// <summary>
+        /// (Output)
+        /// The identity associated with the workload.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.WorkloadWorkloadPropertyIdentity> Identities;
+        /// <summary>
         /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         public readonly string? Location;
@@ -48,6 +54,8 @@ namespace Pulumi.Gcp.Apphub.Outputs
 
             string? gcpProject,
 
+            ImmutableArray<Outputs.WorkloadWorkloadPropertyIdentity> identities,
+
             string? location,
 
             string? zone)
@@ -55,6 +63,7 @@ namespace Pulumi.Gcp.Apphub.Outputs
             ExtendedMetadatas = extendedMetadatas;
             FunctionalTypes = functionalTypes;
             GcpProject = gcpProject;
+            Identities = identities;
             Location = location;
             Zone = zone;
         }

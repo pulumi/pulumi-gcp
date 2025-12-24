@@ -32,7 +32,8 @@ class AiReasoningEngineArgs:
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input['AiReasoningEngineEncryptionSpecArgs'] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
-               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+               will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -81,7 +82,8 @@ class AiReasoningEngineArgs:
     def encryption_spec(self) -> Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]:
         """
         Optional. Customer-managed encryption key spec for a ReasoningEngine.
-        If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+        If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+        will be secured by this key.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
@@ -148,17 +150,18 @@ class _AiReasoningEngineState:
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input['AiReasoningEngineEncryptionSpecArgs'] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
-               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+               will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The generated name of the ReasoningEngine, in the format
-               'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+               projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input['AiReasoningEngineSpecArgs'] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-               with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+               format, with nanosecond resolution and up to nine fractional digits.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -221,7 +224,8 @@ class _AiReasoningEngineState:
     def encryption_spec(self) -> Optional[pulumi.Input['AiReasoningEngineEncryptionSpecArgs']]:
         """
         Optional. Customer-managed encryption key spec for a ReasoningEngine.
-        If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+        If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+        will be secured by this key.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
@@ -235,7 +239,7 @@ class _AiReasoningEngineState:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The generated name of the ReasoningEngine, in the format
-        'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+        projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         """
         return pulumi.get(self, "name")
 
@@ -285,8 +289,8 @@ class _AiReasoningEngineState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-        with nanosecond resolution and up to nine fractional digits.
+        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+        format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
@@ -401,6 +405,13 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "class_methods": json.dumps(class_methods),
                 "service_account": service_account.email,
                 "deployment_spec": {
+                    "min_instances": 1,
+                    "max_instances": 3,
+                    "container_concurrency": 5,
+                    "resource_limits": {
+                        "cpu": "4",
+                        "memory": "4Gi",
+                    },
                     "envs": [
                         {
                             "name": "var_1",
@@ -485,7 +496,8 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
-               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+               will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -592,6 +604,13 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "class_methods": json.dumps(class_methods),
                 "service_account": service_account.email,
                 "deployment_spec": {
+                    "min_instances": 1,
+                    "max_instances": 3,
+                    "container_concurrency": 5,
+                    "resource_limits": {
+                        "cpu": "4",
+                        "memory": "4Gi",
+                    },
                     "envs": [
                         {
                             "name": "var_1",
@@ -743,17 +762,18 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
-               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+               If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+               will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The generated name of the ReasoningEngine, in the format
-               'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+               projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-               with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+               format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -800,7 +820,8 @@ class AiReasoningEngine(pulumi.CustomResource):
     def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiReasoningEngineEncryptionSpec']]:
         """
         Optional. Customer-managed encryption key spec for a ReasoningEngine.
-        If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+        If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+        will be secured by this key.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
@@ -810,7 +831,7 @@ class AiReasoningEngine(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The generated name of the ReasoningEngine, in the format
-        'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+        projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         """
         return pulumi.get(self, "name")
 
@@ -844,8 +865,8 @@ class AiReasoningEngine(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-        with nanosecond resolution and up to nine fractional digits.
+        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+        format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 

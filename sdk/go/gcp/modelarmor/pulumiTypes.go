@@ -1824,6 +1824,189 @@ func (o FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput) EnableM
 	}).(pulumi.BoolPtrOutput)
 }
 
+type FloorsettingGoogleMcpServerFloorSetting struct {
+	// If true, log Model Armor filter results to Cloud Logging.
+	EnableCloudLogging *bool `pulumi:"enableCloudLogging"`
+	// If true, Model Armor filters will be run in inspect and block mode.
+	// Requests that trip Model Armor filters will be blocked.
+	InspectAndBlock *bool `pulumi:"inspectAndBlock"`
+	// If true, Model Armor filters will be run in inspect only mode. No action
+	// will be taken on the request.
+	InspectOnly *bool `pulumi:"inspectOnly"`
+}
+
+// FloorsettingGoogleMcpServerFloorSettingInput is an input type that accepts FloorsettingGoogleMcpServerFloorSettingArgs and FloorsettingGoogleMcpServerFloorSettingOutput values.
+// You can construct a concrete instance of `FloorsettingGoogleMcpServerFloorSettingInput` via:
+//
+//	FloorsettingGoogleMcpServerFloorSettingArgs{...}
+type FloorsettingGoogleMcpServerFloorSettingInput interface {
+	pulumi.Input
+
+	ToFloorsettingGoogleMcpServerFloorSettingOutput() FloorsettingGoogleMcpServerFloorSettingOutput
+	ToFloorsettingGoogleMcpServerFloorSettingOutputWithContext(context.Context) FloorsettingGoogleMcpServerFloorSettingOutput
+}
+
+type FloorsettingGoogleMcpServerFloorSettingArgs struct {
+	// If true, log Model Armor filter results to Cloud Logging.
+	EnableCloudLogging pulumi.BoolPtrInput `pulumi:"enableCloudLogging"`
+	// If true, Model Armor filters will be run in inspect and block mode.
+	// Requests that trip Model Armor filters will be blocked.
+	InspectAndBlock pulumi.BoolPtrInput `pulumi:"inspectAndBlock"`
+	// If true, Model Armor filters will be run in inspect only mode. No action
+	// will be taken on the request.
+	InspectOnly pulumi.BoolPtrInput `pulumi:"inspectOnly"`
+}
+
+func (FloorsettingGoogleMcpServerFloorSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingGoogleMcpServerFloorSetting)(nil)).Elem()
+}
+
+func (i FloorsettingGoogleMcpServerFloorSettingArgs) ToFloorsettingGoogleMcpServerFloorSettingOutput() FloorsettingGoogleMcpServerFloorSettingOutput {
+	return i.ToFloorsettingGoogleMcpServerFloorSettingOutputWithContext(context.Background())
+}
+
+func (i FloorsettingGoogleMcpServerFloorSettingArgs) ToFloorsettingGoogleMcpServerFloorSettingOutputWithContext(ctx context.Context) FloorsettingGoogleMcpServerFloorSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingGoogleMcpServerFloorSettingOutput)
+}
+
+func (i FloorsettingGoogleMcpServerFloorSettingArgs) ToFloorsettingGoogleMcpServerFloorSettingPtrOutput() FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return i.ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(context.Background())
+}
+
+func (i FloorsettingGoogleMcpServerFloorSettingArgs) ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingGoogleMcpServerFloorSettingOutput).ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(ctx)
+}
+
+// FloorsettingGoogleMcpServerFloorSettingPtrInput is an input type that accepts FloorsettingGoogleMcpServerFloorSettingArgs, FloorsettingGoogleMcpServerFloorSettingPtr and FloorsettingGoogleMcpServerFloorSettingPtrOutput values.
+// You can construct a concrete instance of `FloorsettingGoogleMcpServerFloorSettingPtrInput` via:
+//
+//	        FloorsettingGoogleMcpServerFloorSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type FloorsettingGoogleMcpServerFloorSettingPtrInput interface {
+	pulumi.Input
+
+	ToFloorsettingGoogleMcpServerFloorSettingPtrOutput() FloorsettingGoogleMcpServerFloorSettingPtrOutput
+	ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(context.Context) FloorsettingGoogleMcpServerFloorSettingPtrOutput
+}
+
+type floorsettingGoogleMcpServerFloorSettingPtrType FloorsettingGoogleMcpServerFloorSettingArgs
+
+func FloorsettingGoogleMcpServerFloorSettingPtr(v *FloorsettingGoogleMcpServerFloorSettingArgs) FloorsettingGoogleMcpServerFloorSettingPtrInput {
+	return (*floorsettingGoogleMcpServerFloorSettingPtrType)(v)
+}
+
+func (*floorsettingGoogleMcpServerFloorSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingGoogleMcpServerFloorSetting)(nil)).Elem()
+}
+
+func (i *floorsettingGoogleMcpServerFloorSettingPtrType) ToFloorsettingGoogleMcpServerFloorSettingPtrOutput() FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return i.ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *floorsettingGoogleMcpServerFloorSettingPtrType) ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FloorsettingGoogleMcpServerFloorSettingPtrOutput)
+}
+
+type FloorsettingGoogleMcpServerFloorSettingOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingGoogleMcpServerFloorSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FloorsettingGoogleMcpServerFloorSetting)(nil)).Elem()
+}
+
+func (o FloorsettingGoogleMcpServerFloorSettingOutput) ToFloorsettingGoogleMcpServerFloorSettingOutput() FloorsettingGoogleMcpServerFloorSettingOutput {
+	return o
+}
+
+func (o FloorsettingGoogleMcpServerFloorSettingOutput) ToFloorsettingGoogleMcpServerFloorSettingOutputWithContext(ctx context.Context) FloorsettingGoogleMcpServerFloorSettingOutput {
+	return o
+}
+
+func (o FloorsettingGoogleMcpServerFloorSettingOutput) ToFloorsettingGoogleMcpServerFloorSettingPtrOutput() FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return o.ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(context.Background())
+}
+
+func (o FloorsettingGoogleMcpServerFloorSettingOutput) ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloorsettingGoogleMcpServerFloorSetting) *FloorsettingGoogleMcpServerFloorSetting {
+		return &v
+	}).(FloorsettingGoogleMcpServerFloorSettingPtrOutput)
+}
+
+// If true, log Model Armor filter results to Cloud Logging.
+func (o FloorsettingGoogleMcpServerFloorSettingOutput) EnableCloudLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FloorsettingGoogleMcpServerFloorSetting) *bool { return v.EnableCloudLogging }).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect and block mode.
+// Requests that trip Model Armor filters will be blocked.
+func (o FloorsettingGoogleMcpServerFloorSettingOutput) InspectAndBlock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FloorsettingGoogleMcpServerFloorSetting) *bool { return v.InspectAndBlock }).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect only mode. No action
+// will be taken on the request.
+func (o FloorsettingGoogleMcpServerFloorSettingOutput) InspectOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FloorsettingGoogleMcpServerFloorSetting) *bool { return v.InspectOnly }).(pulumi.BoolPtrOutput)
+}
+
+type FloorsettingGoogleMcpServerFloorSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (FloorsettingGoogleMcpServerFloorSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FloorsettingGoogleMcpServerFloorSetting)(nil)).Elem()
+}
+
+func (o FloorsettingGoogleMcpServerFloorSettingPtrOutput) ToFloorsettingGoogleMcpServerFloorSettingPtrOutput() FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return o
+}
+
+func (o FloorsettingGoogleMcpServerFloorSettingPtrOutput) ToFloorsettingGoogleMcpServerFloorSettingPtrOutputWithContext(ctx context.Context) FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return o
+}
+
+func (o FloorsettingGoogleMcpServerFloorSettingPtrOutput) Elem() FloorsettingGoogleMcpServerFloorSettingOutput {
+	return o.ApplyT(func(v *FloorsettingGoogleMcpServerFloorSetting) FloorsettingGoogleMcpServerFloorSetting {
+		if v != nil {
+			return *v
+		}
+		var ret FloorsettingGoogleMcpServerFloorSetting
+		return ret
+	}).(FloorsettingGoogleMcpServerFloorSettingOutput)
+}
+
+// If true, log Model Armor filter results to Cloud Logging.
+func (o FloorsettingGoogleMcpServerFloorSettingPtrOutput) EnableCloudLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloorsettingGoogleMcpServerFloorSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCloudLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect and block mode.
+// Requests that trip Model Armor filters will be blocked.
+func (o FloorsettingGoogleMcpServerFloorSettingPtrOutput) InspectAndBlock() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloorsettingGoogleMcpServerFloorSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InspectAndBlock
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Model Armor filters will be run in inspect only mode. No action
+// will be taken on the request.
+func (o FloorsettingGoogleMcpServerFloorSettingPtrOutput) InspectOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloorsettingGoogleMcpServerFloorSetting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InspectOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TemplateFilterConfig struct {
 	// Malicious URI filter settings.
 	// Structure is documented below.
@@ -3649,6 +3832,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFloorSettingMetadataPtrInput)(nil)).Elem(), FloorsettingFloorSettingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFloorSettingMetadataMultiLanguageDetectionInput)(nil)).Elem(), FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrInput)(nil)).Elem(), FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingGoogleMcpServerFloorSettingInput)(nil)).Elem(), FloorsettingGoogleMcpServerFloorSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FloorsettingGoogleMcpServerFloorSettingPtrInput)(nil)).Elem(), FloorsettingGoogleMcpServerFloorSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigInput)(nil)).Elem(), TemplateFilterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigPtrInput)(nil)).Elem(), TemplateFilterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigMaliciousUriFilterSettingsInput)(nil)).Elem(), TemplateFilterConfigMaliciousUriFilterSettingsArgs{})
@@ -3691,6 +3876,8 @@ func init() {
 	pulumi.RegisterOutputType(FloorsettingFloorSettingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(FloorsettingFloorSettingMetadataMultiLanguageDetectionOutput{})
 	pulumi.RegisterOutputType(FloorsettingFloorSettingMetadataMultiLanguageDetectionPtrOutput{})
+	pulumi.RegisterOutputType(FloorsettingGoogleMcpServerFloorSettingOutput{})
+	pulumi.RegisterOutputType(FloorsettingGoogleMcpServerFloorSettingPtrOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigPtrOutput{})
 	pulumi.RegisterOutputType(TemplateFilterConfigMaliciousUriFilterSettingsOutput{})

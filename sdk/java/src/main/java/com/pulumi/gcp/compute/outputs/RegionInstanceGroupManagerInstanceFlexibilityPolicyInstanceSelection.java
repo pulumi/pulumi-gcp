@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -15,10 +16,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
     /**
+     * @return List of disks to be attached to the instances created from this selection.
+     * 
+     */
+    private @Nullable List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks;
+    /**
      * @return Full machine-type names, e.g. &#34;n1-standard-16&#34;
      * 
      */
     private List<String> machineTypes;
+    /**
+     * @return Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+     * 
+     */
+    private @Nullable String minCpuPlatform;
     /**
      * @return The name of the instance group manager. Must be 1-63
      * characters long and comply with
@@ -35,11 +46,25 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
 
     private RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection() {}
     /**
+     * @return List of disks to be attached to the instances created from this selection.
+     * 
+     */
+    public List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks() {
+        return this.disks == null ? List.of() : this.disks;
+    }
+    /**
      * @return Full machine-type names, e.g. &#34;n1-standard-16&#34;
      * 
      */
     public List<String> machineTypes() {
         return this.machineTypes;
+    }
+    /**
+     * @return Name of the minimum CPU platform to be used by this instance selection. e.g. &#39;Intel Ice Lake&#39;
+     * 
+     */
+    public Optional<String> minCpuPlatform() {
+        return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
      * @return The name of the instance group manager. Must be 1-63
@@ -68,17 +93,30 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks;
         private List<String> machineTypes;
+        private @Nullable String minCpuPlatform;
         private String name;
         private @Nullable Integer rank;
         public Builder() {}
         public Builder(RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.disks = defaults.disks;
     	      this.machineTypes = defaults.machineTypes;
+    	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.name = defaults.name;
     	      this.rank = defaults.rank;
         }
 
+        @CustomType.Setter
+        public Builder disks(@Nullable List<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks) {
+
+            this.disks = disks;
+            return this;
+        }
+        public Builder disks(RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk... disks) {
+            return disks(List.of(disks));
+        }
         @CustomType.Setter
         public Builder machineTypes(List<String> machineTypes) {
             if (machineTypes == null) {
@@ -89,6 +127,12 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
         }
         public Builder machineTypes(String... machineTypes) {
             return machineTypes(List.of(machineTypes));
+        }
+        @CustomType.Setter
+        public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
+
+            this.minCpuPlatform = minCpuPlatform;
+            return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -106,7 +150,9 @@ public final class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSe
         }
         public RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection build() {
             final var _resultValue = new RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection();
+            _resultValue.disks = disks;
             _resultValue.machineTypes = machineTypes;
+            _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.name = name;
             _resultValue.rank = rank;
             return _resultValue;

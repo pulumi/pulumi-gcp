@@ -12,10 +12,11 @@ namespace Pulumi.Gcp.Ces.Inputs
 
     public sealed class ToolOpenApiToolTlsConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("caCerts", required: true)]
+        [Input("caCerts")]
         private InputList<Inputs.ToolOpenApiToolTlsConfigCaCertGetArgs>? _caCerts;
 
         /// <summary>
+        /// (Output)
         /// Specifies a list of allowed custom CA certificates for HTTPS
         /// verification.
         /// Structure is documented below.

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.apphub.inputs.WorkloadWorkloadPropertyExtendedMetadataArgs;
 import com.pulumi.gcp.apphub.inputs.WorkloadWorkloadPropertyFunctionalTypeArgs;
+import com.pulumi.gcp.apphub.inputs.WorkloadWorkloadPropertyIdentityArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -74,6 +75,25 @@ public final class WorkloadWorkloadPropertyArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * (Output)
+     * The identity associated with the workload.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="identities")
+    private @Nullable Output<List<WorkloadWorkloadPropertyIdentityArgs>> identities;
+
+    /**
+     * @return (Output)
+     * The identity associated with the workload.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkloadWorkloadPropertyIdentityArgs>>> identities() {
+        return Optional.ofNullable(this.identities);
+    }
+
+    /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      * 
      */
@@ -111,6 +131,7 @@ public final class WorkloadWorkloadPropertyArgs extends com.pulumi.resources.Res
         this.extendedMetadatas = $.extendedMetadatas;
         this.functionalTypes = $.functionalTypes;
         this.gcpProject = $.gcpProject;
+        this.identities = $.identities;
         this.location = $.location;
         this.zone = $.zone;
     }
@@ -228,6 +249,43 @@ public final class WorkloadWorkloadPropertyArgs extends com.pulumi.resources.Res
          */
         public Builder gcpProject(String gcpProject) {
             return gcpProject(Output.of(gcpProject));
+        }
+
+        /**
+         * @param identities (Output)
+         * The identity associated with the workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identities(@Nullable Output<List<WorkloadWorkloadPropertyIdentityArgs>> identities) {
+            $.identities = identities;
+            return this;
+        }
+
+        /**
+         * @param identities (Output)
+         * The identity associated with the workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identities(List<WorkloadWorkloadPropertyIdentityArgs> identities) {
+            return identities(Output.of(identities));
+        }
+
+        /**
+         * @param identities (Output)
+         * The identity associated with the workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identities(WorkloadWorkloadPropertyIdentityArgs... identities) {
+            return identities(List.of(identities));
         }
 
         /**

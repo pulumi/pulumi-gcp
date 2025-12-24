@@ -73,6 +73,8 @@ __all__ = [
     'InstanceClientConnectionConfigArgsDict',
     'InstanceClientConnectionConfigSslConfigArgs',
     'InstanceClientConnectionConfigSslConfigArgsDict',
+    'InstanceConnectionPoolConfigArgs',
+    'InstanceConnectionPoolConfigArgsDict',
     'InstanceMachineConfigArgs',
     'InstanceMachineConfigArgsDict',
     'InstanceNetworkConfigArgs',
@@ -1080,7 +1082,7 @@ class ClusterEncryptionInfoArgs:
 
 if not MYPY:
     class ClusterInitialUserArgsDict(TypedDict):
-        password: pulumi.Input[_builtins.str]
+        password: NotRequired[pulumi.Input[_builtins.str]]
         """
         The initial password for the user.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1095,20 +1097,21 @@ elif False:
 @pulumi.input_type
 class ClusterInitialUserArgs:
     def __init__(__self__, *,
-                 password: pulumi.Input[_builtins.str],
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: The initial password for the user.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] user: The database username.
         """
-        pulumi.set(__self__, "password", password)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if user is not None:
             pulumi.set(__self__, "user", user)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> pulumi.Input[_builtins.str]:
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The initial password for the user.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1116,7 +1119,7 @@ class ClusterInitialUserArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: pulumi.Input[_builtins.str]):
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
@@ -1797,6 +1800,73 @@ class InstanceClientConnectionConfigSslConfigArgs:
     @ssl_mode.setter
     def ssl_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ssl_mode", value)
+
+
+if not MYPY:
+    class InstanceConnectionPoolConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Whether to enabled Managed Connection Pool.
+        """
+        flags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        pooler_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        (Output)
+        The number of running poolers per instance.
+        """
+elif False:
+    InstanceConnectionPoolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceConnectionPoolConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 pooler_count: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enabled Managed Connection Pool.
+        :param pulumi.Input[_builtins.int] pooler_count: (Output)
+               The number of running poolers per instance.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if pooler_count is not None:
+            pulumi.set(__self__, "pooler_count", pooler_count)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether to enabled Managed Connection Pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def flags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "flags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="poolerCount")
+    def pooler_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Output)
+        The number of running poolers per instance.
+        """
+        return pulumi.get(self, "pooler_count")
+
+    @pooler_count.setter
+    def pooler_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "pooler_count", value)
 
 
 if not MYPY:

@@ -5,7 +5,9 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +17,11 @@ public final class GetClusterNodePoolAutoConfigLinuxNodeConfig {
      * 
      */
     private String cgroupMode;
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    private List<GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
 
     private GetClusterNodePoolAutoConfigLinuxNodeConfig() {}
     /**
@@ -23,6 +30,13 @@ public final class GetClusterNodePoolAutoConfigLinuxNodeConfig {
      */
     public String cgroupMode() {
         return this.cgroupMode;
+    }
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    public List<GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings() {
+        return this.nodeKernelModuleLoadings;
     }
 
     public static Builder builder() {
@@ -35,10 +49,12 @@ public final class GetClusterNodePoolAutoConfigLinuxNodeConfig {
     @CustomType.Builder
     public static final class Builder {
         private String cgroupMode;
+        private List<GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
         public Builder() {}
         public Builder(GetClusterNodePoolAutoConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.nodeKernelModuleLoadings = defaults.nodeKernelModuleLoadings;
         }
 
         @CustomType.Setter
@@ -49,9 +65,21 @@ public final class GetClusterNodePoolAutoConfigLinuxNodeConfig {
             this.cgroupMode = cgroupMode;
             return this;
         }
+        @CustomType.Setter
+        public Builder nodeKernelModuleLoadings(List<GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings) {
+            if (nodeKernelModuleLoadings == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoConfigLinuxNodeConfig", "nodeKernelModuleLoadings");
+            }
+            this.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
+            return this;
+        }
+        public Builder nodeKernelModuleLoadings(GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading... nodeKernelModuleLoadings) {
+            return nodeKernelModuleLoadings(List.of(nodeKernelModuleLoadings));
+        }
         public GetClusterNodePoolAutoConfigLinuxNodeConfig build() {
             final var _resultValue = new GetClusterNodePoolAutoConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
             return _resultValue;
         }
     }

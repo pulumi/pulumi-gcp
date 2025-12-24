@@ -175,30 +175,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent=security_policy_target.name)
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
-            policy_id=policy.id,
-            action="allow",
-            direction="INGRESS",
-            enable_logging=True,
-            match={
-                "config": {
-                    "src_ip_ranges": [
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                    "layer4_configs": [
-                        {
-                            "ip_protocol": "tcp",
-                            "ports": ["22"],
-                        },
-                        {
-                            "ip_protocol": "icmp",
-                        },
-                    ],
-                },
-            },
-            priority=100)
+            parent=security_policy_target.name,
+            type="FIREWALL")
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",
             attachment_id=policy.parent,
@@ -252,30 +230,8 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
-            parent=security_policy_target.name)
-        policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
-            policy_id=policy.id,
-            action="allow",
-            direction="INGRESS",
-            enable_logging=True,
-            match={
-                "config": {
-                    "src_ip_ranges": [
-                        "192.168.0.0/16",
-                        "10.0.0.0/8",
-                    ],
-                    "layer4_configs": [
-                        {
-                            "ip_protocol": "tcp",
-                            "ports": ["22"],
-                        },
-                        {
-                            "ip_protocol": "icmp",
-                        },
-                    ],
-                },
-            },
-            priority=100)
+            parent=security_policy_target.name,
+            type="FIREWALL")
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",
             attachment_id=policy.parent,

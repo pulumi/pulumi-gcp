@@ -26,6 +26,7 @@ public final class GetInstanceResult {
      */
     private String id;
     private String instanceId;
+    private String kmsKey;
     private Map<String,String> labels;
     private String location;
     private String mountPoint;
@@ -36,6 +37,7 @@ public final class GetInstanceResult {
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private String state;
+    private String stateReason;
     private String updateTime;
     private @Nullable String zone;
 
@@ -68,6 +70,9 @@ public final class GetInstanceResult {
     public String instanceId() {
         return this.instanceId;
     }
+    public String kmsKey() {
+        return this.kmsKey;
+    }
     public Map<String,String> labels() {
         return this.labels;
     }
@@ -98,6 +103,9 @@ public final class GetInstanceResult {
     public String state() {
         return this.state;
     }
+    public String stateReason() {
+        return this.stateReason;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -122,6 +130,7 @@ public final class GetInstanceResult {
         private Boolean gkeSupportEnabled;
         private String id;
         private String instanceId;
+        private String kmsKey;
         private Map<String,String> labels;
         private String location;
         private String mountPoint;
@@ -132,6 +141,7 @@ public final class GetInstanceResult {
         private @Nullable String project;
         private Map<String,String> pulumiLabels;
         private String state;
+        private String stateReason;
         private String updateTime;
         private @Nullable String zone;
         public Builder() {}
@@ -145,6 +155,7 @@ public final class GetInstanceResult {
     	      this.gkeSupportEnabled = defaults.gkeSupportEnabled;
     	      this.id = defaults.id;
     	      this.instanceId = defaults.instanceId;
+    	      this.kmsKey = defaults.kmsKey;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.mountPoint = defaults.mountPoint;
@@ -155,6 +166,7 @@ public final class GetInstanceResult {
     	      this.project = defaults.project;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.state = defaults.state;
+    	      this.stateReason = defaults.stateReason;
     	      this.updateTime = defaults.updateTime;
     	      this.zone = defaults.zone;
         }
@@ -221,6 +233,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "instanceId");
             }
             this.instanceId = instanceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKey(String kmsKey) {
+            if (kmsKey == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "kmsKey");
+            }
+            this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
@@ -302,6 +322,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder stateReason(String stateReason) {
+            if (stateReason == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "stateReason");
+            }
+            this.stateReason = stateReason;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "updateTime");
@@ -325,6 +353,7 @@ public final class GetInstanceResult {
             _resultValue.gkeSupportEnabled = gkeSupportEnabled;
             _resultValue.id = id;
             _resultValue.instanceId = instanceId;
+            _resultValue.kmsKey = kmsKey;
             _resultValue.labels = labels;
             _resultValue.location = location;
             _resultValue.mountPoint = mountPoint;
@@ -335,6 +364,7 @@ public final class GetInstanceResult {
             _resultValue.project = project;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.state = state;
+            _resultValue.stateReason = stateReason;
             _resultValue.updateTime = updateTime;
             _resultValue.zone = zone;
             return _resultValue;

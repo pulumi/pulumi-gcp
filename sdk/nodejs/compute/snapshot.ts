@@ -225,6 +225,11 @@ export class Snapshot extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly snapshotId: pulumi.Output<number>;
     /**
+     * Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     */
+    declare public readonly snapshotType: pulumi.Output<string | undefined>;
+    /**
      * A reference to the disk used to create this snapshot.
      */
     declare public readonly sourceDisk: pulumi.Output<string>;
@@ -277,6 +282,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["snapshotEncryptionKey"] = state?.snapshotEncryptionKey;
             resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["snapshotType"] = state?.snapshotType;
             resourceInputs["sourceDisk"] = state?.sourceDisk;
             resourceInputs["sourceDiskEncryptionKey"] = state?.sourceDiskEncryptionKey;
             resourceInputs["storageBytes"] = state?.storageBytes;
@@ -293,6 +299,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["snapshotEncryptionKey"] = args?.snapshotEncryptionKey;
+            resourceInputs["snapshotType"] = args?.snapshotType;
             resourceInputs["sourceDisk"] = args?.sourceDisk;
             resourceInputs["sourceDiskEncryptionKey"] = args?.sourceDiskEncryptionKey;
             resourceInputs["storageLocations"] = args?.storageLocations;
@@ -404,6 +411,11 @@ export interface SnapshotState {
      */
     snapshotId?: pulumi.Input<number>;
     /**
+     * Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     */
+    snapshotType?: pulumi.Input<string>;
+    /**
      * A reference to the disk used to create this snapshot.
      */
     sourceDisk?: pulumi.Input<string>;
@@ -482,6 +494,11 @@ export interface SnapshotArgs {
      * Structure is documented below.
      */
     snapshotEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSnapshotEncryptionKey>;
+    /**
+     * Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     */
+    snapshotType?: pulumi.Input<string>;
     /**
      * A reference to the disk used to create this snapshot.
      */

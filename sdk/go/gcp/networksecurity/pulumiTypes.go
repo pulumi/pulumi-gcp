@@ -9009,6 +9009,461 @@ func (o MirroringEndpointGroupConnectedDeploymentGroupLocationArrayOutput) Index
 	}).(MirroringEndpointGroupConnectedDeploymentGroupLocationOutput)
 }
 
+type SacAttachmentSymantecOptions struct {
+	// Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+	SymantecLocationName *string `pulumi:"symantecLocationName"`
+	// Symantec data center identifier that this attachment will connect to.
+	SymantecSite *string `pulumi:"symantecSite"`
+}
+
+// SacAttachmentSymantecOptionsInput is an input type that accepts SacAttachmentSymantecOptionsArgs and SacAttachmentSymantecOptionsOutput values.
+// You can construct a concrete instance of `SacAttachmentSymantecOptionsInput` via:
+//
+//	SacAttachmentSymantecOptionsArgs{...}
+type SacAttachmentSymantecOptionsInput interface {
+	pulumi.Input
+
+	ToSacAttachmentSymantecOptionsOutput() SacAttachmentSymantecOptionsOutput
+	ToSacAttachmentSymantecOptionsOutputWithContext(context.Context) SacAttachmentSymantecOptionsOutput
+}
+
+type SacAttachmentSymantecOptionsArgs struct {
+	// Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+	SymantecLocationName pulumi.StringPtrInput `pulumi:"symantecLocationName"`
+	// Symantec data center identifier that this attachment will connect to.
+	SymantecSite pulumi.StringPtrInput `pulumi:"symantecSite"`
+}
+
+func (SacAttachmentSymantecOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SacAttachmentSymantecOptions)(nil)).Elem()
+}
+
+func (i SacAttachmentSymantecOptionsArgs) ToSacAttachmentSymantecOptionsOutput() SacAttachmentSymantecOptionsOutput {
+	return i.ToSacAttachmentSymantecOptionsOutputWithContext(context.Background())
+}
+
+func (i SacAttachmentSymantecOptionsArgs) ToSacAttachmentSymantecOptionsOutputWithContext(ctx context.Context) SacAttachmentSymantecOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacAttachmentSymantecOptionsOutput)
+}
+
+func (i SacAttachmentSymantecOptionsArgs) ToSacAttachmentSymantecOptionsPtrOutput() SacAttachmentSymantecOptionsPtrOutput {
+	return i.ToSacAttachmentSymantecOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SacAttachmentSymantecOptionsArgs) ToSacAttachmentSymantecOptionsPtrOutputWithContext(ctx context.Context) SacAttachmentSymantecOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacAttachmentSymantecOptionsOutput).ToSacAttachmentSymantecOptionsPtrOutputWithContext(ctx)
+}
+
+// SacAttachmentSymantecOptionsPtrInput is an input type that accepts SacAttachmentSymantecOptionsArgs, SacAttachmentSymantecOptionsPtr and SacAttachmentSymantecOptionsPtrOutput values.
+// You can construct a concrete instance of `SacAttachmentSymantecOptionsPtrInput` via:
+//
+//	        SacAttachmentSymantecOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SacAttachmentSymantecOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSacAttachmentSymantecOptionsPtrOutput() SacAttachmentSymantecOptionsPtrOutput
+	ToSacAttachmentSymantecOptionsPtrOutputWithContext(context.Context) SacAttachmentSymantecOptionsPtrOutput
+}
+
+type sacAttachmentSymantecOptionsPtrType SacAttachmentSymantecOptionsArgs
+
+func SacAttachmentSymantecOptionsPtr(v *SacAttachmentSymantecOptionsArgs) SacAttachmentSymantecOptionsPtrInput {
+	return (*sacAttachmentSymantecOptionsPtrType)(v)
+}
+
+func (*sacAttachmentSymantecOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SacAttachmentSymantecOptions)(nil)).Elem()
+}
+
+func (i *sacAttachmentSymantecOptionsPtrType) ToSacAttachmentSymantecOptionsPtrOutput() SacAttachmentSymantecOptionsPtrOutput {
+	return i.ToSacAttachmentSymantecOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *sacAttachmentSymantecOptionsPtrType) ToSacAttachmentSymantecOptionsPtrOutputWithContext(ctx context.Context) SacAttachmentSymantecOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacAttachmentSymantecOptionsPtrOutput)
+}
+
+type SacAttachmentSymantecOptionsOutput struct{ *pulumi.OutputState }
+
+func (SacAttachmentSymantecOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SacAttachmentSymantecOptions)(nil)).Elem()
+}
+
+func (o SacAttachmentSymantecOptionsOutput) ToSacAttachmentSymantecOptionsOutput() SacAttachmentSymantecOptionsOutput {
+	return o
+}
+
+func (o SacAttachmentSymantecOptionsOutput) ToSacAttachmentSymantecOptionsOutputWithContext(ctx context.Context) SacAttachmentSymantecOptionsOutput {
+	return o
+}
+
+func (o SacAttachmentSymantecOptionsOutput) ToSacAttachmentSymantecOptionsPtrOutput() SacAttachmentSymantecOptionsPtrOutput {
+	return o.ToSacAttachmentSymantecOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SacAttachmentSymantecOptionsOutput) ToSacAttachmentSymantecOptionsPtrOutputWithContext(ctx context.Context) SacAttachmentSymantecOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SacAttachmentSymantecOptions) *SacAttachmentSymantecOptions {
+		return &v
+	}).(SacAttachmentSymantecOptionsPtrOutput)
+}
+
+// Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+func (o SacAttachmentSymantecOptionsOutput) SymantecLocationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SacAttachmentSymantecOptions) *string { return v.SymantecLocationName }).(pulumi.StringPtrOutput)
+}
+
+// Symantec data center identifier that this attachment will connect to.
+func (o SacAttachmentSymantecOptionsOutput) SymantecSite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SacAttachmentSymantecOptions) *string { return v.SymantecSite }).(pulumi.StringPtrOutput)
+}
+
+type SacAttachmentSymantecOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SacAttachmentSymantecOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SacAttachmentSymantecOptions)(nil)).Elem()
+}
+
+func (o SacAttachmentSymantecOptionsPtrOutput) ToSacAttachmentSymantecOptionsPtrOutput() SacAttachmentSymantecOptionsPtrOutput {
+	return o
+}
+
+func (o SacAttachmentSymantecOptionsPtrOutput) ToSacAttachmentSymantecOptionsPtrOutputWithContext(ctx context.Context) SacAttachmentSymantecOptionsPtrOutput {
+	return o
+}
+
+func (o SacAttachmentSymantecOptionsPtrOutput) Elem() SacAttachmentSymantecOptionsOutput {
+	return o.ApplyT(func(v *SacAttachmentSymantecOptions) SacAttachmentSymantecOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SacAttachmentSymantecOptions
+		return ret
+	}).(SacAttachmentSymantecOptionsOutput)
+}
+
+// Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+func (o SacAttachmentSymantecOptionsPtrOutput) SymantecLocationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SacAttachmentSymantecOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SymantecLocationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Symantec data center identifier that this attachment will connect to.
+func (o SacAttachmentSymantecOptionsPtrOutput) SymantecSite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SacAttachmentSymantecOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SymantecSite
+	}).(pulumi.StringPtrOutput)
+}
+
+type SacRealmPairingKey struct {
+	// (Output)
+	// Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+	ExpireTime *string `pulumi:"expireTime"`
+	// (Output)
+	// Key value.
+	Key *string `pulumi:"key"`
+}
+
+// SacRealmPairingKeyInput is an input type that accepts SacRealmPairingKeyArgs and SacRealmPairingKeyOutput values.
+// You can construct a concrete instance of `SacRealmPairingKeyInput` via:
+//
+//	SacRealmPairingKeyArgs{...}
+type SacRealmPairingKeyInput interface {
+	pulumi.Input
+
+	ToSacRealmPairingKeyOutput() SacRealmPairingKeyOutput
+	ToSacRealmPairingKeyOutputWithContext(context.Context) SacRealmPairingKeyOutput
+}
+
+type SacRealmPairingKeyArgs struct {
+	// (Output)
+	// Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+	// (Output)
+	// Key value.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (SacRealmPairingKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SacRealmPairingKey)(nil)).Elem()
+}
+
+func (i SacRealmPairingKeyArgs) ToSacRealmPairingKeyOutput() SacRealmPairingKeyOutput {
+	return i.ToSacRealmPairingKeyOutputWithContext(context.Background())
+}
+
+func (i SacRealmPairingKeyArgs) ToSacRealmPairingKeyOutputWithContext(ctx context.Context) SacRealmPairingKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacRealmPairingKeyOutput)
+}
+
+// SacRealmPairingKeyArrayInput is an input type that accepts SacRealmPairingKeyArray and SacRealmPairingKeyArrayOutput values.
+// You can construct a concrete instance of `SacRealmPairingKeyArrayInput` via:
+//
+//	SacRealmPairingKeyArray{ SacRealmPairingKeyArgs{...} }
+type SacRealmPairingKeyArrayInput interface {
+	pulumi.Input
+
+	ToSacRealmPairingKeyArrayOutput() SacRealmPairingKeyArrayOutput
+	ToSacRealmPairingKeyArrayOutputWithContext(context.Context) SacRealmPairingKeyArrayOutput
+}
+
+type SacRealmPairingKeyArray []SacRealmPairingKeyInput
+
+func (SacRealmPairingKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SacRealmPairingKey)(nil)).Elem()
+}
+
+func (i SacRealmPairingKeyArray) ToSacRealmPairingKeyArrayOutput() SacRealmPairingKeyArrayOutput {
+	return i.ToSacRealmPairingKeyArrayOutputWithContext(context.Background())
+}
+
+func (i SacRealmPairingKeyArray) ToSacRealmPairingKeyArrayOutputWithContext(ctx context.Context) SacRealmPairingKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacRealmPairingKeyArrayOutput)
+}
+
+type SacRealmPairingKeyOutput struct{ *pulumi.OutputState }
+
+func (SacRealmPairingKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SacRealmPairingKey)(nil)).Elem()
+}
+
+func (o SacRealmPairingKeyOutput) ToSacRealmPairingKeyOutput() SacRealmPairingKeyOutput {
+	return o
+}
+
+func (o SacRealmPairingKeyOutput) ToSacRealmPairingKeyOutputWithContext(ctx context.Context) SacRealmPairingKeyOutput {
+	return o
+}
+
+// (Output)
+// Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+func (o SacRealmPairingKeyOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SacRealmPairingKey) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Key value.
+func (o SacRealmPairingKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SacRealmPairingKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type SacRealmPairingKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (SacRealmPairingKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SacRealmPairingKey)(nil)).Elem()
+}
+
+func (o SacRealmPairingKeyArrayOutput) ToSacRealmPairingKeyArrayOutput() SacRealmPairingKeyArrayOutput {
+	return o
+}
+
+func (o SacRealmPairingKeyArrayOutput) ToSacRealmPairingKeyArrayOutputWithContext(ctx context.Context) SacRealmPairingKeyArrayOutput {
+	return o
+}
+
+func (o SacRealmPairingKeyArrayOutput) Index(i pulumi.IntInput) SacRealmPairingKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SacRealmPairingKey {
+		return vs[0].([]SacRealmPairingKey)[vs[1].(int)]
+	}).(SacRealmPairingKeyOutput)
+}
+
+type SacRealmSymantecOptions struct {
+	// (Output)
+	// Symantec site IDs which the user can choose to connect to.
+	AvailableSymantecSites []string `pulumi:"availableSymantecSites"`
+	// API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+	// A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+	SecretPath *string `pulumi:"secretPath"`
+	// (Output)
+	// Connection status to Symantec API
+	SymantecConnectionState *string `pulumi:"symantecConnectionState"`
+}
+
+// SacRealmSymantecOptionsInput is an input type that accepts SacRealmSymantecOptionsArgs and SacRealmSymantecOptionsOutput values.
+// You can construct a concrete instance of `SacRealmSymantecOptionsInput` via:
+//
+//	SacRealmSymantecOptionsArgs{...}
+type SacRealmSymantecOptionsInput interface {
+	pulumi.Input
+
+	ToSacRealmSymantecOptionsOutput() SacRealmSymantecOptionsOutput
+	ToSacRealmSymantecOptionsOutputWithContext(context.Context) SacRealmSymantecOptionsOutput
+}
+
+type SacRealmSymantecOptionsArgs struct {
+	// (Output)
+	// Symantec site IDs which the user can choose to connect to.
+	AvailableSymantecSites pulumi.StringArrayInput `pulumi:"availableSymantecSites"`
+	// API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+	// A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+	SecretPath pulumi.StringPtrInput `pulumi:"secretPath"`
+	// (Output)
+	// Connection status to Symantec API
+	SymantecConnectionState pulumi.StringPtrInput `pulumi:"symantecConnectionState"`
+}
+
+func (SacRealmSymantecOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SacRealmSymantecOptions)(nil)).Elem()
+}
+
+func (i SacRealmSymantecOptionsArgs) ToSacRealmSymantecOptionsOutput() SacRealmSymantecOptionsOutput {
+	return i.ToSacRealmSymantecOptionsOutputWithContext(context.Background())
+}
+
+func (i SacRealmSymantecOptionsArgs) ToSacRealmSymantecOptionsOutputWithContext(ctx context.Context) SacRealmSymantecOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacRealmSymantecOptionsOutput)
+}
+
+func (i SacRealmSymantecOptionsArgs) ToSacRealmSymantecOptionsPtrOutput() SacRealmSymantecOptionsPtrOutput {
+	return i.ToSacRealmSymantecOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SacRealmSymantecOptionsArgs) ToSacRealmSymantecOptionsPtrOutputWithContext(ctx context.Context) SacRealmSymantecOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacRealmSymantecOptionsOutput).ToSacRealmSymantecOptionsPtrOutputWithContext(ctx)
+}
+
+// SacRealmSymantecOptionsPtrInput is an input type that accepts SacRealmSymantecOptionsArgs, SacRealmSymantecOptionsPtr and SacRealmSymantecOptionsPtrOutput values.
+// You can construct a concrete instance of `SacRealmSymantecOptionsPtrInput` via:
+//
+//	        SacRealmSymantecOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SacRealmSymantecOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSacRealmSymantecOptionsPtrOutput() SacRealmSymantecOptionsPtrOutput
+	ToSacRealmSymantecOptionsPtrOutputWithContext(context.Context) SacRealmSymantecOptionsPtrOutput
+}
+
+type sacRealmSymantecOptionsPtrType SacRealmSymantecOptionsArgs
+
+func SacRealmSymantecOptionsPtr(v *SacRealmSymantecOptionsArgs) SacRealmSymantecOptionsPtrInput {
+	return (*sacRealmSymantecOptionsPtrType)(v)
+}
+
+func (*sacRealmSymantecOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SacRealmSymantecOptions)(nil)).Elem()
+}
+
+func (i *sacRealmSymantecOptionsPtrType) ToSacRealmSymantecOptionsPtrOutput() SacRealmSymantecOptionsPtrOutput {
+	return i.ToSacRealmSymantecOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *sacRealmSymantecOptionsPtrType) ToSacRealmSymantecOptionsPtrOutputWithContext(ctx context.Context) SacRealmSymantecOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SacRealmSymantecOptionsPtrOutput)
+}
+
+type SacRealmSymantecOptionsOutput struct{ *pulumi.OutputState }
+
+func (SacRealmSymantecOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SacRealmSymantecOptions)(nil)).Elem()
+}
+
+func (o SacRealmSymantecOptionsOutput) ToSacRealmSymantecOptionsOutput() SacRealmSymantecOptionsOutput {
+	return o
+}
+
+func (o SacRealmSymantecOptionsOutput) ToSacRealmSymantecOptionsOutputWithContext(ctx context.Context) SacRealmSymantecOptionsOutput {
+	return o
+}
+
+func (o SacRealmSymantecOptionsOutput) ToSacRealmSymantecOptionsPtrOutput() SacRealmSymantecOptionsPtrOutput {
+	return o.ToSacRealmSymantecOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SacRealmSymantecOptionsOutput) ToSacRealmSymantecOptionsPtrOutputWithContext(ctx context.Context) SacRealmSymantecOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SacRealmSymantecOptions) *SacRealmSymantecOptions {
+		return &v
+	}).(SacRealmSymantecOptionsPtrOutput)
+}
+
+// (Output)
+// Symantec site IDs which the user can choose to connect to.
+func (o SacRealmSymantecOptionsOutput) AvailableSymantecSites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SacRealmSymantecOptions) []string { return v.AvailableSymantecSites }).(pulumi.StringArrayOutput)
+}
+
+// API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+// A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+func (o SacRealmSymantecOptionsOutput) SecretPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SacRealmSymantecOptions) *string { return v.SecretPath }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Connection status to Symantec API
+func (o SacRealmSymantecOptionsOutput) SymantecConnectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SacRealmSymantecOptions) *string { return v.SymantecConnectionState }).(pulumi.StringPtrOutput)
+}
+
+type SacRealmSymantecOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SacRealmSymantecOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SacRealmSymantecOptions)(nil)).Elem()
+}
+
+func (o SacRealmSymantecOptionsPtrOutput) ToSacRealmSymantecOptionsPtrOutput() SacRealmSymantecOptionsPtrOutput {
+	return o
+}
+
+func (o SacRealmSymantecOptionsPtrOutput) ToSacRealmSymantecOptionsPtrOutputWithContext(ctx context.Context) SacRealmSymantecOptionsPtrOutput {
+	return o
+}
+
+func (o SacRealmSymantecOptionsPtrOutput) Elem() SacRealmSymantecOptionsOutput {
+	return o.ApplyT(func(v *SacRealmSymantecOptions) SacRealmSymantecOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SacRealmSymantecOptions
+		return ret
+	}).(SacRealmSymantecOptionsOutput)
+}
+
+// (Output)
+// Symantec site IDs which the user can choose to connect to.
+func (o SacRealmSymantecOptionsPtrOutput) AvailableSymantecSites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SacRealmSymantecOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableSymantecSites
+	}).(pulumi.StringArrayOutput)
+}
+
+// API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+// A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+func (o SacRealmSymantecOptionsPtrOutput) SecretPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SacRealmSymantecOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Connection status to Symantec API
+func (o SacRealmSymantecOptionsPtrOutput) SymantecConnectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SacRealmSymantecOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SymantecConnectionState
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityProfileCustomInterceptProfile struct {
 	// The Intercept Endpoint Group to which matching traffic should be intercepted.
 	// Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
@@ -9151,9 +9606,22 @@ func (o SecurityProfileCustomInterceptProfilePtrOutput) InterceptEndpointGroup()
 }
 
 type SecurityProfileCustomMirroringProfile struct {
-	// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+	// The target downstream Mirroring Deployment Groups.
+	// This field is used for Packet Broker mirroring endpoint groups to specify
+	// the deployment groups that the packet should be mirrored to by the broker.
+	// Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+	MirroringDeploymentGroups []string `pulumi:"mirroringDeploymentGroups"`
+	// The target Mirroring Endpoint Group.
+	// When a mirroring rule with this security profile attached matches a packet,
+	// a replica will be mirrored to the location-local target in this group.
 	// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
 	MirroringEndpointGroup string `pulumi:"mirroringEndpointGroup"`
+	// (Output, Beta)
+	// The type of the mirroring endpoint group this profile is attached to.
+	// Possible values:
+	// DIRECT
+	// BROKER
+	MirroringEndpointGroupType *string `pulumi:"mirroringEndpointGroupType"`
 }
 
 // SecurityProfileCustomMirroringProfileInput is an input type that accepts SecurityProfileCustomMirroringProfileArgs and SecurityProfileCustomMirroringProfileOutput values.
@@ -9168,9 +9636,22 @@ type SecurityProfileCustomMirroringProfileInput interface {
 }
 
 type SecurityProfileCustomMirroringProfileArgs struct {
-	// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+	// The target downstream Mirroring Deployment Groups.
+	// This field is used for Packet Broker mirroring endpoint groups to specify
+	// the deployment groups that the packet should be mirrored to by the broker.
+	// Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+	MirroringDeploymentGroups pulumi.StringArrayInput `pulumi:"mirroringDeploymentGroups"`
+	// The target Mirroring Endpoint Group.
+	// When a mirroring rule with this security profile attached matches a packet,
+	// a replica will be mirrored to the location-local target in this group.
 	// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
 	MirroringEndpointGroup pulumi.StringInput `pulumi:"mirroringEndpointGroup"`
+	// (Output, Beta)
+	// The type of the mirroring endpoint group this profile is attached to.
+	// Possible values:
+	// DIRECT
+	// BROKER
+	MirroringEndpointGroupType pulumi.StringPtrInput `pulumi:"mirroringEndpointGroupType"`
 }
 
 func (SecurityProfileCustomMirroringProfileArgs) ElementType() reflect.Type {
@@ -9250,10 +9731,29 @@ func (o SecurityProfileCustomMirroringProfileOutput) ToSecurityProfileCustomMirr
 	}).(SecurityProfileCustomMirroringProfilePtrOutput)
 }
 
-// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+// The target downstream Mirroring Deployment Groups.
+// This field is used for Packet Broker mirroring endpoint groups to specify
+// the deployment groups that the packet should be mirrored to by the broker.
+// Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+func (o SecurityProfileCustomMirroringProfileOutput) MirroringDeploymentGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityProfileCustomMirroringProfile) []string { return v.MirroringDeploymentGroups }).(pulumi.StringArrayOutput)
+}
+
+// The target Mirroring Endpoint Group.
+// When a mirroring rule with this security profile attached matches a packet,
+// a replica will be mirrored to the location-local target in this group.
 // Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
 func (o SecurityProfileCustomMirroringProfileOutput) MirroringEndpointGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityProfileCustomMirroringProfile) string { return v.MirroringEndpointGroup }).(pulumi.StringOutput)
+}
+
+// (Output, Beta)
+// The type of the mirroring endpoint group this profile is attached to.
+// Possible values:
+// DIRECT
+// BROKER
+func (o SecurityProfileCustomMirroringProfileOutput) MirroringEndpointGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityProfileCustomMirroringProfile) *string { return v.MirroringEndpointGroupType }).(pulumi.StringPtrOutput)
 }
 
 type SecurityProfileCustomMirroringProfilePtrOutput struct{ *pulumi.OutputState }
@@ -9280,7 +9780,22 @@ func (o SecurityProfileCustomMirroringProfilePtrOutput) Elem() SecurityProfileCu
 	}).(SecurityProfileCustomMirroringProfileOutput)
 }
 
-// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+// The target downstream Mirroring Deployment Groups.
+// This field is used for Packet Broker mirroring endpoint groups to specify
+// the deployment groups that the packet should be mirrored to by the broker.
+// Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+func (o SecurityProfileCustomMirroringProfilePtrOutput) MirroringDeploymentGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileCustomMirroringProfile) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MirroringDeploymentGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// The target Mirroring Endpoint Group.
+// When a mirroring rule with this security profile attached matches a packet,
+// a replica will be mirrored to the location-local target in this group.
 // Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
 func (o SecurityProfileCustomMirroringProfilePtrOutput) MirroringEndpointGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfileCustomMirroringProfile) *string {
@@ -9288,6 +9803,20 @@ func (o SecurityProfileCustomMirroringProfilePtrOutput) MirroringEndpointGroup()
 			return nil
 		}
 		return &v.MirroringEndpointGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output, Beta)
+// The type of the mirroring endpoint group this profile is attached to.
+// Possible values:
+// DIRECT
+// BROKER
+func (o SecurityProfileCustomMirroringProfilePtrOutput) MirroringEndpointGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileCustomMirroringProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MirroringEndpointGroupType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11278,6 +11807,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupConnectedDeploymentGroupArrayInput)(nil)).Elem(), MirroringEndpointGroupConnectedDeploymentGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupConnectedDeploymentGroupLocationInput)(nil)).Elem(), MirroringEndpointGroupConnectedDeploymentGroupLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupConnectedDeploymentGroupLocationArrayInput)(nil)).Elem(), MirroringEndpointGroupConnectedDeploymentGroupLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SacAttachmentSymantecOptionsInput)(nil)).Elem(), SacAttachmentSymantecOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SacAttachmentSymantecOptionsPtrInput)(nil)).Elem(), SacAttachmentSymantecOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SacRealmPairingKeyInput)(nil)).Elem(), SacRealmPairingKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SacRealmPairingKeyArrayInput)(nil)).Elem(), SacRealmPairingKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SacRealmSymantecOptionsInput)(nil)).Elem(), SacRealmSymantecOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SacRealmSymantecOptionsPtrInput)(nil)).Elem(), SacRealmSymantecOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileCustomInterceptProfileInput)(nil)).Elem(), SecurityProfileCustomInterceptProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileCustomInterceptProfilePtrInput)(nil)).Elem(), SecurityProfileCustomInterceptProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileCustomMirroringProfileInput)(nil)).Elem(), SecurityProfileCustomMirroringProfileArgs{})
@@ -11428,6 +11963,12 @@ func init() {
 	pulumi.RegisterOutputType(MirroringEndpointGroupConnectedDeploymentGroupArrayOutput{})
 	pulumi.RegisterOutputType(MirroringEndpointGroupConnectedDeploymentGroupLocationOutput{})
 	pulumi.RegisterOutputType(MirroringEndpointGroupConnectedDeploymentGroupLocationArrayOutput{})
+	pulumi.RegisterOutputType(SacAttachmentSymantecOptionsOutput{})
+	pulumi.RegisterOutputType(SacAttachmentSymantecOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SacRealmPairingKeyOutput{})
+	pulumi.RegisterOutputType(SacRealmPairingKeyArrayOutput{})
+	pulumi.RegisterOutputType(SacRealmSymantecOptionsOutput{})
+	pulumi.RegisterOutputType(SacRealmSymantecOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileCustomInterceptProfileOutput{})
 	pulumi.RegisterOutputType(SecurityProfileCustomInterceptProfilePtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileCustomMirroringProfileOutput{})

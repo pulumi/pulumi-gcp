@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
  *             .displayName("tf-test")
  *             .parent("organizations/123456789")
+ *             .type("FIREWALL")
  *             .build());
  * 
  *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()

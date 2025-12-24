@@ -91,6 +91,22 @@ import * as utilities from "../utilities";
  *     bgpInterRegionCost: "ADD_COST_TO_MED",
  * });
  * ```
+ * ### Network Bgp Standard Mode Delete Med
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ *     name: "vpc-network",
+ *     autoCreateSubnetworks: false,
+ *     routingMode: "GLOBAL",
+ *     project: "my-project-name",
+ *     bgpBestPathSelectionMode: "LEGACY",
+ *     bgpAlwaysCompareMed: false,
+ *     deleteBgpAlwaysCompareMed: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -167,6 +183,11 @@ export class Network extends pulumi.CustomResource {
      * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
      */
     declare public readonly bgpInterRegionCost: pulumi.Output<string>;
+    /**
+     * If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+     * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+     */
+    declare public readonly deleteBgpAlwaysCompareMed: pulumi.Output<boolean | undefined>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
@@ -279,6 +300,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["bgpAlwaysCompareMed"] = state?.bgpAlwaysCompareMed;
             resourceInputs["bgpBestPathSelectionMode"] = state?.bgpBestPathSelectionMode;
             resourceInputs["bgpInterRegionCost"] = state?.bgpInterRegionCost;
+            resourceInputs["deleteBgpAlwaysCompareMed"] = state?.deleteBgpAlwaysCompareMed;
             resourceInputs["deleteDefaultRoutesOnCreate"] = state?.deleteDefaultRoutesOnCreate;
             resourceInputs["description"] = state?.description;
             resourceInputs["enableUlaInternalIpv6"] = state?.enableUlaInternalIpv6;
@@ -300,6 +322,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["bgpAlwaysCompareMed"] = args?.bgpAlwaysCompareMed;
             resourceInputs["bgpBestPathSelectionMode"] = args?.bgpBestPathSelectionMode;
             resourceInputs["bgpInterRegionCost"] = args?.bgpInterRegionCost;
+            resourceInputs["deleteBgpAlwaysCompareMed"] = args?.deleteBgpAlwaysCompareMed;
             resourceInputs["deleteDefaultRoutesOnCreate"] = args?.deleteDefaultRoutesOnCreate;
             resourceInputs["description"] = args?.description;
             resourceInputs["enableUlaInternalIpv6"] = args?.enableUlaInternalIpv6;
@@ -348,6 +371,11 @@ export interface NetworkState {
      * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
      */
     bgpInterRegionCost?: pulumi.Input<string>;
+    /**
+     * If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+     * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+     */
+    deleteBgpAlwaysCompareMed?: pulumi.Input<boolean>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
@@ -471,6 +499,11 @@ export interface NetworkArgs {
      * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
      */
     bgpInterRegionCost?: pulumi.Input<string>;
+    /**
+     * If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+     * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+     */
+    deleteBgpAlwaysCompareMed?: pulumi.Input<boolean>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.

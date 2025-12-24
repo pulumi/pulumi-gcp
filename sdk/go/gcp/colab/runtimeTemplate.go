@@ -159,6 +159,19 @@ import (
 //				EncryptionSpec: &colab.RuntimeTemplateEncryptionSpecArgs{
 //					KmsKeyName: pulumi.String("my-crypto-key"),
 //				},
+//				SoftwareConfig: &colab.RuntimeTemplateSoftwareConfigArgs{
+//					Envs: colab.RuntimeTemplateSoftwareConfigEnvArray{
+//						&colab.RuntimeTemplateSoftwareConfigEnvArgs{
+//							Name:  pulumi.String("TEST"),
+//							Value: pulumi.String("1"),
+//						},
+//					},
+//					PostStartupScriptConfig: &colab.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs{
+//						PostStartupScript:         pulumi.String("echo 'hello world'"),
+//						PostStartupScriptUrl:      pulumi.String("gs://colab-enterprise-pss-secure/secure_pss.sh"),
+//						PostStartupScriptBehavior: pulumi.String("RUN_ONCE"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

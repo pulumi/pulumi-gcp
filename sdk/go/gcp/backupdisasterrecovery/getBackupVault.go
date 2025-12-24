@@ -64,22 +64,23 @@ type LookupBackupVaultArgs struct {
 
 // A collection of values returned by getBackupVault.
 type LookupBackupVaultResult struct {
-	AccessRestriction                      string            `pulumi:"accessRestriction"`
-	AllowMissing                           bool              `pulumi:"allowMissing"`
-	Annotations                            map[string]string `pulumi:"annotations"`
-	BackupCount                            string            `pulumi:"backupCount"`
-	BackupMinimumEnforcedRetentionDuration string            `pulumi:"backupMinimumEnforcedRetentionDuration"`
-	BackupRetentionInheritance             string            `pulumi:"backupRetentionInheritance"`
-	BackupVaultId                          string            `pulumi:"backupVaultId"`
-	CreateTime                             string            `pulumi:"createTime"`
-	Deletable                              bool              `pulumi:"deletable"`
-	Description                            string            `pulumi:"description"`
-	EffectiveAnnotations                   map[string]string `pulumi:"effectiveAnnotations"`
-	EffectiveLabels                        map[string]string `pulumi:"effectiveLabels"`
-	EffectiveTime                          string            `pulumi:"effectiveTime"`
-	Etag                                   string            `pulumi:"etag"`
-	ForceDelete                            bool              `pulumi:"forceDelete"`
-	ForceUpdate                            bool              `pulumi:"forceUpdate"`
+	AccessRestriction                      string                           `pulumi:"accessRestriction"`
+	AllowMissing                           bool                             `pulumi:"allowMissing"`
+	Annotations                            map[string]string                `pulumi:"annotations"`
+	BackupCount                            string                           `pulumi:"backupCount"`
+	BackupMinimumEnforcedRetentionDuration string                           `pulumi:"backupMinimumEnforcedRetentionDuration"`
+	BackupRetentionInheritance             string                           `pulumi:"backupRetentionInheritance"`
+	BackupVaultId                          string                           `pulumi:"backupVaultId"`
+	CreateTime                             string                           `pulumi:"createTime"`
+	Deletable                              bool                             `pulumi:"deletable"`
+	Description                            string                           `pulumi:"description"`
+	EffectiveAnnotations                   map[string]string                `pulumi:"effectiveAnnotations"`
+	EffectiveLabels                        map[string]string                `pulumi:"effectiveLabels"`
+	EffectiveTime                          string                           `pulumi:"effectiveTime"`
+	EncryptionConfigs                      []GetBackupVaultEncryptionConfig `pulumi:"encryptionConfigs"`
+	Etag                                   string                           `pulumi:"etag"`
+	ForceDelete                            bool                             `pulumi:"forceDelete"`
+	ForceUpdate                            bool                             `pulumi:"forceUpdate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string            `pulumi:"id"`
 	IgnoreBackupPlanReferences bool              `pulumi:"ignoreBackupPlanReferences"`
@@ -187,6 +188,10 @@ func (o LookupBackupVaultResultOutput) EffectiveLabels() pulumi.StringMapOutput 
 
 func (o LookupBackupVaultResultOutput) EffectiveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupVaultResult) string { return v.EffectiveTime }).(pulumi.StringOutput)
+}
+
+func (o LookupBackupVaultResultOutput) EncryptionConfigs() GetBackupVaultEncryptionConfigArrayOutput {
+	return o.ApplyT(func(v LookupBackupVaultResult) []GetBackupVaultEncryptionConfig { return v.EncryptionConfigs }).(GetBackupVaultEncryptionConfigArrayOutput)
 }
 
 func (o LookupBackupVaultResultOutput) Etag() pulumi.StringOutput {

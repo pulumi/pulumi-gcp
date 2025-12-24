@@ -265,6 +265,21 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * If true, show NAT IPs of all connected endpoints.
+     * 
+     */
+    @Import(name="showNatIps")
+    private @Nullable Output<Boolean> showNatIps;
+
+    /**
+     * @return If true, show NAT IPs of all connected endpoints.
+     * 
+     */
+    public Optional<Output<Boolean>> showNatIps() {
+        return Optional.ofNullable(this.showNatIps);
+    }
+
+    /**
      * The URL of a service serving the endpoint identified by this service attachment.
      * 
      */
@@ -312,6 +327,7 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         this.reconcileConnections = $.reconcileConnections;
         this.region = $.region;
         this.sendPropagatedConnectionLimitIfZero = $.sendPropagatedConnectionLimitIfZero;
+        this.showNatIps = $.showNatIps;
         this.targetService = $.targetService;
         this.tunnelingConfig = $.tunnelingConfig;
     }
@@ -699,6 +715,27 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder sendPropagatedConnectionLimitIfZero(Boolean sendPropagatedConnectionLimitIfZero) {
             return sendPropagatedConnectionLimitIfZero(Output.of(sendPropagatedConnectionLimitIfZero));
+        }
+
+        /**
+         * @param showNatIps If true, show NAT IPs of all connected endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showNatIps(@Nullable Output<Boolean> showNatIps) {
+            $.showNatIps = showNatIps;
+            return this;
+        }
+
+        /**
+         * @param showNatIps If true, show NAT IPs of all connected endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showNatIps(Boolean showNatIps) {
+            return showNatIps(Output.of(showNatIps));
         }
 
         /**

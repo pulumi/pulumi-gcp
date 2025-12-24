@@ -67,7 +67,7 @@ class GetAncestryResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> _builtins.str:
         """
-        The optional user-assigned display name of the project.
+        The organization id.
         """
         return pulumi.get(self, "org_id")
 
@@ -115,6 +115,13 @@ def get_ancestry(project: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    example = gcp.projects.get_ancestry(project="example-project")
+    ```
+
 
     :param _builtins.str project: The ID of the project. If it is not provided, the provider project is used.
     """
@@ -137,6 +144,13 @@ def get_ancestry_output(project: Optional[pulumi.Input[Optional[_builtins.str]]]
     See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    example = gcp.projects.get_ancestry(project="example-project")
+    ```
 
 
     :param _builtins.str project: The ID of the project. If it is not provided, the provider project is used.

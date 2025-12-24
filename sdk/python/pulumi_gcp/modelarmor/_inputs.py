@@ -37,6 +37,8 @@ __all__ = [
     'FloorsettingFloorSettingMetadataArgsDict',
     'FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs',
     'FloorsettingFloorSettingMetadataMultiLanguageDetectionArgsDict',
+    'FloorsettingGoogleMcpServerFloorSettingArgs',
+    'FloorsettingGoogleMcpServerFloorSettingArgsDict',
     'TemplateFilterConfigArgs',
     'TemplateFilterConfigArgsDict',
     'TemplateFilterConfigMaliciousUriFilterSettingsArgs',
@@ -720,6 +722,84 @@ class FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs:
     @enable_multi_language_detection.setter
     def enable_multi_language_detection(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "enable_multi_language_detection", value)
+
+
+if not MYPY:
+    class FloorsettingGoogleMcpServerFloorSettingArgsDict(TypedDict):
+        enable_cloud_logging: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, log Model Armor filter results to Cloud Logging.
+        """
+        inspect_and_block: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, Model Armor filters will be run in inspect and block mode.
+        Requests that trip Model Armor filters will be blocked.
+        """
+        inspect_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If true, Model Armor filters will be run in inspect only mode. No action
+        will be taken on the request.
+        """
+elif False:
+    FloorsettingGoogleMcpServerFloorSettingArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FloorsettingGoogleMcpServerFloorSettingArgs:
+    def __init__(__self__, *,
+                 enable_cloud_logging: Optional[pulumi.Input[_builtins.bool]] = None,
+                 inspect_and_block: Optional[pulumi.Input[_builtins.bool]] = None,
+                 inspect_only: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_cloud_logging: If true, log Model Armor filter results to Cloud Logging.
+        :param pulumi.Input[_builtins.bool] inspect_and_block: If true, Model Armor filters will be run in inspect and block mode.
+               Requests that trip Model Armor filters will be blocked.
+        :param pulumi.Input[_builtins.bool] inspect_only: If true, Model Armor filters will be run in inspect only mode. No action
+               will be taken on the request.
+        """
+        if enable_cloud_logging is not None:
+            pulumi.set(__self__, "enable_cloud_logging", enable_cloud_logging)
+        if inspect_and_block is not None:
+            pulumi.set(__self__, "inspect_and_block", inspect_and_block)
+        if inspect_only is not None:
+            pulumi.set(__self__, "inspect_only", inspect_only)
+
+    @_builtins.property
+    @pulumi.getter(name="enableCloudLogging")
+    def enable_cloud_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, log Model Armor filter results to Cloud Logging.
+        """
+        return pulumi.get(self, "enable_cloud_logging")
+
+    @enable_cloud_logging.setter
+    def enable_cloud_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_cloud_logging", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inspectAndBlock")
+    def inspect_and_block(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, Model Armor filters will be run in inspect and block mode.
+        Requests that trip Model Armor filters will be blocked.
+        """
+        return pulumi.get(self, "inspect_and_block")
+
+    @inspect_and_block.setter
+    def inspect_and_block(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "inspect_and_block", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inspectOnly")
+    def inspect_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, Model Armor filters will be run in inspect only mode. No action
+        will be taken on the request.
+        """
+        return pulumi.get(self, "inspect_only")
+
+    @inspect_only.setter
+    def inspect_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "inspect_only", value)
 
 
 if not MYPY:

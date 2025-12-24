@@ -283,7 +283,7 @@ type Cluster struct {
 	// and will be automatically deleted after 30 days.
 	EnableKubernetesAlpha pulumi.BoolPtrOutput `pulumi:"enableKubernetesAlpha"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
-	EnableL4IlbSubsetting pulumi.BoolPtrOutput `pulumi:"enableL4IlbSubsetting"`
+	EnableL4IlbSubsetting pulumi.BoolOutput `pulumi:"enableL4IlbSubsetting"`
 	// Whether the ABAC authorizer is enabled for this cluster.
 	// When enabled, identities in the system, including service accounts, nodes, and controllers,
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -2103,8 +2103,8 @@ func (o ClusterOutput) EnableKubernetesAlpha() pulumi.BoolPtrOutput {
 }
 
 // Whether L4ILB Subsetting is enabled for this cluster.
-func (o ClusterOutput) EnableL4IlbSubsetting() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableL4IlbSubsetting }).(pulumi.BoolPtrOutput)
+func (o ClusterOutput) EnableL4IlbSubsetting() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableL4IlbSubsetting }).(pulumi.BoolOutput)
 }
 
 // Whether the ABAC authorizer is enabled for this cluster.

@@ -253,6 +253,21 @@ public final class AppVariableDeclarationSchemaArgs extends com.pulumi.resources
     }
 
     /**
+     * The title of the schema.
+     * 
+     */
+    @Import(name="title")
+    private @Nullable Output<String> title;
+
+    /**
+     * @return The title of the schema.
+     * 
+     */
+    public Optional<Output<String>> title() {
+        return Optional.ofNullable(this.title);
+    }
+
+    /**
      * The type of the data.
      * Possible values:
      * STRING
@@ -311,6 +326,7 @@ public final class AppVariableDeclarationSchemaArgs extends com.pulumi.resources
         this.properties = $.properties;
         this.ref = $.ref;
         this.requireds = $.requireds;
+        this.title = $.title;
         this.type = $.type;
         this.uniqueItems = $.uniqueItems;
     }
@@ -662,6 +678,27 @@ public final class AppVariableDeclarationSchemaArgs extends com.pulumi.resources
          */
         public Builder requireds(String... requireds) {
             return requireds(List.of(requireds));
+        }
+
+        /**
+         * @param title The title of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(@Nullable Output<String> title) {
+            $.title = title;
+            return this;
+        }
+
+        /**
+         * @param title The title of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(String title) {
+            return title(Output.of(title));
         }
 
         /**

@@ -351,8 +351,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
-        /// 
-        /// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -511,8 +509,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
-        /// 
-        /// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -644,8 +640,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
-        /// 
-        /// * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

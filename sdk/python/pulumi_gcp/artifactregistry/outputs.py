@@ -74,6 +74,8 @@ __all__ = [
     'GetRepositoryVulnerabilityScanningConfigResult',
     'GetTagsTagResult',
     'GetVersionRelatedTagResult',
+    'GetVersionsVersionResult',
+    'GetVersionsVersionRelatedTagResult',
 ]
 
 @pulumi.output_type
@@ -2651,6 +2653,104 @@ class GetTagsTagResult(dict):
 
 @pulumi.output_type
 class GetVersionRelatedTagResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str name: The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, _builtins.str],
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 related_tags: Sequence['outputs.GetVersionsVersionRelatedTagResult'],
+                 update_time: _builtins.str):
+        """
+        :param Mapping[str, _builtins.str] annotations: Client specified annotations.
+        :param _builtins.str create_time: The time, as a RFC 3339 string, this package was created.
+        :param _builtins.str description: Description of the version, as specified in its metadata.
+        :param _builtins.str name: The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+        :param Sequence['GetVersionsVersionRelatedTagArgs'] related_tags: A list of related tags. Will contain up to 100 tags that reference this version.
+        :param _builtins.str update_time: The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "related_tags", related_tags)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, _builtins.str]:
+        """
+        Client specified annotations.
+        """
+        return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time, as a RFC 3339 string, this package was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the version, as specified in its metadata.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="relatedTags")
+    def related_tags(self) -> Sequence['outputs.GetVersionsVersionRelatedTagResult']:
+        """
+        A list of related tags. Will contain up to 100 tags that reference this version.
+        """
+        return pulumi.get(self, "related_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetVersionsVersionRelatedTagResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  version: _builtins.str):

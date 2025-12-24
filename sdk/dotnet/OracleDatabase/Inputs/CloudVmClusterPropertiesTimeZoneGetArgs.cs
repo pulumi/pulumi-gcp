@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// IANA Time Zone Database version number, e.g. "2019a".
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public CloudVmClusterPropertiesTimeZoneGetArgs()
         {
         }

@@ -12,12 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class AiReasoningEngineSpecDeploymentSpecSecretEnv {
     /**
-     * @return The name of the environment variable. Must be a valid C identifier.
+     * @return The name of the environment variable. Must be a valid C
+     * identifier.
      * 
      */
     private String name;
     /**
-     * @return Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+     * @return Reference to a secret stored in the Cloud Secret Manager
+     * that will provide the value for this environment variable.
      * Structure is documented below.
      * 
      */
@@ -25,14 +27,16 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnv {
 
     private AiReasoningEngineSpecDeploymentSpecSecretEnv() {}
     /**
-     * @return The name of the environment variable. Must be a valid C identifier.
+     * @return The name of the environment variable. Must be a valid C
+     * identifier.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+     * @return Reference to a secret stored in the Cloud Secret Manager
+     * that will provide the value for this environment variable.
      * Structure is documented below.
      * 
      */

@@ -12,6 +12,8 @@ import (
 )
 
 // This data source fetches information of a version from a provided Artifact Registry repository.
+//
+// ## Example Usage
 func GetVersion(ctx *pulumi.Context, args *GetVersionArgs, opts ...pulumi.InvokeOption) (*GetVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVersionResult

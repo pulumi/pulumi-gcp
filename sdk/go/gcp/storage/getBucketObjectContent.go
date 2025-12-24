@@ -84,6 +84,7 @@ type GetBucketObjectContentResult struct {
 	ContentHexsha512      string                                     `pulumi:"contentHexsha512"`
 	ContentLanguage       string                                     `pulumi:"contentLanguage"`
 	ContentType           string                                     `pulumi:"contentType"`
+	Contexts              []GetBucketObjectContentContext            `pulumi:"contexts"`
 	Crc32c                string                                     `pulumi:"crc32c"`
 	CustomerEncryptions   []GetBucketObjectContentCustomerEncryption `pulumi:"customerEncryptions"`
 	DeletionPolicy        string                                     `pulumi:"deletionPolicy"`
@@ -189,6 +190,10 @@ func (o GetBucketObjectContentResultOutput) ContentLanguage() pulumi.StringOutpu
 
 func (o GetBucketObjectContentResultOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentResult) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o GetBucketObjectContentResultOutput) Contexts() GetBucketObjectContentContextArrayOutput {
+	return o.ApplyT(func(v GetBucketObjectContentResult) []GetBucketObjectContentContext { return v.Contexts }).(GetBucketObjectContentContextArrayOutput)
 }
 
 func (o GetBucketObjectContentResultOutput) Crc32c() pulumi.StringOutput {

@@ -45,6 +45,7 @@ __all__ = [
     'ClusterTrialMetadata',
     'InstanceClientConnectionConfig',
     'InstanceClientConnectionConfigSslConfig',
+    'InstanceConnectionPoolConfig',
     'InstanceMachineConfig',
     'InstanceNetworkConfig',
     'InstanceNetworkConfigAuthorizedExternalNetwork',
@@ -80,6 +81,7 @@ __all__ = [
     'GetClusterTrialMetadataResult',
     'GetInstanceClientConnectionConfigResult',
     'GetInstanceClientConnectionConfigSslConfigResult',
+    'GetInstanceConnectionPoolConfigResult',
     'GetInstanceMachineConfigResult',
     'GetInstanceNetworkConfigResult',
     'GetInstanceNetworkConfigAuthorizedExternalNetworkResult',
@@ -951,20 +953,21 @@ class ClusterEncryptionInfo(dict):
 @pulumi.output_type
 class ClusterInitialUser(dict):
     def __init__(__self__, *,
-                 password: _builtins.str,
+                 password: Optional[_builtins.str] = None,
                  user: Optional[_builtins.str] = None):
         """
         :param _builtins.str password: The initial password for the user.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param _builtins.str user: The database username.
         """
-        pulumi.set(__self__, "password", password)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if user is not None:
             pulumi.set(__self__, "user", user)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> _builtins.str:
+    def password(self) -> Optional[_builtins.str]:
         """
         The initial password for the user.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1576,6 +1579,63 @@ class InstanceClientConnectionConfigSslConfig(dict):
         Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
         """
         return pulumi.get(self, "ssl_mode")
+
+
+@pulumi.output_type
+class InstanceConnectionPoolConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "poolerCount":
+            suggest = "pooler_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConnectionPoolConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConnectionPoolConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConnectionPoolConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 flags: Optional[Mapping[str, _builtins.str]] = None,
+                 pooler_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enabled: Whether to enabled Managed Connection Pool.
+        :param _builtins.int pooler_count: (Output)
+               The number of running poolers per instance.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if pooler_count is not None:
+            pulumi.set(__self__, "pooler_count", pooler_count)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether to enabled Managed Connection Pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def flags(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "flags")
+
+    @_builtins.property
+    @pulumi.getter(name="poolerCount")
+    def pooler_count(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The number of running poolers per instance.
+        """
+        return pulumi.get(self, "pooler_count")
 
 
 @pulumi.output_type
@@ -3120,6 +3180,42 @@ class GetInstanceClientConnectionConfigSslConfigResult(dict):
         SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
         """
         return pulumi.get(self, "ssl_mode")
+
+
+@pulumi.output_type
+class GetInstanceConnectionPoolConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 flags: Mapping[str, _builtins.str],
+                 pooler_count: _builtins.int):
+        """
+        :param _builtins.bool enabled: Whether to enabled Managed Connection Pool.
+        :param _builtins.int pooler_count: The number of running poolers per instance.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "flags", flags)
+        pulumi.set(__self__, "pooler_count", pooler_count)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether to enabled Managed Connection Pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def flags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "flags")
+
+    @_builtins.property
+    @pulumi.getter(name="poolerCount")
+    def pooler_count(self) -> _builtins.int:
+        """
+        The number of running poolers per instance.
+        """
+        return pulumi.get(self, "pooler_count")
 
 
 @pulumi.output_type

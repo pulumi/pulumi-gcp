@@ -515,6 +515,13 @@ type DatabaseInstance struct {
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrOutput `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+	RootPasswordWo pulumi.StringPtrOutput `pulumi:"rootPasswordWo"`
+	// Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWoVersion pulumi.StringPtrOutput `pulumi:"rootPasswordWoVersion"`
 	// The URI of the created resource.
 	SelfLink      pulumi.StringOutput                     `pulumi:"selfLink"`
 	ServerCaCerts DatabaseInstanceServerCaCertArrayOutput `pulumi:"serverCaCerts"`
@@ -542,9 +549,13 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 	if args.RootPassword != nil {
 		args.RootPassword = pulumi.ToSecret(args.RootPassword).(pulumi.StringPtrInput)
 	}
+	if args.RootPasswordWo != nil {
+		args.RootPasswordWo = pulumi.ToSecret(args.RootPasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"replicaConfiguration",
 		"rootPassword",
+		"rootPasswordWo",
 		"serverCaCerts",
 	})
 	opts = append(opts, secrets)
@@ -660,6 +671,13 @@ type databaseInstanceState struct {
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword *string `pulumi:"rootPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+	RootPasswordWo *string `pulumi:"rootPasswordWo"`
+	// Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWoVersion *string `pulumi:"rootPasswordWoVersion"`
 	// The URI of the created resource.
 	SelfLink      *string                        `pulumi:"selfLink"`
 	ServerCaCerts []DatabaseInstanceServerCaCert `pulumi:"serverCaCerts"`
@@ -761,6 +779,13 @@ type DatabaseInstanceState struct {
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+	RootPasswordWo pulumi.StringPtrInput
+	// Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWoVersion pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink      pulumi.StringPtrInput
 	ServerCaCerts DatabaseInstanceServerCaCertArrayInput
@@ -848,6 +873,13 @@ type databaseInstanceArgs struct {
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword *string `pulumi:"rootPassword"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+	RootPasswordWo *string `pulumi:"rootPasswordWo"`
+	// Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWoVersion *string `pulumi:"rootPasswordWoVersion"`
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
 	Settings *DatabaseInstanceSettings `pulumi:"settings"`
@@ -926,6 +958,13 @@ type DatabaseInstanceArgs struct {
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Can be updated. Required for MS SQL Server.
 	RootPassword pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+	RootPasswordWo pulumi.StringPtrInput
+	// Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWoVersion pulumi.StringPtrInput
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
 	Settings DatabaseInstanceSettingsPtrInput
@@ -1191,6 +1230,19 @@ func (o DatabaseInstanceOutput) RestoreBackupContext() DatabaseInstanceRestoreBa
 // Initial root password. Can be updated. Required for MS SQL Server.
 func (o DatabaseInstanceOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.RootPassword }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+func (o DatabaseInstanceOutput) RootPasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.RootPasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o DatabaseInstanceOutput) RootPasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.RootPasswordWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The URI of the created resource.

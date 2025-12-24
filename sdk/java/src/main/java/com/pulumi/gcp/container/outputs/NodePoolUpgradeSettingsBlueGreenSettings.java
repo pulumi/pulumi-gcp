@@ -4,7 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy;
 import com.pulumi.gcp.container.outputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy;
 import java.lang.String;
 import java.util.Objects;
@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolUpgradeSettingsBlueGreenSettings {
+    /**
+     * @return Autoscaled rollout policy for blue-green upgrade.
+     * 
+     */
+    private @Nullable NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy autoscaledRolloutPolicy;
     /**
      * @return Time needed after draining the entire blue pool.
      * After this period, the blue pool will be cleaned up.
@@ -23,9 +28,16 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
      * @return Specifies the standard policy settings for blue-green upgrades.
      * 
      */
-    private NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy;
+    private @Nullable NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy;
 
     private NodePoolUpgradeSettingsBlueGreenSettings() {}
+    /**
+     * @return Autoscaled rollout policy for blue-green upgrade.
+     * 
+     */
+    public Optional<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy> autoscaledRolloutPolicy() {
+        return Optional.ofNullable(this.autoscaledRolloutPolicy);
+    }
     /**
      * @return Time needed after draining the entire blue pool.
      * After this period, the blue pool will be cleaned up.
@@ -38,8 +50,8 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
      * @return Specifies the standard policy settings for blue-green upgrades.
      * 
      */
-    public NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy() {
-        return this.standardRolloutPolicy;
+    public Optional<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy> standardRolloutPolicy() {
+        return Optional.ofNullable(this.standardRolloutPolicy);
     }
 
     public static Builder builder() {
@@ -51,15 +63,23 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy autoscaledRolloutPolicy;
         private @Nullable String nodePoolSoakDuration;
-        private NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy;
+        private @Nullable NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy;
         public Builder() {}
         public Builder(NodePoolUpgradeSettingsBlueGreenSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscaledRolloutPolicy = defaults.autoscaledRolloutPolicy;
     	      this.nodePoolSoakDuration = defaults.nodePoolSoakDuration;
     	      this.standardRolloutPolicy = defaults.standardRolloutPolicy;
         }
 
+        @CustomType.Setter
+        public Builder autoscaledRolloutPolicy(@Nullable NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy autoscaledRolloutPolicy) {
+
+            this.autoscaledRolloutPolicy = autoscaledRolloutPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder nodePoolSoakDuration(@Nullable String nodePoolSoakDuration) {
 
@@ -67,15 +87,14 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder standardRolloutPolicy(NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy) {
-            if (standardRolloutPolicy == null) {
-              throw new MissingRequiredPropertyException("NodePoolUpgradeSettingsBlueGreenSettings", "standardRolloutPolicy");
-            }
+        public Builder standardRolloutPolicy(@Nullable NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy) {
+
             this.standardRolloutPolicy = standardRolloutPolicy;
             return this;
         }
         public NodePoolUpgradeSettingsBlueGreenSettings build() {
             final var _resultValue = new NodePoolUpgradeSettingsBlueGreenSettings();
+            _resultValue.autoscaledRolloutPolicy = autoscaledRolloutPolicy;
             _resultValue.nodePoolSoakDuration = nodePoolSoakDuration;
             _resultValue.standardRolloutPolicy = standardRolloutPolicy;
             return _resultValue;

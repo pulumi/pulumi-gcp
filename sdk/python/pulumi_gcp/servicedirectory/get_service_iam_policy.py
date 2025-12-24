@@ -86,6 +86,8 @@ class AwaitableGetServiceIamPolicyResult(GetServiceIamPolicyResult):
 def get_service_iam_policy(name: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIamPolicyResult:
     """
+    Retrieves the current IAM policy data for service
+
     ## Example Usage
 
     ```python
@@ -111,6 +113,8 @@ def get_service_iam_policy(name: Optional[_builtins.str] = None,
 def get_service_iam_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceIamPolicyResult]:
     """
+    Retrieves the current IAM policy data for service
+
     ## Example Usage
 
     ```python

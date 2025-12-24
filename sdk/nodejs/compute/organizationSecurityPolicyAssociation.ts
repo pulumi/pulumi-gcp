@@ -29,30 +29,7 @@ import * as utilities from "../utilities";
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
  *     displayName: "tf-test",
  *     parent: securityPolicyTarget.name,
- * });
- * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policy", {
- *     policyId: policy.id,
- *     action: "allow",
- *     direction: "INGRESS",
- *     enableLogging: true,
- *     match: {
- *         config: {
- *             srcIpRanges: [
- *                 "192.168.0.0/16",
- *                 "10.0.0.0/8",
- *             ],
- *             layer4Configs: [
- *                 {
- *                     ipProtocol: "tcp",
- *                     ports: ["22"],
- *                 },
- *                 {
- *                     ipProtocol: "icmp",
- *                 },
- *             ],
- *         },
- *     },
- *     priority: 100,
+ *     type: "FIREWALL",
  * });
  * const policyOrganizationSecurityPolicyAssociation = new gcp.compute.OrganizationSecurityPolicyAssociation("policy", {
  *     name: "tf-test",

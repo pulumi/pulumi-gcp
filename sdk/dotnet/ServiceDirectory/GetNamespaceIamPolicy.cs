@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.ServiceDirectory
     public static class GetNamespaceIamPolicy
     {
         /// <summary>
+        /// Retrieves the current IAM policy data for namespace
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +37,9 @@ namespace Pulumi.Gcp.ServiceDirectory
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceIamPolicyResult>("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for namespace
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +62,9 @@ namespace Pulumi.Gcp.ServiceDirectory
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespaceIamPolicyResult>("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieves the current IAM policy data for namespace
+        /// 
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

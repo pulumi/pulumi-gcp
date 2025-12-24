@@ -206,7 +206,7 @@ type DataStore struct {
 
 	// Configuration data for advance site search.
 	// Structure is documented below.
-	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigPtrOutput `pulumi:"advancedSiteSearchConfig"`
+	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigOutput `pulumi:"advancedSiteSearchConfig"`
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
 	ContentConfig pulumi.StringOutput `pulumi:"contentConfig"`
@@ -608,8 +608,8 @@ func (o DataStoreOutput) ToDataStoreOutputWithContext(ctx context.Context) DataS
 
 // Configuration data for advance site search.
 // Structure is documented below.
-func (o DataStoreOutput) AdvancedSiteSearchConfig() DataStoreAdvancedSiteSearchConfigPtrOutput {
-	return o.ApplyT(func(v *DataStore) DataStoreAdvancedSiteSearchConfigPtrOutput { return v.AdvancedSiteSearchConfig }).(DataStoreAdvancedSiteSearchConfigPtrOutput)
+func (o DataStoreOutput) AdvancedSiteSearchConfig() DataStoreAdvancedSiteSearchConfigOutput {
+	return o.ApplyT(func(v *DataStore) DataStoreAdvancedSiteSearchConfigOutput { return v.AdvancedSiteSearchConfig }).(DataStoreAdvancedSiteSearchConfigOutput)
 }
 
 // The content config of the data store.

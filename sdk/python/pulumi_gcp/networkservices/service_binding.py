@@ -286,6 +286,8 @@ class ServiceBinding(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** Cloud Service Mesh's integration with Service Directory is going to be deprecated. [Learn more](https://docs.cloud.google.com/service-mesh/docs/service-routing/service-directory-integration-setup). Creating new service binding resources will be disabled.
+
         ServiceBinding is the resource that defines a Service Directory Service to be used in a
         BackendService resource.
 
@@ -363,6 +365,8 @@ class ServiceBinding(pulumi.CustomResource):
                  args: ServiceBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** Cloud Service Mesh's integration with Service Directory is going to be deprecated. [Learn more](https://docs.cloud.google.com/service-mesh/docs/service-routing/service-directory-integration-setup). Creating new service binding resources will be disabled.
+
         ServiceBinding is the resource that defines a Service Directory Service to be used in a
         BackendService resource.
 

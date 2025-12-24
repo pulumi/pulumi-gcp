@@ -143,7 +143,6 @@ public class CxGenerativeSettings extends com.pulumi.resources.CustomResource {
     }
     /**
      * Settings for Generative Safety.
-     * w
      * Structure is documented below.
      * 
      */
@@ -152,7 +151,6 @@ public class CxGenerativeSettings extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Settings for Generative Safety.
-     * w
      * Structure is documented below.
      * 
      */

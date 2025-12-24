@@ -42,6 +42,7 @@ __all__ = [
     'TriggerDestinationHttpEndpoint',
     'TriggerDestinationNetworkConfig',
     'TriggerMatchingCriteria',
+    'TriggerRetryPolicy',
     'TriggerTransport',
     'TriggerTransportPubsub',
 ]
@@ -1755,6 +1756,44 @@ class TriggerMatchingCriteria(dict):
         Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
         return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class TriggerRetryPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAttempts":
+            suggest = "max_attempts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerRetryPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerRetryPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerRetryPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_attempts: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int max_attempts: The maximum number of delivery attempts for any message. The only valid
+               value is 1.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+
+    @_builtins.property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of delivery attempts for any message. The only valid
+        value is 1.
+        """
+        return pulumi.get(self, "max_attempts")
 
 
 @pulumi.output_type

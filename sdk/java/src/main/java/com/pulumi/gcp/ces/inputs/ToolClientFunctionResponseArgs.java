@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,7 +21,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     public static final ToolClientFunctionResponseArgs Empty = new ToolClientFunctionResponseArgs();
 
     /**
-     * Optional. Defines the schema for additional properties allowed in an object.
+     * Defines the schema for additional properties allowed in an object.
      * The value must be a valid JSON string representing the Schema object.
      * (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
      * 
@@ -28,7 +30,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     private @Nullable Output<String> additionalProperties;
 
     /**
-     * @return Optional. Defines the schema for additional properties allowed in an object.
+     * @return Defines the schema for additional properties allowed in an object.
      * The value must be a valid JSON string representing the Schema object.
      * (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
      * 
@@ -38,14 +40,14 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. The instance value should be valid against at least one of the schemas in this list.
+     * The instance value should be valid against at least one of the schemas in this list.
      * 
      */
     @Import(name="anyOf")
     private @Nullable Output<String> anyOf;
 
     /**
-     * @return Optional. The instance value should be valid against at least one of the schemas in this list.
+     * @return The instance value should be valid against at least one of the schemas in this list.
      * 
      */
     public Optional<Output<String>> anyOf() {
@@ -53,7 +55,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. Default value of the data. Represents a dynamically typed value
+     * Default value of the data. Represents a dynamically typed value
      * which can be either null, a number, a string, a boolean, a struct,
      * or a list of values. The provided default value must be compatible
      * with the defined &#39;type&#39; and other schema constraints.
@@ -63,7 +65,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     private @Nullable Output<String> default_;
 
     /**
-     * @return Optional. Default value of the data. Represents a dynamically typed value
+     * @return Default value of the data. Represents a dynamically typed value
      * which can be either null, a number, a string, a boolean, a struct,
      * or a list of values. The provided default value must be compatible
      * with the defined &#39;type&#39; and other schema constraints.
@@ -144,6 +146,66 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Maximum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    @Import(name="maxItems")
+    private @Nullable Output<Integer> maxItems;
+
+    /**
+     * @return Maximum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    public Optional<Output<Integer>> maxItems() {
+        return Optional.ofNullable(this.maxItems);
+    }
+
+    /**
+     * Maximum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    @Import(name="maximum")
+    private @Nullable Output<Double> maximum;
+
+    /**
+     * @return Maximum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    public Optional<Output<Double>> maximum() {
+        return Optional.ofNullable(this.maximum);
+    }
+
+    /**
+     * Minimum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    @Import(name="minItems")
+    private @Nullable Output<Integer> minItems;
+
+    /**
+     * @return Minimum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    public Optional<Output<Integer>> minItems() {
+        return Optional.ofNullable(this.minItems);
+    }
+
+    /**
+     * Minimum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    @Import(name="minimum")
+    private @Nullable Output<Double> minimum;
+
+    /**
+     * @return Minimum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    public Optional<Output<Double>> minimum() {
+        return Optional.ofNullable(this.minimum);
+    }
+
+    /**
      * Indicates if the value may be null.
      * 
      */
@@ -159,14 +221,14 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. Schemas of initial elements of Type.ARRAY.
+     * Schemas of initial elements of Type.ARRAY.
      * 
      */
     @Import(name="prefixItems")
     private @Nullable Output<String> prefixItems;
 
     /**
-     * @return Optional. Schemas of initial elements of Type.ARRAY.
+     * @return Schemas of initial elements of Type.ARRAY.
      * 
      */
     public Optional<Output<String>> prefixItems() {
@@ -253,6 +315,21 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
     }
 
     /**
+     * The title of the schema.
+     * 
+     */
+    @Import(name="title")
+    private @Nullable Output<String> title;
+
+    /**
+     * @return The title of the schema.
+     * 
+     */
+    public Optional<Output<String>> title() {
+        return Optional.ofNullable(this.title);
+    }
+
+    /**
      * The type of the data.
      * Possible values:
      * STRING
@@ -306,11 +383,16 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         this.description = $.description;
         this.enums = $.enums;
         this.items = $.items;
+        this.maxItems = $.maxItems;
+        this.maximum = $.maximum;
+        this.minItems = $.minItems;
+        this.minimum = $.minimum;
         this.nullable = $.nullable;
         this.prefixItems = $.prefixItems;
         this.properties = $.properties;
         this.ref = $.ref;
         this.requireds = $.requireds;
+        this.title = $.title;
         this.type = $.type;
         this.uniqueItems = $.uniqueItems;
     }
@@ -334,7 +416,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param additionalProperties Optional. Defines the schema for additional properties allowed in an object.
+         * @param additionalProperties Defines the schema for additional properties allowed in an object.
          * The value must be a valid JSON string representing the Schema object.
          * (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
          * 
@@ -347,7 +429,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param additionalProperties Optional. Defines the schema for additional properties allowed in an object.
+         * @param additionalProperties Defines the schema for additional properties allowed in an object.
          * The value must be a valid JSON string representing the Schema object.
          * (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
          * 
@@ -359,7 +441,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param anyOf Optional. The instance value should be valid against at least one of the schemas in this list.
+         * @param anyOf The instance value should be valid against at least one of the schemas in this list.
          * 
          * @return builder
          * 
@@ -370,7 +452,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param anyOf Optional. The instance value should be valid against at least one of the schemas in this list.
+         * @param anyOf The instance value should be valid against at least one of the schemas in this list.
          * 
          * @return builder
          * 
@@ -380,7 +462,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param default_ Optional. Default value of the data. Represents a dynamically typed value
+         * @param default_ Default value of the data. Represents a dynamically typed value
          * which can be either null, a number, a string, a boolean, a struct,
          * or a list of values. The provided default value must be compatible
          * with the defined &#39;type&#39; and other schema constraints.
@@ -394,7 +476,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param default_ Optional. Default value of the data. Represents a dynamically typed value
+         * @param default_ Default value of the data. Represents a dynamically typed value
          * which can be either null, a number, a string, a boolean, a struct,
          * or a list of values. The provided default value must be compatible
          * with the defined &#39;type&#39; and other schema constraints.
@@ -516,6 +598,90 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param maxItems Maximum number of the elements for Type.ARRAY. (int64 format)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxItems(@Nullable Output<Integer> maxItems) {
+            $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param maxItems Maximum number of the elements for Type.ARRAY. (int64 format)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxItems(Integer maxItems) {
+            return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param maximum Maximum value for Type.INTEGER and Type.NUMBER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximum(@Nullable Output<Double> maximum) {
+            $.maximum = maximum;
+            return this;
+        }
+
+        /**
+         * @param maximum Maximum value for Type.INTEGER and Type.NUMBER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximum(Double maximum) {
+            return maximum(Output.of(maximum));
+        }
+
+        /**
+         * @param minItems Minimum number of the elements for Type.ARRAY. (int64 format)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minItems(@Nullable Output<Integer> minItems) {
+            $.minItems = minItems;
+            return this;
+        }
+
+        /**
+         * @param minItems Minimum number of the elements for Type.ARRAY. (int64 format)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minItems(Integer minItems) {
+            return minItems(Output.of(minItems));
+        }
+
+        /**
+         * @param minimum Minimum value for Type.INTEGER and Type.NUMBER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimum(@Nullable Output<Double> minimum) {
+            $.minimum = minimum;
+            return this;
+        }
+
+        /**
+         * @param minimum Minimum value for Type.INTEGER and Type.NUMBER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimum(Double minimum) {
+            return minimum(Output.of(minimum));
+        }
+
+        /**
          * @param nullable Indicates if the value may be null.
          * 
          * @return builder
@@ -537,7 +703,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param prefixItems Optional. Schemas of initial elements of Type.ARRAY.
+         * @param prefixItems Schemas of initial elements of Type.ARRAY.
          * 
          * @return builder
          * 
@@ -548,7 +714,7 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param prefixItems Optional. Schemas of initial elements of Type.ARRAY.
+         * @param prefixItems Schemas of initial elements of Type.ARRAY.
          * 
          * @return builder
          * 
@@ -662,6 +828,27 @@ public final class ToolClientFunctionResponseArgs extends com.pulumi.resources.R
          */
         public Builder requireds(String... requireds) {
             return requireds(List.of(requireds));
+        }
+
+        /**
+         * @param title The title of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(@Nullable Output<String> title) {
+            $.title = title;
+            return this;
+        }
+
+        /**
+         * @param title The title of the schema.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder title(String title) {
+            return title(Output.of(title));
         }
 
         /**

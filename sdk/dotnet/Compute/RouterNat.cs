@@ -324,7 +324,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable endpoint independent mapping.
-        /// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         /// </summary>
         [Output("enableEndpointIndependentMapping")]
         public Output<bool> EnableEndpointIndependentMapping { get; private set; } = null!;
@@ -585,7 +585,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable endpoint independent mapping.
-        /// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         /// </summary>
         [Input("enableEndpointIndependentMapping")]
         public Input<bool>? EnableEndpointIndependentMapping { get; set; }
@@ -844,7 +844,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Enable endpoint independent mapping.
-        /// For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
         /// </summary>
         [Input("enableEndpointIndependentMapping")]
         public Input<bool>? EnableEndpointIndependentMapping { get; set; }

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the current IAM policy data for service
+//
 // ## Example Usage
 //
 // ```go

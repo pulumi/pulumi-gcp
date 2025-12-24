@@ -25,6 +25,14 @@ public final class InstanceAutoscalingConfigAutoscalingTargets {
      * 
      */
     private @Nullable Integer storageUtilizationPercent;
+    /**
+     * @return The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+     * If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+     * The value should be higher than highPriorityCpuUtilizationPercent if present.
+     * 
+     */
+    private @Nullable Integer totalCpuUtilizationPercent;
 
     private InstanceAutoscalingConfigAutoscalingTargets() {}
     /**
@@ -45,6 +53,16 @@ public final class InstanceAutoscalingConfigAutoscalingTargets {
     public Optional<Integer> storageUtilizationPercent() {
         return Optional.ofNullable(this.storageUtilizationPercent);
     }
+    /**
+     * @return The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+     * If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+     * The value should be higher than highPriorityCpuUtilizationPercent if present.
+     * 
+     */
+    public Optional<Integer> totalCpuUtilizationPercent() {
+        return Optional.ofNullable(this.totalCpuUtilizationPercent);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -57,11 +75,13 @@ public final class InstanceAutoscalingConfigAutoscalingTargets {
     public static final class Builder {
         private @Nullable Integer highPriorityCpuUtilizationPercent;
         private @Nullable Integer storageUtilizationPercent;
+        private @Nullable Integer totalCpuUtilizationPercent;
         public Builder() {}
         public Builder(InstanceAutoscalingConfigAutoscalingTargets defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.highPriorityCpuUtilizationPercent = defaults.highPriorityCpuUtilizationPercent;
     	      this.storageUtilizationPercent = defaults.storageUtilizationPercent;
+    	      this.totalCpuUtilizationPercent = defaults.totalCpuUtilizationPercent;
         }
 
         @CustomType.Setter
@@ -76,10 +96,17 @@ public final class InstanceAutoscalingConfigAutoscalingTargets {
             this.storageUtilizationPercent = storageUtilizationPercent;
             return this;
         }
+        @CustomType.Setter
+        public Builder totalCpuUtilizationPercent(@Nullable Integer totalCpuUtilizationPercent) {
+
+            this.totalCpuUtilizationPercent = totalCpuUtilizationPercent;
+            return this;
+        }
         public InstanceAutoscalingConfigAutoscalingTargets build() {
             final var _resultValue = new InstanceAutoscalingConfigAutoscalingTargets();
             _resultValue.highPriorityCpuUtilizationPercent = highPriorityCpuUtilizationPercent;
             _resultValue.storageUtilizationPercent = storageUtilizationPercent;
+            _resultValue.totalCpuUtilizationPercent = totalCpuUtilizationPercent;
             return _resultValue;
         }
     }

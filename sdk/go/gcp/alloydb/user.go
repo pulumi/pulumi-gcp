@@ -20,6 +20,9 @@ import (
 // * How-to Guides
 //   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `passwordWo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Alloydb User Builtin
@@ -238,6 +241,15 @@ type User struct {
 	// Password for this database user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Password for this database user.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringPtrOutput `pulumi:"passwordWoVersion"`
 	// The database role name of the user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// The type of this user.
@@ -264,8 +276,12 @@ func NewUser(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -301,6 +317,15 @@ type userState struct {
 	// Password for this database user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Password for this database user.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The database role name of the user.
 	UserId *string `pulumi:"userId"`
 	// The type of this user.
@@ -319,6 +344,15 @@ type UserState struct {
 	// Password for this database user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Password for this database user.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo pulumi.StringPtrInput
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringPtrInput
 	// The database role name of the user.
 	UserId pulumi.StringPtrInput
 	// The type of this user.
@@ -339,6 +373,15 @@ type userArgs struct {
 	// Password for this database user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Password for this database user.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The database role name of the user.
 	UserId string `pulumi:"userId"`
 	// The type of this user.
@@ -356,6 +399,15 @@ type UserArgs struct {
 	// Password for this database user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// Password for this database user.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `password` or `passwordWo` can only be set.
+	PasswordWo pulumi.StringPtrInput
+	// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PasswordWoVersion pulumi.StringPtrInput
 	// The database role name of the user.
 	UserId pulumi.StringInput
 	// The type of this user.
@@ -470,6 +522,21 @@ func (o UserOutput) Name() pulumi.StringOutput {
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// Password for this database user.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `password` or `passwordWo` can only be set.
+func (o UserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o UserOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The database role name of the user.

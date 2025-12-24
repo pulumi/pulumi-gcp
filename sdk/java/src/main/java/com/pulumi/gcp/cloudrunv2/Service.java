@@ -900,112 +900,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### Cloudrunv2 Service Function
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.storage.Bucket;
- * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.storage.BucketObject;
- * import com.pulumi.gcp.storage.BucketObjectArgs;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
- * import com.pulumi.gcp.cloudrunv2.Service;
- * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.ServiceBuildConfigArgs;
- * import com.pulumi.asset.FileAsset;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
- *             .build());
- * 
- *         var bucket = new Bucket("bucket", BucketArgs.builder()
- *             .name(String.format("%s-gcf-source", project.projectId()))
- *             .location("US")
- *             .uniformBucketLevelAccess(true)
- *             .build());
- * 
- *         var object = new BucketObject("object", BucketObjectArgs.builder()
- *             .name("function-source.zip")
- *             .bucket(bucket.name())
- *             .source(new FileAsset("function_source.zip"))
- *             .build());
- * 
- *         var cloudbuildServiceAccount = new Account("cloudbuildServiceAccount", AccountArgs.builder()
- *             .accountId("build-sa")
- *             .build());
- * 
- *         var actAs = new IAMMember("actAs", IAMMemberArgs.builder()
- *             .project(project.projectId())
- *             .role("roles/iam.serviceAccountUser")
- *             .member(cloudbuildServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
- *             .build());
- * 
- *         var logsWriter = new IAMMember("logsWriter", IAMMemberArgs.builder()
- *             .project(project.projectId())
- *             .role("roles/logging.logWriter")
- *             .member(cloudbuildServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
- *             .build());
- * 
- *         var default_ = new Service("default", ServiceArgs.builder()
- *             .name("cloudrun-service")
- *             .location("us-central1")
- *             .deletionProtection(false)
- *             .ingress("INGRESS_TRAFFIC_ALL")
- *             .template(ServiceTemplateArgs.builder()
- *                 .containers(ServiceTemplateContainerArgs.builder()
- *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
- *                     .baseImageUri("us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22")
- *                     .build())
- *                 .build())
- *             .buildConfig(ServiceBuildConfigArgs.builder()
- *                 .sourceLocation(Output.tuple(bucket.name(), object.name()).applyValue(values -> {
- *                     var bucketName = values.t1;
- *                     var objectName = values.t2;
- *                     return String.format("gs://%s/%s", bucketName,objectName);
- *                 }))
- *                 .functionTarget("helloHttp")
- *                 .imageUri("us-docker.pkg.dev/cloudrun/container/hello")
- *                 .baseImage("us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22")
- *                 .enableAutomaticUpdates(true)
- *                 .environmentVariables(Map.ofEntries(
- *                     Map.entry("FOO_KEY", "FOO_VALUE"),
- *                     Map.entry("BAR_KEY", "BAR_VALUE")
- *                 ))
- *                 .serviceAccount(cloudbuildServiceAccount.id())
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     actAs,
- *                     logsWriter)
- *                 .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * ### Cloudrunv2 Service Iap
  * 
  * <pre>
@@ -1577,15 +1471,15 @@ public class Service extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="scaling", refs={ServiceScaling.class}, tree="[0]")
-    private Output</* @Nullable */ ServiceScaling> scaling;
+    private Output<ServiceScaling> scaling;
 
     /**
      * @return Scaling settings that apply to the whole service
      * Structure is documented below.
      * 
      */
-    public Output<Optional<ServiceScaling>> scaling() {
-        return Codegen.optional(this.scaling);
+    public Output<ServiceScaling> scaling() {
+        return this.scaling;
     }
     /**
      * The template used to create revisions for this Service.

@@ -200,6 +200,7 @@ namespace Pulumi.Gcp.Storage
         public readonly string ContentHexsha512;
         public readonly string ContentLanguage;
         public readonly string ContentType;
+        public readonly ImmutableArray<Outputs.GetBucketObjectContentContextResult> Contexts;
         public readonly string Crc32c;
         public readonly ImmutableArray<Outputs.GetBucketObjectContentCustomerEncryptionResult> CustomerEncryptions;
         public readonly string DeletionPolicy;
@@ -246,6 +247,8 @@ namespace Pulumi.Gcp.Storage
             string contentLanguage,
 
             string contentType,
+
+            ImmutableArray<Outputs.GetBucketObjectContentContextResult> contexts,
 
             string crc32c,
 
@@ -299,6 +302,7 @@ namespace Pulumi.Gcp.Storage
             ContentHexsha512 = contentHexsha512;
             ContentLanguage = contentLanguage;
             ContentType = contentType;
+            Contexts = contexts;
             Crc32c = crc32c;
             CustomerEncryptions = customerEncryptions;
             DeletionPolicy = deletionPolicy;

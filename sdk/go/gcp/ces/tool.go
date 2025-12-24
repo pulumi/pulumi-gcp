@@ -44,10 +44,7 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"SimpleString": map[string]interface{}{
-//					"type":        "STRING",
-//					"description": "A simple string definition",
-//				},
+//				"type": "BOOLEAN",
 //			})
 //			if err != nil {
 //				return err
@@ -68,7 +65,25 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal([]map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"SimpleString": map[string]interface{}{
+//					"type":        "STRING",
+//					"description": "A simple string definition",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//				"type":        "ARRAY",
+//				"description": "An array",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json4 := string(tmpJSON4)
+//			tmpJSON5, err := json.Marshal([]map[string]interface{}{
 //				map[string]interface{}{
 //					"type":        "ARRAY",
 //					"description": "prefix item 1",
@@ -77,15 +92,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
-//				"type": "BOOLEAN",
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//			json5 := string(tmpJSON5)
+//			tmpJSON6, err := json.Marshal(map[string]interface{}{
 //				"name": map[string]interface{}{
 //					"type":        "STRING",
 //					"description": "A name",
@@ -94,20 +102,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json5 := string(tmpJSON5)
-//			tmpJSON6, err := json.Marshal(map[string]interface{}{
-//				"type":        "ARRAY",
-//				"description": "An array",
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			json6 := string(tmpJSON6)
 //			tmpJSON7, err := json.Marshal(map[string]interface{}{
-//				"SimpleString": map[string]interface{}{
-//					"type":        "STRING",
-//					"description": "A simple string definition",
-//				},
+//				"type": "BOOLEAN",
 //			})
 //			if err != nil {
 //				return err
@@ -128,7 +125,25 @@ import (
 //				return err
 //			}
 //			json9 := string(tmpJSON9)
-//			tmpJSON10, err := json.Marshal([]map[string]interface{}{
+//			tmpJSON10, err := json.Marshal(map[string]interface{}{
+//				"SimpleString": map[string]interface{}{
+//					"type":        "STRING",
+//					"description": "A simple string definition",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json10 := string(tmpJSON10)
+//			tmpJSON11, err := json.Marshal(map[string]interface{}{
+//				"type":        "ARRAY",
+//				"description": "An array",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json11 := string(tmpJSON11)
+//			tmpJSON12, err := json.Marshal([]map[string]interface{}{
 //				map[string]interface{}{
 //					"type":        "ARRAY",
 //					"description": "prefix item 1",
@@ -137,27 +152,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json10 := string(tmpJSON10)
-//			tmpJSON11, err := json.Marshal(map[string]interface{}{
-//				"type": "BOOLEAN",
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json11 := string(tmpJSON11)
-//			tmpJSON12, err := json.Marshal(map[string]interface{}{
+//			json12 := string(tmpJSON12)
+//			tmpJSON13, err := json.Marshal(map[string]interface{}{
 //				"name": map[string]interface{}{
 //					"type":        "STRING",
 //					"description": "A name",
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json12 := string(tmpJSON12)
-//			tmpJSON13, err := json.Marshal(map[string]interface{}{
-//				"type":        "ARRAY",
-//				"description": "An array",
 //			})
 //			if err != nil {
 //				return err
@@ -172,46 +172,56 @@ import (
 //					Name:        pulumi.String("ces_tool_client_function_basic"),
 //					Description: pulumi.String("example-description"),
 //					Parameters: &ces.ToolClientFunctionParametersArgs{
-//						Description: pulumi.String("schema description"),
-//						Type:        pulumi.String("ARRAY"),
-//						Nullable:    pulumi.Bool(true),
-//						Requireds: pulumi.StringArray{
-//							pulumi.String("some_property"),
-//						},
-//						Enums: pulumi.StringArray{
-//							pulumi.String("VALUE_A"),
-//							pulumi.String("VALUE_B"),
-//						},
-//						Ref:                  pulumi.String("#/defs/MyDefinition"),
-//						UniqueItems:          pulumi.Bool(true),
-//						Defs:                 pulumi.String(json0),
+//						AdditionalProperties: pulumi.String(json0),
 //						AnyOf:                pulumi.String(json1),
 //						Default:              pulumi.String(json2),
-//						PrefixItems:          pulumi.String(json3),
-//						AdditionalProperties: pulumi.String(json4),
-//						Properties:           pulumi.String(json5),
-//						Items:                pulumi.String(json6),
-//					},
-//					Response: &ces.ToolClientFunctionResponseArgs{
-//						Description: pulumi.String("schema description"),
-//						Type:        pulumi.String("ARRAY"),
-//						Nullable:    pulumi.Bool(true),
-//						Requireds: pulumi.StringArray{
-//							pulumi.String("some_property"),
-//						},
+//						Defs:                 pulumi.String(json3),
+//						Description:          pulumi.String("schema description"),
 //						Enums: pulumi.StringArray{
 //							pulumi.String("VALUE_A"),
 //							pulumi.String("VALUE_B"),
 //						},
-//						Ref:                  pulumi.String("#/defs/MyDefinition"),
-//						UniqueItems:          pulumi.Bool(true),
-//						Defs:                 pulumi.String(json7),
+//						Items:       pulumi.String(json4),
+//						MaxItems:    pulumi.Int(32),
+//						Maximum:     pulumi.Float64(64),
+//						MinItems:    pulumi.Int(1),
+//						Minimum:     pulumi.Float64(2),
+//						Nullable:    pulumi.Bool(true),
+//						PrefixItems: pulumi.String(json5),
+//						Properties:  pulumi.String(json6),
+//						Ref:         pulumi.String("#/defs/MyDefinition"),
+//						Requireds: pulumi.StringArray{
+//							pulumi.String("some_property"),
+//						},
+//						Title:       pulumi.String("Title"),
+//						Type:        pulumi.String("ARRAY"),
+//						UniqueItems: pulumi.Bool(true),
+//					},
+//					Response: &ces.ToolClientFunctionResponseArgs{
+//						AdditionalProperties: pulumi.String(json7),
 //						AnyOf:                pulumi.String(json8),
 //						Default:              pulumi.String(json9),
-//						PrefixItems:          pulumi.String(json10),
-//						AdditionalProperties: pulumi.String(json11),
-//						Properties:           pulumi.String(json12),
-//						Items:                pulumi.String(json13),
+//						Defs:                 pulumi.String(json10),
+//						Description:          pulumi.String("schema description"),
+//						Enums: pulumi.StringArray{
+//							pulumi.String("VALUE_A"),
+//							pulumi.String("VALUE_B"),
+//						},
+//						Items:       pulumi.String(json11),
+//						MaxItems:    pulumi.Int(32),
+//						Maximum:     pulumi.Float64(64),
+//						MinItems:    pulumi.Int(1),
+//						Minimum:     pulumi.Float64(2),
+//						Nullable:    pulumi.Bool(true),
+//						PrefixItems: pulumi.String(json12),
+//						Properties:  pulumi.String(json13),
+//						Ref:         pulumi.String("#/defs/MyDefinition"),
+//						Requireds: pulumi.StringArray{
+//							pulumi.String("some_property"),
+//						},
+//						Title:       pulumi.String("Title"),
+//						Type:        pulumi.String("ARRAY"),
+//						UniqueItems: pulumi.Bool(true),
 //					},
 //				},
 //			})
@@ -391,11 +401,19 @@ import (
 //				ToolId:        pulumi.String("ces_tool_basic3"),
 //				ExecutionType: pulumi.String("SYNCHRONOUS"),
 //				GoogleSearchTool: &ces.ToolGoogleSearchToolArgs{
-//					Name:        pulumi.String("example-tool"),
+//					Name: pulumi.String("example-tool"),
+//					ContextUrls: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//						pulumi.String("example2.com"),
+//					},
 //					Description: pulumi.String("example-description"),
 //					ExcludeDomains: pulumi.StringArray{
 //						pulumi.String("example.com"),
 //						pulumi.String("example2.com"),
+//					},
+//					PreferredDomains: pulumi.StringArray{
+//						pulumi.String("example3.com"),
+//						pulumi.String("example4.com"),
 //					},
 //				},
 //			})

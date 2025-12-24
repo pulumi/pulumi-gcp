@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig? HugepagesConfig;
         /// <summary>
+        /// The settings for kernel module loading.
+        /// </summary>
+        public readonly Outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading? NodeKernelModuleLoading;
+        /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Sysctls;
@@ -40,6 +44,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig? hugepagesConfig,
 
+            Outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading? nodeKernelModuleLoading,
+
             ImmutableDictionary<string, string>? sysctls,
 
             string? transparentHugepageDefrag,
@@ -48,6 +54,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             CgroupMode = cgroupMode;
             HugepagesConfig = hugepagesConfig;
+            NodeKernelModuleLoading = nodeKernelModuleLoading;
             Sysctls = sysctls;
             TransparentHugepageDefrag = transparentHugepageDefrag;
             TransparentHugepageEnabled = transparentHugepageEnabled;

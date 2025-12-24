@@ -32,7 +32,7 @@ public final class BucketObjectRetentionArgs extends com.pulumi.resources.Resour
     /**
      * The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
      * 
-     * &lt;a name&gt;
+     * &lt;a name=&#34;nestedContexts&#34;&gt;&lt;/a&gt; The `contexts` block supports -
      * 
      */
     @Import(name="retainUntilTime", required=true)
@@ -41,7 +41,7 @@ public final class BucketObjectRetentionArgs extends com.pulumi.resources.Resour
     /**
      * @return The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
      * 
-     * &lt;a name&gt;
+     * &lt;a name=&#34;nestedContexts&#34;&gt;&lt;/a&gt; The `contexts` block supports -
      * 
      */
     public Output<String> retainUntilTime() {
@@ -97,7 +97,7 @@ public final class BucketObjectRetentionArgs extends com.pulumi.resources.Resour
         /**
          * @param retainUntilTime The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
          * 
-         * &lt;a name&gt;
+         * &lt;a name=&#34;nestedContexts&#34;&gt;&lt;/a&gt; The `contexts` block supports -
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class BucketObjectRetentionArgs extends com.pulumi.resources.Resour
         /**
          * @param retainUntilTime The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
          * 
-         * &lt;a name&gt;
+         * &lt;a name=&#34;nestedContexts&#34;&gt;&lt;/a&gt; The `contexts` block supports -
          * 
          * @return builder
          * 

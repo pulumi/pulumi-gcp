@@ -53,11 +53,33 @@ public final class InstanceAutoscalingConfigAutoscalingTargetsArgs extends com.p
         return Optional.ofNullable(this.storageUtilizationPercent);
     }
 
+    /**
+     * The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+     * If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+     * The value should be higher than highPriorityCpuUtilizationPercent if present.
+     * 
+     */
+    @Import(name="totalCpuUtilizationPercent")
+    private @Nullable Output<Integer> totalCpuUtilizationPercent;
+
+    /**
+     * @return The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+     * If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+     * The value should be higher than highPriorityCpuUtilizationPercent if present.
+     * 
+     */
+    public Optional<Output<Integer>> totalCpuUtilizationPercent() {
+        return Optional.ofNullable(this.totalCpuUtilizationPercent);
+    }
+
     private InstanceAutoscalingConfigAutoscalingTargetsArgs() {}
 
     private InstanceAutoscalingConfigAutoscalingTargetsArgs(InstanceAutoscalingConfigAutoscalingTargetsArgs $) {
         this.highPriorityCpuUtilizationPercent = $.highPriorityCpuUtilizationPercent;
         this.storageUtilizationPercent = $.storageUtilizationPercent;
+        this.totalCpuUtilizationPercent = $.totalCpuUtilizationPercent;
     }
 
     public static Builder builder() {
@@ -126,6 +148,33 @@ public final class InstanceAutoscalingConfigAutoscalingTargetsArgs extends com.p
          */
         public Builder storageUtilizationPercent(Integer storageUtilizationPercent) {
             return storageUtilizationPercent(Output.of(storageUtilizationPercent));
+        }
+
+        /**
+         * @param totalCpuUtilizationPercent The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+         * If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+         * The value should be higher than highPriorityCpuUtilizationPercent if present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalCpuUtilizationPercent(@Nullable Output<Integer> totalCpuUtilizationPercent) {
+            $.totalCpuUtilizationPercent = totalCpuUtilizationPercent;
+            return this;
+        }
+
+        /**
+         * @param totalCpuUtilizationPercent The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+         * If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+         * The value should be higher than highPriorityCpuUtilizationPercent if present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalCpuUtilizationPercent(Integer totalCpuUtilizationPercent) {
+            return totalCpuUtilizationPercent(Output.of(totalCpuUtilizationPercent));
         }
 
         public InstanceAutoscalingConfigAutoscalingTargetsArgs build() {

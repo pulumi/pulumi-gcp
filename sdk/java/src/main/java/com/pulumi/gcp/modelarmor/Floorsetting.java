@@ -13,6 +13,7 @@ import com.pulumi.gcp.modelarmor.inputs.FloorsettingState;
 import com.pulumi.gcp.modelarmor.outputs.FloorsettingAiPlatformFloorSetting;
 import com.pulumi.gcp.modelarmor.outputs.FloorsettingFilterConfig;
 import com.pulumi.gcp.modelarmor.outputs.FloorsettingFloorSettingMetadata;
+import com.pulumi.gcp.modelarmor.outputs.FloorsettingGoogleMcpServerFloorSetting;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -268,6 +269,22 @@ public class Floorsetting extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<FloorsettingFloorSettingMetadata>> floorSettingMetadata() {
         return Codegen.optional(this.floorSettingMetadata);
+    }
+    /**
+     * Google MCP Server floor setting.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="googleMcpServerFloorSetting", refs={FloorsettingGoogleMcpServerFloorSetting.class}, tree="[0]")
+    private Output</* @Nullable */ FloorsettingGoogleMcpServerFloorSetting> googleMcpServerFloorSetting;
+
+    /**
+     * @return Google MCP Server floor setting.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<FloorsettingGoogleMcpServerFloorSetting>> googleMcpServerFloorSetting() {
+        return Codegen.optional(this.googleMcpServerFloorSetting);
     }
     /**
      * List of integrated services for which the floor setting is applicable.

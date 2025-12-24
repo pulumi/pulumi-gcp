@@ -709,6 +709,17 @@ class RuntimeTemplate(pulumi.CustomResource):
             ],
             encryption_spec={
                 "kms_key_name": "my-crypto-key",
+            },
+            software_config={
+                "envs": [{
+                    "name": "TEST",
+                    "value": "1",
+                }],
+                "post_startup_script_config": {
+                    "post_startup_script": "echo 'hello world'",
+                    "post_startup_script_url": "gs://colab-enterprise-pss-secure/secure_pss.sh",
+                    "post_startup_script_behavior": "RUN_ONCE",
+                },
             })
         ```
 
@@ -868,6 +879,17 @@ class RuntimeTemplate(pulumi.CustomResource):
             ],
             encryption_spec={
                 "kms_key_name": "my-crypto-key",
+            },
+            software_config={
+                "envs": [{
+                    "name": "TEST",
+                    "value": "1",
+                }],
+                "post_startup_script_config": {
+                    "post_startup_script": "echo 'hello world'",
+                    "post_startup_script_url": "gs://colab-enterprise-pss-secure/secure_pss.sh",
+                    "post_startup_script_behavior": "RUN_ONCE",
+                },
             })
         ```
 

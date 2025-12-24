@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// To get more information about CrossSiteNetwork, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/crossSiteNetworks)
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/crossSiteNetworks)
     /// * How-to Guides
     ///     * [Create a Cross-Site Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/create-network)
     /// 

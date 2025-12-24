@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
     /// 
     /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `sensitive_params.secret_access_key_wo`.
-    /// Read more about Write-only Attributes.
+    /// Read more about Write-only Arguments.
     /// 
     /// ## Example Usage
     /// 
@@ -189,17 +189,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Ephemeral Attributes Reference
-    /// 
-    /// The following write-only attributes are supported:
-    /// 
-    /// &lt;a name="NestedSensitiveParams"&gt;&lt;/a&gt;The `SensitiveParams` block supports:
-    /// 
-    /// * `SecretAccessKeyWo` -
-    ///   (Optional)
-    ///   The Secret Access Key of the AWS account transferring data from.
-    ///   **Note**: This property is write-only and will not be read from the API.
     /// 
     /// ## Import
     /// 

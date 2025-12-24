@@ -241,15 +241,15 @@ public class DataStore extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="advancedSiteSearchConfig", refs={DataStoreAdvancedSiteSearchConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfig;
+    private Output<DataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfig;
 
     /**
      * @return Configuration data for advance site search.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<DataStoreAdvancedSiteSearchConfig>> advancedSiteSearchConfig() {
-        return Codegen.optional(this.advancedSiteSearchConfig);
+    public Output<DataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfig() {
+        return this.advancedSiteSearchConfig;
     }
     /**
      * The content config of the data store.

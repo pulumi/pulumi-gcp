@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkforcePoolProviderKey{}
 	case "gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant":
 		r = &WorkforcePoolProviderScimTenant{}
+	case "gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken":
+		r = &WorkforcePoolProviderScimToken{}
 	case "gcp:iam/workloadIdentityPool:WorkloadIdentityPool":
 		r = &WorkloadIdentityPool{}
 	case "gcp:iam/workloadIdentityPoolIamBinding:WorkloadIdentityPoolIamBinding":
@@ -151,6 +153,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iam/workforcePoolProviderScimTenant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iam/workforcePoolProviderScimToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

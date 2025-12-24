@@ -80,6 +80,11 @@ export type UserStore = import("./userStore").UserStore;
 export const UserStore: typeof import("./userStore").UserStore = null as any;
 utilities.lazyLoad(exports, ["UserStore"], () => require("./userStore"));
 
+export { WidgetConfigArgs, WidgetConfigState } from "./widgetConfig";
+export type WidgetConfig = import("./widgetConfig").WidgetConfig;
+export const WidgetConfig: typeof import("./widgetConfig").WidgetConfig = null as any;
+utilities.lazyLoad(exports, ["WidgetConfig"], () => require("./widgetConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -115,6 +120,8 @@ const _module = {
                 return new TargetSite(name, <any>undefined, { urn })
             case "gcp:discoveryengine/userStore:UserStore":
                 return new UserStore(name, <any>undefined, { urn })
+            case "gcp:discoveryengine/widgetConfig:WidgetConfig":
+                return new WidgetConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -135,3 +142,4 @@ pulumi.runtime.registerResourceModule("gcp", "discoveryengine/servingConfig", _m
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/sitemap", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/targetSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "discoveryengine/userStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "discoveryengine/widgetConfig", _module)

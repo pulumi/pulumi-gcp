@@ -15,18 +15,22 @@ public final class AiReasoningEngineEncryptionSpecArgs extends com.pulumi.resour
     public static final AiReasoningEngineEncryptionSpecArgs Empty = new AiReasoningEngineEncryptionSpecArgs();
 
     /**
-     * Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-     * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-     * The key needs to be in the same region as where the compute resource is created.
+     * Required. The Cloud KMS resource identifier of the customer managed
+     * encryption key used to protect a resource. Has the form:
+     * projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+     * The key needs to be in the same region as where the compute resource
+     * is created.
      * 
      */
     @Import(name="kmsKeyName", required=true)
     private Output<String> kmsKeyName;
 
     /**
-     * @return Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-     * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-     * The key needs to be in the same region as where the compute resource is created.
+     * @return Required. The Cloud KMS resource identifier of the customer managed
+     * encryption key used to protect a resource. Has the form:
+     * projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+     * The key needs to be in the same region as where the compute resource
+     * is created.
      * 
      */
     public Output<String> kmsKeyName() {
@@ -58,9 +62,11 @@ public final class AiReasoningEngineEncryptionSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param kmsKeyName Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-         * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-         * The key needs to be in the same region as where the compute resource is created.
+         * @param kmsKeyName Required. The Cloud KMS resource identifier of the customer managed
+         * encryption key used to protect a resource. Has the form:
+         * projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+         * The key needs to be in the same region as where the compute resource
+         * is created.
          * 
          * @return builder
          * 
@@ -71,9 +77,11 @@ public final class AiReasoningEngineEncryptionSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param kmsKeyName Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-         * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-         * The key needs to be in the same region as where the compute resource is created.
+         * @param kmsKeyName Required. The Cloud KMS resource identifier of the customer managed
+         * encryption key used to protect a resource. Has the form:
+         * projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+         * The key needs to be in the same region as where the compute resource
+         * is created.
          * 
          * @return builder
          * 

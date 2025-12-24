@@ -27,6 +27,7 @@ __all__ = [
     'FloorsettingFilterConfigSdpSettingsBasicConfig',
     'FloorsettingFloorSettingMetadata',
     'FloorsettingFloorSettingMetadataMultiLanguageDetection',
+    'FloorsettingGoogleMcpServerFloorSetting',
     'TemplateFilterConfig',
     'TemplateFilterConfigMaliciousUriFilterSettings',
     'TemplateFilterConfigPiAndJailbreakFilterSettings',
@@ -644,6 +645,74 @@ class FloorsettingFloorSettingMetadataMultiLanguageDetection(dict):
         If true, multi language detection will be enabled.
         """
         return pulumi.get(self, "enable_multi_language_detection")
+
+
+@pulumi.output_type
+class FloorsettingGoogleMcpServerFloorSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCloudLogging":
+            suggest = "enable_cloud_logging"
+        elif key == "inspectAndBlock":
+            suggest = "inspect_and_block"
+        elif key == "inspectOnly":
+            suggest = "inspect_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FloorsettingGoogleMcpServerFloorSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FloorsettingGoogleMcpServerFloorSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FloorsettingGoogleMcpServerFloorSetting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_cloud_logging: Optional[_builtins.bool] = None,
+                 inspect_and_block: Optional[_builtins.bool] = None,
+                 inspect_only: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enable_cloud_logging: If true, log Model Armor filter results to Cloud Logging.
+        :param _builtins.bool inspect_and_block: If true, Model Armor filters will be run in inspect and block mode.
+               Requests that trip Model Armor filters will be blocked.
+        :param _builtins.bool inspect_only: If true, Model Armor filters will be run in inspect only mode. No action
+               will be taken on the request.
+        """
+        if enable_cloud_logging is not None:
+            pulumi.set(__self__, "enable_cloud_logging", enable_cloud_logging)
+        if inspect_and_block is not None:
+            pulumi.set(__self__, "inspect_and_block", inspect_and_block)
+        if inspect_only is not None:
+            pulumi.set(__self__, "inspect_only", inspect_only)
+
+    @_builtins.property
+    @pulumi.getter(name="enableCloudLogging")
+    def enable_cloud_logging(self) -> Optional[_builtins.bool]:
+        """
+        If true, log Model Armor filter results to Cloud Logging.
+        """
+        return pulumi.get(self, "enable_cloud_logging")
+
+    @_builtins.property
+    @pulumi.getter(name="inspectAndBlock")
+    def inspect_and_block(self) -> Optional[_builtins.bool]:
+        """
+        If true, Model Armor filters will be run in inspect and block mode.
+        Requests that trip Model Armor filters will be blocked.
+        """
+        return pulumi.get(self, "inspect_and_block")
+
+    @_builtins.property
+    @pulumi.getter(name="inspectOnly")
+    def inspect_only(self) -> Optional[_builtins.bool]:
+        """
+        If true, Model Armor filters will be run in inspect only mode. No action
+        will be taken on the request.
+        """
+        return pulumi.get(self, "inspect_only")
 
 
 @pulumi.output_type

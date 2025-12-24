@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.Ces
     ///         Location = "us",
     ///         Description = "Basic CES App example",
     ///         DisplayName = "my-app",
+    ///         Pinned = true,
     ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
     ///         {
     ///             DefaultLanguageCode = "en-US",
@@ -157,6 +158,7 @@ namespace Pulumi.Gcp.Ces
     ///                 {
     ///                     Description = "schema description",
     ///                     Type = "ARRAY",
+    ///                     Title = "title",
     ///                     Nullable = true,
     ///                     Requireds = new[]
     ///                     {
@@ -619,6 +621,12 @@ namespace Pulumi.Gcp.Ces
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the app is pinned in the app list.
+        /// </summary>
+        [Output("pinned")]
+        public Output<bool?> Pinned { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -818,6 +826,12 @@ namespace Pulumi.Gcp.Ces
         public Input<Inputs.AppModelSettingsArgs>? ModelSettings { get; set; }
 
         /// <summary>
+        /// Whether the app is pinned in the app list.
+        /// </summary>
+        [Input("pinned")]
+        public Input<bool>? Pinned { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -1004,6 +1018,12 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether the app is pinned in the app list.
+        /// </summary>
+        [Input("pinned")]
+        public Input<bool>? Pinned { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

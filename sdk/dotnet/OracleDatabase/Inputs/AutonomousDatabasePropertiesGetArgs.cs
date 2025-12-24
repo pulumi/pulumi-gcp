@@ -129,6 +129,12 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
             set => _connectionUrls = value;
         }
 
+        /// <summary>
+        /// The number of CPU cores to be made available to the database.
+        /// </summary>
+        [Input("cpuCoreCount")]
+        public Input<int>? CpuCoreCount { get; set; }
+
         [Input("customerContacts")]
         private InputList<Inputs.AutonomousDatabasePropertiesCustomerContactGetArgs>? _customerContacts;
 
@@ -486,6 +492,12 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         }
 
         /// <summary>
+        /// The ID of the Oracle Cloud Infrastructure vault secret.
+        /// </summary>
+        [Input("secretId")]
+        public Input<string>? SecretId { get; set; }
+
+        /// <summary>
         /// (Output)
         /// The SQL Web Developer URL for the Autonomous Database.
         /// </summary>
@@ -549,6 +561,12 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
         /// </summary>
         [Input("usedDataStorageSizeTbs")]
         public Input<int>? UsedDataStorageSizeTbs { get; set; }
+
+        /// <summary>
+        /// The ID of the Oracle Cloud Infrastructure vault.
+        /// </summary>
+        [Input("vaultId")]
+        public Input<string>? VaultId { get; set; }
 
         public AutonomousDatabasePropertiesGetArgs()
         {

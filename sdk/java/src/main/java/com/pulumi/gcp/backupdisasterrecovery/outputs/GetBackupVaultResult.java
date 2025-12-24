@@ -5,8 +5,10 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupVaultEncryptionConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +29,7 @@ public final class GetBackupVaultResult {
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
     private String effectiveTime;
+    private List<GetBackupVaultEncryptionConfig> encryptionConfigs;
     private String etag;
     private Boolean forceDelete;
     private Boolean forceUpdate;
@@ -87,6 +90,9 @@ public final class GetBackupVaultResult {
     }
     public String effectiveTime() {
         return this.effectiveTime;
+    }
+    public List<GetBackupVaultEncryptionConfig> encryptionConfigs() {
+        return this.encryptionConfigs;
     }
     public String etag() {
         return this.etag;
@@ -163,6 +169,7 @@ public final class GetBackupVaultResult {
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
         private String effectiveTime;
+        private List<GetBackupVaultEncryptionConfig> encryptionConfigs;
         private String etag;
         private Boolean forceDelete;
         private Boolean forceUpdate;
@@ -195,6 +202,7 @@ public final class GetBackupVaultResult {
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.effectiveTime = defaults.effectiveTime;
+    	      this.encryptionConfigs = defaults.encryptionConfigs;
     	      this.etag = defaults.etag;
     	      this.forceDelete = defaults.forceDelete;
     	      this.forceUpdate = defaults.forceUpdate;
@@ -316,6 +324,17 @@ public final class GetBackupVaultResult {
             }
             this.effectiveTime = effectiveTime;
             return this;
+        }
+        @CustomType.Setter
+        public Builder encryptionConfigs(List<GetBackupVaultEncryptionConfig> encryptionConfigs) {
+            if (encryptionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetBackupVaultResult", "encryptionConfigs");
+            }
+            this.encryptionConfigs = encryptionConfigs;
+            return this;
+        }
+        public Builder encryptionConfigs(GetBackupVaultEncryptionConfig... encryptionConfigs) {
+            return encryptionConfigs(List.of(encryptionConfigs));
         }
         @CustomType.Setter
         public Builder etag(String etag) {
@@ -458,6 +477,7 @@ public final class GetBackupVaultResult {
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.effectiveTime = effectiveTime;
+            _resultValue.encryptionConfigs = encryptionConfigs;
             _resultValue.etag = etag;
             _resultValue.forceDelete = forceDelete;
             _resultValue.forceUpdate = forceUpdate;

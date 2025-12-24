@@ -558,7 +558,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-job",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs

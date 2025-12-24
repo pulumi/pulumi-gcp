@@ -35,6 +35,7 @@ class InterconnectArgs:
                  macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['InterconnectParamsArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_location: Optional[pulumi.Input[_builtins.str]] = None,
                  requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -85,6 +86,8 @@ class InterconnectArgs:
                all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications.
                This field is required for users who sign up for Cloud Interconnect using workforce identity
                federation.
+        :param pulumi.Input['InterconnectParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
@@ -120,6 +123,8 @@ class InterconnectArgs:
             pulumi.set(__self__, "name", name)
         if noc_contact_email is not None:
             pulumi.set(__self__, "noc_contact_email", noc_contact_email)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if remote_location is not None:
@@ -328,6 +333,19 @@ class InterconnectArgs:
 
     @_builtins.property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InterconnectParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InterconnectParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -397,6 +415,7 @@ class _InterconnectState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
                  operational_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input['InterconnectParamsArgs']] = None,
                  peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  provisioned_link_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -482,6 +501,8 @@ class _InterconnectState:
                provisioned on this Interconnect.
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
                attachments may be provisioned or updated on this Interconnect.
+        :param pulumi.Input['InterconnectParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_ip_address: IP address configured on the customer side of the Interconnect link.
                The customer should configure this IP address during turnup when prompted by Google NOC.
                This can be used only for ping tests.
@@ -558,6 +579,8 @@ class _InterconnectState:
             pulumi.set(__self__, "noc_contact_email", noc_contact_email)
         if operational_status is not None:
             pulumi.set(__self__, "operational_status", operational_status)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if peer_ip_address is not None:
             pulumi.set(__self__, "peer_ip_address", peer_ip_address)
         if project is not None:
@@ -917,6 +940,19 @@ class _InterconnectState:
         pulumi.set(self, "operational_status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InterconnectParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InterconnectParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="peerIpAddress")
     def peer_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1073,6 +1109,7 @@ class Interconnect(pulumi.CustomResource):
                  macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_location: Optional[pulumi.Input[_builtins.str]] = None,
                  requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1176,6 +1213,8 @@ class Interconnect(pulumi.CustomResource):
                all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications.
                This field is required for users who sign up for Cloud Interconnect using workforce identity
                federation.
+        :param pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] remote_location: Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
@@ -1274,6 +1313,7 @@ class Interconnect(pulumi.CustomResource):
                  macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 params: Optional[pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_location: Optional[pulumi.Input[_builtins.str]] = None,
                  requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1306,6 +1346,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["macsec_enabled"] = macsec_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["noc_contact_email"] = noc_contact_email
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["remote_location"] = remote_location
             __props__.__dict__["requested_features"] = requested_features
@@ -1365,6 +1406,7 @@ class Interconnect(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
             operational_status: Optional[pulumi.Input[_builtins.str]] = None,
+            params: Optional[pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
             peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             provisioned_link_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1455,6 +1497,8 @@ class Interconnect(pulumi.CustomResource):
                provisioned on this Interconnect.
                - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
                attachments may be provisioned or updated on this Interconnect.
+        :param pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] peer_ip_address: IP address configured on the customer side of the Interconnect link.
                The customer should configure this IP address during turnup when prompted by Google NOC.
                This can be used only for ping tests.
@@ -1511,6 +1555,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["noc_contact_email"] = noc_contact_email
         __props__.__dict__["operational_status"] = operational_status
+        __props__.__dict__["params"] = params
         __props__.__dict__["peer_ip_address"] = peer_ip_address
         __props__.__dict__["project"] = project
         __props__.__dict__["provisioned_link_count"] = provisioned_link_count
@@ -1763,6 +1808,15 @@ class Interconnect(pulumi.CustomResource):
         attachments may be provisioned or updated on this Interconnect.
         """
         return pulumi.get(self, "operational_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.InterconnectParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddress")

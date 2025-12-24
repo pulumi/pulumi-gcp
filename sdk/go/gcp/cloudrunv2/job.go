@@ -577,7 +577,6 @@ import (
 //				Name:               pulumi.String("cloudrun-job"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{

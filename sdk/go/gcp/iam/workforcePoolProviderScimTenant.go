@@ -17,9 +17,9 @@ import (
 //
 // To get more information about WorkforcePoolProviderScimTenant, see:
 //
-// * [API documentation](https://cloud.google.com/sdk/gcloud/reference/iam/workforce-pools/providers/scim-tenants)
+// * [API documentation](https://docs.cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers.scimTenants)
 // * How-to Guides
-//   - [QUICKSTART_TITLE](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
+//   - [Configure a SCIM Tenant](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
 //
 // ## Example Usage
 //
@@ -84,6 +84,10 @@ import (
 //				ScimTenantId:    pulumi.String("example-scim-tenant"),
 //				DisplayName:     pulumi.String("Example SCIM Tenant"),
 //				Description:     pulumi.String("A basic SCIM tenant for IAM Workforce Pool Provider"),
+//				ClaimMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("user.externalId"),
+//					"google.group":   pulumi.String("group.externalId"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -120,6 +124,8 @@ type WorkforcePoolProviderScimTenant struct {
 	// Format:
 	// https://iamscim.googleapis.com/{version}/{tenant_id}/
 	BaseUri pulumi.StringOutput `pulumi:"baseUri"`
+	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+	ClaimMapping pulumi.StringMapOutput `pulumi:"claimMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -131,10 +137,14 @@ type WorkforcePoolProviderScimTenant struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the provider.
 	ProviderId pulumi.StringOutput `pulumi:"providerId"`
+	// The timestamp that represents the time when the SCIM tenant is purged.
+	PurgeTime pulumi.StringOutput `pulumi:"purgeTime"`
 	// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	ScimTenantId pulumi.StringOutput `pulumi:"scimTenantId"`
+	// Service Agent created by SCIM Tenant API. SCIM tokens created under
+	// this tenant will be attached to this service agent.
+	ServiceAgent pulumi.StringOutput `pulumi:"serviceAgent"`
 	// The current state of the scim tenant.
-	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
 	// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
 	//   deleted after approximately 30 days.
@@ -191,6 +201,8 @@ type workforcePoolProviderScimTenantState struct {
 	// Format:
 	// https://iamscim.googleapis.com/{version}/{tenant_id}/
 	BaseUri *string `pulumi:"baseUri"`
+	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+	ClaimMapping map[string]string `pulumi:"claimMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -202,10 +214,14 @@ type workforcePoolProviderScimTenantState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the provider.
 	ProviderId *string `pulumi:"providerId"`
+	// The timestamp that represents the time when the SCIM tenant is purged.
+	PurgeTime *string `pulumi:"purgeTime"`
 	// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	ScimTenantId *string `pulumi:"scimTenantId"`
+	// Service Agent created by SCIM Tenant API. SCIM tokens created under
+	// this tenant will be attached to this service agent.
+	ServiceAgent *string `pulumi:"serviceAgent"`
 	// The current state of the scim tenant.
-	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
 	// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
 	//   deleted after approximately 30 days.
@@ -221,6 +237,8 @@ type WorkforcePoolProviderScimTenantState struct {
 	// Format:
 	// https://iamscim.googleapis.com/{version}/{tenant_id}/
 	BaseUri pulumi.StringPtrInput
+	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+	ClaimMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -232,10 +250,14 @@ type WorkforcePoolProviderScimTenantState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the provider.
 	ProviderId pulumi.StringPtrInput
+	// The timestamp that represents the time when the SCIM tenant is purged.
+	PurgeTime pulumi.StringPtrInput
 	// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 	ScimTenantId pulumi.StringPtrInput
+	// Service Agent created by SCIM Tenant API. SCIM tokens created under
+	// this tenant will be attached to this service agent.
+	ServiceAgent pulumi.StringPtrInput
 	// The current state of the scim tenant.
-	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
 	// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
 	//   deleted after approximately 30 days.
@@ -249,6 +271,8 @@ func (WorkforcePoolProviderScimTenantState) ElementType() reflect.Type {
 }
 
 type workforcePoolProviderScimTenantArgs struct {
+	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+	ClaimMapping map[string]string `pulumi:"claimMapping"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -265,6 +289,8 @@ type workforcePoolProviderScimTenantArgs struct {
 
 // The set of arguments for constructing a WorkforcePoolProviderScimTenant resource.
 type WorkforcePoolProviderScimTenantArgs struct {
+	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+	ClaimMapping pulumi.StringMapInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -375,6 +401,11 @@ func (o WorkforcePoolProviderScimTenantOutput) BaseUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringOutput { return v.BaseUri }).(pulumi.StringOutput)
 }
 
+// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+func (o WorkforcePoolProviderScimTenantOutput) ClaimMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringMapOutput { return v.ClaimMapping }).(pulumi.StringMapOutput)
+}
+
 // A user-specified description of the provider. Cannot exceed 256 characters.
 func (o WorkforcePoolProviderScimTenantOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -401,13 +432,23 @@ func (o WorkforcePoolProviderScimTenantOutput) ProviderId() pulumi.StringOutput 
 	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringOutput { return v.ProviderId }).(pulumi.StringOutput)
 }
 
+// The timestamp that represents the time when the SCIM tenant is purged.
+func (o WorkforcePoolProviderScimTenantOutput) PurgeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringOutput { return v.PurgeTime }).(pulumi.StringOutput)
+}
+
 // The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
 func (o WorkforcePoolProviderScimTenantOutput) ScimTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringOutput { return v.ScimTenantId }).(pulumi.StringOutput)
 }
 
+// Service Agent created by SCIM Tenant API. SCIM tokens created under
+// this tenant will be attached to this service agent.
+func (o WorkforcePoolProviderScimTenantOutput) ServiceAgent() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringOutput { return v.ServiceAgent }).(pulumi.StringOutput)
+}
+
 // The current state of the scim tenant.
-//   - STATE_UNSPECIFIED: State unspecified.
 //   - ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
 //   - DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
 //     deleted after approximately 30 days.

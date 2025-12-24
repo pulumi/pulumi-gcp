@@ -17,10 +17,16 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// The time when cluster will be auto-deleted.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         /// Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        public readonly string? AutoDeleteTime;
+        /// <summary>
+        /// The time when cluster will be auto-stopped.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
         /// 
         /// - - -
         /// </summary>
-        public readonly string? AutoDeleteTime;
+        public readonly string? AutoStopTime;
         /// <summary>
         /// The duration to keep the cluster alive while idling
         /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
@@ -31,18 +37,29 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// (most recent job finished) and became eligible for deletion due to idleness.
         /// </summary>
         public readonly string? IdleStartTime;
+        /// <summary>
+        /// The duration to keep the cluster alive while idling
+        /// (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+        /// </summary>
+        public readonly string? IdleStopTtl;
 
         [OutputConstructor]
         private ClusterClusterConfigLifecycleConfig(
             string? autoDeleteTime,
 
+            string? autoStopTime,
+
             string? idleDeleteTtl,
 
-            string? idleStartTime)
+            string? idleStartTime,
+
+            string? idleStopTtl)
         {
             AutoDeleteTime = autoDeleteTime;
+            AutoStopTime = autoStopTime;
             IdleDeleteTtl = idleDeleteTtl;
             IdleStartTime = idleStartTime;
+            IdleStopTtl = idleStopTtl;
         }
     }
 }

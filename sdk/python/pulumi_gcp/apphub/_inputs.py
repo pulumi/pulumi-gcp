@@ -49,6 +49,8 @@ __all__ = [
     'ServiceServicePropertyExtendedMetadataValueArgsDict',
     'ServiceServicePropertyFunctionalTypeArgs',
     'ServiceServicePropertyFunctionalTypeArgsDict',
+    'ServiceServicePropertyIdentityArgs',
+    'ServiceServicePropertyIdentityArgsDict',
     'ServiceServicePropertyRegistrationTypeArgs',
     'ServiceServicePropertyRegistrationTypeArgsDict',
     'ServiceServiceReferenceArgs',
@@ -73,6 +75,8 @@ __all__ = [
     'WorkloadWorkloadPropertyExtendedMetadataValueArgsDict',
     'WorkloadWorkloadPropertyFunctionalTypeArgs',
     'WorkloadWorkloadPropertyFunctionalTypeArgsDict',
+    'WorkloadWorkloadPropertyIdentityArgs',
+    'WorkloadWorkloadPropertyIdentityArgsDict',
     'WorkloadWorkloadReferenceArgs',
     'WorkloadWorkloadReferenceArgsDict',
 ]
@@ -837,6 +841,12 @@ if not MYPY:
         (Output)
         Output only. The service project identifier that the underlying cloud resource resides in.
         """
+        identities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgsDict']]]]
+        """
+        (Output)
+        The identity associated with the service.
+        Structure is documented below.
+        """
         location: NotRequired[pulumi.Input[_builtins.str]]
         """
         Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -861,6 +871,7 @@ class ServiceServicePropertyArgs:
                  extended_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataArgs']]]] = None,
                  functional_types: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyFunctionalTypeArgs']]]] = None,
                  gcp_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 identities: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgs']]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  registration_types: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyRegistrationTypeArgs']]]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
@@ -873,6 +884,9 @@ class ServiceServicePropertyArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] gcp_project: (Output)
                Output only. The service project identifier that the underlying cloud resource resides in.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgs']]] identities: (Output)
+               The identity associated with the service.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyRegistrationTypeArgs']]] registration_types: (Output)
                Output only. The registration type of the service.
@@ -886,6 +900,8 @@ class ServiceServicePropertyArgs:
             pulumi.set(__self__, "functional_types", functional_types)
         if gcp_project is not None:
             pulumi.set(__self__, "gcp_project", gcp_project)
+        if identities is not None:
+            pulumi.set(__self__, "identities", identities)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if registration_types is not None:
@@ -933,6 +949,20 @@ class ServiceServicePropertyArgs:
     @gcp_project.setter
     def gcp_project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "gcp_project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgs']]]]:
+        """
+        (Output)
+        The identity associated with the service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identities")
+
+    @identities.setter
+    def identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgs']]]]):
+        pulumi.set(self, "identities", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1126,6 +1156,41 @@ class ServiceServicePropertyFunctionalTypeArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class ServiceServicePropertyIdentityArgsDict(TypedDict):
+        principal: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The principal of the identity.
+        """
+elif False:
+    ServiceServicePropertyIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceServicePropertyIdentityArgs:
+    def __init__(__self__, *,
+                 principal: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] principal: (Output)
+               The principal of the identity.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The principal of the identity.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal", value)
 
 
 if not MYPY:
@@ -1568,6 +1633,12 @@ if not MYPY:
         (Output)
         Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
         """
+        identities: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgsDict']]]]
+        """
+        (Output)
+        The identity associated with the workload.
+        Structure is documented below.
+        """
         location: NotRequired[pulumi.Input[_builtins.str]]
         """
         Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -1586,6 +1657,7 @@ class WorkloadWorkloadPropertyArgs:
                  extended_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataArgs']]]] = None,
                  functional_types: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyFunctionalTypeArgs']]]] = None,
                  gcp_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 identities: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgs']]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -1597,6 +1669,9 @@ class WorkloadWorkloadPropertyArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] gcp_project: (Output)
                Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgs']]] identities: (Output)
+               The identity associated with the workload.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] location: Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         :param pulumi.Input[_builtins.str] zone: (Output)
                Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
@@ -1607,6 +1682,8 @@ class WorkloadWorkloadPropertyArgs:
             pulumi.set(__self__, "functional_types", functional_types)
         if gcp_project is not None:
             pulumi.set(__self__, "gcp_project", gcp_project)
+        if identities is not None:
+            pulumi.set(__self__, "identities", identities)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if zone is not None:
@@ -1652,6 +1729,20 @@ class WorkloadWorkloadPropertyArgs:
     @gcp_project.setter
     def gcp_project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "gcp_project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgs']]]]:
+        """
+        (Output)
+        The identity associated with the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identities")
+
+    @identities.setter
+    def identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgs']]]]):
+        pulumi.set(self, "identities", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1831,6 +1922,41 @@ class WorkloadWorkloadPropertyFunctionalTypeArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class WorkloadWorkloadPropertyIdentityArgsDict(TypedDict):
+        principal: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The principal of the identity.
+        """
+elif False:
+    WorkloadWorkloadPropertyIdentityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadWorkloadPropertyIdentityArgs:
+    def __init__(__self__, *,
+                 principal: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] principal: (Output)
+               The principal of the identity.
+        """
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The principal of the identity.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "principal", value)
 
 
 if not MYPY:

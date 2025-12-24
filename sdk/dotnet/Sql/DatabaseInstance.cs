@@ -675,6 +675,21 @@ namespace Pulumi.Gcp.Sql
         public Output<string?> RootPassword { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `RootPassword` or `RootPasswordWo` can only be set.
+        /// </summary>
+        [Output("rootPasswordWo")]
+        public Output<string?> RootPasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Triggers update of `RootPasswordWo` write-only. Increment this value when an update to `RootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Output("rootPasswordWoVersion")]
+        public Output<string?> RootPasswordWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -724,6 +739,7 @@ namespace Pulumi.Gcp.Sql
                 {
                     "replicaConfiguration",
                     "rootPassword",
+                    "rootPasswordWo",
                     "serverCaCerts",
                 },
             };
@@ -921,6 +937,31 @@ namespace Pulumi.Gcp.Sql
                 _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("rootPasswordWo")]
+        private Input<string>? _rootPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `RootPassword` or `RootPasswordWo` can only be set.
+        /// </summary>
+        public Input<string>? RootPasswordWo
+        {
+            get => _rootPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `RootPasswordWo` write-only. Increment this value when an update to `RootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("rootPasswordWoVersion")]
+        public Input<string>? RootPasswordWoVersion { get; set; }
 
         /// <summary>
         /// The settings to use for the database. The
@@ -1178,6 +1219,31 @@ namespace Pulumi.Gcp.Sql
                 _rootPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("rootPasswordWo")]
+        private Input<string>? _rootPasswordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `RootPassword` or `RootPasswordWo` can only be set.
+        /// </summary>
+        public Input<string>? RootPasswordWo
+        {
+            get => _rootPasswordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rootPasswordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `RootPasswordWo` write-only. Increment this value when an update to `RootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("rootPasswordWoVersion")]
+        public Input<string>? RootPasswordWoVersion { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

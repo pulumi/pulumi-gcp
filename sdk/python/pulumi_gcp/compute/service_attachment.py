@@ -35,6 +35,7 @@ class ServiceAttachmentArgs:
                  reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
+                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
                  tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
         The set of arguments for constructing a ServiceAttachment resource.
@@ -76,6 +77,7 @@ class ServiceAttachmentArgs:
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
         :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: Tunneling configuration for this service attachment.
                Structure is documented below.
         """
@@ -103,6 +105,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "region", region)
         if send_propagated_connection_limit_if_zero is not None:
             pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
+        if show_nat_ips is not None:
+            pulumi.set(__self__, "show_nat_ips", show_nat_ips)
         if tunneling_config is not None:
             pulumi.set(__self__, "tunneling_config", tunneling_config)
 
@@ -299,6 +303,18 @@ class ServiceAttachmentArgs:
         pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
 
     @_builtins.property
+    @pulumi.getter(name="showNatIps")
+    def show_nat_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, show NAT IPs of all connected endpoints.
+        """
+        return pulumi.get(self, "show_nat_ips")
+
+    @show_nat_ips.setter
+    def show_nat_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "show_nat_ips", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelingConfig")
     def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
         """
@@ -332,6 +348,7 @@ class _ServiceAttachmentState:
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
+                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[_builtins.str]] = None,
                  tunneling_config: Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']] = None):
         """
@@ -381,6 +398,7 @@ class _ServiceAttachmentState:
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: Tunneling configuration for this service attachment.
                Structure is documented below.
@@ -419,6 +437,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "self_link", self_link)
         if send_propagated_connection_limit_if_zero is not None:
             pulumi.set(__self__, "send_propagated_connection_limit_if_zero", send_propagated_connection_limit_if_zero)
+        if show_nat_ips is not None:
+            pulumi.set(__self__, "show_nat_ips", show_nat_ips)
         if target_service is not None:
             pulumi.set(__self__, "target_service", target_service)
         if tunneling_config is not None:
@@ -657,6 +677,18 @@ class _ServiceAttachmentState:
         pulumi.set(self, "send_propagated_connection_limit_if_zero", value)
 
     @_builtins.property
+    @pulumi.getter(name="showNatIps")
+    def show_nat_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, show NAT IPs of all connected endpoints.
+        """
+        return pulumi.get(self, "show_nat_ips")
+
+    @show_nat_ips.setter
+    def show_nat_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "show_nat_ips", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetService")
     def target_service(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -701,6 +733,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
+                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[_builtins.str]] = None,
                  tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
@@ -1161,6 +1194,7 @@ class ServiceAttachment(pulumi.CustomResource):
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: Tunneling configuration for this service attachment.
                Structure is documented below.
@@ -1617,6 +1651,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  reconcile_connections: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
+                 show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
                  target_service: Optional[pulumi.Input[_builtins.str]] = None,
                  tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None,
                  __props__=None):
@@ -1647,6 +1682,7 @@ class ServiceAttachment(pulumi.CustomResource):
             __props__.__dict__["reconcile_connections"] = reconcile_connections
             __props__.__dict__["region"] = region
             __props__.__dict__["send_propagated_connection_limit_if_zero"] = send_propagated_connection_limit_if_zero
+            __props__.__dict__["show_nat_ips"] = show_nat_ips
             if target_service is None and not opts.urn:
                 raise TypeError("Missing required property 'target_service'")
             __props__.__dict__["target_service"] = target_service
@@ -1682,6 +1718,7 @@ class ServiceAttachment(pulumi.CustomResource):
             region: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
             send_propagated_connection_limit_if_zero: Optional[pulumi.Input[_builtins.bool]] = None,
+            show_nat_ips: Optional[pulumi.Input[_builtins.bool]] = None,
             target_service: Optional[pulumi.Input[_builtins.str]] = None,
             tunneling_config: Optional[pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']]] = None) -> 'ServiceAttachment':
         """
@@ -1736,6 +1773,7 @@ class ServiceAttachment(pulumi.CustomResource):
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
         :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: Tunneling configuration for this service attachment.
                Structure is documented below.
@@ -1761,6 +1799,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["send_propagated_connection_limit_if_zero"] = send_propagated_connection_limit_if_zero
+        __props__.__dict__["show_nat_ips"] = show_nat_ips
         __props__.__dict__["target_service"] = target_service
         __props__.__dict__["tunneling_config"] = tunneling_config
         return ServiceAttachment(resource_name, opts=opts, __props__=__props__)
@@ -1928,6 +1967,14 @@ class ServiceAttachment(pulumi.CustomResource):
         Defaults to false.
         """
         return pulumi.get(self, "send_propagated_connection_limit_if_zero")
+
+    @_builtins.property
+    @pulumi.getter(name="showNatIps")
+    def show_nat_ips(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, show NAT IPs of all connected endpoints.
+        """
+        return pulumi.get(self, "show_nat_ips")
 
     @_builtins.property
     @pulumi.getter(name="targetService")

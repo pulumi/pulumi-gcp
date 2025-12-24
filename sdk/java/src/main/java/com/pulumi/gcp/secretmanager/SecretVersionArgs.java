@@ -124,7 +124,11 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
      * 
      */
     @Import(name="secretDataWo")
@@ -132,7 +136,11 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * (Optional, Write-Only)
+     * The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
      * 
      */
     public Optional<Output<String>> secretDataWo() {
@@ -140,14 +148,14 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     @Import(name="secretDataWoVersion")
     private @Nullable Output<Integer> secretDataWoVersion;
 
     /**
-     * @return Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     public Optional<Output<Integer>> secretDataWoVersion() {
@@ -327,7 +335,11 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secretDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * (Optional, Write-Only)
+         * The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
          * 
          * @return builder
          * 
@@ -339,7 +351,11 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secretDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * (Optional, Write-Only)
+         * The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
          * 
          * @return builder
          * 
@@ -349,7 +365,7 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 
@@ -360,7 +376,7 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param secretDataWoVersion Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 

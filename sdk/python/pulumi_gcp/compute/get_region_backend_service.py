@@ -27,7 +27,7 @@ class GetRegionBackendServiceResult:
     """
     A collection of values returned by getRegionBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None, tls_settings=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, connection_tracking_policies=None, consistent_hashes=None, creation_timestamp=None, custom_metrics=None, description=None, dynamic_forwardings=None, enable_cdn=None, failover_policies=None, fingerprint=None, generated_id=None, ha_policies=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, network=None, network_pass_through_lb_traffic_policies=None, outlier_detections=None, params=None, port_name=None, project=None, protocol=None, region=None, security_policy=None, self_link=None, session_affinity=None, strong_session_affinity_cookies=None, subsettings=None, timeout_sec=None, tls_settings=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -103,6 +103,9 @@ class GetRegionBackendServiceResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if network_pass_through_lb_traffic_policies and not isinstance(network_pass_through_lb_traffic_policies, list):
+            raise TypeError("Expected argument 'network_pass_through_lb_traffic_policies' to be a list")
+        pulumi.set(__self__, "network_pass_through_lb_traffic_policies", network_pass_through_lb_traffic_policies)
         if outlier_detections and not isinstance(outlier_detections, list):
             raise TypeError("Expected argument 'outlier_detections' to be a list")
         pulumi.set(__self__, "outlier_detections", outlier_detections)
@@ -272,6 +275,11 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "network")
 
     @_builtins.property
+    @pulumi.getter(name="networkPassThroughLbTrafficPolicies")
+    def network_pass_through_lb_traffic_policies(self) -> Sequence['outputs.GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyResult']:
+        return pulumi.get(self, "network_pass_through_lb_traffic_policies")
+
+    @_builtins.property
     @pulumi.getter(name="outlierDetections")
     def outlier_detections(self) -> Sequence['outputs.GetRegionBackendServiceOutlierDetectionResult']:
         return pulumi.get(self, "outlier_detections")
@@ -368,6 +376,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             log_configs=self.log_configs,
             name=self.name,
             network=self.network,
+            network_pass_through_lb_traffic_policies=self.network_pass_through_lb_traffic_policies,
             outlier_detections=self.outlier_detections,
             params=self.params,
             port_name=self.port_name,
@@ -441,6 +450,7 @@ def get_region_backend_service(name: Optional[_builtins.str] = None,
         log_configs=pulumi.get(__ret__, 'log_configs'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
+        network_pass_through_lb_traffic_policies=pulumi.get(__ret__, 'network_pass_through_lb_traffic_policies'),
         outlier_detections=pulumi.get(__ret__, 'outlier_detections'),
         params=pulumi.get(__ret__, 'params'),
         port_name=pulumi.get(__ret__, 'port_name'),
@@ -511,6 +521,7 @@ def get_region_backend_service_output(name: Optional[pulumi.Input[_builtins.str]
         log_configs=pulumi.get(__response__, 'log_configs'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
+        network_pass_through_lb_traffic_policies=pulumi.get(__response__, 'network_pass_through_lb_traffic_policies'),
         outlier_detections=pulumi.get(__response__, 'outlier_detections'),
         params=pulumi.get(__response__, 'params'),
         port_name=pulumi.get(__response__, 'port_name'),

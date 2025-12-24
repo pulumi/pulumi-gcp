@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Retrieves the current IAM policy data for namespace
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -53,6 +55,8 @@ export interface GetNamespaceIamPolicyResult {
     readonly policyData: string;
 }
 /**
+ * Retrieves the current IAM policy data for namespace
+ *
  * ## Example Usage
  *
  * ```typescript

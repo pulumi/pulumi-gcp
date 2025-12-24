@@ -51,12 +51,16 @@ public final class GetReservationSubBlockArgs extends com.pulumi.resources.Invok
     /**
      * The name of the parent reservation.
      * 
+     * ***
+     * 
      */
     @Import(name="reservation", required=true)
     private Output<String> reservation;
 
     /**
      * @return The name of the parent reservation.
+     * 
+     * ***
      * 
      */
     public Output<String> reservation() {
@@ -81,16 +85,12 @@ public final class GetReservationSubBlockArgs extends com.pulumi.resources.Invok
     /**
      * The zone where the reservation sub-block resides.
      * 
-     * ***
-     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
      * @return The zone where the reservation sub-block resides.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> zone() {
@@ -172,6 +172,8 @@ public final class GetReservationSubBlockArgs extends com.pulumi.resources.Invok
         /**
          * @param reservation The name of the parent reservation.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -182,6 +184,8 @@ public final class GetReservationSubBlockArgs extends com.pulumi.resources.Invok
 
         /**
          * @param reservation The name of the parent reservation.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -214,8 +218,6 @@ public final class GetReservationSubBlockArgs extends com.pulumi.resources.Invok
         /**
          * @param zone The zone where the reservation sub-block resides.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -226,8 +228,6 @@ public final class GetReservationSubBlockArgs extends com.pulumi.resources.Invok
 
         /**
          * @param zone The zone where the reservation sub-block resides.
-         * 
-         * ***
          * 
          * @return builder
          * 

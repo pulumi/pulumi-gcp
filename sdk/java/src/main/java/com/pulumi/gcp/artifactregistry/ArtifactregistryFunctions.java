@@ -43,6 +43,8 @@ import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetTagsPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetVersionArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetVersionPlainArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetVersionsPlainArgs;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImageResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetDockerImagesResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetLocationsResult;
@@ -60,6 +62,7 @@ import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetTagResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetTagsResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetVersionResult;
+import com.pulumi.gcp.artifactregistry.outputs.GetVersionsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ArtifactregistryFunctions {
@@ -3803,12 +3806,16 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information of a version from a provided Artifact Registry repository.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetVersionResult> getVersion(GetVersionArgs args) {
         return getVersion(args, InvokeOptions.Empty);
     }
     /**
      * This data source fetches information of a version from a provided Artifact Registry repository.
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(GetVersionPlainArgs args) {
@@ -3817,12 +3824,16 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information of a version from a provided Artifact Registry repository.
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetVersionResult> getVersion(GetVersionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:artifactregistry/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source fetches information of a version from a provided Artifact Registry repository.
+     * 
+     * ## Example Usage
      * 
      */
     public static Output<GetVersionResult> getVersion(GetVersionArgs args, InvokeOutputOptions options) {
@@ -3831,8 +3842,230 @@ public final class ArtifactregistryFunctions {
     /**
      * This data source fetches information of a version from a provided Artifact Registry repository.
      * 
+     * ## Example Usage
+     * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(GetVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry versions.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.versions/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVersionsResult> getVersions(GetVersionsArgs args) {
+        return getVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Artifact Registry versions.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.versions/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVersionsResult> getVersionsPlain(GetVersionsPlainArgs args) {
+        return getVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about Artifact Registry versions.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.versions/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVersionsResult> getVersions(GetVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry versions.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.versions/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVersionsResult> getVersions(GetVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about Artifact Registry versions.
+     * See [the official documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     * and [API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages.versions/list).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVersions = ArtifactregistryFunctions.getVersions(GetVersionsArgs.builder()
+     *             .location("us-central1")
+     *             .repositoryId("example-repo")
+     *             .packageName("example-package")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVersionsResult> getVersionsPlain(GetVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
     }
 }

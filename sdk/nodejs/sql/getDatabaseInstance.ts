@@ -78,6 +78,8 @@ export interface GetDatabaseInstanceResult {
     readonly replicationClusters: outputs.sql.GetDatabaseInstanceReplicationCluster[];
     readonly restoreBackupContexts: outputs.sql.GetDatabaseInstanceRestoreBackupContext[];
     readonly rootPassword: string;
+    readonly rootPasswordWo: string;
+    readonly rootPasswordWoVersion: string;
     readonly selfLink: string;
     readonly serverCaCerts: outputs.sql.GetDatabaseInstanceServerCaCert[];
     readonly serviceAccountEmailAddress: string;

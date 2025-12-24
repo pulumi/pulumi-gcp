@@ -1049,6 +1049,20 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sendPropagatedConnectionLimitIfZero);
     }
     /**
+     * If true, show NAT IPs of all connected endpoints.
+     * 
+     */
+    @Export(name="showNatIps", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> showNatIps;
+
+    /**
+     * @return If true, show NAT IPs of all connected endpoints.
+     * 
+     */
+    public Output<Optional<Boolean>> showNatIps() {
+        return Codegen.optional(this.showNatIps);
+    }
+    /**
      * The URL of a service serving the endpoint identified by this service attachment.
      * 
      */

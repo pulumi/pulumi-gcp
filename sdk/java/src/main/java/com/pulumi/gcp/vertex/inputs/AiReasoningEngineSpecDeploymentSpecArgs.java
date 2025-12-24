@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,7 +21,25 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     public static final AiReasoningEngineSpecDeploymentSpecArgs Empty = new AiReasoningEngineSpecDeploymentSpecArgs();
 
     /**
-     * Optional. Environment variables to be set with the Reasoning Engine deployment.
+     * Optional. Concurrency for each container and agent server.
+     * Recommended value: 2 * cpu + 1. Defaults to 9.
+     * 
+     */
+    @Import(name="containerConcurrency")
+    private @Nullable Output<Integer> containerConcurrency;
+
+    /**
+     * @return Optional. Concurrency for each container and agent server.
+     * Recommended value: 2 * cpu + 1. Defaults to 9.
+     * 
+     */
+    public Optional<Output<Integer>> containerConcurrency() {
+        return Optional.ofNullable(this.containerConcurrency);
+    }
+
+    /**
+     * Optional. Environment variables to be set with the Reasoning
+     * Engine deployment.
      * Structure is documented below.
      * 
      */
@@ -26,7 +47,8 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     private @Nullable Output<List<AiReasoningEngineSpecDeploymentSpecEnvArgs>> envs;
 
     /**
-     * @return Optional. Environment variables to be set with the Reasoning Engine deployment.
+     * @return Optional. Environment variables to be set with the Reasoning
+     * Engine deployment.
      * Structure is documented below.
      * 
      */
@@ -35,7 +57,79 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     }
 
     /**
-     * Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add &#39;Secret Manager Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+     * Optional. The minimum number of application instances that will be
+     * kept running at all times. Defaults to 1. Range: [0, 10].
+     * 
+     */
+    @Import(name="maxInstances")
+    private @Nullable Output<Integer> maxInstances;
+
+    /**
+     * @return Optional. The minimum number of application instances that will be
+     * kept running at all times. Defaults to 1. Range: [0, 10].
+     * 
+     */
+    public Optional<Output<Integer>> maxInstances() {
+        return Optional.ofNullable(this.maxInstances);
+    }
+
+    /**
+     * Optional. The maximum number of application instances that can be
+     * launched to handle increased traffic. Defaults to 100.
+     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+     * range is [1, 100].
+     * 
+     */
+    @Import(name="minInstances")
+    private @Nullable Output<Integer> minInstances;
+
+    /**
+     * @return Optional. The maximum number of application instances that can be
+     * launched to handle increased traffic. Defaults to 100.
+     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+     * range is [1, 100].
+     * 
+     */
+    public Optional<Output<Integer>> minInstances() {
+        return Optional.ofNullable(this.minInstances);
+    }
+
+    /**
+     * Optional. Resource limits for each container.
+     * Only &#39;cpu&#39; and &#39;memory&#39; keys are supported.
+     * Defaults to {&#34;cpu&#34;: &#34;4&#34;, &#34;memory&#34;: &#34;4Gi&#34;}.
+     * The only supported values for CPU are &#39;1&#39;, &#39;2&#39;, &#39;4&#39;, &#39;6&#39; and &#39;8&#39;.
+     * For more information, go to
+     * https://cloud.google.com/run/docs/configuring/cpu.
+     * The only supported values for memory are &#39;1Gi&#39;, &#39;2Gi&#39;, ... &#39;32 Gi&#39;.
+     * For more information, go to
+     * https://cloud.google.com/run/docs/configuring/memory-limits.
+     * 
+     */
+    @Import(name="resourceLimits")
+    private @Nullable Output<Map<String,String>> resourceLimits;
+
+    /**
+     * @return Optional. Resource limits for each container.
+     * Only &#39;cpu&#39; and &#39;memory&#39; keys are supported.
+     * Defaults to {&#34;cpu&#34;: &#34;4&#34;, &#34;memory&#34;: &#34;4Gi&#34;}.
+     * The only supported values for CPU are &#39;1&#39;, &#39;2&#39;, &#39;4&#39;, &#39;6&#39; and &#39;8&#39;.
+     * For more information, go to
+     * https://cloud.google.com/run/docs/configuring/cpu.
+     * The only supported values for memory are &#39;1Gi&#39;, &#39;2Gi&#39;, ... &#39;32 Gi&#39;.
+     * For more information, go to
+     * https://cloud.google.com/run/docs/configuring/memory-limits.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> resourceLimits() {
+        return Optional.ofNullable(this.resourceLimits);
+    }
+
+    /**
+     * Optional. Environment variables where the value is a secret in
+     * Cloud Secret Manager. To use this feature, add &#39;Secret Manager
+     * Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI
+     * Platform Reasoning Engine service Agent.
      * Structure is documented below.
      * 
      */
@@ -43,7 +137,10 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     private @Nullable Output<List<AiReasoningEngineSpecDeploymentSpecSecretEnvArgs>> secretEnvs;
 
     /**
-     * @return Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add &#39;Secret Manager Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+     * @return Optional. Environment variables where the value is a secret in
+     * Cloud Secret Manager. To use this feature, add &#39;Secret Manager
+     * Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI
+     * Platform Reasoning Engine service Agent.
      * Structure is documented below.
      * 
      */
@@ -54,7 +151,11 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     private AiReasoningEngineSpecDeploymentSpecArgs() {}
 
     private AiReasoningEngineSpecDeploymentSpecArgs(AiReasoningEngineSpecDeploymentSpecArgs $) {
+        this.containerConcurrency = $.containerConcurrency;
         this.envs = $.envs;
+        this.maxInstances = $.maxInstances;
+        this.minInstances = $.minInstances;
+        this.resourceLimits = $.resourceLimits;
         this.secretEnvs = $.secretEnvs;
     }
 
@@ -77,7 +178,31 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param envs Optional. Environment variables to be set with the Reasoning Engine deployment.
+         * @param containerConcurrency Optional. Concurrency for each container and agent server.
+         * Recommended value: 2 * cpu + 1. Defaults to 9.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerConcurrency(@Nullable Output<Integer> containerConcurrency) {
+            $.containerConcurrency = containerConcurrency;
+            return this;
+        }
+
+        /**
+         * @param containerConcurrency Optional. Concurrency for each container and agent server.
+         * Recommended value: 2 * cpu + 1. Defaults to 9.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerConcurrency(Integer containerConcurrency) {
+            return containerConcurrency(Output.of(containerConcurrency));
+        }
+
+        /**
+         * @param envs Optional. Environment variables to be set with the Reasoning
+         * Engine deployment.
          * Structure is documented below.
          * 
          * @return builder
@@ -89,7 +214,8 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param envs Optional. Environment variables to be set with the Reasoning Engine deployment.
+         * @param envs Optional. Environment variables to be set with the Reasoning
+         * Engine deployment.
          * Structure is documented below.
          * 
          * @return builder
@@ -100,7 +226,8 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param envs Optional. Environment variables to be set with the Reasoning Engine deployment.
+         * @param envs Optional. Environment variables to be set with the Reasoning
+         * Engine deployment.
          * Structure is documented below.
          * 
          * @return builder
@@ -111,7 +238,97 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param secretEnvs Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add &#39;Secret Manager Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+         * @param maxInstances Optional. The minimum number of application instances that will be
+         * kept running at all times. Defaults to 1. Range: [0, 10].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstances(@Nullable Output<Integer> maxInstances) {
+            $.maxInstances = maxInstances;
+            return this;
+        }
+
+        /**
+         * @param maxInstances Optional. The minimum number of application instances that will be
+         * kept running at all times. Defaults to 1. Range: [0, 10].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstances(Integer maxInstances) {
+            return maxInstances(Output.of(maxInstances));
+        }
+
+        /**
+         * @param minInstances Optional. The maximum number of application instances that can be
+         * launched to handle increased traffic. Defaults to 100.
+         * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+         * range is [1, 100].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minInstances(@Nullable Output<Integer> minInstances) {
+            $.minInstances = minInstances;
+            return this;
+        }
+
+        /**
+         * @param minInstances Optional. The maximum number of application instances that can be
+         * launched to handle increased traffic. Defaults to 100.
+         * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+         * range is [1, 100].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minInstances(Integer minInstances) {
+            return minInstances(Output.of(minInstances));
+        }
+
+        /**
+         * @param resourceLimits Optional. Resource limits for each container.
+         * Only &#39;cpu&#39; and &#39;memory&#39; keys are supported.
+         * Defaults to {&#34;cpu&#34;: &#34;4&#34;, &#34;memory&#34;: &#34;4Gi&#34;}.
+         * The only supported values for CPU are &#39;1&#39;, &#39;2&#39;, &#39;4&#39;, &#39;6&#39; and &#39;8&#39;.
+         * For more information, go to
+         * https://cloud.google.com/run/docs/configuring/cpu.
+         * The only supported values for memory are &#39;1Gi&#39;, &#39;2Gi&#39;, ... &#39;32 Gi&#39;.
+         * For more information, go to
+         * https://cloud.google.com/run/docs/configuring/memory-limits.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceLimits(@Nullable Output<Map<String,String>> resourceLimits) {
+            $.resourceLimits = resourceLimits;
+            return this;
+        }
+
+        /**
+         * @param resourceLimits Optional. Resource limits for each container.
+         * Only &#39;cpu&#39; and &#39;memory&#39; keys are supported.
+         * Defaults to {&#34;cpu&#34;: &#34;4&#34;, &#34;memory&#34;: &#34;4Gi&#34;}.
+         * The only supported values for CPU are &#39;1&#39;, &#39;2&#39;, &#39;4&#39;, &#39;6&#39; and &#39;8&#39;.
+         * For more information, go to
+         * https://cloud.google.com/run/docs/configuring/cpu.
+         * The only supported values for memory are &#39;1Gi&#39;, &#39;2Gi&#39;, ... &#39;32 Gi&#39;.
+         * For more information, go to
+         * https://cloud.google.com/run/docs/configuring/memory-limits.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceLimits(Map<String,String> resourceLimits) {
+            return resourceLimits(Output.of(resourceLimits));
+        }
+
+        /**
+         * @param secretEnvs Optional. Environment variables where the value is a secret in
+         * Cloud Secret Manager. To use this feature, add &#39;Secret Manager
+         * Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI
+         * Platform Reasoning Engine service Agent.
          * Structure is documented below.
          * 
          * @return builder
@@ -123,7 +340,10 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param secretEnvs Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add &#39;Secret Manager Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+         * @param secretEnvs Optional. Environment variables where the value is a secret in
+         * Cloud Secret Manager. To use this feature, add &#39;Secret Manager
+         * Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI
+         * Platform Reasoning Engine service Agent.
          * Structure is documented below.
          * 
          * @return builder
@@ -134,7 +354,10 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param secretEnvs Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add &#39;Secret Manager Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+         * @param secretEnvs Optional. Environment variables where the value is a secret in
+         * Cloud Secret Manager. To use this feature, add &#39;Secret Manager
+         * Secret Accessor&#39; role (roles/secretmanager.secretAccessor) to AI
+         * Platform Reasoning Engine service Agent.
          * Structure is documented below.
          * 
          * @return builder

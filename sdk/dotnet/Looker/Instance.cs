@@ -387,6 +387,19 @@ namespace Pulumi.Gcp.Looker
         public Output<string?> ConsumerNetwork { get; private set; } = null!;
 
         /// <summary>
+        /// Controlled egress configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("controlledEgressConfig")]
+        public Output<Outputs.InstanceControlledEgressConfig?> ControlledEgressConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether controlled egress is enabled on the Looker instance.
+        /// </summary>
+        [Output("controlledEgressEnabled")]
+        public Output<bool?> ControlledEgressEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format,
         /// accurate to nanoseconds.
         /// </summary>
@@ -527,7 +540,7 @@ namespace Pulumi.Gcp.Looker
         /// Structure is documented below.
         /// </summary>
         [Output("pscConfig")]
-        public Output<Outputs.InstancePscConfig?> PscConfig { get; private set; } = null!;
+        public Output<Outputs.InstancePscConfig> PscConfig { get; private set; } = null!;
 
         /// <summary>
         /// Whether Public Service Connect (PSC) is enabled on the Looker instance
@@ -634,6 +647,19 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("consumerNetwork")]
         public Input<string>? ConsumerNetwork { get; set; }
+
+        /// <summary>
+        /// Controlled egress configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("controlledEgressConfig")]
+        public Input<Inputs.InstanceControlledEgressConfigArgs>? ControlledEgressConfig { get; set; }
+
+        /// <summary>
+        /// Whether controlled egress is enabled on the Looker instance.
+        /// </summary>
+        [Input("controlledEgressEnabled")]
+        public Input<bool>? ControlledEgressEnabled { get; set; }
 
         /// <summary>
         /// Custom domain settings for a Looker instance.
@@ -801,6 +827,19 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("consumerNetwork")]
         public Input<string>? ConsumerNetwork { get; set; }
+
+        /// <summary>
+        /// Controlled egress configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("controlledEgressConfig")]
+        public Input<Inputs.InstanceControlledEgressConfigGetArgs>? ControlledEgressConfig { get; set; }
+
+        /// <summary>
+        /// Whether controlled egress is enabled on the Looker instance.
+        /// </summary>
+        [Input("controlledEgressEnabled")]
+        public Input<bool>? ControlledEgressEnabled { get; set; }
 
         /// <summary>
         /// The time the instance was created in RFC3339 UTC "Zulu" format,

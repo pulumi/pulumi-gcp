@@ -836,6 +836,143 @@ func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) WeekOfMonth
 	}).(pulumi.StringPtrOutput)
 }
 
+type BackupVaultEncryptionConfig struct {
+	// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// BackupVaultEncryptionConfigInput is an input type that accepts BackupVaultEncryptionConfigArgs and BackupVaultEncryptionConfigOutput values.
+// You can construct a concrete instance of `BackupVaultEncryptionConfigInput` via:
+//
+//	BackupVaultEncryptionConfigArgs{...}
+type BackupVaultEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToBackupVaultEncryptionConfigOutput() BackupVaultEncryptionConfigOutput
+	ToBackupVaultEncryptionConfigOutputWithContext(context.Context) BackupVaultEncryptionConfigOutput
+}
+
+type BackupVaultEncryptionConfigArgs struct {
+	// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (BackupVaultEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (i BackupVaultEncryptionConfigArgs) ToBackupVaultEncryptionConfigOutput() BackupVaultEncryptionConfigOutput {
+	return i.ToBackupVaultEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i BackupVaultEncryptionConfigArgs) ToBackupVaultEncryptionConfigOutputWithContext(ctx context.Context) BackupVaultEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupVaultEncryptionConfigOutput)
+}
+
+func (i BackupVaultEncryptionConfigArgs) ToBackupVaultEncryptionConfigPtrOutput() BackupVaultEncryptionConfigPtrOutput {
+	return i.ToBackupVaultEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BackupVaultEncryptionConfigArgs) ToBackupVaultEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupVaultEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupVaultEncryptionConfigOutput).ToBackupVaultEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// BackupVaultEncryptionConfigPtrInput is an input type that accepts BackupVaultEncryptionConfigArgs, BackupVaultEncryptionConfigPtr and BackupVaultEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `BackupVaultEncryptionConfigPtrInput` via:
+//
+//	        BackupVaultEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupVaultEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToBackupVaultEncryptionConfigPtrOutput() BackupVaultEncryptionConfigPtrOutput
+	ToBackupVaultEncryptionConfigPtrOutputWithContext(context.Context) BackupVaultEncryptionConfigPtrOutput
+}
+
+type backupVaultEncryptionConfigPtrType BackupVaultEncryptionConfigArgs
+
+func BackupVaultEncryptionConfigPtr(v *BackupVaultEncryptionConfigArgs) BackupVaultEncryptionConfigPtrInput {
+	return (*backupVaultEncryptionConfigPtrType)(v)
+}
+
+func (*backupVaultEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (i *backupVaultEncryptionConfigPtrType) ToBackupVaultEncryptionConfigPtrOutput() BackupVaultEncryptionConfigPtrOutput {
+	return i.ToBackupVaultEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *backupVaultEncryptionConfigPtrType) ToBackupVaultEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupVaultEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupVaultEncryptionConfigPtrOutput)
+}
+
+type BackupVaultEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (BackupVaultEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (o BackupVaultEncryptionConfigOutput) ToBackupVaultEncryptionConfigOutput() BackupVaultEncryptionConfigOutput {
+	return o
+}
+
+func (o BackupVaultEncryptionConfigOutput) ToBackupVaultEncryptionConfigOutputWithContext(ctx context.Context) BackupVaultEncryptionConfigOutput {
+	return o
+}
+
+func (o BackupVaultEncryptionConfigOutput) ToBackupVaultEncryptionConfigPtrOutput() BackupVaultEncryptionConfigPtrOutput {
+	return o.ToBackupVaultEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BackupVaultEncryptionConfigOutput) ToBackupVaultEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupVaultEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupVaultEncryptionConfig) *BackupVaultEncryptionConfig {
+		return &v
+	}).(BackupVaultEncryptionConfigPtrOutput)
+}
+
+// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+func (o BackupVaultEncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupVaultEncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type BackupVaultEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupVaultEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (o BackupVaultEncryptionConfigPtrOutput) ToBackupVaultEncryptionConfigPtrOutput() BackupVaultEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o BackupVaultEncryptionConfigPtrOutput) ToBackupVaultEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupVaultEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o BackupVaultEncryptionConfigPtrOutput) Elem() BackupVaultEncryptionConfigOutput {
+	return o.ApplyT(func(v *BackupVaultEncryptionConfig) BackupVaultEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BackupVaultEncryptionConfig
+		return ret
+	}).(BackupVaultEncryptionConfigOutput)
+}
+
+// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+func (o BackupVaultEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupVaultEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagementServerManagementUri struct {
 	// (Output)
 	// The management console api endpoint.
@@ -2300,6 +2437,103 @@ func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) Index(
 	}).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
 }
 
+type GetBackupVaultEncryptionConfig struct {
+	// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetBackupVaultEncryptionConfigInput is an input type that accepts GetBackupVaultEncryptionConfigArgs and GetBackupVaultEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetBackupVaultEncryptionConfigInput` via:
+//
+//	GetBackupVaultEncryptionConfigArgs{...}
+type GetBackupVaultEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetBackupVaultEncryptionConfigOutput() GetBackupVaultEncryptionConfigOutput
+	ToGetBackupVaultEncryptionConfigOutputWithContext(context.Context) GetBackupVaultEncryptionConfigOutput
+}
+
+type GetBackupVaultEncryptionConfigArgs struct {
+	// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetBackupVaultEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetBackupVaultEncryptionConfigArgs) ToGetBackupVaultEncryptionConfigOutput() GetBackupVaultEncryptionConfigOutput {
+	return i.ToGetBackupVaultEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetBackupVaultEncryptionConfigArgs) ToGetBackupVaultEncryptionConfigOutputWithContext(ctx context.Context) GetBackupVaultEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupVaultEncryptionConfigOutput)
+}
+
+// GetBackupVaultEncryptionConfigArrayInput is an input type that accepts GetBackupVaultEncryptionConfigArray and GetBackupVaultEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetBackupVaultEncryptionConfigArrayInput` via:
+//
+//	GetBackupVaultEncryptionConfigArray{ GetBackupVaultEncryptionConfigArgs{...} }
+type GetBackupVaultEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupVaultEncryptionConfigArrayOutput() GetBackupVaultEncryptionConfigArrayOutput
+	ToGetBackupVaultEncryptionConfigArrayOutputWithContext(context.Context) GetBackupVaultEncryptionConfigArrayOutput
+}
+
+type GetBackupVaultEncryptionConfigArray []GetBackupVaultEncryptionConfigInput
+
+func (GetBackupVaultEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetBackupVaultEncryptionConfigArray) ToGetBackupVaultEncryptionConfigArrayOutput() GetBackupVaultEncryptionConfigArrayOutput {
+	return i.ToGetBackupVaultEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupVaultEncryptionConfigArray) ToGetBackupVaultEncryptionConfigArrayOutputWithContext(ctx context.Context) GetBackupVaultEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupVaultEncryptionConfigArrayOutput)
+}
+
+type GetBackupVaultEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetBackupVaultEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetBackupVaultEncryptionConfigOutput) ToGetBackupVaultEncryptionConfigOutput() GetBackupVaultEncryptionConfigOutput {
+	return o
+}
+
+func (o GetBackupVaultEncryptionConfigOutput) ToGetBackupVaultEncryptionConfigOutputWithContext(ctx context.Context) GetBackupVaultEncryptionConfigOutput {
+	return o
+}
+
+// The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+func (o GetBackupVaultEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupVaultEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetBackupVaultEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupVaultEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupVaultEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetBackupVaultEncryptionConfigArrayOutput) ToGetBackupVaultEncryptionConfigArrayOutput() GetBackupVaultEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetBackupVaultEncryptionConfigArrayOutput) ToGetBackupVaultEncryptionConfigArrayOutputWithContext(ctx context.Context) GetBackupVaultEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetBackupVaultEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetBackupVaultEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupVaultEncryptionConfig {
+		return vs[0].([]GetBackupVaultEncryptionConfig)[vs[1].(int)]
+	}).(GetBackupVaultEncryptionConfigOutput)
+}
+
 type GetDataSourceBackupConfigInfo struct {
 	// Configuration for an application backed up by a Backup Appliance.
 	BackupApplianceBackupConfigs []GetDataSourceBackupConfigInfoBackupApplianceBackupConfig `pulumi:"backupApplianceBackupConfigs"`
@@ -3515,6 +3749,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleBackupWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultEncryptionConfigInput)(nil)).Elem(), BackupVaultEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultEncryptionConfigPtrInput)(nil)).Elem(), BackupVaultEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriInput)(nil)).Elem(), ManagementServerManagementUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriArrayInput)(nil)).Elem(), ManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkInput)(nil)).Elem(), ManagementServerNetworkArgs{})
@@ -3539,6 +3775,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleBackupWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupVaultEncryptionConfigInput)(nil)).Elem(), GetBackupVaultEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupVaultEncryptionConfigArrayInput)(nil)).Elem(), GetBackupVaultEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoInput)(nil)).Elem(), GetDataSourceBackupConfigInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoArrayInput)(nil)).Elem(), GetDataSourceBackupConfigInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoBackupApplianceBackupConfigInput)(nil)).Elem(), GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs{})
@@ -3568,6 +3806,8 @@ func init() {
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput{})
+	pulumi.RegisterOutputType(BackupVaultEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(BackupVaultEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagementServerManagementUriOutput{})
 	pulumi.RegisterOutputType(ManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkOutput{})
@@ -3592,6 +3832,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupVaultEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetBackupVaultEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoOutput{})
 	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput{})

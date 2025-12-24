@@ -186,7 +186,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// Structure is documented below.
         /// </summary>
         [Output("advancedSiteSearchConfig")]
-        public Output<Outputs.DataStoreAdvancedSiteSearchConfig?> AdvancedSiteSearchConfig { get; private set; } = null!;
+        public Output<Outputs.DataStoreAdvancedSiteSearchConfig> AdvancedSiteSearchConfig { get; private set; } = null!;
 
         /// <summary>
         /// The content config of the data store.
