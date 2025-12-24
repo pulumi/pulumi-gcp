@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudsecuritycompliance.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueOneofValueArgs;
 import com.pulumi.gcp.cloudsecuritycompliance.inputs.FrameworkCloudControlDetailParameterParameterValueStringListValueArgs;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -49,6 +50,23 @@ public final class FrameworkCloudControlDetailParameterParameterValueArgs extend
     }
 
     /**
+     * Sub-parameter values.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="oneofValue")
+    private @Nullable Output<FrameworkCloudControlDetailParameterParameterValueOneofValueArgs> oneofValue;
+
+    /**
+     * @return Sub-parameter values.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FrameworkCloudControlDetailParameterParameterValueOneofValueArgs>> oneofValue() {
+        return Optional.ofNullable(this.oneofValue);
+    }
+
+    /**
      * A list of strings.
      * Structure is documented below.
      * 
@@ -85,6 +103,7 @@ public final class FrameworkCloudControlDetailParameterParameterValueArgs extend
     private FrameworkCloudControlDetailParameterParameterValueArgs(FrameworkCloudControlDetailParameterParameterValueArgs $) {
         this.boolValue = $.boolValue;
         this.numberValue = $.numberValue;
+        this.oneofValue = $.oneofValue;
         this.stringListValue = $.stringListValue;
         this.stringValue = $.stringValue;
     }
@@ -147,6 +166,29 @@ public final class FrameworkCloudControlDetailParameterParameterValueArgs extend
          */
         public Builder numberValue(Double numberValue) {
             return numberValue(Output.of(numberValue));
+        }
+
+        /**
+         * @param oneofValue Sub-parameter values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneofValue(@Nullable Output<FrameworkCloudControlDetailParameterParameterValueOneofValueArgs> oneofValue) {
+            $.oneofValue = oneofValue;
+            return this;
+        }
+
+        /**
+         * @param oneofValue Sub-parameter values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneofValue(FrameworkCloudControlDetailParameterParameterValueOneofValueArgs oneofValue) {
+            return oneofValue(Output.of(oneofValue));
         }
 
         /**

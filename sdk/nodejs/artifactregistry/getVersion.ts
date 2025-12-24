@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * This data source fetches information of a version from a provided Artifact Registry repository.
+ *
+ * ## Example Usage
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -92,6 +94,8 @@ export interface GetVersionResult {
 }
 /**
  * This data source fetches information of a version from a provided Artifact Registry repository.
+ *
+ * ## Example Usage
  */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

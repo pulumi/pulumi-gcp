@@ -37,10 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.FolderArgs;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicy;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyArgs;
- * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRule;
- * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
- * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
- * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociation;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyAssociationArgs;
  * import java.util.List;
@@ -65,29 +61,7 @@ import javax.annotation.Nullable;
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
  *             .displayName("tf-test")
  *             .parent(securityPolicyTarget.name())
- *             .build());
- * 
- *         var policyOrganizationSecurityPolicyRule = new OrganizationSecurityPolicyRule("policyOrganizationSecurityPolicyRule", OrganizationSecurityPolicyRuleArgs.builder()
- *             .policyId(policy.id())
- *             .action("allow")
- *             .direction("INGRESS")
- *             .enableLogging(true)
- *             .match(OrganizationSecurityPolicyRuleMatchArgs.builder()
- *                 .config(OrganizationSecurityPolicyRuleMatchConfigArgs.builder()
- *                     .srcIpRanges(                    
- *                         "192.168.0.0/16",
- *                         "10.0.0.0/8")
- *                     .layer4Configs(                    
- *                         OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .ports("22")
- *                             .build(),
- *                         OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs.builder()
- *                             .ipProtocol("icmp")
- *                             .build())
- *                     .build())
- *                 .build())
- *             .priority(100)
+ *             .type("FIREWALL")
  *             .build());
  * 
  *         var policyOrganizationSecurityPolicyAssociation = new OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", OrganizationSecurityPolicyAssociationArgs.builder()

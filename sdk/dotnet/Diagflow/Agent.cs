@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// To get more information about Agent, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects/agent)
+    /// * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
     /// 

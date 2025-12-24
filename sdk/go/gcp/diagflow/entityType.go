@@ -16,7 +16,7 @@ import (
 //
 // To get more information about EntityType, see:
 //
-// * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2/projects.agent.entityTypes)
+// * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.agent.entityTypes)
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //

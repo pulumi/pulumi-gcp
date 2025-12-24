@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("cgroupMode")]
         public Input<string>? CgroupMode { get; set; }
 
+        /// <summary>
+        /// The settings for kernel module loading.
+        /// </summary>
+        [Input("nodeKernelModuleLoading")]
+        public Input<Inputs.ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingGetArgs>? NodeKernelModuleLoading { get; set; }
+
         public ClusterNodePoolAutoConfigLinuxNodeConfigGetArgs()
         {
         }

@@ -6,6 +6,7 @@ package com.pulumi.gcp.apphub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.apphub.outputs.ServiceServicePropertyExtendedMetadata;
 import com.pulumi.gcp.apphub.outputs.ServiceServicePropertyFunctionalType;
+import com.pulumi.gcp.apphub.outputs.ServiceServicePropertyIdentity;
 import com.pulumi.gcp.apphub.outputs.ServiceServicePropertyRegistrationType;
 import java.lang.String;
 import java.util.List;
@@ -35,6 +36,13 @@ public final class ServiceServiceProperty {
      * 
      */
     private @Nullable String gcpProject;
+    /**
+     * @return (Output)
+     * The identity associated with the service.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServiceServicePropertyIdentity> identities;
     /**
      * @return Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      * 
@@ -82,6 +90,15 @@ public final class ServiceServiceProperty {
         return Optional.ofNullable(this.gcpProject);
     }
     /**
+     * @return (Output)
+     * The identity associated with the service.
+     * Structure is documented below.
+     * 
+     */
+    public List<ServiceServicePropertyIdentity> identities() {
+        return this.identities == null ? List.of() : this.identities;
+    }
+    /**
      * @return Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      * 
      */
@@ -118,6 +135,7 @@ public final class ServiceServiceProperty {
         private @Nullable List<ServiceServicePropertyExtendedMetadata> extendedMetadatas;
         private @Nullable List<ServiceServicePropertyFunctionalType> functionalTypes;
         private @Nullable String gcpProject;
+        private @Nullable List<ServiceServicePropertyIdentity> identities;
         private @Nullable String location;
         private @Nullable List<ServiceServicePropertyRegistrationType> registrationTypes;
         private @Nullable String zone;
@@ -127,6 +145,7 @@ public final class ServiceServiceProperty {
     	      this.extendedMetadatas = defaults.extendedMetadatas;
     	      this.functionalTypes = defaults.functionalTypes;
     	      this.gcpProject = defaults.gcpProject;
+    	      this.identities = defaults.identities;
     	      this.location = defaults.location;
     	      this.registrationTypes = defaults.registrationTypes;
     	      this.zone = defaults.zone;
@@ -157,6 +176,15 @@ public final class ServiceServiceProperty {
             return this;
         }
         @CustomType.Setter
+        public Builder identities(@Nullable List<ServiceServicePropertyIdentity> identities) {
+
+            this.identities = identities;
+            return this;
+        }
+        public Builder identities(ServiceServicePropertyIdentity... identities) {
+            return identities(List.of(identities));
+        }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
 
             this.location = location;
@@ -182,6 +210,7 @@ public final class ServiceServiceProperty {
             _resultValue.extendedMetadatas = extendedMetadatas;
             _resultValue.functionalTypes = functionalTypes;
             _resultValue.gcpProject = gcpProject;
+            _resultValue.identities = identities;
             _resultValue.location = location;
             _resultValue.registrationTypes = registrationTypes;
             _resultValue.zone = zone;

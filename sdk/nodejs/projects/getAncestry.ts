@@ -11,6 +11,15 @@ import * as utilities from "../utilities";
  * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = gcp.projects.getAncestry({
+ *     project: "example-project",
+ * });
+ * ```
  */
 export function getAncestry(args?: GetAncestryArgs, opts?: pulumi.InvokeOptions): Promise<GetAncestryResult> {
     args = args || {};
@@ -43,7 +52,7 @@ export interface GetAncestryResult {
      */
     readonly id: string;
     /**
-     * The optional user-assigned display name of the project.
+     * The organization id.
      */
     readonly orgId: string;
     /**
@@ -61,6 +70,15 @@ export interface GetAncestryResult {
  * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = gcp.projects.getAncestry({
+ *     project: "example-project",
+ * });
+ * ```
  */
 export function getAncestryOutput(args?: GetAncestryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAncestryResult> {
     args = args || {};

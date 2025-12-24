@@ -120,6 +120,8 @@ class AutonomousDatabaseProperties(dict):
             suggest = "connection_strings"
         elif key == "connectionUrls":
             suggest = "connection_urls"
+        elif key == "cpuCoreCount":
+            suggest = "cpu_core_count"
         elif key == "customerContacts":
             suggest = "customer_contacts"
         elif key == "dataSafeState":
@@ -188,6 +190,8 @@ class AutonomousDatabaseProperties(dict):
             suggest = "refreshable_state"
         elif key == "scheduledOperationDetails":
             suggest = "scheduled_operation_details"
+        elif key == "secretId":
+            suggest = "secret_id"
         elif key == "sqlWebDeveloperUrl":
             suggest = "sql_web_developer_url"
         elif key == "supportedCloneRegions":
@@ -196,6 +200,8 @@ class AutonomousDatabaseProperties(dict):
             suggest = "total_auto_backup_storage_size_gbs"
         elif key == "usedDataStorageSizeTbs":
             suggest = "used_data_storage_size_tbs"
+        elif key == "vaultId":
+            suggest = "vault_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AutonomousDatabaseProperties. Access the value via the '{suggest}' property getter instead.")
@@ -222,6 +228,7 @@ class AutonomousDatabaseProperties(dict):
                  compute_count: Optional[_builtins.float] = None,
                  connection_strings: Optional[Sequence['outputs.AutonomousDatabasePropertiesConnectionString']] = None,
                  connection_urls: Optional[Sequence['outputs.AutonomousDatabasePropertiesConnectionUrl']] = None,
+                 cpu_core_count: Optional[_builtins.int] = None,
                  customer_contacts: Optional[Sequence['outputs.AutonomousDatabasePropertiesCustomerContact']] = None,
                  data_safe_state: Optional[_builtins.str] = None,
                  data_storage_size_gb: Optional[_builtins.int] = None,
@@ -258,11 +265,13 @@ class AutonomousDatabaseProperties(dict):
                  refreshable_state: Optional[_builtins.str] = None,
                  role: Optional[_builtins.str] = None,
                  scheduled_operation_details: Optional[Sequence['outputs.AutonomousDatabasePropertiesScheduledOperationDetail']] = None,
+                 secret_id: Optional[_builtins.str] = None,
                  sql_web_developer_url: Optional[_builtins.str] = None,
                  state: Optional[_builtins.str] = None,
                  supported_clone_regions: Optional[Sequence[_builtins.str]] = None,
                  total_auto_backup_storage_size_gbs: Optional[_builtins.float] = None,
-                 used_data_storage_size_tbs: Optional[_builtins.int] = None):
+                 used_data_storage_size_tbs: Optional[_builtins.int] = None,
+                 vault_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str db_workload: Possible values:
                DB_WORKLOAD_UNSPECIFIED
@@ -313,6 +322,7 @@ class AutonomousDatabaseProperties(dict):
                Web with a browser from a Compute instance.
                https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
                Structure is documented below.
+        :param _builtins.int cpu_core_count: The number of CPU cores to be made available to the database.
         :param Sequence['AutonomousDatabasePropertiesCustomerContactArgs'] customer_contacts: The list of customer contacts.
                Structure is documented below.
         :param _builtins.str data_safe_state: (Output)
@@ -444,6 +454,7 @@ class AutonomousDatabaseProperties(dict):
                The list and details of the scheduled operations of the Autonomous
                Database.
                Structure is documented below.
+        :param _builtins.str secret_id: The ID of the Oracle Cloud Infrastructure vault secret.
         :param _builtins.str sql_web_developer_url: (Output)
                The SQL Web Developer URL for the Autonomous Database.
         :param _builtins.str state: (Output)
@@ -478,6 +489,7 @@ class AutonomousDatabaseProperties(dict):
                gigabytes.
         :param _builtins.int used_data_storage_size_tbs: (Output)
                The storage space used by Autonomous Database, in gigabytes.
+        :param _builtins.str vault_id: The ID of the Oracle Cloud Infrastructure vault.
         """
         pulumi.set(__self__, "db_workload", db_workload)
         pulumi.set(__self__, "license_type", license_type)
@@ -503,6 +515,8 @@ class AutonomousDatabaseProperties(dict):
             pulumi.set(__self__, "connection_strings", connection_strings)
         if connection_urls is not None:
             pulumi.set(__self__, "connection_urls", connection_urls)
+        if cpu_core_count is not None:
+            pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         if customer_contacts is not None:
             pulumi.set(__self__, "customer_contacts", customer_contacts)
         if data_safe_state is not None:
@@ -575,6 +589,8 @@ class AutonomousDatabaseProperties(dict):
             pulumi.set(__self__, "role", role)
         if scheduled_operation_details is not None:
             pulumi.set(__self__, "scheduled_operation_details", scheduled_operation_details)
+        if secret_id is not None:
+            pulumi.set(__self__, "secret_id", secret_id)
         if sql_web_developer_url is not None:
             pulumi.set(__self__, "sql_web_developer_url", sql_web_developer_url)
         if state is not None:
@@ -585,6 +601,8 @@ class AutonomousDatabaseProperties(dict):
             pulumi.set(__self__, "total_auto_backup_storage_size_gbs", total_auto_backup_storage_size_gbs)
         if used_data_storage_size_tbs is not None:
             pulumi.set(__self__, "used_data_storage_size_tbs", used_data_storage_size_tbs)
+        if vault_id is not None:
+            pulumi.set(__self__, "vault_id", vault_id)
 
     @_builtins.property
     @pulumi.getter(name="dbWorkload")
@@ -725,6 +743,14 @@ class AutonomousDatabaseProperties(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "connection_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuCoreCount")
+    def cpu_core_count(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU cores to be made available to the database.
+        """
+        return pulumi.get(self, "cpu_core_count")
 
     @_builtins.property
     @pulumi.getter(name="customerContacts")
@@ -1110,6 +1136,14 @@ class AutonomousDatabaseProperties(dict):
         return pulumi.get(self, "scheduled_operation_details")
 
     @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the Oracle Cloud Infrastructure vault secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @_builtins.property
     @pulumi.getter(name="sqlWebDeveloperUrl")
     def sql_web_developer_url(self) -> Optional[_builtins.str]:
         """
@@ -1177,6 +1211,14 @@ class AutonomousDatabaseProperties(dict):
         The storage space used by Autonomous Database, in gigabytes.
         """
         return pulumi.get(self, "used_data_storage_size_tbs")
+
+    @_builtins.property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the Oracle Cloud Infrastructure vault.
+        """
+        return pulumi.get(self, "vault_id")
 
 
 @pulumi.output_type
@@ -3392,12 +3434,16 @@ class CloudVmClusterPropertiesDiagnosticsDataCollectionOptions(dict):
 @pulumi.output_type
 class CloudVmClusterPropertiesTimeZone(dict):
     def __init__(__self__, *,
-                 id: Optional[_builtins.str] = None):
+                 id: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
         """
         :param _builtins.str id: IANA Time Zone Database time zone, e.g. "America/New_York".
+        :param _builtins.str version: IANA Time Zone Database version number, e.g. "2019a".
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -3406,6 +3452,14 @@ class CloudVmClusterPropertiesTimeZone(dict):
         IANA Time Zone Database time zone, e.g. "America/New_York".
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        IANA Time Zone Database version number, e.g. "2019a".
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -4916,6 +4970,7 @@ class GetAutonomousDatabasePropertyResult(dict):
                  compute_count: _builtins.float,
                  connection_strings: Sequence['outputs.GetAutonomousDatabasePropertyConnectionStringResult'],
                  connection_urls: Sequence['outputs.GetAutonomousDatabasePropertyConnectionUrlResult'],
+                 cpu_core_count: _builtins.int,
                  customer_contacts: Sequence['outputs.GetAutonomousDatabasePropertyCustomerContactResult'],
                  data_safe_state: _builtins.str,
                  data_storage_size_gb: _builtins.int,
@@ -4954,11 +5009,13 @@ class GetAutonomousDatabasePropertyResult(dict):
                  refreshable_state: _builtins.str,
                  role: _builtins.str,
                  scheduled_operation_details: Sequence['outputs.GetAutonomousDatabasePropertyScheduledOperationDetailResult'],
+                 secret_id: _builtins.str,
                  sql_web_developer_url: _builtins.str,
                  state: _builtins.str,
                  supported_clone_regions: Sequence[_builtins.str],
                  total_auto_backup_storage_size_gbs: _builtins.float,
-                 used_data_storage_size_tbs: _builtins.int):
+                 used_data_storage_size_tbs: _builtins.int,
+                 vault_id: _builtins.str):
         """
         :param _builtins.float actual_used_data_storage_size_tb: The amount of storage currently being used for user and system data, in
                terabytes.
@@ -4987,6 +5044,7 @@ class GetAutonomousDatabasePropertyResult(dict):
         :param Sequence['GetAutonomousDatabasePropertyConnectionUrlArgs'] connection_urls: The URLs for accessing Oracle Application Express (APEX) and SQL Developer
                Web with a browser from a Compute instance.
                https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
+        :param _builtins.int cpu_core_count: The number of CPU cores to be made available to the database.
         :param Sequence['GetAutonomousDatabasePropertyCustomerContactArgs'] customer_contacts: The list of customer contacts.
         :param _builtins.str data_safe_state: The current state of the Data Safe registration for the
                Autonomous Database. 
@@ -5103,6 +5161,7 @@ class GetAutonomousDatabasePropertyResult(dict):
                SNAPSHOT_STANDBY
         :param Sequence['GetAutonomousDatabasePropertyScheduledOperationDetailArgs'] scheduled_operation_details: The list and details of the scheduled operations of the Autonomous
                Database.
+        :param _builtins.str secret_id: The ID of the Oracle Cloud Infrastructure vault secret.
         :param _builtins.str sql_web_developer_url: The SQL Web Developer URL for the Autonomous Database.
         :param _builtins.str state: Possible values:
                 STATE_UNSPECIFIED
@@ -5132,6 +5191,7 @@ class GetAutonomousDatabasePropertyResult(dict):
         :param _builtins.float total_auto_backup_storage_size_gbs: The storage space used by automatic backups of Autonomous Database, in
                gigabytes.
         :param _builtins.int used_data_storage_size_tbs: The storage space used by Autonomous Database, in gigabytes.
+        :param _builtins.str vault_id: The ID of the Oracle Cloud Infrastructure vault.
         """
         pulumi.set(__self__, "actual_used_data_storage_size_tb", actual_used_data_storage_size_tb)
         pulumi.set(__self__, "allocated_storage_size_tb", allocated_storage_size_tb)
@@ -5144,6 +5204,7 @@ class GetAutonomousDatabasePropertyResult(dict):
         pulumi.set(__self__, "compute_count", compute_count)
         pulumi.set(__self__, "connection_strings", connection_strings)
         pulumi.set(__self__, "connection_urls", connection_urls)
+        pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         pulumi.set(__self__, "customer_contacts", customer_contacts)
         pulumi.set(__self__, "data_safe_state", data_safe_state)
         pulumi.set(__self__, "data_storage_size_gb", data_storage_size_gb)
@@ -5182,11 +5243,13 @@ class GetAutonomousDatabasePropertyResult(dict):
         pulumi.set(__self__, "refreshable_state", refreshable_state)
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "scheduled_operation_details", scheduled_operation_details)
+        pulumi.set(__self__, "secret_id", secret_id)
         pulumi.set(__self__, "sql_web_developer_url", sql_web_developer_url)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "supported_clone_regions", supported_clone_regions)
         pulumi.set(__self__, "total_auto_backup_storage_size_gbs", total_auto_backup_storage_size_gbs)
         pulumi.set(__self__, "used_data_storage_size_tbs", used_data_storage_size_tbs)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @_builtins.property
     @pulumi.getter(name="actualUsedDataStorageSizeTb")
@@ -5291,6 +5354,14 @@ class GetAutonomousDatabasePropertyResult(dict):
         https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
         """
         return pulumi.get(self, "connection_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuCoreCount")
+    def cpu_core_count(self) -> _builtins.int:
+        """
+        The number of CPU cores to be made available to the database.
+        """
+        return pulumi.get(self, "cpu_core_count")
 
     @_builtins.property
     @pulumi.getter(name="customerContacts")
@@ -5675,6 +5746,14 @@ class GetAutonomousDatabasePropertyResult(dict):
         return pulumi.get(self, "scheduled_operation_details")
 
     @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> _builtins.str:
+        """
+        The ID of the Oracle Cloud Infrastructure vault secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @_builtins.property
     @pulumi.getter(name="sqlWebDeveloperUrl")
     def sql_web_developer_url(self) -> _builtins.str:
         """
@@ -5737,6 +5816,14 @@ class GetAutonomousDatabasePropertyResult(dict):
         The storage space used by Autonomous Database, in gigabytes.
         """
         return pulumi.get(self, "used_data_storage_size_tbs")
+
+    @_builtins.property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> _builtins.str:
+        """
+        The ID of the Oracle Cloud Infrastructure vault.
+        """
+        return pulumi.get(self, "vault_id")
 
 
 @pulumi.output_type
@@ -6725,6 +6812,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                  compute_count: _builtins.float,
                  connection_strings: Sequence['outputs.GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringResult'],
                  connection_urls: Sequence['outputs.GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrlResult'],
+                 cpu_core_count: _builtins.int,
                  customer_contacts: Sequence['outputs.GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContactResult'],
                  data_safe_state: _builtins.str,
                  data_storage_size_gb: _builtins.int,
@@ -6763,11 +6851,13 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                  refreshable_state: _builtins.str,
                  role: _builtins.str,
                  scheduled_operation_details: Sequence['outputs.GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailResult'],
+                 secret_id: _builtins.str,
                  sql_web_developer_url: _builtins.str,
                  state: _builtins.str,
                  supported_clone_regions: Sequence[_builtins.str],
                  total_auto_backup_storage_size_gbs: _builtins.float,
-                 used_data_storage_size_tbs: _builtins.int):
+                 used_data_storage_size_tbs: _builtins.int,
+                 vault_id: _builtins.str):
         """
         :param _builtins.float actual_used_data_storage_size_tb: The amount of storage currently being used for user and system data, in
                terabytes.
@@ -6796,6 +6886,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         :param Sequence['GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrlArgs'] connection_urls: The URLs for accessing Oracle Application Express (APEX) and SQL Developer
                Web with a browser from a Compute instance.
                https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
+        :param _builtins.int cpu_core_count: The number of CPU cores to be made available to the database.
         :param Sequence['GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContactArgs'] customer_contacts: The list of customer contacts.
         :param _builtins.str data_safe_state: The current state of the Data Safe registration for the
                Autonomous Database. 
@@ -6912,6 +7003,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                SNAPSHOT_STANDBY
         :param Sequence['GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailArgs'] scheduled_operation_details: The list and details of the scheduled operations of the Autonomous
                Database.
+        :param _builtins.str secret_id: The ID of the Oracle Cloud Infrastructure vault secret.
         :param _builtins.str sql_web_developer_url: The SQL Web Developer URL for the Autonomous Database.
         :param _builtins.str state: Possible values:
                 STATE_UNSPECIFIED
@@ -6941,6 +7033,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         :param _builtins.float total_auto_backup_storage_size_gbs: The storage space used by automatic backups of Autonomous Database, in
                gigabytes.
         :param _builtins.int used_data_storage_size_tbs: The storage space used by Autonomous Database, in gigabytes.
+        :param _builtins.str vault_id: The ID of the Oracle Cloud Infrastructure vault.
         """
         pulumi.set(__self__, "actual_used_data_storage_size_tb", actual_used_data_storage_size_tb)
         pulumi.set(__self__, "allocated_storage_size_tb", allocated_storage_size_tb)
@@ -6953,6 +7046,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         pulumi.set(__self__, "compute_count", compute_count)
         pulumi.set(__self__, "connection_strings", connection_strings)
         pulumi.set(__self__, "connection_urls", connection_urls)
+        pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         pulumi.set(__self__, "customer_contacts", customer_contacts)
         pulumi.set(__self__, "data_safe_state", data_safe_state)
         pulumi.set(__self__, "data_storage_size_gb", data_storage_size_gb)
@@ -6991,11 +7085,13 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         pulumi.set(__self__, "refreshable_state", refreshable_state)
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "scheduled_operation_details", scheduled_operation_details)
+        pulumi.set(__self__, "secret_id", secret_id)
         pulumi.set(__self__, "sql_web_developer_url", sql_web_developer_url)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "supported_clone_regions", supported_clone_regions)
         pulumi.set(__self__, "total_auto_backup_storage_size_gbs", total_auto_backup_storage_size_gbs)
         pulumi.set(__self__, "used_data_storage_size_tbs", used_data_storage_size_tbs)
+        pulumi.set(__self__, "vault_id", vault_id)
 
     @_builtins.property
     @pulumi.getter(name="actualUsedDataStorageSizeTb")
@@ -7100,6 +7196,14 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
         """
         return pulumi.get(self, "connection_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuCoreCount")
+    def cpu_core_count(self) -> _builtins.int:
+        """
+        The number of CPU cores to be made available to the database.
+        """
+        return pulumi.get(self, "cpu_core_count")
 
     @_builtins.property
     @pulumi.getter(name="customerContacts")
@@ -7484,6 +7588,14 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         return pulumi.get(self, "scheduled_operation_details")
 
     @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> _builtins.str:
+        """
+        The ID of the Oracle Cloud Infrastructure vault secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @_builtins.property
     @pulumi.getter(name="sqlWebDeveloperUrl")
     def sql_web_developer_url(self) -> _builtins.str:
         """
@@ -7546,6 +7658,14 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         The storage space used by Autonomous Database, in gigabytes.
         """
         return pulumi.get(self, "used_data_storage_size_tbs")
+
+    @_builtins.property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> _builtins.str:
+        """
+        The ID of the Oracle Cloud Infrastructure vault.
+        """
+        return pulumi.get(self, "vault_id")
 
 
 @pulumi.output_type
@@ -9921,11 +10041,14 @@ class GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionResult(dict):
 @pulumi.output_type
 class GetCloudVmClusterPropertyTimeZoneResult(dict):
     def __init__(__self__, *,
-                 id: _builtins.str):
+                 id: _builtins.str,
+                 version: _builtins.str):
         """
         :param _builtins.str id: IANA Time Zone Database time zone, e.g. "America/New_York".
+        :param _builtins.str version: IANA Time Zone Database version number, e.g. "2019a".
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -9934,6 +10057,14 @@ class GetCloudVmClusterPropertyTimeZoneResult(dict):
         IANA Time Zone Database time zone, e.g. "America/New_York".
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        IANA Time Zone Database version number, e.g. "2019a".
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -10638,11 +10769,14 @@ class GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOptionRes
 @pulumi.output_type
 class GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult(dict):
     def __init__(__self__, *,
-                 id: _builtins.str):
+                 id: _builtins.str,
+                 version: _builtins.str):
         """
         :param _builtins.str id: IANA Time Zone Database time zone, e.g. "America/New_York".
+        :param _builtins.str version: IANA Time Zone Database version number, e.g. "2019a".
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -10651,6 +10785,14 @@ class GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult(dict):
         IANA Time Zone Database time zone, e.g. "America/New_York".
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        IANA Time Zone Database version number, e.g. "2019a".
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

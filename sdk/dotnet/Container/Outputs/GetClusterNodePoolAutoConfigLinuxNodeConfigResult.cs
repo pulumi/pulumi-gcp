@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Container.Outputs
         /// cgroupMode specifies the cgroup mode to be used on the node.
         /// </summary>
         public readonly string CgroupMode;
+        /// <summary>
+        /// The settings for kernel module loading.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingResult> NodeKernelModuleLoadings;
 
         [OutputConstructor]
-        private GetClusterNodePoolAutoConfigLinuxNodeConfigResult(string cgroupMode)
+        private GetClusterNodePoolAutoConfigLinuxNodeConfigResult(
+            string cgroupMode,
+
+            ImmutableArray<Outputs.GetClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingResult> nodeKernelModuleLoadings)
         {
             CgroupMode = cgroupMode;
+            NodeKernelModuleLoadings = nodeKernelModuleLoadings;
         }
     }
 }

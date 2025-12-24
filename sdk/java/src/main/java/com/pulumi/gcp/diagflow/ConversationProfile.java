@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about ConversationProfile, see:
  * 
- * * [API documentation](https://cloud.google.com/dialogflow/docs/reference/rest/v2beta1/projects/conversationProfiles)
+ * * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.conversationProfiles)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
  * 

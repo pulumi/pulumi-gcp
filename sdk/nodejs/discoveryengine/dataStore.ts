@@ -159,7 +159,7 @@ export class DataStore extends pulumi.CustomResource {
      * Configuration data for advance site search.
      * Structure is documented below.
      */
-    declare public readonly advancedSiteSearchConfig: pulumi.Output<outputs.discoveryengine.DataStoreAdvancedSiteSearchConfig | undefined>;
+    declare public readonly advancedSiteSearchConfig: pulumi.Output<outputs.discoveryengine.DataStoreAdvancedSiteSearchConfig>;
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.

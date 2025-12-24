@@ -293,7 +293,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Whether L4ILB Subsetting is enabled for this cluster.
      */
-    declare public readonly enableL4IlbSubsetting: pulumi.Output<boolean | undefined>;
+    declare public readonly enableL4IlbSubsetting: pulumi.Output<boolean>;
     /**
      * Whether the ABAC authorizer is enabled for this cluster.
      * When enabled, identities in the system, including service accounts, nodes, and controllers,

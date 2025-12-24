@@ -34,6 +34,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.App;
  * import com.pulumi.gcp.ces.AppArgs;
  * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Tool;
+ * import com.pulumi.gcp.ces.ToolArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolPythonFunctionArgs;
+ * import com.pulumi.gcp.ces.Toolset;
+ * import com.pulumi.gcp.ces.ToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
+ * import com.pulumi.gcp.ces.Agent;
+ * import com.pulumi.gcp.ces.AgentArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentModelSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.AgentLlmAgentArgs;
  * import com.pulumi.gcp.ces.Example;
  * import com.pulumi.gcp.ces.ExampleArgs;
  * import com.pulumi.gcp.ces.inputs.ExampleMessageArgs;
@@ -62,14 +76,102 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         var cesTool = new Tool("cesTool", ToolArgs.builder()
+ *             .location("us")
+ *             .app(my_app.appId())
+ *             .toolId("tool-1")
+ *             .executionType("SYNCHRONOUS")
+ *             .pythonFunction(ToolPythonFunctionArgs.builder()
+ *                 .name("example_function")
+ *                 .pythonCode("def example_function() -> int: return 0")
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesToolset = new Toolset("cesToolset", ToolsetArgs.builder()
+ *             .toolsetId("toolset-id")
+ *             .location("us")
+ *             .app(my_app.appId())
+ *             .displayName("Basic toolset display name")
+ *             .openApiToolset(ToolsetOpenApiToolsetArgs.builder()
+ *                 .openApiSchema("""
+ * openapi: 3.0.0
+ * info:
+ *     title: My Sample API
+ *     version: 1.0.0
+ *     description: A simple API example
+ * servers:
+ *     - url: https://api.example.com/v1
+ * paths: {}
+ *                 """)
+ *                 .ignoreUnknownFields(false)
+ *                 .tlsConfig(ToolsetOpenApiToolsetTlsConfigArgs.builder()
+ *                     .caCerts(ToolsetOpenApiToolsetTlsConfigCaCertArgs.builder()
+ *                         .displayName("example")
+ *                         .cert("ZXhhbXBsZQ==")
+ *                         .build())
+ *                     .build())
+ *                 .serviceDirectoryConfig(ToolsetOpenApiToolsetServiceDirectoryConfigArgs.builder()
+ *                     .service("projects/example/locations/us/namespaces/namespace/services/service")
+ *                     .build())
+ *                 .apiAuthentication(ToolsetOpenApiToolsetApiAuthenticationArgs.builder()
+ *                     .serviceAgentIdTokenAuthConfig(ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesBaseAgent = new Agent("cesBaseAgent", AgentArgs.builder()
+ *             .agentId("base-agent-id")
+ *             .location("us")
+ *             .app(my_app.appId())
+ *             .displayName("base agent")
+ *             .instruction("You are a helpful assistant for this example.")
+ *             .modelSettings(AgentModelSettingsArgs.builder()
+ *                 .model("gemini-2.5-flash")
+ *                 .temperature(0.5)
+ *                 .build())
+ *             .llmAgent(AgentLlmAgentArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *         var cesChildAgent = new Agent("cesChildAgent", AgentArgs.builder()
+ *             .agentId("child-agent-id")
+ *             .location("us")
+ *             .app(my_app.appId())
+ *             .displayName("child agent")
+ *             .instruction("You are a helpful assistant for this example.")
+ *             .modelSettings(AgentModelSettingsArgs.builder()
+ *                 .model("gemini-2.5-flash")
+ *                 .temperature(0.5)
+ *                 .build())
+ *             .llmAgent(AgentLlmAgentArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
  *         var my_example = new Example("my-example", ExampleArgs.builder()
  *             .location("us")
  *             .displayName("my-example")
  *             .app(my_app.name())
  *             .exampleId("example-id")
  *             .description("example description")
+ *             .entryAgent(Output.tuple(my_app.project(), my_app.appId(), cesBaseAgent.agentId()).applyValue(values -> {
+ *                 var project = values.t1;
+ *                 var appId = values.t2;
+ *                 var agentId = values.t3;
+ *                 return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
+ *             }))
  *             .messages(ExampleMessageArgs.builder()
  *                 .chunks(                
+ *                     ExampleMessageChunkArgs.builder()
+ *                         .agentTransfer(ExampleMessageChunkAgentTransferArgs.builder()
+ *                             .targetAgent(Output.tuple(my_app.project(), my_app.appId(), cesChildAgent.agentId()).applyValue(values -> {
+ *                                 var project = values.t1;
+ *                                 var appId = values.t2;
+ *                                 var agentId = values.t3;
+ *                                 return String.format("projects/%s/locations/us/apps/%s/agents/%s", project,appId,agentId);
+ *                             }))
+ *                             .build())
+ *                         .build(),
  *                     ExampleMessageChunkArgs.builder()
  *                         .image(ExampleMessageChunkImageArgs.builder()
  *                             .mimeType("image/png")
@@ -80,6 +182,74 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     ExampleMessageChunkArgs.builder()
  *                         .text("text_data")
+ *                         .build(),
+ *                     ExampleMessageChunkArgs.builder()
+ *                         .toolCall(ExampleMessageChunkToolCallArgs.builder()
+ *                             .args(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("arg1", "val1"),
+ *                                     jsonProperty("arg2", "val2")
+ *                                 )))
+ *                             .id("tool_call_id")
+ *                             .tool(Output.tuple(my_app.project(), my_app.appId(), cesTool.toolId()).applyValue(values -> {
+ *                                 var project = values.t1;
+ *                                 var appId = values.t2;
+ *                                 var toolId = values.t3;
+ *                                 return String.format("projects/%s/locations/us/apps/%s/tools/%s", project,appId,toolId);
+ *                             }))
+ *                             .build())
+ *                         .build(),
+ *                     ExampleMessageChunkArgs.builder()
+ *                         .toolCall(ExampleMessageChunkToolCallArgs.builder()
+ *                             .args(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("arg1", "val1"),
+ *                                     jsonProperty("arg2", "val2")
+ *                                 )))
+ *                             .id("tool_call_id2")
+ *                             .toolsetTool(ExampleMessageChunkToolCallToolsetToolArgs.builder()
+ *                                 .toolset(Output.tuple(my_app.project(), my_app.appId(), cesToolset.toolsetId()).applyValue(values -> {
+ *                                     var project = values.t1;
+ *                                     var appId = values.t2;
+ *                                     var toolsetId = values.t3;
+ *                                     return String.format("projects/%s/locations/us/apps/%s/toolsets/%s", project,appId,toolsetId);
+ *                                 }))
+ *                                 .toolId("example-id")
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     ExampleMessageChunkArgs.builder()
+ *                         .toolResponse(ExampleMessageChunkToolResponseArgs.builder()
+ *                             .id("tool_call_id")
+ *                             .response(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("output", "example-output")
+ *                                 )))
+ *                             .tool(Output.tuple(my_app.project(), my_app.appId(), cesTool.toolId()).applyValue(values -> {
+ *                                 var project = values.t1;
+ *                                 var appId = values.t2;
+ *                                 var toolId = values.t3;
+ *                                 return String.format("projects/%s/locations/us/apps/%s/tools/%s", project,appId,toolId);
+ *                             }))
+ *                             .build())
+ *                         .build(),
+ *                     ExampleMessageChunkArgs.builder()
+ *                         .toolResponse(ExampleMessageChunkToolResponseArgs.builder()
+ *                             .id("tool_call_id2")
+ *                             .response(serializeJson(
+ *                                 jsonObject(
+ *                                     jsonProperty("output", "example-output")
+ *                                 )))
+ *                             .toolsetTool(ExampleMessageChunkToolResponseToolsetToolArgs.builder()
+ *                                 .toolset(Output.tuple(my_app.project(), my_app.appId(), cesToolset.toolsetId()).applyValue(values -> {
+ *                                     var project = values.t1;
+ *                                     var appId = values.t2;
+ *                                     var toolsetId = values.t3;
+ *                                     return String.format("projects/%s/locations/us/apps/%s/toolsets/%s", project,appId,toolsetId);
+ *                                 }))
+ *                                 .toolId("example-id")
+ *                                 .build())
+ *                             .build())
  *                         .build(),
  *                     ExampleMessageChunkArgs.builder()
  *                         .updatedVariables(serializeJson(
@@ -179,6 +349,24 @@ public class Example extends com.pulumi.resources.CustomResource {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+    /**
+     * The agent that initially handles the conversation. If not specified, the
+     * example represents a conversation that is handled by the root agent.
+     * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     * 
+     */
+    @Export(name="entryAgent", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> entryAgent;
+
+    /**
+     * @return The agent that initially handles the conversation. If not specified, the
+     * example represents a conversation that is handled by the root agent.
+     * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     * 
+     */
+    public Output<Optional<String>> entryAgent() {
+        return Codegen.optional(this.entryAgent);
     }
     /**
      * Etag used to ensure the object hasn&#39;t changed during a read-modify-write

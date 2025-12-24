@@ -15,6 +15,7 @@ import com.pulumi.gcp.ces.inputs.AppLoggingSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppModelSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
 import com.pulumi.gcp.ces.inputs.AppVariableDeclarationArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -354,6 +355,21 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the app is pinned in the app list.
+     * 
+     */
+    @Import(name="pinned")
+    private @Nullable Output<Boolean> pinned;
+
+    /**
+     * @return Whether the app is pinned in the app list.
+     * 
+     */
+    public Optional<Output<Boolean>> pinned() {
+        return Optional.ofNullable(this.pinned);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -458,6 +474,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.metadata = $.metadata;
         this.modelSettings = $.modelSettings;
         this.name = $.name;
+        this.pinned = $.pinned;
         this.project = $.project;
         this.rootAgent = $.rootAgent;
         this.timeZoneSettings = $.timeZoneSettings;
@@ -932,6 +949,27 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param pinned Whether the app is pinned in the app list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pinned(@Nullable Output<Boolean> pinned) {
+            $.pinned = pinned;
+            return this;
+        }
+
+        /**
+         * @param pinned Whether the app is pinned in the app list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pinned(Boolean pinned) {
+            return pinned(Output.of(pinned));
         }
 
         /**

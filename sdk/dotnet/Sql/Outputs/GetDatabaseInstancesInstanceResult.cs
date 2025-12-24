@@ -102,6 +102,15 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string RootPassword;
         /// <summary>
+        /// Initial root password. Required for MS SQL Server.
+        /// 				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string RootPasswordWo;
+        /// <summary>
+        /// Triggers update of RootPasswordWo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        public readonly string RootPasswordWoVersion;
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         public readonly string SelfLink;
@@ -173,6 +182,10 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string rootPassword,
 
+            string rootPasswordWo,
+
+            string rootPasswordWoVersion,
+
             string selfLink,
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceServerCaCertResult> serverCaCerts,
@@ -209,6 +222,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             ReplicationClusters = replicationClusters;
             RestoreBackupContexts = restoreBackupContexts;
             RootPassword = rootPassword;
+            RootPasswordWo = rootPasswordWo;
+            RootPasswordWoVersion = rootPasswordWoVersion;
             SelfLink = selfLink;
             ServerCaCerts = serverCaCerts;
             ServiceAccountEmailAddress = serviceAccountEmailAddress;

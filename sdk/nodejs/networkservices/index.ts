@@ -45,6 +45,11 @@ export type HttpRoute = import("./httpRoute").HttpRoute;
 export const HttpRoute: typeof import("./httpRoute").HttpRoute = null as any;
 utilities.lazyLoad(exports, ["HttpRoute"], () => require("./httpRoute"));
 
+export { LbEdgeExtensionArgs, LbEdgeExtensionState } from "./lbEdgeExtension";
+export type LbEdgeExtension = import("./lbEdgeExtension").LbEdgeExtension;
+export const LbEdgeExtension: typeof import("./lbEdgeExtension").LbEdgeExtension = null as any;
+utilities.lazyLoad(exports, ["LbEdgeExtension"], () => require("./lbEdgeExtension"));
+
 export { LbRouteExtensionArgs, LbRouteExtensionState } from "./lbRouteExtension";
 export type LbRouteExtension = import("./lbRouteExtension").LbRouteExtension;
 export const LbRouteExtension: typeof import("./lbRouteExtension").LbRouteExtension = null as any;
@@ -60,10 +65,50 @@ export type Mesh = import("./mesh").Mesh;
 export const Mesh: typeof import("./mesh").Mesh = null as any;
 utilities.lazyLoad(exports, ["Mesh"], () => require("./mesh"));
 
+export { MulticastConsumerAssociationArgs, MulticastConsumerAssociationState } from "./multicastConsumerAssociation";
+export type MulticastConsumerAssociation = import("./multicastConsumerAssociation").MulticastConsumerAssociation;
+export const MulticastConsumerAssociation: typeof import("./multicastConsumerAssociation").MulticastConsumerAssociation = null as any;
+utilities.lazyLoad(exports, ["MulticastConsumerAssociation"], () => require("./multicastConsumerAssociation"));
+
 export { MulticastDomainArgs, MulticastDomainState } from "./multicastDomain";
 export type MulticastDomain = import("./multicastDomain").MulticastDomain;
 export const MulticastDomain: typeof import("./multicastDomain").MulticastDomain = null as any;
 utilities.lazyLoad(exports, ["MulticastDomain"], () => require("./multicastDomain"));
+
+export { MulticastDomainActivationArgs, MulticastDomainActivationState } from "./multicastDomainActivation";
+export type MulticastDomainActivation = import("./multicastDomainActivation").MulticastDomainActivation;
+export const MulticastDomainActivation: typeof import("./multicastDomainActivation").MulticastDomainActivation = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainActivation"], () => require("./multicastDomainActivation"));
+
+export { MulticastDomainGroupArgs, MulticastDomainGroupState } from "./multicastDomainGroup";
+export type MulticastDomainGroup = import("./multicastDomainGroup").MulticastDomainGroup;
+export const MulticastDomainGroup: typeof import("./multicastDomainGroup").MulticastDomainGroup = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainGroup"], () => require("./multicastDomainGroup"));
+
+export { MulticastGroupConsumerActivationArgs, MulticastGroupConsumerActivationState } from "./multicastGroupConsumerActivation";
+export type MulticastGroupConsumerActivation = import("./multicastGroupConsumerActivation").MulticastGroupConsumerActivation;
+export const MulticastGroupConsumerActivation: typeof import("./multicastGroupConsumerActivation").MulticastGroupConsumerActivation = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupConsumerActivation"], () => require("./multicastGroupConsumerActivation"));
+
+export { MulticastGroupProducerActivationArgs, MulticastGroupProducerActivationState } from "./multicastGroupProducerActivation";
+export type MulticastGroupProducerActivation = import("./multicastGroupProducerActivation").MulticastGroupProducerActivation;
+export const MulticastGroupProducerActivation: typeof import("./multicastGroupProducerActivation").MulticastGroupProducerActivation = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupProducerActivation"], () => require("./multicastGroupProducerActivation"));
+
+export { MulticastGroupRangeArgs, MulticastGroupRangeState } from "./multicastGroupRange";
+export type MulticastGroupRange = import("./multicastGroupRange").MulticastGroupRange;
+export const MulticastGroupRange: typeof import("./multicastGroupRange").MulticastGroupRange = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupRange"], () => require("./multicastGroupRange"));
+
+export { MulticastGroupRangeActivationArgs, MulticastGroupRangeActivationState } from "./multicastGroupRangeActivation";
+export type MulticastGroupRangeActivation = import("./multicastGroupRangeActivation").MulticastGroupRangeActivation;
+export const MulticastGroupRangeActivation: typeof import("./multicastGroupRangeActivation").MulticastGroupRangeActivation = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupRangeActivation"], () => require("./multicastGroupRangeActivation"));
+
+export { MulticastProducerAssociationArgs, MulticastProducerAssociationState } from "./multicastProducerAssociation";
+export type MulticastProducerAssociation = import("./multicastProducerAssociation").MulticastProducerAssociation;
+export const MulticastProducerAssociation: typeof import("./multicastProducerAssociation").MulticastProducerAssociation = null as any;
+utilities.lazyLoad(exports, ["MulticastProducerAssociation"], () => require("./multicastProducerAssociation"));
 
 export { ServiceBindingArgs, ServiceBindingState } from "./serviceBinding";
 export type ServiceBinding = import("./serviceBinding").ServiceBinding;
@@ -111,14 +156,32 @@ const _module = {
                 return new GrpcRoute(name, <any>undefined, { urn })
             case "gcp:networkservices/httpRoute:HttpRoute":
                 return new HttpRoute(name, <any>undefined, { urn })
+            case "gcp:networkservices/lbEdgeExtension:LbEdgeExtension":
+                return new LbEdgeExtension(name, <any>undefined, { urn })
             case "gcp:networkservices/lbRouteExtension:LbRouteExtension":
                 return new LbRouteExtension(name, <any>undefined, { urn })
             case "gcp:networkservices/lbTrafficExtension:LbTrafficExtension":
                 return new LbTrafficExtension(name, <any>undefined, { urn })
             case "gcp:networkservices/mesh:Mesh":
                 return new Mesh(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation":
+                return new MulticastConsumerAssociation(name, <any>undefined, { urn })
             case "gcp:networkservices/multicastDomain:MulticastDomain":
                 return new MulticastDomain(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastDomainActivation:MulticastDomainActivation":
+                return new MulticastDomainActivation(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastDomainGroup:MulticastDomainGroup":
+                return new MulticastDomainGroup(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastGroupConsumerActivation:MulticastGroupConsumerActivation":
+                return new MulticastGroupConsumerActivation(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation":
+                return new MulticastGroupProducerActivation(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastGroupRange:MulticastGroupRange":
+                return new MulticastGroupRange(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastGroupRangeActivation:MulticastGroupRangeActivation":
+                return new MulticastGroupRangeActivation(name, <any>undefined, { urn })
+            case "gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation":
+                return new MulticastProducerAssociation(name, <any>undefined, { urn })
             case "gcp:networkservices/serviceBinding:ServiceBinding":
                 return new ServiceBinding(name, <any>undefined, { urn })
             case "gcp:networkservices/serviceLbPolicies:ServiceLbPolicies":
@@ -142,10 +205,19 @@ pulumi.runtime.registerResourceModule("gcp", "networkservices/endpointPolicy", _
 pulumi.runtime.registerResourceModule("gcp", "networkservices/gateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/grpcRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/httpRoute", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/lbEdgeExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/lbRouteExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/lbTrafficExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/mesh", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastConsumerAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastDomain", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastDomainActivation", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastDomainGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastGroupConsumerActivation", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastGroupProducerActivation", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastGroupRange", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastGroupRangeActivation", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/multicastProducerAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceLbPolicies", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tcpRoute", _module)

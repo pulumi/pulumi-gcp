@@ -23,6 +23,7 @@ class WorkforcePoolProviderScimTenantArgs:
                  provider_id: pulumi.Input[_builtins.str],
                  scim_tenant_id: pulumi.Input[_builtins.str],
                  workforce_pool_id: pulumi.Input[_builtins.str],
+                 claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -31,6 +32,7 @@ class WorkforcePoolProviderScimTenantArgs:
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the workforce pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         """
@@ -38,6 +40,8 @@ class WorkforcePoolProviderScimTenantArgs:
         pulumi.set(__self__, "provider_id", provider_id)
         pulumi.set(__self__, "scim_tenant_id", scim_tenant_id)
         pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        if claim_mapping is not None:
+            pulumi.set(__self__, "claim_mapping", claim_mapping)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -92,6 +96,18 @@ class WorkforcePoolProviderScimTenantArgs:
         pulumi.set(self, "workforce_pool_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="claimMapping")
+    def claim_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        """
+        return pulumi.get(self, "claim_mapping")
+
+    @claim_mapping.setter
+    def claim_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "claim_mapping", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -120,12 +136,15 @@ class WorkforcePoolProviderScimTenantArgs:
 class _WorkforcePoolProviderScimTenantState:
     def __init__(__self__, *,
                  base_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_time: Optional[pulumi.Input[_builtins.str]] = None,
                  scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -135,15 +154,18 @@ class _WorkforcePoolProviderScimTenantState:
                must use this as the root address for managing resources under the tenant.
                Format:
                https://iamscim.googleapis.com/{version}/{tenant_id}/
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the scim tenant.
                Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
+        :param pulumi.Input[_builtins.str] purge_time: The timestamp that represents the time when the SCIM tenant is purged.
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
+        :param pulumi.Input[_builtins.str] service_agent: Service Agent created by SCIM Tenant API. SCIM tokens created under
+               this tenant will be attached to this service agent.
         :param pulumi.Input[_builtins.str] state: The current state of the scim tenant.
-               * STATE_UNSPECIFIED: State unspecified.
                * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
                * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
                deleted after approximately 30 days.
@@ -151,6 +173,8 @@ class _WorkforcePoolProviderScimTenantState:
         """
         if base_uri is not None:
             pulumi.set(__self__, "base_uri", base_uri)
+        if claim_mapping is not None:
+            pulumi.set(__self__, "claim_mapping", claim_mapping)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -161,8 +185,12 @@ class _WorkforcePoolProviderScimTenantState:
             pulumi.set(__self__, "name", name)
         if provider_id is not None:
             pulumi.set(__self__, "provider_id", provider_id)
+        if purge_time is not None:
+            pulumi.set(__self__, "purge_time", purge_time)
         if scim_tenant_id is not None:
             pulumi.set(__self__, "scim_tenant_id", scim_tenant_id)
+        if service_agent is not None:
+            pulumi.set(__self__, "service_agent", service_agent)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if workforce_pool_id is not None:
@@ -183,6 +211,18 @@ class _WorkforcePoolProviderScimTenantState:
     @base_uri.setter
     def base_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "base_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimMapping")
+    def claim_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        """
+        return pulumi.get(self, "claim_mapping")
+
+    @claim_mapping.setter
+    def claim_mapping(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "claim_mapping", value)
 
     @_builtins.property
     @pulumi.getter
@@ -246,6 +286,18 @@ class _WorkforcePoolProviderScimTenantState:
         pulumi.set(self, "provider_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeTime")
+    def purge_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The timestamp that represents the time when the SCIM tenant is purged.
+        """
+        return pulumi.get(self, "purge_time")
+
+    @purge_time.setter
+    def purge_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "purge_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="scimTenantId")
     def scim_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -258,11 +310,23 @@ class _WorkforcePoolProviderScimTenantState:
         pulumi.set(self, "scim_tenant_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceAgent")
+    def service_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service Agent created by SCIM Tenant API. SCIM tokens created under
+        this tenant will be attached to this service agent.
+        """
+        return pulumi.get(self, "service_agent")
+
+    @service_agent.setter
+    def service_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_agent", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The current state of the scim tenant.
-        * STATE_UNSPECIFIED: State unspecified.
         * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
         deleted after approximately 30 days.
@@ -292,6 +356,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -305,9 +370,9 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
 
         To get more information about WorkforcePoolProviderScimTenant, see:
 
-        * [API documentation](https://cloud.google.com/sdk/gcloud/reference/iam/workforce-pools/providers/scim-tenants)
+        * [API documentation](https://docs.cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers.scimTenants)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
+            * [Configure a SCIM Tenant](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
 
         ## Example Usage
 
@@ -355,7 +420,11 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             provider_id=provider.provider_id,
             scim_tenant_id="example-scim-tenant",
             display_name="Example SCIM Tenant",
-            description="A basic SCIM tenant for IAM Workforce Pool Provider")
+            description="A basic SCIM tenant for IAM Workforce Pool Provider",
+            claim_mapping={
+                "google.subject": "user.externalId",
+                "google.group": "group.externalId",
+            })
         ```
 
         ## Import
@@ -378,6 +447,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
@@ -397,9 +467,9 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
 
         To get more information about WorkforcePoolProviderScimTenant, see:
 
-        * [API documentation](https://cloud.google.com/sdk/gcloud/reference/iam/workforce-pools/providers/scim-tenants)
+        * [API documentation](https://docs.cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers.scimTenants)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
+            * [Configure a SCIM Tenant](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
 
         ## Example Usage
 
@@ -447,7 +517,11 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             provider_id=provider.provider_id,
             scim_tenant_id="example-scim-tenant",
             display_name="Example SCIM Tenant",
-            description="A basic SCIM tenant for IAM Workforce Pool Provider")
+            description="A basic SCIM tenant for IAM Workforce Pool Provider",
+            claim_mapping={
+                "google.subject": "user.externalId",
+                "google.group": "group.externalId",
+            })
         ```
 
         ## Import
@@ -483,6 +557,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -498,6 +573,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkforcePoolProviderScimTenantArgs.__new__(WorkforcePoolProviderScimTenantArgs)
 
+            __props__.__dict__["claim_mapping"] = claim_mapping
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if location is None and not opts.urn:
@@ -514,6 +590,8 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             __props__.__dict__["workforce_pool_id"] = workforce_pool_id
             __props__.__dict__["base_uri"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["purge_time"] = None
+            __props__.__dict__["service_agent"] = None
             __props__.__dict__["state"] = None
         super(WorkforcePoolProviderScimTenant, __self__).__init__(
             'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
@@ -526,12 +604,15 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             base_uri: Optional[pulumi.Input[_builtins.str]] = None,
+            claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             provider_id: Optional[pulumi.Input[_builtins.str]] = None,
+            purge_time: Optional[pulumi.Input[_builtins.str]] = None,
             scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+            service_agent: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkforcePoolProviderScimTenant':
         """
@@ -546,15 +627,18 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                must use this as the root address for managing resources under the tenant.
                Format:
                https://iamscim.googleapis.com/{version}/{tenant_id}/
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the scim tenant.
                Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
+        :param pulumi.Input[_builtins.str] purge_time: The timestamp that represents the time when the SCIM tenant is purged.
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
+        :param pulumi.Input[_builtins.str] service_agent: Service Agent created by SCIM Tenant API. SCIM tokens created under
+               this tenant will be attached to this service agent.
         :param pulumi.Input[_builtins.str] state: The current state of the scim tenant.
-               * STATE_UNSPECIFIED: State unspecified.
                * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
                * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
                deleted after approximately 30 days.
@@ -565,12 +649,15 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         __props__ = _WorkforcePoolProviderScimTenantState.__new__(_WorkforcePoolProviderScimTenantState)
 
         __props__.__dict__["base_uri"] = base_uri
+        __props__.__dict__["claim_mapping"] = claim_mapping
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["provider_id"] = provider_id
+        __props__.__dict__["purge_time"] = purge_time
         __props__.__dict__["scim_tenant_id"] = scim_tenant_id
+        __props__.__dict__["service_agent"] = service_agent
         __props__.__dict__["state"] = state
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePoolProviderScimTenant(resource_name, opts=opts, __props__=__props__)
@@ -586,6 +673,14 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         https://iamscim.googleapis.com/{version}/{tenant_id}/
         """
         return pulumi.get(self, "base_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="claimMapping")
+    def claim_mapping(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        """
+        return pulumi.get(self, "claim_mapping")
 
     @_builtins.property
     @pulumi.getter
@@ -629,6 +724,14 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         return pulumi.get(self, "provider_id")
 
     @_builtins.property
+    @pulumi.getter(name="purgeTime")
+    def purge_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The timestamp that represents the time when the SCIM tenant is purged.
+        """
+        return pulumi.get(self, "purge_time")
+
+    @_builtins.property
     @pulumi.getter(name="scimTenantId")
     def scim_tenant_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -637,11 +740,19 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         return pulumi.get(self, "scim_tenant_id")
 
     @_builtins.property
+    @pulumi.getter(name="serviceAgent")
+    def service_agent(self) -> pulumi.Output[_builtins.str]:
+        """
+        Service Agent created by SCIM Tenant API. SCIM tokens created under
+        this tenant will be attached to this service agent.
+        """
+        return pulumi.get(self, "service_agent")
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
         The current state of the scim tenant.
-        * STATE_UNSPECIFIED: State unspecified.
         * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
         deleted after approximately 30 days.

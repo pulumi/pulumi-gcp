@@ -663,6 +663,34 @@ class SecurityProfile(pulumi.CustomResource):
                 "foo": "bar",
             })
         ```
+        ### Network Security Security Profile Broker
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_mirroring_deployment_group = gcp.networksecurity.MirroringDeploymentGroup("default",
+            mirroring_deployment_group_id="my-dg",
+            location="global",
+            network=default.id)
+        default_mirroring_endpoint_group = gcp.networksecurity.MirroringEndpointGroup("default",
+            mirroring_endpoint_group_id="my-eg",
+            location="global",
+            type="BROKER",
+            mirroring_deployment_groups=[default_mirroring_deployment_group.id])
+        default_security_profile = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="organizations/123456789",
+            description="my description",
+            type="CUSTOM_MIRRORING",
+            custom_mirroring_profile={
+                "mirroring_endpoint_group": default_mirroring_endpoint_group.id,
+                "mirroring_deployment_groups": [default_mirroring_deployment_group.id],
+            })
+        ```
 
         ## Import
 
@@ -848,6 +876,34 @@ class SecurityProfile(pulumi.CustomResource):
             },
             labels={
                 "foo": "bar",
+            })
+        ```
+        ### Network Security Security Profile Broker
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_mirroring_deployment_group = gcp.networksecurity.MirroringDeploymentGroup("default",
+            mirroring_deployment_group_id="my-dg",
+            location="global",
+            network=default.id)
+        default_mirroring_endpoint_group = gcp.networksecurity.MirroringEndpointGroup("default",
+            mirroring_endpoint_group_id="my-eg",
+            location="global",
+            type="BROKER",
+            mirroring_deployment_groups=[default_mirroring_deployment_group.id])
+        default_security_profile = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="organizations/123456789",
+            description="my description",
+            type="CUSTOM_MIRRORING",
+            custom_mirroring_profile={
+                "mirroring_endpoint_group": default_mirroring_endpoint_group.id,
+                "mirroring_deployment_groups": [default_mirroring_deployment_group.id],
             })
         ```
 

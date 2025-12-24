@@ -27,6 +27,8 @@ __all__ = [
     'BackupPlanBackupRuleStandardScheduleBackupWindowArgsDict',
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs',
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgsDict',
+    'BackupVaultEncryptionConfigArgs',
+    'BackupVaultEncryptionConfigArgsDict',
     'ManagementServerManagementUriArgs',
     'ManagementServerManagementUriArgsDict',
     'ManagementServerNetworkArgs',
@@ -548,6 +550,38 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs:
     @week_of_month.setter
     def week_of_month(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "week_of_month", value)
+
+
+if not MYPY:
+    class BackupVaultEncryptionConfigArgsDict(TypedDict):
+        kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+        """
+elif False:
+    BackupVaultEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackupVaultEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 if not MYPY:

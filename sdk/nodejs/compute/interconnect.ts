@@ -233,6 +233,11 @@ export class Interconnect extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly operationalStatus: pulumi.Output<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.InterconnectParams | undefined>;
+    /**
      * IP address configured on the customer side of the Interconnect link.
      * The customer should configure this IP address during turnup when prompted by Google NOC.
      * This can be used only for ping tests.
@@ -327,6 +332,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["nocContactEmail"] = state?.nocContactEmail;
             resourceInputs["operationalStatus"] = state?.operationalStatus;
+            resourceInputs["params"] = state?.params;
             resourceInputs["peerIpAddress"] = state?.peerIpAddress;
             resourceInputs["project"] = state?.project;
             resourceInputs["provisionedLinkCount"] = state?.provisionedLinkCount;
@@ -364,6 +370,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["macsecEnabled"] = args?.macsecEnabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["nocContactEmail"] = args?.nocContactEmail;
+            resourceInputs["params"] = args?.params;
             resourceInputs["project"] = args?.project;
             resourceInputs["remoteLocation"] = args?.remoteLocation;
             resourceInputs["requestedFeatures"] = args?.requestedFeatures;
@@ -543,6 +550,11 @@ export interface InterconnectState {
      */
     operationalStatus?: pulumi.Input<string>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.InterconnectParams>;
+    /**
      * IP address configured on the customer side of the Interconnect link.
      * The customer should configure this IP address during turnup when prompted by Google NOC.
      * This can be used only for ping tests.
@@ -688,6 +700,11 @@ export interface InterconnectArgs {
      * federation.
      */
     nocContactEmail?: pulumi.Input<string>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.InterconnectParams>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

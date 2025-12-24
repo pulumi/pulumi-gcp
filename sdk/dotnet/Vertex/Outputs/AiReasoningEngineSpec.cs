@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly string? AgentFramework;
         /// <summary>
-        /// Optional. Declarations for object class methods in OpenAPI specification format.
+        /// Optional. Declarations for object class methods in OpenAPI
+        /// specification format.
         /// </summary>
         public readonly string? ClassMethods;
         /// <summary>
@@ -35,12 +36,18 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecPackageSpec? PackageSpec;
         /// <summary>
-        /// Optional. The service account that the Reasoning Engine artifact runs as.
-        /// It should have "roles/storage.objectViewer" for reading the user project's
-        /// Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-        /// If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+        /// Optional. The service account that the Reasoning Engine artifact runs
+        /// as. It should have "roles/storage.objectViewer" for reading the user
+        /// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+        /// extensions. If not specified, the Vertex AI Reasoning Engine service
+        /// Agent in the project will be used.
         /// </summary>
         public readonly string? ServiceAccount;
+        /// <summary>
+        /// Specification for deploying from source code.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecSourceCodeSpec? SourceCodeSpec;
 
         [OutputConstructor]
         private AiReasoningEngineSpec(
@@ -52,13 +59,16 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             Outputs.AiReasoningEngineSpecPackageSpec? packageSpec,
 
-            string? serviceAccount)
+            string? serviceAccount,
+
+            Outputs.AiReasoningEngineSpecSourceCodeSpec? sourceCodeSpec)
         {
             AgentFramework = agentFramework;
             ClassMethods = classMethods;
             DeploymentSpec = deploymentSpec;
             PackageSpec = packageSpec;
             ServiceAccount = serviceAccount;
+            SourceCodeSpec = sourceCodeSpec;
         }
     }
 }

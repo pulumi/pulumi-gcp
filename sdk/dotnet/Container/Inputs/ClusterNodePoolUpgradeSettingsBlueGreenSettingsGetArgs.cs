@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolUpgradeSettingsBlueGreenSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Autoscaled rollout policy for blue-green upgrade.
+        /// </summary>
+        [Input("autoscaledRolloutPolicy")]
+        public Input<Inputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyGetArgs>? AutoscaledRolloutPolicy { get; set; }
+
+        /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         /// </summary>
         [Input("nodePoolSoakDuration")]
@@ -21,8 +27,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         /// </summary>
-        [Input("standardRolloutPolicy", required: true)]
-        public Input<Inputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyGetArgs> StandardRolloutPolicy { get; set; } = null!;
+        [Input("standardRolloutPolicy")]
+        public Input<Inputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyGetArgs>? StandardRolloutPolicy { get; set; }
 
         public ClusterNodePoolUpgradeSettingsBlueGreenSettingsGetArgs()
         {

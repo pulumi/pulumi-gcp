@@ -486,8 +486,6 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
-     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
-     * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
@@ -495,8 +493,6 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     * 
-     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      * 
      */
     public Output<String> project() {

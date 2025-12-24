@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.RoutineArgs;
 import com.pulumi.gcp.bigquery.inputs.RoutineState;
 import com.pulumi.gcp.bigquery.outputs.RoutineArgument;
+import com.pulumi.gcp.bigquery.outputs.RoutineExternalRuntimeOptions;
+import com.pulumi.gcp.bigquery.outputs.RoutinePythonOptions;
 import com.pulumi.gcp.bigquery.outputs.RoutineRemoteFunctionOptions;
 import com.pulumi.gcp.bigquery.outputs.RoutineSparkOptions;
 import java.lang.Integer;
@@ -499,6 +501,72 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Bigquery Routine Python Function
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutinePythonOptionsArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineExternalRuntimeOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Dataset("test", DatasetArgs.builder()
+ *             .datasetId("dataset_id")
+ *             .build());
+ * 
+ *         var pythonFunction = new Routine("pythonFunction", RoutineArgs.builder()
+ *             .datasetId(test.datasetId())
+ *             .routineId("routine_id")
+ *             .routineType("SCALAR_FUNCTION")
+ *             .language("PYTHON")
+ *             .arguments(            
+ *                 RoutineArgumentArgs.builder()
+ *                     .name("x")
+ *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
+ *                     .build(),
+ *                 RoutineArgumentArgs.builder()
+ *                     .name("y")
+ *                     .dataType("{\"typeKind\" :  \"FLOAT64\"}")
+ *                     .build())
+ *             .definitionBody("""
+ * def multiply(x, y):
+ *   return x * y
+ *             """)
+ *             .returnType("{\"typeKind\" :  \"FLOAT64\"}")
+ *             .pythonOptions(RoutinePythonOptionsArgs.builder()
+ *                 .entryPoint("multiply")
+ *                 .build())
+ *             .externalRuntimeOptions(RoutineExternalRuntimeOptionsArgs.builder()
+ *                 .containerMemory("512Mi")
+ *                 .containerCpu(0.5)
+ *                 .runtimeVersion("python-3.11")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -636,6 +704,24 @@ public class Routine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.determinismLevel);
     }
     /**
+     * Options for the runtime of the external system.
+     * This field is only applicable for Python UDFs.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="externalRuntimeOptions", refs={RoutineExternalRuntimeOptions.class}, tree="[0]")
+    private Output</* @Nullable */ RoutineExternalRuntimeOptions> externalRuntimeOptions;
+
+    /**
+     * @return Options for the runtime of the external system.
+     * This field is only applicable for Python UDFs.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RoutineExternalRuntimeOptions>> externalRuntimeOptions() {
+        return Codegen.optional(this.externalRuntimeOptions);
+    }
+    /**
      * Optional. If language = &#34;JAVASCRIPT&#34;, this field stores the path of the
      * imported JAVASCRIPT libraries.
      * 
@@ -698,6 +784,22 @@ public class Routine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Options for a user-defined Python function.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pythonOptions", refs={RoutinePythonOptions.class}, tree="[0]")
+    private Output</* @Nullable */ RoutinePythonOptions> pythonOptions;
+
+    /**
+     * @return Options for a user-defined Python function.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RoutinePythonOptions>> pythonOptions() {
+        return Codegen.optional(this.pythonOptions);
     }
     /**
      * Remote function specific options.

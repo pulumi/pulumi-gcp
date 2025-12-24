@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * To get more information about Snapshot, see:
+ * To get more information about RouterNat, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides
@@ -97,7 +97,7 @@ export interface GetRouterNatResult {
     readonly udpIdleTimeoutSec: number;
 }
 /**
- * To get more information about Snapshot, see:
+ * To get more information about RouterNat, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
  * * How-to Guides

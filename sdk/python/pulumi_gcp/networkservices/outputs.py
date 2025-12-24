@@ -80,13 +80,27 @@ __all__ = [
     'HttpRouteRuleMatchHeader',
     'HttpRouteRuleMatchHeaderRangeMatch',
     'HttpRouteRuleMatchQueryParameter',
+    'LbEdgeExtensionExtensionChain',
+    'LbEdgeExtensionExtensionChainExtension',
+    'LbEdgeExtensionExtensionChainMatchCondition',
     'LbRouteExtensionExtensionChain',
     'LbRouteExtensionExtensionChainExtension',
     'LbRouteExtensionExtensionChainMatchCondition',
     'LbTrafficExtensionExtensionChain',
     'LbTrafficExtensionExtensionChainExtension',
     'LbTrafficExtensionExtensionChainMatchCondition',
+    'MulticastConsumerAssociationState',
+    'MulticastDomainActivationTrafficSpec',
     'MulticastDomainConnectionConfig',
+    'MulticastDomainGroupState',
+    'MulticastGroupConsumerActivationLogConfig',
+    'MulticastGroupConsumerActivationState',
+    'MulticastGroupProducerActivationState',
+    'MulticastGroupRangeActivationLogConfig',
+    'MulticastGroupRangeActivationState',
+    'MulticastGroupRangeLogConfig',
+    'MulticastGroupRangeState',
+    'MulticastProducerAssociationState',
     'ServiceLbPoliciesAutoCapacityDrain',
     'ServiceLbPoliciesFailoverConfig',
     'ServiceLbPoliciesIsolationConfig',
@@ -4618,6 +4632,222 @@ class HttpRouteRuleMatchQueryParameter(dict):
 
 
 @pulumi.output_type
+class LbEdgeExtensionExtensionChain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchCondition":
+            suggest = "match_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LbEdgeExtensionExtensionChain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LbEdgeExtensionExtensionChain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LbEdgeExtensionExtensionChain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 extensions: Sequence['outputs.LbEdgeExtensionExtensionChainExtension'],
+                 match_condition: 'outputs.LbEdgeExtensionExtensionChainMatchCondition',
+                 name: _builtins.str):
+        """
+        :param Sequence['LbEdgeExtensionExtensionChainExtensionArgs'] extensions: A set of extensions to execute for the matching request.
+               At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+               LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+               Structure is documented below.
+        :param 'LbEdgeExtensionExtensionChainMatchConditionArgs' match_condition: Conditions under which this chain is invoked for a request.
+               Structure is documented below.
+        :param _builtins.str name: The name for this extension chain. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last character must be a letter or a number.
+        """
+        pulumi.set(__self__, "extensions", extensions)
+        pulumi.set(__self__, "match_condition", match_condition)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def extensions(self) -> Sequence['outputs.LbEdgeExtensionExtensionChainExtension']:
+        """
+        A set of extensions to execute for the matching request.
+        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extensions")
+
+    @_builtins.property
+    @pulumi.getter(name="matchCondition")
+    def match_condition(self) -> 'outputs.LbEdgeExtensionExtensionChainMatchCondition':
+        """
+        Conditions under which this chain is invoked for a request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match_condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name for this extension chain. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last character must be a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class LbEdgeExtensionExtensionChainExtension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failOpen":
+            suggest = "fail_open"
+        elif key == "forwardHeaders":
+            suggest = "forward_headers"
+        elif key == "supportedEvents":
+            suggest = "supported_events"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LbEdgeExtensionExtensionChainExtension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LbEdgeExtensionExtensionChainExtension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LbEdgeExtensionExtensionChainExtension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 service: _builtins.str,
+                 fail_open: Optional[_builtins.bool] = None,
+                 forward_headers: Optional[Sequence[_builtins.str]] = None,
+                 supported_events: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str name: The name for this extension. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last a letter or a number.
+        :param _builtins.str service: The reference to the service that runs the extension.
+               * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+               * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+        :param _builtins.bool fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
+               When set to TRUE, request or response processing continues without error.
+               Any subsequent extensions in the extension chain are also executed.
+               When set to FALSE: * If response headers have not been delivered to the downstream client,
+               a generic 500 error is returned to the client. The error response can be tailored by
+               configuring a custom error response in the load balancer.
+        :param Sequence[_builtins.str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
+               If omitted, all headers are sent. Each element is a string indicating the header name.
+        :param Sequence[_builtins.str] supported_events: A set of events during request or response processing for which this extension is called.
+               This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if forward_headers is not None:
+            pulumi.set(__self__, "forward_headers", forward_headers)
+        if supported_events is not None:
+            pulumi.set(__self__, "supported_events", supported_events)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name for this extension. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        The reference to the service that runs the extension.
+        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+        """
+        return pulumi.get(self, "service")
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[_builtins.bool]:
+        """
+        Determines how the proxy behaves if the call to the extension fails or times out.
+        When set to TRUE, request or response processing continues without error.
+        Any subsequent extensions in the extension chain are also executed.
+        When set to FALSE: * If response headers have not been delivered to the downstream client,
+        a generic 500 error is returned to the client. The error response can be tailored by
+        configuring a custom error response in the load balancer.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardHeaders")
+    def forward_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of the HTTP headers to forward to the extension (from the client or backend).
+        If omitted, all headers are sent. Each element is a string indicating the header name.
+        """
+        return pulumi.get(self, "forward_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedEvents")
+    def supported_events(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A set of events during request or response processing for which this extension is called.
+        This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+        """
+        return pulumi.get(self, "supported_events")
+
+
+@pulumi.output_type
+class LbEdgeExtensionExtensionChainMatchCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "celExpression":
+            suggest = "cel_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LbEdgeExtensionExtensionChainMatchCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LbEdgeExtensionExtensionChainMatchCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LbEdgeExtensionExtensionChainMatchCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cel_expression: _builtins.str):
+        """
+        :param _builtins.str cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        pulumi.set(__self__, "cel_expression", cel_expression)
+
+    @_builtins.property
+    @pulumi.getter(name="celExpression")
+    def cel_expression(self) -> _builtins.str:
+        """
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        return pulumi.get(self, "cel_expression")
+
+
+@pulumi.output_type
 class LbRouteExtensionExtensionChain(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5108,6 +5338,145 @@ class LbTrafficExtensionExtensionChainMatchCondition(dict):
 
 
 @pulumi.output_type
+class MulticastConsumerAssociationState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastDomainActivationTrafficSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggrEgressPps":
+            suggest = "aggr_egress_pps"
+        elif key == "aggrIngressPps":
+            suggest = "aggr_ingress_pps"
+        elif key == "avgPacketSize":
+            suggest = "avg_packet_size"
+        elif key == "maxPerGroupIngressPps":
+            suggest = "max_per_group_ingress_pps"
+        elif key == "maxPerGroupSubscribers":
+            suggest = "max_per_group_subscribers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MulticastDomainActivationTrafficSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MulticastDomainActivationTrafficSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MulticastDomainActivationTrafficSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aggr_egress_pps: Optional[_builtins.str] = None,
+                 aggr_ingress_pps: Optional[_builtins.str] = None,
+                 avg_packet_size: Optional[_builtins.int] = None,
+                 max_per_group_ingress_pps: Optional[_builtins.str] = None,
+                 max_per_group_subscribers: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str aggr_egress_pps: Aggregated egress Packet-Per-Second for all multicast groups in the domain
+               in this zone.
+        :param _builtins.str aggr_ingress_pps: Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+               in this zone. Default to (aggregated_egress_pps /
+               max_per_group_subscribers) * 2.
+        :param _builtins.int avg_packet_size: Average packet size (Default to 512 bytes).
+        :param _builtins.str max_per_group_ingress_pps: Maximum ingress Packet-Per-Second for a single multicast group in this
+               zone. Default to aggregated_ingress_pps / 2.
+        :param _builtins.str max_per_group_subscribers: Maximum number of subscribers for a single multicast group in this zone.
+               Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
+        """
+        if aggr_egress_pps is not None:
+            pulumi.set(__self__, "aggr_egress_pps", aggr_egress_pps)
+        if aggr_ingress_pps is not None:
+            pulumi.set(__self__, "aggr_ingress_pps", aggr_ingress_pps)
+        if avg_packet_size is not None:
+            pulumi.set(__self__, "avg_packet_size", avg_packet_size)
+        if max_per_group_ingress_pps is not None:
+            pulumi.set(__self__, "max_per_group_ingress_pps", max_per_group_ingress_pps)
+        if max_per_group_subscribers is not None:
+            pulumi.set(__self__, "max_per_group_subscribers", max_per_group_subscribers)
+
+    @_builtins.property
+    @pulumi.getter(name="aggrEgressPps")
+    def aggr_egress_pps(self) -> Optional[_builtins.str]:
+        """
+        Aggregated egress Packet-Per-Second for all multicast groups in the domain
+        in this zone.
+        """
+        return pulumi.get(self, "aggr_egress_pps")
+
+    @_builtins.property
+    @pulumi.getter(name="aggrIngressPps")
+    def aggr_ingress_pps(self) -> Optional[_builtins.str]:
+        """
+        Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+        in this zone. Default to (aggregated_egress_pps /
+        max_per_group_subscribers) * 2.
+        """
+        return pulumi.get(self, "aggr_ingress_pps")
+
+    @_builtins.property
+    @pulumi.getter(name="avgPacketSize")
+    def avg_packet_size(self) -> Optional[_builtins.int]:
+        """
+        Average packet size (Default to 512 bytes).
+        """
+        return pulumi.get(self, "avg_packet_size")
+
+    @_builtins.property
+    @pulumi.getter(name="maxPerGroupIngressPps")
+    def max_per_group_ingress_pps(self) -> Optional[_builtins.str]:
+        """
+        Maximum ingress Packet-Per-Second for a single multicast group in this
+        zone. Default to aggregated_ingress_pps / 2.
+        """
+        return pulumi.get(self, "max_per_group_ingress_pps")
+
+    @_builtins.property
+    @pulumi.getter(name="maxPerGroupSubscribers")
+    def max_per_group_subscribers(self) -> Optional[_builtins.str]:
+        """
+        Maximum number of subscribers for a single multicast group in this zone.
+        Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
+        """
+        return pulumi.get(self, "max_per_group_subscribers")
+
+
+@pulumi.output_type
 class MulticastDomainConnectionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5166,6 +5535,285 @@ class MulticastDomainConnectionConfig(dict):
         `projects/{project}/locations/global/hubs/{hub}`.
         """
         return pulumi.get(self, "ncc_hub")
+
+
+@pulumi.output_type
+class MulticastDomainGroupState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastGroupConsumerActivationLogConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether to enable logging or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable logging or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class MulticastGroupConsumerActivationState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastGroupProducerActivationState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastGroupRangeActivationLogConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether to enable logging or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable logging or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class MulticastGroupRangeActivationState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastGroupRangeLogConfig(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether to enable logging or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable logging or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class MulticastGroupRangeState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastProducerAssociationState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

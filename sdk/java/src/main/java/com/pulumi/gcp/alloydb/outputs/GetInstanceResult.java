@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.outputs.GetInstanceClientConnectionConfig;
+import com.pulumi.gcp.alloydb.outputs.GetInstanceConnectionPoolConfig;
 import com.pulumi.gcp.alloydb.outputs.GetInstanceMachineConfig;
 import com.pulumi.gcp.alloydb.outputs.GetInstanceNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.GetInstanceObservabilityConfig;
@@ -28,6 +29,7 @@ public final class GetInstanceResult {
     private List<GetInstanceClientConnectionConfig> clientConnectionConfigs;
     private String cluster;
     private String clusterId;
+    private List<GetInstanceConnectionPoolConfig> connectionPoolConfigs;
     private String createTime;
     private Map<String,String> databaseFlags;
     private String displayName;
@@ -78,6 +80,9 @@ public final class GetInstanceResult {
     }
     public String clusterId() {
         return this.clusterId;
+    }
+    public List<GetInstanceConnectionPoolConfig> connectionPoolConfigs() {
+        return this.connectionPoolConfigs;
     }
     public String createTime() {
         return this.createTime;
@@ -180,6 +185,7 @@ public final class GetInstanceResult {
         private List<GetInstanceClientConnectionConfig> clientConnectionConfigs;
         private String cluster;
         private String clusterId;
+        private List<GetInstanceConnectionPoolConfig> connectionPoolConfigs;
         private String createTime;
         private Map<String,String> databaseFlags;
         private String displayName;
@@ -216,6 +222,7 @@ public final class GetInstanceResult {
     	      this.clientConnectionConfigs = defaults.clientConnectionConfigs;
     	      this.cluster = defaults.cluster;
     	      this.clusterId = defaults.clusterId;
+    	      this.connectionPoolConfigs = defaults.connectionPoolConfigs;
     	      this.createTime = defaults.createTime;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.displayName = defaults.displayName;
@@ -295,6 +302,17 @@ public final class GetInstanceResult {
             }
             this.clusterId = clusterId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder connectionPoolConfigs(List<GetInstanceConnectionPoolConfig> connectionPoolConfigs) {
+            if (connectionPoolConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "connectionPoolConfigs");
+            }
+            this.connectionPoolConfigs = connectionPoolConfigs;
+            return this;
+        }
+        public Builder connectionPoolConfigs(GetInstanceConnectionPoolConfig... connectionPoolConfigs) {
+            return connectionPoolConfigs(List.of(connectionPoolConfigs));
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
@@ -537,6 +555,7 @@ public final class GetInstanceResult {
             _resultValue.clientConnectionConfigs = clientConnectionConfigs;
             _resultValue.cluster = cluster;
             _resultValue.clusterId = clusterId;
+            _resultValue.connectionPoolConfigs = connectionPoolConfigs;
             _resultValue.createTime = createTime;
             _resultValue.databaseFlags = databaseFlags;
             _resultValue.displayName = displayName;

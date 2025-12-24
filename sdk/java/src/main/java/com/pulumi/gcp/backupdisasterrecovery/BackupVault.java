@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupVaultState;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.BackupVaultEncryptionConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -22,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Backup Dr Backup Vault Full
+ * ### Backup Dr Backup Vault Simple
  * 
  * <pre>
  * {@code
@@ -59,6 +60,65 @@ import javax.annotation.Nullable;
  *                 Map.entry("foo", "bar1"),
  *                 Map.entry("bar", "baz1")
  *             ))
+ *             .forceUpdate(true)
+ *             .accessRestriction("WITHIN_ORGANIZATION")
+ *             .backupRetentionInheritance("INHERIT_VAULT_RETENTION")
+ *             .ignoreInactiveDatasources(true)
+ *             .ignoreBackupPlanReferences(true)
+ *             .allowMissing(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Backup Dr Backup Vault Cmek
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupVaultEncryptionConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var testProject = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .projectId("my-project-name")
+ *             .build());
+ * 
+ *         var backup_vault_cmek = new BackupVault("backup-vault-cmek", BackupVaultArgs.builder()
+ *             .location("us-central1")
+ *             .backupVaultId("backup-vault-cmek")
+ *             .description("This is a second backup vault built by Terraform.")
+ *             .backupMinimumEnforcedRetentionDuration("100000s")
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry("annotations1", "bar1"),
+ *                 Map.entry("annotations2", "baz1")
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("foo", "bar1"),
+ *                 Map.entry("bar", "baz1")
+ *             ))
+ *             .encryptionConfig(BackupVaultEncryptionConfigArgs.builder()
+ *                 .kmsKeyName("bkpvault-key")
+ *                 .build())
  *             .forceUpdate(true)
  *             .accessRestriction("WITHIN_ORGANIZATION")
  *             .backupRetentionInheritance("INHERIT_VAULT_RETENTION")
@@ -284,6 +344,22 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> effectiveTime() {
         return Codegen.optional(this.effectiveTime);
+    }
+    /**
+     * Encryption configuration for the backup vault.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionConfig", refs={BackupVaultEncryptionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ BackupVaultEncryptionConfig> encryptionConfig;
+
+    /**
+     * @return Encryption configuration for the backup vault.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackupVaultEncryptionConfig>> encryptionConfig() {
+        return Codegen.optional(this.encryptionConfig);
     }
     /**
      * Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.

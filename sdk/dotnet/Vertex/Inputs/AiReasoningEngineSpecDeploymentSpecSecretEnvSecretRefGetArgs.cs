@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+        /// The name of the secret in Cloud Secret Manager.
+        /// Format: {secret_name}.
         /// </summary>
         [Input("secret", required: true)]
         public Input<string> Secret { get; set; } = null!;
 
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
+        /// The Cloud Secret Manager secret version. Can be 'latest'
+        /// for the latest version, an integer for a specific
+        /// version, or a version alias.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

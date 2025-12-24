@@ -282,8 +282,6 @@ export class Reservation extends pulumi.CustomResource {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     *
-     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -459,8 +457,6 @@ export interface ReservationState {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     *
-     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      */
     project?: pulumi.Input<string>;
     /**
@@ -547,8 +543,6 @@ export interface ReservationArgs {
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     *
-     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      */
     project?: pulumi.Input<string>;
     /**

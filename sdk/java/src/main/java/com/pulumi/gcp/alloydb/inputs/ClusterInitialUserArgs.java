@@ -5,7 +5,6 @@ package com.pulumi.gcp.alloydb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,16 +20,16 @@ public final class ClusterInitialUserArgs extends com.pulumi.resources.ResourceA
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return The initial password for the user.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -80,7 +79,7 @@ public final class ClusterInitialUserArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -118,9 +117,6 @@ public final class ClusterInitialUserArgs extends com.pulumi.resources.ResourceA
         }
 
         public ClusterInitialUserArgs build() {
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("ClusterInitialUserArgs", "password");
-            }
             return $;
         }
     }

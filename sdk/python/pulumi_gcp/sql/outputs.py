@@ -1458,6 +1458,8 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
         suggest = None
         if key == "backupRetentionSettings":
             suggest = "backup_retention_settings"
+        elif key == "backupTier":
+            suggest = "backup_tier"
         elif key == "binaryLogEnabled":
             suggest = "binary_log_enabled"
         elif key == "pointInTimeRecoveryEnabled":
@@ -1480,6 +1482,7 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
 
     def __init__(__self__, *,
                  backup_retention_settings: Optional['outputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings'] = None,
+                 backup_tier: Optional[_builtins.str] = None,
                  binary_log_enabled: Optional[_builtins.bool] = None,
                  enabled: Optional[_builtins.bool] = None,
                  location: Optional[_builtins.str] = None,
@@ -1488,6 +1491,7 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
                  transaction_log_retention_days: Optional[_builtins.int] = None):
         """
         :param 'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs' backup_retention_settings: Backup retention settings. The configuration is detailed below.
+        :param _builtins.str backup_tier: The backup tier that manages the backups for the instance.
         :param _builtins.bool binary_log_enabled: True if binary logging is enabled.
                Can only be used with MySQL.
         :param _builtins.bool enabled: True if backup configuration is enabled.
@@ -1499,6 +1503,8 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
         """
         if backup_retention_settings is not None:
             pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
+        if backup_tier is not None:
+            pulumi.set(__self__, "backup_tier", backup_tier)
         if binary_log_enabled is not None:
             pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         if enabled is not None:
@@ -1519,6 +1525,14 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
         Backup retention settings. The configuration is detailed below.
         """
         return pulumi.get(self, "backup_retention_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="backupTier")
+    def backup_tier(self) -> Optional[_builtins.str]:
+        """
+        The backup tier that manages the backups for the instance.
+        """
+        return pulumi.get(self, "backup_tier")
 
     @_builtins.property
     @pulumi.getter(name="binaryLogEnabled")
@@ -3965,6 +3979,7 @@ class GetDatabaseInstanceSettingAdvancedMachineFeatureResult(dict):
 class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     def __init__(__self__, *,
                  backup_retention_settings: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
+                 backup_tier: _builtins.str,
                  binary_log_enabled: _builtins.bool,
                  enabled: _builtins.bool,
                  location: _builtins.str,
@@ -3972,6 +3987,7 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
                  start_time: _builtins.str,
                  transaction_log_retention_days: _builtins.int):
         """
+        :param _builtins.str backup_tier: Backup tier that manages the backups for the instance.
         :param _builtins.bool binary_log_enabled: True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
         :param _builtins.bool enabled: True if backup configuration is enabled.
         :param _builtins.str location: Location of the backup configuration.
@@ -3980,6 +3996,7 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
         :param _builtins.int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
         """
         pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
+        pulumi.set(__self__, "backup_tier", backup_tier)
         pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "location", location)
@@ -3991,6 +4008,14 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     @pulumi.getter(name="backupRetentionSettings")
     def backup_retention_settings(self) -> Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult']:
         return pulumi.get(self, "backup_retention_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="backupTier")
+    def backup_tier(self) -> _builtins.str:
+        """
+        Backup tier that manages the backups for the instance.
+        """
+        return pulumi.get(self, "backup_tier")
 
     @_builtins.property
     @pulumi.getter(name="binaryLogEnabled")
@@ -4901,6 +4926,8 @@ class GetDatabaseInstancesInstanceResult(dict):
                  replication_clusters: Sequence['outputs.GetDatabaseInstancesInstanceReplicationClusterResult'],
                  restore_backup_contexts: Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult'],
                  root_password: _builtins.str,
+                 root_password_wo: _builtins.str,
+                 root_password_wo_version: _builtins.str,
                  self_link: _builtins.str,
                  server_ca_certs: Sequence['outputs.GetDatabaseInstancesInstanceServerCaCertResult'],
                  service_account_email_address: _builtins.str,
@@ -4926,6 +4953,9 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param Sequence[_builtins.str] replica_names: The replicas of the instance.
         :param Sequence['GetDatabaseInstancesInstanceReplicationClusterArgs'] replication_clusters: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         :param _builtins.str root_password: Initial root password. Required for MS SQL Server.
+        :param _builtins.str root_password_wo: Initial root password. Required for MS SQL Server.
+               				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        :param _builtins.str root_password_wo_version: Triggers update of root_password_wo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str self_link: The URI of the created resource.
         :param _builtins.str service_account_email_address: The service account email address assigned to the instance.
         :param Sequence['GetDatabaseInstancesInstanceSettingArgs'] settings: The settings to use for the database. The configuration is detailed below.
@@ -4958,6 +4988,8 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "replication_clusters", replication_clusters)
         pulumi.set(__self__, "restore_backup_contexts", restore_backup_contexts)
         pulumi.set(__self__, "root_password", root_password)
+        pulumi.set(__self__, "root_password_wo", root_password_wo)
+        pulumi.set(__self__, "root_password_wo_version", root_password_wo_version)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "server_ca_certs", server_ca_certs)
         pulumi.set(__self__, "service_account_email_address", service_account_email_address)
@@ -5162,6 +5194,23 @@ class GetDatabaseInstancesInstanceResult(dict):
         Initial root password. Required for MS SQL Server.
         """
         return pulumi.get(self, "root_password")
+
+    @_builtins.property
+    @pulumi.getter(name="rootPasswordWo")
+    def root_password_wo(self) -> _builtins.str:
+        """
+        Initial root password. Required for MS SQL Server.
+        				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "root_password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="rootPasswordWoVersion")
+    def root_password_wo_version(self) -> _builtins.str:
+        """
+        Triggers update of root_password_wo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "root_password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
@@ -6086,6 +6135,7 @@ class GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult(dict):
 class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
     def __init__(__self__, *,
                  backup_retention_settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
+                 backup_tier: _builtins.str,
                  binary_log_enabled: _builtins.bool,
                  enabled: _builtins.bool,
                  location: _builtins.str,
@@ -6093,6 +6143,7 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
                  start_time: _builtins.str,
                  transaction_log_retention_days: _builtins.int):
         """
+        :param _builtins.str backup_tier: Backup tier that manages the backups for the instance.
         :param _builtins.bool binary_log_enabled: True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
         :param _builtins.bool enabled: True if backup configuration is enabled.
         :param _builtins.str location: Location of the backup configuration.
@@ -6101,6 +6152,7 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
         :param _builtins.int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
         """
         pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
+        pulumi.set(__self__, "backup_tier", backup_tier)
         pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "location", location)
@@ -6112,6 +6164,14 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
     @pulumi.getter(name="backupRetentionSettings")
     def backup_retention_settings(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult']:
         return pulumi.get(self, "backup_retention_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="backupTier")
+    def backup_tier(self) -> _builtins.str:
+        """
+        Backup tier that manages the backups for the instance.
+        """
+        return pulumi.get(self, "backup_tier")
 
     @_builtins.property
     @pulumi.getter(name="binaryLogEnabled")

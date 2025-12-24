@@ -252,7 +252,7 @@ export class RouterNat extends pulumi.CustomResource {
     declare public readonly enableDynamicPortAllocation: pulumi.Output<boolean>;
     /**
      * Enable endpoint independent mapping.
-     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      */
     declare public readonly enableEndpointIndependentMapping: pulumi.Output<boolean>;
     /**
@@ -493,7 +493,7 @@ export interface RouterNatState {
     enableDynamicPortAllocation?: pulumi.Input<boolean>;
     /**
      * Enable endpoint independent mapping.
-     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      */
     enableEndpointIndependentMapping?: pulumi.Input<boolean>;
     /**
@@ -656,7 +656,7 @@ export interface RouterNatArgs {
     enableDynamicPortAllocation?: pulumi.Input<boolean>;
     /**
      * Enable endpoint independent mapping.
-     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      */
     enableEndpointIndependentMapping?: pulumi.Input<boolean>;
     /**

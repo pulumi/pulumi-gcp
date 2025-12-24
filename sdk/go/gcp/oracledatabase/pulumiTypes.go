@@ -63,6 +63,8 @@ type AutonomousDatabaseProperties struct {
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
 	// Structure is documented below.
 	ConnectionUrls []AutonomousDatabasePropertiesConnectionUrl `pulumi:"connectionUrls"`
+	// The number of CPU cores to be made available to the database.
+	CpuCoreCount *int `pulumi:"cpuCoreCount"`
 	// The list of customer contacts.
 	// Structure is documented below.
 	CustomerContacts []AutonomousDatabasePropertiesCustomerContact `pulumi:"customerContacts"`
@@ -243,6 +245,8 @@ type AutonomousDatabaseProperties struct {
 	// Database.
 	// Structure is documented below.
 	ScheduledOperationDetails []AutonomousDatabasePropertiesScheduledOperationDetail `pulumi:"scheduledOperationDetails"`
+	// The ID of the Oracle Cloud Infrastructure vault secret.
+	SecretId *string `pulumi:"secretId"`
 	// (Output)
 	// The SQL Web Developer URL for the Autonomous Database.
 	SqlWebDeveloperUrl *string `pulumi:"sqlWebDeveloperUrl"`
@@ -282,6 +286,8 @@ type AutonomousDatabaseProperties struct {
 	// (Output)
 	// The storage space used by Autonomous Database, in gigabytes.
 	UsedDataStorageSizeTbs *int `pulumi:"usedDataStorageSizeTbs"`
+	// The ID of the Oracle Cloud Infrastructure vault.
+	VaultId *string `pulumi:"vaultId"`
 }
 
 // AutonomousDatabasePropertiesInput is an input type that accepts AutonomousDatabasePropertiesArgs and AutonomousDatabasePropertiesOutput values.
@@ -345,6 +351,8 @@ type AutonomousDatabasePropertiesArgs struct {
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
 	// Structure is documented below.
 	ConnectionUrls AutonomousDatabasePropertiesConnectionUrlArrayInput `pulumi:"connectionUrls"`
+	// The number of CPU cores to be made available to the database.
+	CpuCoreCount pulumi.IntPtrInput `pulumi:"cpuCoreCount"`
 	// The list of customer contacts.
 	// Structure is documented below.
 	CustomerContacts AutonomousDatabasePropertiesCustomerContactArrayInput `pulumi:"customerContacts"`
@@ -525,6 +533,8 @@ type AutonomousDatabasePropertiesArgs struct {
 	// Database.
 	// Structure is documented below.
 	ScheduledOperationDetails AutonomousDatabasePropertiesScheduledOperationDetailArrayInput `pulumi:"scheduledOperationDetails"`
+	// The ID of the Oracle Cloud Infrastructure vault secret.
+	SecretId pulumi.StringPtrInput `pulumi:"secretId"`
 	// (Output)
 	// The SQL Web Developer URL for the Autonomous Database.
 	SqlWebDeveloperUrl pulumi.StringPtrInput `pulumi:"sqlWebDeveloperUrl"`
@@ -564,6 +574,8 @@ type AutonomousDatabasePropertiesArgs struct {
 	// (Output)
 	// The storage space used by Autonomous Database, in gigabytes.
 	UsedDataStorageSizeTbs pulumi.IntPtrInput `pulumi:"usedDataStorageSizeTbs"`
+	// The ID of the Oracle Cloud Infrastructure vault.
+	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 
 func (AutonomousDatabasePropertiesArgs) ElementType() reflect.Type {
@@ -727,6 +739,11 @@ func (o AutonomousDatabasePropertiesOutput) ConnectionUrls() AutonomousDatabaseP
 	return o.ApplyT(func(v AutonomousDatabaseProperties) []AutonomousDatabasePropertiesConnectionUrl {
 		return v.ConnectionUrls
 	}).(AutonomousDatabasePropertiesConnectionUrlArrayOutput)
+}
+
+// The number of CPU cores to be made available to the database.
+func (o AutonomousDatabasePropertiesOutput) CpuCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AutonomousDatabaseProperties) *int { return v.CpuCoreCount }).(pulumi.IntPtrOutput)
 }
 
 // The list of customer contacts.
@@ -1029,6 +1046,11 @@ func (o AutonomousDatabasePropertiesOutput) ScheduledOperationDetails() Autonomo
 	}).(AutonomousDatabasePropertiesScheduledOperationDetailArrayOutput)
 }
 
+// The ID of the Oracle Cloud Infrastructure vault secret.
+func (o AutonomousDatabasePropertiesOutput) SecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutonomousDatabaseProperties) *string { return v.SecretId }).(pulumi.StringPtrOutput)
+}
+
 // (Output)
 // The SQL Web Developer URL for the Autonomous Database.
 func (o AutonomousDatabasePropertiesOutput) SqlWebDeveloperUrl() pulumi.StringPtrOutput {
@@ -1081,6 +1103,11 @@ func (o AutonomousDatabasePropertiesOutput) TotalAutoBackupStorageSizeGbs() pulu
 // The storage space used by Autonomous Database, in gigabytes.
 func (o AutonomousDatabasePropertiesOutput) UsedDataStorageSizeTbs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AutonomousDatabaseProperties) *int { return v.UsedDataStorageSizeTbs }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the Oracle Cloud Infrastructure vault.
+func (o AutonomousDatabasePropertiesOutput) VaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutonomousDatabaseProperties) *string { return v.VaultId }).(pulumi.StringPtrOutput)
 }
 
 type AutonomousDatabasePropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -1242,6 +1269,16 @@ func (o AutonomousDatabasePropertiesPtrOutput) ConnectionUrls() AutonomousDataba
 		}
 		return v.ConnectionUrls
 	}).(AutonomousDatabasePropertiesConnectionUrlArrayOutput)
+}
+
+// The number of CPU cores to be made available to the database.
+func (o AutonomousDatabasePropertiesPtrOutput) CpuCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutonomousDatabaseProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCoreCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // The list of customer contacts.
@@ -1728,6 +1765,16 @@ func (o AutonomousDatabasePropertiesPtrOutput) ScheduledOperationDetails() Auton
 	}).(AutonomousDatabasePropertiesScheduledOperationDetailArrayOutput)
 }
 
+// The ID of the Oracle Cloud Infrastructure vault secret.
+func (o AutonomousDatabasePropertiesPtrOutput) SecretId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutonomousDatabaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretId
+	}).(pulumi.StringPtrOutput)
+}
+
 // (Output)
 // The SQL Web Developer URL for the Autonomous Database.
 func (o AutonomousDatabasePropertiesPtrOutput) SqlWebDeveloperUrl() pulumi.StringPtrOutput {
@@ -1805,6 +1852,16 @@ func (o AutonomousDatabasePropertiesPtrOutput) UsedDataStorageSizeTbs() pulumi.I
 		}
 		return v.UsedDataStorageSizeTbs
 	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the Oracle Cloud Infrastructure vault.
+func (o AutonomousDatabasePropertiesPtrOutput) VaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutonomousDatabaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VaultId
+	}).(pulumi.StringPtrOutput)
 }
 
 type AutonomousDatabasePropertiesApexDetail struct {
@@ -5730,6 +5787,8 @@ func (o CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsPtrOutput) Incid
 type CloudVmClusterPropertiesTimeZone struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	Id *string `pulumi:"id"`
+	// IANA Time Zone Database version number, e.g. "2019a".
+	Version *string `pulumi:"version"`
 }
 
 // CloudVmClusterPropertiesTimeZoneInput is an input type that accepts CloudVmClusterPropertiesTimeZoneArgs and CloudVmClusterPropertiesTimeZoneOutput values.
@@ -5746,6 +5805,8 @@ type CloudVmClusterPropertiesTimeZoneInput interface {
 type CloudVmClusterPropertiesTimeZoneArgs struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// IANA Time Zone Database version number, e.g. "2019a".
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (CloudVmClusterPropertiesTimeZoneArgs) ElementType() reflect.Type {
@@ -5830,6 +5891,11 @@ func (o CloudVmClusterPropertiesTimeZoneOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudVmClusterPropertiesTimeZone) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// IANA Time Zone Database version number, e.g. "2019a".
+func (o CloudVmClusterPropertiesTimeZoneOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudVmClusterPropertiesTimeZone) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type CloudVmClusterPropertiesTimeZonePtrOutput struct{ *pulumi.OutputState }
 
 func (CloudVmClusterPropertiesTimeZonePtrOutput) ElementType() reflect.Type {
@@ -5861,6 +5927,16 @@ func (o CloudVmClusterPropertiesTimeZonePtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// IANA Time Zone Database version number, e.g. "2019a".
+func (o CloudVmClusterPropertiesTimeZonePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmClusterPropertiesTimeZone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9362,6 +9438,8 @@ type GetAutonomousDatabaseProperty struct {
 	// Web with a browser from a Compute instance.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
 	ConnectionUrls []GetAutonomousDatabasePropertyConnectionUrl `pulumi:"connectionUrls"`
+	// The number of CPU cores to be made available to the database.
+	CpuCoreCount int `pulumi:"cpuCoreCount"`
 	// The list of customer contacts.
 	CustomerContacts []GetAutonomousDatabasePropertyCustomerContact `pulumi:"customerContacts"`
 	// The current state of the Data Safe registration for the
@@ -9516,6 +9594,8 @@ type GetAutonomousDatabaseProperty struct {
 	// The list and details of the scheduled operations of the Autonomous
 	// Database.
 	ScheduledOperationDetails []GetAutonomousDatabasePropertyScheduledOperationDetail `pulumi:"scheduledOperationDetails"`
+	// The ID of the Oracle Cloud Infrastructure vault secret.
+	SecretId string `pulumi:"secretId"`
 	// The SQL Web Developer URL for the Autonomous Database.
 	SqlWebDeveloperUrl string `pulumi:"sqlWebDeveloperUrl"`
 	// Possible values:
@@ -9550,6 +9630,8 @@ type GetAutonomousDatabaseProperty struct {
 	TotalAutoBackupStorageSizeGbs float64 `pulumi:"totalAutoBackupStorageSizeGbs"`
 	// The storage space used by Autonomous Database, in gigabytes.
 	UsedDataStorageSizeTbs int `pulumi:"usedDataStorageSizeTbs"`
+	// The ID of the Oracle Cloud Infrastructure vault.
+	VaultId string `pulumi:"vaultId"`
 }
 
 // GetAutonomousDatabasePropertyInput is an input type that accepts GetAutonomousDatabasePropertyArgs and GetAutonomousDatabasePropertyOutput values.
@@ -9602,6 +9684,8 @@ type GetAutonomousDatabasePropertyArgs struct {
 	// Web with a browser from a Compute instance.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
 	ConnectionUrls GetAutonomousDatabasePropertyConnectionUrlArrayInput `pulumi:"connectionUrls"`
+	// The number of CPU cores to be made available to the database.
+	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
 	// The list of customer contacts.
 	CustomerContacts GetAutonomousDatabasePropertyCustomerContactArrayInput `pulumi:"customerContacts"`
 	// The current state of the Data Safe registration for the
@@ -9756,6 +9840,8 @@ type GetAutonomousDatabasePropertyArgs struct {
 	// The list and details of the scheduled operations of the Autonomous
 	// Database.
 	ScheduledOperationDetails GetAutonomousDatabasePropertyScheduledOperationDetailArrayInput `pulumi:"scheduledOperationDetails"`
+	// The ID of the Oracle Cloud Infrastructure vault secret.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
 	// The SQL Web Developer URL for the Autonomous Database.
 	SqlWebDeveloperUrl pulumi.StringInput `pulumi:"sqlWebDeveloperUrl"`
 	// Possible values:
@@ -9790,6 +9876,8 @@ type GetAutonomousDatabasePropertyArgs struct {
 	TotalAutoBackupStorageSizeGbs pulumi.Float64Input `pulumi:"totalAutoBackupStorageSizeGbs"`
 	// The storage space used by Autonomous Database, in gigabytes.
 	UsedDataStorageSizeTbs pulumi.IntInput `pulumi:"usedDataStorageSizeTbs"`
+	// The ID of the Oracle Cloud Infrastructure vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
 func (GetAutonomousDatabasePropertyArgs) ElementType() reflect.Type {
@@ -9916,6 +10004,11 @@ func (o GetAutonomousDatabasePropertyOutput) ConnectionUrls() GetAutonomousDatab
 	return o.ApplyT(func(v GetAutonomousDatabaseProperty) []GetAutonomousDatabasePropertyConnectionUrl {
 		return v.ConnectionUrls
 	}).(GetAutonomousDatabasePropertyConnectionUrlArrayOutput)
+}
+
+// The number of CPU cores to be made available to the database.
+func (o GetAutonomousDatabasePropertyOutput) CpuCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutonomousDatabaseProperty) int { return v.CpuCoreCount }).(pulumi.IntOutput)
 }
 
 // The list of customer contacts.
@@ -10218,6 +10311,11 @@ func (o GetAutonomousDatabasePropertyOutput) ScheduledOperationDetails() GetAuto
 	}).(GetAutonomousDatabasePropertyScheduledOperationDetailArrayOutput)
 }
 
+// The ID of the Oracle Cloud Infrastructure vault secret.
+func (o GetAutonomousDatabasePropertyOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabaseProperty) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
 // The SQL Web Developer URL for the Autonomous Database.
 func (o GetAutonomousDatabasePropertyOutput) SqlWebDeveloperUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutonomousDatabaseProperty) string { return v.SqlWebDeveloperUrl }).(pulumi.StringOutput)
@@ -10267,6 +10365,11 @@ func (o GetAutonomousDatabasePropertyOutput) TotalAutoBackupStorageSizeGbs() pul
 // The storage space used by Autonomous Database, in gigabytes.
 func (o GetAutonomousDatabasePropertyOutput) UsedDataStorageSizeTbs() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAutonomousDatabaseProperty) int { return v.UsedDataStorageSizeTbs }).(pulumi.IntOutput)
+}
+
+// The ID of the Oracle Cloud Infrastructure vault.
+func (o GetAutonomousDatabasePropertyOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabaseProperty) string { return v.VaultId }).(pulumi.StringOutput)
 }
 
 type GetAutonomousDatabasePropertyArrayOutput struct{ *pulumi.OutputState }
@@ -12199,6 +12302,8 @@ type GetAutonomousDatabasesAutonomousDatabaseProperty struct {
 	// Web with a browser from a Compute instance.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
 	ConnectionUrls []GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl `pulumi:"connectionUrls"`
+	// The number of CPU cores to be made available to the database.
+	CpuCoreCount int `pulumi:"cpuCoreCount"`
 	// The list of customer contacts.
 	CustomerContacts []GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContact `pulumi:"customerContacts"`
 	// The current state of the Data Safe registration for the
@@ -12353,6 +12458,8 @@ type GetAutonomousDatabasesAutonomousDatabaseProperty struct {
 	// The list and details of the scheduled operations of the Autonomous
 	// Database.
 	ScheduledOperationDetails []GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail `pulumi:"scheduledOperationDetails"`
+	// The ID of the Oracle Cloud Infrastructure vault secret.
+	SecretId string `pulumi:"secretId"`
 	// The SQL Web Developer URL for the Autonomous Database.
 	SqlWebDeveloperUrl string `pulumi:"sqlWebDeveloperUrl"`
 	// Possible values:
@@ -12387,6 +12494,8 @@ type GetAutonomousDatabasesAutonomousDatabaseProperty struct {
 	TotalAutoBackupStorageSizeGbs float64 `pulumi:"totalAutoBackupStorageSizeGbs"`
 	// The storage space used by Autonomous Database, in gigabytes.
 	UsedDataStorageSizeTbs int `pulumi:"usedDataStorageSizeTbs"`
+	// The ID of the Oracle Cloud Infrastructure vault.
+	VaultId string `pulumi:"vaultId"`
 }
 
 // GetAutonomousDatabasesAutonomousDatabasePropertyInput is an input type that accepts GetAutonomousDatabasesAutonomousDatabasePropertyArgs and GetAutonomousDatabasesAutonomousDatabasePropertyOutput values.
@@ -12439,6 +12548,8 @@ type GetAutonomousDatabasesAutonomousDatabasePropertyArgs struct {
 	// Web with a browser from a Compute instance.
 	// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
 	ConnectionUrls GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrlArrayInput `pulumi:"connectionUrls"`
+	// The number of CPU cores to be made available to the database.
+	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
 	// The list of customer contacts.
 	CustomerContacts GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContactArrayInput `pulumi:"customerContacts"`
 	// The current state of the Data Safe registration for the
@@ -12593,6 +12704,8 @@ type GetAutonomousDatabasesAutonomousDatabasePropertyArgs struct {
 	// The list and details of the scheduled operations of the Autonomous
 	// Database.
 	ScheduledOperationDetails GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailArrayInput `pulumi:"scheduledOperationDetails"`
+	// The ID of the Oracle Cloud Infrastructure vault secret.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
 	// The SQL Web Developer URL for the Autonomous Database.
 	SqlWebDeveloperUrl pulumi.StringInput `pulumi:"sqlWebDeveloperUrl"`
 	// Possible values:
@@ -12627,6 +12740,8 @@ type GetAutonomousDatabasesAutonomousDatabasePropertyArgs struct {
 	TotalAutoBackupStorageSizeGbs pulumi.Float64Input `pulumi:"totalAutoBackupStorageSizeGbs"`
 	// The storage space used by Autonomous Database, in gigabytes.
 	UsedDataStorageSizeTbs pulumi.IntInput `pulumi:"usedDataStorageSizeTbs"`
+	// The ID of the Oracle Cloud Infrastructure vault.
+	VaultId pulumi.StringInput `pulumi:"vaultId"`
 }
 
 func (GetAutonomousDatabasesAutonomousDatabasePropertyArgs) ElementType() reflect.Type {
@@ -12757,6 +12872,11 @@ func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) ConnectionUrls()
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseProperty) []GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl {
 		return v.ConnectionUrls
 	}).(GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrlArrayOutput)
+}
+
+// The number of CPU cores to be made available to the database.
+func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) CpuCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseProperty) int { return v.CpuCoreCount }).(pulumi.IntOutput)
 }
 
 // The list of customer contacts.
@@ -13061,6 +13181,11 @@ func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) ScheduledOperati
 	}).(GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailArrayOutput)
 }
 
+// The ID of the Oracle Cloud Infrastructure vault secret.
+func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseProperty) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
 // The SQL Web Developer URL for the Autonomous Database.
 func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) SqlWebDeveloperUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseProperty) string { return v.SqlWebDeveloperUrl }).(pulumi.StringOutput)
@@ -13112,6 +13237,11 @@ func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) TotalAutoBackupS
 // The storage space used by Autonomous Database, in gigabytes.
 func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) UsedDataStorageSizeTbs() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseProperty) int { return v.UsedDataStorageSizeTbs }).(pulumi.IntOutput)
+}
+
+// The ID of the Oracle Cloud Infrastructure vault.
+func (o GetAutonomousDatabasesAutonomousDatabasePropertyOutput) VaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseProperty) string { return v.VaultId }).(pulumi.StringOutput)
 }
 
 type GetAutonomousDatabasesAutonomousDatabasePropertyArrayOutput struct{ *pulumi.OutputState }
@@ -17091,6 +17221,8 @@ func (o GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionArrayOutput) Ind
 type GetCloudVmClusterPropertyTimeZone struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	Id string `pulumi:"id"`
+	// IANA Time Zone Database version number, e.g. "2019a".
+	Version string `pulumi:"version"`
 }
 
 // GetCloudVmClusterPropertyTimeZoneInput is an input type that accepts GetCloudVmClusterPropertyTimeZoneArgs and GetCloudVmClusterPropertyTimeZoneOutput values.
@@ -17107,6 +17239,8 @@ type GetCloudVmClusterPropertyTimeZoneInput interface {
 type GetCloudVmClusterPropertyTimeZoneArgs struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	Id pulumi.StringInput `pulumi:"id"`
+	// IANA Time Zone Database version number, e.g. "2019a".
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetCloudVmClusterPropertyTimeZoneArgs) ElementType() reflect.Type {
@@ -17163,6 +17297,11 @@ func (o GetCloudVmClusterPropertyTimeZoneOutput) ToGetCloudVmClusterPropertyTime
 // IANA Time Zone Database time zone, e.g. "America/New_York".
 func (o GetCloudVmClusterPropertyTimeZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClusterPropertyTimeZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IANA Time Zone Database version number, e.g. "2019a".
+func (o GetCloudVmClusterPropertyTimeZoneOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClusterPropertyTimeZone) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetCloudVmClusterPropertyTimeZoneArrayOutput struct{ *pulumi.OutputState }
@@ -18089,6 +18228,8 @@ func (o GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOptionA
 type GetCloudVmClustersCloudVmClusterPropertyTimeZone struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	Id string `pulumi:"id"`
+	// IANA Time Zone Database version number, e.g. "2019a".
+	Version string `pulumi:"version"`
 }
 
 // GetCloudVmClustersCloudVmClusterPropertyTimeZoneInput is an input type that accepts GetCloudVmClustersCloudVmClusterPropertyTimeZoneArgs and GetCloudVmClustersCloudVmClusterPropertyTimeZoneOutput values.
@@ -18105,6 +18246,8 @@ type GetCloudVmClustersCloudVmClusterPropertyTimeZoneInput interface {
 type GetCloudVmClustersCloudVmClusterPropertyTimeZoneArgs struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	Id pulumi.StringInput `pulumi:"id"`
+	// IANA Time Zone Database version number, e.g. "2019a".
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetCloudVmClustersCloudVmClusterPropertyTimeZoneArgs) ElementType() reflect.Type {
@@ -18161,6 +18304,11 @@ func (o GetCloudVmClustersCloudVmClusterPropertyTimeZoneOutput) ToGetCloudVmClus
 // IANA Time Zone Database time zone, e.g. "America/New_York".
 func (o GetCloudVmClustersCloudVmClusterPropertyTimeZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterPropertyTimeZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IANA Time Zone Database version number, e.g. "2019a".
+func (o GetCloudVmClustersCloudVmClusterPropertyTimeZoneOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterPropertyTimeZone) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetCloudVmClustersCloudVmClusterPropertyTimeZoneArrayOutput struct{ *pulumi.OutputState }

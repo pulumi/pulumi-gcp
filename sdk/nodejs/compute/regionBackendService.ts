@@ -792,6 +792,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string | undefined>;
     /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    declare public readonly networkPassThroughLbTrafficPolicy: pulumi.Output<outputs.compute.RegionBackendServiceNetworkPassThroughLbTrafficPolicy | undefined>;
+    /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
      * to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -905,6 +910,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["logConfig"] = state?.logConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
+            resourceInputs["networkPassThroughLbTrafficPolicy"] = state?.networkPassThroughLbTrafficPolicy;
             resourceInputs["outlierDetection"] = state?.outlierDetection;
             resourceInputs["params"] = state?.params;
             resourceInputs["portName"] = state?.portName;
@@ -941,6 +947,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["logConfig"] = args?.logConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
+            resourceInputs["networkPassThroughLbTrafficPolicy"] = args?.networkPassThroughLbTrafficPolicy;
             resourceInputs["outlierDetection"] = args?.outlierDetection;
             resourceInputs["params"] = args?.params;
             resourceInputs["portName"] = args?.portName;
@@ -1169,6 +1176,11 @@ export interface RegionBackendServiceState {
      * Changes to this field force recreation of the resource.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceNetworkPassThroughLbTrafficPolicy>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set
@@ -1440,6 +1452,11 @@ export interface RegionBackendServiceArgs {
      * Changes to this field force recreation of the resource.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * Structure is documented below.
+     */
+    networkPassThroughLbTrafficPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceNetworkPassThroughLbTrafficPolicy>;
     /**
      * Settings controlling eviction of unhealthy hosts from the load balancing pool.
      * This field is applicable only when the `loadBalancingScheme` is set

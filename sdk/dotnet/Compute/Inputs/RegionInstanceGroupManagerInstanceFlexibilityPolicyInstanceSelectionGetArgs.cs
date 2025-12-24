@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("disks")]
+        private InputList<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskGetArgs>? _disks;
+
+        /// <summary>
+        /// List of disks to be attached to the instances created from this selection.
+        /// </summary>
+        public InputList<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskGetArgs> Disks
+        {
+            get => _disks ?? (_disks = new InputList<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskGetArgs>());
+            set => _disks = value;
+        }
+
         [Input("machineTypes", required: true)]
         private InputList<string>? _machineTypes;
 
@@ -23,6 +35,12 @@ namespace Pulumi.Gcp.Compute.Inputs
             get => _machineTypes ?? (_machineTypes = new InputList<string>());
             set => _machineTypes = value;
         }
+
+        /// <summary>
+        /// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+        /// </summary>
+        [Input("minCpuPlatform")]
+        public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
         /// The name of the instance group manager. Must be 1-63

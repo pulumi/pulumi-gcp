@@ -159,6 +159,23 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     * 
+     */
+    @Import(name="snapshotType")
+    private @Nullable Output<String> snapshotType;
+
+    /**
+     * @return Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     * 
+     */
+    public Optional<Output<String>> snapshotType() {
+        return Optional.ofNullable(this.snapshotType);
+    }
+
+    /**
      * A reference to the disk used to create this snapshot.
      * 
      */
@@ -233,6 +250,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.snapshotEncryptionKey = $.snapshotEncryptionKey;
+        this.snapshotType = $.snapshotType;
         this.sourceDisk = $.sourceDisk;
         this.sourceDiskEncryptionKey = $.sourceDiskEncryptionKey;
         this.storageLocations = $.storageLocations;
@@ -429,6 +447,29 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder snapshotEncryptionKey(SnapshotSnapshotEncryptionKeyArgs snapshotEncryptionKey) {
             return snapshotEncryptionKey(Output.of(snapshotEncryptionKey));
+        }
+
+        /**
+         * @param snapshotType Indicates the type of the snapshot.
+         * Possible values are: `ARCHIVE`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotType(@Nullable Output<String> snapshotType) {
+            $.snapshotType = snapshotType;
+            return this;
+        }
+
+        /**
+         * @param snapshotType Indicates the type of the snapshot.
+         * Possible values are: `ARCHIVE`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotType(String snapshotType) {
+            return snapshotType(Output.of(snapshotType));
         }
 
         /**

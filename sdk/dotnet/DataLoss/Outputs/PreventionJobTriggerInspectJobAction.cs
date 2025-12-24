@@ -28,7 +28,10 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionPubSub? PubSub;
         /// <summary>
+        /// (Optional, Deprecated)
         /// Publish findings of a DlpJob to Data Catalog.
+        /// 
+        /// &gt; **Warning:** `PublishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `PublishFindingsToDataplexCatalog` instead.
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? PublishFindingsToCloudDataCatalog;
         /// <summary>

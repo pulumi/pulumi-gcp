@@ -143,6 +143,12 @@ __all__ = [
     'HttpRouteRuleMatchHeaderRangeMatchArgsDict',
     'HttpRouteRuleMatchQueryParameterArgs',
     'HttpRouteRuleMatchQueryParameterArgsDict',
+    'LbEdgeExtensionExtensionChainArgs',
+    'LbEdgeExtensionExtensionChainArgsDict',
+    'LbEdgeExtensionExtensionChainExtensionArgs',
+    'LbEdgeExtensionExtensionChainExtensionArgsDict',
+    'LbEdgeExtensionExtensionChainMatchConditionArgs',
+    'LbEdgeExtensionExtensionChainMatchConditionArgsDict',
     'LbRouteExtensionExtensionChainArgs',
     'LbRouteExtensionExtensionChainArgsDict',
     'LbRouteExtensionExtensionChainExtensionArgs',
@@ -155,8 +161,30 @@ __all__ = [
     'LbTrafficExtensionExtensionChainExtensionArgsDict',
     'LbTrafficExtensionExtensionChainMatchConditionArgs',
     'LbTrafficExtensionExtensionChainMatchConditionArgsDict',
+    'MulticastConsumerAssociationStateArgs',
+    'MulticastConsumerAssociationStateArgsDict',
+    'MulticastDomainActivationTrafficSpecArgs',
+    'MulticastDomainActivationTrafficSpecArgsDict',
     'MulticastDomainConnectionConfigArgs',
     'MulticastDomainConnectionConfigArgsDict',
+    'MulticastDomainGroupStateArgs',
+    'MulticastDomainGroupStateArgsDict',
+    'MulticastGroupConsumerActivationLogConfigArgs',
+    'MulticastGroupConsumerActivationLogConfigArgsDict',
+    'MulticastGroupConsumerActivationStateArgs',
+    'MulticastGroupConsumerActivationStateArgsDict',
+    'MulticastGroupProducerActivationStateArgs',
+    'MulticastGroupProducerActivationStateArgsDict',
+    'MulticastGroupRangeActivationLogConfigArgs',
+    'MulticastGroupRangeActivationLogConfigArgsDict',
+    'MulticastGroupRangeActivationStateArgs',
+    'MulticastGroupRangeActivationStateArgsDict',
+    'MulticastGroupRangeLogConfigArgs',
+    'MulticastGroupRangeLogConfigArgsDict',
+    'MulticastGroupRangeStateArgs',
+    'MulticastGroupRangeStateArgsDict',
+    'MulticastProducerAssociationStateArgs',
+    'MulticastProducerAssociationStateArgsDict',
     'ServiceLbPoliciesAutoCapacityDrainArgs',
     'ServiceLbPoliciesAutoCapacityDrainArgsDict',
     'ServiceLbPoliciesFailoverConfigArgs',
@@ -5862,6 +5890,273 @@ class HttpRouteRuleMatchQueryParameterArgs:
 
 
 if not MYPY:
+    class LbEdgeExtensionExtensionChainArgsDict(TypedDict):
+        extensions: pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainExtensionArgsDict']]]
+        """
+        A set of extensions to execute for the matching request.
+        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        Structure is documented below.
+        """
+        match_condition: pulumi.Input['LbEdgeExtensionExtensionChainMatchConditionArgsDict']
+        """
+        Conditions under which this chain is invoked for a request.
+        Structure is documented below.
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        The name for this extension chain. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last character must be a letter or a number.
+        """
+elif False:
+    LbEdgeExtensionExtensionChainArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LbEdgeExtensionExtensionChainArgs:
+    def __init__(__self__, *,
+                 extensions: pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainExtensionArgs']]],
+                 match_condition: pulumi.Input['LbEdgeExtensionExtensionChainMatchConditionArgs'],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainExtensionArgs']]] extensions: A set of extensions to execute for the matching request.
+               At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+               LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+               Structure is documented below.
+        :param pulumi.Input['LbEdgeExtensionExtensionChainMatchConditionArgs'] match_condition: Conditions under which this chain is invoked for a request.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] name: The name for this extension chain. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last character must be a letter or a number.
+        """
+        pulumi.set(__self__, "extensions", extensions)
+        pulumi.set(__self__, "match_condition", match_condition)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def extensions(self) -> pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainExtensionArgs']]]:
+        """
+        A set of extensions to execute for the matching request.
+        At least one extension is required. Up to 3 extensions can be defined for each extension chain for
+        LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: pulumi.Input[Sequence[pulumi.Input['LbEdgeExtensionExtensionChainExtensionArgs']]]):
+        pulumi.set(self, "extensions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchCondition")
+    def match_condition(self) -> pulumi.Input['LbEdgeExtensionExtensionChainMatchConditionArgs']:
+        """
+        Conditions under which this chain is invoked for a request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match_condition")
+
+    @match_condition.setter
+    def match_condition(self, value: pulumi.Input['LbEdgeExtensionExtensionChainMatchConditionArgs']):
+        pulumi.set(self, "match_condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name for this extension chain. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last character must be a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class LbEdgeExtensionExtensionChainExtensionArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        The name for this extension. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last a letter or a number.
+        """
+        service: pulumi.Input[_builtins.str]
+        """
+        The reference to the service that runs the extension.
+        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+        """
+        fail_open: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Determines how the proxy behaves if the call to the extension fails or times out.
+        When set to TRUE, request or response processing continues without error.
+        Any subsequent extensions in the extension chain are also executed.
+        When set to FALSE: * If response headers have not been delivered to the downstream client,
+        a generic 500 error is returned to the client. The error response can be tailored by
+        configuring a custom error response in the load balancer.
+        """
+        forward_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of the HTTP headers to forward to the extension (from the client or backend).
+        If omitted, all headers are sent. Each element is a string indicating the header name.
+        """
+        supported_events: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A set of events during request or response processing for which this extension is called.
+        This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+        """
+elif False:
+    LbEdgeExtensionExtensionChainExtensionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LbEdgeExtensionExtensionChainExtensionArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 service: pulumi.Input[_builtins.str],
+                 fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
+                 forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 supported_events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name for this extension. The name is logged as part of the HTTP request logs.
+               The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+               and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+               and the last a letter or a number.
+        :param pulumi.Input[_builtins.str] service: The reference to the service that runs the extension.
+               * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+               * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+        :param pulumi.Input[_builtins.bool] fail_open: Determines how the proxy behaves if the call to the extension fails or times out.
+               When set to TRUE, request or response processing continues without error.
+               Any subsequent extensions in the extension chain are also executed.
+               When set to FALSE: * If response headers have not been delivered to the downstream client,
+               a generic 500 error is returned to the client. The error response can be tailored by
+               configuring a custom error response in the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
+               If omitted, all headers are sent. Each element is a string indicating the header name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_events: A set of events during request or response processing for which this extension is called.
+               This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "service", service)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
+        if forward_headers is not None:
+            pulumi.set(__self__, "forward_headers", forward_headers)
+        if supported_events is not None:
+            pulumi.set(__self__, "supported_events", supported_events)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name for this extension. The name is logged as part of the HTTP request logs.
+        The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
+        and can have a maximum length of 63 characters. Additionally, the first character must be a letter
+        and the last a letter or a number.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[_builtins.str]:
+        """
+        The reference to the service that runs the extension.
+        * To configure a callout extension, service must be a fully-qualified reference to a backend service.
+        * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Determines how the proxy behaves if the call to the extension fails or times out.
+        When set to TRUE, request or response processing continues without error.
+        Any subsequent extensions in the extension chain are also executed.
+        When set to FALSE: * If response headers have not been delivered to the downstream client,
+        a generic 500 error is returned to the client. The error response can be tailored by
+        configuring a custom error response in the load balancer.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @fail_open.setter
+    def fail_open(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "fail_open", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardHeaders")
+    def forward_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of the HTTP headers to forward to the extension (from the client or backend).
+        If omitted, all headers are sent. Each element is a string indicating the header name.
+        """
+        return pulumi.get(self, "forward_headers")
+
+    @forward_headers.setter
+    def forward_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "forward_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="supportedEvents")
+    def supported_events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of events during request or response processing for which this extension is called.
+        This field is required for the LbEdgeExtension resource and only supports the value `REQUEST_HEADERS`.
+        """
+        return pulumi.get(self, "supported_events")
+
+    @supported_events.setter
+    def supported_events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "supported_events", value)
+
+
+if not MYPY:
+    class LbEdgeExtensionExtensionChainMatchConditionArgsDict(TypedDict):
+        cel_expression: pulumi.Input[_builtins.str]
+        """
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+elif False:
+    LbEdgeExtensionExtensionChainMatchConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LbEdgeExtensionExtensionChainMatchConditionArgs:
+    def __init__(__self__, *,
+                 cel_expression: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] cel_expression: A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        pulumi.set(__self__, "cel_expression", cel_expression)
+
+    @_builtins.property
+    @pulumi.getter(name="celExpression")
+    def cel_expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
+        """
+        return pulumi.get(self, "cel_expression")
+
+    @cel_expression.setter
+    def cel_expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cel_expression", value)
+
+
+if not MYPY:
     class LbRouteExtensionExtensionChainArgsDict(TypedDict):
         extensions: pulumi.Input[Sequence[pulumi.Input['LbRouteExtensionExtensionChainExtensionArgsDict']]]
         """
@@ -6494,6 +6789,192 @@ class LbTrafficExtensionExtensionChainMatchConditionArgs:
 
 
 if not MYPY:
+    class MulticastConsumerAssociationStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastConsumerAssociationStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastConsumerAssociationStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class MulticastDomainActivationTrafficSpecArgsDict(TypedDict):
+        aggr_egress_pps: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Aggregated egress Packet-Per-Second for all multicast groups in the domain
+        in this zone.
+        """
+        aggr_ingress_pps: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+        in this zone. Default to (aggregated_egress_pps /
+        max_per_group_subscribers) * 2.
+        """
+        avg_packet_size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Average packet size (Default to 512 bytes).
+        """
+        max_per_group_ingress_pps: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Maximum ingress Packet-Per-Second for a single multicast group in this
+        zone. Default to aggregated_ingress_pps / 2.
+        """
+        max_per_group_subscribers: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Maximum number of subscribers for a single multicast group in this zone.
+        Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
+        """
+elif False:
+    MulticastDomainActivationTrafficSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastDomainActivationTrafficSpecArgs:
+    def __init__(__self__, *,
+                 aggr_egress_pps: Optional[pulumi.Input[_builtins.str]] = None,
+                 aggr_ingress_pps: Optional[pulumi.Input[_builtins.str]] = None,
+                 avg_packet_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_per_group_ingress_pps: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_per_group_subscribers: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] aggr_egress_pps: Aggregated egress Packet-Per-Second for all multicast groups in the domain
+               in this zone.
+        :param pulumi.Input[_builtins.str] aggr_ingress_pps: Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+               in this zone. Default to (aggregated_egress_pps /
+               max_per_group_subscribers) * 2.
+        :param pulumi.Input[_builtins.int] avg_packet_size: Average packet size (Default to 512 bytes).
+        :param pulumi.Input[_builtins.str] max_per_group_ingress_pps: Maximum ingress Packet-Per-Second for a single multicast group in this
+               zone. Default to aggregated_ingress_pps / 2.
+        :param pulumi.Input[_builtins.str] max_per_group_subscribers: Maximum number of subscribers for a single multicast group in this zone.
+               Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
+        """
+        if aggr_egress_pps is not None:
+            pulumi.set(__self__, "aggr_egress_pps", aggr_egress_pps)
+        if aggr_ingress_pps is not None:
+            pulumi.set(__self__, "aggr_ingress_pps", aggr_ingress_pps)
+        if avg_packet_size is not None:
+            pulumi.set(__self__, "avg_packet_size", avg_packet_size)
+        if max_per_group_ingress_pps is not None:
+            pulumi.set(__self__, "max_per_group_ingress_pps", max_per_group_ingress_pps)
+        if max_per_group_subscribers is not None:
+            pulumi.set(__self__, "max_per_group_subscribers", max_per_group_subscribers)
+
+    @_builtins.property
+    @pulumi.getter(name="aggrEgressPps")
+    def aggr_egress_pps(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Aggregated egress Packet-Per-Second for all multicast groups in the domain
+        in this zone.
+        """
+        return pulumi.get(self, "aggr_egress_pps")
+
+    @aggr_egress_pps.setter
+    def aggr_egress_pps(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "aggr_egress_pps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aggrIngressPps")
+    def aggr_ingress_pps(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Aggregated ingress Packet-Per-Second for all multicast groups in the domain
+        in this zone. Default to (aggregated_egress_pps /
+        max_per_group_subscribers) * 2.
+        """
+        return pulumi.get(self, "aggr_ingress_pps")
+
+    @aggr_ingress_pps.setter
+    def aggr_ingress_pps(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "aggr_ingress_pps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="avgPacketSize")
+    def avg_packet_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Average packet size (Default to 512 bytes).
+        """
+        return pulumi.get(self, "avg_packet_size")
+
+    @avg_packet_size.setter
+    def avg_packet_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "avg_packet_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxPerGroupIngressPps")
+    def max_per_group_ingress_pps(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Maximum ingress Packet-Per-Second for a single multicast group in this
+        zone. Default to aggregated_ingress_pps / 2.
+        """
+        return pulumi.get(self, "max_per_group_ingress_pps")
+
+    @max_per_group_ingress_pps.setter
+    def max_per_group_ingress_pps(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "max_per_group_ingress_pps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxPerGroupSubscribers")
+    def max_per_group_subscribers(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Maximum number of subscribers for a single multicast group in this zone.
+        Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
+        """
+        return pulumi.get(self, "max_per_group_subscribers")
+
+    @max_per_group_subscribers.setter
+    def max_per_group_subscribers(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "max_per_group_subscribers", value)
+
+
+if not MYPY:
     class MulticastDomainConnectionConfigArgsDict(TypedDict):
         connection_type: pulumi.Input[_builtins.str]
         """
@@ -6560,6 +7041,456 @@ class MulticastDomainConnectionConfigArgs:
     @ncc_hub.setter
     def ncc_hub(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ncc_hub", value)
+
+
+if not MYPY:
+    class MulticastDomainGroupStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastDomainGroupStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastDomainGroupStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class MulticastGroupConsumerActivationLogConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable logging or not.
+        """
+elif False:
+    MulticastGroupConsumerActivationLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastGroupConsumerActivationLogConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable logging or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable logging or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class MulticastGroupConsumerActivationStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastGroupConsumerActivationStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastGroupConsumerActivationStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class MulticastGroupProducerActivationStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastGroupProducerActivationStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastGroupProducerActivationStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class MulticastGroupRangeActivationLogConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable logging or not.
+        """
+elif False:
+    MulticastGroupRangeActivationLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastGroupRangeActivationLogConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable logging or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable logging or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class MulticastGroupRangeActivationStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastGroupRangeActivationStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastGroupRangeActivationStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class MulticastGroupRangeLogConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable logging or not.
+        """
+elif False:
+    MulticastGroupRangeLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastGroupRangeLogConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable logging or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable logging or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class MulticastGroupRangeStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastGroupRangeStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastGroupRangeStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class MulticastProducerAssociationStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastProducerAssociationStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastProducerAssociationStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:

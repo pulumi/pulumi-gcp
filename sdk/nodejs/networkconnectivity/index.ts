@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GatewayAdvertisedRouteArgs, GatewayAdvertisedRouteState } from "./gatewayAdvertisedRoute";
+export type GatewayAdvertisedRoute = import("./gatewayAdvertisedRoute").GatewayAdvertisedRoute;
+export const GatewayAdvertisedRoute: typeof import("./gatewayAdvertisedRoute").GatewayAdvertisedRoute = null as any;
+utilities.lazyLoad(exports, ["GatewayAdvertisedRoute"], () => require("./gatewayAdvertisedRoute"));
+
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
@@ -45,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute":
+                return new GatewayAdvertisedRoute(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/hub:Hub":
@@ -64,6 +71,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/gatewayAdvertisedRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/group", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hub", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/internalRange", _module)

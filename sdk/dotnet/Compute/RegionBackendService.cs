@@ -1061,6 +1061,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
+        /// Configures traffic steering properties of internal passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("networkPassThroughLbTrafficPolicy")]
+        public Output<Outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy?> NetworkPassThroughLbTrafficPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
         /// This field is applicable only when the `LoadBalancingScheme` is set
         /// to INTERNAL_MANAGED and the `Protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -1452,6 +1459,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// Configures traffic steering properties of internal passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkPassThroughLbTrafficPolicy")]
+        public Input<Inputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs>? NetworkPassThroughLbTrafficPolicy { get; set; }
+
+        /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
         /// This field is applicable only when the `LoadBalancingScheme` is set
         /// to INTERNAL_MANAGED and the `Protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
@@ -1816,6 +1830,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Configures traffic steering properties of internal passthrough Network Load Balancers.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkPassThroughLbTrafficPolicy")]
+        public Input<Inputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicyGetArgs>? NetworkPassThroughLbTrafficPolicy { get; set; }
 
         /// <summary>
         /// Settings controlling eviction of unhealthy hosts from the load balancing pool.

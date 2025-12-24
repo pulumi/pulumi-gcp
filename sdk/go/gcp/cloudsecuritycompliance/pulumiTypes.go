@@ -25,6 +25,9 @@ type CloudControlParameterSpec struct {
 	IsRequired bool `pulumi:"isRequired"`
 	// The name of the parameter.
 	Name string `pulumi:"name"`
+	// The parameter spec of the cloud control.
+	// Structure is documented below.
+	SubParameters []CloudControlParameterSpecSubParameter `pulumi:"subParameters"`
 	// List of parameter substitutions.
 	// Structure is documented below.
 	SubstitutionRules []CloudControlParameterSpecSubstitutionRule `pulumi:"substitutionRules"`
@@ -64,6 +67,9 @@ type CloudControlParameterSpecArgs struct {
 	IsRequired pulumi.BoolInput `pulumi:"isRequired"`
 	// The name of the parameter.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The parameter spec of the cloud control.
+	// Structure is documented below.
+	SubParameters CloudControlParameterSpecSubParameterArrayInput `pulumi:"subParameters"`
 	// List of parameter substitutions.
 	// Structure is documented below.
 	SubstitutionRules CloudControlParameterSpecSubstitutionRuleArrayInput `pulumi:"substitutionRules"`
@@ -157,6 +163,12 @@ func (o CloudControlParameterSpecOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudControlParameterSpec) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The parameter spec of the cloud control.
+// Structure is documented below.
+func (o CloudControlParameterSpecOutput) SubParameters() CloudControlParameterSpecSubParameterArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpec) []CloudControlParameterSpecSubParameter { return v.SubParameters }).(CloudControlParameterSpecSubParameterArrayOutput)
+}
+
 // List of parameter substitutions.
 // Structure is documented below.
 func (o CloudControlParameterSpecOutput) SubstitutionRules() CloudControlParameterSpecSubstitutionRuleArrayOutput {
@@ -207,6 +219,9 @@ type CloudControlParameterSpecDefaultValue struct {
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue *CloudControlParameterSpecDefaultValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecDefaultValueStringListValue `pulumi:"stringListValue"`
@@ -230,6 +245,9 @@ type CloudControlParameterSpecDefaultValueArgs struct {
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue CloudControlParameterSpecDefaultValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecDefaultValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -324,6 +342,14 @@ func (o CloudControlParameterSpecDefaultValueOutput) NumberValue() pulumi.Float6
 	return o.ApplyT(func(v CloudControlParameterSpecDefaultValue) *float64 { return v.NumberValue }).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecDefaultValueOutput) OneofValue() CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValue) *CloudControlParameterSpecDefaultValueOneofValue {
+		return v.OneofValue
+	}).(CloudControlParameterSpecDefaultValueOneofValuePtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecDefaultValueOutput) StringListValue() CloudControlParameterSpecDefaultValueStringListValuePtrOutput {
@@ -381,6 +407,17 @@ func (o CloudControlParameterSpecDefaultValuePtrOutput) NumberValue() pulumi.Flo
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecDefaultValuePtrOutput) OneofValue() CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValue) *CloudControlParameterSpecDefaultValueOneofValue {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(CloudControlParameterSpecDefaultValueOneofValuePtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecDefaultValuePtrOutput) StringListValue() CloudControlParameterSpecDefaultValueStringListValuePtrOutput {
@@ -400,6 +437,507 @@ func (o CloudControlParameterSpecDefaultValuePtrOutput) StringValue() pulumi.Str
 		}
 		return v.StringValue
 	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValue struct {
+	// The name of the parameter.
+	Name *string `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue *CloudControlParameterSpecDefaultValueOneofValueParameterValue `pulumi:"parameterValue"`
+}
+
+// CloudControlParameterSpecDefaultValueOneofValueInput is an input type that accepts CloudControlParameterSpecDefaultValueOneofValueArgs and CloudControlParameterSpecDefaultValueOneofValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecDefaultValueOneofValueInput` via:
+//
+//	CloudControlParameterSpecDefaultValueOneofValueArgs{...}
+type CloudControlParameterSpecDefaultValueOneofValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecDefaultValueOneofValueOutput() CloudControlParameterSpecDefaultValueOneofValueOutput
+	ToCloudControlParameterSpecDefaultValueOneofValueOutputWithContext(context.Context) CloudControlParameterSpecDefaultValueOneofValueOutput
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueArgs struct {
+	// The name of the parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrInput `pulumi:"parameterValue"`
+}
+
+func (CloudControlParameterSpecDefaultValueOneofValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueOutput() CloudControlParameterSpecDefaultValueOneofValueOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueOutput)
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueArgs) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueArgs) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueOutput).ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecDefaultValueOneofValuePtrInput is an input type that accepts CloudControlParameterSpecDefaultValueOneofValueArgs, CloudControlParameterSpecDefaultValueOneofValuePtr and CloudControlParameterSpecDefaultValueOneofValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecDefaultValueOneofValuePtrInput` via:
+//
+//	        CloudControlParameterSpecDefaultValueOneofValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecDefaultValueOneofValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecDefaultValueOneofValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValuePtrOutput
+	ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(context.Context) CloudControlParameterSpecDefaultValueOneofValuePtrOutput
+}
+
+type cloudControlParameterSpecDefaultValueOneofValuePtrType CloudControlParameterSpecDefaultValueOneofValueArgs
+
+func CloudControlParameterSpecDefaultValueOneofValuePtr(v *CloudControlParameterSpecDefaultValueOneofValueArgs) CloudControlParameterSpecDefaultValueOneofValuePtrInput {
+	return (*cloudControlParameterSpecDefaultValueOneofValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecDefaultValueOneofValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecDefaultValueOneofValuePtrType) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecDefaultValueOneofValuePtrType) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValuePtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecDefaultValueOneofValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueOutput() CloudControlParameterSpecDefaultValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueOutput) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return o.ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueOutput) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecDefaultValueOneofValue) *CloudControlParameterSpecDefaultValueOneofValue {
+		return &v
+	}).(CloudControlParameterSpecDefaultValueOneofValuePtrOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecDefaultValueOneofValueOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValue) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecDefaultValueOneofValueOutput) ParameterValue() CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValue {
+		return v.ParameterValue
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecDefaultValueOneofValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValuePtrOutput) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValuePtrOutput) ToCloudControlParameterSpecDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValuePtrOutput) Elem() CloudControlParameterSpecDefaultValueOneofValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValue) CloudControlParameterSpecDefaultValueOneofValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecDefaultValueOneofValue
+		return ret
+	}).(CloudControlParameterSpecDefaultValueOneofValueOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecDefaultValueOneofValuePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecDefaultValueOneofValuePtrOutput) ParameterValue() CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValue {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValue
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// CloudControlParameterSpecDefaultValueOneofValueParameterValueInput is an input type that accepts CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs and CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecDefaultValueOneofValueParameterValueInput` via:
+//
+//	CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs{...}
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValueOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValueOutputWithContext(context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValueParameterValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput)
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput).ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrInput is an input type that accepts CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs, CloudControlParameterSpecDefaultValueOneofValueParameterValuePtr and CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrInput` via:
+//
+//	        CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput
+}
+
+type cloudControlParameterSpecDefaultValueOneofValueParameterValuePtrType CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs
+
+func CloudControlParameterSpecDefaultValueOneofValueParameterValuePtr(v *CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs) CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrInput {
+	return (*cloudControlParameterSpecDefaultValueOneofValueParameterValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecDefaultValueOneofValueParameterValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecDefaultValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecDefaultValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecDefaultValueOneofValueParameterValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValue {
+		return &v
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValue) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValue) *float64 { return v.NumberValue }).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue {
+		return v.StringListValue
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValue) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) Elem() CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValue) CloudControlParameterSpecDefaultValueOneofValueParameterValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecDefaultValueOneofValueParameterValue
+		return ret
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) StringListValue() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue {
+		if v == nil {
+			return nil
+		}
+		return v.StringListValue
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueInput is an input type that accepts CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs and CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueInput` via:
+//
+//	CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs{...}
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutputWithContext(context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput)
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput).ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrInput is an input type that accepts CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs, CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtr and CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrInput` via:
+//
+//	        CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput
+	ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput
+}
+
+type cloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrType CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs
+
+func CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtr(v *CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrInput {
+	return (*cloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue) *CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue {
+		return &v
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput) Elem() CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue) CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue
+		return ret
+	}).(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type CloudControlParameterSpecDefaultValueStringListValue struct {
@@ -537,6 +1075,2890 @@ func (o CloudControlParameterSpecDefaultValueStringListValuePtrOutput) Values() 
 		}
 		return v.Values
 	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameter struct {
+	// Possible parameter value types.
+	// Structure is documented below.
+	DefaultValue *CloudControlParameterSpecSubParameterDefaultValue `pulumi:"defaultValue"`
+	// The description of the parameter. The maximum length is 2000 characters.
+	Description *string `pulumi:"description"`
+	// The display name of the parameter. The maximum length is 200 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// if the parameter is required
+	IsRequired bool `pulumi:"isRequired"`
+	// The name of the parameter.
+	Name string `pulumi:"name"`
+	// List of parameter substitutions.
+	// Structure is documented below.
+	SubstitutionRules []CloudControlParameterSpecSubParameterSubstitutionRule `pulumi:"substitutionRules"`
+	// Validation of the parameter.
+	// Structure is documented below.
+	Validation *CloudControlParameterSpecSubParameterValidation `pulumi:"validation"`
+	// Parameter value type.
+	// Possible values:
+	// STRING
+	// BOOLEAN
+	// STRINGLIST
+	// NUMBER
+	// ONEOF
+	ValueType string `pulumi:"valueType"`
+}
+
+// CloudControlParameterSpecSubParameterInput is an input type that accepts CloudControlParameterSpecSubParameterArgs and CloudControlParameterSpecSubParameterOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterInput` via:
+//
+//	CloudControlParameterSpecSubParameterArgs{...}
+type CloudControlParameterSpecSubParameterInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterOutput() CloudControlParameterSpecSubParameterOutput
+	ToCloudControlParameterSpecSubParameterOutputWithContext(context.Context) CloudControlParameterSpecSubParameterOutput
+}
+
+type CloudControlParameterSpecSubParameterArgs struct {
+	// Possible parameter value types.
+	// Structure is documented below.
+	DefaultValue CloudControlParameterSpecSubParameterDefaultValuePtrInput `pulumi:"defaultValue"`
+	// The description of the parameter. The maximum length is 2000 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The display name of the parameter. The maximum length is 200 characters.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// if the parameter is required
+	IsRequired pulumi.BoolInput `pulumi:"isRequired"`
+	// The name of the parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of parameter substitutions.
+	// Structure is documented below.
+	SubstitutionRules CloudControlParameterSpecSubParameterSubstitutionRuleArrayInput `pulumi:"substitutionRules"`
+	// Validation of the parameter.
+	// Structure is documented below.
+	Validation CloudControlParameterSpecSubParameterValidationPtrInput `pulumi:"validation"`
+	// Parameter value type.
+	// Possible values:
+	// STRING
+	// BOOLEAN
+	// STRINGLIST
+	// NUMBER
+	// ONEOF
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (CloudControlParameterSpecSubParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameter)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterArgs) ToCloudControlParameterSpecSubParameterOutput() CloudControlParameterSpecSubParameterOutput {
+	return i.ToCloudControlParameterSpecSubParameterOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterArgs) ToCloudControlParameterSpecSubParameterOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterOutput)
+}
+
+// CloudControlParameterSpecSubParameterArrayInput is an input type that accepts CloudControlParameterSpecSubParameterArray and CloudControlParameterSpecSubParameterArrayOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterArrayInput` via:
+//
+//	CloudControlParameterSpecSubParameterArray{ CloudControlParameterSpecSubParameterArgs{...} }
+type CloudControlParameterSpecSubParameterArrayInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterArrayOutput() CloudControlParameterSpecSubParameterArrayOutput
+	ToCloudControlParameterSpecSubParameterArrayOutputWithContext(context.Context) CloudControlParameterSpecSubParameterArrayOutput
+}
+
+type CloudControlParameterSpecSubParameterArray []CloudControlParameterSpecSubParameterInput
+
+func (CloudControlParameterSpecSubParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudControlParameterSpecSubParameter)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterArray) ToCloudControlParameterSpecSubParameterArrayOutput() CloudControlParameterSpecSubParameterArrayOutput {
+	return i.ToCloudControlParameterSpecSubParameterArrayOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterArray) ToCloudControlParameterSpecSubParameterArrayOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameter)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterOutput) ToCloudControlParameterSpecSubParameterOutput() CloudControlParameterSpecSubParameterOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterOutput) ToCloudControlParameterSpecSubParameterOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterOutput {
+	return o
+}
+
+// Possible parameter value types.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterOutput) DefaultValue() CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) *CloudControlParameterSpecSubParameterDefaultValue {
+		return v.DefaultValue
+	}).(CloudControlParameterSpecSubParameterDefaultValuePtrOutput)
+}
+
+// The description of the parameter. The maximum length is 2000 characters.
+func (o CloudControlParameterSpecSubParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the parameter. The maximum length is 200 characters.
+func (o CloudControlParameterSpecSubParameterOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// if the parameter is required
+func (o CloudControlParameterSpecSubParameterOutput) IsRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) bool { return v.IsRequired }).(pulumi.BoolOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecSubParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of parameter substitutions.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterOutput) SubstitutionRules() CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) []CloudControlParameterSpecSubParameterSubstitutionRule {
+		return v.SubstitutionRules
+	}).(CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput)
+}
+
+// Validation of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterOutput) Validation() CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) *CloudControlParameterSpecSubParameterValidation {
+		return v.Validation
+	}).(CloudControlParameterSpecSubParameterValidationPtrOutput)
+}
+
+// Parameter value type.
+// Possible values:
+// STRING
+// BOOLEAN
+// STRINGLIST
+// NUMBER
+// ONEOF
+func (o CloudControlParameterSpecSubParameterOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameter) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type CloudControlParameterSpecSubParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudControlParameterSpecSubParameter)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterArrayOutput) ToCloudControlParameterSpecSubParameterArrayOutput() CloudControlParameterSpecSubParameterArrayOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterArrayOutput) ToCloudControlParameterSpecSubParameterArrayOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterArrayOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterArrayOutput) Index(i pulumi.IntInput) CloudControlParameterSpecSubParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudControlParameterSpecSubParameter {
+		return vs[0].([]CloudControlParameterSpecSubParameter)[vs[1].(int)]
+	}).(CloudControlParameterSpecSubParameterOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue *CloudControlParameterSpecSubParameterDefaultValueOneofValue `pulumi:"oneofValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *CloudControlParameterSpecSubParameterDefaultValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueArgs and CloudControlParameterSpecSubParameterDefaultValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterDefaultValueArgs{...}
+type CloudControlParameterSpecSubParameterDefaultValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueOutput() CloudControlParameterSpecSubParameterDefaultValueOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueOutput
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrInput `pulumi:"oneofValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (CloudControlParameterSpecSubParameterDefaultValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOutput() CloudControlParameterSpecSubParameterDefaultValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueArgs) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueArgs) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOutput).ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterDefaultValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueArgs, CloudControlParameterSpecSubParameterDefaultValuePtr and CloudControlParameterSpecSubParameterDefaultValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterDefaultValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterDefaultValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValuePtrOutput
+	ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterDefaultValuePtrType CloudControlParameterSpecSubParameterDefaultValueArgs
+
+func CloudControlParameterSpecSubParameterDefaultValuePtr(v *CloudControlParameterSpecSubParameterDefaultValueArgs) CloudControlParameterSpecSubParameterDefaultValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterDefaultValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterDefaultValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOutput() CloudControlParameterSpecSubParameterDefaultValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterDefaultValue) *CloudControlParameterSpecSubParameterDefaultValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterDefaultValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValue) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValue) *float64 { return v.NumberValue }).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) OneofValue() CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValue {
+		return v.OneofValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) StringListValue() CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValue) *CloudControlParameterSpecSubParameterDefaultValueStringListValue {
+		return v.StringListValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValue) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) Elem() CloudControlParameterSpecSubParameterDefaultValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValue) CloudControlParameterSpecSubParameterDefaultValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterDefaultValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterDefaultValueOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) OneofValue() CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValue {
+		if v == nil {
+			return nil
+		}
+		return v.OneofValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) StringListValue() CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValue) *CloudControlParameterSpecSubParameterDefaultValueStringListValue {
+		if v == nil {
+			return nil
+		}
+		return v.StringListValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecSubParameterDefaultValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValue struct {
+	// The name of the parameter.
+	Name *string `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue `pulumi:"parameterValue"`
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueOneofValueInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs and CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueOneofValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs{...}
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs struct {
+	// The name of the parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrInput `pulumi:"parameterValue"`
+}
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput).ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs, CloudControlParameterSpecSubParameterDefaultValueOneofValuePtr and CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterDefaultValueOneofValuePtrType CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs
+
+func CloudControlParameterSpecSubParameterDefaultValueOneofValuePtr(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs) CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterDefaultValueOneofValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterDefaultValueOneofValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueOneofValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueOneofValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterDefaultValueOneofValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValue) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput) ParameterValue() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue {
+		return v.ParameterValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput) Elem() CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValue) CloudControlParameterSpecSubParameterDefaultValueOneofValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterDefaultValueOneofValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput) ParameterValue() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs and CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs{...}
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput).ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs, CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtr and CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrType CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs
+
+func CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtr(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *bool {
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *float64 {
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue {
+		return v.StringListValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) Elem() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) StringListValue() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue {
+		if v == nil {
+			return nil
+		}
+		return v.StringListValue
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs and CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs{...}
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput).ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs, CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtr and CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrType CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs
+
+func CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtr(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue) *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput) Elem() CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue) CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueStringListValueInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs and CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueStringListValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs{...}
+type CloudControlParameterSpecSubParameterDefaultValueStringListValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueStringListValueOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueStringListValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueStringListValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueStringListValueOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput).ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs, CloudControlParameterSpecSubParameterDefaultValueStringListValuePtr and CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput
+	ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterDefaultValueStringListValuePtrType CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs
+
+func CloudControlParameterSpecSubParameterDefaultValueStringListValuePtr(v *CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs) CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterDefaultValueStringListValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterDefaultValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueStringListValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterDefaultValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueStringListValueOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterDefaultValueStringListValue) *CloudControlParameterSpecSubParameterDefaultValueStringListValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterDefaultValueStringListValue) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterDefaultValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput) Elem() CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueStringListValue) CloudControlParameterSpecSubParameterDefaultValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterDefaultValueStringListValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterDefaultValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRule struct {
+	// Attribute at the given path is substituted entirely.
+	// Structure is documented below.
+	AttributeSubstitutionRule *CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule `pulumi:"attributeSubstitutionRule"`
+	// Placeholder is substituted in the rendered string.
+	// Structure is documented below.
+	PlaceholderSubstitutionRule *CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule `pulumi:"placeholderSubstitutionRule"`
+}
+
+// CloudControlParameterSpecSubParameterSubstitutionRuleInput is an input type that accepts CloudControlParameterSpecSubParameterSubstitutionRuleArgs and CloudControlParameterSpecSubParameterSubstitutionRuleOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterSubstitutionRuleInput` via:
+//
+//	CloudControlParameterSpecSubParameterSubstitutionRuleArgs{...}
+type CloudControlParameterSpecSubParameterSubstitutionRuleInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRuleOutput
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleOutputWithContext(context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleOutput
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleArgs struct {
+	// Attribute at the given path is substituted entirely.
+	// Structure is documented below.
+	AttributeSubstitutionRule CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrInput `pulumi:"attributeSubstitutionRule"`
+	// Placeholder is substituted in the rendered string.
+	// Structure is documented below.
+	PlaceholderSubstitutionRule CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrInput `pulumi:"placeholderSubstitutionRule"`
+}
+
+func (CloudControlParameterSpecSubParameterSubstitutionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRule)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRuleOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRuleOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRuleOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRuleOutput)
+}
+
+// CloudControlParameterSpecSubParameterSubstitutionRuleArrayInput is an input type that accepts CloudControlParameterSpecSubParameterSubstitutionRuleArray and CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterSubstitutionRuleArrayInput` via:
+//
+//	CloudControlParameterSpecSubParameterSubstitutionRuleArray{ CloudControlParameterSpecSubParameterSubstitutionRuleArgs{...} }
+type CloudControlParameterSpecSubParameterSubstitutionRuleArrayInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput() CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleArrayOutputWithContext(context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleArray []CloudControlParameterSpecSubParameterSubstitutionRuleInput
+
+func (CloudControlParameterSpecSubParameterSubstitutionRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudControlParameterSpecSubParameterSubstitutionRule)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleArray) ToCloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput() CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleArray) ToCloudControlParameterSpecSubParameterSubstitutionRuleArrayOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterSubstitutionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRule)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRuleOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleOutput {
+	return o
+}
+
+// Attribute at the given path is substituted entirely.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleOutput) AttributeSubstitutionRule() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubstitutionRule) *CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule {
+		return v.AttributeSubstitutionRule
+	}).(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput)
+}
+
+// Placeholder is substituted in the rendered string.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleOutput) PlaceholderSubstitutionRule() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubstitutionRule) *CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule {
+		return v.PlaceholderSubstitutionRule
+	}).(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudControlParameterSpecSubParameterSubstitutionRule)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput() CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleArrayOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput) Index(i pulumi.IntInput) CloudControlParameterSpecSubParameterSubstitutionRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudControlParameterSpecSubParameterSubstitutionRule {
+		return vs[0].([]CloudControlParameterSpecSubParameterSubstitutionRule)[vs[1].(int)]
+	}).(CloudControlParameterSpecSubParameterSubstitutionRuleOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule struct {
+	// Fully qualified proto attribute path (in dot notation).
+	// Example: rules[0].cel_expression.resource_types_values
+	Attribute *string `pulumi:"attribute"`
+}
+
+// CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleInput is an input type that accepts CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs and CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleInput` via:
+//
+//	CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs{...}
+type CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutputWithContext(context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs struct {
+	// Fully qualified proto attribute path (in dot notation).
+	// Example: rules[0].cel_expression.resource_types_values
+	Attribute pulumi.StringPtrInput `pulumi:"attribute"`
+}
+
+func (CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput).ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrInput is an input type that accepts CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs, CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtr and CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput
+	ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrType CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs
+
+func CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtr(v *CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrInput {
+	return (*cloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrType) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrType) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule) *CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule {
+		return &v
+	}).(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput)
+}
+
+// Fully qualified proto attribute path (in dot notation).
+// Example: rules[0].cel_expression.resource_types_values
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput) Attribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule) *string {
+		return v.Attribute
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput) ToCloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput) Elem() CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule) CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule
+		return ret
+	}).(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput)
+}
+
+// Fully qualified proto attribute path (in dot notation).
+// Example: rules[0].cel_expression.resource_types_values
+func (o CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput) Attribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Attribute
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule struct {
+	// Fully qualified proto attribute path (e.g., dot notation)
+	Attribute *string `pulumi:"attribute"`
+}
+
+// CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleInput is an input type that accepts CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs and CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleInput` via:
+//
+//	CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs{...}
+type CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput
+	ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutputWithContext(context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs struct {
+	// Fully qualified proto attribute path (e.g., dot notation)
+	Attribute pulumi.StringPtrInput `pulumi:"attribute"`
+}
+
+func (CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput).ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrInput is an input type that accepts CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs, CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtr and CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput
+	ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrType CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs
+
+func CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtr(v *CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrInput {
+	return (*cloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrType) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrType) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule) *CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule {
+		return &v
+	}).(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput)
+}
+
+// Fully qualified proto attribute path (e.g., dot notation)
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput) Attribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule) *string {
+		return v.Attribute
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput) ToCloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput) Elem() CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule) CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule
+		return ret
+	}).(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput)
+}
+
+// Fully qualified proto attribute path (e.g., dot notation)
+func (o CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput) Attribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Attribute
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidation struct {
+	// Allowed set of values for the parameter.
+	// Structure is documented below.
+	AllowedValues *CloudControlParameterSpecSubParameterValidationAllowedValues `pulumi:"allowedValues"`
+	// Number range for number parameters.
+	// Structure is documented below.
+	IntRange *CloudControlParameterSpecSubParameterValidationIntRange `pulumi:"intRange"`
+	// Regular Expression Validator for parameter values.
+	// Structure is documented below.
+	RegexpPattern *CloudControlParameterSpecSubParameterValidationRegexpPattern `pulumi:"regexpPattern"`
+}
+
+// CloudControlParameterSpecSubParameterValidationInput is an input type that accepts CloudControlParameterSpecSubParameterValidationArgs and CloudControlParameterSpecSubParameterValidationOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationArgs{...}
+type CloudControlParameterSpecSubParameterValidationInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationOutput() CloudControlParameterSpecSubParameterValidationOutput
+	ToCloudControlParameterSpecSubParameterValidationOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationArgs struct {
+	// Allowed set of values for the parameter.
+	// Structure is documented below.
+	AllowedValues CloudControlParameterSpecSubParameterValidationAllowedValuesPtrInput `pulumi:"allowedValues"`
+	// Number range for number parameters.
+	// Structure is documented below.
+	IntRange CloudControlParameterSpecSubParameterValidationIntRangePtrInput `pulumi:"intRange"`
+	// Regular Expression Validator for parameter values.
+	// Structure is documented below.
+	RegexpPattern CloudControlParameterSpecSubParameterValidationRegexpPatternPtrInput `pulumi:"regexpPattern"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidation)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationArgs) ToCloudControlParameterSpecSubParameterValidationOutput() CloudControlParameterSpecSubParameterValidationOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationArgs) ToCloudControlParameterSpecSubParameterValidationOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationArgs) ToCloudControlParameterSpecSubParameterValidationPtrOutput() CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationArgs) ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationOutput).ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationPtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationArgs, CloudControlParameterSpecSubParameterValidationPtr and CloudControlParameterSpecSubParameterValidationPtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationPtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationPtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationPtrOutput() CloudControlParameterSpecSubParameterValidationPtrOutput
+	ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationPtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationPtrType CloudControlParameterSpecSubParameterValidationArgs
+
+func CloudControlParameterSpecSubParameterValidationPtr(v *CloudControlParameterSpecSubParameterValidationArgs) CloudControlParameterSpecSubParameterValidationPtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationPtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidation)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationPtrType) ToCloudControlParameterSpecSubParameterValidationPtrOutput() CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationPtrType) ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidation)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationOutput) ToCloudControlParameterSpecSubParameterValidationOutput() CloudControlParameterSpecSubParameterValidationOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationOutput) ToCloudControlParameterSpecSubParameterValidationOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationOutput) ToCloudControlParameterSpecSubParameterValidationPtrOutput() CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationOutput) ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidation) *CloudControlParameterSpecSubParameterValidation {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationPtrOutput)
+}
+
+// Allowed set of values for the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationOutput) AllowedValues() CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidation) *CloudControlParameterSpecSubParameterValidationAllowedValues {
+		return v.AllowedValues
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput)
+}
+
+// Number range for number parameters.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationOutput) IntRange() CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidation) *CloudControlParameterSpecSubParameterValidationIntRange {
+		return v.IntRange
+	}).(CloudControlParameterSpecSubParameterValidationIntRangePtrOutput)
+}
+
+// Regular Expression Validator for parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationOutput) RegexpPattern() CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidation) *CloudControlParameterSpecSubParameterValidationRegexpPattern {
+		return v.RegexpPattern
+	}).(CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidation)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationPtrOutput) ToCloudControlParameterSpecSubParameterValidationPtrOutput() CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationPtrOutput) ToCloudControlParameterSpecSubParameterValidationPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationPtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationPtrOutput) Elem() CloudControlParameterSpecSubParameterValidationOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidation) CloudControlParameterSpecSubParameterValidation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidation
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationOutput)
+}
+
+// Allowed set of values for the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationPtrOutput) AllowedValues() CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidation) *CloudControlParameterSpecSubParameterValidationAllowedValues {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedValues
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput)
+}
+
+// Number range for number parameters.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationPtrOutput) IntRange() CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidation) *CloudControlParameterSpecSubParameterValidationIntRange {
+		if v == nil {
+			return nil
+		}
+		return v.IntRange
+	}).(CloudControlParameterSpecSubParameterValidationIntRangePtrOutput)
+}
+
+// Regular Expression Validator for parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationPtrOutput) RegexpPattern() CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidation) *CloudControlParameterSpecSubParameterValidationRegexpPattern {
+		if v == nil {
+			return nil
+		}
+		return v.RegexpPattern
+	}).(CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValues struct {
+	// List of allowed values for the parameter.
+	// Structure is documented below.
+	Values []CloudControlParameterSpecSubParameterValidationAllowedValuesValue `pulumi:"values"`
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesArgs and CloudControlParameterSpecSubParameterValidationAllowedValuesOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationAllowedValuesArgs{...}
+type CloudControlParameterSpecSubParameterValidationAllowedValuesInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesArgs struct {
+	// List of allowed values for the parameter.
+	// Structure is documented below.
+	Values CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayInput `pulumi:"values"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValues)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesOutput).ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesPtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesArgs, CloudControlParameterSpecSubParameterValidationAllowedValuesPtr and CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesPtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationAllowedValuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationAllowedValuesPtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationAllowedValuesPtrType CloudControlParameterSpecSubParameterValidationAllowedValuesArgs
+
+func CloudControlParameterSpecSubParameterValidationAllowedValuesPtr(v *CloudControlParameterSpecSubParameterValidationAllowedValuesArgs) CloudControlParameterSpecSubParameterValidationAllowedValuesPtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationAllowedValuesPtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationAllowedValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValues)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesPtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesPtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValues)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidationAllowedValues) *CloudControlParameterSpecSubParameterValidationAllowedValues {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput)
+}
+
+// List of allowed values for the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesOutput) Values() CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValues) []CloudControlParameterSpecSubParameterValidationAllowedValuesValue {
+		return v.Values
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValues)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput) Elem() CloudControlParameterSpecSubParameterValidationAllowedValuesOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValues) CloudControlParameterSpecSubParameterValidationAllowedValues {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidationAllowedValues
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesOutput)
+}
+
+// List of allowed values for the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput) Values() CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValues) []CloudControlParameterSpecSubParameterValidationAllowedValuesValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue `pulumi:"oneofValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs and CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs{...}
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrInput `pulumi:"oneofValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput)
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueArray and CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationAllowedValuesValueArray{ CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs{...} }
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueArray []CloudControlParameterSpecSubParameterValidationAllowedValuesValueInput
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudControlParameterSpecSubParameterValidationAllowedValuesValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueArray) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueArray) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput {
+	return o
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValue) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValue) *float64 {
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Sub-parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) OneofValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue {
+		return v.OneofValue
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) StringListValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue {
+		return v.StringListValue
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudControlParameterSpecSubParameterValidationAllowedValuesValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput) Index(i pulumi.IntInput) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudControlParameterSpecSubParameterValidationAllowedValuesValue {
+		return vs[0].([]CloudControlParameterSpecSubParameterValidationAllowedValuesValue)[vs[1].(int)]
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue struct {
+	// The name of the parameter.
+	Name *string `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue `pulumi:"parameterValue"`
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs and CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs{...}
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs struct {
+	// The name of the parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrInput `pulumi:"parameterValue"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput).ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs, CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtr and CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrType CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs
+
+func CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtr(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput) ParameterValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue {
+		return v.ParameterValue
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput) Elem() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput) ParameterValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValue
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs and CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs{...}
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput).ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs, CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtr and CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrType CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs
+
+func CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtr(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *bool {
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *float64 {
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		return v.StringListValue
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) Elem() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) StringListValue() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		if v == nil {
+			return nil
+		}
+		return v.StringListValue
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs and CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{...}
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput).ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs, CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtr and CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs
+
+func CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtr(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) Elem() CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue) CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs and CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs{...}
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput).ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs, CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtr and CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput
+	ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrType CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs
+
+func CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtr(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrType) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue) *CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput) ToCloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput) Elem() CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue) CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationIntRange struct {
+	// Maximum allowed value for the numeric parameter (inclusive).
+	Max string `pulumi:"max"`
+	// Minimum allowed value for the numeric parameter (inclusive).
+	Min string `pulumi:"min"`
+}
+
+// CloudControlParameterSpecSubParameterValidationIntRangeInput is an input type that accepts CloudControlParameterSpecSubParameterValidationIntRangeArgs and CloudControlParameterSpecSubParameterValidationIntRangeOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationIntRangeInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationIntRangeArgs{...}
+type CloudControlParameterSpecSubParameterValidationIntRangeInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationIntRangeOutput() CloudControlParameterSpecSubParameterValidationIntRangeOutput
+	ToCloudControlParameterSpecSubParameterValidationIntRangeOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationIntRangeOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationIntRangeArgs struct {
+	// Maximum allowed value for the numeric parameter (inclusive).
+	Max pulumi.StringInput `pulumi:"max"`
+	// Minimum allowed value for the numeric parameter (inclusive).
+	Min pulumi.StringInput `pulumi:"min"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationIntRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationIntRange)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationIntRangeArgs) ToCloudControlParameterSpecSubParameterValidationIntRangeOutput() CloudControlParameterSpecSubParameterValidationIntRangeOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationIntRangeOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationIntRangeArgs) ToCloudControlParameterSpecSubParameterValidationIntRangeOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationIntRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationIntRangeOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationIntRangeArgs) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutput() CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationIntRangeArgs) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationIntRangeOutput).ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationIntRangePtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationIntRangeArgs, CloudControlParameterSpecSubParameterValidationIntRangePtr and CloudControlParameterSpecSubParameterValidationIntRangePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationIntRangePtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationIntRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationIntRangePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutput() CloudControlParameterSpecSubParameterValidationIntRangePtrOutput
+	ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationIntRangePtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationIntRangePtrType CloudControlParameterSpecSubParameterValidationIntRangeArgs
+
+func CloudControlParameterSpecSubParameterValidationIntRangePtr(v *CloudControlParameterSpecSubParameterValidationIntRangeArgs) CloudControlParameterSpecSubParameterValidationIntRangePtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationIntRangePtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationIntRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationIntRange)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationIntRangePtrType) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutput() CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationIntRangePtrType) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationIntRangePtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationIntRangeOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationIntRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationIntRange)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationIntRangeOutput) ToCloudControlParameterSpecSubParameterValidationIntRangeOutput() CloudControlParameterSpecSubParameterValidationIntRangeOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationIntRangeOutput) ToCloudControlParameterSpecSubParameterValidationIntRangeOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationIntRangeOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationIntRangeOutput) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutput() CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationIntRangeOutput) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidationIntRange) *CloudControlParameterSpecSubParameterValidationIntRange {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationIntRangePtrOutput)
+}
+
+// Maximum allowed value for the numeric parameter (inclusive).
+func (o CloudControlParameterSpecSubParameterValidationIntRangeOutput) Max() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationIntRange) string { return v.Max }).(pulumi.StringOutput)
+}
+
+// Minimum allowed value for the numeric parameter (inclusive).
+func (o CloudControlParameterSpecSubParameterValidationIntRangeOutput) Min() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationIntRange) string { return v.Min }).(pulumi.StringOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationIntRangePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationIntRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationIntRange)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationIntRangePtrOutput) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutput() CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationIntRangePtrOutput) ToCloudControlParameterSpecSubParameterValidationIntRangePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationIntRangePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationIntRangePtrOutput) Elem() CloudControlParameterSpecSubParameterValidationIntRangeOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationIntRange) CloudControlParameterSpecSubParameterValidationIntRange {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidationIntRange
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationIntRangeOutput)
+}
+
+// Maximum allowed value for the numeric parameter (inclusive).
+func (o CloudControlParameterSpecSubParameterValidationIntRangePtrOutput) Max() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationIntRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minimum allowed value for the numeric parameter (inclusive).
+func (o CloudControlParameterSpecSubParameterValidationIntRangePtrOutput) Min() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationIntRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationRegexpPattern struct {
+	// Regex Pattern to match the value(s) of parameter.
+	Pattern string `pulumi:"pattern"`
+}
+
+// CloudControlParameterSpecSubParameterValidationRegexpPatternInput is an input type that accepts CloudControlParameterSpecSubParameterValidationRegexpPatternArgs and CloudControlParameterSpecSubParameterValidationRegexpPatternOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationRegexpPatternInput` via:
+//
+//	CloudControlParameterSpecSubParameterValidationRegexpPatternArgs{...}
+type CloudControlParameterSpecSubParameterValidationRegexpPatternInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationRegexpPatternOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternOutput
+	ToCloudControlParameterSpecSubParameterValidationRegexpPatternOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternOutput
+}
+
+type CloudControlParameterSpecSubParameterValidationRegexpPatternArgs struct {
+	// Regex Pattern to match the value(s) of parameter.
+	Pattern pulumi.StringInput `pulumi:"pattern"`
+}
+
+func (CloudControlParameterSpecSubParameterValidationRegexpPatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationRegexpPattern)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecSubParameterValidationRegexpPatternArgs) ToCloudControlParameterSpecSubParameterValidationRegexpPatternOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationRegexpPatternOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationRegexpPatternArgs) ToCloudControlParameterSpecSubParameterValidationRegexpPatternOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationRegexpPatternOutput)
+}
+
+func (i CloudControlParameterSpecSubParameterValidationRegexpPatternArgs) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecSubParameterValidationRegexpPatternArgs) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationRegexpPatternOutput).ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecSubParameterValidationRegexpPatternPtrInput is an input type that accepts CloudControlParameterSpecSubParameterValidationRegexpPatternArgs, CloudControlParameterSpecSubParameterValidationRegexpPatternPtr and CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecSubParameterValidationRegexpPatternPtrInput` via:
+//
+//	        CloudControlParameterSpecSubParameterValidationRegexpPatternArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecSubParameterValidationRegexpPatternPtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput
+	ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput
+}
+
+type cloudControlParameterSpecSubParameterValidationRegexpPatternPtrType CloudControlParameterSpecSubParameterValidationRegexpPatternArgs
+
+func CloudControlParameterSpecSubParameterValidationRegexpPatternPtr(v *CloudControlParameterSpecSubParameterValidationRegexpPatternArgs) CloudControlParameterSpecSubParameterValidationRegexpPatternPtrInput {
+	return (*cloudControlParameterSpecSubParameterValidationRegexpPatternPtrType)(v)
+}
+
+func (*cloudControlParameterSpecSubParameterValidationRegexpPatternPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationRegexpPattern)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationRegexpPatternPtrType) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return i.ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecSubParameterValidationRegexpPatternPtrType) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationRegexpPatternOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationRegexpPatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationRegexpPattern)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternOutput) ToCloudControlParameterSpecSubParameterValidationRegexpPatternOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternOutput) ToCloudControlParameterSpecSubParameterValidationRegexpPatternOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternOutput) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return o.ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternOutput) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecSubParameterValidationRegexpPattern) *CloudControlParameterSpecSubParameterValidationRegexpPattern {
+		return &v
+	}).(CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput)
+}
+
+// Regex Pattern to match the value(s) of parameter.
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecSubParameterValidationRegexpPattern) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+type CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecSubParameterValidationRegexpPattern)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput() CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput) ToCloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutputWithContext(ctx context.Context) CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput) Elem() CloudControlParameterSpecSubParameterValidationRegexpPatternOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationRegexpPattern) CloudControlParameterSpecSubParameterValidationRegexpPattern {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecSubParameterValidationRegexpPattern
+		return ret
+	}).(CloudControlParameterSpecSubParameterValidationRegexpPatternOutput)
+}
+
+// Regex Pattern to match the value(s) of parameter.
+func (o CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecSubParameterValidationRegexpPattern) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Pattern
+	}).(pulumi.StringPtrOutput)
 }
 
 type CloudControlParameterSpecSubstitutionRule struct {
@@ -1276,6 +4698,9 @@ type CloudControlParameterSpecValidationAllowedValuesValue struct {
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue *CloudControlParameterSpecValidationAllowedValuesValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *CloudControlParameterSpecValidationAllowedValuesValueStringListValue `pulumi:"stringListValue"`
@@ -1299,6 +4724,9 @@ type CloudControlParameterSpecValidationAllowedValuesValueArgs struct {
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue CloudControlParameterSpecValidationAllowedValuesValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -1367,6 +4795,14 @@ func (o CloudControlParameterSpecValidationAllowedValuesValueOutput) NumberValue
 	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValue) *float64 { return v.NumberValue }).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values.
+// Structure is documented below.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOutput) OneofValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValue {
+		return v.OneofValue
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o CloudControlParameterSpecValidationAllowedValuesValueOutput) StringListValue() CloudControlParameterSpecValidationAllowedValuesValueStringListValuePtrOutput {
@@ -1398,6 +4834,513 @@ func (o CloudControlParameterSpecValidationAllowedValuesValueArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudControlParameterSpecValidationAllowedValuesValue {
 		return vs[0].([]CloudControlParameterSpecValidationAllowedValuesValue)[vs[1].(int)]
 	}).(CloudControlParameterSpecValidationAllowedValuesValueOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValue struct {
+	// The name of the parameter.
+	Name *string `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue `pulumi:"parameterValue"`
+}
+
+// CloudControlParameterSpecValidationAllowedValuesValueOneofValueInput is an input type that accepts CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs and CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecValidationAllowedValuesValueOneofValueInput` via:
+//
+//	CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs{...}
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueOutputWithContext(context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs struct {
+	// The name of the parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrInput `pulumi:"parameterValue"`
+}
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput)
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput).ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrInput is an input type that accepts CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs, CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtr and CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrInput` via:
+//
+//	        CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput
+}
+
+type cloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrType CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs
+
+func CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtr(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs) CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrInput {
+	return (*cloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrType) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrType) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return o.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecValidationAllowedValuesValueOneofValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValue {
+		return &v
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValue) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput) ParameterValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue {
+		return v.ParameterValue
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecValidationAllowedValuesValueOneofValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput) Elem() CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValue) CloudControlParameterSpecValidationAllowedValuesValueOneofValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecValidationAllowedValuesValueOneofValue
+		return ret
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput)
+}
+
+// The name of the parameter.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput) ParameterValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValue
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueInput is an input type that accepts CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs and CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueInput` via:
+//
+//	CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs{...}
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput)
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput).ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrInput is an input type that accepts CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs, CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtr and CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrInput` via:
+//
+//	        CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput
+}
+
+type cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrType CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs
+
+func CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtr(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrInput {
+	return (*cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrType) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue {
+		return &v
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *bool {
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *float64 {
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) StringListValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		return v.StringListValue
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) Elem() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue
+		return ret
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput)
+}
+
+// Represents a boolean value.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) StringListValue() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		if v == nil {
+			return nil
+		}
+		return v.StringListValue
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueInput is an input type that accepts CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs and CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueInput` via:
+//
+//	CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{...}
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput)
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput).ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput is an input type that accepts CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs, CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtr and CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput` via:
+//
+//	        CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput
+	ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput
+}
+
+type cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs
+
+func CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtr(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput {
+	return (*cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType)(v)
+}
+
+func (*cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i *cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrType) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue) *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		return &v
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) ToCloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) Elem() CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue) CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue
+		return ret
+	}).(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type CloudControlParameterSpecValidationAllowedValuesValueStringListValue struct {
@@ -2497,6 +6440,9 @@ type FrameworkCloudControlDetailParameterParameterValue struct {
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue *FrameworkCloudControlDetailParameterParameterValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *FrameworkCloudControlDetailParameterParameterValueStringListValue `pulumi:"stringListValue"`
@@ -2520,6 +6466,9 @@ type FrameworkCloudControlDetailParameterParameterValueArgs struct {
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue FrameworkCloudControlDetailParameterParameterValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue FrameworkCloudControlDetailParameterParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -2563,6 +6512,14 @@ func (o FrameworkCloudControlDetailParameterParameterValueOutput) NumberValue() 
 	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValue) *float64 { return v.NumberValue }).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values.
+// Structure is documented below.
+func (o FrameworkCloudControlDetailParameterParameterValueOutput) OneofValue() FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValue) *FrameworkCloudControlDetailParameterParameterValueOneofValue {
+		return v.OneofValue
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o FrameworkCloudControlDetailParameterParameterValueOutput) StringListValue() FrameworkCloudControlDetailParameterParameterValueStringListValuePtrOutput {
@@ -2574,6 +6531,513 @@ func (o FrameworkCloudControlDetailParameterParameterValueOutput) StringListValu
 // Represents a string value.
 func (o FrameworkCloudControlDetailParameterParameterValueOutput) StringValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValue) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValue struct {
+	// The name of the parameter.
+	Name *string `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue `pulumi:"parameterValue"`
+}
+
+// FrameworkCloudControlDetailParameterParameterValueOneofValueInput is an input type that accepts FrameworkCloudControlDetailParameterParameterValueOneofValueArgs and FrameworkCloudControlDetailParameterParameterValueOneofValueOutput values.
+// You can construct a concrete instance of `FrameworkCloudControlDetailParameterParameterValueOneofValueInput` via:
+//
+//	FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{...}
+type FrameworkCloudControlDetailParameterParameterValueOneofValueInput interface {
+	pulumi.Input
+
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueOutput
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueOutputWithContext(context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueOutput
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueArgs struct {
+	// The name of the parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrInput `pulumi:"parameterValue"`
+}
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValueOutputWithContext(context.Background())
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueOutput)
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueOutput).ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(ctx)
+}
+
+// FrameworkCloudControlDetailParameterParameterValueOneofValuePtrInput is an input type that accepts FrameworkCloudControlDetailParameterParameterValueOneofValueArgs, FrameworkCloudControlDetailParameterParameterValueOneofValuePtr and FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput values.
+// You can construct a concrete instance of `FrameworkCloudControlDetailParameterParameterValueOneofValuePtrInput` via:
+//
+//	        FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type FrameworkCloudControlDetailParameterParameterValueOneofValuePtrInput interface {
+	pulumi.Input
+
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput
+}
+
+type frameworkCloudControlDetailParameterParameterValueOneofValuePtrType FrameworkCloudControlDetailParameterParameterValueOneofValueArgs
+
+func FrameworkCloudControlDetailParameterParameterValueOneofValuePtr(v *FrameworkCloudControlDetailParameterParameterValueOneofValueArgs) FrameworkCloudControlDetailParameterParameterValueOneofValuePtrInput {
+	return (*frameworkCloudControlDetailParameterParameterValueOneofValuePtrType)(v)
+}
+
+func (*frameworkCloudControlDetailParameterParameterValueOneofValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkCloudControlDetailParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (i *frameworkCloudControlDetailParameterParameterValueOneofValuePtrType) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i *frameworkCloudControlDetailParameterParameterValueOneofValuePtrType) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueOutput struct{ *pulumi.OutputState }
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return o.ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrameworkCloudControlDetailParameterParameterValueOneofValue) *FrameworkCloudControlDetailParameterParameterValueOneofValue {
+		return &v
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput)
+}
+
+// The name of the parameter.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValueOneofValue) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueOutput) ParameterValue() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValueOneofValue) *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue {
+		return v.ParameterValue
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput struct{ *pulumi.OutputState }
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkCloudControlDetailParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput) Elem() FrameworkCloudControlDetailParameterParameterValueOneofValueOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValue) FrameworkCloudControlDetailParameterParameterValueOneofValue {
+		if v != nil {
+			return *v
+		}
+		var ret FrameworkCloudControlDetailParameterParameterValueOneofValue
+		return ret
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueOutput)
+}
+
+// The name of the parameter.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput) ParameterValue() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValue) *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValue
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueInput is an input type that accepts FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs and FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput values.
+// You can construct a concrete instance of `FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueInput` via:
+//
+//	FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{...}
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueInput interface {
+	pulumi.Input
+
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutputWithContext(context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutputWithContext(context.Background())
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput)
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput).ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx)
+}
+
+// FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrInput is an input type that accepts FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs, FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtr and FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput values.
+// You can construct a concrete instance of `FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrInput` via:
+//
+//	        FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrInput interface {
+	pulumi.Input
+
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput
+}
+
+type frameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrType FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs
+
+func FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtr(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrInput {
+	return (*frameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrType)(v)
+}
+
+func (*frameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i *frameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrType) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i *frameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrType) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput struct{ *pulumi.OutputState }
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue {
+		return &v
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *bool {
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *float64 {
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) StringListValue() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue {
+		return v.StringListValue
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput struct{ *pulumi.OutputState }
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) Elem() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue {
+		if v != nil {
+			return *v
+		}
+		var ret FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
+		return ret
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput)
+}
+
+// Represents a boolean value.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) StringListValue() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue {
+		if v == nil {
+			return nil
+		}
+		return v.StringListValue
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueInput is an input type that accepts FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs and FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput values.
+// You can construct a concrete instance of `FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueInput` via:
+//
+//	FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{...}
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueInput interface {
+	pulumi.Input
+
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput)
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput).ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrInput is an input type that accepts FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs, FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtr and FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrInput` via:
+//
+//	        FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput
+	ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput
+}
+
+type frameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrType FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs
+
+func FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtr(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrInput {
+	return (*frameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrType)(v)
+}
+
+func (*frameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i *frameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrType) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *frameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrType) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue) *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue {
+		return &v
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) ToFrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) Elem() FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue) FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue
+		return ret
+	}).(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type FrameworkCloudControlDetailParameterParameterValueStringListValue struct {
@@ -3142,6 +7606,9 @@ type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamete
 	BoolValue *bool `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue *float64 `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValue `pulumi:"stringListValue"`
@@ -3165,6 +7632,9 @@ type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamete
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
 	// Represents a double value.
 	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// Sub-parameter values.
+	// Structure is documented below.
+	OneofValue FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrInput `pulumi:"oneofValue"`
 	// A list of strings.
 	// Structure is documented below.
 	StringListValue FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
@@ -3212,6 +7682,14 @@ func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParam
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Sub-parameter values.
+// Structure is documented below.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOutput) OneofValue() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue {
+		return v.OneofValue
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput)
+}
+
 // A list of strings.
 // Structure is documented below.
 func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOutput) StringListValue() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValuePtrOutput {
@@ -3225,6 +7703,515 @@ func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParam
 	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue) *string {
 		return v.StringValue
 	}).(pulumi.StringPtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue struct {
+	// The name of the parameter.
+	Name *string `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue `pulumi:"parameterValue"`
+}
+
+// FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueInput is an input type that accepts FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs and FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput values.
+// You can construct a concrete instance of `FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueInput` via:
+//
+//	FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{...}
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueInput interface {
+	pulumi.Input
+
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutputWithContext(context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs struct {
+	// The name of the parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the parameter.
+	// Structure is documented below.
+	ParameterValue FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrInput `pulumi:"parameterValue"`
+}
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutputWithContext(context.Background())
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput)
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput).ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(ctx)
+}
+
+// FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrInput is an input type that accepts FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs, FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtr and FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput values.
+// You can construct a concrete instance of `FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrInput` via:
+//
+//	        FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrInput interface {
+	pulumi.Input
+
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput
+}
+
+type frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrType FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs
+
+func FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtr(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrInput {
+	return (*frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrType)(v)
+}
+
+func (*frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (i *frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrType) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (i *frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrType) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput struct{ *pulumi.OutputState }
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return o.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(context.Background())
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue {
+		return &v
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput)
+}
+
+// The name of the parameter.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput) ParameterValue() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue {
+		return v.ParameterValue
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput struct{ *pulumi.OutputState }
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue)(nil)).Elem()
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput) Elem() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue {
+		if v != nil {
+			return *v
+		}
+		var ret FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue
+		return ret
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput)
+}
+
+// The name of the parameter.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+// Structure is documented below.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput) ParameterValue() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterValue
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue struct {
+	// Represents a boolean value.
+	BoolValue *bool `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue *float64 `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue *string `pulumi:"stringValue"`
+}
+
+// FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueInput is an input type that accepts FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs and FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput values.
+// You can construct a concrete instance of `FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueInput` via:
+//
+//	FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{...}
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueInput interface {
+	pulumi.Input
+
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutputWithContext(context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs struct {
+	// Represents a boolean value.
+	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
+	// Represents a double value.
+	NumberValue pulumi.Float64PtrInput `pulumi:"numberValue"`
+	// A list of strings.
+	// Structure is documented below.
+	StringListValue FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrInput `pulumi:"stringListValue"`
+	// Represents a string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+}
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutputWithContext(context.Background())
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput)
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput).ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx)
+}
+
+// FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrInput is an input type that accepts FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs, FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtr and FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput values.
+// You can construct a concrete instance of `FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrInput` via:
+//
+//	        FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrInput interface {
+	pulumi.Input
+
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput
+}
+
+type frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrType FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs
+
+func FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtr(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrInput {
+	return (*frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrType)(v)
+}
+
+func (*frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (i *frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrType) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (i *frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrType) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput struct{ *pulumi.OutputState }
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(context.Background())
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue {
+		return &v
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput)
+}
+
+// Represents a boolean value.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *bool {
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *float64 {
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) StringListValue() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue {
+		return v.StringListValue
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *string {
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput struct{ *pulumi.OutputState }
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue)(nil)).Elem()
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) Elem() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue {
+		if v != nil {
+			return *v
+		}
+		var ret FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue
+		return ret
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput)
+}
+
+// Represents a boolean value.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) BoolValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BoolValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a double value.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) NumberValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.NumberValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A list of strings.
+// Structure is documented below.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) StringListValue() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue {
+		if v == nil {
+			return nil
+		}
+		return v.StringListValue
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// Represents a string value.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StringValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue struct {
+	// The strings in the list.
+	Values []string `pulumi:"values"`
+}
+
+// FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueInput is an input type that accepts FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs and FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput values.
+// You can construct a concrete instance of `FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueInput` via:
+//
+//	FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs{...}
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueInput interface {
+	pulumi.Input
+
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs struct {
+	// The strings in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(context.Background())
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput)
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput).ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx)
+}
+
+// FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrInput is an input type that accepts FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs, FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtr and FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput values.
+// You can construct a concrete instance of `FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrInput` via:
+//
+//	        FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrInput interface {
+	pulumi.Input
+
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput
+	ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput
+}
+
+type frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrType FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs
+
+func FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtr(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrInput {
+	return (*frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrType)(v)
+}
+
+func (*frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (i *frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrType) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return i.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (i *frameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrType) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput struct{ *pulumi.OutputState }
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(context.Background())
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue) *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue {
+		return &v
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput)
+}
+
+// The strings in the list.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput struct{ *pulumi.OutputState }
+
+func (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue)(nil)).Elem()
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) ToFrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutputWithContext(ctx context.Context) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput {
+	return o
+}
+
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) Elem() FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue) FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue {
+		if v != nil {
+			return *v
+		}
+		var ret FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue
+		return ret
+	}).(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput)
+}
+
+// The strings in the list.
+func (o FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValue struct {
@@ -4222,8 +9209,50 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecArrayInput)(nil)).Elem(), CloudControlParameterSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValuePtrInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValuePtrInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValueInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecDefaultValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecDefaultValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterInput)(nil)).Elem(), CloudControlParameterSpecSubParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterArrayInput)(nil)).Elem(), CloudControlParameterSpecSubParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRuleInput)(nil)).Elem(), CloudControlParameterSpecSubParameterSubstitutionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRuleArrayInput)(nil)).Elem(), CloudControlParameterSpecSubParameterSubstitutionRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleInput)(nil)).Elem(), CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleInput)(nil)).Elem(), CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationPtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesPtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationIntRangeInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationIntRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationIntRangePtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationIntRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationRegexpPatternInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationRegexpPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubParameterValidationRegexpPatternPtrInput)(nil)).Elem(), CloudControlParameterSpecSubParameterValidationRegexpPatternArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubstitutionRuleInput)(nil)).Elem(), CloudControlParameterSpecSubstitutionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubstitutionRuleArrayInput)(nil)).Elem(), CloudControlParameterSpecSubstitutionRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleInput)(nil)).Elem(), CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs{})
@@ -4236,6 +9265,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesPtrInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueArrayInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueStringListValueInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationAllowedValuesValueStringListValuePtrInput)(nil)).Elem(), CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudControlParameterSpecValidationIntRangeInput)(nil)).Elem(), CloudControlParameterSpecValidationIntRangeArgs{})
@@ -4253,6 +9288,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterInput)(nil)).Elem(), FrameworkCloudControlDetailParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterArrayInput)(nil)).Elem(), FrameworkCloudControlDetailParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValuePtrInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueStringListValueInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkCloudControlDetailParameterParameterValueStringListValuePtrInput)(nil)).Elem(), FrameworkCloudControlDetailParameterParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlDeploymentReferenceInput)(nil)).Elem(), FrameworkDeploymentCloudControlDeploymentReferenceArgs{})
@@ -4263,6 +9304,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArrayInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValuePtrInput)(nil)).Elem(), FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FrameworkDeploymentFrameworkInput)(nil)).Elem(), FrameworkDeploymentFrameworkArgs{})
@@ -4279,8 +9326,50 @@ func init() {
 	pulumi.RegisterOutputType(CloudControlParameterSpecArrayOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueOneofValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueOneofValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueOneofValueParameterValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueOneofValueParameterValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValuePtrOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueStringListValueOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecDefaultValueStringListValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterArrayOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueOneofValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueOneofValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueStringListValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterDefaultValueStringListValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterSubstitutionRuleOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterSubstitutionRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRulePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRulePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationPtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesPtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueArrayOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationIntRangeOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationIntRangePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationRegexpPatternOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecSubParameterValidationRegexpPatternPtrOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecSubstitutionRuleOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecSubstitutionRuleArrayOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleOutput{})
@@ -4293,6 +9382,12 @@ func init() {
 	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesPtrOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueArrayOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueOneofValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueOneofValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValuePtrOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueOutput{})
+	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValuePtrOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueStringListValueOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecValidationAllowedValuesValueStringListValuePtrOutput{})
 	pulumi.RegisterOutputType(CloudControlParameterSpecValidationIntRangeOutput{})
@@ -4310,6 +9405,12 @@ func init() {
 	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterOutput{})
 	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterArrayOutput{})
 	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueOutput{})
+	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueOneofValueOutput{})
+	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueOneofValuePtrOutput{})
+	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueOutput{})
+	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValuePtrOutput{})
+	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueOutput{})
+	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValuePtrOutput{})
 	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueStringListValueOutput{})
 	pulumi.RegisterOutputType(FrameworkCloudControlDetailParameterParameterValueStringListValuePtrOutput{})
 	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlDeploymentReferenceOutput{})
@@ -4320,6 +9421,12 @@ func init() {
 	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterOutput{})
 	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArrayOutput{})
 	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOutput{})
+	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueOutput{})
+	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValuePtrOutput{})
+	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueOutput{})
+	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValuePtrOutput{})
+	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueOutput{})
+	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValuePtrOutput{})
 	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueOutput{})
 	pulumi.RegisterOutputType(FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValuePtrOutput{})
 	pulumi.RegisterOutputType(FrameworkDeploymentFrameworkOutput{})

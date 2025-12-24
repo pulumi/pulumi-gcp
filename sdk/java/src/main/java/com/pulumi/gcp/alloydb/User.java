@@ -24,6 +24,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `passwordWo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Alloydb User Builtin
@@ -302,6 +305,44 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Password for this database user.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * Password for this database user.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `password` or `passwordWo` can only be set.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
+     * Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWoVersion;
+
+    /**
+     * @return Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Output<Optional<String>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
+    }
+    /**
      * The database role name of the user.
      * 
      */
@@ -372,7 +413,8 @@ public class User extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

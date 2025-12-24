@@ -190,6 +190,89 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dialogflowcx Tool Connector
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent-connector",
+ *     location: "us-central1",
+ *     defaultLanguageCode: "en",
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     deleteChatEngineOnDestroy: true,
+ * });
+ * const bqDataset = new gcp.bigquery.Dataset("bq_dataset", {
+ *     datasetId: "terraformdatasetdfcxtool",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "us-central1",
+ *     deleteContentsOnDestroy: true,
+ * });
+ * const testProject = gcp.organizations.getProject({});
+ * const integrationConnector = new gcp.integrationconnectors.Connection("integration_connector", {
+ *     name: "terraform-df-cx-tool-connection",
+ *     location: "us-central1",
+ *     connectorVersion: pulumi.interpolate`projects/${agent.project}/locations/global/providers/gcp/connectors/bigquery/versions/1`,
+ *     description: "tf created description",
+ *     configVariables: [
+ *         {
+ *             key: "dataset_id",
+ *             stringValue: bqDataset.datasetId,
+ *         },
+ *         {
+ *             key: "project_id",
+ *             stringValue: agent.project,
+ *         },
+ *         {
+ *             key: "support_native_data_type",
+ *             booleanValue: false,
+ *         },
+ *         {
+ *             key: "proxy_enabled",
+ *             booleanValue: false,
+ *         },
+ *     ],
+ *     serviceAccount: testProject.then(testProject => `${testProject.number}-compute@developer.gserviceaccount.com`),
+ *     authConfig: {
+ *         authType: "AUTH_TYPE_UNSPECIFIED",
+ *     },
+ * });
+ * const bqTable = new gcp.bigquery.Table("bq_table", {
+ *     deletionProtection: false,
+ *     datasetId: bqDataset.datasetId,
+ *     tableId: "terraformdatasetdfcxtooltable",
+ * });
+ * const connectorSaDatasetPerms = new gcp.bigquery.DatasetIamMember("connector_sa_dataset_perms", {
+ *     project: testProject.then(testProject => testProject.projectId),
+ *     datasetId: bqDataset.datasetId,
+ *     role: "roles/bigquery.dataEditor",
+ *     member: testProject.then(testProject => `serviceAccount:${testProject.number}-compute@developer.gserviceaccount.com`),
+ * });
+ * const connectorTool = new gcp.diagflow.CxTool("connector_tool", {
+ *     parent: agent.id,
+ *     displayName: "Example Connector Tool",
+ *     description: "Example Description",
+ *     connectorSpec: {
+ *         name: pulumi.interpolate`projects/${agent.project}/locations/us-central1/connections/${integrationConnector.name}`,
+ *         actions: [
+ *             {
+ *                 connectionActionId: "ExecuteCustomQuery",
+ *                 inputFields: ["test1"],
+ *                 outputFields: ["test1"],
+ *             },
+ *             {
+ *                 entityOperation: {
+ *                     entityId: bqTable.tableId,
+ *                     operation: "LIST",
+ *                 },
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -237,6 +320,12 @@ export class CxTool extends pulumi.CustomResource {
         return obj['__pulumiType'] === CxTool.__pulumiType;
     }
 
+    /**
+     * Integration connectors tool specification.
+     * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+     * Structure is documented below.
+     */
+    declare public readonly connectorSpec: pulumi.Output<outputs.diagflow.CxToolConnectorSpec | undefined>;
     /**
      * Data store search tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -291,6 +380,7 @@ export class CxTool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CxToolState | undefined;
+            resourceInputs["connectorSpec"] = state?.connectorSpec;
             resourceInputs["dataStoreSpec"] = state?.dataStoreSpec;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
@@ -307,6 +397,7 @@ export class CxTool extends pulumi.CustomResource {
             if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["connectorSpec"] = args?.connectorSpec;
             resourceInputs["dataStoreSpec"] = args?.dataStoreSpec;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
@@ -325,6 +416,12 @@ export class CxTool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CxTool resources.
  */
 export interface CxToolState {
+    /**
+     * Integration connectors tool specification.
+     * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+     * Structure is documented below.
+     */
+    connectorSpec?: pulumi.Input<inputs.diagflow.CxToolConnectorSpec>;
     /**
      * Data store search tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -371,6 +468,12 @@ export interface CxToolState {
  * The set of arguments for constructing a CxTool resource.
  */
 export interface CxToolArgs {
+    /**
+     * Integration connectors tool specification.
+     * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+     * Structure is documented below.
+     */
+    connectorSpec?: pulumi.Input<inputs.diagflow.CxToolConnectorSpec>;
     /**
      * Data store search tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.

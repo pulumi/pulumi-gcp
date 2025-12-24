@@ -490,6 +490,17 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly rootPassword: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+     *
+     * > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+     */
+    declare public readonly rootPasswordWo: pulumi.Output<string | undefined>;
+    /**
+     * Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     */
+    declare public readonly rootPasswordWoVersion: pulumi.Output<string | undefined>;
+    /**
      * The URI of the created resource.
      */
     declare public /*out*/ readonly selfLink: pulumi.Output<string>;
@@ -546,6 +557,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["replicationCluster"] = state?.replicationCluster;
             resourceInputs["restoreBackupContext"] = state?.restoreBackupContext;
             resourceInputs["rootPassword"] = state?.rootPassword;
+            resourceInputs["rootPasswordWo"] = state?.rootPasswordWo;
+            resourceInputs["rootPasswordWoVersion"] = state?.rootPasswordWoVersion;
             resourceInputs["selfLink"] = state?.selfLink;
             resourceInputs["serverCaCerts"] = state?.serverCaCerts;
             resourceInputs["serviceAccountEmailAddress"] = state?.serviceAccountEmailAddress;
@@ -574,6 +587,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["replicationCluster"] = args?.replicationCluster;
             resourceInputs["restoreBackupContext"] = args?.restoreBackupContext;
             resourceInputs["rootPassword"] = args?.rootPassword ? pulumi.secret(args.rootPassword) : undefined;
+            resourceInputs["rootPasswordWo"] = args?.rootPasswordWo ? pulumi.secret(args.rootPasswordWo) : undefined;
+            resourceInputs["rootPasswordWoVersion"] = args?.rootPasswordWoVersion;
             resourceInputs["settings"] = args?.settings;
             resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
@@ -589,7 +604,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["serviceAccountEmailAddress"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["replicaConfiguration", "rootPassword", "serverCaCerts"] };
+        const secretOpts = { additionalSecretOutputs: ["replicaConfiguration", "rootPassword", "rootPasswordWo", "serverCaCerts"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseInstance.__pulumiType, name, resourceInputs, opts);
     }
@@ -743,6 +758,17 @@ export interface DatabaseInstanceState {
      */
     rootPassword?: pulumi.Input<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+     *
+     * > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+     */
+    rootPasswordWo?: pulumi.Input<string>;
+    /**
+     * Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     */
+    rootPasswordWoVersion?: pulumi.Input<string>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -872,6 +898,17 @@ export interface DatabaseInstanceArgs {
      * Initial root password. Can be updated. Required for MS SQL Server.
      */
     rootPassword?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+     *
+     * > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+     */
+    rootPasswordWo?: pulumi.Input<string>;
+    /**
+     * Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     */
+    rootPasswordWoVersion?: pulumi.Input<string>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below. Required if `clone` is not set.

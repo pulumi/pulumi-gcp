@@ -83,6 +83,7 @@ export interface GetBucketObjectContentResult {
     readonly contentHexsha512: string;
     readonly contentLanguage: string;
     readonly contentType: string;
+    readonly contexts: outputs.storage.GetBucketObjectContentContext[];
     readonly crc32c: string;
     readonly customerEncryptions: outputs.storage.GetBucketObjectContentCustomerEncryption[];
     readonly deletionPolicy: string;

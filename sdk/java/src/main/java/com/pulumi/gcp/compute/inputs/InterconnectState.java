@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.inputs.InterconnectApplicationAwareInterconnectArg
 import com.pulumi.gcp.compute.inputs.InterconnectCircuitInfoArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectExpectedOutageArgs;
 import com.pulumi.gcp.compute.inputs.InterconnectMacsecArgs;
+import com.pulumi.gcp.compute.inputs.InterconnectParamsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -482,6 +483,23 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InterconnectParamsArgs> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InterconnectParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * IP address configured on the customer side of the Interconnect link.
      * The customer should configure this IP address during turnup when prompted by Google NOC.
      * This can be used only for ping tests.
@@ -692,6 +710,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nocContactEmail = $.nocContactEmail;
         this.operationalStatus = $.operationalStatus;
+        this.params = $.params;
         this.peerIpAddress = $.peerIpAddress;
         this.project = $.project;
         this.provisionedLinkCount = $.provisionedLinkCount;
@@ -1378,6 +1397,29 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder operationalStatus(String operationalStatus) {
             return operationalStatus(Output.of(operationalStatus));
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InterconnectParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional params passed with the request, but not persisted as part of resource payload
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InterconnectParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

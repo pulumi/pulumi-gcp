@@ -256,6 +256,129 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// ### Dialogflowcx Tool Connector
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent-connector",
+    ///         Location = "us-central1",
+    ///         DefaultLanguageCode = "en",
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         DeleteChatEngineOnDestroy = true,
+    ///     });
+    /// 
+    ///     var bqDataset = new Gcp.BigQuery.Dataset("bq_dataset", new()
+    ///     {
+    ///         DatasetId = "terraformdatasetdfcxtool",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "us-central1",
+    ///         DeleteContentsOnDestroy = true,
+    ///     });
+    /// 
+    ///     var testProject = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var integrationConnector = new Gcp.IntegrationConnectors.Connection("integration_connector", new()
+    ///     {
+    ///         Name = "terraform-df-cx-tool-connection",
+    ///         Location = "us-central1",
+    ///         ConnectorVersion = agent.Project.Apply(project =&gt; $"projects/{project}/locations/global/providers/gcp/connectors/bigquery/versions/1"),
+    ///         Description = "tf created description",
+    ///         ConfigVariables = new[]
+    ///         {
+    ///             new Gcp.IntegrationConnectors.Inputs.ConnectionConfigVariableArgs
+    ///             {
+    ///                 Key = "dataset_id",
+    ///                 StringValue = bqDataset.DatasetId,
+    ///             },
+    ///             new Gcp.IntegrationConnectors.Inputs.ConnectionConfigVariableArgs
+    ///             {
+    ///                 Key = "project_id",
+    ///                 StringValue = agent.Project,
+    ///             },
+    ///             new Gcp.IntegrationConnectors.Inputs.ConnectionConfigVariableArgs
+    ///             {
+    ///                 Key = "support_native_data_type",
+    ///                 BooleanValue = false,
+    ///             },
+    ///             new Gcp.IntegrationConnectors.Inputs.ConnectionConfigVariableArgs
+    ///             {
+    ///                 Key = "proxy_enabled",
+    ///                 BooleanValue = false,
+    ///             },
+    ///         },
+    ///         ServiceAccount = $"{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///         AuthConfig = new Gcp.IntegrationConnectors.Inputs.ConnectionAuthConfigArgs
+    ///         {
+    ///             AuthType = "AUTH_TYPE_UNSPECIFIED",
+    ///         },
+    ///     });
+    /// 
+    ///     var bqTable = new Gcp.BigQuery.Table("bq_table", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = bqDataset.DatasetId,
+    ///         TableId = "terraformdatasetdfcxtooltable",
+    ///     });
+    /// 
+    ///     var connectorSaDatasetPerms = new Gcp.BigQuery.DatasetIamMember("connector_sa_dataset_perms", new()
+    ///     {
+    ///         Project = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         DatasetId = bqDataset.DatasetId,
+    ///         Role = "roles/bigquery.dataEditor",
+    ///         Member = $"serviceAccount:{testProject.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var connectorTool = new Gcp.Diagflow.CxTool("connector_tool", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "Example Connector Tool",
+    ///         Description = "Example Description",
+    ///         ConnectorSpec = new Gcp.Diagflow.Inputs.CxToolConnectorSpecArgs
+    ///         {
+    ///             Name = Output.Tuple(agent.Project, integrationConnector.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"projects/{project}/locations/us-central1/connections/{name}";
+    ///             }),
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.Diagflow.Inputs.CxToolConnectorSpecActionArgs
+    ///                 {
+    ///                     ConnectionActionId = "ExecuteCustomQuery",
+    ///                     InputFields = new[]
+    ///                     {
+    ///                         "test1",
+    ///                     },
+    ///                     OutputFields = new[]
+    ///                     {
+    ///                         "test1",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxToolConnectorSpecActionArgs
+    ///                 {
+    ///                     EntityOperation = new Gcp.Diagflow.Inputs.CxToolConnectorSpecActionEntityOperationArgs
+    ///                     {
+    ///                         EntityId = bqTable.TableId,
+    ///                         Operation = "LIST",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -278,6 +401,14 @@ namespace Pulumi.Gcp.Diagflow
     [GcpResourceType("gcp:diagflow/cxTool:CxTool")]
     public partial class CxTool : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Integration connectors tool specification.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("connectorSpec")]
+        public Output<Outputs.CxToolConnectorSpec?> ConnectorSpec { get; private set; } = null!;
+
         /// <summary>
         /// Data store search tool specification.
         /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -381,6 +512,14 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxToolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Integration connectors tool specification.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectorSpec")]
+        public Input<Inputs.CxToolConnectorSpecArgs>? ConnectorSpec { get; set; }
+
+        /// <summary>
         /// Data store search tool specification.
         /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
         /// Structure is documented below.
@@ -431,6 +570,14 @@ namespace Pulumi.Gcp.Diagflow
 
     public sealed class CxToolState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Integration connectors tool specification.
+        /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("connectorSpec")]
+        public Input<Inputs.CxToolConnectorSpecGetArgs>? ConnectorSpec { get; set; }
+
         /// <summary>
         /// Data store search tool specification.
         /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.

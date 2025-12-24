@@ -241,6 +241,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionHealthAggregationPolicy{}
 	case "gcp:compute/regionHealthCheck:RegionHealthCheck":
 		r = &RegionHealthCheck{}
+	case "gcp:compute/regionHealthSource:RegionHealthSource":
+		r = &RegionHealthSource{}
 	case "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager":
 		r = &RegionInstanceGroupManager{}
 	case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
@@ -924,6 +926,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionHealthCheck",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionHealthSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

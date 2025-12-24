@@ -14,15 +14,39 @@ namespace Pulumi.Gcp.NetworkSecurity.Outputs
     public sealed class SecurityProfileCustomMirroringProfile
     {
         /// <summary>
-        /// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+        /// The target downstream Mirroring Deployment Groups.
+        /// This field is used for Packet Broker mirroring endpoint groups to specify
+        /// the deployment groups that the packet should be mirrored to by the broker.
+        /// Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+        /// </summary>
+        public readonly ImmutableArray<string> MirroringDeploymentGroups;
+        /// <summary>
+        /// The target Mirroring Endpoint Group.
+        /// When a mirroring rule with this security profile attached matches a packet,
+        /// a replica will be mirrored to the location-local target in this group.
         /// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
         /// </summary>
         public readonly string MirroringEndpointGroup;
+        /// <summary>
+        /// (Output, Beta)
+        /// The type of the mirroring endpoint group this profile is attached to.
+        /// Possible values:
+        /// DIRECT
+        /// BROKER
+        /// </summary>
+        public readonly string? MirroringEndpointGroupType;
 
         [OutputConstructor]
-        private SecurityProfileCustomMirroringProfile(string mirroringEndpointGroup)
+        private SecurityProfileCustomMirroringProfile(
+            ImmutableArray<string> mirroringDeploymentGroups,
+
+            string mirroringEndpointGroup,
+
+            string? mirroringEndpointGroupType)
         {
+            MirroringDeploymentGroups = mirroringDeploymentGroups;
             MirroringEndpointGroup = mirroringEndpointGroup;
+            MirroringEndpointGroupType = mirroringEndpointGroupType;
         }
     }
 }

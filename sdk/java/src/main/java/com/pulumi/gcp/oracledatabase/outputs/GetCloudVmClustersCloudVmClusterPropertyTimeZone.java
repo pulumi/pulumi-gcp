@@ -15,6 +15,11 @@ public final class GetCloudVmClustersCloudVmClusterPropertyTimeZone {
      * 
      */
     private String id;
+    /**
+     * @return IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+     * 
+     */
+    private String version;
 
     private GetCloudVmClustersCloudVmClusterPropertyTimeZone() {}
     /**
@@ -23,6 +28,13 @@ public final class GetCloudVmClustersCloudVmClusterPropertyTimeZone {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+     * 
+     */
+    public String version() {
+        return this.version;
     }
 
     public static Builder builder() {
@@ -35,10 +47,12 @@ public final class GetCloudVmClustersCloudVmClusterPropertyTimeZone {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private String version;
         public Builder() {}
         public Builder(GetCloudVmClustersCloudVmClusterPropertyTimeZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -49,9 +63,18 @@ public final class GetCloudVmClustersCloudVmClusterPropertyTimeZone {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(String version) {
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmClusterPropertyTimeZone", "version");
+            }
+            this.version = version;
+            return this;
+        }
         public GetCloudVmClustersCloudVmClusterPropertyTimeZone build() {
             final var _resultValue = new GetCloudVmClustersCloudVmClusterPropertyTimeZone();
             _resultValue.id = id;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

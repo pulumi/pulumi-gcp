@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,11 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
      * 
      */
     private List<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    private List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
@@ -53,6 +59,13 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
      */
     public List<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs() {
         return this.hugepagesConfigs;
+    }
+    /**
+     * @return The settings for kernel module loading.
+     * 
+     */
+    public List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings() {
+        return this.nodeKernelModuleLoadings;
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -87,6 +100,7 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     public static final class Builder {
         private String cgroupMode;
         private List<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
+        private List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
         private Map<String,String> sysctls;
         private String transparentHugepageDefrag;
         private String transparentHugepageEnabled;
@@ -95,6 +109,7 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
     	      this.hugepagesConfigs = defaults.hugepagesConfigs;
+    	      this.nodeKernelModuleLoadings = defaults.nodeKernelModuleLoadings;
     	      this.sysctls = defaults.sysctls;
     	      this.transparentHugepageDefrag = defaults.transparentHugepageDefrag;
     	      this.transparentHugepageEnabled = defaults.transparentHugepageEnabled;
@@ -118,6 +133,17 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
         }
         public Builder hugepagesConfigs(GetClusterNodeConfigLinuxNodeConfigHugepagesConfig... hugepagesConfigs) {
             return hugepagesConfigs(List.of(hugepagesConfigs));
+        }
+        @CustomType.Setter
+        public Builder nodeKernelModuleLoadings(List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings) {
+            if (nodeKernelModuleLoadings == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "nodeKernelModuleLoadings");
+            }
+            this.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
+            return this;
+        }
+        public Builder nodeKernelModuleLoadings(GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading... nodeKernelModuleLoadings) {
+            return nodeKernelModuleLoadings(List.of(nodeKernelModuleLoadings));
         }
         @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
@@ -147,6 +173,7 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
             final var _resultValue = new GetClusterNodeConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
             _resultValue.hugepagesConfigs = hugepagesConfigs;
+            _resultValue.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
             _resultValue.sysctls = sysctls;
             _resultValue.transparentHugepageDefrag = transparentHugepageDefrag;
             _resultValue.transparentHugepageEnabled = transparentHugepageEnabled;

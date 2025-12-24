@@ -13,26 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef {
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+     * @return The name of the secret in Cloud Secret Manager.
+     * Format: {secret_name}.
      * 
      */
     private String secret;
     /**
-     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest version, an integer for a specific version, or a version alias.
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39;
+     * for the latest version, an integer for a specific
+     * version, or a version alias.
      * 
      */
     private @Nullable String version;
 
     private AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef() {}
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+     * @return The name of the secret in Cloud Secret Manager.
+     * Format: {secret_name}.
      * 
      */
     public String secret() {
         return this.secret;
     }
     /**
-     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest version, an integer for a specific version, or a version alias.
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39;
+     * for the latest version, an integer for a specific
+     * version, or a version alias.
      * 
      */
     public Optional<String> version() {

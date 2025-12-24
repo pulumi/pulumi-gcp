@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudsecuritycompliance.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudsecuritycompliance.outputs.CloudControlParameterSpecDefaultValue;
+import com.pulumi.gcp.cloudsecuritycompliance.outputs.CloudControlParameterSpecSubParameter;
 import com.pulumi.gcp.cloudsecuritycompliance.outputs.CloudControlParameterSpecSubstitutionRule;
 import com.pulumi.gcp.cloudsecuritycompliance.outputs.CloudControlParameterSpecValidation;
 import java.lang.Boolean;
@@ -43,6 +44,12 @@ public final class CloudControlParameterSpec {
      * 
      */
     private String name;
+    /**
+     * @return The parameter spec of the cloud control.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CloudControlParameterSpecSubParameter> subParameters;
     /**
      * @return List of parameter substitutions.
      * Structure is documented below.
@@ -105,6 +112,14 @@ public final class CloudControlParameterSpec {
         return this.name;
     }
     /**
+     * @return The parameter spec of the cloud control.
+     * Structure is documented below.
+     * 
+     */
+    public List<CloudControlParameterSpecSubParameter> subParameters() {
+        return this.subParameters == null ? List.of() : this.subParameters;
+    }
+    /**
      * @return List of parameter substitutions.
      * Structure is documented below.
      * 
@@ -148,6 +163,7 @@ public final class CloudControlParameterSpec {
         private @Nullable String displayName;
         private Boolean isRequired;
         private String name;
+        private @Nullable List<CloudControlParameterSpecSubParameter> subParameters;
         private @Nullable List<CloudControlParameterSpecSubstitutionRule> substitutionRules;
         private @Nullable CloudControlParameterSpecValidation validation;
         private String valueType;
@@ -159,6 +175,7 @@ public final class CloudControlParameterSpec {
     	      this.displayName = defaults.displayName;
     	      this.isRequired = defaults.isRequired;
     	      this.name = defaults.name;
+    	      this.subParameters = defaults.subParameters;
     	      this.substitutionRules = defaults.substitutionRules;
     	      this.validation = defaults.validation;
     	      this.valueType = defaults.valueType;
@@ -199,6 +216,15 @@ public final class CloudControlParameterSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder subParameters(@Nullable List<CloudControlParameterSpecSubParameter> subParameters) {
+
+            this.subParameters = subParameters;
+            return this;
+        }
+        public Builder subParameters(CloudControlParameterSpecSubParameter... subParameters) {
+            return subParameters(List.of(subParameters));
+        }
+        @CustomType.Setter
         public Builder substitutionRules(@Nullable List<CloudControlParameterSpecSubstitutionRule> substitutionRules) {
 
             this.substitutionRules = substitutionRules;
@@ -228,6 +254,7 @@ public final class CloudControlParameterSpec {
             _resultValue.displayName = displayName;
             _resultValue.isRequired = isRequired;
             _resultValue.name = name;
+            _resultValue.subParameters = subParameters;
             _resultValue.substitutionRules = substitutionRules;
             _resultValue.validation = validation;
             _resultValue.valueType = valueType;

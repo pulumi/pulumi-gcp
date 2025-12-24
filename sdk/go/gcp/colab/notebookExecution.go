@@ -133,6 +133,129 @@ import (
 //	}
 //
 // ```
+// ### Colab Notebook Execution Custom Env
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myNetwork, err := compute.NewNetwork(ctx, "my_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("colab-test-default"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("colab-test-default"),
+//				Network:     myNetwork.ID(),
+//				Region:      pulumi.String("us-central1"),
+//				IpCidrRange: pulumi.String("10.0.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			outputBucket, err := storage.NewBucket(ctx, "output_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_bucket"),
+//				Location:                 pulumi.String("US"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: `    {
+//	      \"cells\": [
+//	        {
+//	          \"cell_type\": \"code\",
+//	          \"execution_count\": null,
+//	          \"metadata\": {},
+//	          \"outputs\": [],
+//	          \"source\": [
+//	            \"print(\\\"Hello, World!\\\")\"
+//	          ]
+//	        }
+//	      ],
+//	      \"metadata\": {
+//	        \"kernelspec\": {
+//	          \"display_name\": \"Python 3\",
+//	          \"language\": \"python\",
+//	          \"name\": \"python3\"
+//	        },
+//	        \"language_info\": {
+//	          \"codemirror_mode\": {
+//	            \"name\": \"ipython\",
+//	            \"version\": 3
+//	          },
+//	          \"file_extension\": \".py\",
+//	          \"mimetype\": \"text/x-python\",
+//	          \"name\": \"python\",
+//	          \"nbconvert_exporter\": \"python\",
+//	          \"pygments_lexer\": \"ipython3\",
+//	          \"version\": \"3.8.5\"
+//	        }
+//	      },
+//	      \"nbformat\": 4,
+//	      \"nbformat_minor\": 4
+//	    }
+//
+// `,
+//
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = colab.NewNotebookExecution(ctx, "notebook-execution", &colab.NotebookExecutionArgs{
+//				DisplayName: pulumi.String("Notebook execution basic"),
+//				Location:    pulumi.String("us-central1"),
+//				DirectNotebookSource: &colab.NotebookExecutionDirectNotebookSourceArgs{
+//					Content: pulumi.String(invokeBase64encode.Result),
+//				},
+//				CustomEnvironmentSpec: &colab.NotebookExecutionCustomEnvironmentSpecArgs{
+//					MachineSpec: &colab.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{
+//						MachineType:      pulumi.String("n1-standard-2"),
+//						AcceleratorType:  pulumi.String("NVIDIA_TESLA_T4"),
+//						AcceleratorCount: pulumi.Int(1),
+//					},
+//					PersistentDiskSpec: &colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{
+//						DiskType:   pulumi.String("pd-standard"),
+//						DiskSizeGb: pulumi.String("200"),
+//					},
+//					NetworkSpec: &colab.NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{
+//						EnableInternetAccess: pulumi.Bool(true),
+//						Network:              myNetwork.ID(),
+//						Subnetwork:           mySubnetwork.ID(),
+//					},
+//				},
+//				GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("gs://%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ServiceAccount: pulumi.String("my@service-account.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				outputBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Colab Notebook Execution Full
 //
 // ```go
@@ -397,6 +520,9 @@ import (
 type NotebookExecution struct {
 	pulumi.CustomResourceState
 
+	// Compute configuration to use for an execution job
+	// Structure is documented below.
+	CustomEnvironmentSpec NotebookExecutionCustomEnvironmentSpecPtrOutput `pulumi:"customEnvironmentSpec"`
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource NotebookExecutionDataformRepositorySourcePtrOutput `pulumi:"dataformRepositorySource"`
@@ -466,6 +592,9 @@ func GetNotebookExecution(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NotebookExecution resources.
 type notebookExecutionState struct {
+	// Compute configuration to use for an execution job
+	// Structure is documented below.
+	CustomEnvironmentSpec *NotebookExecutionCustomEnvironmentSpec `pulumi:"customEnvironmentSpec"`
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource *NotebookExecutionDataformRepositorySource `pulumi:"dataformRepositorySource"`
@@ -497,6 +626,9 @@ type notebookExecutionState struct {
 }
 
 type NotebookExecutionState struct {
+	// Compute configuration to use for an execution job
+	// Structure is documented below.
+	CustomEnvironmentSpec NotebookExecutionCustomEnvironmentSpecPtrInput
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource NotebookExecutionDataformRepositorySourcePtrInput
@@ -532,6 +664,9 @@ func (NotebookExecutionState) ElementType() reflect.Type {
 }
 
 type notebookExecutionArgs struct {
+	// Compute configuration to use for an execution job
+	// Structure is documented below.
+	CustomEnvironmentSpec *NotebookExecutionCustomEnvironmentSpec `pulumi:"customEnvironmentSpec"`
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource *NotebookExecutionDataformRepositorySource `pulumi:"dataformRepositorySource"`
@@ -564,6 +699,9 @@ type notebookExecutionArgs struct {
 
 // The set of arguments for constructing a NotebookExecution resource.
 type NotebookExecutionArgs struct {
+	// Compute configuration to use for an execution job
+	// Structure is documented below.
+	CustomEnvironmentSpec NotebookExecutionCustomEnvironmentSpecPtrInput
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource NotebookExecutionDataformRepositorySourcePtrInput
@@ -679,6 +817,14 @@ func (o NotebookExecutionOutput) ToNotebookExecutionOutput() NotebookExecutionOu
 
 func (o NotebookExecutionOutput) ToNotebookExecutionOutputWithContext(ctx context.Context) NotebookExecutionOutput {
 	return o
+}
+
+// Compute configuration to use for an execution job
+// Structure is documented below.
+func (o NotebookExecutionOutput) CustomEnvironmentSpec() NotebookExecutionCustomEnvironmentSpecPtrOutput {
+	return o.ApplyT(func(v *NotebookExecution) NotebookExecutionCustomEnvironmentSpecPtrOutput {
+		return v.CustomEnvironmentSpec
+	}).(NotebookExecutionCustomEnvironmentSpecPtrOutput)
 }
 
 // The Dataform Repository containing the input notebook.

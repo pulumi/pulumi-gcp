@@ -16,6 +16,10 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'NotebookExecutionCustomEnvironmentSpec',
+    'NotebookExecutionCustomEnvironmentSpecMachineSpec',
+    'NotebookExecutionCustomEnvironmentSpecNetworkSpec',
+    'NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec',
     'NotebookExecutionDataformRepositorySource',
     'NotebookExecutionDirectNotebookSource',
     'NotebookExecutionGcsNotebookSource',
@@ -31,11 +35,256 @@ __all__ = [
     'RuntimeTemplateShieldedVmConfig',
     'RuntimeTemplateSoftwareConfig',
     'RuntimeTemplateSoftwareConfigEnv',
+    'RuntimeTemplateSoftwareConfigPostStartupScriptConfig',
     'ScheduleCreateNotebookExecutionJobRequest',
     'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob',
     'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource',
     'ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource',
 ]
+
+@pulumi.output_type
+class NotebookExecutionCustomEnvironmentSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineSpec":
+            suggest = "machine_spec"
+        elif key == "networkSpec":
+            suggest = "network_spec"
+        elif key == "persistentDiskSpec":
+            suggest = "persistent_disk_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotebookExecutionCustomEnvironmentSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotebookExecutionCustomEnvironmentSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotebookExecutionCustomEnvironmentSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_spec: Optional['outputs.NotebookExecutionCustomEnvironmentSpecMachineSpec'] = None,
+                 network_spec: Optional['outputs.NotebookExecutionCustomEnvironmentSpecNetworkSpec'] = None,
+                 persistent_disk_spec: Optional['outputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec'] = None):
+        """
+        :param 'NotebookExecutionCustomEnvironmentSpecMachineSpecArgs' machine_spec: 'The machine configuration of the runtime.'
+               Structure is documented below.
+        :param 'NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs' network_spec: The network configuration for the runtime.
+               Structure is documented below.
+        :param 'NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs' persistent_disk_spec: The configuration for the data disk of the runtime.
+               Structure is documented below.
+        """
+        if machine_spec is not None:
+            pulumi.set(__self__, "machine_spec", machine_spec)
+        if network_spec is not None:
+            pulumi.set(__self__, "network_spec", network_spec)
+        if persistent_disk_spec is not None:
+            pulumi.set(__self__, "persistent_disk_spec", persistent_disk_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> Optional['outputs.NotebookExecutionCustomEnvironmentSpecMachineSpec']:
+        """
+        'The machine configuration of the runtime.'
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="networkSpec")
+    def network_spec(self) -> Optional['outputs.NotebookExecutionCustomEnvironmentSpecNetworkSpec']:
+        """
+        The network configuration for the runtime.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="persistentDiskSpec")
+    def persistent_disk_spec(self) -> Optional['outputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec']:
+        """
+        The configuration for the data disk of the runtime.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "persistent_disk_spec")
+
+
+@pulumi.output_type
+class NotebookExecutionCustomEnvironmentSpecMachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotebookExecutionCustomEnvironmentSpecMachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotebookExecutionCustomEnvironmentSpecMachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotebookExecutionCustomEnvironmentSpecMachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_count: Optional[_builtins.int] = None,
+                 accelerator_type: Optional[_builtins.str] = None,
+                 machine_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int accelerator_count: The number of accelerators used by the runtime.
+        :param _builtins.str accelerator_type: The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+        :param _builtins.str machine_type: The Compute Engine machine type selected for the runtime.
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[_builtins.int]:
+        """
+        The number of accelerators used by the runtime.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[_builtins.str]:
+        """
+        The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        The Compute Engine machine type selected for the runtime.
+        """
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class NotebookExecutionCustomEnvironmentSpecNetworkSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableInternetAccess":
+            suggest = "enable_internet_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotebookExecutionCustomEnvironmentSpecNetworkSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotebookExecutionCustomEnvironmentSpecNetworkSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotebookExecutionCustomEnvironmentSpecNetworkSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_internet_access: Optional[_builtins.bool] = None,
+                 network: Optional[_builtins.str] = None,
+                 subnetwork: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enable_internet_access: Enable public internet access for the runtime.
+        :param _builtins.str network: The name of the VPC that this runtime is in.
+        :param _builtins.str subnetwork: The name of the subnetwork that this runtime is in.
+        """
+        if enable_internet_access is not None:
+            pulumi.set(__self__, "enable_internet_access", enable_internet_access)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter(name="enableInternetAccess")
+    def enable_internet_access(self) -> Optional[_builtins.bool]:
+        """
+        Enable public internet access for the runtime.
+        """
+        return pulumi.get(self, "enable_internet_access")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        The name of the VPC that this runtime is in.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[_builtins.str]:
+        """
+        The name of the subnetwork that this runtime is in.
+        """
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[_builtins.str] = None,
+                 disk_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str disk_size_gb: The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+        :param _builtins.str disk_type: The type of the persistent disk.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.str]:
+        """
+        The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the persistent disk.
+        """
+        return pulumi.get(self, "disk_type")
+
 
 @pulumi.output_type
 class NotebookExecutionDataformRepositorySource(dict):
@@ -543,14 +792,36 @@ class RuntimeTemplateShieldedVmConfig(dict):
 
 @pulumi.output_type
 class RuntimeTemplateSoftwareConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postStartupScriptConfig":
+            suggest = "post_startup_script_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeTemplateSoftwareConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeTemplateSoftwareConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeTemplateSoftwareConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 envs: Optional[Sequence['outputs.RuntimeTemplateSoftwareConfigEnv']] = None):
+                 envs: Optional[Sequence['outputs.RuntimeTemplateSoftwareConfigEnv']] = None,
+                 post_startup_script_config: Optional['outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig'] = None):
         """
         :param Sequence['RuntimeTemplateSoftwareConfigEnvArgs'] envs: Environment variables to be passed to the container.
+               Structure is documented below.
+        :param 'RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs' post_startup_script_config: Post startup script config.
                Structure is documented below.
         """
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if post_startup_script_config is not None:
+            pulumi.set(__self__, "post_startup_script_config", post_startup_script_config)
 
     @_builtins.property
     @pulumi.getter
@@ -560,6 +831,15 @@ class RuntimeTemplateSoftwareConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "envs")
+
+    @_builtins.property
+    @pulumi.getter(name="postStartupScriptConfig")
+    def post_startup_script_config(self) -> Optional['outputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfig']:
+        """
+        Post startup script config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "post_startup_script_config")
 
 
 @pulumi.output_type
@@ -591,6 +871,72 @@ class RuntimeTemplateSoftwareConfigEnv(dict):
         Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RuntimeTemplateSoftwareConfigPostStartupScriptConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postStartupScript":
+            suggest = "post_startup_script"
+        elif key == "postStartupScriptBehavior":
+            suggest = "post_startup_script_behavior"
+        elif key == "postStartupScriptUrl":
+            suggest = "post_startup_script_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeTemplateSoftwareConfigPostStartupScriptConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeTemplateSoftwareConfigPostStartupScriptConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeTemplateSoftwareConfigPostStartupScriptConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 post_startup_script: Optional[_builtins.str] = None,
+                 post_startup_script_behavior: Optional[_builtins.str] = None,
+                 post_startup_script_url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str post_startup_script: Post startup script to run after runtime is started.
+        :param _builtins.str post_startup_script_behavior: Post startup script behavior that defines download and execution behavior.
+               Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+        :param _builtins.str post_startup_script_url: Post startup script url to download. Example: https://bucket/script.sh.
+        """
+        if post_startup_script is not None:
+            pulumi.set(__self__, "post_startup_script", post_startup_script)
+        if post_startup_script_behavior is not None:
+            pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
+        if post_startup_script_url is not None:
+            pulumi.set(__self__, "post_startup_script_url", post_startup_script_url)
+
+    @_builtins.property
+    @pulumi.getter(name="postStartupScript")
+    def post_startup_script(self) -> Optional[_builtins.str]:
+        """
+        Post startup script to run after runtime is started.
+        """
+        return pulumi.get(self, "post_startup_script")
+
+    @_builtins.property
+    @pulumi.getter(name="postStartupScriptBehavior")
+    def post_startup_script_behavior(self) -> Optional[_builtins.str]:
+        """
+        Post startup script behavior that defines download and execution behavior.
+        Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
+        """
+        return pulumi.get(self, "post_startup_script_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="postStartupScriptUrl")
+    def post_startup_script_url(self) -> Optional[_builtins.str]:
+        """
+        Post startup script url to download. Example: https://bucket/script.sh.
+        """
+        return pulumi.get(self, "post_startup_script_url")
 
 
 @pulumi.output_type

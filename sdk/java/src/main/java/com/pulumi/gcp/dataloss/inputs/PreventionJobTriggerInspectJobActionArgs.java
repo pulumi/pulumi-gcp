@@ -72,16 +72,30 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
     }
 
     /**
+     * (Optional, Deprecated)
      * Publish findings of a DlpJob to Data Catalog.
      * 
+     * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
+     * 
+     * @deprecated
+     * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
+     * 
      */
+    @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
     @Import(name="publishFindingsToCloudDataCatalog")
     private @Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs> publishFindingsToCloudDataCatalog;
 
     /**
-     * @return Publish findings of a DlpJob to Data Catalog.
+     * @return (Optional, Deprecated)
+     * Publish findings of a DlpJob to Data Catalog.
+     * 
+     * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
+     * 
+     * @deprecated
+     * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
      * 
      */
+    @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
     public Optional<Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs>> publishFindingsToCloudDataCatalog() {
         return Optional.ofNullable(this.publishFindingsToCloudDataCatalog);
     }
@@ -247,22 +261,36 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         }
 
         /**
-         * @param publishFindingsToCloudDataCatalog Publish findings of a DlpJob to Data Catalog.
+         * @param publishFindingsToCloudDataCatalog (Optional, Deprecated)
+         * Publish findings of a DlpJob to Data Catalog.
+         * 
+         * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
+         * 
          */
+        @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
         public Builder publishFindingsToCloudDataCatalog(@Nullable Output<PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs> publishFindingsToCloudDataCatalog) {
             $.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             return this;
         }
 
         /**
-         * @param publishFindingsToCloudDataCatalog Publish findings of a DlpJob to Data Catalog.
+         * @param publishFindingsToCloudDataCatalog (Optional, Deprecated)
+         * Publish findings of a DlpJob to Data Catalog.
+         * 
+         * &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
+         * 
          */
+        @Deprecated /* `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead. */
         public Builder publishFindingsToCloudDataCatalog(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs publishFindingsToCloudDataCatalog) {
             return publishFindingsToCloudDataCatalog(Output.of(publishFindingsToCloudDataCatalog));
         }

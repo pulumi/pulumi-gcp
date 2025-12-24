@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BackupVaultArgs', 'BackupVault']
 
@@ -28,6 +30,7 @@ class BackupVaultArgs:
                  backup_retention_inheritance: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_config: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -51,6 +54,8 @@ class BackupVaultArgs:
                Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
+        :param pulumi.Input['BackupVaultEncryptionConfigArgs'] encryption_config: Encryption configuration for the backup vault.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_delete: (Optional, Deprecated)
                If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance containing no backups, but still containing empty datasources.
@@ -86,6 +91,8 @@ class BackupVaultArgs:
             pulumi.set(__self__, "description", description)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if force_delete is not None:
             warnings.warn("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""", DeprecationWarning)
             pulumi.log.warn("""force_delete is deprecated: `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
@@ -217,6 +224,19 @@ class BackupVaultArgs:
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]:
+        """
+        Encryption configuration for the backup vault.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="forceDelete")
     @_utilities.deprecated("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
@@ -319,6 +339,7 @@ class _BackupVaultState:
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_config: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -354,6 +375,8 @@ class _BackupVaultState:
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
+        :param pulumi.Input['BackupVaultEncryptionConfigArgs'] encryption_config: Encryption configuration for the backup vault.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
         :param pulumi.Input[_builtins.bool] force_delete: (Optional, Deprecated)
                If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -416,6 +439,8 @@ class _BackupVaultState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if force_delete is not None:
@@ -608,6 +633,19 @@ class _BackupVaultState:
     @effective_time.setter
     def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]:
+        """
+        Encryption configuration for the backup vault.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['BackupVaultEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -825,6 +863,7 @@ class BackupVault(pulumi.CustomResource):
                  backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -838,7 +877,7 @@ class BackupVault(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Backup Dr Backup Vault Full
+        ### Backup Dr Backup Vault Simple
 
         ```python
         import pulumi
@@ -856,6 +895,36 @@ class BackupVault(pulumi.CustomResource):
             labels={
                 "foo": "bar1",
                 "bar": "baz1",
+            },
+            force_update=True,
+            access_restriction="WITHIN_ORGANIZATION",
+            backup_retention_inheritance="INHERIT_VAULT_RETENTION",
+            ignore_inactive_datasources=True,
+            ignore_backup_plan_references=True,
+            allow_missing=True)
+        ```
+        ### Backup Dr Backup Vault Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_project = gcp.organizations.get_project(project_id="my-project-name")
+        backup_vault_cmek = gcp.backupdisasterrecovery.BackupVault("backup-vault-cmek",
+            location="us-central1",
+            backup_vault_id="backup-vault-cmek",
+            description="This is a second backup vault built by Terraform.",
+            backup_minimum_enforced_retention_duration="100000s",
+            annotations={
+                "annotations1": "bar1",
+                "annotations2": "baz1",
+            },
+            labels={
+                "foo": "bar1",
+                "bar": "baz1",
+            },
+            encryption_config={
+                "kms_key_name": "bkpvault-key",
             },
             force_update=True,
             access_restriction="WITHIN_ORGANIZATION",
@@ -905,6 +974,8 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_vault_id: Required. ID of the requesting object.
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
+        :param pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the backup vault.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_delete: (Optional, Deprecated)
                If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance containing no backups, but still containing empty datasources.
@@ -937,7 +1008,7 @@ class BackupVault(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Backup Dr Backup Vault Full
+        ### Backup Dr Backup Vault Simple
 
         ```python
         import pulumi
@@ -955,6 +1026,36 @@ class BackupVault(pulumi.CustomResource):
             labels={
                 "foo": "bar1",
                 "bar": "baz1",
+            },
+            force_update=True,
+            access_restriction="WITHIN_ORGANIZATION",
+            backup_retention_inheritance="INHERIT_VAULT_RETENTION",
+            ignore_inactive_datasources=True,
+            ignore_backup_plan_references=True,
+            allow_missing=True)
+        ```
+        ### Backup Dr Backup Vault Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_project = gcp.organizations.get_project(project_id="my-project-name")
+        backup_vault_cmek = gcp.backupdisasterrecovery.BackupVault("backup-vault-cmek",
+            location="us-central1",
+            backup_vault_id="backup-vault-cmek",
+            description="This is a second backup vault built by Terraform.",
+            backup_minimum_enforced_retention_duration="100000s",
+            annotations={
+                "annotations1": "bar1",
+                "annotations2": "baz1",
+            },
+            labels={
+                "foo": "bar1",
+                "bar": "baz1",
+            },
+            encryption_config={
+                "kms_key_name": "bkpvault-key",
             },
             force_update=True,
             access_restriction="WITHIN_ORGANIZATION",
@@ -1011,6 +1112,7 @@ class BackupVault(pulumi.CustomResource):
                  backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_config: Optional[pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  ignore_backup_plan_references: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1039,6 +1141,7 @@ class BackupVault(pulumi.CustomResource):
             __props__.__dict__["backup_vault_id"] = backup_vault_id
             __props__.__dict__["description"] = description
             __props__.__dict__["effective_time"] = effective_time
+            __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["force_update"] = force_update
             __props__.__dict__["ignore_backup_plan_references"] = ignore_backup_plan_references
@@ -1086,6 +1189,7 @@ class BackupVault(pulumi.CustomResource):
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_time: Optional[pulumi.Input[_builtins.str]] = None,
+            encryption_config: Optional[pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
             force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             force_update: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1126,6 +1230,8 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_time: Optional. Time after which the BackupVault resource is locked.
+        :param pulumi.Input[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']] encryption_config: Encryption configuration for the backup vault.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
         :param pulumi.Input[_builtins.bool] force_delete: (Optional, Deprecated)
                If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -1179,6 +1285,7 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["effective_time"] = effective_time
+        __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["etag"] = etag
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["force_update"] = force_update
@@ -1302,6 +1409,15 @@ class BackupVault(pulumi.CustomResource):
         Optional. Time after which the BackupVault resource is locked.
         """
         return pulumi.get(self, "effective_time")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output[Optional['outputs.BackupVaultEncryptionConfig']]:
+        """
+        Encryption configuration for the backup vault.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @_builtins.property
     @pulumi.getter

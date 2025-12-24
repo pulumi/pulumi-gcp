@@ -23,6 +23,7 @@ from .get_repository_iam_policy import *
 from .get_tag import *
 from .get_tags import *
 from .get_version import *
+from .get_versions import *
 from .repository import *
 from .repository_iam_binding import *
 from .repository_iam_member import *

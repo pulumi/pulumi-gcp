@@ -35,10 +35,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = defaultNetwork.Id,
     ///         },
-    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
-    ///         {
-    ///             Password = "alloydb-cluster",
-    ///         },
     ///         DeletionProtection = false,
     ///     });
     /// 
@@ -344,10 +340,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = @default.Id,
     ///         },
-    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
-    ///         {
-    ///             Password = "alloydb-primary-cluster",
-    ///         },
     ///         DeletionProtection = false,
     ///     });
     /// 
@@ -560,7 +552,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string?> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Initial user to setup during cluster creation. This must be set for all new Clusters.
+        /// Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
         /// Structure is documented below.
         /// </summary>
         [Output("initialUser")]
@@ -826,7 +818,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Initial user to setup during cluster creation. This must be set for all new Clusters.
+        /// Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
         /// Structure is documented below.
         /// </summary>
         [Input("initialUser")]
@@ -1072,7 +1064,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Initial user to setup during cluster creation. This must be set for all new Clusters.
+        /// Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
         /// Structure is documented below.
         /// </summary>
         [Input("initialUser")]

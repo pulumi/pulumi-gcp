@@ -377,6 +377,58 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Routine Python Function
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Gcp.BigQuery.Dataset("test", new()
+    ///     {
+    ///         DatasetId = "dataset_id",
+    ///     });
+    /// 
+    ///     var pythonFunction = new Gcp.BigQuery.Routine("python_function", new()
+    ///     {
+    ///         DatasetId = test.DatasetId,
+    ///         RoutineId = "routine_id",
+    ///         RoutineType = "SCALAR_FUNCTION",
+    ///         Language = "PYTHON",
+    ///         Arguments = new[]
+    ///         {
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "x",
+    ///                 DataType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///             },
+    ///             new Gcp.BigQuery.Inputs.RoutineArgumentArgs
+    ///             {
+    ///                 Name = "y",
+    ///                 DataType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///             },
+    ///         },
+    ///         DefinitionBody = @"def multiply(x, y):
+    ///   return x * y
+    /// ",
+    ///         ReturnType = "{\"typeKind\" :  \"FLOAT64\"}",
+    ///         PythonOptions = new Gcp.BigQuery.Inputs.RoutinePythonOptionsArgs
+    ///         {
+    ///             EntryPoint = "multiply",
+    ///         },
+    ///         ExternalRuntimeOptions = new Gcp.BigQuery.Inputs.RoutineExternalRuntimeOptionsArgs
+    ///         {
+    ///             ContainerMemory = "512Mi",
+    ///             ContainerCpu = 0.5,
+    ///             RuntimeVersion = "python-3.11",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -453,6 +505,14 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> DeterminismLevel { get; private set; } = null!;
 
         /// <summary>
+        /// Options for the runtime of the external system.
+        /// This field is only applicable for Python UDFs.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("externalRuntimeOptions")]
+        public Output<Outputs.RoutineExternalRuntimeOptions?> ExternalRuntimeOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. If language = "JAVASCRIPT", this field stores the path of the
         /// imported JAVASCRIPT libraries.
         /// </summary>
@@ -479,6 +539,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Options for a user-defined Python function.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pythonOptions")]
+        public Output<Outputs.RoutinePythonOptions?> PythonOptions { get; private set; } = null!;
 
         /// <summary>
         /// Remote function specific options.
@@ -629,6 +696,14 @@ namespace Pulumi.Gcp.BigQuery
         [Input("determinismLevel")]
         public Input<string>? DeterminismLevel { get; set; }
 
+        /// <summary>
+        /// Options for the runtime of the external system.
+        /// This field is only applicable for Python UDFs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("externalRuntimeOptions")]
+        public Input<Inputs.RoutineExternalRuntimeOptionsArgs>? ExternalRuntimeOptions { get; set; }
+
         [Input("importedLibraries")]
         private InputList<string>? _importedLibraries;
 
@@ -655,6 +730,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Options for a user-defined Python function.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pythonOptions")]
+        public Input<Inputs.RoutinePythonOptionsArgs>? PythonOptions { get; set; }
 
         /// <summary>
         /// Remote function specific options.
@@ -774,6 +856,14 @@ namespace Pulumi.Gcp.BigQuery
         [Input("determinismLevel")]
         public Input<string>? DeterminismLevel { get; set; }
 
+        /// <summary>
+        /// Options for the runtime of the external system.
+        /// This field is only applicable for Python UDFs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("externalRuntimeOptions")]
+        public Input<Inputs.RoutineExternalRuntimeOptionsGetArgs>? ExternalRuntimeOptions { get; set; }
+
         [Input("importedLibraries")]
         private InputList<string>? _importedLibraries;
 
@@ -807,6 +897,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Options for a user-defined Python function.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pythonOptions")]
+        public Input<Inputs.RoutinePythonOptionsGetArgs>? PythonOptions { get; set; }
 
         /// <summary>
         /// Remote function specific options.

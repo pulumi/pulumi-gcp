@@ -16,8 +16,12 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
         private InputList<string>? _additionalSubnets;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+        /// 
+        /// &gt; **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
         /// </summary>
+        [Obsolete(@"`additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.")]
         public InputList<string> AdditionalSubnets
         {
             get => _additionalSubnets ?? (_additionalSubnets = new InputList<string>());

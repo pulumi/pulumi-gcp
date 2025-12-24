@@ -116,8 +116,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
-     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
-     * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
@@ -125,8 +123,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
-     * 
-     * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
      * 
      */
     public Optional<Output<String>> project() {
@@ -377,8 +373,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
-         * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
-         * 
          * @return builder
          * 
          */
@@ -390,8 +384,6 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
-         * 
-         * * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
          * 
          * @return builder
          * 

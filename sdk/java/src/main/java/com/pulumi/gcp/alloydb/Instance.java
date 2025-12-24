@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.alloydb.InstanceArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceState;
 import com.pulumi.gcp.alloydb.outputs.InstanceClientConnectionConfig;
+import com.pulumi.gcp.alloydb.outputs.InstanceConnectionPoolConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceMachineConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.InstanceObservabilityConfig;
@@ -127,7 +128,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -162,9 +162,6 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
  *                 .network(default_.id())
- *                 .build())
- *             .initialUser(ClusterInitialUserArgs.builder()
- *                 .password("alloydb-primary-cluster")
  *                 .build())
  *             .deletionProtection(false)
  *             .build());
@@ -364,6 +361,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> cluster() {
         return this.cluster;
+    }
+    /**
+     * Configuration for Managed Connection Pool.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="connectionPoolConfig", refs={InstanceConnectionPoolConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceConnectionPoolConfig> connectionPoolConfig;
+
+    /**
+     * @return Configuration for Managed Connection Pool.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceConnectionPoolConfig>> connectionPoolConfig() {
+        return Codegen.optional(this.connectionPoolConfig);
     }
     /**
      * Time the Instance was created in UTC.

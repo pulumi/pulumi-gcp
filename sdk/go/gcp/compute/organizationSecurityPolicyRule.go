@@ -39,6 +39,7 @@ import (
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
 //				DisplayName: pulumi.String("tf-test"),
 //				Parent:      pulumi.String("organizations/123456789"),
+//				Type:        pulumi.String("FIREWALL"),
 //			})
 //			if err != nil {
 //				return err

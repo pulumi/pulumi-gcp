@@ -99,6 +99,7 @@ type LookupSnapshotResult struct {
 	SelfLink                 string                               `pulumi:"selfLink"`
 	SnapshotEncryptionKeys   []GetSnapshotSnapshotEncryptionKey   `pulumi:"snapshotEncryptionKeys"`
 	SnapshotId               int                                  `pulumi:"snapshotId"`
+	SnapshotType             string                               `pulumi:"snapshotType"`
 	SourceDisk               string                               `pulumi:"sourceDisk"`
 	SourceDiskEncryptionKeys []GetSnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKeys"`
 	StorageBytes             int                                  `pulumi:"storageBytes"`
@@ -219,6 +220,10 @@ func (o LookupSnapshotResultOutput) SnapshotEncryptionKeys() GetSnapshotSnapshot
 
 func (o LookupSnapshotResultOutput) SnapshotId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) int { return v.SnapshotId }).(pulumi.IntOutput)
+}
+
+func (o LookupSnapshotResultOutput) SnapshotType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SnapshotType }).(pulumi.StringOutput)
 }
 
 func (o LookupSnapshotResultOutput) SourceDisk() pulumi.StringOutput {

@@ -319,7 +319,7 @@ import (
 //				Region: pulumi.String("europe-west1"),
 //				WorkloadPolicy: &compute.ResourcePolicyWorkloadPolicyArgs{
 //					Type:                pulumi.String("HIGH_THROUGHPUT"),
-//					AcceleratorTopology: pulumi.String("SOME NEW TOPOLOGY"),
+//					AcceleratorTopology: pulumi.String("2x2"),
 //				},
 //			})
 //			if err != nil {

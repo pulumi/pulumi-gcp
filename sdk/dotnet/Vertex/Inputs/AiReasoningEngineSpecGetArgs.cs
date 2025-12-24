@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<string>? AgentFramework { get; set; }
 
         /// <summary>
-        /// Optional. Declarations for object class methods in OpenAPI specification format.
+        /// Optional. Declarations for object class methods in OpenAPI
+        /// specification format.
         /// </summary>
         [Input("classMethods")]
         public Input<string>? ClassMethods { get; set; }
@@ -42,13 +43,21 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<Inputs.AiReasoningEngineSpecPackageSpecGetArgs>? PackageSpec { get; set; }
 
         /// <summary>
-        /// Optional. The service account that the Reasoning Engine artifact runs as.
-        /// It should have "roles/storage.objectViewer" for reading the user project's
-        /// Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-        /// If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+        /// Optional. The service account that the Reasoning Engine artifact runs
+        /// as. It should have "roles/storage.objectViewer" for reading the user
+        /// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+        /// extensions. If not specified, the Vertex AI Reasoning Engine service
+        /// Agent in the project will be used.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Specification for deploying from source code.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceCodeSpec")]
+        public Input<Inputs.AiReasoningEngineSpecSourceCodeSpecGetArgs>? SourceCodeSpec { get; set; }
 
         public AiReasoningEngineSpecGetArgs()
         {

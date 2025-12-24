@@ -70,6 +70,7 @@ type LookupInstanceResult struct {
 	ClientConnectionConfigs []GetInstanceClientConnectionConfig `pulumi:"clientConnectionConfigs"`
 	Cluster                 string                              `pulumi:"cluster"`
 	ClusterId               string                              `pulumi:"clusterId"`
+	ConnectionPoolConfigs   []GetInstanceConnectionPoolConfig   `pulumi:"connectionPoolConfigs"`
 	CreateTime              string                              `pulumi:"createTime"`
 	DatabaseFlags           map[string]string                   `pulumi:"databaseFlags"`
 	DisplayName             string                              `pulumi:"displayName"`
@@ -166,6 +167,10 @@ func (o LookupInstanceResultOutput) Cluster() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) ConnectionPoolConfigs() GetInstanceConnectionPoolConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceConnectionPoolConfig { return v.ConnectionPoolConfigs }).(GetInstanceConnectionPoolConfigArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {

@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** Cloud Service Mesh&#39;s integration with Service Directory is going to be deprecated. [Learn more](https://docs.cloud.google.com/service-mesh/docs/service-routing/service-directory-integration-setup). Creating new service binding resources will be disabled.
+ * 
  * ServiceBinding is the resource that defines a Service Directory Service to be used in a
  * BackendService resource.
  * 

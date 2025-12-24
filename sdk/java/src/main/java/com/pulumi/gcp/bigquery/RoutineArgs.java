@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+import com.pulumi.gcp.bigquery.inputs.RoutineExternalRuntimeOptionsArgs;
+import com.pulumi.gcp.bigquery.inputs.RoutinePythonOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.RoutineRemoteFunctionOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
 import java.lang.String;
@@ -119,6 +121,25 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Options for the runtime of the external system.
+     * This field is only applicable for Python UDFs.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="externalRuntimeOptions")
+    private @Nullable Output<RoutineExternalRuntimeOptionsArgs> externalRuntimeOptions;
+
+    /**
+     * @return Options for the runtime of the external system.
+     * This field is only applicable for Python UDFs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RoutineExternalRuntimeOptionsArgs>> externalRuntimeOptions() {
+        return Optional.ofNullable(this.externalRuntimeOptions);
+    }
+
+    /**
      * Optional. If language = &#34;JAVASCRIPT&#34;, this field stores the path of the
      * imported JAVASCRIPT libraries.
      * 
@@ -167,6 +188,23 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * Options for a user-defined Python function.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pythonOptions")
+    private @Nullable Output<RoutinePythonOptionsArgs> pythonOptions;
+
+    /**
+     * @return Options for a user-defined Python function.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RoutinePythonOptionsArgs>> pythonOptions() {
+        return Optional.ofNullable(this.pythonOptions);
     }
 
     /**
@@ -313,9 +351,11 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
         this.definitionBody = $.definitionBody;
         this.description = $.description;
         this.determinismLevel = $.determinismLevel;
+        this.externalRuntimeOptions = $.externalRuntimeOptions;
         this.importedLibraries = $.importedLibraries;
         this.language = $.language;
         this.project = $.project;
+        this.pythonOptions = $.pythonOptions;
         this.remoteFunctionOptions = $.remoteFunctionOptions;
         this.returnTableType = $.returnTableType;
         this.returnType = $.returnType;
@@ -489,6 +529,31 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param externalRuntimeOptions Options for the runtime of the external system.
+         * This field is only applicable for Python UDFs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRuntimeOptions(@Nullable Output<RoutineExternalRuntimeOptionsArgs> externalRuntimeOptions) {
+            $.externalRuntimeOptions = externalRuntimeOptions;
+            return this;
+        }
+
+        /**
+         * @param externalRuntimeOptions Options for the runtime of the external system.
+         * This field is only applicable for Python UDFs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalRuntimeOptions(RoutineExternalRuntimeOptionsArgs externalRuntimeOptions) {
+            return externalRuntimeOptions(Output.of(externalRuntimeOptions));
+        }
+
+        /**
          * @param importedLibraries Optional. If language = &#34;JAVASCRIPT&#34;, this field stores the path of the
          * imported JAVASCRIPT libraries.
          * 
@@ -566,6 +631,29 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pythonOptions Options for a user-defined Python function.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pythonOptions(@Nullable Output<RoutinePythonOptionsArgs> pythonOptions) {
+            $.pythonOptions = pythonOptions;
+            return this;
+        }
+
+        /**
+         * @param pythonOptions Options for a user-defined Python function.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pythonOptions(RoutinePythonOptionsArgs pythonOptions) {
+            return pythonOptions(Output.of(pythonOptions));
         }
 
         /**

@@ -100,10 +100,20 @@ export type Fulfillment = import("./fulfillment").Fulfillment;
 export const Fulfillment: typeof import("./fulfillment").Fulfillment = null as any;
 utilities.lazyLoad(exports, ["Fulfillment"], () => require("./fulfillment"));
 
+export { GeneratorArgs, GeneratorState } from "./generator";
+export type Generator = import("./generator").Generator;
+export const Generator: typeof import("./generator").Generator = null as any;
+utilities.lazyLoad(exports, ["Generator"], () => require("./generator"));
+
 export { IntentArgs, IntentState } from "./intent";
 export type Intent = import("./intent").Intent;
 export const Intent: typeof import("./intent").Intent = null as any;
 utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
+
+export { VersionArgs, VersionState } from "./version";
+export type Version = import("./version").Version;
+export const Version: typeof import("./version").Version = null as any;
+utilities.lazyLoad(exports, ["Version"], () => require("./version"));
 
 
 const _module = {
@@ -148,8 +158,12 @@ const _module = {
                 return new EntityType(name, <any>undefined, { urn })
             case "gcp:diagflow/fulfillment:Fulfillment":
                 return new Fulfillment(name, <any>undefined, { urn })
+            case "gcp:diagflow/generator:Generator":
+                return new Generator(name, <any>undefined, { urn })
             case "gcp:diagflow/intent:Intent":
                 return new Intent(name, <any>undefined, { urn })
+            case "gcp:diagflow/version:Version":
+                return new Version(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -174,4 +188,6 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxWebhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/encryptionSpec", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/entityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/fulfillment", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/generator", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/intent", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/version", _module)

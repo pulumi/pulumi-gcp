@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         }
 
         /// <summary>
-        /// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        /// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         /// </summary>
         [Input("secretAccessKeyWoVersion")]
         public Input<int>? SecretAccessKeyWoVersion { get; set; }

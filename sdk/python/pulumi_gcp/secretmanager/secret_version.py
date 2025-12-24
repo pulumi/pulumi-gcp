@@ -43,8 +43,12 @@ class SecretVersionArgs:
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         pulumi.set(__self__, "secret", secret)
         if deletion_policy is not None:
@@ -146,7 +150,11 @@ class SecretVersionArgs:
     def secret_data_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        (Optional, Write-Only)
+        The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
         """
         return pulumi.get(self, "secret_data_wo")
 
@@ -158,7 +166,7 @@ class SecretVersionArgs:
     @pulumi.getter(name="secretDataWoVersion")
     def secret_data_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_data_wo_version")
 
@@ -202,8 +210,12 @@ class _SecretVersionState:
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] version: The version of the Secret.
         """
         if create_time is not None:
@@ -352,7 +364,11 @@ class _SecretVersionState:
     def secret_data_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        (Optional, Write-Only)
+        The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
         """
         return pulumi.get(self, "secret_data_wo")
 
@@ -364,7 +380,7 @@ class _SecretVersionState:
     @pulumi.getter(name="secretDataWoVersion")
     def secret_data_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_data_wo_version")
 
@@ -410,7 +426,7 @@ class SecretVersion(pulumi.CustomResource):
             * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
 
         > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
-        Read more about Write-only Attributes.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -534,22 +550,6 @@ class SecretVersion(pulumi.CustomResource):
             secret_data_wo_version=1,
             secret_data_wo=std.filebase64(input="secret-data-base64-write-only.pfx").result)
         ```
-
-        ## Ephemeral Attributes Reference
-
-        The following write-only attributes are supported:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
-
-        <a name="nested_payload"></a>The `payload` block supports:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
 
         ## Import
 
@@ -579,8 +579,12 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         ...
     @overload
@@ -598,7 +602,7 @@ class SecretVersion(pulumi.CustomResource):
             * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
 
         > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
-        Read more about Write-only Attributes.
+        Read more about Write-only Arguments.
 
         ## Example Usage
 
@@ -722,22 +726,6 @@ class SecretVersion(pulumi.CustomResource):
             secret_data_wo_version=1,
             secret_data_wo=std.filebase64(input="secret-data-base64-write-only.pfx").result)
         ```
-
-        ## Ephemeral Attributes Reference
-
-        The following write-only attributes are supported:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
-
-        <a name="nested_payload"></a>The `payload` block supports:
-
-        * `secret_data_wo` -
-          (Optional)
-          The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-          **Note**: This property is write-only and will not be read from the API.
 
         ## Import
 
@@ -846,8 +834,12 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] secret_data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+               (Optional, Write-Only)
+               The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
+        :param pulumi.Input[_builtins.int] secret_data_wo_version: Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] version: The version of the Secret.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -953,7 +945,11 @@ class SecretVersion(pulumi.CustomResource):
     def secret_data_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        (Optional, Write-Only)
+        The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
         """
         return pulumi.get(self, "secret_data_wo")
 
@@ -961,7 +957,7 @@ class SecretVersion(pulumi.CustomResource):
     @pulumi.getter(name="secretDataWoVersion")
     def secret_data_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Triggers update of secret data write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_data_wo_version")
 

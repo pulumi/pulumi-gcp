@@ -49,14 +49,14 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
     }
 
     /**
-     * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     @Import(name="secretAccessKeyWoVersion")
     private @Nullable Output<Integer> secretAccessKeyWoVersion;
 
     /**
-     * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+     * @return The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      * 
      */
     public Optional<Output<Integer>> secretAccessKeyWoVersion() {
@@ -134,7 +134,7 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class DataTransferConfigSensitiveParamsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+         * @param secretAccessKeyWoVersion The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          * 
          * @return builder
          * 

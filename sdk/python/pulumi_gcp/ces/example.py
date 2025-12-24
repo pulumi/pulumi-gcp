@@ -26,6 +26,7 @@ class ExampleArgs:
                  example_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -34,6 +35,9 @@ class ExampleArgs:
         :param pulumi.Input[_builtins.str] display_name: Display name of the example.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the example.
+        :param pulumi.Input[_builtins.str] entry_agent: The agent that initially handles the conversation. If not specified, the
+               example represents a conversation that is handled by the root agent.
+               Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]] messages: The collection of messages that make up the conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -45,6 +49,8 @@ class ExampleArgs:
         pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if entry_agent is not None:
+            pulumi.set(__self__, "entry_agent", entry_agent)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if project is not None:
@@ -108,6 +114,20 @@ class ExampleArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="entryAgent")
+    def entry_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The agent that initially handles the conversation. If not specified, the
+        example represents a conversation that is handled by the root agent.
+        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        """
+        return pulumi.get(self, "entry_agent")
+
+    @entry_agent.setter
+    def entry_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entry_agent", value)
+
+    @_builtins.property
     @pulumi.getter
     def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExampleMessageArgs']]]]:
         """
@@ -141,6 +161,7 @@ class _ExampleState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  example_id: Optional[pulumi.Input[_builtins.str]] = None,
                  invalid: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -155,6 +176,9 @@ class _ExampleState:
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the example was created.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the example.
         :param pulumi.Input[_builtins.str] display_name: Display name of the example.
+        :param pulumi.Input[_builtins.str] entry_agent: The agent that initially handles the conversation. If not specified, the
+               example represents a conversation that is handled by the root agent.
+               Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
@@ -178,6 +202,8 @@ class _ExampleState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if entry_agent is not None:
+            pulumi.set(__self__, "entry_agent", entry_agent)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if example_id is not None:
@@ -242,6 +268,20 @@ class _ExampleState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entryAgent")
+    def entry_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The agent that initially handles the conversation. If not specified, the
+        example represents a conversation that is handled by the root agent.
+        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        """
+        return pulumi.get(self, "entry_agent")
+
+    @entry_agent.setter
+    def entry_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entry_agent", value)
 
     @_builtins.property
     @pulumi.getter
@@ -353,6 +393,7 @@ class Example(pulumi.CustomResource):
                  app: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  example_id: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
@@ -378,14 +419,90 @@ class Example(pulumi.CustomResource):
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
+        ces_tool = gcp.ces.Tool("ces_tool",
+            location="us",
+            app=my_app.app_id,
+            tool_id="tool-1",
+            execution_type="SYNCHRONOUS",
+            python_function={
+                "name": "example_function",
+                "python_code": "def example_function() -> int: return 0",
+            })
+        ces_toolset = gcp.ces.Toolset("ces_toolset",
+            toolset_id="toolset-id",
+            location="us",
+            app=my_app.app_id,
+            display_name="Basic toolset display name",
+            open_api_toolset={
+                "open_api_schema": \"\"\"openapi: 3.0.0
+        info:
+            title: My Sample API
+            version: 1.0.0
+            description: A simple API example
+        servers:
+            - url: https://api.example.com/v1
+        paths: {}
+        \"\"\",
+                "ignore_unknown_fields": False,
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "service_agent_id_token_auth_config": {},
+                },
+            })
+        ces_base_agent = gcp.ces.Agent("ces_base_agent",
+            agent_id="base-agent-id",
+            location="us",
+            app=my_app.app_id,
+            display_name="base agent",
+            instruction="You are a helpful assistant for this example.",
+            model_settings={
+                "model": "gemini-2.5-flash",
+                "temperature": 0.5,
+            },
+            llm_agent={})
+        ces_child_agent = gcp.ces.Agent("ces_child_agent",
+            agent_id="child-agent-id",
+            location="us",
+            app=my_app.app_id,
+            display_name="child agent",
+            instruction="You are a helpful assistant for this example.",
+            model_settings={
+                "model": "gemini-2.5-flash",
+                "temperature": 0.5,
+            },
+            llm_agent={})
         my_example = gcp.ces.Example("my-example",
             location="us",
             display_name="my-example",
             app=my_app.name,
             example_id="example-id",
             description="example description",
+            entry_agent=pulumi.Output.all(
+                project=my_app.project,
+                app_id=my_app.app_id,
+                agent_id=ces_base_agent.agent_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+        ,
             messages=[{
                 "chunks": [
+                    {
+                        "agent_transfer": {
+                            "target_agent": pulumi.Output.all(
+                                project=my_app.project,
+                                app_id=my_app.app_id,
+                                agent_id=ces_child_agent.agent_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+        ,
+                        },
+                    },
                     {
                         "image": {
                             "mime_type": "image/png",
@@ -394,6 +511,70 @@ class Example(pulumi.CustomResource):
                     },
                     {
                         "text": "text_data",
+                    },
+                    {
+                        "tool_call": {
+                            "args": json.dumps({
+                                "arg1": "val1",
+                                "arg2": "val2",
+                            }),
+                            "id": "tool_call_id",
+                            "tool": pulumi.Output.all(
+                                project=my_app.project,
+                                app_id=my_app.app_id,
+                                tool_id=ces_tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                        },
+                    },
+                    {
+                        "tool_call": {
+                            "args": json.dumps({
+                                "arg1": "val1",
+                                "arg2": "val2",
+                            }),
+                            "id": "tool_call_id2",
+                            "toolset_tool": {
+                                "toolset": pulumi.Output.all(
+                                    project=my_app.project,
+                                    app_id=my_app.app_id,
+                                    toolset_id=ces_toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                "tool_id": "example-id",
+                            },
+                        },
+                    },
+                    {
+                        "tool_response": {
+                            "id": "tool_call_id",
+                            "response": json.dumps({
+                                "output": "example-output",
+                            }),
+                            "tool": pulumi.Output.all(
+                                project=my_app.project,
+                                app_id=my_app.app_id,
+                                tool_id=ces_tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                        },
+                    },
+                    {
+                        "tool_response": {
+                            "id": "tool_call_id2",
+                            "response": json.dumps({
+                                "output": "example-output",
+                            }),
+                            "toolset_tool": {
+                                "toolset": pulumi.Output.all(
+                                    project=my_app.project,
+                                    app_id=my_app.app_id,
+                                    toolset_id=ces_toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                "tool_id": "example-id",
+                            },
+                        },
                     },
                     {
                         "updated_variables": json.dumps({
@@ -435,6 +616,9 @@ class Example(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app: Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the example.
         :param pulumi.Input[_builtins.str] display_name: Display name of the example.
+        :param pulumi.Input[_builtins.str] entry_agent: The agent that initially handles the conversation. If not specified, the
+               example represents a conversation that is handled by the root agent.
+               Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]] messages: The collection of messages that make up the conversation.
                Structure is documented below.
@@ -467,14 +651,90 @@ class Example(pulumi.CustomResource):
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
+        ces_tool = gcp.ces.Tool("ces_tool",
+            location="us",
+            app=my_app.app_id,
+            tool_id="tool-1",
+            execution_type="SYNCHRONOUS",
+            python_function={
+                "name": "example_function",
+                "python_code": "def example_function() -> int: return 0",
+            })
+        ces_toolset = gcp.ces.Toolset("ces_toolset",
+            toolset_id="toolset-id",
+            location="us",
+            app=my_app.app_id,
+            display_name="Basic toolset display name",
+            open_api_toolset={
+                "open_api_schema": \"\"\"openapi: 3.0.0
+        info:
+            title: My Sample API
+            version: 1.0.0
+            description: A simple API example
+        servers:
+            - url: https://api.example.com/v1
+        paths: {}
+        \"\"\",
+                "ignore_unknown_fields": False,
+                "tls_config": {
+                    "ca_certs": [{
+                        "display_name": "example",
+                        "cert": "ZXhhbXBsZQ==",
+                    }],
+                },
+                "service_directory_config": {
+                    "service": "projects/example/locations/us/namespaces/namespace/services/service",
+                },
+                "api_authentication": {
+                    "service_agent_id_token_auth_config": {},
+                },
+            })
+        ces_base_agent = gcp.ces.Agent("ces_base_agent",
+            agent_id="base-agent-id",
+            location="us",
+            app=my_app.app_id,
+            display_name="base agent",
+            instruction="You are a helpful assistant for this example.",
+            model_settings={
+                "model": "gemini-2.5-flash",
+                "temperature": 0.5,
+            },
+            llm_agent={})
+        ces_child_agent = gcp.ces.Agent("ces_child_agent",
+            agent_id="child-agent-id",
+            location="us",
+            app=my_app.app_id,
+            display_name="child agent",
+            instruction="You are a helpful assistant for this example.",
+            model_settings={
+                "model": "gemini-2.5-flash",
+                "temperature": 0.5,
+            },
+            llm_agent={})
         my_example = gcp.ces.Example("my-example",
             location="us",
             display_name="my-example",
             app=my_app.name,
             example_id="example-id",
             description="example description",
+            entry_agent=pulumi.Output.all(
+                project=my_app.project,
+                app_id=my_app.app_id,
+                agent_id=ces_base_agent.agent_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+        ,
             messages=[{
                 "chunks": [
+                    {
+                        "agent_transfer": {
+                            "target_agent": pulumi.Output.all(
+                                project=my_app.project,
+                                app_id=my_app.app_id,
+                                agent_id=ces_child_agent.agent_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/agents/{resolved_outputs['agent_id']}")
+        ,
+                        },
+                    },
                     {
                         "image": {
                             "mime_type": "image/png",
@@ -483,6 +743,70 @@ class Example(pulumi.CustomResource):
                     },
                     {
                         "text": "text_data",
+                    },
+                    {
+                        "tool_call": {
+                            "args": json.dumps({
+                                "arg1": "val1",
+                                "arg2": "val2",
+                            }),
+                            "id": "tool_call_id",
+                            "tool": pulumi.Output.all(
+                                project=my_app.project,
+                                app_id=my_app.app_id,
+                                tool_id=ces_tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                        },
+                    },
+                    {
+                        "tool_call": {
+                            "args": json.dumps({
+                                "arg1": "val1",
+                                "arg2": "val2",
+                            }),
+                            "id": "tool_call_id2",
+                            "toolset_tool": {
+                                "toolset": pulumi.Output.all(
+                                    project=my_app.project,
+                                    app_id=my_app.app_id,
+                                    toolset_id=ces_toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                "tool_id": "example-id",
+                            },
+                        },
+                    },
+                    {
+                        "tool_response": {
+                            "id": "tool_call_id",
+                            "response": json.dumps({
+                                "output": "example-output",
+                            }),
+                            "tool": pulumi.Output.all(
+                                project=my_app.project,
+                                app_id=my_app.app_id,
+                                tool_id=ces_tool.tool_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/tools/{resolved_outputs['tool_id']}")
+        ,
+                        },
+                    },
+                    {
+                        "tool_response": {
+                            "id": "tool_call_id2",
+                            "response": json.dumps({
+                                "output": "example-output",
+                            }),
+                            "toolset_tool": {
+                                "toolset": pulumi.Output.all(
+                                    project=my_app.project,
+                                    app_id=my_app.app_id,
+                                    toolset_id=ces_toolset.toolset_id
+        ).apply(lambda resolved_outputs: f"projects/{resolved_outputs['project']}/locations/us/apps/{resolved_outputs['app_id']}/toolsets/{resolved_outputs['toolset_id']}")
+        ,
+                                "tool_id": "example-id",
+                            },
+                        },
                     },
                     {
                         "updated_variables": json.dumps({
@@ -537,6 +861,7 @@ class Example(pulumi.CustomResource):
                  app: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  example_id: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExampleMessageArgs', 'ExampleMessageArgsDict']]]]] = None,
@@ -557,6 +882,7 @@ class Example(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["entry_agent"] = entry_agent
             if example_id is None and not opts.urn:
                 raise TypeError("Missing required property 'example_id'")
             __props__.__dict__["example_id"] = example_id
@@ -584,6 +910,7 @@ class Example(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            entry_agent: Optional[pulumi.Input[_builtins.str]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
             example_id: Optional[pulumi.Input[_builtins.str]] = None,
             invalid: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -603,6 +930,9 @@ class Example(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the example was created.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the example.
         :param pulumi.Input[_builtins.str] display_name: Display name of the example.
+        :param pulumi.Input[_builtins.str] entry_agent: The agent that initially handles the conversation. If not specified, the
+               example represents a conversation that is handled by the root agent.
+               Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[_builtins.str] etag: Etag used to ensure the object hasn't changed during a read-modify-write
                operation. If the etag is empty, the update will overwrite any concurrent
                changes.
@@ -626,6 +956,7 @@ class Example(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["entry_agent"] = entry_agent
         __props__.__dict__["etag"] = etag
         __props__.__dict__["example_id"] = example_id
         __props__.__dict__["invalid"] = invalid
@@ -667,6 +998,16 @@ class Example(pulumi.CustomResource):
         Display name of the example.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="entryAgent")
+    def entry_agent(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The agent that initially handles the conversation. If not specified, the
+        example represents a conversation that is handled by the root agent.
+        Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+        """
+        return pulumi.get(self, "entry_agent")
 
     @_builtins.property
     @pulumi.getter

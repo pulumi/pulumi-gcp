@@ -14,17 +14,17 @@ namespace Pulumi.Gcp.Ces.Outputs
     public sealed class ToolClientFunctionResponse
     {
         /// <summary>
-        /// Optional. Defines the schema for additional properties allowed in an object.
+        /// Defines the schema for additional properties allowed in an object.
         /// The value must be a valid JSON string representing the Schema object.
         /// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
         /// </summary>
         public readonly string? AdditionalProperties;
         /// <summary>
-        /// Optional. The instance value should be valid against at least one of the schemas in this list.
+        /// The instance value should be valid against at least one of the schemas in this list.
         /// </summary>
         public readonly string? AnyOf;
         /// <summary>
-        /// Optional. Default value of the data. Represents a dynamically typed value
+        /// Default value of the data. Represents a dynamically typed value
         /// which can be either null, a number, a string, a boolean, a struct,
         /// or a list of values. The provided default value must be compatible
         /// with the defined 'type' and other schema constraints.
@@ -52,11 +52,27 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly string? Items;
         /// <summary>
+        /// Maximum number of the elements for Type.ARRAY. (int64 format)
+        /// </summary>
+        public readonly int? MaxItems;
+        /// <summary>
+        /// Maximum value for Type.INTEGER and Type.NUMBER.
+        /// </summary>
+        public readonly double? Maximum;
+        /// <summary>
+        /// Minimum number of the elements for Type.ARRAY. (int64 format)
+        /// </summary>
+        public readonly int? MinItems;
+        /// <summary>
+        /// Minimum value for Type.INTEGER and Type.NUMBER.
+        /// </summary>
+        public readonly double? Minimum;
+        /// <summary>
         /// Indicates if the value may be null.
         /// </summary>
         public readonly bool? Nullable;
         /// <summary>
-        /// Optional. Schemas of initial elements of Type.ARRAY.
+        /// Schemas of initial elements of Type.ARRAY.
         /// </summary>
         public readonly string? PrefixItems;
         /// <summary>
@@ -89,6 +105,10 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Requireds;
         /// <summary>
+        /// The title of the schema.
+        /// </summary>
+        public readonly string? Title;
+        /// <summary>
         /// The type of the data.
         /// Possible values:
         /// STRING
@@ -120,6 +140,14 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             string? items,
 
+            int? maxItems,
+
+            double? maximum,
+
+            int? minItems,
+
+            double? minimum,
+
             bool? nullable,
 
             string? prefixItems,
@@ -129,6 +157,8 @@ namespace Pulumi.Gcp.Ces.Outputs
             string? @ref,
 
             ImmutableArray<string> requireds,
+
+            string? title,
 
             string type,
 
@@ -141,11 +171,16 @@ namespace Pulumi.Gcp.Ces.Outputs
             Description = description;
             Enums = enums;
             Items = items;
+            MaxItems = maxItems;
+            Maximum = maximum;
+            MinItems = minItems;
+            Minimum = minimum;
             Nullable = nullable;
             PrefixItems = prefixItems;
             Properties = properties;
             Ref = @ref;
             Requireds = requireds;
+            Title = title;
             Type = type;
             UniqueItems = uniqueItems;
         }

@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Apphub.Outputs
         /// </summary>
         public readonly string? GcpProject;
         /// <summary>
+        /// (Output)
+        /// The identity associated with the service.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServiceServicePropertyIdentity> Identities;
+        /// <summary>
         /// Part of `Parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
         /// </summary>
         public readonly string? Location;
@@ -54,6 +60,8 @@ namespace Pulumi.Gcp.Apphub.Outputs
 
             string? gcpProject,
 
+            ImmutableArray<Outputs.ServiceServicePropertyIdentity> identities,
+
             string? location,
 
             ImmutableArray<Outputs.ServiceServicePropertyRegistrationType> registrationTypes,
@@ -63,6 +71,7 @@ namespace Pulumi.Gcp.Apphub.Outputs
             ExtendedMetadatas = extendedMetadatas;
             FunctionalTypes = functionalTypes;
             GcpProject = gcpProject;
+            Identities = identities;
             Location = location;
             RegistrationTypes = registrationTypes;
             Zone = zone;

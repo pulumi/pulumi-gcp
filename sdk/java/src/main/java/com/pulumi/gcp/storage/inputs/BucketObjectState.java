@@ -6,6 +6,7 @@ package com.pulumi.gcp.storage.inputs;
 import com.pulumi.asset.AssetOrArchive;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.BucketObjectContextsArgs;
 import com.pulumi.gcp.storage.inputs.BucketObjectCustomerEncryptionArgs;
 import com.pulumi.gcp.storage.inputs.BucketObjectRetentionArgs;
 import java.lang.Boolean;
@@ -126,6 +127,21 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> contentType() {
         return Optional.ofNullable(this.contentType);
+    }
+
+    /**
+     * Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+     * 
+     */
+    @Import(name="contexts")
+    private @Nullable Output<BucketObjectContextsArgs> contexts;
+
+    /**
+     * @return Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+     * 
+     */
+    public Optional<Output<BucketObjectContextsArgs>> contexts() {
+        return Optional.ofNullable(this.contexts);
     }
 
     /**
@@ -440,6 +456,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         this.contentEncoding = $.contentEncoding;
         this.contentLanguage = $.contentLanguage;
         this.contentType = $.contentType;
+        this.contexts = $.contexts;
         this.crc32c = $.crc32c;
         this.customerEncryption = $.customerEncryption;
         this.deletionPolicy = $.deletionPolicy;
@@ -627,6 +644,27 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder contentType(String contentType) {
             return contentType(Output.of(contentType));
+        }
+
+        /**
+         * @param contexts Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contexts(@Nullable Output<BucketObjectContextsArgs> contexts) {
+            $.contexts = contexts;
+            return this;
+        }
+
+        /**
+         * @param contexts Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contexts(BucketObjectContextsArgs contexts) {
+            return contexts(Output.of(contexts));
         }
 
         /**

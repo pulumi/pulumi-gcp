@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.apphub.inputs.ServiceServicePropertyExtendedMetadataArgs;
 import com.pulumi.gcp.apphub.inputs.ServiceServicePropertyFunctionalTypeArgs;
+import com.pulumi.gcp.apphub.inputs.ServiceServicePropertyIdentityArgs;
 import com.pulumi.gcp.apphub.inputs.ServiceServicePropertyRegistrationTypeArgs;
 import java.lang.String;
 import java.util.List;
@@ -75,6 +76,25 @@ public final class ServiceServicePropertyArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output)
+     * The identity associated with the service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="identities")
+    private @Nullable Output<List<ServiceServicePropertyIdentityArgs>> identities;
+
+    /**
+     * @return (Output)
+     * The identity associated with the service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceServicePropertyIdentityArgs>>> identities() {
+        return Optional.ofNullable(this.identities);
+    }
+
+    /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      * 
      */
@@ -131,6 +151,7 @@ public final class ServiceServicePropertyArgs extends com.pulumi.resources.Resou
         this.extendedMetadatas = $.extendedMetadatas;
         this.functionalTypes = $.functionalTypes;
         this.gcpProject = $.gcpProject;
+        this.identities = $.identities;
         this.location = $.location;
         this.registrationTypes = $.registrationTypes;
         this.zone = $.zone;
@@ -249,6 +270,43 @@ public final class ServiceServicePropertyArgs extends com.pulumi.resources.Resou
          */
         public Builder gcpProject(String gcpProject) {
             return gcpProject(Output.of(gcpProject));
+        }
+
+        /**
+         * @param identities (Output)
+         * The identity associated with the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identities(@Nullable Output<List<ServiceServicePropertyIdentityArgs>> identities) {
+            $.identities = identities;
+            return this;
+        }
+
+        /**
+         * @param identities (Output)
+         * The identity associated with the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identities(List<ServiceServicePropertyIdentityArgs> identities) {
+            return identities(Output.of(identities));
+        }
+
+        /**
+         * @param identities (Output)
+         * The identity associated with the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identities(ServiceServicePropertyIdentityArgs... identities) {
+            return identities(List.of(identities));
         }
 
         /**

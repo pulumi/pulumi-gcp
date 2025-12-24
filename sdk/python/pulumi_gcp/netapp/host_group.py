@@ -402,8 +402,10 @@ class HostGroup(pulumi.CustomResource):
         Hostgroup is a regional resource and independent of the volumes or any other resource
 
         To get more information about HostGroup, see:
+
+        * [API documentation](https://docs.cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.hostGroups)
         * How-to Guides
-            * Documentation
+            * [Documentation](https://docs.cloud.google.com/netapp/volumes/docs/configure-and-use/host-groups/overview)
 
         ## Example Usage
 
@@ -475,8 +477,10 @@ class HostGroup(pulumi.CustomResource):
         Hostgroup is a regional resource and independent of the volumes or any other resource
 
         To get more information about HostGroup, see:
+
+        * [API documentation](https://docs.cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.hostGroups)
         * How-to Guides
-            * Documentation
+            * [Documentation](https://docs.cloud.google.com/netapp/volumes/docs/configure-and-use/host-groups/overview)
 
         ## Example Usage
 

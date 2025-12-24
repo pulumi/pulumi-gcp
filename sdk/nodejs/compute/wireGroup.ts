@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about WireGroup, see:
  *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/wireGroups)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/wireGroups)
  * * How-to Guides
  *     * [Create a WireGroup](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/modify-network#add-wire-group)
  *
@@ -32,6 +32,31 @@ import * as utilities from "../utilities";
  *     name: "test-wire-group",
  *     description: "Example Wire Group",
  *     crossSiteNetwork: "test-cross-site-network",
+ *     wireProperties: {
+ *         bandwidthUnmetered: 10,
+ *         faultResponse: "NONE",
+ *         bandwidthAllocation: "ALLOCATE_PER_WIRE",
+ *     },
+ *     adminEnabled: true,
+ * }, {
+ *     dependsOn: [example_cross_site_network],
+ * });
+ * ```
+ * ### Compute Wire Group Basic Beta
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example_cross_site_network = new gcp.compute.CrossSiteNetwork("example-cross-site-network", {
+ *     name: "test-cross-site-network-beta",
+ *     description: "Example cross site network",
+ * });
+ * const example_test_wire_group_beta = new gcp.compute.WireGroup("example-test-wire-group-beta", {
+ *     name: "test-wire-group-beta",
+ *     description: "Example Wire Group Beta",
+ *     crossSiteNetwork: "test-cross-site-network-beta",
  *     wireProperties: {
  *         bandwidthUnmetered: 10,
  *         faultResponse: "NONE",

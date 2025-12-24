@@ -299,6 +299,70 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Security Security Profile Broker
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networksecurity.MirroringDeploymentGroup;
+ * import com.pulumi.gcp.networksecurity.MirroringDeploymentGroupArgs;
+ * import com.pulumi.gcp.networksecurity.MirroringEndpointGroup;
+ * import com.pulumi.gcp.networksecurity.MirroringEndpointGroupArgs;
+ * import com.pulumi.gcp.networksecurity.SecurityProfile;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultMirroringDeploymentGroup = new MirroringDeploymentGroup("defaultMirroringDeploymentGroup", MirroringDeploymentGroupArgs.builder()
+ *             .mirroringDeploymentGroupId("my-dg")
+ *             .location("global")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var defaultMirroringEndpointGroup = new MirroringEndpointGroup("defaultMirroringEndpointGroup", MirroringEndpointGroupArgs.builder()
+ *             .mirroringEndpointGroupId("my-eg")
+ *             .location("global")
+ *             .type("BROKER")
+ *             .mirroringDeploymentGroups(defaultMirroringDeploymentGroup.id())
+ *             .build());
+ * 
+ *         var defaultSecurityProfile = new SecurityProfile("defaultSecurityProfile", SecurityProfileArgs.builder()
+ *             .name("my-security-profile")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .type("CUSTOM_MIRRORING")
+ *             .customMirroringProfile(SecurityProfileCustomMirroringProfileArgs.builder()
+ *                 .mirroringEndpointGroup(defaultMirroringEndpointGroup.id())
+ *                 .mirroringDeploymentGroups(defaultMirroringDeploymentGroup.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -93,6 +93,23 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+     * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+     * 
+     */
+    @Import(name="deleteBgpAlwaysCompareMed")
+    private @Nullable Output<Boolean> deleteBgpAlwaysCompareMed;
+
+    /**
+     * @return If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+     * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteBgpAlwaysCompareMed() {
+        return Optional.ofNullable(this.deleteBgpAlwaysCompareMed);
+    }
+
+    /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
      * 
@@ -396,6 +413,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.bgpAlwaysCompareMed = $.bgpAlwaysCompareMed;
         this.bgpBestPathSelectionMode = $.bgpBestPathSelectionMode;
         this.bgpInterRegionCost = $.bgpInterRegionCost;
+        this.deleteBgpAlwaysCompareMed = $.deleteBgpAlwaysCompareMed;
         this.deleteDefaultRoutesOnCreate = $.deleteDefaultRoutesOnCreate;
         this.description = $.description;
         this.enableUlaInternalIpv6 = $.enableUlaInternalIpv6;
@@ -527,6 +545,29 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bgpInterRegionCost(String bgpInterRegionCost) {
             return bgpInterRegionCost(Output.of(bgpInterRegionCost));
+        }
+
+        /**
+         * @param deleteBgpAlwaysCompareMed If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+         * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteBgpAlwaysCompareMed(@Nullable Output<Boolean> deleteBgpAlwaysCompareMed) {
+            $.deleteBgpAlwaysCompareMed = deleteBgpAlwaysCompareMed;
+            return this;
+        }
+
+        /**
+         * @param deleteBgpAlwaysCompareMed If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+         * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteBgpAlwaysCompareMed(Boolean deleteBgpAlwaysCompareMed) {
+            return deleteBgpAlwaysCompareMed(Output.of(deleteBgpAlwaysCompareMed));
         }
 
         /**

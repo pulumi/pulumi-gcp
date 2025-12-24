@@ -8018,6 +8018,251 @@ func (o GetVersionRelatedTagArrayOutput) Index(i pulumi.IntInput) GetVersionRela
 	}).(GetVersionRelatedTagOutput)
 }
 
+type GetVersionsVersion struct {
+	// Client specified annotations.
+	Annotations map[string]string `pulumi:"annotations"`
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime string `pulumi:"createTime"`
+	// Description of the version, as specified in its metadata.
+	Description string `pulumi:"description"`
+	// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+	Name string `pulumi:"name"`
+	// A list of related tags. Will contain up to 100 tags that reference this version.
+	RelatedTags []GetVersionsVersionRelatedTag `pulumi:"relatedTags"`
+	// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetVersionsVersionInput is an input type that accepts GetVersionsVersionArgs and GetVersionsVersionOutput values.
+// You can construct a concrete instance of `GetVersionsVersionInput` via:
+//
+//	GetVersionsVersionArgs{...}
+type GetVersionsVersionInput interface {
+	pulumi.Input
+
+	ToGetVersionsVersionOutput() GetVersionsVersionOutput
+	ToGetVersionsVersionOutputWithContext(context.Context) GetVersionsVersionOutput
+}
+
+type GetVersionsVersionArgs struct {
+	// Client specified annotations.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// The time, as a RFC 3339 string, this package was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Description of the version, as specified in its metadata.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of related tags. Will contain up to 100 tags that reference this version.
+	RelatedTags GetVersionsVersionRelatedTagArrayInput `pulumi:"relatedTags"`
+	// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetVersionsVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsVersion)(nil)).Elem()
+}
+
+func (i GetVersionsVersionArgs) ToGetVersionsVersionOutput() GetVersionsVersionOutput {
+	return i.ToGetVersionsVersionOutputWithContext(context.Background())
+}
+
+func (i GetVersionsVersionArgs) ToGetVersionsVersionOutputWithContext(ctx context.Context) GetVersionsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionOutput)
+}
+
+// GetVersionsVersionArrayInput is an input type that accepts GetVersionsVersionArray and GetVersionsVersionArrayOutput values.
+// You can construct a concrete instance of `GetVersionsVersionArrayInput` via:
+//
+//	GetVersionsVersionArray{ GetVersionsVersionArgs{...} }
+type GetVersionsVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetVersionsVersionArrayOutput() GetVersionsVersionArrayOutput
+	ToGetVersionsVersionArrayOutputWithContext(context.Context) GetVersionsVersionArrayOutput
+}
+
+type GetVersionsVersionArray []GetVersionsVersionInput
+
+func (GetVersionsVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsVersion)(nil)).Elem()
+}
+
+func (i GetVersionsVersionArray) ToGetVersionsVersionArrayOutput() GetVersionsVersionArrayOutput {
+	return i.ToGetVersionsVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetVersionsVersionArray) ToGetVersionsVersionArrayOutputWithContext(ctx context.Context) GetVersionsVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionArrayOutput)
+}
+
+type GetVersionsVersionOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsVersion)(nil)).Elem()
+}
+
+func (o GetVersionsVersionOutput) ToGetVersionsVersionOutput() GetVersionsVersionOutput {
+	return o
+}
+
+func (o GetVersionsVersionOutput) ToGetVersionsVersionOutputWithContext(ctx context.Context) GetVersionsVersionOutput {
+	return o
+}
+
+// Client specified annotations.
+func (o GetVersionsVersionOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVersionsVersion) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// The time, as a RFC 3339 string, this package was created.
+func (o GetVersionsVersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersion) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the version, as specified in its metadata.
+func (o GetVersionsVersionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersion) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+func (o GetVersionsVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of related tags. Will contain up to 100 tags that reference this version.
+func (o GetVersionsVersionOutput) RelatedTags() GetVersionsVersionRelatedTagArrayOutput {
+	return o.ApplyT(func(v GetVersionsVersion) []GetVersionsVersionRelatedTag { return v.RelatedTags }).(GetVersionsVersionRelatedTagArrayOutput)
+}
+
+// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
+func (o GetVersionsVersionOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersion) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetVersionsVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsVersion)(nil)).Elem()
+}
+
+func (o GetVersionsVersionArrayOutput) ToGetVersionsVersionArrayOutput() GetVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetVersionsVersionArrayOutput) ToGetVersionsVersionArrayOutputWithContext(ctx context.Context) GetVersionsVersionArrayOutput {
+	return o
+}
+
+func (o GetVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetVersionsVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVersionsVersion {
+		return vs[0].([]GetVersionsVersion)[vs[1].(int)]
+	}).(GetVersionsVersionOutput)
+}
+
+type GetVersionsVersionRelatedTag struct {
+	// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+	Name    string `pulumi:"name"`
+	Version string `pulumi:"version"`
+}
+
+// GetVersionsVersionRelatedTagInput is an input type that accepts GetVersionsVersionRelatedTagArgs and GetVersionsVersionRelatedTagOutput values.
+// You can construct a concrete instance of `GetVersionsVersionRelatedTagInput` via:
+//
+//	GetVersionsVersionRelatedTagArgs{...}
+type GetVersionsVersionRelatedTagInput interface {
+	pulumi.Input
+
+	ToGetVersionsVersionRelatedTagOutput() GetVersionsVersionRelatedTagOutput
+	ToGetVersionsVersionRelatedTagOutputWithContext(context.Context) GetVersionsVersionRelatedTagOutput
+}
+
+type GetVersionsVersionRelatedTagArgs struct {
+	// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+	Name    pulumi.StringInput `pulumi:"name"`
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetVersionsVersionRelatedTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsVersionRelatedTag)(nil)).Elem()
+}
+
+func (i GetVersionsVersionRelatedTagArgs) ToGetVersionsVersionRelatedTagOutput() GetVersionsVersionRelatedTagOutput {
+	return i.ToGetVersionsVersionRelatedTagOutputWithContext(context.Background())
+}
+
+func (i GetVersionsVersionRelatedTagArgs) ToGetVersionsVersionRelatedTagOutputWithContext(ctx context.Context) GetVersionsVersionRelatedTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionRelatedTagOutput)
+}
+
+// GetVersionsVersionRelatedTagArrayInput is an input type that accepts GetVersionsVersionRelatedTagArray and GetVersionsVersionRelatedTagArrayOutput values.
+// You can construct a concrete instance of `GetVersionsVersionRelatedTagArrayInput` via:
+//
+//	GetVersionsVersionRelatedTagArray{ GetVersionsVersionRelatedTagArgs{...} }
+type GetVersionsVersionRelatedTagArrayInput interface {
+	pulumi.Input
+
+	ToGetVersionsVersionRelatedTagArrayOutput() GetVersionsVersionRelatedTagArrayOutput
+	ToGetVersionsVersionRelatedTagArrayOutputWithContext(context.Context) GetVersionsVersionRelatedTagArrayOutput
+}
+
+type GetVersionsVersionRelatedTagArray []GetVersionsVersionRelatedTagInput
+
+func (GetVersionsVersionRelatedTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsVersionRelatedTag)(nil)).Elem()
+}
+
+func (i GetVersionsVersionRelatedTagArray) ToGetVersionsVersionRelatedTagArrayOutput() GetVersionsVersionRelatedTagArrayOutput {
+	return i.ToGetVersionsVersionRelatedTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetVersionsVersionRelatedTagArray) ToGetVersionsVersionRelatedTagArrayOutputWithContext(ctx context.Context) GetVersionsVersionRelatedTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsVersionRelatedTagArrayOutput)
+}
+
+type GetVersionsVersionRelatedTagOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsVersionRelatedTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsVersionRelatedTag)(nil)).Elem()
+}
+
+func (o GetVersionsVersionRelatedTagOutput) ToGetVersionsVersionRelatedTagOutput() GetVersionsVersionRelatedTagOutput {
+	return o
+}
+
+func (o GetVersionsVersionRelatedTagOutput) ToGetVersionsVersionRelatedTagOutputWithContext(ctx context.Context) GetVersionsVersionRelatedTagOutput {
+	return o
+}
+
+// The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
+func (o GetVersionsVersionRelatedTagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersionRelatedTag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetVersionsVersionRelatedTagOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsVersionRelatedTag) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetVersionsVersionRelatedTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsVersionRelatedTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsVersionRelatedTag)(nil)).Elem()
+}
+
+func (o GetVersionsVersionRelatedTagArrayOutput) ToGetVersionsVersionRelatedTagArrayOutput() GetVersionsVersionRelatedTagArrayOutput {
+	return o
+}
+
+func (o GetVersionsVersionRelatedTagArrayOutput) ToGetVersionsVersionRelatedTagArrayOutputWithContext(ctx context.Context) GetVersionsVersionRelatedTagArrayOutput {
+	return o
+}
+
+func (o GetVersionsVersionRelatedTagArrayOutput) Index(i pulumi.IntInput) GetVersionsVersionRelatedTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVersionsVersionRelatedTag {
+		return vs[0].([]GetVersionsVersionRelatedTag)[vs[1].(int)]
+	}).(GetVersionsVersionRelatedTagOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyInput)(nil)).Elem(), RepositoryCleanupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyArrayInput)(nil)).Elem(), RepositoryCleanupPolicyArray{})
@@ -8135,6 +8380,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionRelatedTagInput)(nil)).Elem(), GetVersionRelatedTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionRelatedTagArrayInput)(nil)).Elem(), GetVersionRelatedTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionInput)(nil)).Elem(), GetVersionsVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionArrayInput)(nil)).Elem(), GetVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionRelatedTagInput)(nil)).Elem(), GetVersionsVersionRelatedTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsVersionRelatedTagArrayInput)(nil)).Elem(), GetVersionsVersionRelatedTagArray{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyConditionOutput{})
@@ -8251,4 +8500,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
 	pulumi.RegisterOutputType(GetVersionRelatedTagOutput{})
 	pulumi.RegisterOutputType(GetVersionRelatedTagArrayOutput{})
+	pulumi.RegisterOutputType(GetVersionsVersionOutput{})
+	pulumi.RegisterOutputType(GetVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetVersionsVersionRelatedTagOutput{})
+	pulumi.RegisterOutputType(GetVersionsVersionRelatedTagArrayOutput{})
 }

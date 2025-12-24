@@ -39,7 +39,6 @@ public final class CxGenerativeSettingsArgs extends com.pulumi.resources.Resourc
 
     /**
      * Settings for Generative Safety.
-     * w
      * Structure is documented below.
      * 
      */
@@ -48,7 +47,6 @@ public final class CxGenerativeSettingsArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Settings for Generative Safety.
-     * w
      * Structure is documented below.
      * 
      */
@@ -176,7 +174,6 @@ public final class CxGenerativeSettingsArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param generativeSafetySettings Settings for Generative Safety.
-         * w
          * Structure is documented below.
          * 
          * @return builder
@@ -189,7 +186,6 @@ public final class CxGenerativeSettingsArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param generativeSafetySettings Settings for Generative Safety.
-         * w
          * Structure is documented below.
          * 
          * @return builder

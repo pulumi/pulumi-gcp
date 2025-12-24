@@ -90,6 +90,11 @@ export const getVersion: typeof import("./getVersion").getVersion = null as any;
 export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
 
+export { GetVersionsArgs, GetVersionsResult, GetVersionsOutputArgs } from "./getVersions";
+export const getVersions: typeof import("./getVersions").getVersions = null as any;
+export const getVersionsOutput: typeof import("./getVersions").getVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getVersions","getVersionsOutput"], () => require("./getVersions"));
+
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;

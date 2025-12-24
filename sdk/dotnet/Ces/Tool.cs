@@ -48,27 +48,9 @@ namespace Pulumi.Gcp.Ces
     ///             Description = "example-description",
     ///             Parameters = new Gcp.Ces.Inputs.ToolClientFunctionParametersArgs
     ///             {
-    ///                 Description = "schema description",
-    ///                 Type = "ARRAY",
-    ///                 Nullable = true,
-    ///                 Requireds = new[]
+    ///                 AdditionalProperties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     "some_property",
-    ///                 },
-    ///                 Enums = new[]
-    ///                 {
-    ///                     "VALUE_A",
-    ///                     "VALUE_B",
-    ///                 },
-    ///                 Ref = "#/defs/MyDefinition",
-    ///                 UniqueItems = true,
-    ///                 Defs = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["SimpleString"] = new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["type"] = "STRING",
-    ///                         ["description"] = "A simple string definition",
-    ///                     },
+    ///                     ["type"] = "BOOLEAN",
     ///                 }),
     ///                 AnyOf = JsonSerializer.Serialize(new[]
     ///                 {
@@ -79,6 +61,30 @@ namespace Pulumi.Gcp.Ces
     ///                     },
     ///                 }),
     ///                 Default = JsonSerializer.Serialize(false),
+    ///                 Defs = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["SimpleString"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "STRING",
+    ///                         ["description"] = "A simple string definition",
+    ///                     },
+    ///                 }),
+    ///                 Description = "schema description",
+    ///                 Enums = new[]
+    ///                 {
+    ///                     "VALUE_A",
+    ///                     "VALUE_B",
+    ///                 },
+    ///                 Items = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["type"] = "ARRAY",
+    ///                     ["description"] = "An array",
+    ///                 }),
+    ///                 MaxItems = 32,
+    ///                 Maximum = 64,
+    ///                 MinItems = 1,
+    ///                 Minimum = 2,
+    ///                 Nullable = true,
     ///                 PrefixItems = JsonSerializer.Serialize(new[]
     ///                 {
     ///                     new Dictionary&lt;string, object?&gt;
@@ -86,10 +92,6 @@ namespace Pulumi.Gcp.Ces
     ///                         ["type"] = "ARRAY",
     ///                         ["description"] = "prefix item 1",
     ///                     },
-    ///                 }),
-    ///                 AdditionalProperties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["type"] = "BOOLEAN",
     ///                 }),
     ///                 Properties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
@@ -99,35 +101,20 @@ namespace Pulumi.Gcp.Ces
     ///                         ["description"] = "A name",
     ///                     },
     ///                 }),
-    ///                 Items = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 Ref = "#/defs/MyDefinition",
+    ///                 Requireds = new[]
     ///                 {
-    ///                     ["type"] = "ARRAY",
-    ///                     ["description"] = "An array",
-    ///                 }),
+    ///                     "some_property",
+    ///                 },
+    ///                 Title = "Title",
+    ///                 Type = "ARRAY",
+    ///                 UniqueItems = true,
     ///             },
     ///             Response = new Gcp.Ces.Inputs.ToolClientFunctionResponseArgs
     ///             {
-    ///                 Description = "schema description",
-    ///                 Type = "ARRAY",
-    ///                 Nullable = true,
-    ///                 Requireds = new[]
+    ///                 AdditionalProperties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     "some_property",
-    ///                 },
-    ///                 Enums = new[]
-    ///                 {
-    ///                     "VALUE_A",
-    ///                     "VALUE_B",
-    ///                 },
-    ///                 Ref = "#/defs/MyDefinition",
-    ///                 UniqueItems = true,
-    ///                 Defs = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["SimpleString"] = new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["type"] = "STRING",
-    ///                         ["description"] = "A simple string definition",
-    ///                     },
+    ///                     ["type"] = "BOOLEAN",
     ///                 }),
     ///                 AnyOf = JsonSerializer.Serialize(new[]
     ///                 {
@@ -138,6 +125,30 @@ namespace Pulumi.Gcp.Ces
     ///                     },
     ///                 }),
     ///                 Default = JsonSerializer.Serialize(false),
+    ///                 Defs = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["SimpleString"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "STRING",
+    ///                         ["description"] = "A simple string definition",
+    ///                     },
+    ///                 }),
+    ///                 Description = "schema description",
+    ///                 Enums = new[]
+    ///                 {
+    ///                     "VALUE_A",
+    ///                     "VALUE_B",
+    ///                 },
+    ///                 Items = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["type"] = "ARRAY",
+    ///                     ["description"] = "An array",
+    ///                 }),
+    ///                 MaxItems = 32,
+    ///                 Maximum = 64,
+    ///                 MinItems = 1,
+    ///                 Minimum = 2,
+    ///                 Nullable = true,
     ///                 PrefixItems = JsonSerializer.Serialize(new[]
     ///                 {
     ///                     new Dictionary&lt;string, object?&gt;
@@ -145,10 +156,6 @@ namespace Pulumi.Gcp.Ces
     ///                         ["type"] = "ARRAY",
     ///                         ["description"] = "prefix item 1",
     ///                     },
-    ///                 }),
-    ///                 AdditionalProperties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["type"] = "BOOLEAN",
     ///                 }),
     ///                 Properties = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
@@ -158,11 +165,14 @@ namespace Pulumi.Gcp.Ces
     ///                         ["description"] = "A name",
     ///                     },
     ///                 }),
-    ///                 Items = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 Ref = "#/defs/MyDefinition",
+    ///                 Requireds = new[]
     ///                 {
-    ///                     ["type"] = "ARRAY",
-    ///                     ["description"] = "An array",
-    ///                 }),
+    ///                     "some_property",
+    ///                 },
+    ///                 Title = "Title",
+    ///                 Type = "ARRAY",
+    ///                 UniqueItems = true,
     ///             },
     ///         },
     ///     });
@@ -349,11 +359,21 @@ namespace Pulumi.Gcp.Ces
     ///         GoogleSearchTool = new Gcp.Ces.Inputs.ToolGoogleSearchToolArgs
     ///         {
     ///             Name = "example-tool",
+    ///             ContextUrls = new[]
+    ///             {
+    ///                 "example.com",
+    ///                 "example2.com",
+    ///             },
     ///             Description = "example-description",
     ///             ExcludeDomains = new[]
     ///             {
     ///                 "example.com",
     ///                 "example2.com",
+    ///             },
+    ///             PreferredDomains = new[]
+    ///             {
+    ///                 "example3.com",
+    ///                 "example4.com",
     ///             },
     ///         },
     ///     });

@@ -36,6 +36,7 @@ class AppArgs:
                  logging_settings: Optional[pulumi.Input['AppLoggingSettingsArgs']] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  model_settings: Optional[pulumi.Input['AppModelSettingsArgs']] = None,
+                 pinned: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  root_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  time_zone_settings: Optional[pulumi.Input['AppTimeZoneSettingsArgs']] = None,
@@ -74,6 +75,7 @@ class AppArgs:
                information relevant to the app's details or intended usages.
         :param pulumi.Input['AppModelSettingsArgs'] model_settings: Model settings contains various configurations for the LLM model.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] pinned: Whether the app is pinned in the app list.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] root_agent: The root agent is the entry point of the app.
@@ -110,6 +112,8 @@ class AppArgs:
             pulumi.set(__self__, "metadata", metadata)
         if model_settings is not None:
             pulumi.set(__self__, "model_settings", model_settings)
+        if pinned is not None:
+            pulumi.set(__self__, "pinned", pinned)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if root_agent is not None:
@@ -318,6 +322,18 @@ class AppArgs:
 
     @_builtins.property
     @pulumi.getter
+    def pinned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the app is pinned in the app list.
+        """
+        return pulumi.get(self, "pinned")
+
+    @pinned.setter
+    def pinned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "pinned", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -391,6 +407,7 @@ class _AppState:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  model_settings: Optional[pulumi.Input['AppModelSettingsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 pinned: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  root_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  time_zone_settings: Optional[pulumi.Input['AppTimeZoneSettingsArgs']] = None,
@@ -437,6 +454,7 @@ class _AppState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of the app.
                Format: `projects/{project}/locations/{location}/apps/{app}`
+        :param pulumi.Input[_builtins.bool] pinned: Whether the app is pinned in the app list.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] root_agent: The root agent is the entry point of the app.
@@ -485,6 +503,8 @@ class _AppState:
             pulumi.set(__self__, "model_settings", model_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pinned is not None:
+            pulumi.set(__self__, "pinned", pinned)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if root_agent is not None:
@@ -746,6 +766,18 @@ class _AppState:
 
     @_builtins.property
     @pulumi.getter
+    def pinned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the app is pinned in the app list.
+        """
+        return pulumi.get(self, "pinned")
+
+    @pinned.setter
+    def pinned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "pinned", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -830,6 +862,7 @@ class App(pulumi.CustomResource):
                  logging_settings: Optional[pulumi.Input[Union['AppLoggingSettingsArgs', 'AppLoggingSettingsArgsDict']]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  model_settings: Optional[pulumi.Input[Union['AppModelSettingsArgs', 'AppModelSettingsArgsDict']]] = None,
+                 pinned: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  root_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  time_zone_settings: Optional[pulumi.Input[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']]] = None,
@@ -867,6 +900,7 @@ class App(pulumi.CustomResource):
             location="us",
             description="Basic CES App example",
             display_name="my-app",
+            pinned=True,
             language_settings={
                 "default_language_code": "en-US",
                 "supported_language_codes": [
@@ -941,6 +975,7 @@ class App(pulumi.CustomResource):
                 "schema": {
                     "description": "schema description",
                     "type": "ARRAY",
+                    "title": "title",
                     "nullable": True,
                     "requireds": ["some_property"],
                     "enums": [
@@ -1213,6 +1248,7 @@ class App(pulumi.CustomResource):
                information relevant to the app's details or intended usages.
         :param pulumi.Input[Union['AppModelSettingsArgs', 'AppModelSettingsArgsDict']] model_settings: Model settings contains various configurations for the LLM model.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] pinned: Whether the app is pinned in the app list.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] root_agent: The root agent is the entry point of the app.
@@ -1260,6 +1296,7 @@ class App(pulumi.CustomResource):
             location="us",
             description="Basic CES App example",
             display_name="my-app",
+            pinned=True,
             language_settings={
                 "default_language_code": "en-US",
                 "supported_language_codes": [
@@ -1334,6 +1371,7 @@ class App(pulumi.CustomResource):
                 "schema": {
                     "description": "schema description",
                     "type": "ARRAY",
+                    "title": "title",
                     "nullable": True,
                     "requireds": ["some_property"],
                     "enums": [
@@ -1602,6 +1640,7 @@ class App(pulumi.CustomResource):
                  logging_settings: Optional[pulumi.Input[Union['AppLoggingSettingsArgs', 'AppLoggingSettingsArgsDict']]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  model_settings: Optional[pulumi.Input[Union['AppModelSettingsArgs', 'AppModelSettingsArgsDict']]] = None,
+                 pinned: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  root_agent: Optional[pulumi.Input[_builtins.str]] = None,
                  time_zone_settings: Optional[pulumi.Input[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']]] = None,
@@ -1636,6 +1675,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["logging_settings"] = logging_settings
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["model_settings"] = model_settings
+            __props__.__dict__["pinned"] = pinned
             __props__.__dict__["project"] = project
             __props__.__dict__["root_agent"] = root_agent
             __props__.__dict__["time_zone_settings"] = time_zone_settings
@@ -1674,6 +1714,7 @@ class App(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             model_settings: Optional[pulumi.Input[Union['AppModelSettingsArgs', 'AppModelSettingsArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            pinned: Optional[pulumi.Input[_builtins.bool]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             root_agent: Optional[pulumi.Input[_builtins.str]] = None,
             time_zone_settings: Optional[pulumi.Input[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']]] = None,
@@ -1725,6 +1766,7 @@ class App(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of the app.
                Format: `projects/{project}/locations/{location}/apps/{app}`
+        :param pulumi.Input[_builtins.bool] pinned: Whether the app is pinned in the app list.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] root_agent: The root agent is the entry point of the app.
@@ -1758,6 +1800,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["model_settings"] = model_settings
         __props__.__dict__["name"] = name
+        __props__.__dict__["pinned"] = pinned
         __props__.__dict__["project"] = project
         __props__.__dict__["root_agent"] = root_agent
         __props__.__dict__["time_zone_settings"] = time_zone_settings
@@ -1936,6 +1979,14 @@ class App(pulumi.CustomResource):
         Format: `projects/{project}/locations/{location}/apps/{app}`
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def pinned(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the app is pinned in the app list.
+        """
+        return pulumi.get(self, "pinned")
 
     @_builtins.property
     @pulumi.getter

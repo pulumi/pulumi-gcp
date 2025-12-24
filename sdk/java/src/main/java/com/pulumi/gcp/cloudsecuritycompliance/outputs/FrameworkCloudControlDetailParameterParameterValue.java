@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudsecuritycompliance.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudsecuritycompliance.outputs.FrameworkCloudControlDetailParameterParameterValueOneofValue;
 import com.pulumi.gcp.cloudsecuritycompliance.outputs.FrameworkCloudControlDetailParameterParameterValueStringListValue;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -24,6 +25,12 @@ public final class FrameworkCloudControlDetailParameterParameterValue {
      * 
      */
     private @Nullable Double numberValue;
+    /**
+     * @return Sub-parameter values.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FrameworkCloudControlDetailParameterParameterValueOneofValue oneofValue;
     /**
      * @return A list of strings.
      * Structure is documented below.
@@ -52,6 +59,14 @@ public final class FrameworkCloudControlDetailParameterParameterValue {
         return Optional.ofNullable(this.numberValue);
     }
     /**
+     * @return Sub-parameter values.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FrameworkCloudControlDetailParameterParameterValueOneofValue> oneofValue() {
+        return Optional.ofNullable(this.oneofValue);
+    }
+    /**
      * @return A list of strings.
      * Structure is documented below.
      * 
@@ -78,6 +93,7 @@ public final class FrameworkCloudControlDetailParameterParameterValue {
     public static final class Builder {
         private @Nullable Boolean boolValue;
         private @Nullable Double numberValue;
+        private @Nullable FrameworkCloudControlDetailParameterParameterValueOneofValue oneofValue;
         private @Nullable FrameworkCloudControlDetailParameterParameterValueStringListValue stringListValue;
         private @Nullable String stringValue;
         public Builder() {}
@@ -85,6 +101,7 @@ public final class FrameworkCloudControlDetailParameterParameterValue {
     	      Objects.requireNonNull(defaults);
     	      this.boolValue = defaults.boolValue;
     	      this.numberValue = defaults.numberValue;
+    	      this.oneofValue = defaults.oneofValue;
     	      this.stringListValue = defaults.stringListValue;
     	      this.stringValue = defaults.stringValue;
         }
@@ -99,6 +116,12 @@ public final class FrameworkCloudControlDetailParameterParameterValue {
         public Builder numberValue(@Nullable Double numberValue) {
 
             this.numberValue = numberValue;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oneofValue(@Nullable FrameworkCloudControlDetailParameterParameterValueOneofValue oneofValue) {
+
+            this.oneofValue = oneofValue;
             return this;
         }
         @CustomType.Setter
@@ -117,6 +140,7 @@ public final class FrameworkCloudControlDetailParameterParameterValue {
             final var _resultValue = new FrameworkCloudControlDetailParameterParameterValue();
             _resultValue.boolValue = boolValue;
             _resultValue.numberValue = numberValue;
+            _resultValue.oneofValue = oneofValue;
             _resultValue.stringListValue = stringListValue;
             _resultValue.stringValue = stringValue;
             return _resultValue;

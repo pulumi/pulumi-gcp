@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.modelarmor.inputs.FloorsettingAiPlatformFloorSettingArgs;
 import com.pulumi.gcp.modelarmor.inputs.FloorsettingFilterConfigArgs;
 import com.pulumi.gcp.modelarmor.inputs.FloorsettingFloorSettingMetadataArgs;
+import com.pulumi.gcp.modelarmor.inputs.FloorsettingGoogleMcpServerFloorSettingArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -102,6 +103,23 @@ public final class FloorsettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Google MCP Server floor setting.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="googleMcpServerFloorSetting")
+    private @Nullable Output<FloorsettingGoogleMcpServerFloorSettingArgs> googleMcpServerFloorSetting;
+
+    /**
+     * @return Google MCP Server floor setting.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FloorsettingGoogleMcpServerFloorSettingArgs>> googleMcpServerFloorSetting() {
+        return Optional.ofNullable(this.googleMcpServerFloorSetting);
+    }
+
+    /**
      * List of integrated services for which the floor setting is applicable.
      * 
      */
@@ -190,6 +208,7 @@ public final class FloorsettingState extends com.pulumi.resources.ResourceArgs {
         this.enableFloorSettingEnforcement = $.enableFloorSettingEnforcement;
         this.filterConfig = $.filterConfig;
         this.floorSettingMetadata = $.floorSettingMetadata;
+        this.googleMcpServerFloorSetting = $.googleMcpServerFloorSetting;
         this.integratedServices = $.integratedServices;
         this.location = $.location;
         this.name = $.name;
@@ -324,6 +343,29 @@ public final class FloorsettingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder floorSettingMetadata(FloorsettingFloorSettingMetadataArgs floorSettingMetadata) {
             return floorSettingMetadata(Output.of(floorSettingMetadata));
+        }
+
+        /**
+         * @param googleMcpServerFloorSetting Google MCP Server floor setting.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleMcpServerFloorSetting(@Nullable Output<FloorsettingGoogleMcpServerFloorSettingArgs> googleMcpServerFloorSetting) {
+            $.googleMcpServerFloorSetting = googleMcpServerFloorSetting;
+            return this;
+        }
+
+        /**
+         * @param googleMcpServerFloorSetting Google MCP Server floor setting.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder googleMcpServerFloorSetting(FloorsettingGoogleMcpServerFloorSettingArgs googleMcpServerFloorSetting) {
+            return googleMcpServerFloorSetting(Output.of(googleMcpServerFloorSetting));
         }
 
         /**

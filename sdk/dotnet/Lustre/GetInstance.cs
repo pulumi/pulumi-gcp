@@ -104,6 +104,7 @@ namespace Pulumi.Gcp.Lustre
         /// </summary>
         public readonly string Id;
         public readonly string InstanceId;
+        public readonly string KmsKey;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
         public readonly string MountPoint;
@@ -114,6 +115,7 @@ namespace Pulumi.Gcp.Lustre
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string State;
+        public readonly string StateReason;
         public readonly string UpdateTime;
         public readonly string? Zone;
 
@@ -135,6 +137,8 @@ namespace Pulumi.Gcp.Lustre
 
             string instanceId,
 
+            string kmsKey,
+
             ImmutableDictionary<string, string> labels,
 
             string location,
@@ -155,6 +159,8 @@ namespace Pulumi.Gcp.Lustre
 
             string state,
 
+            string stateReason,
+
             string updateTime,
 
             string? zone)
@@ -167,6 +173,7 @@ namespace Pulumi.Gcp.Lustre
             GkeSupportEnabled = gkeSupportEnabled;
             Id = id;
             InstanceId = instanceId;
+            KmsKey = kmsKey;
             Labels = labels;
             Location = location;
             MountPoint = mountPoint;
@@ -177,6 +184,7 @@ namespace Pulumi.Gcp.Lustre
             Project = project;
             PulumiLabels = pulumiLabels;
             State = state;
+            StateReason = stateReason;
             UpdateTime = updateTime;
             Zone = zone;
         }

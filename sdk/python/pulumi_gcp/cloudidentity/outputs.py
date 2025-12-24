@@ -34,6 +34,8 @@ __all__ = [
     'GetGroupsGroupResult',
     'GetGroupsGroupAdditionalGroupKeyResult',
     'GetGroupsGroupGroupKeyResult',
+    'GetPoliciesPolicyResult',
+    'GetPoliciesPolicyPolicyQueryResult',
     'GetPolicyPolicyQueryResult',
 ]
 
@@ -950,6 +952,119 @@ class GetGroupsGroupGroupKeyResult(dict):
         and must be in the form of `identitysources/{identity_source_id}`.
         """
         return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class GetPoliciesPolicyResult(dict):
+    def __init__(__self__, *,
+                 customer: _builtins.str,
+                 name: _builtins.str,
+                 policy_queries: Sequence['outputs.GetPoliciesPolicyPolicyQueryResult'],
+                 setting: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str customer: The customer that the policy belongs to.
+        :param _builtins.str name: The resource name of the policy.
+        :param Sequence['GetPoliciesPolicyPolicyQueryArgs'] policy_queries: A list containing the CEL query that defines which entities the policy applies to. Structure is documented below.
+        :param _builtins.str setting: The setting configured by this policy, represented as a JSON string.
+        :param _builtins.str type: The type of the policy.
+        """
+        pulumi.set(__self__, "customer", customer)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policy_queries", policy_queries)
+        pulumi.set(__self__, "setting", setting)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def customer(self) -> _builtins.str:
+        """
+        The customer that the policy belongs to.
+        """
+        return pulumi.get(self, "customer")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The resource name of the policy.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="policyQueries")
+    def policy_queries(self) -> Sequence['outputs.GetPoliciesPolicyPolicyQueryResult']:
+        """
+        A list containing the CEL query that defines which entities the policy applies to. Structure is documented below.
+        """
+        return pulumi.get(self, "policy_queries")
+
+    @_builtins.property
+    @pulumi.getter
+    def setting(self) -> _builtins.str:
+        """
+        The setting configured by this policy, represented as a JSON string.
+        """
+        return pulumi.get(self, "setting")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the policy.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPoliciesPolicyPolicyQueryResult(dict):
+    def __init__(__self__, *,
+                 group: _builtins.str,
+                 org_unit: _builtins.str,
+                 query: _builtins.str,
+                 sort_order: _builtins.float):
+        """
+        :param _builtins.str group: The group that the policy applies to.
+        :param _builtins.str org_unit: The org unit that the policy applies to.
+        :param _builtins.str query: The query that defines which entities the policy applies to.
+        :param _builtins.float sort_order: The sort order of the policy.
+        """
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "org_unit", org_unit)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "sort_order", sort_order)
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> _builtins.str:
+        """
+        The group that the policy applies to.
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="orgUnit")
+    def org_unit(self) -> _builtins.str:
+        """
+        The org unit that the policy applies to.
+        """
+        return pulumi.get(self, "org_unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> _builtins.str:
+        """
+        The query that defines which entities the policy applies to.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> _builtins.float:
+        """
+        The sort order of the policy.
+        """
+        return pulumi.get(self, "sort_order")
 
 
 @pulumi.output_type

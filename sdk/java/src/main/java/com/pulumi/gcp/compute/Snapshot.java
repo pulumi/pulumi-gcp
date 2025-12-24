@@ -434,6 +434,22 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return this.snapshotId;
     }
     /**
+     * Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     * 
+     */
+    @Export(name="snapshotType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> snapshotType;
+
+    /**
+     * @return Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     * 
+     */
+    public Output<Optional<String>> snapshotType() {
+        return Codegen.optional(this.snapshotType);
+    }
+    /**
      * A reference to the disk used to create this snapshot.
      * 
      */

@@ -508,6 +508,42 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+     * 
+     */
+    @Import(name="rootPasswordWo")
+    private @Nullable Output<String> rootPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> rootPasswordWo() {
+        return Optional.ofNullable(this.rootPasswordWo);
+    }
+
+    /**
+     * Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="rootPasswordWoVersion")
+    private @Nullable Output<String> rootPasswordWoVersion;
+
+    /**
+     * @return Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> rootPasswordWoVersion() {
+        return Optional.ofNullable(this.rootPasswordWoVersion);
+    }
+
+    /**
      * The URI of the created resource.
      * 
      */
@@ -594,6 +630,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.replicationCluster = $.replicationCluster;
         this.restoreBackupContext = $.restoreBackupContext;
         this.rootPassword = $.rootPassword;
+        this.rootPasswordWo = $.rootPasswordWo;
+        this.rootPasswordWoVersion = $.rootPasswordWoVersion;
         this.selfLink = $.selfLink;
         this.serverCaCerts = $.serverCaCerts;
         this.serviceAccountEmailAddress = $.serviceAccountEmailAddress;
@@ -1294,6 +1332,54 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder rootPassword(String rootPassword) {
             return rootPassword(Output.of(rootPassword));
+        }
+
+        /**
+         * @param rootPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootPasswordWo(@Nullable Output<String> rootPasswordWo) {
+            $.rootPasswordWo = rootPasswordWo;
+            return this;
+        }
+
+        /**
+         * @param rootPasswordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootPasswordWo(String rootPasswordWo) {
+            return rootPasswordWo(Output.of(rootPasswordWo));
+        }
+
+        /**
+         * @param rootPasswordWoVersion Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootPasswordWoVersion(@Nullable Output<String> rootPasswordWoVersion) {
+            $.rootPasswordWoVersion = rootPasswordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param rootPasswordWoVersion Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootPasswordWoVersion(String rootPasswordWoVersion) {
+            return rootPasswordWoVersion(Output.of(rootPasswordWoVersion));
         }
 
         /**

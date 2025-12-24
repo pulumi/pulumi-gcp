@@ -448,6 +448,60 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Routine Python Function
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewRoutine(ctx, "python_function", &bigquery.RoutineArgs{
+//				DatasetId:   test.DatasetId,
+//				RoutineId:   pulumi.String("routine_id"),
+//				RoutineType: pulumi.String("SCALAR_FUNCTION"),
+//				Language:    pulumi.String("PYTHON"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:     pulumi.String("x"),
+//						DataType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
+//					},
+//					&bigquery.RoutineArgumentArgs{
+//						Name:     pulumi.String("y"),
+//						DataType: pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
+//					},
+//				},
+//				DefinitionBody: pulumi.String("def multiply(x, y):\n  return x * y\n"),
+//				ReturnType:     pulumi.String("{\"typeKind\" :  \"FLOAT64\"}"),
+//				PythonOptions: &bigquery.RoutinePythonOptionsArgs{
+//					EntryPoint: pulumi.String("multiply"),
+//				},
+//				ExternalRuntimeOptions: &bigquery.RoutineExternalRuntimeOptionsArgs{
+//					ContainerMemory: pulumi.String("512Mi"),
+//					ContainerCpu:    pulumi.Float64(0.5),
+//					RuntimeVersion:  pulumi.String("python-3.11"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -494,6 +548,10 @@ type Routine struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrOutput `pulumi:"determinismLevel"`
+	// Options for the runtime of the external system.
+	// This field is only applicable for Python UDFs.
+	// Structure is documented below.
+	ExternalRuntimeOptions RoutineExternalRuntimeOptionsPtrOutput `pulumi:"externalRuntimeOptions"`
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries pulumi.StringArrayOutput `pulumi:"importedLibraries"`
@@ -506,6 +564,9 @@ type Routine struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Options for a user-defined Python function.
+	// Structure is documented below.
+	PythonOptions RoutinePythonOptionsPtrOutput `pulumi:"pythonOptions"`
 	// Remote function specific options.
 	// Structure is documented below.
 	RemoteFunctionOptions RoutineRemoteFunctionOptionsPtrOutput `pulumi:"remoteFunctionOptions"`
@@ -598,6 +659,10 @@ type routineState struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel *string `pulumi:"determinismLevel"`
+	// Options for the runtime of the external system.
+	// This field is only applicable for Python UDFs.
+	// Structure is documented below.
+	ExternalRuntimeOptions *RoutineExternalRuntimeOptions `pulumi:"externalRuntimeOptions"`
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries []string `pulumi:"importedLibraries"`
@@ -610,6 +675,9 @@ type routineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Options for a user-defined Python function.
+	// Structure is documented below.
+	PythonOptions *RoutinePythonOptions `pulumi:"pythonOptions"`
 	// Remote function specific options.
 	// Structure is documented below.
 	RemoteFunctionOptions *RoutineRemoteFunctionOptions `pulumi:"remoteFunctionOptions"`
@@ -661,6 +729,10 @@ type RoutineState struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrInput
+	// Options for the runtime of the external system.
+	// This field is only applicable for Python UDFs.
+	// Structure is documented below.
+	ExternalRuntimeOptions RoutineExternalRuntimeOptionsPtrInput
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries pulumi.StringArrayInput
@@ -673,6 +745,9 @@ type RoutineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Options for a user-defined Python function.
+	// Structure is documented below.
+	PythonOptions RoutinePythonOptionsPtrInput
 	// Remote function specific options.
 	// Structure is documented below.
 	RemoteFunctionOptions RoutineRemoteFunctionOptionsPtrInput
@@ -725,6 +800,10 @@ type routineArgs struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel *string `pulumi:"determinismLevel"`
+	// Options for the runtime of the external system.
+	// This field is only applicable for Python UDFs.
+	// Structure is documented below.
+	ExternalRuntimeOptions *RoutineExternalRuntimeOptions `pulumi:"externalRuntimeOptions"`
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries []string `pulumi:"importedLibraries"`
@@ -734,6 +813,9 @@ type routineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Options for a user-defined Python function.
+	// Structure is documented below.
+	PythonOptions *RoutinePythonOptions `pulumi:"pythonOptions"`
 	// Remote function specific options.
 	// Structure is documented below.
 	RemoteFunctionOptions *RoutineRemoteFunctionOptions `pulumi:"remoteFunctionOptions"`
@@ -783,6 +865,10 @@ type RoutineArgs struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrInput
+	// Options for the runtime of the external system.
+	// This field is only applicable for Python UDFs.
+	// Structure is documented below.
+	ExternalRuntimeOptions RoutineExternalRuntimeOptionsPtrInput
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries pulumi.StringArrayInput
@@ -792,6 +878,9 @@ type RoutineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Options for a user-defined Python function.
+	// Structure is documented below.
+	PythonOptions RoutinePythonOptionsPtrInput
 	// Remote function specific options.
 	// Structure is documented below.
 	RemoteFunctionOptions RoutineRemoteFunctionOptionsPtrInput
@@ -950,6 +1039,13 @@ func (o RoutineOutput) DeterminismLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.DeterminismLevel }).(pulumi.StringPtrOutput)
 }
 
+// Options for the runtime of the external system.
+// This field is only applicable for Python UDFs.
+// Structure is documented below.
+func (o RoutineOutput) ExternalRuntimeOptions() RoutineExternalRuntimeOptionsPtrOutput {
+	return o.ApplyT(func(v *Routine) RoutineExternalRuntimeOptionsPtrOutput { return v.ExternalRuntimeOptions }).(RoutineExternalRuntimeOptionsPtrOutput)
+}
+
 // Optional. If language = "JAVASCRIPT", this field stores the path of the
 // imported JAVASCRIPT libraries.
 func (o RoutineOutput) ImportedLibraries() pulumi.StringArrayOutput {
@@ -972,6 +1068,12 @@ func (o RoutineOutput) LastModifiedTime() pulumi.IntOutput {
 // If it is not provided, the provider project is used.
 func (o RoutineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Options for a user-defined Python function.
+// Structure is documented below.
+func (o RoutineOutput) PythonOptions() RoutinePythonOptionsPtrOutput {
+	return o.ApplyT(func(v *Routine) RoutinePythonOptionsPtrOutput { return v.PythonOptions }).(RoutinePythonOptionsPtrOutput)
 }
 
 // Remote function specific options.

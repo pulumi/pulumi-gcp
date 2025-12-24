@@ -21,7 +21,7 @@ import (
 //   - [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
 //
 // > **Note:**  All arguments marked as write-only values will not be stored in the state: `sharedSecretWo`.
-// Read more about Write-only Attributes.
+// Read more about Write-only Arguments.
 //
 // ## Example Usage
 //
@@ -239,17 +239,6 @@ import (
 //
 // ```
 //
-// ## Ephemeral Attributes Reference
-//
-// The following write-only attributes are supported:
-//
-//   - `sharedSecretWo` -
-//     (Optional)
-//     Shared secret used to set the secure session between the Cloud VPN
-//     gateway and the peer VPN gateway.
-//     Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
-//     **Note**: This property is write-only and will not be read from the API.
-//
 // ## Import
 //
 // VpnTunnel can be imported using any of these accepted formats:
@@ -352,11 +341,14 @@ type VPNTunnel struct {
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringOutput `pulumi:"sharedSecretHash"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
-	//  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
 	SharedSecretWo pulumi.StringPtrOutput `pulumi:"sharedSecretWo"`
-	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SharedSecretWoVersion pulumi.StringPtrOutput `pulumi:"sharedSecretWoVersion"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -484,11 +476,14 @@ type vpntunnelState struct {
 	// Hash of the shared secret.
 	SharedSecretHash *string `pulumi:"sharedSecretHash"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
-	//  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
 	SharedSecretWo *string `pulumi:"sharedSecretWo"`
-	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SharedSecretWoVersion *string `pulumi:"sharedSecretWoVersion"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -574,11 +569,14 @@ type VPNTunnelState struct {
 	// Hash of the shared secret.
 	SharedSecretHash pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
-	//  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
 	SharedSecretWo pulumi.StringPtrInput
-	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SharedSecretWoVersion pulumi.StringPtrInput
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -652,11 +650,14 @@ type vpntunnelArgs struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SharedSecret *string `pulumi:"sharedSecret"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
-	//  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
 	SharedSecretWo *string `pulumi:"sharedSecretWo"`
-	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SharedSecretWoVersion *string `pulumi:"sharedSecretWoVersion"`
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -725,11 +726,14 @@ type VPNTunnelArgs struct {
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	SharedSecret pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
 	// Shared secret used to set the secure session between the Cloud VPN
 	// gateway and the peer VPN gateway.
-	//  Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
 	SharedSecretWo pulumi.StringPtrInput
-	// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SharedSecretWoVersion pulumi.StringPtrInput
 	// URL of the Target VPN gateway with which this VPN tunnel is
 	// associated.
@@ -965,15 +969,17 @@ func (o VPNTunnelOutput) SharedSecretHash() pulumi.StringOutput {
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
 // Shared secret used to set the secure session between the Cloud VPN
 // gateway and the peer VPN gateway.
+// **Note**: This property is write-only and will not be read from the API.
 //
-//	Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+// > **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
 func (o VPNTunnelOutput) SharedSecretWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringPtrOutput { return v.SharedSecretWo }).(pulumi.StringPtrOutput)
 }
 
-// Triggers update of sharedSecretWo write-only. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o VPNTunnelOutput) SharedSecretWoVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringPtrOutput { return v.SharedSecretWoVersion }).(pulumi.StringPtrOutput)
 }

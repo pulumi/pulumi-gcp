@@ -187,7 +187,7 @@ import * as utilities from "../utilities";
  *     region: "europe-west1",
  *     workloadPolicy: {
  *         type: "HIGH_THROUGHPUT",
- *         acceleratorTopology: "SOME NEW TOPOLOGY",
+ *         acceleratorTopology: "2x2",
  *     },
  * });
  * ```

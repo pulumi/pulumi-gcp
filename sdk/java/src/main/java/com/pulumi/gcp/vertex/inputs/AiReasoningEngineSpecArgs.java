@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,14 +34,16 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Optional. Declarations for object class methods in OpenAPI specification format.
+     * Optional. Declarations for object class methods in OpenAPI
+     * specification format.
      * 
      */
     @Import(name="classMethods")
     private @Nullable Output<String> classMethods;
 
     /**
-     * @return Optional. Declarations for object class methods in OpenAPI specification format.
+     * @return Optional. Declarations for object class methods in OpenAPI
+     * specification format.
      * 
      */
     public Optional<Output<String>> classMethods() {
@@ -88,24 +91,43 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Optional. The service account that the Reasoning Engine artifact runs as.
-     * It should have &#34;roles/storage.objectViewer&#34; for reading the user project&#39;s
-     * Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex extensions.
-     * If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+     * Optional. The service account that the Reasoning Engine artifact runs
+     * as. It should have &#34;roles/storage.objectViewer&#34; for reading the user
+     * project&#39;s Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex
+     * extensions. If not specified, the Vertex AI Reasoning Engine service
+     * Agent in the project will be used.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return Optional. The service account that the Reasoning Engine artifact runs as.
-     * It should have &#34;roles/storage.objectViewer&#34; for reading the user project&#39;s
-     * Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex extensions.
-     * If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+     * @return Optional. The service account that the Reasoning Engine artifact runs
+     * as. It should have &#34;roles/storage.objectViewer&#34; for reading the user
+     * project&#39;s Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex
+     * extensions. If not specified, the Vertex AI Reasoning Engine service
+     * Agent in the project will be used.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
+     * Specification for deploying from source code.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceCodeSpec")
+    private @Nullable Output<AiReasoningEngineSpecSourceCodeSpecArgs> sourceCodeSpec;
+
+    /**
+     * @return Specification for deploying from source code.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecSourceCodeSpecArgs>> sourceCodeSpec() {
+        return Optional.ofNullable(this.sourceCodeSpec);
     }
 
     private AiReasoningEngineSpecArgs() {}
@@ -116,6 +138,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         this.deploymentSpec = $.deploymentSpec;
         this.packageSpec = $.packageSpec;
         this.serviceAccount = $.serviceAccount;
+        this.sourceCodeSpec = $.sourceCodeSpec;
     }
 
     public static Builder builder() {
@@ -158,7 +181,8 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param classMethods Optional. Declarations for object class methods in OpenAPI specification format.
+         * @param classMethods Optional. Declarations for object class methods in OpenAPI
+         * specification format.
          * 
          * @return builder
          * 
@@ -169,7 +193,8 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param classMethods Optional. Declarations for object class methods in OpenAPI specification format.
+         * @param classMethods Optional. Declarations for object class methods in OpenAPI
+         * specification format.
          * 
          * @return builder
          * 
@@ -231,10 +256,11 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceAccount Optional. The service account that the Reasoning Engine artifact runs as.
-         * It should have &#34;roles/storage.objectViewer&#34; for reading the user project&#39;s
-         * Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex extensions.
-         * If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+         * @param serviceAccount Optional. The service account that the Reasoning Engine artifact runs
+         * as. It should have &#34;roles/storage.objectViewer&#34; for reading the user
+         * project&#39;s Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex
+         * extensions. If not specified, the Vertex AI Reasoning Engine service
+         * Agent in the project will be used.
          * 
          * @return builder
          * 
@@ -245,16 +271,40 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param serviceAccount Optional. The service account that the Reasoning Engine artifact runs as.
-         * It should have &#34;roles/storage.objectViewer&#34; for reading the user project&#39;s
-         * Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex extensions.
-         * If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+         * @param serviceAccount Optional. The service account that the Reasoning Engine artifact runs
+         * as. It should have &#34;roles/storage.objectViewer&#34; for reading the user
+         * project&#39;s Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex
+         * extensions. If not specified, the Vertex AI Reasoning Engine service
+         * Agent in the project will be used.
          * 
          * @return builder
          * 
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param sourceCodeSpec Specification for deploying from source code.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCodeSpec(@Nullable Output<AiReasoningEngineSpecSourceCodeSpecArgs> sourceCodeSpec) {
+            $.sourceCodeSpec = sourceCodeSpec;
+            return this;
+        }
+
+        /**
+         * @param sourceCodeSpec Specification for deploying from source code.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs sourceCodeSpec) {
+            return sourceCodeSpec(Output.of(sourceCodeSpec));
         }
 
         public AiReasoningEngineSpecArgs build() {

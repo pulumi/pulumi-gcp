@@ -142,6 +142,7 @@ import (
 //				Location:    pulumi.String("us"),
 //				Description: pulumi.String("Basic CES App example"),
 //				DisplayName: pulumi.String("my-app"),
+//				Pinned:      pulumi.Bool(true),
 //				LanguageSettings: &ces.AppLanguageSettingsArgs{
 //					DefaultLanguageCode: pulumi.String("en-US"),
 //					SupportedLanguageCodes: pulumi.StringArray{
@@ -217,6 +218,7 @@ import (
 //						Schema: &ces.AppVariableDeclarationSchemaArgs{
 //							Description: pulumi.String("schema description"),
 //							Type:        pulumi.String("ARRAY"),
+//							Title:       pulumi.String("title"),
 //							Nullable:    pulumi.Bool(true),
 //							Requireds: pulumi.StringArray{
 //								pulumi.String("some_property"),
@@ -565,6 +567,8 @@ type App struct {
 	// Identifier. The unique identifier of the app.
 	// Format: `projects/{project}/locations/{location}/apps/{app}`
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether the app is pinned in the app list.
+	Pinned pulumi.BoolPtrOutput `pulumi:"pinned"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -678,6 +682,8 @@ type appState struct {
 	// Identifier. The unique identifier of the app.
 	// Format: `projects/{project}/locations/{location}/apps/{app}`
 	Name *string `pulumi:"name"`
+	// Whether the app is pinned in the app list.
+	Pinned *bool `pulumi:"pinned"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -753,6 +759,8 @@ type AppState struct {
 	// Identifier. The unique identifier of the app.
 	// Format: `projects/{project}/locations/{location}/apps/{app}`
 	Name pulumi.StringPtrInput
+	// Whether the app is pinned in the app list.
+	Pinned pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -821,6 +829,8 @@ type appArgs struct {
 	// Model settings contains various configurations for the LLM model.
 	// Structure is documented below.
 	ModelSettings *AppModelSettings `pulumi:"modelSettings"`
+	// Whether the app is pinned in the app list.
+	Pinned *bool `pulumi:"pinned"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -884,6 +894,8 @@ type AppArgs struct {
 	// Model settings contains various configurations for the LLM model.
 	// Structure is documented below.
 	ModelSettings AppModelSettingsPtrInput
+	// Whether the app is pinned in the app list.
+	Pinned pulumi.BoolPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1098,6 +1110,11 @@ func (o AppOutput) ModelSettings() AppModelSettingsPtrOutput {
 // Format: `projects/{project}/locations/{location}/apps/{app}`
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the app is pinned in the app list.
+func (o AppOutput) Pinned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.Pinned }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

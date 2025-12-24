@@ -83,6 +83,7 @@ export interface GetRegionBackendServiceResult {
     readonly logConfigs: outputs.compute.GetRegionBackendServiceLogConfig[];
     readonly name: string;
     readonly network: string;
+    readonly networkPassThroughLbTrafficPolicies: outputs.compute.GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy[];
     readonly outlierDetections: outputs.compute.GetRegionBackendServiceOutlierDetection[];
     readonly params: outputs.compute.GetRegionBackendServiceParam[];
     readonly portName: string;

@@ -85,6 +85,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AutonomousDatabasePropertiesConnectionUrl> ConnectionUrls;
         /// <summary>
+        /// The number of CPU cores to be made available to the database.
+        /// </summary>
+        public readonly int? CpuCoreCount;
+        /// <summary>
         /// The list of customer contacts.
         /// Structure is documented below.
         /// </summary>
@@ -341,6 +345,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AutonomousDatabasePropertiesScheduledOperationDetail> ScheduledOperationDetails;
         /// <summary>
+        /// The ID of the Oracle Cloud Infrastructure vault secret.
+        /// </summary>
+        public readonly string? SecretId;
+        /// <summary>
         /// (Output)
         /// The SQL Web Developer URL for the Autonomous Database.
         /// </summary>
@@ -389,6 +397,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// The storage space used by Autonomous Database, in gigabytes.
         /// </summary>
         public readonly int? UsedDataStorageSizeTbs;
+        /// <summary>
+        /// The ID of the Oracle Cloud Infrastructure vault.
+        /// </summary>
+        public readonly string? VaultId;
 
         [OutputConstructor]
         private AutonomousDatabaseProperties(
@@ -413,6 +425,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             ImmutableArray<Outputs.AutonomousDatabasePropertiesConnectionString> connectionStrings,
 
             ImmutableArray<Outputs.AutonomousDatabasePropertiesConnectionUrl> connectionUrls,
+
+            int? cpuCoreCount,
 
             ImmutableArray<Outputs.AutonomousDatabasePropertiesCustomerContact> customerContacts,
 
@@ -490,6 +504,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             ImmutableArray<Outputs.AutonomousDatabasePropertiesScheduledOperationDetail> scheduledOperationDetails,
 
+            string? secretId,
+
             string? sqlWebDeveloperUrl,
 
             string? state,
@@ -498,7 +514,9 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             double? totalAutoBackupStorageSizeGbs,
 
-            int? usedDataStorageSizeTbs)
+            int? usedDataStorageSizeTbs,
+
+            string? vaultId)
         {
             ActualUsedDataStorageSizeTb = actualUsedDataStorageSizeTb;
             AllocatedStorageSizeTb = allocatedStorageSizeTb;
@@ -511,6 +529,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             ComputeCount = computeCount;
             ConnectionStrings = connectionStrings;
             ConnectionUrls = connectionUrls;
+            CpuCoreCount = cpuCoreCount;
             CustomerContacts = customerContacts;
             DataSafeState = dataSafeState;
             DataStorageSizeGb = dataStorageSizeGb;
@@ -549,11 +568,13 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             RefreshableState = refreshableState;
             Role = role;
             ScheduledOperationDetails = scheduledOperationDetails;
+            SecretId = secretId;
             SqlWebDeveloperUrl = sqlWebDeveloperUrl;
             State = state;
             SupportedCloneRegions = supportedCloneRegions;
             TotalAutoBackupStorageSizeGbs = totalAutoBackupStorageSizeGbs;
             UsedDataStorageSizeTbs = usedDataStorageSizeTbs;
+            VaultId = vaultId;
         }
     }
 }

@@ -142,6 +142,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateEucConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateShieldedVmConfigArgs;
  * import com.pulumi.gcp.colab.inputs.RuntimeTemplateEncryptionSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigArgs;
+ * import com.pulumi.gcp.colab.inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -201,6 +203,17 @@ import javax.annotation.Nullable;
  *                 "def")
  *             .encryptionSpec(RuntimeTemplateEncryptionSpecArgs.builder()
  *                 .kmsKeyName("my-crypto-key")
+ *                 .build())
+ *             .softwareConfig(RuntimeTemplateSoftwareConfigArgs.builder()
+ *                 .envs(RuntimeTemplateSoftwareConfigEnvArgs.builder()
+ *                     .name("TEST")
+ *                     .value("1")
+ *                     .build())
+ *                 .postStartupScriptConfig(RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs.builder()
+ *                     .postStartupScript("echo 'hello world'")
+ *                     .postStartupScriptUrl("gs://colab-enterprise-pss-secure/secure_pss.sh")
+ *                     .postStartupScriptBehavior("RUN_ONCE")
+ *                     .build())
  *                 .build())
  *             .build());
  * 

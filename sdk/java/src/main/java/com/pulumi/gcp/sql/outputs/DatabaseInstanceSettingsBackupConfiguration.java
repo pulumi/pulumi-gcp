@@ -20,6 +20,11 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
      */
     private @Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings;
     /**
+     * @return The backup tier that manages the backups for the instance.
+     * 
+     */
+    private @Nullable String backupTier;
+    /**
      * @return True if binary logging is enabled.
      * Can only be used with MySQL.
      * 
@@ -59,6 +64,13 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
      */
     public Optional<DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings> backupRetentionSettings() {
         return Optional.ofNullable(this.backupRetentionSettings);
+    }
+    /**
+     * @return The backup tier that manages the backups for the instance.
+     * 
+     */
+    public Optional<String> backupTier() {
+        return Optional.ofNullable(this.backupTier);
     }
     /**
      * @return True if binary logging is enabled.
@@ -115,6 +127,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings;
+        private @Nullable String backupTier;
         private @Nullable Boolean binaryLogEnabled;
         private @Nullable Boolean enabled;
         private @Nullable String location;
@@ -125,6 +138,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
         public Builder(DatabaseInstanceSettingsBackupConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupRetentionSettings = defaults.backupRetentionSettings;
+    	      this.backupTier = defaults.backupTier;
     	      this.binaryLogEnabled = defaults.binaryLogEnabled;
     	      this.enabled = defaults.enabled;
     	      this.location = defaults.location;
@@ -137,6 +151,12 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
         public Builder backupRetentionSettings(@Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings) {
 
             this.backupRetentionSettings = backupRetentionSettings;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backupTier(@Nullable String backupTier) {
+
+            this.backupTier = backupTier;
             return this;
         }
         @CustomType.Setter
@@ -178,6 +198,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
         public DatabaseInstanceSettingsBackupConfiguration build() {
             final var _resultValue = new DatabaseInstanceSettingsBackupConfiguration();
             _resultValue.backupRetentionSettings = backupRetentionSettings;
+            _resultValue.backupTier = backupTier;
             _resultValue.binaryLogEnabled = binaryLogEnabled;
             _resultValue.enabled = enabled;
             _resultValue.location = location;

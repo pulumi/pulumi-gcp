@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Ces.Inputs
     public sealed class ExampleMessageChunkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Represents an event indicating the transfer of a conversation to a different
+        /// agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("agentTransfer")]
+        public Input<Inputs.ExampleMessageChunkAgentTransferArgs>? AgentTransfer { get; set; }
+
+        /// <summary>
         /// Represents an image input or output in the conversation.
         /// Structure is documented below.
         /// </summary>
@@ -24,6 +32,20 @@ namespace Pulumi.Gcp.Ces.Inputs
         /// </summary>
         [Input("text")]
         public Input<string>? Text { get; set; }
+
+        /// <summary>
+        /// Request for the client or the agent to execute the specified tool.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("toolCall")]
+        public Input<Inputs.ExampleMessageChunkToolCallArgs>? ToolCall { get; set; }
+
+        /// <summary>
+        /// The execution result of a specific tool from the client or the agent.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("toolResponse")]
+        public Input<Inputs.ExampleMessageChunkToolResponseArgs>? ToolResponse { get; set; }
 
         /// <summary>
         /// A struct represents variables that were updated in the conversation,

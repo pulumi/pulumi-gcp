@@ -16,10 +16,17 @@ public final class ClusterClusterConfigLifecycleConfig {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
      * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
+     */
+    private @Nullable String autoDeleteTime;
+    /**
+     * @return The time when cluster will be auto-stopped.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
      * ***
      * 
      */
-    private @Nullable String autoDeleteTime;
+    private @Nullable String autoStopTime;
     /**
      * @return The duration to keep the cluster alive while idling
      * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
@@ -32,6 +39,12 @@ public final class ClusterClusterConfigLifecycleConfig {
      * 
      */
     private @Nullable String idleStartTime;
+    /**
+     * @return The duration to keep the cluster alive while idling
+     * (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+     * 
+     */
+    private @Nullable String idleStopTtl;
 
     private ClusterClusterConfigLifecycleConfig() {}
     /**
@@ -39,11 +52,20 @@ public final class ClusterClusterConfigLifecycleConfig {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
      * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
-     * ***
-     * 
      */
     public Optional<String> autoDeleteTime() {
         return Optional.ofNullable(this.autoDeleteTime);
+    }
+    /**
+     * @return The time when cluster will be auto-stopped.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     * ***
+     * 
+     */
+    public Optional<String> autoStopTime() {
+        return Optional.ofNullable(this.autoStopTime);
     }
     /**
      * @return The duration to keep the cluster alive while idling
@@ -61,6 +83,14 @@ public final class ClusterClusterConfigLifecycleConfig {
     public Optional<String> idleStartTime() {
         return Optional.ofNullable(this.idleStartTime);
     }
+    /**
+     * @return The duration to keep the cluster alive while idling
+     * (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+     * 
+     */
+    public Optional<String> idleStopTtl() {
+        return Optional.ofNullable(this.idleStopTtl);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -72,20 +102,30 @@ public final class ClusterClusterConfigLifecycleConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoDeleteTime;
+        private @Nullable String autoStopTime;
         private @Nullable String idleDeleteTtl;
         private @Nullable String idleStartTime;
+        private @Nullable String idleStopTtl;
         public Builder() {}
         public Builder(ClusterClusterConfigLifecycleConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoDeleteTime = defaults.autoDeleteTime;
+    	      this.autoStopTime = defaults.autoStopTime;
     	      this.idleDeleteTtl = defaults.idleDeleteTtl;
     	      this.idleStartTime = defaults.idleStartTime;
+    	      this.idleStopTtl = defaults.idleStopTtl;
         }
 
         @CustomType.Setter
         public Builder autoDeleteTime(@Nullable String autoDeleteTime) {
 
             this.autoDeleteTime = autoDeleteTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoStopTime(@Nullable String autoStopTime) {
+
+            this.autoStopTime = autoStopTime;
             return this;
         }
         @CustomType.Setter
@@ -100,11 +140,19 @@ public final class ClusterClusterConfigLifecycleConfig {
             this.idleStartTime = idleStartTime;
             return this;
         }
+        @CustomType.Setter
+        public Builder idleStopTtl(@Nullable String idleStopTtl) {
+
+            this.idleStopTtl = idleStopTtl;
+            return this;
+        }
         public ClusterClusterConfigLifecycleConfig build() {
             final var _resultValue = new ClusterClusterConfigLifecycleConfig();
             _resultValue.autoDeleteTime = autoDeleteTime;
+            _resultValue.autoStopTime = autoStopTime;
             _resultValue.idleDeleteTtl = idleDeleteTtl;
             _resultValue.idleStartTime = idleStartTime;
+            _resultValue.idleStopTtl = idleStopTtl;
             return _resultValue;
         }
     }

@@ -40,6 +40,8 @@ class DatabaseInstanceArgs:
                  replication_cluster: Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']] = None,
                  restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
                  root_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
@@ -95,6 +97,11 @@ class DatabaseInstanceArgs:
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
+        :param pulumi.Input[_builtins.str] root_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `root_password` or `root_password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] root_password_wo_version: Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
@@ -135,6 +142,10 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "restore_backup_context", restore_backup_context)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
+        if root_password_wo is not None:
+            pulumi.set(__self__, "root_password_wo", root_password_wo)
+        if root_password_wo_version is not None:
+            pulumi.set(__self__, "root_password_wo_version", root_password_wo_version)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
 
@@ -400,6 +411,33 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "root_password", value)
 
     @_builtins.property
+    @pulumi.getter(name="rootPasswordWo")
+    def root_password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `root_password` or `root_password_wo` can only be set.
+        """
+        return pulumi.get(self, "root_password_wo")
+
+    @root_password_wo.setter
+    def root_password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "root_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rootPasswordWoVersion")
+    def root_password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "root_password_wo_version")
+
+    @root_password_wo_version.setter
+    def root_password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "root_password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsArgs']]:
         """
@@ -444,6 +482,8 @@ class _DatabaseInstanceState:
                  replication_cluster: Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']] = None,
                  restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
                  root_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
                  server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]] = None,
                  service_account_email_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -511,6 +551,11 @@ class _DatabaseInstanceState:
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
+        :param pulumi.Input[_builtins.str] root_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `root_password` or `root_password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] root_password_wo_version: Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] service_account_email_address: The service account email address assigned to the
                instance.
@@ -573,6 +618,10 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "restore_backup_context", restore_backup_context)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
+        if root_password_wo is not None:
+            pulumi.set(__self__, "root_password_wo", root_password_wo)
+        if root_password_wo_version is not None:
+            pulumi.set(__self__, "root_password_wo_version", root_password_wo_version)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if server_ca_certs is not None:
@@ -950,6 +999,33 @@ class _DatabaseInstanceState:
         pulumi.set(self, "root_password", value)
 
     @_builtins.property
+    @pulumi.getter(name="rootPasswordWo")
+    def root_password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `root_password` or `root_password_wo` can only be set.
+        """
+        return pulumi.get(self, "root_password_wo")
+
+    @root_password_wo.setter
+    def root_password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "root_password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rootPasswordWoVersion")
+    def root_password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "root_password_wo_version")
+
+    @root_password_wo_version.setter
+    def root_password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "root_password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1022,6 +1098,8 @@ class DatabaseInstance(pulumi.CustomResource):
                  replication_cluster: Optional[pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
                  restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
                  __props__=None):
         """
@@ -1335,6 +1413,11 @@ class DatabaseInstance(pulumi.CustomResource):
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
+        :param pulumi.Input[_builtins.str] root_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `root_password` or `root_password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] root_password_wo_version: Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
         """
@@ -1635,6 +1718,8 @@ class DatabaseInstance(pulumi.CustomResource):
                  replication_cluster: Optional[pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
                  restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 root_password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1666,6 +1751,8 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["replication_cluster"] = replication_cluster
             __props__.__dict__["restore_backup_context"] = restore_backup_context
             __props__.__dict__["root_password"] = None if root_password is None else pulumi.Output.secret(root_password)
+            __props__.__dict__["root_password_wo"] = None if root_password_wo is None else pulumi.Output.secret(root_password_wo)
+            __props__.__dict__["root_password_wo_version"] = root_password_wo_version
             __props__.__dict__["settings"] = settings
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None
@@ -1679,7 +1766,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["server_ca_certs"] = None
             __props__.__dict__["service_account_email_address"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["replicaConfiguration", "rootPassword", "serverCaCerts"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["replicaConfiguration", "rootPassword", "rootPasswordWo", "serverCaCerts"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseInstance, __self__).__init__(
             'gcp:sql/databaseInstance:DatabaseInstance',
@@ -1719,6 +1806,8 @@ class DatabaseInstance(pulumi.CustomResource):
             replication_cluster: Optional[pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
             restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
             root_password: Optional[pulumi.Input[_builtins.str]] = None,
+            root_password_wo: Optional[pulumi.Input[_builtins.str]] = None,
+            root_password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseInstanceServerCaCertArgs', 'DatabaseInstanceServerCaCertArgsDict']]]]] = None,
             service_account_email_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1791,6 +1880,11 @@ class DatabaseInstance(pulumi.CustomResource):
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
                block during resource creation/update will trigger the restore action after the resource is created/updated.
         :param pulumi.Input[_builtins.str] root_password: Initial root password. Can be updated. Required for MS SQL Server.
+        :param pulumi.Input[_builtins.str] root_password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `root_password` or `root_password_wo` can only be set.
+        :param pulumi.Input[_builtins.str] root_password_wo_version: Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] service_account_email_address: The service account email address assigned to the
                instance.
@@ -1829,6 +1923,8 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["replication_cluster"] = replication_cluster
         __props__.__dict__["restore_backup_context"] = restore_backup_context
         __props__.__dict__["root_password"] = root_password
+        __props__.__dict__["root_password_wo"] = root_password_wo
+        __props__.__dict__["root_password_wo_version"] = root_password_wo_version
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["server_ca_certs"] = server_ca_certs
         __props__.__dict__["service_account_email_address"] = service_account_email_address
@@ -2089,6 +2185,25 @@ class DatabaseInstance(pulumi.CustomResource):
         Initial root password. Can be updated. Required for MS SQL Server.
         """
         return pulumi.get(self, "root_password")
+
+    @_builtins.property
+    @pulumi.getter(name="rootPasswordWo")
+    def root_password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `root_password` or `root_password_wo` can only be set.
+        """
+        return pulumi.get(self, "root_password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="rootPasswordWoVersion")
+    def root_password_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "root_password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="selfLink")

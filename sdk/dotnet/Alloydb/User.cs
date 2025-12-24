@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Alloydb
     /// * How-to Guides
     ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `PasswordWo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Alloydb User Builtin
@@ -242,6 +245,23 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Password for this database user.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Password` or `PasswordWo` can only be set.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Triggers update of `PasswordWo` write-only. Increment this value when an update to `PasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<string?> PasswordWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The database role name of the user.
         /// </summary>
         [Output("userId")]
@@ -280,6 +300,7 @@ namespace Pulumi.Gcp.Alloydb
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -339,6 +360,33 @@ namespace Pulumi.Gcp.Alloydb
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Password for this database user.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Password` or `PasswordWo` can only be set.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `PasswordWo` write-only. Increment this value when an update to `PasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<string>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The database role name of the user.
@@ -402,6 +450,33 @@ namespace Pulumi.Gcp.Alloydb
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// Password for this database user.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `Password` or `PasswordWo` can only be set.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `PasswordWo` write-only. Increment this value when an update to `PasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<string>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The database role name of the user.

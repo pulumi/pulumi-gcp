@@ -16,6 +16,11 @@ public final class CloudVmClusterPropertiesTimeZone {
      * 
      */
     private @Nullable String id;
+    /**
+     * @return IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+     * 
+     */
+    private @Nullable String version;
 
     private CloudVmClusterPropertiesTimeZone() {}
     /**
@@ -24,6 +29,13 @@ public final class CloudVmClusterPropertiesTimeZone {
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
+    }
+    /**
+     * @return IANA Time Zone Database version number, e.g. &#34;2019a&#34;.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class CloudVmClusterPropertiesTimeZone {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
+        private @Nullable String version;
         public Builder() {}
         public Builder(CloudVmClusterPropertiesTimeZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class CloudVmClusterPropertiesTimeZone {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
+            return this;
+        }
         public CloudVmClusterPropertiesTimeZone build() {
             final var _resultValue = new CloudVmClusterPropertiesTimeZone();
             _resultValue.id = id;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

@@ -5,7 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.inputs.NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs;
 import com.pulumi.gcp.container.inputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +16,21 @@ import javax.annotation.Nullable;
 public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolUpgradeSettingsBlueGreenSettingsArgs Empty = new NodePoolUpgradeSettingsBlueGreenSettingsArgs();
+
+    /**
+     * Autoscaled rollout policy for blue-green upgrade.
+     * 
+     */
+    @Import(name="autoscaledRolloutPolicy")
+    private @Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs> autoscaledRolloutPolicy;
+
+    /**
+     * @return Autoscaled rollout policy for blue-green upgrade.
+     * 
+     */
+    public Optional<Output<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs>> autoscaledRolloutPolicy() {
+        return Optional.ofNullable(this.autoscaledRolloutPolicy);
+    }
 
     /**
      * Time needed after draining the entire blue pool.
@@ -38,20 +53,21 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
      * Specifies the standard policy settings for blue-green upgrades.
      * 
      */
-    @Import(name="standardRolloutPolicy", required=true)
-    private Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy;
+    @Import(name="standardRolloutPolicy")
+    private @Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy;
 
     /**
      * @return Specifies the standard policy settings for blue-green upgrades.
      * 
      */
-    public Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy() {
-        return this.standardRolloutPolicy;
+    public Optional<Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs>> standardRolloutPolicy() {
+        return Optional.ofNullable(this.standardRolloutPolicy);
     }
 
     private NodePoolUpgradeSettingsBlueGreenSettingsArgs() {}
 
     private NodePoolUpgradeSettingsBlueGreenSettingsArgs(NodePoolUpgradeSettingsBlueGreenSettingsArgs $) {
+        this.autoscaledRolloutPolicy = $.autoscaledRolloutPolicy;
         this.nodePoolSoakDuration = $.nodePoolSoakDuration;
         this.standardRolloutPolicy = $.standardRolloutPolicy;
     }
@@ -72,6 +88,27 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
 
         public Builder(NodePoolUpgradeSettingsBlueGreenSettingsArgs defaults) {
             $ = new NodePoolUpgradeSettingsBlueGreenSettingsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscaledRolloutPolicy Autoscaled rollout policy for blue-green upgrade.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaledRolloutPolicy(@Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs> autoscaledRolloutPolicy) {
+            $.autoscaledRolloutPolicy = autoscaledRolloutPolicy;
+            return this;
+        }
+
+        /**
+         * @param autoscaledRolloutPolicy Autoscaled rollout policy for blue-green upgrade.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaledRolloutPolicy(NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs autoscaledRolloutPolicy) {
+            return autoscaledRolloutPolicy(Output.of(autoscaledRolloutPolicy));
         }
 
         /**
@@ -103,7 +140,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
          * @return builder
          * 
          */
-        public Builder standardRolloutPolicy(Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy) {
+        public Builder standardRolloutPolicy(@Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy) {
             $.standardRolloutPolicy = standardRolloutPolicy;
             return this;
         }
@@ -119,9 +156,6 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         public NodePoolUpgradeSettingsBlueGreenSettingsArgs build() {
-            if ($.standardRolloutPolicy == null) {
-                throw new MissingRequiredPropertyException("NodePoolUpgradeSettingsBlueGreenSettingsArgs", "standardRolloutPolicy");
-            }
             return $;
         }
     }

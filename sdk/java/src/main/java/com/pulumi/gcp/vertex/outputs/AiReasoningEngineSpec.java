@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecPackageSpec;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpec;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,7 +20,8 @@ public final class AiReasoningEngineSpec {
      */
     private @Nullable String agentFramework;
     /**
-     * @return Optional. Declarations for object class methods in OpenAPI specification format.
+     * @return Optional. Declarations for object class methods in OpenAPI
+     * specification format.
      * 
      */
     private @Nullable String classMethods;
@@ -39,13 +41,20 @@ public final class AiReasoningEngineSpec {
      */
     private @Nullable AiReasoningEngineSpecPackageSpec packageSpec;
     /**
-     * @return Optional. The service account that the Reasoning Engine artifact runs as.
-     * It should have &#34;roles/storage.objectViewer&#34; for reading the user project&#39;s
-     * Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex extensions.
-     * If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+     * @return Optional. The service account that the Reasoning Engine artifact runs
+     * as. It should have &#34;roles/storage.objectViewer&#34; for reading the user
+     * project&#39;s Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex
+     * extensions. If not specified, the Vertex AI Reasoning Engine service
+     * Agent in the project will be used.
      * 
      */
     private @Nullable String serviceAccount;
+    /**
+     * @return Specification for deploying from source code.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecSourceCodeSpec sourceCodeSpec;
 
     private AiReasoningEngineSpec() {}
     /**
@@ -56,7 +65,8 @@ public final class AiReasoningEngineSpec {
         return Optional.ofNullable(this.agentFramework);
     }
     /**
-     * @return Optional. Declarations for object class methods in OpenAPI specification format.
+     * @return Optional. Declarations for object class methods in OpenAPI
+     * specification format.
      * 
      */
     public Optional<String> classMethods() {
@@ -82,14 +92,23 @@ public final class AiReasoningEngineSpec {
         return Optional.ofNullable(this.packageSpec);
     }
     /**
-     * @return Optional. The service account that the Reasoning Engine artifact runs as.
-     * It should have &#34;roles/storage.objectViewer&#34; for reading the user project&#39;s
-     * Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex extensions.
-     * If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+     * @return Optional. The service account that the Reasoning Engine artifact runs
+     * as. It should have &#34;roles/storage.objectViewer&#34; for reading the user
+     * project&#39;s Cloud Storage and &#34;roles/aiplatform.user&#34; for using Vertex
+     * extensions. If not specified, the Vertex AI Reasoning Engine service
+     * Agent in the project will be used.
      * 
      */
     public Optional<String> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
+    }
+    /**
+     * @return Specification for deploying from source code.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecSourceCodeSpec> sourceCodeSpec() {
+        return Optional.ofNullable(this.sourceCodeSpec);
     }
 
     public static Builder builder() {
@@ -106,6 +125,7 @@ public final class AiReasoningEngineSpec {
         private @Nullable AiReasoningEngineSpecDeploymentSpec deploymentSpec;
         private @Nullable AiReasoningEngineSpecPackageSpec packageSpec;
         private @Nullable String serviceAccount;
+        private @Nullable AiReasoningEngineSpecSourceCodeSpec sourceCodeSpec;
         public Builder() {}
         public Builder(AiReasoningEngineSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -114,6 +134,7 @@ public final class AiReasoningEngineSpec {
     	      this.deploymentSpec = defaults.deploymentSpec;
     	      this.packageSpec = defaults.packageSpec;
     	      this.serviceAccount = defaults.serviceAccount;
+    	      this.sourceCodeSpec = defaults.sourceCodeSpec;
         }
 
         @CustomType.Setter
@@ -146,6 +167,12 @@ public final class AiReasoningEngineSpec {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceCodeSpec(@Nullable AiReasoningEngineSpecSourceCodeSpec sourceCodeSpec) {
+
+            this.sourceCodeSpec = sourceCodeSpec;
+            return this;
+        }
         public AiReasoningEngineSpec build() {
             final var _resultValue = new AiReasoningEngineSpec();
             _resultValue.agentFramework = agentFramework;
@@ -153,6 +180,7 @@ public final class AiReasoningEngineSpec {
             _resultValue.deploymentSpec = deploymentSpec;
             _resultValue.packageSpec = packageSpec;
             _resultValue.serviceAccount = serviceAccount;
+            _resultValue.sourceCodeSpec = sourceCodeSpec;
             return _resultValue;
         }
     }

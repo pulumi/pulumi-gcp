@@ -6,6 +6,7 @@ package com.pulumi.gcp.apphub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.apphub.outputs.WorkloadWorkloadPropertyExtendedMetadata;
 import com.pulumi.gcp.apphub.outputs.WorkloadWorkloadPropertyFunctionalType;
+import com.pulumi.gcp.apphub.outputs.WorkloadWorkloadPropertyIdentity;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,13 @@ public final class WorkloadWorkloadProperty {
      * 
      */
     private @Nullable String gcpProject;
+    /**
+     * @return (Output)
+     * The identity associated with the workload.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<WorkloadWorkloadPropertyIdentity> identities;
     /**
      * @return Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      * 
@@ -74,6 +82,15 @@ public final class WorkloadWorkloadProperty {
         return Optional.ofNullable(this.gcpProject);
     }
     /**
+     * @return (Output)
+     * The identity associated with the workload.
+     * Structure is documented below.
+     * 
+     */
+    public List<WorkloadWorkloadPropertyIdentity> identities() {
+        return this.identities == null ? List.of() : this.identities;
+    }
+    /**
      * @return Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      * 
      */
@@ -101,6 +118,7 @@ public final class WorkloadWorkloadProperty {
         private @Nullable List<WorkloadWorkloadPropertyExtendedMetadata> extendedMetadatas;
         private @Nullable List<WorkloadWorkloadPropertyFunctionalType> functionalTypes;
         private @Nullable String gcpProject;
+        private @Nullable List<WorkloadWorkloadPropertyIdentity> identities;
         private @Nullable String location;
         private @Nullable String zone;
         public Builder() {}
@@ -109,6 +127,7 @@ public final class WorkloadWorkloadProperty {
     	      this.extendedMetadatas = defaults.extendedMetadatas;
     	      this.functionalTypes = defaults.functionalTypes;
     	      this.gcpProject = defaults.gcpProject;
+    	      this.identities = defaults.identities;
     	      this.location = defaults.location;
     	      this.zone = defaults.zone;
         }
@@ -138,6 +157,15 @@ public final class WorkloadWorkloadProperty {
             return this;
         }
         @CustomType.Setter
+        public Builder identities(@Nullable List<WorkloadWorkloadPropertyIdentity> identities) {
+
+            this.identities = identities;
+            return this;
+        }
+        public Builder identities(WorkloadWorkloadPropertyIdentity... identities) {
+            return identities(List.of(identities));
+        }
+        @CustomType.Setter
         public Builder location(@Nullable String location) {
 
             this.location = location;
@@ -154,6 +182,7 @@ public final class WorkloadWorkloadProperty {
             _resultValue.extendedMetadatas = extendedMetadatas;
             _resultValue.functionalTypes = functionalTypes;
             _resultValue.gcpProject = gcpProject;
+            _resultValue.identities = identities;
             _resultValue.location = location;
             _resultValue.zone = zone;
             return _resultValue;

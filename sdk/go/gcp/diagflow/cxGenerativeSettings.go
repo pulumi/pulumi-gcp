@@ -114,7 +114,6 @@ type CxGenerativeSettings struct {
 	// Structure is documented below.
 	FallbackSettings CxGenerativeSettingsFallbackSettingsPtrOutput `pulumi:"fallbackSettings"`
 	// Settings for Generative Safety.
-	// w
 	// Structure is documented below.
 	GenerativeSafetySettings CxGenerativeSettingsGenerativeSafetySettingsPtrOutput `pulumi:"generativeSafetySettings"`
 	// Settings for knowledge connector.
@@ -170,7 +169,6 @@ type cxGenerativeSettingsState struct {
 	// Structure is documented below.
 	FallbackSettings *CxGenerativeSettingsFallbackSettings `pulumi:"fallbackSettings"`
 	// Settings for Generative Safety.
-	// w
 	// Structure is documented below.
 	GenerativeSafetySettings *CxGenerativeSettingsGenerativeSafetySettings `pulumi:"generativeSafetySettings"`
 	// Settings for knowledge connector.
@@ -194,7 +192,6 @@ type CxGenerativeSettingsState struct {
 	// Structure is documented below.
 	FallbackSettings CxGenerativeSettingsFallbackSettingsPtrInput
 	// Settings for Generative Safety.
-	// w
 	// Structure is documented below.
 	GenerativeSafetySettings CxGenerativeSettingsGenerativeSafetySettingsPtrInput
 	// Settings for knowledge connector.
@@ -222,7 +219,6 @@ type cxGenerativeSettingsArgs struct {
 	// Structure is documented below.
 	FallbackSettings *CxGenerativeSettingsFallbackSettings `pulumi:"fallbackSettings"`
 	// Settings for Generative Safety.
-	// w
 	// Structure is documented below.
 	GenerativeSafetySettings *CxGenerativeSettingsGenerativeSafetySettings `pulumi:"generativeSafetySettings"`
 	// Settings for knowledge connector.
@@ -244,7 +240,6 @@ type CxGenerativeSettingsArgs struct {
 	// Structure is documented below.
 	FallbackSettings CxGenerativeSettingsFallbackSettingsPtrInput
 	// Settings for Generative Safety.
-	// w
 	// Structure is documented below.
 	GenerativeSafetySettings CxGenerativeSettingsGenerativeSafetySettingsPtrInput
 	// Settings for knowledge connector.
@@ -354,7 +349,6 @@ func (o CxGenerativeSettingsOutput) FallbackSettings() CxGenerativeSettingsFallb
 }
 
 // Settings for Generative Safety.
-// w
 // Structure is documented below.
 func (o CxGenerativeSettingsOutput) GenerativeSafetySettings() CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {
 	return o.ApplyT(func(v *CxGenerativeSettings) CxGenerativeSettingsGenerativeSafetySettingsPtrOutput {

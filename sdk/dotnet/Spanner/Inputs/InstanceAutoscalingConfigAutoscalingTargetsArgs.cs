@@ -28,6 +28,15 @@ namespace Pulumi.Gcp.Spanner.Inputs
         [Input("storageUtilizationPercent")]
         public Input<int>? StorageUtilizationPercent { get; set; }
 
+        /// <summary>
+        /// The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+        /// This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        /// If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+        /// The value should be higher than HighPriorityCpuUtilizationPercent if present.
+        /// </summary>
+        [Input("totalCpuUtilizationPercent")]
+        public Input<int>? TotalCpuUtilizationPercent { get; set; }
+
         public InstanceAutoscalingConfigAutoscalingTargetsArgs()
         {
         }

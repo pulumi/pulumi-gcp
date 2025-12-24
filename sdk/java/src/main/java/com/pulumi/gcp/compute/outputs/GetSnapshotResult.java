@@ -39,6 +39,7 @@ public final class GetSnapshotResult {
     private String selfLink;
     private List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys;
     private Integer snapshotId;
+    private String snapshotType;
     private String sourceDisk;
     private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
     private Integer storageBytes;
@@ -101,6 +102,9 @@ public final class GetSnapshotResult {
     public Integer snapshotId() {
         return this.snapshotId;
     }
+    public String snapshotType() {
+        return this.snapshotType;
+    }
     public String sourceDisk() {
         return this.sourceDisk;
     }
@@ -143,6 +147,7 @@ public final class GetSnapshotResult {
         private String selfLink;
         private List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys;
         private Integer snapshotId;
+        private String snapshotType;
         private String sourceDisk;
         private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
         private Integer storageBytes;
@@ -168,6 +173,7 @@ public final class GetSnapshotResult {
     	      this.selfLink = defaults.selfLink;
     	      this.snapshotEncryptionKeys = defaults.snapshotEncryptionKeys;
     	      this.snapshotId = defaults.snapshotId;
+    	      this.snapshotType = defaults.snapshotType;
     	      this.sourceDisk = defaults.sourceDisk;
     	      this.sourceDiskEncryptionKeys = defaults.sourceDiskEncryptionKeys;
     	      this.storageBytes = defaults.storageBytes;
@@ -310,6 +316,14 @@ public final class GetSnapshotResult {
             return this;
         }
         @CustomType.Setter
+        public Builder snapshotType(String snapshotType) {
+            if (snapshotType == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "snapshotType");
+            }
+            this.snapshotType = snapshotType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceDisk(String sourceDisk) {
             if (sourceDisk == null) {
               throw new MissingRequiredPropertyException("GetSnapshotResult", "sourceDisk");
@@ -374,6 +388,7 @@ public final class GetSnapshotResult {
             _resultValue.selfLink = selfLink;
             _resultValue.snapshotEncryptionKeys = snapshotEncryptionKeys;
             _resultValue.snapshotId = snapshotId;
+            _resultValue.snapshotType = snapshotType;
             _resultValue.sourceDisk = sourceDisk;
             _resultValue.sourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             _resultValue.storageBytes = storageBytes;

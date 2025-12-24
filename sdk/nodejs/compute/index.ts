@@ -395,6 +395,11 @@ export const getRegionSSLPolicy: typeof import("./getRegionSSLPolicy").getRegion
 export const getRegionSSLPolicyOutput: typeof import("./getRegionSSLPolicy").getRegionSSLPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionSSLPolicy","getRegionSSLPolicyOutput"], () => require("./getRegionSSLPolicy"));
 
+export { GetRegionSecurityPolicyArgs, GetRegionSecurityPolicyResult, GetRegionSecurityPolicyOutputArgs } from "./getRegionSecurityPolicy";
+export const getRegionSecurityPolicy: typeof import("./getRegionSecurityPolicy").getRegionSecurityPolicy = null as any;
+export const getRegionSecurityPolicyOutput: typeof import("./getRegionSecurityPolicy").getRegionSecurityPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionSecurityPolicy","getRegionSecurityPolicyOutput"], () => require("./getRegionSecurityPolicy"));
+
 export { GetRegionSslCertificateArgs, GetRegionSslCertificateResult, GetRegionSslCertificateOutputArgs } from "./getRegionSslCertificate";
 export const getRegionSslCertificate: typeof import("./getRegionSslCertificate").getRegionSslCertificate = null as any;
 export const getRegionSslCertificateOutput: typeof import("./getRegionSslCertificate").getRegionSslCertificateOutput = null as any;
@@ -459,6 +464,11 @@ export { GetSnapshotIamPolicyArgs, GetSnapshotIamPolicyResult, GetSnapshotIamPol
 export const getSnapshotIamPolicy: typeof import("./getSnapshotIamPolicy").getSnapshotIamPolicy = null as any;
 export const getSnapshotIamPolicyOutput: typeof import("./getSnapshotIamPolicy").getSnapshotIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSnapshotIamPolicy","getSnapshotIamPolicyOutput"], () => require("./getSnapshotIamPolicy"));
+
+export { GetStoragePoolArgs, GetStoragePoolResult, GetStoragePoolOutputArgs } from "./getStoragePool";
+export const getStoragePool: typeof import("./getStoragePool").getStoragePool = null as any;
+export const getStoragePoolOutput: typeof import("./getStoragePool").getStoragePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getStoragePool","getStoragePoolOutput"], () => require("./getStoragePool"));
 
 export { GetStoragePoolIamPolicyArgs, GetStoragePoolIamPolicyResult, GetStoragePoolIamPolicyOutputArgs } from "./getStoragePoolIamPolicy";
 export const getStoragePoolIamPolicy: typeof import("./getStoragePoolIamPolicy").getStoragePoolIamPolicy = null as any;
@@ -899,6 +909,11 @@ export { RegionHealthCheckArgs, RegionHealthCheckState } from "./regionHealthChe
 export type RegionHealthCheck = import("./regionHealthCheck").RegionHealthCheck;
 export const RegionHealthCheck: typeof import("./regionHealthCheck").RegionHealthCheck = null as any;
 utilities.lazyLoad(exports, ["RegionHealthCheck"], () => require("./regionHealthCheck"));
+
+export { RegionHealthSourceArgs, RegionHealthSourceState } from "./regionHealthSource";
+export type RegionHealthSource = import("./regionHealthSource").RegionHealthSource;
+export const RegionHealthSource: typeof import("./regionHealthSource").RegionHealthSource = null as any;
+utilities.lazyLoad(exports, ["RegionHealthSource"], () => require("./regionHealthSource"));
 
 export { RegionInstanceGroupManagerArgs, RegionInstanceGroupManagerState } from "./regionInstanceGroupManager";
 export type RegionInstanceGroupManager = import("./regionInstanceGroupManager").RegionInstanceGroupManager;
@@ -1435,6 +1450,8 @@ const _module = {
                 return new RegionHealthAggregationPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionHealthCheck:RegionHealthCheck":
                 return new RegionHealthCheck(name, <any>undefined, { urn })
+            case "gcp:compute/regionHealthSource:RegionHealthSource":
+                return new RegionHealthSource(name, <any>undefined, { urn })
             case "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager":
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
             case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
@@ -1672,6 +1689,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamPolicy", _mod
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskResourcePolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthAggregationPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthCheck", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthSource", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceGroupManager", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpoint", _module)

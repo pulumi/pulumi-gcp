@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'InstanceAdminSettingsArgs',
     'InstanceAdminSettingsArgsDict',
+    'InstanceControlledEgressConfigArgs',
+    'InstanceControlledEgressConfigArgsDict',
     'InstanceCustomDomainArgs',
     'InstanceCustomDomainArgsDict',
     'InstanceDenyMaintenancePeriodArgs',
@@ -66,6 +68,61 @@ class InstanceAdminSettingsArgs:
     @allowed_email_domains.setter
     def allowed_email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_email_domains", value)
+
+
+if not MYPY:
+    class InstanceControlledEgressConfigArgsDict(TypedDict):
+        egress_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of fully qualified domain names to be added to the allowlist for
+        outbound traffic.
+        """
+        marketplace_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the Looker Marketplace is enabled.
+        """
+elif False:
+    InstanceControlledEgressConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceControlledEgressConfigArgs:
+    def __init__(__self__, *,
+                 egress_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 marketplace_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_fqdns: List of fully qualified domain names to be added to the allowlist for
+               outbound traffic.
+        :param pulumi.Input[_builtins.bool] marketplace_enabled: Whether the Looker Marketplace is enabled.
+        """
+        if egress_fqdns is not None:
+            pulumi.set(__self__, "egress_fqdns", egress_fqdns)
+        if marketplace_enabled is not None:
+            pulumi.set(__self__, "marketplace_enabled", marketplace_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="egressFqdns")
+    def egress_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of fully qualified domain names to be added to the allowlist for
+        outbound traffic.
+        """
+        return pulumi.get(self, "egress_fqdns")
+
+    @egress_fqdns.setter
+    def egress_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "egress_fqdns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="marketplaceEnabled")
+    def marketplace_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the Looker Marketplace is enabled.
+        """
+        return pulumi.get(self, "marketplace_enabled")
+
+    @marketplace_enabled.setter
+    def marketplace_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "marketplace_enabled", value)
 
 
 if not MYPY:

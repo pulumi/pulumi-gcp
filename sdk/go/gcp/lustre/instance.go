@@ -120,6 +120,8 @@ type Instance struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The KMS key id to use for encryption of the Lustre instance.
+	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -147,15 +149,10 @@ type Instance struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The state of the instance.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// ACTIVE
-	// CREATING
-	// DELETING
-	// UPGRADING
-	// REPAIRING
-	// STOPPED
+	// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
 	State pulumi.StringOutput `pulumi:"state"`
+	// The reason why the instance is in a certain state.
+	StateReason pulumi.StringOutput `pulumi:"stateReason"`
 	// Timestamp when the instance was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -235,6 +232,8 @@ type instanceState struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	InstanceId *string `pulumi:"instanceId"`
+	// The KMS key id to use for encryption of the Lustre instance.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -262,15 +261,10 @@ type instanceState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The state of the instance.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// ACTIVE
-	// CREATING
-	// DELETING
-	// UPGRADING
-	// REPAIRING
-	// STOPPED
+	// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
 	State *string `pulumi:"state"`
+	// The reason why the instance is in a certain state.
+	StateReason *string `pulumi:"stateReason"`
 	// Timestamp when the instance was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -298,6 +292,8 @@ type InstanceState struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	InstanceId pulumi.StringPtrInput
+	// The KMS key id to use for encryption of the Lustre instance.
+	KmsKey pulumi.StringPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -325,15 +321,10 @@ type InstanceState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The state of the instance.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// ACTIVE
-	// CREATING
-	// DELETING
-	// UPGRADING
-	// REPAIRING
-	// STOPPED
+	// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
 	State pulumi.StringPtrInput
+	// The reason why the instance is in a certain state.
+	StateReason pulumi.StringPtrInput
 	// Timestamp when the instance was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -361,6 +352,8 @@ type instanceArgs struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	InstanceId string `pulumi:"instanceId"`
+	// The KMS key id to use for encryption of the Lustre instance.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -402,6 +395,8 @@ type InstanceArgs struct {
 	// * Must be between 1-63 characters.
 	// * Must end with a number or a letter.
 	InstanceId pulumi.StringInput
+	// The KMS key id to use for encryption of the Lustre instance.
+	KmsKey pulumi.StringPtrInput
 	// Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -553,6 +548,11 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The KMS key id to use for encryption of the Lustre instance.
+func (o InstanceOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
 // Labels as key value pairs.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -607,16 +607,14 @@ func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // The state of the instance.
-// Possible values:
-// STATE_UNSPECIFIED
-// ACTIVE
-// CREATING
-// DELETING
-// UPGRADING
-// REPAIRING
-// STOPPED
+// Please see https://cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances#state for values
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The reason why the instance is in a certain state.
+func (o InstanceOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
 }
 
 // Timestamp when the instance was last updated.

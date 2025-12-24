@@ -14,9 +14,17 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection
     {
         /// <summary>
+        /// List of disks to be attached to the instances created from this selection.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> Disks;
+        /// <summary>
         /// Full machine-type names, e.g. "n1-standard-16"
         /// </summary>
         public readonly ImmutableArray<string> MachineTypes;
+        /// <summary>
+        /// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+        /// </summary>
+        public readonly string? MinCpuPlatform;
         /// <summary>
         /// The name of the instance group manager. Must be 1-63
         /// characters long and comply with
@@ -31,13 +39,19 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(
+            ImmutableArray<Outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk> disks,
+
             ImmutableArray<string> machineTypes,
+
+            string? minCpuPlatform,
 
             string name,
 
             int? rank)
         {
+            Disks = disks;
             MachineTypes = machineTypes;
+            MinCpuPlatform = minCpuPlatform;
             Name = name;
             Rank = rank;
         }

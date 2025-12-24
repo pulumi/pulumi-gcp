@@ -18565,9 +18565,11 @@ func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) Elem() AiRagE
 }
 
 type AiReasoningEngineEncryptionSpec struct {
-	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-	// The key needs to be in the same region as where the compute resource is created.
+	// Required. The Cloud KMS resource identifier of the customer managed
+	// encryption key used to protect a resource. Has the form:
+	// projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+	// The key needs to be in the same region as where the compute resource
+	// is created.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -18583,9 +18585,11 @@ type AiReasoningEngineEncryptionSpecInput interface {
 }
 
 type AiReasoningEngineEncryptionSpecArgs struct {
-	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-	// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-	// The key needs to be in the same region as where the compute resource is created.
+	// Required. The Cloud KMS resource identifier of the customer managed
+	// encryption key used to protect a resource. Has the form:
+	// projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+	// The key needs to be in the same region as where the compute resource
+	// is created.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -18666,9 +18670,11 @@ func (o AiReasoningEngineEncryptionSpecOutput) ToAiReasoningEngineEncryptionSpec
 	}).(AiReasoningEngineEncryptionSpecPtrOutput)
 }
 
-// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-// The key needs to be in the same region as where the compute resource is created.
+// Required. The Cloud KMS resource identifier of the customer managed
+// encryption key used to protect a resource. Has the form:
+// projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+// The key needs to be in the same region as where the compute resource
+// is created.
 func (o AiReasoningEngineEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -18697,9 +18703,11 @@ func (o AiReasoningEngineEncryptionSpecPtrOutput) Elem() AiReasoningEngineEncryp
 	}).(AiReasoningEngineEncryptionSpecOutput)
 }
 
-// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-// Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-// The key needs to be in the same region as where the compute resource is created.
+// Required. The Cloud KMS resource identifier of the customer managed
+// encryption key used to protect a resource. Has the form:
+// projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+// The key needs to be in the same region as where the compute resource
+// is created.
 func (o AiReasoningEngineEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineEncryptionSpec) *string {
 		if v == nil {
@@ -18712,7 +18720,8 @@ func (o AiReasoningEngineEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrO
 type AiReasoningEngineSpec struct {
 	// Optional. The OSS agent framework used to develop the agent.
 	AgentFramework *string `pulumi:"agentFramework"`
-	// Optional. Declarations for object class methods in OpenAPI specification format.
+	// Optional. Declarations for object class methods in OpenAPI
+	// specification format.
 	ClassMethods *string `pulumi:"classMethods"`
 	// Optional. The specification of a Reasoning Engine deployment.
 	// Structure is documented below.
@@ -18723,11 +18732,15 @@ type AiReasoningEngineSpec struct {
 	// fieldBehavior to avoid introducing breaking changes.
 	// Structure is documented below.
 	PackageSpec *AiReasoningEngineSpecPackageSpec `pulumi:"packageSpec"`
-	// Optional. The service account that the Reasoning Engine artifact runs as.
-	// It should have "roles/storage.objectViewer" for reading the user project's
-	// Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-	// If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+	// Optional. The service account that the Reasoning Engine artifact runs
+	// as. It should have "roles/storage.objectViewer" for reading the user
+	// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+	// extensions. If not specified, the Vertex AI Reasoning Engine service
+	// Agent in the project will be used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Specification for deploying from source code.
+	// Structure is documented below.
+	SourceCodeSpec *AiReasoningEngineSpecSourceCodeSpec `pulumi:"sourceCodeSpec"`
 }
 
 // AiReasoningEngineSpecInput is an input type that accepts AiReasoningEngineSpecArgs and AiReasoningEngineSpecOutput values.
@@ -18744,7 +18757,8 @@ type AiReasoningEngineSpecInput interface {
 type AiReasoningEngineSpecArgs struct {
 	// Optional. The OSS agent framework used to develop the agent.
 	AgentFramework pulumi.StringPtrInput `pulumi:"agentFramework"`
-	// Optional. Declarations for object class methods in OpenAPI specification format.
+	// Optional. Declarations for object class methods in OpenAPI
+	// specification format.
 	ClassMethods pulumi.StringPtrInput `pulumi:"classMethods"`
 	// Optional. The specification of a Reasoning Engine deployment.
 	// Structure is documented below.
@@ -18755,11 +18769,15 @@ type AiReasoningEngineSpecArgs struct {
 	// fieldBehavior to avoid introducing breaking changes.
 	// Structure is documented below.
 	PackageSpec AiReasoningEngineSpecPackageSpecPtrInput `pulumi:"packageSpec"`
-	// Optional. The service account that the Reasoning Engine artifact runs as.
-	// It should have "roles/storage.objectViewer" for reading the user project's
-	// Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-	// If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+	// Optional. The service account that the Reasoning Engine artifact runs
+	// as. It should have "roles/storage.objectViewer" for reading the user
+	// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+	// extensions. If not specified, the Vertex AI Reasoning Engine service
+	// Agent in the project will be used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Specification for deploying from source code.
+	// Structure is documented below.
+	SourceCodeSpec AiReasoningEngineSpecSourceCodeSpecPtrInput `pulumi:"sourceCodeSpec"`
 }
 
 func (AiReasoningEngineSpecArgs) ElementType() reflect.Type {
@@ -18844,7 +18862,8 @@ func (o AiReasoningEngineSpecOutput) AgentFramework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.AgentFramework }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Declarations for object class methods in OpenAPI specification format.
+// Optional. Declarations for object class methods in OpenAPI
+// specification format.
 func (o AiReasoningEngineSpecOutput) ClassMethods() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.ClassMethods }).(pulumi.StringPtrOutput)
 }
@@ -18864,12 +18883,19 @@ func (o AiReasoningEngineSpecOutput) PackageSpec() AiReasoningEngineSpecPackageS
 	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecPackageSpec { return v.PackageSpec }).(AiReasoningEngineSpecPackageSpecPtrOutput)
 }
 
-// Optional. The service account that the Reasoning Engine artifact runs as.
-// It should have "roles/storage.objectViewer" for reading the user project's
-// Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-// If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+// Optional. The service account that the Reasoning Engine artifact runs
+// as. It should have "roles/storage.objectViewer" for reading the user
+// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+// extensions. If not specified, the Vertex AI Reasoning Engine service
+// Agent in the project will be used.
 func (o AiReasoningEngineSpecOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Specification for deploying from source code.
+// Structure is documented below.
+func (o AiReasoningEngineSpecOutput) SourceCodeSpec() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecSourceCodeSpec { return v.SourceCodeSpec }).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
 }
 
 type AiReasoningEngineSpecPtrOutput struct{ *pulumi.OutputState }
@@ -18906,7 +18932,8 @@ func (o AiReasoningEngineSpecPtrOutput) AgentFramework() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Declarations for object class methods in OpenAPI specification format.
+// Optional. Declarations for object class methods in OpenAPI
+// specification format.
 func (o AiReasoningEngineSpecPtrOutput) ClassMethods() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
 		if v == nil {
@@ -18941,10 +18968,11 @@ func (o AiReasoningEngineSpecPtrOutput) PackageSpec() AiReasoningEngineSpecPacka
 	}).(AiReasoningEngineSpecPackageSpecPtrOutput)
 }
 
-// Optional. The service account that the Reasoning Engine artifact runs as.
-// It should have "roles/storage.objectViewer" for reading the user project's
-// Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-// If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+// Optional. The service account that the Reasoning Engine artifact runs
+// as. It should have "roles/storage.objectViewer" for reading the user
+// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+// extensions. If not specified, the Vertex AI Reasoning Engine service
+// Agent in the project will be used.
 func (o AiReasoningEngineSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
 		if v == nil {
@@ -18954,11 +18982,47 @@ func (o AiReasoningEngineSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specification for deploying from source code.
+// Structure is documented below.
+func (o AiReasoningEngineSpecPtrOutput) SourceCodeSpec() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpec) *AiReasoningEngineSpecSourceCodeSpec {
+		if v == nil {
+			return nil
+		}
+		return v.SourceCodeSpec
+	}).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
+}
+
 type AiReasoningEngineSpecDeploymentSpec struct {
-	// Optional. Environment variables to be set with the Reasoning Engine deployment.
+	// Optional. Concurrency for each container and agent server.
+	// Recommended value: 2 * cpu + 1. Defaults to 9.
+	ContainerConcurrency *int `pulumi:"containerConcurrency"`
+	// Optional. Environment variables to be set with the Reasoning
+	// Engine deployment.
 	// Structure is documented below.
 	Envs []AiReasoningEngineSpecDeploymentSpecEnv `pulumi:"envs"`
-	// Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+	// Optional. The minimum number of application instances that will be
+	// kept running at all times. Defaults to 1. Range: [0, 10].
+	MaxInstances *int `pulumi:"maxInstances"`
+	// Optional. The maximum number of application instances that can be
+	// launched to handle increased traffic. Defaults to 100.
+	// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+	// range is [1, 100].
+	MinInstances *int `pulumi:"minInstances"`
+	// Optional. Resource limits for each container.
+	// Only 'cpu' and 'memory' keys are supported.
+	// Defaults to {"cpu": "4", "memory": "4Gi"}.
+	// The only supported values for CPU are '1', '2', '4', '6' and '8'.
+	// For more information, go to
+	// https://cloud.google.com/run/docs/configuring/cpu.
+	// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+	// For more information, go to
+	// https://cloud.google.com/run/docs/configuring/memory-limits.
+	ResourceLimits map[string]string `pulumi:"resourceLimits"`
+	// Optional. Environment variables where the value is a secret in
+	// Cloud Secret Manager. To use this feature, add 'Secret Manager
+	// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+	// Platform Reasoning Engine service Agent.
 	// Structure is documented below.
 	SecretEnvs []AiReasoningEngineSpecDeploymentSpecSecretEnv `pulumi:"secretEnvs"`
 }
@@ -18975,10 +19039,35 @@ type AiReasoningEngineSpecDeploymentSpecInput interface {
 }
 
 type AiReasoningEngineSpecDeploymentSpecArgs struct {
-	// Optional. Environment variables to be set with the Reasoning Engine deployment.
+	// Optional. Concurrency for each container and agent server.
+	// Recommended value: 2 * cpu + 1. Defaults to 9.
+	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
+	// Optional. Environment variables to be set with the Reasoning
+	// Engine deployment.
 	// Structure is documented below.
 	Envs AiReasoningEngineSpecDeploymentSpecEnvArrayInput `pulumi:"envs"`
-	// Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+	// Optional. The minimum number of application instances that will be
+	// kept running at all times. Defaults to 1. Range: [0, 10].
+	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
+	// Optional. The maximum number of application instances that can be
+	// launched to handle increased traffic. Defaults to 100.
+	// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+	// range is [1, 100].
+	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
+	// Optional. Resource limits for each container.
+	// Only 'cpu' and 'memory' keys are supported.
+	// Defaults to {"cpu": "4", "memory": "4Gi"}.
+	// The only supported values for CPU are '1', '2', '4', '6' and '8'.
+	// For more information, go to
+	// https://cloud.google.com/run/docs/configuring/cpu.
+	// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+	// For more information, go to
+	// https://cloud.google.com/run/docs/configuring/memory-limits.
+	ResourceLimits pulumi.StringMapInput `pulumi:"resourceLimits"`
+	// Optional. Environment variables where the value is a secret in
+	// Cloud Secret Manager. To use this feature, add 'Secret Manager
+	// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+	// Platform Reasoning Engine service Agent.
 	// Structure is documented below.
 	SecretEnvs AiReasoningEngineSpecDeploymentSpecSecretEnvArrayInput `pulumi:"secretEnvs"`
 }
@@ -19060,13 +19149,50 @@ func (o AiReasoningEngineSpecDeploymentSpecOutput) ToAiReasoningEngineSpecDeploy
 	}).(AiReasoningEngineSpecDeploymentSpecPtrOutput)
 }
 
-// Optional. Environment variables to be set with the Reasoning Engine deployment.
+// Optional. Concurrency for each container and agent server.
+// Recommended value: 2 * cpu + 1. Defaults to 9.
+func (o AiReasoningEngineSpecDeploymentSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Environment variables to be set with the Reasoning
+// Engine deployment.
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecOutput) Envs() AiReasoningEngineSpecDeploymentSpecEnvArrayOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) []AiReasoningEngineSpecDeploymentSpecEnv { return v.Envs }).(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput)
 }
 
-// Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+// Optional. The minimum number of application instances that will be
+// kept running at all times. Defaults to 1. Range: [0, 10].
+func (o AiReasoningEngineSpecDeploymentSpecOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The maximum number of application instances that can be
+// launched to handle increased traffic. Defaults to 100.
+// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+// range is [1, 100].
+func (o AiReasoningEngineSpecDeploymentSpecOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Resource limits for each container.
+// Only 'cpu' and 'memory' keys are supported.
+// Defaults to {"cpu": "4", "memory": "4Gi"}.
+// The only supported values for CPU are '1', '2', '4', '6' and '8'.
+// For more information, go to
+// https://cloud.google.com/run/docs/configuring/cpu.
+// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+// For more information, go to
+// https://cloud.google.com/run/docs/configuring/memory-limits.
+func (o AiReasoningEngineSpecDeploymentSpecOutput) ResourceLimits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) map[string]string { return v.ResourceLimits }).(pulumi.StringMapOutput)
+}
+
+// Optional. Environment variables where the value is a secret in
+// Cloud Secret Manager. To use this feature, add 'Secret Manager
+// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+// Platform Reasoning Engine service Agent.
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecOutput) SecretEnvs() AiReasoningEngineSpecDeploymentSpecSecretEnvArrayOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) []AiReasoningEngineSpecDeploymentSpecSecretEnv {
@@ -19098,7 +19224,19 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) Elem() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecDeploymentSpecOutput)
 }
 
-// Optional. Environment variables to be set with the Reasoning Engine deployment.
+// Optional. Concurrency for each container and agent server.
+// Recommended value: 2 * cpu + 1. Defaults to 9.
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerConcurrency
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Environment variables to be set with the Reasoning
+// Engine deployment.
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) Envs() AiReasoningEngineSpecDeploymentSpecEnvArrayOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) []AiReasoningEngineSpecDeploymentSpecEnv {
@@ -19109,7 +19247,52 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) Envs() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput)
 }
 
-// Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+// Optional. The minimum number of application instances that will be
+// kept running at all times. Defaults to 1. Range: [0, 10].
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The maximum number of application instances that can be
+// launched to handle increased traffic. Defaults to 100.
+// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+// range is [1, 100].
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Resource limits for each container.
+// Only 'cpu' and 'memory' keys are supported.
+// Defaults to {"cpu": "4", "memory": "4Gi"}.
+// The only supported values for CPU are '1', '2', '4', '6' and '8'.
+// For more information, go to
+// https://cloud.google.com/run/docs/configuring/cpu.
+// The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+// For more information, go to
+// https://cloud.google.com/run/docs/configuring/memory-limits.
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) ResourceLimits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLimits
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. Environment variables where the value is a secret in
+// Cloud Secret Manager. To use this feature, add 'Secret Manager
+// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+// Platform Reasoning Engine service Agent.
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) SecretEnvs() AiReasoningEngineSpecDeploymentSpecSecretEnvArrayOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) []AiReasoningEngineSpecDeploymentSpecSecretEnv {
@@ -19121,9 +19304,17 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) SecretEnvs() AiReasoningEn
 }
 
 type AiReasoningEngineSpecDeploymentSpecEnv struct {
-	// The name of the environment variable. Must be a valid C identifier.
+	// The name of the environment variable. Must be a valid
+	// C identifier.
 	Name string `pulumi:"name"`
-	// Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+	// Variables that reference a $(VAR_NAME) are expanded using
+	// the previous defined environment variables in the container
+	// and any service environment variables. If a variable cannot
+	// be resolved, the reference in the input string will be
+	// unchanged. The $(VAR_NAME) syntax can be escaped with a
+	// double $$, ie: $$(VAR_NAME). Escaped references will never
+	// be expanded, regardless of whether the variable exists
+	// or not.
 	Value string `pulumi:"value"`
 }
 
@@ -19139,9 +19330,17 @@ type AiReasoningEngineSpecDeploymentSpecEnvInput interface {
 }
 
 type AiReasoningEngineSpecDeploymentSpecEnvArgs struct {
-	// The name of the environment variable. Must be a valid C identifier.
+	// The name of the environment variable. Must be a valid
+	// C identifier.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+	// Variables that reference a $(VAR_NAME) are expanded using
+	// the previous defined environment variables in the container
+	// and any service environment variables. If a variable cannot
+	// be resolved, the reference in the input string will be
+	// unchanged. The $(VAR_NAME) syntax can be escaped with a
+	// double $$, ie: $$(VAR_NAME). Escaped references will never
+	// be expanded, regardless of whether the variable exists
+	// or not.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -19196,12 +19395,20 @@ func (o AiReasoningEngineSpecDeploymentSpecEnvOutput) ToAiReasoningEngineSpecDep
 	return o
 }
 
-// The name of the environment variable. Must be a valid C identifier.
+// The name of the environment variable. Must be a valid
+// C identifier.
 func (o AiReasoningEngineSpecDeploymentSpecEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+// Variables that reference a $(VAR_NAME) are expanded using
+// the previous defined environment variables in the container
+// and any service environment variables. If a variable cannot
+// be resolved, the reference in the input string will be
+// unchanged. The $(VAR_NAME) syntax can be escaped with a
+// double $$, ie: $$(VAR_NAME). Escaped references will never
+// be expanded, regardless of whether the variable exists
+// or not.
 func (o AiReasoningEngineSpecDeploymentSpecEnvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecEnv) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -19227,9 +19434,11 @@ func (o AiReasoningEngineSpecDeploymentSpecEnvArrayOutput) Index(i pulumi.IntInp
 }
 
 type AiReasoningEngineSpecDeploymentSpecSecretEnv struct {
-	// The name of the environment variable. Must be a valid C identifier.
+	// The name of the environment variable. Must be a valid C
+	// identifier.
 	Name string `pulumi:"name"`
-	// Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+	// Reference to a secret stored in the Cloud Secret Manager
+	// that will provide the value for this environment variable.
 	// Structure is documented below.
 	SecretRef AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef `pulumi:"secretRef"`
 }
@@ -19246,9 +19455,11 @@ type AiReasoningEngineSpecDeploymentSpecSecretEnvInput interface {
 }
 
 type AiReasoningEngineSpecDeploymentSpecSecretEnvArgs struct {
-	// The name of the environment variable. Must be a valid C identifier.
+	// The name of the environment variable. Must be a valid C
+	// identifier.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+	// Reference to a secret stored in the Cloud Secret Manager
+	// that will provide the value for this environment variable.
 	// Structure is documented below.
 	SecretRef AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefInput `pulumi:"secretRef"`
 }
@@ -19304,12 +19515,14 @@ func (o AiReasoningEngineSpecDeploymentSpecSecretEnvOutput) ToAiReasoningEngineS
 	return o
 }
 
-// The name of the environment variable. Must be a valid C identifier.
+// The name of the environment variable. Must be a valid C
+// identifier.
 func (o AiReasoningEngineSpecDeploymentSpecSecretEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecSecretEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+// Reference to a secret stored in the Cloud Secret Manager
+// that will provide the value for this environment variable.
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecSecretEnvOutput) SecretRef() AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecSecretEnv) AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef {
@@ -19338,9 +19551,12 @@ func (o AiReasoningEngineSpecDeploymentSpecSecretEnvArrayOutput) Index(i pulumi.
 }
 
 type AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef struct {
-	// The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+	// The name of the secret in Cloud Secret Manager.
+	// Format: {secret_name}.
 	Secret string `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
+	// The Cloud Secret Manager secret version. Can be 'latest'
+	// for the latest version, an integer for a specific
+	// version, or a version alias.
 	Version *string `pulumi:"version"`
 }
 
@@ -19356,9 +19572,12 @@ type AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefInput interface {
 }
 
 type AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs struct {
-	// The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+	// The name of the secret in Cloud Secret Manager.
+	// Format: {secret_name}.
 	Secret pulumi.StringInput `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
+	// The Cloud Secret Manager secret version. Can be 'latest'
+	// for the latest version, an integer for a specific
+	// version, or a version alias.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -19388,24 +19607,29 @@ func (o AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefOutput) ToAiReasoni
 	return o
 }
 
-// The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+// The name of the secret in Cloud Secret Manager.
+// Format: {secret_name}.
 func (o AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
+// The Cloud Secret Manager secret version. Can be 'latest'
+// for the latest version, an integer for a specific
+// version, or a version alias.
 func (o AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type AiReasoningEngineSpecPackageSpec struct {
-	// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+	// Optional. The Cloud Storage URI of the dependency files in tar.gz
+	// format.
 	DependencyFilesGcsUri *string `pulumi:"dependencyFilesGcsUri"`
 	// Optional. The Cloud Storage URI of the pickled python object.
 	PickleObjectGcsUri *string `pulumi:"pickleObjectGcsUri"`
-	// Optional. The Python version.
+	// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+	// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
 	PythonVersion *string `pulumi:"pythonVersion"`
-	// Optional. The Cloud Storage URI of the requirements.txt file
+	// Optional. The Cloud Storage URI of the requirements.txtfile
 	RequirementsGcsUri *string `pulumi:"requirementsGcsUri"`
 }
 
@@ -19421,13 +19645,15 @@ type AiReasoningEngineSpecPackageSpecInput interface {
 }
 
 type AiReasoningEngineSpecPackageSpecArgs struct {
-	// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+	// Optional. The Cloud Storage URI of the dependency files in tar.gz
+	// format.
 	DependencyFilesGcsUri pulumi.StringPtrInput `pulumi:"dependencyFilesGcsUri"`
 	// Optional. The Cloud Storage URI of the pickled python object.
 	PickleObjectGcsUri pulumi.StringPtrInput `pulumi:"pickleObjectGcsUri"`
-	// Optional. The Python version.
+	// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+	// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
 	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
-	// Optional. The Cloud Storage URI of the requirements.txt file
+	// Optional. The Cloud Storage URI of the requirements.txtfile
 	RequirementsGcsUri pulumi.StringPtrInput `pulumi:"requirementsGcsUri"`
 }
 
@@ -19508,7 +19734,8 @@ func (o AiReasoningEngineSpecPackageSpecOutput) ToAiReasoningEngineSpecPackageSp
 	}).(AiReasoningEngineSpecPackageSpecPtrOutput)
 }
 
-// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+// Optional. The Cloud Storage URI of the dependency files in tar.gz
+// format.
 func (o AiReasoningEngineSpecPackageSpecOutput) DependencyFilesGcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecPackageSpec) *string { return v.DependencyFilesGcsUri }).(pulumi.StringPtrOutput)
 }
@@ -19518,12 +19745,13 @@ func (o AiReasoningEngineSpecPackageSpecOutput) PickleObjectGcsUri() pulumi.Stri
 	return o.ApplyT(func(v AiReasoningEngineSpecPackageSpec) *string { return v.PickleObjectGcsUri }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Python version.
+// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
 func (o AiReasoningEngineSpecPackageSpecOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecPackageSpec) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Cloud Storage URI of the requirements.txt file
+// Optional. The Cloud Storage URI of the requirements.txtfile
 func (o AiReasoningEngineSpecPackageSpecOutput) RequirementsGcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecPackageSpec) *string { return v.RequirementsGcsUri }).(pulumi.StringPtrOutput)
 }
@@ -19552,7 +19780,8 @@ func (o AiReasoningEngineSpecPackageSpecPtrOutput) Elem() AiReasoningEngineSpecP
 	}).(AiReasoningEngineSpecPackageSpecOutput)
 }
 
-// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+// Optional. The Cloud Storage URI of the dependency files in tar.gz
+// format.
 func (o AiReasoningEngineSpecPackageSpecPtrOutput) DependencyFilesGcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecPackageSpec) *string {
 		if v == nil {
@@ -19572,7 +19801,8 @@ func (o AiReasoningEngineSpecPackageSpecPtrOutput) PickleObjectGcsUri() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Python version.
+// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
 func (o AiReasoningEngineSpecPackageSpecPtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecPackageSpec) *string {
 		if v == nil {
@@ -19582,13 +19812,556 @@ func (o AiReasoningEngineSpecPackageSpecPtrOutput) PythonVersion() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The Cloud Storage URI of the requirements.txt file
+// Optional. The Cloud Storage URI of the requirements.txtfile
 func (o AiReasoningEngineSpecPackageSpecPtrOutput) RequirementsGcsUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecPackageSpec) *string {
 		if v == nil {
 			return nil
 		}
 		return v.RequirementsGcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpec struct {
+	// Source code is provided directly in the request.
+	// Structure is documented below.
+	InlineSource *AiReasoningEngineSpecSourceCodeSpecInlineSource `pulumi:"inlineSource"`
+	// Specification for running a Python application from source.
+	// Structure is documented below.
+	PythonSpec *AiReasoningEngineSpecSourceCodeSpecPythonSpec `pulumi:"pythonSpec"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecArgs and AiReasoningEngineSpecSourceCodeSpecOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecOutput() AiReasoningEngineSpecSourceCodeSpecOutput
+	ToAiReasoningEngineSpecSourceCodeSpecOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecArgs struct {
+	// Source code is provided directly in the request.
+	// Structure is documented below.
+	InlineSource AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput `pulumi:"inlineSource"`
+	// Specification for running a Python application from source.
+	// Structure is documented below.
+	PythonSpec AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput `pulumi:"pythonSpec"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpec)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecOutput() AiReasoningEngineSpecSourceCodeSpecOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecOutput).ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecPtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecArgs, AiReasoningEngineSpecSourceCodeSpecPtr and AiReasoningEngineSpecSourceCodeSpecPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecPtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecPtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecPtrType AiReasoningEngineSpecSourceCodeSpecArgs
+
+func AiReasoningEngineSpecSourceCodeSpecPtr(v *AiReasoningEngineSpecSourceCodeSpecArgs) AiReasoningEngineSpecSourceCodeSpecPtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpec)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecPtrType) ToAiReasoningEngineSpecSourceCodeSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecPtrType) ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecOutput() AiReasoningEngineSpecSourceCodeSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpec {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
+}
+
+// Source code is provided directly in the request.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) InlineSource() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecInlineSource {
+		return v.InlineSource
+	}).(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput)
+}
+
+// Specification for running a Python application from source.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) PythonSpec() AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecPythonSpec {
+		return v.PythonSpec
+	}).(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpec) AiReasoningEngineSpecSourceCodeSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpec
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecOutput)
+}
+
+// Source code is provided directly in the request.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) InlineSource() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecInlineSource {
+		if v == nil {
+			return nil
+		}
+		return v.InlineSource
+	}).(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput)
+}
+
+// Specification for running a Python application from source.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) PythonSpec() AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecPythonSpec {
+		if v == nil {
+			return nil
+		}
+		return v.PythonSpec
+	}).(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecInlineSource struct {
+	// Required. Input only.
+	// The application source code archive, provided as a compressed
+	// tarball (.tar.gz) file. A base64-encoded string.
+	SourceArchive *string `pulumi:"sourceArchive"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecInlineSourceInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs and AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecInlineSourceInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecInlineSourceInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecInlineSourceOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput
+	ToAiReasoningEngineSpecSourceCodeSpecInlineSourceOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs struct {
+	// Required. Input only.
+	// The application source code archive, provided as a compressed
+	// tarball (.tar.gz) file. A base64-encoded string.
+	SourceArchive pulumi.StringPtrInput `pulumi:"sourceArchive"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSource)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecInlineSourceOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecInlineSourceOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecInlineSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput).ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs, AiReasoningEngineSpecSourceCodeSpecInlineSourcePtr and AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecInlineSourcePtrType AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
+
+func AiReasoningEngineSpecSourceCodeSpecInlineSourcePtr(v *AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs) AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecInlineSourcePtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecInlineSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecInlineSource)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecInlineSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecInlineSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecInlineSourceOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecInlineSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpecInlineSource) *AiReasoningEngineSpecSourceCodeSpecInlineSource {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput)
+}
+
+// Required. Input only.
+// The application source code archive, provided as a compressed
+// tarball (.tar.gz) file. A base64-encoded string.
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) SourceArchive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecInlineSource) *string { return v.SourceArchive }).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecInlineSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecInlineSource) AiReasoningEngineSpecSourceCodeSpecInlineSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpecInlineSource
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput)
+}
+
+// Required. Input only.
+// The application source code archive, provided as a compressed
+// tarball (.tar.gz) file. A base64-encoded string.
+func (o AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput) SourceArchive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecInlineSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceArchive
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecPythonSpec struct {
+	// Optional. The Python module to load as the entrypoint,
+	// specified as a fully qualified module name. For example:
+	// path.to.agent. If not specified, defaults to "agent".
+	// The project root will be added to Python sys.path, allowing
+	// imports to be specified relative to the root.
+	EntrypointModule *string `pulumi:"entrypointModule"`
+	// Optional. The name of the callable object within the
+	// entrypointModule to use as the application If not specified,
+	// defaults to "rootAgent".
+	EntrypointObject *string `pulumi:"entrypointObject"`
+	// Optional. The path to the requirements file, relative to the
+	// source root. If not specified, defaults to "requirements.txt".
+	RequirementsFile *string `pulumi:"requirementsFile"`
+	// Optional. The version of Python to use. Support version
+	// includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
+	// default value is 3.10.
+	Version *string `pulumi:"version"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecPythonSpecInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs and AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecPythonSpecInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecPythonSpecInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecPythonSpecOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput
+	ToAiReasoningEngineSpecSourceCodeSpecPythonSpecOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs struct {
+	// Optional. The Python module to load as the entrypoint,
+	// specified as a fully qualified module name. For example:
+	// path.to.agent. If not specified, defaults to "agent".
+	// The project root will be added to Python sys.path, allowing
+	// imports to be specified relative to the root.
+	EntrypointModule pulumi.StringPtrInput `pulumi:"entrypointModule"`
+	// Optional. The name of the callable object within the
+	// entrypointModule to use as the application If not specified,
+	// defaults to "rootAgent".
+	EntrypointObject pulumi.StringPtrInput `pulumi:"entrypointObject"`
+	// Optional. The path to the requirements file, relative to the
+	// source root. If not specified, defaults to "requirements.txt".
+	RequirementsFile pulumi.StringPtrInput `pulumi:"requirementsFile"`
+	// Optional. The version of Python to use. Support version
+	// includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
+	// default value is 3.10.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpec)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecPythonSpecOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput).ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs, AiReasoningEngineSpecSourceCodeSpecPythonSpecPtr and AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecPythonSpecPtrType AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs
+
+func AiReasoningEngineSpecSourceCodeSpecPythonSpecPtr(v *AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs) AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecPythonSpecPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecPythonSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecPythonSpec)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecPythonSpecPtrType) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecPythonSpecPtrType) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpecPythonSpec) *AiReasoningEngineSpecSourceCodeSpecPythonSpec {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput)
+}
+
+// Optional. The Python module to load as the entrypoint,
+// specified as a fully qualified module name. For example:
+// path.to.agent. If not specified, defaults to "agent".
+// The project root will be added to Python sys.path, allowing
+// imports to be specified relative to the root.
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) EntrypointModule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string { return v.EntrypointModule }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the callable object within the
+// entrypointModule to use as the application If not specified,
+// defaults to "rootAgent".
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) EntrypointObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string { return v.EntrypointObject }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The path to the requirements file, relative to the
+// source root. If not specified, defaults to "requirements.txt".
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) RequirementsFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string { return v.RequirementsFile }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The version of Python to use. Support version
+// includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
+// default value is 3.10.
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecPythonSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput() AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecPythonSpec) AiReasoningEngineSpecSourceCodeSpecPythonSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpecPythonSpec
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput)
+}
+
+// Optional. The Python module to load as the entrypoint,
+// specified as a fully qualified module name. For example:
+// path.to.agent. If not specified, defaults to "agent".
+// The project root will be added to Python sys.path, allowing
+// imports to be specified relative to the root.
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) EntrypointModule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntrypointModule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the callable object within the
+// entrypointModule to use as the application If not specified,
+// defaults to "rootAgent".
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) EntrypointObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntrypointObject
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The path to the requirements file, relative to the
+// source root. If not specified, defaults to "requirements.txt".
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) RequirementsFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequirementsFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The version of Python to use. Support version
+// includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
+// default value is 3.10.
+func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecPythonSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20891,6 +21664,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecPackageSpecInput)(nil)).Elem(), AiReasoningEngineSpecPackageSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecPackageSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecPackageSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSourceInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpecInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexInput)(nil)).Elem(), GetAiIndexDeployedIndexArgs{})
@@ -21130,6 +21909,12 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecPackageSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecPackageSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GetAiIndexDeployedIndexOutput{})

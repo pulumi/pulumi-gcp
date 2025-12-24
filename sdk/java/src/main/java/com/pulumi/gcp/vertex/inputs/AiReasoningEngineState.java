@@ -66,7 +66,8 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
     /**
      * Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      * 
      */
@@ -75,7 +76,8 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Optional. Customer-managed encryption key spec for a ReasoningEngine.
-     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+     * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+     * will be secured by this key.
      * Structure is documented below.
      * 
      */
@@ -85,7 +87,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
     /**
      * The generated name of the ReasoningEngine, in the format
-     * &#39;projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}&#39;
+     * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
      * 
      */
     @Import(name="name")
@@ -93,7 +95,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The generated name of the ReasoningEngine, in the format
-     * &#39;projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}&#39;
+     * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
      * 
      */
     public Optional<Output<String>> name() {
@@ -150,16 +152,16 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format,
-     * with nanosecond resolution and up to nine fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
+     * format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format,
-     * with nanosecond resolution and up to nine fractional digits.
+     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
+     * format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -265,7 +267,8 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
         /**
          * @param encryptionSpec Optional. Customer-managed encryption key spec for a ReasoningEngine.
-         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+         * will be secured by this key.
          * Structure is documented below.
          * 
          * @return builder
@@ -278,7 +281,8 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
         /**
          * @param encryptionSpec Optional. Customer-managed encryption key spec for a ReasoningEngine.
-         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+         * If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+         * will be secured by this key.
          * Structure is documented below.
          * 
          * @return builder
@@ -290,7 +294,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
         /**
          * @param name The generated name of the ReasoningEngine, in the format
-         * &#39;projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}&#39;
+         * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
          * 
          * @return builder
          * 
@@ -302,7 +306,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
 
         /**
          * @param name The generated name of the ReasoningEngine, in the format
-         * &#39;projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}&#39;
+         * projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
          * 
          * @return builder
          * 
@@ -379,8 +383,8 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format,
-         * with nanosecond resolution and up to nine fractional digits.
+         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
+         * format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -391,8 +395,8 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format,
-         * with nanosecond resolution and up to nine fractional digits.
+         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
+         * format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 

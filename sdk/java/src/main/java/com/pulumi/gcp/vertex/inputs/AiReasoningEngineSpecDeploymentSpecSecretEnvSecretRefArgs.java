@@ -17,14 +17,16 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs ext
     public static final AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs Empty = new AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs();
 
     /**
-     * The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+     * The name of the secret in Cloud Secret Manager.
+     * Format: {secret_name}.
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+     * @return The name of the secret in Cloud Secret Manager.
+     * Format: {secret_name}.
      * 
      */
     public Output<String> secret() {
@@ -32,14 +34,18 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs ext
     }
 
     /**
-     * The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest version, an integer for a specific version, or a version alias.
+     * The Cloud Secret Manager secret version. Can be &#39;latest&#39;
+     * for the latest version, an integer for a specific
+     * version, or a version alias.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest version, an integer for a specific version, or a version alias.
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39;
+     * for the latest version, an integer for a specific
+     * version, or a version alias.
      * 
      */
     public Optional<Output<String>> version() {
@@ -72,7 +78,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs ext
         }
 
         /**
-         * @param secret The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+         * @param secret The name of the secret in Cloud Secret Manager.
+         * Format: {secret_name}.
          * 
          * @return builder
          * 
@@ -83,7 +90,8 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs ext
         }
 
         /**
-         * @param secret The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+         * @param secret The name of the secret in Cloud Secret Manager.
+         * Format: {secret_name}.
          * 
          * @return builder
          * 
@@ -93,7 +101,9 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs ext
         }
 
         /**
-         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest version, an integer for a specific version, or a version alias.
+         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39;
+         * for the latest version, an integer for a specific
+         * version, or a version alias.
          * 
          * @return builder
          * 
@@ -104,7 +114,9 @@ public final class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs ext
         }
 
         /**
-         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest version, an integer for a specific version, or a version alias.
+         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39;
+         * for the latest version, an integer for a specific
+         * version, or a version alias.
          * 
          * @return builder
          * 

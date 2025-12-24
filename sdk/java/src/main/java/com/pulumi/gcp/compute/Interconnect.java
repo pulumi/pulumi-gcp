@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.outputs.InterconnectApplicationAwareInterconnect;
 import com.pulumi.gcp.compute.outputs.InterconnectCircuitInfo;
 import com.pulumi.gcp.compute.outputs.InterconnectExpectedOutage;
 import com.pulumi.gcp.compute.outputs.InterconnectMacsec;
+import com.pulumi.gcp.compute.outputs.InterconnectParams;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -537,6 +538,22 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      */
     public Output<String> operationalStatus() {
         return this.operationalStatus;
+    }
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="params", refs={InterconnectParams.class}, tree="[0]")
+    private Output</* @Nullable */ InterconnectParams> params;
+
+    /**
+     * @return Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InterconnectParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * IP address configured on the customer side of the Interconnect link.

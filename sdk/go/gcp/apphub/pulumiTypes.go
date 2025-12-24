@@ -1844,6 +1844,10 @@ type ServiceServiceProperty struct {
 	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in.
 	GcpProject *string `pulumi:"gcpProject"`
+	// (Output)
+	// The identity associated with the service.
+	// Structure is documented below.
+	Identities []ServiceServicePropertyIdentity `pulumi:"identities"`
 	// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 	Location *string `pulumi:"location"`
 	// (Output)
@@ -1878,6 +1882,10 @@ type ServiceServicePropertyArgs struct {
 	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in.
 	GcpProject pulumi.StringPtrInput `pulumi:"gcpProject"`
+	// (Output)
+	// The identity associated with the service.
+	// Structure is documented below.
+	Identities ServiceServicePropertyIdentityArrayInput `pulumi:"identities"`
 	// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
@@ -1958,6 +1966,13 @@ func (o ServiceServicePropertyOutput) FunctionalTypes() ServiceServicePropertyFu
 // Output only. The service project identifier that the underlying cloud resource resides in.
 func (o ServiceServicePropertyOutput) GcpProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceServiceProperty) *string { return v.GcpProject }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The identity associated with the service.
+// Structure is documented below.
+func (o ServiceServicePropertyOutput) Identities() ServiceServicePropertyIdentityArrayOutput {
+	return o.ApplyT(func(v ServiceServiceProperty) []ServiceServicePropertyIdentity { return v.Identities }).(ServiceServicePropertyIdentityArrayOutput)
 }
 
 // Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -2325,6 +2340,106 @@ func (o ServiceServicePropertyFunctionalTypeArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceServicePropertyFunctionalType {
 		return vs[0].([]ServiceServicePropertyFunctionalType)[vs[1].(int)]
 	}).(ServiceServicePropertyFunctionalTypeOutput)
+}
+
+type ServiceServicePropertyIdentity struct {
+	// (Output)
+	// The principal of the identity.
+	Principal *string `pulumi:"principal"`
+}
+
+// ServiceServicePropertyIdentityInput is an input type that accepts ServiceServicePropertyIdentityArgs and ServiceServicePropertyIdentityOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyIdentityInput` via:
+//
+//	ServiceServicePropertyIdentityArgs{...}
+type ServiceServicePropertyIdentityInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyIdentityOutput() ServiceServicePropertyIdentityOutput
+	ToServiceServicePropertyIdentityOutputWithContext(context.Context) ServiceServicePropertyIdentityOutput
+}
+
+type ServiceServicePropertyIdentityArgs struct {
+	// (Output)
+	// The principal of the identity.
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
+}
+
+func (ServiceServicePropertyIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyIdentity)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyIdentityArgs) ToServiceServicePropertyIdentityOutput() ServiceServicePropertyIdentityOutput {
+	return i.ToServiceServicePropertyIdentityOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyIdentityArgs) ToServiceServicePropertyIdentityOutputWithContext(ctx context.Context) ServiceServicePropertyIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyIdentityOutput)
+}
+
+// ServiceServicePropertyIdentityArrayInput is an input type that accepts ServiceServicePropertyIdentityArray and ServiceServicePropertyIdentityArrayOutput values.
+// You can construct a concrete instance of `ServiceServicePropertyIdentityArrayInput` via:
+//
+//	ServiceServicePropertyIdentityArray{ ServiceServicePropertyIdentityArgs{...} }
+type ServiceServicePropertyIdentityArrayInput interface {
+	pulumi.Input
+
+	ToServiceServicePropertyIdentityArrayOutput() ServiceServicePropertyIdentityArrayOutput
+	ToServiceServicePropertyIdentityArrayOutputWithContext(context.Context) ServiceServicePropertyIdentityArrayOutput
+}
+
+type ServiceServicePropertyIdentityArray []ServiceServicePropertyIdentityInput
+
+func (ServiceServicePropertyIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyIdentity)(nil)).Elem()
+}
+
+func (i ServiceServicePropertyIdentityArray) ToServiceServicePropertyIdentityArrayOutput() ServiceServicePropertyIdentityArrayOutput {
+	return i.ToServiceServicePropertyIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceServicePropertyIdentityArray) ToServiceServicePropertyIdentityArrayOutputWithContext(ctx context.Context) ServiceServicePropertyIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceServicePropertyIdentityArrayOutput)
+}
+
+type ServiceServicePropertyIdentityOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceServicePropertyIdentity)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyIdentityOutput) ToServiceServicePropertyIdentityOutput() ServiceServicePropertyIdentityOutput {
+	return o
+}
+
+func (o ServiceServicePropertyIdentityOutput) ToServiceServicePropertyIdentityOutputWithContext(ctx context.Context) ServiceServicePropertyIdentityOutput {
+	return o
+}
+
+// (Output)
+// The principal of the identity.
+func (o ServiceServicePropertyIdentityOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceServicePropertyIdentity) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+type ServiceServicePropertyIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceServicePropertyIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceServicePropertyIdentity)(nil)).Elem()
+}
+
+func (o ServiceServicePropertyIdentityArrayOutput) ToServiceServicePropertyIdentityArrayOutput() ServiceServicePropertyIdentityArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyIdentityArrayOutput) ToServiceServicePropertyIdentityArrayOutputWithContext(ctx context.Context) ServiceServicePropertyIdentityArrayOutput {
+	return o
+}
+
+func (o ServiceServicePropertyIdentityArrayOutput) Index(i pulumi.IntInput) ServiceServicePropertyIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceServicePropertyIdentity {
+		return vs[0].([]ServiceServicePropertyIdentity)[vs[1].(int)]
+	}).(ServiceServicePropertyIdentityOutput)
 }
 
 type ServiceServicePropertyRegistrationType struct {
@@ -3375,6 +3490,10 @@ type WorkloadWorkloadProperty struct {
 	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
 	GcpProject *string `pulumi:"gcpProject"`
+	// (Output)
+	// The identity associated with the workload.
+	// Structure is documented below.
+	Identities []WorkloadWorkloadPropertyIdentity `pulumi:"identities"`
 	// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 	Location *string `pulumi:"location"`
 	// (Output)
@@ -3405,6 +3524,10 @@ type WorkloadWorkloadPropertyArgs struct {
 	// (Output)
 	// Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
 	GcpProject pulumi.StringPtrInput `pulumi:"gcpProject"`
+	// (Output)
+	// The identity associated with the workload.
+	// Structure is documented below.
+	Identities WorkloadWorkloadPropertyIdentityArrayInput `pulumi:"identities"`
 	// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// (Output)
@@ -3483,6 +3606,13 @@ func (o WorkloadWorkloadPropertyOutput) FunctionalTypes() WorkloadWorkloadProper
 // Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
 func (o WorkloadWorkloadPropertyOutput) GcpProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadWorkloadProperty) *string { return v.GcpProject }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The identity associated with the workload.
+// Structure is documented below.
+func (o WorkloadWorkloadPropertyOutput) Identities() WorkloadWorkloadPropertyIdentityArrayOutput {
+	return o.ApplyT(func(v WorkloadWorkloadProperty) []WorkloadWorkloadPropertyIdentity { return v.Identities }).(WorkloadWorkloadPropertyIdentityArrayOutput)
 }
 
 // Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
@@ -3843,6 +3973,106 @@ func (o WorkloadWorkloadPropertyFunctionalTypeArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadWorkloadPropertyFunctionalType {
 		return vs[0].([]WorkloadWorkloadPropertyFunctionalType)[vs[1].(int)]
 	}).(WorkloadWorkloadPropertyFunctionalTypeOutput)
+}
+
+type WorkloadWorkloadPropertyIdentity struct {
+	// (Output)
+	// The principal of the identity.
+	Principal *string `pulumi:"principal"`
+}
+
+// WorkloadWorkloadPropertyIdentityInput is an input type that accepts WorkloadWorkloadPropertyIdentityArgs and WorkloadWorkloadPropertyIdentityOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyIdentityInput` via:
+//
+//	WorkloadWorkloadPropertyIdentityArgs{...}
+type WorkloadWorkloadPropertyIdentityInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyIdentityOutput() WorkloadWorkloadPropertyIdentityOutput
+	ToWorkloadWorkloadPropertyIdentityOutputWithContext(context.Context) WorkloadWorkloadPropertyIdentityOutput
+}
+
+type WorkloadWorkloadPropertyIdentityArgs struct {
+	// (Output)
+	// The principal of the identity.
+	Principal pulumi.StringPtrInput `pulumi:"principal"`
+}
+
+func (WorkloadWorkloadPropertyIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyIdentity)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyIdentityArgs) ToWorkloadWorkloadPropertyIdentityOutput() WorkloadWorkloadPropertyIdentityOutput {
+	return i.ToWorkloadWorkloadPropertyIdentityOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyIdentityArgs) ToWorkloadWorkloadPropertyIdentityOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyIdentityOutput)
+}
+
+// WorkloadWorkloadPropertyIdentityArrayInput is an input type that accepts WorkloadWorkloadPropertyIdentityArray and WorkloadWorkloadPropertyIdentityArrayOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadPropertyIdentityArrayInput` via:
+//
+//	WorkloadWorkloadPropertyIdentityArray{ WorkloadWorkloadPropertyIdentityArgs{...} }
+type WorkloadWorkloadPropertyIdentityArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadPropertyIdentityArrayOutput() WorkloadWorkloadPropertyIdentityArrayOutput
+	ToWorkloadWorkloadPropertyIdentityArrayOutputWithContext(context.Context) WorkloadWorkloadPropertyIdentityArrayOutput
+}
+
+type WorkloadWorkloadPropertyIdentityArray []WorkloadWorkloadPropertyIdentityInput
+
+func (WorkloadWorkloadPropertyIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyIdentity)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadPropertyIdentityArray) ToWorkloadWorkloadPropertyIdentityArrayOutput() WorkloadWorkloadPropertyIdentityArrayOutput {
+	return i.ToWorkloadWorkloadPropertyIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadPropertyIdentityArray) ToWorkloadWorkloadPropertyIdentityArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadPropertyIdentityArrayOutput)
+}
+
+type WorkloadWorkloadPropertyIdentityOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadPropertyIdentity)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyIdentityOutput) ToWorkloadWorkloadPropertyIdentityOutput() WorkloadWorkloadPropertyIdentityOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyIdentityOutput) ToWorkloadWorkloadPropertyIdentityOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyIdentityOutput {
+	return o
+}
+
+// (Output)
+// The principal of the identity.
+func (o WorkloadWorkloadPropertyIdentityOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadWorkloadPropertyIdentity) *string { return v.Principal }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadWorkloadPropertyIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadPropertyIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadWorkloadPropertyIdentity)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadPropertyIdentityArrayOutput) ToWorkloadWorkloadPropertyIdentityArrayOutput() WorkloadWorkloadPropertyIdentityArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyIdentityArrayOutput) ToWorkloadWorkloadPropertyIdentityArrayOutputWithContext(ctx context.Context) WorkloadWorkloadPropertyIdentityArrayOutput {
+	return o
+}
+
+func (o WorkloadWorkloadPropertyIdentityArrayOutput) Index(i pulumi.IntInput) WorkloadWorkloadPropertyIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadWorkloadPropertyIdentity {
+		return vs[0].([]WorkloadWorkloadPropertyIdentity)[vs[1].(int)]
+	}).(WorkloadWorkloadPropertyIdentityOutput)
 }
 
 type WorkloadWorkloadReference struct {
@@ -5166,6 +5396,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyExtendedMetadataValueArrayInput)(nil)).Elem(), ServiceServicePropertyExtendedMetadataValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyFunctionalTypeInput)(nil)).Elem(), ServiceServicePropertyFunctionalTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyFunctionalTypeArrayInput)(nil)).Elem(), ServiceServicePropertyFunctionalTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyIdentityInput)(nil)).Elem(), ServiceServicePropertyIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyIdentityArrayInput)(nil)).Elem(), ServiceServicePropertyIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyRegistrationTypeInput)(nil)).Elem(), ServiceServicePropertyRegistrationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServicePropertyRegistrationTypeArrayInput)(nil)).Elem(), ServiceServicePropertyRegistrationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceServiceReferenceInput)(nil)).Elem(), ServiceServiceReferenceArgs{})
@@ -5190,6 +5422,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyExtendedMetadataValueArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyExtendedMetadataValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyFunctionalTypeInput)(nil)).Elem(), WorkloadWorkloadPropertyFunctionalTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyFunctionalTypeArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyFunctionalTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyIdentityInput)(nil)).Elem(), WorkloadWorkloadPropertyIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadPropertyIdentityArrayInput)(nil)).Elem(), WorkloadWorkloadPropertyIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadReferenceInput)(nil)).Elem(), WorkloadWorkloadReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadReferenceArrayInput)(nil)).Elem(), WorkloadWorkloadReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationAttributeInput)(nil)).Elem(), GetApplicationAttributeArgs{})
@@ -5248,6 +5482,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceServicePropertyExtendedMetadataValueArrayOutput{})
 	pulumi.RegisterOutputType(ServiceServicePropertyFunctionalTypeOutput{})
 	pulumi.RegisterOutputType(ServiceServicePropertyFunctionalTypeArrayOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyIdentityOutput{})
+	pulumi.RegisterOutputType(ServiceServicePropertyIdentityArrayOutput{})
 	pulumi.RegisterOutputType(ServiceServicePropertyRegistrationTypeOutput{})
 	pulumi.RegisterOutputType(ServiceServicePropertyRegistrationTypeArrayOutput{})
 	pulumi.RegisterOutputType(ServiceServiceReferenceOutput{})
@@ -5272,6 +5508,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadWorkloadPropertyExtendedMetadataValueArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadPropertyFunctionalTypeOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadPropertyFunctionalTypeArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyIdentityOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadPropertyIdentityArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadReferenceOutput{})
 	pulumi.RegisterOutputType(WorkloadWorkloadReferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationAttributeOutput{})

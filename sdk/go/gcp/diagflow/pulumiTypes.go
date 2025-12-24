@@ -36897,6 +36897,994 @@ func (o CxTestCaseTestConfigPtrOutput) TrackingParameters() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+type CxToolConnectorSpec struct {
+	// Actions for the tool to use.
+	// Structure is documented below.
+	Actions []CxToolConnectorSpecAction `pulumi:"actions"`
+	// Integration Connectors end-user authentication configuration.
+	// If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+	// and override the admin, default authentication configured for the Connection.
+	// Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+	// the ConnectorTool creation will fail.
+	// See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+	// Structure is documented below.
+	EndUserAuthConfig *CxToolConnectorSpecEndUserAuthConfig `pulumi:"endUserAuthConfig"`
+	// The full resource name of the referenced Integration Connectors Connection.
+	// Format: projects/*/locations/*/connections/*
+	Name string `pulumi:"name"`
+}
+
+// CxToolConnectorSpecInput is an input type that accepts CxToolConnectorSpecArgs and CxToolConnectorSpecOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecInput` via:
+//
+//	CxToolConnectorSpecArgs{...}
+type CxToolConnectorSpecInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecOutput() CxToolConnectorSpecOutput
+	ToCxToolConnectorSpecOutputWithContext(context.Context) CxToolConnectorSpecOutput
+}
+
+type CxToolConnectorSpecArgs struct {
+	// Actions for the tool to use.
+	// Structure is documented below.
+	Actions CxToolConnectorSpecActionArrayInput `pulumi:"actions"`
+	// Integration Connectors end-user authentication configuration.
+	// If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+	// and override the admin, default authentication configured for the Connection.
+	// Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+	// the ConnectorTool creation will fail.
+	// See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+	// Structure is documented below.
+	EndUserAuthConfig CxToolConnectorSpecEndUserAuthConfigPtrInput `pulumi:"endUserAuthConfig"`
+	// The full resource name of the referenced Integration Connectors Connection.
+	// Format: projects/*/locations/*/connections/*
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (CxToolConnectorSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpec)(nil)).Elem()
+}
+
+func (i CxToolConnectorSpecArgs) ToCxToolConnectorSpecOutput() CxToolConnectorSpecOutput {
+	return i.ToCxToolConnectorSpecOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecArgs) ToCxToolConnectorSpecOutputWithContext(ctx context.Context) CxToolConnectorSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecOutput)
+}
+
+func (i CxToolConnectorSpecArgs) ToCxToolConnectorSpecPtrOutput() CxToolConnectorSpecPtrOutput {
+	return i.ToCxToolConnectorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecArgs) ToCxToolConnectorSpecPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecOutput).ToCxToolConnectorSpecPtrOutputWithContext(ctx)
+}
+
+// CxToolConnectorSpecPtrInput is an input type that accepts CxToolConnectorSpecArgs, CxToolConnectorSpecPtr and CxToolConnectorSpecPtrOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecPtrInput` via:
+//
+//	        CxToolConnectorSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolConnectorSpecPtrInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecPtrOutput() CxToolConnectorSpecPtrOutput
+	ToCxToolConnectorSpecPtrOutputWithContext(context.Context) CxToolConnectorSpecPtrOutput
+}
+
+type cxToolConnectorSpecPtrType CxToolConnectorSpecArgs
+
+func CxToolConnectorSpecPtr(v *CxToolConnectorSpecArgs) CxToolConnectorSpecPtrInput {
+	return (*cxToolConnectorSpecPtrType)(v)
+}
+
+func (*cxToolConnectorSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpec)(nil)).Elem()
+}
+
+func (i *cxToolConnectorSpecPtrType) ToCxToolConnectorSpecPtrOutput() CxToolConnectorSpecPtrOutput {
+	return i.ToCxToolConnectorSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolConnectorSpecPtrType) ToCxToolConnectorSpecPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecPtrOutput)
+}
+
+type CxToolConnectorSpecOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpec)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecOutput) ToCxToolConnectorSpecOutput() CxToolConnectorSpecOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecOutput) ToCxToolConnectorSpecOutputWithContext(ctx context.Context) CxToolConnectorSpecOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecOutput) ToCxToolConnectorSpecPtrOutput() CxToolConnectorSpecPtrOutput {
+	return o.ToCxToolConnectorSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolConnectorSpecOutput) ToCxToolConnectorSpecPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolConnectorSpec) *CxToolConnectorSpec {
+		return &v
+	}).(CxToolConnectorSpecPtrOutput)
+}
+
+// Actions for the tool to use.
+// Structure is documented below.
+func (o CxToolConnectorSpecOutput) Actions() CxToolConnectorSpecActionArrayOutput {
+	return o.ApplyT(func(v CxToolConnectorSpec) []CxToolConnectorSpecAction { return v.Actions }).(CxToolConnectorSpecActionArrayOutput)
+}
+
+// Integration Connectors end-user authentication configuration.
+// If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+// and override the admin, default authentication configured for the Connection.
+// Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+// the ConnectorTool creation will fail.
+// See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+// Structure is documented below.
+func (o CxToolConnectorSpecOutput) EndUserAuthConfig() CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return o.ApplyT(func(v CxToolConnectorSpec) *CxToolConnectorSpecEndUserAuthConfig { return v.EndUserAuthConfig }).(CxToolConnectorSpecEndUserAuthConfigPtrOutput)
+}
+
+// The full resource name of the referenced Integration Connectors Connection.
+// Format: projects/*/locations/*/connections/*
+func (o CxToolConnectorSpecOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolConnectorSpec) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type CxToolConnectorSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpec)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecPtrOutput) ToCxToolConnectorSpecPtrOutput() CxToolConnectorSpecPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecPtrOutput) ToCxToolConnectorSpecPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecPtrOutput) Elem() CxToolConnectorSpecOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpec) CxToolConnectorSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolConnectorSpec
+		return ret
+	}).(CxToolConnectorSpecOutput)
+}
+
+// Actions for the tool to use.
+// Structure is documented below.
+func (o CxToolConnectorSpecPtrOutput) Actions() CxToolConnectorSpecActionArrayOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpec) []CxToolConnectorSpecAction {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(CxToolConnectorSpecActionArrayOutput)
+}
+
+// Integration Connectors end-user authentication configuration.
+// If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+// and override the admin, default authentication configured for the Connection.
+// Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+// the ConnectorTool creation will fail.
+// See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+// Structure is documented below.
+func (o CxToolConnectorSpecPtrOutput) EndUserAuthConfig() CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpec) *CxToolConnectorSpecEndUserAuthConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EndUserAuthConfig
+	}).(CxToolConnectorSpecEndUserAuthConfigPtrOutput)
+}
+
+// The full resource name of the referenced Integration Connectors Connection.
+// Format: projects/*/locations/*/connections/*
+func (o CxToolConnectorSpecPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolConnectorSpecAction struct {
+	// ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+	ConnectionActionId *string `pulumi:"connectionActionId"`
+	// Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+	// Structure is documented below.
+	EntityOperation *CxToolConnectorSpecActionEntityOperation `pulumi:"entityOperation"`
+	// Entity fields to use as inputs for the operation.
+	// If no fields are specified, all fields of the Entity will be used.
+	InputFields []string `pulumi:"inputFields"`
+	// Entity fields to return from the operation.
+	// If no fields are specified, all fields of the Entity will be returned.
+	OutputFields []string `pulumi:"outputFields"`
+}
+
+// CxToolConnectorSpecActionInput is an input type that accepts CxToolConnectorSpecActionArgs and CxToolConnectorSpecActionOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecActionInput` via:
+//
+//	CxToolConnectorSpecActionArgs{...}
+type CxToolConnectorSpecActionInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecActionOutput() CxToolConnectorSpecActionOutput
+	ToCxToolConnectorSpecActionOutputWithContext(context.Context) CxToolConnectorSpecActionOutput
+}
+
+type CxToolConnectorSpecActionArgs struct {
+	// ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+	ConnectionActionId pulumi.StringPtrInput `pulumi:"connectionActionId"`
+	// Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+	// Structure is documented below.
+	EntityOperation CxToolConnectorSpecActionEntityOperationPtrInput `pulumi:"entityOperation"`
+	// Entity fields to use as inputs for the operation.
+	// If no fields are specified, all fields of the Entity will be used.
+	InputFields pulumi.StringArrayInput `pulumi:"inputFields"`
+	// Entity fields to return from the operation.
+	// If no fields are specified, all fields of the Entity will be returned.
+	OutputFields pulumi.StringArrayInput `pulumi:"outputFields"`
+}
+
+func (CxToolConnectorSpecActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (i CxToolConnectorSpecActionArgs) ToCxToolConnectorSpecActionOutput() CxToolConnectorSpecActionOutput {
+	return i.ToCxToolConnectorSpecActionOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecActionArgs) ToCxToolConnectorSpecActionOutputWithContext(ctx context.Context) CxToolConnectorSpecActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecActionOutput)
+}
+
+// CxToolConnectorSpecActionArrayInput is an input type that accepts CxToolConnectorSpecActionArray and CxToolConnectorSpecActionArrayOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecActionArrayInput` via:
+//
+//	CxToolConnectorSpecActionArray{ CxToolConnectorSpecActionArgs{...} }
+type CxToolConnectorSpecActionArrayInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecActionArrayOutput() CxToolConnectorSpecActionArrayOutput
+	ToCxToolConnectorSpecActionArrayOutputWithContext(context.Context) CxToolConnectorSpecActionArrayOutput
+}
+
+type CxToolConnectorSpecActionArray []CxToolConnectorSpecActionInput
+
+func (CxToolConnectorSpecActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (i CxToolConnectorSpecActionArray) ToCxToolConnectorSpecActionArrayOutput() CxToolConnectorSpecActionArrayOutput {
+	return i.ToCxToolConnectorSpecActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecActionArray) ToCxToolConnectorSpecActionArrayOutputWithContext(ctx context.Context) CxToolConnectorSpecActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecActionArrayOutput)
+}
+
+type CxToolConnectorSpecActionOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecActionOutput) ToCxToolConnectorSpecActionOutput() CxToolConnectorSpecActionOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecActionOutput) ToCxToolConnectorSpecActionOutputWithContext(ctx context.Context) CxToolConnectorSpecActionOutput {
+	return o
+}
+
+// ID of a Connection action for the tool to use. This field is part of a required union field `actionSpec`.
+func (o CxToolConnectorSpecActionOutput) ConnectionActionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecAction) *string { return v.ConnectionActionId }).(pulumi.StringPtrOutput)
+}
+
+// Entity operation configuration for the tool to use. This field is part of a required union field `actionSpec`.
+// Structure is documented below.
+func (o CxToolConnectorSpecActionOutput) EntityOperation() CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecAction) *CxToolConnectorSpecActionEntityOperation { return v.EntityOperation }).(CxToolConnectorSpecActionEntityOperationPtrOutput)
+}
+
+// Entity fields to use as inputs for the operation.
+// If no fields are specified, all fields of the Entity will be used.
+func (o CxToolConnectorSpecActionOutput) InputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecAction) []string { return v.InputFields }).(pulumi.StringArrayOutput)
+}
+
+// Entity fields to return from the operation.
+// If no fields are specified, all fields of the Entity will be returned.
+func (o CxToolConnectorSpecActionOutput) OutputFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecAction) []string { return v.OutputFields }).(pulumi.StringArrayOutput)
+}
+
+type CxToolConnectorSpecActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxToolConnectorSpecAction)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecActionArrayOutput) ToCxToolConnectorSpecActionArrayOutput() CxToolConnectorSpecActionArrayOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecActionArrayOutput) ToCxToolConnectorSpecActionArrayOutputWithContext(ctx context.Context) CxToolConnectorSpecActionArrayOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecActionArrayOutput) Index(i pulumi.IntInput) CxToolConnectorSpecActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxToolConnectorSpecAction {
+		return vs[0].([]CxToolConnectorSpecAction)[vs[1].(int)]
+	}).(CxToolConnectorSpecActionOutput)
+}
+
+type CxToolConnectorSpecActionEntityOperation struct {
+	// ID of the entity.
+	EntityId string `pulumi:"entityId"`
+	// The operation to perform on the entity.
+	// Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+	Operation string `pulumi:"operation"`
+}
+
+// CxToolConnectorSpecActionEntityOperationInput is an input type that accepts CxToolConnectorSpecActionEntityOperationArgs and CxToolConnectorSpecActionEntityOperationOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecActionEntityOperationInput` via:
+//
+//	CxToolConnectorSpecActionEntityOperationArgs{...}
+type CxToolConnectorSpecActionEntityOperationInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecActionEntityOperationOutput() CxToolConnectorSpecActionEntityOperationOutput
+	ToCxToolConnectorSpecActionEntityOperationOutputWithContext(context.Context) CxToolConnectorSpecActionEntityOperationOutput
+}
+
+type CxToolConnectorSpecActionEntityOperationArgs struct {
+	// ID of the entity.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// The operation to perform on the entity.
+	// Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+	Operation pulumi.StringInput `pulumi:"operation"`
+}
+
+func (CxToolConnectorSpecActionEntityOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (i CxToolConnectorSpecActionEntityOperationArgs) ToCxToolConnectorSpecActionEntityOperationOutput() CxToolConnectorSpecActionEntityOperationOutput {
+	return i.ToCxToolConnectorSpecActionEntityOperationOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecActionEntityOperationArgs) ToCxToolConnectorSpecActionEntityOperationOutputWithContext(ctx context.Context) CxToolConnectorSpecActionEntityOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecActionEntityOperationOutput)
+}
+
+func (i CxToolConnectorSpecActionEntityOperationArgs) ToCxToolConnectorSpecActionEntityOperationPtrOutput() CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return i.ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecActionEntityOperationArgs) ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecActionEntityOperationOutput).ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx)
+}
+
+// CxToolConnectorSpecActionEntityOperationPtrInput is an input type that accepts CxToolConnectorSpecActionEntityOperationArgs, CxToolConnectorSpecActionEntityOperationPtr and CxToolConnectorSpecActionEntityOperationPtrOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecActionEntityOperationPtrInput` via:
+//
+//	        CxToolConnectorSpecActionEntityOperationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolConnectorSpecActionEntityOperationPtrInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecActionEntityOperationPtrOutput() CxToolConnectorSpecActionEntityOperationPtrOutput
+	ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Context) CxToolConnectorSpecActionEntityOperationPtrOutput
+}
+
+type cxToolConnectorSpecActionEntityOperationPtrType CxToolConnectorSpecActionEntityOperationArgs
+
+func CxToolConnectorSpecActionEntityOperationPtr(v *CxToolConnectorSpecActionEntityOperationArgs) CxToolConnectorSpecActionEntityOperationPtrInput {
+	return (*cxToolConnectorSpecActionEntityOperationPtrType)(v)
+}
+
+func (*cxToolConnectorSpecActionEntityOperationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (i *cxToolConnectorSpecActionEntityOperationPtrType) ToCxToolConnectorSpecActionEntityOperationPtrOutput() CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return i.ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolConnectorSpecActionEntityOperationPtrType) ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecActionEntityOperationPtrOutput)
+}
+
+type CxToolConnectorSpecActionEntityOperationOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecActionEntityOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecActionEntityOperationOutput) ToCxToolConnectorSpecActionEntityOperationOutput() CxToolConnectorSpecActionEntityOperationOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecActionEntityOperationOutput) ToCxToolConnectorSpecActionEntityOperationOutputWithContext(ctx context.Context) CxToolConnectorSpecActionEntityOperationOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecActionEntityOperationOutput) ToCxToolConnectorSpecActionEntityOperationPtrOutput() CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return o.ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolConnectorSpecActionEntityOperationOutput) ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolConnectorSpecActionEntityOperation) *CxToolConnectorSpecActionEntityOperation {
+		return &v
+	}).(CxToolConnectorSpecActionEntityOperationPtrOutput)
+}
+
+// ID of the entity.
+func (o CxToolConnectorSpecActionEntityOperationOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecActionEntityOperation) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// The operation to perform on the entity.
+// Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+func (o CxToolConnectorSpecActionEntityOperationOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecActionEntityOperation) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+type CxToolConnectorSpecActionEntityOperationPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecActionEntityOperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecActionEntityOperation)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecActionEntityOperationPtrOutput) ToCxToolConnectorSpecActionEntityOperationPtrOutput() CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecActionEntityOperationPtrOutput) ToCxToolConnectorSpecActionEntityOperationPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecActionEntityOperationPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecActionEntityOperationPtrOutput) Elem() CxToolConnectorSpecActionEntityOperationOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecActionEntityOperation) CxToolConnectorSpecActionEntityOperation {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolConnectorSpecActionEntityOperation
+		return ret
+	}).(CxToolConnectorSpecActionEntityOperationOutput)
+}
+
+// ID of the entity.
+func (o CxToolConnectorSpecActionEntityOperationPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecActionEntityOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The operation to perform on the entity.
+// Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+func (o CxToolConnectorSpecActionEntityOperationPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecActionEntityOperation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfig struct {
+	// Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+	// Structure is documented below.
+	Oauth2AuthCodeConfig *CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig `pulumi:"oauth2AuthCodeConfig"`
+	// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+	// Structure is documented below.
+	//
+	// <a name="nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+	Oauth2JwtBearerConfig *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig `pulumi:"oauth2JwtBearerConfig"`
+}
+
+// CxToolConnectorSpecEndUserAuthConfigInput is an input type that accepts CxToolConnectorSpecEndUserAuthConfigArgs and CxToolConnectorSpecEndUserAuthConfigOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecEndUserAuthConfigInput` via:
+//
+//	CxToolConnectorSpecEndUserAuthConfigArgs{...}
+type CxToolConnectorSpecEndUserAuthConfigInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecEndUserAuthConfigOutput() CxToolConnectorSpecEndUserAuthConfigOutput
+	ToCxToolConnectorSpecEndUserAuthConfigOutputWithContext(context.Context) CxToolConnectorSpecEndUserAuthConfigOutput
+}
+
+type CxToolConnectorSpecEndUserAuthConfigArgs struct {
+	// Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+	// Structure is documented below.
+	Oauth2AuthCodeConfig CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrInput `pulumi:"oauth2AuthCodeConfig"`
+	// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+	// Structure is documented below.
+	//
+	// <a name="nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+	Oauth2JwtBearerConfig CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrInput `pulumi:"oauth2JwtBearerConfig"`
+}
+
+func (CxToolConnectorSpecEndUserAuthConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfig)(nil)).Elem()
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOutput() CxToolConnectorSpecEndUserAuthConfigOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOutput)
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOutput).ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolConnectorSpecEndUserAuthConfigPtrInput is an input type that accepts CxToolConnectorSpecEndUserAuthConfigArgs, CxToolConnectorSpecEndUserAuthConfigPtr and CxToolConnectorSpecEndUserAuthConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecEndUserAuthConfigPtrInput` via:
+//
+//	        CxToolConnectorSpecEndUserAuthConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolConnectorSpecEndUserAuthConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecEndUserAuthConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigPtrOutput
+	ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(context.Context) CxToolConnectorSpecEndUserAuthConfigPtrOutput
+}
+
+type cxToolConnectorSpecEndUserAuthConfigPtrType CxToolConnectorSpecEndUserAuthConfigArgs
+
+func CxToolConnectorSpecEndUserAuthConfigPtr(v *CxToolConnectorSpecEndUserAuthConfigArgs) CxToolConnectorSpecEndUserAuthConfigPtrInput {
+	return (*cxToolConnectorSpecEndUserAuthConfigPtrType)(v)
+}
+
+func (*cxToolConnectorSpecEndUserAuthConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecEndUserAuthConfig)(nil)).Elem()
+}
+
+func (i *cxToolConnectorSpecEndUserAuthConfigPtrType) ToCxToolConnectorSpecEndUserAuthConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolConnectorSpecEndUserAuthConfigPtrType) ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigPtrOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecEndUserAuthConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfig)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOutput() CxToolConnectorSpecEndUserAuthConfigOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return o.ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolConnectorSpecEndUserAuthConfig) *CxToolConnectorSpecEndUserAuthConfig {
+		return &v
+	}).(CxToolConnectorSpecEndUserAuthConfigPtrOutput)
+}
+
+// Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+// Structure is documented below.
+func (o CxToolConnectorSpecEndUserAuthConfigOutput) Oauth2AuthCodeConfig() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecEndUserAuthConfig) *CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
+		return v.Oauth2AuthCodeConfig
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+// Structure is documented below.
+//
+// <a name="nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+func (o CxToolConnectorSpecEndUserAuthConfigOutput) Oauth2JwtBearerConfig() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecEndUserAuthConfig) *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
+		return v.Oauth2JwtBearerConfig
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecEndUserAuthConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecEndUserAuthConfig)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigPtrOutput) ToCxToolConnectorSpecEndUserAuthConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigPtrOutput) ToCxToolConnectorSpecEndUserAuthConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigPtrOutput) Elem() CxToolConnectorSpecEndUserAuthConfigOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfig) CxToolConnectorSpecEndUserAuthConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolConnectorSpecEndUserAuthConfig
+		return ret
+	}).(CxToolConnectorSpecEndUserAuthConfigOutput)
+}
+
+// Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+// Structure is documented below.
+func (o CxToolConnectorSpecEndUserAuthConfigPtrOutput) Oauth2AuthCodeConfig() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfig) *CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2AuthCodeConfig
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+// Structure is documented below.
+//
+// <a name="nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"></a>The `oauth2AuthCodeConfig` block supports:
+func (o CxToolConnectorSpecEndUserAuthConfigPtrOutput) Oauth2JwtBearerConfig() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfig) *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2JwtBearerConfig
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig struct {
+	// Oauth token value or parameter name to pass it through.
+	OauthToken string `pulumi:"oauthToken"`
+}
+
+// CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigInput is an input type that accepts CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs and CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigInput` via:
+//
+//	CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs{...}
+type CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutputWithContext(context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs struct {
+	// Oauth token value or parameter name to pass it through.
+	OauthToken pulumi.StringInput `pulumi:"oauthToken"`
+}
+
+func (CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput)
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput).ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrInput is an input type that accepts CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs, CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtr and CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrInput` via:
+//
+//	        CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput
+}
+
+type cxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrType CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs
+
+func CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtr(v *CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrInput {
+	return (*cxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrType)(v)
+}
+
+func (*cxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (i *cxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrType) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrType) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig) *CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
+		return &v
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput)
+}
+
+// Oauth token value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput) OauthToken() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig) string { return v.OauthToken }).(pulumi.StringOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput) Elem() CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig) CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig
+		return ret
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput)
+}
+
+// Oauth token value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput) OauthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OauthToken
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig struct {
+	// Client key value or parameter name to pass it through.
+	ClientKey string `pulumi:"clientKey"`
+	// Issuer value or parameter name to pass it through.
+	Issuer string `pulumi:"issuer"`
+	// Subject value or parameter name to pass it through.
+	Subject string `pulumi:"subject"`
+}
+
+// CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigInput is an input type that accepts CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs and CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigInput` via:
+//
+//	CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs{...}
+type CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutputWithContext(context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs struct {
+	// Client key value or parameter name to pass it through.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	// Issuer value or parameter name to pass it through.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// Subject value or parameter name to pass it through.
+	Subject pulumi.StringInput `pulumi:"subject"`
+}
+
+func (CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput)
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput).ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx)
+}
+
+// CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrInput is an input type that accepts CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs, CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtr and CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput values.
+// You can construct a concrete instance of `CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrInput` via:
+//
+//	        CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput
+	ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput
+}
+
+type cxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrType CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs
+
+func CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtr(v *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrInput {
+	return (*cxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrType)(v)
+}
+
+func (*cxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (i *cxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrType) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return i.ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrType) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
+		return &v
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput)
+}
+
+// Client key value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) string { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+// Issuer value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// Subject value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+type CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig)(nil)).Elem()
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput) ToCxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutputWithContext(ctx context.Context) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput {
+	return o
+}
+
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput) Elem() CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig
+		return ret
+	}).(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput)
+}
+
+// Client key value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Issuer value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Issuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subject value or parameter name to pass it through.
+func (o CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subject
+	}).(pulumi.StringPtrOutput)
+}
+
 type CxToolDataStoreSpec struct {
 	// List of data stores to search.
 	// Structure is documented below.
@@ -41536,6 +42524,1518 @@ func (o FulfillmentGenericWebServicePtrOutput) Username() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type GeneratorInferenceParameter struct {
+	// Optional. Maximum number of the output tokens for the generator.
+	MaxOutputTokens *int `pulumi:"maxOutputTokens"`
+	// Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+	Temperature *float64 `pulumi:"temperature"`
+	// Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+	TopK *int `pulumi:"topK"`
+	// Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+	TopP *float64 `pulumi:"topP"`
+}
+
+// GeneratorInferenceParameterInput is an input type that accepts GeneratorInferenceParameterArgs and GeneratorInferenceParameterOutput values.
+// You can construct a concrete instance of `GeneratorInferenceParameterInput` via:
+//
+//	GeneratorInferenceParameterArgs{...}
+type GeneratorInferenceParameterInput interface {
+	pulumi.Input
+
+	ToGeneratorInferenceParameterOutput() GeneratorInferenceParameterOutput
+	ToGeneratorInferenceParameterOutputWithContext(context.Context) GeneratorInferenceParameterOutput
+}
+
+type GeneratorInferenceParameterArgs struct {
+	// Optional. Maximum number of the output tokens for the generator.
+	MaxOutputTokens pulumi.IntPtrInput `pulumi:"maxOutputTokens"`
+	// Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+	TopK pulumi.IntPtrInput `pulumi:"topK"`
+	// Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+	TopP pulumi.Float64PtrInput `pulumi:"topP"`
+}
+
+func (GeneratorInferenceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorInferenceParameter)(nil)).Elem()
+}
+
+func (i GeneratorInferenceParameterArgs) ToGeneratorInferenceParameterOutput() GeneratorInferenceParameterOutput {
+	return i.ToGeneratorInferenceParameterOutputWithContext(context.Background())
+}
+
+func (i GeneratorInferenceParameterArgs) ToGeneratorInferenceParameterOutputWithContext(ctx context.Context) GeneratorInferenceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorInferenceParameterOutput)
+}
+
+func (i GeneratorInferenceParameterArgs) ToGeneratorInferenceParameterPtrOutput() GeneratorInferenceParameterPtrOutput {
+	return i.ToGeneratorInferenceParameterPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorInferenceParameterArgs) ToGeneratorInferenceParameterPtrOutputWithContext(ctx context.Context) GeneratorInferenceParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorInferenceParameterOutput).ToGeneratorInferenceParameterPtrOutputWithContext(ctx)
+}
+
+// GeneratorInferenceParameterPtrInput is an input type that accepts GeneratorInferenceParameterArgs, GeneratorInferenceParameterPtr and GeneratorInferenceParameterPtrOutput values.
+// You can construct a concrete instance of `GeneratorInferenceParameterPtrInput` via:
+//
+//	        GeneratorInferenceParameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorInferenceParameterPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorInferenceParameterPtrOutput() GeneratorInferenceParameterPtrOutput
+	ToGeneratorInferenceParameterPtrOutputWithContext(context.Context) GeneratorInferenceParameterPtrOutput
+}
+
+type generatorInferenceParameterPtrType GeneratorInferenceParameterArgs
+
+func GeneratorInferenceParameterPtr(v *GeneratorInferenceParameterArgs) GeneratorInferenceParameterPtrInput {
+	return (*generatorInferenceParameterPtrType)(v)
+}
+
+func (*generatorInferenceParameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorInferenceParameter)(nil)).Elem()
+}
+
+func (i *generatorInferenceParameterPtrType) ToGeneratorInferenceParameterPtrOutput() GeneratorInferenceParameterPtrOutput {
+	return i.ToGeneratorInferenceParameterPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorInferenceParameterPtrType) ToGeneratorInferenceParameterPtrOutputWithContext(ctx context.Context) GeneratorInferenceParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorInferenceParameterPtrOutput)
+}
+
+type GeneratorInferenceParameterOutput struct{ *pulumi.OutputState }
+
+func (GeneratorInferenceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorInferenceParameter)(nil)).Elem()
+}
+
+func (o GeneratorInferenceParameterOutput) ToGeneratorInferenceParameterOutput() GeneratorInferenceParameterOutput {
+	return o
+}
+
+func (o GeneratorInferenceParameterOutput) ToGeneratorInferenceParameterOutputWithContext(ctx context.Context) GeneratorInferenceParameterOutput {
+	return o
+}
+
+func (o GeneratorInferenceParameterOutput) ToGeneratorInferenceParameterPtrOutput() GeneratorInferenceParameterPtrOutput {
+	return o.ToGeneratorInferenceParameterPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorInferenceParameterOutput) ToGeneratorInferenceParameterPtrOutputWithContext(ctx context.Context) GeneratorInferenceParameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorInferenceParameter) *GeneratorInferenceParameter {
+		return &v
+	}).(GeneratorInferenceParameterPtrOutput)
+}
+
+// Optional. Maximum number of the output tokens for the generator.
+func (o GeneratorInferenceParameterOutput) MaxOutputTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GeneratorInferenceParameter) *int { return v.MaxOutputTokens }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+func (o GeneratorInferenceParameterOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GeneratorInferenceParameter) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+func (o GeneratorInferenceParameterOutput) TopK() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GeneratorInferenceParameter) *int { return v.TopK }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+func (o GeneratorInferenceParameterOutput) TopP() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GeneratorInferenceParameter) *float64 { return v.TopP }).(pulumi.Float64PtrOutput)
+}
+
+type GeneratorInferenceParameterPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorInferenceParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorInferenceParameter)(nil)).Elem()
+}
+
+func (o GeneratorInferenceParameterPtrOutput) ToGeneratorInferenceParameterPtrOutput() GeneratorInferenceParameterPtrOutput {
+	return o
+}
+
+func (o GeneratorInferenceParameterPtrOutput) ToGeneratorInferenceParameterPtrOutputWithContext(ctx context.Context) GeneratorInferenceParameterPtrOutput {
+	return o
+}
+
+func (o GeneratorInferenceParameterPtrOutput) Elem() GeneratorInferenceParameterOutput {
+	return o.ApplyT(func(v *GeneratorInferenceParameter) GeneratorInferenceParameter {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorInferenceParameter
+		return ret
+	}).(GeneratorInferenceParameterOutput)
+}
+
+// Optional. Maximum number of the output tokens for the generator.
+func (o GeneratorInferenceParameterPtrOutput) MaxOutputTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GeneratorInferenceParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxOutputTokens
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+func (o GeneratorInferenceParameterPtrOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GeneratorInferenceParameter) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+func (o GeneratorInferenceParameterPtrOutput) TopK() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GeneratorInferenceParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopK
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+func (o GeneratorInferenceParameterPtrOutput) TopP() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GeneratorInferenceParameter) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TopP
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GeneratorSummarizationContext struct {
+	// Optional. List of few shot examples.
+	// Structure is documented below.
+	FewShotExamples []GeneratorSummarizationContextFewShotExample `pulumi:"fewShotExamples"`
+	// Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+	OutputLanguageCode *string `pulumi:"outputLanguageCode"`
+	// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+	// Structure is documented below.
+	SummarizationSections []GeneratorSummarizationContextSummarizationSection `pulumi:"summarizationSections"`
+	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+	Version *string `pulumi:"version"`
+}
+
+// GeneratorSummarizationContextInput is an input type that accepts GeneratorSummarizationContextArgs and GeneratorSummarizationContextOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextInput` via:
+//
+//	GeneratorSummarizationContextArgs{...}
+type GeneratorSummarizationContextInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextOutput() GeneratorSummarizationContextOutput
+	ToGeneratorSummarizationContextOutputWithContext(context.Context) GeneratorSummarizationContextOutput
+}
+
+type GeneratorSummarizationContextArgs struct {
+	// Optional. List of few shot examples.
+	// Structure is documented below.
+	FewShotExamples GeneratorSummarizationContextFewShotExampleArrayInput `pulumi:"fewShotExamples"`
+	// Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+	OutputLanguageCode pulumi.StringPtrInput `pulumi:"outputLanguageCode"`
+	// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+	// Structure is documented below.
+	SummarizationSections GeneratorSummarizationContextSummarizationSectionArrayInput `pulumi:"summarizationSections"`
+	// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GeneratorSummarizationContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContext)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextArgs) ToGeneratorSummarizationContextOutput() GeneratorSummarizationContextOutput {
+	return i.ToGeneratorSummarizationContextOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextArgs) ToGeneratorSummarizationContextOutputWithContext(ctx context.Context) GeneratorSummarizationContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextOutput)
+}
+
+func (i GeneratorSummarizationContextArgs) ToGeneratorSummarizationContextPtrOutput() GeneratorSummarizationContextPtrOutput {
+	return i.ToGeneratorSummarizationContextPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextArgs) ToGeneratorSummarizationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextOutput).ToGeneratorSummarizationContextPtrOutputWithContext(ctx)
+}
+
+// GeneratorSummarizationContextPtrInput is an input type that accepts GeneratorSummarizationContextArgs, GeneratorSummarizationContextPtr and GeneratorSummarizationContextPtrOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextPtrInput` via:
+//
+//	        GeneratorSummarizationContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorSummarizationContextPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextPtrOutput() GeneratorSummarizationContextPtrOutput
+	ToGeneratorSummarizationContextPtrOutputWithContext(context.Context) GeneratorSummarizationContextPtrOutput
+}
+
+type generatorSummarizationContextPtrType GeneratorSummarizationContextArgs
+
+func GeneratorSummarizationContextPtr(v *GeneratorSummarizationContextArgs) GeneratorSummarizationContextPtrInput {
+	return (*generatorSummarizationContextPtrType)(v)
+}
+
+func (*generatorSummarizationContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContext)(nil)).Elem()
+}
+
+func (i *generatorSummarizationContextPtrType) ToGeneratorSummarizationContextPtrOutput() GeneratorSummarizationContextPtrOutput {
+	return i.ToGeneratorSummarizationContextPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorSummarizationContextPtrType) ToGeneratorSummarizationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextPtrOutput)
+}
+
+type GeneratorSummarizationContextOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContext)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextOutput) ToGeneratorSummarizationContextOutput() GeneratorSummarizationContextOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextOutput) ToGeneratorSummarizationContextOutputWithContext(ctx context.Context) GeneratorSummarizationContextOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextOutput) ToGeneratorSummarizationContextPtrOutput() GeneratorSummarizationContextPtrOutput {
+	return o.ToGeneratorSummarizationContextPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorSummarizationContextOutput) ToGeneratorSummarizationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorSummarizationContext) *GeneratorSummarizationContext {
+		return &v
+	}).(GeneratorSummarizationContextPtrOutput)
+}
+
+// Optional. List of few shot examples.
+// Structure is documented below.
+func (o GeneratorSummarizationContextOutput) FewShotExamples() GeneratorSummarizationContextFewShotExampleArrayOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContext) []GeneratorSummarizationContextFewShotExample {
+		return v.FewShotExamples
+	}).(GeneratorSummarizationContextFewShotExampleArrayOutput)
+}
+
+// Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+func (o GeneratorSummarizationContextOutput) OutputLanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContext) *string { return v.OutputLanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+// Structure is documented below.
+func (o GeneratorSummarizationContextOutput) SummarizationSections() GeneratorSummarizationContextSummarizationSectionArrayOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContext) []GeneratorSummarizationContextSummarizationSection {
+		return v.SummarizationSections
+	}).(GeneratorSummarizationContextSummarizationSectionArrayOutput)
+}
+
+// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+func (o GeneratorSummarizationContextOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContext) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorSummarizationContextPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContext)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextPtrOutput) ToGeneratorSummarizationContextPtrOutput() GeneratorSummarizationContextPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextPtrOutput) ToGeneratorSummarizationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextPtrOutput) Elem() GeneratorSummarizationContextOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContext) GeneratorSummarizationContext {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorSummarizationContext
+		return ret
+	}).(GeneratorSummarizationContextOutput)
+}
+
+// Optional. List of few shot examples.
+// Structure is documented below.
+func (o GeneratorSummarizationContextPtrOutput) FewShotExamples() GeneratorSummarizationContextFewShotExampleArrayOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContext) []GeneratorSummarizationContextFewShotExample {
+		if v == nil {
+			return nil
+		}
+		return v.FewShotExamples
+	}).(GeneratorSummarizationContextFewShotExampleArrayOutput)
+}
+
+// Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+func (o GeneratorSummarizationContextPtrOutput) OutputLanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputLanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+// Structure is documented below.
+func (o GeneratorSummarizationContextPtrOutput) SummarizationSections() GeneratorSummarizationContextSummarizationSectionArrayOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContext) []GeneratorSummarizationContextSummarizationSection {
+		if v == nil {
+			return nil
+		}
+		return v.SummarizationSections
+	}).(GeneratorSummarizationContextSummarizationSectionArrayOutput)
+}
+
+// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+func (o GeneratorSummarizationContextPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExample struct {
+	// Optional. Conversation transcripts.
+	// Structure is documented below.
+	ConversationContext *GeneratorSummarizationContextFewShotExampleConversationContext `pulumi:"conversationContext"`
+	// Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+	ExtraInfo map[string]string `pulumi:"extraInfo"`
+	// Required. Example output of the model.
+	// Structure is documented below.
+	Output GeneratorSummarizationContextFewShotExampleOutputType `pulumi:"output"`
+	// Summarization sections.
+	// Structure is documented below.
+	SummarizationSectionList *GeneratorSummarizationContextFewShotExampleSummarizationSectionList `pulumi:"summarizationSectionList"`
+}
+
+// GeneratorSummarizationContextFewShotExampleInput is an input type that accepts GeneratorSummarizationContextFewShotExampleArgs and GeneratorSummarizationContextFewShotExampleOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleArgs{...}
+type GeneratorSummarizationContextFewShotExampleInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutput() GeneratorSummarizationContextFewShotExampleOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleArgs struct {
+	// Optional. Conversation transcripts.
+	// Structure is documented below.
+	ConversationContext GeneratorSummarizationContextFewShotExampleConversationContextPtrInput `pulumi:"conversationContext"`
+	// Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+	ExtraInfo pulumi.StringMapInput `pulumi:"extraInfo"`
+	// Required. Example output of the model.
+	// Structure is documented below.
+	Output GeneratorSummarizationContextFewShotExampleOutputTypeInput `pulumi:"output"`
+	// Summarization sections.
+	// Structure is documented below.
+	SummarizationSectionList GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrInput `pulumi:"summarizationSectionList"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExample)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleArgs) ToGeneratorSummarizationContextFewShotExampleOutput() GeneratorSummarizationContextFewShotExampleOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleArgs) ToGeneratorSummarizationContextFewShotExampleOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutput)
+}
+
+// GeneratorSummarizationContextFewShotExampleArrayInput is an input type that accepts GeneratorSummarizationContextFewShotExampleArray and GeneratorSummarizationContextFewShotExampleArrayOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleArrayInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleArray{ GeneratorSummarizationContextFewShotExampleArgs{...} }
+type GeneratorSummarizationContextFewShotExampleArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleArrayOutput() GeneratorSummarizationContextFewShotExampleArrayOutput
+	ToGeneratorSummarizationContextFewShotExampleArrayOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleArrayOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleArray []GeneratorSummarizationContextFewShotExampleInput
+
+func (GeneratorSummarizationContextFewShotExampleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExample)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleArray) ToGeneratorSummarizationContextFewShotExampleArrayOutput() GeneratorSummarizationContextFewShotExampleArrayOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleArray) ToGeneratorSummarizationContextFewShotExampleArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExample)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutput) ToGeneratorSummarizationContextFewShotExampleOutput() GeneratorSummarizationContextFewShotExampleOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutput) ToGeneratorSummarizationContextFewShotExampleOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutput {
+	return o
+}
+
+// Optional. Conversation transcripts.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutput) ConversationContext() GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExample) *GeneratorSummarizationContextFewShotExampleConversationContext {
+		return v.ConversationContext
+	}).(GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput)
+}
+
+// Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+func (o GeneratorSummarizationContextFewShotExampleOutput) ExtraInfo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExample) map[string]string { return v.ExtraInfo }).(pulumi.StringMapOutput)
+}
+
+// Required. Example output of the model.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutput) Output() GeneratorSummarizationContextFewShotExampleOutputTypeOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExample) GeneratorSummarizationContextFewShotExampleOutputType {
+		return v.Output
+	}).(GeneratorSummarizationContextFewShotExampleOutputTypeOutput)
+}
+
+// Summarization sections.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutput) SummarizationSectionList() GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExample) *GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
+		return v.SummarizationSectionList
+	}).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExample)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleArrayOutput) ToGeneratorSummarizationContextFewShotExampleArrayOutput() GeneratorSummarizationContextFewShotExampleArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleArrayOutput) ToGeneratorSummarizationContextFewShotExampleArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleArrayOutput) Index(i pulumi.IntInput) GeneratorSummarizationContextFewShotExampleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSummarizationContextFewShotExample {
+		return vs[0].([]GeneratorSummarizationContextFewShotExample)[vs[1].(int)]
+	}).(GeneratorSummarizationContextFewShotExampleOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContext struct {
+	// Optional. List of message transcripts in the conversation.
+	// Structure is documented below.
+	MessageEntries []GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry `pulumi:"messageEntries"`
+}
+
+// GeneratorSummarizationContextFewShotExampleConversationContextInput is an input type that accepts GeneratorSummarizationContextFewShotExampleConversationContextArgs and GeneratorSummarizationContextFewShotExampleConversationContextOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleConversationContextInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleConversationContextArgs{...}
+type GeneratorSummarizationContextFewShotExampleConversationContextInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleConversationContextOutput() GeneratorSummarizationContextFewShotExampleConversationContextOutput
+	ToGeneratorSummarizationContextFewShotExampleConversationContextOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleConversationContextOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextArgs struct {
+	// Optional. List of message transcripts in the conversation.
+	// Structure is documented below.
+	MessageEntries GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayInput `pulumi:"messageEntries"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleConversationContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContext)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextArgs) ToGeneratorSummarizationContextFewShotExampleConversationContextOutput() GeneratorSummarizationContextFewShotExampleConversationContextOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleConversationContextOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextArgs) ToGeneratorSummarizationContextFewShotExampleConversationContextOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleConversationContextOutput)
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextArgs) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutput() GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextArgs) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleConversationContextOutput).ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(ctx)
+}
+
+// GeneratorSummarizationContextFewShotExampleConversationContextPtrInput is an input type that accepts GeneratorSummarizationContextFewShotExampleConversationContextArgs, GeneratorSummarizationContextFewShotExampleConversationContextPtr and GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleConversationContextPtrInput` via:
+//
+//	        GeneratorSummarizationContextFewShotExampleConversationContextArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorSummarizationContextFewShotExampleConversationContextPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutput() GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput
+	ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput
+}
+
+type generatorSummarizationContextFewShotExampleConversationContextPtrType GeneratorSummarizationContextFewShotExampleConversationContextArgs
+
+func GeneratorSummarizationContextFewShotExampleConversationContextPtr(v *GeneratorSummarizationContextFewShotExampleConversationContextArgs) GeneratorSummarizationContextFewShotExampleConversationContextPtrInput {
+	return (*generatorSummarizationContextFewShotExampleConversationContextPtrType)(v)
+}
+
+func (*generatorSummarizationContextFewShotExampleConversationContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleConversationContext)(nil)).Elem()
+}
+
+func (i *generatorSummarizationContextFewShotExampleConversationContextPtrType) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutput() GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorSummarizationContextFewShotExampleConversationContextPtrType) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleConversationContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContext)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextOutput() GeneratorSummarizationContextFewShotExampleConversationContextOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutput() GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return o.ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorSummarizationContextFewShotExampleConversationContext) *GeneratorSummarizationContextFewShotExampleConversationContext {
+		return &v
+	}).(GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput)
+}
+
+// Optional. List of message transcripts in the conversation.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleConversationContextOutput) MessageEntries() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleConversationContext) []GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry {
+		return v.MessageEntries
+	}).(GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleConversationContext)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutput() GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput) Elem() GeneratorSummarizationContextFewShotExampleConversationContextOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleConversationContext) GeneratorSummarizationContextFewShotExampleConversationContext {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorSummarizationContextFewShotExampleConversationContext
+		return ret
+	}).(GeneratorSummarizationContextFewShotExampleConversationContextOutput)
+}
+
+// Optional. List of message transcripts in the conversation.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput) MessageEntries() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleConversationContext) []GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry {
+		if v == nil {
+			return nil
+		}
+		return v.MessageEntries
+	}).(GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry struct {
+	// Optional. Create time of the message entry.
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. The language of the text.
+	LanguageCode *string `pulumi:"languageCode"`
+	// Optional. Participant role of the message.
+	// Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+	Role *string `pulumi:"role"`
+	// Optional. Transcript content of the message.
+	Text *string `pulumi:"text"`
+}
+
+// GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryInput is an input type that accepts GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs and GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs{...}
+type GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput
+	ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs struct {
+	// Optional. Create time of the message entry.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Optional. The language of the text.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// Optional. Participant role of the message.
+	// Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// Optional. Transcript content of the message.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput)
+}
+
+// GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayInput is an input type that accepts GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArray and GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArray{ GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs{...} }
+type GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput
+	ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArray []GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryInput
+
+func (GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArray) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArray) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput {
+	return o
+}
+
+// Optional. Create time of the message entry.
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry) *string {
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The language of the text.
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry) *string {
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Participant role of the message.
+// Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry) *string {
+		return v.Role
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Transcript content of the message.
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry) *string {
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput() GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput) ToGeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput) Index(i pulumi.IntInput) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry {
+		return vs[0].([]GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry)[vs[1].(int)]
+	}).(GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputType struct {
+	// Optional. Suggested summary.
+	// Structure is documented below.
+	SummarySuggestion *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion `pulumi:"summarySuggestion"`
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputTypeInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputTypeArgs and GeneratorSummarizationContextFewShotExampleOutputTypeOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputTypeInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputTypeArgs{...}
+type GeneratorSummarizationContextFewShotExampleOutputTypeInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputTypeOutput() GeneratorSummarizationContextFewShotExampleOutputTypeOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputTypeOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputTypeOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputTypeArgs struct {
+	// Optional. Suggested summary.
+	// Structure is documented below.
+	SummarySuggestion GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput `pulumi:"summarySuggestion"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleOutputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputType)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputTypeArgs) ToGeneratorSummarizationContextFewShotExampleOutputTypeOutput() GeneratorSummarizationContextFewShotExampleOutputTypeOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputTypeOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputTypeArgs) ToGeneratorSummarizationContextFewShotExampleOutputTypeOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputTypeOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputTypeOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputType)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputTypeOutput) ToGeneratorSummarizationContextFewShotExampleOutputTypeOutput() GeneratorSummarizationContextFewShotExampleOutputTypeOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputTypeOutput) ToGeneratorSummarizationContextFewShotExampleOutputTypeOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputTypeOutput {
+	return o
+}
+
+// Optional. Suggested summary.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutputTypeOutput) SummarySuggestion() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputType) *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
+		return v.SummarySuggestion
+	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion struct {
+	// Required. All the parts of generated summary.
+	// Structure is documented below.
+	SummarySections []GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection `pulumi:"summarySections"`
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs and GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs{...}
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs struct {
+	// Required. All the parts of generated summary.
+	// Structure is documented below.
+	SummarySections GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayInput `pulumi:"summarySections"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput)
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput).ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(ctx)
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs, GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtr and GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput` via:
+//
+//	        GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput
+}
+
+type generatorSummarizationContextFewShotExampleOutputSummarySuggestionPtrType GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs
+
+func GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtr(v *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput {
+	return (*generatorSummarizationContextFewShotExampleOutputSummarySuggestionPtrType)(v)
+}
+
+func (*generatorSummarizationContextFewShotExampleOutputSummarySuggestionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion)(nil)).Elem()
+}
+
+func (i *generatorSummarizationContextFewShotExampleOutputSummarySuggestionPtrType) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorSummarizationContextFewShotExampleOutputSummarySuggestionPtrType) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return o.ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion) *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
+		return &v
+	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput)
+}
+
+// Required. All the parts of generated summary.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput) SummarySections() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion) []GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection {
+		return v.SummarySections
+	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput) Elem() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion
+		return ret
+	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput)
+}
+
+// Required. All the parts of generated summary.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput) SummarySections() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion) []GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection {
+		if v == nil {
+			return nil
+		}
+		return v.SummarySections
+	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection struct {
+	// Required. Name of the section.
+	Section string `pulumi:"section"`
+	// Required. Summary text for the section.
+	Summary string `pulumi:"summary"`
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs and GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs{...}
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs struct {
+	// Required. Name of the section.
+	Section pulumi.StringInput `pulumi:"section"`
+	// Required. Summary text for the section.
+	Summary pulumi.StringInput `pulumi:"summary"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput)
+}
+
+// GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayInput is an input type that accepts GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray and GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray{ GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs{...} }
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput
+	ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray []GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionInput
+
+func (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput {
+	return o
+}
+
+// Required. Name of the section.
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput) Section() pulumi.StringOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection) string {
+		return v.Section
+	}).(pulumi.StringOutput)
+}
+
+// Required. Summary text for the section.
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection) string {
+		return v.Summary
+	}).(pulumi.StringOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput() GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput) ToGeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput) Index(i pulumi.IntInput) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection {
+		return vs[0].([]GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection)[vs[1].(int)]
+	}).(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionList struct {
+	// Optional. Summarization sections.
+	// Structure is documented below.
+	SummarizationSections []GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection `pulumi:"summarizationSections"`
+}
+
+// GeneratorSummarizationContextFewShotExampleSummarizationSectionListInput is an input type that accepts GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs and GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleSummarizationSectionListInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs{...}
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs struct {
+	// Optional. Summarization sections.
+	// Structure is documented below.
+	SummarizationSections GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayInput `pulumi:"summarizationSections"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionList)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput)
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput).ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(ctx)
+}
+
+// GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrInput is an input type that accepts GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs, GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtr and GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrInput` via:
+//
+//	        GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput
+}
+
+type generatorSummarizationContextFewShotExampleSummarizationSectionListPtrType GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs
+
+func GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtr(v *GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs) GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrInput {
+	return (*generatorSummarizationContextFewShotExampleSummarizationSectionListPtrType)(v)
+}
+
+func (*generatorSummarizationContextFewShotExampleSummarizationSectionListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleSummarizationSectionList)(nil)).Elem()
+}
+
+func (i *generatorSummarizationContextFewShotExampleSummarizationSectionListPtrType) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(context.Background())
+}
+
+func (i *generatorSummarizationContextFewShotExampleSummarizationSectionListPtrType) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionList)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return o.ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(context.Background())
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeneratorSummarizationContextFewShotExampleSummarizationSectionList) *GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
+		return &v
+	}).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput)
+}
+
+// Optional. Summarization sections.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput) SummarizationSections() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleSummarizationSectionList) []GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection {
+		return v.SummarizationSections
+	}).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeneratorSummarizationContextFewShotExampleSummarizationSectionList)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput) Elem() GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleSummarizationSectionList) GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
+		if v != nil {
+			return *v
+		}
+		var ret GeneratorSummarizationContextFewShotExampleSummarizationSectionList
+		return ret
+	}).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput)
+}
+
+// Optional. Summarization sections.
+// Structure is documented below.
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput) SummarizationSections() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput {
+	return o.ApplyT(func(v *GeneratorSummarizationContextFewShotExampleSummarizationSectionList) []GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection {
+		if v == nil {
+			return nil
+		}
+		return v.SummarizationSections
+	}).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection struct {
+	// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+	Definition *string `pulumi:"definition"`
+	// Optional. Name of the section, for example, "situation".
+	Key *string `pulumi:"key"`
+	// Optional. Type of the summarization section.
+	// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+	Type *string `pulumi:"type"`
+}
+
+// GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionInput is an input type that accepts GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs and GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs{...}
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs struct {
+	// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+	Definition pulumi.StringPtrInput `pulumi:"definition"`
+	// Optional. Name of the section, for example, "situation".
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Optional. Type of the summarization section.
+	// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput)
+}
+
+// GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayInput is an input type that accepts GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArray and GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayInput` via:
+//
+//	GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArray{ GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs{...} }
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput
+	ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutputWithContext(context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArray []GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionInput
+
+func (GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArray) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput {
+	return i.ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArray) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput {
+	return o
+}
+
+// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput) Definition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection) *string {
+		return v.Definition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Name of the section, for example, "situation".
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Type of the summarization section.
+// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput() GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput) ToGeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput) Index(i pulumi.IntInput) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection {
+		return vs[0].([]GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection)[vs[1].(int)]
+	}).(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput)
+}
+
+type GeneratorSummarizationContextSummarizationSection struct {
+	// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+	Definition *string `pulumi:"definition"`
+	// Optional. Name of the section, for example, "situation".
+	Key *string `pulumi:"key"`
+	// Optional. Type of the summarization section.
+	// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+	Type *string `pulumi:"type"`
+}
+
+// GeneratorSummarizationContextSummarizationSectionInput is an input type that accepts GeneratorSummarizationContextSummarizationSectionArgs and GeneratorSummarizationContextSummarizationSectionOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextSummarizationSectionInput` via:
+//
+//	GeneratorSummarizationContextSummarizationSectionArgs{...}
+type GeneratorSummarizationContextSummarizationSectionInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextSummarizationSectionOutput() GeneratorSummarizationContextSummarizationSectionOutput
+	ToGeneratorSummarizationContextSummarizationSectionOutputWithContext(context.Context) GeneratorSummarizationContextSummarizationSectionOutput
+}
+
+type GeneratorSummarizationContextSummarizationSectionArgs struct {
+	// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+	Definition pulumi.StringPtrInput `pulumi:"definition"`
+	// Optional. Name of the section, for example, "situation".
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Optional. Type of the summarization section.
+	// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GeneratorSummarizationContextSummarizationSectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextSummarizationSection)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextSummarizationSectionArgs) ToGeneratorSummarizationContextSummarizationSectionOutput() GeneratorSummarizationContextSummarizationSectionOutput {
+	return i.ToGeneratorSummarizationContextSummarizationSectionOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextSummarizationSectionArgs) ToGeneratorSummarizationContextSummarizationSectionOutputWithContext(ctx context.Context) GeneratorSummarizationContextSummarizationSectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextSummarizationSectionOutput)
+}
+
+// GeneratorSummarizationContextSummarizationSectionArrayInput is an input type that accepts GeneratorSummarizationContextSummarizationSectionArray and GeneratorSummarizationContextSummarizationSectionArrayOutput values.
+// You can construct a concrete instance of `GeneratorSummarizationContextSummarizationSectionArrayInput` via:
+//
+//	GeneratorSummarizationContextSummarizationSectionArray{ GeneratorSummarizationContextSummarizationSectionArgs{...} }
+type GeneratorSummarizationContextSummarizationSectionArrayInput interface {
+	pulumi.Input
+
+	ToGeneratorSummarizationContextSummarizationSectionArrayOutput() GeneratorSummarizationContextSummarizationSectionArrayOutput
+	ToGeneratorSummarizationContextSummarizationSectionArrayOutputWithContext(context.Context) GeneratorSummarizationContextSummarizationSectionArrayOutput
+}
+
+type GeneratorSummarizationContextSummarizationSectionArray []GeneratorSummarizationContextSummarizationSectionInput
+
+func (GeneratorSummarizationContextSummarizationSectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextSummarizationSection)(nil)).Elem()
+}
+
+func (i GeneratorSummarizationContextSummarizationSectionArray) ToGeneratorSummarizationContextSummarizationSectionArrayOutput() GeneratorSummarizationContextSummarizationSectionArrayOutput {
+	return i.ToGeneratorSummarizationContextSummarizationSectionArrayOutputWithContext(context.Background())
+}
+
+func (i GeneratorSummarizationContextSummarizationSectionArray) ToGeneratorSummarizationContextSummarizationSectionArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextSummarizationSectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeneratorSummarizationContextSummarizationSectionArrayOutput)
+}
+
+type GeneratorSummarizationContextSummarizationSectionOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextSummarizationSectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeneratorSummarizationContextSummarizationSection)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextSummarizationSectionOutput) ToGeneratorSummarizationContextSummarizationSectionOutput() GeneratorSummarizationContextSummarizationSectionOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextSummarizationSectionOutput) ToGeneratorSummarizationContextSummarizationSectionOutputWithContext(ctx context.Context) GeneratorSummarizationContextSummarizationSectionOutput {
+	return o
+}
+
+// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+func (o GeneratorSummarizationContextSummarizationSectionOutput) Definition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextSummarizationSection) *string { return v.Definition }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Name of the section, for example, "situation".
+func (o GeneratorSummarizationContextSummarizationSectionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextSummarizationSection) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Type of the summarization section.
+// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+func (o GeneratorSummarizationContextSummarizationSectionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GeneratorSummarizationContextSummarizationSection) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GeneratorSummarizationContextSummarizationSectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GeneratorSummarizationContextSummarizationSectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GeneratorSummarizationContextSummarizationSection)(nil)).Elem()
+}
+
+func (o GeneratorSummarizationContextSummarizationSectionArrayOutput) ToGeneratorSummarizationContextSummarizationSectionArrayOutput() GeneratorSummarizationContextSummarizationSectionArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextSummarizationSectionArrayOutput) ToGeneratorSummarizationContextSummarizationSectionArrayOutputWithContext(ctx context.Context) GeneratorSummarizationContextSummarizationSectionArrayOutput {
+	return o
+}
+
+func (o GeneratorSummarizationContextSummarizationSectionArrayOutput) Index(i pulumi.IntInput) GeneratorSummarizationContextSummarizationSectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GeneratorSummarizationContextSummarizationSection {
+		return vs[0].([]GeneratorSummarizationContextSummarizationSection)[vs[1].(int)]
+	}).(GeneratorSummarizationContextSummarizationSectionOutput)
+}
+
 type IntentFollowupIntentInfo struct {
 	// The unique identifier of the followup intent.
 	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
@@ -42095,6 +44595,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestConfigInput)(nil)).Elem(), CxTestCaseTestConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestConfigPtrInput)(nil)).Elem(), CxTestCaseTestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecInput)(nil)).Elem(), CxToolConnectorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecPtrInput)(nil)).Elem(), CxToolConnectorSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecActionInput)(nil)).Elem(), CxToolConnectorSpecActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecActionArrayInput)(nil)).Elem(), CxToolConnectorSpecActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecActionEntityOperationInput)(nil)).Elem(), CxToolConnectorSpecActionEntityOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecActionEntityOperationPtrInput)(nil)).Elem(), CxToolConnectorSpecActionEntityOperationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigInput)(nil)).Elem(), CxToolConnectorSpecEndUserAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigPtrInput)(nil)).Elem(), CxToolConnectorSpecEndUserAuthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigInput)(nil)).Elem(), CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrInput)(nil)).Elem(), CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigInput)(nil)).Elem(), CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrInput)(nil)).Elem(), CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecInput)(nil)).Elem(), CxToolDataStoreSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecPtrInput)(nil)).Elem(), CxToolDataStoreSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxToolDataStoreSpecDataStoreConnectionInput)(nil)).Elem(), CxToolDataStoreSpecDataStoreConnectionArgs{})
@@ -42145,6 +44657,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentFeatureArrayInput)(nil)).Elem(), FulfillmentFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentGenericWebServiceInput)(nil)).Elem(), FulfillmentGenericWebServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FulfillmentGenericWebServicePtrInput)(nil)).Elem(), FulfillmentGenericWebServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorInferenceParameterInput)(nil)).Elem(), GeneratorInferenceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorInferenceParameterPtrInput)(nil)).Elem(), GeneratorInferenceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextInput)(nil)).Elem(), GeneratorSummarizationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextPtrInput)(nil)).Elem(), GeneratorSummarizationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleArrayInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContextInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleConversationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContextPtrInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleConversationContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputTypeInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayInput)(nil)).Elem(), GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextSummarizationSectionInput)(nil)).Elem(), GeneratorSummarizationContextSummarizationSectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GeneratorSummarizationContextSummarizationSectionArrayInput)(nil)).Elem(), GeneratorSummarizationContextSummarizationSectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoInput)(nil)).Elem(), IntentFollowupIntentInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentFollowupIntentInfoArrayInput)(nil)).Elem(), IntentFollowupIntentInfoArray{})
 	pulumi.RegisterOutputType(ConversationProfileAutomatedAgentConfigOutput{})
@@ -42593,6 +45126,18 @@ func init() {
 	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput{})
 	pulumi.RegisterOutputType(CxTestCaseTestConfigOutput{})
 	pulumi.RegisterOutputType(CxTestCaseTestConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecPtrOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecActionOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecActionArrayOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecActionEntityOperationOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecActionEntityOperationPtrOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecEndUserAuthConfigOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecEndUserAuthConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigOutput{})
+	pulumi.RegisterOutputType(CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigPtrOutput{})
 	pulumi.RegisterOutputType(CxToolDataStoreSpecOutput{})
 	pulumi.RegisterOutputType(CxToolDataStoreSpecPtrOutput{})
 	pulumi.RegisterOutputType(CxToolDataStoreSpecDataStoreConnectionOutput{})
@@ -42643,6 +45188,27 @@ func init() {
 	pulumi.RegisterOutputType(FulfillmentFeatureArrayOutput{})
 	pulumi.RegisterOutputType(FulfillmentGenericWebServiceOutput{})
 	pulumi.RegisterOutputType(FulfillmentGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(GeneratorInferenceParameterOutput{})
+	pulumi.RegisterOutputType(GeneratorInferenceParameterPtrOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextPtrOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleConversationContextOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleConversationContextPtrOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputTypeOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionPtrOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleSummarizationSectionListOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleSummarizationSectionListPtrOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArrayOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextSummarizationSectionOutput{})
+	pulumi.RegisterOutputType(GeneratorSummarizationContextSummarizationSectionArrayOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoOutput{})
 	pulumi.RegisterOutputType(IntentFollowupIntentInfoArrayOutput{})
 }

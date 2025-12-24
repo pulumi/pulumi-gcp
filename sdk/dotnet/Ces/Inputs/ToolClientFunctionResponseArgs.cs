@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Ces.Inputs
     public sealed class ToolClientFunctionResponseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Defines the schema for additional properties allowed in an object.
+        /// Defines the schema for additional properties allowed in an object.
         /// The value must be a valid JSON string representing the Schema object.
         /// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
         /// </summary>
@@ -21,13 +21,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<string>? AdditionalProperties { get; set; }
 
         /// <summary>
-        /// Optional. The instance value should be valid against at least one of the schemas in this list.
+        /// The instance value should be valid against at least one of the schemas in this list.
         /// </summary>
         [Input("anyOf")]
         public Input<string>? AnyOf { get; set; }
 
         /// <summary>
-        /// Optional. Default value of the data. Represents a dynamically typed value
+        /// Default value of the data. Represents a dynamically typed value
         /// which can be either null, a number, a string, a boolean, a struct,
         /// or a list of values. The provided default value must be compatible
         /// with the defined 'type' and other schema constraints.
@@ -71,13 +71,37 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<string>? Items { get; set; }
 
         /// <summary>
+        /// Maximum number of the elements for Type.ARRAY. (int64 format)
+        /// </summary>
+        [Input("maxItems")]
+        public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Maximum value for Type.INTEGER and Type.NUMBER.
+        /// </summary>
+        [Input("maximum")]
+        public Input<double>? Maximum { get; set; }
+
+        /// <summary>
+        /// Minimum number of the elements for Type.ARRAY. (int64 format)
+        /// </summary>
+        [Input("minItems")]
+        public Input<int>? MinItems { get; set; }
+
+        /// <summary>
+        /// Minimum value for Type.INTEGER and Type.NUMBER.
+        /// </summary>
+        [Input("minimum")]
+        public Input<double>? Minimum { get; set; }
+
+        /// <summary>
         /// Indicates if the value may be null.
         /// </summary>
         [Input("nullable")]
         public Input<bool>? Nullable { get; set; }
 
         /// <summary>
-        /// Optional. Schemas of initial elements of Type.ARRAY.
+        /// Schemas of initial elements of Type.ARRAY.
         /// </summary>
         [Input("prefixItems")]
         public Input<string>? PrefixItems { get; set; }
@@ -122,6 +146,12 @@ namespace Pulumi.Gcp.Ces.Inputs
             get => _requireds ?? (_requireds = new InputList<string>());
             set => _requireds = value;
         }
+
+        /// <summary>
+        /// The title of the schema.
+        /// </summary>
+        [Input("title")]
+        public Input<string>? Title { get; set; }
 
         /// <summary>
         /// The type of the data.

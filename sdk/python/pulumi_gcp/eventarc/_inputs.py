@@ -67,6 +67,8 @@ __all__ = [
     'TriggerDestinationNetworkConfigArgsDict',
     'TriggerMatchingCriteriaArgs',
     'TriggerMatchingCriteriaArgsDict',
+    'TriggerRetryPolicyArgs',
+    'TriggerRetryPolicyArgsDict',
     'TriggerTransportArgs',
     'TriggerTransportArgsDict',
     'TriggerTransportPubsubArgs',
@@ -2330,6 +2332,41 @@ class TriggerMatchingCriteriaArgs:
     @operator.setter
     def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "operator", value)
+
+
+if not MYPY:
+    class TriggerRetryPolicyArgsDict(TypedDict):
+        max_attempts: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of delivery attempts for any message. The only valid
+        value is 1.
+        """
+elif False:
+    TriggerRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TriggerRetryPolicyArgs:
+    def __init__(__self__, *,
+                 max_attempts: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_attempts: The maximum number of delivery attempts for any message. The only valid
+               value is 1.
+        """
+        if max_attempts is not None:
+            pulumi.set(__self__, "max_attempts", max_attempts)
+
+    @_builtins.property
+    @pulumi.getter(name="maxAttempts")
+    def max_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of delivery attempts for any message. The only valid
+        value is 1.
+        """
+        return pulumi.get(self, "max_attempts")
+
+    @max_attempts.setter
+    def max_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_attempts", value)
 
 
 if not MYPY:

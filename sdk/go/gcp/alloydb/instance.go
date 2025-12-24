@@ -122,9 +122,6 @@ import (
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
 //					Network: _default.ID(),
 //				},
-//				InitialUser: &alloydb.ClusterInitialUserArgs{
-//					Password: pulumi.String("alloydb-primary-cluster"),
-//				},
 //				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -261,6 +258,9 @@ type Instance struct {
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
+	// Configuration for Managed Connection Pool.
+	// Structure is documented below.
+	ConnectionPoolConfig InstanceConnectionPoolConfigPtrOutput `pulumi:"connectionPoolConfig"`
 	// Time the Instance was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
@@ -394,6 +394,9 @@ type instanceState struct {
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster *string `pulumi:"cluster"`
+	// Configuration for Managed Connection Pool.
+	// Structure is documented below.
+	ConnectionPoolConfig *InstanceConnectionPoolConfig `pulumi:"connectionPoolConfig"`
 	// Time the Instance was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
 	// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
@@ -484,6 +487,9 @@ type InstanceState struct {
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster pulumi.StringPtrInput
+	// Configuration for Managed Connection Pool.
+	// Structure is documented below.
+	ConnectionPoolConfig InstanceConnectionPoolConfigPtrInput
 	// Time the Instance was created in UTC.
 	CreateTime pulumi.StringPtrInput
 	// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
@@ -578,6 +584,9 @@ type instanceArgs struct {
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster string `pulumi:"cluster"`
+	// Configuration for Managed Connection Pool.
+	// Structure is documented below.
+	ConnectionPoolConfig *InstanceConnectionPoolConfig `pulumi:"connectionPoolConfig"`
 	// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
 	// User-settable and human-readable display name for the Instance.
@@ -641,6 +650,9 @@ type InstanceArgs struct {
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 	Cluster pulumi.StringInput
+	// Configuration for Managed Connection Pool.
+	// Structure is documented below.
+	ConnectionPoolConfig InstanceConnectionPoolConfigPtrInput
 	// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
 	DatabaseFlags pulumi.StringMapInput
 	// User-settable and human-readable display name for the Instance.
@@ -802,6 +814,12 @@ func (o InstanceOutput) ClientConnectionConfig() InstanceClientConnectionConfigO
 // 'projects/{project}/locations/{location}/clusters/{cluster_id}'
 func (o InstanceOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Configuration for Managed Connection Pool.
+// Structure is documented below.
+func (o InstanceOutput) ConnectionPoolConfig() InstanceConnectionPoolConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceConnectionPoolConfigPtrOutput { return v.ConnectionPoolConfig }).(InstanceConnectionPoolConfigPtrOutput)
 }
 
 // Time the Instance was created in UTC.

@@ -151,7 +151,7 @@ class EncryptionSpec(pulumi.CustomResource):
 
         To get more information about EncryptionSpec, see:
 
-        * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.locations.encryptionSpec)
+        * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.locations.encryptionSpec)
         * How-to Guides
             * [Official CX Documentation](https://cloud.google.com/dialogflow/cx/docs)
             * [Official ES Documentation](https://cloud.google.com/dialogflow/es/docs)
@@ -237,7 +237,7 @@ class EncryptionSpec(pulumi.CustomResource):
 
         To get more information about EncryptionSpec, see:
 
-        * [API documentation](https://cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.locations.encryptionSpec)
+        * [API documentation](https://docs.cloud.google.com/dialogflow/es/docs/reference/rest/v2/projects.locations.encryptionSpec)
         * How-to Guides
             * [Official CX Documentation](https://cloud.google.com/dialogflow/cx/docs)
             * [Official ES Documentation](https://cloud.google.com/dialogflow/es/docs)

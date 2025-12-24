@@ -48,35 +48,7 @@ import (
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
 //				DisplayName: pulumi.String("tf-test"),
 //				Parent:      securityPolicyTarget.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId:      policy.ID(),
-//				Action:        pulumi.String("allow"),
-//				Direction:     pulumi.String("INGRESS"),
-//				EnableLogging: pulumi.Bool(true),
-//				Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
-//					Config: &compute.OrganizationSecurityPolicyRuleMatchConfigArgs{
-//						SrcIpRanges: pulumi.StringArray{
-//							pulumi.String("192.168.0.0/16"),
-//							pulumi.String("10.0.0.0/8"),
-//						},
-//						Layer4Configs: compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArray{
-//							&compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs{
-//								IpProtocol: pulumi.String("tcp"),
-//								Ports: pulumi.StringArray{
-//									pulumi.String("22"),
-//								},
-//							},
-//							&compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs{
-//								IpProtocol: pulumi.String("icmp"),
-//							},
-//						},
-//					},
-//				},
-//				Priority: pulumi.Int(100),
+//				Type:        pulumi.String("FIREWALL"),
 //			})
 //			if err != nil {
 //				return err

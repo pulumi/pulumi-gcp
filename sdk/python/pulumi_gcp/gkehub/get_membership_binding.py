@@ -182,7 +182,29 @@ def get_membership_binding(location: Optional[_builtins.str] = None,
                            project: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMembershipBindingResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+
+    A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    example = gcp.gkehub.get_membership_binding(location="global",
+        membership_id="my-membership-id",
+        membership_binding_id="my-membership-binding-id",
+        project="my-project-id")
+    ```
+
+
+    :param _builtins.str location: The location for the GKE Hub Membership Binding.
+           Currently only `global` is supported.
+    :param _builtins.str membership_binding_id: The ID of the membership binding.
+    :param _builtins.str membership_id: The ID of the membership that this binding applies to.
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -214,7 +236,29 @@ def get_membership_binding_output(location: Optional[pulumi.Input[_builtins.str]
                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMembershipBindingResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+
+    A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    example = gcp.gkehub.get_membership_binding(location="global",
+        membership_id="my-membership-id",
+        membership_binding_id="my-membership-binding-id",
+        project="my-project-id")
+    ```
+
+
+    :param _builtins.str location: The location for the GKE Hub Membership Binding.
+           Currently only `global` is supported.
+    :param _builtins.str membership_binding_id: The ID of the membership binding.
+    :param _builtins.str membership_id: The ID of the membership that this binding applies to.
+    :param _builtins.str project: The ID of the project in which the resource belongs.
+           If it is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['location'] = location

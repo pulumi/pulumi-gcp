@@ -16,6 +16,22 @@ namespace Pulumi.Gcp.Projects
         /// See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.Projects.GetAncestry.Invoke(new()
+        ///     {
+        ///         Project = "example-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAncestryResult> InvokeAsync(GetAncestryArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAncestryResult>("gcp:projects/getAncestry:getAncestry", args ?? new GetAncestryArgs(), options.WithDefaults());
@@ -25,6 +41,22 @@ namespace Pulumi.Gcp.Projects
         /// See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.Projects.GetAncestry.Invoke(new()
+        ///     {
+        ///         Project = "example-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAncestryResult> Invoke(GetAncestryInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAncestryResult>("gcp:projects/getAncestry:getAncestry", args ?? new GetAncestryInvokeArgs(), options.WithDefaults());
@@ -34,6 +66,22 @@ namespace Pulumi.Gcp.Projects
         /// See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.Projects.GetAncestry.Invoke(new()
+        ///     {
+        ///         Project = "example-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAncestryResult> Invoke(GetAncestryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAncestryResult>("gcp:projects/getAncestry:getAncestry", args ?? new GetAncestryInvokeArgs(), options.WithDefaults());
@@ -81,7 +129,7 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The optional user-assigned display name of the project.
+        /// The organization id.
         /// </summary>
         public readonly string OrgId;
         /// <summary>

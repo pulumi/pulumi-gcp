@@ -6,6 +6,7 @@ package com.pulumi.gcp.diagflow;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.diagflow.inputs.CxToolConnectorSpecArgs;
 import com.pulumi.gcp.diagflow.inputs.CxToolDataStoreSpecArgs;
 import com.pulumi.gcp.diagflow.inputs.CxToolFunctionSpecArgs;
 import com.pulumi.gcp.diagflow.inputs.CxToolOpenApiSpecArgs;
@@ -18,6 +19,25 @@ import javax.annotation.Nullable;
 public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CxToolArgs Empty = new CxToolArgs();
+
+    /**
+     * Integration connectors tool specification.
+     * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="connectorSpec")
+    private @Nullable Output<CxToolConnectorSpecArgs> connectorSpec;
+
+    /**
+     * @return Integration connectors tool specification.
+     * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxToolConnectorSpecArgs>> connectorSpec() {
+        return Optional.ofNullable(this.connectorSpec);
+    }
 
     /**
      * Data store search tool specification.
@@ -126,6 +146,7 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
     private CxToolArgs() {}
 
     private CxToolArgs(CxToolArgs $) {
+        this.connectorSpec = $.connectorSpec;
         this.dataStoreSpec = $.dataStoreSpec;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -150,6 +171,31 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CxToolArgs defaults) {
             $ = new CxToolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectorSpec Integration connectors tool specification.
+         * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorSpec(@Nullable Output<CxToolConnectorSpecArgs> connectorSpec) {
+            $.connectorSpec = connectorSpec;
+            return this;
+        }
+
+        /**
+         * @param connectorSpec Integration connectors tool specification.
+         * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectorSpec(CxToolConnectorSpecArgs connectorSpec) {
+            return connectorSpec(Output.of(connectorSpec));
         }
 
         /**

@@ -575,7 +575,7 @@ class ResourcePolicy(pulumi.CustomResource):
             region="europe-west1",
             workload_policy={
                 "type": "HIGH_THROUGHPUT",
-                "accelerator_topology": "SOME NEW TOPOLOGY",
+                "accelerator_topology": "2x2",
             })
         ```
         ### Resource Policy Workload Policy Max Topology Distance
@@ -855,7 +855,7 @@ class ResourcePolicy(pulumi.CustomResource):
             region="europe-west1",
             workload_policy={
                 "type": "HIGH_THROUGHPUT",
-                "accelerator_topology": "SOME NEW TOPOLOGY",
+                "accelerator_topology": "2x2",
             })
         ```
         ### Resource Policy Workload Policy Max Topology Distance

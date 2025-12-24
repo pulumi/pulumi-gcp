@@ -93,6 +93,7 @@ export interface GetSnapshotResult {
     readonly selfLink: string;
     readonly snapshotEncryptionKeys: outputs.compute.GetSnapshotSnapshotEncryptionKey[];
     readonly snapshotId: number;
+    readonly snapshotType: string;
     readonly sourceDisk: string;
     readonly sourceDiskEncryptionKeys: outputs.compute.GetSnapshotSourceDiskEncryptionKey[];
     readonly storageBytes: number;

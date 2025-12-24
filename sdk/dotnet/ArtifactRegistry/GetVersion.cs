@@ -13,18 +13,24 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// This data source fetches information of a version from a provided Artifact Registry repository.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("gcp:artifactregistry/getVersion:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches information of a version from a provided Artifact Registry repository.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("gcp:artifactregistry/getVersion:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source fetches information of a version from a provided Artifact Registry repository.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("gcp:artifactregistry/getVersion:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());

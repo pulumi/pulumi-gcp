@@ -1002,7 +1002,7 @@ class DataStore(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="advancedSiteSearchConfig")
-    def advanced_site_search_config(self) -> pulumi.Output[Optional['outputs.DataStoreAdvancedSiteSearchConfig']]:
+    def advanced_site_search_config(self) -> pulumi.Output['outputs.DataStoreAdvancedSiteSearchConfig']:
         """
         Configuration data for advance site search.
         Structure is documented below.

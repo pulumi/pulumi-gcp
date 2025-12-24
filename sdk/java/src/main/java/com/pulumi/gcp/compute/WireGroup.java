@@ -26,13 +26,69 @@ import javax.annotation.Nullable;
  * 
  * To get more information about WireGroup, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/wireGroups)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/wireGroups)
  * * How-to Guides
  *     * [Create a WireGroup](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/cross-site/modify-network#add-wire-group)
  * 
  * ## Example Usage
  * 
  * ### Compute Wire Group Basic
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.compute.CrossSiteNetwork;
+ * import com.pulumi.gcp.compute.CrossSiteNetworkArgs;
+ * import com.pulumi.gcp.compute.WireGroup;
+ * import com.pulumi.gcp.compute.WireGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.WireGroupWirePropertiesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example_cross_site_network = new CrossSiteNetwork("example-cross-site-network", CrossSiteNetworkArgs.builder()
+ *             .name("test-cross-site-network")
+ *             .description("Example cross site network")
+ *             .build());
+ * 
+ *         var example_test_wire_group = new WireGroup("example-test-wire-group", WireGroupArgs.builder()
+ *             .name("test-wire-group")
+ *             .description("Example Wire Group")
+ *             .crossSiteNetwork("test-cross-site-network")
+ *             .wireProperties(WireGroupWirePropertiesArgs.builder()
+ *                 .bandwidthUnmetered(10)
+ *                 .faultResponse("NONE")
+ *                 .bandwidthAllocation("ALLOCATE_PER_WIRE")
+ *                 .build())
+ *             .adminEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(example_cross_site_network)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Compute Wire Group Basic Beta
  * 
  * <pre>
  * {@code
@@ -67,14 +123,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example_cross_site_network = new CrossSiteNetwork("example-cross-site-network", CrossSiteNetworkArgs.builder()
- *             .name("test-cross-site-network")
+ *             .name("test-cross-site-network-beta")
  *             .description("Example cross site network")
  *             .build());
  * 
- *         var example_test_wire_group = new WireGroup("example-test-wire-group", WireGroupArgs.builder()
- *             .name("test-wire-group")
- *             .description("Example Wire Group")
- *             .crossSiteNetwork("test-cross-site-network")
+ *         var example_test_wire_group_beta = new WireGroup("example-test-wire-group-beta", WireGroupArgs.builder()
+ *             .name("test-wire-group-beta")
+ *             .description("Example Wire Group Beta")
+ *             .crossSiteNetwork("test-cross-site-network-beta")
  *             .wireProperties(WireGroupWirePropertiesArgs.builder()
  *                 .bandwidthUnmetered(10)
  *                 .faultResponse("NONE")

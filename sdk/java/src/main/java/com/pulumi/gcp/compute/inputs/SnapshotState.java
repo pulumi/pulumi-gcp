@@ -289,6 +289,23 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     * 
+     */
+    @Import(name="snapshotType")
+    private @Nullable Output<String> snapshotType;
+
+    /**
+     * @return Indicates the type of the snapshot.
+     * Possible values are: `ARCHIVE`, `STANDARD`.
+     * 
+     */
+    public Optional<Output<String>> snapshotType() {
+        return Optional.ofNullable(this.snapshotType);
+    }
+
+    /**
      * A reference to the disk used to create this snapshot.
      * 
      */
@@ -390,6 +407,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.snapshotEncryptionKey = $.snapshotEncryptionKey;
         this.snapshotId = $.snapshotId;
+        this.snapshotType = $.snapshotType;
         this.sourceDisk = $.sourceDisk;
         this.sourceDiskEncryptionKey = $.sourceDiskEncryptionKey;
         this.storageBytes = $.storageBytes;
@@ -778,6 +796,29 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder snapshotId(Integer snapshotId) {
             return snapshotId(Output.of(snapshotId));
+        }
+
+        /**
+         * @param snapshotType Indicates the type of the snapshot.
+         * Possible values are: `ARCHIVE`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotType(@Nullable Output<String> snapshotType) {
+            $.snapshotType = snapshotType;
+            return this;
+        }
+
+        /**
+         * @param snapshotType Indicates the type of the snapshot.
+         * Possible values are: `ARCHIVE`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotType(String snapshotType) {
+            return snapshotType(Output.of(snapshotType));
         }
 
         /**

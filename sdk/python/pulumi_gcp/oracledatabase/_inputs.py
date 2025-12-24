@@ -169,6 +169,10 @@ if not MYPY:
         https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
         Structure is documented below.
         """
+        cpu_core_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of CPU cores to be made available to the database.
+        """
         customer_contacts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AutonomousDatabasePropertiesCustomerContactArgsDict']]]]
         """
         The list of customer contacts.
@@ -408,6 +412,10 @@ if not MYPY:
         Database.
         Structure is documented below.
         """
+        secret_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the Oracle Cloud Infrastructure vault secret.
+        """
         sql_web_developer_url: NotRequired[pulumi.Input[_builtins.str]]
         """
         (Output)
@@ -457,6 +465,10 @@ if not MYPY:
         (Output)
         The storage space used by Autonomous Database, in gigabytes.
         """
+        vault_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the Oracle Cloud Infrastructure vault.
+        """
 elif False:
     AutonomousDatabasePropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -476,6 +488,7 @@ class AutonomousDatabasePropertiesArgs:
                  compute_count: Optional[pulumi.Input[_builtins.float]] = None,
                  connection_strings: Optional[pulumi.Input[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionStringArgs']]]] = None,
                  connection_urls: Optional[pulumi.Input[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionUrlArgs']]]] = None,
+                 cpu_core_count: Optional[pulumi.Input[_builtins.int]] = None,
                  customer_contacts: Optional[pulumi.Input[Sequence[pulumi.Input['AutonomousDatabasePropertiesCustomerContactArgs']]]] = None,
                  data_safe_state: Optional[pulumi.Input[_builtins.str]] = None,
                  data_storage_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
@@ -512,11 +525,13 @@ class AutonomousDatabasePropertiesArgs:
                  refreshable_state: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  scheduled_operation_details: Optional[pulumi.Input[Sequence[pulumi.Input['AutonomousDatabasePropertiesScheduledOperationDetailArgs']]]] = None,
+                 secret_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sql_web_developer_url: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  supported_clone_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  total_auto_backup_storage_size_gbs: Optional[pulumi.Input[_builtins.float]] = None,
-                 used_data_storage_size_tbs: Optional[pulumi.Input[_builtins.int]] = None):
+                 used_data_storage_size_tbs: Optional[pulumi.Input[_builtins.int]] = None,
+                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] db_workload: Possible values:
                DB_WORKLOAD_UNSPECIFIED
@@ -567,6 +582,7 @@ class AutonomousDatabasePropertiesArgs:
                Web with a browser from a Compute instance.
                https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
                Structure is documented below.
+        :param pulumi.Input[_builtins.int] cpu_core_count: The number of CPU cores to be made available to the database.
         :param pulumi.Input[Sequence[pulumi.Input['AutonomousDatabasePropertiesCustomerContactArgs']]] customer_contacts: The list of customer contacts.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_safe_state: (Output)
@@ -698,6 +714,7 @@ class AutonomousDatabasePropertiesArgs:
                The list and details of the scheduled operations of the Autonomous
                Database.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] secret_id: The ID of the Oracle Cloud Infrastructure vault secret.
         :param pulumi.Input[_builtins.str] sql_web_developer_url: (Output)
                The SQL Web Developer URL for the Autonomous Database.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -732,6 +749,7 @@ class AutonomousDatabasePropertiesArgs:
                gigabytes.
         :param pulumi.Input[_builtins.int] used_data_storage_size_tbs: (Output)
                The storage space used by Autonomous Database, in gigabytes.
+        :param pulumi.Input[_builtins.str] vault_id: The ID of the Oracle Cloud Infrastructure vault.
         """
         pulumi.set(__self__, "db_workload", db_workload)
         pulumi.set(__self__, "license_type", license_type)
@@ -757,6 +775,8 @@ class AutonomousDatabasePropertiesArgs:
             pulumi.set(__self__, "connection_strings", connection_strings)
         if connection_urls is not None:
             pulumi.set(__self__, "connection_urls", connection_urls)
+        if cpu_core_count is not None:
+            pulumi.set(__self__, "cpu_core_count", cpu_core_count)
         if customer_contacts is not None:
             pulumi.set(__self__, "customer_contacts", customer_contacts)
         if data_safe_state is not None:
@@ -829,6 +849,8 @@ class AutonomousDatabasePropertiesArgs:
             pulumi.set(__self__, "role", role)
         if scheduled_operation_details is not None:
             pulumi.set(__self__, "scheduled_operation_details", scheduled_operation_details)
+        if secret_id is not None:
+            pulumi.set(__self__, "secret_id", secret_id)
         if sql_web_developer_url is not None:
             pulumi.set(__self__, "sql_web_developer_url", sql_web_developer_url)
         if state is not None:
@@ -839,6 +861,8 @@ class AutonomousDatabasePropertiesArgs:
             pulumi.set(__self__, "total_auto_backup_storage_size_gbs", total_auto_backup_storage_size_gbs)
         if used_data_storage_size_tbs is not None:
             pulumi.set(__self__, "used_data_storage_size_tbs", used_data_storage_size_tbs)
+        if vault_id is not None:
+            pulumi.set(__self__, "vault_id", vault_id)
 
     @_builtins.property
     @pulumi.getter(name="dbWorkload")
@@ -1031,6 +1055,18 @@ class AutonomousDatabasePropertiesArgs:
     @connection_urls.setter
     def connection_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionUrlArgs']]]]):
         pulumi.set(self, "connection_urls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuCoreCount")
+    def cpu_core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of CPU cores to be made available to the database.
+        """
+        return pulumi.get(self, "cpu_core_count")
+
+    @cpu_core_count.setter
+    def cpu_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cpu_core_count", value)
 
     @_builtins.property
     @pulumi.getter(name="customerContacts")
@@ -1560,6 +1596,18 @@ class AutonomousDatabasePropertiesArgs:
         pulumi.set(self, "scheduled_operation_details", value)
 
     @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the Oracle Cloud Infrastructure vault secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="sqlWebDeveloperUrl")
     def sql_web_developer_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1647,6 +1695,18 @@ class AutonomousDatabasePropertiesArgs:
     @used_data_storage_size_tbs.setter
     def used_data_storage_size_tbs(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "used_data_storage_size_tbs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the Oracle Cloud Infrastructure vault.
+        """
+        return pulumi.get(self, "vault_id")
+
+    @vault_id.setter
+    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vault_id", value)
 
 
 if not MYPY:
@@ -4746,18 +4806,26 @@ if not MYPY:
         """
         IANA Time Zone Database time zone, e.g. "America/New_York".
         """
+        version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IANA Time Zone Database version number, e.g. "2019a".
+        """
 elif False:
     CloudVmClusterPropertiesTimeZoneArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudVmClusterPropertiesTimeZoneArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: IANA Time Zone Database time zone, e.g. "America/New_York".
+        :param pulumi.Input[_builtins.str] version: IANA Time Zone Database version number, e.g. "2019a".
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -4770,6 +4838,18 @@ class CloudVmClusterPropertiesTimeZoneArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IANA Time Zone Database version number, e.g. "2019a".
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version", value)
 
 
 if not MYPY:

@@ -15,14 +15,16 @@ public final class AiReasoningEngineSpecDeploymentSpecEnvArgs extends com.pulumi
     public static final AiReasoningEngineSpecDeploymentSpecEnvArgs Empty = new AiReasoningEngineSpecDeploymentSpecEnvArgs();
 
     /**
-     * The name of the environment variable. Must be a valid C identifier.
+     * The name of the environment variable. Must be a valid
+     * C identifier.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the environment variable. Must be a valid C identifier.
+     * @return The name of the environment variable. Must be a valid
+     * C identifier.
      * 
      */
     public Output<String> name() {
@@ -30,14 +32,28 @@ public final class AiReasoningEngineSpecDeploymentSpecEnvArgs extends com.pulumi
     }
 
     /**
-     * Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+     * Variables that reference a $(VAR_NAME) are expanded using
+     * the previous defined environment variables in the container
+     * and any service environment variables. If a variable cannot
+     * be resolved, the reference in the input string will be
+     * unchanged. The $(VAR_NAME) syntax can be escaped with a
+     * double $$, ie: $$(VAR_NAME). Escaped references will never
+     * be expanded, regardless of whether the variable exists
+     * or not.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+     * @return Variables that reference a $(VAR_NAME) are expanded using
+     * the previous defined environment variables in the container
+     * and any service environment variables. If a variable cannot
+     * be resolved, the reference in the input string will be
+     * unchanged. The $(VAR_NAME) syntax can be escaped with a
+     * double $$, ie: $$(VAR_NAME). Escaped references will never
+     * be expanded, regardless of whether the variable exists
+     * or not.
      * 
      */
     public Output<String> value() {
@@ -70,7 +86,8 @@ public final class AiReasoningEngineSpecDeploymentSpecEnvArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the environment variable. Must be a valid C identifier.
+         * @param name The name of the environment variable. Must be a valid
+         * C identifier.
          * 
          * @return builder
          * 
@@ -81,7 +98,8 @@ public final class AiReasoningEngineSpecDeploymentSpecEnvArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the environment variable. Must be a valid C identifier.
+         * @param name The name of the environment variable. Must be a valid
+         * C identifier.
          * 
          * @return builder
          * 
@@ -91,7 +109,14 @@ public final class AiReasoningEngineSpecDeploymentSpecEnvArgs extends com.pulumi
         }
 
         /**
-         * @param value Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+         * @param value Variables that reference a $(VAR_NAME) are expanded using
+         * the previous defined environment variables in the container
+         * and any service environment variables. If a variable cannot
+         * be resolved, the reference in the input string will be
+         * unchanged. The $(VAR_NAME) syntax can be escaped with a
+         * double $$, ie: $$(VAR_NAME). Escaped references will never
+         * be expanded, regardless of whether the variable exists
+         * or not.
          * 
          * @return builder
          * 
@@ -102,7 +127,14 @@ public final class AiReasoningEngineSpecDeploymentSpecEnvArgs extends com.pulumi
         }
 
         /**
-         * @param value Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+         * @param value Variables that reference a $(VAR_NAME) are expanded using
+         * the previous defined environment variables in the container
+         * and any service environment variables. If a variable cannot
+         * be resolved, the reference in the input string will be
+         * unchanged. The $(VAR_NAME) syntax can be escaped with a
+         * double $$, ie: $$(VAR_NAME). Escaped references will never
+         * be expanded, regardless of whether the variable exists
+         * or not.
          * 
          * @return builder
          * 

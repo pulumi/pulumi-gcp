@@ -834,6 +834,13 @@ if not MYPY:
         should be trying to achieve for the instance.
         This number is on a scale from 0 (no utilization) to 100 (full utilization).
         """
+        total_cpu_utilization_percent: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+        The value should be higher than high_priority_cpu_utilization_percent if present.
+        """
 elif False:
     InstanceAutoscalingConfigAutoscalingTargetsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -841,7 +848,8 @@ elif False:
 class InstanceAutoscalingConfigAutoscalingTargetsArgs:
     def __init__(__self__, *,
                  high_priority_cpu_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 storage_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None,
+                 total_cpu_utilization_percent: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] high_priority_cpu_utilization_percent: Specifies the target high priority cpu utilization percentage that the autoscaler
                should be trying to achieve for the instance.
@@ -849,11 +857,17 @@ class InstanceAutoscalingConfigAutoscalingTargetsArgs:
         :param pulumi.Input[_builtins.int] storage_utilization_percent: Specifies the target storage utilization percentage that the autoscaler
                should be trying to achieve for the instance.
                This number is on a scale from 0 (no utilization) to 100 (full utilization).
+        :param pulumi.Input[_builtins.int] total_cpu_utilization_percent: The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+               This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+               If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+               The value should be higher than high_priority_cpu_utilization_percent if present.
         """
         if high_priority_cpu_utilization_percent is not None:
             pulumi.set(__self__, "high_priority_cpu_utilization_percent", high_priority_cpu_utilization_percent)
         if storage_utilization_percent is not None:
             pulumi.set(__self__, "storage_utilization_percent", storage_utilization_percent)
+        if total_cpu_utilization_percent is not None:
+            pulumi.set(__self__, "total_cpu_utilization_percent", total_cpu_utilization_percent)
 
     @_builtins.property
     @pulumi.getter(name="highPriorityCpuUtilizationPercent")
@@ -882,6 +896,21 @@ class InstanceAutoscalingConfigAutoscalingTargetsArgs:
     @storage_utilization_percent.setter
     def storage_utilization_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "storage_utilization_percent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalCpuUtilizationPercent")
+    def total_cpu_utilization_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The target total cpu utilization percentage that the autoscaler should be trying to achieve for the instance.
+        This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+        If not specified or set to 0, the autoscaler will skip scaling based on total cpu utilization.
+        The value should be higher than high_priority_cpu_utilization_percent if present.
+        """
+        return pulumi.get(self, "total_cpu_utilization_percent")
+
+    @total_cpu_utilization_percent.setter
+    def total_cpu_utilization_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "total_cpu_utilization_percent", value)
 
 
 if not MYPY:

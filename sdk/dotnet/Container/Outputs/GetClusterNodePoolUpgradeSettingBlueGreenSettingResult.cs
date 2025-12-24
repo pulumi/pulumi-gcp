@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodePoolUpgradeSettingBlueGreenSettingResult
     {
         /// <summary>
+        /// Autoscaled rollout policy for blue-green upgrade.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingAutoscaledRolloutPolicyResult> AutoscaledRolloutPolicies;
+        /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         /// </summary>
         public readonly string NodePoolSoakDuration;
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterNodePoolUpgradeSettingBlueGreenSettingResult(
+            ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingAutoscaledRolloutPolicyResult> autoscaledRolloutPolicies,
+
             string nodePoolSoakDuration,
 
             ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult> standardRolloutPolicies)
         {
+            AutoscaledRolloutPolicies = autoscaledRolloutPolicies;
             NodePoolSoakDuration = nodePoolSoakDuration;
             StandardRolloutPolicies = standardRolloutPolicies;
         }

@@ -35,6 +35,11 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The parameter spec of the cloud control.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CloudControlParameterSpecSubParameter> SubParameters;
+        /// <summary>
         /// List of parameter substitutions.
         /// Structure is documented below.
         /// </summary>
@@ -67,6 +72,8 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
 
             string name,
 
+            ImmutableArray<Outputs.CloudControlParameterSpecSubParameter> subParameters,
+
             ImmutableArray<Outputs.CloudControlParameterSpecSubstitutionRule> substitutionRules,
 
             Outputs.CloudControlParameterSpecValidation? validation,
@@ -78,6 +85,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Outputs
             DisplayName = displayName;
             IsRequired = isRequired;
             Name = name;
+            SubParameters = subParameters;
             SubstitutionRules = substitutionRules;
             Validation = validation;
             ValueType = valueType;

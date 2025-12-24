@@ -24,6 +24,7 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
@@ -44,14 +45,127 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			cesTool, err := ces.NewTool(ctx, "ces_tool", &ces.ToolArgs{
+//				Location:      pulumi.String("us"),
+//				App:           my_app.AppId,
+//				ToolId:        pulumi.String("tool-1"),
+//				ExecutionType: pulumi.String("SYNCHRONOUS"),
+//				PythonFunction: &ces.ToolPythonFunctionArgs{
+//					Name:       pulumi.String("example_function"),
+//					PythonCode: pulumi.String("def example_function() -> int: return 0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cesToolset, err := ces.NewToolset(ctx, "ces_toolset", &ces.ToolsetArgs{
+//				ToolsetId:   pulumi.String("toolset-id"),
+//				Location:    pulumi.String("us"),
+//				App:         my_app.AppId,
+//				DisplayName: pulumi.String("Basic toolset display name"),
+//				OpenApiToolset: &ces.ToolsetOpenApiToolsetArgs{
+//					OpenApiSchema: pulumi.String(`openapi: 3.0.0
+//
+// info:
+//
+//	title: My Sample API
+//	version: 1.0.0
+//	description: A simple API example
+//
+// servers:
+//   - url: https://api.example.com/v1
+//
+// paths: {}
+// `),
+//
+//					IgnoreUnknownFields: pulumi.Bool(false),
+//					TlsConfig: &ces.ToolsetOpenApiToolsetTlsConfigArgs{
+//						CaCerts: ces.ToolsetOpenApiToolsetTlsConfigCaCertArray{
+//							&ces.ToolsetOpenApiToolsetTlsConfigCaCertArgs{
+//								DisplayName: pulumi.String("example"),
+//								Cert:        pulumi.String("ZXhhbXBsZQ=="),
+//							},
+//						},
+//					},
+//					ServiceDirectoryConfig: &ces.ToolsetOpenApiToolsetServiceDirectoryConfigArgs{
+//						Service: pulumi.String("projects/example/locations/us/namespaces/namespace/services/service"),
+//					},
+//					ApiAuthentication: &ces.ToolsetOpenApiToolsetApiAuthenticationArgs{
+//						ServiceAgentIdTokenAuthConfig: &ces.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cesBaseAgent, err := ces.NewAgent(ctx, "ces_base_agent", &ces.AgentArgs{
+//				AgentId:     pulumi.String("base-agent-id"),
+//				Location:    pulumi.String("us"),
+//				App:         my_app.AppId,
+//				DisplayName: pulumi.String("base agent"),
+//				Instruction: pulumi.String("You are a helpful assistant for this example."),
+//				ModelSettings: &ces.AgentModelSettingsArgs{
+//					Model:       pulumi.String("gemini-2.5-flash"),
+//					Temperature: pulumi.Float64(0.5),
+//				},
+//				LlmAgent: &ces.AgentLlmAgentArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cesChildAgent, err := ces.NewAgent(ctx, "ces_child_agent", &ces.AgentArgs{
+//				AgentId:     pulumi.String("child-agent-id"),
+//				Location:    pulumi.String("us"),
+//				App:         my_app.AppId,
+//				DisplayName: pulumi.String("child agent"),
+//				Instruction: pulumi.String("You are a helpful assistant for this example."),
+//				ModelSettings: &ces.AgentModelSettingsArgs{
+//					Model:       pulumi.String("gemini-2.5-flash"),
+//					Temperature: pulumi.Float64(0.5),
+//				},
+//				LlmAgent: &ces.AgentLlmAgentArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"arg1": "val1",
+//				"arg2": "val2",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"arg1": "val1",
+//				"arg2": "val2",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//				"output": "example-output",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//				"output": "example-output",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			tmpJSON4, err := json.Marshal(map[string]interface{}{
 //				"var1": "val1",
 //				"var2": "val2",
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			json0 := string(tmpJSON0)
+//			json4 := string(tmpJSON4)
 //			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
 //				Input: "This is some fake image binary data.",
 //			}, nil)
@@ -64,9 +178,25 @@ import (
 //				App:         my_app.Name,
 //				ExampleId:   pulumi.String("example-id"),
 //				Description: pulumi.String("example description"),
+//				EntryAgent: pulumi.All(my_app.Project, my_app.AppId, cesBaseAgent.AgentId).ApplyT(func(_args []interface{}) (string, error) {
+//					project := _args[0].(string)
+//					appId := _args[1].(string)
+//					agentId := _args[2].(*string)
+//					return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
+//				}).(pulumi.StringOutput),
 //				Messages: ces.ExampleMessageArray{
 //					&ces.ExampleMessageArgs{
 //						Chunks: ces.ExampleMessageChunkArray{
+//							&ces.ExampleMessageChunkArgs{
+//								AgentTransfer: &ces.ExampleMessageChunkAgentTransferArgs{
+//									TargetAgent: pulumi.All(my_app.Project, my_app.AppId, cesChildAgent.AgentId).ApplyT(func(_args []interface{}) (string, error) {
+//										project := _args[0].(string)
+//										appId := _args[1].(string)
+//										agentId := _args[2].(*string)
+//										return fmt.Sprintf("projects/%v/locations/us/apps/%v/agents/%v", project, appId, agentId), nil
+//									}).(pulumi.StringOutput),
+//								},
+//							},
 //							&ces.ExampleMessageChunkArgs{
 //								Image: &ces.ExampleMessageChunkImageArgs{
 //									MimeType: pulumi.String("image/png"),
@@ -77,7 +207,61 @@ import (
 //								Text: pulumi.String("text_data"),
 //							},
 //							&ces.ExampleMessageChunkArgs{
-//								UpdatedVariables: pulumi.String(json0),
+//								ToolCall: &ces.ExampleMessageChunkToolCallArgs{
+//									Args: pulumi.String(json0),
+//									Id:   pulumi.String("tool_call_id"),
+//									Tool: pulumi.All(my_app.Project, my_app.AppId, cesTool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
+//										project := _args[0].(string)
+//										appId := _args[1].(string)
+//										toolId := _args[2].(string)
+//										return fmt.Sprintf("projects/%v/locations/us/apps/%v/tools/%v", project, appId, toolId), nil
+//									}).(pulumi.StringOutput),
+//								},
+//							},
+//							&ces.ExampleMessageChunkArgs{
+//								ToolCall: &ces.ExampleMessageChunkToolCallArgs{
+//									Args: pulumi.String(json1),
+//									Id:   pulumi.String("tool_call_id2"),
+//									ToolsetTool: &ces.ExampleMessageChunkToolCallToolsetToolArgs{
+//										Toolset: pulumi.All(my_app.Project, my_app.AppId, cesToolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
+//											project := _args[0].(string)
+//											appId := _args[1].(string)
+//											toolsetId := _args[2].(string)
+//											return fmt.Sprintf("projects/%v/locations/us/apps/%v/toolsets/%v", project, appId, toolsetId), nil
+//										}).(pulumi.StringOutput),
+//										ToolId: pulumi.String("example-id"),
+//									},
+//								},
+//							},
+//							&ces.ExampleMessageChunkArgs{
+//								ToolResponse: &ces.ExampleMessageChunkToolResponseArgs{
+//									Id:       pulumi.String("tool_call_id"),
+//									Response: pulumi.String(json2),
+//									Tool: pulumi.All(my_app.Project, my_app.AppId, cesTool.ToolId).ApplyT(func(_args []interface{}) (string, error) {
+//										project := _args[0].(string)
+//										appId := _args[1].(string)
+//										toolId := _args[2].(string)
+//										return fmt.Sprintf("projects/%v/locations/us/apps/%v/tools/%v", project, appId, toolId), nil
+//									}).(pulumi.StringOutput),
+//								},
+//							},
+//							&ces.ExampleMessageChunkArgs{
+//								ToolResponse: &ces.ExampleMessageChunkToolResponseArgs{
+//									Id:       pulumi.String("tool_call_id2"),
+//									Response: pulumi.String(json3),
+//									ToolsetTool: &ces.ExampleMessageChunkToolResponseToolsetToolArgs{
+//										Toolset: pulumi.All(my_app.Project, my_app.AppId, cesToolset.ToolsetId).ApplyT(func(_args []interface{}) (string, error) {
+//											project := _args[0].(string)
+//											appId := _args[1].(string)
+//											toolsetId := _args[2].(string)
+//											return fmt.Sprintf("projects/%v/locations/us/apps/%v/toolsets/%v", project, appId, toolsetId), nil
+//										}).(pulumi.StringOutput),
+//										ToolId: pulumi.String("example-id"),
+//									},
+//								},
+//							},
+//							&ces.ExampleMessageChunkArgs{
+//								UpdatedVariables: pulumi.String(json4),
 //							},
 //						},
 //						Role: pulumi.String("agent"),
@@ -127,6 +311,10 @@ type Example struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the example.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The agent that initially handles the conversation. If not specified, the
+	// example represents a conversation that is handled by the root agent.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	EntryAgent pulumi.StringPtrOutput `pulumi:"entryAgent"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -201,6 +389,10 @@ type exampleState struct {
 	Description *string `pulumi:"description"`
 	// Display name of the example.
 	DisplayName *string `pulumi:"displayName"`
+	// The agent that initially handles the conversation. If not specified, the
+	// example represents a conversation that is handled by the root agent.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	EntryAgent *string `pulumi:"entryAgent"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -234,6 +426,10 @@ type ExampleState struct {
 	Description pulumi.StringPtrInput
 	// Display name of the example.
 	DisplayName pulumi.StringPtrInput
+	// The agent that initially handles the conversation. If not specified, the
+	// example represents a conversation that is handled by the root agent.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	EntryAgent pulumi.StringPtrInput
 	// Etag used to ensure the object hasn't changed during a read-modify-write
 	// operation. If the etag is empty, the update will overwrite any concurrent
 	// changes.
@@ -269,7 +465,11 @@ type exampleArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name of the example.
 	DisplayName string `pulumi:"displayName"`
-	ExampleId   string `pulumi:"exampleId"`
+	// The agent that initially handles the conversation. If not specified, the
+	// example represents a conversation that is handled by the root agent.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	EntryAgent *string `pulumi:"entryAgent"`
+	ExampleId  string  `pulumi:"exampleId"`
 	// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
 	// The collection of messages that make up the conversation.
@@ -288,7 +488,11 @@ type ExampleArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name of the example.
 	DisplayName pulumi.StringInput
-	ExampleId   pulumi.StringInput
+	// The agent that initially handles the conversation. If not specified, the
+	// example represents a conversation that is handled by the root agent.
+	// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+	EntryAgent pulumi.StringPtrInput
+	ExampleId  pulumi.StringInput
 	// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput
 	// The collection of messages that make up the conversation.
@@ -404,6 +608,13 @@ func (o ExampleOutput) Description() pulumi.StringPtrOutput {
 // Display name of the example.
 func (o ExampleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Example) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The agent that initially handles the conversation. If not specified, the
+// example represents a conversation that is handled by the root agent.
+// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+func (o ExampleOutput) EntryAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Example) pulumi.StringPtrOutput { return v.EntryAgent }).(pulumi.StringPtrOutput)
 }
 
 // Etag used to ensure the object hasn't changed during a read-modify-write

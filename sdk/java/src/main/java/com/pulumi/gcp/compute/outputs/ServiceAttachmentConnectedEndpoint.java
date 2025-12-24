@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +25,12 @@ public final class ServiceAttachmentConnectedEndpoint {
      * 
      */
     private @Nullable String endpoint;
+    /**
+     * @return (Output)
+     * The nat IPs of the connected endpoint.
+     * 
+     */
+    private @Nullable List<String> natIps;
     /**
      * @return (Output)
      * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
@@ -63,6 +70,14 @@ public final class ServiceAttachmentConnectedEndpoint {
     }
     /**
      * @return (Output)
+     * The nat IPs of the connected endpoint.
+     * 
+     */
+    public List<String> natIps() {
+        return this.natIps == null ? List.of() : this.natIps;
+    }
+    /**
+     * @return (Output)
      * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
      * 
      */
@@ -98,6 +113,7 @@ public final class ServiceAttachmentConnectedEndpoint {
     public static final class Builder {
         private @Nullable String consumerNetwork;
         private @Nullable String endpoint;
+        private @Nullable List<String> natIps;
         private @Nullable Integer propagatedConnectionCount;
         private @Nullable String pscConnectionId;
         private @Nullable String status;
@@ -106,6 +122,7 @@ public final class ServiceAttachmentConnectedEndpoint {
     	      Objects.requireNonNull(defaults);
     	      this.consumerNetwork = defaults.consumerNetwork;
     	      this.endpoint = defaults.endpoint;
+    	      this.natIps = defaults.natIps;
     	      this.propagatedConnectionCount = defaults.propagatedConnectionCount;
     	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.status = defaults.status;
@@ -122,6 +139,15 @@ public final class ServiceAttachmentConnectedEndpoint {
 
             this.endpoint = endpoint;
             return this;
+        }
+        @CustomType.Setter
+        public Builder natIps(@Nullable List<String> natIps) {
+
+            this.natIps = natIps;
+            return this;
+        }
+        public Builder natIps(String... natIps) {
+            return natIps(List.of(natIps));
         }
         @CustomType.Setter
         public Builder propagatedConnectionCount(@Nullable Integer propagatedConnectionCount) {
@@ -145,6 +171,7 @@ public final class ServiceAttachmentConnectedEndpoint {
             final var _resultValue = new ServiceAttachmentConnectedEndpoint();
             _resultValue.consumerNetwork = consumerNetwork;
             _resultValue.endpoint = endpoint;
+            _resultValue.natIps = natIps;
             _resultValue.propagatedConnectionCount = propagatedConnectionCount;
             _resultValue.pscConnectionId = pscConnectionId;
             _resultValue.status = status;

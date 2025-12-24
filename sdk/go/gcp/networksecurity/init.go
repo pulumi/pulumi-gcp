@@ -65,6 +65,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MirroringEndpointGroup{}
 	case "gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation":
 		r = &MirroringEndpointGroupAssociation{}
+	case "gcp:networksecurity/sacAttachment:SacAttachment":
+		r = &SacAttachment{}
+	case "gcp:networksecurity/sacRealm:SacRealm":
+		r = &SacRealm{}
 	case "gcp:networksecurity/securityProfile:SecurityProfile":
 		r = &SecurityProfile{}
 	case "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup":
@@ -196,6 +200,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/mirroringEndpointGroupAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/sacAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/sacRealm",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

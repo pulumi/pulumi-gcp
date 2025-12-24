@@ -934,6 +934,40 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rootPassword);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+     * 
+     */
+    @Export(name="rootPasswordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> rootPasswordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
+     * 
+     */
+    public Output<Optional<String>> rootPasswordWo() {
+        return Codegen.optional(this.rootPasswordWo);
+    }
+    /**
+     * Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Export(name="rootPasswordWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> rootPasswordWoVersion;
+
+    /**
+     * @return Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Output<Optional<String>> rootPasswordWoVersion() {
+        return Codegen.optional(this.rootPasswordWoVersion);
+    }
+    /**
      * The URI of the created resource.
      * 
      */
@@ -1028,6 +1062,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
             .additionalSecretOutputs(List.of(
                 "replicaConfiguration",
                 "rootPassword",
+                "rootPasswordWo",
                 "serverCaCerts"
             ))
             .build();

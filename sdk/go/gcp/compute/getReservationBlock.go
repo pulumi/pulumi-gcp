@@ -63,10 +63,10 @@ type GetReservationBlockArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The name of the parent reservation.
-	Reservation string `pulumi:"reservation"`
-	// The zone where the reservation block resides.
 	//
 	// ***
+	Reservation string `pulumi:"reservation"`
+	// The zone where the reservation block resides.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -125,10 +125,10 @@ type GetReservationBlockOutputArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The name of the parent reservation.
-	Reservation pulumi.StringInput `pulumi:"reservation"`
-	// The zone where the reservation block resides.
 	//
 	// ***
+	Reservation pulumi.StringInput `pulumi:"reservation"`
+	// The zone where the reservation block resides.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 

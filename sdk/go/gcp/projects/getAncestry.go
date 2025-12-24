@@ -15,6 +15,30 @@ import (
 // See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := projects.GetAncestry(ctx, &projects.GetAncestryArgs{
+//				Project: pulumi.StringRef("example-project"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAncestry(ctx *pulumi.Context, args *GetAncestryArgs, opts ...pulumi.InvokeOption) (*GetAncestryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAncestryResult
@@ -37,7 +61,7 @@ type GetAncestryResult struct {
 	Ancestors []GetAncestryAncestor `pulumi:"ancestors"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The optional user-assigned display name of the project.
+	// The organization id.
 	OrgId string `pulumi:"orgId"`
 	// The parent's id.
 	ParentId string `pulumi:"parentId"`
@@ -90,7 +114,7 @@ func (o GetAncestryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAncestryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The optional user-assigned display name of the project.
+// The organization id.
 func (o GetAncestryResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAncestryResult) string { return v.OrgId }).(pulumi.StringOutput)
 }

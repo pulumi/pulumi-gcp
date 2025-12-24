@@ -124,6 +124,12 @@ namespace Pulumi.Gcp.Ces.Inputs
         }
 
         /// <summary>
+        /// The title of the schema.
+        /// </summary>
+        [Input("title")]
+        public Input<string>? Title { get; set; }
+
+        /// <summary>
         /// The type of the data.
         /// Possible values:
         /// STRING

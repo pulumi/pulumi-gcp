@@ -80,6 +80,8 @@ __all__ = [
     'ReservationReplicationStatus',
     'ReservationReplicationStatusError',
     'RoutineArgument',
+    'RoutineExternalRuntimeOptions',
+    'RoutinePythonOptions',
     'RoutineRemoteFunctionOptions',
     'RoutineSparkOptions',
     'TableBiglakeConfiguration',
@@ -1182,7 +1184,7 @@ class DataTransferConfigSensitiveParams(dict):
         :param _builtins.str secret_access_key: The Secret Access Key of the AWS account transferring data from.
         :param _builtins.str secret_access_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The Secret Access Key of the AWS account transferring data from.
-        :param _builtins.int secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        :param _builtins.int secret_access_key_wo_version: The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
@@ -1212,7 +1214,7 @@ class DataTransferConfigSensitiveParams(dict):
     @pulumi.getter(name="secretAccessKeyWoVersion")
     def secret_access_key_wo_version(self) -> Optional[_builtins.int]:
         """
-        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+        The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_access_key_wo_version")
 
@@ -4522,6 +4524,171 @@ class RoutineArgument(dict):
         The name of this argument. Can be absent for function return argument.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class RoutineExternalRuntimeOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerCpu":
+            suggest = "container_cpu"
+        elif key == "containerMemory":
+            suggest = "container_memory"
+        elif key == "maxBatchingRows":
+            suggest = "max_batching_rows"
+        elif key == "runtimeConnection":
+            suggest = "runtime_connection"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoutineExternalRuntimeOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoutineExternalRuntimeOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoutineExternalRuntimeOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_cpu: Optional[_builtins.float] = None,
+                 container_memory: Optional[_builtins.str] = None,
+                 max_batching_rows: Optional[_builtins.str] = None,
+                 runtime_connection: Optional[_builtins.str] = None,
+                 runtime_version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.float container_cpu: Amount of CPU provisioned for a Python UDF container instance. For more
+               information, see [Configure container limits for Python
+               UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+        :param _builtins.str container_memory: Amount of memory provisioned for a Python UDF container instance. Format:
+               {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+               512Mi). If not specified, the default value is 512Mi. For more information,
+               see [Configure container limits for Python
+               UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+        :param _builtins.str max_batching_rows: Maximum number of rows in each batch sent to the external runtime. If
+               absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+        :param _builtins.str runtime_connection: Fully qualified name of the connection whose service account will be used
+               to execute the code in the container. Format:
+               `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
+        :param _builtins.str runtime_version: Language runtime version. Example: `python-3.11`.
+        """
+        if container_cpu is not None:
+            pulumi.set(__self__, "container_cpu", container_cpu)
+        if container_memory is not None:
+            pulumi.set(__self__, "container_memory", container_memory)
+        if max_batching_rows is not None:
+            pulumi.set(__self__, "max_batching_rows", max_batching_rows)
+        if runtime_connection is not None:
+            pulumi.set(__self__, "runtime_connection", runtime_connection)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @_builtins.property
+    @pulumi.getter(name="containerCpu")
+    def container_cpu(self) -> Optional[_builtins.float]:
+        """
+        Amount of CPU provisioned for a Python UDF container instance. For more
+        information, see [Configure container limits for Python
+        UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+        """
+        return pulumi.get(self, "container_cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="containerMemory")
+    def container_memory(self) -> Optional[_builtins.str]:
+        """
+        Amount of memory provisioned for a Python UDF container instance. Format:
+        {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+        512Mi). If not specified, the default value is 512Mi. For more information,
+        see [Configure container limits for Python
+        UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+        """
+        return pulumi.get(self, "container_memory")
+
+    @_builtins.property
+    @pulumi.getter(name="maxBatchingRows")
+    def max_batching_rows(self) -> Optional[_builtins.str]:
+        """
+        Maximum number of rows in each batch sent to the external runtime. If
+        absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+        """
+        return pulumi.get(self, "max_batching_rows")
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeConnection")
+    def runtime_connection(self) -> Optional[_builtins.str]:
+        """
+        Fully qualified name of the connection whose service account will be used
+        to execute the code in the container. Format:
+        `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
+        """
+        return pulumi.get(self, "runtime_connection")
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[_builtins.str]:
+        """
+        Language runtime version. Example: `python-3.11`.
+        """
+        return pulumi.get(self, "runtime_version")
+
+
+@pulumi.output_type
+class RoutinePythonOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entryPoint":
+            suggest = "entry_point"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoutinePythonOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoutinePythonOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoutinePythonOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entry_point: _builtins.str,
+                 packages: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str entry_point: The name of the function defined in Python code as the entry point when the
+               Python UDF is invoked.
+        :param Sequence[_builtins.str] packages: A list of Python package names along with versions to be installed.
+               Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
+               information, see [Use third-party
+               packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+        """
+        pulumi.set(__self__, "entry_point", entry_point)
+        if packages is not None:
+            pulumi.set(__self__, "packages", packages)
+
+    @_builtins.property
+    @pulumi.getter(name="entryPoint")
+    def entry_point(self) -> _builtins.str:
+        """
+        The name of the function defined in Python code as the entry point when the
+        Python UDF is invoked.
+        """
+        return pulumi.get(self, "entry_point")
+
+    @_builtins.property
+    @pulumi.getter
+    def packages(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of Python package names along with versions to be installed.
+        Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
+        information, see [Use third-party
+        packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+        """
+        return pulumi.get(self, "packages")
 
 
 @pulumi.output_type

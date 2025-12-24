@@ -52,8 +52,6 @@ class ReservationArgs:
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
         :param pulumi.Input['ReservationShareSettingsArgs'] share_settings: The share setting for reservations.
@@ -182,8 +180,6 @@ class ReservationArgs:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
-
-        * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         """
         return pulumi.get(self, "project")
 
@@ -279,8 +275,6 @@ class _ReservationState:
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
                The number of reservation blocks associated with this reservation.
         :param pulumi.Input['ReservationReservationSharingPolicyArgs'] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
@@ -477,8 +471,6 @@ class _ReservationState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
-
-        * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         """
         return pulumi.get(self, "project")
 
@@ -835,8 +827,6 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
                Structure is documented below.
         :param pulumi.Input[Union['ReservationShareSettingsArgs', 'ReservationShareSettingsArgsDict']] share_settings: The share setting for reservations.
@@ -1159,8 +1149,6 @@ class Reservation(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-               
-               * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         :param pulumi.Input[_builtins.int] reservation_block_count: (Output)
                The number of reservation blocks associated with this reservation.
         :param pulumi.Input[Union['ReservationReservationSharingPolicyArgs', 'ReservationReservationSharingPolicyArgsDict']] reservation_sharing_policy: Sharing policy for reservations with Google Cloud managed services.
@@ -1301,8 +1289,6 @@ class Reservation(pulumi.CustomResource):
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
-
-        * `blockNames` - (Optional) List of all reservation block names in the parent reservation.
         """
         return pulumi.get(self, "project")
 

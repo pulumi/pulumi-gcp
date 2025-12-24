@@ -307,6 +307,7 @@ __all__ = [
     'InterconnectGroupPhysicalStructureMetroFacilityZone',
     'InterconnectMacsec',
     'InterconnectMacsecPreSharedKey',
+    'InterconnectParams',
     'MachineImageIamBindingCondition',
     'MachineImageIamMemberCondition',
     'MachineImageMachineImageEncryptionKey',
@@ -389,6 +390,8 @@ __all__ = [
     'RegionBackendServiceIamMemberCondition',
     'RegionBackendServiceIap',
     'RegionBackendServiceLogConfig',
+    'RegionBackendServiceNetworkPassThroughLbTrafficPolicy',
+    'RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity',
     'RegionBackendServiceOutlierDetection',
     'RegionBackendServiceOutlierDetectionBaseEjectionTime',
     'RegionBackendServiceOutlierDetectionInterval',
@@ -418,6 +421,12 @@ __all__ = [
     'RegionInstanceGroupManagerAutoHealingPolicies',
     'RegionInstanceGroupManagerInstanceFlexibilityPolicy',
     'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey',
     'RegionInstanceGroupManagerInstanceLifecyclePolicy',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair',
     'RegionInstanceGroupManagerNamedPort',
@@ -1001,6 +1010,8 @@ __all__ = [
     'GetRegionBackendServiceHaPolicyLeaderNetworkEndpointResult',
     'GetRegionBackendServiceIapResult',
     'GetRegionBackendServiceLogConfigResult',
+    'GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyResult',
+    'GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityResult',
     'GetRegionBackendServiceOutlierDetectionResult',
     'GetRegionBackendServiceOutlierDetectionBaseEjectionTimeResult',
     'GetRegionBackendServiceOutlierDetectionIntervalResult',
@@ -1020,6 +1031,12 @@ __all__ = [
     'GetRegionInstanceGroupManagerAutoHealingPolicyResult',
     'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyResult',
     'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResult',
+    'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResult',
+    'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyResult',
+    'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelResult',
+    'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagResult',
+    'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyResult',
+    'GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyResult',
     'GetRegionInstanceGroupManagerInstanceLifecyclePolicyResult',
     'GetRegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairResult',
     'GetRegionInstanceGroupManagerNamedPortResult',
@@ -1064,6 +1081,26 @@ __all__ = [
     'GetRegionNetworkEndpointGroupCloudRunResult',
     'GetRegionNetworkEndpointGroupPscDataResult',
     'GetRegionNetworkEndpointGroupServerlessDeploymentResult',
+    'GetRegionSecurityPolicyAdvancedOptionsConfigResult',
+    'GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult',
+    'GetRegionSecurityPolicyDdosProtectionConfigResult',
+    'GetRegionSecurityPolicyRuleResult',
+    'GetRegionSecurityPolicyRuleMatchResult',
+    'GetRegionSecurityPolicyRuleMatchConfigResult',
+    'GetRegionSecurityPolicyRuleMatchExprResult',
+    'GetRegionSecurityPolicyRuleNetworkMatchResult',
+    'GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldResult',
+    'GetRegionSecurityPolicyRulePreconfiguredWafConfigResult',
+    'GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionResult',
+    'GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult',
+    'GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult',
+    'GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult',
+    'GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult',
+    'GetRegionSecurityPolicyRuleRateLimitOptionResult',
+    'GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdResult',
+    'GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult',
+    'GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult',
+    'GetRegionSecurityPolicyUserDefinedFieldResult',
     'GetReservationBlockHealthInfoResult',
     'GetReservationBlockPhysicalTopologyResult',
     'GetReservationBlockReservationMaintenanceResult',
@@ -1146,6 +1183,8 @@ __all__ = [
     'GetSecurityPolicyRuleRedirectOptionResult',
     'GetSnapshotSnapshotEncryptionKeyResult',
     'GetSnapshotSourceDiskEncryptionKeyResult',
+    'GetStoragePoolResourceStatusResult',
+    'GetStoragePoolStatusResult',
     'GetStoragePoolTypesDeprecatedResult',
     'GetSubnetworkSecondaryIpRangeResult',
     'GetSubnetworksSubnetworkResult',
@@ -23096,6 +23135,46 @@ class InterconnectMacsecPreSharedKey(dict):
 
 
 @pulumi.output_type
+class InterconnectParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] resource_manager_tags: Resource manager tags to be bound to the interconnect. Tag keys and values have the
+               same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+               and values are in the format tagValues/456.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource manager tags to be bound to the interconnect. Tag keys and values have the
+        same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+        and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
 class MachineImageIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: _builtins.str,
@@ -29398,6 +29477,104 @@ class RegionBackendServiceLogConfig(dict):
 
 
 @pulumi.output_type
+class RegionBackendServiceNetworkPassThroughLbTrafficPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "zonalAffinity":
+            suggest = "zonal_affinity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceNetworkPassThroughLbTrafficPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceNetworkPassThroughLbTrafficPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceNetworkPassThroughLbTrafficPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 zonal_affinity: Optional['outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity'] = None):
+        """
+        :param 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs' zonal_affinity: When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+               Structure is documented below.
+        """
+        if zonal_affinity is not None:
+            pulumi.set(__self__, "zonal_affinity", zonal_affinity)
+
+    @_builtins.property
+    @pulumi.getter(name="zonalAffinity")
+    def zonal_affinity(self) -> Optional['outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity']:
+        """
+        When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "zonal_affinity")
+
+
+@pulumi.output_type
+class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "spilloverRatio":
+            suggest = "spillover_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 spillover: Optional[_builtins.str] = None,
+                 spillover_ratio: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str spillover: This field indicates whether zonal affinity is enabled or not.
+               Default value is `ZONAL_AFFINITY_DISABLED`.
+               Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
+        :param _builtins.float spillover_ratio: The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+               to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+               distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+               of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+               threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+        """
+        if spillover is not None:
+            pulumi.set(__self__, "spillover", spillover)
+        if spillover_ratio is not None:
+            pulumi.set(__self__, "spillover_ratio", spillover_ratio)
+
+    @_builtins.property
+    @pulumi.getter
+    def spillover(self) -> Optional[_builtins.str]:
+        """
+        This field indicates whether zonal affinity is enabled or not.
+        Default value is `ZONAL_AFFINITY_DISABLED`.
+        Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
+        """
+        return pulumi.get(self, "spillover")
+
+    @_builtins.property
+    @pulumi.getter(name="spilloverRatio")
+    def spillover_ratio(self) -> Optional[_builtins.float]:
+        """
+        The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+        to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+        distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+        of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+        threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+        """
+        return pulumi.get(self, "spillover_ratio")
+
+
+@pulumi.output_type
 class RegionBackendServiceOutlierDetection(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -31363,8 +31540,10 @@ class RegionInstanceGroupManagerAllInstancesConfig(dict):
                  labels: Optional[Mapping[str, _builtins.str]] = None,
                  metadata: Optional[Mapping[str, _builtins.str]] = None):
         """
-        :param Mapping[str, _builtins.str] labels: The label key-value pairs that you want to patch onto the instance,
-        :param Mapping[str, _builtins.str] metadata: The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+        :param Mapping[str, _builtins.str] labels: , The label key-value pairs that you want to patch onto the instance.
+               
+               - - -
+        :param Mapping[str, _builtins.str] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -31375,7 +31554,9 @@ class RegionInstanceGroupManagerAllInstancesConfig(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The label key-value pairs that you want to patch onto the instance,
+        , The label key-value pairs that you want to patch onto the instance.
+
+        - - -
         """
         return pulumi.get(self, "labels")
 
@@ -31383,7 +31564,7 @@ class RegionInstanceGroupManagerAllInstancesConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         return pulumi.get(self, "metadata")
 
@@ -31481,6 +31662,8 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(dict)
         suggest = None
         if key == "machineTypes":
             suggest = "machine_types"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection. Access the value via the '{suggest}' property getter instead.")
@@ -31496,6 +31679,8 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(dict)
     def __init__(__self__, *,
                  machine_types: Sequence[_builtins.str],
                  name: _builtins.str,
+                 disks: Optional[Sequence['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk']] = None,
+                 min_cpu_platform: Optional[_builtins.str] = None,
                  rank: Optional[_builtins.int] = None):
         """
         :param Sequence[_builtins.str] machine_types: Full machine-type names, e.g. "n1-standard-16"
@@ -31503,10 +31688,16 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(dict)
                characters long and comply with
                [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
                include lowercase letters, numbers, and hyphens.
+        :param Sequence['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs'] disks: List of disks to be attached to the instances created from this selection.
+        :param _builtins.str min_cpu_platform: Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
         :param _builtins.int rank: Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
         """
         pulumi.set(__self__, "machine_types", machine_types)
         pulumi.set(__self__, "name", name)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if rank is not None:
             pulumi.set(__self__, "rank", rank)
 
@@ -31531,11 +31722,647 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(dict)
 
     @_builtins.property
     @pulumi.getter
+    def disks(self) -> Optional[Sequence['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk']]:
+        """
+        List of disks to be attached to the instances created from this selection.
+        """
+        return pulumi.get(self, "disks")
+
+    @_builtins.property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[_builtins.str]:
+        """
+        Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @_builtins.property
+    @pulumi.getter
     def rank(self) -> Optional[_builtins.int]:
         """
         Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
         """
         return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+        elif key == "deviceName":
+            suggest = "device_name"
+        elif key == "diskEncryptionKey":
+            suggest = "disk_encryption_key"
+        elif key == "diskName":
+            suggest = "disk_name"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "guestOsFeatures":
+            suggest = "guest_os_features"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+        elif key == "resourcePolicies":
+            suggest = "resource_policies"
+        elif key == "sourceImage":
+            suggest = "source_image"
+        elif key == "sourceImageEncryptionKey":
+            suggest = "source_image_encryption_key"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
+        elif key == "sourceSnapshotEncryptionKey":
+            suggest = "source_snapshot_encryption_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 architecture: Optional[_builtins.str] = None,
+                 auto_delete: Optional[_builtins.bool] = None,
+                 boot: Optional[_builtins.bool] = None,
+                 device_name: Optional[_builtins.str] = None,
+                 disk_encryption_key: Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey'] = None,
+                 disk_name: Optional[_builtins.str] = None,
+                 disk_size_gb: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 guest_os_features: Optional[Sequence[_builtins.str]] = None,
+                 interface: Optional[_builtins.str] = None,
+                 labels: Optional[Sequence['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel']] = None,
+                 mode: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None,
+                 resource_manager_tags: Optional[Sequence['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag']] = None,
+                 resource_policies: Optional[_builtins.str] = None,
+                 source: Optional[_builtins.str] = None,
+                 source_image: Optional[_builtins.str] = None,
+                 source_image_encryption_key: Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey'] = None,
+                 source_snapshot: Optional[_builtins.str] = None,
+                 source_snapshot_encryption_key: Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey'] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str architecture: , The architecture of the image. Allowed values are ARM64 or X86_64.
+        :param _builtins.bool auto_delete: , Whether or not the disk should be auto-deleted. This defaults to true.
+        :param _builtins.bool boot: , Indicates that this is a boot disk. This defaults to false.
+        :param _builtins.str device_name: , A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
+        :param 'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs' disk_encryption_key: , Encrypts or decrypts a disk using a customer-supplied encryption key.  Structure is documented below.
+        :param _builtins.str disk_name: , Name of the disk. When not provided, this defaults to the name of the instance.
+        :param _builtins.int disk_size_gb: , The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
+        :param _builtins.str disk_type: , The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
+        :param Sequence[_builtins.str] guest_os_features: , A list of features to enable on the guest operating system. Applicable only for bootable images.
+        :param _builtins.str interface: , Specifies the disk interface to use for attaching this disk.
+        :param Sequence['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs'] labels: , A set of key/value label pairs to assign to disks. Structure is documented below.
+        :param _builtins.str mode: , The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
+        :param _builtins.int provisioned_iops: , Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
+        :param _builtins.int provisioned_throughput: , Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        :param Sequence['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs'] resource_manager_tags: , A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty. Structure is documented below.
+        :param _builtins.str resource_policies: , A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
+        :param _builtins.str source: , The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        :param _builtins.str source_image: , The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        :param 'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs' source_image_encryption_key: , The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys. Structure is documented below.
+        :param _builtins.str source_snapshot: , The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
+        :param 'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: , The customer-supplied encryption key of the source snapshot. Structure is documented below.
+               - - -
+        :param _builtins.str type: , The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+        """
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if auto_delete is not None:
+            pulumi.set(__self__, "auto_delete", auto_delete)
+        if boot is not None:
+            pulumi.set(__self__, "boot", boot)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if disk_encryption_key is not None:
+            pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if source_image is not None:
+            pulumi.set(__self__, "source_image", source_image)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> Optional[_builtins.str]:
+        """
+        , The architecture of the image. Allowed values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
+
+    @_builtins.property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> Optional[_builtins.bool]:
+        """
+        , Whether or not the disk should be auto-deleted. This defaults to true.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def boot(self) -> Optional[_builtins.bool]:
+        """
+        , Indicates that this is a boot disk. This defaults to false.
+        """
+        return pulumi.get(self, "boot")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[_builtins.str]:
+        """
+        , A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
+        """
+        return pulumi.get(self, "device_name")
+
+    @_builtins.property
+    @pulumi.getter(name="diskEncryptionKey")
+    def disk_encryption_key(self) -> Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey']:
+        """
+        , Encrypts or decrypts a disk using a customer-supplied encryption key.  Structure is documented below.
+        """
+        return pulumi.get(self, "disk_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[_builtins.str]:
+        """
+        , Name of the disk. When not provided, this defaults to the name of the instance.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        , The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        , The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        , A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @_builtins.property
+    @pulumi.getter
+    def interface(self) -> Optional[_builtins.str]:
+        """
+        , Specifies the disk interface to use for attaching this disk.
+        """
+        return pulumi.get(self, "interface")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[Sequence['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel']]:
+        """
+        , A set of key/value label pairs to assign to disks. Structure is documented below.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        , The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        , Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        , Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Sequence['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag']]:
+        """
+        , A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty. Structure is documented below.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[_builtins.str]:
+        """
+        , A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        , The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        """
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> Optional[_builtins.str]:
+        """
+        , The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        """
+        return pulumi.get(self, "source_image")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey']:
+        """
+        , The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys. Structure is documented below.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[_builtins.str]:
+        """
+        , The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey']:
+        """
+        , The customer-supplied encryption key of the source snapshot. Structure is documented below.
+        - - -
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        , The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[_builtins.str] = None,
+                 kms_key_service_account: Optional[_builtins.str] = None,
+                 raw_key: Optional[_builtins.str] = None,
+                 rsa_encrypted_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str kms_key_self_link: , The self link of the encryption key that is stored in Google Cloud KMS.
+               - - -
+        :param _builtins.str kms_key_service_account: , The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param _builtins.str raw_key: , Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str rsa_encrypted_key: , Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[_builtins.str]:
+        """
+        , The self link of the encryption key that is stored in Google Cloud KMS.
+        - - -
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[_builtins.str]:
+        """
+        , The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[_builtins.str]:
+        """
+        , Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[_builtins.str]:
+        """
+        , Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: , The unique key of the label to assign to disks.
+        :param _builtins.str value: , The value of the label to assign to disks.
+               - - -
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        , The unique key of the label to assign to disks.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        , The value of the label to assign to disks.
+        - - -
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: , The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
+        :param _builtins.str value: , The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
+               - - -
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        , The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        , The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
+        - - -
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[_builtins.str] = None,
+                 kms_key_service_account: Optional[_builtins.str] = None,
+                 raw_key: Optional[_builtins.str] = None,
+                 rsa_encrypted_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str kms_key_self_link: , The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+               - - -
+        :param _builtins.str kms_key_service_account: , The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param _builtins.str raw_key: , Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str rsa_encrypted_key: , Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[_builtins.str]:
+        """
+        , The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        - - -
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[_builtins.str]:
+        """
+        , The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[_builtins.str]:
+        """
+        , Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[_builtins.str]:
+        """
+        , Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+
+@pulumi.output_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+        elif key == "rsaEncryptedKey":
+            suggest = "rsa_encrypted_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: Optional[_builtins.str] = None,
+                 kms_key_service_account: Optional[_builtins.str] = None,
+                 raw_key: Optional[_builtins.str] = None,
+                 rsa_encrypted_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str kms_key_self_link: , The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+               - - -
+        :param _builtins.str kms_key_service_account: , The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param _builtins.str raw_key: , Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str rsa_encrypted_key: , Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        if kms_key_self_link is not None:
+            pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        if raw_key is not None:
+            pulumi.set(__self__, "raw_key", raw_key)
+        if rsa_encrypted_key is not None:
+            pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> Optional[_builtins.str]:
+        """
+        , The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        - - -
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[_builtins.str]:
+        """
+        , The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> Optional[_builtins.str]:
+        """
+        , Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> Optional[_builtins.str]:
+        """
+        , Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
 
 @pulumi.output_type
@@ -52852,6 +53679,8 @@ class ServiceAttachmentConnectedEndpoint(dict):
         suggest = None
         if key == "consumerNetwork":
             suggest = "consumer_network"
+        elif key == "natIps":
+            suggest = "nat_ips"
         elif key == "propagatedConnectionCount":
             suggest = "propagated_connection_count"
         elif key == "pscConnectionId":
@@ -52871,6 +53700,7 @@ class ServiceAttachmentConnectedEndpoint(dict):
     def __init__(__self__, *,
                  consumer_network: Optional[_builtins.str] = None,
                  endpoint: Optional[_builtins.str] = None,
+                 nat_ips: Optional[Sequence[_builtins.str]] = None,
                  propagated_connection_count: Optional[_builtins.int] = None,
                  psc_connection_id: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None):
@@ -52879,6 +53709,8 @@ class ServiceAttachmentConnectedEndpoint(dict):
                The url of the consumer network.
         :param _builtins.str endpoint: (Output)
                The URL of the consumer forwarding rule.
+        :param Sequence[_builtins.str] nat_ips: (Output)
+               The nat IPs of the connected endpoint.
         :param _builtins.int propagated_connection_count: (Output)
                The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
         :param _builtins.str psc_connection_id: (Output)
@@ -52891,6 +53723,8 @@ class ServiceAttachmentConnectedEndpoint(dict):
             pulumi.set(__self__, "consumer_network", consumer_network)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if nat_ips is not None:
+            pulumi.set(__self__, "nat_ips", nat_ips)
         if propagated_connection_count is not None:
             pulumi.set(__self__, "propagated_connection_count", propagated_connection_count)
         if psc_connection_id is not None:
@@ -52915,6 +53749,15 @@ class ServiceAttachmentConnectedEndpoint(dict):
         The URL of the consumer forwarding rule.
         """
         return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The nat IPs of the connected endpoint.
+        """
+        return pulumi.get(self, "nat_ips")
 
     @_builtins.property
     @pulumi.getter(name="propagatedConnectionCount")
@@ -72691,6 +73534,61 @@ class GetRegionBackendServiceLogConfigResult(dict):
 
 
 @pulumi.output_type
+class GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyResult(dict):
+    def __init__(__self__, *,
+                 zonal_affinities: Sequence['outputs.GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityResult']):
+        """
+        :param Sequence['GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs'] zonal_affinities: When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+        """
+        pulumi.set(__self__, "zonal_affinities", zonal_affinities)
+
+    @_builtins.property
+    @pulumi.getter(name="zonalAffinities")
+    def zonal_affinities(self) -> Sequence['outputs.GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityResult']:
+        """
+        When configured, new connections are load balanced across healthy backend endpoints in the local zone.
+        """
+        return pulumi.get(self, "zonal_affinities")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityResult(dict):
+    def __init__(__self__, *,
+                 spillover: _builtins.str,
+                 spillover_ratio: _builtins.float):
+        """
+        :param _builtins.str spillover: This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+        :param _builtins.float spillover_ratio: The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+               to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+               distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+               of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+               threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+        """
+        pulumi.set(__self__, "spillover", spillover)
+        pulumi.set(__self__, "spillover_ratio", spillover_ratio)
+
+    @_builtins.property
+    @pulumi.getter
+    def spillover(self) -> _builtins.str:
+        """
+        This field indicates whether zonal affinity is enabled or not. Default value: "ZONAL_AFFINITY_DISABLED" Possible values: ["ZONAL_AFFINITY_DISABLED", "ZONAL_AFFINITY_SPILL_CROSS_ZONE", "ZONAL_AFFINITY_STAY_WITHIN_ZONE"]
+        """
+        return pulumi.get(self, "spillover")
+
+    @_builtins.property
+    @pulumi.getter(name="spilloverRatio")
+    def spillover_ratio(self) -> _builtins.float:
+        """
+        The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+        to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
+        distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
+        of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
+        threshold, the load balancer distributes all new connections to all healthy endpoints across all zones.
+        """
+        return pulumi.get(self, "spillover_ratio")
+
+
+@pulumi.output_type
 class GetRegionBackendServiceOutlierDetectionResult(dict):
     def __init__(__self__, *,
                  base_ejection_times: Sequence['outputs.GetRegionBackendServiceOutlierDetectionBaseEjectionTimeResult'],
@@ -73454,17 +74352,31 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyResult(dict):
 @pulumi.output_type
 class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionResult(dict):
     def __init__(__self__, *,
+                 disks: Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResult'],
                  machine_types: Sequence[_builtins.str],
+                 min_cpu_platform: _builtins.str,
                  name: _builtins.str,
                  rank: _builtins.int):
         """
+        :param Sequence['GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskArgs'] disks: List of disks to be attached to the instances created from this selection.
         :param Sequence[_builtins.str] machine_types: Full machine-type names, e.g. "n1-standard-16"
+        :param _builtins.str min_cpu_platform: Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
         :param _builtins.str name: The name of the instance group. Either `name` or `self_link` must be provided.
         :param _builtins.int rank: Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
         """
+        pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "machine_types", machine_types)
+        pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResult']:
+        """
+        List of disks to be attached to the instances created from this selection.
+        """
+        return pulumi.get(self, "disks")
 
     @_builtins.property
     @pulumi.getter(name="machineTypes")
@@ -73473,6 +74385,14 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionRes
         Full machine-type names, e.g. "n1-standard-16"
         """
         return pulumi.get(self, "machine_types")
+
+    @_builtins.property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> _builtins.str:
+        """
+        Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
+        """
+        return pulumi.get(self, "min_cpu_platform")
 
     @_builtins.property
     @pulumi.getter
@@ -73489,6 +74409,466 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionRes
         Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
         """
         return pulumi.get(self, "rank")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResult(dict):
+    def __init__(__self__, *,
+                 architecture: _builtins.str,
+                 auto_delete: _builtins.bool,
+                 boot: _builtins.bool,
+                 device_name: _builtins.str,
+                 disk_encryption_keys: Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyResult'],
+                 disk_name: _builtins.str,
+                 disk_size_gb: _builtins.int,
+                 disk_type: _builtins.str,
+                 guest_os_features: Sequence[_builtins.str],
+                 interface: _builtins.str,
+                 labels: Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelResult'],
+                 mode: _builtins.str,
+                 provisioned_iops: _builtins.int,
+                 provisioned_throughput: _builtins.int,
+                 resource_manager_tags: Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagResult'],
+                 resource_policies: Sequence[_builtins.str],
+                 source: _builtins.str,
+                 source_image: _builtins.str,
+                 source_image_encryption_keys: Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyResult'],
+                 source_snapshot: _builtins.str,
+                 source_snapshot_encryption_keys: Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyResult'],
+                 type: _builtins.str):
+        """
+        :param _builtins.str architecture: The architecture of the image. Allowed values are ARM64 or X86_64.
+        :param _builtins.bool auto_delete: Whether or not the disk should be auto-deleted. This defaults to true.
+        :param _builtins.bool boot: Indicates that this is a boot disk. This defaults to false.
+        :param _builtins.str device_name: A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
+        :param Sequence['GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyArgs'] disk_encryption_keys: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param _builtins.str disk_name: Name of the disk. When not provided, this defaults to the name of the instance.
+        :param _builtins.int disk_size_gb: The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
+        :param _builtins.str disk_type: The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
+        :param Sequence[_builtins.str] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images.
+        :param _builtins.str interface: Specifies the disk interface to use for attaching this disk.
+        :param Sequence['GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelArgs'] labels: A set of key/value label pairs to assign to disks.
+        :param _builtins.str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
+        :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        :param Sequence['GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagArgs'] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param Sequence[_builtins.str] resource_policies: A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
+        :param _builtins.str source: The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        :param _builtins.str source_image: The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        :param Sequence['GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyArgs'] source_image_encryption_keys: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        :param _builtins.str source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
+        :param Sequence['GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_keys: The customer-supplied encryption key of the source snapshot.
+        :param _builtins.str type: The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+        """
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "auto_delete", auto_delete)
+        pulumi.set(__self__, "boot", boot)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "disk_encryption_keys", disk_encryption_keys)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "guest_os_features", guest_os_features)
+        pulumi.set(__self__, "interface", interface)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+        pulumi.set(__self__, "resource_policies", resource_policies)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_image", source_image)
+        pulumi.set(__self__, "source_image_encryption_keys", source_image_encryption_keys)
+        pulumi.set(__self__, "source_snapshot", source_snapshot)
+        pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> _builtins.str:
+        """
+        The architecture of the image. Allowed values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
+
+    @_builtins.property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> _builtins.bool:
+        """
+        Whether or not the disk should be auto-deleted. This defaults to true.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def boot(self) -> _builtins.bool:
+        """
+        Indicates that this is a boot disk. This defaults to false.
+        """
+        return pulumi.get(self, "boot")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> _builtins.str:
+        """
+        A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk.
+        """
+        return pulumi.get(self, "device_name")
+
+    @_builtins.property
+    @pulumi.getter(name="diskEncryptionKeys")
+    def disk_encryption_keys(self) -> Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyResult']:
+        """
+        Encrypts or decrypts a disk using a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "disk_encryption_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> _builtins.str:
+        """
+        Name of the disk. When not provided, this defaults to the name of the instance.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> _builtins.int:
+        """
+        The size of the image in gigabytes. If not specified, it will inherit the size of its base image. For SCRATCH disks, the size must be one of 375 or 3000 GB, with a default of 375 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> _builtins.str:
+        """
+        The Google Compute Engine disk type. Such as "pd-ssd", "local-ssd", "pd-balanced" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Sequence[_builtins.str]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @_builtins.property
+    @pulumi.getter
+    def interface(self) -> _builtins.str:
+        """
+        Specifies the disk interface to use for attaching this disk.
+        """
+        return pulumi.get(self, "interface")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelResult']:
+        """
+        A set of key/value label pairs to assign to disks.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If you are attaching or creating a boot disk, this must read-write mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> _builtins.int:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> _builtins.int:
+        """
+        Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagResult']:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Sequence[_builtins.str]:
+        """
+        A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        """
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> _builtins.str:
+        """
+        The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
+        """
+        return pulumi.get(self, "source_image")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageEncryptionKeys")
+    def source_image_encryption_keys(self) -> Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyResult']:
+        """
+        The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        """
+        return pulumi.get(self, "source_image_encryption_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> _builtins.str:
+        """
+        The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSnapshotEncryptionKeys")
+    def source_snapshot_encryption_keys(self) -> Sequence['outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyResult']:
+        """
+        The customer-supplied encryption key of the source snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_keys")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskDiskEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: _builtins.str,
+                 kms_key_service_account: _builtins.str,
+                 raw_key: _builtins.str,
+                 rsa_encrypted_key: _builtins.str):
+        """
+        :param _builtins.str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS.
+        :param _builtins.str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> _builtins.str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> _builtins.str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> _builtins.str:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> _builtins.str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabelResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The unique key of the label to assign to disks.
+        :param _builtins.str value: The value of the label to assign to disks.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The unique key of the label to assign to disks.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the label to assign to disks.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTagResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
+        :param _builtins.str value: The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: _builtins.str,
+                 kms_key_service_account: _builtins.str,
+                 raw_key: _builtins.str,
+                 rsa_encrypted_key: _builtins.str):
+        """
+        :param _builtins.str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> _builtins.str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> _builtins.str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> _builtins.str:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> _builtins.str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceSnapshotEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: _builtins.str,
+                 kms_key_service_account: _builtins.str,
+                 raw_key: _builtins.str,
+                 rsa_encrypted_key: _builtins.str):
+        """
+        :param _builtins.str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        :param _builtins.str rsa_encrypted_key: Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "rsa_encrypted_key", rsa_encrypted_key)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> _builtins.str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> _builtins.str:
+        """
+        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> _builtins.str:
+        """
+        Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "raw_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rsaEncryptedKey")
+    def rsa_encrypted_key(self) -> _builtins.str:
+        """
+        Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.
+        """
+        return pulumi.get(self, "rsa_encrypted_key")
 
 
 @pulumi.output_type
@@ -75793,6 +77173,1042 @@ class GetRegionNetworkEndpointGroupServerlessDeploymentResult(dict):
         API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyAdvancedOptionsConfigResult(dict):
+    def __init__(__self__, *,
+                 json_custom_configs: Sequence['outputs.GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult'],
+                 json_parsing: _builtins.str,
+                 log_level: _builtins.str,
+                 request_body_inspection_size: _builtins.str,
+                 user_ip_request_headers: Sequence[_builtins.str]):
+        """
+        :param Sequence['GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_configs: Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+        :param _builtins.str json_parsing: JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL". Possible values: ["DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL"]
+        :param _builtins.str log_level: Logging level. Supported values include: "NORMAL", "VERBOSE". Possible values: ["NORMAL", "VERBOSE"]
+        :param _builtins.str request_body_inspection_size: The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+               Values are case insensitive. Possible values: ["8KB", "16KB", "32KB", "48KB", "64KB"]
+        :param Sequence[_builtins.str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        pulumi.set(__self__, "json_custom_configs", json_custom_configs)
+        pulumi.set(__self__, "json_parsing", json_parsing)
+        pulumi.set(__self__, "log_level", log_level)
+        pulumi.set(__self__, "request_body_inspection_size", request_body_inspection_size)
+        pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonCustomConfigs")
+    def json_custom_configs(self) -> Sequence['outputs.GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult']:
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+        """
+        return pulumi.get(self, "json_custom_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="jsonParsing")
+    def json_parsing(self) -> _builtins.str:
+        """
+        JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL". Possible values: ["DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL"]
+        """
+        return pulumi.get(self, "json_parsing")
+
+    @_builtins.property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> _builtins.str:
+        """
+        Logging level. Supported values include: "NORMAL", "VERBOSE". Possible values: ["NORMAL", "VERBOSE"]
+        """
+        return pulumi.get(self, "log_level")
+
+    @_builtins.property
+    @pulumi.getter(name="requestBodyInspectionSize")
+    def request_body_inspection_size(self) -> _builtins.str:
+        """
+        The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+        Values are case insensitive. Possible values: ["8KB", "16KB", "32KB", "48KB", "64KB"]
+        """
+        return pulumi.get(self, "request_body_inspection_size")
+
+    @_builtins.property
+    @pulumi.getter(name="userIpRequestHeaders")
+    def user_ip_request_headers(self) -> Sequence[_builtins.str]:
+        """
+        An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        return pulumi.get(self, "user_ip_request_headers")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResult(dict):
+    def __init__(__self__, *,
+                 content_types: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] content_types: A list of custom Content-Type header values to apply the JSON parsing.
+        """
+        pulumi.set(__self__, "content_types", content_types)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[_builtins.str]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing.
+        """
+        return pulumi.get(self, "content_types")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyDdosProtectionConfigResult(dict):
+    def __init__(__self__, *,
+                 ddos_protection: _builtins.str):
+        """
+        :param _builtins.str ddos_protection: Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+               - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+               - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+               - ADVANCED_PREVIEW: flag to enable the security policy in preview mode. Possible values: ["ADVANCED", "ADVANCED_PREVIEW", "STANDARD"]
+        """
+        pulumi.set(__self__, "ddos_protection", ddos_protection)
+
+    @_builtins.property
+    @pulumi.getter(name="ddosProtection")
+    def ddos_protection(self) -> _builtins.str:
+        """
+        Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+        - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED_PREVIEW: flag to enable the security policy in preview mode. Possible values: ["ADVANCED", "ADVANCED_PREVIEW", "STANDARD"]
+        """
+        return pulumi.get(self, "ddos_protection")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 description: _builtins.str,
+                 matches: Sequence['outputs.GetRegionSecurityPolicyRuleMatchResult'],
+                 network_matches: Sequence['outputs.GetRegionSecurityPolicyRuleNetworkMatchResult'],
+                 preconfigured_waf_configs: Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigResult'],
+                 preview: _builtins.bool,
+                 priority: _builtins.int,
+                 rate_limit_options: Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionResult']):
+        """
+        :param _builtins.str action: The Action to perform when the rule is matched. The following are the valid actions:
+               
+               * allow: allow access to target.
+               
+               * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+               
+               * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+               
+               * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+               
+               * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        :param _builtins.str description: An optional description of this resource. Provide this property when you create the resource.
+        :param Sequence['GetRegionSecurityPolicyRuleMatchArgs'] matches: A match condition that incoming traffic is evaluated against.
+               If it evaluates to true, the corresponding 'action' is enforced.
+        :param Sequence['GetRegionSecurityPolicyRuleNetworkMatchArgs'] network_matches: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+               The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+               Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+               Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+               For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+               Example:
+               networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
+               The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+        :param Sequence['GetRegionSecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_configs: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        :param _builtins.bool preview: If set to true, the specified action is not enforced.
+        :param _builtins.int priority: An integer indicating the priority of a rule in the list.
+               The priority must be a positive value between 0 and 2147483647.
+               Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+        :param Sequence['GetRegionSecurityPolicyRuleRateLimitOptionArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "matches", matches)
+        pulumi.set(__self__, "network_matches", network_matches)
+        pulumi.set(__self__, "preconfigured_waf_configs", preconfigured_waf_configs)
+        pulumi.set(__self__, "preview", preview)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "rate_limit_options", rate_limit_options)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        The Action to perform when the rule is matched. The following are the valid actions:
+
+        * allow: allow access to target.
+
+        * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+
+        * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+
+        * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+
+        * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def matches(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleMatchResult']:
+        """
+        A match condition that incoming traffic is evaluated against.
+        If it evaluates to true, the corresponding 'action' is enforced.
+        """
+        return pulumi.get(self, "matches")
+
+    @_builtins.property
+    @pulumi.getter(name="networkMatches")
+    def network_matches(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleNetworkMatchResult']:
+        """
+        A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+        Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+        Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+        For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+        Example:
+        networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
+        The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+        """
+        return pulumi.get(self, "network_matches")
+
+    @_builtins.property
+    @pulumi.getter(name="preconfiguredWafConfigs")
+    def preconfigured_waf_configs(self) -> Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigResult']:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        """
+        return pulumi.get(self, "preconfigured_waf_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def preview(self) -> _builtins.bool:
+        """
+        If set to true, the specified action is not enforced.
+        """
+        return pulumi.get(self, "preview")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> _builtins.int:
+        """
+        An integer indicating the priority of a rule in the list.
+        The priority must be a positive value between 0 and 2147483647.
+        Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionResult']:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleMatchResult(dict):
+    def __init__(__self__, *,
+                 configs: Sequence['outputs.GetRegionSecurityPolicyRuleMatchConfigResult'],
+                 exprs: Sequence['outputs.GetRegionSecurityPolicyRuleMatchExprResult'],
+                 versioned_expr: _builtins.str):
+        """
+        :param Sequence['GetRegionSecurityPolicyRuleMatchConfigArgs'] configs: The configuration options available when specifying versionedExpr.
+               This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+        :param Sequence['GetRegionSecurityPolicyRuleMatchExprArgs'] exprs: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
+        :param _builtins.str versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified.
+               Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. Possible values: ["SRC_IPS_V1"]
+        """
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "exprs", exprs)
+        pulumi.set(__self__, "versioned_expr", versioned_expr)
+
+    @_builtins.property
+    @pulumi.getter
+    def configs(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleMatchConfigResult']:
+        """
+        The configuration options available when specifying versionedExpr.
+        This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+        """
+        return pulumi.get(self, "configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exprs(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleMatchExprResult']:
+        """
+        User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. See [Sample expressions](https://cloud.google.com/armor/docs/configure-security-policies#sample-expressions) for examples.
+        """
+        return pulumi.get(self, "exprs")
+
+    @_builtins.property
+    @pulumi.getter(name="versionedExpr")
+    def versioned_expr(self) -> _builtins.str:
+        """
+        Preconfigured versioned expression. If this field is specified, config must also be specified.
+        Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config. Possible values: ["SRC_IPS_V1"]
+        """
+        return pulumi.get(self, "versioned_expr")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleMatchConfigResult(dict):
+    def __init__(__self__, *,
+                 src_ip_ranges: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+        """
+        pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Sequence[_builtins.str]:
+        """
+        CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleMatchExprResult(dict):
+    def __init__(__self__, *,
+                 expression: _builtins.str):
+        """
+        :param _builtins.str expression: Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+        pulumi.set(__self__, "expression", expression)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> _builtins.str:
+        """
+        Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+        """
+        return pulumi.get(self, "expression")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleNetworkMatchResult(dict):
+    def __init__(__self__, *,
+                 dest_ip_ranges: Sequence[_builtins.str],
+                 dest_ports: Sequence[_builtins.str],
+                 ip_protocols: Sequence[_builtins.str],
+                 src_asns: Sequence[_builtins.int],
+                 src_ip_ranges: Sequence[_builtins.str],
+                 src_ports: Sequence[_builtins.str],
+                 src_region_codes: Sequence[_builtins.str],
+                 user_defined_fields: Sequence['outputs.GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldResult']):
+        """
+        :param Sequence[_builtins.str] dest_ip_ranges: Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        :param Sequence[_builtins.str] dest_ports: Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        :param Sequence[_builtins.str] ip_protocols: IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+        :param Sequence[_builtins.int] src_asns: BGP Autonomous System Number associated with the source IP address.
+        :param Sequence[_builtins.str] src_ip_ranges: Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        :param Sequence[_builtins.str] src_ports: Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        :param Sequence[_builtins.str] src_region_codes: Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+        :param Sequence['GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs'] user_defined_fields: User-defined fields. Each element names a defined field and lists the matching values for that field.
+        """
+        pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        pulumi.set(__self__, "dest_ports", dest_ports)
+        pulumi.set(__self__, "ip_protocols", ip_protocols)
+        pulumi.set(__self__, "src_asns", src_asns)
+        pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        pulumi.set(__self__, "src_ports", src_ports)
+        pulumi.set(__self__, "src_region_codes", src_region_codes)
+        pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Sequence[_builtins.str]:
+        """
+        Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="destPorts")
+    def dest_ports(self) -> Sequence[_builtins.str]:
+        """
+        Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        return pulumi.get(self, "dest_ports")
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocols")
+    def ip_protocols(self) -> Sequence[_builtins.str]:
+        """
+        IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+        """
+        return pulumi.get(self, "ip_protocols")
+
+    @_builtins.property
+    @pulumi.getter(name="srcAsns")
+    def src_asns(self) -> Sequence[_builtins.int]:
+        """
+        BGP Autonomous System Number associated with the source IP address.
+        """
+        return pulumi.get(self, "src_asns")
+
+    @_builtins.property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Sequence[_builtins.str]:
+        """
+        Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="srcPorts")
+    def src_ports(self) -> Sequence[_builtins.str]:
+        """
+        Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        return pulumi.get(self, "src_ports")
+
+    @_builtins.property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Sequence[_builtins.str]:
+        """
+        Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldResult']:
+        """
+        User-defined fields. Each element names a defined field and lists the matching values for that field.
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleNetworkMatchUserDefinedFieldResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str name: The name of the Region Security Policy.
+        :param Sequence[_builtins.str] values: Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Region Security Policy.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRulePreconfiguredWafConfigResult(dict):
+    def __init__(__self__, *,
+                 exclusions: Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionResult']):
+        """
+        :param Sequence['GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionArgs'] exclusions: An exclusion to apply during preconfigured WAF evaluation.
+        """
+        pulumi.set(__self__, "exclusions", exclusions)
+
+    @_builtins.property
+    @pulumi.getter
+    def exclusions(self) -> Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionResult']:
+        """
+        An exclusion to apply during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "exclusions")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionResult(dict):
+    def __init__(__self__, *,
+                 request_cookies: Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult'],
+                 request_headers: Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult'],
+                 request_query_params: Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult'],
+                 request_uris: Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult'],
+                 target_rule_ids: Sequence[_builtins.str],
+                 target_rule_set: _builtins.str):
+        """
+        :param Sequence['GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs'] request_cookies: Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs'] request_headers: Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs'] request_query_params: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+               Note that the parameter can be in the query string or in the POST body.
+        :param Sequence['GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs'] request_uris: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+               When specifying this field, the query or fragment part should be excluded.
+        :param Sequence[_builtins.str] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+               If omitted, it refers to all the rule IDs under the WAF rule set.
+        :param _builtins.str target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        pulumi.set(__self__, "request_cookies", request_cookies)
+        pulumi.set(__self__, "request_headers", request_headers)
+        pulumi.set(__self__, "request_query_params", request_query_params)
+        pulumi.set(__self__, "request_uris", request_uris)
+        pulumi.set(__self__, "target_rule_ids", target_rule_ids)
+        pulumi.set(__self__, "target_rule_set", target_rule_set)
+
+    @_builtins.property
+    @pulumi.getter(name="requestCookies")
+    def request_cookies(self) -> Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult']:
+        """
+        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_cookies")
+
+    @_builtins.property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult']:
+        """
+        Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="requestQueryParams")
+    def request_query_params(self) -> Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult']:
+        """
+        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
+        Note that the parameter can be in the query string or in the POST body.
+        """
+        return pulumi.get(self, "request_query_params")
+
+    @_builtins.property
+    @pulumi.getter(name="requestUris")
+    def request_uris(self) -> Sequence['outputs.GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult']:
+        """
+        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
+        When specifying this field, the query or fragment part should be excluded.
+        """
+        return pulumi.get(self, "request_uris")
+
+    @_builtins.property
+    @pulumi.getter(name="targetRuleIds")
+    def target_rule_ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
+        If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+        return pulumi.get(self, "target_rule_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="targetRuleSet")
+    def target_rule_set(self) -> _builtins.str:
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        return pulumi.get(self, "target_rule_set")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        :param _builtins.str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        :param _builtins.str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        :param _builtins.str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               Available options:
+               EQUALS: The operator matches if the field value equals the specified value.
+               STARTS_WITH: The operator matches if the field value starts with the specified value.
+               ENDS_WITH: The operator matches if the field value ends with the specified value.
+               CONTAINS: The operator matches if the field value contains the specified value.
+               EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        :param _builtins.str value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+               The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        You can specify an exact match or a partial match by using a field operator and a field value.
+        Available options:
+        EQUALS: The operator matches if the field value equals the specified value.
+        STARTS_WITH: The operator matches if the field value starts with the specified value.
+        ENDS_WITH: The operator matches if the field value ends with the specified value.
+        CONTAINS: The operator matches if the field value contains the specified value.
+        EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
+        The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleRateLimitOptionResult(dict):
+    def __init__(__self__, *,
+                 ban_duration_sec: _builtins.int,
+                 ban_thresholds: Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdResult'],
+                 conform_action: _builtins.str,
+                 enforce_on_key: _builtins.str,
+                 enforce_on_key_configs: Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult'],
+                 enforce_on_key_name: _builtins.str,
+                 exceed_action: _builtins.str,
+                 rate_limit_thresholds: Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult']):
+        """
+        :param _builtins.int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban".
+               If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        :param Sequence['GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdArgs'] ban_thresholds: Can only be specified if the action for the rule is "rate_based_ban".
+               If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        :param _builtins.str conform_action: Action to take for requests that are under the configured rate limit threshold.
+               Valid option is "allow" only.
+        :param _builtins.str enforce_on_key: Determines the key to enforce the rateLimitThreshold on. Possible values are:
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
+               * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+        :param Sequence['GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigArgs'] enforce_on_key_configs: If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+               You can specify up to 3 enforceOnKeyConfigs.
+               If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+        :param _builtins.str enforce_on_key_name: Rate limit key name applicable only for the following key types:
+               HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+               HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param _builtins.str exceed_action: Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+               Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        :param Sequence['GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdArgs'] rate_limit_thresholds: Threshold at which to begin ratelimiting.
+        """
+        pulumi.set(__self__, "ban_duration_sec", ban_duration_sec)
+        pulumi.set(__self__, "ban_thresholds", ban_thresholds)
+        pulumi.set(__self__, "conform_action", conform_action)
+        pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        pulumi.set(__self__, "enforce_on_key_configs", enforce_on_key_configs)
+        pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        pulumi.set(__self__, "exceed_action", exceed_action)
+        pulumi.set(__self__, "rate_limit_thresholds", rate_limit_thresholds)
+
+    @_builtins.property
+    @pulumi.getter(name="banDurationSec")
+    def ban_duration_sec(self) -> _builtins.int:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+        """
+        return pulumi.get(self, "ban_duration_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="banThresholds")
+    def ban_thresholds(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdResult']:
+        """
+        Can only be specified if the action for the rule is "rate_based_ban".
+        If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+        """
+        return pulumi.get(self, "ban_thresholds")
+
+    @_builtins.property
+    @pulumi.getter(name="conformAction")
+    def conform_action(self) -> _builtins.str:
+        """
+        Action to take for requests that are under the configured rate limit threshold.
+        Valid option is "allow" only.
+        """
+        return pulumi.get(self, "conform_action")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnKey")
+    def enforce_on_key(self) -> _builtins.str:
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+        """
+        return pulumi.get(self, "enforce_on_key")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnKeyConfigs")
+    def enforce_on_key_configs(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult']:
+        """
+        If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.
+        You can specify up to 3 enforceOnKeyConfigs.
+        If enforceOnKeyConfigs is specified, enforceOnKey must not be specified.
+        """
+        return pulumi.get(self, "enforce_on_key_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> _builtins.str:
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="exceedAction")
+    def exceed_action(self) -> _builtins.str:
+        """
+        Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
+        Valid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.
+        """
+        return pulumi.get(self, "exceed_action")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimitThresholds")
+    def rate_limit_thresholds(self) -> Sequence['outputs.GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult']:
+        """
+        Threshold at which to begin ratelimiting.
+        """
+        return pulumi.get(self, "rate_limit_thresholds")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleRateLimitOptionBanThresholdResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.int,
+                 interval_sec: _builtins.int):
+        """
+        :param _builtins.int count: Number of HTTP(S) requests for calculating the threshold.
+        :param _builtins.int interval_sec: Interval over which the threshold is computed.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> _builtins.int:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfigResult(dict):
+    def __init__(__self__, *,
+                 enforce_on_key_name: _builtins.str,
+                 enforce_on_key_type: _builtins.str):
+        """
+        :param _builtins.str enforce_on_key_name: Rate limit key name applicable only for the following key types:
+               HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+               HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param _builtins.str enforce_on_key_type: Determines the key to enforce the rateLimitThreshold on. Possible values are:
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
+               * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+               * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+        """
+        pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        pulumi.set(__self__, "enforce_on_key_type", enforce_on_key_type)
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> _builtins.str:
+        """
+        Rate limit key name applicable only for the following key types:
+        HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.
+        HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceOnKeyType")
+    def enforce_on_key_type(self) -> _builtins.str:
+        """
+        Determines the key to enforce the rateLimitThreshold on. Possible values are:
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
+        * TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.
+        * USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: ["ALL", "IP", "HTTP_HEADER", "XFF_IP", "HTTP_COOKIE", "HTTP_PATH", "SNI", "REGION_CODE", "TLS_JA3_FINGERPRINT", "TLS_JA4_FINGERPRINT", "USER_IP"]
+        """
+        return pulumi.get(self, "enforce_on_key_type")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyRuleRateLimitOptionRateLimitThresholdResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.int,
+                 interval_sec: _builtins.int):
+        """
+        :param _builtins.int count: Number of HTTP(S) requests for calculating the threshold.
+        :param _builtins.int interval_sec: Interval over which the threshold is computed.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "interval_sec", interval_sec)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        Number of HTTP(S) requests for calculating the threshold.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter(name="intervalSec")
+    def interval_sec(self) -> _builtins.int:
+        """
+        Interval over which the threshold is computed.
+        """
+        return pulumi.get(self, "interval_sec")
+
+
+@pulumi.output_type
+class GetRegionSecurityPolicyUserDefinedFieldResult(dict):
+    def __init__(__self__, *,
+                 base: _builtins.str,
+                 mask: _builtins.str,
+                 name: _builtins.str,
+                 offset: _builtins.int,
+                 size: _builtins.int):
+        """
+        :param _builtins.str base: The base relative to which 'offset' is measured. Possible values are:
+               - IPV4: Points to the beginning of the IPv4 header.
+               - IPV6: Points to the beginning of the IPv6 header.
+               - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+               - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. Possible values: ["IPV4", "IPV6", "TCP", "UDP"]
+        :param _builtins.str mask: If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+               Encoded as a hexadecimal number (starting with "0x").
+               The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+        :param _builtins.str name: The name of the Region Security Policy.
+        :param _builtins.int offset: Offset of the first byte of the field (in network byte order) relative to 'base'.
+        :param _builtins.int size: Size of the field in bytes. Valid values: 1-4.
+        """
+        pulumi.set(__self__, "base", base)
+        pulumi.set(__self__, "mask", mask)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def base(self) -> _builtins.str:
+        """
+        The base relative to which 'offset' is measured. Possible values are:
+        - IPV4: Points to the beginning of the IPv4 header.
+        - IPV6: Points to the beginning of the IPv6 header.
+        - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+        - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. Possible values: ["IPV4", "IPV6", "TCP", "UDP"]
+        """
+        return pulumi.get(self, "base")
+
+    @_builtins.property
+    @pulumi.getter
+    def mask(self) -> _builtins.str:
+        """
+        If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+        Encoded as a hexadecimal number (starting with "0x").
+        The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+        """
+        return pulumi.get(self, "mask")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Region Security Policy.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def offset(self) -> _builtins.int:
+        """
+        Offset of the first byte of the field (in network byte order) relative to 'base'.
+        """
+        return pulumi.get(self, "offset")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the field in bytes. Valid values: 1-4.
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -79969,6 +82385,258 @@ class GetSnapshotSourceDiskEncryptionKeyResult(dict):
         RFC 4648 base64 to either encrypt or decrypt this resource.
         """
         return pulumi.get(self, "rsa_encrypted_key")
+
+
+@pulumi.output_type
+class GetStoragePoolResourceStatusResult(dict):
+    def __init__(__self__, *,
+                 disk_count: _builtins.str,
+                 last_resize_timestamp: _builtins.str,
+                 max_total_provisioned_disk_capacity_gb: _builtins.str,
+                 pool_used_capacity_bytes: _builtins.str,
+                 pool_used_iops: _builtins.str,
+                 pool_used_throughput: _builtins.str,
+                 pool_user_written_bytes: _builtins.str,
+                 total_provisioned_disk_capacity_gb: _builtins.str,
+                 total_provisioned_disk_iops: _builtins.str,
+                 total_provisioned_disk_throughput: _builtins.str):
+        """
+        :param _builtins.str disk_count: Number of disks used.
+        :param _builtins.str last_resize_timestamp: Timestamp of the last successful resize in RFC3339 text format.
+        :param _builtins.str max_total_provisioned_disk_capacity_gb: Maximum allowed aggregate disk size in gigabytes.
+        :param _builtins.str pool_used_capacity_bytes: Space used by data stored in disks within the storage pool (in bytes).
+               This will reflect the total number of bytes written to the disks in the pool,
+               in contrast to the capacity of those disks.
+        :param _builtins.str pool_used_iops: Sum of all the disks' provisioned IOPS, minus some amount
+               that is allowed per disk that is not counted towards pool's IOPS capacity.
+               For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        :param _builtins.str pool_used_throughput: Sum of all the disks' provisioned throughput in MB/s.
+        :param _builtins.str pool_user_written_bytes: Amount of data written into the pool, before it is compacted.
+        :param _builtins.str total_provisioned_disk_capacity_gb: Sum of all the capacity provisioned in disks in this storage pool.
+               A disk's provisioned capacity is the same as its total capacity.
+        :param _builtins.str total_provisioned_disk_iops: Sum of all the disks' provisioned IOPS.
+        :param _builtins.str total_provisioned_disk_throughput: Sum of all the disks' provisioned throughput in MB/s,
+               minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        pulumi.set(__self__, "disk_count", disk_count)
+        pulumi.set(__self__, "last_resize_timestamp", last_resize_timestamp)
+        pulumi.set(__self__, "max_total_provisioned_disk_capacity_gb", max_total_provisioned_disk_capacity_gb)
+        pulumi.set(__self__, "pool_used_capacity_bytes", pool_used_capacity_bytes)
+        pulumi.set(__self__, "pool_used_iops", pool_used_iops)
+        pulumi.set(__self__, "pool_used_throughput", pool_used_throughput)
+        pulumi.set(__self__, "pool_user_written_bytes", pool_user_written_bytes)
+        pulumi.set(__self__, "total_provisioned_disk_capacity_gb", total_provisioned_disk_capacity_gb)
+        pulumi.set(__self__, "total_provisioned_disk_iops", total_provisioned_disk_iops)
+        pulumi.set(__self__, "total_provisioned_disk_throughput", total_provisioned_disk_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> _builtins.str:
+        """
+        Number of disks used.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @_builtins.property
+    @pulumi.getter(name="lastResizeTimestamp")
+    def last_resize_timestamp(self) -> _builtins.str:
+        """
+        Timestamp of the last successful resize in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_resize_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="maxTotalProvisionedDiskCapacityGb")
+    def max_total_provisioned_disk_capacity_gb(self) -> _builtins.str:
+        """
+        Maximum allowed aggregate disk size in gigabytes.
+        """
+        return pulumi.get(self, "max_total_provisioned_disk_capacity_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUsedCapacityBytes")
+    def pool_used_capacity_bytes(self) -> _builtins.str:
+        """
+        Space used by data stored in disks within the storage pool (in bytes).
+        This will reflect the total number of bytes written to the disks in the pool,
+        in contrast to the capacity of those disks.
+        """
+        return pulumi.get(self, "pool_used_capacity_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUsedIops")
+    def pool_used_iops(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned IOPS, minus some amount
+        that is allowed per disk that is not counted towards pool's IOPS capacity.
+        For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        """
+        return pulumi.get(self, "pool_used_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUsedThroughput")
+    def pool_used_throughput(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned throughput in MB/s.
+        """
+        return pulumi.get(self, "pool_used_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUserWrittenBytes")
+    def pool_user_written_bytes(self) -> _builtins.str:
+        """
+        Amount of data written into the pool, before it is compacted.
+        """
+        return pulumi.get(self, "pool_user_written_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalProvisionedDiskCapacityGb")
+    def total_provisioned_disk_capacity_gb(self) -> _builtins.str:
+        """
+        Sum of all the capacity provisioned in disks in this storage pool.
+        A disk's provisioned capacity is the same as its total capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_capacity_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="totalProvisionedDiskIops")
+    def total_provisioned_disk_iops(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned IOPS.
+        """
+        return pulumi.get(self, "total_provisioned_disk_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="totalProvisionedDiskThroughput")
+    def total_provisioned_disk_throughput(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned throughput in MB/s,
+        minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_throughput")
+
+
+@pulumi.output_type
+class GetStoragePoolStatusResult(dict):
+    def __init__(__self__, *,
+                 disk_count: _builtins.str,
+                 last_resize_timestamp: _builtins.str,
+                 max_total_provisioned_disk_capacity_gb: _builtins.str,
+                 pool_used_capacity_bytes: _builtins.str,
+                 pool_used_iops: _builtins.str,
+                 pool_used_throughput: _builtins.str,
+                 pool_user_written_bytes: _builtins.str,
+                 total_provisioned_disk_capacity_gb: _builtins.str,
+                 total_provisioned_disk_iops: _builtins.str,
+                 total_provisioned_disk_throughput: _builtins.str):
+        """
+        :param _builtins.str disk_count: Number of disks used.
+        :param _builtins.str last_resize_timestamp: Timestamp of the last successful resize in RFC3339 text format.
+        :param _builtins.str max_total_provisioned_disk_capacity_gb: Maximum allowed aggregate disk size in gigabytes.
+        :param _builtins.str pool_used_capacity_bytes: Space used by data stored in disks within the storage pool (in bytes).
+               This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        :param _builtins.str pool_used_iops: Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        :param _builtins.str pool_used_throughput: Sum of all the disks' provisioned throughput in MB/s.
+        :param _builtins.str pool_user_written_bytes: Amount of data written into the pool, before it is compacted.
+        :param _builtins.str total_provisioned_disk_capacity_gb: Sum of all the capacity provisioned in disks in this storage pool.
+               A disk's provisioned capacity is the same as its total capacity.
+        :param _builtins.str total_provisioned_disk_iops: Sum of all the disks' provisioned IOPS.
+        :param _builtins.str total_provisioned_disk_throughput: Sum of all the disks' provisioned throughput in MB/s,
+               minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        pulumi.set(__self__, "disk_count", disk_count)
+        pulumi.set(__self__, "last_resize_timestamp", last_resize_timestamp)
+        pulumi.set(__self__, "max_total_provisioned_disk_capacity_gb", max_total_provisioned_disk_capacity_gb)
+        pulumi.set(__self__, "pool_used_capacity_bytes", pool_used_capacity_bytes)
+        pulumi.set(__self__, "pool_used_iops", pool_used_iops)
+        pulumi.set(__self__, "pool_used_throughput", pool_used_throughput)
+        pulumi.set(__self__, "pool_user_written_bytes", pool_user_written_bytes)
+        pulumi.set(__self__, "total_provisioned_disk_capacity_gb", total_provisioned_disk_capacity_gb)
+        pulumi.set(__self__, "total_provisioned_disk_iops", total_provisioned_disk_iops)
+        pulumi.set(__self__, "total_provisioned_disk_throughput", total_provisioned_disk_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> _builtins.str:
+        """
+        Number of disks used.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @_builtins.property
+    @pulumi.getter(name="lastResizeTimestamp")
+    def last_resize_timestamp(self) -> _builtins.str:
+        """
+        Timestamp of the last successful resize in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_resize_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="maxTotalProvisionedDiskCapacityGb")
+    def max_total_provisioned_disk_capacity_gb(self) -> _builtins.str:
+        """
+        Maximum allowed aggregate disk size in gigabytes.
+        """
+        return pulumi.get(self, "max_total_provisioned_disk_capacity_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUsedCapacityBytes")
+    def pool_used_capacity_bytes(self) -> _builtins.str:
+        """
+        Space used by data stored in disks within the storage pool (in bytes).
+        This will reflect the total number of bytes written to the disks in the pool, in contrast to the capacity of those disks.
+        """
+        return pulumi.get(self, "pool_used_capacity_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUsedIops")
+    def pool_used_iops(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned IOPS, minus some amount that is allowed per disk that is not counted towards pool's IOPS capacity. For more information, see https://cloud.google.com/compute/docs/disks/storage-pools.
+        """
+        return pulumi.get(self, "pool_used_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUsedThroughput")
+    def pool_used_throughput(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned throughput in MB/s.
+        """
+        return pulumi.get(self, "pool_used_throughput")
+
+    @_builtins.property
+    @pulumi.getter(name="poolUserWrittenBytes")
+    def pool_user_written_bytes(self) -> _builtins.str:
+        """
+        Amount of data written into the pool, before it is compacted.
+        """
+        return pulumi.get(self, "pool_user_written_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalProvisionedDiskCapacityGb")
+    def total_provisioned_disk_capacity_gb(self) -> _builtins.str:
+        """
+        Sum of all the capacity provisioned in disks in this storage pool.
+        A disk's provisioned capacity is the same as its total capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_capacity_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="totalProvisionedDiskIops")
+    def total_provisioned_disk_iops(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned IOPS.
+        """
+        return pulumi.get(self, "total_provisioned_disk_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="totalProvisionedDiskThroughput")
+    def total_provisioned_disk_throughput(self) -> _builtins.str:
+        """
+        Sum of all the disks' provisioned throughput in MB/s,
+        minus some amount that is allowed per disk that is not counted towards pool's throughput capacity.
+        """
+        return pulumi.get(self, "total_provisioned_disk_throughput")
 
 
 @pulumi.output_type

@@ -24,6 +24,7 @@ class NotebookExecutionArgs:
                  display_name: pulumi.Input[_builtins.str],
                  gcs_output_uri: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 custom_environment_spec: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs']] = None,
                  dataform_repository_source: Optional[pulumi.Input['NotebookExecutionDataformRepositorySourceArgs']] = None,
                  direct_notebook_source: Optional[pulumi.Input['NotebookExecutionDirectNotebookSourceArgs']] = None,
                  execution_timeout: Optional[pulumi.Input[_builtins.str]] = None,
@@ -38,6 +39,8 @@ class NotebookExecutionArgs:
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Notebook Execution.
         :param pulumi.Input[_builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
+        :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs'] custom_environment_spec: Compute configuration to use for an execution job
+               Structure is documented below.
         :param pulumi.Input['NotebookExecutionDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionDirectNotebookSourceArgs'] direct_notebook_source: The content of the input notebook in ipynb format.
@@ -55,6 +58,8 @@ class NotebookExecutionArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "gcs_output_uri", gcs_output_uri)
         pulumi.set(__self__, "location", location)
+        if custom_environment_spec is not None:
+            pulumi.set(__self__, "custom_environment_spec", custom_environment_spec)
         if dataform_repository_source is not None:
             pulumi.set(__self__, "dataform_repository_source", dataform_repository_source)
         if direct_notebook_source is not None:
@@ -109,6 +114,19 @@ class NotebookExecutionArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customEnvironmentSpec")
+    def custom_environment_spec(self) -> Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs']]:
+        """
+        Compute configuration to use for an execution job
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_environment_spec")
+
+    @custom_environment_spec.setter
+    def custom_environment_spec(self, value: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs']]):
+        pulumi.set(self, "custom_environment_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dataformRepositorySource")
@@ -226,6 +244,7 @@ class NotebookExecutionArgs:
 @pulumi.input_type
 class _NotebookExecutionState:
     def __init__(__self__, *,
+                 custom_environment_spec: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs']] = None,
                  dataform_repository_source: Optional[pulumi.Input['NotebookExecutionDataformRepositorySourceArgs']] = None,
                  direct_notebook_source: Optional[pulumi.Input['NotebookExecutionDirectNotebookSourceArgs']] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -240,6 +259,8 @@ class _NotebookExecutionState:
                  service_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NotebookExecution resources.
+        :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs'] custom_environment_spec: Compute configuration to use for an execution job
+               Structure is documented below.
         :param pulumi.Input['NotebookExecutionDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionDirectNotebookSourceArgs'] direct_notebook_source: The content of the input notebook in ipynb format.
@@ -257,6 +278,8 @@ class _NotebookExecutionState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] service_account: The service account to run the execution as.
         """
+        if custom_environment_spec is not None:
+            pulumi.set(__self__, "custom_environment_spec", custom_environment_spec)
         if dataform_repository_source is not None:
             pulumi.set(__self__, "dataform_repository_source", dataform_repository_source)
         if direct_notebook_source is not None:
@@ -281,6 +304,19 @@ class _NotebookExecutionState:
             pulumi.set(__self__, "project", project)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="customEnvironmentSpec")
+    def custom_environment_spec(self) -> Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs']]:
+        """
+        Compute configuration to use for an execution job
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_environment_spec")
+
+    @custom_environment_spec.setter
+    def custom_environment_spec(self, value: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecArgs']]):
+        pulumi.set(self, "custom_environment_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dataformRepositorySource")
@@ -437,6 +473,7 @@ class NotebookExecution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_environment_spec: Optional[pulumi.Input[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']]] = None,
                  dataform_repository_source: Optional[pulumi.Input[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']]] = None,
                  direct_notebook_source: Optional[pulumi.Input[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -535,6 +572,86 @@ class NotebookExecution(pulumi.CustomResource):
                     my_runtime_template,
                     output_bucket,
                 ]))
+        ```
+        ### Colab Notebook Execution Custom Env
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_network = gcp.compute.Network("my_network",
+            name="colab-test-default",
+            auto_create_subnetworks=False)
+        my_subnetwork = gcp.compute.Subnetwork("my_subnetwork",
+            name="colab-test-default",
+            network=my_network.id,
+            region="us-central1",
+            ip_cidr_range="10.0.1.0/24")
+        output_bucket = gcp.storage.Bucket("output_bucket",
+            name="my_bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+            display_name="Notebook execution basic",
+            location="us-central1",
+            direct_notebook_source={
+                "content": std.base64encode(input=\"\"\"    {
+              \\"cells\\": [
+                {
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+                  ]
+                }
+              ],
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
+                },
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
+                  },
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
+                }
+              },
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
+            }
+        \"\"\").result,
+            },
+            custom_environment_spec={
+                "machine_spec": {
+                    "machine_type": "n1-standard-2",
+                    "accelerator_type": "NVIDIA_TESLA_T4",
+                    "accelerator_count": 1,
+                },
+                "persistent_disk_spec": {
+                    "disk_type": "pd-standard",
+                    "disk_size_gb": "200",
+                },
+                "network_spec": {
+                    "enable_internet_access": True,
+                    "network": my_network.id,
+                    "subnetwork": my_subnetwork.id,
+                },
+            },
+            gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+            service_account="my@service-account.com",
+            opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
         ### Colab Notebook Execution Full
 
@@ -724,6 +841,8 @@ class NotebookExecution(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']] custom_environment_spec: Compute configuration to use for an execution job
+               Structure is documented below.
         :param pulumi.Input[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
         :param pulumi.Input[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']] direct_notebook_source: The content of the input notebook in ipynb format.
@@ -832,6 +951,86 @@ class NotebookExecution(pulumi.CustomResource):
                     my_runtime_template,
                     output_bucket,
                 ]))
+        ```
+        ### Colab Notebook Execution Custom Env
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        my_network = gcp.compute.Network("my_network",
+            name="colab-test-default",
+            auto_create_subnetworks=False)
+        my_subnetwork = gcp.compute.Subnetwork("my_subnetwork",
+            name="colab-test-default",
+            network=my_network.id,
+            region="us-central1",
+            ip_cidr_range="10.0.1.0/24")
+        output_bucket = gcp.storage.Bucket("output_bucket",
+            name="my_bucket",
+            location="US",
+            force_destroy=True,
+            uniform_bucket_level_access=True)
+        notebook_execution = gcp.colab.NotebookExecution("notebook-execution",
+            display_name="Notebook execution basic",
+            location="us-central1",
+            direct_notebook_source={
+                "content": std.base64encode(input=\"\"\"    {
+              \\"cells\\": [
+                {
+                  \\"cell_type\\": \\"code\\",
+                  \\"execution_count\\": null,
+                  \\"metadata\\": {},
+                  \\"outputs\\": [],
+                  \\"source\\": [
+                    \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+                  ]
+                }
+              ],
+              \\"metadata\\": {
+                \\"kernelspec\\": {
+                  \\"display_name\\": \\"Python 3\\",
+                  \\"language\\": \\"python\\",
+                  \\"name\\": \\"python3\\"
+                },
+                \\"language_info\\": {
+                  \\"codemirror_mode\\": {
+                    \\"name\\": \\"ipython\\",
+                    \\"version\\": 3
+                  },
+                  \\"file_extension\\": \\".py\\",
+                  \\"mimetype\\": \\"text/x-python\\",
+                  \\"name\\": \\"python\\",
+                  \\"nbconvert_exporter\\": \\"python\\",
+                  \\"pygments_lexer\\": \\"ipython3\\",
+                  \\"version\\": \\"3.8.5\\"
+                }
+              },
+              \\"nbformat\\": 4,
+              \\"nbformat_minor\\": 4
+            }
+        \"\"\").result,
+            },
+            custom_environment_spec={
+                "machine_spec": {
+                    "machine_type": "n1-standard-2",
+                    "accelerator_type": "NVIDIA_TESLA_T4",
+                    "accelerator_count": 1,
+                },
+                "persistent_disk_spec": {
+                    "disk_type": "pd-standard",
+                    "disk_size_gb": "200",
+                },
+                "network_spec": {
+                    "enable_internet_access": True,
+                    "network": my_network.id,
+                    "subnetwork": my_subnetwork.id,
+                },
+            },
+            gcs_output_uri=output_bucket.name.apply(lambda name: f"gs://{name}"),
+            service_account="my@service-account.com",
+            opts = pulumi.ResourceOptions(depends_on=[output_bucket]))
         ```
         ### Colab Notebook Execution Full
 
@@ -1034,6 +1233,7 @@ class NotebookExecution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_environment_spec: Optional[pulumi.Input[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']]] = None,
                  dataform_repository_source: Optional[pulumi.Input[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']]] = None,
                  direct_notebook_source: Optional[pulumi.Input[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1055,6 +1255,7 @@ class NotebookExecution(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NotebookExecutionArgs.__new__(NotebookExecutionArgs)
 
+            __props__.__dict__["custom_environment_spec"] = custom_environment_spec
             __props__.__dict__["dataform_repository_source"] = dataform_repository_source
             __props__.__dict__["direct_notebook_source"] = direct_notebook_source
             if display_name is None and not opts.urn:
@@ -1083,6 +1284,7 @@ class NotebookExecution(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_environment_spec: Optional[pulumi.Input[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']]] = None,
             dataform_repository_source: Optional[pulumi.Input[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']]] = None,
             direct_notebook_source: Optional[pulumi.Input[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1102,6 +1304,8 @@ class NotebookExecution(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']] custom_environment_spec: Compute configuration to use for an execution job
+               Structure is documented below.
         :param pulumi.Input[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
         :param pulumi.Input[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']] direct_notebook_source: The content of the input notebook in ipynb format.
@@ -1123,6 +1327,7 @@ class NotebookExecution(pulumi.CustomResource):
 
         __props__ = _NotebookExecutionState.__new__(_NotebookExecutionState)
 
+        __props__.__dict__["custom_environment_spec"] = custom_environment_spec
         __props__.__dict__["dataform_repository_source"] = dataform_repository_source
         __props__.__dict__["direct_notebook_source"] = direct_notebook_source
         __props__.__dict__["display_name"] = display_name
@@ -1136,6 +1341,15 @@ class NotebookExecution(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service_account"] = service_account
         return NotebookExecution(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="customEnvironmentSpec")
+    def custom_environment_spec(self) -> pulumi.Output[Optional['outputs.NotebookExecutionCustomEnvironmentSpec']]:
+        """
+        Compute configuration to use for an execution job
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_environment_spec")
 
     @_builtins.property
     @pulumi.getter(name="dataformRepositorySource")

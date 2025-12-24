@@ -32,7 +32,7 @@ class OrganizationSecurityPolicyArgs:
         :param pulumi.Input[_builtins.str] display_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
         :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-               Default value is `FIREWALL`.
+               **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
                Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         pulumi.set(__self__, "parent", parent)
@@ -99,7 +99,7 @@ class OrganizationSecurityPolicyArgs:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-        Default value is `FIREWALL`.
+        **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
         Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
@@ -130,7 +130,7 @@ class _OrganizationSecurityPolicyState:
         :param pulumi.Input[_builtins.str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-               Default value is `FIREWALL`.
+               **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
                Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         if description is not None:
@@ -227,7 +227,7 @@ class _OrganizationSecurityPolicyState:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-        Default value is `FIREWALL`.
+        **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
         Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
@@ -254,7 +254,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         To get more information about OrganizationSecurityPolicy, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies)
         * How-to Guides
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
@@ -267,8 +267,9 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
-            parent="organizations/123456789")
+            short_name="my-short-name",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
         ```
 
         ## Import
@@ -297,7 +298,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-               Default value is `FIREWALL`.
+               **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
                Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         ...
@@ -311,7 +312,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         To get more information about OrganizationSecurityPolicy, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies)
         * How-to Guides
             * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
 
@@ -324,8 +325,9 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            display_name="tf-test",
-            parent="organizations/123456789")
+            short_name="my-short-name",
+            parent="organizations/123456789",
+            type="CLOUD_ARMOR")
         ```
 
         ## Import
@@ -417,7 +419,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[_builtins.str] short_name: User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
         :param pulumi.Input[_builtins.str] type: The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-               Default value is `FIREWALL`.
+               **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
                Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -485,10 +487,10 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def type(self) -> pulumi.Output[_builtins.str]:
         """
         The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-        Default value is `FIREWALL`.
+        **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
         Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")

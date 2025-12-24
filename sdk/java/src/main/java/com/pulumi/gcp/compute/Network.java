@@ -236,6 +236,44 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Bgp Standard Mode Delete Med
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
+ *             .name("vpc-network")
+ *             .autoCreateSubnetworks(false)
+ *             .routingMode("GLOBAL")
+ *             .project("my-project-name")
+ *             .bgpBestPathSelectionMode("LEGACY")
+ *             .bgpAlwaysCompareMed(false)
+ *             .deleteBgpAlwaysCompareMed(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -333,6 +371,22 @@ public class Network extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bgpInterRegionCost() {
         return this.bgpInterRegionCost;
+    }
+    /**
+     * If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+     * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+     * 
+     */
+    @Export(name="deleteBgpAlwaysCompareMed", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deleteBgpAlwaysCompareMed;
+
+    /**
+     * @return If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
+     * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
+     * 
+     */
+    public Output<Optional<Boolean>> deleteBgpAlwaysCompareMed() {
+        return Codegen.optional(this.deleteBgpAlwaysCompareMed);
     }
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted

@@ -13,6 +13,1106 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterResourceUsageExportConfigBigqueryDestination struct {
+	// The ID of a BigQuery Dataset.
+	DatasetId string `pulumi:"datasetId"`
+}
+
+// GetClusterResourceUsageExportConfigBigqueryDestinationInput is an input type that accepts GetClusterResourceUsageExportConfigBigqueryDestinationArgs and GetClusterResourceUsageExportConfigBigqueryDestinationOutput values.
+// You can construct a concrete instance of `GetClusterResourceUsageExportConfigBigqueryDestinationInput` via:
+//
+//	GetClusterResourceUsageExportConfigBigqueryDestinationArgs{...}
+type GetClusterResourceUsageExportConfigBigqueryDestinationInput interface {
+	pulumi.Input
+
+	ToGetClusterResourceUsageExportConfigBigqueryDestinationOutput() GetClusterResourceUsageExportConfigBigqueryDestinationOutput
+	ToGetClusterResourceUsageExportConfigBigqueryDestinationOutputWithContext(context.Context) GetClusterResourceUsageExportConfigBigqueryDestinationOutput
+}
+
+type GetClusterResourceUsageExportConfigBigqueryDestinationArgs struct {
+	// The ID of a BigQuery Dataset.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+}
+
+func (GetClusterResourceUsageExportConfigBigqueryDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i GetClusterResourceUsageExportConfigBigqueryDestinationArgs) ToGetClusterResourceUsageExportConfigBigqueryDestinationOutput() GetClusterResourceUsageExportConfigBigqueryDestinationOutput {
+	return i.ToGetClusterResourceUsageExportConfigBigqueryDestinationOutputWithContext(context.Background())
+}
+
+func (i GetClusterResourceUsageExportConfigBigqueryDestinationArgs) ToGetClusterResourceUsageExportConfigBigqueryDestinationOutputWithContext(ctx context.Context) GetClusterResourceUsageExportConfigBigqueryDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
+}
+
+// GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput is an input type that accepts GetClusterResourceUsageExportConfigBigqueryDestinationArray and GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput values.
+// You can construct a concrete instance of `GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput` via:
+//
+//	GetClusterResourceUsageExportConfigBigqueryDestinationArray{ GetClusterResourceUsageExportConfigBigqueryDestinationArgs{...} }
+type GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput() GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput
+	ToGetClusterResourceUsageExportConfigBigqueryDestinationArrayOutputWithContext(context.Context) GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput
+}
+
+type GetClusterResourceUsageExportConfigBigqueryDestinationArray []GetClusterResourceUsageExportConfigBigqueryDestinationInput
+
+func (GetClusterResourceUsageExportConfigBigqueryDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterResourceUsageExportConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i GetClusterResourceUsageExportConfigBigqueryDestinationArray) ToGetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput() GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput {
+	return i.ToGetClusterResourceUsageExportConfigBigqueryDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterResourceUsageExportConfigBigqueryDestinationArray) ToGetClusterResourceUsageExportConfigBigqueryDestinationArrayOutputWithContext(ctx context.Context) GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput)
+}
+
+type GetClusterResourceUsageExportConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetClusterResourceUsageExportConfigBigqueryDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o GetClusterResourceUsageExportConfigBigqueryDestinationOutput) ToGetClusterResourceUsageExportConfigBigqueryDestinationOutput() GetClusterResourceUsageExportConfigBigqueryDestinationOutput {
+	return o
+}
+
+func (o GetClusterResourceUsageExportConfigBigqueryDestinationOutput) ToGetClusterResourceUsageExportConfigBigqueryDestinationOutputWithContext(ctx context.Context) GetClusterResourceUsageExportConfigBigqueryDestinationOutput {
+	return o
+}
+
+// The ID of a BigQuery Dataset.
+func (o GetClusterResourceUsageExportConfigBigqueryDestinationOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterResourceUsageExportConfigBigqueryDestination) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+type GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterResourceUsageExportConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) ToGetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput() GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput {
+	return o
+}
+
+func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) ToGetClusterResourceUsageExportConfigBigqueryDestinationArrayOutputWithContext(ctx context.Context) GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput {
+	return o
+}
+
+func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index(i pulumi.IntInput) GetClusterResourceUsageExportConfigBigqueryDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterResourceUsageExportConfigBigqueryDestination {
+		return vs[0].([]GetClusterResourceUsageExportConfigBigqueryDestination)[vs[1].(int)]
+	}).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
+}
+
+type GetClusterSecretManagerConfig struct {
+	// Enable the Secret manager csi component.
+	Enabled bool `pulumi:"enabled"`
+	// Configuration for Secret Manager auto rotation.
+	RotationConfigs []GetClusterSecretManagerConfigRotationConfig `pulumi:"rotationConfigs"`
+}
+
+// GetClusterSecretManagerConfigInput is an input type that accepts GetClusterSecretManagerConfigArgs and GetClusterSecretManagerConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigInput` via:
+//
+//	GetClusterSecretManagerConfigArgs{...}
+type GetClusterSecretManagerConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigOutput() GetClusterSecretManagerConfigOutput
+	ToGetClusterSecretManagerConfigOutputWithContext(context.Context) GetClusterSecretManagerConfigOutput
+}
+
+type GetClusterSecretManagerConfigArgs struct {
+	// Enable the Secret manager csi component.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Configuration for Secret Manager auto rotation.
+	RotationConfigs GetClusterSecretManagerConfigRotationConfigArrayInput `pulumi:"rotationConfigs"`
+}
+
+func (GetClusterSecretManagerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigArgs) ToGetClusterSecretManagerConfigOutput() GetClusterSecretManagerConfigOutput {
+	return i.ToGetClusterSecretManagerConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigArgs) ToGetClusterSecretManagerConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigOutput)
+}
+
+// GetClusterSecretManagerConfigArrayInput is an input type that accepts GetClusterSecretManagerConfigArray and GetClusterSecretManagerConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigArrayInput` via:
+//
+//	GetClusterSecretManagerConfigArray{ GetClusterSecretManagerConfigArgs{...} }
+type GetClusterSecretManagerConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigArrayOutput() GetClusterSecretManagerConfigArrayOutput
+	ToGetClusterSecretManagerConfigArrayOutputWithContext(context.Context) GetClusterSecretManagerConfigArrayOutput
+}
+
+type GetClusterSecretManagerConfigArray []GetClusterSecretManagerConfigInput
+
+func (GetClusterSecretManagerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigArray) ToGetClusterSecretManagerConfigArrayOutput() GetClusterSecretManagerConfigArrayOutput {
+	return i.ToGetClusterSecretManagerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigArray) ToGetClusterSecretManagerConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigArrayOutput)
+}
+
+type GetClusterSecretManagerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigOutput) ToGetClusterSecretManagerConfigOutput() GetClusterSecretManagerConfigOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigOutput) ToGetClusterSecretManagerConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigOutput {
+	return o
+}
+
+// Enable the Secret manager csi component.
+func (o GetClusterSecretManagerConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Configuration for Secret Manager auto rotation.
+func (o GetClusterSecretManagerConfigOutput) RotationConfigs() GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfig) []GetClusterSecretManagerConfigRotationConfig {
+		return v.RotationConfigs
+	}).(GetClusterSecretManagerConfigRotationConfigArrayOutput)
+}
+
+type GetClusterSecretManagerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigArrayOutput) ToGetClusterSecretManagerConfigArrayOutput() GetClusterSecretManagerConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigArrayOutput) ToGetClusterSecretManagerConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecretManagerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecretManagerConfig {
+		return vs[0].([]GetClusterSecretManagerConfig)[vs[1].(int)]
+	}).(GetClusterSecretManagerConfigOutput)
+}
+
+type GetClusterSecretManagerConfigRotationConfig struct {
+	// Enable the Secret manager auto rotation.
+	Enabled bool `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+	RotationInterval string `pulumi:"rotationInterval"`
+}
+
+// GetClusterSecretManagerConfigRotationConfigInput is an input type that accepts GetClusterSecretManagerConfigRotationConfigArgs and GetClusterSecretManagerConfigRotationConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigRotationConfigInput` via:
+//
+//	GetClusterSecretManagerConfigRotationConfigArgs{...}
+type GetClusterSecretManagerConfigRotationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigRotationConfigOutput() GetClusterSecretManagerConfigRotationConfigOutput
+	ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(context.Context) GetClusterSecretManagerConfigRotationConfigOutput
+}
+
+type GetClusterSecretManagerConfigRotationConfigArgs struct {
+	// Enable the Secret manager auto rotation.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+	RotationInterval pulumi.StringInput `pulumi:"rotationInterval"`
+}
+
+func (GetClusterSecretManagerConfigRotationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArgs) ToGetClusterSecretManagerConfigRotationConfigOutput() GetClusterSecretManagerConfigRotationConfigOutput {
+	return i.ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArgs) ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigRotationConfigOutput)
+}
+
+// GetClusterSecretManagerConfigRotationConfigArrayInput is an input type that accepts GetClusterSecretManagerConfigRotationConfigArray and GetClusterSecretManagerConfigRotationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecretManagerConfigRotationConfigArrayInput` via:
+//
+//	GetClusterSecretManagerConfigRotationConfigArray{ GetClusterSecretManagerConfigRotationConfigArgs{...} }
+type GetClusterSecretManagerConfigRotationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretManagerConfigRotationConfigArrayOutput() GetClusterSecretManagerConfigRotationConfigArrayOutput
+	ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(context.Context) GetClusterSecretManagerConfigRotationConfigArrayOutput
+}
+
+type GetClusterSecretManagerConfigRotationConfigArray []GetClusterSecretManagerConfigRotationConfigInput
+
+func (GetClusterSecretManagerConfigRotationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArray) ToGetClusterSecretManagerConfigRotationConfigArrayOutput() GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return i.ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretManagerConfigRotationConfigArray) ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretManagerConfigRotationConfigArrayOutput)
+}
+
+type GetClusterSecretManagerConfigRotationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigRotationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigOutput) ToGetClusterSecretManagerConfigRotationConfigOutput() GetClusterSecretManagerConfigRotationConfigOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigOutput) ToGetClusterSecretManagerConfigRotationConfigOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigOutput {
+	return o
+}
+
+// Enable the Secret manager auto rotation.
+func (o GetClusterSecretManagerConfigRotationConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfigRotationConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+func (o GetClusterSecretManagerConfigRotationConfigOutput) RotationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecretManagerConfigRotationConfig) string { return v.RotationInterval }).(pulumi.StringOutput)
+}
+
+type GetClusterSecretManagerConfigRotationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretManagerConfigRotationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretManagerConfigRotationConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigArrayOutput) ToGetClusterSecretManagerConfigRotationConfigArrayOutput() GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigArrayOutput) ToGetClusterSecretManagerConfigRotationConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretManagerConfigRotationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretManagerConfigRotationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecretManagerConfigRotationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecretManagerConfigRotationConfig {
+		return vs[0].([]GetClusterSecretManagerConfigRotationConfig)[vs[1].(int)]
+	}).(GetClusterSecretManagerConfigRotationConfigOutput)
+}
+
+type GetClusterSecretSyncConfig struct {
+	// Enable the Sync as k8s secret add-on.
+	Enabled bool `pulumi:"enabled"`
+	// Configuration for Secret Sync auto rotation.
+	RotationConfigs []GetClusterSecretSyncConfigRotationConfig `pulumi:"rotationConfigs"`
+}
+
+// GetClusterSecretSyncConfigInput is an input type that accepts GetClusterSecretSyncConfigArgs and GetClusterSecretSyncConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecretSyncConfigInput` via:
+//
+//	GetClusterSecretSyncConfigArgs{...}
+type GetClusterSecretSyncConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretSyncConfigOutput() GetClusterSecretSyncConfigOutput
+	ToGetClusterSecretSyncConfigOutputWithContext(context.Context) GetClusterSecretSyncConfigOutput
+}
+
+type GetClusterSecretSyncConfigArgs struct {
+	// Enable the Sync as k8s secret add-on.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Configuration for Secret Sync auto rotation.
+	RotationConfigs GetClusterSecretSyncConfigRotationConfigArrayInput `pulumi:"rotationConfigs"`
+}
+
+func (GetClusterSecretSyncConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretSyncConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretSyncConfigArgs) ToGetClusterSecretSyncConfigOutput() GetClusterSecretSyncConfigOutput {
+	return i.ToGetClusterSecretSyncConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretSyncConfigArgs) ToGetClusterSecretSyncConfigOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretSyncConfigOutput)
+}
+
+// GetClusterSecretSyncConfigArrayInput is an input type that accepts GetClusterSecretSyncConfigArray and GetClusterSecretSyncConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecretSyncConfigArrayInput` via:
+//
+//	GetClusterSecretSyncConfigArray{ GetClusterSecretSyncConfigArgs{...} }
+type GetClusterSecretSyncConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretSyncConfigArrayOutput() GetClusterSecretSyncConfigArrayOutput
+	ToGetClusterSecretSyncConfigArrayOutputWithContext(context.Context) GetClusterSecretSyncConfigArrayOutput
+}
+
+type GetClusterSecretSyncConfigArray []GetClusterSecretSyncConfigInput
+
+func (GetClusterSecretSyncConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretSyncConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretSyncConfigArray) ToGetClusterSecretSyncConfigArrayOutput() GetClusterSecretSyncConfigArrayOutput {
+	return i.ToGetClusterSecretSyncConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretSyncConfigArray) ToGetClusterSecretSyncConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretSyncConfigArrayOutput)
+}
+
+type GetClusterSecretSyncConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretSyncConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretSyncConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretSyncConfigOutput) ToGetClusterSecretSyncConfigOutput() GetClusterSecretSyncConfigOutput {
+	return o
+}
+
+func (o GetClusterSecretSyncConfigOutput) ToGetClusterSecretSyncConfigOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigOutput {
+	return o
+}
+
+// Enable the Sync as k8s secret add-on.
+func (o GetClusterSecretSyncConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterSecretSyncConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Configuration for Secret Sync auto rotation.
+func (o GetClusterSecretSyncConfigOutput) RotationConfigs() GetClusterSecretSyncConfigRotationConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterSecretSyncConfig) []GetClusterSecretSyncConfigRotationConfig {
+		return v.RotationConfigs
+	}).(GetClusterSecretSyncConfigRotationConfigArrayOutput)
+}
+
+type GetClusterSecretSyncConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretSyncConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretSyncConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretSyncConfigArrayOutput) ToGetClusterSecretSyncConfigArrayOutput() GetClusterSecretSyncConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretSyncConfigArrayOutput) ToGetClusterSecretSyncConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretSyncConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecretSyncConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecretSyncConfig {
+		return vs[0].([]GetClusterSecretSyncConfig)[vs[1].(int)]
+	}).(GetClusterSecretSyncConfigOutput)
+}
+
+type GetClusterSecretSyncConfigRotationConfig struct {
+	// Enable the Secret sync auto rotation.
+	Enabled bool `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+	RotationInterval string `pulumi:"rotationInterval"`
+}
+
+// GetClusterSecretSyncConfigRotationConfigInput is an input type that accepts GetClusterSecretSyncConfigRotationConfigArgs and GetClusterSecretSyncConfigRotationConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecretSyncConfigRotationConfigInput` via:
+//
+//	GetClusterSecretSyncConfigRotationConfigArgs{...}
+type GetClusterSecretSyncConfigRotationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretSyncConfigRotationConfigOutput() GetClusterSecretSyncConfigRotationConfigOutput
+	ToGetClusterSecretSyncConfigRotationConfigOutputWithContext(context.Context) GetClusterSecretSyncConfigRotationConfigOutput
+}
+
+type GetClusterSecretSyncConfigRotationConfigArgs struct {
+	// Enable the Secret sync auto rotation.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+	RotationInterval pulumi.StringInput `pulumi:"rotationInterval"`
+}
+
+func (GetClusterSecretSyncConfigRotationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretSyncConfigRotationConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretSyncConfigRotationConfigArgs) ToGetClusterSecretSyncConfigRotationConfigOutput() GetClusterSecretSyncConfigRotationConfigOutput {
+	return i.ToGetClusterSecretSyncConfigRotationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretSyncConfigRotationConfigArgs) ToGetClusterSecretSyncConfigRotationConfigOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigRotationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretSyncConfigRotationConfigOutput)
+}
+
+// GetClusterSecretSyncConfigRotationConfigArrayInput is an input type that accepts GetClusterSecretSyncConfigRotationConfigArray and GetClusterSecretSyncConfigRotationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecretSyncConfigRotationConfigArrayInput` via:
+//
+//	GetClusterSecretSyncConfigRotationConfigArray{ GetClusterSecretSyncConfigRotationConfigArgs{...} }
+type GetClusterSecretSyncConfigRotationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecretSyncConfigRotationConfigArrayOutput() GetClusterSecretSyncConfigRotationConfigArrayOutput
+	ToGetClusterSecretSyncConfigRotationConfigArrayOutputWithContext(context.Context) GetClusterSecretSyncConfigRotationConfigArrayOutput
+}
+
+type GetClusterSecretSyncConfigRotationConfigArray []GetClusterSecretSyncConfigRotationConfigInput
+
+func (GetClusterSecretSyncConfigRotationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretSyncConfigRotationConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecretSyncConfigRotationConfigArray) ToGetClusterSecretSyncConfigRotationConfigArrayOutput() GetClusterSecretSyncConfigRotationConfigArrayOutput {
+	return i.ToGetClusterSecretSyncConfigRotationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecretSyncConfigRotationConfigArray) ToGetClusterSecretSyncConfigRotationConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigRotationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecretSyncConfigRotationConfigArrayOutput)
+}
+
+type GetClusterSecretSyncConfigRotationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretSyncConfigRotationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecretSyncConfigRotationConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretSyncConfigRotationConfigOutput) ToGetClusterSecretSyncConfigRotationConfigOutput() GetClusterSecretSyncConfigRotationConfigOutput {
+	return o
+}
+
+func (o GetClusterSecretSyncConfigRotationConfigOutput) ToGetClusterSecretSyncConfigRotationConfigOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigRotationConfigOutput {
+	return o
+}
+
+// Enable the Secret sync auto rotation.
+func (o GetClusterSecretSyncConfigRotationConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterSecretSyncConfigRotationConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The interval between two consecutive rotations. Default rotation interval is 2 minutes
+func (o GetClusterSecretSyncConfigRotationConfigOutput) RotationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecretSyncConfigRotationConfig) string { return v.RotationInterval }).(pulumi.StringOutput)
+}
+
+type GetClusterSecretSyncConfigRotationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecretSyncConfigRotationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecretSyncConfigRotationConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecretSyncConfigRotationConfigArrayOutput) ToGetClusterSecretSyncConfigRotationConfigArrayOutput() GetClusterSecretSyncConfigRotationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretSyncConfigRotationConfigArrayOutput) ToGetClusterSecretSyncConfigRotationConfigArrayOutputWithContext(ctx context.Context) GetClusterSecretSyncConfigRotationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecretSyncConfigRotationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecretSyncConfigRotationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecretSyncConfigRotationConfig {
+		return vs[0].([]GetClusterSecretSyncConfigRotationConfig)[vs[1].(int)]
+	}).(GetClusterSecretSyncConfigRotationConfigOutput)
+}
+
+type GetClusterSecurityPostureConfig struct {
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
+	Mode string `pulumi:"mode"`
+	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
+	VulnerabilityMode string `pulumi:"vulnerabilityMode"`
+}
+
+// GetClusterSecurityPostureConfigInput is an input type that accepts GetClusterSecurityPostureConfigArgs and GetClusterSecurityPostureConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecurityPostureConfigInput` via:
+//
+//	GetClusterSecurityPostureConfigArgs{...}
+type GetClusterSecurityPostureConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecurityPostureConfigOutput() GetClusterSecurityPostureConfigOutput
+	ToGetClusterSecurityPostureConfigOutputWithContext(context.Context) GetClusterSecurityPostureConfigOutput
+}
+
+type GetClusterSecurityPostureConfigArgs struct {
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
+	VulnerabilityMode pulumi.StringInput `pulumi:"vulnerabilityMode"`
+}
+
+func (GetClusterSecurityPostureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecurityPostureConfigArgs) ToGetClusterSecurityPostureConfigOutput() GetClusterSecurityPostureConfigOutput {
+	return i.ToGetClusterSecurityPostureConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecurityPostureConfigArgs) ToGetClusterSecurityPostureConfigOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecurityPostureConfigOutput)
+}
+
+// GetClusterSecurityPostureConfigArrayInput is an input type that accepts GetClusterSecurityPostureConfigArray and GetClusterSecurityPostureConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecurityPostureConfigArrayInput` via:
+//
+//	GetClusterSecurityPostureConfigArray{ GetClusterSecurityPostureConfigArgs{...} }
+type GetClusterSecurityPostureConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecurityPostureConfigArrayOutput() GetClusterSecurityPostureConfigArrayOutput
+	ToGetClusterSecurityPostureConfigArrayOutputWithContext(context.Context) GetClusterSecurityPostureConfigArrayOutput
+}
+
+type GetClusterSecurityPostureConfigArray []GetClusterSecurityPostureConfigInput
+
+func (GetClusterSecurityPostureConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecurityPostureConfigArray) ToGetClusterSecurityPostureConfigArrayOutput() GetClusterSecurityPostureConfigArrayOutput {
+	return i.ToGetClusterSecurityPostureConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecurityPostureConfigArray) ToGetClusterSecurityPostureConfigArrayOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecurityPostureConfigArrayOutput)
+}
+
+type GetClusterSecurityPostureConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecurityPostureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecurityPostureConfigOutput) ToGetClusterSecurityPostureConfigOutput() GetClusterSecurityPostureConfigOutput {
+	return o
+}
+
+func (o GetClusterSecurityPostureConfigOutput) ToGetClusterSecurityPostureConfigOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigOutput {
+	return o
+}
+
+// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.
+func (o GetClusterSecurityPostureConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecurityPostureConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
+func (o GetClusterSecurityPostureConfigOutput) VulnerabilityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecurityPostureConfig) string { return v.VulnerabilityMode }).(pulumi.StringOutput)
+}
+
+type GetClusterSecurityPostureConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecurityPostureConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecurityPostureConfigArrayOutput) ToGetClusterSecurityPostureConfigArrayOutput() GetClusterSecurityPostureConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecurityPostureConfigArrayOutput) ToGetClusterSecurityPostureConfigArrayOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecurityPostureConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecurityPostureConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecurityPostureConfig {
+		return vs[0].([]GetClusterSecurityPostureConfig)[vs[1].(int)]
+	}).(GetClusterSecurityPostureConfigOutput)
+}
+
+type GetClusterServiceExternalIpsConfig struct {
+	// When enabled, services with external ips specified will be allowed.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterServiceExternalIpsConfigInput is an input type that accepts GetClusterServiceExternalIpsConfigArgs and GetClusterServiceExternalIpsConfigOutput values.
+// You can construct a concrete instance of `GetClusterServiceExternalIpsConfigInput` via:
+//
+//	GetClusterServiceExternalIpsConfigArgs{...}
+type GetClusterServiceExternalIpsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterServiceExternalIpsConfigOutput() GetClusterServiceExternalIpsConfigOutput
+	ToGetClusterServiceExternalIpsConfigOutputWithContext(context.Context) GetClusterServiceExternalIpsConfigOutput
+}
+
+type GetClusterServiceExternalIpsConfigArgs struct {
+	// When enabled, services with external ips specified will be allowed.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterServiceExternalIpsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (i GetClusterServiceExternalIpsConfigArgs) ToGetClusterServiceExternalIpsConfigOutput() GetClusterServiceExternalIpsConfigOutput {
+	return i.ToGetClusterServiceExternalIpsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterServiceExternalIpsConfigArgs) ToGetClusterServiceExternalIpsConfigOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterServiceExternalIpsConfigOutput)
+}
+
+// GetClusterServiceExternalIpsConfigArrayInput is an input type that accepts GetClusterServiceExternalIpsConfigArray and GetClusterServiceExternalIpsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterServiceExternalIpsConfigArrayInput` via:
+//
+//	GetClusterServiceExternalIpsConfigArray{ GetClusterServiceExternalIpsConfigArgs{...} }
+type GetClusterServiceExternalIpsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterServiceExternalIpsConfigArrayOutput() GetClusterServiceExternalIpsConfigArrayOutput
+	ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(context.Context) GetClusterServiceExternalIpsConfigArrayOutput
+}
+
+type GetClusterServiceExternalIpsConfigArray []GetClusterServiceExternalIpsConfigInput
+
+func (GetClusterServiceExternalIpsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (i GetClusterServiceExternalIpsConfigArray) ToGetClusterServiceExternalIpsConfigArrayOutput() GetClusterServiceExternalIpsConfigArrayOutput {
+	return i.ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterServiceExternalIpsConfigArray) ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterServiceExternalIpsConfigArrayOutput)
+}
+
+type GetClusterServiceExternalIpsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterServiceExternalIpsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (o GetClusterServiceExternalIpsConfigOutput) ToGetClusterServiceExternalIpsConfigOutput() GetClusterServiceExternalIpsConfigOutput {
+	return o
+}
+
+func (o GetClusterServiceExternalIpsConfigOutput) ToGetClusterServiceExternalIpsConfigOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigOutput {
+	return o
+}
+
+// When enabled, services with external ips specified will be allowed.
+func (o GetClusterServiceExternalIpsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterServiceExternalIpsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterServiceExternalIpsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterServiceExternalIpsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterServiceExternalIpsConfig)(nil)).Elem()
+}
+
+func (o GetClusterServiceExternalIpsConfigArrayOutput) ToGetClusterServiceExternalIpsConfigArrayOutput() GetClusterServiceExternalIpsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterServiceExternalIpsConfigArrayOutput) ToGetClusterServiceExternalIpsConfigArrayOutputWithContext(ctx context.Context) GetClusterServiceExternalIpsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterServiceExternalIpsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterServiceExternalIpsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterServiceExternalIpsConfig {
+		return vs[0].([]GetClusterServiceExternalIpsConfig)[vs[1].(int)]
+	}).(GetClusterServiceExternalIpsConfigOutput)
+}
+
+type GetClusterTpuConfig struct {
+	// Whether Cloud TPU integration is enabled or not
+	Enabled bool `pulumi:"enabled"`
+	// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+	Ipv4CidrBlock string `pulumi:"ipv4CidrBlock"`
+	// Whether to use service networking for Cloud TPU or not
+	UseServiceNetworking bool `pulumi:"useServiceNetworking"`
+}
+
+// GetClusterTpuConfigInput is an input type that accepts GetClusterTpuConfigArgs and GetClusterTpuConfigOutput values.
+// You can construct a concrete instance of `GetClusterTpuConfigInput` via:
+//
+//	GetClusterTpuConfigArgs{...}
+type GetClusterTpuConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterTpuConfigOutput() GetClusterTpuConfigOutput
+	ToGetClusterTpuConfigOutputWithContext(context.Context) GetClusterTpuConfigOutput
+}
+
+type GetClusterTpuConfigArgs struct {
+	// Whether Cloud TPU integration is enabled or not
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+	Ipv4CidrBlock pulumi.StringInput `pulumi:"ipv4CidrBlock"`
+	// Whether to use service networking for Cloud TPU or not
+	UseServiceNetworking pulumi.BoolInput `pulumi:"useServiceNetworking"`
+}
+
+func (GetClusterTpuConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (i GetClusterTpuConfigArgs) ToGetClusterTpuConfigOutput() GetClusterTpuConfigOutput {
+	return i.ToGetClusterTpuConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterTpuConfigArgs) ToGetClusterTpuConfigOutputWithContext(ctx context.Context) GetClusterTpuConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTpuConfigOutput)
+}
+
+// GetClusterTpuConfigArrayInput is an input type that accepts GetClusterTpuConfigArray and GetClusterTpuConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterTpuConfigArrayInput` via:
+//
+//	GetClusterTpuConfigArray{ GetClusterTpuConfigArgs{...} }
+type GetClusterTpuConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterTpuConfigArrayOutput() GetClusterTpuConfigArrayOutput
+	ToGetClusterTpuConfigArrayOutputWithContext(context.Context) GetClusterTpuConfigArrayOutput
+}
+
+type GetClusterTpuConfigArray []GetClusterTpuConfigInput
+
+func (GetClusterTpuConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (i GetClusterTpuConfigArray) ToGetClusterTpuConfigArrayOutput() GetClusterTpuConfigArrayOutput {
+	return i.ToGetClusterTpuConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterTpuConfigArray) ToGetClusterTpuConfigArrayOutputWithContext(ctx context.Context) GetClusterTpuConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterTpuConfigArrayOutput)
+}
+
+type GetClusterTpuConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTpuConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (o GetClusterTpuConfigOutput) ToGetClusterTpuConfigOutput() GetClusterTpuConfigOutput {
+	return o
+}
+
+func (o GetClusterTpuConfigOutput) ToGetClusterTpuConfigOutputWithContext(ctx context.Context) GetClusterTpuConfigOutput {
+	return o
+}
+
+// Whether Cloud TPU integration is enabled or not
+func (o GetClusterTpuConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterTpuConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+func (o GetClusterTpuConfigOutput) Ipv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterTpuConfig) string { return v.Ipv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// Whether to use service networking for Cloud TPU or not
+func (o GetClusterTpuConfigOutput) UseServiceNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterTpuConfig) bool { return v.UseServiceNetworking }).(pulumi.BoolOutput)
+}
+
+type GetClusterTpuConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterTpuConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterTpuConfig)(nil)).Elem()
+}
+
+func (o GetClusterTpuConfigArrayOutput) ToGetClusterTpuConfigArrayOutput() GetClusterTpuConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterTpuConfigArrayOutput) ToGetClusterTpuConfigArrayOutputWithContext(ctx context.Context) GetClusterTpuConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterTpuConfigArrayOutput) Index(i pulumi.IntInput) GetClusterTpuConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterTpuConfig {
+		return vs[0].([]GetClusterTpuConfig)[vs[1].(int)]
+	}).(GetClusterTpuConfigOutput)
+}
+
+type GetClusterUserManagedKeysConfig struct {
+	// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+	AggregationCa string `pulumi:"aggregationCa"`
+	// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+	ClusterCa string `pulumi:"clusterCa"`
+	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKey string `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+	EtcdApiCa string `pulumi:"etcdApiCa"`
+	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+	EtcdPeerCa string `pulumi:"etcdPeerCa"`
+	// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+	GkeopsEtcdBackupEncryptionKey string `pulumi:"gkeopsEtcdBackupEncryptionKey"`
+	// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+	ServiceAccountSigningKeys []string `pulumi:"serviceAccountSigningKeys"`
+	// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+	ServiceAccountVerificationKeys []string `pulumi:"serviceAccountVerificationKeys"`
+}
+
+// GetClusterUserManagedKeysConfigInput is an input type that accepts GetClusterUserManagedKeysConfigArgs and GetClusterUserManagedKeysConfigOutput values.
+// You can construct a concrete instance of `GetClusterUserManagedKeysConfigInput` via:
+//
+//	GetClusterUserManagedKeysConfigArgs{...}
+type GetClusterUserManagedKeysConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterUserManagedKeysConfigOutput() GetClusterUserManagedKeysConfigOutput
+	ToGetClusterUserManagedKeysConfigOutputWithContext(context.Context) GetClusterUserManagedKeysConfigOutput
+}
+
+type GetClusterUserManagedKeysConfigArgs struct {
+	// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+	AggregationCa pulumi.StringInput `pulumi:"aggregationCa"`
+	// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+	ClusterCa pulumi.StringInput `pulumi:"clusterCa"`
+	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKey pulumi.StringInput `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+	EtcdApiCa pulumi.StringInput `pulumi:"etcdApiCa"`
+	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+	EtcdPeerCa pulumi.StringInput `pulumi:"etcdPeerCa"`
+	// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+	GkeopsEtcdBackupEncryptionKey pulumi.StringInput `pulumi:"gkeopsEtcdBackupEncryptionKey"`
+	// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+	ServiceAccountSigningKeys pulumi.StringArrayInput `pulumi:"serviceAccountSigningKeys"`
+	// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+	ServiceAccountVerificationKeys pulumi.StringArrayInput `pulumi:"serviceAccountVerificationKeys"`
+}
+
+func (GetClusterUserManagedKeysConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (i GetClusterUserManagedKeysConfigArgs) ToGetClusterUserManagedKeysConfigOutput() GetClusterUserManagedKeysConfigOutput {
+	return i.ToGetClusterUserManagedKeysConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterUserManagedKeysConfigArgs) ToGetClusterUserManagedKeysConfigOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterUserManagedKeysConfigOutput)
+}
+
+// GetClusterUserManagedKeysConfigArrayInput is an input type that accepts GetClusterUserManagedKeysConfigArray and GetClusterUserManagedKeysConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterUserManagedKeysConfigArrayInput` via:
+//
+//	GetClusterUserManagedKeysConfigArray{ GetClusterUserManagedKeysConfigArgs{...} }
+type GetClusterUserManagedKeysConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterUserManagedKeysConfigArrayOutput() GetClusterUserManagedKeysConfigArrayOutput
+	ToGetClusterUserManagedKeysConfigArrayOutputWithContext(context.Context) GetClusterUserManagedKeysConfigArrayOutput
+}
+
+type GetClusterUserManagedKeysConfigArray []GetClusterUserManagedKeysConfigInput
+
+func (GetClusterUserManagedKeysConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (i GetClusterUserManagedKeysConfigArray) ToGetClusterUserManagedKeysConfigArrayOutput() GetClusterUserManagedKeysConfigArrayOutput {
+	return i.ToGetClusterUserManagedKeysConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterUserManagedKeysConfigArray) ToGetClusterUserManagedKeysConfigArrayOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterUserManagedKeysConfigArrayOutput)
+}
+
+type GetClusterUserManagedKeysConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterUserManagedKeysConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (o GetClusterUserManagedKeysConfigOutput) ToGetClusterUserManagedKeysConfigOutput() GetClusterUserManagedKeysConfigOutput {
+	return o
+}
+
+func (o GetClusterUserManagedKeysConfigOutput) ToGetClusterUserManagedKeysConfigOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigOutput {
+	return o
+}
+
+// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) AggregationCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.AggregationCa }).(pulumi.StringOutput)
+}
+
+// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) ClusterCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.ClusterCa }).(pulumi.StringOutput)
+}
+
+// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+func (o GetClusterUserManagedKeysConfigOutput) ControlPlaneDiskEncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.ControlPlaneDiskEncryptionKey }).(pulumi.StringOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) EtcdApiCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.EtcdApiCa }).(pulumi.StringOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) EtcdPeerCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.EtcdPeerCa }).(pulumi.StringOutput)
+}
+
+// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+func (o GetClusterUserManagedKeysConfigOutput) GkeopsEtcdBackupEncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.GkeopsEtcdBackupEncryptionKey }).(pulumi.StringOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) ServiceAccountSigningKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) []string { return v.ServiceAccountSigningKeys }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) ServiceAccountVerificationKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) []string { return v.ServiceAccountVerificationKeys }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterUserManagedKeysConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterUserManagedKeysConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (o GetClusterUserManagedKeysConfigArrayOutput) ToGetClusterUserManagedKeysConfigArrayOutput() GetClusterUserManagedKeysConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterUserManagedKeysConfigArrayOutput) ToGetClusterUserManagedKeysConfigArrayOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterUserManagedKeysConfigArrayOutput) Index(i pulumi.IntInput) GetClusterUserManagedKeysConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterUserManagedKeysConfig {
+		return vs[0].([]GetClusterUserManagedKeysConfig)[vs[1].(int)]
+	}).(GetClusterUserManagedKeysConfigOutput)
+}
+
+type GetClusterVerticalPodAutoscaling struct {
+	// Enables vertical pod autoscaling.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterVerticalPodAutoscalingInput is an input type that accepts GetClusterVerticalPodAutoscalingArgs and GetClusterVerticalPodAutoscalingOutput values.
+// You can construct a concrete instance of `GetClusterVerticalPodAutoscalingInput` via:
+//
+//	GetClusterVerticalPodAutoscalingArgs{...}
+type GetClusterVerticalPodAutoscalingInput interface {
+	pulumi.Input
+
+	ToGetClusterVerticalPodAutoscalingOutput() GetClusterVerticalPodAutoscalingOutput
+	ToGetClusterVerticalPodAutoscalingOutputWithContext(context.Context) GetClusterVerticalPodAutoscalingOutput
+}
+
+type GetClusterVerticalPodAutoscalingArgs struct {
+	// Enables vertical pod autoscaling.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterVerticalPodAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterVerticalPodAutoscaling)(nil)).Elem()
+}
+
+func (i GetClusterVerticalPodAutoscalingArgs) ToGetClusterVerticalPodAutoscalingOutput() GetClusterVerticalPodAutoscalingOutput {
+	return i.ToGetClusterVerticalPodAutoscalingOutputWithContext(context.Background())
+}
+
+func (i GetClusterVerticalPodAutoscalingArgs) ToGetClusterVerticalPodAutoscalingOutputWithContext(ctx context.Context) GetClusterVerticalPodAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterVerticalPodAutoscalingOutput)
+}
+
+// GetClusterVerticalPodAutoscalingArrayInput is an input type that accepts GetClusterVerticalPodAutoscalingArray and GetClusterVerticalPodAutoscalingArrayOutput values.
+// You can construct a concrete instance of `GetClusterVerticalPodAutoscalingArrayInput` via:
+//
+//	GetClusterVerticalPodAutoscalingArray{ GetClusterVerticalPodAutoscalingArgs{...} }
+type GetClusterVerticalPodAutoscalingArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterVerticalPodAutoscalingArrayOutput() GetClusterVerticalPodAutoscalingArrayOutput
+	ToGetClusterVerticalPodAutoscalingArrayOutputWithContext(context.Context) GetClusterVerticalPodAutoscalingArrayOutput
+}
+
+type GetClusterVerticalPodAutoscalingArray []GetClusterVerticalPodAutoscalingInput
+
+func (GetClusterVerticalPodAutoscalingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterVerticalPodAutoscaling)(nil)).Elem()
+}
+
+func (i GetClusterVerticalPodAutoscalingArray) ToGetClusterVerticalPodAutoscalingArrayOutput() GetClusterVerticalPodAutoscalingArrayOutput {
+	return i.ToGetClusterVerticalPodAutoscalingArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterVerticalPodAutoscalingArray) ToGetClusterVerticalPodAutoscalingArrayOutputWithContext(ctx context.Context) GetClusterVerticalPodAutoscalingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterVerticalPodAutoscalingArrayOutput)
+}
+
+type GetClusterVerticalPodAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (GetClusterVerticalPodAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterVerticalPodAutoscaling)(nil)).Elem()
+}
+
+func (o GetClusterVerticalPodAutoscalingOutput) ToGetClusterVerticalPodAutoscalingOutput() GetClusterVerticalPodAutoscalingOutput {
+	return o
+}
+
+func (o GetClusterVerticalPodAutoscalingOutput) ToGetClusterVerticalPodAutoscalingOutputWithContext(ctx context.Context) GetClusterVerticalPodAutoscalingOutput {
+	return o
+}
+
+// Enables vertical pod autoscaling.
+func (o GetClusterVerticalPodAutoscalingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterVerticalPodAutoscaling) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterVerticalPodAutoscalingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterVerticalPodAutoscalingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterVerticalPodAutoscaling)(nil)).Elem()
+}
+
+func (o GetClusterVerticalPodAutoscalingArrayOutput) ToGetClusterVerticalPodAutoscalingArrayOutput() GetClusterVerticalPodAutoscalingArrayOutput {
+	return o
+}
+
+func (o GetClusterVerticalPodAutoscalingArrayOutput) ToGetClusterVerticalPodAutoscalingArrayOutputWithContext(ctx context.Context) GetClusterVerticalPodAutoscalingArrayOutput {
+	return o
+}
+
+func (o GetClusterVerticalPodAutoscalingArrayOutput) Index(i pulumi.IntInput) GetClusterVerticalPodAutoscalingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterVerticalPodAutoscaling {
+		return vs[0].([]GetClusterVerticalPodAutoscaling)[vs[1].(int)]
+	}).(GetClusterVerticalPodAutoscalingOutput)
+}
+
 type GetClusterWorkloadAltsConfig struct {
 	// Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool must be non-empty).
 	EnableAlts bool `pulumi:"enableAlts"`
@@ -208,10 +1308,50 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigArrayInput)(nil)).Elem(), GetClusterSecretManagerConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigRotationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfigArrayInput)(nil)).Elem(), GetClusterSecretManagerConfigRotationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretSyncConfigInput)(nil)).Elem(), GetClusterSecretSyncConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretSyncConfigArrayInput)(nil)).Elem(), GetClusterSecretSyncConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretSyncConfigRotationConfigInput)(nil)).Elem(), GetClusterSecretSyncConfigRotationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretSyncConfigRotationConfigArrayInput)(nil)).Elem(), GetClusterSecretSyncConfigRotationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigInput)(nil)).Elem(), GetClusterSecurityPostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigArrayInput)(nil)).Elem(), GetClusterSecurityPostureConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigArrayInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigInput)(nil)).Elem(), GetClusterTpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigArrayInput)(nil)).Elem(), GetClusterTpuConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterUserManagedKeysConfigInput)(nil)).Elem(), GetClusterUserManagedKeysConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterUserManagedKeysConfigArrayInput)(nil)).Elem(), GetClusterUserManagedKeysConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationOutput{})
+	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigRotationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretManagerConfigRotationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretSyncConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretSyncConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretSyncConfigRotationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecretSyncConfigRotationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterTpuConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterTpuConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterUserManagedKeysConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterUserManagedKeysConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingOutput{})
+	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterWorkloadAltsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterWorkloadAltsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterWorkloadIdentityConfigOutput{})

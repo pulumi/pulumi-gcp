@@ -239,6 +239,12 @@ __all__ = [
     'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse',
     'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent',
     'CxTestCaseTestConfig',
+    'CxToolConnectorSpec',
+    'CxToolConnectorSpecAction',
+    'CxToolConnectorSpecActionEntityOperation',
+    'CxToolConnectorSpecEndUserAuthConfig',
+    'CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig',
+    'CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig',
     'CxToolDataStoreSpec',
     'CxToolDataStoreSpecDataStoreConnection',
     'CxToolDataStoreSpecFallbackPrompt',
@@ -264,6 +270,17 @@ __all__ = [
     'EntityTypeEntity',
     'FulfillmentFeature',
     'FulfillmentGenericWebService',
+    'GeneratorInferenceParameter',
+    'GeneratorSummarizationContext',
+    'GeneratorSummarizationContextFewShotExample',
+    'GeneratorSummarizationContextFewShotExampleConversationContext',
+    'GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry',
+    'GeneratorSummarizationContextFewShotExampleOutput',
+    'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion',
+    'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection',
+    'GeneratorSummarizationContextFewShotExampleSummarizationSectionList',
+    'GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection',
+    'GeneratorSummarizationContextSummarizationSection',
     'IntentFollowupIntentInfo',
 ]
 
@@ -13499,6 +13516,364 @@ class CxTestCaseTestConfig(dict):
 
 
 @pulumi.output_type
+class CxToolConnectorSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endUserAuthConfig":
+            suggest = "end_user_auth_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolConnectorSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolConnectorSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolConnectorSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.CxToolConnectorSpecAction'],
+                 name: _builtins.str,
+                 end_user_auth_config: Optional['outputs.CxToolConnectorSpecEndUserAuthConfig'] = None):
+        """
+        :param Sequence['CxToolConnectorSpecActionArgs'] actions: Actions for the tool to use.
+               Structure is documented below.
+        :param _builtins.str name: The full resource name of the referenced Integration Connectors Connection.
+               Format: projects/*/locations/*/connections/*
+        :param 'CxToolConnectorSpecEndUserAuthConfigArgs' end_user_auth_config: Integration Connectors end-user authentication configuration.
+               If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+               and override the admin, default authentication configured for the Connection.
+               Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+               the ConnectorTool creation will fail.
+               See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "name", name)
+        if end_user_auth_config is not None:
+            pulumi.set(__self__, "end_user_auth_config", end_user_auth_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.CxToolConnectorSpecAction']:
+        """
+        Actions for the tool to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The full resource name of the referenced Integration Connectors Connection.
+        Format: projects/*/locations/*/connections/*
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="endUserAuthConfig")
+    def end_user_auth_config(self) -> Optional['outputs.CxToolConnectorSpecEndUserAuthConfig']:
+        """
+        Integration Connectors end-user authentication configuration.
+        If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+        and override the admin, default authentication configured for the Connection.
+        Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+        the ConnectorTool creation will fail.
+        See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_user_auth_config")
+
+
+@pulumi.output_type
+class CxToolConnectorSpecAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionActionId":
+            suggest = "connection_action_id"
+        elif key == "entityOperation":
+            suggest = "entity_operation"
+        elif key == "inputFields":
+            suggest = "input_fields"
+        elif key == "outputFields":
+            suggest = "output_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolConnectorSpecAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolConnectorSpecAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolConnectorSpecAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_action_id: Optional[_builtins.str] = None,
+                 entity_operation: Optional['outputs.CxToolConnectorSpecActionEntityOperation'] = None,
+                 input_fields: Optional[Sequence[_builtins.str]] = None,
+                 output_fields: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str connection_action_id: ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        :param 'CxToolConnectorSpecActionEntityOperationArgs' entity_operation: Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+               Structure is documented below.
+        :param Sequence[_builtins.str] input_fields: Entity fields to use as inputs for the operation.
+               If no fields are specified, all fields of the Entity will be used.
+        :param Sequence[_builtins.str] output_fields: Entity fields to return from the operation.
+               If no fields are specified, all fields of the Entity will be returned.
+        """
+        if connection_action_id is not None:
+            pulumi.set(__self__, "connection_action_id", connection_action_id)
+        if entity_operation is not None:
+            pulumi.set(__self__, "entity_operation", entity_operation)
+        if input_fields is not None:
+            pulumi.set(__self__, "input_fields", input_fields)
+        if output_fields is not None:
+            pulumi.set(__self__, "output_fields", output_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionActionId")
+    def connection_action_id(self) -> Optional[_builtins.str]:
+        """
+        ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        """
+        return pulumi.get(self, "connection_action_id")
+
+    @_builtins.property
+    @pulumi.getter(name="entityOperation")
+    def entity_operation(self) -> Optional['outputs.CxToolConnectorSpecActionEntityOperation']:
+        """
+        Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entity_operation")
+
+    @_builtins.property
+    @pulumi.getter(name="inputFields")
+    def input_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity fields to use as inputs for the operation.
+        If no fields are specified, all fields of the Entity will be used.
+        """
+        return pulumi.get(self, "input_fields")
+
+    @_builtins.property
+    @pulumi.getter(name="outputFields")
+    def output_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity fields to return from the operation.
+        If no fields are specified, all fields of the Entity will be returned.
+        """
+        return pulumi.get(self, "output_fields")
+
+
+@pulumi.output_type
+class CxToolConnectorSpecActionEntityOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityId":
+            suggest = "entity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolConnectorSpecActionEntityOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolConnectorSpecActionEntityOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolConnectorSpecActionEntityOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_id: _builtins.str,
+                 operation: _builtins.str):
+        """
+        :param _builtins.str entity_id: ID of the entity.
+        :param _builtins.str operation: The operation to perform on the entity.
+               Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "operation", operation)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> _builtins.str:
+        """
+        ID of the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> _builtins.str:
+        """
+        The operation to perform on the entity.
+        Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+        """
+        return pulumi.get(self, "operation")
+
+
+@pulumi.output_type
+class CxToolConnectorSpecEndUserAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2AuthCodeConfig":
+            suggest = "oauth2_auth_code_config"
+        elif key == "oauth2JwtBearerConfig":
+            suggest = "oauth2_jwt_bearer_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolConnectorSpecEndUserAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolConnectorSpecEndUserAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolConnectorSpecEndUserAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth2_auth_code_config: Optional['outputs.CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig'] = None,
+                 oauth2_jwt_bearer_config: Optional['outputs.CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig'] = None):
+        """
+        :param 'CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs' oauth2_auth_code_config: Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+               Structure is documented below.
+        :param 'CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs' oauth2_jwt_bearer_config: JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+               Structure is documented below.
+               
+               
+               <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        if oauth2_auth_code_config is not None:
+            pulumi.set(__self__, "oauth2_auth_code_config", oauth2_auth_code_config)
+        if oauth2_jwt_bearer_config is not None:
+            pulumi.set(__self__, "oauth2_jwt_bearer_config", oauth2_jwt_bearer_config)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2AuthCodeConfig")
+    def oauth2_auth_code_config(self) -> Optional['outputs.CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig']:
+        """
+        Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_auth_code_config")
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2JwtBearerConfig")
+    def oauth2_jwt_bearer_config(self) -> Optional['outputs.CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig']:
+        """
+        JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+
+
+        <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        return pulumi.get(self, "oauth2_jwt_bearer_config")
+
+
+@pulumi.output_type
+class CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauthToken":
+            suggest = "oauth_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth_token: _builtins.str):
+        """
+        :param _builtins.str oauth_token: Oauth token value or parameter name to pass it through.
+        """
+        pulumi.set(__self__, "oauth_token", oauth_token)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> _builtins.str:
+        """
+        Oauth token value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "oauth_token")
+
+
+@pulumi.output_type
+class CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientKey":
+            suggest = "client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_key: _builtins.str,
+                 issuer: _builtins.str,
+                 subject: _builtins.str):
+        """
+        :param _builtins.str client_key: Client key value or parameter name to pass it through.
+        :param _builtins.str issuer: Issuer value or parameter name to pass it through.
+        :param _builtins.str subject: Subject value or parameter name to pass it through.
+        """
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> _builtins.str:
+        """
+        Client key value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> _builtins.str:
+        """
+        Issuer value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "issuer")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Subject value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
 class CxToolDataStoreSpec(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -15323,6 +15698,589 @@ class FulfillmentGenericWebService(dict):
         The user name for HTTP Basic authentication.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GeneratorInferenceParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxOutputTokens":
+            suggest = "max_output_tokens"
+        elif key == "topK":
+            suggest = "top_k"
+        elif key == "topP":
+            suggest = "top_p"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorInferenceParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorInferenceParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorInferenceParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_output_tokens: Optional[_builtins.int] = None,
+                 temperature: Optional[_builtins.float] = None,
+                 top_k: Optional[_builtins.int] = None,
+                 top_p: Optional[_builtins.float] = None):
+        """
+        :param _builtins.int max_output_tokens: Optional. Maximum number of the output tokens for the generator.
+        :param _builtins.float temperature: Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+        :param _builtins.int top_k: Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+        :param _builtins.float top_p: Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+        """
+        if max_output_tokens is not None:
+            pulumi.set(__self__, "max_output_tokens", max_output_tokens)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+        if top_k is not None:
+            pulumi.set(__self__, "top_k", top_k)
+        if top_p is not None:
+            pulumi.set(__self__, "top_p", top_p)
+
+    @_builtins.property
+    @pulumi.getter(name="maxOutputTokens")
+    def max_output_tokens(self) -> Optional[_builtins.int]:
+        """
+        Optional. Maximum number of the output tokens for the generator.
+        """
+        return pulumi.get(self, "max_output_tokens")
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[_builtins.float]:
+        """
+        Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more random. If unset (or 0), uses a default value of 0.
+        """
+        return pulumi.get(self, "temperature")
+
+    @_builtins.property
+    @pulumi.getter(name="topK")
+    def top_k(self) -> Optional[_builtins.int]:
+        """
+        Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further filtered based on topP with the final token selected using temperature sampling. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to 40.
+        """
+        return pulumi.get(self, "top_k")
+
+    @_builtins.property
+    @pulumi.getter(name="topP")
+    def top_p(self) -> Optional[_builtins.float]:
+        """
+        Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value is 0.95. Specify a lower value for less random responses and a higher value for more random responses. Acceptable value is [0.0, 1.0], default to 0.95.
+        """
+        return pulumi.get(self, "top_p")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fewShotExamples":
+            suggest = "few_shot_examples"
+        elif key == "outputLanguageCode":
+            suggest = "output_language_code"
+        elif key == "summarizationSections":
+            suggest = "summarization_sections"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorSummarizationContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorSummarizationContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorSummarizationContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 few_shot_examples: Optional[Sequence['outputs.GeneratorSummarizationContextFewShotExample']] = None,
+                 output_language_code: Optional[_builtins.str] = None,
+                 summarization_sections: Optional[Sequence['outputs.GeneratorSummarizationContextSummarizationSection']] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GeneratorSummarizationContextFewShotExampleArgs'] few_shot_examples: Optional. List of few shot examples.
+               Structure is documented below.
+        :param _builtins.str output_language_code: Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+        :param Sequence['GeneratorSummarizationContextSummarizationSectionArgs'] summarization_sections: Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+               Structure is documented below.
+        :param _builtins.str version: Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        """
+        if few_shot_examples is not None:
+            pulumi.set(__self__, "few_shot_examples", few_shot_examples)
+        if output_language_code is not None:
+            pulumi.set(__self__, "output_language_code", output_language_code)
+        if summarization_sections is not None:
+            pulumi.set(__self__, "summarization_sections", summarization_sections)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="fewShotExamples")
+    def few_shot_examples(self) -> Optional[Sequence['outputs.GeneratorSummarizationContextFewShotExample']]:
+        """
+        Optional. List of few shot examples.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "few_shot_examples")
+
+    @_builtins.property
+    @pulumi.getter(name="outputLanguageCode")
+    def output_language_code(self) -> Optional[_builtins.str]:
+        """
+        Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
+        """
+        return pulumi.get(self, "output_language_code")
+
+    @_builtins.property
+    @pulumi.getter(name="summarizationSections")
+    def summarization_sections(self) -> Optional[Sequence['outputs.GeneratorSummarizationContextSummarizationSection']]:
+        """
+        Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_sections")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExample(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationContext":
+            suggest = "conversation_context"
+        elif key == "extraInfo":
+            suggest = "extra_info"
+        elif key == "summarizationSectionList":
+            suggest = "summarization_section_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorSummarizationContextFewShotExample. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorSummarizationContextFewShotExample.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorSummarizationContextFewShotExample.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 output: 'outputs.GeneratorSummarizationContextFewShotExampleOutput',
+                 conversation_context: Optional['outputs.GeneratorSummarizationContextFewShotExampleConversationContext'] = None,
+                 extra_info: Optional[Mapping[str, _builtins.str]] = None,
+                 summarization_section_list: Optional['outputs.GeneratorSummarizationContextFewShotExampleSummarizationSectionList'] = None):
+        """
+        :param 'GeneratorSummarizationContextFewShotExampleOutputArgs' output: Required. Example output of the model.
+               Structure is documented below.
+        :param 'GeneratorSummarizationContextFewShotExampleConversationContextArgs' conversation_context: Optional. Conversation transcripts.
+               Structure is documented below.
+        :param Mapping[str, _builtins.str] extra_info: Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+        :param 'GeneratorSummarizationContextFewShotExampleSummarizationSectionListArgs' summarization_section_list: Summarization sections.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "output", output)
+        if conversation_context is not None:
+            pulumi.set(__self__, "conversation_context", conversation_context)
+        if extra_info is not None:
+            pulumi.set(__self__, "extra_info", extra_info)
+        if summarization_section_list is not None:
+            pulumi.set(__self__, "summarization_section_list", summarization_section_list)
+
+    @_builtins.property
+    @pulumi.getter
+    def output(self) -> 'outputs.GeneratorSummarizationContextFewShotExampleOutput':
+        """
+        Required. Example output of the model.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output")
+
+    @_builtins.property
+    @pulumi.getter(name="conversationContext")
+    def conversation_context(self) -> Optional['outputs.GeneratorSummarizationContextFewShotExampleConversationContext']:
+        """
+        Optional. Conversation transcripts.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_context")
+
+    @_builtins.property
+    @pulumi.getter(name="extraInfo")
+    def extra_info(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has <"price", "10">
+        """
+        return pulumi.get(self, "extra_info")
+
+    @_builtins.property
+    @pulumi.getter(name="summarizationSectionList")
+    def summarization_section_list(self) -> Optional['outputs.GeneratorSummarizationContextFewShotExampleSummarizationSectionList']:
+        """
+        Summarization sections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_section_list")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExampleConversationContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageEntries":
+            suggest = "message_entries"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorSummarizationContextFewShotExampleConversationContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorSummarizationContextFewShotExampleConversationContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorSummarizationContextFewShotExampleConversationContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 message_entries: Optional[Sequence['outputs.GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry']] = None):
+        """
+        :param Sequence['GeneratorSummarizationContextFewShotExampleConversationContextMessageEntryArgs'] message_entries: Optional. List of message transcripts in the conversation.
+               Structure is documented below.
+        """
+        if message_entries is not None:
+            pulumi.set(__self__, "message_entries", message_entries)
+
+    @_builtins.property
+    @pulumi.getter(name="messageEntries")
+    def message_entries(self) -> Optional[Sequence['outputs.GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry']]:
+        """
+        Optional. List of message transcripts in the conversation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "message_entries")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "languageCode":
+            suggest = "language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: Optional[_builtins.str] = None,
+                 language_code: Optional[_builtins.str] = None,
+                 role: Optional[_builtins.str] = None,
+                 text: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create_time: Optional. Create time of the message entry.
+        :param _builtins.str language_code: Optional. The language of the text.
+        :param _builtins.str role: Optional. Participant role of the message.
+               Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+        :param _builtins.str text: Optional. Transcript content of the message.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        Optional. Create time of the message entry.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[_builtins.str]:
+        """
+        Optional. The language of the text.
+        """
+        return pulumi.get(self, "language_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> Optional[_builtins.str]:
+        """
+        Optional. Participant role of the message.
+        Possible values are: `HUMAN_AGENT`, `AUTOMATED_AGENT`, `END_USER`.
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> Optional[_builtins.str]:
+        """
+        Optional. Transcript content of the message.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExampleOutput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "summarySuggestion":
+            suggest = "summary_suggestion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorSummarizationContextFewShotExampleOutput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorSummarizationContextFewShotExampleOutput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorSummarizationContextFewShotExampleOutput.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 summary_suggestion: Optional['outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion'] = None):
+        """
+        :param 'GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionArgs' summary_suggestion: Optional. Suggested summary.
+               Structure is documented below.
+        """
+        if summary_suggestion is not None:
+            pulumi.set(__self__, "summary_suggestion", summary_suggestion)
+
+    @_builtins.property
+    @pulumi.getter(name="summarySuggestion")
+    def summary_suggestion(self) -> Optional['outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion']:
+        """
+        Optional. Suggested summary.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summary_suggestion")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "summarySections":
+            suggest = "summary_sections"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 summary_sections: Sequence['outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection']):
+        """
+        :param Sequence['GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySectionArgs'] summary_sections: Required. All the parts of generated summary.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "summary_sections", summary_sections)
+
+    @_builtins.property
+    @pulumi.getter(name="summarySections")
+    def summary_sections(self) -> Sequence['outputs.GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection']:
+        """
+        Required. All the parts of generated summary.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summary_sections")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection(dict):
+    def __init__(__self__, *,
+                 section: _builtins.str,
+                 summary: _builtins.str):
+        """
+        :param _builtins.str section: Required. Name of the section.
+        :param _builtins.str summary: Required. Summary text for the section.
+        """
+        pulumi.set(__self__, "section", section)
+        pulumi.set(__self__, "summary", summary)
+
+    @_builtins.property
+    @pulumi.getter
+    def section(self) -> _builtins.str:
+        """
+        Required. Name of the section.
+        """
+        return pulumi.get(self, "section")
+
+    @_builtins.property
+    @pulumi.getter
+    def summary(self) -> _builtins.str:
+        """
+        Required. Summary text for the section.
+        """
+        return pulumi.get(self, "summary")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExampleSummarizationSectionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "summarizationSections":
+            suggest = "summarization_sections"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GeneratorSummarizationContextFewShotExampleSummarizationSectionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GeneratorSummarizationContextFewShotExampleSummarizationSectionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GeneratorSummarizationContextFewShotExampleSummarizationSectionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 summarization_sections: Optional[Sequence['outputs.GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection']] = None):
+        """
+        :param Sequence['GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSectionArgs'] summarization_sections: Optional. Summarization sections.
+               Structure is documented below.
+        """
+        if summarization_sections is not None:
+            pulumi.set(__self__, "summarization_sections", summarization_sections)
+
+    @_builtins.property
+    @pulumi.getter(name="summarizationSections")
+    def summarization_sections(self) -> Optional[Sequence['outputs.GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection']]:
+        """
+        Optional. Summarization sections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summarization_sections")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection(dict):
+    def __init__(__self__, *,
+                 definition: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str definition: Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        :param _builtins.str key: Optional. Name of the section, for example, "situation".
+        :param _builtins.str type: Optional. Type of the summarization section.
+               Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def definition(self) -> Optional[_builtins.str]:
+        """
+        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        """
+        return pulumi.get(self, "definition")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Optional. Name of the section, for example, "situation".
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Optional. Type of the summarization section.
+        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GeneratorSummarizationContextSummarizationSection(dict):
+    def __init__(__self__, *,
+                 definition: Optional[_builtins.str] = None,
+                 key: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str definition: Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        :param _builtins.str key: Optional. Name of the section, for example, "situation".
+        :param _builtins.str type: Optional. Type of the summarization section.
+               Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        if definition is not None:
+            pulumi.set(__self__, "definition", definition)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def definition(self) -> Optional[_builtins.str]:
+        """
+        Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        """
+        return pulumi.get(self, "definition")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Optional. Name of the section, for example, "situation".
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Optional. Type of the summarization section.
+        Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

@@ -16,6 +16,11 @@ import java.util.Objects;
 public final class GetDatabaseInstanceSettingBackupConfiguration {
     private List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting> backupRetentionSettings;
     /**
+     * @return Backup tier that manages the backups for the instance.
+     * 
+     */
+    private String backupTier;
+    /**
      * @return True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
      * 
      */
@@ -49,6 +54,13 @@ public final class GetDatabaseInstanceSettingBackupConfiguration {
     private GetDatabaseInstanceSettingBackupConfiguration() {}
     public List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting> backupRetentionSettings() {
         return this.backupRetentionSettings;
+    }
+    /**
+     * @return Backup tier that manages the backups for the instance.
+     * 
+     */
+    public String backupTier() {
+        return this.backupTier;
     }
     /**
      * @return True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
@@ -103,6 +115,7 @@ public final class GetDatabaseInstanceSettingBackupConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting> backupRetentionSettings;
+        private String backupTier;
         private Boolean binaryLogEnabled;
         private Boolean enabled;
         private String location;
@@ -113,6 +126,7 @@ public final class GetDatabaseInstanceSettingBackupConfiguration {
         public Builder(GetDatabaseInstanceSettingBackupConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupRetentionSettings = defaults.backupRetentionSettings;
+    	      this.backupTier = defaults.backupTier;
     	      this.binaryLogEnabled = defaults.binaryLogEnabled;
     	      this.enabled = defaults.enabled;
     	      this.location = defaults.location;
@@ -131,6 +145,14 @@ public final class GetDatabaseInstanceSettingBackupConfiguration {
         }
         public Builder backupRetentionSettings(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting... backupRetentionSettings) {
             return backupRetentionSettings(List.of(backupRetentionSettings));
+        }
+        @CustomType.Setter
+        public Builder backupTier(String backupTier) {
+            if (backupTier == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "backupTier");
+            }
+            this.backupTier = backupTier;
+            return this;
         }
         @CustomType.Setter
         public Builder binaryLogEnabled(Boolean binaryLogEnabled) {
@@ -183,6 +205,7 @@ public final class GetDatabaseInstanceSettingBackupConfiguration {
         public GetDatabaseInstanceSettingBackupConfiguration build() {
             final var _resultValue = new GetDatabaseInstanceSettingBackupConfiguration();
             _resultValue.backupRetentionSettings = backupRetentionSettings;
+            _resultValue.backupTier = backupTier;
             _resultValue.binaryLogEnabled = binaryLogEnabled;
             _resultValue.enabled = enabled;
             _resultValue.location = location;

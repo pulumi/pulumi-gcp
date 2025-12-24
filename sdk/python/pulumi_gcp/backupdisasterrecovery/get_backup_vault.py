@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetBackupVaultResult',
@@ -26,7 +27,7 @@ class GetBackupVaultResult:
     """
     A collection of values returned by getBackupVault.
     """
-    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_retention_inheritance=None, backup_vault_id=None, create_time=None, deletable=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, etag=None, force_delete=None, force_update=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
+    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_retention_inheritance=None, backup_vault_id=None, create_time=None, deletable=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, encryption_configs=None, etag=None, force_delete=None, force_update=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
         if access_restriction and not isinstance(access_restriction, str):
             raise TypeError("Expected argument 'access_restriction' to be a str")
         pulumi.set(__self__, "access_restriction", access_restriction)
@@ -66,6 +67,9 @@ class GetBackupVaultResult:
         if effective_time and not isinstance(effective_time, str):
             raise TypeError("Expected argument 'effective_time' to be a str")
         pulumi.set(__self__, "effective_time", effective_time)
+        if encryption_configs and not isinstance(encryption_configs, list):
+            raise TypeError("Expected argument 'encryption_configs' to be a list")
+        pulumi.set(__self__, "encryption_configs", encryption_configs)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -181,6 +185,11 @@ class GetBackupVaultResult:
         return pulumi.get(self, "effective_time")
 
     @_builtins.property
+    @pulumi.getter(name="encryptionConfigs")
+    def encryption_configs(self) -> Sequence['outputs.GetBackupVaultEncryptionConfigResult']:
+        return pulumi.get(self, "encryption_configs")
+
+    @_builtins.property
     @pulumi.getter
     def etag(self) -> _builtins.str:
         return pulumi.get(self, "etag")
@@ -283,6 +292,7 @@ class AwaitableGetBackupVaultResult(GetBackupVaultResult):
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
             effective_time=self.effective_time,
+            encryption_configs=self.encryption_configs,
             etag=self.etag,
             force_delete=self.force_delete,
             force_update=self.force_update,
@@ -347,6 +357,7 @@ def get_backup_vault(backup_vault_id: Optional[_builtins.str] = None,
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         effective_time=pulumi.get(__ret__, 'effective_time'),
+        encryption_configs=pulumi.get(__ret__, 'encryption_configs'),
         etag=pulumi.get(__ret__, 'etag'),
         force_delete=pulumi.get(__ret__, 'force_delete'),
         force_update=pulumi.get(__ret__, 'force_update'),
@@ -408,6 +419,7 @@ def get_backup_vault_output(backup_vault_id: Optional[pulumi.Input[_builtins.str
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         effective_time=pulumi.get(__response__, 'effective_time'),
+        encryption_configs=pulumi.get(__response__, 'encryption_configs'),
         etag=pulumi.get(__response__, 'etag'),
         force_delete=pulumi.get(__response__, 'force_delete'),
         force_update=pulumi.get(__response__, 'force_update'),

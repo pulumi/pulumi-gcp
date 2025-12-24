@@ -6,6 +6,7 @@ package com.pulumi.gcp.iam.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,21 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
      */
     public Optional<Output<String>> baseUri() {
         return Optional.ofNullable(this.baseUri);
+    }
+
+    /**
+     * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+     * 
+     */
+    @Import(name="claimMapping")
+    private @Nullable Output<Map<String,String>> claimMapping;
+
+    /**
+     * @return Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> claimMapping() {
+        return Optional.ofNullable(this.claimMapping);
     }
 
     /**
@@ -116,6 +132,21 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
     }
 
     /**
+     * The timestamp that represents the time when the SCIM tenant is purged.
+     * 
+     */
+    @Import(name="purgeTime")
+    private @Nullable Output<String> purgeTime;
+
+    /**
+     * @return The timestamp that represents the time when the SCIM tenant is purged.
+     * 
+     */
+    public Optional<Output<String>> purgeTime() {
+        return Optional.ofNullable(this.purgeTime);
+    }
+
+    /**
      * The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * 
      */
@@ -131,8 +162,24 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
     }
 
     /**
+     * Service Agent created by SCIM Tenant API. SCIM tokens created under
+     * this tenant will be attached to this service agent.
+     * 
+     */
+    @Import(name="serviceAgent")
+    private @Nullable Output<String> serviceAgent;
+
+    /**
+     * @return Service Agent created by SCIM Tenant API. SCIM tokens created under
+     * this tenant will be attached to this service agent.
+     * 
+     */
+    public Optional<Output<String>> serviceAgent() {
+        return Optional.ofNullable(this.serviceAgent);
+    }
+
+    /**
      * The current state of the scim tenant.
-     * * STATE_UNSPECIFIED: State unspecified.
      * * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
      * * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
      *   deleted after approximately 30 days.
@@ -143,7 +190,6 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
 
     /**
      * @return The current state of the scim tenant.
-     * * STATE_UNSPECIFIED: State unspecified.
      * * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
      * * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
      *   deleted after approximately 30 days.
@@ -172,12 +218,15 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
 
     private WorkforcePoolProviderScimTenantState(WorkforcePoolProviderScimTenantState $) {
         this.baseUri = $.baseUri;
+        this.claimMapping = $.claimMapping;
         this.description = $.description;
         this.displayName = $.displayName;
         this.location = $.location;
         this.name = $.name;
         this.providerId = $.providerId;
+        this.purgeTime = $.purgeTime;
         this.scimTenantId = $.scimTenantId;
+        this.serviceAgent = $.serviceAgent;
         this.state = $.state;
         this.workforcePoolId = $.workforcePoolId;
     }
@@ -227,6 +276,27 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
          */
         public Builder baseUri(String baseUri) {
             return baseUri(Output.of(baseUri));
+        }
+
+        /**
+         * @param claimMapping Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder claimMapping(@Nullable Output<Map<String,String>> claimMapping) {
+            $.claimMapping = claimMapping;
+            return this;
+        }
+
+        /**
+         * @param claimMapping Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder claimMapping(Map<String,String> claimMapping) {
+            return claimMapping(Output.of(claimMapping));
         }
 
         /**
@@ -337,6 +407,27 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
         }
 
         /**
+         * @param purgeTime The timestamp that represents the time when the SCIM tenant is purged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeTime(@Nullable Output<String> purgeTime) {
+            $.purgeTime = purgeTime;
+            return this;
+        }
+
+        /**
+         * @param purgeTime The timestamp that represents the time when the SCIM tenant is purged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeTime(String purgeTime) {
+            return purgeTime(Output.of(purgeTime));
+        }
+
+        /**
          * @param scimTenantId The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
          * 
          * @return builder
@@ -358,8 +449,30 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
         }
 
         /**
+         * @param serviceAgent Service Agent created by SCIM Tenant API. SCIM tokens created under
+         * this tenant will be attached to this service agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAgent(@Nullable Output<String> serviceAgent) {
+            $.serviceAgent = serviceAgent;
+            return this;
+        }
+
+        /**
+         * @param serviceAgent Service Agent created by SCIM Tenant API. SCIM tokens created under
+         * this tenant will be attached to this service agent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAgent(String serviceAgent) {
+            return serviceAgent(Output.of(serviceAgent));
+        }
+
+        /**
          * @param state The current state of the scim tenant.
-         * * STATE_UNSPECIFIED: State unspecified.
          * * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
          * * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
          *   deleted after approximately 30 days.
@@ -374,7 +487,6 @@ public final class WorkforcePoolProviderScimTenantState extends com.pulumi.resou
 
         /**
          * @param state The current state of the scim tenant.
-         * * STATE_UNSPECIFIED: State unspecified.
          * * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
          * * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
          *   deleted after approximately 30 days.

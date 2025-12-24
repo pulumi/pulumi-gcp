@@ -34,6 +34,21 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
     }
 
     /**
+     * The backup tier that manages the backups for the instance.
+     * 
+     */
+    @Import(name="backupTier")
+    private @Nullable Output<String> backupTier;
+
+    /**
+     * @return The backup tier that manages the backups for the instance.
+     * 
+     */
+    public Optional<Output<String>> backupTier() {
+        return Optional.ofNullable(this.backupTier);
+    }
+
+    /**
      * True if binary logging is enabled.
      * Can only be used with MySQL.
      * 
@@ -131,6 +146,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
 
     private DatabaseInstanceSettingsBackupConfigurationArgs(DatabaseInstanceSettingsBackupConfigurationArgs $) {
         this.backupRetentionSettings = $.backupRetentionSettings;
+        this.backupTier = $.backupTier;
         this.binaryLogEnabled = $.binaryLogEnabled;
         this.enabled = $.enabled;
         this.location = $.location;
@@ -176,6 +192,27 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
          */
         public Builder backupRetentionSettings(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs backupRetentionSettings) {
             return backupRetentionSettings(Output.of(backupRetentionSettings));
+        }
+
+        /**
+         * @param backupTier The backup tier that manages the backups for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupTier(@Nullable Output<String> backupTier) {
+            $.backupTier = backupTier;
+            return this;
+        }
+
+        /**
+         * @param backupTier The backup tier that manages the backups for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupTier(String backupTier) {
+            return backupTier(Output.of(backupTier));
         }
 
         /**

@@ -43,6 +43,19 @@ namespace Pulumi.Gcp.CloudSecurityCompliance.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("subParameters")]
+        private InputList<Inputs.CloudControlParameterSpecSubParameterGetArgs>? _subParameters;
+
+        /// <summary>
+        /// The parameter spec of the cloud control.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CloudControlParameterSpecSubParameterGetArgs> SubParameters
+        {
+            get => _subParameters ?? (_subParameters = new InputList<Inputs.CloudControlParameterSpecSubParameterGetArgs>());
+            set => _subParameters = value;
+        }
+
         [Input("substitutionRules")]
         private InputList<Inputs.CloudControlParameterSpecSubstitutionRuleGetArgs>? _substitutionRules;
 

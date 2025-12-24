@@ -11,6 +11,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.BucketObjectArgs;
 import com.pulumi.gcp.storage.inputs.BucketObjectState;
+import com.pulumi.gcp.storage.outputs.BucketObjectContexts;
 import com.pulumi.gcp.storage.outputs.BucketObjectCustomerEncryption;
 import com.pulumi.gcp.storage.outputs.BucketObjectRetention;
 import java.lang.Boolean;
@@ -99,6 +100,53 @@ import javax.annotation.Nullable;
  *             .name("empty_folder/")
  *             .content(" ")
  *             .bucket("image-store")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Example creating an contexts for an object.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketObjectContextsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucketObject = new BucketObject("bucketObject", BucketObjectArgs.builder()
+ *             .bucket("test-bucket")
+ *             .name("test-object")
+ *             .content("test-content")
+ *             .contexts(BucketObjectContextsArgs.builder()
+ *                 .customs(                
+ *                     BucketObjectContextsCustomArgs.builder()
+ *                         .key("testKey")
+ *                         .value("test")
+ *                         .build(),
+ *                     BucketObjectContextsCustomArgs.builder()
+ *                         .key("testKeyTwo")
+ *                         .value("test")
+ *                         .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -212,6 +260,20 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      */
     public Output<String> contentType() {
         return this.contentType;
+    }
+    /**
+     * Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+     * 
+     */
+    @Export(name="contexts", refs={BucketObjectContexts.class}, tree="[0]")
+    private Output</* @Nullable */ BucketObjectContexts> contexts;
+
+    /**
+     * @return Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
+     * 
+     */
+    public Output<Optional<BucketObjectContexts>> contexts() {
+        return Codegen.optional(this.contexts);
     }
     /**
      * (Computed) Base 64 CRC32 hash of the uploaded data.

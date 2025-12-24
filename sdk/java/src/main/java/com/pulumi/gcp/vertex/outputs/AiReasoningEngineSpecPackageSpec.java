@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineSpecPackageSpec {
     /**
-     * @return Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+     * @return Optional. The Cloud Storage URI of the dependency files in tar.gz
+     * format.
      * 
      */
     private @Nullable String dependencyFilesGcsUri;
@@ -22,19 +23,21 @@ public final class AiReasoningEngineSpecPackageSpec {
      */
     private @Nullable String pickleObjectGcsUri;
     /**
-     * @return Optional. The Python version.
+     * @return Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+     * 3.11, 3.12, 3.13. If not specified, default value is 3.10.
      * 
      */
     private @Nullable String pythonVersion;
     /**
-     * @return Optional. The Cloud Storage URI of the requirements.txt file
+     * @return Optional. The Cloud Storage URI of the requirements.txtfile
      * 
      */
     private @Nullable String requirementsGcsUri;
 
     private AiReasoningEngineSpecPackageSpec() {}
     /**
-     * @return Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+     * @return Optional. The Cloud Storage URI of the dependency files in tar.gz
+     * format.
      * 
      */
     public Optional<String> dependencyFilesGcsUri() {
@@ -48,14 +51,15 @@ public final class AiReasoningEngineSpecPackageSpec {
         return Optional.ofNullable(this.pickleObjectGcsUri);
     }
     /**
-     * @return Optional. The Python version.
+     * @return Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+     * 3.11, 3.12, 3.13. If not specified, default value is 3.10.
      * 
      */
     public Optional<String> pythonVersion() {
         return Optional.ofNullable(this.pythonVersion);
     }
     /**
-     * @return Optional. The Cloud Storage URI of the requirements.txt file
+     * @return Optional. The Cloud Storage URI of the requirements.txtfile
      * 
      */
     public Optional<String> requirementsGcsUri() {

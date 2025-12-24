@@ -803,6 +803,12 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> SendPropagatedConnectionLimitIfZero { get; private set; } = null!;
 
         /// <summary>
+        /// If true, show NAT IPs of all connected endpoints.
+        /// </summary>
+        [Output("showNatIps")]
+        public Output<bool?> ShowNatIps { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of a service serving the endpoint identified by this service attachment.
         /// </summary>
         [Output("targetService")]
@@ -986,6 +992,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sendPropagatedConnectionLimitIfZero")]
         public Input<bool>? SendPropagatedConnectionLimitIfZero { get; set; }
+
+        /// <summary>
+        /// If true, show NAT IPs of all connected endpoints.
+        /// </summary>
+        [Input("showNatIps")]
+        public Input<bool>? ShowNatIps { get; set; }
 
         /// <summary>
         /// The URL of a service serving the endpoint identified by this service attachment.
@@ -1173,6 +1185,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sendPropagatedConnectionLimitIfZero")]
         public Input<bool>? SendPropagatedConnectionLimitIfZero { get; set; }
+
+        /// <summary>
+        /// If true, show NAT IPs of all connected endpoints.
+        /// </summary>
+        [Input("showNatIps")]
+        public Input<bool>? ShowNatIps { get; set; }
 
         /// <summary>
         /// The URL of a service serving the endpoint identified by this service attachment.

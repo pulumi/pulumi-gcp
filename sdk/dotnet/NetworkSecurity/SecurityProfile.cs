@@ -234,6 +234,58 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Security Profile Broker
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultMirroringDeploymentGroup = new Gcp.NetworkSecurity.MirroringDeploymentGroup("default", new()
+    ///     {
+    ///         MirroringDeploymentGroupId = "my-dg",
+    ///         Location = "global",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultMirroringEndpointGroup = new Gcp.NetworkSecurity.MirroringEndpointGroup("default", new()
+    ///     {
+    ///         MirroringEndpointGroupId = "my-eg",
+    ///         Location = "global",
+    ///         Type = "BROKER",
+    ///         MirroringDeploymentGroups = new[]
+    ///         {
+    ///             defaultMirroringDeploymentGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSecurityProfile = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+    ///     {
+    ///         Name = "my-security-profile",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         Type = "CUSTOM_MIRRORING",
+    ///         CustomMirroringProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileCustomMirroringProfileArgs
+    ///         {
+    ///             MirroringEndpointGroup = defaultMirroringEndpointGroup.Id,
+    ///             MirroringDeploymentGroups = new[]
+    ///             {
+    ///                 defaultMirroringDeploymentGroup.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

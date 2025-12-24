@@ -51,6 +51,7 @@ export interface GetInstanceResult {
      */
     readonly id: string;
     readonly instanceId: string;
+    readonly kmsKey: string;
     readonly labels: {[key: string]: string};
     readonly location: string;
     readonly mountPoint: string;
@@ -61,6 +62,7 @@ export interface GetInstanceResult {
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly state: string;
+    readonly stateReason: string;
     readonly updateTime: string;
     readonly zone?: string;
 }

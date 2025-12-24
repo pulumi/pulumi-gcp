@@ -34,84 +34,94 @@ import * as utilities from "../utilities";
  *         name: "ces_tool_client_function_basic",
  *         description: "example-description",
  *         parameters: {
- *             description: "schema description",
- *             type: "ARRAY",
- *             nullable: true,
- *             requireds: ["some_property"],
- *             enums: [
- *                 "VALUE_A",
- *                 "VALUE_B",
- *             ],
- *             ref: "#/defs/MyDefinition",
- *             uniqueItems: true,
- *             defs: JSON.stringify({
- *                 SimpleString: {
- *                     type: "STRING",
- *                     description: "A simple string definition",
- *                 },
+ *             additionalProperties: JSON.stringify({
+ *                 type: "BOOLEAN",
  *             }),
  *             anyOf: JSON.stringify([{
  *                 type: "STRING",
  *                 description: "any_of option 1: string",
  *             }]),
  *             "default": JSON.stringify(false),
+ *             defs: JSON.stringify({
+ *                 SimpleString: {
+ *                     type: "STRING",
+ *                     description: "A simple string definition",
+ *                 },
+ *             }),
+ *             description: "schema description",
+ *             enums: [
+ *                 "VALUE_A",
+ *                 "VALUE_B",
+ *             ],
+ *             items: JSON.stringify({
+ *                 type: "ARRAY",
+ *                 description: "An array",
+ *             }),
+ *             maxItems: 32,
+ *             maximum: 64,
+ *             minItems: 1,
+ *             minimum: 2,
+ *             nullable: true,
  *             prefixItems: JSON.stringify([{
  *                 type: "ARRAY",
  *                 description: "prefix item 1",
  *             }]),
- *             additionalProperties: JSON.stringify({
- *                 type: "BOOLEAN",
- *             }),
  *             properties: JSON.stringify({
  *                 name: {
  *                     type: "STRING",
  *                     description: "A name",
  *                 },
  *             }),
- *             items: JSON.stringify({
- *                 type: "ARRAY",
- *                 description: "An array",
- *             }),
+ *             ref: "#/defs/MyDefinition",
+ *             requireds: ["some_property"],
+ *             title: "Title",
+ *             type: "ARRAY",
+ *             uniqueItems: true,
  *         },
  *         response: {
- *             description: "schema description",
- *             type: "ARRAY",
- *             nullable: true,
- *             requireds: ["some_property"],
- *             enums: [
- *                 "VALUE_A",
- *                 "VALUE_B",
- *             ],
- *             ref: "#/defs/MyDefinition",
- *             uniqueItems: true,
- *             defs: JSON.stringify({
- *                 SimpleString: {
- *                     type: "STRING",
- *                     description: "A simple string definition",
- *                 },
+ *             additionalProperties: JSON.stringify({
+ *                 type: "BOOLEAN",
  *             }),
  *             anyOf: JSON.stringify([{
  *                 type: "STRING",
  *                 description: "any_of option 1: string",
  *             }]),
  *             "default": JSON.stringify(false),
+ *             defs: JSON.stringify({
+ *                 SimpleString: {
+ *                     type: "STRING",
+ *                     description: "A simple string definition",
+ *                 },
+ *             }),
+ *             description: "schema description",
+ *             enums: [
+ *                 "VALUE_A",
+ *                 "VALUE_B",
+ *             ],
+ *             items: JSON.stringify({
+ *                 type: "ARRAY",
+ *                 description: "An array",
+ *             }),
+ *             maxItems: 32,
+ *             maximum: 64,
+ *             minItems: 1,
+ *             minimum: 2,
+ *             nullable: true,
  *             prefixItems: JSON.stringify([{
  *                 type: "ARRAY",
  *                 description: "prefix item 1",
  *             }]),
- *             additionalProperties: JSON.stringify({
- *                 type: "BOOLEAN",
- *             }),
  *             properties: JSON.stringify({
  *                 name: {
  *                     type: "STRING",
  *                     description: "A name",
  *                 },
  *             }),
- *             items: JSON.stringify({
- *                 type: "ARRAY",
- *                 description: "An array",
- *             }),
+ *             ref: "#/defs/MyDefinition",
+ *             requireds: ["some_property"],
+ *             title: "Title",
+ *             type: "ARRAY",
+ *             uniqueItems: true,
  *         },
  *     },
  * });
@@ -231,10 +241,18 @@ import * as utilities from "../utilities";
  *     executionType: "SYNCHRONOUS",
  *     googleSearchTool: {
  *         name: "example-tool",
+ *         contextUrls: [
+ *             "example.com",
+ *             "example2.com",
+ *         ],
  *         description: "example-description",
  *         excludeDomains: [
  *             "example.com",
  *             "example2.com",
+ *         ],
+ *         preferredDomains: [
+ *             "example3.com",
+ *             "example4.com",
  *         ],
  *     },
  * });

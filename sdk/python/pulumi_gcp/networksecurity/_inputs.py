@@ -135,6 +135,12 @@ __all__ = [
     'MirroringEndpointGroupConnectedDeploymentGroupArgsDict',
     'MirroringEndpointGroupConnectedDeploymentGroupLocationArgs',
     'MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict',
+    'SacAttachmentSymantecOptionsArgs',
+    'SacAttachmentSymantecOptionsArgsDict',
+    'SacRealmPairingKeyArgs',
+    'SacRealmPairingKeyArgsDict',
+    'SacRealmSymantecOptionsArgs',
+    'SacRealmSymantecOptionsArgsDict',
     'SecurityProfileCustomInterceptProfileArgs',
     'SecurityProfileCustomInterceptProfileArgsDict',
     'SecurityProfileCustomMirroringProfileArgs',
@@ -4862,6 +4868,197 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocationArgs:
 
 
 if not MYPY:
+    class SacAttachmentSymantecOptionsArgsDict(TypedDict):
+        symantec_location_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+        """
+        symantec_site: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Symantec data center identifier that this attachment will connect to.
+        """
+elif False:
+    SacAttachmentSymantecOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SacAttachmentSymantecOptionsArgs:
+    def __init__(__self__, *,
+                 symantec_location_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 symantec_site: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] symantec_location_name: Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+        :param pulumi.Input[_builtins.str] symantec_site: Symantec data center identifier that this attachment will connect to.
+        """
+        if symantec_location_name is not None:
+            pulumi.set(__self__, "symantec_location_name", symantec_location_name)
+        if symantec_site is not None:
+            pulumi.set(__self__, "symantec_site", symantec_site)
+
+    @_builtins.property
+    @pulumi.getter(name="symantecLocationName")
+    def symantec_location_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
+        """
+        return pulumi.get(self, "symantec_location_name")
+
+    @symantec_location_name.setter
+    def symantec_location_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "symantec_location_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="symantecSite")
+    def symantec_site(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Symantec data center identifier that this attachment will connect to.
+        """
+        return pulumi.get(self, "symantec_site")
+
+    @symantec_site.setter
+    def symantec_site(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "symantec_site", value)
+
+
+if not MYPY:
+    class SacRealmPairingKeyArgsDict(TypedDict):
+        expire_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Key value.
+        """
+elif False:
+    SacRealmPairingKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SacRealmPairingKeyArgs:
+    def __init__(__self__, *,
+                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expire_time: (Output)
+               Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+        :param pulumi.Input[_builtins.str] key: (Output)
+               Key value.
+        """
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expire_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Key value.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+
+if not MYPY:
+    class SacRealmSymantecOptionsArgsDict(TypedDict):
+        available_symantec_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        (Output)
+        Symantec site IDs which the user can choose to connect to.
+        """
+        secret_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+        A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+        """
+        symantec_connection_state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Connection status to Symantec API
+        """
+elif False:
+    SacRealmSymantecOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SacRealmSymantecOptionsArgs:
+    def __init__(__self__, *,
+                 available_symantec_sites: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 symantec_connection_state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_symantec_sites: (Output)
+               Symantec site IDs which the user can choose to connect to.
+        :param pulumi.Input[_builtins.str] secret_path: API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+               A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+        :param pulumi.Input[_builtins.str] symantec_connection_state: (Output)
+               Connection status to Symantec API
+        """
+        if available_symantec_sites is not None:
+            pulumi.set(__self__, "available_symantec_sites", available_symantec_sites)
+        if secret_path is not None:
+            pulumi.set(__self__, "secret_path", secret_path)
+        if symantec_connection_state is not None:
+            pulumi.set(__self__, "symantec_connection_state", symantec_connection_state)
+
+    @_builtins.property
+    @pulumi.getter(name="availableSymantecSites")
+    def available_symantec_sites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        (Output)
+        Symantec site IDs which the user can choose to connect to.
+        """
+        return pulumi.get(self, "available_symantec_sites")
+
+    @available_symantec_sites.setter
+    def available_symantec_sites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "available_symantec_sites", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretPath")
+    def secret_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
+        A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
+        """
+        return pulumi.get(self, "secret_path")
+
+    @secret_path.setter
+    def secret_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="symantecConnectionState")
+    def symantec_connection_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Connection status to Symantec API
+        """
+        return pulumi.get(self, "symantec_connection_state")
+
+    @symantec_connection_state.setter
+    def symantec_connection_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "symantec_connection_state", value)
+
+
+if not MYPY:
     class SecurityProfileCustomInterceptProfileArgsDict(TypedDict):
         intercept_endpoint_group: pulumi.Input[_builtins.str]
         """
@@ -4899,8 +5096,25 @@ if not MYPY:
     class SecurityProfileCustomMirroringProfileArgsDict(TypedDict):
         mirroring_endpoint_group: pulumi.Input[_builtins.str]
         """
-        The Mirroring Endpoint Group to which matching traffic should be mirrored.
+        The target Mirroring Endpoint Group.
+        When a mirroring rule with this security profile attached matches a packet,
+        a replica will be mirrored to the location-local target in this group.
         Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+        """
+        mirroring_deployment_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The target downstream Mirroring Deployment Groups.
+        This field is used for Packet Broker mirroring endpoint groups to specify
+        the deployment groups that the packet should be mirrored to by the broker.
+        Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+        """
+        mirroring_endpoint_group_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output, Beta)
+        The type of the mirroring endpoint group this profile is attached to.
+        Possible values:
+        DIRECT
+        BROKER
         """
 elif False:
     SecurityProfileCustomMirroringProfileArgsDict: TypeAlias = Mapping[str, Any]
@@ -4908,18 +5122,37 @@ elif False:
 @pulumi.input_type
 class SecurityProfileCustomMirroringProfileArgs:
     def __init__(__self__, *,
-                 mirroring_endpoint_group: pulumi.Input[_builtins.str]):
+                 mirroring_endpoint_group: pulumi.Input[_builtins.str],
+                 mirroring_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mirroring_endpoint_group_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] mirroring_endpoint_group: The Mirroring Endpoint Group to which matching traffic should be mirrored.
+        :param pulumi.Input[_builtins.str] mirroring_endpoint_group: The target Mirroring Endpoint Group.
+               When a mirroring rule with this security profile attached matches a packet,
+               a replica will be mirrored to the location-local target in this group.
                Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: The target downstream Mirroring Deployment Groups.
+               This field is used for Packet Broker mirroring endpoint groups to specify
+               the deployment groups that the packet should be mirrored to by the broker.
+               Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+        :param pulumi.Input[_builtins.str] mirroring_endpoint_group_type: (Output, Beta)
+               The type of the mirroring endpoint group this profile is attached to.
+               Possible values:
+               DIRECT
+               BROKER
         """
         pulumi.set(__self__, "mirroring_endpoint_group", mirroring_endpoint_group)
+        if mirroring_deployment_groups is not None:
+            pulumi.set(__self__, "mirroring_deployment_groups", mirroring_deployment_groups)
+        if mirroring_endpoint_group_type is not None:
+            pulumi.set(__self__, "mirroring_endpoint_group_type", mirroring_endpoint_group_type)
 
     @_builtins.property
     @pulumi.getter(name="mirroringEndpointGroup")
     def mirroring_endpoint_group(self) -> pulumi.Input[_builtins.str]:
         """
-        The Mirroring Endpoint Group to which matching traffic should be mirrored.
+        The target Mirroring Endpoint Group.
+        When a mirroring rule with this security profile attached matches a packet,
+        a replica will be mirrored to the location-local target in this group.
         Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
         """
         return pulumi.get(self, "mirroring_endpoint_group")
@@ -4927,6 +5160,37 @@ class SecurityProfileCustomMirroringProfileArgs:
     @mirroring_endpoint_group.setter
     def mirroring_endpoint_group(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "mirroring_endpoint_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mirroringDeploymentGroups")
+    def mirroring_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The target downstream Mirroring Deployment Groups.
+        This field is used for Packet Broker mirroring endpoint groups to specify
+        the deployment groups that the packet should be mirrored to by the broker.
+        Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
+        """
+        return pulumi.get(self, "mirroring_deployment_groups")
+
+    @mirroring_deployment_groups.setter
+    def mirroring_deployment_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mirroring_deployment_groups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mirroringEndpointGroupType")
+    def mirroring_endpoint_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output, Beta)
+        The type of the mirroring endpoint group this profile is attached to.
+        Possible values:
+        DIRECT
+        BROKER
+        """
+        return pulumi.get(self, "mirroring_endpoint_group_type")
+
+    @mirroring_endpoint_group_type.setter
+    def mirroring_endpoint_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mirroring_endpoint_group_type", value)
 
 
 if not MYPY:

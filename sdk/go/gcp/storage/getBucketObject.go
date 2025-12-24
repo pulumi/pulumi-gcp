@@ -76,7 +76,8 @@ type LookupBucketObjectResult struct {
 	// (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
 	ContentLanguage string `pulumi:"contentLanguage"`
 	// (Computed) [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-	ContentType string `pulumi:"contentType"`
+	ContentType string                   `pulumi:"contentType"`
+	Contexts    []GetBucketObjectContext `pulumi:"contexts"`
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c              string                              `pulumi:"crc32c"`
 	CustomerEncryptions []GetBucketObjectCustomerEncryption `pulumi:"customerEncryptions"`
@@ -179,6 +180,10 @@ func (o LookupBucketObjectResultOutput) ContentLanguage() pulumi.StringOutput {
 // (Computed) [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 func (o LookupBucketObjectResultOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketObjectResultOutput) Contexts() GetBucketObjectContextArrayOutput {
+	return o.ApplyT(func(v LookupBucketObjectResult) []GetBucketObjectContext { return v.Contexts }).(GetBucketObjectContextArrayOutput)
 }
 
 // (Computed) Base 64 CRC32 hash of the uploaded data.

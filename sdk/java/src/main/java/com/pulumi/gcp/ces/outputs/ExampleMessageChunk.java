@@ -4,7 +4,10 @@
 package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.ces.outputs.ExampleMessageChunkAgentTransfer;
 import com.pulumi.gcp.ces.outputs.ExampleMessageChunkImage;
+import com.pulumi.gcp.ces.outputs.ExampleMessageChunkToolCall;
+import com.pulumi.gcp.ces.outputs.ExampleMessageChunkToolResponse;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +15,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ExampleMessageChunk {
+    /**
+     * @return Represents an event indicating the transfer of a conversation to a different
+     * agent.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ExampleMessageChunkAgentTransfer agentTransfer;
     /**
      * @return Represents an image input or output in the conversation.
      * Structure is documented below.
@@ -24,6 +34,18 @@ public final class ExampleMessageChunk {
      */
     private @Nullable String text;
     /**
+     * @return Request for the client or the agent to execute the specified tool.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ExampleMessageChunkToolCall toolCall;
+    /**
+     * @return The execution result of a specific tool from the client or the agent.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ExampleMessageChunkToolResponse toolResponse;
+    /**
      * @return A struct represents variables that were updated in the conversation,
      * keyed by variable names.
      * 
@@ -31,6 +53,15 @@ public final class ExampleMessageChunk {
     private @Nullable String updatedVariables;
 
     private ExampleMessageChunk() {}
+    /**
+     * @return Represents an event indicating the transfer of a conversation to a different
+     * agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ExampleMessageChunkAgentTransfer> agentTransfer() {
+        return Optional.ofNullable(this.agentTransfer);
+    }
     /**
      * @return Represents an image input or output in the conversation.
      * Structure is documented below.
@@ -45,6 +76,22 @@ public final class ExampleMessageChunk {
      */
     public Optional<String> text() {
         return Optional.ofNullable(this.text);
+    }
+    /**
+     * @return Request for the client or the agent to execute the specified tool.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ExampleMessageChunkToolCall> toolCall() {
+        return Optional.ofNullable(this.toolCall);
+    }
+    /**
+     * @return The execution result of a specific tool from the client or the agent.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ExampleMessageChunkToolResponse> toolResponse() {
+        return Optional.ofNullable(this.toolResponse);
     }
     /**
      * @return A struct represents variables that were updated in the conversation,
@@ -64,17 +111,29 @@ public final class ExampleMessageChunk {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ExampleMessageChunkAgentTransfer agentTransfer;
         private @Nullable ExampleMessageChunkImage image;
         private @Nullable String text;
+        private @Nullable ExampleMessageChunkToolCall toolCall;
+        private @Nullable ExampleMessageChunkToolResponse toolResponse;
         private @Nullable String updatedVariables;
         public Builder() {}
         public Builder(ExampleMessageChunk defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.agentTransfer = defaults.agentTransfer;
     	      this.image = defaults.image;
     	      this.text = defaults.text;
+    	      this.toolCall = defaults.toolCall;
+    	      this.toolResponse = defaults.toolResponse;
     	      this.updatedVariables = defaults.updatedVariables;
         }
 
+        @CustomType.Setter
+        public Builder agentTransfer(@Nullable ExampleMessageChunkAgentTransfer agentTransfer) {
+
+            this.agentTransfer = agentTransfer;
+            return this;
+        }
         @CustomType.Setter
         public Builder image(@Nullable ExampleMessageChunkImage image) {
 
@@ -88,6 +147,18 @@ public final class ExampleMessageChunk {
             return this;
         }
         @CustomType.Setter
+        public Builder toolCall(@Nullable ExampleMessageChunkToolCall toolCall) {
+
+            this.toolCall = toolCall;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder toolResponse(@Nullable ExampleMessageChunkToolResponse toolResponse) {
+
+            this.toolResponse = toolResponse;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updatedVariables(@Nullable String updatedVariables) {
 
             this.updatedVariables = updatedVariables;
@@ -95,8 +166,11 @@ public final class ExampleMessageChunk {
         }
         public ExampleMessageChunk build() {
             final var _resultValue = new ExampleMessageChunk();
+            _resultValue.agentTransfer = agentTransfer;
             _resultValue.image = image;
             _resultValue.text = text;
+            _resultValue.toolCall = toolCall;
+            _resultValue.toolResponse = toolResponse;
             _resultValue.updatedVariables = updatedVariables;
             return _resultValue;
         }

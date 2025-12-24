@@ -119,6 +119,116 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// ### Colab Notebook Execution Custom Env
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myNetwork = new Gcp.Compute.Network("my_network", new()
+    ///     {
+    ///         Name = "colab-test-default",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var mySubnetwork = new Gcp.Compute.Subnetwork("my_subnetwork", new()
+    ///     {
+    ///         Name = "colab-test-default",
+    ///         Network = myNetwork.Id,
+    ///         Region = "us-central1",
+    ///         IpCidrRange = "10.0.1.0/24",
+    ///     });
+    /// 
+    ///     var outputBucket = new Gcp.Storage.Bucket("output_bucket", new()
+    ///     {
+    ///         Name = "my_bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var notebook_execution = new Gcp.Colab.NotebookExecution("notebook-execution", new()
+    ///     {
+    ///         DisplayName = "Notebook execution basic",
+    ///         Location = "us-central1",
+    ///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
+    ///         {
+    ///             Content = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = @"    {
+    ///       \""cells\"": [
+    ///         {
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
+    ///           ]
+    ///         }
+    ///       ],
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
+    ///         },
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
+    ///           },
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
+    ///         }
+    ///       },
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
+    ///     }
+    /// ",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///         CustomEnvironmentSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecArgs
+    ///         {
+    ///             MachineSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+    ///             {
+    ///                 MachineType = "n1-standard-2",
+    ///                 AcceleratorType = "NVIDIA_TESLA_T4",
+    ///                 AcceleratorCount = 1,
+    ///             },
+    ///             PersistentDiskSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+    ///             {
+    ///                 DiskType = "pd-standard",
+    ///                 DiskSizeGb = "200",
+    ///             },
+    ///             NetworkSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs
+    ///             {
+    ///                 EnableInternetAccess = true,
+    ///                 Network = myNetwork.Id,
+    ///                 Subnetwork = mySubnetwork.Id,
+    ///             },
+    ///         },
+    ///         GcsOutputUri = outputBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///         ServiceAccount = "my@service-account.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             outputBucket,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Colab Notebook Execution Full
     /// 
     /// ```csharp
@@ -369,6 +479,13 @@ namespace Pulumi.Gcp.Colab
     public partial class NotebookExecution : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Compute configuration to use for an execution job
+        /// Structure is documented below.
+        /// </summary>
+        [Output("customEnvironmentSpec")]
+        public Output<Outputs.NotebookExecutionCustomEnvironmentSpec?> CustomEnvironmentSpec { get; private set; } = null!;
+
+        /// <summary>
         /// The Dataform Repository containing the input notebook.
         /// Structure is documented below.
         /// </summary>
@@ -491,6 +608,13 @@ namespace Pulumi.Gcp.Colab
     public sealed class NotebookExecutionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Compute configuration to use for an execution job
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customEnvironmentSpec")]
+        public Input<Inputs.NotebookExecutionCustomEnvironmentSpecArgs>? CustomEnvironmentSpec { get; set; }
+
+        /// <summary>
         /// The Dataform Repository containing the input notebook.
         /// Structure is documented below.
         /// </summary>
@@ -574,6 +698,13 @@ namespace Pulumi.Gcp.Colab
 
     public sealed class NotebookExecutionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Compute configuration to use for an execution job
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customEnvironmentSpec")]
+        public Input<Inputs.NotebookExecutionCustomEnvironmentSpecGetArgs>? CustomEnvironmentSpec { get; set; }
+
         /// <summary>
         /// The Dataform Repository containing the input notebook.
         /// Structure is documented below.

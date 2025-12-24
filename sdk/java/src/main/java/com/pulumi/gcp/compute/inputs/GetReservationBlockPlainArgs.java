@@ -50,12 +50,16 @@ public final class GetReservationBlockPlainArgs extends com.pulumi.resources.Inv
     /**
      * The name of the parent reservation.
      * 
+     * ***
+     * 
      */
     @Import(name="reservation", required=true)
     private String reservation;
 
     /**
      * @return The name of the parent reservation.
+     * 
+     * ***
      * 
      */
     public String reservation() {
@@ -65,16 +69,12 @@ public final class GetReservationBlockPlainArgs extends com.pulumi.resources.Inv
     /**
      * The zone where the reservation block resides.
      * 
-     * ***
-     * 
      */
     @Import(name="zone")
     private @Nullable String zone;
 
     /**
      * @return The zone where the reservation block resides.
-     * 
-     * ***
      * 
      */
     public Optional<String> zone() {
@@ -134,6 +134,8 @@ public final class GetReservationBlockPlainArgs extends com.pulumi.resources.Inv
         /**
          * @param reservation The name of the parent reservation.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -144,8 +146,6 @@ public final class GetReservationBlockPlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param zone The zone where the reservation block resides.
-         * 
-         * ***
          * 
          * @return builder
          * 

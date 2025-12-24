@@ -16,7 +16,7 @@ import (
 //
 // To get more information about Service, see:
 //
-// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
+// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1/projects.locations.namespaces.services)
 // * How-to Guides
 //   - [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
 //

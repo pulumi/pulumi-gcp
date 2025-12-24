@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// To get more information about OrganizationSecurityPolicy, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies)
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies)
     /// * How-to Guides
     ///     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
     /// 
@@ -32,8 +32,9 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         DisplayName = "tf-test",
+    ///         ShortName = "my-short-name",
     ///         Parent = "organizations/123456789",
+    ///         Type = "CLOUD_ARMOR",
     ///     });
     /// 
     /// });
@@ -100,11 +101,11 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-        /// Default value is `FIREWALL`.
+        /// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
         /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -179,7 +180,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-        /// Default value is `FIREWALL`.
+        /// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
         /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         /// </summary>
         [Input("type")]
@@ -233,7 +234,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-        /// Default value is `FIREWALL`.
+        /// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
         /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
         /// </summary>
         [Input("type")]

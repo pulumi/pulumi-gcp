@@ -13,13 +13,15 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecDeploymentSpecSecretEnvArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the environment variable. Must be a valid C identifier.
+        /// The name of the environment variable. Must be a valid C
+        /// identifier.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+        /// Reference to a secret stored in the Cloud Secret Manager
+        /// that will provide the value for this environment variable.
         /// Structure is documented below.
         /// </summary>
         [Input("secretRef", required: true)]

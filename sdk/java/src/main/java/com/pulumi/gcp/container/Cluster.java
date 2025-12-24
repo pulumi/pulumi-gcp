@@ -689,14 +689,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableL4IlbSubsetting", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableL4IlbSubsetting;
+    private Output<Boolean> enableL4IlbSubsetting;
 
     /**
      * @return Whether L4ILB Subsetting is enabled for this cluster.
      * 
      */
-    public Output<Optional<Boolean>> enableL4IlbSubsetting() {
-        return Codegen.optional(this.enableL4IlbSubsetting);
+    public Output<Boolean> enableL4IlbSubsetting() {
+        return this.enableL4IlbSubsetting;
     }
     /**
      * Whether the ABAC authorizer is enabled for this cluster.

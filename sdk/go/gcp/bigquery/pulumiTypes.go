@@ -3206,7 +3206,7 @@ type DataTransferConfigSensitiveParams struct {
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// The Secret Access Key of the AWS account transferring data from.
 	SecretAccessKeyWo *string `pulumi:"secretAccessKeyWo"`
-	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SecretAccessKeyWoVersion *int `pulumi:"secretAccessKeyWoVersion"`
 }
 
@@ -3227,7 +3227,7 @@ type DataTransferConfigSensitiveParamsArgs struct {
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
 	// The Secret Access Key of the AWS account transferring data from.
 	SecretAccessKeyWo pulumi.StringPtrInput `pulumi:"secretAccessKeyWo"`
-	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+	// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 	SecretAccessKeyWoVersion pulumi.IntPtrInput `pulumi:"secretAccessKeyWoVersion"`
 }
 
@@ -3319,7 +3319,7 @@ func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWo() pulumi.Stri
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *string { return v.SecretAccessKeyWo }).(pulumi.StringPtrOutput)
 }
 
-// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o DataTransferConfigSensitiveParamsOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DataTransferConfigSensitiveParams) *int { return v.SecretAccessKeyWoVersion }).(pulumi.IntPtrOutput)
 }
@@ -3369,7 +3369,7 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWo() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)
+// The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
 func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfigSensitiveParams) *int {
 		if v == nil {
@@ -11805,6 +11805,427 @@ func (o RoutineArgumentArrayOutput) Index(i pulumi.IntInput) RoutineArgumentOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutineArgument {
 		return vs[0].([]RoutineArgument)[vs[1].(int)]
 	}).(RoutineArgumentOutput)
+}
+
+type RoutineExternalRuntimeOptions struct {
+	// Amount of CPU provisioned for a Python UDF container instance. For more
+	// information, see [Configure container limits for Python
+	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+	ContainerCpu *float64 `pulumi:"containerCpu"`
+	// Amount of memory provisioned for a Python UDF container instance. Format:
+	// {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+	// 512Mi). If not specified, the default value is 512Mi. For more information,
+	// see [Configure container limits for Python
+	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+	ContainerMemory *string `pulumi:"containerMemory"`
+	// Maximum number of rows in each batch sent to the external runtime. If
+	// absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+	MaxBatchingRows *string `pulumi:"maxBatchingRows"`
+	// Fully qualified name of the connection whose service account will be used
+	// to execute the code in the container. Format:
+	// `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
+	RuntimeConnection *string `pulumi:"runtimeConnection"`
+	// Language runtime version. Example: `python-3.11`.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+}
+
+// RoutineExternalRuntimeOptionsInput is an input type that accepts RoutineExternalRuntimeOptionsArgs and RoutineExternalRuntimeOptionsOutput values.
+// You can construct a concrete instance of `RoutineExternalRuntimeOptionsInput` via:
+//
+//	RoutineExternalRuntimeOptionsArgs{...}
+type RoutineExternalRuntimeOptionsInput interface {
+	pulumi.Input
+
+	ToRoutineExternalRuntimeOptionsOutput() RoutineExternalRuntimeOptionsOutput
+	ToRoutineExternalRuntimeOptionsOutputWithContext(context.Context) RoutineExternalRuntimeOptionsOutput
+}
+
+type RoutineExternalRuntimeOptionsArgs struct {
+	// Amount of CPU provisioned for a Python UDF container instance. For more
+	// information, see [Configure container limits for Python
+	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+	ContainerCpu pulumi.Float64PtrInput `pulumi:"containerCpu"`
+	// Amount of memory provisioned for a Python UDF container instance. Format:
+	// {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+	// 512Mi). If not specified, the default value is 512Mi. For more information,
+	// see [Configure container limits for Python
+	// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+	ContainerMemory pulumi.StringPtrInput `pulumi:"containerMemory"`
+	// Maximum number of rows in each batch sent to the external runtime. If
+	// absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+	MaxBatchingRows pulumi.StringPtrInput `pulumi:"maxBatchingRows"`
+	// Fully qualified name of the connection whose service account will be used
+	// to execute the code in the container. Format:
+	// `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
+	RuntimeConnection pulumi.StringPtrInput `pulumi:"runtimeConnection"`
+	// Language runtime version. Example: `python-3.11`.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+func (RoutineExternalRuntimeOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineExternalRuntimeOptions)(nil)).Elem()
+}
+
+func (i RoutineExternalRuntimeOptionsArgs) ToRoutineExternalRuntimeOptionsOutput() RoutineExternalRuntimeOptionsOutput {
+	return i.ToRoutineExternalRuntimeOptionsOutputWithContext(context.Background())
+}
+
+func (i RoutineExternalRuntimeOptionsArgs) ToRoutineExternalRuntimeOptionsOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineExternalRuntimeOptionsOutput)
+}
+
+func (i RoutineExternalRuntimeOptionsArgs) ToRoutineExternalRuntimeOptionsPtrOutput() RoutineExternalRuntimeOptionsPtrOutput {
+	return i.ToRoutineExternalRuntimeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i RoutineExternalRuntimeOptionsArgs) ToRoutineExternalRuntimeOptionsPtrOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineExternalRuntimeOptionsOutput).ToRoutineExternalRuntimeOptionsPtrOutputWithContext(ctx)
+}
+
+// RoutineExternalRuntimeOptionsPtrInput is an input type that accepts RoutineExternalRuntimeOptionsArgs, RoutineExternalRuntimeOptionsPtr and RoutineExternalRuntimeOptionsPtrOutput values.
+// You can construct a concrete instance of `RoutineExternalRuntimeOptionsPtrInput` via:
+//
+//	        RoutineExternalRuntimeOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoutineExternalRuntimeOptionsPtrInput interface {
+	pulumi.Input
+
+	ToRoutineExternalRuntimeOptionsPtrOutput() RoutineExternalRuntimeOptionsPtrOutput
+	ToRoutineExternalRuntimeOptionsPtrOutputWithContext(context.Context) RoutineExternalRuntimeOptionsPtrOutput
+}
+
+type routineExternalRuntimeOptionsPtrType RoutineExternalRuntimeOptionsArgs
+
+func RoutineExternalRuntimeOptionsPtr(v *RoutineExternalRuntimeOptionsArgs) RoutineExternalRuntimeOptionsPtrInput {
+	return (*routineExternalRuntimeOptionsPtrType)(v)
+}
+
+func (*routineExternalRuntimeOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineExternalRuntimeOptions)(nil)).Elem()
+}
+
+func (i *routineExternalRuntimeOptionsPtrType) ToRoutineExternalRuntimeOptionsPtrOutput() RoutineExternalRuntimeOptionsPtrOutput {
+	return i.ToRoutineExternalRuntimeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *routineExternalRuntimeOptionsPtrType) ToRoutineExternalRuntimeOptionsPtrOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineExternalRuntimeOptionsPtrOutput)
+}
+
+type RoutineExternalRuntimeOptionsOutput struct{ *pulumi.OutputState }
+
+func (RoutineExternalRuntimeOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineExternalRuntimeOptions)(nil)).Elem()
+}
+
+func (o RoutineExternalRuntimeOptionsOutput) ToRoutineExternalRuntimeOptionsOutput() RoutineExternalRuntimeOptionsOutput {
+	return o
+}
+
+func (o RoutineExternalRuntimeOptionsOutput) ToRoutineExternalRuntimeOptionsOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsOutput {
+	return o
+}
+
+func (o RoutineExternalRuntimeOptionsOutput) ToRoutineExternalRuntimeOptionsPtrOutput() RoutineExternalRuntimeOptionsPtrOutput {
+	return o.ToRoutineExternalRuntimeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o RoutineExternalRuntimeOptionsOutput) ToRoutineExternalRuntimeOptionsPtrOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineExternalRuntimeOptions) *RoutineExternalRuntimeOptions {
+		return &v
+	}).(RoutineExternalRuntimeOptionsPtrOutput)
+}
+
+// Amount of CPU provisioned for a Python UDF container instance. For more
+// information, see [Configure container limits for Python
+// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+func (o RoutineExternalRuntimeOptionsOutput) ContainerCpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *float64 { return v.ContainerCpu }).(pulumi.Float64PtrOutput)
+}
+
+// Amount of memory provisioned for a Python UDF container instance. Format:
+// {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+// 512Mi). If not specified, the default value is 512Mi. For more information,
+// see [Configure container limits for Python
+// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+func (o RoutineExternalRuntimeOptionsOutput) ContainerMemory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *string { return v.ContainerMemory }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of rows in each batch sent to the external runtime. If
+// absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+func (o RoutineExternalRuntimeOptionsOutput) MaxBatchingRows() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *string { return v.MaxBatchingRows }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name of the connection whose service account will be used
+// to execute the code in the container. Format:
+// `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
+func (o RoutineExternalRuntimeOptionsOutput) RuntimeConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *string { return v.RuntimeConnection }).(pulumi.StringPtrOutput)
+}
+
+// Language runtime version. Example: `python-3.11`.
+func (o RoutineExternalRuntimeOptionsOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineExternalRuntimeOptions) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type RoutineExternalRuntimeOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (RoutineExternalRuntimeOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineExternalRuntimeOptions)(nil)).Elem()
+}
+
+func (o RoutineExternalRuntimeOptionsPtrOutput) ToRoutineExternalRuntimeOptionsPtrOutput() RoutineExternalRuntimeOptionsPtrOutput {
+	return o
+}
+
+func (o RoutineExternalRuntimeOptionsPtrOutput) ToRoutineExternalRuntimeOptionsPtrOutputWithContext(ctx context.Context) RoutineExternalRuntimeOptionsPtrOutput {
+	return o
+}
+
+func (o RoutineExternalRuntimeOptionsPtrOutput) Elem() RoutineExternalRuntimeOptionsOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) RoutineExternalRuntimeOptions {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineExternalRuntimeOptions
+		return ret
+	}).(RoutineExternalRuntimeOptionsOutput)
+}
+
+// Amount of CPU provisioned for a Python UDF container instance. For more
+// information, see [Configure container limits for Python
+// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+func (o RoutineExternalRuntimeOptionsPtrOutput) ContainerCpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerCpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Amount of memory provisioned for a Python UDF container instance. Format:
+// {number}{unit} where unit is one of "M", "G", "Mi" and "Gi" (e.g. 1G,
+// 512Mi). If not specified, the default value is 512Mi. For more information,
+// see [Configure container limits for Python
+// UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits)
+func (o RoutineExternalRuntimeOptionsPtrOutput) ContainerMemory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerMemory
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of rows in each batch sent to the external runtime. If
+// absent or if 0, BigQuery dynamically decides the number of rows in a batch.
+func (o RoutineExternalRuntimeOptionsPtrOutput) MaxBatchingRows() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchingRows
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name of the connection whose service account will be used
+// to execute the code in the container. Format:
+// `"projects/{project_id}/locations/{location_id}/connections/{connection_id}"`
+func (o RoutineExternalRuntimeOptionsPtrOutput) RuntimeConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeConnection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Language runtime version. Example: `python-3.11`.
+func (o RoutineExternalRuntimeOptionsPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineExternalRuntimeOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type RoutinePythonOptions struct {
+	// The name of the function defined in Python code as the entry point when the
+	// Python UDF is invoked.
+	EntryPoint string `pulumi:"entryPoint"`
+	// A list of Python package names along with versions to be installed.
+	// Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
+	// information, see [Use third-party
+	// packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+	Packages []string `pulumi:"packages"`
+}
+
+// RoutinePythonOptionsInput is an input type that accepts RoutinePythonOptionsArgs and RoutinePythonOptionsOutput values.
+// You can construct a concrete instance of `RoutinePythonOptionsInput` via:
+//
+//	RoutinePythonOptionsArgs{...}
+type RoutinePythonOptionsInput interface {
+	pulumi.Input
+
+	ToRoutinePythonOptionsOutput() RoutinePythonOptionsOutput
+	ToRoutinePythonOptionsOutputWithContext(context.Context) RoutinePythonOptionsOutput
+}
+
+type RoutinePythonOptionsArgs struct {
+	// The name of the function defined in Python code as the entry point when the
+	// Python UDF is invoked.
+	EntryPoint pulumi.StringInput `pulumi:"entryPoint"`
+	// A list of Python package names along with versions to be installed.
+	// Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
+	// information, see [Use third-party
+	// packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+	Packages pulumi.StringArrayInput `pulumi:"packages"`
+}
+
+func (RoutinePythonOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutinePythonOptions)(nil)).Elem()
+}
+
+func (i RoutinePythonOptionsArgs) ToRoutinePythonOptionsOutput() RoutinePythonOptionsOutput {
+	return i.ToRoutinePythonOptionsOutputWithContext(context.Background())
+}
+
+func (i RoutinePythonOptionsArgs) ToRoutinePythonOptionsOutputWithContext(ctx context.Context) RoutinePythonOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutinePythonOptionsOutput)
+}
+
+func (i RoutinePythonOptionsArgs) ToRoutinePythonOptionsPtrOutput() RoutinePythonOptionsPtrOutput {
+	return i.ToRoutinePythonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i RoutinePythonOptionsArgs) ToRoutinePythonOptionsPtrOutputWithContext(ctx context.Context) RoutinePythonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutinePythonOptionsOutput).ToRoutinePythonOptionsPtrOutputWithContext(ctx)
+}
+
+// RoutinePythonOptionsPtrInput is an input type that accepts RoutinePythonOptionsArgs, RoutinePythonOptionsPtr and RoutinePythonOptionsPtrOutput values.
+// You can construct a concrete instance of `RoutinePythonOptionsPtrInput` via:
+//
+//	        RoutinePythonOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoutinePythonOptionsPtrInput interface {
+	pulumi.Input
+
+	ToRoutinePythonOptionsPtrOutput() RoutinePythonOptionsPtrOutput
+	ToRoutinePythonOptionsPtrOutputWithContext(context.Context) RoutinePythonOptionsPtrOutput
+}
+
+type routinePythonOptionsPtrType RoutinePythonOptionsArgs
+
+func RoutinePythonOptionsPtr(v *RoutinePythonOptionsArgs) RoutinePythonOptionsPtrInput {
+	return (*routinePythonOptionsPtrType)(v)
+}
+
+func (*routinePythonOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutinePythonOptions)(nil)).Elem()
+}
+
+func (i *routinePythonOptionsPtrType) ToRoutinePythonOptionsPtrOutput() RoutinePythonOptionsPtrOutput {
+	return i.ToRoutinePythonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *routinePythonOptionsPtrType) ToRoutinePythonOptionsPtrOutputWithContext(ctx context.Context) RoutinePythonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutinePythonOptionsPtrOutput)
+}
+
+type RoutinePythonOptionsOutput struct{ *pulumi.OutputState }
+
+func (RoutinePythonOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutinePythonOptions)(nil)).Elem()
+}
+
+func (o RoutinePythonOptionsOutput) ToRoutinePythonOptionsOutput() RoutinePythonOptionsOutput {
+	return o
+}
+
+func (o RoutinePythonOptionsOutput) ToRoutinePythonOptionsOutputWithContext(ctx context.Context) RoutinePythonOptionsOutput {
+	return o
+}
+
+func (o RoutinePythonOptionsOutput) ToRoutinePythonOptionsPtrOutput() RoutinePythonOptionsPtrOutput {
+	return o.ToRoutinePythonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o RoutinePythonOptionsOutput) ToRoutinePythonOptionsPtrOutputWithContext(ctx context.Context) RoutinePythonOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutinePythonOptions) *RoutinePythonOptions {
+		return &v
+	}).(RoutinePythonOptionsPtrOutput)
+}
+
+// The name of the function defined in Python code as the entry point when the
+// Python UDF is invoked.
+func (o RoutinePythonOptionsOutput) EntryPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutinePythonOptions) string { return v.EntryPoint }).(pulumi.StringOutput)
+}
+
+// A list of Python package names along with versions to be installed.
+// Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
+// information, see [Use third-party
+// packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+func (o RoutinePythonOptionsOutput) Packages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoutinePythonOptions) []string { return v.Packages }).(pulumi.StringArrayOutput)
+}
+
+type RoutinePythonOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (RoutinePythonOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutinePythonOptions)(nil)).Elem()
+}
+
+func (o RoutinePythonOptionsPtrOutput) ToRoutinePythonOptionsPtrOutput() RoutinePythonOptionsPtrOutput {
+	return o
+}
+
+func (o RoutinePythonOptionsPtrOutput) ToRoutinePythonOptionsPtrOutputWithContext(ctx context.Context) RoutinePythonOptionsPtrOutput {
+	return o
+}
+
+func (o RoutinePythonOptionsPtrOutput) Elem() RoutinePythonOptionsOutput {
+	return o.ApplyT(func(v *RoutinePythonOptions) RoutinePythonOptions {
+		if v != nil {
+			return *v
+		}
+		var ret RoutinePythonOptions
+		return ret
+	}).(RoutinePythonOptionsOutput)
+}
+
+// The name of the function defined in Python code as the entry point when the
+// Python UDF is invoked.
+func (o RoutinePythonOptionsPtrOutput) EntryPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutinePythonOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntryPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of Python package names along with versions to be installed.
+// Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more
+// information, see [Use third-party
+// packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
+func (o RoutinePythonOptionsPtrOutput) Packages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoutinePythonOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Packages
+	}).(pulumi.StringArrayOutput)
 }
 
 type RoutineRemoteFunctionOptions struct {
@@ -22417,6 +22838,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusErrorArrayInput)(nil)).Elem(), ReservationReplicationStatusErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentInput)(nil)).Elem(), RoutineArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentArrayInput)(nil)).Elem(), RoutineArgumentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsInput)(nil)).Elem(), RoutineExternalRuntimeOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsPtrInput)(nil)).Elem(), RoutineExternalRuntimeOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutinePythonOptionsInput)(nil)).Elem(), RoutinePythonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutinePythonOptionsPtrInput)(nil)).Elem(), RoutinePythonOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRemoteFunctionOptionsInput)(nil)).Elem(), RoutineRemoteFunctionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRemoteFunctionOptionsPtrInput)(nil)).Elem(), RoutineRemoteFunctionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSparkOptionsInput)(nil)).Elem(), RoutineSparkOptionsArgs{})
@@ -22677,6 +23102,10 @@ func init() {
 	pulumi.RegisterOutputType(ReservationReplicationStatusErrorArrayOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
+	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsOutput{})
+	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsPtrOutput{})
+	pulumi.RegisterOutputType(RoutinePythonOptionsOutput{})
+	pulumi.RegisterOutputType(RoutinePythonOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RoutineRemoteFunctionOptionsOutput{})
 	pulumi.RegisterOutputType(RoutineRemoteFunctionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RoutineSparkOptionsOutput{})

@@ -221,6 +221,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetSnapshotSnapshotEncryptionKeyResult> SnapshotEncryptionKeys;
         public readonly int SnapshotId;
+        public readonly string SnapshotType;
         public readonly string SourceDisk;
         public readonly ImmutableArray<Outputs.GetSnapshotSourceDiskEncryptionKeyResult> SourceDiskEncryptionKeys;
         public readonly int StorageBytes;
@@ -263,6 +264,8 @@ namespace Pulumi.Gcp.Compute
 
             int snapshotId,
 
+            string snapshotType,
+
             string sourceDisk,
 
             ImmutableArray<Outputs.GetSnapshotSourceDiskEncryptionKeyResult> sourceDiskEncryptionKeys,
@@ -290,6 +293,7 @@ namespace Pulumi.Gcp.Compute
             SelfLink = selfLink;
             SnapshotEncryptionKeys = snapshotEncryptionKeys;
             SnapshotId = snapshotId;
+            SnapshotType = snapshotType;
             SourceDisk = sourceDisk;
             SourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             StorageBytes = storageBytes;

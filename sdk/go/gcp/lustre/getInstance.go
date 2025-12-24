@@ -45,6 +45,7 @@ type LookupInstanceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string            `pulumi:"id"`
 	InstanceId               string            `pulumi:"instanceId"`
+	KmsKey                   string            `pulumi:"kmsKey"`
 	Labels                   map[string]string `pulumi:"labels"`
 	Location                 string            `pulumi:"location"`
 	MountPoint               string            `pulumi:"mountPoint"`
@@ -55,6 +56,7 @@ type LookupInstanceResult struct {
 	Project                  *string           `pulumi:"project"`
 	PulumiLabels             map[string]string `pulumi:"pulumiLabels"`
 	State                    string            `pulumi:"state"`
+	StateReason              string            `pulumi:"stateReason"`
 	UpdateTime               string            `pulumi:"updateTime"`
 	Zone                     *string           `pulumi:"zone"`
 }
@@ -130,6 +132,10 @@ func (o LookupInstanceResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+func (o LookupInstanceResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -168,6 +174,10 @@ func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
 
 func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.StateReason }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) UpdateTime() pulumi.StringOutput {

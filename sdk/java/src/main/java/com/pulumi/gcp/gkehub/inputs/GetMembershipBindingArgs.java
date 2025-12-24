@@ -16,30 +16,66 @@ public final class GetMembershipBindingArgs extends com.pulumi.resources.InvokeA
 
     public static final GetMembershipBindingArgs Empty = new GetMembershipBindingArgs();
 
+    /**
+     * The location for the GKE Hub Membership Binding.
+     * Currently only `global` is supported.
+     * 
+     */
     @Import(name="location", required=true)
     private Output<String> location;
 
+    /**
+     * @return The location for the GKE Hub Membership Binding.
+     * Currently only `global` is supported.
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
 
+    /**
+     * The ID of the membership binding.
+     * 
+     */
     @Import(name="membershipBindingId", required=true)
     private Output<String> membershipBindingId;
 
+    /**
+     * @return The ID of the membership binding.
+     * 
+     */
     public Output<String> membershipBindingId() {
         return this.membershipBindingId;
     }
 
+    /**
+     * The ID of the membership that this binding applies to.
+     * 
+     */
     @Import(name="membershipId", required=true)
     private Output<String> membershipId;
 
+    /**
+     * @return The ID of the membership that this binding applies to.
+     * 
+     */
     public Output<String> membershipId() {
         return this.membershipId;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -71,38 +107,90 @@ public final class GetMembershipBindingArgs extends com.pulumi.resources.InvokeA
             $ = new GetMembershipBindingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param location The location for the GKE Hub Membership Binding.
+         * Currently only `global` is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The location for the GKE Hub Membership Binding.
+         * Currently only `global` is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param membershipBindingId The ID of the membership binding.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipBindingId(Output<String> membershipBindingId) {
             $.membershipBindingId = membershipBindingId;
             return this;
         }
 
+        /**
+         * @param membershipBindingId The ID of the membership binding.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipBindingId(String membershipBindingId) {
             return membershipBindingId(Output.of(membershipBindingId));
         }
 
+        /**
+         * @param membershipId The ID of the membership that this binding applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipId(Output<String> membershipId) {
             $.membershipId = membershipId;
             return this;
         }
 
+        /**
+         * @param membershipId The ID of the membership that this binding applies to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membershipId(String membershipId) {
             return membershipId(Output.of(membershipId));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -27,7 +27,7 @@ class GetBucketObjectContentResult:
     """
     A collection of values returned by getBucketObjectContent.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_base64=None, content_base64sha512=None, content_disposition=None, content_encoding=None, content_hexsha512=None, content_language=None, content_type=None, crc32c=None, customer_encryptions=None, deletion_policy=None, detect_md5hash=None, event_based_hold=None, force_empty_content_type=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, source_md5hash=None, storage_class=None, temporary_hold=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_base64=None, content_base64sha512=None, content_disposition=None, content_encoding=None, content_hexsha512=None, content_language=None, content_type=None, contexts=None, crc32c=None, customer_encryptions=None, deletion_policy=None, detect_md5hash=None, event_based_hold=None, force_empty_content_type=None, generation=None, id=None, kms_key_name=None, md5hash=None, md5hexhash=None, media_link=None, metadata=None, name=None, output_name=None, retentions=None, self_link=None, source=None, source_md5hash=None, storage_class=None, temporary_hold=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -58,6 +58,9 @@ class GetBucketObjectContentResult:
         if content_type and not isinstance(content_type, str):
             raise TypeError("Expected argument 'content_type' to be a str")
         pulumi.set(__self__, "content_type", content_type)
+        if contexts and not isinstance(contexts, list):
+            raise TypeError("Expected argument 'contexts' to be a list")
+        pulumi.set(__self__, "contexts", contexts)
         if crc32c and not isinstance(crc32c, str):
             raise TypeError("Expected argument 'crc32c' to be a str")
         pulumi.set(__self__, "crc32c", crc32c)
@@ -187,6 +190,11 @@ class GetBucketObjectContentResult:
 
     @_builtins.property
     @pulumi.getter
+    def contexts(self) -> Sequence['outputs.GetBucketObjectContentContextResult']:
+        return pulumi.get(self, "contexts")
+
+    @_builtins.property
+    @pulumi.getter
     def crc32c(self) -> _builtins.str:
         return pulumi.get(self, "crc32c")
 
@@ -310,6 +318,7 @@ class AwaitableGetBucketObjectContentResult(GetBucketObjectContentResult):
             content_hexsha512=self.content_hexsha512,
             content_language=self.content_language,
             content_type=self.content_type,
+            contexts=self.contexts,
             crc32c=self.crc32c,
             customer_encryptions=self.customer_encryptions,
             deletion_policy=self.deletion_policy,
@@ -381,6 +390,7 @@ def get_bucket_object_content(bucket: Optional[_builtins.str] = None,
         content_hexsha512=pulumi.get(__ret__, 'content_hexsha512'),
         content_language=pulumi.get(__ret__, 'content_language'),
         content_type=pulumi.get(__ret__, 'content_type'),
+        contexts=pulumi.get(__ret__, 'contexts'),
         crc32c=pulumi.get(__ret__, 'crc32c'),
         customer_encryptions=pulumi.get(__ret__, 'customer_encryptions'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
@@ -449,6 +459,7 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[_builtins.str
         content_hexsha512=pulumi.get(__response__, 'content_hexsha512'),
         content_language=pulumi.get(__response__, 'content_language'),
         content_type=pulumi.get(__response__, 'content_type'),
+        contexts=pulumi.get(__response__, 'contexts'),
         crc32c=pulumi.get(__response__, 'crc32c'),
         customer_encryptions=pulumi.get(__response__, 'customer_encryptions'),
         deletion_policy=pulumi.get(__response__, 'deletion_policy'),

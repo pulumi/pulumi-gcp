@@ -83,26 +83,27 @@ type LookupRegionBackendServiceResult struct {
 	HealthChecks                 []string                                          `pulumi:"healthChecks"`
 	Iaps                         []GetRegionBackendServiceIap                      `pulumi:"iaps"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                           string                                              `pulumi:"id"`
-	IpAddressSelectionPolicy     string                                              `pulumi:"ipAddressSelectionPolicy"`
-	LoadBalancingScheme          string                                              `pulumi:"loadBalancingScheme"`
-	LocalityLbPolicy             string                                              `pulumi:"localityLbPolicy"`
-	LogConfigs                   []GetRegionBackendServiceLogConfig                  `pulumi:"logConfigs"`
-	Name                         string                                              `pulumi:"name"`
-	Network                      string                                              `pulumi:"network"`
-	OutlierDetections            []GetRegionBackendServiceOutlierDetection           `pulumi:"outlierDetections"`
-	Params                       []GetRegionBackendServiceParam                      `pulumi:"params"`
-	PortName                     string                                              `pulumi:"portName"`
-	Project                      *string                                             `pulumi:"project"`
-	Protocol                     string                                              `pulumi:"protocol"`
-	Region                       *string                                             `pulumi:"region"`
-	SecurityPolicy               string                                              `pulumi:"securityPolicy"`
-	SelfLink                     string                                              `pulumi:"selfLink"`
-	SessionAffinity              string                                              `pulumi:"sessionAffinity"`
-	StrongSessionAffinityCookies []GetRegionBackendServiceStrongSessionAffinityCooky `pulumi:"strongSessionAffinityCookies"`
-	Subsettings                  []GetRegionBackendServiceSubsetting                 `pulumi:"subsettings"`
-	TimeoutSec                   int                                                 `pulumi:"timeoutSec"`
-	TlsSettings                  []GetRegionBackendServiceTlsSetting                 `pulumi:"tlsSettings"`
+	Id                                  string                                                     `pulumi:"id"`
+	IpAddressSelectionPolicy            string                                                     `pulumi:"ipAddressSelectionPolicy"`
+	LoadBalancingScheme                 string                                                     `pulumi:"loadBalancingScheme"`
+	LocalityLbPolicy                    string                                                     `pulumi:"localityLbPolicy"`
+	LogConfigs                          []GetRegionBackendServiceLogConfig                         `pulumi:"logConfigs"`
+	Name                                string                                                     `pulumi:"name"`
+	Network                             string                                                     `pulumi:"network"`
+	NetworkPassThroughLbTrafficPolicies []GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicies"`
+	OutlierDetections                   []GetRegionBackendServiceOutlierDetection                  `pulumi:"outlierDetections"`
+	Params                              []GetRegionBackendServiceParam                             `pulumi:"params"`
+	PortName                            string                                                     `pulumi:"portName"`
+	Project                             *string                                                    `pulumi:"project"`
+	Protocol                            string                                                     `pulumi:"protocol"`
+	Region                              *string                                                    `pulumi:"region"`
+	SecurityPolicy                      string                                                     `pulumi:"securityPolicy"`
+	SelfLink                            string                                                     `pulumi:"selfLink"`
+	SessionAffinity                     string                                                     `pulumi:"sessionAffinity"`
+	StrongSessionAffinityCookies        []GetRegionBackendServiceStrongSessionAffinityCooky        `pulumi:"strongSessionAffinityCookies"`
+	Subsettings                         []GetRegionBackendServiceSubsetting                        `pulumi:"subsettings"`
+	TimeoutSec                          int                                                        `pulumi:"timeoutSec"`
+	TlsSettings                         []GetRegionBackendServiceTlsSetting                        `pulumi:"tlsSettings"`
 }
 
 func LookupRegionBackendServiceOutput(ctx *pulumi.Context, args LookupRegionBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupRegionBackendServiceResultOutput {
@@ -253,6 +254,12 @@ func (o LookupRegionBackendServiceResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupRegionBackendServiceResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) NetworkPassThroughLbTrafficPolicies() GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy {
+		return v.NetworkPassThroughLbTrafficPolicies
+	}).(GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyArrayOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) OutlierDetections() GetRegionBackendServiceOutlierDetectionArrayOutput {

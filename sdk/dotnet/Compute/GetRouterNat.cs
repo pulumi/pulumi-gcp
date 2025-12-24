@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Compute
     public static class GetRouterNat
     {
         /// <summary>
-        /// To get more information about Snapshot, see:
+        /// To get more information about RouterNat, see:
         /// 
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         /// * How-to Guides
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatArgs(), options.WithDefaults());
 
         /// <summary>
-        /// To get more information about Snapshot, see:
+        /// To get more information about RouterNat, see:
         /// 
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         /// * How-to Guides
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// To get more information about Snapshot, see:
+        /// To get more information about RouterNat, see:
         /// 
         /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         /// * How-to Guides

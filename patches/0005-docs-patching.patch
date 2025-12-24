@@ -310,14 +310,14 @@ diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/clo
 index eeeeda70d..c033cbc68 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
-@@ -33,8 +33,63 @@ To get more information about Service, see:
+@@ -33,9 +33,64 @@ To get more information about Service, see:
  ~> **Warning:** We recommend using the `google_cloud_run_v2_service` resource which offers a better
  developer experience and broader support of Cloud Run features.
  
 -## Example Usage - Cloud Run Service Basic
 +## Example Usage - Cloud Run Service Pubsub
-+
-+
+ 
+ 
 +```hcl
 +resource "google_cloud_run_service" "default" {
 +    name     = "cloud_run_service_name"
@@ -370,11 +370,12 @@ index eeeeda70d..c033cbc68 100644
 +  }
 +}
 +```
- 
++
 +## Example Usage - Cloud Run Service Basic
- 
++
  ```hcl
  resource "google_cloud_run_service" "default" {
+   name     = "cloudrun-srv"
 @@ -118,7 +173,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
@@ -870,24 +871,11 @@ index 0b0ddf4e9..9cf71f60b 100644
    maintenance_policy = "RESTART_IN_PLACE"
    maintenance_window {
      start_time = "08:00"
-diff --git a/website/docs/r/compute_organization_security_policy.html.markdown b/website/docs/r/compute_organization_security_policy.html.markdown
-index 364e2f7c6..9eb790bbb 100644
---- a/website/docs/r/compute_organization_security_policy.html.markdown
-+++ b/website/docs/r/compute_organization_security_policy.html.markdown
-@@ -38,7 +38,7 @@ To get more information about OrganizationSecurityPolicy, see:
- ```hcl
- resource "google_compute_organization_security_policy" "policy" {
-   provider = google-beta
--  display_name = "tf-test%{random_suffix}"
-+  display_name = "tf-test"
-   parent       = "organizations/123456789"
- }
- ```
 diff --git a/website/docs/r/compute_organization_security_policy_association.html.markdown b/website/docs/r/compute_organization_security_policy_association.html.markdown
-index 77bf7bb65..84d26a787 100644
+index 0587728b2..c518ea02e 100644
 --- a/website/docs/r/compute_organization_security_policy_association.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_association.html.markdown
-@@ -38,14 +38,14 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
+@@ -38,21 +38,21 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
  ```hcl
  resource "google_folder" "security_policy_target" {
    provider     = google-beta
@@ -898,13 +886,12 @@ index 77bf7bb65..84d26a787 100644
  }
  
  resource "google_compute_organization_security_policy" "policy" {
-   provider = google-beta
+   provider     = google-beta
 -  display_name = "tf-test%{random_suffix}"
 +  display_name = "tf-test"
    parent       = google_folder.security_policy_target.name
+   type         = "FIREWALL"
  }
- 
-@@ -73,7 +73,7 @@ resource "google_compute_organization_security_policy_rule" "policy" {
  
  resource "google_compute_organization_security_policy_association" "policy" {
    provider = google-beta
@@ -914,18 +901,18 @@ index 77bf7bb65..84d26a787 100644
    policy_id     = google_compute_organization_security_policy.policy.id
  }
 diff --git a/website/docs/r/compute_organization_security_policy_rule.html.markdown b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-index f45b26373..af28fb4bd 100644
+index 7d2be926f..e10730dfb 100644
 --- a/website/docs/r/compute_organization_security_policy_rule.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_rule.html.markdown
 @@ -38,7 +38,7 @@ To get more information about OrganizationSecurityPolicyRule, see:
  ```hcl
  resource "google_compute_organization_security_policy" "policy" {
-   provider = google-beta
+   provider     = google-beta
 -  display_name = "tf-test%{random_suffix}"
 +  display_name = "tf-test"
    parent       = "organizations/123456789"
+   type         = "FIREWALL"
  }
- 
 diff --git a/website/docs/r/compute_per_instance_config.html.markdown b/website/docs/r/compute_per_instance_config.html.markdown
 index ef20b36ad..209c36271 100644
 --- a/website/docs/r/compute_per_instance_config.html.markdown
@@ -990,7 +977,7 @@ index 29759b8c5..c55b98cdb 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index e11a495cd..f5b48c550 100644
+index 0c20053fd..d78306e4d 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
 @@ -179,7 +179,7 @@ The following arguments are supported:
@@ -1339,7 +1326,7 @@ index 50584521d..22390de09 100644
  ## Example Usage
  
 diff --git a/website/docs/r/compute_snapshot.html.markdown b/website/docs/r/compute_snapshot.html.markdown
-index b0ee3879d..eb681cfe8 100644
+index 9d4cbf6c1..51db799aa 100644
 --- a/website/docs/r/compute_snapshot.html.markdown
 +++ b/website/docs/r/compute_snapshot.html.markdown
 @@ -9,7 +9,7 @@
@@ -1433,7 +1420,7 @@ index 7b99556ac..e7237015b 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/compute_vpn_tunnel.html.markdown b/website/docs/r/compute_vpn_tunnel.html.markdown
-index b994642a9..f06472978 100644
+index b6f867ff6..fe70198ae 100644
 --- a/website/docs/r/compute_vpn_tunnel.html.markdown
 +++ b/website/docs/r/compute_vpn_tunnel.html.markdown
 @@ -31,9 +31,8 @@ To get more information about VpnTunnel, see:
@@ -1447,9 +1434,9 @@ index b994642a9..f06472978 100644
 +state as plain-text.
  
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
- [Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
+ [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index dc7ff1a72..db705c7b7 100644
+index 52b7dda99..b407c4d83 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -1617,7 +1604,7 @@ index dc7ff1a72..db705c7b7 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index 908d3e993..410cace25 100644
+index 955de92e9..2646064a5 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -20,14 +20,11 @@ description: |-
@@ -1831,7 +1818,7 @@ index ad0cde9bf..fdf69242a 100644
  * `zone` - (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used.
  * `region` - (Optional) The region in which the created job should run.
 diff --git a/website/docs/r/dataproc_cluster.html.markdown b/website/docs/r/dataproc_cluster.html.markdown
-index 009f052c2..9a5f1b38f 100644
+index a215775a6..71e2870e5 100644
 --- a/website/docs/r/dataproc_cluster.html.markdown
 +++ b/website/docs/r/dataproc_cluster.html.markdown
 @@ -162,7 +162,7 @@ resource "google_dataproc_cluster" "accelerated_cluster" {
@@ -1918,7 +1905,7 @@ index 1858e1545..9b762d31c 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs.
 diff --git a/website/docs/r/dialogflow_agent.html.markdown b/website/docs/r/dialogflow_agent.html.markdown
-index 22865a95e..759cacafd 100644
+index 37c71e8f9..c254a1215 100644
 --- a/website/docs/r/dialogflow_agent.html.markdown
 +++ b/website/docs/r/dialogflow_agent.html.markdown
 @@ -129,8 +129,7 @@ The following arguments are supported:
@@ -2556,10 +2543,10 @@ index 602e15c69..f124e5525 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project_service.html.markdown b/website/docs/r/google_project_service.html.markdown
-index ae4506e17..1c66a7f48 100644
+index 87002145e..a35ebb328 100644
 --- a/website/docs/r/google_project_service.html.markdown
 +++ b/website/docs/r/google_project_service.html.markdown
-@@ -66,8 +66,8 @@ be `true` or unset in configurations that manage the `google_project` resource i
+@@ -66,8 +66,8 @@ be `true` in configurations that manage the `google_project` resource itself.
  
  * `disable_dependent_services` - (Optional) If `true`, services that are enabled
  and which depend on this service should also be disabled when this service is
@@ -3123,7 +3110,7 @@ index 247b3e23a..1b443f49f 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index e3ad33db0..ad9bba840 100644
+index 7f9de7e90..663d97a43 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -30,12 +30,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3135,7 +3122,7 @@ index e3ad33db0..ad9bba840 100644
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
 -
 -~> **Note:**  All arguments marked as write-only values will not be stored in the state: `http_check.auth_info.password_wo`.
--[Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
+-[Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 +~> **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
 +state as plain-text.
  
@@ -3190,7 +3177,7 @@ index cc0d32fbf..1b040eaa2 100644
    depends_on = [google_service_networking_connection.private_service_connection]
  
 diff --git a/website/docs/r/secret_manager_secret_version.html.markdown b/website/docs/r/secret_manager_secret_version.html.markdown
-index ee5f59562..37e670147 100644
+index 0a20d2cd0..f1ddf8585 100644
 --- a/website/docs/r/secret_manager_secret_version.html.markdown
 +++ b/website/docs/r/secret_manager_secret_version.html.markdown
 @@ -30,15 +30,8 @@ To get more information about SecretVersion, see:
@@ -3210,7 +3197,7 @@ index ee5f59562..37e670147 100644
 +state as plain-text.
  
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
- [Read more about Write-only Attributes](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
+ [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
 index 7971e6136..87700c82b 100644
 --- a/website/docs/r/security_scanner_scan_config.html.markdown
@@ -3270,7 +3257,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 58b759614..ccc628feb 100644
+index b5de1cf6e..6bf4df374 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3297,7 +3284,7 @@ index 58b759614..ccc628feb 100644
      created. This is done because after a name is used, it cannot be reused for
      up to [one week](https://cloud.google.com/sql/docs/delete-instance).
  
-@@ -329,7 +329,7 @@ includes an up-to-date reference of supported versions.
+@@ -335,7 +335,7 @@ includes an up-to-date reference of supported versions.
  
  * `encryption_key_name` - (Optional)
      The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -3306,7 +3293,7 @@ index 58b759614..ccc628feb 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -337,18 +337,16 @@ includes an up-to-date reference of supported versions.
+@@ -343,18 +343,16 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
@@ -3330,7 +3317,7 @@ index 58b759614..ccc628feb 100644
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  *  `backupdr_backup` - (optional) The backupdr_backup needed to restore the database to a backup run. This field will
-@@ -357,7 +355,7 @@ includes an up-to-date reference of supported versions.
+@@ -363,7 +361,7 @@ includes an up-to-date reference of supported versions.
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `clone` - (Optional) The context needed to create this instance as a clone of another instance. When this field is set during
@@ -3339,7 +3326,7 @@ index 58b759614..ccc628feb 100644
      configuration is detailed below.
  
  * `point_in_time_restore_context` - (Optional) The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
-@@ -686,7 +684,7 @@ The optional `clone` block supports:
+@@ -694,7 +692,7 @@ The optional `clone` block supports:
      A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
  
  The optional `restore_backup_context` block supports:
@@ -3348,7 +3335,7 @@ index 58b759614..ccc628feb 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -752,21 +750,13 @@ instance.
+@@ -760,21 +758,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3468,10 +3455,10 @@ index 3e5ea5ef3..4648a2fa5 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/storage_bucket_object.html.markdown b/website/docs/r/storage_bucket_object.html.markdown
-index 4cf3bdb01..b1814c778 100644
+index 88716aaac..ad7afa067 100644
 --- a/website/docs/r/storage_bucket_object.html.markdown
 +++ b/website/docs/r/storage_bucket_object.html.markdown
-@@ -66,7 +66,7 @@ The following arguments are supported:
+@@ -86,7 +86,7 @@ The following arguments are supported:
  
  One of the following is required:
  

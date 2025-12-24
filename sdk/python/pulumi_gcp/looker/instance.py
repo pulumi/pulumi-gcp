@@ -24,6 +24,8 @@ class InstanceArgs:
                  oauth_config: pulumi.Input['InstanceOauthConfigArgs'],
                  admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
                  consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 controlled_egress_config: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']] = None,
+                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
@@ -50,6 +52,9 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
+        :param pulumi.Input['InstanceControlledEgressConfigArgs'] controlled_egress_config: Controlled egress configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] controlled_egress_enabled: Whether controlled egress is enabled on the Looker instance.
         :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
@@ -108,6 +113,10 @@ class InstanceArgs:
             pulumi.set(__self__, "admin_settings", admin_settings)
         if consumer_network is not None:
             pulumi.set(__self__, "consumer_network", consumer_network)
+        if controlled_egress_config is not None:
+            pulumi.set(__self__, "controlled_egress_config", controlled_egress_config)
+        if controlled_egress_enabled is not None:
+            pulumi.set(__self__, "controlled_egress_enabled", controlled_egress_enabled)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if deletion_policy is not None:
@@ -182,6 +191,31 @@ class InstanceArgs:
     @consumer_network.setter
     def consumer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "consumer_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlledEgressConfig")
+    def controlled_egress_config(self) -> Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]:
+        """
+        Controlled egress configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "controlled_egress_config")
+
+    @controlled_egress_config.setter
+    def controlled_egress_config(self, value: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]):
+        pulumi.set(self, "controlled_egress_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlledEgressEnabled")
+    def controlled_egress_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether controlled egress is enabled on the Looker instance.
+        """
+        return pulumi.get(self, "controlled_egress_enabled")
+
+    @controlled_egress_enabled.setter
+    def controlled_egress_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "controlled_egress_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
@@ -428,6 +462,8 @@ class _InstanceState:
     def __init__(__self__, *,
                  admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
                  consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 controlled_egress_config: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']] = None,
+                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -460,6 +496,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
+        :param pulumi.Input['InstanceControlledEgressConfigArgs'] controlled_egress_config: Controlled egress configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] controlled_egress_enabled: Whether controlled egress is enabled on the Looker instance.
         :param pulumi.Input[_builtins.str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
         :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
@@ -528,6 +567,10 @@ class _InstanceState:
             pulumi.set(__self__, "admin_settings", admin_settings)
         if consumer_network is not None:
             pulumi.set(__self__, "consumer_network", consumer_network)
+        if controlled_egress_config is not None:
+            pulumi.set(__self__, "controlled_egress_config", controlled_egress_config)
+        if controlled_egress_enabled is not None:
+            pulumi.set(__self__, "controlled_egress_enabled", controlled_egress_enabled)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if custom_domain is not None:
@@ -605,6 +648,31 @@ class _InstanceState:
     @consumer_network.setter
     def consumer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "consumer_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlledEgressConfig")
+    def controlled_egress_config(self) -> Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]:
+        """
+        Controlled egress configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "controlled_egress_config")
+
+    @controlled_egress_config.setter
+    def controlled_egress_config(self, value: Optional[pulumi.Input['InstanceControlledEgressConfigArgs']]):
+        pulumi.set(self, "controlled_egress_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlledEgressEnabled")
+    def controlled_egress_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether controlled egress is enabled on the Looker instance.
+        """
+        return pulumi.get(self, "controlled_egress_enabled")
+
+    @controlled_egress_enabled.setter
+    def controlled_egress_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "controlled_egress_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -953,6 +1021,8 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 controlled_egress_config: Optional[pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
@@ -1227,6 +1297,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
+        :param pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']] controlled_egress_config: Controlled egress configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] controlled_egress_enabled: Whether controlled egress is enabled on the Looker instance.
         :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
@@ -1553,6 +1626,8 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 controlled_egress_config: Optional[pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+                 controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
@@ -1582,6 +1657,8 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["admin_settings"] = admin_settings
             __props__.__dict__["consumer_network"] = consumer_network
+            __props__.__dict__["controlled_egress_config"] = controlled_egress_config
+            __props__.__dict__["controlled_egress_enabled"] = controlled_egress_enabled
             __props__.__dict__["custom_domain"] = custom_domain
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
@@ -1621,6 +1698,8 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
             consumer_network: Optional[pulumi.Input[_builtins.str]] = None,
+            controlled_egress_config: Optional[pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']]] = None,
+            controlled_egress_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1658,6 +1737,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] consumer_network: Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
                Note that the consumer network may be in a different GCP project than the consumer
                project that is hosting the Looker Instance.
+        :param pulumi.Input[Union['InstanceControlledEgressConfigArgs', 'InstanceControlledEgressConfigArgsDict']] controlled_egress_config: Controlled egress configuration.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] controlled_egress_enabled: Whether controlled egress is enabled on the Looker instance.
         :param pulumi.Input[_builtins.str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format,
                accurate to nanoseconds.
         :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
@@ -1728,6 +1810,8 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["admin_settings"] = admin_settings
         __props__.__dict__["consumer_network"] = consumer_network
+        __props__.__dict__["controlled_egress_config"] = controlled_egress_config
+        __props__.__dict__["controlled_egress_enabled"] = controlled_egress_enabled
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_domain"] = custom_domain
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1773,6 +1857,23 @@ class Instance(pulumi.CustomResource):
         project that is hosting the Looker Instance.
         """
         return pulumi.get(self, "consumer_network")
+
+    @_builtins.property
+    @pulumi.getter(name="controlledEgressConfig")
+    def controlled_egress_config(self) -> pulumi.Output[Optional['outputs.InstanceControlledEgressConfig']]:
+        """
+        Controlled egress configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "controlled_egress_config")
+
+    @_builtins.property
+    @pulumi.getter(name="controlledEgressEnabled")
+    def controlled_egress_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether controlled egress is enabled on the Looker instance.
+        """
+        return pulumi.get(self, "controlled_egress_enabled")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -1948,7 +2049,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="pscConfig")
-    def psc_config(self) -> pulumi.Output[Optional['outputs.InstancePscConfig']]:
+    def psc_config(self) -> pulumi.Output['outputs.InstancePscConfig']:
         """
         Information for Private Service Connect (PSC) setup for a Looker instance.
         Structure is documented below.

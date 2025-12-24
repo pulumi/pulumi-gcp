@@ -19,6 +19,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ServicedirectoryFunctions {
     /**
+     * Retrieves the current IAM policy data for namespace
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -57,6 +59,8 @@ public final class ServicedirectoryFunctions {
         return getNamespaceIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for namespace
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -95,6 +99,8 @@ public final class ServicedirectoryFunctions {
         return getNamespaceIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for namespace
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -133,6 +139,8 @@ public final class ServicedirectoryFunctions {
         return Deployment.getInstance().invoke("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", TypeShape.of(GetNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for namespace
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -171,6 +179,8 @@ public final class ServicedirectoryFunctions {
         return Deployment.getInstance().invoke("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", TypeShape.of(GetNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for namespace
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -209,6 +219,8 @@ public final class ServicedirectoryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", TypeShape.of(GetNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for service
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -247,6 +259,8 @@ public final class ServicedirectoryFunctions {
         return getServiceIamPolicy(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for service
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -285,6 +299,8 @@ public final class ServicedirectoryFunctions {
         return getServiceIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Retrieves the current IAM policy data for service
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -323,6 +339,8 @@ public final class ServicedirectoryFunctions {
         return Deployment.getInstance().invoke("gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy", TypeShape.of(GetServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for service
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -361,6 +379,8 @@ public final class ServicedirectoryFunctions {
         return Deployment.getInstance().invoke("gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy", TypeShape.of(GetServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for service
+     * 
      * ## Example Usage
      * 
      * <pre>

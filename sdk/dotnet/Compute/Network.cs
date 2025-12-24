@@ -138,6 +138,29 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Network Bgp Standard Mode Delete Med
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
+    ///     {
+    ///         Name = "vpc-network",
+    ///         AutoCreateSubnetworks = false,
+    ///         RoutingMode = "GLOBAL",
+    ///         Project = "my-project-name",
+    ///         BgpBestPathSelectionMode = "LEGACY",
+    ///         BgpAlwaysCompareMed = false,
+    ///         DeleteBgpAlwaysCompareMed = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -196,6 +219,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("bgpInterRegionCost")]
         public Output<string> BgpInterRegionCost { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to `True`, the `BgpAlwaysCompareMed` field will be cleared.
+        /// If set to `False` (the default), `BgpAlwaysCompareMed` will be set to the value specified in the configuration.
+        /// </summary>
+        [Output("deleteBgpAlwaysCompareMed")]
+        public Output<bool?> DeleteBgpAlwaysCompareMed { get; private set; } = null!;
 
         /// <summary>
         /// If set to `True`, default routes (`0.0.0.0/0`) will be deleted
@@ -397,6 +427,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? BgpInterRegionCost { get; set; }
 
         /// <summary>
+        /// If set to `True`, the `BgpAlwaysCompareMed` field will be cleared.
+        /// If set to `False` (the default), `BgpAlwaysCompareMed` will be set to the value specified in the configuration.
+        /// </summary>
+        [Input("deleteBgpAlwaysCompareMed")]
+        public Input<bool>? DeleteBgpAlwaysCompareMed { get; set; }
+
+        /// <summary>
         /// If set to `True`, default routes (`0.0.0.0/0`) will be deleted
         /// immediately after network creation. Defaults to `False`.
         /// </summary>
@@ -530,6 +567,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("bgpInterRegionCost")]
         public Input<string>? BgpInterRegionCost { get; set; }
+
+        /// <summary>
+        /// If set to `True`, the `BgpAlwaysCompareMed` field will be cleared.
+        /// If set to `False` (the default), `BgpAlwaysCompareMed` will be set to the value specified in the configuration.
+        /// </summary>
+        [Input("deleteBgpAlwaysCompareMed")]
+        public Input<bool>? DeleteBgpAlwaysCompareMed { get; set; }
 
         /// <summary>
         /// If set to `True`, default routes (`0.0.0.0/0`) will be deleted

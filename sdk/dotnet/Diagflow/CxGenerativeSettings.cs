@@ -117,7 +117,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Settings for Generative Safety.
-        /// w
         /// Structure is documented below.
         /// </summary>
         [Output("generativeSafetySettings")]
@@ -212,7 +211,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Settings for Generative Safety.
-        /// w
         /// Structure is documented below.
         /// </summary>
         [Input("generativeSafetySettings")]
@@ -262,7 +260,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// Settings for Generative Safety.
-        /// w
         /// Structure is documented below.
         /// </summary>
         [Input("generativeSafetySettings")]

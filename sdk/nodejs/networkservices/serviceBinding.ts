@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** Cloud Service Mesh's integration with Service Directory is going to be deprecated. [Learn more](https://docs.cloud.google.com/service-mesh/docs/service-routing/service-directory-integration-setup). Creating new service binding resources will be disabled.
+ *
  * ServiceBinding is the resource that defines a Service Directory Service to be used in a
  * BackendService resource.
  *

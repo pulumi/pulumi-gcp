@@ -2742,6 +2742,8 @@ func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ThreadsPerCore
 type DatabaseInstanceSettingsBackupConfiguration struct {
 	// Backup retention settings. The configuration is detailed below.
 	BackupRetentionSettings *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings `pulumi:"backupRetentionSettings"`
+	// The backup tier that manages the backups for the instance.
+	BackupTier *string `pulumi:"backupTier"`
 	// True if binary logging is enabled.
 	// Can only be used with MySQL.
 	BinaryLogEnabled *bool `pulumi:"binaryLogEnabled"`
@@ -2772,6 +2774,8 @@ type DatabaseInstanceSettingsBackupConfigurationInput interface {
 type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// Backup retention settings. The configuration is detailed below.
 	BackupRetentionSettings DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput `pulumi:"backupRetentionSettings"`
+	// The backup tier that manages the backups for the instance.
+	BackupTier pulumi.StringPtrInput `pulumi:"backupTier"`
 	// True if binary logging is enabled.
 	// Can only be used with MySQL.
 	BinaryLogEnabled pulumi.BoolPtrInput `pulumi:"binaryLogEnabled"`
@@ -2872,6 +2876,11 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) BackupRetentionSettin
 	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
 }
 
+// The backup tier that manages the backups for the instance.
+func (o DatabaseInstanceSettingsBackupConfigurationOutput) BackupTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.BackupTier }).(pulumi.StringPtrOutput)
+}
+
 // True if binary logging is enabled.
 // Can only be used with MySQL.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
@@ -2936,6 +2945,16 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BackupRetentionSet
 		}
 		return v.BackupRetentionSettings
 	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
+}
+
+// The backup tier that manages the backups for the instance.
+func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BackupTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupTier
+	}).(pulumi.StringPtrOutput)
 }
 
 // True if binary logging is enabled.
@@ -8251,6 +8270,8 @@ func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) Index(i pul
 
 type GetDatabaseInstanceSettingBackupConfiguration struct {
 	BackupRetentionSettings []GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting `pulumi:"backupRetentionSettings"`
+	// Backup tier that manages the backups for the instance.
+	BackupTier string `pulumi:"backupTier"`
 	// True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
 	BinaryLogEnabled bool `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -8278,6 +8299,8 @@ type GetDatabaseInstanceSettingBackupConfigurationInput interface {
 
 type GetDatabaseInstanceSettingBackupConfigurationArgs struct {
 	BackupRetentionSettings GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput `pulumi:"backupRetentionSettings"`
+	// Backup tier that manages the backups for the instance.
+	BackupTier pulumi.StringInput `pulumi:"backupTier"`
 	// True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
 	BinaryLogEnabled pulumi.BoolInput `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -8347,6 +8370,11 @@ func (o GetDatabaseInstanceSettingBackupConfigurationOutput) BackupRetentionSett
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) []GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
 		return v.BackupRetentionSettings
 	}).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
+}
+
+// Backup tier that manages the backups for the instance.
+func (o GetDatabaseInstanceSettingBackupConfigurationOutput) BackupTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) string { return v.BackupTier }).(pulumi.StringOutput)
 }
 
 // True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
@@ -10630,6 +10658,11 @@ type GetDatabaseInstancesInstance struct {
 	RestoreBackupContexts []GetDatabaseInstancesInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
 	RootPassword string `pulumi:"rootPassword"`
+	// Initial root password. Required for MS SQL Server.
+	// 				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWo string `pulumi:"rootPasswordWo"`
+	// Triggers update of rootPasswordWo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWoVersion string `pulumi:"rootPasswordWoVersion"`
 	// The URI of the created resource.
 	SelfLink      string                                     `pulumi:"selfLink"`
 	ServerCaCerts []GetDatabaseInstancesInstanceServerCaCert `pulumi:"serverCaCerts"`
@@ -10699,6 +10732,11 @@ type GetDatabaseInstancesInstanceArgs struct {
 	RestoreBackupContexts GetDatabaseInstancesInstanceRestoreBackupContextArrayInput `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
 	RootPassword pulumi.StringInput `pulumi:"rootPassword"`
+	// Initial root password. Required for MS SQL Server.
+	// 				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWo pulumi.StringInput `pulumi:"rootPasswordWo"`
+	// Triggers update of rootPasswordWo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	RootPasswordWoVersion pulumi.StringInput `pulumi:"rootPasswordWoVersion"`
 	// The URI of the created resource.
 	SelfLink      pulumi.StringInput                                 `pulumi:"selfLink"`
 	ServerCaCerts GetDatabaseInstancesInstanceServerCaCertArrayInput `pulumi:"serverCaCerts"`
@@ -10897,6 +10935,18 @@ func (o GetDatabaseInstancesInstanceOutput) RestoreBackupContexts() GetDatabaseI
 // Initial root password. Required for MS SQL Server.
 func (o GetDatabaseInstancesInstanceOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+// Initial root password. Required for MS SQL Server.
+//
+//	Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetDatabaseInstancesInstanceOutput) RootPasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.RootPasswordWo }).(pulumi.StringOutput)
+}
+
+// Triggers update of rootPasswordWo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o GetDatabaseInstancesInstanceOutput) RootPasswordWoVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.RootPasswordWoVersion }).(pulumi.StringOutput)
 }
 
 // The URI of the created resource.
@@ -12624,6 +12674,8 @@ func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) In
 
 type GetDatabaseInstancesInstanceSettingBackupConfiguration struct {
 	BackupRetentionSettings []GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting `pulumi:"backupRetentionSettings"`
+	// Backup tier that manages the backups for the instance.
+	BackupTier string `pulumi:"backupTier"`
 	// True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
 	BinaryLogEnabled bool `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -12651,6 +12703,8 @@ type GetDatabaseInstancesInstanceSettingBackupConfigurationInput interface {
 
 type GetDatabaseInstancesInstanceSettingBackupConfigurationArgs struct {
 	BackupRetentionSettings GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput `pulumi:"backupRetentionSettings"`
+	// Backup tier that manages the backups for the instance.
+	BackupTier pulumi.StringInput `pulumi:"backupTier"`
 	// True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
 	BinaryLogEnabled pulumi.BoolInput `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -12720,6 +12774,11 @@ func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) BackupRete
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) []GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
 		return v.BackupRetentionSettings
 	}).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
+}
+
+// Backup tier that manages the backups for the instance.
+func (o GetDatabaseInstancesInstanceSettingBackupConfigurationOutput) BackupTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingBackupConfiguration) string { return v.BackupTier }).(pulumi.StringOutput)
 }
 
 // True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.

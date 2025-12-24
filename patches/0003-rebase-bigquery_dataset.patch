@@ -5,10 +5,10 @@ Subject: [PATCH] rebase bigquery_dataset
 
 
 diff --git a/google-beta/services/bigquery/resource_bigquery_dataset.go b/google-beta/services/bigquery/resource_bigquery_dataset.go
-index fb1bef74c..6ae3fcd9d 100644
+index ec7880629..4237a7b5c 100644
 --- a/google-beta/services/bigquery/resource_bigquery_dataset.go
 +++ b/google-beta/services/bigquery/resource_bigquery_dataset.go
-@@ -880,8 +880,13 @@ func resourceBigQueryDatasetRead(d *schema.ResourceData, meta interface{}) error
+@@ -890,8 +890,13 @@ func resourceBigQueryDatasetRead(d *schema.ResourceData, meta interface{}) error
  	if err := d.Set("effective_labels", flattenBigQueryDatasetEffectiveLabels(res["labels"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Dataset: %s", err)
  	}

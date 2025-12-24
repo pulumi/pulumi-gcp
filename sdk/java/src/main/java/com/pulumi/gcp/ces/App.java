@@ -20,6 +20,7 @@ import com.pulumi.gcp.ces.outputs.AppLoggingSettings;
 import com.pulumi.gcp.ces.outputs.AppModelSettings;
 import com.pulumi.gcp.ces.outputs.AppTimeZoneSettings;
 import com.pulumi.gcp.ces.outputs.AppVariableDeclaration;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -121,6 +122,7 @@ import javax.annotation.Nullable;
  *             .location("us")
  *             .description("Basic CES App example")
  *             .displayName("my-app")
+ *             .pinned(true)
  *             .languageSettings(AppLanguageSettingsArgs.builder()
  *                 .defaultLanguageCode("en-US")
  *                 .supportedLanguageCodes(                
@@ -193,6 +195,7 @@ import javax.annotation.Nullable;
  *                 .schema(AppVariableDeclarationSchemaArgs.builder()
  *                     .description("schema description")
  *                     .type("ARRAY")
+ *                     .title("title")
  *                     .nullable(true)
  *                     .requireds("some_property")
  *                     .enums(                    
@@ -796,6 +799,20 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Whether the app is pinned in the app list.
+     * 
+     */
+    @Export(name="pinned", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> pinned;
+
+    /**
+     * @return Whether the app is pinned in the app list.
+     * 
+     */
+    public Output<Optional<Boolean>> pinned() {
+        return Codegen.optional(this.pinned);
     }
     /**
      * The ID of the project in which the resource belongs.

@@ -21,6 +21,12 @@ namespace Pulumi.Gcp.Ces.Outputs
         public readonly ImmutableArray<Outputs.ToolOpenApiToolApiAuthenticationApiKeyConfig> ApiKeyConfigs;
         /// <summary>
         /// (Output)
+        /// Configurations for authentication with a bearer token.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ToolOpenApiToolApiAuthenticationBearerTokenConfig> BearerTokenConfigs;
+        /// <summary>
+        /// (Output)
         /// Configurations for authentication with OAuth.
         /// Structure is documented below.
         /// </summary>
@@ -43,6 +49,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         private ToolOpenApiToolApiAuthentication(
             ImmutableArray<Outputs.ToolOpenApiToolApiAuthenticationApiKeyConfig> apiKeyConfigs,
 
+            ImmutableArray<Outputs.ToolOpenApiToolApiAuthenticationBearerTokenConfig> bearerTokenConfigs,
+
             ImmutableArray<Outputs.ToolOpenApiToolApiAuthenticationOauthConfig> oauthConfigs,
 
             ImmutableArray<Outputs.ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig> serviceAccountAuthConfigs,
@@ -50,6 +58,7 @@ namespace Pulumi.Gcp.Ces.Outputs
             ImmutableArray<Outputs.ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfig> serviceAgentIdTokenAuthConfigs)
         {
             ApiKeyConfigs = apiKeyConfigs;
+            BearerTokenConfigs = bearerTokenConfigs;
             OauthConfigs = oauthConfigs;
             ServiceAccountAuthConfigs = serviceAccountAuthConfigs;
             ServiceAgentIdTokenAuthConfigs = serviceAgentIdTokenAuthConfigs;

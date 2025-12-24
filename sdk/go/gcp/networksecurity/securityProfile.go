@@ -266,6 +266,67 @@ import (
 //	}
 //
 // ```
+// ### Network Security Security Profile Broker
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
+//				MirroringDeploymentGroupId: pulumi.String("my-dg"),
+//				Location:                   pulumi.String("global"),
+//				Network:                    _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
+//				MirroringEndpointGroupId: pulumi.String("my-eg"),
+//				Location:                 pulumi.String("global"),
+//				Type:                     pulumi.String("BROKER"),
+//				MirroringDeploymentGroups: pulumi.StringArray{
+//					defaultMirroringDeploymentGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewSecurityProfile(ctx, "default", &networksecurity.SecurityProfileArgs{
+//				Name:        pulumi.String("my-security-profile"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Description: pulumi.String("my description"),
+//				Type:        pulumi.String("CUSTOM_MIRRORING"),
+//				CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
+//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+//					MirroringDeploymentGroups: pulumi.StringArray{
+//						defaultMirroringDeploymentGroup.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

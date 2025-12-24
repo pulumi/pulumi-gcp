@@ -5,7 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs Empty = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs();
+
+    /**
+     * Autoscaled rollout policy for blue-green upgrade.
+     * 
+     */
+    @Import(name="autoscaledRolloutPolicy")
+    private @Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs> autoscaledRolloutPolicy;
+
+    /**
+     * @return Autoscaled rollout policy for blue-green upgrade.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs>> autoscaledRolloutPolicy() {
+        return Optional.ofNullable(this.autoscaledRolloutPolicy);
+    }
 
     /**
      * Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -36,20 +51,21 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
      * Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
      * 
      */
-    @Import(name="standardRolloutPolicy", required=true)
-    private Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy;
+    @Import(name="standardRolloutPolicy")
+    private @Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy;
 
     /**
      * @return Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
      * 
      */
-    public Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy() {
-        return this.standardRolloutPolicy;
+    public Optional<Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs>> standardRolloutPolicy() {
+        return Optional.ofNullable(this.standardRolloutPolicy);
     }
 
     private ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs() {}
 
     private ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs(ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs $) {
+        this.autoscaledRolloutPolicy = $.autoscaledRolloutPolicy;
         this.nodePoolSoakDuration = $.nodePoolSoakDuration;
         this.standardRolloutPolicy = $.standardRolloutPolicy;
     }
@@ -70,6 +86,27 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
 
         public Builder(ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs defaults) {
             $ = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscaledRolloutPolicy Autoscaled rollout policy for blue-green upgrade.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaledRolloutPolicy(@Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs> autoscaledRolloutPolicy) {
+            $.autoscaledRolloutPolicy = autoscaledRolloutPolicy;
+            return this;
+        }
+
+        /**
+         * @param autoscaledRolloutPolicy Autoscaled rollout policy for blue-green upgrade.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscaledRolloutPolicy(ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs autoscaledRolloutPolicy) {
+            return autoscaledRolloutPolicy(Output.of(autoscaledRolloutPolicy));
         }
 
         /**
@@ -99,7 +136,7 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
          * @return builder
          * 
          */
-        public Builder standardRolloutPolicy(Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy) {
+        public Builder standardRolloutPolicy(@Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy) {
             $.standardRolloutPolicy = standardRolloutPolicy;
             return this;
         }
@@ -115,9 +152,6 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
         }
 
         public ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs build() {
-            if ($.standardRolloutPolicy == null) {
-                throw new MissingRequiredPropertyException("ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs", "standardRolloutPolicy");
-            }
             return $;
         }
     }

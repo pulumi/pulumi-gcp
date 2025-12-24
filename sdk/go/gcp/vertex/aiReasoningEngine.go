@@ -178,6 +178,13 @@ import (
 //					ClassMethods:   pulumi.String(json0),
 //					ServiceAccount: serviceAccount.Email,
 //					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
+//						MinInstances:         pulumi.Int(1),
+//						MaxInstances:         pulumi.Int(3),
+//						ContainerConcurrency: pulumi.Int(5),
+//						ResourceLimits: pulumi.StringMap{
+//							"cpu":    pulumi.String("4"),
+//							"memory": pulumi.String("4Gi"),
+//						},
 //						Envs: vertex.AiReasoningEngineSpecDeploymentSpecEnvArray{
 //							&vertex.AiReasoningEngineSpecDeploymentSpecEnvArgs{
 //								Name:  pulumi.String("var_1"),
@@ -276,11 +283,12 @@ type AiReasoningEngine struct {
 	// The display name of the ReasoningEngine.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiReasoningEngineEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// The generated name of the ReasoningEngine, in the format
-	// 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+	// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -290,8 +298,8 @@ type AiReasoningEngine struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec AiReasoningEngineSpecPtrOutput `pulumi:"spec"`
-	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-	// with nanosecond resolution and up to nine fractional digits.
+	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+	// format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -336,11 +344,12 @@ type aiReasoningEngineState struct {
 	// The display name of the ReasoningEngine.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiReasoningEngineEncryptionSpec `pulumi:"encryptionSpec"`
 	// The generated name of the ReasoningEngine, in the format
-	// 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+	// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -350,8 +359,8 @@ type aiReasoningEngineState struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec *AiReasoningEngineSpec `pulumi:"spec"`
-	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-	// with nanosecond resolution and up to nine fractional digits.
+	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+	// format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -364,11 +373,12 @@ type AiReasoningEngineState struct {
 	// The display name of the ReasoningEngine.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiReasoningEngineEncryptionSpecPtrInput
 	// The generated name of the ReasoningEngine, in the format
-	// 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+	// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -378,8 +388,8 @@ type AiReasoningEngineState struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec AiReasoningEngineSpecPtrInput
-	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-	// with nanosecond resolution and up to nine fractional digits.
+	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+	// format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -393,7 +403,8 @@ type aiReasoningEngineArgs struct {
 	// The display name of the ReasoningEngine.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiReasoningEngineEncryptionSpec `pulumi:"encryptionSpec"`
 	// The ID of the project in which the resource belongs.
@@ -413,7 +424,8 @@ type AiReasoningEngineArgs struct {
 	// The display name of the ReasoningEngine.
 	DisplayName pulumi.StringInput
 	// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+	// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+	// will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiReasoningEngineEncryptionSpecPtrInput
 	// The ID of the project in which the resource belongs.
@@ -530,14 +542,15 @@ func (o AiReasoningEngineOutput) DisplayName() pulumi.StringOutput {
 }
 
 // Optional. Customer-managed encryption key spec for a ReasoningEngine.
-// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+// will be secured by this key.
 // Structure is documented below.
 func (o AiReasoningEngineOutput) EncryptionSpec() AiReasoningEngineEncryptionSpecPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineEncryptionSpecPtrOutput { return v.EncryptionSpec }).(AiReasoningEngineEncryptionSpecPtrOutput)
 }
 
 // The generated name of the ReasoningEngine, in the format
-// 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
 func (o AiReasoningEngineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -559,8 +572,8 @@ func (o AiReasoningEngineOutput) Spec() AiReasoningEngineSpecPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineSpecPtrOutput { return v.Spec }).(AiReasoningEngineSpecPtrOutput)
 }
 
-// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-// with nanosecond resolution and up to nine fractional digits.
+// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+// format, with nanosecond resolution and up to nine fractional digits.
 func (o AiReasoningEngineOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

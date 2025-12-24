@@ -17,12 +17,15 @@ import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupTransitiveMembershipsPlainArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupsPlainArgs;
+import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesPlainArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetPolicyArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetPolicyPlainArgs;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupLookupResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupTransitiveMembershipsResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupsResult;
+import com.pulumi.gcp.cloudidentity.outputs.GetPoliciesResult;
 import com.pulumi.gcp.cloudidentity.outputs.GetPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -931,6 +934,335 @@ public final class CloudidentityFunctions {
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list Cloud Identity policies.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = CloudidentityFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", all.policies()[0].name());
+     *         ctx.export("firstPolicyCustomer", all.policies()[0].customer());
+     *         ctx.export("policyQueryQuery", all.policies()[0].policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", all.policies()[0].policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", all.policies()[0].policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", all.policies()[0].policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", all.policies()[0].setting());
+     *         ctx.export("policyType", all.policies()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies() {
+        return getPolicies(GetPoliciesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list Cloud Identity policies.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = CloudidentityFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", all.policies()[0].name());
+     *         ctx.export("firstPolicyCustomer", all.policies()[0].customer());
+     *         ctx.export("policyQueryQuery", all.policies()[0].policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", all.policies()[0].policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", all.policies()[0].policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", all.policies()[0].policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", all.policies()[0].setting());
+     *         ctx.export("policyType", all.policies()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoliciesResult> getPoliciesPlain() {
+        return getPoliciesPlain(GetPoliciesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list Cloud Identity policies.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = CloudidentityFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", all.policies()[0].name());
+     *         ctx.export("firstPolicyCustomer", all.policies()[0].customer());
+     *         ctx.export("policyQueryQuery", all.policies()[0].policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", all.policies()[0].policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", all.policies()[0].policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", all.policies()[0].policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", all.policies()[0].setting());
+     *         ctx.export("policyType", all.policies()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args) {
+        return getPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list Cloud Identity policies.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = CloudidentityFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", all.policies()[0].name());
+     *         ctx.export("firstPolicyCustomer", all.policies()[0].customer());
+     *         ctx.export("policyQueryQuery", all.policies()[0].policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", all.policies()[0].policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", all.policies()[0].policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", all.policies()[0].policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", all.policies()[0].setting());
+     *         ctx.export("policyType", all.policies()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args) {
+        return getPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list Cloud Identity policies.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = CloudidentityFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", all.policies()[0].name());
+     *         ctx.export("firstPolicyCustomer", all.policies()[0].customer());
+     *         ctx.export("policyQueryQuery", all.policies()[0].policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", all.policies()[0].policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", all.policies()[0].policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", all.policies()[0].policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", all.policies()[0].setting());
+     *         ctx.export("policyType", all.policies()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list Cloud Identity policies.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = CloudidentityFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", all.policies()[0].name());
+     *         ctx.export("firstPolicyCustomer", all.policies()[0].customer());
+     *         ctx.export("policyQueryQuery", all.policies()[0].policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", all.policies()[0].policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", all.policies()[0].policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", all.policies()[0].policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", all.policies()[0].setting());
+     *         ctx.export("policyType", all.policies()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoliciesResult> getPolicies(GetPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list Cloud Identity policies.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = CloudidentityFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firstPolicyName", all.policies()[0].name());
+     *         ctx.export("firstPolicyCustomer", all.policies()[0].customer());
+     *         ctx.export("policyQueryQuery", all.policies()[0].policyQueries()[0].query());
+     *         ctx.export("policyQueryOrgUnit", all.policies()[0].policyQueries()[0].orgUnit());
+     *         ctx.export("policyQueryGroup", all.policies()[0].policyQueries()[0].group());
+     *         ctx.export("policyQuerySortOrder", all.policies()[0].policyQueries()[0].sortOrder());
+     *         ctx.export("policySetting", all.policies()[0].setting());
+     *         ctx.export("policyType", all.policies()[0].type());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoliciesResult> getPoliciesPlain(GetPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve a Cloud Identity policy.

@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecPackageSpec
     {
         /// <summary>
-        /// Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+        /// Optional. The Cloud Storage URI of the dependency files in tar.gz
+        /// format.
         /// </summary>
         public readonly string? DependencyFilesGcsUri;
         /// <summary>
@@ -22,11 +23,12 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly string? PickleObjectGcsUri;
         /// <summary>
-        /// Optional. The Python version.
+        /// Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+        /// 3.11, 3.12, 3.13. If not specified, default value is 3.10.
         /// </summary>
         public readonly string? PythonVersion;
         /// <summary>
-        /// Optional. The Cloud Storage URI of the requirements.txt file
+        /// Optional. The Cloud Storage URI of the requirements.txtfile
         /// </summary>
         public readonly string? RequirementsGcsUri;
 

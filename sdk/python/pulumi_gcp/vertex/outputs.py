@@ -127,6 +127,9 @@ __all__ = [
     'AiReasoningEngineSpecDeploymentSpecSecretEnv',
     'AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef',
     'AiReasoningEngineSpecPackageSpec',
+    'AiReasoningEngineSpecSourceCodeSpec',
+    'AiReasoningEngineSpecSourceCodeSpecInlineSource',
+    'AiReasoningEngineSpecSourceCodeSpecPythonSpec',
     'AiTensorboardEncryptionSpec',
     'GetAiIndexDeployedIndexResult',
     'GetAiIndexEncryptionSpecResult',
@@ -6536,9 +6539,11 @@ class AiReasoningEngineEncryptionSpec(dict):
     def __init__(__self__, *,
                  kms_key_name: _builtins.str):
         """
-        :param _builtins.str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-               Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-               The key needs to be in the same region as where the compute resource is created.
+        :param _builtins.str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed
+               encryption key used to protect a resource. Has the form:
+               projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+               The key needs to be in the same region as where the compute resource
+               is created.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -6546,9 +6551,11 @@ class AiReasoningEngineEncryptionSpec(dict):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> _builtins.str:
         """
-        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-        The key needs to be in the same region as where the compute resource is created.
+        Required. The Cloud KMS resource identifier of the customer managed
+        encryption key used to protect a resource. Has the form:
+        projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
+        The key needs to be in the same region as where the compute resource
+        is created.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -6568,6 +6575,8 @@ class AiReasoningEngineSpec(dict):
             suggest = "package_spec"
         elif key == "serviceAccount":
             suggest = "service_account"
+        elif key == "sourceCodeSpec":
+            suggest = "source_code_spec"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineSpec. Access the value via the '{suggest}' property getter instead.")
@@ -6585,10 +6594,12 @@ class AiReasoningEngineSpec(dict):
                  class_methods: Optional[_builtins.str] = None,
                  deployment_spec: Optional['outputs.AiReasoningEngineSpecDeploymentSpec'] = None,
                  package_spec: Optional['outputs.AiReasoningEngineSpecPackageSpec'] = None,
-                 service_account: Optional[_builtins.str] = None):
+                 service_account: Optional[_builtins.str] = None,
+                 source_code_spec: Optional['outputs.AiReasoningEngineSpecSourceCodeSpec'] = None):
         """
         :param _builtins.str agent_framework: Optional. The OSS agent framework used to develop the agent.
-        :param _builtins.str class_methods: Optional. Declarations for object class methods in OpenAPI specification format.
+        :param _builtins.str class_methods: Optional. Declarations for object class methods in OpenAPI
+               specification format.
         :param 'AiReasoningEngineSpecDeploymentSpecArgs' deployment_spec: Optional. The specification of a Reasoning Engine deployment.
                Structure is documented below.
         :param 'AiReasoningEngineSpecPackageSpecArgs' package_spec: Optional. User provided package spec of the ReasoningEngine.
@@ -6596,10 +6607,13 @@ class AiReasoningEngineSpec(dict):
                deploymentSpec.first_party_image_override, but keeping the
                field_behavior to avoid introducing breaking changes.
                Structure is documented below.
-        :param _builtins.str service_account: Optional. The service account that the Reasoning Engine artifact runs as.
-               It should have "roles/storage.objectViewer" for reading the user project's
-               Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-               If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+        :param _builtins.str service_account: Optional. The service account that the Reasoning Engine artifact runs
+               as. It should have "roles/storage.objectViewer" for reading the user
+               project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+               extensions. If not specified, the Vertex AI Reasoning Engine service
+               Agent in the project will be used.
+        :param 'AiReasoningEngineSpecSourceCodeSpecArgs' source_code_spec: Specification for deploying from source code.
+               Structure is documented below.
         """
         if agent_framework is not None:
             pulumi.set(__self__, "agent_framework", agent_framework)
@@ -6611,6 +6625,8 @@ class AiReasoningEngineSpec(dict):
             pulumi.set(__self__, "package_spec", package_spec)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if source_code_spec is not None:
+            pulumi.set(__self__, "source_code_spec", source_code_spec)
 
     @_builtins.property
     @pulumi.getter(name="agentFramework")
@@ -6624,7 +6640,8 @@ class AiReasoningEngineSpec(dict):
     @pulumi.getter(name="classMethods")
     def class_methods(self) -> Optional[_builtins.str]:
         """
-        Optional. Declarations for object class methods in OpenAPI specification format.
+        Optional. Declarations for object class methods in OpenAPI
+        specification format.
         """
         return pulumi.get(self, "class_methods")
 
@@ -6653,12 +6670,22 @@ class AiReasoningEngineSpec(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[_builtins.str]:
         """
-        Optional. The service account that the Reasoning Engine artifact runs as.
-        It should have "roles/storage.objectViewer" for reading the user project's
-        Cloud Storage and "roles/aiplatform.user" for using Vertex extensions.
-        If not specified, the Vertex AI Reasoning Engine service Agent in the project will be used.
+        Optional. The service account that the Reasoning Engine artifact runs
+        as. It should have "roles/storage.objectViewer" for reading the user
+        project's Cloud Storage and "roles/aiplatform.user" for using Vertex
+        extensions. If not specified, the Vertex AI Reasoning Engine service
+        Agent in the project will be used.
         """
         return pulumi.get(self, "service_account")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCodeSpec")
+    def source_code_spec(self) -> Optional['outputs.AiReasoningEngineSpecSourceCodeSpec']:
+        """
+        Specification for deploying from source code.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_code_spec")
 
 
 @pulumi.output_type
@@ -6666,7 +6693,15 @@ class AiReasoningEngineSpecDeploymentSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "secretEnvs":
+        if key == "containerConcurrency":
+            suggest = "container_concurrency"
+        elif key == "maxInstances":
+            suggest = "max_instances"
+        elif key == "minInstances":
+            suggest = "min_instances"
+        elif key == "resourceLimits":
+            suggest = "resource_limits"
+        elif key == "secretEnvs":
             suggest = "secret_envs"
 
         if suggest:
@@ -6681,33 +6716,115 @@ class AiReasoningEngineSpecDeploymentSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 container_concurrency: Optional[_builtins.int] = None,
                  envs: Optional[Sequence['outputs.AiReasoningEngineSpecDeploymentSpecEnv']] = None,
+                 max_instances: Optional[_builtins.int] = None,
+                 min_instances: Optional[_builtins.int] = None,
+                 resource_limits: Optional[Mapping[str, _builtins.str]] = None,
                  secret_envs: Optional[Sequence['outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv']] = None):
         """
-        :param Sequence['AiReasoningEngineSpecDeploymentSpecEnvArgs'] envs: Optional. Environment variables to be set with the Reasoning Engine deployment.
+        :param _builtins.int container_concurrency: Optional. Concurrency for each container and agent server.
+               Recommended value: 2 * cpu + 1. Defaults to 9.
+        :param Sequence['AiReasoningEngineSpecDeploymentSpecEnvArgs'] envs: Optional. Environment variables to be set with the Reasoning
+               Engine deployment.
                Structure is documented below.
-        :param Sequence['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs'] secret_envs: Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+        :param _builtins.int max_instances: Optional. The minimum number of application instances that will be
+               kept running at all times. Defaults to 1. Range: [0, 10].
+        :param _builtins.int min_instances: Optional. The maximum number of application instances that can be
+               launched to handle increased traffic. Defaults to 100.
+               Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+               range is [1, 100].
+        :param Mapping[str, _builtins.str] resource_limits: Optional. Resource limits for each container.
+               Only 'cpu' and 'memory' keys are supported.
+               Defaults to {"cpu": "4", "memory": "4Gi"}.
+               The only supported values for CPU are '1', '2', '4', '6' and '8'.
+               For more information, go to
+               https://cloud.google.com/run/docs/configuring/cpu.
+               The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+               For more information, go to
+               https://cloud.google.com/run/docs/configuring/memory-limits.
+        :param Sequence['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs'] secret_envs: Optional. Environment variables where the value is a secret in
+               Cloud Secret Manager. To use this feature, add 'Secret Manager
+               Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+               Platform Reasoning Engine service Agent.
                Structure is documented below.
         """
+        if container_concurrency is not None:
+            pulumi.set(__self__, "container_concurrency", container_concurrency)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if max_instances is not None:
+            pulumi.set(__self__, "max_instances", max_instances)
+        if min_instances is not None:
+            pulumi.set(__self__, "min_instances", min_instances)
+        if resource_limits is not None:
+            pulumi.set(__self__, "resource_limits", resource_limits)
         if secret_envs is not None:
             pulumi.set(__self__, "secret_envs", secret_envs)
+
+    @_builtins.property
+    @pulumi.getter(name="containerConcurrency")
+    def container_concurrency(self) -> Optional[_builtins.int]:
+        """
+        Optional. Concurrency for each container and agent server.
+        Recommended value: 2 * cpu + 1. Defaults to 9.
+        """
+        return pulumi.get(self, "container_concurrency")
 
     @_builtins.property
     @pulumi.getter
     def envs(self) -> Optional[Sequence['outputs.AiReasoningEngineSpecDeploymentSpecEnv']]:
         """
-        Optional. Environment variables to be set with the Reasoning Engine deployment.
+        Optional. Environment variables to be set with the Reasoning
+        Engine deployment.
         Structure is documented below.
         """
         return pulumi.get(self, "envs")
 
     @_builtins.property
+    @pulumi.getter(name="maxInstances")
+    def max_instances(self) -> Optional[_builtins.int]:
+        """
+        Optional. The minimum number of application instances that will be
+        kept running at all times. Defaults to 1. Range: [0, 10].
+        """
+        return pulumi.get(self, "max_instances")
+
+    @_builtins.property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> Optional[_builtins.int]:
+        """
+        Optional. The maximum number of application instances that can be
+        launched to handle increased traffic. Defaults to 100.
+        Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+        range is [1, 100].
+        """
+        return pulumi.get(self, "min_instances")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceLimits")
+    def resource_limits(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Optional. Resource limits for each container.
+        Only 'cpu' and 'memory' keys are supported.
+        Defaults to {"cpu": "4", "memory": "4Gi"}.
+        The only supported values for CPU are '1', '2', '4', '6' and '8'.
+        For more information, go to
+        https://cloud.google.com/run/docs/configuring/cpu.
+        The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'.
+        For more information, go to
+        https://cloud.google.com/run/docs/configuring/memory-limits.
+        """
+        return pulumi.get(self, "resource_limits")
+
+    @_builtins.property
     @pulumi.getter(name="secretEnvs")
     def secret_envs(self) -> Optional[Sequence['outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv']]:
         """
-        Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine service Agent.
+        Optional. Environment variables where the value is a secret in
+        Cloud Secret Manager. To use this feature, add 'Secret Manager
+        Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
+        Platform Reasoning Engine service Agent.
         Structure is documented below.
         """
         return pulumi.get(self, "secret_envs")
@@ -6719,8 +6836,16 @@ class AiReasoningEngineSpecDeploymentSpecEnv(dict):
                  name: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str name: The name of the environment variable. Must be a valid C identifier.
-        :param _builtins.str value: Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        :param _builtins.str name: The name of the environment variable. Must be a valid
+               C identifier.
+        :param _builtins.str value: Variables that reference a $(VAR_NAME) are expanded using
+               the previous defined environment variables in the container
+               and any service environment variables. If a variable cannot
+               be resolved, the reference in the input string will be
+               unchanged. The $(VAR_NAME) syntax can be escaped with a
+               double $$, ie: $$(VAR_NAME). Escaped references will never
+               be expanded, regardless of whether the variable exists
+               or not.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -6729,7 +6854,8 @@ class AiReasoningEngineSpecDeploymentSpecEnv(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the environment variable. Must be a valid C identifier.
+        The name of the environment variable. Must be a valid
+        C identifier.
         """
         return pulumi.get(self, "name")
 
@@ -6737,7 +6863,14 @@ class AiReasoningEngineSpecDeploymentSpecEnv(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
+        Variables that reference a $(VAR_NAME) are expanded using
+        the previous defined environment variables in the container
+        and any service environment variables. If a variable cannot
+        be resolved, the reference in the input string will be
+        unchanged. The $(VAR_NAME) syntax can be escaped with a
+        double $$, ie: $$(VAR_NAME). Escaped references will never
+        be expanded, regardless of whether the variable exists
+        or not.
         """
         return pulumi.get(self, "value")
 
@@ -6765,8 +6898,10 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnv(dict):
                  name: _builtins.str,
                  secret_ref: 'outputs.AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef'):
         """
-        :param _builtins.str name: The name of the environment variable. Must be a valid C identifier.
-        :param 'AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs' secret_ref: Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+        :param _builtins.str name: The name of the environment variable. Must be a valid C
+               identifier.
+        :param 'AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs' secret_ref: Reference to a secret stored in the Cloud Secret Manager
+               that will provide the value for this environment variable.
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -6776,7 +6911,8 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnv(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the environment variable. Must be a valid C identifier.
+        The name of the environment variable. Must be a valid C
+        identifier.
         """
         return pulumi.get(self, "name")
 
@@ -6784,7 +6920,8 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnv(dict):
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> 'outputs.AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef':
         """
-        Reference to a secret stored in the Cloud Secret Manager that will provide the value for this environment variable.
+        Reference to a secret stored in the Cloud Secret Manager
+        that will provide the value for this environment variable.
         Structure is documented below.
         """
         return pulumi.get(self, "secret_ref")
@@ -6796,8 +6933,11 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef(dict):
                  secret: _builtins.str,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str secret: The name of the secret in Cloud Secret Manager. Format: {secret_name}.
-        :param _builtins.str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
+        :param _builtins.str secret: The name of the secret in Cloud Secret Manager.
+               Format: {secret_name}.
+        :param _builtins.str version: The Cloud Secret Manager secret version. Can be 'latest'
+               for the latest version, an integer for a specific
+               version, or a version alias.
         """
         pulumi.set(__self__, "secret", secret)
         if version is not None:
@@ -6807,7 +6947,8 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef(dict):
     @pulumi.getter
     def secret(self) -> _builtins.str:
         """
-        The name of the secret in Cloud Secret Manager. Format: {secret_name}.
+        The name of the secret in Cloud Secret Manager.
+        Format: {secret_name}.
         """
         return pulumi.get(self, "secret")
 
@@ -6815,7 +6956,9 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRef(dict):
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
         """
-        The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
+        The Cloud Secret Manager secret version. Can be 'latest'
+        for the latest version, an integer for a specific
+        version, or a version alias.
         """
         return pulumi.get(self, "version")
 
@@ -6851,10 +6994,12 @@ class AiReasoningEngineSpecPackageSpec(dict):
                  python_version: Optional[_builtins.str] = None,
                  requirements_gcs_uri: Optional[_builtins.str] = None):
         """
-        :param _builtins.str dependency_files_gcs_uri: Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+        :param _builtins.str dependency_files_gcs_uri: Optional. The Cloud Storage URI of the dependency files in tar.gz
+               format.
         :param _builtins.str pickle_object_gcs_uri: Optional. The Cloud Storage URI of the pickled python object.
-        :param _builtins.str python_version: Optional. The Python version.
-        :param _builtins.str requirements_gcs_uri: Optional. The Cloud Storage URI of the requirements.txt file
+        :param _builtins.str python_version: Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+               3.11, 3.12, 3.13. If not specified, default value is 3.10.
+        :param _builtins.str requirements_gcs_uri: Optional. The Cloud Storage URI of the requirements.txtfile
         """
         if dependency_files_gcs_uri is not None:
             pulumi.set(__self__, "dependency_files_gcs_uri", dependency_files_gcs_uri)
@@ -6869,7 +7014,8 @@ class AiReasoningEngineSpecPackageSpec(dict):
     @pulumi.getter(name="dependencyFilesGcsUri")
     def dependency_files_gcs_uri(self) -> Optional[_builtins.str]:
         """
-        Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+        Optional. The Cloud Storage URI of the dependency files in tar.gz
+        format.
         """
         return pulumi.get(self, "dependency_files_gcs_uri")
 
@@ -6885,7 +7031,8 @@ class AiReasoningEngineSpecPackageSpec(dict):
     @pulumi.getter(name="pythonVersion")
     def python_version(self) -> Optional[_builtins.str]:
         """
-        Optional. The Python version.
+        Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+        3.11, 3.12, 3.13. If not specified, default value is 3.10.
         """
         return pulumi.get(self, "python_version")
 
@@ -6893,9 +7040,197 @@ class AiReasoningEngineSpecPackageSpec(dict):
     @pulumi.getter(name="requirementsGcsUri")
     def requirements_gcs_uri(self) -> Optional[_builtins.str]:
         """
-        Optional. The Cloud Storage URI of the requirements.txt file
+        Optional. The Cloud Storage URI of the requirements.txtfile
         """
         return pulumi.get(self, "requirements_gcs_uri")
+
+
+@pulumi.output_type
+class AiReasoningEngineSpecSourceCodeSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inlineSource":
+            suggest = "inline_source"
+        elif key == "pythonSpec":
+            suggest = "python_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineSpecSourceCodeSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineSpecSourceCodeSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineSpecSourceCodeSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 inline_source: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource'] = None,
+                 python_spec: Optional['outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec'] = None):
+        """
+        :param 'AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs' inline_source: Source code is provided directly in the request.
+               Structure is documented below.
+        :param 'AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs' python_spec: Specification for running a Python application from source.
+               Structure is documented below.
+        """
+        if inline_source is not None:
+            pulumi.set(__self__, "inline_source", inline_source)
+        if python_spec is not None:
+            pulumi.set(__self__, "python_spec", python_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="inlineSource")
+    def inline_source(self) -> Optional['outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource']:
+        """
+        Source code is provided directly in the request.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inline_source")
+
+    @_builtins.property
+    @pulumi.getter(name="pythonSpec")
+    def python_spec(self) -> Optional['outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec']:
+        """
+        Specification for running a Python application from source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_spec")
+
+
+@pulumi.output_type
+class AiReasoningEngineSpecSourceCodeSpecInlineSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceArchive":
+            suggest = "source_archive"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineSpecSourceCodeSpecInlineSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecInlineSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecInlineSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_archive: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str source_archive: Required. Input only.
+               The application source code archive, provided as a compressed
+               tarball (.tar.gz) file. A base64-encoded string.
+        """
+        if source_archive is not None:
+            pulumi.set(__self__, "source_archive", source_archive)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceArchive")
+    def source_archive(self) -> Optional[_builtins.str]:
+        """
+        Required. Input only.
+        The application source code archive, provided as a compressed
+        tarball (.tar.gz) file. A base64-encoded string.
+        """
+        return pulumi.get(self, "source_archive")
+
+
+@pulumi.output_type
+class AiReasoningEngineSpecSourceCodeSpecPythonSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entrypointModule":
+            suggest = "entrypoint_module"
+        elif key == "entrypointObject":
+            suggest = "entrypoint_object"
+        elif key == "requirementsFile":
+            suggest = "requirements_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineSpecSourceCodeSpecPythonSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecPythonSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineSpecSourceCodeSpecPythonSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entrypoint_module: Optional[_builtins.str] = None,
+                 entrypoint_object: Optional[_builtins.str] = None,
+                 requirements_file: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str entrypoint_module: Optional. The Python module to load as the entrypoint,
+               specified as a fully qualified module name. For example:
+               path.to.agent. If not specified, defaults to "agent".
+               The project root will be added to Python sys.path, allowing
+               imports to be specified relative to the root.
+        :param _builtins.str entrypoint_object: Optional. The name of the callable object within the
+               entrypointModule to use as the application If not specified,
+               defaults to "root_agent".
+        :param _builtins.str requirements_file: Optional. The path to the requirements file, relative to the
+               source root. If not specified, defaults to "requirements.txt".
+        :param _builtins.str version: Optional. The version of Python to use. Support version
+               includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
+               default value is 3.10.
+        """
+        if entrypoint_module is not None:
+            pulumi.set(__self__, "entrypoint_module", entrypoint_module)
+        if entrypoint_object is not None:
+            pulumi.set(__self__, "entrypoint_object", entrypoint_object)
+        if requirements_file is not None:
+            pulumi.set(__self__, "requirements_file", requirements_file)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="entrypointModule")
+    def entrypoint_module(self) -> Optional[_builtins.str]:
+        """
+        Optional. The Python module to load as the entrypoint,
+        specified as a fully qualified module name. For example:
+        path.to.agent. If not specified, defaults to "agent".
+        The project root will be added to Python sys.path, allowing
+        imports to be specified relative to the root.
+        """
+        return pulumi.get(self, "entrypoint_module")
+
+    @_builtins.property
+    @pulumi.getter(name="entrypointObject")
+    def entrypoint_object(self) -> Optional[_builtins.str]:
+        """
+        Optional. The name of the callable object within the
+        entrypointModule to use as the application If not specified,
+        defaults to "root_agent".
+        """
+        return pulumi.get(self, "entrypoint_object")
+
+    @_builtins.property
+    @pulumi.getter(name="requirementsFile")
+    def requirements_file(self) -> Optional[_builtins.str]:
+        """
+        Optional. The path to the requirements file, relative to the
+        source root. If not specified, defaults to "requirements.txt".
+        """
+        return pulumi.get(self, "requirements_file")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Optional. The version of Python to use. Support version
+        includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
+        default value is 3.10.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

@@ -180,6 +180,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceLogConfigResult> LogConfigs;
         public readonly string Name;
         public readonly string Network;
+        public readonly ImmutableArray<Outputs.GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyResult> NetworkPassThroughLbTrafficPolicies;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceOutlierDetectionResult> OutlierDetections;
         public readonly ImmutableArray<Outputs.GetRegionBackendServiceParamResult> Params;
         public readonly string PortName;
@@ -246,6 +247,8 @@ namespace Pulumi.Gcp.Compute
 
             string network,
 
+            ImmutableArray<Outputs.GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyResult> networkPassThroughLbTrafficPolicies,
+
             ImmutableArray<Outputs.GetRegionBackendServiceOutlierDetectionResult> outlierDetections,
 
             ImmutableArray<Outputs.GetRegionBackendServiceParamResult> @params,
@@ -297,6 +300,7 @@ namespace Pulumi.Gcp.Compute
             LogConfigs = logConfigs;
             Name = name;
             Network = network;
+            NetworkPassThroughLbTrafficPolicies = networkPassThroughLbTrafficPolicies;
             OutlierDetections = outlierDetections;
             Params = @params;
             PortName = portName;

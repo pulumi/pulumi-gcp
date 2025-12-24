@@ -43,10 +43,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         {
     ///             Network = defaultNetwork.Id,
     ///         },
-    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
-    ///         {
-    ///             Password = "alloydb-cluster",
-    ///         },
     ///         DeletionProtection = false,
     ///     });
     /// 
@@ -119,10 +115,6 @@ namespace Pulumi.Gcp.Alloydb
     ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
     ///         {
     ///             Network = defaultNetwork.Id,
-    ///         },
-    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
-    ///         {
-    ///             Password = "alloydb-cluster",
     ///         },
     ///         DeletionProtection = false,
     ///     });

@@ -11,6 +11,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.
+//
+// A membership binding associates a GKE Hub membership with a scope, enabling the membership to participate in fleet-wide configurations and policies defined by the scope.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.LookupMembershipBinding(ctx, &gkehub.LookupMembershipBindingArgs{
+//				Location:            "global",
+//				MembershipId:        "my-membership-id",
+//				MembershipBindingId: "my-membership-binding-id",
+//				Project:             pulumi.StringRef("my-project-id"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupMembershipBinding(ctx *pulumi.Context, args *LookupMembershipBindingArgs, opts ...pulumi.InvokeOption) (*LookupMembershipBindingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMembershipBindingResult
@@ -23,10 +55,16 @@ func LookupMembershipBinding(ctx *pulumi.Context, args *LookupMembershipBindingA
 
 // A collection of arguments for invoking getMembershipBinding.
 type LookupMembershipBindingArgs struct {
-	Location            string  `pulumi:"location"`
-	MembershipBindingId string  `pulumi:"membershipBindingId"`
-	MembershipId        string  `pulumi:"membershipId"`
-	Project             *string `pulumi:"project"`
+	// The location for the GKE Hub Membership Binding.
+	// Currently only `global` is supported.
+	Location string `pulumi:"location"`
+	// The ID of the membership binding.
+	MembershipBindingId string `pulumi:"membershipBindingId"`
+	// The ID of the membership that this binding applies to.
+	MembershipId string `pulumi:"membershipId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getMembershipBinding.
@@ -60,10 +98,16 @@ func LookupMembershipBindingOutput(ctx *pulumi.Context, args LookupMembershipBin
 
 // A collection of arguments for invoking getMembershipBinding.
 type LookupMembershipBindingOutputArgs struct {
-	Location            pulumi.StringInput    `pulumi:"location"`
-	MembershipBindingId pulumi.StringInput    `pulumi:"membershipBindingId"`
-	MembershipId        pulumi.StringInput    `pulumi:"membershipId"`
-	Project             pulumi.StringPtrInput `pulumi:"project"`
+	// The location for the GKE Hub Membership Binding.
+	// Currently only `global` is supported.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The ID of the membership binding.
+	MembershipBindingId pulumi.StringInput `pulumi:"membershipBindingId"`
+	// The ID of the membership that this binding applies to.
+	MembershipId pulumi.StringInput `pulumi:"membershipId"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (LookupMembershipBindingOutputArgs) ElementType() reflect.Type {

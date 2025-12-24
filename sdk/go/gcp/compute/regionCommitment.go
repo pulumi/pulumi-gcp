@@ -189,7 +189,7 @@ type RegionCommitment struct {
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// The type of commitment, which affects the discount rate and the eligible resources.
 	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
 	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
 	// `GRAPHICS_OPTIMIZED_G2`
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -282,7 +282,7 @@ type regionCommitmentState struct {
 	StatusMessage *string `pulumi:"statusMessage"`
 	// The type of commitment, which affects the discount rate and the eligible resources.
 	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
 	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
 	// `GRAPHICS_OPTIMIZED_G2`
 	Type *string `pulumi:"type"`
@@ -343,7 +343,7 @@ type RegionCommitmentState struct {
 	StatusMessage pulumi.StringPtrInput
 	// The type of commitment, which affects the discount rate and the eligible resources.
 	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
 	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
 	// `GRAPHICS_OPTIMIZED_G2`
 	Type pulumi.StringPtrInput
@@ -393,7 +393,7 @@ type regionCommitmentArgs struct {
 	Resources []RegionCommitmentResource `pulumi:"resources"`
 	// The type of commitment, which affects the discount rate and the eligible resources.
 	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
 	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
 	// `GRAPHICS_OPTIMIZED_G2`
 	Type *string `pulumi:"type"`
@@ -440,7 +440,7 @@ type RegionCommitmentArgs struct {
 	Resources RegionCommitmentResourceArrayInput
 	// The type of commitment, which affects the discount rate and the eligible resources.
 	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
 	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
 	// `GRAPHICS_OPTIMIZED_G2`
 	Type pulumi.StringPtrInput
@@ -638,7 +638,7 @@ func (o RegionCommitmentOutput) StatusMessage() pulumi.StringOutput {
 
 // The type of commitment, which affects the discount rate and the eligible resources.
 // The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+// `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
 // `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
 // `GRAPHICS_OPTIMIZED_G2`
 func (o RegionCommitmentOutput) Type() pulumi.StringOutput {

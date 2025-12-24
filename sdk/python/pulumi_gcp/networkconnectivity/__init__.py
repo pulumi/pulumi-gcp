@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .gateway_advertised_route import *
 from .group import *
 from .hub import *
 from .internal_range import *

@@ -7393,15 +7393,22 @@ type ClusterClusterConfigLifecycleConfig struct {
 	// The time when cluster will be auto-deleted.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	// Example: "2014-10-02T15:01:23.045123456Z".
+	AutoDeleteTime *string `pulumi:"autoDeleteTime"`
+	// The time when cluster will be auto-stopped.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	//
 	// ***
-	AutoDeleteTime *string `pulumi:"autoDeleteTime"`
+	AutoStopTime *string `pulumi:"autoStopTime"`
 	// The duration to keep the cluster alive while idling
 	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
 	IdleDeleteTtl *string `pulumi:"idleDeleteTtl"`
 	// Time when the cluster became idle
 	// (most recent job finished) and became eligible for deletion due to idleness.
 	IdleStartTime *string `pulumi:"idleStartTime"`
+	// The duration to keep the cluster alive while idling
+	// (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+	IdleStopTtl *string `pulumi:"idleStopTtl"`
 }
 
 // ClusterClusterConfigLifecycleConfigInput is an input type that accepts ClusterClusterConfigLifecycleConfigArgs and ClusterClusterConfigLifecycleConfigOutput values.
@@ -7419,15 +7426,22 @@ type ClusterClusterConfigLifecycleConfigArgs struct {
 	// The time when cluster will be auto-deleted.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	// Example: "2014-10-02T15:01:23.045123456Z".
+	AutoDeleteTime pulumi.StringPtrInput `pulumi:"autoDeleteTime"`
+	// The time when cluster will be auto-stopped.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	//
 	// ***
-	AutoDeleteTime pulumi.StringPtrInput `pulumi:"autoDeleteTime"`
+	AutoStopTime pulumi.StringPtrInput `pulumi:"autoStopTime"`
 	// The duration to keep the cluster alive while idling
 	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
 	IdleDeleteTtl pulumi.StringPtrInput `pulumi:"idleDeleteTtl"`
 	// Time when the cluster became idle
 	// (most recent job finished) and became eligible for deletion due to idleness.
 	IdleStartTime pulumi.StringPtrInput `pulumi:"idleStartTime"`
+	// The duration to keep the cluster alive while idling
+	// (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+	IdleStopTtl pulumi.StringPtrInput `pulumi:"idleStopTtl"`
 }
 
 func (ClusterClusterConfigLifecycleConfigArgs) ElementType() reflect.Type {
@@ -7510,10 +7524,17 @@ func (o ClusterClusterConfigLifecycleConfigOutput) ToClusterClusterConfigLifecyc
 // The time when cluster will be auto-deleted.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 // Example: "2014-10-02T15:01:23.045123456Z".
-//
-// ***
 func (o ClusterClusterConfigLifecycleConfigOutput) AutoDeleteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *string { return v.AutoDeleteTime }).(pulumi.StringPtrOutput)
+}
+
+// The time when cluster will be auto-stopped.
+// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+// Example: "2014-10-02T15:01:23.045123456Z".
+//
+// ***
+func (o ClusterClusterConfigLifecycleConfigOutput) AutoStopTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *string { return v.AutoStopTime }).(pulumi.StringPtrOutput)
 }
 
 // The duration to keep the cluster alive while idling
@@ -7526,6 +7547,12 @@ func (o ClusterClusterConfigLifecycleConfigOutput) IdleDeleteTtl() pulumi.String
 // (most recent job finished) and became eligible for deletion due to idleness.
 func (o ClusterClusterConfigLifecycleConfigOutput) IdleStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *string { return v.IdleStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The duration to keep the cluster alive while idling
+// (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+func (o ClusterClusterConfigLifecycleConfigOutput) IdleStopTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *string { return v.IdleStopTtl }).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterConfigLifecycleConfigPtrOutput struct{ *pulumi.OutputState }
@@ -7555,14 +7582,26 @@ func (o ClusterClusterConfigLifecycleConfigPtrOutput) Elem() ClusterClusterConfi
 // The time when cluster will be auto-deleted.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 // Example: "2014-10-02T15:01:23.045123456Z".
-//
-// ***
 func (o ClusterClusterConfigLifecycleConfigPtrOutput) AutoDeleteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigLifecycleConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.AutoDeleteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when cluster will be auto-stopped.
+// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+// Example: "2014-10-02T15:01:23.045123456Z".
+//
+// ***
+func (o ClusterClusterConfigLifecycleConfigPtrOutput) AutoStopTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigLifecycleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoStopTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7585,6 +7624,17 @@ func (o ClusterClusterConfigLifecycleConfigPtrOutput) IdleStartTime() pulumi.Str
 			return nil
 		}
 		return v.IdleStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration to keep the cluster alive while idling
+// (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+func (o ClusterClusterConfigLifecycleConfigPtrOutput) IdleStopTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigLifecycleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleStopTtl
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -207,7 +207,7 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
     /**
      * The type of commitment, which affects the discount rate and the eligible resources.
      * The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-     * `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+     * `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
      * `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
      * `GRAPHICS_OPTIMIZED_G2`
      * 
@@ -218,7 +218,7 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The type of commitment, which affects the discount rate and the eligible resources.
      * The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-     * `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+     * `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
      * `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
      * `GRAPHICS_OPTIMIZED_G2`
      * 
@@ -520,7 +520,7 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param type The type of commitment, which affects the discount rate and the eligible resources.
          * The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-         * `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+         * `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
          * `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
          * `GRAPHICS_OPTIMIZED_G2`
          * 
@@ -535,7 +535,7 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param type The type of commitment, which affects the discount rate and the eligible resources.
          * The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
-         * `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+         * `GENERAL_PURPOSE`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
          * `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
          * `GRAPHICS_OPTIMIZED_G2`
          * 

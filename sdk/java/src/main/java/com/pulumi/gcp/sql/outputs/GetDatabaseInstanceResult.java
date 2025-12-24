@@ -57,6 +57,8 @@ public final class GetDatabaseInstanceResult {
     private List<GetDatabaseInstanceReplicationCluster> replicationClusters;
     private List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts;
     private String rootPassword;
+    private String rootPasswordWo;
+    private String rootPasswordWoVersion;
     private String selfLink;
     private List<GetDatabaseInstanceServerCaCert> serverCaCerts;
     private String serviceAccountEmailAddress;
@@ -154,6 +156,12 @@ public final class GetDatabaseInstanceResult {
     public String rootPassword() {
         return this.rootPassword;
     }
+    public String rootPasswordWo() {
+        return this.rootPasswordWo;
+    }
+    public String rootPasswordWoVersion() {
+        return this.rootPasswordWoVersion;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -205,6 +213,8 @@ public final class GetDatabaseInstanceResult {
         private List<GetDatabaseInstanceReplicationCluster> replicationClusters;
         private List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts;
         private String rootPassword;
+        private String rootPasswordWo;
+        private String rootPasswordWoVersion;
         private String selfLink;
         private List<GetDatabaseInstanceServerCaCert> serverCaCerts;
         private String serviceAccountEmailAddress;
@@ -241,6 +251,8 @@ public final class GetDatabaseInstanceResult {
     	      this.replicationClusters = defaults.replicationClusters;
     	      this.restoreBackupContexts = defaults.restoreBackupContexts;
     	      this.rootPassword = defaults.rootPassword;
+    	      this.rootPasswordWo = defaults.rootPasswordWo;
+    	      this.rootPasswordWoVersion = defaults.rootPasswordWoVersion;
     	      this.selfLink = defaults.selfLink;
     	      this.serverCaCerts = defaults.serverCaCerts;
     	      this.serviceAccountEmailAddress = defaults.serviceAccountEmailAddress;
@@ -505,6 +517,22 @@ public final class GetDatabaseInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder rootPasswordWo(String rootPasswordWo) {
+            if (rootPasswordWo == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "rootPasswordWo");
+            }
+            this.rootPasswordWo = rootPasswordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rootPasswordWoVersion(String rootPasswordWoVersion) {
+            if (rootPasswordWoVersion == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "rootPasswordWoVersion");
+            }
+            this.rootPasswordWoVersion = rootPasswordWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             if (selfLink == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "selfLink");
@@ -573,6 +601,8 @@ public final class GetDatabaseInstanceResult {
             _resultValue.replicationClusters = replicationClusters;
             _resultValue.restoreBackupContexts = restoreBackupContexts;
             _resultValue.rootPassword = rootPassword;
+            _resultValue.rootPasswordWo = rootPasswordWo;
+            _resultValue.rootPasswordWoVersion = rootPasswordWoVersion;
             _resultValue.selfLink = selfLink;
             _resultValue.serverCaCerts = serverCaCerts;
             _resultValue.serviceAccountEmailAddress = serviceAccountEmailAddress;

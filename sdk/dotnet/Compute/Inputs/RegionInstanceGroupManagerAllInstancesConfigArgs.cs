@@ -16,7 +16,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The label key-value pairs that you want to patch onto the instance,
+        /// , The label key-value pairs that you want to patch onto the instance.
+        /// 
+        /// - - -
         /// </summary>
         public InputMap<string> Labels
         {
@@ -28,7 +30,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+        /// , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         /// </summary>
         public InputMap<string> Metadata
         {

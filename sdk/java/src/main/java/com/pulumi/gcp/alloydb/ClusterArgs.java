@@ -214,7 +214,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Initial user to setup during cluster creation. This must be set for all new Clusters.
+     * Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
      * Structure is documented below.
      * 
      */
@@ -222,7 +222,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterInitialUserArgs> initialUser;
 
     /**
-     * @return Initial user to setup during cluster creation. This must be set for all new Clusters.
+     * @return Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
      * Structure is documented below.
      * 
      */
@@ -713,7 +713,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialUser Initial user to setup during cluster creation. This must be set for all new Clusters.
+         * @param initialUser Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
          * Structure is documented below.
          * 
          * @return builder
@@ -725,7 +725,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initialUser Initial user to setup during cluster creation. This must be set for all new Clusters.
+         * @param initialUser Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
          * Structure is documented below.
          * 
          * @return builder

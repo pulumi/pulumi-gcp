@@ -159,6 +159,14 @@ namespace Pulumi.Gcp.Vertex
     ///             ServiceAccount = serviceAccount.Email,
     ///             DeploymentSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecArgs
     ///             {
+    ///                 MinInstances = 1,
+    ///                 MaxInstances = 3,
+    ///                 ContainerConcurrency = 5,
+    ///                 ResourceLimits = 
+    ///                 {
+    ///                     { "cpu", "4" },
+    ///                     { "memory", "4Gi" },
+    ///                 },
     ///                 Envs = new[]
     ///                 {
     ///                     new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs
@@ -282,7 +290,8 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-        /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+        /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+        /// will be secured by this key.
         /// Structure is documented below.
         /// </summary>
         [Output("encryptionSpec")]
@@ -290,7 +299,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The generated name of the ReasoningEngine, in the format
-        /// 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+        /// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -316,8 +325,8 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiReasoningEngineSpec?> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-        /// with nanosecond resolution and up to nine fractional digits.
+        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+        /// format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -382,7 +391,8 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-        /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+        /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+        /// will be secured by this key.
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec")]
@@ -437,7 +447,8 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
-        /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine will be secured by this key.
+        /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
+        /// will be secured by this key.
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec")]
@@ -445,7 +456,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The generated name of the ReasoningEngine, in the format
-        /// 'projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}'
+        /// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -471,8 +482,8 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiReasoningEngineSpecGetArgs>? Spec { get; set; }
 
         /// <summary>
-        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format,
-        /// with nanosecond resolution and up to nine fractional digits.
+        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
+        /// format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

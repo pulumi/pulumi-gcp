@@ -1838,6 +1838,10 @@ if not MYPY:
         """
         Backup retention settings. The configuration is detailed below.
         """
+        backup_tier: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The backup tier that manages the backups for the instance.
+        """
         binary_log_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         True if binary logging is enabled.
@@ -1871,6 +1875,7 @@ elif False:
 class DatabaseInstanceSettingsBackupConfigurationArgs:
     def __init__(__self__, *,
                  backup_retention_settings: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']] = None,
+                 backup_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  binary_log_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1879,6 +1884,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
                  transaction_log_retention_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs'] backup_retention_settings: Backup retention settings. The configuration is detailed below.
+        :param pulumi.Input[_builtins.str] backup_tier: The backup tier that manages the backups for the instance.
         :param pulumi.Input[_builtins.bool] binary_log_enabled: True if binary logging is enabled.
                Can only be used with MySQL.
         :param pulumi.Input[_builtins.bool] enabled: True if backup configuration is enabled.
@@ -1890,6 +1896,8 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
         """
         if backup_retention_settings is not None:
             pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
+        if backup_tier is not None:
+            pulumi.set(__self__, "backup_tier", backup_tier)
         if binary_log_enabled is not None:
             pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         if enabled is not None:
@@ -1914,6 +1922,18 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
     @backup_retention_settings.setter
     def backup_retention_settings(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]):
         pulumi.set(self, "backup_retention_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupTier")
+    def backup_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The backup tier that manages the backups for the instance.
+        """
+        return pulumi.get(self, "backup_tier")
+
+    @backup_tier.setter
+    def backup_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backup_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryLogEnabled")

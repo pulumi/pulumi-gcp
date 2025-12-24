@@ -261,6 +261,13 @@ namespace Pulumi.Gcp.Compute
         public Output<int> SnapshotId { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates the type of the snapshot.
+        /// Possible values are: `ARCHIVE`, `STANDARD`.
+        /// </summary>
+        [Output("snapshotType")]
+        public Output<string?> SnapshotType { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the disk used to create this snapshot.
         /// </summary>
         [Output("sourceDisk")]
@@ -411,6 +418,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.SnapshotSnapshotEncryptionKeyArgs>? SnapshotEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Indicates the type of the snapshot.
+        /// Possible values are: `ARCHIVE`, `STANDARD`.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<string>? SnapshotType { get; set; }
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.
@@ -597,6 +611,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("snapshotId")]
         public Input<int>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// Indicates the type of the snapshot.
+        /// Possible values are: `ARCHIVE`, `STANDARD`.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<string>? SnapshotType { get; set; }
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.

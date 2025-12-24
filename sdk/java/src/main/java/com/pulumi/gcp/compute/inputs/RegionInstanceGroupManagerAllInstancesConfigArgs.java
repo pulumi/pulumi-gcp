@@ -17,14 +17,18 @@ public final class RegionInstanceGroupManagerAllInstancesConfigArgs extends com.
     public static final RegionInstanceGroupManagerAllInstancesConfigArgs Empty = new RegionInstanceGroupManagerAllInstancesConfigArgs();
 
     /**
-     * The label key-value pairs that you want to patch onto the instance,
+     * , The label key-value pairs that you want to patch onto the instance.
+     * 
+     * ***
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return The label key-value pairs that you want to patch onto the instance,
+     * @return , The label key-value pairs that you want to patch onto the instance.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -32,14 +36,14 @@ public final class RegionInstanceGroupManagerAllInstancesConfigArgs extends com.
     }
 
     /**
-     * The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+     * , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
-     * @return The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+     * @return , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -72,7 +76,9 @@ public final class RegionInstanceGroupManagerAllInstancesConfigArgs extends com.
         }
 
         /**
-         * @param labels The label key-value pairs that you want to patch onto the instance,
+         * @param labels , The label key-value pairs that you want to patch onto the instance.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -83,7 +89,9 @@ public final class RegionInstanceGroupManagerAllInstancesConfigArgs extends com.
         }
 
         /**
-         * @param labels The label key-value pairs that you want to patch onto the instance,
+         * @param labels , The label key-value pairs that you want to patch onto the instance.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -93,7 +101,7 @@ public final class RegionInstanceGroupManagerAllInstancesConfigArgs extends com.
         }
 
         /**
-         * @param metadata The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+         * @param metadata , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
          * 
          * @return builder
          * 
@@ -104,7 +112,7 @@ public final class RegionInstanceGroupManagerAllInstancesConfigArgs extends com.
         }
 
         /**
-         * @param metadata The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+         * @param metadata , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
          * 
          * @return builder
          * 

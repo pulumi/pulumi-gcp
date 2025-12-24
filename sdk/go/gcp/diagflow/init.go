@@ -59,8 +59,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EntityType{}
 	case "gcp:diagflow/fulfillment:Fulfillment":
 		r = &Fulfillment{}
+	case "gcp:diagflow/generator:Generator":
+		r = &Generator{}
 	case "gcp:diagflow/intent:Intent":
 		r = &Intent{}
+	case "gcp:diagflow/version:Version":
+		r = &Version{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -171,7 +175,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"diagflow/generator",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"diagflow/intent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/version",
 		&module{version},
 	)
 }

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// To get more information about Namespace, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
+    /// * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1/projects.locations.namespaces)
     /// * How-to Guides
     ///     * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
     /// 
@@ -91,8 +91,6 @@ namespace Pulumi.Gcp.ServiceDirectory
 
         /// <summary>
         /// The location for the Namespace.
-        /// A full list of valid locations can be found by running
-        /// `gcloud beta service-directory locations list`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -195,8 +193,6 @@ namespace Pulumi.Gcp.ServiceDirectory
 
         /// <summary>
         /// The location for the Namespace.
-        /// A full list of valid locations can be found by running
-        /// `gcloud beta service-directory locations list`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -258,8 +254,6 @@ namespace Pulumi.Gcp.ServiceDirectory
 
         /// <summary>
         /// The location for the Namespace.
-        /// A full list of valid locations can be found by running
-        /// `gcloud beta service-directory locations list`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -25,6 +25,13 @@ namespace Pulumi.Gcp.Colab.Inputs
             set => _envs = value;
         }
 
+        /// <summary>
+        /// Post startup script config.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("postStartupScriptConfig")]
+        public Input<Inputs.RuntimeTemplateSoftwareConfigPostStartupScriptConfigGetArgs>? PostStartupScriptConfig { get; set; }
+
         public RuntimeTemplateSoftwareConfigGetArgs()
         {
         }

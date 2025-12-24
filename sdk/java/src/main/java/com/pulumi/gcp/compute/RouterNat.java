@@ -396,7 +396,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enable endpoint independent mapping.
-     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      * 
      */
     @Export(name="enableEndpointIndependentMapping", refs={Boolean.class}, tree="[0]")
@@ -404,7 +404,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable endpoint independent mapping.
-     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      * 
      */
     public Output<Boolean> enableEndpointIndependentMapping() {

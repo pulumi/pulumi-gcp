@@ -650,7 +650,6 @@ import javax.annotation.Nullable;
  *             .name("cloudrun-job")
  *             .location("us-central1")
  *             .deletionProtection(false)
- *             .launchStage("BETA")
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()

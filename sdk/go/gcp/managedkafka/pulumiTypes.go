@@ -1815,7 +1815,12 @@ func (o ConnectClusterGcpConfigAccessConfigPtrOutput) NetworkConfigs() ConnectCl
 }
 
 type ConnectClusterGcpConfigAccessConfigNetworkConfig struct {
+	// (Optional, Deprecated)
 	// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+	//
+	// > **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
+	//
+	// Deprecated: `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
 	AdditionalSubnets []string `pulumi:"additionalSubnets"`
 	// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
 	DnsDomainNames []string `pulumi:"dnsDomainNames"`
@@ -1835,7 +1840,12 @@ type ConnectClusterGcpConfigAccessConfigNetworkConfigInput interface {
 }
 
 type ConnectClusterGcpConfigAccessConfigNetworkConfigArgs struct {
+	// (Optional, Deprecated)
 	// Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+	//
+	// > **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
+	//
+	// Deprecated: `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
 	AdditionalSubnets pulumi.StringArrayInput `pulumi:"additionalSubnets"`
 	// Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog
 	DnsDomainNames pulumi.StringArrayInput `pulumi:"dnsDomainNames"`
@@ -1894,7 +1904,12 @@ func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) ToConnectCluster
 	return o
 }
 
+// (Optional, Deprecated)
 // Additional subnets may be specified. They may be in another region, but must be in the same VPC network. The Connect workers can communicate with network endpoints in either the primary or additional subnets.
+//
+// > **Warning:** `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
+//
+// Deprecated: `additionalSubnets` is deprecated and will be removed in a future major release. Managed Kafka Connect clusters can now reach any endpoint accessible from the primary subnet without the need to define additional subnets. Please see https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet for more information.
 func (o ConnectClusterGcpConfigAccessConfigNetworkConfigOutput) AdditionalSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectClusterGcpConfigAccessConfigNetworkConfig) []string { return v.AdditionalSubnets }).(pulumi.StringArrayOutput)
 }

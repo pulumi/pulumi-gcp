@@ -4,30 +4,32 @@
 package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.outputs.ToolOpenApiToolTlsConfigCaCert;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ToolOpenApiToolTlsConfig {
     /**
-     * @return Specifies a list of allowed custom CA certificates for HTTPS
+     * @return (Output)
+     * Specifies a list of allowed custom CA certificates for HTTPS
      * verification.
      * Structure is documented below.
      * 
      */
-    private List<ToolOpenApiToolTlsConfigCaCert> caCerts;
+    private @Nullable List<ToolOpenApiToolTlsConfigCaCert> caCerts;
 
     private ToolOpenApiToolTlsConfig() {}
     /**
-     * @return Specifies a list of allowed custom CA certificates for HTTPS
+     * @return (Output)
+     * Specifies a list of allowed custom CA certificates for HTTPS
      * verification.
      * Structure is documented below.
      * 
      */
     public List<ToolOpenApiToolTlsConfigCaCert> caCerts() {
-        return this.caCerts;
+        return this.caCerts == null ? List.of() : this.caCerts;
     }
 
     public static Builder builder() {
@@ -39,7 +41,7 @@ public final class ToolOpenApiToolTlsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<ToolOpenApiToolTlsConfigCaCert> caCerts;
+        private @Nullable List<ToolOpenApiToolTlsConfigCaCert> caCerts;
         public Builder() {}
         public Builder(ToolOpenApiToolTlsConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -47,10 +49,8 @@ public final class ToolOpenApiToolTlsConfig {
         }
 
         @CustomType.Setter
-        public Builder caCerts(List<ToolOpenApiToolTlsConfigCaCert> caCerts) {
-            if (caCerts == null) {
-              throw new MissingRequiredPropertyException("ToolOpenApiToolTlsConfig", "caCerts");
-            }
+        public Builder caCerts(@Nullable List<ToolOpenApiToolTlsConfigCaCert> caCerts) {
+
             this.caCerts = caCerts;
             return this;
         }

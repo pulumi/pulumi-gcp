@@ -165,6 +165,9 @@ type Floorsetting struct {
 	// Metadata to enable multi language detection via floor setting.
 	// Structure is documented below.
 	FloorSettingMetadata FloorsettingFloorSettingMetadataPtrOutput `pulumi:"floorSettingMetadata"`
+	// Google MCP Server floor setting.
+	// Structure is documented below.
+	GoogleMcpServerFloorSetting FloorsettingGoogleMcpServerFloorSettingPtrOutput `pulumi:"googleMcpServerFloorSetting"`
 	// List of integrated services for which the floor setting is applicable.
 	IntegratedServices pulumi.StringArrayOutput `pulumi:"integratedServices"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -232,6 +235,9 @@ type floorsettingState struct {
 	// Metadata to enable multi language detection via floor setting.
 	// Structure is documented below.
 	FloorSettingMetadata *FloorsettingFloorSettingMetadata `pulumi:"floorSettingMetadata"`
+	// Google MCP Server floor setting.
+	// Structure is documented below.
+	GoogleMcpServerFloorSetting *FloorsettingGoogleMcpServerFloorSetting `pulumi:"googleMcpServerFloorSetting"`
 	// List of integrated services for which the floor setting is applicable.
 	IntegratedServices []string `pulumi:"integratedServices"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -261,6 +267,9 @@ type FloorsettingState struct {
 	// Metadata to enable multi language detection via floor setting.
 	// Structure is documented below.
 	FloorSettingMetadata FloorsettingFloorSettingMetadataPtrInput
+	// Google MCP Server floor setting.
+	// Structure is documented below.
+	GoogleMcpServerFloorSetting FloorsettingGoogleMcpServerFloorSettingPtrInput
 	// List of integrated services for which the floor setting is applicable.
 	IntegratedServices pulumi.StringArrayInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -292,6 +301,9 @@ type floorsettingArgs struct {
 	// Metadata to enable multi language detection via floor setting.
 	// Structure is documented below.
 	FloorSettingMetadata *FloorsettingFloorSettingMetadata `pulumi:"floorSettingMetadata"`
+	// Google MCP Server floor setting.
+	// Structure is documented below.
+	GoogleMcpServerFloorSetting *FloorsettingGoogleMcpServerFloorSetting `pulumi:"googleMcpServerFloorSetting"`
 	// List of integrated services for which the floor setting is applicable.
 	IntegratedServices []string `pulumi:"integratedServices"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -316,6 +328,9 @@ type FloorsettingArgs struct {
 	// Metadata to enable multi language detection via floor setting.
 	// Structure is documented below.
 	FloorSettingMetadata FloorsettingFloorSettingMetadataPtrInput
+	// Google MCP Server floor setting.
+	// Structure is documented below.
+	GoogleMcpServerFloorSetting FloorsettingGoogleMcpServerFloorSettingPtrInput
 	// List of integrated services for which the floor setting is applicable.
 	IntegratedServices pulumi.StringArrayInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -440,6 +455,14 @@ func (o FloorsettingOutput) FilterConfig() FloorsettingFilterConfigOutput {
 // Structure is documented below.
 func (o FloorsettingOutput) FloorSettingMetadata() FloorsettingFloorSettingMetadataPtrOutput {
 	return o.ApplyT(func(v *Floorsetting) FloorsettingFloorSettingMetadataPtrOutput { return v.FloorSettingMetadata }).(FloorsettingFloorSettingMetadataPtrOutput)
+}
+
+// Google MCP Server floor setting.
+// Structure is documented below.
+func (o FloorsettingOutput) GoogleMcpServerFloorSetting() FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+	return o.ApplyT(func(v *Floorsetting) FloorsettingGoogleMcpServerFloorSettingPtrOutput {
+		return v.GoogleMcpServerFloorSetting
+	}).(FloorsettingGoogleMcpServerFloorSettingPtrOutput)
 }
 
 // List of integrated services for which the floor setting is applicable.

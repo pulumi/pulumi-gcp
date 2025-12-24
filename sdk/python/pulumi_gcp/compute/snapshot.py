@@ -28,6 +28,7 @@ class SnapshotArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
+                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
@@ -64,6 +65,8 @@ class SnapshotArgs:
                then the snapshot will be encrypted using an automatically generated
                key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
+               Possible values are: `ARCHIVE`, `STANDARD`.
         :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -84,6 +87,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "project", project)
         if snapshot_encryption_key is not None:
             pulumi.set(__self__, "snapshot_encryption_key", snapshot_encryption_key)
+        if snapshot_type is not None:
+            pulumi.set(__self__, "snapshot_type", snapshot_type)
         if source_disk_encryption_key is not None:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
         if storage_locations is not None:
@@ -200,6 +205,19 @@ class SnapshotArgs:
         pulumi.set(self, "snapshot_encryption_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates the type of the snapshot.
+        Possible values are: `ARCHIVE`, `STANDARD`.
+        """
+        return pulumi.get(self, "snapshot_type")
+
+    @snapshot_type.setter
+    def snapshot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "snapshot_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceDiskEncryptionKey")
     def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]:
         """
@@ -256,6 +274,7 @@ class _SnapshotState:
                  self_link: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
                  storage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
@@ -306,6 +325,8 @@ class _SnapshotState:
                key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] snapshot_id: The unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
+               Possible values are: `ARCHIVE`, `STANDARD`.
         :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
@@ -345,6 +366,8 @@ class _SnapshotState:
             pulumi.set(__self__, "snapshot_encryption_key", snapshot_encryption_key)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if snapshot_type is not None:
+            pulumi.set(__self__, "snapshot_type", snapshot_type)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_encryption_key is not None:
@@ -554,6 +577,19 @@ class _SnapshotState:
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates the type of the snapshot.
+        Possible values are: `ARCHIVE`, `STANDARD`.
+        """
+        return pulumi.get(self, "snapshot_type")
+
+    @snapshot_type.setter
+    def snapshot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "snapshot_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -631,6 +667,7 @@ class Snapshot(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -765,6 +802,8 @@ class Snapshot(pulumi.CustomResource):
                then the snapshot will be encrypted using an automatically generated
                key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
+               Possible values are: `ARCHIVE`, `STANDARD`.
         :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
@@ -897,6 +936,7 @@ class Snapshot(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -916,6 +956,7 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
+            __props__.__dict__["snapshot_type"] = snapshot_type
             if source_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'source_disk'")
             __props__.__dict__["source_disk"] = source_disk
@@ -957,6 +998,7 @@ class Snapshot(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[_builtins.str]] = None,
             snapshot_encryption_key: Optional[pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
             snapshot_id: Optional[pulumi.Input[_builtins.int]] = None,
+            snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
             source_disk: Optional[pulumi.Input[_builtins.str]] = None,
             source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
             storage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1012,6 +1054,8 @@ class Snapshot(pulumi.CustomResource):
                key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] snapshot_id: The unique identifier for the resource.
+        :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
+               Possible values are: `ARCHIVE`, `STANDARD`.
         :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
@@ -1041,6 +1085,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
         __props__.__dict__["snapshot_id"] = snapshot_id
+        __props__.__dict__["snapshot_type"] = snapshot_type
         __props__.__dict__["source_disk"] = source_disk
         __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
         __props__.__dict__["storage_bytes"] = storage_bytes
@@ -1188,6 +1233,15 @@ class Snapshot(pulumi.CustomResource):
         The unique identifier for the resource.
         """
         return pulumi.get(self, "snapshot_id")
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Indicates the type of the snapshot.
+        Possible values are: `ARCHIVE`, `STANDARD`.
+        """
+        return pulumi.get(self, "snapshot_type")
 
     @_builtins.property
     @pulumi.getter(name="sourceDisk")

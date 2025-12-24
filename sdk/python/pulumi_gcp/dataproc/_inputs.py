@@ -4210,6 +4210,12 @@ if not MYPY:
         The time when cluster will be auto-deleted.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        auto_stop_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The time when cluster will be auto-stopped.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        Example: "2014-10-02T15:01:23.045123456Z".
 
         - - -
         """
@@ -4223,6 +4229,11 @@ if not MYPY:
         Time when the cluster became idle
         (most recent job finished) and became eligible for deletion due to idleness.
         """
+        idle_stop_ttl: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The duration to keep the cluster alive while idling
+        (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+        """
 elif False:
     ClusterClusterConfigLifecycleConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4230,10 +4241,15 @@ elif False:
 class ClusterClusterConfigLifecycleConfigArgs:
     def __init__(__self__, *,
                  auto_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_stop_time: Optional[pulumi.Input[_builtins.str]] = None,
                  idle_delete_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 idle_start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_stop_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auto_delete_time: The time when cluster will be auto-deleted.
+               A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+               Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] auto_stop_time: The time when cluster will be auto-stopped.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".
                
@@ -4242,13 +4258,19 @@ class ClusterClusterConfigLifecycleConfigArgs:
                (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
         :param pulumi.Input[_builtins.str] idle_start_time: Time when the cluster became idle
                (most recent job finished) and became eligible for deletion due to idleness.
+        :param pulumi.Input[_builtins.str] idle_stop_ttl: The duration to keep the cluster alive while idling
+               (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
         """
         if auto_delete_time is not None:
             pulumi.set(__self__, "auto_delete_time", auto_delete_time)
+        if auto_stop_time is not None:
+            pulumi.set(__self__, "auto_stop_time", auto_stop_time)
         if idle_delete_ttl is not None:
             pulumi.set(__self__, "idle_delete_ttl", idle_delete_ttl)
         if idle_start_time is not None:
             pulumi.set(__self__, "idle_start_time", idle_start_time)
+        if idle_stop_ttl is not None:
+            pulumi.set(__self__, "idle_stop_ttl", idle_stop_ttl)
 
     @_builtins.property
     @pulumi.getter(name="autoDeleteTime")
@@ -4257,14 +4279,28 @@ class ClusterClusterConfigLifecycleConfigArgs:
         The time when cluster will be auto-deleted.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         Example: "2014-10-02T15:01:23.045123456Z".
-
-        - - -
         """
         return pulumi.get(self, "auto_delete_time")
 
     @auto_delete_time.setter
     def auto_delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "auto_delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoStopTime")
+    def auto_stop_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when cluster will be auto-stopped.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        Example: "2014-10-02T15:01:23.045123456Z".
+
+        - - -
+        """
+        return pulumi.get(self, "auto_stop_time")
+
+    @auto_stop_time.setter
+    def auto_stop_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "auto_stop_time", value)
 
     @_builtins.property
     @pulumi.getter(name="idleDeleteTtl")
@@ -4291,6 +4327,19 @@ class ClusterClusterConfigLifecycleConfigArgs:
     @idle_start_time.setter
     def idle_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "idle_start_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleStopTtl")
+    def idle_stop_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The duration to keep the cluster alive while idling
+        (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+        """
+        return pulumi.get(self, "idle_stop_ttl")
+
+    @idle_stop_ttl.setter
+    def idle_stop_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "idle_stop_ttl", value)
 
 
 if not MYPY:

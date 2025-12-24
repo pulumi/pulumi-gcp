@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
  *     displayName: "tf-test",
  *     parent: "organizations/123456789",
+ *     type: "FIREWALL",
  * });
  * const policyOrganizationSecurityPolicyRule = new gcp.compute.OrganizationSecurityPolicyRule("policy", {
  *     policyId: policy.id,

@@ -411,7 +411,7 @@ import javax.annotation.Nullable;
  *             .region("europe-west1")
  *             .workloadPolicy(ResourcePolicyWorkloadPolicyArgs.builder()
  *                 .type("HIGH_THROUGHPUT")
- *                 .acceleratorTopology("SOME NEW TOPOLOGY")
+ *                 .acceleratorTopology("2x2")
  *                 .build())
  *             .build());
  * 

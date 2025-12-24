@@ -20,8 +20,6 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
      * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
-     * ***
-     * 
      */
     @Import(name="autoDeleteTime")
     private @Nullable Output<String> autoDeleteTime;
@@ -31,11 +29,32 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
      * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> autoDeleteTime() {
         return Optional.ofNullable(this.autoDeleteTime);
+    }
+
+    /**
+     * The time when cluster will be auto-stopped.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="autoStopTime")
+    private @Nullable Output<String> autoStopTime;
+
+    /**
+     * @return The time when cluster will be auto-stopped.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> autoStopTime() {
+        return Optional.ofNullable(this.autoStopTime);
     }
 
     /**
@@ -72,12 +91,31 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.idleStartTime);
     }
 
+    /**
+     * The duration to keep the cluster alive while idling
+     * (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+     * 
+     */
+    @Import(name="idleStopTtl")
+    private @Nullable Output<String> idleStopTtl;
+
+    /**
+     * @return The duration to keep the cluster alive while idling
+     * (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+     * 
+     */
+    public Optional<Output<String>> idleStopTtl() {
+        return Optional.ofNullable(this.idleStopTtl);
+    }
+
     private ClusterClusterConfigLifecycleConfigArgs() {}
 
     private ClusterClusterConfigLifecycleConfigArgs(ClusterClusterConfigLifecycleConfigArgs $) {
         this.autoDeleteTime = $.autoDeleteTime;
+        this.autoStopTime = $.autoStopTime;
         this.idleDeleteTtl = $.idleDeleteTtl;
         this.idleStartTime = $.idleStartTime;
+        this.idleStopTtl = $.idleStopTtl;
     }
 
     public static Builder builder() {
@@ -103,8 +141,6 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
          * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -118,13 +154,40 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
          * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder autoDeleteTime(String autoDeleteTime) {
             return autoDeleteTime(Output.of(autoDeleteTime));
+        }
+
+        /**
+         * @param autoStopTime The time when cluster will be auto-stopped.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+         * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopTime(@Nullable Output<String> autoStopTime) {
+            $.autoStopTime = autoStopTime;
+            return this;
+        }
+
+        /**
+         * @param autoStopTime The time when cluster will be auto-stopped.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+         * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoStopTime(String autoStopTime) {
+            return autoStopTime(Output.of(autoStopTime));
         }
 
         /**
@@ -171,6 +234,29 @@ public final class ClusterClusterConfigLifecycleConfigArgs extends com.pulumi.re
          */
         public Builder idleStartTime(String idleStartTime) {
             return idleStartTime(Output.of(idleStartTime));
+        }
+
+        /**
+         * @param idleStopTtl The duration to keep the cluster alive while idling
+         * (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleStopTtl(@Nullable Output<String> idleStopTtl) {
+            $.idleStopTtl = idleStopTtl;
+            return this;
+        }
+
+        /**
+         * @param idleStopTtl The duration to keep the cluster alive while idling
+         * (no jobs running). After this TTL, the cluster will be stopped. Valid range: [10m, 14d].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleStopTtl(String idleStopTtl) {
+            return idleStopTtl(Output.of(idleStopTtl));
         }
 
         public ClusterClusterConfigLifecycleConfigArgs build() {

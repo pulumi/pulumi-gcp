@@ -15,9 +15,9 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// To get more information about WorkforcePoolProviderScimTenant, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/sdk/gcloud/reference/iam/workforce-pools/providers/scim-tenants)
+    /// * [API documentation](https://docs.cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers.scimTenants)
     /// * How-to Guides
-    ///     * [QUICKSTART_TITLE](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
+    ///     * [Configure a SCIM Tenant](https://cloud.google.com/iam/docs/workforce-sign-in-microsoft-entra-id-scalable-groups?group_type=extended#extended-attributes)
     /// 
     /// ## Example Usage
     /// 
@@ -83,6 +83,11 @@ namespace Pulumi.Gcp.Iam
     ///         ScimTenantId = "example-scim-tenant",
     ///         DisplayName = "Example SCIM Tenant",
     ///         Description = "A basic SCIM tenant for IAM Workforce Pool Provider",
+    ///         ClaimMapping = 
+    ///         {
+    ///             { "google.subject", "user.externalId" },
+    ///             { "google.group", "group.externalId" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -120,6 +125,12 @@ namespace Pulumi.Gcp.Iam
         public Output<string> BaseUri { get; private set; } = null!;
 
         /// <summary>
+        /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        /// </summary>
+        [Output("claimMapping")]
+        public Output<ImmutableDictionary<string, string>?> ClaimMapping { get; private set; } = null!;
+
+        /// <summary>
         /// A user-specified description of the provider. Cannot exceed 256 characters.
         /// </summary>
         [Output("description")]
@@ -151,14 +162,26 @@ namespace Pulumi.Gcp.Iam
         public Output<string> ProviderId { get; private set; } = null!;
 
         /// <summary>
+        /// The timestamp that represents the time when the SCIM tenant is purged.
+        /// </summary>
+        [Output("purgeTime")]
+        public Output<string> PurgeTime { get; private set; } = null!;
+
+        /// <summary>
         /// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         /// </summary>
         [Output("scimTenantId")]
         public Output<string> ScimTenantId { get; private set; } = null!;
 
         /// <summary>
+        /// Service Agent created by SCIM Tenant API. SCIM tokens created under
+        /// this tenant will be attached to this service agent.
+        /// </summary>
+        [Output("serviceAgent")]
+        public Output<string> ServiceAgent { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the scim tenant.
-        /// * STATE_UNSPECIFIED: State unspecified.
         /// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         /// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
         /// deleted after approximately 30 days.
@@ -218,6 +241,18 @@ namespace Pulumi.Gcp.Iam
 
     public sealed class WorkforcePoolProviderScimTenantArgs : global::Pulumi.ResourceArgs
     {
+        [Input("claimMapping")]
+        private InputMap<string>? _claimMapping;
+
+        /// <summary>
+        /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        /// </summary>
+        public InputMap<string> ClaimMapping
+        {
+            get => _claimMapping ?? (_claimMapping = new InputMap<string>());
+            set => _claimMapping = value;
+        }
+
         /// <summary>
         /// A user-specified description of the provider. Cannot exceed 256 characters.
         /// </summary>
@@ -272,6 +307,18 @@ namespace Pulumi.Gcp.Iam
         [Input("baseUri")]
         public Input<string>? BaseUri { get; set; }
 
+        [Input("claimMapping")]
+        private InputMap<string>? _claimMapping;
+
+        /// <summary>
+        /// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        /// </summary>
+        public InputMap<string> ClaimMapping
+        {
+            get => _claimMapping ?? (_claimMapping = new InputMap<string>());
+            set => _claimMapping = value;
+        }
+
         /// <summary>
         /// A user-specified description of the provider. Cannot exceed 256 characters.
         /// </summary>
@@ -304,14 +351,26 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? ProviderId { get; set; }
 
         /// <summary>
+        /// The timestamp that represents the time when the SCIM tenant is purged.
+        /// </summary>
+        [Input("purgeTime")]
+        public Input<string>? PurgeTime { get; set; }
+
+        /// <summary>
         /// The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         /// </summary>
         [Input("scimTenantId")]
         public Input<string>? ScimTenantId { get; set; }
 
         /// <summary>
+        /// Service Agent created by SCIM Tenant API. SCIM tokens created under
+        /// this tenant will be attached to this service agent.
+        /// </summary>
+        [Input("serviceAgent")]
+        public Input<string>? ServiceAgent { get; set; }
+
+        /// <summary>
         /// The current state of the scim tenant.
-        /// * STATE_UNSPECIFIED: State unspecified.
         /// * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         /// * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
         /// deleted after approximately 30 days.

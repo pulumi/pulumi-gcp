@@ -6,6 +6,8 @@ package com.pulumi.gcp.ces.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,19 +17,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ToolClientFunctionResponse {
     /**
-     * @return Optional. Defines the schema for additional properties allowed in an object.
+     * @return Defines the schema for additional properties allowed in an object.
      * The value must be a valid JSON string representing the Schema object.
      * (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
      * 
      */
     private @Nullable String additionalProperties;
     /**
-     * @return Optional. The instance value should be valid against at least one of the schemas in this list.
+     * @return The instance value should be valid against at least one of the schemas in this list.
      * 
      */
     private @Nullable String anyOf;
     /**
-     * @return Optional. Default value of the data. Represents a dynamically typed value
+     * @return Default value of the data. Represents a dynamically typed value
      * which can be either null, a number, a string, a boolean, a struct,
      * or a list of values. The provided default value must be compatible
      * with the defined &#39;type&#39; and other schema constraints.
@@ -60,12 +62,32 @@ public final class ToolClientFunctionResponse {
      */
     private @Nullable String items;
     /**
+     * @return Maximum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    private @Nullable Integer maxItems;
+    /**
+     * @return Maximum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    private @Nullable Double maximum;
+    /**
+     * @return Minimum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    private @Nullable Integer minItems;
+    /**
+     * @return Minimum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    private @Nullable Double minimum;
+    /**
      * @return Indicates if the value may be null.
      * 
      */
     private @Nullable Boolean nullable;
     /**
-     * @return Optional. Schemas of initial elements of Type.ARRAY.
+     * @return Schemas of initial elements of Type.ARRAY.
      * 
      */
     private @Nullable String prefixItems;
@@ -102,6 +124,11 @@ public final class ToolClientFunctionResponse {
      */
     private @Nullable List<String> requireds;
     /**
+     * @return The title of the schema.
+     * 
+     */
+    private @Nullable String title;
+    /**
      * @return The type of the data.
      * Possible values:
      * STRING
@@ -121,7 +148,7 @@ public final class ToolClientFunctionResponse {
 
     private ToolClientFunctionResponse() {}
     /**
-     * @return Optional. Defines the schema for additional properties allowed in an object.
+     * @return Defines the schema for additional properties allowed in an object.
      * The value must be a valid JSON string representing the Schema object.
      * (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
      * 
@@ -130,14 +157,14 @@ public final class ToolClientFunctionResponse {
         return Optional.ofNullable(this.additionalProperties);
     }
     /**
-     * @return Optional. The instance value should be valid against at least one of the schemas in this list.
+     * @return The instance value should be valid against at least one of the schemas in this list.
      * 
      */
     public Optional<String> anyOf() {
         return Optional.ofNullable(this.anyOf);
     }
     /**
-     * @return Optional. Default value of the data. Represents a dynamically typed value
+     * @return Default value of the data. Represents a dynamically typed value
      * which can be either null, a number, a string, a boolean, a struct,
      * or a list of values. The provided default value must be compatible
      * with the defined &#39;type&#39; and other schema constraints.
@@ -180,6 +207,34 @@ public final class ToolClientFunctionResponse {
         return Optional.ofNullable(this.items);
     }
     /**
+     * @return Maximum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    public Optional<Integer> maxItems() {
+        return Optional.ofNullable(this.maxItems);
+    }
+    /**
+     * @return Maximum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    public Optional<Double> maximum() {
+        return Optional.ofNullable(this.maximum);
+    }
+    /**
+     * @return Minimum number of the elements for Type.ARRAY. (int64 format)
+     * 
+     */
+    public Optional<Integer> minItems() {
+        return Optional.ofNullable(this.minItems);
+    }
+    /**
+     * @return Minimum value for Type.INTEGER and Type.NUMBER.
+     * 
+     */
+    public Optional<Double> minimum() {
+        return Optional.ofNullable(this.minimum);
+    }
+    /**
      * @return Indicates if the value may be null.
      * 
      */
@@ -187,7 +242,7 @@ public final class ToolClientFunctionResponse {
         return Optional.ofNullable(this.nullable);
     }
     /**
-     * @return Optional. Schemas of initial elements of Type.ARRAY.
+     * @return Schemas of initial elements of Type.ARRAY.
      * 
      */
     public Optional<String> prefixItems() {
@@ -232,6 +287,13 @@ public final class ToolClientFunctionResponse {
         return this.requireds == null ? List.of() : this.requireds;
     }
     /**
+     * @return The title of the schema.
+     * 
+     */
+    public Optional<String> title() {
+        return Optional.ofNullable(this.title);
+    }
+    /**
      * @return The type of the data.
      * Possible values:
      * STRING
@@ -269,11 +331,16 @@ public final class ToolClientFunctionResponse {
         private @Nullable String description;
         private @Nullable List<String> enums;
         private @Nullable String items;
+        private @Nullable Integer maxItems;
+        private @Nullable Double maximum;
+        private @Nullable Integer minItems;
+        private @Nullable Double minimum;
         private @Nullable Boolean nullable;
         private @Nullable String prefixItems;
         private @Nullable String properties;
         private @Nullable String ref;
         private @Nullable List<String> requireds;
+        private @Nullable String title;
         private String type;
         private @Nullable Boolean uniqueItems;
         public Builder() {}
@@ -286,11 +353,16 @@ public final class ToolClientFunctionResponse {
     	      this.description = defaults.description;
     	      this.enums = defaults.enums;
     	      this.items = defaults.items;
+    	      this.maxItems = defaults.maxItems;
+    	      this.maximum = defaults.maximum;
+    	      this.minItems = defaults.minItems;
+    	      this.minimum = defaults.minimum;
     	      this.nullable = defaults.nullable;
     	      this.prefixItems = defaults.prefixItems;
     	      this.properties = defaults.properties;
     	      this.ref = defaults.ref;
     	      this.requireds = defaults.requireds;
+    	      this.title = defaults.title;
     	      this.type = defaults.type;
     	      this.uniqueItems = defaults.uniqueItems;
         }
@@ -341,6 +413,30 @@ public final class ToolClientFunctionResponse {
             return this;
         }
         @CustomType.Setter
+        public Builder maxItems(@Nullable Integer maxItems) {
+
+            this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maximum(@Nullable Double maximum) {
+
+            this.maximum = maximum;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minItems(@Nullable Integer minItems) {
+
+            this.minItems = minItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minimum(@Nullable Double minimum) {
+
+            this.minimum = minimum;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nullable(@Nullable Boolean nullable) {
 
             this.nullable = nullable;
@@ -374,6 +470,12 @@ public final class ToolClientFunctionResponse {
             return requireds(List.of(requireds));
         }
         @CustomType.Setter
+        public Builder title(@Nullable String title) {
+
+            this.title = title;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("ToolClientFunctionResponse", "type");
@@ -396,11 +498,16 @@ public final class ToolClientFunctionResponse {
             _resultValue.description = description;
             _resultValue.enums = enums;
             _resultValue.items = items;
+            _resultValue.maxItems = maxItems;
+            _resultValue.maximum = maximum;
+            _resultValue.minItems = minItems;
+            _resultValue.minimum = minimum;
             _resultValue.nullable = nullable;
             _resultValue.prefixItems = prefixItems;
             _resultValue.properties = properties;
             _resultValue.ref = ref;
             _resultValue.requireds = requireds;
+            _resultValue.title = title;
             _resultValue.type = type;
             _resultValue.uniqueItems = uniqueItems;
             return _resultValue;

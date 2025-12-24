@@ -16,14 +16,16 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
     public static final AiReasoningEngineSpecPackageSpecArgs Empty = new AiReasoningEngineSpecPackageSpecArgs();
 
     /**
-     * Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+     * Optional. The Cloud Storage URI of the dependency files in tar.gz
+     * format.
      * 
      */
     @Import(name="dependencyFilesGcsUri")
     private @Nullable Output<String> dependencyFilesGcsUri;
 
     /**
-     * @return Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+     * @return Optional. The Cloud Storage URI of the dependency files in tar.gz
+     * format.
      * 
      */
     public Optional<Output<String>> dependencyFilesGcsUri() {
@@ -46,14 +48,16 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
     }
 
     /**
-     * Optional. The Python version.
+     * Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+     * 3.11, 3.12, 3.13. If not specified, default value is 3.10.
      * 
      */
     @Import(name="pythonVersion")
     private @Nullable Output<String> pythonVersion;
 
     /**
-     * @return Optional. The Python version.
+     * @return Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+     * 3.11, 3.12, 3.13. If not specified, default value is 3.10.
      * 
      */
     public Optional<Output<String>> pythonVersion() {
@@ -61,14 +65,14 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
     }
 
     /**
-     * Optional. The Cloud Storage URI of the requirements.txt file
+     * Optional. The Cloud Storage URI of the requirements.txtfile
      * 
      */
     @Import(name="requirementsGcsUri")
     private @Nullable Output<String> requirementsGcsUri;
 
     /**
-     * @return Optional. The Cloud Storage URI of the requirements.txt file
+     * @return Optional. The Cloud Storage URI of the requirements.txtfile
      * 
      */
     public Optional<Output<String>> requirementsGcsUri() {
@@ -103,7 +107,8 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
         }
 
         /**
-         * @param dependencyFilesGcsUri Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+         * @param dependencyFilesGcsUri Optional. The Cloud Storage URI of the dependency files in tar.gz
+         * format.
          * 
          * @return builder
          * 
@@ -114,7 +119,8 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
         }
 
         /**
-         * @param dependencyFilesGcsUri Optional. The Cloud Storage URI of the dependency files in tar.gz format.
+         * @param dependencyFilesGcsUri Optional. The Cloud Storage URI of the dependency files in tar.gz
+         * format.
          * 
          * @return builder
          * 
@@ -145,7 +151,8 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
         }
 
         /**
-         * @param pythonVersion Optional. The Python version.
+         * @param pythonVersion Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+         * 3.11, 3.12, 3.13. If not specified, default value is 3.10.
          * 
          * @return builder
          * 
@@ -156,7 +163,8 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
         }
 
         /**
-         * @param pythonVersion Optional. The Python version.
+         * @param pythonVersion Optional. The Python version. Currently support 3.8, 3.9, 3.10,
+         * 3.11, 3.12, 3.13. If not specified, default value is 3.10.
          * 
          * @return builder
          * 
@@ -166,7 +174,7 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requirementsGcsUri Optional. The Cloud Storage URI of the requirements.txt file
+         * @param requirementsGcsUri Optional. The Cloud Storage URI of the requirements.txtfile
          * 
          * @return builder
          * 
@@ -177,7 +185,7 @@ public final class AiReasoningEngineSpecPackageSpecArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requirementsGcsUri Optional. The Cloud Storage URI of the requirements.txt file
+         * @param requirementsGcsUri Optional. The Cloud Storage URI of the requirements.txtfile
          * 
          * @return builder
          * 

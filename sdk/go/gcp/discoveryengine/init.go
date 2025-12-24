@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TargetSite{}
 	case "gcp:discoveryengine/userStore:UserStore":
 		r = &UserStore{}
+	case "gcp:discoveryengine/widgetConfig:WidgetConfig":
+		r = &WidgetConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -137,6 +139,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"discoveryengine/userStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/widgetConfig",
 		&module{version},
 	)
 }

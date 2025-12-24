@@ -68,11 +68,19 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
     }
 
     /**
+     * (Deprecated)
      * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
+     *
+     * @deprecated `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
      */
     declare public /*out*/ readonly effectiveContainer: pulumi.Output<string>;
     /**
+     * (Deprecated)
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
+     *
+     * @deprecated `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
      */
     declare public /*out*/ readonly effectiveEnablement: pulumi.Output<string>;
     /**
@@ -136,11 +144,19 @@ export class SQuotaAdjusterSettings extends pulumi.CustomResource {
  */
 export interface SQuotaAdjusterSettingsState {
     /**
+     * (Deprecated)
      * The resource container that determines if the quota adjuster is set for this project.
+     * Expect this field to be empty currently.
+     *
+     * @deprecated `effectiveContainer` is deprecated and will be removed in a future major release. Use `inheritedFrom` instead.
      */
     effectiveContainer?: pulumi.Input<string>;
     /**
+     * (Deprecated)
      * Based on the effective container`s setting above, determines Whether this resource container has the quota adjuster enabled.
+     * Expect this field to be empty currently.
+     *
+     * @deprecated `effectiveEnablement` is deprecated and will be removed in a future major release. Use `inherited` instead.
      */
     effectiveEnablement?: pulumi.Input<string>;
     /**
