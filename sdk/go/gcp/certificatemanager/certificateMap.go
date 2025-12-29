@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := certificatemanager.NewCertificateMap(ctx, "default", &certificatemanager.CertificateMapArgs{
+//			_, err := certificatemanager.NewCertificateMapResource(ctx, "default", &certificatemanager.CertificateMapResourceArgs{
 //				Name:        pulumi.String("cert-map"),
 //				Description: pulumi.String("My acceptance test certificate map"),
 //				Labels: pulumi.StringMap{
