@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := privilegedaccessmanager.Newentitlement(ctx, "tfentitlement", &privilegedaccessmanager.entitlementArgs{
+//			_, err := privilegedaccessmanager.NewEntitlement(ctx, "tfentitlement", &privilegedaccessmanager.EntitlementArgs{
 //				EntitlementId:      pulumi.String("example-entitlement"),
 //				Location:           pulumi.String("global"),
 //				MaxRequestDuration: pulumi.String("43200s"),
