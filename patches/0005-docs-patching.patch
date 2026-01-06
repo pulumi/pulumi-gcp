@@ -57,7 +57,7 @@ index f79942a5b..60e7469cf 100644
  ~> **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
  state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
 diff --git a/website/docs/r/app_engine_flexible_app_version.html.markdown b/website/docs/r/app_engine_flexible_app_version.html.markdown
-index be5b80ea5..64eee9cbe 100644
+index b739bc845..2908180a6 100644
 --- a/website/docs/r/app_engine_flexible_app_version.html.markdown
 +++ b/website/docs/r/app_engine_flexible_app_version.html.markdown
 @@ -250,7 +250,7 @@ The following arguments are supported:
@@ -70,7 +70,7 @@ index be5b80ea5..64eee9cbe 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index cea8f5f02..f2c6e186f 100644
+index aecff7dc7..bb6e8c317 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
 @@ -784,8 +784,8 @@ The following arguments are supported:
@@ -307,7 +307,7 @@ index f4794cf4d..982b4019c 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index eeeeda70d..c033cbc68 100644
+index 0177e77f0..3bf6d95c9 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -33,9 +33,64 @@ To get more information about Service, see:
@@ -401,7 +401,7 @@ index eeeeda70d..c033cbc68 100644
 -  Periodic probe of container liveness. Container will be restarted if the probe fails.
 +  Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
 +  https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-   Structure is [documented below](#nested_spec_template_spec_containers_containers_liveness_probe).
+   Structure is [documented below](#nested_template_spec_containers_liveness_probe).
  
  
 @@ -1183,7 +1239,7 @@ this field is set to false, the revision name will still autogenerate.)
@@ -510,7 +510,7 @@ index 8c5f02037..ead4fc8ea 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index d540c99ae..7dc8b9027 100644
+index f77b07e88..9050cff82 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -41,7 +41,6 @@ To get more information about BackendService, see:
@@ -872,13 +872,13 @@ index 0b0ddf4e9..9cf71f60b 100644
    maintenance_window {
      start_time = "08:00"
 diff --git a/website/docs/r/compute_organization_security_policy_association.html.markdown b/website/docs/r/compute_organization_security_policy_association.html.markdown
-index 0587728b2..c518ea02e 100644
+index 8ad96324c..41a279952 100644
 --- a/website/docs/r/compute_organization_security_policy_association.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_association.html.markdown
-@@ -38,21 +38,21 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
+@@ -35,19 +35,19 @@ To get more information about OrganizationSecurityPolicyAssociation, see:
+ 
  ```hcl
  resource "google_folder" "security_policy_target" {
-   provider     = google-beta
 -  display_name = "tf-test-secpol-%{random_suffix}"
 +  display_name = "tf-test-secpol"
    parent       = "organizations/123456789"
@@ -886,15 +886,13 @@ index 0587728b2..c518ea02e 100644
  }
  
  resource "google_compute_organization_security_policy" "policy" {
-   provider     = google-beta
--  display_name = "tf-test%{random_suffix}"
+-  short_name   = "tf-test%{random_suffix}"
 +  display_name = "tf-test"
    parent       = google_folder.security_policy_target.name
-   type         = "FIREWALL"
+   type         = "CLOUD_ARMOR"
  }
  
  resource "google_compute_organization_security_policy_association" "policy" {
-   provider = google-beta
 -  name          = "tf-test%{random_suffix}"
 +  name          = "tf-test"
    attachment_id = google_compute_organization_security_policy.policy.parent
@@ -914,7 +912,7 @@ index 7d2be926f..e10730dfb 100644
    type         = "FIREWALL"
  }
 diff --git a/website/docs/r/compute_per_instance_config.html.markdown b/website/docs/r/compute_per_instance_config.html.markdown
-index ef20b36ad..209c36271 100644
+index 0fe3e385e..efaefb77d 100644
 --- a/website/docs/r/compute_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_per_instance_config.html.markdown
 @@ -62,7 +62,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -1010,7 +1008,7 @@ index 7621b1266..7c4871eab 100644
  
  * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
 diff --git a/website/docs/r/compute_region_per_instance_config.html.markdown b/website/docs/r/compute_region_per_instance_config.html.markdown
-index 4345d8b5c..504406f86 100644
+index 1e3372cf3..415c7fcd3 100644
 --- a/website/docs/r/compute_region_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_region_per_instance_config.html.markdown
 @@ -63,7 +63,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -1326,7 +1324,7 @@ index 50584521d..22390de09 100644
  ## Example Usage
  
 diff --git a/website/docs/r/compute_snapshot.html.markdown b/website/docs/r/compute_snapshot.html.markdown
-index 9d4cbf6c1..51db799aa 100644
+index be5c149e2..d8ac3e805 100644
 --- a/website/docs/r/compute_snapshot.html.markdown
 +++ b/website/docs/r/compute_snapshot.html.markdown
 @@ -9,7 +9,7 @@
@@ -1436,7 +1434,7 @@ index b6f867ff6..fe70198ae 100644
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
  [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 52b7dda99..b407c4d83 100644
+index 24f4364c4..503cbcf61 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -3052,7 +3050,7 @@ index 231a459ce..314430215 100644
    the sensitive_labels block, but cannot be configured in both places.
  
 diff --git a/website/docs/r/monitoring_slo.html.markdown b/website/docs/r/monitoring_slo.html.markdown
-index 247b3e23a..1b443f49f 100644
+index 7c5a0fe0d..451daf51f 100644
 --- a/website/docs/r/monitoring_slo.html.markdown
 +++ b/website/docs/r/monitoring_slo.html.markdown
 @@ -55,7 +55,7 @@ resource "google_monitoring_slo" "appeng_slo" {
@@ -3110,7 +3108,7 @@ index 247b3e23a..1b443f49f 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 7f9de7e90..663d97a43 100644
+index 9d8efa2bd..19f32a005 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -30,12 +30,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3155,7 +3153,7 @@ index bc1d673a0..a19ec47e2 100644
  
  ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index cc0d32fbf..1b040eaa2 100644
+index cca4f82d8..2eb43efd3 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -69,7 +69,7 @@ resource "google_redis_instance" "cache" {
@@ -3177,7 +3175,7 @@ index cc0d32fbf..1b040eaa2 100644
    depends_on = [google_service_networking_connection.private_service_connection]
  
 diff --git a/website/docs/r/secret_manager_secret_version.html.markdown b/website/docs/r/secret_manager_secret_version.html.markdown
-index 0a20d2cd0..f1ddf8585 100644
+index ec7b7285a..5220b0320 100644
 --- a/website/docs/r/secret_manager_secret_version.html.markdown
 +++ b/website/docs/r/secret_manager_secret_version.html.markdown
 @@ -30,15 +30,8 @@ To get more information about SecretVersion, see:
@@ -3191,12 +3189,12 @@ index 0a20d2cd0..f1ddf8585 100644
 -For more details, refer to the [Terraform lifecycle documentation](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#the-lifecycle-meta-argument).
 -
 -~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `payload.secret_data`.
+-values will be stored in the raw state as plain text: `secret_data`.
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
 +~> **Warning:** All arguments including `payload.secret_data` will be stored in the raw
 +state as plain-text.
  
- ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+ ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
  [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
 index 7971e6136..87700c82b 100644
@@ -3257,7 +3255,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index b5de1cf6e..6bf4df374 100644
+index e28a79b60..ab48e285e 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3275,7 +3273,7 @@ index b5de1cf6e..6bf4df374 100644
  It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
  
  ## Example Usage
-@@ -307,7 +307,7 @@ SQL Server version to use. Supported values include `MYSQL_5_6`,
+@@ -347,7 +347,7 @@ SQL Server version to use. Supported values include `MYSQL_5_6`,
  includes an up-to-date reference of supported versions.
  
  * `name` - (Optional, Computed) The name of the instance. If the name is left
@@ -3284,7 +3282,7 @@ index b5de1cf6e..6bf4df374 100644
      created. This is done because after a name is used, it cannot be reused for
      up to [one week](https://cloud.google.com/sql/docs/delete-instance).
  
-@@ -335,7 +335,7 @@ includes an up-to-date reference of supported versions.
+@@ -375,7 +375,7 @@ includes an up-to-date reference of supported versions.
  
  * `encryption_key_name` - (Optional)
      The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -3293,7 +3291,7 @@ index b5de1cf6e..6bf4df374 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -343,18 +343,16 @@ includes an up-to-date reference of supported versions.
+@@ -383,18 +383,16 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
@@ -3317,7 +3315,7 @@ index b5de1cf6e..6bf4df374 100644
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  *  `backupdr_backup` - (optional) The backupdr_backup needed to restore the database to a backup run. This field will
-@@ -363,7 +361,7 @@ includes an up-to-date reference of supported versions.
+@@ -403,7 +401,7 @@ includes an up-to-date reference of supported versions.
      block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `clone` - (Optional) The context needed to create this instance as a clone of another instance. When this field is set during
@@ -3326,7 +3324,7 @@ index b5de1cf6e..6bf4df374 100644
      configuration is detailed below.
  
  * `point_in_time_restore_context` - (Optional) The point_in_time_restore_context needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
-@@ -694,7 +692,7 @@ The optional `clone` block supports:
+@@ -734,7 +732,7 @@ The optional `clone` block supports:
      A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
  
  The optional `restore_backup_context` block supports:
@@ -3335,7 +3333,7 @@ index b5de1cf6e..6bf4df374 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -760,21 +758,13 @@ instance.
+@@ -800,21 +798,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3388,19 +3386,19 @@ index d3e4a7bb3..48878d436 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index 183f5f072..2dccc72f4 100644
+index 332c19715..7d574d9b2 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
-@@ -183,7 +183,7 @@ The following arguments are supported:
+@@ -181,7 +181,7 @@ The following arguments are supported:
  
- * `force_destroy` - (Optional, Default: false) When deleting a bucket, this
-     boolean option will delete all contained objects. If you try to delete a
--    bucket that contains objects, Terraform will fail that run.
-+    bucket that contains objects, the provider will fail that run.
+ - - -
+ 
+-* `force_destroy` - (Optional, Default: false) When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when Terraform is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
++* `force_destroy` - (Optional, Default: false) When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
      is not provided, the provider project is used.
-@@ -331,9 +331,9 @@ The following arguments are supported:
+@@ -329,9 +329,9 @@ The following arguments are supported:
    until a relevant action has occurred which triggers its creation.
    You should use the [`google_storage_project_service_account`](/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
    address for the service account when configuring IAM policy on the Cloud KMS key.
