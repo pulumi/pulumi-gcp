@@ -13,6 +13,363 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DestinationEndpoint struct {
+	// The ASN of the remote IP prefix.
+	Asn string `pulumi:"asn"`
+	// The CSP of the remote IP prefix.
+	Csp string `pulumi:"csp"`
+	// (Output)
+	// The state of the DestinationEndpoint resource.
+	State *string `pulumi:"state"`
+	// (Output)
+	// Time when the DestinationEndpoint resource was updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// DestinationEndpointInput is an input type that accepts DestinationEndpointArgs and DestinationEndpointOutput values.
+// You can construct a concrete instance of `DestinationEndpointInput` via:
+//
+//	DestinationEndpointArgs{...}
+type DestinationEndpointInput interface {
+	pulumi.Input
+
+	ToDestinationEndpointOutput() DestinationEndpointOutput
+	ToDestinationEndpointOutputWithContext(context.Context) DestinationEndpointOutput
+}
+
+type DestinationEndpointArgs struct {
+	// The ASN of the remote IP prefix.
+	Asn pulumi.StringInput `pulumi:"asn"`
+	// The CSP of the remote IP prefix.
+	Csp pulumi.StringInput `pulumi:"csp"`
+	// (Output)
+	// The state of the DestinationEndpoint resource.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Time when the DestinationEndpoint resource was updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (DestinationEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationEndpoint)(nil)).Elem()
+}
+
+func (i DestinationEndpointArgs) ToDestinationEndpointOutput() DestinationEndpointOutput {
+	return i.ToDestinationEndpointOutputWithContext(context.Background())
+}
+
+func (i DestinationEndpointArgs) ToDestinationEndpointOutputWithContext(ctx context.Context) DestinationEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationEndpointOutput)
+}
+
+// DestinationEndpointArrayInput is an input type that accepts DestinationEndpointArray and DestinationEndpointArrayOutput values.
+// You can construct a concrete instance of `DestinationEndpointArrayInput` via:
+//
+//	DestinationEndpointArray{ DestinationEndpointArgs{...} }
+type DestinationEndpointArrayInput interface {
+	pulumi.Input
+
+	ToDestinationEndpointArrayOutput() DestinationEndpointArrayOutput
+	ToDestinationEndpointArrayOutputWithContext(context.Context) DestinationEndpointArrayOutput
+}
+
+type DestinationEndpointArray []DestinationEndpointInput
+
+func (DestinationEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationEndpoint)(nil)).Elem()
+}
+
+func (i DestinationEndpointArray) ToDestinationEndpointArrayOutput() DestinationEndpointArrayOutput {
+	return i.ToDestinationEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i DestinationEndpointArray) ToDestinationEndpointArrayOutputWithContext(ctx context.Context) DestinationEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationEndpointArrayOutput)
+}
+
+type DestinationEndpointOutput struct{ *pulumi.OutputState }
+
+func (DestinationEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationEndpoint)(nil)).Elem()
+}
+
+func (o DestinationEndpointOutput) ToDestinationEndpointOutput() DestinationEndpointOutput {
+	return o
+}
+
+func (o DestinationEndpointOutput) ToDestinationEndpointOutputWithContext(ctx context.Context) DestinationEndpointOutput {
+	return o
+}
+
+// The ASN of the remote IP prefix.
+func (o DestinationEndpointOutput) Asn() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationEndpoint) string { return v.Asn }).(pulumi.StringOutput)
+}
+
+// The CSP of the remote IP prefix.
+func (o DestinationEndpointOutput) Csp() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationEndpoint) string { return v.Csp }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The state of the DestinationEndpoint resource.
+func (o DestinationEndpointOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationEndpoint) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Time when the DestinationEndpoint resource was updated.
+func (o DestinationEndpointOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationEndpoint) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type DestinationEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationEndpoint)(nil)).Elem()
+}
+
+func (o DestinationEndpointArrayOutput) ToDestinationEndpointArrayOutput() DestinationEndpointArrayOutput {
+	return o
+}
+
+func (o DestinationEndpointArrayOutput) ToDestinationEndpointArrayOutputWithContext(ctx context.Context) DestinationEndpointArrayOutput {
+	return o
+}
+
+func (o DestinationEndpointArrayOutput) Index(i pulumi.IntInput) DestinationEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationEndpoint {
+		return vs[0].([]DestinationEndpoint)[vs[1].(int)]
+	}).(DestinationEndpointOutput)
+}
+
+type DestinationStateTimeline struct {
+	// (Output)
+	// The state and activation time details of the resource state.
+	// Structure is documented below.
+	States []DestinationStateTimelineState `pulumi:"states"`
+}
+
+// DestinationStateTimelineInput is an input type that accepts DestinationStateTimelineArgs and DestinationStateTimelineOutput values.
+// You can construct a concrete instance of `DestinationStateTimelineInput` via:
+//
+//	DestinationStateTimelineArgs{...}
+type DestinationStateTimelineInput interface {
+	pulumi.Input
+
+	ToDestinationStateTimelineOutput() DestinationStateTimelineOutput
+	ToDestinationStateTimelineOutputWithContext(context.Context) DestinationStateTimelineOutput
+}
+
+type DestinationStateTimelineArgs struct {
+	// (Output)
+	// The state and activation time details of the resource state.
+	// Structure is documented below.
+	States DestinationStateTimelineStateArrayInput `pulumi:"states"`
+}
+
+func (DestinationStateTimelineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationStateTimeline)(nil)).Elem()
+}
+
+func (i DestinationStateTimelineArgs) ToDestinationStateTimelineOutput() DestinationStateTimelineOutput {
+	return i.ToDestinationStateTimelineOutputWithContext(context.Background())
+}
+
+func (i DestinationStateTimelineArgs) ToDestinationStateTimelineOutputWithContext(ctx context.Context) DestinationStateTimelineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationStateTimelineOutput)
+}
+
+// DestinationStateTimelineArrayInput is an input type that accepts DestinationStateTimelineArray and DestinationStateTimelineArrayOutput values.
+// You can construct a concrete instance of `DestinationStateTimelineArrayInput` via:
+//
+//	DestinationStateTimelineArray{ DestinationStateTimelineArgs{...} }
+type DestinationStateTimelineArrayInput interface {
+	pulumi.Input
+
+	ToDestinationStateTimelineArrayOutput() DestinationStateTimelineArrayOutput
+	ToDestinationStateTimelineArrayOutputWithContext(context.Context) DestinationStateTimelineArrayOutput
+}
+
+type DestinationStateTimelineArray []DestinationStateTimelineInput
+
+func (DestinationStateTimelineArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationStateTimeline)(nil)).Elem()
+}
+
+func (i DestinationStateTimelineArray) ToDestinationStateTimelineArrayOutput() DestinationStateTimelineArrayOutput {
+	return i.ToDestinationStateTimelineArrayOutputWithContext(context.Background())
+}
+
+func (i DestinationStateTimelineArray) ToDestinationStateTimelineArrayOutputWithContext(ctx context.Context) DestinationStateTimelineArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationStateTimelineArrayOutput)
+}
+
+type DestinationStateTimelineOutput struct{ *pulumi.OutputState }
+
+func (DestinationStateTimelineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationStateTimeline)(nil)).Elem()
+}
+
+func (o DestinationStateTimelineOutput) ToDestinationStateTimelineOutput() DestinationStateTimelineOutput {
+	return o
+}
+
+func (o DestinationStateTimelineOutput) ToDestinationStateTimelineOutputWithContext(ctx context.Context) DestinationStateTimelineOutput {
+	return o
+}
+
+// (Output)
+// The state and activation time details of the resource state.
+// Structure is documented below.
+func (o DestinationStateTimelineOutput) States() DestinationStateTimelineStateArrayOutput {
+	return o.ApplyT(func(v DestinationStateTimeline) []DestinationStateTimelineState { return v.States }).(DestinationStateTimelineStateArrayOutput)
+}
+
+type DestinationStateTimelineArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationStateTimelineArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationStateTimeline)(nil)).Elem()
+}
+
+func (o DestinationStateTimelineArrayOutput) ToDestinationStateTimelineArrayOutput() DestinationStateTimelineArrayOutput {
+	return o
+}
+
+func (o DestinationStateTimelineArrayOutput) ToDestinationStateTimelineArrayOutputWithContext(ctx context.Context) DestinationStateTimelineArrayOutput {
+	return o
+}
+
+func (o DestinationStateTimelineArrayOutput) Index(i pulumi.IntInput) DestinationStateTimelineOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationStateTimeline {
+		return vs[0].([]DestinationStateTimeline)[vs[1].(int)]
+	}).(DestinationStateTimelineOutput)
+}
+
+type DestinationStateTimelineState struct {
+	// (Output)
+	// Accompanies only the transient states, which include `ADDING`,
+	// `DELETING`, and `SUSPENDING`, to denote the time until which the
+	// transient state of the resource will be effective. For instance, if the
+	// state is `ADDING`, this field shows the time when the resource state
+	// transitions to `ACTIVE`.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// (Output)
+	// The state of the resource.
+	State *string `pulumi:"state"`
+}
+
+// DestinationStateTimelineStateInput is an input type that accepts DestinationStateTimelineStateArgs and DestinationStateTimelineStateOutput values.
+// You can construct a concrete instance of `DestinationStateTimelineStateInput` via:
+//
+//	DestinationStateTimelineStateArgs{...}
+type DestinationStateTimelineStateInput interface {
+	pulumi.Input
+
+	ToDestinationStateTimelineStateOutput() DestinationStateTimelineStateOutput
+	ToDestinationStateTimelineStateOutputWithContext(context.Context) DestinationStateTimelineStateOutput
+}
+
+type DestinationStateTimelineStateArgs struct {
+	// (Output)
+	// Accompanies only the transient states, which include `ADDING`,
+	// `DELETING`, and `SUSPENDING`, to denote the time until which the
+	// transient state of the resource will be effective. For instance, if the
+	// state is `ADDING`, this field shows the time when the resource state
+	// transitions to `ACTIVE`.
+	EffectiveTime pulumi.StringPtrInput `pulumi:"effectiveTime"`
+	// (Output)
+	// The state of the resource.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (DestinationStateTimelineStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationStateTimelineState)(nil)).Elem()
+}
+
+func (i DestinationStateTimelineStateArgs) ToDestinationStateTimelineStateOutput() DestinationStateTimelineStateOutput {
+	return i.ToDestinationStateTimelineStateOutputWithContext(context.Background())
+}
+
+func (i DestinationStateTimelineStateArgs) ToDestinationStateTimelineStateOutputWithContext(ctx context.Context) DestinationStateTimelineStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationStateTimelineStateOutput)
+}
+
+// DestinationStateTimelineStateArrayInput is an input type that accepts DestinationStateTimelineStateArray and DestinationStateTimelineStateArrayOutput values.
+// You can construct a concrete instance of `DestinationStateTimelineStateArrayInput` via:
+//
+//	DestinationStateTimelineStateArray{ DestinationStateTimelineStateArgs{...} }
+type DestinationStateTimelineStateArrayInput interface {
+	pulumi.Input
+
+	ToDestinationStateTimelineStateArrayOutput() DestinationStateTimelineStateArrayOutput
+	ToDestinationStateTimelineStateArrayOutputWithContext(context.Context) DestinationStateTimelineStateArrayOutput
+}
+
+type DestinationStateTimelineStateArray []DestinationStateTimelineStateInput
+
+func (DestinationStateTimelineStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationStateTimelineState)(nil)).Elem()
+}
+
+func (i DestinationStateTimelineStateArray) ToDestinationStateTimelineStateArrayOutput() DestinationStateTimelineStateArrayOutput {
+	return i.ToDestinationStateTimelineStateArrayOutputWithContext(context.Background())
+}
+
+func (i DestinationStateTimelineStateArray) ToDestinationStateTimelineStateArrayOutputWithContext(ctx context.Context) DestinationStateTimelineStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationStateTimelineStateArrayOutput)
+}
+
+type DestinationStateTimelineStateOutput struct{ *pulumi.OutputState }
+
+func (DestinationStateTimelineStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationStateTimelineState)(nil)).Elem()
+}
+
+func (o DestinationStateTimelineStateOutput) ToDestinationStateTimelineStateOutput() DestinationStateTimelineStateOutput {
+	return o
+}
+
+func (o DestinationStateTimelineStateOutput) ToDestinationStateTimelineStateOutputWithContext(ctx context.Context) DestinationStateTimelineStateOutput {
+	return o
+}
+
+// (Output)
+// Accompanies only the transient states, which include `ADDING`,
+// `DELETING`, and `SUSPENDING`, to denote the time until which the
+// transient state of the resource will be effective. For instance, if the
+// state is `ADDING`, this field shows the time when the resource state
+// transitions to `ACTIVE`.
+func (o DestinationStateTimelineStateOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationStateTimelineState) *string { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The state of the resource.
+func (o DestinationStateTimelineStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationStateTimelineState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type DestinationStateTimelineStateArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationStateTimelineStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationStateTimelineState)(nil)).Elem()
+}
+
+func (o DestinationStateTimelineStateArrayOutput) ToDestinationStateTimelineStateArrayOutput() DestinationStateTimelineStateArrayOutput {
+	return o
+}
+
+func (o DestinationStateTimelineStateArrayOutput) ToDestinationStateTimelineStateArrayOutputWithContext(ctx context.Context) DestinationStateTimelineStateArrayOutput {
+	return o
+}
+
+func (o DestinationStateTimelineStateArrayOutput) Index(i pulumi.IntInput) DestinationStateTimelineStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationStateTimelineState {
+		return vs[0].([]DestinationStateTimelineState)[vs[1].(int)]
+	}).(DestinationStateTimelineStateOutput)
+}
+
 type GroupAutoAccept struct {
 	// A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
 	AutoAcceptProjects []string `pulumi:"autoAcceptProjects"`
@@ -589,6 +946,235 @@ func (o InternalRangeMigrationPtrOutput) Target() pulumi.StringPtrOutput {
 		}
 		return &v.Target
 	}).(pulumi.StringPtrOutput)
+}
+
+type MulticloudDataTransferConfigService struct {
+	// The name of the service, like "big-query" or "cloud-storage".
+	// This corresponds to the map key in the API.
+	ServiceName string `pulumi:"serviceName"`
+	// (Output)
+	// The state and activation time details for the service.
+	// Structure is documented below.
+	//
+	// <a name="nestedServicesStates"></a>The `states` block contains:
+	States []MulticloudDataTransferConfigServiceState `pulumi:"states"`
+}
+
+// MulticloudDataTransferConfigServiceInput is an input type that accepts MulticloudDataTransferConfigServiceArgs and MulticloudDataTransferConfigServiceOutput values.
+// You can construct a concrete instance of `MulticloudDataTransferConfigServiceInput` via:
+//
+//	MulticloudDataTransferConfigServiceArgs{...}
+type MulticloudDataTransferConfigServiceInput interface {
+	pulumi.Input
+
+	ToMulticloudDataTransferConfigServiceOutput() MulticloudDataTransferConfigServiceOutput
+	ToMulticloudDataTransferConfigServiceOutputWithContext(context.Context) MulticloudDataTransferConfigServiceOutput
+}
+
+type MulticloudDataTransferConfigServiceArgs struct {
+	// The name of the service, like "big-query" or "cloud-storage".
+	// This corresponds to the map key in the API.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// (Output)
+	// The state and activation time details for the service.
+	// Structure is documented below.
+	//
+	// <a name="nestedServicesStates"></a>The `states` block contains:
+	States MulticloudDataTransferConfigServiceStateArrayInput `pulumi:"states"`
+}
+
+func (MulticloudDataTransferConfigServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticloudDataTransferConfigService)(nil)).Elem()
+}
+
+func (i MulticloudDataTransferConfigServiceArgs) ToMulticloudDataTransferConfigServiceOutput() MulticloudDataTransferConfigServiceOutput {
+	return i.ToMulticloudDataTransferConfigServiceOutputWithContext(context.Background())
+}
+
+func (i MulticloudDataTransferConfigServiceArgs) ToMulticloudDataTransferConfigServiceOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticloudDataTransferConfigServiceOutput)
+}
+
+// MulticloudDataTransferConfigServiceArrayInput is an input type that accepts MulticloudDataTransferConfigServiceArray and MulticloudDataTransferConfigServiceArrayOutput values.
+// You can construct a concrete instance of `MulticloudDataTransferConfigServiceArrayInput` via:
+//
+//	MulticloudDataTransferConfigServiceArray{ MulticloudDataTransferConfigServiceArgs{...} }
+type MulticloudDataTransferConfigServiceArrayInput interface {
+	pulumi.Input
+
+	ToMulticloudDataTransferConfigServiceArrayOutput() MulticloudDataTransferConfigServiceArrayOutput
+	ToMulticloudDataTransferConfigServiceArrayOutputWithContext(context.Context) MulticloudDataTransferConfigServiceArrayOutput
+}
+
+type MulticloudDataTransferConfigServiceArray []MulticloudDataTransferConfigServiceInput
+
+func (MulticloudDataTransferConfigServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticloudDataTransferConfigService)(nil)).Elem()
+}
+
+func (i MulticloudDataTransferConfigServiceArray) ToMulticloudDataTransferConfigServiceArrayOutput() MulticloudDataTransferConfigServiceArrayOutput {
+	return i.ToMulticloudDataTransferConfigServiceArrayOutputWithContext(context.Background())
+}
+
+func (i MulticloudDataTransferConfigServiceArray) ToMulticloudDataTransferConfigServiceArrayOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticloudDataTransferConfigServiceArrayOutput)
+}
+
+type MulticloudDataTransferConfigServiceOutput struct{ *pulumi.OutputState }
+
+func (MulticloudDataTransferConfigServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticloudDataTransferConfigService)(nil)).Elem()
+}
+
+func (o MulticloudDataTransferConfigServiceOutput) ToMulticloudDataTransferConfigServiceOutput() MulticloudDataTransferConfigServiceOutput {
+	return o
+}
+
+func (o MulticloudDataTransferConfigServiceOutput) ToMulticloudDataTransferConfigServiceOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceOutput {
+	return o
+}
+
+// The name of the service, like "big-query" or "cloud-storage".
+// This corresponds to the map key in the API.
+func (o MulticloudDataTransferConfigServiceOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v MulticloudDataTransferConfigService) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The state and activation time details for the service.
+// Structure is documented below.
+//
+// <a name="nestedServicesStates"></a>The `states` block contains:
+func (o MulticloudDataTransferConfigServiceOutput) States() MulticloudDataTransferConfigServiceStateArrayOutput {
+	return o.ApplyT(func(v MulticloudDataTransferConfigService) []MulticloudDataTransferConfigServiceState {
+		return v.States
+	}).(MulticloudDataTransferConfigServiceStateArrayOutput)
+}
+
+type MulticloudDataTransferConfigServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticloudDataTransferConfigServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticloudDataTransferConfigService)(nil)).Elem()
+}
+
+func (o MulticloudDataTransferConfigServiceArrayOutput) ToMulticloudDataTransferConfigServiceArrayOutput() MulticloudDataTransferConfigServiceArrayOutput {
+	return o
+}
+
+func (o MulticloudDataTransferConfigServiceArrayOutput) ToMulticloudDataTransferConfigServiceArrayOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceArrayOutput {
+	return o
+}
+
+func (o MulticloudDataTransferConfigServiceArrayOutput) Index(i pulumi.IntInput) MulticloudDataTransferConfigServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticloudDataTransferConfigService {
+		return vs[0].([]MulticloudDataTransferConfigService)[vs[1].(int)]
+	}).(MulticloudDataTransferConfigServiceOutput)
+}
+
+type MulticloudDataTransferConfigServiceState struct {
+	// The time when the state becomes effective
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// The state of the resource.
+	State *string `pulumi:"state"`
+}
+
+// MulticloudDataTransferConfigServiceStateInput is an input type that accepts MulticloudDataTransferConfigServiceStateArgs and MulticloudDataTransferConfigServiceStateOutput values.
+// You can construct a concrete instance of `MulticloudDataTransferConfigServiceStateInput` via:
+//
+//	MulticloudDataTransferConfigServiceStateArgs{...}
+type MulticloudDataTransferConfigServiceStateInput interface {
+	pulumi.Input
+
+	ToMulticloudDataTransferConfigServiceStateOutput() MulticloudDataTransferConfigServiceStateOutput
+	ToMulticloudDataTransferConfigServiceStateOutputWithContext(context.Context) MulticloudDataTransferConfigServiceStateOutput
+}
+
+type MulticloudDataTransferConfigServiceStateArgs struct {
+	// The time when the state becomes effective
+	EffectiveTime pulumi.StringPtrInput `pulumi:"effectiveTime"`
+	// The state of the resource.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticloudDataTransferConfigServiceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticloudDataTransferConfigServiceState)(nil)).Elem()
+}
+
+func (i MulticloudDataTransferConfigServiceStateArgs) ToMulticloudDataTransferConfigServiceStateOutput() MulticloudDataTransferConfigServiceStateOutput {
+	return i.ToMulticloudDataTransferConfigServiceStateOutputWithContext(context.Background())
+}
+
+func (i MulticloudDataTransferConfigServiceStateArgs) ToMulticloudDataTransferConfigServiceStateOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticloudDataTransferConfigServiceStateOutput)
+}
+
+// MulticloudDataTransferConfigServiceStateArrayInput is an input type that accepts MulticloudDataTransferConfigServiceStateArray and MulticloudDataTransferConfigServiceStateArrayOutput values.
+// You can construct a concrete instance of `MulticloudDataTransferConfigServiceStateArrayInput` via:
+//
+//	MulticloudDataTransferConfigServiceStateArray{ MulticloudDataTransferConfigServiceStateArgs{...} }
+type MulticloudDataTransferConfigServiceStateArrayInput interface {
+	pulumi.Input
+
+	ToMulticloudDataTransferConfigServiceStateArrayOutput() MulticloudDataTransferConfigServiceStateArrayOutput
+	ToMulticloudDataTransferConfigServiceStateArrayOutputWithContext(context.Context) MulticloudDataTransferConfigServiceStateArrayOutput
+}
+
+type MulticloudDataTransferConfigServiceStateArray []MulticloudDataTransferConfigServiceStateInput
+
+func (MulticloudDataTransferConfigServiceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticloudDataTransferConfigServiceState)(nil)).Elem()
+}
+
+func (i MulticloudDataTransferConfigServiceStateArray) ToMulticloudDataTransferConfigServiceStateArrayOutput() MulticloudDataTransferConfigServiceStateArrayOutput {
+	return i.ToMulticloudDataTransferConfigServiceStateArrayOutputWithContext(context.Background())
+}
+
+func (i MulticloudDataTransferConfigServiceStateArray) ToMulticloudDataTransferConfigServiceStateArrayOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticloudDataTransferConfigServiceStateArrayOutput)
+}
+
+type MulticloudDataTransferConfigServiceStateOutput struct{ *pulumi.OutputState }
+
+func (MulticloudDataTransferConfigServiceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticloudDataTransferConfigServiceState)(nil)).Elem()
+}
+
+func (o MulticloudDataTransferConfigServiceStateOutput) ToMulticloudDataTransferConfigServiceStateOutput() MulticloudDataTransferConfigServiceStateOutput {
+	return o
+}
+
+func (o MulticloudDataTransferConfigServiceStateOutput) ToMulticloudDataTransferConfigServiceStateOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceStateOutput {
+	return o
+}
+
+// The time when the state becomes effective
+func (o MulticloudDataTransferConfigServiceStateOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticloudDataTransferConfigServiceState) *string { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
+// The state of the resource.
+func (o MulticloudDataTransferConfigServiceStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticloudDataTransferConfigServiceState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticloudDataTransferConfigServiceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticloudDataTransferConfigServiceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticloudDataTransferConfigServiceState)(nil)).Elem()
+}
+
+func (o MulticloudDataTransferConfigServiceStateArrayOutput) ToMulticloudDataTransferConfigServiceStateArrayOutput() MulticloudDataTransferConfigServiceStateArrayOutput {
+	return o
+}
+
+func (o MulticloudDataTransferConfigServiceStateArrayOutput) ToMulticloudDataTransferConfigServiceStateArrayOutputWithContext(ctx context.Context) MulticloudDataTransferConfigServiceStateArrayOutput {
+	return o
+}
+
+func (o MulticloudDataTransferConfigServiceStateArrayOutput) Index(i pulumi.IntInput) MulticloudDataTransferConfigServiceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticloudDataTransferConfigServiceState {
+		return vs[0].([]MulticloudDataTransferConfigServiceState)[vs[1].(int)]
+	}).(MulticloudDataTransferConfigServiceStateOutput)
 }
 
 type PolicyBasedRouteFilter struct {
@@ -3406,6 +3992,12 @@ func (o SpokeReasonArrayOutput) Index(i pulumi.IntInput) SpokeReasonOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationEndpointInput)(nil)).Elem(), DestinationEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationEndpointArrayInput)(nil)).Elem(), DestinationEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationStateTimelineInput)(nil)).Elem(), DestinationStateTimelineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationStateTimelineArrayInput)(nil)).Elem(), DestinationStateTimelineArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationStateTimelineStateInput)(nil)).Elem(), DestinationStateTimelineStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationStateTimelineStateArrayInput)(nil)).Elem(), DestinationStateTimelineStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptInput)(nil)).Elem(), GroupAutoAcceptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptPtrInput)(nil)).Elem(), GroupAutoAcceptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
@@ -3414,6 +4006,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeAllocationOptionsPtrInput)(nil)).Elem(), InternalRangeAllocationOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeMigrationInput)(nil)).Elem(), InternalRangeMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeMigrationPtrInput)(nil)).Elem(), InternalRangeMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticloudDataTransferConfigServiceInput)(nil)).Elem(), MulticloudDataTransferConfigServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticloudDataTransferConfigServiceArrayInput)(nil)).Elem(), MulticloudDataTransferConfigServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticloudDataTransferConfigServiceStateInput)(nil)).Elem(), MulticloudDataTransferConfigServiceStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticloudDataTransferConfigServiceStateArrayInput)(nil)).Elem(), MulticloudDataTransferConfigServiceStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteFilterInput)(nil)).Elem(), PolicyBasedRouteFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteFilterPtrInput)(nil)).Elem(), PolicyBasedRouteFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteInterconnectAttachmentInput)(nil)).Elem(), PolicyBasedRouteInterconnectAttachmentArgs{})
@@ -3448,6 +4044,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeReasonInput)(nil)).Elem(), SpokeReasonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeReasonArrayInput)(nil)).Elem(), SpokeReasonArray{})
+	pulumi.RegisterOutputType(DestinationEndpointOutput{})
+	pulumi.RegisterOutputType(DestinationEndpointArrayOutput{})
+	pulumi.RegisterOutputType(DestinationStateTimelineOutput{})
+	pulumi.RegisterOutputType(DestinationStateTimelineArrayOutput{})
+	pulumi.RegisterOutputType(DestinationStateTimelineStateOutput{})
+	pulumi.RegisterOutputType(DestinationStateTimelineStateArrayOutput{})
 	pulumi.RegisterOutputType(GroupAutoAcceptOutput{})
 	pulumi.RegisterOutputType(GroupAutoAcceptPtrOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
@@ -3456,6 +4058,10 @@ func init() {
 	pulumi.RegisterOutputType(InternalRangeAllocationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(InternalRangeMigrationOutput{})
 	pulumi.RegisterOutputType(InternalRangeMigrationPtrOutput{})
+	pulumi.RegisterOutputType(MulticloudDataTransferConfigServiceOutput{})
+	pulumi.RegisterOutputType(MulticloudDataTransferConfigServiceArrayOutput{})
+	pulumi.RegisterOutputType(MulticloudDataTransferConfigServiceStateOutput{})
+	pulumi.RegisterOutputType(MulticloudDataTransferConfigServiceStateArrayOutput{})
 	pulumi.RegisterOutputType(PolicyBasedRouteFilterOutput{})
 	pulumi.RegisterOutputType(PolicyBasedRouteFilterPtrOutput{})
 	pulumi.RegisterOutputType(PolicyBasedRouteInterconnectAttachmentOutput{})

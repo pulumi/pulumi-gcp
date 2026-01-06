@@ -195,6 +195,13 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiFeatureOnlineStoreEmbeddingManagement> EmbeddingManagement { get; private set; } = null!;
 
         /// <summary>
+        /// If set, both of the online and offline data storage will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionSpec")]
+        public Output<Outputs.AiFeatureOnlineStoreEncryptionSpec?> EncryptionSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Used to perform consistent read-modify-write updates.
         /// </summary>
         [Output("etag")]
@@ -333,6 +340,13 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureOnlineStoreEmbeddingManagementArgs>? EmbeddingManagement { get; set; }
 
         /// <summary>
+        /// If set, both of the online and offline data storage will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiFeatureOnlineStoreEncryptionSpecArgs>? EncryptionSpec { get; set; }
+
+        /// <summary>
         /// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         /// </summary>
         [Input("forceDestroy")]
@@ -429,6 +443,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("embeddingManagement")]
         public Input<Inputs.AiFeatureOnlineStoreEmbeddingManagementGetArgs>? EmbeddingManagement { get; set; }
+
+        /// <summary>
+        /// If set, both of the online and offline data storage will be secured by this key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.AiFeatureOnlineStoreEncryptionSpecGetArgs>? EncryptionSpec { get; set; }
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates.

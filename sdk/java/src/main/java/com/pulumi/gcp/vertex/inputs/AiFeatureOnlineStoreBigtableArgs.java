@@ -7,7 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs;
+import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AiFeatureOnlineStoreBigtableArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,10 +35,42 @@ public final class AiFeatureOnlineStoreBigtableArgs extends com.pulumi.resources
         return this.autoScaling;
     }
 
+    /**
+     * Optional. If true, enable direct access to the Bigtable instance.
+     * 
+     */
+    @Import(name="enableDirectBigtableAccess")
+    private @Nullable Output<Boolean> enableDirectBigtableAccess;
+
+    /**
+     * @return Optional. If true, enable direct access to the Bigtable instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDirectBigtableAccess() {
+        return Optional.ofNullable(this.enableDirectBigtableAccess);
+    }
+
+    /**
+     * The zone where the Bigtable instance will be created.
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return The zone where the Bigtable instance will be created.
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
+    }
+
     private AiFeatureOnlineStoreBigtableArgs() {}
 
     private AiFeatureOnlineStoreBigtableArgs(AiFeatureOnlineStoreBigtableArgs $) {
         this.autoScaling = $.autoScaling;
+        this.enableDirectBigtableAccess = $.enableDirectBigtableAccess;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -76,6 +112,48 @@ public final class AiFeatureOnlineStoreBigtableArgs extends com.pulumi.resources
          */
         public Builder autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs autoScaling) {
             return autoScaling(Output.of(autoScaling));
+        }
+
+        /**
+         * @param enableDirectBigtableAccess Optional. If true, enable direct access to the Bigtable instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDirectBigtableAccess(@Nullable Output<Boolean> enableDirectBigtableAccess) {
+            $.enableDirectBigtableAccess = enableDirectBigtableAccess;
+            return this;
+        }
+
+        /**
+         * @param enableDirectBigtableAccess Optional. If true, enable direct access to the Bigtable instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDirectBigtableAccess(Boolean enableDirectBigtableAccess) {
+            return enableDirectBigtableAccess(Output.of(enableDirectBigtableAccess));
+        }
+
+        /**
+         * @param zone The zone where the Bigtable instance will be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone The zone where the Bigtable instance will be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public AiFeatureOnlineStoreBigtableArgs build() {

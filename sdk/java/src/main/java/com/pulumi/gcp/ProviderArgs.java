@@ -154,6 +154,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.biglakeCustomEndpoint);
     }
 
+    @Import(name="biglakeIcebergCustomEndpoint")
+    private @Nullable Output<String> biglakeIcebergCustomEndpoint;
+
+    public Optional<Output<String>> biglakeIcebergCustomEndpoint() {
+        return Optional.ofNullable(this.biglakeIcebergCustomEndpoint);
+    }
+
     @Import(name="bigqueryAnalyticsHubCustomEndpoint")
     private @Nullable Output<String> bigqueryAnalyticsHubCustomEndpoint;
 
@@ -1436,6 +1443,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.beyondcorpCustomEndpoint = $.beyondcorpCustomEndpoint;
         this.bigQueryCustomEndpoint = $.bigQueryCustomEndpoint;
         this.biglakeCustomEndpoint = $.biglakeCustomEndpoint;
+        this.biglakeIcebergCustomEndpoint = $.biglakeIcebergCustomEndpoint;
         this.bigqueryAnalyticsHubCustomEndpoint = $.bigqueryAnalyticsHubCustomEndpoint;
         this.bigqueryConnectionCustomEndpoint = $.bigqueryConnectionCustomEndpoint;
         this.bigqueryDataTransferCustomEndpoint = $.bigqueryDataTransferCustomEndpoint;
@@ -1805,6 +1813,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder biglakeCustomEndpoint(String biglakeCustomEndpoint) {
             return biglakeCustomEndpoint(Output.of(biglakeCustomEndpoint));
+        }
+
+        public Builder biglakeIcebergCustomEndpoint(@Nullable Output<String> biglakeIcebergCustomEndpoint) {
+            $.biglakeIcebergCustomEndpoint = biglakeIcebergCustomEndpoint;
+            return this;
+        }
+
+        public Builder biglakeIcebergCustomEndpoint(String biglakeIcebergCustomEndpoint) {
+            return biglakeIcebergCustomEndpoint(Output.of(biglakeIcebergCustomEndpoint));
         }
 
         public Builder bigqueryAnalyticsHubCustomEndpoint(@Nullable Output<String> bigqueryAnalyticsHubCustomEndpoint) {

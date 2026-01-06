@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VolumeHybridReplicationParameters {
     /**
-     * @return Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+     * @return Optional. Name of source cluster location associated with the replication. This is a free-form field
+     * for display purposes only.
      * 
      */
     private @Nullable String clusterLocation;
@@ -25,7 +26,10 @@ public final class VolumeHybridReplicationParameters {
      */
     private @Nullable String description;
     /**
-     * @return Optional. Type of the volume&#39;s hybrid replication.
+     * @return Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+     * and `ONPREM_REPLICATION` to create an external replication.
+     * Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+     * replication which got reversed. Default is `MIGRATION`.
      * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
      * 
      */
@@ -37,27 +41,27 @@ public final class VolumeHybridReplicationParameters {
      */
     private @Nullable Map<String,String> labels;
     /**
-     * @return Optional. Constituent volume count for large volume.
+     * @return Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
      * 
      */
     private @Nullable Integer largeVolumeConstituentCount;
     /**
-     * @return Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
+     * @return Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
      * 
      */
     private @Nullable String peerClusterName;
     /**
-     * @return Required. List of node ip addresses to be peered with.
+     * @return Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
      * 
      */
     private @Nullable List<String> peerIpAddresses;
     /**
-     * @return Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
+     * @return Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
      * 
      */
     private @Nullable String peerSvmName;
     /**
-     * @return Required. Name of the user&#39;s local source volume to be peered with the destination volume.
+     * @return Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
      * 
      */
     private @Nullable String peerVolumeName;
@@ -75,7 +79,8 @@ public final class VolumeHybridReplicationParameters {
 
     private VolumeHybridReplicationParameters() {}
     /**
-     * @return Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+     * @return Optional. Name of source cluster location associated with the replication. This is a free-form field
+     * for display purposes only.
      * 
      */
     public Optional<String> clusterLocation() {
@@ -89,7 +94,10 @@ public final class VolumeHybridReplicationParameters {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Optional. Type of the volume&#39;s hybrid replication.
+     * @return Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+     * and `ONPREM_REPLICATION` to create an external replication.
+     * Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+     * replication which got reversed. Default is `MIGRATION`.
      * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
      * 
      */
@@ -105,35 +113,35 @@ public final class VolumeHybridReplicationParameters {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return Optional. Constituent volume count for large volume.
+     * @return Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
      * 
      */
     public Optional<Integer> largeVolumeConstituentCount() {
         return Optional.ofNullable(this.largeVolumeConstituentCount);
     }
     /**
-     * @return Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
+     * @return Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
      * 
      */
     public Optional<String> peerClusterName() {
         return Optional.ofNullable(this.peerClusterName);
     }
     /**
-     * @return Required. List of node ip addresses to be peered with.
+     * @return Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
      * 
      */
     public List<String> peerIpAddresses() {
         return this.peerIpAddresses == null ? List.of() : this.peerIpAddresses;
     }
     /**
-     * @return Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
+     * @return Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
      * 
      */
     public Optional<String> peerSvmName() {
         return Optional.ofNullable(this.peerSvmName);
     }
     /**
-     * @return Required. Name of the user&#39;s local source volume to be peered with the destination volume.
+     * @return Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
      * 
      */
     public Optional<String> peerVolumeName() {

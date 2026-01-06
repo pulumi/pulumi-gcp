@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
  *
- * > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
  * Read more about Write-only Arguments.
  *
  * ## Example Usage

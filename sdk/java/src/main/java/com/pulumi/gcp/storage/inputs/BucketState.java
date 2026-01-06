@@ -129,18 +129,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
+     * When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
      * 
      */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
     /**
-     * @return When deleting a bucket, this
-     * boolean option will delete all contained objects. If you try to delete a
-     * bucket that contains objects, the provider will fail that run.
+     * @return When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
      * 
      */
     public Optional<Output<Boolean>> forceDestroy() {
@@ -698,9 +694,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
+         * @param forceDestroy When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
          * 
          * @return builder
          * 
@@ -711,9 +705,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy When deleting a bucket, this
-         * boolean option will delete all contained objects. If you try to delete a
-         * bucket that contains objects, the provider will fail that run.
+         * @param forceDestroy When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
          * 
          * @return builder
          * 

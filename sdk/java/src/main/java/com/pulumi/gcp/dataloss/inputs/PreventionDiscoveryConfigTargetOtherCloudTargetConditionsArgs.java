@@ -20,7 +20,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs
      * Amazon S3 bucket conditions.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
      * 
      */
     @Import(name="amazonS3BucketConditions")
@@ -30,7 +30,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs
      * @return Amazon S3 bucket conditions.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
      * 
      */
     public Optional<Output<PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgs>> amazonS3BucketConditions() {
@@ -81,7 +81,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs
          * @param amazonS3BucketConditions Amazon S3 bucket conditions.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
+         * &lt;a name=&#34;nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs
          * @param amazonS3BucketConditions Amazon S3 bucket conditions.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
+         * &lt;a name=&#34;nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
          * 
          * @return builder
          * 

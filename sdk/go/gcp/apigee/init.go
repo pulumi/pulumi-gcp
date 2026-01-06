@@ -83,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Organization{}
 	case "gcp:apigee/securityAction:SecurityAction":
 		r = &SecurityAction{}
+	case "gcp:apigee/securityFeedback:SecurityFeedback":
+		r = &SecurityFeedback{}
 	case "gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition":
 		r = &SecurityMonitoringCondition{}
 	case "gcp:apigee/securityProfileV2:SecurityProfileV2":
@@ -261,6 +263,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/securityAction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/securityFeedback",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

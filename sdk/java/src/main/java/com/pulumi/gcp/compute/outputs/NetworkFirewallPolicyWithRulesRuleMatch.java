@@ -104,7 +104,7 @@ public final class NetworkFirewallPolicyWithRulesRuleMatch {
      * Maximum number of source tag values allowed is 256.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
+     * &lt;a name=&#34;nestedRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     private @Nullable List<NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag> srcSecureTags;
@@ -231,7 +231,7 @@ public final class NetworkFirewallPolicyWithRulesRuleMatch {
      * Maximum number of source tag values allowed is 256.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
+     * &lt;a name=&#34;nestedRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     public List<NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag> srcSecureTags() {

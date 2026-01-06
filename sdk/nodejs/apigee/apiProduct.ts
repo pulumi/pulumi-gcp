@@ -92,6 +92,15 @@ import * as utilities from "../utilities";
  *     orgId: apigeeOrg.id,
  *     peeringCidrRange: "SLASH_22",
  * });
+ * const envDev = new gcp.apigee.Environment("env_dev", {
+ *     name: "dev",
+ *     orgId: apigeeOrg.id,
+ * });
+ * const testApigeeApi = new gcp.apigee.Api("test_apigee_api", {
+ *     name: "hello-world",
+ *     orgId: apigeeOrg.name,
+ *     configBundle: "apigee_api_bundle.zip",
+ * });
  * const fullApiProduct = new gcp.apigee.ApiProduct("full_api_product", {
  *     orgId: apigeeOrg.id,
  *     name: "my-product",
@@ -102,10 +111,7 @@ import * as utilities from "../utilities";
  *         name: "access",
  *         value: "private",
  *     }],
- *     environments: [
- *         "dev",
- *         "hom",
- *     ],
+ *     environments: ["dev"],
  *     proxies: ["hello-world"],
  *     apiResources: [
  *         "/",
@@ -120,7 +126,11 @@ import * as utilities from "../utilities";
  *     quotaTimeUnit: "day",
  *     quotaCounterScope: "PROXY",
  * }, {
- *     dependsOn: [apigeeInstance],
+ *     dependsOn: [
+ *         apigeeInstance,
+ *         envDev,
+ *         testApigeeApi,
+ *     ],
  * });
  * ```
  * ## Import

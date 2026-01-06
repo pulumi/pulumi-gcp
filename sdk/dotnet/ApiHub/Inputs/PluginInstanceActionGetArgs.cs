@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.ApiHub.Inputs
         /// be used.
         /// 
         /// 
-        /// &lt;a name="NestedActionsActionsHubInstanceAction"&gt;&lt;/a&gt;The `HubInstanceAction` block contains:
+        /// &lt;a name="NestedActionsHubInstanceAction"&gt;&lt;/a&gt;The `HubInstanceAction` block contains:
         /// </summary>
         [Input("scheduleTimeZone")]
         public Input<string>? ScheduleTimeZone { get; set; }

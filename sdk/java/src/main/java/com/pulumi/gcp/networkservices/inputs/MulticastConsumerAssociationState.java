@@ -122,7 +122,7 @@ public final class MulticastConsumerAssociationState extends com.pulumi.resource
 
     /**
      * The resource name of the multicast domain activation that is in the
-     * same zone as this multicast producer association.
+     * same zone as this multicast consumer association.
      * Use the following format:
      * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      * 
@@ -132,7 +132,7 @@ public final class MulticastConsumerAssociationState extends com.pulumi.resource
 
     /**
      * @return The resource name of the multicast domain activation that is in the
-     * same zone as this multicast producer association.
+     * same zone as this multicast consumer association.
      * Use the following format:
      * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      * 
@@ -485,7 +485,7 @@ public final class MulticastConsumerAssociationState extends com.pulumi.resource
 
         /**
          * @param multicastDomainActivation The resource name of the multicast domain activation that is in the
-         * same zone as this multicast producer association.
+         * same zone as this multicast consumer association.
          * Use the following format:
          * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
          * 
@@ -499,7 +499,7 @@ public final class MulticastConsumerAssociationState extends com.pulumi.resource
 
         /**
          * @param multicastDomainActivation The resource name of the multicast domain activation that is in the
-         * same zone as this multicast producer association.
+         * same zone as this multicast consumer association.
          * Use the following format:
          * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
          * 

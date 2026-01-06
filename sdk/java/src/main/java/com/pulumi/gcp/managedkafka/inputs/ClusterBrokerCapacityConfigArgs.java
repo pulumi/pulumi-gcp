@@ -16,24 +16,24 @@ public final class ClusterBrokerCapacityConfigArgs extends com.pulumi.resources.
     public static final ClusterBrokerCapacityConfigArgs Empty = new ClusterBrokerCapacityConfigArgs();
 
     /**
-     * The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+     * The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
      * 
      */
-    @Import(name="diskSizeGb")
-    private @Nullable Output<String> diskSizeGb;
+    @Import(name="diskSizeGib")
+    private @Nullable Output<String> diskSizeGib;
 
     /**
-     * @return The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+     * @return The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
      * 
      */
-    public Optional<Output<String>> diskSizeGb() {
-        return Optional.ofNullable(this.diskSizeGb);
+    public Optional<Output<String>> diskSizeGib() {
+        return Optional.ofNullable(this.diskSizeGib);
     }
 
     private ClusterBrokerCapacityConfigArgs() {}
 
     private ClusterBrokerCapacityConfigArgs(ClusterBrokerCapacityConfigArgs $) {
-        this.diskSizeGb = $.diskSizeGb;
+        this.diskSizeGib = $.diskSizeGib;
     }
 
     public static Builder builder() {
@@ -55,24 +55,24 @@ public final class ClusterBrokerCapacityConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param diskSizeGb The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+         * @param diskSizeGib The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
          * 
          * @return builder
          * 
          */
-        public Builder diskSizeGb(@Nullable Output<String> diskSizeGb) {
-            $.diskSizeGb = diskSizeGb;
+        public Builder diskSizeGib(@Nullable Output<String> diskSizeGib) {
+            $.diskSizeGib = diskSizeGib;
             return this;
         }
 
         /**
-         * @param diskSizeGb The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+         * @param diskSizeGib The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
          * 
          * @return builder
          * 
          */
-        public Builder diskSizeGb(String diskSizeGb) {
-            return diskSizeGb(Output.of(diskSizeGb));
+        public Builder diskSizeGib(String diskSizeGib) {
+            return diskSizeGib(Output.of(diskSizeGib));
         }
 
         public ClusterBrokerCapacityConfigArgs build() {

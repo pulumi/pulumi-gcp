@@ -5,6 +5,7 @@ package com.pulumi.gcp.lustre.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.lustre.inputs.InstanceAccessRulesOptionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -16,6 +17,25 @@ import javax.annotation.Nullable;
 public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceState Empty = new InstanceState();
+
+    /**
+     * Access control rules for the Lustre instance. Configures default root
+     * squashing behavior and specific access rules based on IP addresses.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accessRulesOptions")
+    private @Nullable Output<InstanceAccessRulesOptionsArgs> accessRulesOptions;
+
+    /**
+     * @return Access control rules for the Lustre instance. Configures default root
+     * squashing behavior and specific access rules based on IP addresses.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceAccessRulesOptionsArgs>> accessRulesOptions() {
+        return Optional.ofNullable(this.accessRulesOptions);
+    }
 
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
@@ -354,6 +374,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.accessRulesOptions = $.accessRulesOptions;
         this.capacityGib = $.capacityGib;
         this.createTime = $.createTime;
         this.description = $.description;
@@ -392,6 +413,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceState defaults) {
             $ = new InstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessRulesOptions Access control rules for the Lustre instance. Configures default root
+         * squashing behavior and specific access rules based on IP addresses.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessRulesOptions(@Nullable Output<InstanceAccessRulesOptionsArgs> accessRulesOptions) {
+            $.accessRulesOptions = accessRulesOptions;
+            return this;
+        }
+
+        /**
+         * @param accessRulesOptions Access control rules for the Lustre instance. Configures default root
+         * squashing behavior and specific access rules based on IP addresses.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessRulesOptions(InstanceAccessRulesOptionsArgs accessRulesOptions) {
+            return accessRulesOptions(Output.of(accessRulesOptions));
         }
 
         /**

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.ApiHub.Outputs
         /// be used.
         /// 
         /// 
-        /// &lt;a name="NestedActionsActionsHubInstanceAction"&gt;&lt;/a&gt;The `HubInstanceAction` block contains:
+        /// &lt;a name="NestedActionsHubInstanceAction"&gt;&lt;/a&gt;The `HubInstanceAction` block contains:
         /// </summary>
         public readonly string? ScheduleTimeZone;
         /// <summary>

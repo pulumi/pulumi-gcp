@@ -157,7 +157,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         To get more information about OrganizationSecurityPolicyAssociation, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies/addAssociation)
         * How-to Guides
             * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
 
@@ -176,7 +176,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
             parent=security_policy_target.name,
-            type="FIREWALL")
+            type="CLOUD_ARMOR")
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",
             attachment_id=policy.parent,
@@ -212,7 +212,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
 
         To get more information about OrganizationSecurityPolicyAssociation, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies/addAssociation)
         * How-to Guides
             * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
 
@@ -231,7 +231,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
             display_name="tf-test",
             parent=security_policy_target.name,
-            type="FIREWALL")
+            type="CLOUD_ARMOR")
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
             name="tf-test",
             attachment_id=policy.parent,

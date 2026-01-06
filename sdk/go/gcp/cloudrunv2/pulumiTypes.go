@@ -6900,6 +6900,9 @@ type ServiceTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *ServiceTemplateContainerResources `pulumi:"resources"`
+	// Location of the source.
+	// Structure is documented below.
+	SourceCode *ServiceTemplateContainerSourceCode `pulumi:"sourceCode"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	StartupProbe *ServiceTemplateContainerStartupProbe `pulumi:"startupProbe"`
@@ -6951,6 +6954,9 @@ type ServiceTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources ServiceTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// Location of the source.
+	// Structure is documented below.
+	SourceCode ServiceTemplateContainerSourceCodePtrInput `pulumi:"sourceCode"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	StartupProbe ServiceTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
@@ -7072,6 +7078,12 @@ func (o ServiceTemplateContainerOutput) Ports() ServiceTemplateContainerPortsPtr
 // Structure is documented below.
 func (o ServiceTemplateContainerOutput) Resources() ServiceTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerResources { return v.Resources }).(ServiceTemplateContainerResourcesPtrOutput)
+}
+
+// Location of the source.
+// Structure is documented below.
+func (o ServiceTemplateContainerOutput) SourceCode() ServiceTemplateContainerSourceCodePtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerSourceCode { return v.SourceCode }).(ServiceTemplateContainerSourceCodePtrOutput)
 }
 
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -7911,7 +7923,7 @@ type ServiceTemplateContainerLivenessProbeGrpc struct {
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
 	//
-	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+	// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service *string `pulumi:"service"`
 }
 
@@ -7934,7 +7946,7 @@ type ServiceTemplateContainerLivenessProbeGrpcArgs struct {
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
 	//
-	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+	// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -8025,7 +8037,7 @@ func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOut
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
 //
-// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -8069,7 +8081,7 @@ func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtr
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
 //
-// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeGrpc) *string {
 		if v == nil {
@@ -8846,6 +8858,324 @@ func (o ServiceTemplateContainerResourcesPtrOutput) StartupCpuBoost() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ServiceTemplateContainerSourceCode struct {
+	// Cloud Storage source.
+	// Structure is documented below.
+	CloudStorageSource *ServiceTemplateContainerSourceCodeCloudStorageSource `pulumi:"cloudStorageSource"`
+}
+
+// ServiceTemplateContainerSourceCodeInput is an input type that accepts ServiceTemplateContainerSourceCodeArgs and ServiceTemplateContainerSourceCodeOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerSourceCodeInput` via:
+//
+//	ServiceTemplateContainerSourceCodeArgs{...}
+type ServiceTemplateContainerSourceCodeInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerSourceCodeOutput() ServiceTemplateContainerSourceCodeOutput
+	ToServiceTemplateContainerSourceCodeOutputWithContext(context.Context) ServiceTemplateContainerSourceCodeOutput
+}
+
+type ServiceTemplateContainerSourceCodeArgs struct {
+	// Cloud Storage source.
+	// Structure is documented below.
+	CloudStorageSource ServiceTemplateContainerSourceCodeCloudStorageSourcePtrInput `pulumi:"cloudStorageSource"`
+}
+
+func (ServiceTemplateContainerSourceCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (i ServiceTemplateContainerSourceCodeArgs) ToServiceTemplateContainerSourceCodeOutput() ServiceTemplateContainerSourceCodeOutput {
+	return i.ToServiceTemplateContainerSourceCodeOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerSourceCodeArgs) ToServiceTemplateContainerSourceCodeOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerSourceCodeOutput)
+}
+
+func (i ServiceTemplateContainerSourceCodeArgs) ToServiceTemplateContainerSourceCodePtrOutput() ServiceTemplateContainerSourceCodePtrOutput {
+	return i.ToServiceTemplateContainerSourceCodePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerSourceCodeArgs) ToServiceTemplateContainerSourceCodePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerSourceCodeOutput).ToServiceTemplateContainerSourceCodePtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateContainerSourceCodePtrInput is an input type that accepts ServiceTemplateContainerSourceCodeArgs, ServiceTemplateContainerSourceCodePtr and ServiceTemplateContainerSourceCodePtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerSourceCodePtrInput` via:
+//
+//	        ServiceTemplateContainerSourceCodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateContainerSourceCodePtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerSourceCodePtrOutput() ServiceTemplateContainerSourceCodePtrOutput
+	ToServiceTemplateContainerSourceCodePtrOutputWithContext(context.Context) ServiceTemplateContainerSourceCodePtrOutput
+}
+
+type serviceTemplateContainerSourceCodePtrType ServiceTemplateContainerSourceCodeArgs
+
+func ServiceTemplateContainerSourceCodePtr(v *ServiceTemplateContainerSourceCodeArgs) ServiceTemplateContainerSourceCodePtrInput {
+	return (*serviceTemplateContainerSourceCodePtrType)(v)
+}
+
+func (*serviceTemplateContainerSourceCodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (i *serviceTemplateContainerSourceCodePtrType) ToServiceTemplateContainerSourceCodePtrOutput() ServiceTemplateContainerSourceCodePtrOutput {
+	return i.ToServiceTemplateContainerSourceCodePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateContainerSourceCodePtrType) ToServiceTemplateContainerSourceCodePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerSourceCodePtrOutput)
+}
+
+type ServiceTemplateContainerSourceCodeOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerSourceCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerSourceCodeOutput) ToServiceTemplateContainerSourceCodeOutput() ServiceTemplateContainerSourceCodeOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodeOutput) ToServiceTemplateContainerSourceCodeOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodeOutput) ToServiceTemplateContainerSourceCodePtrOutput() ServiceTemplateContainerSourceCodePtrOutput {
+	return o.ToServiceTemplateContainerSourceCodePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateContainerSourceCodeOutput) ToServiceTemplateContainerSourceCodePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerSourceCode) *ServiceTemplateContainerSourceCode {
+		return &v
+	}).(ServiceTemplateContainerSourceCodePtrOutput)
+}
+
+// Cloud Storage source.
+// Structure is documented below.
+func (o ServiceTemplateContainerSourceCodeOutput) CloudStorageSource() ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerSourceCode) *ServiceTemplateContainerSourceCodeCloudStorageSource {
+		return v.CloudStorageSource
+	}).(ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput)
+}
+
+type ServiceTemplateContainerSourceCodePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerSourceCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerSourceCodePtrOutput) ToServiceTemplateContainerSourceCodePtrOutput() ServiceTemplateContainerSourceCodePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodePtrOutput) ToServiceTemplateContainerSourceCodePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodePtrOutput) Elem() ServiceTemplateContainerSourceCodeOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerSourceCode) ServiceTemplateContainerSourceCode {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateContainerSourceCode
+		return ret
+	}).(ServiceTemplateContainerSourceCodeOutput)
+}
+
+// Cloud Storage source.
+// Structure is documented below.
+func (o ServiceTemplateContainerSourceCodePtrOutput) CloudStorageSource() ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerSourceCode) *ServiceTemplateContainerSourceCodeCloudStorageSource {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStorageSource
+	}).(ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput)
+}
+
+type ServiceTemplateContainerSourceCodeCloudStorageSource struct {
+	// The Cloud Storage bucket name.
+	Bucket string `pulumi:"bucket"`
+	// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+	Generation *string `pulumi:"generation"`
+	// The Cloud Storage object name.
+	Object string `pulumi:"object"`
+}
+
+// ServiceTemplateContainerSourceCodeCloudStorageSourceInput is an input type that accepts ServiceTemplateContainerSourceCodeCloudStorageSourceArgs and ServiceTemplateContainerSourceCodeCloudStorageSourceOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerSourceCodeCloudStorageSourceInput` via:
+//
+//	ServiceTemplateContainerSourceCodeCloudStorageSourceArgs{...}
+type ServiceTemplateContainerSourceCodeCloudStorageSourceInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerSourceCodeCloudStorageSourceOutput() ServiceTemplateContainerSourceCodeCloudStorageSourceOutput
+	ToServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourceOutput
+}
+
+type ServiceTemplateContainerSourceCodeCloudStorageSourceArgs struct {
+	// The Cloud Storage bucket name.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+	Generation pulumi.StringPtrInput `pulumi:"generation"`
+	// The Cloud Storage object name.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (ServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (i ServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ToServiceTemplateContainerSourceCodeCloudStorageSourceOutput() ServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return i.ToServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ToServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerSourceCodeCloudStorageSourceOutput)
+}
+
+func (i ServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput() ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return i.ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerSourceCodeCloudStorageSourceOutput).ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateContainerSourceCodeCloudStorageSourcePtrInput is an input type that accepts ServiceTemplateContainerSourceCodeCloudStorageSourceArgs, ServiceTemplateContainerSourceCodeCloudStorageSourcePtr and ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerSourceCodeCloudStorageSourcePtrInput` via:
+//
+//	        ServiceTemplateContainerSourceCodeCloudStorageSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateContainerSourceCodeCloudStorageSourcePtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput() ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput
+	ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput
+}
+
+type serviceTemplateContainerSourceCodeCloudStorageSourcePtrType ServiceTemplateContainerSourceCodeCloudStorageSourceArgs
+
+func ServiceTemplateContainerSourceCodeCloudStorageSourcePtr(v *ServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ServiceTemplateContainerSourceCodeCloudStorageSourcePtrInput {
+	return (*serviceTemplateContainerSourceCodeCloudStorageSourcePtrType)(v)
+}
+
+func (*serviceTemplateContainerSourceCodeCloudStorageSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (i *serviceTemplateContainerSourceCodeCloudStorageSourcePtrType) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput() ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return i.ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateContainerSourceCodeCloudStorageSourcePtrType) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput)
+}
+
+type ServiceTemplateContainerSourceCodeCloudStorageSourceOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ToServiceTemplateContainerSourceCodeCloudStorageSourceOutput() ServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ToServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput() ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return o.ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerSourceCodeCloudStorageSource) *ServiceTemplateContainerSourceCodeCloudStorageSource {
+		return &v
+	}).(ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput)
+}
+
+// The Cloud Storage bucket name.
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerSourceCodeCloudStorageSource) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerSourceCodeCloudStorageSource) *string { return v.Generation }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage object name.
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourceOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerSourceCodeCloudStorageSource) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput() ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput) ToServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput) Elem() ServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerSourceCodeCloudStorageSource) ServiceTemplateContainerSourceCodeCloudStorageSource {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateContainerSourceCodeCloudStorageSource
+		return ret
+	}).(ServiceTemplateContainerSourceCodeCloudStorageSourceOutput)
+}
+
+// The Cloud Storage bucket name.
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerSourceCodeCloudStorageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerSourceCodeCloudStorageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage object name.
+func (o ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerSourceCodeCloudStorageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceTemplateContainerStartupProbe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
@@ -9121,7 +9451,7 @@ type ServiceTemplateContainerStartupProbeGrpc struct {
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
 	//
-	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+	// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service *string `pulumi:"service"`
 }
 
@@ -9144,7 +9474,7 @@ type ServiceTemplateContainerStartupProbeGrpcArgs struct {
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 	// If this is not specified, the default behavior is defined by gRPC.
 	//
-	// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+	// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -9235,7 +9565,7 @@ func (o ServiceTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutp
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
 //
-// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeGrpc) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -9279,7 +9609,7 @@ func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrO
 // (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 // If this is not specified, the default behavior is defined by gRPC.
 //
-// <a name="nestedTemplateContainersContainersBuildInfo"></a>The `buildInfo` block contains:
+// <a name="nestedTemplateContainersBuildInfo"></a>The `buildInfo` block contains:
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeGrpc) *string {
 		if v == nil {
@@ -22594,6 +22924,8 @@ type GetServiceTemplateContainer struct {
 	Ports []GetServiceTemplateContainerPort `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources []GetServiceTemplateContainerResource `pulumi:"resources"`
+	// Location of the source.
+	SourceCodes []GetServiceTemplateContainerSourceCode `pulumi:"sourceCodes"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbes []GetServiceTemplateContainerStartupProbe `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
@@ -22638,6 +22970,8 @@ type GetServiceTemplateContainerArgs struct {
 	Ports GetServiceTemplateContainerPortArrayInput `pulumi:"ports"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources GetServiceTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Location of the source.
+	SourceCodes GetServiceTemplateContainerSourceCodeArrayInput `pulumi:"sourceCodes"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbes GetServiceTemplateContainerStartupProbeArrayInput `pulumi:"startupProbes"`
 	// Volume to mount into the container's filesystem.
@@ -22754,6 +23088,11 @@ func (o GetServiceTemplateContainerOutput) Ports() GetServiceTemplateContainerPo
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetServiceTemplateContainerOutput) Resources() GetServiceTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerResource { return v.Resources }).(GetServiceTemplateContainerResourceArrayOutput)
+}
+
+// Location of the source.
+func (o GetServiceTemplateContainerOutput) SourceCodes() GetServiceTemplateContainerSourceCodeArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerSourceCode { return v.SourceCodes }).(GetServiceTemplateContainerSourceCodeArrayOutput)
 }
 
 // Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -24042,6 +24381,220 @@ func (o GetServiceTemplateContainerResourceArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerResource {
 		return vs[0].([]GetServiceTemplateContainerResource)[vs[1].(int)]
 	}).(GetServiceTemplateContainerResourceOutput)
+}
+
+type GetServiceTemplateContainerSourceCode struct {
+	// Cloud Storage source.
+	CloudStorageSources []GetServiceTemplateContainerSourceCodeCloudStorageSource `pulumi:"cloudStorageSources"`
+}
+
+// GetServiceTemplateContainerSourceCodeInput is an input type that accepts GetServiceTemplateContainerSourceCodeArgs and GetServiceTemplateContainerSourceCodeOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerSourceCodeInput` via:
+//
+//	GetServiceTemplateContainerSourceCodeArgs{...}
+type GetServiceTemplateContainerSourceCodeInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerSourceCodeOutput() GetServiceTemplateContainerSourceCodeOutput
+	ToGetServiceTemplateContainerSourceCodeOutputWithContext(context.Context) GetServiceTemplateContainerSourceCodeOutput
+}
+
+type GetServiceTemplateContainerSourceCodeArgs struct {
+	// Cloud Storage source.
+	CloudStorageSources GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayInput `pulumi:"cloudStorageSources"`
+}
+
+func (GetServiceTemplateContainerSourceCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerSourceCodeArgs) ToGetServiceTemplateContainerSourceCodeOutput() GetServiceTemplateContainerSourceCodeOutput {
+	return i.ToGetServiceTemplateContainerSourceCodeOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerSourceCodeArgs) ToGetServiceTemplateContainerSourceCodeOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerSourceCodeOutput)
+}
+
+// GetServiceTemplateContainerSourceCodeArrayInput is an input type that accepts GetServiceTemplateContainerSourceCodeArray and GetServiceTemplateContainerSourceCodeArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerSourceCodeArrayInput` via:
+//
+//	GetServiceTemplateContainerSourceCodeArray{ GetServiceTemplateContainerSourceCodeArgs{...} }
+type GetServiceTemplateContainerSourceCodeArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerSourceCodeArrayOutput() GetServiceTemplateContainerSourceCodeArrayOutput
+	ToGetServiceTemplateContainerSourceCodeArrayOutputWithContext(context.Context) GetServiceTemplateContainerSourceCodeArrayOutput
+}
+
+type GetServiceTemplateContainerSourceCodeArray []GetServiceTemplateContainerSourceCodeInput
+
+func (GetServiceTemplateContainerSourceCodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerSourceCodeArray) ToGetServiceTemplateContainerSourceCodeArrayOutput() GetServiceTemplateContainerSourceCodeArrayOutput {
+	return i.ToGetServiceTemplateContainerSourceCodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerSourceCodeArray) ToGetServiceTemplateContainerSourceCodeArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerSourceCodeArrayOutput)
+}
+
+type GetServiceTemplateContainerSourceCodeOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerSourceCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerSourceCodeOutput) ToGetServiceTemplateContainerSourceCodeOutput() GetServiceTemplateContainerSourceCodeOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerSourceCodeOutput) ToGetServiceTemplateContainerSourceCodeOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeOutput {
+	return o
+}
+
+// Cloud Storage source.
+func (o GetServiceTemplateContainerSourceCodeOutput) CloudStorageSources() GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerSourceCode) []GetServiceTemplateContainerSourceCodeCloudStorageSource {
+		return v.CloudStorageSources
+	}).(GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput)
+}
+
+type GetServiceTemplateContainerSourceCodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerSourceCodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerSourceCode)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerSourceCodeArrayOutput) ToGetServiceTemplateContainerSourceCodeArrayOutput() GetServiceTemplateContainerSourceCodeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerSourceCodeArrayOutput) ToGetServiceTemplateContainerSourceCodeArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerSourceCodeArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerSourceCodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerSourceCode {
+		return vs[0].([]GetServiceTemplateContainerSourceCode)[vs[1].(int)]
+	}).(GetServiceTemplateContainerSourceCodeOutput)
+}
+
+type GetServiceTemplateContainerSourceCodeCloudStorageSource struct {
+	// The Cloud Storage bucket name.
+	Bucket string `pulumi:"bucket"`
+	// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+	Generation string `pulumi:"generation"`
+	// The Cloud Storage object name.
+	Object string `pulumi:"object"`
+}
+
+// GetServiceTemplateContainerSourceCodeCloudStorageSourceInput is an input type that accepts GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs and GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerSourceCodeCloudStorageSourceInput` via:
+//
+//	GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs{...}
+type GetServiceTemplateContainerSourceCodeCloudStorageSourceInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerSourceCodeCloudStorageSourceOutput() GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput
+	ToGetServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(context.Context) GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput
+}
+
+type GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs struct {
+	// The Cloud Storage bucket name.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+	Generation pulumi.StringInput `pulumi:"generation"`
+	// The Cloud Storage object name.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceOutput() GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return i.ToGetServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput)
+}
+
+// GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayInput is an input type that accepts GetServiceTemplateContainerSourceCodeCloudStorageSourceArray and GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayInput` via:
+//
+//	GetServiceTemplateContainerSourceCodeCloudStorageSourceArray{ GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs{...} }
+type GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput() GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput
+	ToGetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutputWithContext(context.Context) GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput
+}
+
+type GetServiceTemplateContainerSourceCodeCloudStorageSourceArray []GetServiceTemplateContainerSourceCodeCloudStorageSourceInput
+
+func (GetServiceTemplateContainerSourceCodeCloudStorageSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerSourceCodeCloudStorageSourceArray) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput() GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput {
+	return i.ToGetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerSourceCodeCloudStorageSourceArray) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput)
+}
+
+type GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceOutput() GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return o
+}
+
+// The Cloud Storage bucket name.
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerSourceCodeCloudStorageSource) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerSourceCodeCloudStorageSource) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The Cloud Storage object name.
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerSourceCodeCloudStorageSource) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerSourceCodeCloudStorageSource)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput() GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput) ToGetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerSourceCodeCloudStorageSource {
+		return vs[0].([]GetServiceTemplateContainerSourceCodeCloudStorageSource)[vs[1].(int)]
+	}).(GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput)
 }
 
 type GetServiceTemplateContainerStartupProbe struct {
@@ -30700,6 +31253,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerPortsPtrInput)(nil)).Elem(), ServiceTemplateContainerPortsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerResourcesInput)(nil)).Elem(), ServiceTemplateContainerResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerResourcesPtrInput)(nil)).Elem(), ServiceTemplateContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerSourceCodeInput)(nil)).Elem(), ServiceTemplateContainerSourceCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerSourceCodePtrInput)(nil)).Elem(), ServiceTemplateContainerSourceCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerSourceCodeCloudStorageSourceInput)(nil)).Elem(), ServiceTemplateContainerSourceCodeCloudStorageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerSourceCodeCloudStorageSourcePtrInput)(nil)).Elem(), ServiceTemplateContainerSourceCodeCloudStorageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbePtrInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeGrpcArgs{})
@@ -30904,6 +31461,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerPortArrayInput)(nil)).Elem(), GetServiceTemplateContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerResourceInput)(nil)).Elem(), GetServiceTemplateContainerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerResourceArrayInput)(nil)).Elem(), GetServiceTemplateContainerResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerSourceCodeInput)(nil)).Elem(), GetServiceTemplateContainerSourceCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerSourceCodeArrayInput)(nil)).Elem(), GetServiceTemplateContainerSourceCodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerSourceCodeCloudStorageSourceInput)(nil)).Elem(), GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayInput)(nil)).Elem(), GetServiceTemplateContainerSourceCodeCloudStorageSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeArrayInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeGrpcInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeGrpcArgs{})
@@ -31112,6 +31673,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerPortsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerResourcesOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerResourcesPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerSourceCodeOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerSourceCodePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerSourceCodeCloudStorageSourceOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerSourceCodeCloudStorageSourcePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeGrpcOutput{})
@@ -31316,6 +31881,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerResourceOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerSourceCodeOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerSourceCodeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerSourceCodeCloudStorageSourceOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerSourceCodeCloudStorageSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeGrpcOutput{})

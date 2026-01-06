@@ -38,7 +38,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpcArgs extends com.pul
      * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
      * If this is not specified, the default behavior is defined by gRPC.
      * 
-     * &lt;a name=&#34;nestedTemplateContainersContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
+     * &lt;a name=&#34;nestedTemplateContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
      * 
      */
     @Import(name="service")
@@ -49,7 +49,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpcArgs extends com.pul
      * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
      * If this is not specified, the default behavior is defined by gRPC.
      * 
-     * &lt;a name=&#34;nestedTemplateContainersContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
+     * &lt;a name=&#34;nestedTemplateContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
      * 
      */
     public Optional<Output<String>> service() {
@@ -109,7 +109,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpcArgs extends com.pul
          * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
          * If this is not specified, the default behavior is defined by gRPC.
          * 
-         * &lt;a name=&#34;nestedTemplateContainersContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
+         * &lt;a name=&#34;nestedTemplateContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpcArgs extends com.pul
          * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
          * If this is not specified, the default behavior is defined by gRPC.
          * 
-         * &lt;a name=&#34;nestedTemplateContainersContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
+         * &lt;a name=&#34;nestedTemplateContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
          * 
          * @return builder
          * 

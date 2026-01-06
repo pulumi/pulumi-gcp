@@ -323,6 +323,31 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Vertex Ai Reasoning Engine Source Based Deployment
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="A basic reasoning engine",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "inline_source": {
+                        "source_archive": std.filebase64(input="./test-fixtures/source.tar.gz").result,
+                    },
+                    "python_spec": {
+                        "entrypoint_module": "simple_agent",
+                        "entrypoint_object": "fixed_name_generator",
+                        "requirements_file": "./test-fixtures/requirements.txt",
+                        "version": "3.11",
+                    },
+                },
+            })
+        ```
         ### Vertex Ai Reasoning Engine Full
 
         ```python
@@ -522,6 +547,31 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Vertex Ai Reasoning Engine Source Based Deployment
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="A basic reasoning engine",
+            region="us-central1",
+            spec={
+                "source_code_spec": {
+                    "inline_source": {
+                        "source_archive": std.filebase64(input="./test-fixtures/source.tar.gz").result,
+                    },
+                    "python_spec": {
+                        "entrypoint_module": "simple_agent",
+                        "entrypoint_object": "fixed_name_generator",
+                        "requirements_file": "./test-fixtures/requirements.txt",
+                        "version": "3.11",
+                    },
+                },
+            })
+        ```
         ### Vertex Ai Reasoning Engine Full
 
         ```python

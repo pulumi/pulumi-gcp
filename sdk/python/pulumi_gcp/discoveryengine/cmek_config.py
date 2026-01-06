@@ -21,19 +21,19 @@ __all__ = ['CmekConfigArgs', 'CmekConfig']
 @pulumi.input_type
 class CmekConfigArgs:
     def __init__(__self__, *,
+                 cmek_config_id: pulumi.Input[_builtins.str],
                  kms_key: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 cmek_config_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  set_default: Optional[pulumi.Input[_builtins.bool]] = None,
                  single_region_keys: Optional[pulumi.Input[Sequence[pulumi.Input['CmekConfigSingleRegionKeyArgs']]]] = None):
         """
         The set of arguments for constructing a CmekConfig resource.
+        :param pulumi.Input[_builtins.str] cmek_config_id: The unique id of the cmek config.
         :param pulumi.Input[_builtins.str] kms_key: KMS key resource name which will be used to encrypt resources
                `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
         :param pulumi.Input[_builtins.str] location: The geographic location where the CMEK config should reside. The value can
                only be one of "us" and "eu".
-        :param pulumi.Input[_builtins.str] cmek_config_id: The unique id of the cmek config.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] set_default: Set the following CmekConfig as the default to be used for child resources
@@ -41,16 +41,27 @@ class CmekConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CmekConfigSingleRegionKeyArgs']]] single_region_keys: Single-regional CMEKs that are required for some VAIS features.
                Structure is documented below.
         """
+        pulumi.set(__self__, "cmek_config_id", cmek_config_id)
         pulumi.set(__self__, "kms_key", kms_key)
         pulumi.set(__self__, "location", location)
-        if cmek_config_id is not None:
-            pulumi.set(__self__, "cmek_config_id", cmek_config_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if set_default is not None:
             pulumi.set(__self__, "set_default", set_default)
         if single_region_keys is not None:
             pulumi.set(__self__, "single_region_keys", single_region_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="cmekConfigId")
+    def cmek_config_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The unique id of the cmek config.
+        """
+        return pulumi.get(self, "cmek_config_id")
+
+    @cmek_config_id.setter
+    def cmek_config_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cmek_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -77,18 +88,6 @@ class CmekConfigArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cmekConfigId")
-    def cmek_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique id of the cmek config.
-        """
-        return pulumi.get(self, "cmek_config_id")
-
-    @cmek_config_id.setter
-    def cmek_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cmek_config_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -515,6 +514,8 @@ class CmekConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CmekConfigArgs.__new__(CmekConfigArgs)
 
+            if cmek_config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cmek_config_id'")
             __props__.__dict__["cmek_config_id"] = cmek_config_id
             if kms_key is None and not opts.urn:
                 raise TypeError("Missing required property 'kms_key'")
@@ -602,7 +603,7 @@ class CmekConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="cmekConfigId")
-    def cmek_config_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def cmek_config_id(self) -> pulumi.Output[_builtins.str]:
         """
         The unique id of the cmek config.
         """

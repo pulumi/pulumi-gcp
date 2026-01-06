@@ -93,7 +93,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
      * The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
+     * &lt;a name=&#34;nestedActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     @Import(name="scheduleTimeZone")
@@ -103,7 +103,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
      * @return The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
+     * &lt;a name=&#34;nestedActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     public Optional<Output<String>> scheduleTimeZone() {
@@ -280,7 +280,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
          * @param scheduleTimeZone The time zone for the schedule cron expression. If not provided, UTC will
          * be used.
          * 
-         * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
+         * &lt;a name=&#34;nestedActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class PluginInstanceActionArgs extends com.pulumi.resources.Resourc
          * @param scheduleTimeZone The time zone for the schedule cron expression. If not provided, UTC will
          * be used.
          * 
-         * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
+         * &lt;a name=&#34;nestedActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
          * 
          * @return builder
          * 

@@ -88,6 +88,7 @@ import (
 //					"google.subject": pulumi.String("user.externalId"),
 //					"google.group":   pulumi.String("group.externalId"),
 //				},
+//				HardDelete: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

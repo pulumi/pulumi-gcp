@@ -195,6 +195,9 @@ type AiFeatureOnlineStore struct {
 	//
 	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementOutput `pulumi:"embeddingManagement"`
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiFeatureOnlineStoreEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
@@ -273,6 +276,9 @@ type aiFeatureOnlineStoreState struct {
 	//
 	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement *AiFeatureOnlineStoreEmbeddingManagement `pulumi:"embeddingManagement"`
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiFeatureOnlineStoreEncryptionSpec `pulumi:"encryptionSpec"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
@@ -317,6 +323,9 @@ type AiFeatureOnlineStoreState struct {
 	//
 	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrInput
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiFeatureOnlineStoreEncryptionSpecPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
@@ -361,6 +370,9 @@ type aiFeatureOnlineStoreArgs struct {
 	//
 	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement *AiFeatureOnlineStoreEmbeddingManagement `pulumi:"embeddingManagement"`
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec *AiFeatureOnlineStoreEncryptionSpec `pulumi:"encryptionSpec"`
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The labels with user-defined metadata to organize your feature online stores.
@@ -393,6 +405,9 @@ type AiFeatureOnlineStoreArgs struct {
 	//
 	// Deprecated: `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrInput
+	// If set, both of the online and offline data storage will be secured by this key.
+	// Structure is documented below.
+	EncryptionSpec AiFeatureOnlineStoreEncryptionSpecPtrInput
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
 	ForceDestroy pulumi.BoolPtrInput
 	// The labels with user-defined metadata to organize your feature online stores.
@@ -531,6 +546,12 @@ func (o AiFeatureOnlineStoreOutput) EmbeddingManagement() AiFeatureOnlineStoreEm
 	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreEmbeddingManagementOutput {
 		return v.EmbeddingManagement
 	}).(AiFeatureOnlineStoreEmbeddingManagementOutput)
+}
+
+// If set, both of the online and offline data storage will be secured by this key.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreOutput) EncryptionSpec() AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreEncryptionSpecPtrOutput { return v.EncryptionSpec }).(AiFeatureOnlineStoreEncryptionSpecPtrOutput)
 }
 
 // Used to perform consistent read-modify-write updates.

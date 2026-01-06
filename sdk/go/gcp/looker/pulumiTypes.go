@@ -1946,6 +1946,391 @@ func (o InstanceOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstancePeriodicExportConfig struct {
+	// Cloud Storage bucket URI for periodic export.
+	// Format: gs://{bucket_name}
+	GcsUri string `pulumi:"gcsUri"`
+	// Name of the CMEK key in KMS.
+	// Format:
+	// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+	KmsKey string `pulumi:"kmsKey"`
+	// Time in UTC to start the periodic export job.
+	// Structure is documented below.
+	StartTime InstancePeriodicExportConfigStartTime `pulumi:"startTime"`
+}
+
+// InstancePeriodicExportConfigInput is an input type that accepts InstancePeriodicExportConfigArgs and InstancePeriodicExportConfigOutput values.
+// You can construct a concrete instance of `InstancePeriodicExportConfigInput` via:
+//
+//	InstancePeriodicExportConfigArgs{...}
+type InstancePeriodicExportConfigInput interface {
+	pulumi.Input
+
+	ToInstancePeriodicExportConfigOutput() InstancePeriodicExportConfigOutput
+	ToInstancePeriodicExportConfigOutputWithContext(context.Context) InstancePeriodicExportConfigOutput
+}
+
+type InstancePeriodicExportConfigArgs struct {
+	// Cloud Storage bucket URI for periodic export.
+	// Format: gs://{bucket_name}
+	GcsUri pulumi.StringInput `pulumi:"gcsUri"`
+	// Name of the CMEK key in KMS.
+	// Format:
+	// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+	// Time in UTC to start the periodic export job.
+	// Structure is documented below.
+	StartTime InstancePeriodicExportConfigStartTimeInput `pulumi:"startTime"`
+}
+
+func (InstancePeriodicExportConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePeriodicExportConfig)(nil)).Elem()
+}
+
+func (i InstancePeriodicExportConfigArgs) ToInstancePeriodicExportConfigOutput() InstancePeriodicExportConfigOutput {
+	return i.ToInstancePeriodicExportConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePeriodicExportConfigArgs) ToInstancePeriodicExportConfigOutputWithContext(ctx context.Context) InstancePeriodicExportConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePeriodicExportConfigOutput)
+}
+
+func (i InstancePeriodicExportConfigArgs) ToInstancePeriodicExportConfigPtrOutput() InstancePeriodicExportConfigPtrOutput {
+	return i.ToInstancePeriodicExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePeriodicExportConfigArgs) ToInstancePeriodicExportConfigPtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePeriodicExportConfigOutput).ToInstancePeriodicExportConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePeriodicExportConfigPtrInput is an input type that accepts InstancePeriodicExportConfigArgs, InstancePeriodicExportConfigPtr and InstancePeriodicExportConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePeriodicExportConfigPtrInput` via:
+//
+//	        InstancePeriodicExportConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePeriodicExportConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePeriodicExportConfigPtrOutput() InstancePeriodicExportConfigPtrOutput
+	ToInstancePeriodicExportConfigPtrOutputWithContext(context.Context) InstancePeriodicExportConfigPtrOutput
+}
+
+type instancePeriodicExportConfigPtrType InstancePeriodicExportConfigArgs
+
+func InstancePeriodicExportConfigPtr(v *InstancePeriodicExportConfigArgs) InstancePeriodicExportConfigPtrInput {
+	return (*instancePeriodicExportConfigPtrType)(v)
+}
+
+func (*instancePeriodicExportConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePeriodicExportConfig)(nil)).Elem()
+}
+
+func (i *instancePeriodicExportConfigPtrType) ToInstancePeriodicExportConfigPtrOutput() InstancePeriodicExportConfigPtrOutput {
+	return i.ToInstancePeriodicExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePeriodicExportConfigPtrType) ToInstancePeriodicExportConfigPtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePeriodicExportConfigPtrOutput)
+}
+
+type InstancePeriodicExportConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePeriodicExportConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePeriodicExportConfig)(nil)).Elem()
+}
+
+func (o InstancePeriodicExportConfigOutput) ToInstancePeriodicExportConfigOutput() InstancePeriodicExportConfigOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigOutput) ToInstancePeriodicExportConfigOutputWithContext(ctx context.Context) InstancePeriodicExportConfigOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigOutput) ToInstancePeriodicExportConfigPtrOutput() InstancePeriodicExportConfigPtrOutput {
+	return o.ToInstancePeriodicExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePeriodicExportConfigOutput) ToInstancePeriodicExportConfigPtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePeriodicExportConfig) *InstancePeriodicExportConfig {
+		return &v
+	}).(InstancePeriodicExportConfigPtrOutput)
+}
+
+// Cloud Storage bucket URI for periodic export.
+// Format: gs://{bucket_name}
+func (o InstancePeriodicExportConfigOutput) GcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePeriodicExportConfig) string { return v.GcsUri }).(pulumi.StringOutput)
+}
+
+// Name of the CMEK key in KMS.
+// Format:
+// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+func (o InstancePeriodicExportConfigOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePeriodicExportConfig) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+// Time in UTC to start the periodic export job.
+// Structure is documented below.
+func (o InstancePeriodicExportConfigOutput) StartTime() InstancePeriodicExportConfigStartTimeOutput {
+	return o.ApplyT(func(v InstancePeriodicExportConfig) InstancePeriodicExportConfigStartTime { return v.StartTime }).(InstancePeriodicExportConfigStartTimeOutput)
+}
+
+type InstancePeriodicExportConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePeriodicExportConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePeriodicExportConfig)(nil)).Elem()
+}
+
+func (o InstancePeriodicExportConfigPtrOutput) ToInstancePeriodicExportConfigPtrOutput() InstancePeriodicExportConfigPtrOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigPtrOutput) ToInstancePeriodicExportConfigPtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigPtrOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigPtrOutput) Elem() InstancePeriodicExportConfigOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfig) InstancePeriodicExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePeriodicExportConfig
+		return ret
+	}).(InstancePeriodicExportConfigOutput)
+}
+
+// Cloud Storage bucket URI for periodic export.
+// Format: gs://{bucket_name}
+func (o InstancePeriodicExportConfigPtrOutput) GcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the CMEK key in KMS.
+// Format:
+// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+func (o InstancePeriodicExportConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time in UTC to start the periodic export job.
+// Structure is documented below.
+func (o InstancePeriodicExportConfigPtrOutput) StartTime() InstancePeriodicExportConfigStartTimePtrOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfig) *InstancePeriodicExportConfigStartTime {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(InstancePeriodicExportConfigStartTimePtrOutput)
+}
+
+type InstancePeriodicExportConfigStartTime struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// InstancePeriodicExportConfigStartTimeInput is an input type that accepts InstancePeriodicExportConfigStartTimeArgs and InstancePeriodicExportConfigStartTimeOutput values.
+// You can construct a concrete instance of `InstancePeriodicExportConfigStartTimeInput` via:
+//
+//	InstancePeriodicExportConfigStartTimeArgs{...}
+type InstancePeriodicExportConfigStartTimeInput interface {
+	pulumi.Input
+
+	ToInstancePeriodicExportConfigStartTimeOutput() InstancePeriodicExportConfigStartTimeOutput
+	ToInstancePeriodicExportConfigStartTimeOutputWithContext(context.Context) InstancePeriodicExportConfigStartTimeOutput
+}
+
+type InstancePeriodicExportConfigStartTimeArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (InstancePeriodicExportConfigStartTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePeriodicExportConfigStartTime)(nil)).Elem()
+}
+
+func (i InstancePeriodicExportConfigStartTimeArgs) ToInstancePeriodicExportConfigStartTimeOutput() InstancePeriodicExportConfigStartTimeOutput {
+	return i.ToInstancePeriodicExportConfigStartTimeOutputWithContext(context.Background())
+}
+
+func (i InstancePeriodicExportConfigStartTimeArgs) ToInstancePeriodicExportConfigStartTimeOutputWithContext(ctx context.Context) InstancePeriodicExportConfigStartTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePeriodicExportConfigStartTimeOutput)
+}
+
+func (i InstancePeriodicExportConfigStartTimeArgs) ToInstancePeriodicExportConfigStartTimePtrOutput() InstancePeriodicExportConfigStartTimePtrOutput {
+	return i.ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i InstancePeriodicExportConfigStartTimeArgs) ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePeriodicExportConfigStartTimeOutput).ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(ctx)
+}
+
+// InstancePeriodicExportConfigStartTimePtrInput is an input type that accepts InstancePeriodicExportConfigStartTimeArgs, InstancePeriodicExportConfigStartTimePtr and InstancePeriodicExportConfigStartTimePtrOutput values.
+// You can construct a concrete instance of `InstancePeriodicExportConfigStartTimePtrInput` via:
+//
+//	        InstancePeriodicExportConfigStartTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePeriodicExportConfigStartTimePtrInput interface {
+	pulumi.Input
+
+	ToInstancePeriodicExportConfigStartTimePtrOutput() InstancePeriodicExportConfigStartTimePtrOutput
+	ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(context.Context) InstancePeriodicExportConfigStartTimePtrOutput
+}
+
+type instancePeriodicExportConfigStartTimePtrType InstancePeriodicExportConfigStartTimeArgs
+
+func InstancePeriodicExportConfigStartTimePtr(v *InstancePeriodicExportConfigStartTimeArgs) InstancePeriodicExportConfigStartTimePtrInput {
+	return (*instancePeriodicExportConfigStartTimePtrType)(v)
+}
+
+func (*instancePeriodicExportConfigStartTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePeriodicExportConfigStartTime)(nil)).Elem()
+}
+
+func (i *instancePeriodicExportConfigStartTimePtrType) ToInstancePeriodicExportConfigStartTimePtrOutput() InstancePeriodicExportConfigStartTimePtrOutput {
+	return i.ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (i *instancePeriodicExportConfigStartTimePtrType) ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigStartTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePeriodicExportConfigStartTimePtrOutput)
+}
+
+type InstancePeriodicExportConfigStartTimeOutput struct{ *pulumi.OutputState }
+
+func (InstancePeriodicExportConfigStartTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePeriodicExportConfigStartTime)(nil)).Elem()
+}
+
+func (o InstancePeriodicExportConfigStartTimeOutput) ToInstancePeriodicExportConfigStartTimeOutput() InstancePeriodicExportConfigStartTimeOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigStartTimeOutput) ToInstancePeriodicExportConfigStartTimeOutputWithContext(ctx context.Context) InstancePeriodicExportConfigStartTimeOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigStartTimeOutput) ToInstancePeriodicExportConfigStartTimePtrOutput() InstancePeriodicExportConfigStartTimePtrOutput {
+	return o.ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(context.Background())
+}
+
+func (o InstancePeriodicExportConfigStartTimeOutput) ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigStartTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePeriodicExportConfigStartTime) *InstancePeriodicExportConfigStartTime {
+		return &v
+	}).(InstancePeriodicExportConfigStartTimePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o InstancePeriodicExportConfigStartTimeOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePeriodicExportConfigStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o InstancePeriodicExportConfigStartTimeOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePeriodicExportConfigStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o InstancePeriodicExportConfigStartTimeOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePeriodicExportConfigStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59.
+func (o InstancePeriodicExportConfigStartTimeOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePeriodicExportConfigStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type InstancePeriodicExportConfigStartTimePtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePeriodicExportConfigStartTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePeriodicExportConfigStartTime)(nil)).Elem()
+}
+
+func (o InstancePeriodicExportConfigStartTimePtrOutput) ToInstancePeriodicExportConfigStartTimePtrOutput() InstancePeriodicExportConfigStartTimePtrOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigStartTimePtrOutput) ToInstancePeriodicExportConfigStartTimePtrOutputWithContext(ctx context.Context) InstancePeriodicExportConfigStartTimePtrOutput {
+	return o
+}
+
+func (o InstancePeriodicExportConfigStartTimePtrOutput) Elem() InstancePeriodicExportConfigStartTimeOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfigStartTime) InstancePeriodicExportConfigStartTime {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePeriodicExportConfigStartTime
+		return ret
+	}).(InstancePeriodicExportConfigStartTimeOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23.
+func (o InstancePeriodicExportConfigStartTimePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o InstancePeriodicExportConfigStartTimePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o InstancePeriodicExportConfigStartTimePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59.
+func (o InstancePeriodicExportConfigStartTimePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePeriodicExportConfigStartTime) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
 type InstancePscConfig struct {
 	// List of VPCs that are allowed ingress into the Looker instance.
 	AllowedVpcs []string `pulumi:"allowedVpcs"`
@@ -2445,6 +2830,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceWindowStartTimePtrInput)(nil)).Elem(), InstanceMaintenanceWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceOauthConfigInput)(nil)).Elem(), InstanceOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceOauthConfigPtrInput)(nil)).Elem(), InstanceOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePeriodicExportConfigInput)(nil)).Elem(), InstancePeriodicExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePeriodicExportConfigPtrInput)(nil)).Elem(), InstancePeriodicExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePeriodicExportConfigStartTimeInput)(nil)).Elem(), InstancePeriodicExportConfigStartTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePeriodicExportConfigStartTimePtrInput)(nil)).Elem(), InstancePeriodicExportConfigStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscConfigInput)(nil)).Elem(), InstancePscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscConfigPtrInput)(nil)).Elem(), InstancePscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscConfigServiceAttachmentInput)(nil)).Elem(), InstancePscConfigServiceAttachmentArgs{})
@@ -2473,6 +2862,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMaintenanceWindowStartTimePtrOutput{})
 	pulumi.RegisterOutputType(InstanceOauthConfigOutput{})
 	pulumi.RegisterOutputType(InstanceOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePeriodicExportConfigOutput{})
+	pulumi.RegisterOutputType(InstancePeriodicExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePeriodicExportConfigStartTimeOutput{})
+	pulumi.RegisterOutputType(InstancePeriodicExportConfigStartTimePtrOutput{})
 	pulumi.RegisterOutputType(InstancePscConfigOutput{})
 	pulumi.RegisterOutputType(InstancePscConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstancePscConfigServiceAttachmentOutput{})

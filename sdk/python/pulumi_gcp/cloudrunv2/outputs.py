@@ -66,6 +66,8 @@ __all__ = [
     'ServiceTemplateContainerLivenessProbeTcpSocket',
     'ServiceTemplateContainerPorts',
     'ServiceTemplateContainerResources',
+    'ServiceTemplateContainerSourceCode',
+    'ServiceTemplateContainerSourceCodeCloudStorageSource',
     'ServiceTemplateContainerStartupProbe',
     'ServiceTemplateContainerStartupProbeGrpc',
     'ServiceTemplateContainerStartupProbeHttpGet',
@@ -168,6 +170,8 @@ __all__ = [
     'GetServiceTemplateContainerLivenessProbeTcpSocketResult',
     'GetServiceTemplateContainerPortResult',
     'GetServiceTemplateContainerResourceResult',
+    'GetServiceTemplateContainerSourceCodeResult',
+    'GetServiceTemplateContainerSourceCodeCloudStorageSourceResult',
     'GetServiceTemplateContainerStartupProbeResult',
     'GetServiceTemplateContainerStartupProbeGrpcResult',
     'GetServiceTemplateContainerStartupProbeHttpGetResult',
@@ -3041,6 +3045,8 @@ class ServiceTemplateContainer(dict):
             suggest = "depends_ons"
         elif key == "livenessProbe":
             suggest = "liveness_probe"
+        elif key == "sourceCode":
+            suggest = "source_code"
         elif key == "startupProbe":
             suggest = "startup_probe"
         elif key == "volumeMounts":
@@ -3071,6 +3077,7 @@ class ServiceTemplateContainer(dict):
                  name: Optional[_builtins.str] = None,
                  ports: Optional['outputs.ServiceTemplateContainerPorts'] = None,
                  resources: Optional['outputs.ServiceTemplateContainerResources'] = None,
+                 source_code: Optional['outputs.ServiceTemplateContainerSourceCode'] = None,
                  startup_probe: Optional['outputs.ServiceTemplateContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.ServiceTemplateContainerVolumeMount']] = None,
                  working_dir: Optional[_builtins.str] = None):
@@ -3092,6 +3099,8 @@ class ServiceTemplateContainer(dict):
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
         :param 'ServiceTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+               Structure is documented below.
+        :param 'ServiceTemplateContainerSourceCodeArgs' source_code: Location of the source.
                Structure is documented below.
         :param 'ServiceTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
@@ -3120,6 +3129,8 @@ class ServiceTemplateContainer(dict):
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if source_code is not None:
+            pulumi.set(__self__, "source_code", source_code)
         if startup_probe is not None:
             pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
@@ -3221,6 +3232,15 @@ class ServiceTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCode")
+    def source_code(self) -> Optional['outputs.ServiceTemplateContainerSourceCode']:
+        """
+        Location of the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_code")
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
@@ -3564,7 +3584,7 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
                
-               <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
+               <a name="nested_template_containers_build_info"></a>The `build_info` block contains:
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -3588,7 +3608,7 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
         If this is not specified, the default behavior is defined by gRPC.
 
-        <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
+        <a name="nested_template_containers_build_info"></a>The `build_info` block contains:
         """
         return pulumi.get(self, "service")
 
@@ -3820,6 +3840,85 @@ class ServiceTemplateContainerResources(dict):
 
 
 @pulumi.output_type
+class ServiceTemplateContainerSourceCode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStorageSource":
+            suggest = "cloud_storage_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateContainerSourceCode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateContainerSourceCode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateContainerSourceCode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_storage_source: Optional['outputs.ServiceTemplateContainerSourceCodeCloudStorageSource'] = None):
+        """
+        :param 'ServiceTemplateContainerSourceCodeCloudStorageSourceArgs' cloud_storage_source: Cloud Storage source.
+               Structure is documented below.
+        """
+        if cloud_storage_source is not None:
+            pulumi.set(__self__, "cloud_storage_source", cloud_storage_source)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageSource")
+    def cloud_storage_source(self) -> Optional['outputs.ServiceTemplateContainerSourceCodeCloudStorageSource']:
+        """
+        Cloud Storage source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage_source")
+
+
+@pulumi.output_type
+class ServiceTemplateContainerSourceCodeCloudStorageSource(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 object: _builtins.str,
+                 generation: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str bucket: The Cloud Storage bucket name.
+        :param _builtins.str object: The Cloud Storage object name.
+        :param _builtins.str generation: The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The Cloud Storage bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def object(self) -> _builtins.str:
+        """
+        The Cloud Storage object name.
+        """
+        return pulumi.get(self, "object")
+
+    @_builtins.property
+    @pulumi.getter
+    def generation(self) -> Optional[_builtins.str]:
+        """
+        The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+        """
+        return pulumi.get(self, "generation")
+
+
+@pulumi.output_type
 class ServiceTemplateContainerStartupProbe(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3955,7 +4054,7 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
                
-               <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
+               <a name="nested_template_containers_build_info"></a>The `build_info` block contains:
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -3979,7 +4078,7 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
         If this is not specified, the default behavior is defined by gRPC.
 
-        <a name="nested_template_containers_containers_build_info"></a>The `build_info` block contains:
+        <a name="nested_template_containers_build_info"></a>The `build_info` block contains:
         """
         return pulumi.get(self, "service")
 
@@ -9231,6 +9330,7 @@ class GetServiceTemplateContainerResult(dict):
                  name: _builtins.str,
                  ports: Sequence['outputs.GetServiceTemplateContainerPortResult'],
                  resources: Sequence['outputs.GetServiceTemplateContainerResourceResult'],
+                 source_codes: Sequence['outputs.GetServiceTemplateContainerSourceCodeResult'],
                  startup_probes: Sequence['outputs.GetServiceTemplateContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetServiceTemplateContainerVolumeMountResult'],
                  working_dir: _builtins.str):
@@ -9248,6 +9348,7 @@ class GetServiceTemplateContainerResult(dict):
                
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
         :param Sequence['GetServiceTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param Sequence['GetServiceTemplateContainerSourceCodeArgs'] source_codes: Location of the source.
         :param Sequence['GetServiceTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param Sequence['GetServiceTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
         :param _builtins.str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -9263,6 +9364,7 @@ class GetServiceTemplateContainerResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "source_codes", source_codes)
         pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
@@ -9356,6 +9458,14 @@ class GetServiceTemplateContainerResult(dict):
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCodes")
+    def source_codes(self) -> Sequence['outputs.GetServiceTemplateContainerSourceCodeResult']:
+        """
+        Location of the source.
+        """
+        return pulumi.get(self, "source_codes")
 
     @_builtins.property
     @pulumi.getter(name="startupProbes")
@@ -9779,6 +9889,64 @@ class GetServiceTemplateContainerResourceResult(dict):
         Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
         return pulumi.get(self, "startup_cpu_boost")
+
+
+@pulumi.output_type
+class GetServiceTemplateContainerSourceCodeResult(dict):
+    def __init__(__self__, *,
+                 cloud_storage_sources: Sequence['outputs.GetServiceTemplateContainerSourceCodeCloudStorageSourceResult']):
+        """
+        :param Sequence['GetServiceTemplateContainerSourceCodeCloudStorageSourceArgs'] cloud_storage_sources: Cloud Storage source.
+        """
+        pulumi.set(__self__, "cloud_storage_sources", cloud_storage_sources)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudStorageSources")
+    def cloud_storage_sources(self) -> Sequence['outputs.GetServiceTemplateContainerSourceCodeCloudStorageSourceResult']:
+        """
+        Cloud Storage source.
+        """
+        return pulumi.get(self, "cloud_storage_sources")
+
+
+@pulumi.output_type
+class GetServiceTemplateContainerSourceCodeCloudStorageSourceResult(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 generation: _builtins.str,
+                 object: _builtins.str):
+        """
+        :param _builtins.str bucket: The Cloud Storage bucket name.
+        :param _builtins.str generation: The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+        :param _builtins.str object: The Cloud Storage object name.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation", generation)
+        pulumi.set(__self__, "object", object)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The Cloud Storage bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def generation(self) -> _builtins.str:
+        """
+        The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+        """
+        return pulumi.get(self, "generation")
+
+    @_builtins.property
+    @pulumi.getter
+    def object(self) -> _builtins.str:
+        """
+        The Cloud Storage object name.
+        """
+        return pulumi.get(self, "object")
 
 
 @pulumi.output_type

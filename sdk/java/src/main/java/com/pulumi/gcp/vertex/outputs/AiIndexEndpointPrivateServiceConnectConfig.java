@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vertex.outputs.AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -23,6 +24,12 @@ public final class AiIndexEndpointPrivateServiceConnectConfig {
      * 
      */
     private @Nullable List<String> projectAllowlists;
+    /**
+     * @return List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig> pscAutomationConfigs;
 
     private AiIndexEndpointPrivateServiceConnectConfig() {}
     /**
@@ -39,6 +46,14 @@ public final class AiIndexEndpointPrivateServiceConnectConfig {
     public List<String> projectAllowlists() {
         return this.projectAllowlists == null ? List.of() : this.projectAllowlists;
     }
+    /**
+     * @return List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+     * Structure is documented below.
+     * 
+     */
+    public List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig> pscAutomationConfigs() {
+        return this.pscAutomationConfigs == null ? List.of() : this.pscAutomationConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -51,11 +66,13 @@ public final class AiIndexEndpointPrivateServiceConnectConfig {
     public static final class Builder {
         private Boolean enablePrivateServiceConnect;
         private @Nullable List<String> projectAllowlists;
+        private @Nullable List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig> pscAutomationConfigs;
         public Builder() {}
         public Builder(AiIndexEndpointPrivateServiceConnectConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enablePrivateServiceConnect = defaults.enablePrivateServiceConnect;
     	      this.projectAllowlists = defaults.projectAllowlists;
+    	      this.pscAutomationConfigs = defaults.pscAutomationConfigs;
         }
 
         @CustomType.Setter
@@ -75,10 +92,20 @@ public final class AiIndexEndpointPrivateServiceConnectConfig {
         public Builder projectAllowlists(String... projectAllowlists) {
             return projectAllowlists(List.of(projectAllowlists));
         }
+        @CustomType.Setter
+        public Builder pscAutomationConfigs(@Nullable List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig> pscAutomationConfigs) {
+
+            this.pscAutomationConfigs = pscAutomationConfigs;
+            return this;
+        }
+        public Builder pscAutomationConfigs(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig... pscAutomationConfigs) {
+            return pscAutomationConfigs(List.of(pscAutomationConfigs));
+        }
         public AiIndexEndpointPrivateServiceConnectConfig build() {
             final var _resultValue = new AiIndexEndpointPrivateServiceConnectConfig();
             _resultValue.enablePrivateServiceConnect = enablePrivateServiceConnect;
             _resultValue.projectAllowlists = projectAllowlists;
+            _resultValue.pscAutomationConfigs = pscAutomationConfigs;
             return _resultValue;
         }
     }

@@ -15,7 +15,7 @@ public final class JobConfigElementaryStreamVideoStream {
      * @return H264 codec settings
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
+     * &lt;a name=&#34;nestedConfigElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
      * 
      */
     private @Nullable JobConfigElementaryStreamVideoStreamH264 h264;
@@ -25,7 +25,7 @@ public final class JobConfigElementaryStreamVideoStream {
      * @return H264 codec settings
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
+     * &lt;a name=&#34;nestedConfigElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
      * 
      */
     public Optional<JobConfigElementaryStreamVideoStreamH264> h264() {

@@ -10653,7 +10653,7 @@ type GetDatabaseInstancesInstance struct {
 	ReplicaConfigurations []GetDatabaseInstancesInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
 	// The replicas of the instance.
 	ReplicaNames []string `pulumi:"replicaNames"`
-	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 	ReplicationClusters   []GetDatabaseInstancesInstanceReplicationCluster   `pulumi:"replicationClusters"`
 	RestoreBackupContexts []GetDatabaseInstancesInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
@@ -10727,7 +10727,7 @@ type GetDatabaseInstancesInstanceArgs struct {
 	ReplicaConfigurations GetDatabaseInstancesInstanceReplicaConfigurationArrayInput `pulumi:"replicaConfigurations"`
 	// The replicas of the instance.
 	ReplicaNames pulumi.StringArrayInput `pulumi:"replicaNames"`
-	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 	ReplicationClusters   GetDatabaseInstancesInstanceReplicationClusterArrayInput   `pulumi:"replicationClusters"`
 	RestoreBackupContexts GetDatabaseInstancesInstanceRestoreBackupContextArrayInput `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
@@ -10919,7 +10919,7 @@ func (o GetDatabaseInstancesInstanceOutput) ReplicaNames() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []string { return v.ReplicaNames }).(pulumi.StringArrayOutput)
 }
 
-// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
 func (o GetDatabaseInstancesInstanceOutput) ReplicationClusters() GetDatabaseInstancesInstanceReplicationClusterArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceReplicationCluster {
 		return v.ReplicationClusters

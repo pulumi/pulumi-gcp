@@ -177,6 +177,444 @@ func (o DatabaseHiveOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type IcebergCatalogIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// IcebergCatalogIamBindingConditionInput is an input type that accepts IcebergCatalogIamBindingConditionArgs and IcebergCatalogIamBindingConditionOutput values.
+// You can construct a concrete instance of `IcebergCatalogIamBindingConditionInput` via:
+//
+//	IcebergCatalogIamBindingConditionArgs{...}
+type IcebergCatalogIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogIamBindingConditionOutput() IcebergCatalogIamBindingConditionOutput
+	ToIcebergCatalogIamBindingConditionOutputWithContext(context.Context) IcebergCatalogIamBindingConditionOutput
+}
+
+type IcebergCatalogIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (IcebergCatalogIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (i IcebergCatalogIamBindingConditionArgs) ToIcebergCatalogIamBindingConditionOutput() IcebergCatalogIamBindingConditionOutput {
+	return i.ToIcebergCatalogIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogIamBindingConditionArgs) ToIcebergCatalogIamBindingConditionOutputWithContext(ctx context.Context) IcebergCatalogIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogIamBindingConditionOutput)
+}
+
+func (i IcebergCatalogIamBindingConditionArgs) ToIcebergCatalogIamBindingConditionPtrOutput() IcebergCatalogIamBindingConditionPtrOutput {
+	return i.ToIcebergCatalogIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogIamBindingConditionArgs) ToIcebergCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogIamBindingConditionOutput).ToIcebergCatalogIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogIamBindingConditionPtrInput is an input type that accepts IcebergCatalogIamBindingConditionArgs, IcebergCatalogIamBindingConditionPtr and IcebergCatalogIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogIamBindingConditionPtrInput` via:
+//
+//	        IcebergCatalogIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogIamBindingConditionPtrOutput() IcebergCatalogIamBindingConditionPtrOutput
+	ToIcebergCatalogIamBindingConditionPtrOutputWithContext(context.Context) IcebergCatalogIamBindingConditionPtrOutput
+}
+
+type icebergCatalogIamBindingConditionPtrType IcebergCatalogIamBindingConditionArgs
+
+func IcebergCatalogIamBindingConditionPtr(v *IcebergCatalogIamBindingConditionArgs) IcebergCatalogIamBindingConditionPtrInput {
+	return (*icebergCatalogIamBindingConditionPtrType)(v)
+}
+
+func (*icebergCatalogIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (i *icebergCatalogIamBindingConditionPtrType) ToIcebergCatalogIamBindingConditionPtrOutput() IcebergCatalogIamBindingConditionPtrOutput {
+	return i.ToIcebergCatalogIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogIamBindingConditionPtrType) ToIcebergCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogIamBindingConditionPtrOutput)
+}
+
+type IcebergCatalogIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (o IcebergCatalogIamBindingConditionOutput) ToIcebergCatalogIamBindingConditionOutput() IcebergCatalogIamBindingConditionOutput {
+	return o
+}
+
+func (o IcebergCatalogIamBindingConditionOutput) ToIcebergCatalogIamBindingConditionOutputWithContext(ctx context.Context) IcebergCatalogIamBindingConditionOutput {
+	return o
+}
+
+func (o IcebergCatalogIamBindingConditionOutput) ToIcebergCatalogIamBindingConditionPtrOutput() IcebergCatalogIamBindingConditionPtrOutput {
+	return o.ToIcebergCatalogIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogIamBindingConditionOutput) ToIcebergCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogIamBindingCondition) *IcebergCatalogIamBindingCondition {
+		return &v
+	}).(IcebergCatalogIamBindingConditionPtrOutput)
+}
+
+func (o IcebergCatalogIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergCatalogIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o IcebergCatalogIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IcebergCatalogIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogIamBindingCondition)(nil)).Elem()
+}
+
+func (o IcebergCatalogIamBindingConditionPtrOutput) ToIcebergCatalogIamBindingConditionPtrOutput() IcebergCatalogIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogIamBindingConditionPtrOutput) ToIcebergCatalogIamBindingConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogIamBindingConditionPtrOutput) Elem() IcebergCatalogIamBindingConditionOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamBindingCondition) IcebergCatalogIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogIamBindingCondition
+		return ret
+	}).(IcebergCatalogIamBindingConditionOutput)
+}
+
+func (o IcebergCatalogIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergCatalogIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergCatalogIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// IcebergCatalogIamMemberConditionInput is an input type that accepts IcebergCatalogIamMemberConditionArgs and IcebergCatalogIamMemberConditionOutput values.
+// You can construct a concrete instance of `IcebergCatalogIamMemberConditionInput` via:
+//
+//	IcebergCatalogIamMemberConditionArgs{...}
+type IcebergCatalogIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogIamMemberConditionOutput() IcebergCatalogIamMemberConditionOutput
+	ToIcebergCatalogIamMemberConditionOutputWithContext(context.Context) IcebergCatalogIamMemberConditionOutput
+}
+
+type IcebergCatalogIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (IcebergCatalogIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (i IcebergCatalogIamMemberConditionArgs) ToIcebergCatalogIamMemberConditionOutput() IcebergCatalogIamMemberConditionOutput {
+	return i.ToIcebergCatalogIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogIamMemberConditionArgs) ToIcebergCatalogIamMemberConditionOutputWithContext(ctx context.Context) IcebergCatalogIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogIamMemberConditionOutput)
+}
+
+func (i IcebergCatalogIamMemberConditionArgs) ToIcebergCatalogIamMemberConditionPtrOutput() IcebergCatalogIamMemberConditionPtrOutput {
+	return i.ToIcebergCatalogIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogIamMemberConditionArgs) ToIcebergCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogIamMemberConditionOutput).ToIcebergCatalogIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogIamMemberConditionPtrInput is an input type that accepts IcebergCatalogIamMemberConditionArgs, IcebergCatalogIamMemberConditionPtr and IcebergCatalogIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogIamMemberConditionPtrInput` via:
+//
+//	        IcebergCatalogIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogIamMemberConditionPtrOutput() IcebergCatalogIamMemberConditionPtrOutput
+	ToIcebergCatalogIamMemberConditionPtrOutputWithContext(context.Context) IcebergCatalogIamMemberConditionPtrOutput
+}
+
+type icebergCatalogIamMemberConditionPtrType IcebergCatalogIamMemberConditionArgs
+
+func IcebergCatalogIamMemberConditionPtr(v *IcebergCatalogIamMemberConditionArgs) IcebergCatalogIamMemberConditionPtrInput {
+	return (*icebergCatalogIamMemberConditionPtrType)(v)
+}
+
+func (*icebergCatalogIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (i *icebergCatalogIamMemberConditionPtrType) ToIcebergCatalogIamMemberConditionPtrOutput() IcebergCatalogIamMemberConditionPtrOutput {
+	return i.ToIcebergCatalogIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogIamMemberConditionPtrType) ToIcebergCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogIamMemberConditionPtrOutput)
+}
+
+type IcebergCatalogIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (o IcebergCatalogIamMemberConditionOutput) ToIcebergCatalogIamMemberConditionOutput() IcebergCatalogIamMemberConditionOutput {
+	return o
+}
+
+func (o IcebergCatalogIamMemberConditionOutput) ToIcebergCatalogIamMemberConditionOutputWithContext(ctx context.Context) IcebergCatalogIamMemberConditionOutput {
+	return o
+}
+
+func (o IcebergCatalogIamMemberConditionOutput) ToIcebergCatalogIamMemberConditionPtrOutput() IcebergCatalogIamMemberConditionPtrOutput {
+	return o.ToIcebergCatalogIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogIamMemberConditionOutput) ToIcebergCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogIamMemberCondition) *IcebergCatalogIamMemberCondition {
+		return &v
+	}).(IcebergCatalogIamMemberConditionPtrOutput)
+}
+
+func (o IcebergCatalogIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergCatalogIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o IcebergCatalogIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IcebergCatalogIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogIamMemberCondition)(nil)).Elem()
+}
+
+func (o IcebergCatalogIamMemberConditionPtrOutput) ToIcebergCatalogIamMemberConditionPtrOutput() IcebergCatalogIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogIamMemberConditionPtrOutput) ToIcebergCatalogIamMemberConditionPtrOutputWithContext(ctx context.Context) IcebergCatalogIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogIamMemberConditionPtrOutput) Elem() IcebergCatalogIamMemberConditionOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamMemberCondition) IcebergCatalogIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogIamMemberCondition
+		return ret
+	}).(IcebergCatalogIamMemberConditionOutput)
+}
+
+func (o IcebergCatalogIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergCatalogIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IcebergCatalogIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogReplica struct {
+	// (Output)
+	// The region of the replica, e.g., `us-east1`.
+	Region *string `pulumi:"region"`
+	// (Output)
+	// If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+	State *string `pulumi:"state"`
+}
+
+// IcebergCatalogReplicaInput is an input type that accepts IcebergCatalogReplicaArgs and IcebergCatalogReplicaOutput values.
+// You can construct a concrete instance of `IcebergCatalogReplicaInput` via:
+//
+//	IcebergCatalogReplicaArgs{...}
+type IcebergCatalogReplicaInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogReplicaOutput() IcebergCatalogReplicaOutput
+	ToIcebergCatalogReplicaOutputWithContext(context.Context) IcebergCatalogReplicaOutput
+}
+
+type IcebergCatalogReplicaArgs struct {
+	// (Output)
+	// The region of the replica, e.g., `us-east1`.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// (Output)
+	// If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (IcebergCatalogReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogReplica)(nil)).Elem()
+}
+
+func (i IcebergCatalogReplicaArgs) ToIcebergCatalogReplicaOutput() IcebergCatalogReplicaOutput {
+	return i.ToIcebergCatalogReplicaOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogReplicaArgs) ToIcebergCatalogReplicaOutputWithContext(ctx context.Context) IcebergCatalogReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogReplicaOutput)
+}
+
+// IcebergCatalogReplicaArrayInput is an input type that accepts IcebergCatalogReplicaArray and IcebergCatalogReplicaArrayOutput values.
+// You can construct a concrete instance of `IcebergCatalogReplicaArrayInput` via:
+//
+//	IcebergCatalogReplicaArray{ IcebergCatalogReplicaArgs{...} }
+type IcebergCatalogReplicaArrayInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogReplicaArrayOutput() IcebergCatalogReplicaArrayOutput
+	ToIcebergCatalogReplicaArrayOutputWithContext(context.Context) IcebergCatalogReplicaArrayOutput
+}
+
+type IcebergCatalogReplicaArray []IcebergCatalogReplicaInput
+
+func (IcebergCatalogReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergCatalogReplica)(nil)).Elem()
+}
+
+func (i IcebergCatalogReplicaArray) ToIcebergCatalogReplicaArrayOutput() IcebergCatalogReplicaArrayOutput {
+	return i.ToIcebergCatalogReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogReplicaArray) ToIcebergCatalogReplicaArrayOutputWithContext(ctx context.Context) IcebergCatalogReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogReplicaArrayOutput)
+}
+
+type IcebergCatalogReplicaOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogReplica)(nil)).Elem()
+}
+
+func (o IcebergCatalogReplicaOutput) ToIcebergCatalogReplicaOutput() IcebergCatalogReplicaOutput {
+	return o
+}
+
+func (o IcebergCatalogReplicaOutput) ToIcebergCatalogReplicaOutputWithContext(ctx context.Context) IcebergCatalogReplicaOutput {
+	return o
+}
+
+// (Output)
+// The region of the replica, e.g., `us-east1`.
+func (o IcebergCatalogReplicaOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogReplica) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+func (o IcebergCatalogReplicaOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogReplica) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergCatalogReplica)(nil)).Elem()
+}
+
+func (o IcebergCatalogReplicaArrayOutput) ToIcebergCatalogReplicaArrayOutput() IcebergCatalogReplicaArrayOutput {
+	return o
+}
+
+func (o IcebergCatalogReplicaArrayOutput) ToIcebergCatalogReplicaArrayOutputWithContext(ctx context.Context) IcebergCatalogReplicaArrayOutput {
+	return o
+}
+
+func (o IcebergCatalogReplicaArrayOutput) Index(i pulumi.IntInput) IcebergCatalogReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergCatalogReplica {
+		return vs[0].([]IcebergCatalogReplica)[vs[1].(int)]
+	}).(IcebergCatalogReplicaOutput)
+}
+
 type TableHiveOptions struct {
 	// Stores user supplied Hive table parameters. An object containing a
 	// list of "key": value pairs.
@@ -542,12 +980,24 @@ func (o TableHiveOptionsStorageDescriptorPtrOutput) OutputFormat() pulumi.String
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseHiveOptionsInput)(nil)).Elem(), DatabaseHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseHiveOptionsPtrInput)(nil)).Elem(), DatabaseHiveOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionPtrInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamMemberConditionInput)(nil)).Elem(), IcebergCatalogIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamMemberConditionPtrInput)(nil)).Elem(), IcebergCatalogIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogReplicaInput)(nil)).Elem(), IcebergCatalogReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogReplicaArrayInput)(nil)).Elem(), IcebergCatalogReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsInput)(nil)).Elem(), TableHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsPtrInput)(nil)).Elem(), TableHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorPtrInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsOutput{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsPtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogReplicaOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogReplicaArrayOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorOutput{})

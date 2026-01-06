@@ -140,7 +140,9 @@ type Volume struct {
 	HasReplication pulumi.BoolOutput `pulumi:"hasReplication"`
 	// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
 	HotTierSizeUsedGib pulumi.StringOutput `pulumi:"hotTierSizeUsedGib"`
-	// The Hybrid Replication parameters for the volume.
+	// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+	// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+	// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
 	// Structure is documented below.
 	HybridReplicationParameters VolumeHybridReplicationParametersPtrOutput `pulumi:"hybridReplicationParameters"`
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -306,7 +308,9 @@ type volumeState struct {
 	HasReplication *bool `pulumi:"hasReplication"`
 	// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
 	HotTierSizeUsedGib *string `pulumi:"hotTierSizeUsedGib"`
-	// The Hybrid Replication parameters for the volume.
+	// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+	// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+	// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
 	// Structure is documented below.
 	HybridReplicationParameters *VolumeHybridReplicationParameters `pulumi:"hybridReplicationParameters"`
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -426,7 +430,9 @@ type VolumeState struct {
 	HasReplication pulumi.BoolPtrInput
 	// Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
 	HotTierSizeUsedGib pulumi.StringPtrInput
-	// The Hybrid Replication parameters for the volume.
+	// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+	// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+	// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
 	// Structure is documented below.
 	HybridReplicationParameters VolumeHybridReplicationParametersPtrInput
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -536,7 +542,9 @@ type volumeArgs struct {
 	// Export policy of the volume for NFSV3 and/or NFSV4.1 access.
 	// Structure is documented below.
 	ExportPolicy *VolumeExportPolicy `pulumi:"exportPolicy"`
-	// The Hybrid Replication parameters for the volume.
+	// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+	// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+	// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
 	// Structure is documented below.
 	HybridReplicationParameters *VolumeHybridReplicationParameters `pulumi:"hybridReplicationParameters"`
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -617,7 +625,9 @@ type VolumeArgs struct {
 	// Export policy of the volume for NFSV3 and/or NFSV4.1 access.
 	// Structure is documented below.
 	ExportPolicy VolumeExportPolicyPtrInput
-	// The Hybrid Replication parameters for the volume.
+	// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+	// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+	// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
 	// Structure is documented below.
 	HybridReplicationParameters VolumeHybridReplicationParametersPtrInput
 	// Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
@@ -839,7 +849,9 @@ func (o VolumeOutput) HotTierSizeUsedGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.HotTierSizeUsedGib }).(pulumi.StringOutput)
 }
 
-// The Hybrid Replication parameters for the volume.
+// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
 // Structure is documented below.
 func (o VolumeOutput) HybridReplicationParameters() VolumeHybridReplicationParametersPtrOutput {
 	return o.ApplyT(func(v *Volume) VolumeHybridReplicationParametersPtrOutput { return v.HybridReplicationParameters }).(VolumeHybridReplicationParametersPtrOutput)

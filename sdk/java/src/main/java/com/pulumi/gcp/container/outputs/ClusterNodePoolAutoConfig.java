@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolAutoConfig {
     /**
-     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` and `nodeKernelModuleLoading` fields are supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolAutoConfigLinuxNodeConfig linuxNodeConfig;
@@ -39,7 +39,7 @@ public final class ClusterNodePoolAutoConfig {
 
     private ClusterNodePoolAutoConfig() {}
     /**
-     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` and `nodeKernelModuleLoading` fields are supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolAutoConfigLinuxNodeConfig> linuxNodeConfig() {

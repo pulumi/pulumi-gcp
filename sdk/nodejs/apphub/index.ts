@@ -10,6 +10,11 @@ export type Application = import("./application").Application;
 export const Application: typeof import("./application").Application = null as any;
 utilities.lazyLoad(exports, ["Application"], () => require("./application"));
 
+export { BoundaryArgs, BoundaryState } from "./boundary";
+export type Boundary = import("./boundary").Boundary;
+export const Boundary: typeof import("./boundary").Boundary = null as any;
+utilities.lazyLoad(exports, ["Boundary"], () => require("./boundary"));
+
 export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
 export const getApplication: typeof import("./getApplication").getApplication = null as any;
 export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
@@ -47,6 +52,8 @@ const _module = {
         switch (type) {
             case "gcp:apphub/application:Application":
                 return new Application(name, <any>undefined, { urn })
+            case "gcp:apphub/boundary:Boundary":
+                return new Boundary(name, <any>undefined, { urn })
             case "gcp:apphub/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment":
@@ -59,6 +66,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "apphub/application", _module)
+pulumi.runtime.registerResourceModule("gcp", "apphub/boundary", _module)
 pulumi.runtime.registerResourceModule("gcp", "apphub/service", _module)
 pulumi.runtime.registerResourceModule("gcp", "apphub/serviceProjectAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apphub/workload", _module)

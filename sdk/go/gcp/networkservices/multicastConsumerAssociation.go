@@ -14,6 +14,12 @@ import (
 
 // Create a multicast consumer association in the specified location of the current project.
 //
+// To get more information about MulticastConsumerAssociation, see:
+//
+// * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastConsumerAssociations)
+// * How-to Guides
+//   - [Create Multicast Consumer Association](https://docs.cloud.google.com/vpc/docs/multicast/enable-consumer-network#add-consumer)
+//
 // ## Example Usage
 //
 // ### Network Services Multicast Consumer Association Basic
@@ -121,7 +127,7 @@ type MulticastConsumerAssociation struct {
 	// exceed 48 characters.
 	MulticastConsumerAssociationId pulumi.StringOutput `pulumi:"multicastConsumerAssociationId"`
 	// The resource name of the multicast domain activation that is in the
-	// same zone as this multicast producer association.
+	// same zone as this multicast consumer association.
 	// Use the following format:
 	// // `projects/*/locations/*/multicastDomainActivations/*`.
 	MulticastDomainActivation pulumi.StringOutput `pulumi:"multicastDomainActivation"`
@@ -232,7 +238,7 @@ type multicastConsumerAssociationState struct {
 	// exceed 48 characters.
 	MulticastConsumerAssociationId *string `pulumi:"multicastConsumerAssociationId"`
 	// The resource name of the multicast domain activation that is in the
-	// same zone as this multicast producer association.
+	// same zone as this multicast consumer association.
 	// Use the following format:
 	// // `projects/*/locations/*/multicastDomainActivations/*`.
 	MulticastDomainActivation *string `pulumi:"multicastDomainActivation"`
@@ -297,7 +303,7 @@ type MulticastConsumerAssociationState struct {
 	// exceed 48 characters.
 	MulticastConsumerAssociationId pulumi.StringPtrInput
 	// The resource name of the multicast domain activation that is in the
-	// same zone as this multicast producer association.
+	// same zone as this multicast consumer association.
 	// Use the following format:
 	// // `projects/*/locations/*/multicastDomainActivations/*`.
 	MulticastDomainActivation pulumi.StringPtrInput
@@ -361,7 +367,7 @@ type multicastConsumerAssociationArgs struct {
 	// exceed 48 characters.
 	MulticastConsumerAssociationId string `pulumi:"multicastConsumerAssociationId"`
 	// The resource name of the multicast domain activation that is in the
-	// same zone as this multicast producer association.
+	// same zone as this multicast consumer association.
 	// Use the following format:
 	// // `projects/*/locations/*/multicastDomainActivations/*`.
 	MulticastDomainActivation string `pulumi:"multicastDomainActivation"`
@@ -390,7 +396,7 @@ type MulticastConsumerAssociationArgs struct {
 	// exceed 48 characters.
 	MulticastConsumerAssociationId pulumi.StringInput
 	// The resource name of the multicast domain activation that is in the
-	// same zone as this multicast producer association.
+	// same zone as this multicast consumer association.
 	// Use the following format:
 	// // `projects/*/locations/*/multicastDomainActivations/*`.
 	MulticastDomainActivation pulumi.StringInput
@@ -527,7 +533,7 @@ func (o MulticastConsumerAssociationOutput) MulticastConsumerAssociationId() pul
 }
 
 // The resource name of the multicast domain activation that is in the
-// same zone as this multicast producer association.
+// same zone as this multicast consumer association.
 // Use the following format:
 // // `projects/*/locations/*/multicastDomainActivations/*`.
 func (o MulticastConsumerAssociationOutput) MulticastDomainActivation() pulumi.StringOutput {

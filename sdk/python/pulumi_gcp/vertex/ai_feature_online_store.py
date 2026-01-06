@@ -24,6 +24,7 @@ class AiFeatureOnlineStoreArgs:
                  bigtable: Optional[pulumi.Input['AiFeatureOnlineStoreBigtableArgs']] = None,
                  dedicated_serving_endpoint: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
                  embedding_management: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,6 +41,8 @@ class AiFeatureOnlineStoreArgs:
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+        :param pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs'] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your feature online stores.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -59,6 +62,8 @@ class AiFeatureOnlineStoreArgs:
             pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
         if embedding_management is not None:
             pulumi.set(__self__, "embedding_management", embedding_management)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if labels is not None:
@@ -113,6 +118,19 @@ class AiFeatureOnlineStoreArgs:
     @embedding_management.setter
     def embedding_management(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]):
         pulumi.set(self, "embedding_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]:
+        """
+        If set, both of the online and offline data storage will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
@@ -198,6 +216,7 @@ class _AiFeatureOnlineStoreState:
                  dedicated_serving_endpoint: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointArgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  embedding_management: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']] = None,
                  etag: Optional[pulumi.Input[_builtins.str]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -220,6 +239,8 @@ class _AiFeatureOnlineStoreState:
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+        :param pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs'] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your feature online stores.
@@ -248,6 +269,8 @@ class _AiFeatureOnlineStoreState:
             pulumi.log.warn("""embedding_management is deprecated: `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type""")
         if embedding_management is not None:
             pulumi.set(__self__, "embedding_management", embedding_management)
+        if encryption_spec is not None:
+            pulumi.set(__self__, "encryption_spec", encryption_spec)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if force_destroy is not None:
@@ -334,6 +357,19 @@ class _AiFeatureOnlineStoreState:
     @embedding_management.setter
     def embedding_management(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEmbeddingManagementArgs']]):
         pulumi.set(self, "embedding_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]:
+        """
+        If set, both of the online and offline data storage will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
+
+    @encryption_spec.setter
+    def encryption_spec(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreEncryptionSpecArgs']]):
+        pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -469,6 +505,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                  bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
                  dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
                  embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -594,6 +631,8 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your feature online stores.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -736,6 +775,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                  bigtable: Optional[pulumi.Input[Union['AiFeatureOnlineStoreBigtableArgs', 'AiFeatureOnlineStoreBigtableArgsDict']]] = None,
                  dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
                  embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
+                 encryption_spec: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -754,6 +794,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             __props__.__dict__["bigtable"] = bigtable
             __props__.__dict__["dedicated_serving_endpoint"] = dedicated_serving_endpoint
             __props__.__dict__["embedding_management"] = embedding_management
+            __props__.__dict__["encryption_spec"] = encryption_spec
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -783,6 +824,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
             dedicated_serving_endpoint: Optional[pulumi.Input[Union['AiFeatureOnlineStoreDedicatedServingEndpointArgs', 'AiFeatureOnlineStoreDedicatedServingEndpointArgsDict']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             embedding_management: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEmbeddingManagementArgs', 'AiFeatureOnlineStoreEmbeddingManagementArgsDict']]] = None,
+            encryption_spec: Optional[pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']]] = None,
             etag: Optional[pulumi.Input[_builtins.str]] = None,
             force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -810,6 +852,8 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
                Structure is documented below.
                
                > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+        :param pulumi.Input[Union['AiFeatureOnlineStoreEncryptionSpecArgs', 'AiFeatureOnlineStoreEncryptionSpecArgsDict']] encryption_spec: If set, both of the online and offline data storage will be secured by this key.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels with user-defined metadata to organize your feature online stores.
@@ -834,6 +878,7 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         __props__.__dict__["dedicated_serving_endpoint"] = dedicated_serving_endpoint
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["embedding_management"] = embedding_management
+        __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["etag"] = etag
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["labels"] = labels
@@ -891,6 +936,15 @@ class AiFeatureOnlineStore(pulumi.CustomResource):
         > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
         """
         return pulumi.get(self, "embedding_management")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionSpec")
+    def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiFeatureOnlineStoreEncryptionSpec']]:
+        """
+        If set, both of the online and offline data storage will be secured by this key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_spec")
 
     @_builtins.property
     @pulumi.getter

@@ -37,6 +37,10 @@ __all__ = [
     'InstanceMaintenanceWindowStartTimeArgsDict',
     'InstanceOauthConfigArgs',
     'InstanceOauthConfigArgsDict',
+    'InstancePeriodicExportConfigArgs',
+    'InstancePeriodicExportConfigArgsDict',
+    'InstancePeriodicExportConfigStartTimeArgs',
+    'InstancePeriodicExportConfigStartTimeArgsDict',
     'InstancePscConfigArgs',
     'InstancePscConfigArgsDict',
     'InstancePscConfigServiceAttachmentArgs',
@@ -807,6 +811,179 @@ class InstanceOauthConfigArgs:
     @client_secret.setter
     def client_secret(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "client_secret", value)
+
+
+if not MYPY:
+    class InstancePeriodicExportConfigArgsDict(TypedDict):
+        gcs_uri: pulumi.Input[_builtins.str]
+        """
+        Cloud Storage bucket URI for periodic export.
+        Format: gs://{bucket_name}
+        """
+        kms_key: pulumi.Input[_builtins.str]
+        """
+        Name of the CMEK key in KMS.
+        Format:
+        projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+        """
+        start_time: pulumi.Input['InstancePeriodicExportConfigStartTimeArgsDict']
+        """
+        Time in UTC to start the periodic export job.
+        Structure is documented below.
+        """
+elif False:
+    InstancePeriodicExportConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePeriodicExportConfigArgs:
+    def __init__(__self__, *,
+                 gcs_uri: pulumi.Input[_builtins.str],
+                 kms_key: pulumi.Input[_builtins.str],
+                 start_time: pulumi.Input['InstancePeriodicExportConfigStartTimeArgs']):
+        """
+        :param pulumi.Input[_builtins.str] gcs_uri: Cloud Storage bucket URI for periodic export.
+               Format: gs://{bucket_name}
+        :param pulumi.Input[_builtins.str] kms_key: Name of the CMEK key in KMS.
+               Format:
+               projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+        :param pulumi.Input['InstancePeriodicExportConfigStartTimeArgs'] start_time: Time in UTC to start the periodic export job.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "gcs_uri", gcs_uri)
+        pulumi.set(__self__, "kms_key", kms_key)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> pulumi.Input[_builtins.str]:
+        """
+        Cloud Storage bucket URI for periodic export.
+        Format: gs://{bucket_name}
+        """
+        return pulumi.get(self, "gcs_uri")
+
+    @gcs_uri.setter
+    def gcs_uri(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "gcs_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the CMEK key in KMS.
+        Format:
+        projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input['InstancePeriodicExportConfigStartTimeArgs']:
+        """
+        Time in UTC to start the periodic export job.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input['InstancePeriodicExportConfigStartTimeArgs']):
+        pulumi.set(self, "start_time", value)
+
+
+if not MYPY:
+    class InstancePeriodicExportConfigStartTimeArgsDict(TypedDict):
+        hours: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        minutes: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        nanos: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        seconds: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        """
+elif False:
+    InstancePeriodicExportConfigStartTimeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePeriodicExportConfigStartTimeArgs:
+    def __init__(__self__, *,
+                 hours: Optional[pulumi.Input[_builtins.int]] = None,
+                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
+                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
+                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
+        :param pulumi.Input[_builtins.int] minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param pulumi.Input[_builtins.int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param pulumi.Input[_builtins.int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+        """
+        if hours is not None:
+            pulumi.set(__self__, "hours", hours)
+        if minutes is not None:
+            pulumi.set(__self__, "minutes", minutes)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        """
+        return pulumi.get(self, "hours")
+
+    @hours.setter
+    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "hours", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
+        return pulumi.get(self, "minutes")
+
+    @minutes.setter
+    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "minutes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "nanos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "seconds", value)
 
 
 if not MYPY:

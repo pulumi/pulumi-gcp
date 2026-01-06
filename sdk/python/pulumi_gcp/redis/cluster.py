@@ -28,6 +28,7 @@ class ClusterArgs:
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gcs_source: Optional[pulumi.Input['ClusterGcsSourceArgs']] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  managed_backup_source: Optional[pulumi.Input['ClusterManagedBackupSourceArgs']] = None,
@@ -57,6 +58,9 @@ class ClusterArgs:
         :param pulumi.Input['ClusterGcsSourceArgs'] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[_builtins.str] maintenance_version: This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
@@ -101,6 +105,8 @@ class ClusterArgs:
             pulumi.set(__self__, "gcs_source", gcs_source)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_version is not None:
@@ -218,6 +224,20 @@ class ClusterArgs:
     @kms_key.setter
     def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
@@ -404,9 +424,11 @@ class _ClusterState:
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  gcs_source: Optional[pulumi.Input['ClusterGcsSourceArgs']] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]] = None,
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -420,6 +442,7 @@ class _ClusterState:
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
                  psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
                  psc_service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  replica_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -452,10 +475,14 @@ class _ClusterState:
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_maintenance_version: This field represents the actual maintenance version of the cluster.
         :param pulumi.Input['ClusterGcsSourceArgs'] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
@@ -484,6 +511,8 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]] psc_service_attachments: Service attachment details to configure Psc connections.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -518,12 +547,16 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if discovery_endpoints is not None:
             pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if effective_maintenance_version is not None:
             pulumi.set(__self__, "effective_maintenance_version", effective_maintenance_version)
         if gcs_source is not None:
             pulumi.set(__self__, "gcs_source", gcs_source)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if maintenance_schedules is not None:
@@ -550,6 +583,8 @@ class _ClusterState:
             pulumi.set(__self__, "psc_connections", psc_connections)
         if psc_service_attachments is not None:
             pulumi.set(__self__, "psc_service_attachments", psc_service_attachments)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if region is not None:
@@ -680,6 +715,18 @@ class _ClusterState:
         pulumi.set(self, "discovery_endpoints", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="effectiveMaintenanceVersion")
     def effective_maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -715,6 +762,20 @@ class _ClusterState:
     @kms_key.setter
     def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
@@ -888,6 +949,19 @@ class _ClusterState:
         pulumi.set(self, "psc_service_attachments", value)
 
     @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -1027,6 +1101,7 @@ class Cluster(pulumi.CustomResource):
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
@@ -1045,6 +1120,64 @@ class Cluster(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ### Redis Cluster Ha With Labels
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=consumer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-policy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=consumer_net.id,
+            psc_config={
+                "subnetworks": [consumer_subnet.id],
+            })
+        cluster_ha_with_labels = gcp.redis.Cluster("cluster-ha-with-labels",
+            name="ha-cluster",
+            shard_count=3,
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            psc_configs=[{
+                "network": consumer_net.id,
+            }],
+            region="us-central1",
+            replica_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            deletion_protection_enabled=True,
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
         ### Redis Cluster Ha
 
         ```python
@@ -1469,6 +1602,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[_builtins.str] maintenance_version: This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
@@ -1510,6 +1646,64 @@ class Cluster(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ### Redis Cluster Ha With Labels
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        consumer_net = gcp.compute.Network("consumer_net",
+            name="my-network",
+            auto_create_subnetworks=False)
+        consumer_subnet = gcp.compute.Subnetwork("consumer_subnet",
+            name="my-subnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=consumer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="my-policy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=consumer_net.id,
+            psc_config={
+                "subnetworks": [consumer_subnet.id],
+            })
+        cluster_ha_with_labels = gcp.redis.Cluster("cluster-ha-with-labels",
+            name="ha-cluster",
+            shard_count=3,
+            labels={
+                "my_key": "my_val",
+                "other_key": "other_val",
+            },
+            psc_configs=[{
+                "network": consumer_net.id,
+            }],
+            region="us-central1",
+            replica_count=1,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            deletion_protection_enabled=True,
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
         ### Redis Cluster Ha
 
         ```python
@@ -1940,6 +2134,7 @@ class Cluster(pulumi.CustomResource):
                  deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
                  managed_backup_source: Optional[pulumi.Input[Union['ClusterManagedBackupSourceArgs', 'ClusterManagedBackupSourceArgsDict']]] = None,
@@ -1969,6 +2164,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["gcs_source"] = gcs_source
             __props__.__dict__["kms_key"] = kms_key
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["managed_backup_source"] = managed_backup_source
@@ -1989,16 +2185,20 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["backup_collection"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoints"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["effective_maintenance_version"] = None
             __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["managed_server_cas"] = None
             __props__.__dict__["precise_size_gb"] = None
             __props__.__dict__["psc_connections"] = None
             __props__.__dict__["psc_service_attachments"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["size_gb"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_infos"] = None
             __props__.__dict__["uid"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cluster, __self__).__init__(
             'gcp:redis/cluster:Cluster',
             resource_name,
@@ -2017,9 +2217,11 @@ class Cluster(pulumi.CustomResource):
             cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
             gcs_source: Optional[pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
             kms_key: Optional[pulumi.Input[_builtins.str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]]] = None,
             maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2033,6 +2235,7 @@ class Cluster(pulumi.CustomResource):
             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict']]]]] = None,
             psc_service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict']]]]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             replica_count: Optional[pulumi.Input[_builtins.int]] = None,
@@ -2070,10 +2273,14 @@ class Cluster(pulumi.CustomResource):
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] effective_maintenance_version: This field represents the actual maintenance version of the cluster.
         :param pulumi.Input[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']] gcs_source: Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] kms_key: The KMS key used to encrypt the at-rest data of the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
@@ -2102,6 +2309,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict']]]] psc_service_attachments: Service attachment details to configure Psc connections.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -2132,9 +2341,11 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["effective_maintenance_version"] = effective_maintenance_version
         __props__.__dict__["gcs_source"] = gcs_source
         __props__.__dict__["kms_key"] = kms_key
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["maintenance_version"] = maintenance_version
@@ -2148,6 +2359,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["psc_configs"] = psc_configs
         __props__.__dict__["psc_connections"] = psc_connections
         __props__.__dict__["psc_service_attachments"] = psc_service_attachments
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["redis_configs"] = redis_configs
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_count"] = replica_count
@@ -2237,6 +2449,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "discovery_endpoints")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveMaintenanceVersion")
     def effective_maintenance_version(self) -> pulumi.Output[_builtins.str]:
         """
@@ -2260,6 +2480,16 @@ class Cluster(pulumi.CustomResource):
         The KMS key used to encrypt the at-rest data of the cluster.
         """
         return pulumi.get(self, "kms_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
@@ -2379,6 +2609,15 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "psc_service_attachments")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
     @pulumi.getter(name="redisConfigs")

@@ -19,14 +19,16 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     public static final VolumeHybridReplicationParametersArgs Empty = new VolumeHybridReplicationParametersArgs();
 
     /**
-     * Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+     * Optional. Name of source cluster location associated with the replication. This is a free-form field
+     * for display purposes only.
      * 
      */
     @Import(name="clusterLocation")
     private @Nullable Output<String> clusterLocation;
 
     /**
-     * @return Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+     * @return Optional. Name of source cluster location associated with the replication. This is a free-form field
+     * for display purposes only.
      * 
      */
     public Optional<Output<String>> clusterLocation() {
@@ -49,7 +51,10 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     }
 
     /**
-     * Optional. Type of the volume&#39;s hybrid replication.
+     * Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+     * and `ONPREM_REPLICATION` to create an external replication.
+     * Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+     * replication which got reversed. Default is `MIGRATION`.
      * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
      * 
      */
@@ -57,7 +62,10 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     private @Nullable Output<String> hybridReplicationType;
 
     /**
-     * @return Optional. Type of the volume&#39;s hybrid replication.
+     * @return Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+     * and `ONPREM_REPLICATION` to create an external replication.
+     * Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+     * replication which got reversed. Default is `MIGRATION`.
      * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
      * 
      */
@@ -83,14 +91,14 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     }
 
     /**
-     * Optional. Constituent volume count for large volume.
+     * Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
      * 
      */
     @Import(name="largeVolumeConstituentCount")
     private @Nullable Output<Integer> largeVolumeConstituentCount;
 
     /**
-     * @return Optional. Constituent volume count for large volume.
+     * @return Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
      * 
      */
     public Optional<Output<Integer>> largeVolumeConstituentCount() {
@@ -98,14 +106,14 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
+     * Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
      * 
      */
     @Import(name="peerClusterName")
     private @Nullable Output<String> peerClusterName;
 
     /**
-     * @return Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
+     * @return Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
      * 
      */
     public Optional<Output<String>> peerClusterName() {
@@ -113,14 +121,14 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. List of node ip addresses to be peered with.
+     * Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
      * 
      */
     @Import(name="peerIpAddresses")
     private @Nullable Output<List<String>> peerIpAddresses;
 
     /**
-     * @return Required. List of node ip addresses to be peered with.
+     * @return Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
      * 
      */
     public Optional<Output<List<String>>> peerIpAddresses() {
@@ -128,14 +136,14 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
+     * Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
      * 
      */
     @Import(name="peerSvmName")
     private @Nullable Output<String> peerSvmName;
 
     /**
-     * @return Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
+     * @return Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
      * 
      */
     public Optional<Output<String>> peerSvmName() {
@@ -143,14 +151,14 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. Name of the user&#39;s local source volume to be peered with the destination volume.
+     * Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
      * 
      */
     @Import(name="peerVolumeName")
     private @Nullable Output<String> peerVolumeName;
 
     /**
-     * @return Required. Name of the user&#39;s local source volume to be peered with the destination volume.
+     * @return Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
      * 
      */
     public Optional<Output<String>> peerVolumeName() {
@@ -224,7 +232,8 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clusterLocation Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+         * @param clusterLocation Optional. Name of source cluster location associated with the replication. This is a free-form field
+         * for display purposes only.
          * 
          * @return builder
          * 
@@ -235,7 +244,8 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clusterLocation Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+         * @param clusterLocation Optional. Name of source cluster location associated with the replication. This is a free-form field
+         * for display purposes only.
          * 
          * @return builder
          * 
@@ -266,7 +276,10 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param hybridReplicationType Optional. Type of the volume&#39;s hybrid replication.
+         * @param hybridReplicationType Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+         * and `ONPREM_REPLICATION` to create an external replication.
+         * Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+         * replication which got reversed. Default is `MIGRATION`.
          * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
          * 
          * @return builder
@@ -278,7 +291,10 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param hybridReplicationType Optional. Type of the volume&#39;s hybrid replication.
+         * @param hybridReplicationType Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+         * and `ONPREM_REPLICATION` to create an external replication.
+         * Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+         * replication which got reversed. Default is `MIGRATION`.
          * Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
          * 
          * @return builder
@@ -312,7 +328,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param largeVolumeConstituentCount Optional. Constituent volume count for large volume.
+         * @param largeVolumeConstituentCount Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
          * 
          * @return builder
          * 
@@ -323,7 +339,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param largeVolumeConstituentCount Optional. Constituent volume count for large volume.
+         * @param largeVolumeConstituentCount Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
          * 
          * @return builder
          * 
@@ -333,7 +349,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerClusterName Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
+         * @param peerClusterName Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
          * 
          * @return builder
          * 
@@ -344,7 +360,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerClusterName Required. Name of the user&#39;s local source cluster to be peered with the destination cluster.
+         * @param peerClusterName Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
          * 
          * @return builder
          * 
@@ -354,7 +370,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerIpAddresses Required. List of node ip addresses to be peered with.
+         * @param peerIpAddresses Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
          * 
          * @return builder
          * 
@@ -365,7 +381,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerIpAddresses Required. List of node ip addresses to be peered with.
+         * @param peerIpAddresses Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
          * 
          * @return builder
          * 
@@ -375,7 +391,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerIpAddresses Required. List of node ip addresses to be peered with.
+         * @param peerIpAddresses Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
          * 
          * @return builder
          * 
@@ -385,7 +401,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerSvmName Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
+         * @param peerSvmName Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
          * 
          * @return builder
          * 
@@ -396,7 +412,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerSvmName Required. Name of the user&#39;s local source vserver svm to be peered with the destination vserver svm.
+         * @param peerSvmName Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
          * 
          * @return builder
          * 
@@ -406,7 +422,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerVolumeName Required. Name of the user&#39;s local source volume to be peered with the destination volume.
+         * @param peerVolumeName Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
          * 
          * @return builder
          * 
@@ -417,7 +433,7 @@ public final class VolumeHybridReplicationParametersArgs extends com.pulumi.reso
         }
 
         /**
-         * @param peerVolumeName Required. Name of the user&#39;s local source volume to be peered with the destination volume.
+         * @param peerVolumeName Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
          * 
          * @return builder
          * 

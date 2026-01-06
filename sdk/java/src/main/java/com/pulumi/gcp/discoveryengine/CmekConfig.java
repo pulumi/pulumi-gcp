@@ -111,14 +111,14 @@ public class CmekConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cmekConfigId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cmekConfigId;
+    private Output<String> cmekConfigId;
 
     /**
      * @return The unique id of the cmek config.
      * 
      */
-    public Output<Optional<String>> cmekConfigId() {
-        return Codegen.optional(this.cmekConfigId);
+    public Output<String> cmekConfigId() {
+        return this.cmekConfigId;
     }
     /**
      * The default CmekConfig for the Customer.

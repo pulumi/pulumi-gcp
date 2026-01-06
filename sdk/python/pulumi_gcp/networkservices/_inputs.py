@@ -169,6 +169,8 @@ __all__ = [
     'MulticastDomainConnectionConfigArgsDict',
     'MulticastDomainGroupStateArgs',
     'MulticastDomainGroupStateArgsDict',
+    'MulticastDomainStateArgs',
+    'MulticastDomainStateArgsDict',
     'MulticastGroupConsumerActivationLogConfigArgs',
     'MulticastGroupConsumerActivationLogConfigArgsDict',
     'MulticastGroupConsumerActivationStateArgs',
@@ -7063,6 +7065,65 @@ elif False:
 
 @pulumi.input_type
 class MulticastDomainGroupStateArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class MulticastDomainStateArgsDict(TypedDict):
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+elif False:
+    MulticastDomainStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MulticastDomainStateArgs:
     def __init__(__self__, *,
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """

@@ -40,14 +40,14 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfigArgs extends com.pulu
     }
 
     /**
-     * The settings for kernel module loading.
+     * Settings for kernel module loading. Structure is documented below.
      * 
      */
     @Import(name="nodeKernelModuleLoading")
     private @Nullable Output<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs> nodeKernelModuleLoading;
 
     /**
-     * @return The settings for kernel module loading.
+     * @return Settings for kernel module loading. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs>> nodeKernelModuleLoading() {
@@ -109,7 +109,7 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfigArgs extends com.pulu
         }
 
         /**
-         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * @param nodeKernelModuleLoading Settings for kernel module loading. Structure is documented below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfigArgs extends com.pulu
         }
 
         /**
-         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * @param nodeKernelModuleLoading Settings for kernel module loading. Structure is documented below.
          * 
          * @return builder
          * 

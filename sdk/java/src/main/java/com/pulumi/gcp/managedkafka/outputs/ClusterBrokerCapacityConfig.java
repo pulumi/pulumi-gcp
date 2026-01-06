@@ -12,18 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterBrokerCapacityConfig {
     /**
-     * @return The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+     * @return The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
      * 
      */
-    private @Nullable String diskSizeGb;
+    private @Nullable String diskSizeGib;
 
     private ClusterBrokerCapacityConfig() {}
     /**
-     * @return The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+     * @return The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
      * 
      */
-    public Optional<String> diskSizeGb() {
-        return Optional.ofNullable(this.diskSizeGb);
+    public Optional<String> diskSizeGib() {
+        return Optional.ofNullable(this.diskSizeGib);
     }
 
     public static Builder builder() {
@@ -35,22 +35,22 @@ public final class ClusterBrokerCapacityConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String diskSizeGb;
+        private @Nullable String diskSizeGib;
         public Builder() {}
         public Builder(ClusterBrokerCapacityConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.diskSizeGb = defaults.diskSizeGb;
+    	      this.diskSizeGib = defaults.diskSizeGib;
         }
 
         @CustomType.Setter
-        public Builder diskSizeGb(@Nullable String diskSizeGb) {
+        public Builder diskSizeGib(@Nullable String diskSizeGib) {
 
-            this.diskSizeGb = diskSizeGb;
+            this.diskSizeGib = diskSizeGib;
             return this;
         }
         public ClusterBrokerCapacityConfig build() {
             final var _resultValue = new ClusterBrokerCapacityConfig();
-            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.diskSizeGib = diskSizeGib;
             return _resultValue;
         }
     }

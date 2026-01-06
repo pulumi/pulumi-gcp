@@ -19,7 +19,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollecti
      * Regex for Cloud Storage.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
      * 
      */
     @Import(name="amazonS3BucketRegex")
@@ -29,7 +29,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollecti
      * @return Regex for Cloud Storage.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
      * 
      */
     public Optional<Output<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgs>> amazonS3BucketRegex() {
@@ -64,7 +64,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollecti
          * @param amazonS3BucketRegex Regex for Cloud Storage.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
+         * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
          * 
          * @return builder
          * 
@@ -78,7 +78,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollecti
          * @param amazonS3BucketRegex Regex for Cloud Storage.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
+         * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
          * 
          * @return builder
          * 

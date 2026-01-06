@@ -251,6 +251,52 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Cloud SQL Instance created with backupdrBackup
+ * > **NOTE:** For restoring from a backupdr_backup, note that the backup must be in active state. List down the backups using `gcp.backupdisasterrecovery.getBackup`. Replace `backupdrBackupFullPath` with the backup name.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "main-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *         backupdrBackup: "backupdr_backup_full_path",
+ *     },
+ * });
+ * ```
+ *
+ * ### Cloud SQL Instance created using pointInTimeRestore
+ * > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "main-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *     },
+ *     pointInTimeRestoreContext: {
+ *         datasource: "backupdr_datasource",
+ *         targetInstance: "target_instance_name",
+ *         pointInTime: "time_stamp",
+ *     },
+ * });
+ * ```
+ *
  * ## Switchover
  *
  * Users can perform a switchover on a replica by following the steps below.
@@ -475,7 +521,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly replicaNames: pulumi.Output<string[]>;
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      */
     declare public readonly replicationCluster: pulumi.Output<outputs.sql.DatabaseInstanceReplicationCluster>;
     /**
@@ -743,7 +789,7 @@ export interface DatabaseInstanceState {
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      */
     replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
     /**
@@ -884,7 +930,7 @@ export interface DatabaseInstanceArgs {
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      */
     replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
     /**

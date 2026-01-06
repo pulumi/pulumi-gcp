@@ -67,6 +67,7 @@ import * as utilities from "../utilities";
  *         "google.subject": "user.externalId",
  *         "google.group": "group.externalId",
  *     },
+ *     hardDelete: true,
  * });
  * const example = new gcp.iam.WorkforcePoolProviderScimToken("example", {
  *     location: "global",

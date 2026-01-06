@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var example_dataset = new Gcp.BigQuery.Dataset("example-dataset", new()
     ///     {
-    ///         DatasetId = "dataset-basic",
+    ///         DatasetId = "dataset_basic",
     ///         FriendlyName = "Example Dataset",
     ///         Location = "us-central1",
     ///         DeleteContentsOnDestroy = true,

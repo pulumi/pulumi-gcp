@@ -30,16 +30,16 @@ public final class AiReasoningEngineSpecDeploymentSpec {
      */
     private @Nullable List<AiReasoningEngineSpecDeploymentSpecEnv> envs;
     /**
-     * @return Optional. The minimum number of application instances that will be
-     * kept running at all times. Defaults to 1. Range: [0, 10].
-     * 
-     */
-    private @Nullable Integer maxInstances;
-    /**
      * @return Optional. The maximum number of application instances that can be
      * launched to handle increased traffic. Defaults to 100.
      * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
      * range is [1, 100].
+     * 
+     */
+    private @Nullable Integer maxInstances;
+    /**
+     * @return Optional. The minimum number of application instances that will be
+     * kept running at all times. Defaults to 1. Range: [0, 10].
      * 
      */
     private @Nullable Integer minInstances;
@@ -85,18 +85,18 @@ public final class AiReasoningEngineSpecDeploymentSpec {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return Optional. The minimum number of application instances that will be
-     * kept running at all times. Defaults to 1. Range: [0, 10].
+     * @return Optional. The maximum number of application instances that can be
+     * launched to handle increased traffic. Defaults to 100.
+     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+     * range is [1, 100].
      * 
      */
     public Optional<Integer> maxInstances() {
         return Optional.ofNullable(this.maxInstances);
     }
     /**
-     * @return Optional. The maximum number of application instances that can be
-     * launched to handle increased traffic. Defaults to 100.
-     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
-     * range is [1, 100].
+     * @return Optional. The minimum number of application instances that will be
+     * kept running at all times. Defaults to 1. Range: [0, 10].
      * 
      */
     public Optional<Integer> minInstances() {

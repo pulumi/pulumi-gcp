@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerPort;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerResource;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerSourceCode;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerVolumeMount;
 import java.lang.String;
@@ -75,6 +76,11 @@ public final class GetServiceTemplateContainer {
      * 
      */
     private List<GetServiceTemplateContainerResource> resources;
+    /**
+     * @return Location of the source.
+     * 
+     */
+    private List<GetServiceTemplateContainerSourceCode> sourceCodes;
     /**
      * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * 
@@ -172,6 +178,13 @@ public final class GetServiceTemplateContainer {
         return this.resources;
     }
     /**
+     * @return Location of the source.
+     * 
+     */
+    public List<GetServiceTemplateContainerSourceCode> sourceCodes() {
+        return this.sourceCodes;
+    }
+    /**
      * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * 
      */
@@ -213,6 +226,7 @@ public final class GetServiceTemplateContainer {
         private String name;
         private List<GetServiceTemplateContainerPort> ports;
         private List<GetServiceTemplateContainerResource> resources;
+        private List<GetServiceTemplateContainerSourceCode> sourceCodes;
         private List<GetServiceTemplateContainerStartupProbe> startupProbes;
         private List<GetServiceTemplateContainerVolumeMount> volumeMounts;
         private String workingDir;
@@ -230,6 +244,7 @@ public final class GetServiceTemplateContainer {
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
+    	      this.sourceCodes = defaults.sourceCodes;
     	      this.startupProbes = defaults.startupProbes;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
@@ -348,6 +363,17 @@ public final class GetServiceTemplateContainer {
             return resources(List.of(resources));
         }
         @CustomType.Setter
+        public Builder sourceCodes(List<GetServiceTemplateContainerSourceCode> sourceCodes) {
+            if (sourceCodes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "sourceCodes");
+            }
+            this.sourceCodes = sourceCodes;
+            return this;
+        }
+        public Builder sourceCodes(GetServiceTemplateContainerSourceCode... sourceCodes) {
+            return sourceCodes(List.of(sourceCodes));
+        }
+        @CustomType.Setter
         public Builder startupProbes(List<GetServiceTemplateContainerStartupProbe> startupProbes) {
             if (startupProbes == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "startupProbes");
@@ -390,6 +416,7 @@ public final class GetServiceTemplateContainer {
             _resultValue.name = name;
             _resultValue.ports = ports;
             _resultValue.resources = resources;
+            _resultValue.sourceCodes = sourceCodes;
             _resultValue.startupProbes = startupProbes;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;

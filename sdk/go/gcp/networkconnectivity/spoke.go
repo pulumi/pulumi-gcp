@@ -167,14 +167,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-network_85160"),
+//				Name:                  pulumi.String("tf-test-network_92130"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_92130"),
+//				Name:        pulumi.String("tf-test-subnet_16199"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -183,7 +183,7 @@ import (
 //				return err
 //			}
 //			instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-//				Name:         pulumi.String("tf-test-instance_16199"),
+//				Name:         pulumi.String("tf-test-instance_21563"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(true),
 //				Zone:         pulumi.String("us-central1-a"),
@@ -208,7 +208,7 @@ import (
 //				return err
 //			}
 //			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
-//				Name:        pulumi.String("tf-test-hub_21563"),
+//				Name:        pulumi.String("tf-test-hub_25141"),
 //				Description: pulumi.String("A sample hub"),
 //				Labels: pulumi.StringMap{
 //					"label-two": pulumi.String("value-one"),
@@ -218,7 +218,7 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-//				Name:        pulumi.String("tf-test-name_25141"),
+//				Name:        pulumi.String("tf-test-name_30827"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
 //				Labels: pulumi.StringMap{
@@ -641,8 +641,8 @@ import (
 //				Hub:  starHub.ID(),
 //				AutoAccept: &networkconnectivity.GroupAutoAcceptArgs{
 //					AutoAcceptProjects: pulumi.StringArray{
-//						pulumi.String("foo_30827"),
-//						pulumi.String("bar_6529"),
+//						pulumi.String("foo_6529"),
+//						pulumi.String("bar_16178"),
 //					},
 //				},
 //			})
@@ -749,7 +749,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_16178"),
+//				Name:        pulumi.String("tf-test-subnet_26317"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,

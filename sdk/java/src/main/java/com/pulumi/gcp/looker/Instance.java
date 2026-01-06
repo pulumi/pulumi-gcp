@@ -17,6 +17,7 @@ import com.pulumi.gcp.looker.outputs.InstanceDenyMaintenancePeriod;
 import com.pulumi.gcp.looker.outputs.InstanceEncryptionConfig;
 import com.pulumi.gcp.looker.outputs.InstanceMaintenanceWindow;
 import com.pulumi.gcp.looker.outputs.InstanceOauthConfig;
+import com.pulumi.gcp.looker.outputs.InstancePeriodicExportConfig;
 import com.pulumi.gcp.looker.outputs.InstancePscConfig;
 import com.pulumi.gcp.looker.outputs.InstanceUserMetadata;
 import java.lang.Boolean;
@@ -784,6 +785,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<InstanceOauthConfig> oauthConfig() {
         return this.oauthConfig;
+    }
+    /**
+     * Configuration for periodic export.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="periodicExportConfig", refs={InstancePeriodicExportConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePeriodicExportConfig> periodicExportConfig;
+
+    /**
+     * @return Configuration for periodic export.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstancePeriodicExportConfig>> periodicExportConfig() {
+        return Codegen.optional(this.periodicExportConfig);
     }
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:

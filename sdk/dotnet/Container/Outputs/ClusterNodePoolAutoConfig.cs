@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolAutoConfig
     {
         /// <summary>
-        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `CgroupMode` field is supported in `NodePoolAutoConfig`. Structure is documented below.
+        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `CgroupMode` and `NodeKernelModuleLoading` fields are supported in `NodePoolAutoConfig`. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigLinuxNodeConfig? LinuxNodeConfig;
         /// <summary>

@@ -795,6 +795,13 @@ class ApiProduct(pulumi.CustomResource):
             location="us-central1",
             org_id=apigee_org.id,
             peering_cidr_range="SLASH_22")
+        env_dev = gcp.apigee.Environment("env_dev",
+            name="dev",
+            org_id=apigee_org.id)
+        test_apigee_api = gcp.apigee.Api("test_apigee_api",
+            name="hello-world",
+            org_id=apigee_org.name,
+            config_bundle="apigee_api_bundle.zip")
         full_api_product = gcp.apigee.ApiProduct("full_api_product",
             org_id=apigee_org.id,
             name="my-product",
@@ -805,10 +812,7 @@ class ApiProduct(pulumi.CustomResource):
                 "name": "access",
                 "value": "private",
             }],
-            environments=[
-                "dev",
-                "hom",
-            ],
+            environments=["dev"],
             proxies=["hello-world"],
             api_resources=[
                 "/",
@@ -822,7 +826,11 @@ class ApiProduct(pulumi.CustomResource):
             quota_interval="1",
             quota_time_unit="day",
             quota_counter_scope="PROXY",
-            opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[
+                    apigee_instance,
+                    env_dev,
+                    test_apigee_api,
+                ]))
         ```
         ## Import
 
@@ -957,6 +965,13 @@ class ApiProduct(pulumi.CustomResource):
             location="us-central1",
             org_id=apigee_org.id,
             peering_cidr_range="SLASH_22")
+        env_dev = gcp.apigee.Environment("env_dev",
+            name="dev",
+            org_id=apigee_org.id)
+        test_apigee_api = gcp.apigee.Api("test_apigee_api",
+            name="hello-world",
+            org_id=apigee_org.name,
+            config_bundle="apigee_api_bundle.zip")
         full_api_product = gcp.apigee.ApiProduct("full_api_product",
             org_id=apigee_org.id,
             name="my-product",
@@ -967,10 +982,7 @@ class ApiProduct(pulumi.CustomResource):
                 "name": "access",
                 "value": "private",
             }],
-            environments=[
-                "dev",
-                "hom",
-            ],
+            environments=["dev"],
             proxies=["hello-world"],
             api_resources=[
                 "/",
@@ -984,7 +996,11 @@ class ApiProduct(pulumi.CustomResource):
             quota_interval="1",
             quota_time_unit="day",
             quota_counter_scope="PROXY",
-            opts = pulumi.ResourceOptions(depends_on=[apigee_instance]))
+            opts = pulumi.ResourceOptions(depends_on=[
+                    apigee_instance,
+                    env_dev,
+                    test_apigee_api,
+                ]))
         ```
         ## Import
 

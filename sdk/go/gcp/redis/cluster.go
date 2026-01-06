@@ -14,6 +14,101 @@ import (
 
 // ## Example Usage
 //
+// ### Redis Cluster Ha With Labels
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			consumerNet, err := compute.NewNetwork(ctx, "consumer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			consumerSubnet, err := compute.NewSubnetwork(ctx, "consumer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     consumerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("my-policy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      consumerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						consumerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewCluster(ctx, "cluster-ha-with-labels", &redis.ClusterArgs{
+//				Name:       pulumi.String("ha-cluster"),
+//				ShardCount: pulumi.Int(3),
+//				Labels: pulumi.StringMap{
+//					"my_key":    pulumi.String("my_val"),
+//					"other_key": pulumi.String("other_val"),
+//				},
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: consumerNet.ID(),
+//					},
+//				},
+//				Region:                pulumi.String("us-central1"),
+//				ReplicaCount:          pulumi.Int(1),
+//				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
+//				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
+//				RedisConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
+//					Mode: pulumi.String("MULTI_ZONE"),
+//				},
+//				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Redis Cluster Ha
 //
 // ```go
@@ -696,6 +791,8 @@ type Cluster struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// This field represents the actual maintenance version of the cluster.
 	EffectiveMaintenanceVersion pulumi.StringOutput `pulumi:"effectiveMaintenanceVersion"`
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
@@ -703,6 +800,10 @@ type Cluster struct {
 	GcsSource ClusterGcsSourcePtrOutput `pulumi:"gcsSource"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
+	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
@@ -744,6 +845,9 @@ type Cluster struct {
 	// Service attachment details to configure Psc connections.
 	// Structure is documented below.
 	PscServiceAttachments ClusterPscServiceAttachmentArrayOutput `pulumi:"pscServiceAttachments"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -783,6 +887,11 @@ func NewCluster(ctx *pulumi.Context,
 	if args.ShardCount == nil {
 		return nil, errors.New("invalid value for required argument 'ShardCount'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cluster
 	err := ctx.RegisterResource("gcp:redis/cluster:Cluster", name, args, &resource, opts...)
@@ -834,6 +943,8 @@ type clusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints []ClusterDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// This field represents the actual maintenance version of the cluster.
 	EffectiveMaintenanceVersion *string `pulumi:"effectiveMaintenanceVersion"`
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
@@ -841,6 +952,10 @@ type clusterState struct {
 	GcsSource *ClusterGcsSource `pulumi:"gcsSource"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey *string `pulumi:"kmsKey"`
+	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -882,6 +997,9 @@ type clusterState struct {
 	// Service attachment details to configure Psc connections.
 	// Structure is documented below.
 	PscServiceAttachments []ClusterPscServiceAttachment `pulumi:"pscServiceAttachments"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -940,6 +1058,8 @@ type ClusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// This field represents the actual maintenance version of the cluster.
 	EffectiveMaintenanceVersion pulumi.StringPtrInput
 	// Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
@@ -947,6 +1067,10 @@ type ClusterState struct {
 	GcsSource ClusterGcsSourcePtrInput
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrInput
+	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
@@ -988,6 +1112,9 @@ type ClusterState struct {
 	// Service attachment details to configure Psc connections.
 	// Structure is documented below.
 	PscServiceAttachments ClusterPscServiceAttachmentArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
 	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -1041,6 +1168,10 @@ type clusterArgs struct {
 	GcsSource *ClusterGcsSource `pulumi:"gcsSource"`
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey *string `pulumi:"kmsKey"`
+	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -1109,6 +1240,10 @@ type ClusterArgs struct {
 	GcsSource ClusterGcsSourcePtrInput
 	// The KMS key used to encrypt the at-rest data of the cluster.
 	KmsKey pulumi.StringPtrInput
+	// Resource labels to represent user provided metadata.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// Maintenance policy for a cluster
 	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
@@ -1295,6 +1430,11 @@ func (o ClusterOutput) DiscoveryEndpoints() ClusterDiscoveryEndpointArrayOutput 
 	return o.ApplyT(func(v *Cluster) ClusterDiscoveryEndpointArrayOutput { return v.DiscoveryEndpoints }).(ClusterDiscoveryEndpointArrayOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // This field represents the actual maintenance version of the cluster.
 func (o ClusterOutput) EffectiveMaintenanceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EffectiveMaintenanceVersion }).(pulumi.StringOutput)
@@ -1309,6 +1449,13 @@ func (o ClusterOutput) GcsSource() ClusterGcsSourcePtrOutput {
 // The KMS key used to encrypt the at-rest data of the cluster.
 func (o ClusterOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+// Resource labels to represent user provided metadata.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o ClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Maintenance policy for a cluster
@@ -1389,6 +1536,12 @@ func (o ClusterOutput) PscConnections() ClusterPscConnectionArrayOutput {
 // Structure is documented below.
 func (o ClusterOutput) PscServiceAttachments() ClusterPscServiceAttachmentArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPscServiceAttachmentArrayOutput { return v.PscServiceAttachments }).(ClusterPscServiceAttachmentArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ClusterOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // Configure Redis Cluster behavior using a subset of native Redis configuration parameters.

@@ -192,7 +192,7 @@ class Version(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
-            default_language_code="en-us",
+            default_language_code="en",
             time_zone="America/New_York",
             project=project.project_id,
             opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
@@ -267,7 +267,7 @@ class Version(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
-            default_language_code="en-us",
+            default_language_code="en",
             time_zone="America/New_York",
             project=project.project_id,
             opts = pulumi.ResourceOptions(depends_on=[wait_enable_service_api]))

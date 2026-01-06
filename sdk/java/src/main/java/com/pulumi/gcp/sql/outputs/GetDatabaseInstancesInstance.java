@@ -120,7 +120,7 @@ public final class GetDatabaseInstancesInstance {
      */
     private List<String> replicaNames;
     /**
-     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      * 
      */
     private List<GetDatabaseInstancesInstanceReplicationCluster> replicationClusters;
@@ -307,7 +307,7 @@ public final class GetDatabaseInstancesInstance {
         return this.replicaNames;
     }
     /**
-     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      * 
      */
     public List<GetDatabaseInstancesInstanceReplicationCluster> replicationClusters() {

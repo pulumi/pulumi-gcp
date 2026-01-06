@@ -88,6 +88,7 @@ namespace Pulumi.Gcp.Iam
     ///             { "google.subject", "user.externalId" },
     ///             { "google.group", "group.externalId" },
     ///         },
+    ///         HardDelete = true,
     ///     });
     /// 
     ///     var example = new Gcp.Iam.WorkforcePoolProviderScimToken("example", new()

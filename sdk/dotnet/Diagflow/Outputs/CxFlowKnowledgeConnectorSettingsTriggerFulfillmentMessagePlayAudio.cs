@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// (Output)
         /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         /// 
-        /// &lt;a name="NestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"&gt;&lt;/a&gt;The `MixedAudio` block contains:
+        /// &lt;a name="NestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"&gt;&lt;/a&gt;The `MixedAudio` block contains:
         /// </summary>
         public readonly bool? AllowPlaybackInterruption;
         /// <summary>

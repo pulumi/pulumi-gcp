@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.Lustre
     [OutputType]
     public sealed class GetInstanceResult
     {
+        public readonly ImmutableArray<Outputs.GetInstanceAccessRulesOptionResult> AccessRulesOptions;
         public readonly string CapacityGib;
         public readonly string CreateTime;
         public readonly string Description;
@@ -121,6 +122,8 @@ namespace Pulumi.Gcp.Lustre
 
         [OutputConstructor]
         private GetInstanceResult(
+            ImmutableArray<Outputs.GetInstanceAccessRulesOptionResult> accessRulesOptions,
+
             string capacityGib,
 
             string createTime,
@@ -165,6 +168,7 @@ namespace Pulumi.Gcp.Lustre
 
             string? zone)
         {
+            AccessRulesOptions = accessRulesOptions;
             CapacityGib = capacityGib;
             CreateTime = createTime;
             Description = description;

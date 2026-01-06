@@ -19,6 +19,18 @@ namespace Pulumi.Gcp.Vertex.Inputs
         [Input("autoScaling", required: true)]
         public Input<Inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs> AutoScaling { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. If true, enable direct access to the Bigtable instance.
+        /// </summary>
+        [Input("enableDirectBigtableAccess")]
+        public Input<bool>? EnableDirectBigtableAccess { get; set; }
+
+        /// <summary>
+        /// The zone where the Bigtable instance will be created.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
         public AiFeatureOnlineStoreBigtableArgs()
         {
         }

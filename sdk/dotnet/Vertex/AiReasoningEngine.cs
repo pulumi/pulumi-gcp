@@ -20,6 +20,46 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ## Example Usage
     /// 
+    /// ### Vertex Ai Reasoning Engine Source Based Deployment
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "reasoning-engine",
+    ///         Description = "A basic reasoning engine",
+    ///         Region = "us-central1",
+    ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+    ///         {
+    ///             SourceCodeSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecArgs
+    ///             {
+    ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
+    ///                 {
+    ///                     SourceArchive = Std.Filebase64.Invoke(new()
+    ///                     {
+    ///                         Input = "./test-fixtures/source.tar.gz",
+    ///                     }).Apply(invoke =&gt; invoke.Result),
+    ///                 },
+    ///                 PythonSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs
+    ///                 {
+    ///                     EntrypointModule = "simple_agent",
+    ///                     EntrypointObject = "fixed_name_generator",
+    ///                     RequirementsFile = "./test-fixtures/requirements.txt",
+    ///                     Version = "3.11",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Reasoning Engine Full
     /// 
     /// ```csharp

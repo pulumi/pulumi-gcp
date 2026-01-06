@@ -37,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_33052"),
+//				ScopeId: pulumi.String("tf-test-scope_3684"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
-//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_3684"),
+//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_10719"),
 //				ScopeId:                scope.ScopeId,
 //				User:                   pulumi.String("test-email@gmail.com"),
 //				Role: &gkehub.ScopeRbacRoleBindingRoleArgs{
@@ -76,7 +76,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-//				ScopeId: pulumi.String("tf-test-scope_10719"),
+//				ScopeId: pulumi.String("tf-test-scope_1443"),
 //			})
 //			if err != nil {
 //				return err
@@ -96,7 +96,7 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewScopeRbacRoleBinding(ctx, "scope_rbac_role_binding", &gkehub.ScopeRbacRoleBindingArgs{
-//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_1443"),
+//				ScopeRbacRoleBindingId: pulumi.String("tf-test-scope-rbac-role-binding_26032"),
 //				ScopeId:                scope.ScopeId,
 //				User:                   pulumi.String("test-email@gmail.com"),
 //				Role: &gkehub.ScopeRbacRoleBindingRoleArgs{

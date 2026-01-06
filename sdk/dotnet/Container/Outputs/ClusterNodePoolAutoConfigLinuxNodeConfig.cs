@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? CgroupMode;
         /// <summary>
-        /// The settings for kernel module loading.
+        /// Settings for kernel module loading. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading? NodeKernelModuleLoading;
 

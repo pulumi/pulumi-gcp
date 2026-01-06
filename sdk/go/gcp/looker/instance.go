@@ -464,6 +464,9 @@ type Instance struct {
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
 	OauthConfig InstanceOauthConfigOutput `pulumi:"oauthConfig"`
+	// Configuration for periodic export.
+	// Structure is documented below.
+	PeriodicExportConfig InstancePeriodicExportConfigPtrOutput `pulumi:"periodicExportConfig"`
 	// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
 	// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
 	// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -599,6 +602,9 @@ type instanceState struct {
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
 	OauthConfig *InstanceOauthConfig `pulumi:"oauthConfig"`
+	// Configuration for periodic export.
+	// Structure is documented below.
+	PeriodicExportConfig *InstancePeriodicExportConfig `pulumi:"periodicExportConfig"`
 	// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
 	// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
 	// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -702,6 +708,9 @@ type InstanceState struct {
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
 	OauthConfig InstanceOauthConfigPtrInput
+	// Configuration for periodic export.
+	// Structure is documented below.
+	PeriodicExportConfig InstancePeriodicExportConfigPtrInput
 	// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
 	// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
 	// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -796,6 +805,9 @@ type instanceArgs struct {
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
 	OauthConfig InstanceOauthConfig `pulumi:"oauthConfig"`
+	// Configuration for periodic export.
+	// Structure is documented below.
+	PeriodicExportConfig *InstancePeriodicExportConfig `pulumi:"periodicExportConfig"`
 	// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
 	// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
 	// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -884,6 +896,9 @@ type InstanceArgs struct {
 	// Looker Instance OAuth login settings.
 	// Structure is documented below.
 	OauthConfig InstanceOauthConfigInput
+	// Configuration for periodic export.
+	// Structure is documented below.
+	PeriodicExportConfig InstancePeriodicExportConfigPtrInput
 	// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
 	// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
 	// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -1125,6 +1140,12 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) OauthConfig() InstanceOauthConfigOutput {
 	return o.ApplyT(func(v *Instance) InstanceOauthConfigOutput { return v.OauthConfig }).(InstanceOauthConfigOutput)
+}
+
+// Configuration for periodic export.
+// Structure is documented below.
+func (o InstanceOutput) PeriodicExportConfig() InstancePeriodicExportConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstancePeriodicExportConfigPtrOutput { return v.PeriodicExportConfig }).(InstancePeriodicExportConfigPtrOutput)
 }
 
 // Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:

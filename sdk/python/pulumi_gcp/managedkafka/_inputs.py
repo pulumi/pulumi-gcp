@@ -150,9 +150,9 @@ class AclAclEntryArgs:
 
 if not MYPY:
     class ClusterBrokerCapacityConfigArgsDict(TypedDict):
-        disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
+        disk_size_gib: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         """
 elif False:
     ClusterBrokerCapacityConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -160,24 +160,24 @@ elif False:
 @pulumi.input_type
 class ClusterBrokerCapacityConfigArgs:
     def __init__(__self__, *,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_size_gib: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] disk_size_gb: The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        :param pulumi.Input[_builtins.str] disk_size_gib: The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         """
-        if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_size_gib is not None:
+            pulumi.set(__self__, "disk_size_gib", disk_size_gib)
 
     @_builtins.property
-    @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="diskSizeGib")
+    def disk_size_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         """
-        return pulumi.get(self, "disk_size_gb")
+        return pulumi.get(self, "disk_size_gib")
 
-    @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "disk_size_gb", value)
+    @disk_size_gib.setter
+    def disk_size_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "disk_size_gib", value)
 
 
 if not MYPY:

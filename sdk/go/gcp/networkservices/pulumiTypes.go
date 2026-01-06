@@ -12937,6 +12937,130 @@ func (o MulticastDomainGroupStateTypeArrayOutput) Index(i pulumi.IntInput) Multi
 	}).(MulticastDomainGroupStateTypeOutput)
 }
 
+type MulticastDomainStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastDomainStateTypeInput is an input type that accepts MulticastDomainStateTypeArgs and MulticastDomainStateTypeOutput values.
+// You can construct a concrete instance of `MulticastDomainStateTypeInput` via:
+//
+//	MulticastDomainStateTypeArgs{...}
+type MulticastDomainStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastDomainStateTypeOutput() MulticastDomainStateTypeOutput
+	ToMulticastDomainStateTypeOutputWithContext(context.Context) MulticastDomainStateTypeOutput
+}
+
+type MulticastDomainStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastDomainStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainStateType)(nil)).Elem()
+}
+
+func (i MulticastDomainStateTypeArgs) ToMulticastDomainStateTypeOutput() MulticastDomainStateTypeOutput {
+	return i.ToMulticastDomainStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainStateTypeArgs) ToMulticastDomainStateTypeOutputWithContext(ctx context.Context) MulticastDomainStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainStateTypeOutput)
+}
+
+// MulticastDomainStateTypeArrayInput is an input type that accepts MulticastDomainStateTypeArray and MulticastDomainStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastDomainStateTypeArrayInput` via:
+//
+//	MulticastDomainStateTypeArray{ MulticastDomainStateTypeArgs{...} }
+type MulticastDomainStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastDomainStateTypeArrayOutput() MulticastDomainStateTypeArrayOutput
+	ToMulticastDomainStateTypeArrayOutputWithContext(context.Context) MulticastDomainStateTypeArrayOutput
+}
+
+type MulticastDomainStateTypeArray []MulticastDomainStateTypeInput
+
+func (MulticastDomainStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastDomainStateType)(nil)).Elem()
+}
+
+func (i MulticastDomainStateTypeArray) ToMulticastDomainStateTypeArrayOutput() MulticastDomainStateTypeArrayOutput {
+	return i.ToMulticastDomainStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainStateTypeArray) ToMulticastDomainStateTypeArrayOutputWithContext(ctx context.Context) MulticastDomainStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainStateTypeArrayOutput)
+}
+
+type MulticastDomainStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainStateType)(nil)).Elem()
+}
+
+func (o MulticastDomainStateTypeOutput) ToMulticastDomainStateTypeOutput() MulticastDomainStateTypeOutput {
+	return o
+}
+
+func (o MulticastDomainStateTypeOutput) ToMulticastDomainStateTypeOutputWithContext(ctx context.Context) MulticastDomainStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastDomainStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastDomainStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastDomainStateType)(nil)).Elem()
+}
+
+func (o MulticastDomainStateTypeArrayOutput) ToMulticastDomainStateTypeArrayOutput() MulticastDomainStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastDomainStateTypeArrayOutput) ToMulticastDomainStateTypeArrayOutputWithContext(ctx context.Context) MulticastDomainStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastDomainStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastDomainStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastDomainStateType {
+		return vs[0].([]MulticastDomainStateType)[vs[1].(int)]
+	}).(MulticastDomainStateTypeOutput)
+}
+
 type MulticastGroupConsumerActivationLogConfig struct {
 	// Whether to enable logging or not.
 	Enabled *bool `pulumi:"enabled"`
@@ -15869,6 +15993,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainConnectionConfigPtrInput)(nil)).Elem(), MulticastDomainConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainGroupStateTypeInput)(nil)).Elem(), MulticastDomainGroupStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainGroupStateTypeArrayInput)(nil)).Elem(), MulticastDomainGroupStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainStateTypeInput)(nil)).Elem(), MulticastDomainStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainStateTypeArrayInput)(nil)).Elem(), MulticastDomainStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationLogConfigInput)(nil)).Elem(), MulticastGroupConsumerActivationLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationLogConfigPtrInput)(nil)).Elem(), MulticastGroupConsumerActivationLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastGroupConsumerActivationStateTypeInput)(nil)).Elem(), MulticastGroupConsumerActivationStateTypeArgs{})
@@ -16062,6 +16188,8 @@ func init() {
 	pulumi.RegisterOutputType(MulticastDomainConnectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(MulticastDomainGroupStateTypeOutput{})
 	pulumi.RegisterOutputType(MulticastDomainGroupStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastDomainStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastDomainStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(MulticastGroupConsumerActivationLogConfigOutput{})
 	pulumi.RegisterOutputType(MulticastGroupConsumerActivationLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(MulticastGroupConsumerActivationStateTypeOutput{})

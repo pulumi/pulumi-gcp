@@ -11,6 +11,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerEnvArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerLivenessProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerPortsArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerSourceCodeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
 import java.lang.String;
@@ -204,6 +205,23 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Location of the source.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceCode")
+    private @Nullable Output<ServiceTemplateContainerSourceCodeArgs> sourceCode;
+
+    /**
+     * @return Location of the source.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateContainerSourceCodeArgs>> sourceCode() {
+        return Optional.ofNullable(this.sourceCode);
+    }
+
+    /**
      * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * Structure is documented below.
      * 
@@ -266,6 +284,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         this.name = $.name;
         this.ports = $.ports;
         this.resources = $.resources;
+        this.sourceCode = $.sourceCode;
         this.startupProbe = $.startupProbe;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
@@ -585,6 +604,29 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
          */
         public Builder resources(ServiceTemplateContainerResourcesArgs resources) {
             return resources(Output.of(resources));
+        }
+
+        /**
+         * @param sourceCode Location of the source.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCode(@Nullable Output<ServiceTemplateContainerSourceCodeArgs> sourceCode) {
+            $.sourceCode = sourceCode;
+            return this;
+        }
+
+        /**
+         * @param sourceCode Location of the source.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceCode(ServiceTemplateContainerSourceCodeArgs sourceCode) {
+            return sourceCode(Output.of(sourceCode));
         }
 
         /**

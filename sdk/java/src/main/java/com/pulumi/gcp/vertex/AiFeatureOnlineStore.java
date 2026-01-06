@@ -13,6 +13,7 @@ import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreState;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreBigtable;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreDedicatedServingEndpoint;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreEmbeddingManagement;
+import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreOptimized;
 import java.lang.Boolean;
 import java.lang.String;
@@ -295,6 +296,22 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
      */
     public Output<AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement() {
         return this.embeddingManagement;
+    }
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionSpec", refs={AiFeatureOnlineStoreEncryptionSpec.class}, tree="[0]")
+    private Output</* @Nullable */ AiFeatureOnlineStoreEncryptionSpec> encryptionSpec;
+
+    /**
+     * @return If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiFeatureOnlineStoreEncryptionSpec>> encryptionSpec() {
+        return Codegen.optional(this.encryptionSpec);
     }
     /**
      * Used to perform consistent read-modify-write updates.

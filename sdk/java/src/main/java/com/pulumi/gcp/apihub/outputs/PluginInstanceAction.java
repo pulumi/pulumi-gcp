@@ -44,7 +44,7 @@ public final class PluginInstanceAction {
      * @return The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
+     * &lt;a name=&#34;nestedActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     private @Nullable String scheduleTimeZone;
@@ -100,7 +100,7 @@ public final class PluginInstanceAction {
      * @return The time zone for the schedule cron expression. If not provided, UTC will
      * be used.
      * 
-     * &lt;a name=&#34;nestedActionsActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
+     * &lt;a name=&#34;nestedActionsHubInstanceAction&#34;&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
      * 
      */
     public Optional<String> scheduleTimeZone() {

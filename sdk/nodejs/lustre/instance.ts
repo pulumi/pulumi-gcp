@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -98,6 +100,12 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * Access control rules for the Lustre instance. Configures default root
+     * squashing behavior and specific access rules based on IP addresses.
+     * Structure is documented below.
+     */
+    declare public readonly accessRulesOptions: pulumi.Output<outputs.lustre.InstanceAccessRulesOptions | undefined>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `18000` to `954000`, in increments of 9000.
@@ -209,6 +217,7 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["accessRulesOptions"] = state?.accessRulesOptions;
             resourceInputs["capacityGib"] = state?.capacityGib;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
@@ -249,6 +258,7 @@ export class Instance extends pulumi.CustomResource {
             if (args?.perUnitStorageThroughput === undefined && !opts.urn) {
                 throw new Error("Missing required property 'perUnitStorageThroughput'");
             }
+            resourceInputs["accessRulesOptions"] = args?.accessRulesOptions;
             resourceInputs["capacityGib"] = args?.capacityGib;
             resourceInputs["description"] = args?.description;
             resourceInputs["filesystem"] = args?.filesystem;
@@ -281,6 +291,12 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
+    /**
+     * Access control rules for the Lustre instance. Configures default root
+     * squashing behavior and specific access rules based on IP addresses.
+     * Structure is documented below.
+     */
+    accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `18000` to `954000`, in increments of 9000.
@@ -384,6 +400,12 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Access control rules for the Lustre instance. Configures default root
+     * squashing behavior and specific access rules based on IP addresses.
+     * Structure is documented below.
+     */
+    accessRulesOptions?: pulumi.Input<inputs.lustre.InstanceAccessRulesOptions>;
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `18000` to `954000`, in increments of 9000.

@@ -247,7 +247,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * const example_dataset = new gcp.bigquery.Dataset("example-dataset", {
- *     datasetId: "dataset-basic",
+ *     datasetId: "dataset_basic",
  *     friendlyName: "Example Dataset",
  *     location: "us-central1",
  *     deleteContentsOnDestroy: true,

@@ -79,6 +79,7 @@ export interface GetSnapshotResult {
     readonly diskSizeGb: number;
     readonly effectiveLabels: {[key: string]: string};
     readonly filter?: string;
+    readonly guestFlush: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

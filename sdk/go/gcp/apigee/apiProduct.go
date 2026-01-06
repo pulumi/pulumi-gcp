@@ -170,6 +170,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			envDev, err := apigee.NewEnvironment(ctx, "env_dev", &apigee.EnvironmentArgs{
+//				Name:  pulumi.String("dev"),
+//				OrgId: apigeeOrg.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testApigeeApi, err := apigee.NewApi(ctx, "test_apigee_api", &apigee.ApiArgs{
+//				Name:         pulumi.String("hello-world"),
+//				OrgId:        apigeeOrg.Name,
+//				ConfigBundle: pulumi.String("apigee_api_bundle.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = apigee.NewApiProduct(ctx, "full_api_product", &apigee.ApiProductArgs{
 //				OrgId:        apigeeOrg.ID(),
 //				Name:         pulumi.String("my-product"),
@@ -184,7 +199,6 @@ import (
 //				},
 //				Environments: pulumi.StringArray{
 //					pulumi.String("dev"),
-//					pulumi.String("hom"),
 //				},
 //				Proxies: pulumi.StringArray{
 //					pulumi.String("hello-world"),
@@ -203,6 +217,8 @@ import (
 //				QuotaCounterScope: pulumi.String("PROXY"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeInstance,
+//				envDev,
+//				testApigeeApi,
 //			}))
 //			if err != nil {
 //				return err

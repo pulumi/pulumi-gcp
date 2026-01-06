@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_20665"),
+//				Name:        pulumi.String("tf-test-subnet_85160"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,

@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ReplicaNames;
         /// <summary>
-        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has PsaWriteEndpoint set or both the primary and replica are created.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceReplicationClusterResult> ReplicationClusters;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult> RestoreBackupContexts;

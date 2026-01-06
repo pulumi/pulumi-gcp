@@ -15,7 +15,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollecti
      * @return Regex for Cloud Storage.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex amazonS3BucketRegex;
@@ -25,7 +25,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollecti
      * @return Regex for Cloud Storage.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex&#34;&gt;&lt;/a&gt;The `amazonS3BucketRegex` block supports:
      * 
      */
     public Optional<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex> amazonS3BucketRegex() {

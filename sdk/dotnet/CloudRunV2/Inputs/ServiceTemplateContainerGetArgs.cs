@@ -116,6 +116,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.ServiceTemplateContainerResourcesGetArgs>? Resources { get; set; }
 
         /// <summary>
+        /// Location of the source.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceCode")]
+        public Input<Inputs.ServiceTemplateContainerSourceCodeGetArgs>? SourceCode { get; set; }
+
+        /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// Structure is documented below.
         /// </summary>

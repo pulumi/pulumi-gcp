@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_20665",
+    ///         Name = "tf-test-subnet_85160",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,

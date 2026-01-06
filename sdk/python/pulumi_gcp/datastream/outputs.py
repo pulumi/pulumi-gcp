@@ -72,6 +72,21 @@ __all__ = [
     'StreamDestinationConfigGcsDestinationConfig',
     'StreamDestinationConfigGcsDestinationConfigAvroFileFormat',
     'StreamDestinationConfigGcsDestinationConfigJsonFileFormat',
+    'StreamRuleSet',
+    'StreamRuleSetCustomizationRule',
+    'StreamRuleSetCustomizationRuleBigqueryClustering',
+    'StreamRuleSetCustomizationRuleBigqueryPartitioning',
+    'StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition',
+    'StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition',
+    'StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition',
+    'StreamRuleSetObjectFilter',
+    'StreamRuleSetObjectFilterSourceObjectIdentifier',
+    'StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier',
+    'StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier',
+    'StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier',
+    'StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier',
+    'StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier',
+    'StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier',
     'StreamSourceConfig',
     'StreamSourceConfigMongodbSourceConfig',
     'StreamSourceConfigMongodbSourceConfigExcludeObjects',
@@ -3473,6 +3488,688 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormat(dict):
         Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
         """
         return pulumi.get(self, "schema_file_format")
+
+
+@pulumi.output_type
+class StreamRuleSet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customizationRules":
+            suggest = "customization_rules"
+        elif key == "objectFilter":
+            suggest = "object_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customization_rules: Sequence['outputs.StreamRuleSetCustomizationRule'],
+                 object_filter: 'outputs.StreamRuleSetObjectFilter'):
+        """
+        :param Sequence['StreamRuleSetCustomizationRuleArgs'] customization_rules: List of customization rules to apply.
+               Structure is documented below.
+        :param 'StreamRuleSetObjectFilterArgs' object_filter: Object filter to apply the customization rules to.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "customization_rules", customization_rules)
+        pulumi.set(__self__, "object_filter", object_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="customizationRules")
+    def customization_rules(self) -> Sequence['outputs.StreamRuleSetCustomizationRule']:
+        """
+        List of customization rules to apply.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customization_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="objectFilter")
+    def object_filter(self) -> 'outputs.StreamRuleSetObjectFilter':
+        """
+        Object filter to apply the customization rules to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "object_filter")
+
+
+@pulumi.output_type
+class StreamRuleSetCustomizationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryClustering":
+            suggest = "bigquery_clustering"
+        elif key == "bigqueryPartitioning":
+            suggest = "bigquery_partitioning"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSetCustomizationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSetCustomizationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSetCustomizationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bigquery_clustering: Optional['outputs.StreamRuleSetCustomizationRuleBigqueryClustering'] = None,
+                 bigquery_partitioning: Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioning'] = None):
+        """
+        :param 'StreamRuleSetCustomizationRuleBigqueryClusteringArgs' bigquery_clustering: BigQuery clustering rule.
+               Structure is documented below.
+        :param 'StreamRuleSetCustomizationRuleBigqueryPartitioningArgs' bigquery_partitioning: BigQuery partitioning rule.
+               Structure is documented below.
+        """
+        if bigquery_clustering is not None:
+            pulumi.set(__self__, "bigquery_clustering", bigquery_clustering)
+        if bigquery_partitioning is not None:
+            pulumi.set(__self__, "bigquery_partitioning", bigquery_partitioning)
+
+    @_builtins.property
+    @pulumi.getter(name="bigqueryClustering")
+    def bigquery_clustering(self) -> Optional['outputs.StreamRuleSetCustomizationRuleBigqueryClustering']:
+        """
+        BigQuery clustering rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_clustering")
+
+    @_builtins.property
+    @pulumi.getter(name="bigqueryPartitioning")
+    def bigquery_partitioning(self) -> Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioning']:
+        """
+        BigQuery partitioning rule.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_partitioning")
+
+
+@pulumi.output_type
+class StreamRuleSetCustomizationRuleBigqueryClustering(dict):
+    def __init__(__self__, *,
+                 columns: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] columns: Column names to set as clustering columns.
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Sequence[_builtins.str]:
+        """
+        Column names to set as clustering columns.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class StreamRuleSetCustomizationRuleBigqueryPartitioning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingestionTimePartition":
+            suggest = "ingestion_time_partition"
+        elif key == "integerRangePartition":
+            suggest = "integer_range_partition"
+        elif key == "requirePartitionFilter":
+            suggest = "require_partition_filter"
+        elif key == "timeUnitPartition":
+            suggest = "time_unit_partition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSetCustomizationRuleBigqueryPartitioning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSetCustomizationRuleBigqueryPartitioning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSetCustomizationRuleBigqueryPartitioning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ingestion_time_partition: Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition'] = None,
+                 integer_range_partition: Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition'] = None,
+                 require_partition_filter: Optional[_builtins.bool] = None,
+                 time_unit_partition: Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition'] = None):
+        """
+        :param 'StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs' ingestion_time_partition: A nested object resource.
+               Structure is documented below.
+        :param 'StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs' integer_range_partition: A nested object resource.
+               Structure is documented below.
+        :param _builtins.bool require_partition_filter: If true, queries over the table require a partition filter.
+        :param 'StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs' time_unit_partition: A nested object resource.
+               Structure is documented below.
+        """
+        if ingestion_time_partition is not None:
+            pulumi.set(__self__, "ingestion_time_partition", ingestion_time_partition)
+        if integer_range_partition is not None:
+            pulumi.set(__self__, "integer_range_partition", integer_range_partition)
+        if require_partition_filter is not None:
+            pulumi.set(__self__, "require_partition_filter", require_partition_filter)
+        if time_unit_partition is not None:
+            pulumi.set(__self__, "time_unit_partition", time_unit_partition)
+
+    @_builtins.property
+    @pulumi.getter(name="ingestionTimePartition")
+    def ingestion_time_partition(self) -> Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ingestion_time_partition")
+
+    @_builtins.property
+    @pulumi.getter(name="integerRangePartition")
+    def integer_range_partition(self) -> Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "integer_range_partition")
+
+    @_builtins.property
+    @pulumi.getter(name="requirePartitionFilter")
+    def require_partition_filter(self) -> Optional[_builtins.bool]:
+        """
+        If true, queries over the table require a partition filter.
+        """
+        return pulumi.get(self, "require_partition_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="timeUnitPartition")
+    def time_unit_partition(self) -> Optional['outputs.StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "time_unit_partition")
+
+
+@pulumi.output_type
+class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partitioningTimeGranularity":
+            suggest = "partitioning_time_granularity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 partitioning_time_granularity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str partitioning_time_granularity: Partition granularity.
+               Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+        """
+        if partitioning_time_granularity is not None:
+            pulumi.set(__self__, "partitioning_time_granularity", partitioning_time_granularity)
+
+    @_builtins.property
+    @pulumi.getter(name="partitioningTimeGranularity")
+    def partitioning_time_granularity(self) -> Optional[_builtins.str]:
+        """
+        Partition granularity.
+        Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+        """
+        return pulumi.get(self, "partitioning_time_granularity")
+
+
+@pulumi.output_type
+class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition(dict):
+    def __init__(__self__, *,
+                 column: _builtins.str,
+                 end: _builtins.int,
+                 interval: _builtins.int,
+                 start: _builtins.int):
+        """
+        :param _builtins.str column: The partitioning column.
+        :param _builtins.int end: The ending value for range partitioning (exclusive).
+        :param _builtins.int interval: The interval of each range within the partition.
+        :param _builtins.int start: The starting value for range partitioning (inclusive).
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> _builtins.str:
+        """
+        The partitioning column.
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> _builtins.int:
+        """
+        The ending value for range partitioning (exclusive).
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.int:
+        """
+        The interval of each range within the partition.
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> _builtins.int:
+        """
+        The starting value for range partitioning (inclusive).
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partitioningTimeGranularity":
+            suggest = "partitioning_time_granularity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: _builtins.str,
+                 partitioning_time_granularity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str column: The partitioning column.
+        :param _builtins.str partitioning_time_granularity: Partition granularity.
+               Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+        """
+        pulumi.set(__self__, "column", column)
+        if partitioning_time_granularity is not None:
+            pulumi.set(__self__, "partitioning_time_granularity", partitioning_time_granularity)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> _builtins.str:
+        """
+        The partitioning column.
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter(name="partitioningTimeGranularity")
+    def partitioning_time_granularity(self) -> Optional[_builtins.str]:
+        """
+        Partition granularity.
+        Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+        """
+        return pulumi.get(self, "partitioning_time_granularity")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceObjectIdentifier":
+            suggest = "source_object_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSetObjectFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSetObjectFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSetObjectFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_object_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifier'] = None):
+        """
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierArgs' source_object_identifier: Specific source object identifier.
+               Structure is documented below.
+        """
+        if source_object_identifier is not None:
+            pulumi.set(__self__, "source_object_identifier", source_object_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceObjectIdentifier")
+    def source_object_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifier']:
+        """
+        Specific source object identifier.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_object_identifier")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mongodbIdentifier":
+            suggest = "mongodb_identifier"
+        elif key == "mysqlIdentifier":
+            suggest = "mysql_identifier"
+        elif key == "oracleIdentifier":
+            suggest = "oracle_identifier"
+        elif key == "postgresqlIdentifier":
+            suggest = "postgresql_identifier"
+        elif key == "salesforceIdentifier":
+            suggest = "salesforce_identifier"
+        elif key == "sqlServerIdentifier":
+            suggest = "sql_server_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSetObjectFilterSourceObjectIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSetObjectFilterSourceObjectIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSetObjectFilterSourceObjectIdentifier.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mongodb_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier'] = None,
+                 mysql_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier'] = None,
+                 oracle_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier'] = None,
+                 postgresql_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier'] = None,
+                 salesforce_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier'] = None,
+                 sql_server_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier'] = None):
+        """
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs' mongodb_identifier: A nested object resource.
+               Structure is documented below.
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs' mysql_identifier: A nested object resource.
+               Structure is documented below.
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs' oracle_identifier: A nested object resource.
+               Structure is documented below.
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs' postgresql_identifier: A nested object resource.
+               Structure is documented below.
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs' salesforce_identifier: A nested object resource.
+               Structure is documented below.
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs' sql_server_identifier: A nested object resource.
+               Structure is documented below.
+        """
+        if mongodb_identifier is not None:
+            pulumi.set(__self__, "mongodb_identifier", mongodb_identifier)
+        if mysql_identifier is not None:
+            pulumi.set(__self__, "mysql_identifier", mysql_identifier)
+        if oracle_identifier is not None:
+            pulumi.set(__self__, "oracle_identifier", oracle_identifier)
+        if postgresql_identifier is not None:
+            pulumi.set(__self__, "postgresql_identifier", postgresql_identifier)
+        if salesforce_identifier is not None:
+            pulumi.set(__self__, "salesforce_identifier", salesforce_identifier)
+        if sql_server_identifier is not None:
+            pulumi.set(__self__, "sql_server_identifier", sql_server_identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbIdentifier")
+    def mongodb_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mongodb_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlIdentifier")
+    def mysql_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="oracleIdentifier")
+    def oracle_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="postgresqlIdentifier")
+    def postgresql_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="salesforceIdentifier")
+    def salesforce_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "salesforce_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="sqlServerIdentifier")
+    def sql_server_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sql_server_identifier")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier(dict):
+    def __init__(__self__, *,
+                 collection: _builtins.str,
+                 database: _builtins.str):
+        """
+        :param _builtins.str collection: The MongoDB collection name.
+        :param _builtins.str database: The MongoDB database name.
+        """
+        pulumi.set(__self__, "collection", collection)
+        pulumi.set(__self__, "database", database)
+
+    @_builtins.property
+    @pulumi.getter
+    def collection(self) -> _builtins.str:
+        """
+        The MongoDB collection name.
+        """
+        return pulumi.get(self, "collection")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> _builtins.str:
+        """
+        The MongoDB database name.
+        """
+        return pulumi.get(self, "database")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier(dict):
+    def __init__(__self__, *,
+                 database: _builtins.str,
+                 table: _builtins.str):
+        """
+        :param _builtins.str database: The database name.
+        :param _builtins.str table: The table name.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> _builtins.str:
+        """
+        The database name.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        The table name.
+        """
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier(dict):
+    def __init__(__self__, *,
+                 schema: _builtins.str,
+                 table: _builtins.str):
+        """
+        :param _builtins.str schema: The schema name.
+        :param _builtins.str table: The table name.
+        """
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> _builtins.str:
+        """
+        The schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        The table name.
+        """
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier(dict):
+    def __init__(__self__, *,
+                 schema: _builtins.str,
+                 table: _builtins.str):
+        """
+        :param _builtins.str schema: The schema name.
+        :param _builtins.str table: The table name.
+        """
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> _builtins.str:
+        """
+        The schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        The table name.
+        """
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectName":
+            suggest = "object_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_name: _builtins.str):
+        """
+        :param _builtins.str object_name: The Salesforce object name.
+        """
+        pulumi.set(__self__, "object_name", object_name)
+
+    @_builtins.property
+    @pulumi.getter(name="objectName")
+    def object_name(self) -> _builtins.str:
+        """
+        The Salesforce object name.
+        """
+        return pulumi.get(self, "object_name")
+
+
+@pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier(dict):
+    def __init__(__self__, *,
+                 schema: _builtins.str,
+                 table: _builtins.str):
+        """
+        :param _builtins.str schema: The schema name.
+        :param _builtins.str table: The table name.
+        """
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> _builtins.str:
+        """
+        The schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        The table name.
+        """
+        return pulumi.get(self, "table")
 
 
 @pulumi.output_type

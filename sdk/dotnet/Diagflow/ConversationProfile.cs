@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Diagflow
     ///     var basicAgent = new Gcp.Diagflow.Agent("basic_agent", new()
     ///     {
     ///         DisplayName = "example_agent",
-    ///         DefaultLanguageCode = "en-us",
+    ///         DefaultLanguageCode = "en",
     ///         TimeZone = "America/New_York",
     ///     });
     /// 

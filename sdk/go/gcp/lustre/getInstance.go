@@ -36,12 +36,13 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	CapacityGib       string            `pulumi:"capacityGib"`
-	CreateTime        string            `pulumi:"createTime"`
-	Description       string            `pulumi:"description"`
-	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
-	Filesystem        string            `pulumi:"filesystem"`
-	GkeSupportEnabled bool              `pulumi:"gkeSupportEnabled"`
+	AccessRulesOptions []GetInstanceAccessRulesOption `pulumi:"accessRulesOptions"`
+	CapacityGib        string                         `pulumi:"capacityGib"`
+	CreateTime         string                         `pulumi:"createTime"`
+	Description        string                         `pulumi:"description"`
+	EffectiveLabels    map[string]string              `pulumi:"effectiveLabels"`
+	Filesystem         string                         `pulumi:"filesystem"`
+	GkeSupportEnabled  bool                           `pulumi:"gkeSupportEnabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string            `pulumi:"id"`
 	InstanceId               string            `pulumi:"instanceId"`
@@ -97,6 +98,10 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
+}
+
+func (o LookupInstanceResultOutput) AccessRulesOptions() GetInstanceAccessRulesOptionArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceAccessRulesOption { return v.AccessRulesOptions }).(GetInstanceAccessRulesOptionArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) CapacityGib() pulumi.StringOutput {

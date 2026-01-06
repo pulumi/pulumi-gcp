@@ -23785,7 +23785,7 @@ type VmwareAdminClusterPlatformConfig struct {
 	// ResourceStatus representing detailed cluster state.
 	// Structure is documented below.
 	//
-	// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
+	// <a name="nestedPlatformConfigBundlesStatus"></a>The `status` block contains:
 	Statuses []VmwareAdminClusterPlatformConfigStatus `pulumi:"statuses"`
 }
 
@@ -23818,7 +23818,7 @@ type VmwareAdminClusterPlatformConfigArgs struct {
 	// ResourceStatus representing detailed cluster state.
 	// Structure is documented below.
 	//
-	// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
+	// <a name="nestedPlatformConfigBundlesStatus"></a>The `status` block contains:
 	Statuses VmwareAdminClusterPlatformConfigStatusArrayInput `pulumi:"statuses"`
 }
 
@@ -23925,7 +23925,7 @@ func (o VmwareAdminClusterPlatformConfigOutput) RequiredPlatformVersion() pulumi
 // ResourceStatus representing detailed cluster state.
 // Structure is documented below.
 //
-// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
+// <a name="nestedPlatformConfigBundlesStatus"></a>The `status` block contains:
 func (o VmwareAdminClusterPlatformConfigOutput) Statuses() VmwareAdminClusterPlatformConfigStatusArrayOutput {
 	return o.ApplyT(func(v VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigStatus { return v.Statuses }).(VmwareAdminClusterPlatformConfigStatusArrayOutput)
 }
@@ -23995,7 +23995,7 @@ func (o VmwareAdminClusterPlatformConfigPtrOutput) RequiredPlatformVersion() pul
 // ResourceStatus representing detailed cluster state.
 // Structure is documented below.
 //
-// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
+// <a name="nestedPlatformConfigBundlesStatus"></a>The `status` block contains:
 func (o VmwareAdminClusterPlatformConfigPtrOutput) Statuses() VmwareAdminClusterPlatformConfigStatusArrayOutput {
 	return o.ApplyT(func(v *VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigStatus {
 		if v == nil {

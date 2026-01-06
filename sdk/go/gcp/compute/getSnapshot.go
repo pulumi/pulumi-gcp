@@ -87,6 +87,7 @@ type LookupSnapshotResult struct {
 	DiskSizeGb        int               `pulumi:"diskSizeGb"`
 	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
 	Filter            *string           `pulumi:"filter"`
+	GuestFlush        bool              `pulumi:"guestFlush"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                               `pulumi:"id"`
 	LabelFingerprint         string                               `pulumi:"labelFingerprint"`
@@ -175,6 +176,10 @@ func (o LookupSnapshotResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 
 func (o LookupSnapshotResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupSnapshotResultOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) bool { return v.GuestFlush }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

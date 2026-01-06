@@ -22,7 +22,7 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfig {
      */
     private @Nullable String cgroupMode;
     /**
-     * @return The settings for kernel module loading.
+     * @return Settings for kernel module loading. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
@@ -40,7 +40,7 @@ public final class ClusterNodePoolAutoConfigLinuxNodeConfig {
         return Optional.ofNullable(this.cgroupMode);
     }
     /**
-     * @return The settings for kernel module loading.
+     * @return Settings for kernel module loading. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoading() {

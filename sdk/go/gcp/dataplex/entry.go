@@ -326,7 +326,7 @@ import (
 //				return err
 //			}
 //			example_dataset, err := bigquery.NewDataset(ctx, "example-dataset", &bigquery.DatasetArgs{
-//				DatasetId:               pulumi.String("dataset-basic"),
+//				DatasetId:               pulumi.String("dataset_basic"),
 //				FriendlyName:            pulumi.String("Example Dataset"),
 //				Location:                pulumi.String("us-central1"),
 //				DeleteContentsOnDestroy: pulumi.Bool(true),

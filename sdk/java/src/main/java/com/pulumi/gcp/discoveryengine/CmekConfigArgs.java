@@ -23,15 +23,15 @@ public final class CmekConfigArgs extends com.pulumi.resources.ResourceArgs {
      * The unique id of the cmek config.
      * 
      */
-    @Import(name="cmekConfigId")
-    private @Nullable Output<String> cmekConfigId;
+    @Import(name="cmekConfigId", required=true)
+    private Output<String> cmekConfigId;
 
     /**
      * @return The unique id of the cmek config.
      * 
      */
-    public Optional<Output<String>> cmekConfigId() {
-        return Optional.ofNullable(this.cmekConfigId);
+    public Output<String> cmekConfigId() {
+        return this.cmekConfigId;
     }
 
     /**
@@ -154,7 +154,7 @@ public final class CmekConfigArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder cmekConfigId(@Nullable Output<String> cmekConfigId) {
+        public Builder cmekConfigId(Output<String> cmekConfigId) {
             $.cmekConfigId = cmekConfigId;
             return this;
         }
@@ -296,6 +296,9 @@ public final class CmekConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CmekConfigArgs build() {
+            if ($.cmekConfigId == null) {
+                throw new MissingRequiredPropertyException("CmekConfigArgs", "cmekConfigId");
+            }
             if ($.kmsKey == null) {
                 throw new MissingRequiredPropertyException("CmekConfigArgs", "kmsKey");
             }

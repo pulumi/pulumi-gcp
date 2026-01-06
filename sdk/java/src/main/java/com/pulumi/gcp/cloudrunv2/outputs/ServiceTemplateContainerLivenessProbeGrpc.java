@@ -23,7 +23,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpc {
      * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
      * If this is not specified, the default behavior is defined by gRPC.
      * 
-     * &lt;a name=&#34;nestedTemplateContainersContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
+     * &lt;a name=&#34;nestedTemplateContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
      * 
      */
     private @Nullable String service;
@@ -42,7 +42,7 @@ public final class ServiceTemplateContainerLivenessProbeGrpc {
      * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
      * If this is not specified, the default behavior is defined by gRPC.
      * 
-     * &lt;a name=&#34;nestedTemplateContainersContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
+     * &lt;a name=&#34;nestedTemplateContainersBuildInfo&#34;&gt;&lt;/a&gt;The `buildInfo` block contains:
      * 
      */
     public Optional<String> service() {

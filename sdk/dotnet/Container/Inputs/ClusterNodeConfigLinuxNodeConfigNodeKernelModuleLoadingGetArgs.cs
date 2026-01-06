@@ -13,7 +13,11 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The policy for kernel module loading.
+        /// Possible kernel module loading policies.
+        /// Accepted values are:
+        /// * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+        /// * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+        /// * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

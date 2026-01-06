@@ -943,6 +943,78 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Service Zip Deploy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var sourcebucket = new Bucket("sourcebucket", BucketArgs.builder()
+ *             .name(String.format("%s-tf-test-gcf-source_21197", project.projectId()))
+ *             .location("US")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var sourceTar = new BucketObject("sourceTar", BucketObjectArgs.builder()
+ *             .name("function-source.zip")
+ *             .bucket(sourcebucket.name())
+ *             .source(new FileAsset("./test-fixtures/cr-zip-nodejs-hello.tar.gz"))
+ *             .build());
+ * 
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-zip-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("scratch")
+ *                     .baseImageUri("us-central1-docker.pkg.dev/serverless-runtimes/google-24-full/runtimes/nodejs24")
+ *                     .commands("node")
+ *                     .args("index.js")
+ *                     .sourceCode(ServiceTemplateContainerSourceCodeArgs.builder()
+ *                         .cloudStorageSource(ServiceTemplateContainerSourceCodeCloudStorageSourceArgs.builder()
+ *                             .bucket(sourcebucket.name())
+ *                             .object(sourceTar.name())
+ *                             .generation(sourceTar.generation())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

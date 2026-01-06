@@ -876,6 +876,78 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Zip Deploy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sourcebucket, err := storage.NewBucket(ctx, "sourcebucket", &storage.BucketArgs{
+//				Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_21197", project.ProjectId),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceTar, err := storage.NewBucketObject(ctx, "source_tar", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("function-source.zip"),
+//				Bucket: sourcebucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/cr-zip-nodejs-hello.tar.gz"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-zip-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image:        pulumi.String("scratch"),
+//							BaseImageUri: pulumi.String("us-central1-docker.pkg.dev/serverless-runtimes/google-24-full/runtimes/nodejs24"),
+//							Commands: pulumi.StringArray{
+//								pulumi.String("node"),
+//							},
+//							Args: pulumi.StringArray{
+//								pulumi.String("index.js"),
+//							},
+//							SourceCode: &cloudrunv2.ServiceTemplateContainerSourceCodeArgs{
+//								CloudStorageSource: &cloudrunv2.ServiceTemplateContainerSourceCodeCloudStorageSourceArgs{
+//									Bucket:     sourcebucket.Name,
+//									Object:     sourceTar.Name,
+//									Generation: sourceTar.Generation,
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -6,7 +6,11 @@ package com.pulumi.gcp.vertex.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreBigtableAutoScaling;
+import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AiFeatureOnlineStoreBigtable {
@@ -16,6 +20,16 @@ public final class AiFeatureOnlineStoreBigtable {
      * 
      */
     private AiFeatureOnlineStoreBigtableAutoScaling autoScaling;
+    /**
+     * @return Optional. If true, enable direct access to the Bigtable instance.
+     * 
+     */
+    private @Nullable Boolean enableDirectBigtableAccess;
+    /**
+     * @return The zone where the Bigtable instance will be created.
+     * 
+     */
+    private @Nullable String zone;
 
     private AiFeatureOnlineStoreBigtable() {}
     /**
@@ -25,6 +39,20 @@ public final class AiFeatureOnlineStoreBigtable {
      */
     public AiFeatureOnlineStoreBigtableAutoScaling autoScaling() {
         return this.autoScaling;
+    }
+    /**
+     * @return Optional. If true, enable direct access to the Bigtable instance.
+     * 
+     */
+    public Optional<Boolean> enableDirectBigtableAccess() {
+        return Optional.ofNullable(this.enableDirectBigtableAccess);
+    }
+    /**
+     * @return The zone where the Bigtable instance will be created.
+     * 
+     */
+    public Optional<String> zone() {
+        return Optional.ofNullable(this.zone);
     }
 
     public static Builder builder() {
@@ -37,10 +65,14 @@ public final class AiFeatureOnlineStoreBigtable {
     @CustomType.Builder
     public static final class Builder {
         private AiFeatureOnlineStoreBigtableAutoScaling autoScaling;
+        private @Nullable Boolean enableDirectBigtableAccess;
+        private @Nullable String zone;
         public Builder() {}
         public Builder(AiFeatureOnlineStoreBigtable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoScaling = defaults.autoScaling;
+    	      this.enableDirectBigtableAccess = defaults.enableDirectBigtableAccess;
+    	      this.zone = defaults.zone;
         }
 
         @CustomType.Setter
@@ -51,9 +83,23 @@ public final class AiFeatureOnlineStoreBigtable {
             this.autoScaling = autoScaling;
             return this;
         }
+        @CustomType.Setter
+        public Builder enableDirectBigtableAccess(@Nullable Boolean enableDirectBigtableAccess) {
+
+            this.enableDirectBigtableAccess = enableDirectBigtableAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zone(@Nullable String zone) {
+
+            this.zone = zone;
+            return this;
+        }
         public AiFeatureOnlineStoreBigtable build() {
             final var _resultValue = new AiFeatureOnlineStoreBigtable();
             _resultValue.autoScaling = autoScaling;
+            _resultValue.enableDirectBigtableAccess = enableDirectBigtableAccess;
+            _resultValue.zone = zone;
             return _resultValue;
         }
     }

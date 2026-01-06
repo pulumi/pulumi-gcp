@@ -6,7 +6,9 @@ package com.pulumi.gcp.networkservices.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkservices.inputs.MulticastDomainConnectionConfigArgs;
+import com.pulumi.gcp.networkservices.inputs.MulticastDomainStateArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,14 +56,14 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * [Output only] The timestamp when the multicast domain was created.
+     * The timestamp when the multicast domain was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain was created.
+     * @return The timestamp when the multicast domain was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -226,7 +228,40 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    @Import(name="states")
+    private @Nullable Output<List<MulticastDomainStateArgs>> states;
+
+    /**
+     * @return (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    public Optional<Output<List<MulticastDomainStateArgs>>> states() {
+        return Optional.ofNullable(this.states);
+    }
+
+    /**
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
      * another with the same name is created, the new domain is assigned a
      * different unique_id.
@@ -236,7 +271,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> uniqueId;
 
     /**
-     * @return [Output only] The Google-generated UUID for the resource. This value is
+     * @return The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
      * another with the same name is created, the new domain is assigned a
      * different unique_id.
@@ -247,7 +282,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * [Output only] The timestamp when the multicast domain was most recently
+     * The timestamp when the multicast domain was most recently
      * updated.
      * 
      */
@@ -255,7 +290,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain was most recently
+     * @return The timestamp when the multicast domain was most recently
      * updated.
      * 
      */
@@ -278,6 +313,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.states = $.states;
         this.uniqueId = $.uniqueId;
         this.updateTime = $.updateTime;
     }
@@ -349,7 +385,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param createTime [Output only] The timestamp when the multicast domain was created.
+         * @param createTime The timestamp when the multicast domain was created.
          * 
          * @return builder
          * 
@@ -360,7 +396,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param createTime [Output only] The timestamp when the multicast domain was created.
+         * @param createTime The timestamp when the multicast domain was created.
          * 
          * @return builder
          * 
@@ -581,7 +617,65 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uniqueId [Output only] The Google-generated UUID for the resource. This value is
+         * @param states (Output)
+         * The state of the multicast resource.
+         * Possible values:
+         * CREATING
+         * ACTIVE
+         * DELETING
+         * DELETE_FAILED
+         * UPDATING
+         * UPDATE_FAILED
+         * INACTIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder states(@Nullable Output<List<MulticastDomainStateArgs>> states) {
+            $.states = states;
+            return this;
+        }
+
+        /**
+         * @param states (Output)
+         * The state of the multicast resource.
+         * Possible values:
+         * CREATING
+         * ACTIVE
+         * DELETING
+         * DELETE_FAILED
+         * UPDATING
+         * UPDATE_FAILED
+         * INACTIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder states(List<MulticastDomainStateArgs> states) {
+            return states(Output.of(states));
+        }
+
+        /**
+         * @param states (Output)
+         * The state of the multicast resource.
+         * Possible values:
+         * CREATING
+         * ACTIVE
+         * DELETING
+         * DELETE_FAILED
+         * UPDATING
+         * UPDATE_FAILED
+         * INACTIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder states(MulticastDomainStateArgs... states) {
+            return states(List.of(states));
+        }
+
+        /**
+         * @param uniqueId The Google-generated UUID for the resource. This value is
          * unique across all multicast domain resources. If a domain is deleted and
          * another with the same name is created, the new domain is assigned a
          * different unique_id.
@@ -595,7 +689,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uniqueId [Output only] The Google-generated UUID for the resource. This value is
+         * @param uniqueId The Google-generated UUID for the resource. This value is
          * unique across all multicast domain resources. If a domain is deleted and
          * another with the same name is created, the new domain is assigned a
          * different unique_id.
@@ -608,7 +702,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param updateTime [Output only] The timestamp when the multicast domain was most recently
+         * @param updateTime The timestamp when the multicast domain was most recently
          * updated.
          * 
          * @return builder
@@ -620,7 +714,7 @@ public final class MulticastDomainState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param updateTime [Output only] The timestamp when the multicast domain was most recently
+         * @param updateTime The timestamp when the multicast domain was most recently
          * updated.
          * 
          * @return builder

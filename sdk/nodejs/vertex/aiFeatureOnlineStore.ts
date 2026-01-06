@@ -173,6 +173,11 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
      */
     declare public readonly embeddingManagement: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
     /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     */
+    declare public readonly encryptionSpec: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreEncryptionSpec | undefined>;
+    /**
      * Used to perform consistent read-modify-write updates.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
@@ -235,6 +240,7 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
             resourceInputs["dedicatedServingEndpoint"] = state?.dedicatedServingEndpoint;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["embeddingManagement"] = state?.embeddingManagement;
+            resourceInputs["encryptionSpec"] = state?.encryptionSpec;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["labels"] = state?.labels;
@@ -250,6 +256,7 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
             resourceInputs["bigtable"] = args?.bigtable;
             resourceInputs["dedicatedServingEndpoint"] = args?.dedicatedServingEndpoint;
             resourceInputs["embeddingManagement"] = args?.embeddingManagement;
+            resourceInputs["encryptionSpec"] = args?.encryptionSpec;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
@@ -301,6 +308,11 @@ export interface AiFeatureOnlineStoreState {
      * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      */
     embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEncryptionSpec>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
@@ -370,6 +382,11 @@ export interface AiFeatureOnlineStoreArgs {
      * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      */
     embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     */
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEncryptionSpec>;
     /**
      * If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
      */

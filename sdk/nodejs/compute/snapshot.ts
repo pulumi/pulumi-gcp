@@ -58,6 +58,34 @@ import * as utilities from "../utilities";
  *     storageLocations: ["us-central1"],
  * });
  * ```
+ * ### Snapshot Basic2
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     name: "debian-disk",
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     name: "my-snapshot",
+ *     sourceDisk: persistent.id,
+ *     zone: "us-central1-a",
+ *     labels: {
+ *         my_label: "value",
+ *     },
+ *     storageLocations: ["us-central1"],
+ *     guestFlush: true,
+ * });
+ * ```
  * ### Snapshot Chainname
  *
  * ```typescript
@@ -164,6 +192,10 @@ export class Snapshot extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     */
+    declare public readonly guestFlush: pulumi.Output<boolean | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
@@ -273,6 +305,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["diskSizeGb"] = state?.diskSizeGb;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["guestFlush"] = state?.guestFlush;
             resourceInputs["labelFingerprint"] = state?.labelFingerprint;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["licenses"] = state?.licenses;
@@ -295,6 +328,7 @@ export class Snapshot extends pulumi.CustomResource {
             }
             resourceInputs["chainName"] = args?.chainName;
             resourceInputs["description"] = args?.description;
+            resourceInputs["guestFlush"] = args?.guestFlush;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -350,6 +384,10 @@ export interface SnapshotState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     */
+    guestFlush?: pulumi.Input<boolean>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
@@ -459,6 +497,10 @@ export interface SnapshotArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     */
+    guestFlush?: pulumi.Input<boolean>;
     /**
      * Labels to apply to this Snapshot.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

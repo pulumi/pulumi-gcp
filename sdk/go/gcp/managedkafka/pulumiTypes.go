@@ -147,8 +147,8 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 }
 
 type ClusterBrokerCapacityConfig struct {
-	// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
-	DiskSizeGb *string `pulumi:"diskSizeGb"`
+	// The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
+	DiskSizeGib *string `pulumi:"diskSizeGib"`
 }
 
 // ClusterBrokerCapacityConfigInput is an input type that accepts ClusterBrokerCapacityConfigArgs and ClusterBrokerCapacityConfigOutput values.
@@ -163,8 +163,8 @@ type ClusterBrokerCapacityConfigInput interface {
 }
 
 type ClusterBrokerCapacityConfigArgs struct {
-	// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
-	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
+	// The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
+	DiskSizeGib pulumi.StringPtrInput `pulumi:"diskSizeGib"`
 }
 
 func (ClusterBrokerCapacityConfigArgs) ElementType() reflect.Type {
@@ -244,9 +244,9 @@ func (o ClusterBrokerCapacityConfigOutput) ToClusterBrokerCapacityConfigPtrOutpu
 	}).(ClusterBrokerCapacityConfigPtrOutput)
 }
 
-// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
-func (o ClusterBrokerCapacityConfigOutput) DiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterBrokerCapacityConfig) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
+// The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
+func (o ClusterBrokerCapacityConfigOutput) DiskSizeGib() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterBrokerCapacityConfig) *string { return v.DiskSizeGib }).(pulumi.StringPtrOutput)
 }
 
 type ClusterBrokerCapacityConfigPtrOutput struct{ *pulumi.OutputState }
@@ -273,13 +273,13 @@ func (o ClusterBrokerCapacityConfigPtrOutput) Elem() ClusterBrokerCapacityConfig
 	}).(ClusterBrokerCapacityConfigOutput)
 }
 
-// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
-func (o ClusterBrokerCapacityConfigPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
+// The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
+func (o ClusterBrokerCapacityConfigPtrOutput) DiskSizeGib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBrokerCapacityConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DiskSizeGb
+		return v.DiskSizeGib
 	}).(pulumi.StringPtrOutput)
 }
 

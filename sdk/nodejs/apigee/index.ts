@@ -165,6 +165,11 @@ export type SecurityAction = import("./securityAction").SecurityAction;
 export const SecurityAction: typeof import("./securityAction").SecurityAction = null as any;
 utilities.lazyLoad(exports, ["SecurityAction"], () => require("./securityAction"));
 
+export { SecurityFeedbackArgs, SecurityFeedbackState } from "./securityFeedback";
+export type SecurityFeedback = import("./securityFeedback").SecurityFeedback;
+export const SecurityFeedback: typeof import("./securityFeedback").SecurityFeedback = null as any;
+utilities.lazyLoad(exports, ["SecurityFeedback"], () => require("./securityFeedback"));
+
 export { SecurityMonitoringConditionArgs, SecurityMonitoringConditionState } from "./securityMonitoringCondition";
 export type SecurityMonitoringCondition = import("./securityMonitoringCondition").SecurityMonitoringCondition;
 export const SecurityMonitoringCondition: typeof import("./securityMonitoringCondition").SecurityMonitoringCondition = null as any;
@@ -262,6 +267,8 @@ const _module = {
                 return new Organization(name, <any>undefined, { urn })
             case "gcp:apigee/securityAction:SecurityAction":
                 return new SecurityAction(name, <any>undefined, { urn })
+            case "gcp:apigee/securityFeedback:SecurityFeedback":
+                return new SecurityFeedback(name, <any>undefined, { urn })
             case "gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition":
                 return new SecurityMonitoringCondition(name, <any>undefined, { urn })
             case "gcp:apigee/securityProfileV2:SecurityProfileV2":
@@ -310,6 +317,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesSelfSignedC
 pulumi.runtime.registerResourceModule("gcp", "apigee/natAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/securityAction", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/securityFeedback", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/securityMonitoringCondition", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/securityProfileV2", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)

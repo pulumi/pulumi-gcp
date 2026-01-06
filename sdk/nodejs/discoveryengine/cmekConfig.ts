@@ -92,7 +92,7 @@ export class CmekConfig extends pulumi.CustomResource {
     /**
      * The unique id of the cmek config.
      */
-    declare public readonly cmekConfigId: pulumi.Output<string | undefined>;
+    declare public readonly cmekConfigId: pulumi.Output<string>;
     /**
      * The default CmekConfig for the Customer.
      */
@@ -174,6 +174,9 @@ export class CmekConfig extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as CmekConfigArgs | undefined;
+            if (args?.cmekConfigId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'cmekConfigId'");
+            }
             if (args?.kmsKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kmsKey'");
             }
@@ -268,7 +271,7 @@ export interface CmekConfigArgs {
     /**
      * The unique id of the cmek config.
      */
-    cmekConfigId?: pulumi.Input<string>;
+    cmekConfigId: pulumi.Input<string>;
     /**
      * KMS key resource name which will be used to encrypt resources
      * `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.

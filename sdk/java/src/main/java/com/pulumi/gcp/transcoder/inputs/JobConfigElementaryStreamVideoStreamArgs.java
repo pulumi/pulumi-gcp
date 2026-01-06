@@ -19,7 +19,7 @@ public final class JobConfigElementaryStreamVideoStreamArgs extends com.pulumi.r
      * H264 codec settings
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
+     * &lt;a name=&#34;nestedConfigElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
      * 
      */
     @Import(name="h264")
@@ -29,7 +29,7 @@ public final class JobConfigElementaryStreamVideoStreamArgs extends com.pulumi.r
      * @return H264 codec settings
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
+     * &lt;a name=&#34;nestedConfigElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
      * 
      */
     public Optional<Output<JobConfigElementaryStreamVideoStreamH264Args>> h264() {
@@ -64,7 +64,7 @@ public final class JobConfigElementaryStreamVideoStreamArgs extends com.pulumi.r
          * @param h264 H264 codec settings
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
+         * &lt;a name=&#34;nestedConfigElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
          * 
          * @return builder
          * 
@@ -78,7 +78,7 @@ public final class JobConfigElementaryStreamVideoStreamArgs extends com.pulumi.r
          * @param h264 H264 codec settings
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
+         * &lt;a name=&#34;nestedConfigElementaryStreamsVideoStreamH264&#34;&gt;&lt;/a&gt;The `h264` block supports:
          * 
          * @return builder
          * 

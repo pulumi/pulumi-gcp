@@ -76,7 +76,7 @@ import (
 //			}
 //			basicAgent, err := diagflow.NewAgent(ctx, "basic_agent", &diagflow.AgentArgs{
 //				DisplayName:         pulumi.String("example_agent"),
-//				DefaultLanguageCode: pulumi.String("en-us"),
+//				DefaultLanguageCode: pulumi.String("en"),
 //				TimeZone:            pulumi.String("America/New_York"),
 //				Project:             project.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{

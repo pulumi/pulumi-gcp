@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreEmbeddingManagementArgs;
+import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreOptimizedArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -112,6 +113,23 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
     public Optional<Output<AiFeatureOnlineStoreEmbeddingManagementArgs>> embeddingManagement() {
         return Optional.ofNullable(this.embeddingManagement);
+    }
+
+    /**
+     * If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<AiFeatureOnlineStoreEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return If set, both of the online and offline data storage will be secured by this key.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureOnlineStoreEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
     }
 
     /**
@@ -280,6 +298,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         this.dedicatedServingEndpoint = $.dedicatedServingEndpoint;
         this.effectiveLabels = $.effectiveLabels;
         this.embeddingManagement = $.embeddingManagement;
+        this.encryptionSpec = $.encryptionSpec;
         this.etag = $.etag;
         this.forceDestroy = $.forceDestroy;
         this.labels = $.labels;
@@ -431,6 +450,29 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         @Deprecated /* `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type */
         public Builder embeddingManagement(AiFeatureOnlineStoreEmbeddingManagementArgs embeddingManagement) {
             return embeddingManagement(Output.of(embeddingManagement));
+        }
+
+        /**
+         * @param encryptionSpec If set, both of the online and offline data storage will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<AiFeatureOnlineStoreEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec If set, both of the online and offline data storage will be secured by this key.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(AiFeatureOnlineStoreEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**

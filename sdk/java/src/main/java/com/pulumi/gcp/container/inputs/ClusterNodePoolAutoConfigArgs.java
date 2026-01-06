@@ -20,14 +20,14 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
     public static final ClusterNodePoolAutoConfigArgs Empty = new ClusterNodePoolAutoConfigArgs();
 
     /**
-     * Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+     * Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` and `nodeKernelModuleLoading` fields are supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     @Import(name="linuxNodeConfig")
     private @Nullable Output<ClusterNodePoolAutoConfigLinuxNodeConfigArgs> linuxNodeConfig;
 
     /**
-     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` and `nodeKernelModuleLoading` fields are supported in `nodePoolAutoConfig`. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolAutoConfigLinuxNodeConfigArgs>> linuxNodeConfig() {
@@ -109,7 +109,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` and `nodeKernelModuleLoading` fields are supported in `nodePoolAutoConfig`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroupMode` and `nodeKernelModuleLoading` fields are supported in `nodePoolAutoConfig`. Structure is documented below.
          * 
          * @return builder
          * 

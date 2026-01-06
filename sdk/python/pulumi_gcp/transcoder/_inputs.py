@@ -682,7 +682,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
 elif False:
     JobConfigElementaryStreamVideoStreamArgsDict: TypeAlias = Mapping[str, Any]
@@ -696,7 +696,7 @@ class JobConfigElementaryStreamVideoStreamArgs:
                Structure is documented below.
                
                
-               <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+               <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         if h264 is not None:
             pulumi.set(__self__, "h264", h264)
@@ -709,7 +709,7 @@ class JobConfigElementaryStreamVideoStreamArgs:
         Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         return pulumi.get(self, "h264")
 
@@ -2607,7 +2607,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
 elif False:
     JobTemplateConfigElementaryStreamVideoStreamArgsDict: TypeAlias = Mapping[str, Any]
@@ -2621,7 +2621,7 @@ class JobTemplateConfigElementaryStreamVideoStreamArgs:
                Structure is documented below.
                
                
-               <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+               <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         if h264 is not None:
             pulumi.set(__self__, "h264", h264)
@@ -2634,7 +2634,7 @@ class JobTemplateConfigElementaryStreamVideoStreamArgs:
         Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         return pulumi.get(self, "h264")
 

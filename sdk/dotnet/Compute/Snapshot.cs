@@ -76,6 +76,49 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Snapshot Basic2
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Name = "debian-disk",
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
+    ///     {
+    ///         Name = "my-snapshot",
+    ///         SourceDisk = persistent.Id,
+    ///         Zone = "us-central1-a",
+    ///         Labels = 
+    ///         {
+    ///             { "my_label", "value" },
+    ///         },
+    ///         StorageLocations = new[]
+    ///         {
+    ///             "us-central1",
+    ///         },
+    ///         GuestFlush = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Snapshot Chainname
     /// 
     /// ```csharp
@@ -181,6 +224,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        /// </summary>
+        [Output("guestFlush")]
+        public Output<bool?> GuestFlush { get; private set; } = null!;
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used
@@ -370,6 +419,12 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        /// </summary>
+        [Input("guestFlush")]
+        public Input<bool>? GuestFlush { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -511,6 +566,12 @@ namespace Pulumi.Gcp.Compute
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        /// </summary>
+        [Input("guestFlush")]
+        public Input<bool>? GuestFlush { get; set; }
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used

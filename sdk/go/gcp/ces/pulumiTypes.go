@@ -30763,7 +30763,7 @@ type ToolDataStoreToolEngineSourceDataStoreSourceDataStore struct {
 	// FAQ
 	// CONNECTOR
 	//
-	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
 	Type *string `pulumi:"type"`
 }
 
@@ -30809,7 +30809,7 @@ type ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs struct {
 	// FAQ
 	// CONNECTOR
 	//
-	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+	// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -30937,7 +30937,7 @@ func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) Name() pulu
 // FAQ
 // CONNECTOR
 //
-// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
 func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStoreOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -31036,7 +31036,7 @@ func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) Name() p
 // FAQ
 // CONNECTOR
 //
-// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
+// <a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"></a>The `connectorConfig` block contains:
 func (o ToolDataStoreToolEngineSourceDataStoreSourceDataStorePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolDataStoreToolEngineSourceDataStoreSourceDataStore) *string {
 		if v == nil {

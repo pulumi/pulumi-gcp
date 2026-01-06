@@ -93,6 +93,7 @@ __all__ = [
     'MulticastDomainActivationTrafficSpec',
     'MulticastDomainConnectionConfig',
     'MulticastDomainGroupState',
+    'MulticastDomainState',
     'MulticastGroupConsumerActivationLogConfig',
     'MulticastGroupConsumerActivationState',
     'MulticastGroupProducerActivationState',
@@ -5539,6 +5540,43 @@ class MulticastDomainConnectionConfig(dict):
 
 @pulumi.output_type
 class MulticastDomainGroupState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastDomainState(dict):
     def __init__(__self__, *,
                  state: Optional[_builtins.str] = None):
         """

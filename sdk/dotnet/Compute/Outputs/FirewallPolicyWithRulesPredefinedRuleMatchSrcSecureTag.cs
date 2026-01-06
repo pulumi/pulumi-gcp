@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         /// or its network is deleted.
         /// 
-        /// &lt;a name="NestedRuleRuleMatchLayer4Config"&gt;&lt;/a&gt;The `Layer4Config` block supports:
+        /// &lt;a name="NestedRuleMatchLayer4Config"&gt;&lt;/a&gt;The `Layer4Config` block supports:
         /// </summary>
         public readonly string? State;
 

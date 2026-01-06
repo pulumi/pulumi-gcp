@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:apphub/application:Application":
 		r = &Application{}
+	case "gcp:apphub/boundary:Boundary":
+		r = &Boundary{}
 	case "gcp:apphub/service:Service":
 		r = &Service{}
 	case "gcp:apphub/serviceProjectAttachment:ServiceProjectAttachment":
@@ -45,6 +47,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apphub/application",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apphub/boundary",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

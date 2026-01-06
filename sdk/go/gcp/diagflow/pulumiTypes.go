@@ -11101,7 +11101,7 @@ type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -11122,7 +11122,7 @@ type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -11208,7 +11208,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEven
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
@@ -11245,7 +11245,7 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() Cx
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -14510,7 +14510,7 @@ type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -14531,7 +14531,7 @@ type CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs stru
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -14617,7 +14617,7 @@ func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -14656,7 +14656,7 @@ func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOut
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -16504,7 +16504,7 @@ type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -16525,7 +16525,7 @@ type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -16611,7 +16611,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowT
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -16650,7 +16650,7 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem()
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -20376,7 +20376,7 @@ type CxPageEntryFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -20397,7 +20397,7 @@ type CxPageEntryFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -20483,7 +20483,7 @@ func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMe
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEntryFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
@@ -20520,7 +20520,7 @@ func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEntryFulfi
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageEntryFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -22144,7 +22144,7 @@ type CxPageEventHandlerTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -22165,7 +22165,7 @@ type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -22251,7 +22251,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEven
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
 }
@@ -22288,7 +22288,7 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() Cx
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -24636,7 +24636,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio str
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -24657,7 +24657,7 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -24743,7 +24743,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioO
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -24784,7 +24784,7 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioP
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -26436,7 +26436,7 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -26457,7 +26457,7 @@ type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessag
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -26543,7 +26543,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -26584,7 +26584,7 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -29859,7 +29859,7 @@ type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -29880,7 +29880,7 @@ type CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioArgs stru
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -29966,7 +29966,7 @@ func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -30005,7 +30005,7 @@ func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOut
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {
@@ -31650,7 +31650,7 @@ type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
@@ -31671,7 +31671,7 @@ type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs struct {
 	// (Output)
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	//
-	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+	// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
 	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
@@ -31757,7 +31757,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageT
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		return v.AllowPlaybackInterruption
@@ -31796,7 +31796,7 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem()
 // (Output)
 // Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 //
-// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio"></a>The `mixedAudio` block contains:
+// <a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"></a>The `mixedAudio` block contains:
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
 		if v == nil {

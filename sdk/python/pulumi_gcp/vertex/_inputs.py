@@ -129,6 +129,8 @@ __all__ = [
     'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgsDict',
     'AiFeatureOnlineStoreEmbeddingManagementArgs',
     'AiFeatureOnlineStoreEmbeddingManagementArgsDict',
+    'AiFeatureOnlineStoreEncryptionSpecArgs',
+    'AiFeatureOnlineStoreEncryptionSpecArgsDict',
     'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs',
     'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgsDict',
     'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs',
@@ -199,6 +201,8 @@ __all__ = [
     'AiIndexEndpointEncryptionSpecArgsDict',
     'AiIndexEndpointPrivateServiceConnectConfigArgs',
     'AiIndexEndpointPrivateServiceConnectConfigArgsDict',
+    'AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs',
+    'AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict',
     'AiIndexIndexStatArgs',
     'AiIndexIndexStatArgsDict',
     'AiIndexMetadataArgs',
@@ -5715,18 +5719,34 @@ if not MYPY:
         Autoscaling config applied to Bigtable Instance.
         Structure is documented below.
         """
+        enable_direct_bigtable_access: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Optional. If true, enable direct access to the Bigtable instance.
+        """
+        zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The zone where the Bigtable instance will be created.
+        """
 elif False:
     AiFeatureOnlineStoreBigtableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreBigtableArgs:
     def __init__(__self__, *,
-                 auto_scaling: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs']):
+                 auto_scaling: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs'],
+                 enable_direct_bigtable_access: Optional[pulumi.Input[_builtins.bool]] = None,
+                 zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs'] auto_scaling: Autoscaling config applied to Bigtable Instance.
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] enable_direct_bigtable_access: Optional. If true, enable direct access to the Bigtable instance.
+        :param pulumi.Input[_builtins.str] zone: The zone where the Bigtable instance will be created.
         """
         pulumi.set(__self__, "auto_scaling", auto_scaling)
+        if enable_direct_bigtable_access is not None:
+            pulumi.set(__self__, "enable_direct_bigtable_access", enable_direct_bigtable_access)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @_builtins.property
     @pulumi.getter(name="autoScaling")
@@ -5740,6 +5760,30 @@ class AiFeatureOnlineStoreBigtableArgs:
     @auto_scaling.setter
     def auto_scaling(self, value: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs']):
         pulumi.set(self, "auto_scaling", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDirectBigtableAccess")
+    def enable_direct_bigtable_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Optional. If true, enable direct access to the Bigtable instance.
+        """
+        return pulumi.get(self, "enable_direct_bigtable_access")
+
+    @enable_direct_bigtable_access.setter
+    def enable_direct_bigtable_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_direct_bigtable_access", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The zone where the Bigtable instance will be created.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone", value)
 
 
 if not MYPY:
@@ -5974,6 +6018,37 @@ class AiFeatureOnlineStoreEmbeddingManagementArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class AiFeatureOnlineStoreEncryptionSpecArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[_builtins.str]
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+        """
+elif False:
+    AiFeatureOnlineStoreEncryptionSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiFeatureOnlineStoreEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 if not MYPY:
@@ -7811,6 +7886,11 @@ if not MYPY:
         """
         A list of Projects from which the forwarding rule will target the service attachment.
         """
+        psc_automation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict']]]]
+        """
+        List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+        Structure is documented below.
+        """
 elif False:
     AiIndexEndpointPrivateServiceConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7818,14 +7898,19 @@ elif False:
 class AiIndexEndpointPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
                  enable_private_service_connect: pulumi.Input[_builtins.bool],
-                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 psc_automation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_service_connect: If set to true, the IndexEndpoint is created without private service access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]] psc_automation_configs: List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+               Structure is documented below.
         """
         pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
         if project_allowlists is not None:
             pulumi.set(__self__, "project_allowlists", project_allowlists)
+        if psc_automation_configs is not None:
+            pulumi.set(__self__, "psc_automation_configs", psc_automation_configs)
 
     @_builtins.property
     @pulumi.getter(name="enablePrivateServiceConnect")
@@ -7850,6 +7935,69 @@ class AiIndexEndpointPrivateServiceConnectConfigArgs:
     @project_allowlists.setter
     def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_allowlists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutomationConfigs")
+    def psc_automation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]:
+        """
+        List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_automation_configs")
+
+    @psc_automation_configs.setter
+    def psc_automation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]):
+        pulumi.set(self, "psc_automation_configs", value)
+
+
+if not MYPY:
+    class AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict(TypedDict):
+        network: pulumi.Input[_builtins.str]
+        """
+        The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        """
+        project_id: pulumi.Input[_builtins.str]
+        """
+        Project id used to create forwarding rule.
+        """
+elif False:
+    AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] network: The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        :param pulumi.Input[_builtins.str] project_id: Project id used to create forwarding rule.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Project id used to create forwarding rule.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
 
 
 if not MYPY:
@@ -8710,15 +8858,15 @@ if not MYPY:
         """
         max_instances: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Optional. The minimum number of application instances that will be
-        kept running at all times. Defaults to 1. Range: [0, 10].
-        """
-        min_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
         Optional. The maximum number of application instances that can be
         launched to handle increased traffic. Defaults to 100.
         Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
         range is [1, 100].
+        """
+        min_instances: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Optional. The minimum number of application instances that will be
+        kept running at all times. Defaults to 1. Range: [0, 10].
         """
         resource_limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -8758,12 +8906,12 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]] envs: Optional. Environment variables to be set with the Reasoning
                Engine deployment.
                Structure is documented below.
-        :param pulumi.Input[_builtins.int] max_instances: Optional. The minimum number of application instances that will be
-               kept running at all times. Defaults to 1. Range: [0, 10].
-        :param pulumi.Input[_builtins.int] min_instances: Optional. The maximum number of application instances that can be
+        :param pulumi.Input[_builtins.int] max_instances: Optional. The maximum number of application instances that can be
                launched to handle increased traffic. Defaults to 100.
                Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
                range is [1, 100].
+        :param pulumi.Input[_builtins.int] min_instances: Optional. The minimum number of application instances that will be
+               kept running at all times. Defaults to 1. Range: [0, 10].
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_limits: Optional. Resource limits for each container.
                Only 'cpu' and 'memory' keys are supported.
                Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -8823,8 +8971,10 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
     @pulumi.getter(name="maxInstances")
     def max_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Optional. The minimum number of application instances that will be
-        kept running at all times. Defaults to 1. Range: [0, 10].
+        Optional. The maximum number of application instances that can be
+        launched to handle increased traffic. Defaults to 100.
+        Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+        range is [1, 100].
         """
         return pulumi.get(self, "max_instances")
 
@@ -8836,10 +8986,8 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
     @pulumi.getter(name="minInstances")
     def min_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Optional. The maximum number of application instances that can be
-        launched to handle increased traffic. Defaults to 100.
-        Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
-        range is [1, 100].
+        Optional. The minimum number of application instances that will be
+        kept running at all times. Defaults to 1. Range: [0, 10].
         """
         return pulumi.get(self, "min_instances")
 

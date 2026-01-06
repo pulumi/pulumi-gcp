@@ -15,6 +15,31 @@ export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
 utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
+export { GetIcebergCatalogIamPolicyArgs, GetIcebergCatalogIamPolicyResult, GetIcebergCatalogIamPolicyOutputArgs } from "./getIcebergCatalogIamPolicy";
+export const getIcebergCatalogIamPolicy: typeof import("./getIcebergCatalogIamPolicy").getIcebergCatalogIamPolicy = null as any;
+export const getIcebergCatalogIamPolicyOutput: typeof import("./getIcebergCatalogIamPolicy").getIcebergCatalogIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIcebergCatalogIamPolicy","getIcebergCatalogIamPolicyOutput"], () => require("./getIcebergCatalogIamPolicy"));
+
+export { IcebergCatalogArgs, IcebergCatalogState } from "./icebergCatalog";
+export type IcebergCatalog = import("./icebergCatalog").IcebergCatalog;
+export const IcebergCatalog: typeof import("./icebergCatalog").IcebergCatalog = null as any;
+utilities.lazyLoad(exports, ["IcebergCatalog"], () => require("./icebergCatalog"));
+
+export { IcebergCatalogIamBindingArgs, IcebergCatalogIamBindingState } from "./icebergCatalogIamBinding";
+export type IcebergCatalogIamBinding = import("./icebergCatalogIamBinding").IcebergCatalogIamBinding;
+export const IcebergCatalogIamBinding: typeof import("./icebergCatalogIamBinding").IcebergCatalogIamBinding = null as any;
+utilities.lazyLoad(exports, ["IcebergCatalogIamBinding"], () => require("./icebergCatalogIamBinding"));
+
+export { IcebergCatalogIamMemberArgs, IcebergCatalogIamMemberState } from "./icebergCatalogIamMember";
+export type IcebergCatalogIamMember = import("./icebergCatalogIamMember").IcebergCatalogIamMember;
+export const IcebergCatalogIamMember: typeof import("./icebergCatalogIamMember").IcebergCatalogIamMember = null as any;
+utilities.lazyLoad(exports, ["IcebergCatalogIamMember"], () => require("./icebergCatalogIamMember"));
+
+export { IcebergCatalogIamPolicyArgs, IcebergCatalogIamPolicyState } from "./icebergCatalogIamPolicy";
+export type IcebergCatalogIamPolicy = import("./icebergCatalogIamPolicy").IcebergCatalogIamPolicy;
+export const IcebergCatalogIamPolicy: typeof import("./icebergCatalogIamPolicy").IcebergCatalogIamPolicy = null as any;
+utilities.lazyLoad(exports, ["IcebergCatalogIamPolicy"], () => require("./icebergCatalogIamPolicy"));
+
 export { TableArgs, TableState } from "./table";
 export type Table = import("./table").Table;
 export const Table: typeof import("./table").Table = null as any;
@@ -29,6 +54,14 @@ const _module = {
                 return new Catalog(name, <any>undefined, { urn })
             case "gcp:biglake/database:Database":
                 return new Database(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergCatalog:IcebergCatalog":
+                return new IcebergCatalog(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergCatalogIamBinding:IcebergCatalogIamBinding":
+                return new IcebergCatalogIamBinding(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember":
+                return new IcebergCatalogIamMember(name, <any>undefined, { urn })
+            case "gcp:biglake/icebergCatalogIamPolicy:IcebergCatalogIamPolicy":
+                return new IcebergCatalogIamPolicy(name, <any>undefined, { urn })
             case "gcp:biglake/table:Table":
                 return new Table(name, <any>undefined, { urn })
             default:
@@ -38,4 +71,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "biglake/catalog", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/database", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalog", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/table", _module)

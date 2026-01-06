@@ -68,6 +68,7 @@ __all__ = [
     'SecurityActionDeny',
     'SecurityActionFlag',
     'SecurityActionFlagHeader',
+    'SecurityFeedbackFeedbackContext',
     'SecurityMonitoringConditionIncludeAllResources',
     'SecurityProfileV2ProfileAssessmentConfig',
     'SharedflowMetaData',
@@ -3016,6 +3017,37 @@ class SecurityActionFlagHeader(dict):
         The header value to be sent to the target.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SecurityFeedbackFeedbackContext(dict):
+    def __init__(__self__, *,
+                 attribute: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str attribute: The attribute the user is providing feedback about.
+               Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+        :param Sequence[_builtins.str] values: The values of the attribute the user is providing feedback about, separated by commas.
+        """
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def attribute(self) -> _builtins.str:
+        """
+        The attribute the user is providing feedback about.
+        Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+        """
+        return pulumi.get(self, "attribute")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The values of the attribute the user is providing feedback about, separated by commas.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

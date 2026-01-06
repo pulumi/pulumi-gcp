@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.SnapshotArgs;
 import com.pulumi.gcp.compute.inputs.SnapshotState;
 import com.pulumi.gcp.compute.outputs.SnapshotSnapshotEncryptionKey;
 import com.pulumi.gcp.compute.outputs.SnapshotSourceDiskEncryptionKey;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -91,6 +92,60 @@ import javax.annotation.Nullable;
  *             .zone("us-central1-a")
  *             .labels(Map.of("my_label", "value"))
  *             .storageLocations("us-central1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Snapshot Basic2
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.Snapshot;
+ * import com.pulumi.gcp.compute.SnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var persistent = new Disk("persistent", DiskArgs.builder()
+ *             .name("debian-disk")
+ *             .image(debian.selfLink())
+ *             .size(10)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
+ *             .name("my-snapshot")
+ *             .sourceDisk(persistent.id())
+ *             .zone("us-central1-a")
+ *             .labels(Map.of("my_label", "value"))
+ *             .storageLocations("us-central1")
+ *             .guestFlush(true)
  *             .build());
  * 
  *     }
@@ -258,6 +313,20 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     * 
+     */
+    @Export(name="guestFlush", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> guestFlush;
+
+    /**
+     * @return Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     * 
+     */
+    public Output<Optional<Boolean>> guestFlush() {
+        return Codegen.optional(this.guestFlush);
     }
     /**
      * The fingerprint used for optimistic locking of this resource. Used

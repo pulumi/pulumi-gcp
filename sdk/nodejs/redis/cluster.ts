@@ -9,6 +9,69 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * ### Redis Cluster Ha With Labels
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const consumerNet = new gcp.compute.Network("consumer_net", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const consumerSubnet = new gcp.compute.Subnetwork("consumer_subnet", {
+ *     name: "my-subnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "us-central1",
+ *     network: consumerNet.id,
+ * });
+ * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "my-policy",
+ *     location: "us-central1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     description: "my basic service connection policy",
+ *     network: consumerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [consumerSubnet.id],
+ *     },
+ * });
+ * const cluster_ha_with_labels = new gcp.redis.Cluster("cluster-ha-with-labels", {
+ *     name: "ha-cluster",
+ *     shardCount: 3,
+ *     labels: {
+ *         my_key: "my_val",
+ *         other_key: "other_val",
+ *     },
+ *     pscConfigs: [{
+ *         network: consumerNet.id,
+ *     }],
+ *     region: "us-central1",
+ *     replicaCount: 1,
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
+ *     authorizationMode: "AUTH_MODE_DISABLED",
+ *     redisConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ *     deletionProtectionEnabled: true,
+ *     zoneDistributionConfig: {
+ *         mode: "MULTI_ZONE",
+ *     },
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
  * ### Redis Cluster Ha
  *
  * ```typescript
@@ -525,6 +588,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly discoveryEndpoints: pulumi.Output<outputs.redis.ClusterDiscoveryEndpoint[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
      * This field represents the actual maintenance version of the cluster.
      */
     declare public /*out*/ readonly effectiveMaintenanceVersion: pulumi.Output<string>;
@@ -537,6 +604,12 @@ export class Cluster extends pulumi.CustomResource {
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
     declare public readonly kmsKey: pulumi.Output<string | undefined>;
+    /**
+     * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.
@@ -604,6 +677,11 @@ export class Cluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public /*out*/ readonly pscServiceAttachments: pulumi.Output<outputs.redis.ClusterPscServiceAttachment[]>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
      * Please check Memorystore documentation for the list of supported parameters:
@@ -673,9 +751,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["crossClusterReplicationConfig"] = state?.crossClusterReplicationConfig;
             resourceInputs["deletionProtectionEnabled"] = state?.deletionProtectionEnabled;
             resourceInputs["discoveryEndpoints"] = state?.discoveryEndpoints;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["effectiveMaintenanceVersion"] = state?.effectiveMaintenanceVersion;
             resourceInputs["gcsSource"] = state?.gcsSource;
             resourceInputs["kmsKey"] = state?.kmsKey;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["maintenanceSchedules"] = state?.maintenanceSchedules;
             resourceInputs["maintenanceVersion"] = state?.maintenanceVersion;
@@ -689,6 +769,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["pscConfigs"] = state?.pscConfigs;
             resourceInputs["pscConnections"] = state?.pscConnections;
             resourceInputs["pscServiceAttachments"] = state?.pscServiceAttachments;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["redisConfigs"] = state?.redisConfigs;
             resourceInputs["region"] = state?.region;
             resourceInputs["replicaCount"] = state?.replicaCount;
@@ -710,6 +791,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionProtectionEnabled"] = args?.deletionProtectionEnabled;
             resourceInputs["gcsSource"] = args?.gcsSource;
             resourceInputs["kmsKey"] = args?.kmsKey;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
             resourceInputs["managedBackupSource"] = args?.managedBackupSource;
@@ -728,18 +810,22 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["backupCollection"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["effectiveMaintenanceVersion"] = undefined /*out*/;
             resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["managedServerCas"] = undefined /*out*/;
             resourceInputs["preciseSizeGb"] = undefined /*out*/;
             resourceInputs["pscConnections"] = undefined /*out*/;
             resourceInputs["pscServiceAttachments"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateInfos"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -793,6 +879,10 @@ export interface ClusterState {
      */
     discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterDiscoveryEndpoint>[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * This field represents the actual maintenance version of the cluster.
      */
     effectiveMaintenanceVersion?: pulumi.Input<string>;
@@ -805,6 +895,12 @@ export interface ClusterState {
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
     kmsKey?: pulumi.Input<string>;
+    /**
+     * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.
@@ -872,6 +968,11 @@ export interface ClusterState {
      * Structure is documented below.
      */
     pscServiceAttachments?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscServiceAttachment>[]>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
      * Please check Memorystore documentation for the list of supported parameters:
@@ -956,6 +1057,12 @@ export interface ClusterArgs {
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
     kmsKey?: pulumi.Input<string>;
+    /**
+     * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.

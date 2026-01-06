@@ -86,6 +86,57 @@ import (
 //	}
 //
 // ```
+// ### Snapshot Basic2
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Name:  pulumi.String("debian-disk"),
+//				Image: pulumi.String(debian.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+//				Name:       pulumi.String("my-snapshot"),
+//				SourceDisk: persistent.ID(),
+//				Zone:       pulumi.String("us-central1-a"),
+//				Labels: pulumi.StringMap{
+//					"my_label": pulumi.String("value"),
+//				},
+//				StorageLocations: pulumi.StringArray{
+//					pulumi.String("us-central1"),
+//				},
+//				GuestFlush: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Snapshot Chainname
 //
 // ```go
@@ -179,6 +230,8 @@ type Snapshot struct {
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+	GuestFlush pulumi.BoolPtrOutput `pulumi:"guestFlush"`
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -294,6 +347,8 @@ type snapshotState struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+	GuestFlush *bool `pulumi:"guestFlush"`
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -372,6 +427,8 @@ type SnapshotState struct {
 	DiskSizeGb pulumi.IntPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+	GuestFlush pulumi.BoolPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -448,6 +505,8 @@ type snapshotArgs struct {
 	ChainName *string `pulumi:"chainName"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+	GuestFlush *bool `pulumi:"guestFlush"`
 	// Labels to apply to this Snapshot.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -502,6 +561,8 @@ type SnapshotArgs struct {
 	ChainName pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+	GuestFlush pulumi.BoolPtrInput
 	// Labels to apply to this Snapshot.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -660,6 +721,11 @@ func (o SnapshotOutput) DiskSizeGb() pulumi.IntOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o SnapshotOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+func (o SnapshotOutput) GuestFlush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.GuestFlush }).(pulumi.BoolPtrOutput)
 }
 
 // The fingerprint used for optimistic locking of this resource. Used

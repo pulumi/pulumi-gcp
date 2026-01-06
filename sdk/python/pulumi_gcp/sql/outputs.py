@@ -4951,7 +4951,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param _builtins.str region: To filter out the Cloud SQL instances which are located in the specified region.
         :param Sequence['GetDatabaseInstancesInstanceReplicaConfigurationArgs'] replica_configurations: The configuration for replication.
         :param Sequence[_builtins.str] replica_names: The replicas of the instance.
-        :param Sequence['GetDatabaseInstancesInstanceReplicationClusterArgs'] replication_clusters: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+        :param Sequence['GetDatabaseInstancesInstanceReplicationClusterArgs'] replication_clusters: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
         :param _builtins.str root_password: Initial root password. Required for MS SQL Server.
         :param _builtins.str root_password_wo: Initial root password. Required for MS SQL Server.
                				Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
@@ -5178,7 +5178,7 @@ class GetDatabaseInstancesInstanceResult(dict):
     @pulumi.getter(name="replicationClusters")
     def replication_clusters(self) -> Sequence['outputs.GetDatabaseInstancesInstanceReplicationClusterResult']:
         """
-        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
         """
         return pulumi.get(self, "replication_clusters")
 

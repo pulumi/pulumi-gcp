@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Create a multicast domain in the current project.
  *
+ * To get more information about MulticastDomain, see:
+ *
+ * * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomains)
+ * * How-to Guides
+ *     * [Create Multicast Domain](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#create-domain)
+ *
  * ## Example Usage
  *
  * ### Network Services Multicast Domain Basic
@@ -103,7 +109,7 @@ export class MulticastDomain extends pulumi.CustomResource {
      */
     declare public readonly connectionConfig: pulumi.Output<outputs.networkservices.MulticastDomainConnectionConfig>;
     /**
-     * [Output only] The timestamp when the multicast domain was created.
+     * The timestamp when the multicast domain was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
@@ -154,14 +160,27 @@ export class MulticastDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     */
+    declare public /*out*/ readonly states: pulumi.Output<outputs.networkservices.MulticastDomainState[]>;
+    /**
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
      * another with the same name is created, the new domain is assigned a
      * different unique_id.
      */
     declare public /*out*/ readonly uniqueId: pulumi.Output<string>;
     /**
-     * [Output only] The timestamp when the multicast domain was most recently
+     * The timestamp when the multicast domain was most recently
      * updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -191,6 +210,7 @@ export class MulticastDomain extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["states"] = state?.states;
             resourceInputs["uniqueId"] = state?.uniqueId;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -219,6 +239,7 @@ export class MulticastDomain extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["states"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -245,7 +266,7 @@ export interface MulticastDomainState {
      */
     connectionConfig?: pulumi.Input<inputs.networkservices.MulticastDomainConnectionConfig>;
     /**
-     * [Output only] The timestamp when the multicast domain was created.
+     * The timestamp when the multicast domain was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -296,14 +317,27 @@ export interface MulticastDomainState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     */
+    states?: pulumi.Input<pulumi.Input<inputs.networkservices.MulticastDomainState>[]>;
+    /**
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
      * another with the same name is created, the new domain is assigned a
      * different unique_id.
      */
     uniqueId?: pulumi.Input<string>;
     /**
-     * [Output only] The timestamp when the multicast domain was most recently
+     * The timestamp when the multicast domain was most recently
      * updated.
      */
     updateTime?: pulumi.Input<string>;

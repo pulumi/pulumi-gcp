@@ -207,6 +207,7 @@ namespace Pulumi.Gcp.Compute
         public readonly int DiskSizeGb;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string? Filter;
+        public readonly bool GuestFlush;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -241,6 +242,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableDictionary<string, string> effectiveLabels,
 
             string? filter,
+
+            bool guestFlush,
 
             string id,
 
@@ -282,6 +285,7 @@ namespace Pulumi.Gcp.Compute
             DiskSizeGb = diskSizeGb;
             EffectiveLabels = effectiveLabels;
             Filter = filter;
+            GuestFlush = guestFlush;
             Id = id;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

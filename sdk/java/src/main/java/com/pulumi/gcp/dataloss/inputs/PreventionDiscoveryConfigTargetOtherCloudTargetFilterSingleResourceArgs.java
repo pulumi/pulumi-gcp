@@ -19,7 +19,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleRe
      * Amazon S3 bucket.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
      * 
      */
     @Import(name="amazonS3Bucket")
@@ -29,7 +29,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleRe
      * @return Amazon S3 bucket.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
      * 
      */
     public Optional<Output<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgs>> amazonS3Bucket() {
@@ -64,7 +64,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleRe
          * @param amazonS3Bucket Amazon S3 bucket.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
+         * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
          * 
          * @return builder
          * 
@@ -78,7 +78,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleRe
          * @param amazonS3Bucket Amazon S3 bucket.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
+         * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
          * 
          * @return builder
          * 

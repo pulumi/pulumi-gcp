@@ -510,7 +510,7 @@ class JobConfigElementaryStreamVideoStream(dict):
                Structure is documented below.
                
                
-               <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+               <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         if h264 is not None:
             pulumi.set(__self__, "h264", h264)
@@ -523,7 +523,7 @@ class JobConfigElementaryStreamVideoStream(dict):
         Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         return pulumi.get(self, "h264")
 
@@ -1929,7 +1929,7 @@ class JobTemplateConfigElementaryStreamVideoStream(dict):
                Structure is documented below.
                
                
-               <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+               <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         if h264 is not None:
             pulumi.set(__self__, "h264", h264)
@@ -1942,7 +1942,7 @@ class JobTemplateConfigElementaryStreamVideoStream(dict):
         Structure is documented below.
 
 
-        <a name="nested_config_elementary_streams_elementary_streams_video_stream_h264"></a>The `h264` block supports:
+        <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         return pulumi.get(self, "h264")
 

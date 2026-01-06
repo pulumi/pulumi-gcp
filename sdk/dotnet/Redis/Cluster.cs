@@ -12,6 +12,103 @@ namespace Pulumi.Gcp.Redis
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ### Redis Cluster Ha With Labels
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var consumerNet = new Gcp.Compute.Network("consumer_net", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var consumerSubnet = new Gcp.Compute.Subnetwork("consumer_subnet", new()
+    ///     {
+    ///         Name = "my-subnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = consumerNet.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "my-policy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "my basic service connection policy",
+    ///         Network = consumerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 consumerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_ha_with_labels = new Gcp.Redis.Cluster("cluster-ha-with-labels", new()
+    ///     {
+    ///         Name = "ha-cluster",
+    ///         ShardCount = 3,
+    ///         Labels = 
+    ///         {
+    ///             { "my_key", "my_val" },
+    ///             { "other_key", "other_val" },
+    ///         },
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = consumerNet.Id,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///         ReplicaCount = 1,
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    ///         AuthorizationMode = "AUTH_MODE_DISABLED",
+    ///         RedisConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///         DeletionProtectionEnabled = true,
+    ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "MULTI_ZONE",
+    ///         },
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Redis Cluster Ha
     /// 
     /// ```csharp
@@ -745,6 +842,12 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.ClusterDiscoveryEndpoint>> DiscoveryEndpoints { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// This field represents the actual maintenance version of the cluster.
         /// </summary>
         [Output("effectiveMaintenanceVersion")]
@@ -762,6 +865,14 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("kmsKey")]
         public Output<string?> KmsKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource labels to represent user provided metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// Maintenance policy for a cluster
@@ -857,6 +968,13 @@ namespace Pulumi.Gcp.Redis
         public Output<ImmutableArray<Outputs.ClusterPscServiceAttachment>> PscServiceAttachments { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
         /// Please check Memorystore documentation for the list of supported parameters:
         /// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -946,6 +1064,11 @@ namespace Pulumi.Gcp.Redis
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -1011,6 +1134,20 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Resource labels to represent user provided metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Maintenance policy for a cluster
@@ -1205,6 +1342,22 @@ namespace Pulumi.Gcp.Redis
             set => _discoveryEndpoints = value;
         }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// This field represents the actual maintenance version of the cluster.
         /// </summary>
@@ -1223,6 +1376,20 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Resource labels to represent user provided metadata.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Maintenance policy for a cluster
@@ -1345,6 +1512,23 @@ namespace Pulumi.Gcp.Redis
         {
             get => _pscServiceAttachments ?? (_pscServiceAttachments = new InputList<Inputs.ClusterPscServiceAttachmentGetArgs>());
             set => _pscServiceAttachments = value;
+        }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("redisConfigs")]

@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetInstanceResult',
@@ -26,7 +27,10 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, update_time=None, zone=None):
+    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, description=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, update_time=None, zone=None):
+        if access_rules_options and not isinstance(access_rules_options, list):
+            raise TypeError("Expected argument 'access_rules_options' to be a list")
+        pulumi.set(__self__, "access_rules_options", access_rules_options)
         if capacity_gib and not isinstance(capacity_gib, str):
             raise TypeError("Expected argument 'capacity_gib' to be a str")
         pulumi.set(__self__, "capacity_gib", capacity_gib)
@@ -93,6 +97,11 @@ class GetInstanceResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRulesOptions")
+    def access_rules_options(self) -> Sequence['outputs.GetInstanceAccessRulesOptionResult']:
+        return pulumi.get(self, "access_rules_options")
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
@@ -214,6 +223,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            access_rules_options=self.access_rules_options,
             capacity_gib=self.capacity_gib,
             create_time=self.create_time,
             description=self.description,
@@ -260,6 +270,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:lustre/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        access_rules_options=pulumi.get(__ret__, 'access_rules_options'),
         capacity_gib=pulumi.get(__ret__, 'capacity_gib'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
@@ -303,6 +314,7 @@ def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:lustre/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
+        access_rules_options=pulumi.get(__response__, 'access_rules_options'),
         capacity_gib=pulumi.get(__response__, 'capacity_gib'),
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),

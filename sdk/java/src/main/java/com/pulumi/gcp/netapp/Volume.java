@@ -338,7 +338,9 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.hotTierSizeUsedGib;
     }
     /**
-     * The Hybrid Replication parameters for the volume.
+     * [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+     * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+     * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      * 
      */
@@ -346,7 +348,9 @@ public class Volume extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ VolumeHybridReplicationParameters> hybridReplicationParameters;
 
     /**
-     * @return The Hybrid Replication parameters for the volume.
+     * @return [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+     * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+     * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      * 
      */

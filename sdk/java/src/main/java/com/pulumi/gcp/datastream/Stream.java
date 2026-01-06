@@ -13,6 +13,7 @@ import com.pulumi.gcp.datastream.inputs.StreamState;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAll;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillNone;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfig;
+import com.pulumi.gcp.datastream.outputs.StreamRuleSet;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -1340,8 +1341,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var cross_project_dataset = new Project("cross-project-dataset", ProjectArgs.builder()
- *             .projectId("tf-test_41150")
- *             .name("tf-test_89313")
+ *             .projectId("tf-test_89313")
+ *             .name("tf-test_60646")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -1800,6 +1801,126 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Datastream Stream Rule Sets Bigquery
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.datastream.Stream;
+ * import com.pulumi.gcp.datastream.StreamArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamRuleSetArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var stream = new Stream("stream", StreamArgs.builder()
+ *             .streamId("rules-stream")
+ *             .location("us-central1")
+ *             .displayName("BigQuery Stream with Rules")
+ *             .sourceConfig(StreamSourceConfigArgs.builder()
+ *                 .sourceConnectionProfile("rules-source-profile")
+ *                 .mysqlSourceConfig(StreamSourceConfigMysqlSourceConfigArgs.builder()
+ *                     .includeObjects(StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs.builder()
+ *                         .mysqlDatabases(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs.builder()
+ *                             .database("my_database")
+ *                             .build())
+ *                         .build())
+ *                     .binaryLogPosition(StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .destinationConfig(StreamDestinationConfigArgs.builder()
+ *                 .destinationConnectionProfile("rules-dest-profile")
+ *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
+ *                     .singleTargetDataset(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs.builder()
+ *                         .datasetId("rules-project:rules-dataset")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .backfillNone(StreamBackfillNoneArgs.builder()
+ *                 .build())
+ *             .ruleSets(            
+ *                 StreamRuleSetArgs.builder()
+ *                     .objectFilter(StreamRuleSetObjectFilterArgs.builder()
+ *                         .sourceObjectIdentifier(StreamRuleSetObjectFilterSourceObjectIdentifierArgs.builder()
+ *                             .mysqlIdentifier(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs.builder()
+ *                                 .database("test_database")
+ *                                 .table("test_table_1")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .customizationRules(                    
+ *                         StreamRuleSetCustomizationRuleArgs.builder()
+ *                             .bigqueryClustering(StreamRuleSetCustomizationRuleBigqueryClusteringArgs.builder()
+ *                                 .columns("user_id")
+ *                                 .build())
+ *                             .build(),
+ *                         StreamRuleSetCustomizationRuleArgs.builder()
+ *                             .bigqueryPartitioning(StreamRuleSetCustomizationRuleBigqueryPartitioningArgs.builder()
+ *                                 .ingestionTimePartition(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs.builder()
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                     .build(),
+ *                 StreamRuleSetArgs.builder()
+ *                     .objectFilter(StreamRuleSetObjectFilterArgs.builder()
+ *                         .sourceObjectIdentifier(StreamRuleSetObjectFilterSourceObjectIdentifierArgs.builder()
+ *                             .mysqlIdentifier(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs.builder()
+ *                                 .database("test_database")
+ *                                 .table("test_table_2")
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .customizationRules(                    
+ *                         StreamRuleSetCustomizationRuleArgs.builder()
+ *                             .bigqueryClustering(StreamRuleSetCustomizationRuleBigqueryClusteringArgs.builder()
+ *                                 .columns("event_time")
+ *                                 .build())
+ *                             .build(),
+ *                         StreamRuleSetCustomizationRuleArgs.builder()
+ *                             .bigqueryPartitioning(StreamRuleSetCustomizationRuleBigqueryPartitioningArgs.builder()
+ *                                 .timeUnitPartition(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs.builder()
+ *                                     .column("event_time")
+ *                                     .partitioningTimeGranularity("PARTITIONING_TIME_GRANULARITY_DAY")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Datastream Stream Mongodb
  * 
  * <pre>
@@ -2105,6 +2226,22 @@ public class Stream extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Rule sets to apply to the stream.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="ruleSets", refs={List.class,StreamRuleSet.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<StreamRuleSet>> ruleSets;
+
+    /**
+     * @return Rule sets to apply to the stream.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<StreamRuleSet>>> ruleSets() {
+        return Codegen.optional(this.ruleSets);
     }
     /**
      * Source connection profile configuration.

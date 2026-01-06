@@ -39,6 +39,7 @@ public final class GetClusterResult {
     private List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
     private Boolean deletionProtectionEnabled;
     private List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
+    private Map<String,String> effectiveLabels;
     private String effectiveMaintenanceVersion;
     private List<GetClusterGcsSource> gcsSources;
     /**
@@ -47,6 +48,7 @@ public final class GetClusterResult {
      */
     private String id;
     private String kmsKey;
+    private Map<String,String> labels;
     private List<GetClusterMaintenancePolicy> maintenancePolicies;
     private List<GetClusterMaintenanceSchedule> maintenanceSchedules;
     private String maintenanceVersion;
@@ -60,6 +62,7 @@ public final class GetClusterResult {
     private List<GetClusterPscConfig> pscConfigs;
     private List<GetClusterPscConnection> pscConnections;
     private List<GetClusterPscServiceAttachment> pscServiceAttachments;
+    private Map<String,String> pulumiLabels;
     private Map<String,String> redisConfigs;
     private @Nullable String region;
     private Integer replicaCount;
@@ -96,6 +99,9 @@ public final class GetClusterResult {
     public List<GetClusterDiscoveryEndpoint> discoveryEndpoints() {
         return this.discoveryEndpoints;
     }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     public String effectiveMaintenanceVersion() {
         return this.effectiveMaintenanceVersion;
     }
@@ -111,6 +117,9 @@ public final class GetClusterResult {
     }
     public String kmsKey() {
         return this.kmsKey;
+    }
+    public Map<String,String> labels() {
+        return this.labels;
     }
     public List<GetClusterMaintenancePolicy> maintenancePolicies() {
         return this.maintenancePolicies;
@@ -150,6 +159,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterPscServiceAttachment> pscServiceAttachments() {
         return this.pscServiceAttachments;
+    }
+    public Map<String,String> pulumiLabels() {
+        return this.pulumiLabels;
     }
     public Map<String,String> redisConfigs() {
         return this.redisConfigs;
@@ -199,10 +211,12 @@ public final class GetClusterResult {
         private List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
         private Boolean deletionProtectionEnabled;
         private List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
+        private Map<String,String> effectiveLabels;
         private String effectiveMaintenanceVersion;
         private List<GetClusterGcsSource> gcsSources;
         private String id;
         private String kmsKey;
+        private Map<String,String> labels;
         private List<GetClusterMaintenancePolicy> maintenancePolicies;
         private List<GetClusterMaintenanceSchedule> maintenanceSchedules;
         private String maintenanceVersion;
@@ -216,6 +230,7 @@ public final class GetClusterResult {
         private List<GetClusterPscConfig> pscConfigs;
         private List<GetClusterPscConnection> pscConnections;
         private List<GetClusterPscServiceAttachment> pscServiceAttachments;
+        private Map<String,String> pulumiLabels;
         private Map<String,String> redisConfigs;
         private @Nullable String region;
         private Integer replicaCount;
@@ -237,10 +252,12 @@ public final class GetClusterResult {
     	      this.crossClusterReplicationConfigs = defaults.crossClusterReplicationConfigs;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.discoveryEndpoints = defaults.discoveryEndpoints;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.effectiveMaintenanceVersion = defaults.effectiveMaintenanceVersion;
     	      this.gcsSources = defaults.gcsSources;
     	      this.id = defaults.id;
     	      this.kmsKey = defaults.kmsKey;
+    	      this.labels = defaults.labels;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.maintenanceSchedules = defaults.maintenanceSchedules;
     	      this.maintenanceVersion = defaults.maintenanceVersion;
@@ -254,6 +271,7 @@ public final class GetClusterResult {
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.pscConnections = defaults.pscConnections;
     	      this.pscServiceAttachments = defaults.pscServiceAttachments;
+    	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.redisConfigs = defaults.redisConfigs;
     	      this.region = defaults.region;
     	      this.replicaCount = defaults.replicaCount;
@@ -343,6 +361,14 @@ public final class GetClusterResult {
             return discoveryEndpoints(List.of(discoveryEndpoints));
         }
         @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder effectiveMaintenanceVersion(String effectiveMaintenanceVersion) {
             if (effectiveMaintenanceVersion == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "effectiveMaintenanceVersion");
@@ -375,6 +401,14 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "kmsKey");
             }
             this.kmsKey = kmsKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder labels(Map<String,String> labels) {
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
@@ -504,6 +538,14 @@ public final class GetClusterResult {
             return pscServiceAttachments(List.of(pscServiceAttachments));
         }
         @CustomType.Setter
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder redisConfigs(Map<String,String> redisConfigs) {
             if (redisConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "redisConfigs");
@@ -597,10 +639,12 @@ public final class GetClusterResult {
             _resultValue.crossClusterReplicationConfigs = crossClusterReplicationConfigs;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.discoveryEndpoints = discoveryEndpoints;
+            _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.effectiveMaintenanceVersion = effectiveMaintenanceVersion;
             _resultValue.gcsSources = gcsSources;
             _resultValue.id = id;
             _resultValue.kmsKey = kmsKey;
+            _resultValue.labels = labels;
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.maintenanceSchedules = maintenanceSchedules;
             _resultValue.maintenanceVersion = maintenanceVersion;
@@ -614,6 +658,7 @@ public final class GetClusterResult {
             _resultValue.pscConfigs = pscConfigs;
             _resultValue.pscConnections = pscConnections;
             _resultValue.pscServiceAttachments = pscServiceAttachments;
+            _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.redisConfigs = redisConfigs;
             _resultValue.region = region;
             _resultValue.replicaCount = replicaCount;

@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, redis_configs=None, region=None, replica_count=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, labels=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, pulumi_labels=None, redis_configs=None, region=None, replica_count=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -52,6 +52,9 @@ class GetClusterResult:
         if discovery_endpoints and not isinstance(discovery_endpoints, list):
             raise TypeError("Expected argument 'discovery_endpoints' to be a list")
         pulumi.set(__self__, "discovery_endpoints", discovery_endpoints)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if effective_maintenance_version and not isinstance(effective_maintenance_version, str):
             raise TypeError("Expected argument 'effective_maintenance_version' to be a str")
         pulumi.set(__self__, "effective_maintenance_version", effective_maintenance_version)
@@ -64,6 +67,9 @@ class GetClusterResult:
         if kms_key and not isinstance(kms_key, str):
             raise TypeError("Expected argument 'kms_key' to be a str")
         pulumi.set(__self__, "kms_key", kms_key)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if maintenance_policies and not isinstance(maintenance_policies, list):
             raise TypeError("Expected argument 'maintenance_policies' to be a list")
         pulumi.set(__self__, "maintenance_policies", maintenance_policies)
@@ -103,6 +109,9 @@ class GetClusterResult:
         if psc_service_attachments and not isinstance(psc_service_attachments, list):
             raise TypeError("Expected argument 'psc_service_attachments' to be a list")
         pulumi.set(__self__, "psc_service_attachments", psc_service_attachments)
+        if pulumi_labels and not isinstance(pulumi_labels, dict):
+            raise TypeError("Expected argument 'pulumi_labels' to be a dict")
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if redis_configs and not isinstance(redis_configs, dict):
             raise TypeError("Expected argument 'redis_configs' to be a dict")
         pulumi.set(__self__, "redis_configs", redis_configs)
@@ -175,6 +184,11 @@ class GetClusterResult:
         return pulumi.get(self, "discovery_endpoints")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveMaintenanceVersion")
     def effective_maintenance_version(self) -> _builtins.str:
         return pulumi.get(self, "effective_maintenance_version")
@@ -196,6 +210,11 @@ class GetClusterResult:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> _builtins.str:
         return pulumi.get(self, "kms_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicies")
@@ -263,6 +282,11 @@ class GetClusterResult:
         return pulumi.get(self, "psc_service_attachments")
 
     @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "redis_configs")
@@ -327,10 +351,12 @@ class AwaitableGetClusterResult(GetClusterResult):
             cross_cluster_replication_configs=self.cross_cluster_replication_configs,
             deletion_protection_enabled=self.deletion_protection_enabled,
             discovery_endpoints=self.discovery_endpoints,
+            effective_labels=self.effective_labels,
             effective_maintenance_version=self.effective_maintenance_version,
             gcs_sources=self.gcs_sources,
             id=self.id,
             kms_key=self.kms_key,
+            labels=self.labels,
             maintenance_policies=self.maintenance_policies,
             maintenance_schedules=self.maintenance_schedules,
             maintenance_version=self.maintenance_version,
@@ -344,6 +370,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             psc_configs=self.psc_configs,
             psc_connections=self.psc_connections,
             psc_service_attachments=self.psc_service_attachments,
+            pulumi_labels=self.pulumi_labels,
             redis_configs=self.redis_configs,
             region=self.region,
             replica_count=self.replica_count,
@@ -395,10 +422,12 @@ def get_cluster(name: Optional[_builtins.str] = None,
         cross_cluster_replication_configs=pulumi.get(__ret__, 'cross_cluster_replication_configs'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
         discovery_endpoints=pulumi.get(__ret__, 'discovery_endpoints'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         effective_maintenance_version=pulumi.get(__ret__, 'effective_maintenance_version'),
         gcs_sources=pulumi.get(__ret__, 'gcs_sources'),
         id=pulumi.get(__ret__, 'id'),
         kms_key=pulumi.get(__ret__, 'kms_key'),
+        labels=pulumi.get(__ret__, 'labels'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__ret__, 'maintenance_schedules'),
         maintenance_version=pulumi.get(__ret__, 'maintenance_version'),
@@ -412,6 +441,7 @@ def get_cluster(name: Optional[_builtins.str] = None,
         psc_configs=pulumi.get(__ret__, 'psc_configs'),
         psc_connections=pulumi.get(__ret__, 'psc_connections'),
         psc_service_attachments=pulumi.get(__ret__, 'psc_service_attachments'),
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         redis_configs=pulumi.get(__ret__, 'redis_configs'),
         region=pulumi.get(__ret__, 'region'),
         replica_count=pulumi.get(__ret__, 'replica_count'),
@@ -460,10 +490,12 @@ def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         cross_cluster_replication_configs=pulumi.get(__response__, 'cross_cluster_replication_configs'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
         discovery_endpoints=pulumi.get(__response__, 'discovery_endpoints'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
         effective_maintenance_version=pulumi.get(__response__, 'effective_maintenance_version'),
         gcs_sources=pulumi.get(__response__, 'gcs_sources'),
         id=pulumi.get(__response__, 'id'),
         kms_key=pulumi.get(__response__, 'kms_key'),
+        labels=pulumi.get(__response__, 'labels'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
         maintenance_schedules=pulumi.get(__response__, 'maintenance_schedules'),
         maintenance_version=pulumi.get(__response__, 'maintenance_version'),
@@ -477,6 +509,7 @@ def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         psc_configs=pulumi.get(__response__, 'psc_configs'),
         psc_connections=pulumi.get(__response__, 'psc_connections'),
         psc_service_attachments=pulumi.get(__response__, 'psc_service_attachments'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         redis_configs=pulumi.get(__response__, 'redis_configs'),
         region=pulumi.get(__response__, 'region'),
         replica_count=pulumi.get(__response__, 'replica_count'),
