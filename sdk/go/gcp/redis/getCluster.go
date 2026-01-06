@@ -70,11 +70,13 @@ type LookupClusterResult struct {
 	CrossClusterReplicationConfigs []GetClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfigs"`
 	DeletionProtectionEnabled      bool                                      `pulumi:"deletionProtectionEnabled"`
 	DiscoveryEndpoints             []GetClusterDiscoveryEndpoint             `pulumi:"discoveryEndpoints"`
+	EffectiveLabels                map[string]string                         `pulumi:"effectiveLabels"`
 	EffectiveMaintenanceVersion    string                                    `pulumi:"effectiveMaintenanceVersion"`
 	GcsSources                     []GetClusterGcsSource                     `pulumi:"gcsSources"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                      string                             `pulumi:"id"`
 	KmsKey                  string                             `pulumi:"kmsKey"`
+	Labels                  map[string]string                  `pulumi:"labels"`
 	MaintenancePolicies     []GetClusterMaintenancePolicy      `pulumi:"maintenancePolicies"`
 	MaintenanceSchedules    []GetClusterMaintenanceSchedule    `pulumi:"maintenanceSchedules"`
 	MaintenanceVersion      string                             `pulumi:"maintenanceVersion"`
@@ -88,6 +90,7 @@ type LookupClusterResult struct {
 	PscConfigs              []GetClusterPscConfig              `pulumi:"pscConfigs"`
 	PscConnections          []GetClusterPscConnection          `pulumi:"pscConnections"`
 	PscServiceAttachments   []GetClusterPscServiceAttachment   `pulumi:"pscServiceAttachments"`
+	PulumiLabels            map[string]string                  `pulumi:"pulumiLabels"`
 	RedisConfigs            map[string]string                  `pulumi:"redisConfigs"`
 	Region                  *string                            `pulumi:"region"`
 	ReplicaCount            int                                `pulumi:"replicaCount"`
@@ -173,6 +176,10 @@ func (o LookupClusterResultOutput) DiscoveryEndpoints() GetClusterDiscoveryEndpo
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterDiscoveryEndpoint { return v.DiscoveryEndpoints }).(GetClusterDiscoveryEndpointArrayOutput)
 }
 
+func (o LookupClusterResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupClusterResultOutput) EffectiveMaintenanceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.EffectiveMaintenanceVersion }).(pulumi.StringOutput)
 }
@@ -188,6 +195,10 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterResultOutput) MaintenancePolicies() GetClusterMaintenancePolicyArrayOutput {
@@ -240,6 +251,10 @@ func (o LookupClusterResultOutput) PscConnections() GetClusterPscConnectionArray
 
 func (o LookupClusterResultOutput) PscServiceAttachments() GetClusterPscServiceAttachmentArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterPscServiceAttachment { return v.PscServiceAttachments }).(GetClusterPscServiceAttachmentArrayOutput)
+}
+
+func (o LookupClusterResultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupClusterResultOutput) RedisConfigs() pulumi.StringMapOutput {

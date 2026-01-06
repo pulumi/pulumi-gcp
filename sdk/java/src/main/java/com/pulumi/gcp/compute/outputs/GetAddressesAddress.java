@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -36,6 +37,11 @@ public final class GetAddressesAddress {
      * 
      */
     private String name;
+    /**
+     * @return The prefix length of the IP range. If not present, it means the address field is a single IP address.
+     * 
+     */
+    private Integer prefixLength;
     /**
      * @return Region that should be considered to search addresses.
      * All regions are considered if missing.
@@ -90,6 +96,13 @@ public final class GetAddressesAddress {
         return this.name;
     }
     /**
+     * @return The prefix length of the IP range. If not present, it means the address field is a single IP address.
+     * 
+     */
+    public Integer prefixLength() {
+        return this.prefixLength;
+    }
+    /**
      * @return Region that should be considered to search addresses.
      * All regions are considered if missing.
      * 
@@ -126,6 +139,7 @@ public final class GetAddressesAddress {
         private String description;
         private Map<String,String> labels;
         private String name;
+        private Integer prefixLength;
         private String region;
         private String selfLink;
         private String status;
@@ -137,6 +151,7 @@ public final class GetAddressesAddress {
     	      this.description = defaults.description;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.prefixLength = defaults.prefixLength;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
     	      this.status = defaults.status;
@@ -183,6 +198,14 @@ public final class GetAddressesAddress {
             return this;
         }
         @CustomType.Setter
+        public Builder prefixLength(Integer prefixLength) {
+            if (prefixLength == null) {
+              throw new MissingRequiredPropertyException("GetAddressesAddress", "prefixLength");
+            }
+            this.prefixLength = prefixLength;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetAddressesAddress", "region");
@@ -213,6 +236,7 @@ public final class GetAddressesAddress {
             _resultValue.description = description;
             _resultValue.labels = labels;
             _resultValue.name = name;
+            _resultValue.prefixLength = prefixLength;
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;
             _resultValue.status = status;

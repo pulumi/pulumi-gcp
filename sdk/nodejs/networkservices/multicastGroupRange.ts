@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Create a multicast group range in the current project.
  *
+ * To get more information about MulticastGroupRange, see:
+ *
+ * * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastGroupRanges)
+ * * How-to Guides
+ *     * [Create Multicast Group Range](https://docs.cloud.google.com/vpc/docs/multicast/create-group-ranges#create_a_group_range)
+ *
  * ## Example Usage
  *
  * ### Network Services Multicast Group Range Basic

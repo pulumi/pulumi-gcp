@@ -179,6 +179,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * This field represents the actual maintenance version of the cluster.
      * 
      */
@@ -223,6 +238,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
+    }
+
+    /**
+     * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -451,6 +485,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
      * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -625,9 +676,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.crossClusterReplicationConfig = $.crossClusterReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.discoveryEndpoints = $.discoveryEndpoints;
+        this.effectiveLabels = $.effectiveLabels;
         this.effectiveMaintenanceVersion = $.effectiveMaintenanceVersion;
         this.gcsSource = $.gcsSource;
         this.kmsKey = $.kmsKey;
+        this.labels = $.labels;
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceSchedules = $.maintenanceSchedules;
         this.maintenanceVersion = $.maintenanceVersion;
@@ -641,6 +694,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.pscConfigs = $.pscConfigs;
         this.pscConnections = $.pscConnections;
         this.pscServiceAttachments = $.pscServiceAttachments;
+        this.pulumiLabels = $.pulumiLabels;
         this.redisConfigs = $.redisConfigs;
         this.region = $.region;
         this.replicaCount = $.replicaCount;
@@ -887,6 +941,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param effectiveMaintenanceVersion This field represents the actual maintenance version of the cluster.
          * 
          * @return builder
@@ -949,6 +1024,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsKey(String kmsKey) {
             return kmsKey(Output.of(kmsKey));
+        }
+
+        /**
+         * @param labels Resource labels to represent user provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Resource labels to represent user provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**
@@ -1309,6 +1409,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pscServiceAttachments(ClusterPscServiceAttachmentArgs... pscServiceAttachments) {
             return pscServiceAttachments(List.of(pscServiceAttachments));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

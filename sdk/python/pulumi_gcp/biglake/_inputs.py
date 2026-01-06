@@ -17,6 +17,12 @@ from .. import _utilities
 __all__ = [
     'DatabaseHiveOptionsArgs',
     'DatabaseHiveOptionsArgsDict',
+    'IcebergCatalogIamBindingConditionArgs',
+    'IcebergCatalogIamBindingConditionArgsDict',
+    'IcebergCatalogIamMemberConditionArgs',
+    'IcebergCatalogIamMemberConditionArgsDict',
+    'IcebergCatalogReplicaArgs',
+    'IcebergCatalogReplicaArgsDict',
     'TableHiveOptionsArgs',
     'TableHiveOptionsArgsDict',
     'TableHiveOptionsStorageDescriptorArgs',
@@ -81,6 +87,158 @@ class DatabaseHiveOptionsArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
+
+
+if not MYPY:
+    class IcebergCatalogIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[_builtins.str]
+        title: pulumi.Input[_builtins.str]
+        description: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    IcebergCatalogIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IcebergCatalogIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class IcebergCatalogIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[_builtins.str]
+        title: pulumi.Input[_builtins.str]
+        description: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    IcebergCatalogIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IcebergCatalogIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class IcebergCatalogReplicaArgsDict(TypedDict):
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The region of the replica, e.g., `us-east1`.
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+        """
+elif False:
+    IcebergCatalogReplicaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class IcebergCatalogReplicaArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: (Output)
+               The region of the replica, e.g., `us-east1`.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The region of the replica, e.g., `us-east1`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        If the IcebergCatalog is replicated to multiple regions, this describes the current state of the replica. STATE_UNKNOWN - The replica state is unknown. STATE_PRIMARY - The replica is the writable primary. STATE_PRIMARY_IN_PROGRESS - The replica has been recently assigned as the primary, but not all namespaces are writeable yet. STATE_SECONDARY - The replica is a read-only secondary replica.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:

@@ -1651,6 +1651,41 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Zip Deploy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        sourcebucket = gcp.storage.Bucket("sourcebucket",
+            name=f"{project.project_id}-tf-test-gcf-source_21197",
+            location="US",
+            uniform_bucket_level_access=True)
+        source_tar = gcp.storage.BucketObject("source_tar",
+            name="function-source.zip",
+            bucket=sourcebucket.name,
+            source=pulumi.FileAsset("./test-fixtures/cr-zip-nodejs-hello.tar.gz"))
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-zip-service",
+            location="us-central1",
+            deletion_protection=False,
+            template={
+                "containers": [{
+                    "image": "scratch",
+                    "base_image_uri": "us-central1-docker.pkg.dev/serverless-runtimes/google-24-full/runtimes/nodejs24",
+                    "commands": ["node"],
+                    "args": ["index.js"],
+                    "source_code": {
+                        "cloud_storage_source": {
+                            "bucket": sourcebucket.name,
+                            "object": source_tar.name,
+                            "generation": source_tar.generation,
+                        },
+                    },
+                }],
+            })
+        ```
 
         ## Import
 
@@ -2215,6 +2250,41 @@ class Service(pulumi.CustomResource):
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Zip Deploy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        sourcebucket = gcp.storage.Bucket("sourcebucket",
+            name=f"{project.project_id}-tf-test-gcf-source_21197",
+            location="US",
+            uniform_bucket_level_access=True)
+        source_tar = gcp.storage.BucketObject("source_tar",
+            name="function-source.zip",
+            bucket=sourcebucket.name,
+            source=pulumi.FileAsset("./test-fixtures/cr-zip-nodejs-hello.tar.gz"))
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-zip-service",
+            location="us-central1",
+            deletion_protection=False,
+            template={
+                "containers": [{
+                    "image": "scratch",
+                    "base_image_uri": "us-central1-docker.pkg.dev/serverless-runtimes/google-24-full/runtimes/nodejs24",
+                    "commands": ["node"],
+                    "args": ["index.js"],
+                    "source_code": {
+                        "cloud_storage_source": {
+                            "bucket": sourcebucket.name,
+                            "object": source_tar.name,
+                            "generation": source_tar.generation,
+                        },
+                    },
                 }],
             })
         ```

@@ -69,7 +69,9 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input['VolumeExportPolicyArgs'] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
-        :param pulumi.Input['VolumeHybridReplicationParametersArgs'] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
+        :param pulumi.Input['VolumeHybridReplicationParametersArgs'] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+               [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+               are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -285,7 +287,9 @@ class VolumeArgs:
     @pulumi.getter(name="hybridReplicationParameters")
     def hybrid_replication_parameters(self) -> Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']]:
         """
-        The Hybrid Replication parameters for the volume.
+        [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+        are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
         Structure is documented below.
         """
         return pulumi.get(self, "hybrid_replication_parameters")
@@ -573,7 +577,9 @@ class _VolumeState:
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
         :param pulumi.Input[_builtins.str] hot_tier_size_used_gib: Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
-        :param pulumi.Input['VolumeHybridReplicationParametersArgs'] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
+        :param pulumi.Input['VolumeHybridReplicationParametersArgs'] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+               [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+               are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[_builtins.str] kms_config: Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
@@ -896,7 +902,9 @@ class _VolumeState:
     @pulumi.getter(name="hybridReplicationParameters")
     def hybrid_replication_parameters(self) -> Optional[pulumi.Input['VolumeHybridReplicationParametersArgs']]:
         """
-        The Hybrid Replication parameters for the volume.
+        [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+        are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
         Structure is documented below.
         """
         return pulumi.get(self, "hybrid_replication_parameters")
@@ -1408,7 +1416,9 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
-        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
+        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+               [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+               are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
@@ -1705,7 +1715,9 @@ class Volume(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] has_replication: Indicates whether the volume is part of a volume replication relationship.
         :param pulumi.Input[_builtins.str] hot_tier_size_used_gib: Total hot tier data rounded down to the nearest GiB used by the volume. This field is only used for flex Service Level
-        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: The Hybrid Replication parameters for the volume.
+        :param pulumi.Input[Union['VolumeHybridReplicationParametersArgs', 'VolumeHybridReplicationParametersArgsDict']] hybrid_replication_parameters: [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+               [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+               are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] kerberos_enabled: Flag indicating if the volume is a kerberos volume or not, export policy rules control kerberos security modes (krb5, krb5i, krb5p).
         :param pulumi.Input[_builtins.str] kms_config: Reports the CMEK policy resurce name being used for volume encryption. Inherited from storage pool.
@@ -1931,7 +1943,9 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="hybridReplicationParameters")
     def hybrid_replication_parameters(self) -> pulumi.Output[Optional['outputs.VolumeHybridReplicationParameters']]:
         """
-        The Hybrid Replication parameters for the volume.
+        [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+        are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
         Structure is documented below.
         """
         return pulumi.get(self, "hybrid_replication_parameters")

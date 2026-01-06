@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Transcoder.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="NestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"&gt;&lt;/a&gt;The `H264` block supports:
+        /// &lt;a name="NestedConfigElementaryStreamsVideoStreamH264"&gt;&lt;/a&gt;The `H264` block supports:
         /// </summary>
         public readonly Outputs.JobTemplateConfigElementaryStreamVideoStreamH264? H264;
 

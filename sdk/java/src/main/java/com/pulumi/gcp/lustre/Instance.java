@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.lustre.InstanceArgs;
 import com.pulumi.gcp.lustre.inputs.InstanceState;
+import com.pulumi.gcp.lustre.outputs.InstanceAccessRulesOptions;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -109,6 +110,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:lustre/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * Access control rules for the Lustre instance. Configures default root
+     * squashing behavior and specific access rules based on IP addresses.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="accessRulesOptions", refs={InstanceAccessRulesOptions.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceAccessRulesOptions> accessRulesOptions;
+
+    /**
+     * @return Access control rules for the Lustre instance. Configures default root
+     * squashing behavior and specific access rules based on IP addresses.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceAccessRulesOptions>> accessRulesOptions() {
+        return Codegen.optional(this.accessRulesOptions);
+    }
     /**
      * The storage capacity of the instance in gibibytes (GiB). Allowed values
      * are from `18000` to `954000`, in increments of 9000.

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// To get more information about OrganizationSecurityPolicyAssociation, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies/addAssociation)
     /// * How-to Guides
     ///     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
     /// 
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         DisplayName = "tf-test",
     ///         Parent = securityPolicyTarget.Name,
-    ///         Type = "FIREWALL",
+    ///         Type = "CLOUD_ARMOR",
     ///     });
     /// 
     ///     var policyOrganizationSecurityPolicyAssociation = new Gcp.Compute.OrganizationSecurityPolicyAssociation("policy", new()

@@ -10757,7 +10757,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_platform_config_bundles_bundles_status"></a>The `status` block contains:
+        <a name="nested_platform_config_bundles_status"></a>The `status` block contains:
         """
 elif False:
     VmwareAdminClusterPlatformConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -10785,7 +10785,7 @@ class VmwareAdminClusterPlatformConfigArgs:
                Structure is documented below.
                
                
-               <a name="nested_platform_config_bundles_bundles_status"></a>The `status` block contains:
+               <a name="nested_platform_config_bundles_status"></a>The `status` block contains:
         """
         if bundles is not None:
             pulumi.set(__self__, "bundles", bundles)
@@ -10848,7 +10848,7 @@ class VmwareAdminClusterPlatformConfigArgs:
         Structure is documented below.
 
 
-        <a name="nested_platform_config_bundles_bundles_status"></a>The `status` block contains:
+        <a name="nested_platform_config_bundles_status"></a>The `status` block contains:
         """
         return pulumi.get(self, "statuses")
 

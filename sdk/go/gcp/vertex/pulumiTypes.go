@@ -10464,6 +10464,10 @@ type AiFeatureOnlineStoreBigtable struct {
 	// Autoscaling config applied to Bigtable Instance.
 	// Structure is documented below.
 	AutoScaling AiFeatureOnlineStoreBigtableAutoScaling `pulumi:"autoScaling"`
+	// Optional. If true, enable direct access to the Bigtable instance.
+	EnableDirectBigtableAccess *bool `pulumi:"enableDirectBigtableAccess"`
+	// The zone where the Bigtable instance will be created.
+	Zone *string `pulumi:"zone"`
 }
 
 // AiFeatureOnlineStoreBigtableInput is an input type that accepts AiFeatureOnlineStoreBigtableArgs and AiFeatureOnlineStoreBigtableOutput values.
@@ -10481,6 +10485,10 @@ type AiFeatureOnlineStoreBigtableArgs struct {
 	// Autoscaling config applied to Bigtable Instance.
 	// Structure is documented below.
 	AutoScaling AiFeatureOnlineStoreBigtableAutoScalingInput `pulumi:"autoScaling"`
+	// Optional. If true, enable direct access to the Bigtable instance.
+	EnableDirectBigtableAccess pulumi.BoolPtrInput `pulumi:"enableDirectBigtableAccess"`
+	// The zone where the Bigtable instance will be created.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (AiFeatureOnlineStoreBigtableArgs) ElementType() reflect.Type {
@@ -10566,6 +10574,16 @@ func (o AiFeatureOnlineStoreBigtableOutput) AutoScaling() AiFeatureOnlineStoreBi
 	return o.ApplyT(func(v AiFeatureOnlineStoreBigtable) AiFeatureOnlineStoreBigtableAutoScaling { return v.AutoScaling }).(AiFeatureOnlineStoreBigtableAutoScalingOutput)
 }
 
+// Optional. If true, enable direct access to the Bigtable instance.
+func (o AiFeatureOnlineStoreBigtableOutput) EnableDirectBigtableAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreBigtable) *bool { return v.EnableDirectBigtableAccess }).(pulumi.BoolPtrOutput)
+}
+
+// The zone where the Bigtable instance will be created.
+func (o AiFeatureOnlineStoreBigtableOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreBigtable) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureOnlineStoreBigtablePtrOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureOnlineStoreBigtablePtrOutput) ElementType() reflect.Type {
@@ -10599,6 +10617,26 @@ func (o AiFeatureOnlineStoreBigtablePtrOutput) AutoScaling() AiFeatureOnlineStor
 		}
 		return &v.AutoScaling
 	}).(AiFeatureOnlineStoreBigtableAutoScalingPtrOutput)
+}
+
+// Optional. If true, enable direct access to the Bigtable instance.
+func (o AiFeatureOnlineStoreBigtablePtrOutput) EnableDirectBigtableAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtable) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDirectBigtableAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The zone where the Bigtable instance will be created.
+func (o AiFeatureOnlineStoreBigtablePtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiFeatureOnlineStoreBigtableAutoScaling struct {
@@ -11260,6 +11298,143 @@ func (o AiFeatureOnlineStoreEmbeddingManagementPtrOutput) Enabled() pulumi.BoolP
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type AiFeatureOnlineStoreEncryptionSpec struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiFeatureOnlineStoreEncryptionSpecInput is an input type that accepts AiFeatureOnlineStoreEncryptionSpecArgs and AiFeatureOnlineStoreEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreEncryptionSpecInput` via:
+//
+//	AiFeatureOnlineStoreEncryptionSpecArgs{...}
+type AiFeatureOnlineStoreEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreEncryptionSpecOutput() AiFeatureOnlineStoreEncryptionSpecOutput
+	ToAiFeatureOnlineStoreEncryptionSpecOutputWithContext(context.Context) AiFeatureOnlineStoreEncryptionSpecOutput
+}
+
+type AiFeatureOnlineStoreEncryptionSpecArgs struct {
+	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiFeatureOnlineStoreEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreEncryptionSpecArgs) ToAiFeatureOnlineStoreEncryptionSpecOutput() AiFeatureOnlineStoreEncryptionSpecOutput {
+	return i.ToAiFeatureOnlineStoreEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreEncryptionSpecArgs) ToAiFeatureOnlineStoreEncryptionSpecOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreEncryptionSpecOutput)
+}
+
+func (i AiFeatureOnlineStoreEncryptionSpecArgs) ToAiFeatureOnlineStoreEncryptionSpecPtrOutput() AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return i.ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreEncryptionSpecArgs) ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreEncryptionSpecOutput).ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreEncryptionSpecPtrInput is an input type that accepts AiFeatureOnlineStoreEncryptionSpecArgs, AiFeatureOnlineStoreEncryptionSpecPtr and AiFeatureOnlineStoreEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreEncryptionSpecPtrInput` via:
+//
+//	        AiFeatureOnlineStoreEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreEncryptionSpecPtrOutput() AiFeatureOnlineStoreEncryptionSpecPtrOutput
+	ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(context.Context) AiFeatureOnlineStoreEncryptionSpecPtrOutput
+}
+
+type aiFeatureOnlineStoreEncryptionSpecPtrType AiFeatureOnlineStoreEncryptionSpecArgs
+
+func AiFeatureOnlineStoreEncryptionSpecPtr(v *AiFeatureOnlineStoreEncryptionSpecArgs) AiFeatureOnlineStoreEncryptionSpecPtrInput {
+	return (*aiFeatureOnlineStoreEncryptionSpecPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreEncryptionSpecPtrType) ToAiFeatureOnlineStoreEncryptionSpecPtrOutput() AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return i.ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreEncryptionSpecPtrType) ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreEncryptionSpecPtrOutput)
+}
+
+type AiFeatureOnlineStoreEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreEncryptionSpecOutput) ToAiFeatureOnlineStoreEncryptionSpecOutput() AiFeatureOnlineStoreEncryptionSpecOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEncryptionSpecOutput) ToAiFeatureOnlineStoreEncryptionSpecOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEncryptionSpecOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEncryptionSpecOutput) ToAiFeatureOnlineStoreEncryptionSpecPtrOutput() AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return o.ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreEncryptionSpecOutput) ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreEncryptionSpec) *AiFeatureOnlineStoreEncryptionSpec {
+		return &v
+	}).(AiFeatureOnlineStoreEncryptionSpecPtrOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+func (o AiFeatureOnlineStoreEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiFeatureOnlineStoreEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreEncryptionSpecPtrOutput) ToAiFeatureOnlineStoreEncryptionSpecPtrOutput() AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEncryptionSpecPtrOutput) ToAiFeatureOnlineStoreEncryptionSpecPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEncryptionSpecPtrOutput) Elem() AiFeatureOnlineStoreEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreEncryptionSpec) AiFeatureOnlineStoreEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreEncryptionSpec
+		return ret
+	}).(AiFeatureOnlineStoreEncryptionSpecOutput)
+}
+
+// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+func (o AiFeatureOnlineStoreEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiFeatureOnlineStoreFeatureviewBigQuerySource struct {
@@ -16578,6 +16753,9 @@ type AiIndexEndpointPrivateServiceConnectConfig struct {
 	EnablePrivateServiceConnect bool `pulumi:"enablePrivateServiceConnect"`
 	// A list of Projects from which the forwarding rule will target the service attachment.
 	ProjectAllowlists []string `pulumi:"projectAllowlists"`
+	// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+	// Structure is documented below.
+	PscAutomationConfigs []AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig `pulumi:"pscAutomationConfigs"`
 }
 
 // AiIndexEndpointPrivateServiceConnectConfigInput is an input type that accepts AiIndexEndpointPrivateServiceConnectConfigArgs and AiIndexEndpointPrivateServiceConnectConfigOutput values.
@@ -16596,6 +16774,9 @@ type AiIndexEndpointPrivateServiceConnectConfigArgs struct {
 	EnablePrivateServiceConnect pulumi.BoolInput `pulumi:"enablePrivateServiceConnect"`
 	// A list of Projects from which the forwarding rule will target the service attachment.
 	ProjectAllowlists pulumi.StringArrayInput `pulumi:"projectAllowlists"`
+	// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+	// Structure is documented below.
+	PscAutomationConfigs AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput `pulumi:"pscAutomationConfigs"`
 }
 
 func (AiIndexEndpointPrivateServiceConnectConfigArgs) ElementType() reflect.Type {
@@ -16685,6 +16866,14 @@ func (o AiIndexEndpointPrivateServiceConnectConfigOutput) ProjectAllowlists() pu
 	return o.ApplyT(func(v AiIndexEndpointPrivateServiceConnectConfig) []string { return v.ProjectAllowlists }).(pulumi.StringArrayOutput)
 }
 
+// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+// Structure is documented below.
+func (o AiIndexEndpointPrivateServiceConnectConfigOutput) PscAutomationConfigs() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o.ApplyT(func(v AiIndexEndpointPrivateServiceConnectConfig) []AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig {
+		return v.PscAutomationConfigs
+	}).(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput)
+}
+
 type AiIndexEndpointPrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (AiIndexEndpointPrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
@@ -16727,6 +16916,123 @@ func (o AiIndexEndpointPrivateServiceConnectConfigPtrOutput) ProjectAllowlists()
 		}
 		return v.ProjectAllowlists
 	}).(pulumi.StringArrayOutput)
+}
+
+// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+// Structure is documented below.
+func (o AiIndexEndpointPrivateServiceConnectConfigPtrOutput) PscAutomationConfigs() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o.ApplyT(func(v *AiIndexEndpointPrivateServiceConnectConfig) []AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscAutomationConfigs
+	}).(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput)
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig struct {
+	// The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+	Network string `pulumi:"network"`
+	// Project id used to create forwarding rule.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigInput is an input type that accepts AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs and AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput values.
+// You can construct a concrete instance of `AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigInput` via:
+//
+//	AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{...}
+type AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput
+	ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(context.Context) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs struct {
+	// The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Project id used to create forwarding rule.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return i.ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput)
+}
+
+// AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput is an input type that accepts AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArray and AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput values.
+// You can construct a concrete instance of `AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput` via:
+//
+//	AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArray{ AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{...} }
+type AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput
+	ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(context.Context) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArray []AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigInput
+
+func (AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArray) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return i.ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArray) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput)
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return o
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return o
+}
+
+// The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
+func (o AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Project id used to create forwarding rule.
+func (o AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig)(nil)).Elem()
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput() AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) ToAiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutputWithContext(ctx context.Context) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput {
+	return o
+}
+
+func (o AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput) Index(i pulumi.IntInput) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig {
+		return vs[0].([]AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig)[vs[1].(int)]
+	}).(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput)
 }
 
 type AiIndexIndexStat struct {
@@ -19001,13 +19307,13 @@ type AiReasoningEngineSpecDeploymentSpec struct {
 	// Engine deployment.
 	// Structure is documented below.
 	Envs []AiReasoningEngineSpecDeploymentSpecEnv `pulumi:"envs"`
-	// Optional. The minimum number of application instances that will be
-	// kept running at all times. Defaults to 1. Range: [0, 10].
-	MaxInstances *int `pulumi:"maxInstances"`
 	// Optional. The maximum number of application instances that can be
 	// launched to handle increased traffic. Defaults to 100.
 	// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
 	// range is [1, 100].
+	MaxInstances *int `pulumi:"maxInstances"`
+	// Optional. The minimum number of application instances that will be
+	// kept running at all times. Defaults to 1. Range: [0, 10].
 	MinInstances *int `pulumi:"minInstances"`
 	// Optional. Resource limits for each container.
 	// Only 'cpu' and 'memory' keys are supported.
@@ -19046,13 +19352,13 @@ type AiReasoningEngineSpecDeploymentSpecArgs struct {
 	// Engine deployment.
 	// Structure is documented below.
 	Envs AiReasoningEngineSpecDeploymentSpecEnvArrayInput `pulumi:"envs"`
-	// Optional. The minimum number of application instances that will be
-	// kept running at all times. Defaults to 1. Range: [0, 10].
-	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
 	// Optional. The maximum number of application instances that can be
 	// launched to handle increased traffic. Defaults to 100.
 	// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
 	// range is [1, 100].
+	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
+	// Optional. The minimum number of application instances that will be
+	// kept running at all times. Defaults to 1. Range: [0, 10].
 	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
 	// Optional. Resource limits for each container.
 	// Only 'cpu' and 'memory' keys are supported.
@@ -19162,16 +19468,16 @@ func (o AiReasoningEngineSpecDeploymentSpecOutput) Envs() AiReasoningEngineSpecD
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) []AiReasoningEngineSpecDeploymentSpecEnv { return v.Envs }).(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput)
 }
 
-// Optional. The minimum number of application instances that will be
-// kept running at all times. Defaults to 1. Range: [0, 10].
-func (o AiReasoningEngineSpecDeploymentSpecOutput) MaxInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
-}
-
 // Optional. The maximum number of application instances that can be
 // launched to handle increased traffic. Defaults to 100.
 // Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
 // range is [1, 100].
+func (o AiReasoningEngineSpecDeploymentSpecOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The minimum number of application instances that will be
+// kept running at all times. Defaults to 1. Range: [0, 10].
 func (o AiReasoningEngineSpecDeploymentSpecOutput) MinInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
 }
@@ -19247,8 +19553,10 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) Envs() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput)
 }
 
-// Optional. The minimum number of application instances that will be
-// kept running at all times. Defaults to 1. Range: [0, 10].
+// Optional. The maximum number of application instances that can be
+// launched to handle increased traffic. Defaults to 100.
+// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+// range is [1, 100].
 func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) MaxInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *int {
 		if v == nil {
@@ -19258,10 +19566,8 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) MaxInstances() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. The maximum number of application instances that can be
-// launched to handle increased traffic. Defaults to 100.
-// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
-// range is [1, 100].
+// Optional. The minimum number of application instances that will be
+// kept running at all times. Defaults to 1. Range: [0, 10].
 func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) MinInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *int {
 		if v == nil {
@@ -21557,6 +21863,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagementInput)(nil)).Elem(), AiFeatureOnlineStoreEmbeddingManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagementPtrInput)(nil)).Elem(), AiFeatureOnlineStoreEmbeddingManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureOnlineStoreEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEncryptionSpecPtrInput)(nil)).Elem(), AiFeatureOnlineStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySourceInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{})
@@ -21627,6 +21935,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointEncryptionSpecPtrInput)(nil)).Elem(), AiIndexEndpointEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayInput)(nil)).Elem(), AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatInput)(nil)).Elem(), AiIndexIndexStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexIndexStatArrayInput)(nil)).Elem(), AiIndexIndexStatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiIndexMetadataInput)(nil)).Elem(), AiIndexMetadataArgs{})
@@ -21802,6 +22112,8 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreEmbeddingManagementOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreEmbeddingManagementPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput{})
@@ -21872,6 +22184,8 @@ func init() {
 	pulumi.RegisterOutputType(AiIndexEndpointEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigOutput{})
 	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigOutput{})
+	pulumi.RegisterOutputType(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArrayOutput{})
 	pulumi.RegisterOutputType(AiIndexIndexStatOutput{})
 	pulumi.RegisterOutputType(AiIndexIndexStatArrayOutput{})
 	pulumi.RegisterOutputType(AiIndexMetadataOutput{})

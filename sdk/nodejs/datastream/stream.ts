@@ -864,8 +864,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
- *     projectId: "tf-test_41150",
- *     name: "tf-test_89313",
+ *     projectId: "tf-test_89313",
+ *     name: "tf-test_60646",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -1176,6 +1176,88 @@ import * as utilities from "../utilities";
  *     backfillNone: {},
  * });
  * ```
+ * ### Datastream Stream Rule Sets Bigquery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const stream = new gcp.datastream.Stream("stream", {
+ *     streamId: "rules-stream",
+ *     location: "us-central1",
+ *     displayName: "BigQuery Stream with Rules",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: "rules-source-profile",
+ *         mysqlSourceConfig: {
+ *             includeObjects: {
+ *                 mysqlDatabases: [{
+ *                     database: "my_database",
+ *                 }],
+ *             },
+ *             binaryLogPosition: {},
+ *         },
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: "rules-dest-profile",
+ *         bigqueryDestinationConfig: {
+ *             singleTargetDataset: {
+ *                 datasetId: "rules-project:rules-dataset",
+ *             },
+ *         },
+ *     },
+ *     backfillNone: {},
+ *     ruleSets: [
+ *         {
+ *             objectFilter: {
+ *                 sourceObjectIdentifier: {
+ *                     mysqlIdentifier: {
+ *                         database: "test_database",
+ *                         table: "test_table_1",
+ *                     },
+ *                 },
+ *             },
+ *             customizationRules: [
+ *                 {
+ *                     bigqueryClustering: {
+ *                         columns: ["user_id"],
+ *                     },
+ *                 },
+ *                 {
+ *                     bigqueryPartitioning: {
+ *                         ingestionTimePartition: {},
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *         {
+ *             objectFilter: {
+ *                 sourceObjectIdentifier: {
+ *                     mysqlIdentifier: {
+ *                         database: "test_database",
+ *                         table: "test_table_2",
+ *                     },
+ *                 },
+ *             },
+ *             customizationRules: [
+ *                 {
+ *                     bigqueryClustering: {
+ *                         columns: ["event_time"],
+ *                     },
+ *                 },
+ *                 {
+ *                     bigqueryPartitioning: {
+ *                         timeUnitPartition: {
+ *                             column: "event_time",
+ *                             partitioningTimeGranularity: "PARTITIONING_TIME_GRANULARITY_DAY",
+ *                         },
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     ],
+ * });
+ * ```
  * ### Datastream Stream Mongodb
  *
  * ```typescript
@@ -1344,6 +1426,11 @@ export class Stream extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Rule sets to apply to the stream.
+     * Structure is documented below.
+     */
+    declare public readonly ruleSets: pulumi.Output<outputs.datastream.StreamRuleSet[] | undefined>;
+    /**
      * Source connection profile configuration.
      * Structure is documented below.
      */
@@ -1383,6 +1470,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["ruleSets"] = state?.ruleSets;
             resourceInputs["sourceConfig"] = state?.sourceConfig;
             resourceInputs["state"] = state?.state;
             resourceInputs["streamId"] = state?.streamId;
@@ -1413,6 +1501,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
+            resourceInputs["ruleSets"] = args?.ruleSets;
             resourceInputs["sourceConfig"] = args?.sourceConfig;
             resourceInputs["streamId"] = args?.streamId;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -1494,6 +1583,11 @@ export interface StreamState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Rule sets to apply to the stream.
+     * Structure is documented below.
+     */
+    ruleSets?: pulumi.Input<pulumi.Input<inputs.datastream.StreamRuleSet>[]>;
+    /**
      * Source connection profile configuration.
      * Structure is documented below.
      */
@@ -1561,6 +1655,11 @@ export interface StreamArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Rule sets to apply to the stream.
+     * Structure is documented below.
+     */
+    ruleSets?: pulumi.Input<pulumi.Input<inputs.datastream.StreamRuleSet>[]>;
     /**
      * Source connection profile configuration.
      * Structure is documented below.

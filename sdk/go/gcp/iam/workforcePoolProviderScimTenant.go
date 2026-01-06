@@ -88,6 +88,7 @@ import (
 //					"google.subject": pulumi.String("user.externalId"),
 //					"google.group":   pulumi.String("group.externalId"),
 //				},
+//				HardDelete: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -130,6 +131,8 @@ type WorkforcePoolProviderScimTenant struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Deletes the SCIM tenant immediately. This operation cannot be undone.
+	HardDelete pulumi.BoolPtrOutput `pulumi:"hardDelete"`
 	// The location for the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. The resource name of the scim tenant.
@@ -207,6 +210,8 @@ type workforcePoolProviderScimTenantState struct {
 	Description *string `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// Deletes the SCIM tenant immediately. This operation cannot be undone.
+	HardDelete *bool `pulumi:"hardDelete"`
 	// The location for the resource.
 	Location *string `pulumi:"location"`
 	// Identifier. The resource name of the scim tenant.
@@ -243,6 +248,8 @@ type WorkforcePoolProviderScimTenantState struct {
 	Description pulumi.StringPtrInput
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
+	// Deletes the SCIM tenant immediately. This operation cannot be undone.
+	HardDelete pulumi.BoolPtrInput
 	// The location for the resource.
 	Location pulumi.StringPtrInput
 	// Identifier. The resource name of the scim tenant.
@@ -277,6 +284,8 @@ type workforcePoolProviderScimTenantArgs struct {
 	Description *string `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// Deletes the SCIM tenant immediately. This operation cannot be undone.
+	HardDelete *bool `pulumi:"hardDelete"`
 	// The location for the resource.
 	Location string `pulumi:"location"`
 	// The ID of the provider.
@@ -295,6 +304,8 @@ type WorkforcePoolProviderScimTenantArgs struct {
 	Description pulumi.StringPtrInput
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
+	// Deletes the SCIM tenant immediately. This operation cannot be undone.
+	HardDelete pulumi.BoolPtrInput
 	// The location for the resource.
 	Location pulumi.StringInput
 	// The ID of the provider.
@@ -414,6 +425,11 @@ func (o WorkforcePoolProviderScimTenantOutput) Description() pulumi.StringPtrOut
 // A user-specified display name for the scim tenant. Cannot exceed 32 characters.
 func (o WorkforcePoolProviderScimTenantOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Deletes the SCIM tenant immediately. This operation cannot be undone.
+func (o WorkforcePoolProviderScimTenantOutput) HardDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.BoolPtrOutput { return v.HardDelete }).(pulumi.BoolPtrOutput)
 }
 
 // The location for the resource.

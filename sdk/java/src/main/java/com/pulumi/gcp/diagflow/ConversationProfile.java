@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
  *             .displayName("example_agent")
- *             .defaultLanguageCode("en-us")
+ *             .defaultLanguageCode("en")
  *             .timeZone("America/New_York")
  *             .build());
  * 

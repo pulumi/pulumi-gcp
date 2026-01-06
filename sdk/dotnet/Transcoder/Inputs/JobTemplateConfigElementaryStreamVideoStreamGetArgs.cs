@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Transcoder.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="NestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"&gt;&lt;/a&gt;The `H264` block supports:
+        /// &lt;a name="NestedConfigElementaryStreamsVideoStreamH264"&gt;&lt;/a&gt;The `H264` block supports:
         /// </summary>
         [Input("h264")]
         public Input<Inputs.JobTemplateConfigElementaryStreamVideoStreamH264GetArgs>? H264 { get; set; }

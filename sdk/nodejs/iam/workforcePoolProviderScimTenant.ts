@@ -67,6 +67,7 @@ import * as utilities from "../utilities";
  *         "google.subject": "user.externalId",
  *         "google.group": "group.externalId",
  *     },
+ *     hardDelete: true,
  * });
  * ```
  *
@@ -137,6 +138,10 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
+     * Deletes the SCIM tenant immediately. This operation cannot be undone.
+     */
+    declare public readonly hardDelete: pulumi.Output<boolean | undefined>;
+    /**
      * The location for the resource.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -191,6 +196,7 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
             resourceInputs["claimMapping"] = state?.claimMapping;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["hardDelete"] = state?.hardDelete;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["providerId"] = state?.providerId;
@@ -216,6 +222,7 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
             resourceInputs["claimMapping"] = args?.claimMapping;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["hardDelete"] = args?.hardDelete;
             resourceInputs["location"] = args?.location;
             resourceInputs["providerId"] = args?.providerId;
             resourceInputs["scimTenantId"] = args?.scimTenantId;
@@ -255,6 +262,10 @@ export interface WorkforcePoolProviderScimTenantState {
      * A user-specified display name for the scim tenant. Cannot exceed 32 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Deletes the SCIM tenant immediately. This operation cannot be undone.
+     */
+    hardDelete?: pulumi.Input<boolean>;
     /**
      * The location for the resource.
      */
@@ -310,6 +321,10 @@ export interface WorkforcePoolProviderScimTenantArgs {
      * A user-specified display name for the scim tenant. Cannot exceed 32 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Deletes the SCIM tenant immediately. This operation cannot be undone.
+     */
+    hardDelete?: pulumi.Input<boolean>;
     /**
      * The location for the resource.
      */

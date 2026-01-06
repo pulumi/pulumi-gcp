@@ -978,6 +978,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/securityFeedback",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/securityFeedback:SecurityFeedback": "SecurityFeedback"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/securityMonitoringCondition",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -1134,6 +1142,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apphub",
   "classes": {
    "gcp:apphub/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apphub/boundary",
+  "fqn": "pulumi_gcp.apphub",
+  "classes": {
+   "gcp:apphub/boundary:Boundary": "Boundary"
   }
  },
  {
@@ -1366,6 +1382,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.biglake",
   "classes": {
    "gcp:biglake/database:Database": "Database"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergCatalog",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergCatalog:IcebergCatalog": "IcebergCatalog"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergCatalogIamBinding",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergCatalogIamBinding:IcebergCatalogIamBinding": "IcebergCatalogIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergCatalogIamMember",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember": "IcebergCatalogIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/icebergCatalogIamPolicy",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/icebergCatalogIamPolicy:IcebergCatalogIamPolicy": "IcebergCatalogIamPolicy"
   }
  },
  {
@@ -7890,6 +7938,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkconnectivity/destination",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/destination:Destination": "Destination"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkconnectivity/gatewayAdvertisedRoute",
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
@@ -7918,6 +7974,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
    "gcp:networkconnectivity/internalRange:InternalRange": "InternalRange"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/multicloudDataTransferConfig",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig": "MulticloudDataTransferConfig"
   }
  },
  {

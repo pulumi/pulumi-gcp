@@ -346,7 +346,8 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
             claim_mapping={
                 "google.subject": "user.externalId",
                 "google.group": "group.externalId",
-            })
+            },
+            hard_delete=True)
         example = gcp.iam.WorkforcePoolProviderScimToken("example",
             location="global",
             workforce_pool_id=pool.workforce_pool_id,
@@ -449,7 +450,8 @@ class WorkforcePoolProviderScimToken(pulumi.CustomResource):
             claim_mapping={
                 "google.subject": "user.externalId",
                 "google.group": "group.externalId",
-            })
+            },
+            hard_delete=True)
         example = gcp.iam.WorkforcePoolProviderScimToken("example",
             location="global",
             workforce_pool_id=pool.workforce_pool_id,

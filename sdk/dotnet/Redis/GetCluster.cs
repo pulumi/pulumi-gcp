@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Redis
         public readonly ImmutableArray<Outputs.GetClusterCrossClusterReplicationConfigResult> CrossClusterReplicationConfigs;
         public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetClusterDiscoveryEndpointResult> DiscoveryEndpoints;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string EffectiveMaintenanceVersion;
         public readonly ImmutableArray<Outputs.GetClusterGcsSourceResult> GcsSources;
         /// <summary>
@@ -161,6 +162,7 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         public readonly string Id;
         public readonly string KmsKey;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> MaintenancePolicies;
         public readonly ImmutableArray<Outputs.GetClusterMaintenanceScheduleResult> MaintenanceSchedules;
         public readonly string MaintenanceVersion;
@@ -174,6 +176,7 @@ namespace Pulumi.Gcp.Redis
         public readonly ImmutableArray<Outputs.GetClusterPscConfigResult> PscConfigs;
         public readonly ImmutableArray<Outputs.GetClusterPscConnectionResult> PscConnections;
         public readonly ImmutableArray<Outputs.GetClusterPscServiceAttachmentResult> PscServiceAttachments;
+        public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableDictionary<string, string> RedisConfigs;
         public readonly string? Region;
         public readonly int ReplicaCount;
@@ -203,6 +206,8 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetClusterDiscoveryEndpointResult> discoveryEndpoints,
 
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string effectiveMaintenanceVersion,
 
             ImmutableArray<Outputs.GetClusterGcsSourceResult> gcsSources,
@@ -210,6 +215,8 @@ namespace Pulumi.Gcp.Redis
             string id,
 
             string kmsKey,
+
+            ImmutableDictionary<string, string> labels,
 
             ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> maintenancePolicies,
 
@@ -236,6 +243,8 @@ namespace Pulumi.Gcp.Redis
             ImmutableArray<Outputs.GetClusterPscConnectionResult> pscConnections,
 
             ImmutableArray<Outputs.GetClusterPscServiceAttachmentResult> pscServiceAttachments,
+
+            ImmutableDictionary<string, string> pulumiLabels,
 
             ImmutableDictionary<string, string> redisConfigs,
 
@@ -265,10 +274,12 @@ namespace Pulumi.Gcp.Redis
             CrossClusterReplicationConfigs = crossClusterReplicationConfigs;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DiscoveryEndpoints = discoveryEndpoints;
+            EffectiveLabels = effectiveLabels;
             EffectiveMaintenanceVersion = effectiveMaintenanceVersion;
             GcsSources = gcsSources;
             Id = id;
             KmsKey = kmsKey;
+            Labels = labels;
             MaintenancePolicies = maintenancePolicies;
             MaintenanceSchedules = maintenanceSchedules;
             MaintenanceVersion = maintenanceVersion;
@@ -282,6 +293,7 @@ namespace Pulumi.Gcp.Redis
             PscConfigs = pscConfigs;
             PscConnections = pscConnections;
             PscServiceAttachments = pscServiceAttachments;
+            PulumiLabels = pulumiLabels;
             RedisConfigs = redisConfigs;
             Region = region;
             ReplicaCount = replicaCount;

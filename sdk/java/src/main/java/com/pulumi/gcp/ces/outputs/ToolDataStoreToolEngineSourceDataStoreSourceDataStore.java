@@ -60,7 +60,7 @@ public final class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
      * FAQ
      * CONNECTOR
      * 
-     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
+     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
      * 
      */
     private @Nullable String type;
@@ -122,7 +122,7 @@ public final class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
      * FAQ
      * CONNECTOR
      * 
-     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
+     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
      * 
      */
     public Optional<String> type() {

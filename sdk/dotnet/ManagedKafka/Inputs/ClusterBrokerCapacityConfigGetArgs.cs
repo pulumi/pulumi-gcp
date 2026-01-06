@@ -13,10 +13,10 @@ namespace Pulumi.Gcp.ManagedKafka.Inputs
     public sealed class ClusterBrokerCapacityConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        /// The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         /// </summary>
-        [Input("diskSizeGb")]
-        public Input<string>? DiskSizeGb { get; set; }
+        [Input("diskSizeGib")]
+        public Input<string>? DiskSizeGib { get; set; }
 
         public ClusterBrokerCapacityConfigGetArgs()
         {

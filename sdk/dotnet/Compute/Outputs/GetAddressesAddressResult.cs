@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The prefix length of the IP range. If not present, it means the address field is a single IP address.
+        /// </summary>
+        public readonly int PrefixLength;
+        /// <summary>
         /// Region that should be considered to search addresses.
         /// All regions are considered if missing.
         /// </summary>
@@ -59,6 +63,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string name,
 
+            int prefixLength,
+
             string region,
 
             string selfLink,
@@ -70,6 +76,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Description = description;
             Labels = labels;
             Name = name;
+            PrefixLength = prefixLength;
             Region = region;
             SelfLink = selfLink;
             Status = status;

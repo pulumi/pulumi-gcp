@@ -24,6 +24,7 @@ class SnapshotArgs:
                  source_disk: pulumi.Input[_builtins.str],
                  chain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -42,6 +43,7 @@ class SnapshotArgs:
                example, for chargeback tracking.  When you describe your snapshot
                resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -79,6 +81,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "chain_name", chain_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if guest_flush is not None:
+            pulumi.set(__self__, "guest_flush", guest_flush)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -136,6 +140,18 @@ class SnapshotArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        """
+        return pulumi.get(self, "guest_flush")
+
+    @guest_flush.setter
+    def guest_flush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "guest_flush", value)
 
     @_builtins.property
     @pulumi.getter
@@ -265,6 +281,7 @@ class _SnapshotState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -292,6 +309,7 @@ class _SnapshotState:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the snapshot, specified in GB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
@@ -348,6 +366,8 @@ class _SnapshotState:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if guest_flush is not None:
+            pulumi.set(__self__, "guest_flush", guest_flush)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -443,6 +463,18 @@ class _SnapshotState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        """
+        return pulumi.get(self, "guest_flush")
+
+    @guest_flush.setter
+    def guest_flush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "guest_flush", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
@@ -663,6 +695,7 @@ class Snapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -720,6 +753,30 @@ class Snapshot(pulumi.CustomResource):
                 "my_label": "value",
             },
             storage_locations=["us-central1"])
+        ```
+        ### Snapshot Basic2
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"],
+            guest_flush=True)
         ```
         ### Snapshot Chainname
 
@@ -779,6 +836,7 @@ class Snapshot(pulumi.CustomResource):
                example, for chargeback tracking.  When you describe your snapshot
                resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -866,6 +924,30 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"])
         ```
+        ### Snapshot Basic2
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
+            source_disk=persistent.id,
+            zone="us-central1-a",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"],
+            guest_flush=True)
+        ```
         ### Snapshot Chainname
 
         ```python
@@ -932,6 +1014,7 @@ class Snapshot(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  chain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -952,6 +1035,7 @@ class Snapshot(pulumi.CustomResource):
 
             __props__.__dict__["chain_name"] = chain_name
             __props__.__dict__["description"] = description
+            __props__.__dict__["guest_flush"] = guest_flush
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -989,6 +1073,7 @@ class Snapshot(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
             label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1021,6 +1106,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the snapshot, specified in GB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
@@ -1076,6 +1162,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size_gb"] = disk_size_gb
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["guest_flush"] = guest_flush
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["licenses"] = licenses
@@ -1137,6 +1224,14 @@ class Snapshot(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        """
+        return pulumi.get(self, "guest_flush")
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")

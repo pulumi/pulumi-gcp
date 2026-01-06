@@ -411,6 +411,101 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Cloud SQL Instance created with backupdrBackup
+ * &gt; **NOTE:** For restoring from a backupdr_backup, note that the backup must be in active state. List down the backups using `gcp.backupdisasterrecovery.getBackup`. Replace `backupdrBackupFullPath` with the backup name.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("main-instance")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .backupdrBackup("backupdr_backup_full_path")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Cloud SQL Instance created using pointInTimeRestore
+ * &gt; **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstancePointInTimeRestoreContextArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("main-instance")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .build())
+ *             .pointInTimeRestoreContext(DatabaseInstancePointInTimeRestoreContextArgs.builder()
+ *                 .datasource("backupdr_datasource")
+ *                 .targetInstance("target_instance_name")
+ *                 .pointInTime("time_stamp")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Switchover
  * 
  * Users can perform a switchover on a replica by following the steps below.
@@ -886,14 +981,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.replicaNames;
     }
     /**
-     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      * 
      */
     @Export(name="replicationCluster", refs={DatabaseInstanceReplicationCluster.class}, tree="[0]")
     private Output<DatabaseInstanceReplicationCluster> replicationCluster;
 
     /**
-     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      * 
      */
     public Output<DatabaseInstanceReplicationCluster> replicationCluster() {

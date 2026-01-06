@@ -6,6 +6,7 @@ package com.pulumi.gcp.iam;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -60,6 +61,21 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Deletes the SCIM tenant immediately. This operation cannot be undone.
+     * 
+     */
+    @Import(name="hardDelete")
+    private @Nullable Output<Boolean> hardDelete;
+
+    /**
+     * @return Deletes the SCIM tenant immediately. This operation cannot be undone.
+     * 
+     */
+    public Optional<Output<Boolean>> hardDelete() {
+        return Optional.ofNullable(this.hardDelete);
     }
 
     /**
@@ -128,6 +144,7 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
         this.claimMapping = $.claimMapping;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.hardDelete = $.hardDelete;
         this.location = $.location;
         this.providerId = $.providerId;
         this.scimTenantId = $.scimTenantId;
@@ -213,6 +230,27 @@ public final class WorkforcePoolProviderScimTenantArgs extends com.pulumi.resour
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param hardDelete Deletes the SCIM tenant immediately. This operation cannot be undone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hardDelete(@Nullable Output<Boolean> hardDelete) {
+            $.hardDelete = hardDelete;
+            return this;
+        }
+
+        /**
+         * @param hardDelete Deletes the SCIM tenant immediately. This operation cannot be undone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hardDelete(Boolean hardDelete) {
+            return hardDelete(Output.of(hardDelete));
         }
 
         /**

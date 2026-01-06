@@ -12082,7 +12082,7 @@ if not MYPY:
         """
         node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
         """
-        The settings for kernel module loading.
+        Settings for kernel module loading. Structure is documented below.
         """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -12118,7 +12118,7 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
-        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: Settings for kernel module loading. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -12171,7 +12171,7 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
     @pulumi.getter(name="nodeKernelModuleLoading")
     def node_kernel_module_loading(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]:
         """
-        The settings for kernel module loading.
+        Settings for kernel module loading. Structure is documented below.
         """
         return pulumi.get(self, "node_kernel_module_loading")
 
@@ -12275,7 +12275,11 @@ if not MYPY:
     class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict(TypedDict):
         policy: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The policy for kernel module loading.
+        Possible kernel module loading policies.
+        Accepted values are:
+        * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+        * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+        * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
 elif False:
     ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict: TypeAlias = Mapping[str, Any]
@@ -12285,7 +12289,11 @@ class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     def __init__(__self__, *,
                  policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] policy: The policy for kernel module loading.
+        :param pulumi.Input[_builtins.str] policy: Possible kernel module loading policies.
+               Accepted values are:
+               * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+               * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+               * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -12294,7 +12302,11 @@ class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy for kernel module loading.
+        Possible kernel module loading policies.
+        Accepted values are:
+        * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+        * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+        * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
         return pulumi.get(self, "policy")
 
@@ -13243,7 +13255,7 @@ if not MYPY:
     class ClusterNodePoolAutoConfigArgsDict(TypedDict):
         linux_node_config: NotRequired[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigArgsDict']]
         """
-        Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` and `node_kernel_module_loading` fields are supported in `node_pool_auto_config`. Structure is documented below.
         """
         network_tags: NotRequired[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgsDict']]
         """
@@ -13269,7 +13281,7 @@ class ClusterNodePoolAutoConfigArgs:
                  node_kubelet_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigNodeKubeletConfigArgs']] = None,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigArgs'] linux_node_config: Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigArgs'] linux_node_config: Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` and `node_kernel_module_loading` fields are supported in `node_pool_auto_config`. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs'] network_tags: The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolAutoConfigNodeKubeletConfigArgs'] node_kubelet_config: Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
                Structure is documented below.
@@ -13288,7 +13300,7 @@ class ClusterNodePoolAutoConfigArgs:
     @pulumi.getter(name="linuxNodeConfig")
     def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigArgs']]:
         """
-        Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` and `node_kernel_module_loading` fields are supported in `node_pool_auto_config`. Structure is documented below.
         """
         return pulumi.get(self, "linux_node_config")
 
@@ -13346,7 +13358,7 @@ if not MYPY:
         """
         node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
         """
-        The settings for kernel module loading.
+        Settings for kernel module loading. Structure is documented below.
         """
 elif False:
     ClusterNodePoolAutoConfigLinuxNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -13362,7 +13374,7 @@ class ClusterNodePoolAutoConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
-        :param pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
+        :param pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: Settings for kernel module loading. Structure is documented below.
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
@@ -13389,7 +13401,7 @@ class ClusterNodePoolAutoConfigLinuxNodeConfigArgs:
     @pulumi.getter(name="nodeKernelModuleLoading")
     def node_kernel_module_loading(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]:
         """
-        The settings for kernel module loading.
+        Settings for kernel module loading. Structure is documented below.
         """
         return pulumi.get(self, "node_kernel_module_loading")
 
@@ -13402,7 +13414,11 @@ if not MYPY:
     class ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict(TypedDict):
         policy: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The policy for kernel module loading.
+        Possible kernel module loading policies.
+        Accepted values are:
+        * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+        * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+        * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
 elif False:
     ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict: TypeAlias = Mapping[str, Any]
@@ -13412,7 +13428,11 @@ class ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     def __init__(__self__, *,
                  policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] policy: The policy for kernel module loading.
+        :param pulumi.Input[_builtins.str] policy: Possible kernel module loading policies.
+               Accepted values are:
+               * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+               * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+               * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -13421,7 +13441,11 @@ class ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy for kernel module loading.
+        Possible kernel module loading policies.
+        Accepted values are:
+        * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+        * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+        * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
         return pulumi.get(self, "policy")
 
@@ -17447,7 +17471,7 @@ if not MYPY:
         """
         node_kernel_module_loading: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]
         """
-        The settings for kernel module loading.
+        Settings for kernel module loading. Structure is documented below.
         """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -17483,7 +17507,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
-        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: The settings for kernel module loading.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loading: Settings for kernel module loading. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -17536,7 +17560,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     @pulumi.getter(name="nodeKernelModuleLoading")
     def node_kernel_module_loading(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]:
         """
-        The settings for kernel module loading.
+        Settings for kernel module loading. Structure is documented below.
         """
         return pulumi.get(self, "node_kernel_module_loading")
 
@@ -17640,7 +17664,11 @@ if not MYPY:
     class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict(TypedDict):
         policy: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The policy for kernel module loading.
+        Possible kernel module loading policies.
+        Accepted values are:
+        * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+        * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+        * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
 elif False:
     ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict: TypeAlias = Mapping[str, Any]
@@ -17650,7 +17678,11 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     def __init__(__self__, *,
                  policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] policy: The policy for kernel module loading.
+        :param pulumi.Input[_builtins.str] policy: Possible kernel module loading policies.
+               Accepted values are:
+               * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+               * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+               * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -17659,7 +17691,11 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The policy for kernel module loading.
+        Possible kernel module loading policies.
+        Accepted values are:
+        * `POLICY_UNSPECIFIED`: Default if unset. GKE selects the image based on node type. For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
+        * `ENFORCE_SIGNED_MODULES`: Enforced signature verification: Node pools will use a Container-Optimized OS image configured to allow loading of *Google-signed* external kernel modules. Loadpin is enabled but configured to exclude modules, and kernel module signature checking is enforced.
+        * `DO_NOT_ENFORCE_SIGNED_MODULES`: Mirrors existing DEFAULT behavior: For CPU and TPU nodes, the image will not allow loading external kernel modules. For GPU nodes, the image will allow loading any module, whether it is signed or not.
         """
         return pulumi.get(self, "policy")
 

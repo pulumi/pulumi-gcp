@@ -34,6 +34,7 @@ class InstanceArgs:
                  gemini_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 periodic_export_config: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']] = None,
                  platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -75,6 +76,8 @@ class InstanceArgs:
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
+        :param pulumi.Input['InstancePeriodicExportConfigArgs'] periodic_export_config: Configuration for periodic export.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
                - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -133,6 +136,8 @@ class InstanceArgs:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if periodic_export_config is not None:
+            pulumi.set(__self__, "periodic_export_config", periodic_export_config)
         if platform_edition is not None:
             pulumi.set(__self__, "platform_edition", platform_edition)
         if private_ip_enabled is not None:
@@ -326,6 +331,19 @@ class InstanceArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="periodicExportConfig")
+    def periodic_export_config(self) -> Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]:
+        """
+        Configuration for periodic export.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "periodic_export_config")
+
+    @periodic_export_config.setter
+    def periodic_export_config(self, value: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]):
+        pulumi.set(self, "periodic_export_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="platformEdition")
     def platform_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -479,6 +497,7 @@ class _InstanceState:
                  maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_config: Optional[pulumi.Input['InstanceOauthConfigArgs']] = None,
+                 periodic_export_config: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']] = None,
                  platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -527,6 +546,8 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
+               Structure is documented below.
+        :param pulumi.Input['InstancePeriodicExportConfigArgs'] periodic_export_config: Configuration for periodic export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -601,6 +622,8 @@ class _InstanceState:
             pulumi.set(__self__, "name", name)
         if oauth_config is not None:
             pulumi.set(__self__, "oauth_config", oauth_config)
+        if periodic_export_config is not None:
+            pulumi.set(__self__, "periodic_export_config", periodic_export_config)
         if platform_edition is not None:
             pulumi.set(__self__, "platform_edition", platform_edition)
         if private_ip_enabled is not None:
@@ -869,6 +892,19 @@ class _InstanceState:
         pulumi.set(self, "oauth_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="periodicExportConfig")
+    def periodic_export_config(self) -> Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]:
+        """
+        Configuration for periodic export.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "periodic_export_config")
+
+    @periodic_export_config.setter
+    def periodic_export_config(self, value: Optional[pulumi.Input['InstancePeriodicExportConfigArgs']]):
+        pulumi.set(self, "periodic_export_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="platformEdition")
     def platform_edition(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1032,6 +1068,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
+                 periodic_export_config: Optional[pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
                  platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1321,6 +1358,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
+               Structure is documented below.
+        :param pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']] periodic_export_config: Configuration for periodic export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -1637,6 +1676,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
+                 periodic_export_config: Optional[pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
                  platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1670,6 +1710,7 @@ class Instance(pulumi.CustomResource):
             if oauth_config is None and not opts.urn:
                 raise TypeError("Missing required property 'oauth_config'")
             __props__.__dict__["oauth_config"] = oauth_config
+            __props__.__dict__["periodic_export_config"] = periodic_export_config
             __props__.__dict__["platform_edition"] = platform_edition
             __props__.__dict__["private_ip_enabled"] = private_ip_enabled
             __props__.__dict__["project"] = project
@@ -1715,6 +1756,7 @@ class Instance(pulumi.CustomResource):
             maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
+            periodic_export_config: Optional[pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']]] = None,
             platform_edition: Optional[pulumi.Input[_builtins.str]] = None,
             private_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1768,6 +1810,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']] oauth_config: Looker Instance OAuth login settings.
+               Structure is documented below.
+        :param pulumi.Input[Union['InstancePeriodicExportConfigArgs', 'InstancePeriodicExportConfigArgsDict']] periodic_export_config: Configuration for periodic export.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
                - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -1827,6 +1871,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["name"] = name
         __props__.__dict__["oauth_config"] = oauth_config
+        __props__.__dict__["periodic_export_config"] = periodic_export_config
         __props__.__dict__["platform_edition"] = platform_edition
         __props__.__dict__["private_ip_enabled"] = private_ip_enabled
         __props__.__dict__["project"] = project
@@ -2008,6 +2053,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "oauth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="periodicExportConfig")
+    def periodic_export_config(self) -> pulumi.Output[Optional['outputs.InstancePeriodicExportConfig']]:
+        """
+        Configuration for periodic export.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "periodic_export_config")
 
     @_builtins.property
     @pulumi.getter(name="platformEdition")

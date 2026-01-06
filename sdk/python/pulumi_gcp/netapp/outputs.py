@@ -809,17 +809,21 @@ class VolumeHybridReplicationParameters(dict):
                  replication: Optional[_builtins.str] = None,
                  replication_schedule: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cluster_location: Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+        :param _builtins.str cluster_location: Optional. Name of source cluster location associated with the replication. This is a free-form field
+               for display purposes only.
         :param _builtins.str description: Optional. Description of the replication.
-        :param _builtins.str hybrid_replication_type: Optional. Type of the volume's hybrid replication.
+        :param _builtins.str hybrid_replication_type: Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+               and `ONPREM_REPLICATION` to create an external replication.
+               Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+               replication which got reversed. Default is `MIGRATION`.
                Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
         :param Mapping[str, _builtins.str] labels: Optional. Labels to be added to the replication as the key value pairs.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param _builtins.int large_volume_constituent_count: Optional. Constituent volume count for large volume.
-        :param _builtins.str peer_cluster_name: Required. Name of the user's local source cluster to be peered with the destination cluster.
-        :param Sequence[_builtins.str] peer_ip_addresses: Required. List of node ip addresses to be peered with.
-        :param _builtins.str peer_svm_name: Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
-        :param _builtins.str peer_volume_name: Required. Name of the user's local source volume to be peered with the destination volume.
+        :param _builtins.int large_volume_constituent_count: Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
+        :param _builtins.str peer_cluster_name: Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
+        :param Sequence[_builtins.str] peer_ip_addresses: Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
+        :param _builtins.str peer_svm_name: Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
+        :param _builtins.str peer_volume_name: Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
         :param _builtins.str replication: Required. Desired name for the replication of this volume.
         :param _builtins.str replication_schedule: Optional. Replication Schedule for the replication created.
                Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
@@ -851,7 +855,8 @@ class VolumeHybridReplicationParameters(dict):
     @pulumi.getter(name="clusterLocation")
     def cluster_location(self) -> Optional[_builtins.str]:
         """
-        Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+        Optional. Name of source cluster location associated with the replication. This is a free-form field
+        for display purposes only.
         """
         return pulumi.get(self, "cluster_location")
 
@@ -867,7 +872,10 @@ class VolumeHybridReplicationParameters(dict):
     @pulumi.getter(name="hybridReplicationType")
     def hybrid_replication_type(self) -> Optional[_builtins.str]:
         """
-        Optional. Type of the volume's hybrid replication.
+        Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+        and `ONPREM_REPLICATION` to create an external replication.
+        Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+        replication which got reversed. Default is `MIGRATION`.
         Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
         """
         return pulumi.get(self, "hybrid_replication_type")
@@ -885,7 +893,7 @@ class VolumeHybridReplicationParameters(dict):
     @pulumi.getter(name="largeVolumeConstituentCount")
     def large_volume_constituent_count(self) -> Optional[_builtins.int]:
         """
-        Optional. Constituent volume count for large volume.
+        Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
         """
         return pulumi.get(self, "large_volume_constituent_count")
 
@@ -893,7 +901,7 @@ class VolumeHybridReplicationParameters(dict):
     @pulumi.getter(name="peerClusterName")
     def peer_cluster_name(self) -> Optional[_builtins.str]:
         """
-        Required. Name of the user's local source cluster to be peered with the destination cluster.
+        Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
         """
         return pulumi.get(self, "peer_cluster_name")
 
@@ -901,7 +909,7 @@ class VolumeHybridReplicationParameters(dict):
     @pulumi.getter(name="peerIpAddresses")
     def peer_ip_addresses(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Required. List of node ip addresses to be peered with.
+        Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
         """
         return pulumi.get(self, "peer_ip_addresses")
 
@@ -909,7 +917,7 @@ class VolumeHybridReplicationParameters(dict):
     @pulumi.getter(name="peerSvmName")
     def peer_svm_name(self) -> Optional[_builtins.str]:
         """
-        Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
         """
         return pulumi.get(self, "peer_svm_name")
 
@@ -917,7 +925,7 @@ class VolumeHybridReplicationParameters(dict):
     @pulumi.getter(name="peerVolumeName")
     def peer_volume_name(self) -> Optional[_builtins.str]:
         """
-        Required. Name of the user's local source volume to be peered with the destination volume.
+        Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
         """
         return pulumi.get(self, "peer_volume_name")
 

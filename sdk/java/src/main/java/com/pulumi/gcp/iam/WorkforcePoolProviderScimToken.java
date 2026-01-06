@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("google.subject", "user.externalId"),
  *                 Map.entry("google.group", "group.externalId")
  *             ))
+ *             .hardDelete(true)
  *             .build());
  * 
  *         var example = new WorkforcePoolProviderScimToken("example", WorkforcePoolProviderScimTokenArgs.builder()

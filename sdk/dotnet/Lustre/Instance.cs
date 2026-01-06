@@ -89,6 +89,14 @@ namespace Pulumi.Gcp.Lustre
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Access control rules for the Lustre instance. Configures default root
+        /// squashing behavior and specific access rules based on IP addresses.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("accessRulesOptions")]
+        public Output<Outputs.InstanceAccessRulesOptions?> AccessRulesOptions { get; private set; } = null!;
+
+        /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
         /// are from `18000` to `954000`, in increments of 9000.
         /// </summary>
@@ -277,6 +285,14 @@ namespace Pulumi.Gcp.Lustre
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Access control rules for the Lustre instance. Configures default root
+        /// squashing behavior and specific access rules based on IP addresses.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessRulesOptions")]
+        public Input<Inputs.InstanceAccessRulesOptionsArgs>? AccessRulesOptions { get; set; }
+
+        /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
         /// are from `18000` to `954000`, in increments of 9000.
         /// </summary>
@@ -377,6 +393,14 @@ namespace Pulumi.Gcp.Lustre
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access control rules for the Lustre instance. Configures default root
+        /// squashing behavior and specific access rules based on IP addresses.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessRulesOptions")]
+        public Input<Inputs.InstanceAccessRulesOptionsGetArgs>? AccessRulesOptions { get; set; }
+
         /// <summary>
         /// The storage capacity of the instance in gibibytes (GiB). Allowed values
         /// are from `18000` to `954000`, in increments of 9000.

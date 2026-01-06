@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerLivenessProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerPorts;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerResources;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerSourceCode;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerVolumeMount;
 import java.lang.String;
@@ -82,6 +83,12 @@ public final class ServiceTemplateContainer {
      * 
      */
     private @Nullable ServiceTemplateContainerResources resources;
+    /**
+     * @return Location of the source.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateContainerSourceCode sourceCode;
     /**
      * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * Structure is documented below.
@@ -186,6 +193,14 @@ public final class ServiceTemplateContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
+     * @return Location of the source.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateContainerSourceCode> sourceCode() {
+        return Optional.ofNullable(this.sourceCode);
+    }
+    /**
      * @return Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * Structure is documented below.
      * 
@@ -229,6 +244,7 @@ public final class ServiceTemplateContainer {
         private @Nullable String name;
         private @Nullable ServiceTemplateContainerPorts ports;
         private @Nullable ServiceTemplateContainerResources resources;
+        private @Nullable ServiceTemplateContainerSourceCode sourceCode;
         private @Nullable ServiceTemplateContainerStartupProbe startupProbe;
         private @Nullable List<ServiceTemplateContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
@@ -246,6 +262,7 @@ public final class ServiceTemplateContainer {
     	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
+    	      this.sourceCode = defaults.sourceCode;
     	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
@@ -335,6 +352,12 @@ public final class ServiceTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceCode(@Nullable ServiceTemplateContainerSourceCode sourceCode) {
+
+            this.sourceCode = sourceCode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder startupProbe(@Nullable ServiceTemplateContainerStartupProbe startupProbe) {
 
             this.startupProbe = startupProbe;
@@ -368,6 +391,7 @@ public final class ServiceTemplateContainer {
             _resultValue.name = name;
             _resultValue.ports = ports;
             _resultValue.resources = resources;
+            _resultValue.sourceCode = sourceCode;
             _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;

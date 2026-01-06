@@ -25,15 +25,15 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecEnv> Envs;
         /// <summary>
-        /// Optional. The minimum number of application instances that will be
-        /// kept running at all times. Defaults to 1. Range: [0, 10].
-        /// </summary>
-        public readonly int? MaxInstances;
-        /// <summary>
         /// Optional. The maximum number of application instances that can be
         /// launched to handle increased traffic. Defaults to 100.
         /// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
         /// range is [1, 100].
+        /// </summary>
+        public readonly int? MaxInstances;
+        /// <summary>
+        /// Optional. The minimum number of application instances that will be
+        /// kept running at all times. Defaults to 1. Range: [0, 10].
         /// </summary>
         public readonly int? MinInstances;
         /// <summary>

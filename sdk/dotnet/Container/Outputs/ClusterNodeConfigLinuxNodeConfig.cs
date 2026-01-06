@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig? HugepagesConfig;
         /// <summary>
-        /// The settings for kernel module loading.
+        /// Settings for kernel module loading. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading? NodeKernelModuleLoading;
         /// <summary>

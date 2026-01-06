@@ -38,7 +38,7 @@ public final class FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs extends com.
      * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
      * or its network is deleted.
      * 
-     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
+     * &lt;a name=&#34;nestedRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     @Import(name="state")
@@ -50,7 +50,7 @@ public final class FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs extends com.
      * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
      * or its network is deleted.
      * 
-     * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
+     * &lt;a name=&#34;nestedRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
      * 
      */
     public Optional<Output<String>> state() {
@@ -111,7 +111,7 @@ public final class FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs extends com.
          * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
          * or its network is deleted.
          * 
-         * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
+         * &lt;a name=&#34;nestedRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs extends com.
          * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
          * or its network is deleted.
          * 
-         * &lt;a name=&#34;nestedRuleRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
+         * &lt;a name=&#34;nestedRuleMatchLayer4Config&#34;&gt;&lt;/a&gt;The `layer4Config` block supports:
          * 
          * @return builder
          * 

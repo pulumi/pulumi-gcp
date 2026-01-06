@@ -5,8 +5,10 @@ package com.pulumi.gcp.lustre.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.lustre.outputs.GetInstanceAccessRulesOption;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceResult {
+    private List<GetInstanceAccessRulesOption> accessRulesOptions;
     private String capacityGib;
     private String createTime;
     private String description;
@@ -42,6 +45,9 @@ public final class GetInstanceResult {
     private @Nullable String zone;
 
     private GetInstanceResult() {}
+    public List<GetInstanceAccessRulesOption> accessRulesOptions() {
+        return this.accessRulesOptions;
+    }
     public String capacityGib() {
         return this.capacityGib;
     }
@@ -122,6 +128,7 @@ public final class GetInstanceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetInstanceAccessRulesOption> accessRulesOptions;
         private String capacityGib;
         private String createTime;
         private String description;
@@ -147,6 +154,7 @@ public final class GetInstanceResult {
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessRulesOptions = defaults.accessRulesOptions;
     	      this.capacityGib = defaults.capacityGib;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
@@ -171,6 +179,17 @@ public final class GetInstanceResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder accessRulesOptions(List<GetInstanceAccessRulesOption> accessRulesOptions) {
+            if (accessRulesOptions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "accessRulesOptions");
+            }
+            this.accessRulesOptions = accessRulesOptions;
+            return this;
+        }
+        public Builder accessRulesOptions(GetInstanceAccessRulesOption... accessRulesOptions) {
+            return accessRulesOptions(List.of(accessRulesOptions));
+        }
         @CustomType.Setter
         public Builder capacityGib(String capacityGib) {
             if (capacityGib == null) {
@@ -345,6 +364,7 @@ public final class GetInstanceResult {
         }
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
+            _resultValue.accessRulesOptions = accessRulesOptions;
             _resultValue.capacityGib = capacityGib;
             _resultValue.createTime = createTime;
             _resultValue.description = description;

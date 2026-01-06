@@ -20126,7 +20126,7 @@ if not MYPY:
         CONNECTOR
 
 
-        <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
+        <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
         """
 elif False:
     ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict: TypeAlias = Mapping[str, Any]
@@ -20167,7 +20167,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs:
                CONNECTOR
                
                
-               <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
+               <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
         """
         pulumi.set(__self__, "name", name)
         if connector_configs is not None:
@@ -20266,7 +20266,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs:
         CONNECTOR
 
 
-        <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
+        <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
         """
         return pulumi.get(self, "type")
 

@@ -98,6 +98,10 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Access control rules for the Lustre instance. Configures default root
+	// squashing behavior and specific access rules based on IP addresses.
+	// Structure is documented below.
+	AccessRulesOptions InstanceAccessRulesOptionsPtrOutput `pulumi:"accessRulesOptions"`
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
@@ -210,6 +214,10 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// Access control rules for the Lustre instance. Configures default root
+	// squashing behavior and specific access rules based on IP addresses.
+	// Structure is documented below.
+	AccessRulesOptions *InstanceAccessRulesOptions `pulumi:"accessRulesOptions"`
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib *string `pulumi:"capacityGib"`
@@ -270,6 +278,10 @@ type instanceState struct {
 }
 
 type InstanceState struct {
+	// Access control rules for the Lustre instance. Configures default root
+	// squashing behavior and specific access rules based on IP addresses.
+	// Structure is documented below.
+	AccessRulesOptions InstanceAccessRulesOptionsPtrInput
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib pulumi.StringPtrInput
@@ -334,6 +346,10 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Access control rules for the Lustre instance. Configures default root
+	// squashing behavior and specific access rules based on IP addresses.
+	// Structure is documented below.
+	AccessRulesOptions *InstanceAccessRulesOptions `pulumi:"accessRulesOptions"`
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib string `pulumi:"capacityGib"`
@@ -377,6 +393,10 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Access control rules for the Lustre instance. Configures default root
+	// squashing behavior and specific access rules based on IP addresses.
+	// Structure is documented below.
+	AccessRulesOptions InstanceAccessRulesOptionsPtrInput
 	// The storage capacity of the instance in gibibytes (GiB). Allowed values
 	// are from `18000` to `954000`, in increments of 9000.
 	CapacityGib pulumi.StringInput
@@ -503,6 +523,13 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// Access control rules for the Lustre instance. Configures default root
+// squashing behavior and specific access rules based on IP addresses.
+// Structure is documented below.
+func (o InstanceOutput) AccessRulesOptions() InstanceAccessRulesOptionsPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceAccessRulesOptionsPtrOutput { return v.AccessRulesOptions }).(InstanceAccessRulesOptionsPtrOutput)
 }
 
 // The storage capacity of the instance in gibibytes (GiB). Allowed values

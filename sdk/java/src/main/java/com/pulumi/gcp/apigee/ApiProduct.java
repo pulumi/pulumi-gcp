@@ -134,6 +134,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.Instance;
  * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.gcp.apigee.Environment;
+ * import com.pulumi.gcp.apigee.EnvironmentArgs;
+ * import com.pulumi.gcp.apigee.Api;
+ * import com.pulumi.gcp.apigee.ApiArgs;
  * import com.pulumi.gcp.apigee.ApiProduct;
  * import com.pulumi.gcp.apigee.ApiProductArgs;
  * import com.pulumi.gcp.apigee.inputs.ApiProductAttributeArgs;
@@ -186,6 +190,17 @@ import javax.annotation.Nullable;
  *             .peeringCidrRange("SLASH_22")
  *             .build());
  * 
+ *         var envDev = new Environment("envDev", EnvironmentArgs.builder()
+ *             .name("dev")
+ *             .orgId(apigeeOrg.id())
+ *             .build());
+ * 
+ *         var testApigeeApi = new Api("testApigeeApi", ApiArgs.builder()
+ *             .name("hello-world")
+ *             .orgId(apigeeOrg.name())
+ *             .configBundle("apigee_api_bundle.zip")
+ *             .build());
+ * 
  *         var fullApiProduct = new ApiProduct("fullApiProduct", ApiProductArgs.builder()
  *             .orgId(apigeeOrg.id())
  *             .name("my-product")
@@ -196,9 +211,7 @@ import javax.annotation.Nullable;
  *                 .name("access")
  *                 .value("private")
  *                 .build())
- *             .environments(            
- *                 "dev",
- *                 "hom")
+ *             .environments("dev")
  *             .proxies("hello-world")
  *             .apiResources(            
  *                 "/",
@@ -211,7 +224,10 @@ import javax.annotation.Nullable;
  *             .quotaTimeUnit("day")
  *             .quotaCounterScope("PROXY")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(apigeeInstance)
+ *                 .dependsOn(                
+ *                     apigeeInstance,
+ *                     envDev,
+ *                     testApigeeApi)
  *                 .build());
  * 
  *     }

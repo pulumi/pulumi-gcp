@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// The unique id of the cmek config.
         /// </summary>
         [Output("cmekConfigId")]
-        public Output<string?> CmekConfigId { get; private set; } = null!;
+        public Output<string> CmekConfigId { get; private set; } = null!;
 
         /// <summary>
         /// The default CmekConfig for the Customer.
@@ -211,8 +211,8 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// <summary>
         /// The unique id of the cmek config.
         /// </summary>
-        [Input("cmekConfigId")]
-        public Input<string>? CmekConfigId { get; set; }
+        [Input("cmekConfigId", required: true)]
+        public Input<string> CmekConfigId { get; set; } = null!;
 
         /// <summary>
         /// KMS key resource name which will be used to encrypt resources

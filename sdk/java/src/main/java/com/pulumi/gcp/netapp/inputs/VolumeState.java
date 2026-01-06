@@ -255,7 +255,9 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Hybrid Replication parameters for the volume.
+     * [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+     * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+     * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      * 
      */
@@ -263,7 +265,9 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<VolumeHybridReplicationParametersArgs> hybridReplicationParameters;
 
     /**
-     * @return The Hybrid Replication parameters for the volume.
+     * @return [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+     * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+     * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      * 
      */
@@ -1160,7 +1164,9 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hybridReplicationParameters The Hybrid Replication parameters for the volume.
+         * @param hybridReplicationParameters [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+         * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+         * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
          * Structure is documented below.
          * 
          * @return builder
@@ -1172,7 +1178,9 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hybridReplicationParameters The Hybrid Replication parameters for the volume.
+         * @param hybridReplicationParameters [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+         * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+         * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
          * Structure is documented below.
          * 
          * @return builder

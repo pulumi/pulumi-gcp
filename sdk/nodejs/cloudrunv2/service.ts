@@ -529,6 +529,44 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Zip Deploy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const sourcebucket = new gcp.storage.Bucket("sourcebucket", {
+ *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_21197`),
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const sourceTar = new gcp.storage.BucketObject("source_tar", {
+ *     name: "function-source.zip",
+ *     bucket: sourcebucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/cr-zip-nodejs-hello.tar.gz"),
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-zip-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     template: {
+ *         containers: [{
+ *             image: "scratch",
+ *             baseImageUri: "us-central1-docker.pkg.dev/serverless-runtimes/google-24-full/runtimes/nodejs24",
+ *             commands: ["node"],
+ *             args: ["index.js"],
+ *             sourceCode: {
+ *                 cloudStorageSource: {
+ *                     bucket: sourcebucket.name,
+ *                     object: sourceTar.name,
+ *                     generation: sourceTar.generation,
+ *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

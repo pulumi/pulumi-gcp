@@ -425,7 +425,7 @@ class SecretVersion(pulumi.CustomResource):
         * How-to Guides
             * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
 
-        > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
         Read more about Write-only Arguments.
 
         ## Example Usage
@@ -601,7 +601,7 @@ class SecretVersion(pulumi.CustomResource):
         * How-to Guides
             * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
 
-        > **Note:**  All arguments marked as write-only values will not be stored in the state: `payload.secret_data_wo`.
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
         Read more about Write-only Arguments.
 
         ## Example Usage

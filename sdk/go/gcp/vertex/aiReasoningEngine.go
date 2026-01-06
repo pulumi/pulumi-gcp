@@ -22,6 +22,53 @@ import (
 //
 // ## Example Usage
 //
+// ### Vertex Ai Reasoning Engine Source Based Deployment
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "./test-fixtures/source.tar.gz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("reasoning-engine"),
+//				Description: pulumi.String("A basic reasoning engine"),
+//				Region:      pulumi.String("us-central1"),
+//				Spec: &vertex.AiReasoningEngineSpecArgs{
+//					SourceCodeSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecArgs{
+//						InlineSource: &vertex.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{
+//							SourceArchive: pulumi.String(invokeFilebase64.Result),
+//						},
+//						PythonSpec: &vertex.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{
+//							EntrypointModule: pulumi.String("simple_agent"),
+//							EntrypointObject: pulumi.String("fixed_name_generator"),
+//							RequirementsFile: pulumi.String("./test-fixtures/requirements.txt"),
+//							Version:          pulumi.String("3.11"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Vertex Ai Reasoning Engine Full
 //
 // ```go

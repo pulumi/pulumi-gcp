@@ -6647,7 +6647,7 @@ class FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag(dict):
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
                
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -6672,7 +6672,7 @@ class FirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag(dict):
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
 
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "state")
 
@@ -7322,7 +7322,7 @@ class FirewallPolicyWithRulesRuleMatchSrcSecureTag(dict):
                `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
                or its network is deleted.
                
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -7347,7 +7347,7 @@ class FirewallPolicyWithRulesRuleMatchSrcSecureTag(dict):
         `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
         or its network is deleted.
 
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "state")
 
@@ -24407,7 +24407,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[_builtins.str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -24542,7 +24542,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -25034,7 +25034,7 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[_builtins.str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -25200,7 +25200,7 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -36340,7 +36340,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[_builtins.str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -36475,7 +36475,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -36967,7 +36967,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[_builtins.str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -37133,7 +37133,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -63392,6 +63392,7 @@ class GetAddressesAddressResult(dict):
                  description: _builtins.str,
                  labels: Mapping[str, _builtins.str],
                  name: _builtins.str,
+                 prefix_length: _builtins.int,
                  region: _builtins.str,
                  self_link: _builtins.str,
                  status: _builtins.str):
@@ -63401,6 +63402,7 @@ class GetAddressesAddressResult(dict):
         :param _builtins.str description: The IP address description.
         :param Mapping[str, _builtins.str] labels: A map containing IP labels.
         :param _builtins.str name: The IP address name.
+        :param _builtins.int prefix_length: The prefix length of the IP range. If not present, it means the address field is a single IP address.
         :param _builtins.str region: Region that should be considered to search addresses.
                All regions are considered if missing.
         :param _builtins.str self_link: The URI of the created resource.
@@ -63411,6 +63413,7 @@ class GetAddressesAddressResult(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "prefix_length", prefix_length)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
@@ -63454,6 +63457,14 @@ class GetAddressesAddressResult(dict):
         The IP address name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> _builtins.int:
+        """
+        The prefix length of the IP range. If not present, it means the address field is a single IP address.
+        """
+        return pulumi.get(self, "prefix_length")
 
     @_builtins.property
     @pulumi.getter

@@ -30,6 +30,19 @@ namespace Pulumi.Gcp.Vertex.Inputs
             set => _projectAllowlists = value;
         }
 
+        [Input("pscAutomationConfigs")]
+        private InputList<Inputs.AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs>? _pscAutomationConfigs;
+
+        /// <summary>
+        /// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs> PscAutomationConfigs
+        {
+            get => _pscAutomationConfigs ?? (_pscAutomationConfigs = new InputList<Inputs.AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs>());
+            set => _pscAutomationConfigs = value;
+        }
+
         public AiIndexEndpointPrivateServiceConnectConfigArgs()
         {
         }

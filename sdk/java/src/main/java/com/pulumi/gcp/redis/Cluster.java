@@ -36,6 +36,103 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * ### Redis Cluster Ha With Labels
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var consumerNet = new Network("consumerNet", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var consumerSubnet = new Subnetwork("consumerSubnet", SubnetworkArgs.builder()
+ *             .name("my-subnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
+ *             .network(consumerNet.id())
+ *             .build());
+ * 
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
+ *             .name("my-policy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("my basic service connection policy")
+ *             .network(consumerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(consumerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var cluster_ha_with_labels = new Cluster("cluster-ha-with-labels", ClusterArgs.builder()
+ *             .name("ha-cluster")
+ *             .shardCount(3)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("my_key", "my_val"),
+ *                 Map.entry("other_key", "other_val")
+ *             ))
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(consumerNet.id())
+ *                 .build())
+ *             .region("us-central1")
+ *             .replicaCount(1)
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+ *             .authorizationMode("AUTH_MODE_DISABLED")
+ *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .deletionProtectionEnabled(true)
+ *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
+ *                 .mode("MULTI_ZONE")
+ *                 .build())
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Redis Cluster Ha
  * 
  * <pre>
@@ -838,6 +935,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.discoveryEndpoints;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * This field represents the actual maintenance version of the cluster.
      * 
      */
@@ -880,6 +991,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> kmsKey() {
         return Codegen.optional(this.kmsKey);
+    }
+    /**
+     * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * Maintenance policy for a cluster
@@ -1094,6 +1223,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.pscServiceAttachments;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
+    }
+    /**
      * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
      * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -1287,6 +1432,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

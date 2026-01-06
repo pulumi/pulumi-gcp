@@ -12,29 +12,69 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackupResult {
+    /**
+     * @return Name of the Backup Vault associated with Backup.
+     * 
+     */
     private String backupVaultId;
+    /**
+     * @return List of all backups under data source. Structure is defined below.
+     * 
+     */
     private List<GetBackupBackup> backups;
+    /**
+     * @return The time when the backup was created.
+     * 
+     */
     private String createTime;
+    /**
+     * @return Name of the Data Source associated with Backup.
+     * 
+     */
     private String dataSourceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Location of the resource.
+     * 
+     */
     private String location;
+    /**
+     * @return Name of the resource.
+     * 
+     */
     private String name;
     private String project;
 
     private GetBackupResult() {}
+    /**
+     * @return Name of the Backup Vault associated with Backup.
+     * 
+     */
     public String backupVaultId() {
         return this.backupVaultId;
     }
+    /**
+     * @return List of all backups under data source. Structure is defined below.
+     * 
+     */
     public List<GetBackupBackup> backups() {
         return this.backups;
     }
+    /**
+     * @return The time when the backup was created.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Name of the Data Source associated with Backup.
+     * 
+     */
     public String dataSourceId() {
         return this.dataSourceId;
     }
@@ -45,9 +85,17 @@ public final class GetBackupResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Location of the resource.
+     * 
+     */
     public String location() {
         return this.location;
     }
+    /**
+     * @return Name of the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }

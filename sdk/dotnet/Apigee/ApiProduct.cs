@@ -150,6 +150,19 @@ namespace Pulumi.Gcp.Apigee
     ///         PeeringCidrRange = "SLASH_22",
     ///     });
     /// 
+    ///     var envDev = new Gcp.Apigee.Environment("env_dev", new()
+    ///     {
+    ///         Name = "dev",
+    ///         OrgId = apigeeOrg.Id,
+    ///     });
+    /// 
+    ///     var testApigeeApi = new Gcp.Apigee.Api("test_apigee_api", new()
+    ///     {
+    ///         Name = "hello-world",
+    ///         OrgId = apigeeOrg.Name,
+    ///         ConfigBundle = "apigee_api_bundle.zip",
+    ///     });
+    /// 
     ///     var fullApiProduct = new Gcp.Apigee.ApiProduct("full_api_product", new()
     ///     {
     ///         OrgId = apigeeOrg.Id,
@@ -168,7 +181,6 @@ namespace Pulumi.Gcp.Apigee
     ///         Environments = new[]
     ///         {
     ///             "dev",
-    ///             "hom",
     ///         },
     ///         Proxies = new[]
     ///         {
@@ -193,6 +205,8 @@ namespace Pulumi.Gcp.Apigee
     ///         DependsOn =
     ///         {
     ///             apigeeInstance,
+    ///             envDev,
+    ///             testApigeeApi,
     ///         },
     ///     });
     /// 

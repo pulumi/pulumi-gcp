@@ -21,7 +21,7 @@ public final class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlay
      * (Output)
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
-     * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
+     * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
      * 
      */
     @Import(name="allowPlaybackInterruption")
@@ -31,7 +31,7 @@ public final class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlay
      * @return (Output)
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
-     * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
+     * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
      * 
      */
     public Optional<Output<Boolean>> allowPlaybackInterruption() {
@@ -82,7 +82,7 @@ public final class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlay
          * @param allowPlaybackInterruption (Output)
          * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
          * 
-         * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
+         * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlay
          * @param allowPlaybackInterruption (Output)
          * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
          * 
-         * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
+         * &lt;a name=&#34;nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio&#34;&gt;&lt;/a&gt;The `mixedAudio` block contains:
          * 
          * @return builder
          * 

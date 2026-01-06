@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iam.WorkforcePoolProviderScimTenantArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderScimTenantState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -103,6 +104,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("google.subject", "user.externalId"),
  *                 Map.entry("google.group", "group.externalId")
  *             ))
+ *             .hardDelete(true)
  *             .build());
  * 
  *     }
@@ -194,6 +196,20 @@ public class WorkforcePoolProviderScimTenant extends com.pulumi.resources.Custom
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * Deletes the SCIM tenant immediately. This operation cannot be undone.
+     * 
+     */
+    @Export(name="hardDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> hardDelete;
+
+    /**
+     * @return Deletes the SCIM tenant immediately. This operation cannot be undone.
+     * 
+     */
+    public Output<Optional<Boolean>> hardDelete() {
+        return Codegen.optional(this.hardDelete);
     }
     /**
      * The location for the resource.

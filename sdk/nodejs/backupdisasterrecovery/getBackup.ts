@@ -59,15 +59,33 @@ export interface GetBackupArgs {
  * A collection of values returned by getBackup.
  */
 export interface GetBackupResult {
+    /**
+     * Name of the Backup Vault associated with Backup.
+     */
     readonly backupVaultId: string;
+    /**
+     * List of all backups under data source. Structure is defined below.
+     */
     readonly backups: outputs.backupdisasterrecovery.GetBackupBackup[];
+    /**
+     * The time when the backup was created.
+     */
     readonly createTime: string;
+    /**
+     * Name of the Data Source associated with Backup.
+     */
     readonly dataSourceId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Location of the resource.
+     */
     readonly location: string;
+    /**
+     * Name of the resource.
+     */
     readonly name: string;
     readonly project: string;
 }

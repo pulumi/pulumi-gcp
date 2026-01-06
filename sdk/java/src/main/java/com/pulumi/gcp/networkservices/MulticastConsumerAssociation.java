@@ -19,6 +19,12 @@ import javax.annotation.Nullable;
 /**
  * Create a multicast consumer association in the specified location of the current project.
  * 
+ * To get more information about MulticastConsumerAssociation, see:
+ * 
+ * * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastConsumerAssociations)
+ * * How-to Guides
+ *     * [Create Multicast Consumer Association](https://docs.cloud.google.com/vpc/docs/multicast/enable-consumer-network#add-consumer)
+ * 
  * ## Example Usage
  * 
  * ### Network Services Multicast Consumer Association Basic
@@ -214,7 +220,7 @@ public class MulticastConsumerAssociation extends com.pulumi.resources.CustomRes
     }
     /**
      * The resource name of the multicast domain activation that is in the
-     * same zone as this multicast producer association.
+     * same zone as this multicast consumer association.
      * Use the following format:
      * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      * 
@@ -224,7 +230,7 @@ public class MulticastConsumerAssociation extends com.pulumi.resources.CustomRes
 
     /**
      * @return The resource name of the multicast domain activation that is in the
-     * same zone as this multicast producer association.
+     * same zone as this multicast consumer association.
      * Use the following format:
      * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      * 

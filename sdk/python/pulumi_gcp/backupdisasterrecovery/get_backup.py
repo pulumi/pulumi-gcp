@@ -56,21 +56,33 @@ class GetBackupResult:
     @_builtins.property
     @pulumi.getter(name="backupVaultId")
     def backup_vault_id(self) -> _builtins.str:
+        """
+        Name of the Backup Vault associated with Backup.
+        """
         return pulumi.get(self, "backup_vault_id")
 
     @_builtins.property
     @pulumi.getter
     def backups(self) -> Sequence['outputs.GetBackupBackupResult']:
+        """
+        List of all backups under data source. Structure is defined below.
+        """
         return pulumi.get(self, "backups")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
+        """
+        The time when the backup was created.
+        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> _builtins.str:
+        """
+        Name of the Data Source associated with Backup.
+        """
         return pulumi.get(self, "data_source_id")
 
     @_builtins.property
@@ -84,11 +96,17 @@ class GetBackupResult:
     @_builtins.property
     @pulumi.getter
     def location(self) -> _builtins.str:
+        """
+        Location of the resource.
+        """
         return pulumi.get(self, "location")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property

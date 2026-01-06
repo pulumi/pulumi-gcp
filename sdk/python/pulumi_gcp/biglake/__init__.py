@@ -8,6 +8,11 @@ import typing
 # Export this package's modules as members:
 from .catalog import *
 from .database import *
+from .get_iceberg_catalog_iam_policy import *
+from .iceberg_catalog import *
+from .iceberg_catalog_iam_binding import *
+from .iceberg_catalog_iam_member import *
+from .iceberg_catalog_iam_policy import *
 from .table import *
 from ._inputs import *
 from . import outputs

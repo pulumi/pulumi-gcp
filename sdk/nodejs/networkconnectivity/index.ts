@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DestinationArgs, DestinationState } from "./destination";
+export type Destination = import("./destination").Destination;
+export const Destination: typeof import("./destination").Destination = null as any;
+utilities.lazyLoad(exports, ["Destination"], () => require("./destination"));
+
 export { GatewayAdvertisedRouteArgs, GatewayAdvertisedRouteState } from "./gatewayAdvertisedRoute";
 export type GatewayAdvertisedRoute = import("./gatewayAdvertisedRoute").GatewayAdvertisedRoute;
 export const GatewayAdvertisedRoute: typeof import("./gatewayAdvertisedRoute").GatewayAdvertisedRoute = null as any;
@@ -24,6 +29,11 @@ export { InternalRangeArgs, InternalRangeState } from "./internalRange";
 export type InternalRange = import("./internalRange").InternalRange;
 export const InternalRange: typeof import("./internalRange").InternalRange = null as any;
 utilities.lazyLoad(exports, ["InternalRange"], () => require("./internalRange"));
+
+export { MulticloudDataTransferConfigArgs, MulticloudDataTransferConfigState } from "./multicloudDataTransferConfig";
+export type MulticloudDataTransferConfig = import("./multicloudDataTransferConfig").MulticloudDataTransferConfig;
+export const MulticloudDataTransferConfig: typeof import("./multicloudDataTransferConfig").MulticloudDataTransferConfig = null as any;
+utilities.lazyLoad(exports, ["MulticloudDataTransferConfig"], () => require("./multicloudDataTransferConfig"));
 
 export { PolicyBasedRouteArgs, PolicyBasedRouteState } from "./policyBasedRoute";
 export type PolicyBasedRoute = import("./policyBasedRoute").PolicyBasedRoute;
@@ -50,6 +60,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:networkconnectivity/destination:Destination":
+                return new Destination(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute":
                 return new GatewayAdvertisedRoute(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/group:Group":
@@ -58,6 +70,8 @@ const _module = {
                 return new Hub(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/internalRange:InternalRange":
                 return new InternalRange(name, <any>undefined, { urn })
+            case "gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig":
+                return new MulticloudDataTransferConfig(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute":
                 return new PolicyBasedRoute(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint":
@@ -71,10 +85,12 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/destination", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/gatewayAdvertisedRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/group", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hub", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/internalRange", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/multicloudDataTransferConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/policyBasedRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/regionalEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/serviceConnectionPolicy", _module)

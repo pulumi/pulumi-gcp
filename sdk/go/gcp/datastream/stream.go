@@ -1227,8 +1227,8 @@ import (
 //				return err
 //			}
 //			cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_41150"),
-//				Name:           pulumi.String("tf-test_89313"),
+//				ProjectId:      pulumi.String("tf-test_89313"),
+//				Name:           pulumi.String("tf-test_60646"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -1674,6 +1674,113 @@ import (
 //	}
 //
 // ```
+// ### Datastream Stream Rule Sets Bigquery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datastream.NewStream(ctx, "stream", &datastream.StreamArgs{
+//				StreamId:    pulumi.String("rules-stream"),
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("BigQuery Stream with Rules"),
+//				SourceConfig: &datastream.StreamSourceConfigArgs{
+//					SourceConnectionProfile: pulumi.String("rules-source-profile"),
+//					MysqlSourceConfig: &datastream.StreamSourceConfigMysqlSourceConfigArgs{
+//						IncludeObjects: &datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{
+//							MysqlDatabases: datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArray{
+//								&datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs{
+//									Database: pulumi.String("my_database"),
+//								},
+//							},
+//						},
+//						BinaryLogPosition: &datastream.StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs{},
+//					},
+//				},
+//				DestinationConfig: &datastream.StreamDestinationConfigArgs{
+//					DestinationConnectionProfile: pulumi.String("rules-dest-profile"),
+//					BigqueryDestinationConfig: &datastream.StreamDestinationConfigBigqueryDestinationConfigArgs{
+//						SingleTargetDataset: &datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs{
+//							DatasetId: pulumi.String("rules-project:rules-dataset"),
+//						},
+//					},
+//				},
+//				BackfillNone: &datastream.StreamBackfillNoneArgs{},
+//				RuleSets: datastream.StreamRuleSetArray{
+//					&datastream.StreamRuleSetArgs{
+//						ObjectFilter: &datastream.StreamRuleSetObjectFilterArgs{
+//							SourceObjectIdentifier: &datastream.StreamRuleSetObjectFilterSourceObjectIdentifierArgs{
+//								MysqlIdentifier: &datastream.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs{
+//									Database: pulumi.String("test_database"),
+//									Table:    pulumi.String("test_table_1"),
+//								},
+//							},
+//						},
+//						CustomizationRules: datastream.StreamRuleSetCustomizationRuleArray{
+//							&datastream.StreamRuleSetCustomizationRuleArgs{
+//								BigqueryClustering: &datastream.StreamRuleSetCustomizationRuleBigqueryClusteringArgs{
+//									Columns: pulumi.StringArray{
+//										pulumi.String("user_id"),
+//									},
+//								},
+//							},
+//							&datastream.StreamRuleSetCustomizationRuleArgs{
+//								BigqueryPartitioning: &datastream.StreamRuleSetCustomizationRuleBigqueryPartitioningArgs{
+//									IngestionTimePartition: &datastream.StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs{},
+//								},
+//							},
+//						},
+//					},
+//					&datastream.StreamRuleSetArgs{
+//						ObjectFilter: &datastream.StreamRuleSetObjectFilterArgs{
+//							SourceObjectIdentifier: &datastream.StreamRuleSetObjectFilterSourceObjectIdentifierArgs{
+//								MysqlIdentifier: &datastream.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs{
+//									Database: pulumi.String("test_database"),
+//									Table:    pulumi.String("test_table_2"),
+//								},
+//							},
+//						},
+//						CustomizationRules: datastream.StreamRuleSetCustomizationRuleArray{
+//							&datastream.StreamRuleSetCustomizationRuleArgs{
+//								BigqueryClustering: &datastream.StreamRuleSetCustomizationRuleBigqueryClusteringArgs{
+//									Columns: pulumi.StringArray{
+//										pulumi.String("event_time"),
+//									},
+//								},
+//							},
+//							&datastream.StreamRuleSetCustomizationRuleArgs{
+//								BigqueryPartitioning: &datastream.StreamRuleSetCustomizationRuleBigqueryPartitioningArgs{
+//									TimeUnitPartition: &datastream.StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs{
+//										Column:                      pulumi.String("event_time"),
+//										PartitioningTimeGranularity: pulumi.String("PARTITIONING_TIME_GRANULARITY_DAY"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Datastream Stream Mongodb
 //
 // ```go
@@ -1814,6 +1921,9 @@ type Stream struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Rule sets to apply to the stream.
+	// Structure is documented below.
+	RuleSets StreamRuleSetArrayOutput `pulumi:"ruleSets"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigOutput `pulumi:"sourceConfig"`
@@ -1909,6 +2019,9 @@ type streamState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Rule sets to apply to the stream.
+	// Structure is documented below.
+	RuleSets []StreamRuleSet `pulumi:"ruleSets"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig *StreamSourceConfig `pulumi:"sourceConfig"`
@@ -1955,6 +2068,9 @@ type StreamState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Rule sets to apply to the stream.
+	// Structure is documented below.
+	RuleSets StreamRuleSetArrayInput
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigPtrInput
@@ -1998,6 +2114,9 @@ type streamArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Rule sets to apply to the stream.
+	// Structure is documented below.
+	RuleSets []StreamRuleSet `pulumi:"ruleSets"`
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfig `pulumi:"sourceConfig"`
@@ -2036,6 +2155,9 @@ type StreamArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Rule sets to apply to the stream.
+	// Structure is documented below.
+	RuleSets StreamRuleSetArrayInput
 	// Source connection profile configuration.
 	// Structure is documented below.
 	SourceConfig StreamSourceConfigInput
@@ -2203,6 +2325,12 @@ func (o StreamOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o StreamOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Rule sets to apply to the stream.
+// Structure is documented below.
+func (o StreamOutput) RuleSets() StreamRuleSetArrayOutput {
+	return o.ApplyT(func(v *Stream) StreamRuleSetArrayOutput { return v.RuleSets }).(StreamRuleSetArrayOutput)
 }
 
 // Source connection profile configuration.

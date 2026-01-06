@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Create a multicast consumer association in the specified location of the current project.
  *
+ * To get more information about MulticastConsumerAssociation, see:
+ *
+ * * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastConsumerAssociations)
+ * * How-to Guides
+ *     * [Create Multicast Consumer Association](https://docs.cloud.google.com/vpc/docs/multicast/enable-consumer-network#add-consumer)
+ *
  * ## Example Usage
  *
  * ### Network Services Multicast Consumer Association Basic
@@ -130,7 +136,7 @@ export class MulticastConsumerAssociation extends pulumi.CustomResource {
     declare public readonly multicastConsumerAssociationId: pulumi.Output<string>;
     /**
      * The resource name of the multicast domain activation that is in the
-     * same zone as this multicast producer association.
+     * same zone as this multicast consumer association.
      * Use the following format:
      * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      */
@@ -292,7 +298,7 @@ export interface MulticastConsumerAssociationState {
     multicastConsumerAssociationId?: pulumi.Input<string>;
     /**
      * The resource name of the multicast domain activation that is in the
-     * same zone as this multicast producer association.
+     * same zone as this multicast consumer association.
      * Use the following format:
      * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      */
@@ -381,7 +387,7 @@ export interface MulticastConsumerAssociationArgs {
     multicastConsumerAssociationId: pulumi.Input<string>;
     /**
      * The resource name of the multicast domain activation that is in the
-     * same zone as this multicast producer association.
+     * same zone as this multicast consumer association.
      * Use the following format:
      * // `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      */

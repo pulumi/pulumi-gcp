@@ -504,6 +504,13 @@ namespace Pulumi.Gcp.Looker
         public Output<Outputs.InstanceOauthConfig> OauthConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for periodic export.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("periodicExportConfig")]
+        public Output<Outputs.InstancePeriodicExportConfig?> PeriodicExportConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
         /// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
         /// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -729,6 +736,13 @@ namespace Pulumi.Gcp.Looker
         public Input<Inputs.InstanceOauthConfigArgs> OauthConfig { get; set; } = null!;
 
         /// <summary>
+        /// Configuration for periodic export.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("periodicExportConfig")]
+        public Input<Inputs.InstancePeriodicExportConfigArgs>? PeriodicExportConfig { get; set; }
+
+        /// <summary>
         /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
         /// - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
         /// - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -944,6 +958,13 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("oauthConfig")]
         public Input<Inputs.InstanceOauthConfigGetArgs>? OauthConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for periodic export.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("periodicExportConfig")]
+        public Input<Inputs.InstancePeriodicExportConfigGetArgs>? PeriodicExportConfig { get; set; }
 
         /// <summary>
         /// Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:

@@ -119,6 +119,8 @@ __all__ = [
     'SecurityActionFlagArgsDict',
     'SecurityActionFlagHeaderArgs',
     'SecurityActionFlagHeaderArgsDict',
+    'SecurityFeedbackFeedbackContextArgs',
+    'SecurityFeedbackFeedbackContextArgsDict',
     'SecurityMonitoringConditionIncludeAllResourcesArgs',
     'SecurityMonitoringConditionIncludeAllResourcesArgsDict',
     'SecurityProfileV2ProfileAssessmentConfigArgs',
@@ -4088,6 +4090,59 @@ class SecurityActionFlagHeaderArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class SecurityFeedbackFeedbackContextArgsDict(TypedDict):
+        attribute: pulumi.Input[_builtins.str]
+        """
+        The attribute the user is providing feedback about.
+        Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+        """
+        values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        The values of the attribute the user is providing feedback about, separated by commas.
+        """
+elif False:
+    SecurityFeedbackFeedbackContextArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityFeedbackFeedbackContextArgs:
+    def __init__(__self__, *,
+                 attribute: pulumi.Input[_builtins.str],
+                 values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] attribute: The attribute the user is providing feedback about.
+               Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The values of the attribute the user is providing feedback about, separated by commas.
+        """
+        pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def attribute(self) -> pulumi.Input[_builtins.str]:
+        """
+        The attribute the user is providing feedback about.
+        Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+        """
+        return pulumi.get(self, "attribute")
+
+    @attribute.setter
+    def attribute(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "attribute", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The values of the attribute the user is providing feedback about, separated by commas.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:

@@ -82,7 +82,7 @@ public final class VmwareAdminClusterPlatformConfigArgs extends com.pulumi.resou
      * ResourceStatus representing detailed cluster state.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedPlatformConfigBundlesBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
+     * &lt;a name=&#34;nestedPlatformConfigBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
      * 
      */
     @Import(name="statuses")
@@ -93,7 +93,7 @@ public final class VmwareAdminClusterPlatformConfigArgs extends com.pulumi.resou
      * ResourceStatus representing detailed cluster state.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedPlatformConfigBundlesBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
+     * &lt;a name=&#34;nestedPlatformConfigBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
      * 
      */
     public Optional<Output<List<VmwareAdminClusterPlatformConfigStatusArgs>>> statuses() {
@@ -221,7 +221,7 @@ public final class VmwareAdminClusterPlatformConfigArgs extends com.pulumi.resou
          * ResourceStatus representing detailed cluster state.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedPlatformConfigBundlesBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
+         * &lt;a name=&#34;nestedPlatformConfigBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class VmwareAdminClusterPlatformConfigArgs extends com.pulumi.resou
          * ResourceStatus representing detailed cluster state.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedPlatformConfigBundlesBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
+         * &lt;a name=&#34;nestedPlatformConfigBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class VmwareAdminClusterPlatformConfigArgs extends com.pulumi.resou
          * ResourceStatus representing detailed cluster state.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nestedPlatformConfigBundlesBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
+         * &lt;a name=&#34;nestedPlatformConfigBundlesStatus&#34;&gt;&lt;/a&gt;The `status` block contains:
          * 
          * @return builder
          * 

@@ -16,10 +16,15 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DestinationEndpoint',
+    'DestinationStateTimeline',
+    'DestinationStateTimelineState',
     'GroupAutoAccept',
     'HubRoutingVpc',
     'InternalRangeAllocationOptions',
     'InternalRangeMigration',
+    'MulticloudDataTransferConfigService',
+    'MulticloudDataTransferConfigServiceState',
     'PolicyBasedRouteFilter',
     'PolicyBasedRouteInterconnectAttachment',
     'PolicyBasedRouteVirtualMachine',
@@ -38,6 +43,163 @@ __all__ = [
     'SpokeLinkedVpnTunnels',
     'SpokeReason',
 ]
+
+@pulumi.output_type
+class DestinationEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asn: _builtins.str,
+                 csp: _builtins.str,
+                 state: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str asn: The ASN of the remote IP prefix.
+        :param _builtins.str csp: The CSP of the remote IP prefix.
+        :param _builtins.str state: (Output)
+               The state of the DestinationEndpoint resource.
+        :param _builtins.str update_time: (Output)
+               Time when the DestinationEndpoint resource was updated.
+        """
+        pulumi.set(__self__, "asn", asn)
+        pulumi.set(__self__, "csp", csp)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def asn(self) -> _builtins.str:
+        """
+        The ASN of the remote IP prefix.
+        """
+        return pulumi.get(self, "asn")
+
+    @_builtins.property
+    @pulumi.getter
+    def csp(self) -> _builtins.str:
+        """
+        The CSP of the remote IP prefix.
+        """
+        return pulumi.get(self, "csp")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the DestinationEndpoint resource.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Time when the DestinationEndpoint resource was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class DestinationStateTimeline(dict):
+    def __init__(__self__, *,
+                 states: Optional[Sequence['outputs.DestinationStateTimelineState']] = None):
+        """
+        :param Sequence['DestinationStateTimelineStateArgs'] states: (Output)
+               The state and activation time details of the resource state.
+               Structure is documented below.
+        """
+        if states is not None:
+            pulumi.set(__self__, "states", states)
+
+    @_builtins.property
+    @pulumi.getter
+    def states(self) -> Optional[Sequence['outputs.DestinationStateTimelineState']]:
+        """
+        (Output)
+        The state and activation time details of the resource state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "states")
+
+
+@pulumi.output_type
+class DestinationStateTimelineState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "effectiveTime":
+            suggest = "effective_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationStateTimelineState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationStateTimelineState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationStateTimelineState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effective_time: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effective_time: (Output)
+               Accompanies only the transient states, which include `ADDING`,
+               `DELETING`, and `SUSPENDING`, to denote the time until which the
+               transient state of the resource will be effective. For instance, if the
+               state is `ADDING`, this field shows the time when the resource state
+               transitions to `ACTIVE`.
+        :param _builtins.str state: (Output)
+               The state of the resource.
+        """
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Accompanies only the transient states, which include `ADDING`,
+        `DELETING`, and `SUSPENDING`, to denote the time until which the
+        transient state of the resource will be effective. For instance, if the
+        state is `ADDING`, this field shows the time when the resource state
+        transitions to `ACTIVE`.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the resource.
+        """
+        return pulumi.get(self, "state")
+
 
 @pulumi.output_type
 class GroupAutoAccept(dict):
@@ -186,6 +348,113 @@ class InternalRangeMigration(dict):
         For example /projects/{project}/regions/{region}/subnetworks/{subnet}
         """
         return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class MulticloudDataTransferConfigService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MulticloudDataTransferConfigService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MulticloudDataTransferConfigService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MulticloudDataTransferConfigService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: _builtins.str,
+                 states: Optional[Sequence['outputs.MulticloudDataTransferConfigServiceState']] = None):
+        """
+        :param _builtins.str service_name: The name of the service, like "big-query" or "cloud-storage".
+               This corresponds to the map key in the API.
+        :param Sequence['MulticloudDataTransferConfigServiceStateArgs'] states: (Output)
+               The state and activation time details for the service.
+               Structure is documented below.
+               
+               
+               <a name="nested_services_states"></a>The `states` block contains:
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if states is not None:
+            pulumi.set(__self__, "states", states)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> _builtins.str:
+        """
+        The name of the service, like "big-query" or "cloud-storage".
+        This corresponds to the map key in the API.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def states(self) -> Optional[Sequence['outputs.MulticloudDataTransferConfigServiceState']]:
+        """
+        (Output)
+        The state and activation time details for the service.
+        Structure is documented below.
+
+
+        <a name="nested_services_states"></a>The `states` block contains:
+        """
+        return pulumi.get(self, "states")
+
+
+@pulumi.output_type
+class MulticloudDataTransferConfigServiceState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "effectiveTime":
+            suggest = "effective_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MulticloudDataTransferConfigServiceState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MulticloudDataTransferConfigServiceState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MulticloudDataTransferConfigServiceState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effective_time: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str effective_time: The time when the state becomes effective
+        :param _builtins.str state: The state of the resource.
+        """
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[_builtins.str]:
+        """
+        The time when the state becomes effective
+        """
+        return pulumi.get(self, "effective_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        The state of the resource.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

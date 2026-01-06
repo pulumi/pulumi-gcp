@@ -56,9 +56,7 @@ class BucketArgs:
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[_builtins.bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input['BucketIpFilterArgs'] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
@@ -215,9 +213,7 @@ class BucketArgs:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When deleting a bucket, this
-        boolean option will delete all contained objects. If you try to delete a
-        bucket that contains objects, the provider will fail that run.
+        When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         """
         return pulumi.get(self, "force_destroy")
 
@@ -461,9 +457,7 @@ class _BucketState:
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[_builtins.bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input['BucketIpFilterArgs'] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
@@ -639,9 +633,7 @@ class _BucketState:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When deleting a bucket, this
-        boolean option will delete all contained objects. If you try to delete a
-        bucket that contains objects, the provider will fail that run.
+        When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         """
         return pulumi.get(self, "force_destroy")
 
@@ -1177,9 +1169,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[_builtins.bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
@@ -1553,9 +1543,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']] encryption: The bucket's encryption configuration. Structure is documented below.
-        :param pulumi.Input[_builtins.bool] force_destroy: When deleting a bucket, this
-               boolean option will delete all contained objects. If you try to delete a
-               bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input[Union['BucketIpFilterArgs', 'BucketIpFilterArgsDict']] ip_filter: The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value label pairs to assign to the bucket.
@@ -1677,9 +1665,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        When deleting a bucket, this
-        boolean option will delete all contained objects. If you try to delete a
-        bucket that contains objects, the provider will fail that run.
+        When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
         """
         return pulumi.get(self, "force_destroy")
 

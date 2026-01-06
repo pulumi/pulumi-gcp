@@ -65,6 +65,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerResources? Resources;
         /// <summary>
+        /// Location of the source.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateContainerSourceCode? SourceCode;
+        /// <summary>
         /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// Structure is documented below.
         /// </summary>
@@ -103,6 +108,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.ServiceTemplateContainerResources? resources,
 
+            Outputs.ServiceTemplateContainerSourceCode? sourceCode,
+
             Outputs.ServiceTemplateContainerStartupProbe? startupProbe,
 
             ImmutableArray<Outputs.ServiceTemplateContainerVolumeMount> volumeMounts,
@@ -120,6 +127,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Name = name;
             Ports = ports;
             Resources = resources;
+            SourceCode = sourceCode;
             StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;

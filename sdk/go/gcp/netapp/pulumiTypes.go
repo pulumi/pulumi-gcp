@@ -1432,25 +1432,29 @@ func (o VolumeExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) VolumeExport
 }
 
 type VolumeHybridReplicationParameters struct {
-	// Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+	// Optional. Name of source cluster location associated with the replication. This is a free-form field
+	// for display purposes only.
 	ClusterLocation *string `pulumi:"clusterLocation"`
 	// Optional. Description of the replication.
 	Description *string `pulumi:"description"`
-	// Optional. Type of the volume's hybrid replication.
+	// Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+	// and `ONPREM_REPLICATION` to create an external replication.
+	// Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+	// replication which got reversed. Default is `MIGRATION`.
 	// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
 	HybridReplicationType *string `pulumi:"hybridReplicationType"`
 	// Optional. Labels to be added to the replication as the key value pairs.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. Constituent volume count for large volume.
+	// Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
 	LargeVolumeConstituentCount *int `pulumi:"largeVolumeConstituentCount"`
-	// Required. Name of the user's local source cluster to be peered with the destination cluster.
+	// Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
 	PeerClusterName *string `pulumi:"peerClusterName"`
-	// Required. List of node ip addresses to be peered with.
+	// Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
 	PeerIpAddresses []string `pulumi:"peerIpAddresses"`
-	// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+	// Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
 	PeerSvmName *string `pulumi:"peerSvmName"`
-	// Required. Name of the user's local source volume to be peered with the destination volume.
+	// Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
 	PeerVolumeName *string `pulumi:"peerVolumeName"`
 	// Required. Desired name for the replication of this volume.
 	Replication *string `pulumi:"replication"`
@@ -1471,25 +1475,29 @@ type VolumeHybridReplicationParametersInput interface {
 }
 
 type VolumeHybridReplicationParametersArgs struct {
-	// Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+	// Optional. Name of source cluster location associated with the replication. This is a free-form field
+	// for display purposes only.
 	ClusterLocation pulumi.StringPtrInput `pulumi:"clusterLocation"`
 	// Optional. Description of the replication.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Optional. Type of the volume's hybrid replication.
+	// Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+	// and `ONPREM_REPLICATION` to create an external replication.
+	// Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+	// replication which got reversed. Default is `MIGRATION`.
 	// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
 	HybridReplicationType pulumi.StringPtrInput `pulumi:"hybridReplicationType"`
 	// Optional. Labels to be added to the replication as the key value pairs.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Optional. Constituent volume count for large volume.
+	// Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
 	LargeVolumeConstituentCount pulumi.IntPtrInput `pulumi:"largeVolumeConstituentCount"`
-	// Required. Name of the user's local source cluster to be peered with the destination cluster.
+	// Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
 	PeerClusterName pulumi.StringPtrInput `pulumi:"peerClusterName"`
-	// Required. List of node ip addresses to be peered with.
+	// Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
 	PeerIpAddresses pulumi.StringArrayInput `pulumi:"peerIpAddresses"`
-	// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+	// Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
 	PeerSvmName pulumi.StringPtrInput `pulumi:"peerSvmName"`
-	// Required. Name of the user's local source volume to be peered with the destination volume.
+	// Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
 	PeerVolumeName pulumi.StringPtrInput `pulumi:"peerVolumeName"`
 	// Required. Desired name for the replication of this volume.
 	Replication pulumi.StringPtrInput `pulumi:"replication"`
@@ -1575,7 +1583,8 @@ func (o VolumeHybridReplicationParametersOutput) ToVolumeHybridReplicationParame
 	}).(VolumeHybridReplicationParametersPtrOutput)
 }
 
-// Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+// Optional. Name of source cluster location associated with the replication. This is a free-form field
+// for display purposes only.
 func (o VolumeHybridReplicationParametersOutput) ClusterLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.ClusterLocation }).(pulumi.StringPtrOutput)
 }
@@ -1585,7 +1594,10 @@ func (o VolumeHybridReplicationParametersOutput) Description() pulumi.StringPtrO
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Type of the volume's hybrid replication.
+// Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+// and `ONPREM_REPLICATION` to create an external replication.
+// Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+// replication which got reversed. Default is `MIGRATION`.
 // Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
 func (o VolumeHybridReplicationParametersOutput) HybridReplicationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.HybridReplicationType }).(pulumi.StringPtrOutput)
@@ -1597,27 +1609,27 @@ func (o VolumeHybridReplicationParametersOutput) Labels() pulumi.StringMapOutput
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Constituent volume count for large volume.
+// Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
 func (o VolumeHybridReplicationParametersOutput) LargeVolumeConstituentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *int { return v.LargeVolumeConstituentCount }).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the user's local source cluster to be peered with the destination cluster.
+// Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
 func (o VolumeHybridReplicationParametersOutput) PeerClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.PeerClusterName }).(pulumi.StringPtrOutput)
 }
 
-// Required. List of node ip addresses to be peered with.
+// Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
 func (o VolumeHybridReplicationParametersOutput) PeerIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) []string { return v.PeerIpAddresses }).(pulumi.StringArrayOutput)
 }
 
-// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+// Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
 func (o VolumeHybridReplicationParametersOutput) PeerSvmName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.PeerSvmName }).(pulumi.StringPtrOutput)
 }
 
-// Required. Name of the user's local source volume to be peered with the destination volume.
+// Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
 func (o VolumeHybridReplicationParametersOutput) PeerVolumeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeHybridReplicationParameters) *string { return v.PeerVolumeName }).(pulumi.StringPtrOutput)
 }
@@ -1657,7 +1669,8 @@ func (o VolumeHybridReplicationParametersPtrOutput) Elem() VolumeHybridReplicati
 	}).(VolumeHybridReplicationParametersOutput)
 }
 
-// Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+// Optional. Name of source cluster location associated with the replication. This is a free-form field
+// for display purposes only.
 func (o VolumeHybridReplicationParametersPtrOutput) ClusterLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
 		if v == nil {
@@ -1677,7 +1690,10 @@ func (o VolumeHybridReplicationParametersPtrOutput) Description() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Type of the volume's hybrid replication.
+// Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+// and `ONPREM_REPLICATION` to create an external replication.
+// Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+// replication which got reversed. Default is `MIGRATION`.
 // Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
 func (o VolumeHybridReplicationParametersPtrOutput) HybridReplicationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
@@ -1699,7 +1715,7 @@ func (o VolumeHybridReplicationParametersPtrOutput) Labels() pulumi.StringMapOut
 	}).(pulumi.StringMapOutput)
 }
 
-// Optional. Constituent volume count for large volume.
+// Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
 func (o VolumeHybridReplicationParametersPtrOutput) LargeVolumeConstituentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *int {
 		if v == nil {
@@ -1709,7 +1725,7 @@ func (o VolumeHybridReplicationParametersPtrOutput) LargeVolumeConstituentCount(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the user's local source cluster to be peered with the destination cluster.
+// Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
 func (o VolumeHybridReplicationParametersPtrOutput) PeerClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
 		if v == nil {
@@ -1719,7 +1735,7 @@ func (o VolumeHybridReplicationParametersPtrOutput) PeerClusterName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. List of node ip addresses to be peered with.
+// Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
 func (o VolumeHybridReplicationParametersPtrOutput) PeerIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VolumeHybridReplicationParameters) []string {
 		if v == nil {
@@ -1729,7 +1745,7 @@ func (o VolumeHybridReplicationParametersPtrOutput) PeerIpAddresses() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+// Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
 func (o VolumeHybridReplicationParametersPtrOutput) PeerSvmName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
 		if v == nil {
@@ -1739,7 +1755,7 @@ func (o VolumeHybridReplicationParametersPtrOutput) PeerSvmName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Name of the user's local source volume to be peered with the destination volume.
+// Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
 func (o VolumeHybridReplicationParametersPtrOutput) PeerVolumeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeHybridReplicationParameters) *string {
 		if v == nil {

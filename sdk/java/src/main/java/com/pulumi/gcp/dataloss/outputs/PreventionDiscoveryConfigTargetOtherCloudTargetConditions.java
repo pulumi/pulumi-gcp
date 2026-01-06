@@ -16,7 +16,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
      * @return Amazon S3 bucket conditions.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions amazonS3BucketConditions;
@@ -31,7 +31,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
      * @return Amazon S3 bucket conditions.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions&#34;&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
      * 
      */
     public Optional<PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions> amazonS3BucketConditions() {

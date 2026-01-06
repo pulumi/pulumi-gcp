@@ -21,15 +21,23 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// A list of Projects from which the forwarding rule will target the service attachment.
         /// </summary>
         public readonly ImmutableArray<string> ProjectAllowlists;
+        /// <summary>
+        /// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig> PscAutomationConfigs;
 
         [OutputConstructor]
         private AiIndexEndpointPrivateServiceConnectConfig(
             bool enablePrivateServiceConnect,
 
-            ImmutableArray<string> projectAllowlists)
+            ImmutableArray<string> projectAllowlists,
+
+            ImmutableArray<Outputs.AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig> pscAutomationConfigs)
         {
             EnablePrivateServiceConnect = enablePrivateServiceConnect;
             ProjectAllowlists = projectAllowlists;
+            PscAutomationConfigs = pscAutomationConfigs;
         }
     }
 }

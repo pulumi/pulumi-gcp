@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  *         var basicAgent = new Agent("basicAgent", AgentArgs.builder()
  *             .displayName("example_agent")
- *             .defaultLanguageCode("en-us")
+ *             .defaultLanguageCode("en")
  *             .timeZone("America/New_York")
  *             .project(project.projectId())
  *             .build(), CustomResourceOptions.builder()

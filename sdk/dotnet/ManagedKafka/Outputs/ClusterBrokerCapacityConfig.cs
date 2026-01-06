@@ -14,14 +14,14 @@ namespace Pulumi.Gcp.ManagedKafka.Outputs
     public sealed class ClusterBrokerCapacityConfig
     {
         /// <summary>
-        /// The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        /// The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         /// </summary>
-        public readonly string? DiskSizeGb;
+        public readonly string? DiskSizeGib;
 
         [OutputConstructor]
-        private ClusterBrokerCapacityConfig(string? diskSizeGb)
+        private ClusterBrokerCapacityConfig(string? diskSizeGib)
         {
-            DiskSizeGb = diskSizeGb;
+            DiskSizeGib = diskSizeGib;
         }
     }
 }

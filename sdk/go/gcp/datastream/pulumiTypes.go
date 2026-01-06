@@ -9217,6 +9217,2328 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Sche
 	}).(pulumi.StringPtrOutput)
 }
 
+type StreamRuleSet struct {
+	// List of customization rules to apply.
+	// Structure is documented below.
+	CustomizationRules []StreamRuleSetCustomizationRule `pulumi:"customizationRules"`
+	// Object filter to apply the customization rules to.
+	// Structure is documented below.
+	ObjectFilter StreamRuleSetObjectFilter `pulumi:"objectFilter"`
+}
+
+// StreamRuleSetInput is an input type that accepts StreamRuleSetArgs and StreamRuleSetOutput values.
+// You can construct a concrete instance of `StreamRuleSetInput` via:
+//
+//	StreamRuleSetArgs{...}
+type StreamRuleSetInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetOutput() StreamRuleSetOutput
+	ToStreamRuleSetOutputWithContext(context.Context) StreamRuleSetOutput
+}
+
+type StreamRuleSetArgs struct {
+	// List of customization rules to apply.
+	// Structure is documented below.
+	CustomizationRules StreamRuleSetCustomizationRuleArrayInput `pulumi:"customizationRules"`
+	// Object filter to apply the customization rules to.
+	// Structure is documented below.
+	ObjectFilter StreamRuleSetObjectFilterInput `pulumi:"objectFilter"`
+}
+
+func (StreamRuleSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSet)(nil)).Elem()
+}
+
+func (i StreamRuleSetArgs) ToStreamRuleSetOutput() StreamRuleSetOutput {
+	return i.ToStreamRuleSetOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetArgs) ToStreamRuleSetOutputWithContext(ctx context.Context) StreamRuleSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetOutput)
+}
+
+// StreamRuleSetArrayInput is an input type that accepts StreamRuleSetArray and StreamRuleSetArrayOutput values.
+// You can construct a concrete instance of `StreamRuleSetArrayInput` via:
+//
+//	StreamRuleSetArray{ StreamRuleSetArgs{...} }
+type StreamRuleSetArrayInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetArrayOutput() StreamRuleSetArrayOutput
+	ToStreamRuleSetArrayOutputWithContext(context.Context) StreamRuleSetArrayOutput
+}
+
+type StreamRuleSetArray []StreamRuleSetInput
+
+func (StreamRuleSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamRuleSet)(nil)).Elem()
+}
+
+func (i StreamRuleSetArray) ToStreamRuleSetArrayOutput() StreamRuleSetArrayOutput {
+	return i.ToStreamRuleSetArrayOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetArray) ToStreamRuleSetArrayOutputWithContext(ctx context.Context) StreamRuleSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetArrayOutput)
+}
+
+type StreamRuleSetOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSet)(nil)).Elem()
+}
+
+func (o StreamRuleSetOutput) ToStreamRuleSetOutput() StreamRuleSetOutput {
+	return o
+}
+
+func (o StreamRuleSetOutput) ToStreamRuleSetOutputWithContext(ctx context.Context) StreamRuleSetOutput {
+	return o
+}
+
+// List of customization rules to apply.
+// Structure is documented below.
+func (o StreamRuleSetOutput) CustomizationRules() StreamRuleSetCustomizationRuleArrayOutput {
+	return o.ApplyT(func(v StreamRuleSet) []StreamRuleSetCustomizationRule { return v.CustomizationRules }).(StreamRuleSetCustomizationRuleArrayOutput)
+}
+
+// Object filter to apply the customization rules to.
+// Structure is documented below.
+func (o StreamRuleSetOutput) ObjectFilter() StreamRuleSetObjectFilterOutput {
+	return o.ApplyT(func(v StreamRuleSet) StreamRuleSetObjectFilter { return v.ObjectFilter }).(StreamRuleSetObjectFilterOutput)
+}
+
+type StreamRuleSetArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamRuleSet)(nil)).Elem()
+}
+
+func (o StreamRuleSetArrayOutput) ToStreamRuleSetArrayOutput() StreamRuleSetArrayOutput {
+	return o
+}
+
+func (o StreamRuleSetArrayOutput) ToStreamRuleSetArrayOutputWithContext(ctx context.Context) StreamRuleSetArrayOutput {
+	return o
+}
+
+func (o StreamRuleSetArrayOutput) Index(i pulumi.IntInput) StreamRuleSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamRuleSet {
+		return vs[0].([]StreamRuleSet)[vs[1].(int)]
+	}).(StreamRuleSetOutput)
+}
+
+type StreamRuleSetCustomizationRule struct {
+	// BigQuery clustering rule.
+	// Structure is documented below.
+	BigqueryClustering *StreamRuleSetCustomizationRuleBigqueryClustering `pulumi:"bigqueryClustering"`
+	// BigQuery partitioning rule.
+	// Structure is documented below.
+	BigqueryPartitioning *StreamRuleSetCustomizationRuleBigqueryPartitioning `pulumi:"bigqueryPartitioning"`
+}
+
+// StreamRuleSetCustomizationRuleInput is an input type that accepts StreamRuleSetCustomizationRuleArgs and StreamRuleSetCustomizationRuleOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleInput` via:
+//
+//	StreamRuleSetCustomizationRuleArgs{...}
+type StreamRuleSetCustomizationRuleInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleOutput() StreamRuleSetCustomizationRuleOutput
+	ToStreamRuleSetCustomizationRuleOutputWithContext(context.Context) StreamRuleSetCustomizationRuleOutput
+}
+
+type StreamRuleSetCustomizationRuleArgs struct {
+	// BigQuery clustering rule.
+	// Structure is documented below.
+	BigqueryClustering StreamRuleSetCustomizationRuleBigqueryClusteringPtrInput `pulumi:"bigqueryClustering"`
+	// BigQuery partitioning rule.
+	// Structure is documented below.
+	BigqueryPartitioning StreamRuleSetCustomizationRuleBigqueryPartitioningPtrInput `pulumi:"bigqueryPartitioning"`
+}
+
+func (StreamRuleSetCustomizationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRule)(nil)).Elem()
+}
+
+func (i StreamRuleSetCustomizationRuleArgs) ToStreamRuleSetCustomizationRuleOutput() StreamRuleSetCustomizationRuleOutput {
+	return i.ToStreamRuleSetCustomizationRuleOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleArgs) ToStreamRuleSetCustomizationRuleOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleOutput)
+}
+
+// StreamRuleSetCustomizationRuleArrayInput is an input type that accepts StreamRuleSetCustomizationRuleArray and StreamRuleSetCustomizationRuleArrayOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleArrayInput` via:
+//
+//	StreamRuleSetCustomizationRuleArray{ StreamRuleSetCustomizationRuleArgs{...} }
+type StreamRuleSetCustomizationRuleArrayInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleArrayOutput() StreamRuleSetCustomizationRuleArrayOutput
+	ToStreamRuleSetCustomizationRuleArrayOutputWithContext(context.Context) StreamRuleSetCustomizationRuleArrayOutput
+}
+
+type StreamRuleSetCustomizationRuleArray []StreamRuleSetCustomizationRuleInput
+
+func (StreamRuleSetCustomizationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamRuleSetCustomizationRule)(nil)).Elem()
+}
+
+func (i StreamRuleSetCustomizationRuleArray) ToStreamRuleSetCustomizationRuleArrayOutput() StreamRuleSetCustomizationRuleArrayOutput {
+	return i.ToStreamRuleSetCustomizationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleArray) ToStreamRuleSetCustomizationRuleArrayOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleArrayOutput)
+}
+
+type StreamRuleSetCustomizationRuleOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRule)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleOutput) ToStreamRuleSetCustomizationRuleOutput() StreamRuleSetCustomizationRuleOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleOutput) ToStreamRuleSetCustomizationRuleOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleOutput {
+	return o
+}
+
+// BigQuery clustering rule.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleOutput) BigqueryClustering() StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRule) *StreamRuleSetCustomizationRuleBigqueryClustering {
+		return v.BigqueryClustering
+	}).(StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput)
+}
+
+// BigQuery partitioning rule.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleOutput) BigqueryPartitioning() StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRule) *StreamRuleSetCustomizationRuleBigqueryPartitioning {
+		return v.BigqueryPartitioning
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamRuleSetCustomizationRule)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleArrayOutput) ToStreamRuleSetCustomizationRuleArrayOutput() StreamRuleSetCustomizationRuleArrayOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleArrayOutput) ToStreamRuleSetCustomizationRuleArrayOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleArrayOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleArrayOutput) Index(i pulumi.IntInput) StreamRuleSetCustomizationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamRuleSetCustomizationRule {
+		return vs[0].([]StreamRuleSetCustomizationRule)[vs[1].(int)]
+	}).(StreamRuleSetCustomizationRuleOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryClustering struct {
+	// Column names to set as clustering columns.
+	Columns []string `pulumi:"columns"`
+}
+
+// StreamRuleSetCustomizationRuleBigqueryClusteringInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryClusteringArgs and StreamRuleSetCustomizationRuleBigqueryClusteringOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryClusteringInput` via:
+//
+//	StreamRuleSetCustomizationRuleBigqueryClusteringArgs{...}
+type StreamRuleSetCustomizationRuleBigqueryClusteringInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryClusteringOutput() StreamRuleSetCustomizationRuleBigqueryClusteringOutput
+	ToStreamRuleSetCustomizationRuleBigqueryClusteringOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringOutput
+}
+
+type StreamRuleSetCustomizationRuleBigqueryClusteringArgs struct {
+	// Column names to set as clustering columns.
+	Columns pulumi.StringArrayInput `pulumi:"columns"`
+}
+
+func (StreamRuleSetCustomizationRuleBigqueryClusteringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryClustering)(nil)).Elem()
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryClusteringArgs) ToStreamRuleSetCustomizationRuleBigqueryClusteringOutput() StreamRuleSetCustomizationRuleBigqueryClusteringOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryClusteringOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryClusteringArgs) ToStreamRuleSetCustomizationRuleBigqueryClusteringOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryClusteringOutput)
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryClusteringArgs) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput() StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryClusteringArgs) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryClusteringOutput).ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetCustomizationRuleBigqueryClusteringPtrInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryClusteringArgs, StreamRuleSetCustomizationRuleBigqueryClusteringPtr and StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryClusteringPtrInput` via:
+//
+//	        StreamRuleSetCustomizationRuleBigqueryClusteringArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetCustomizationRuleBigqueryClusteringPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput() StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput
+	ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput
+}
+
+type streamRuleSetCustomizationRuleBigqueryClusteringPtrType StreamRuleSetCustomizationRuleBigqueryClusteringArgs
+
+func StreamRuleSetCustomizationRuleBigqueryClusteringPtr(v *StreamRuleSetCustomizationRuleBigqueryClusteringArgs) StreamRuleSetCustomizationRuleBigqueryClusteringPtrInput {
+	return (*streamRuleSetCustomizationRuleBigqueryClusteringPtrType)(v)
+}
+
+func (*streamRuleSetCustomizationRuleBigqueryClusteringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryClustering)(nil)).Elem()
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryClusteringPtrType) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput() StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryClusteringPtrType) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryClusteringOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryClusteringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryClustering)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringOutput) ToStreamRuleSetCustomizationRuleBigqueryClusteringOutput() StreamRuleSetCustomizationRuleBigqueryClusteringOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringOutput) ToStreamRuleSetCustomizationRuleBigqueryClusteringOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringOutput) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput() StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return o.ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringOutput) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetCustomizationRuleBigqueryClustering) *StreamRuleSetCustomizationRuleBigqueryClustering {
+		return &v
+	}).(StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput)
+}
+
+// Column names to set as clustering columns.
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryClustering) []string { return v.Columns }).(pulumi.StringArrayOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryClustering)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput() StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryClusteringPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput) Elem() StreamRuleSetCustomizationRuleBigqueryClusteringOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryClustering) StreamRuleSetCustomizationRuleBigqueryClustering {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetCustomizationRuleBigqueryClustering
+		return ret
+	}).(StreamRuleSetCustomizationRuleBigqueryClusteringOutput)
+}
+
+// Column names to set as clustering columns.
+func (o StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryClustering) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Columns
+	}).(pulumi.StringArrayOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioning struct {
+	// A nested object resource.
+	// Structure is documented below.
+	IngestionTimePartition *StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition `pulumi:"ingestionTimePartition"`
+	// A nested object resource.
+	// Structure is documented below.
+	IntegerRangePartition *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition `pulumi:"integerRangePartition"`
+	// If true, queries over the table require a partition filter.
+	RequirePartitionFilter *bool `pulumi:"requirePartitionFilter"`
+	// A nested object resource.
+	// Structure is documented below.
+	TimeUnitPartition *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition `pulumi:"timeUnitPartition"`
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningArgs and StreamRuleSetCustomizationRuleBigqueryPartitioningOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningInput` via:
+//
+//	StreamRuleSetCustomizationRuleBigqueryPartitioningArgs{...}
+type StreamRuleSetCustomizationRuleBigqueryPartitioningInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningOutput
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningArgs struct {
+	// A nested object resource.
+	// Structure is documented below.
+	IngestionTimePartition StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrInput `pulumi:"ingestionTimePartition"`
+	// A nested object resource.
+	// Structure is documented below.
+	IntegerRangePartition StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrInput `pulumi:"integerRangePartition"`
+	// If true, queries over the table require a partition filter.
+	RequirePartitionFilter pulumi.BoolPtrInput `pulumi:"requirePartitionFilter"`
+	// A nested object resource.
+	// Structure is documented below.
+	TimeUnitPartition StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrInput `pulumi:"timeUnitPartition"`
+}
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioning)(nil)).Elem()
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningOutput)
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningOutput).ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningPtrInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningArgs, StreamRuleSetCustomizationRuleBigqueryPartitioningPtr and StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningPtrInput` via:
+//
+//	        StreamRuleSetCustomizationRuleBigqueryPartitioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetCustomizationRuleBigqueryPartitioningPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput
+}
+
+type streamRuleSetCustomizationRuleBigqueryPartitioningPtrType StreamRuleSetCustomizationRuleBigqueryPartitioningArgs
+
+func StreamRuleSetCustomizationRuleBigqueryPartitioningPtr(v *StreamRuleSetCustomizationRuleBigqueryPartitioningArgs) StreamRuleSetCustomizationRuleBigqueryPartitioningPtrInput {
+	return (*streamRuleSetCustomizationRuleBigqueryPartitioningPtrType)(v)
+}
+
+func (*streamRuleSetCustomizationRuleBigqueryPartitioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioning)(nil)).Elem()
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioning)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return o.ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetCustomizationRuleBigqueryPartitioning) *StreamRuleSetCustomizationRuleBigqueryPartitioning {
+		return &v
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) IngestionTimePartition() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioning) *StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition {
+		return v.IngestionTimePartition
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) IntegerRangePartition() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioning) *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
+		return v.IntegerRangePartition
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput)
+}
+
+// If true, queries over the table require a partition filter.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioning) *bool { return v.RequirePartitionFilter }).(pulumi.BoolPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningOutput) TimeUnitPartition() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioning) *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition {
+		return v.TimeUnitPartition
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioning)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) Elem() StreamRuleSetCustomizationRuleBigqueryPartitioningOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioning) StreamRuleSetCustomizationRuleBigqueryPartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetCustomizationRuleBigqueryPartitioning
+		return ret
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) IngestionTimePartition() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioning) *StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition {
+		if v == nil {
+			return nil
+		}
+		return v.IngestionTimePartition
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) IntegerRangePartition() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioning) *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
+		if v == nil {
+			return nil
+		}
+		return v.IntegerRangePartition
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput)
+}
+
+// If true, queries over the table require a partition filter.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) RequirePartitionFilter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequirePartitionFilter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput) TimeUnitPartition() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioning) *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition {
+		if v == nil {
+			return nil
+		}
+		return v.TimeUnitPartition
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition struct {
+	// Partition granularity.
+	// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+	PartitioningTimeGranularity *string `pulumi:"partitioningTimeGranularity"`
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs and StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionInput` via:
+//
+//	StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs{...}
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs struct {
+	// Partition granularity.
+	// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+	PartitioningTimeGranularity pulumi.StringPtrInput `pulumi:"partitioningTimeGranularity"`
+}
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition)(nil)).Elem()
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput)
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput).ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs, StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtr and StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrInput` via:
+//
+//	        StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput
+}
+
+type streamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrType StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs
+
+func StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtr(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrInput {
+	return (*streamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrType)(v)
+}
+
+func (*streamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition)(nil)).Elem()
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return o.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition) *StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition {
+		return &v
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput)
+}
+
+// Partition granularity.
+// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput) PartitioningTimeGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition) *string {
+		return v.PartitioningTimeGranularity
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput) Elem() StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition) StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition
+		return ret
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput)
+}
+
+// Partition granularity.
+// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput) PartitioningTimeGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartitioningTimeGranularity
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition struct {
+	// The partitioning column.
+	Column string `pulumi:"column"`
+	// The ending value for range partitioning (exclusive).
+	End int `pulumi:"end"`
+	// The interval of each range within the partition.
+	Interval int `pulumi:"interval"`
+	// The starting value for range partitioning (inclusive).
+	Start int `pulumi:"start"`
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs and StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionInput` via:
+//
+//	StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs{...}
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs struct {
+	// The partitioning column.
+	Column pulumi.StringInput `pulumi:"column"`
+	// The ending value for range partitioning (exclusive).
+	End pulumi.IntInput `pulumi:"end"`
+	// The interval of each range within the partition.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// The starting value for range partitioning (inclusive).
+	Start pulumi.IntInput `pulumi:"start"`
+}
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition)(nil)).Elem()
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput)
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput).ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs, StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtr and StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrInput` via:
+//
+//	        StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput
+}
+
+type streamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrType StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs
+
+func StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtr(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrInput {
+	return (*streamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrType)(v)
+}
+
+func (*streamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition)(nil)).Elem()
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return o.ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
+		return &v
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput)
+}
+
+// The partitioning column.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) string {
+		return v.Column
+	}).(pulumi.StringOutput)
+}
+
+// The ending value for range partitioning (exclusive).
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) End() pulumi.IntOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) int { return v.End }).(pulumi.IntOutput)
+}
+
+// The interval of each range within the partition.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// The starting value for range partitioning (inclusive).
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput) Start() pulumi.IntOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) int { return v.Start }).(pulumi.IntOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) Elem() StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition
+		return ret
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput)
+}
+
+// The partitioning column.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ending value for range partitioning (exclusive).
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) End() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.End
+	}).(pulumi.IntPtrOutput)
+}
+
+// The interval of each range within the partition.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The starting value for range partitioning (inclusive).
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput) Start() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Start
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition struct {
+	// The partitioning column.
+	Column string `pulumi:"column"`
+	// Partition granularity.
+	// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+	PartitioningTimeGranularity *string `pulumi:"partitioningTimeGranularity"`
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs and StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionInput` via:
+//
+//	StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs{...}
+type StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs struct {
+	// The partitioning column.
+	Column pulumi.StringInput `pulumi:"column"`
+	// Partition granularity.
+	// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+	PartitioningTimeGranularity pulumi.StringPtrInput `pulumi:"partitioningTimeGranularity"`
+}
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition)(nil)).Elem()
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput)
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput).ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrInput is an input type that accepts StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs, StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtr and StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrInput` via:
+//
+//	        StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput
+	ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput
+}
+
+type streamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrType StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs
+
+func StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtr(v *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrInput {
+	return (*streamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrType)(v)
+}
+
+func (*streamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition)(nil)).Elem()
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return i.ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrType) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return o.ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition) *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition {
+		return &v
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput)
+}
+
+// The partitioning column.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Partition granularity.
+// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput) PartitioningTimeGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition) *string {
+		return v.PartitioningTimeGranularity
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition)(nil)).Elem()
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput) ToStreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutputWithContext(ctx context.Context) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput) Elem() StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition) StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition
+		return ret
+	}).(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput)
+}
+
+// The partitioning column.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Column
+	}).(pulumi.StringPtrOutput)
+}
+
+// Partition granularity.
+// Possible values are: `PARTITIONING_TIME_GRANULARITY_UNSPECIFIED`, `PARTITIONING_TIME_GRANULARITY_HOUR`, `PARTITIONING_TIME_GRANULARITY_DAY`, `PARTITIONING_TIME_GRANULARITY_MONTH`, `PARTITIONING_TIME_GRANULARITY_YEAR`.
+func (o StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput) PartitioningTimeGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PartitioningTimeGranularity
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetObjectFilter struct {
+	// Specific source object identifier.
+	// Structure is documented below.
+	SourceObjectIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifier `pulumi:"sourceObjectIdentifier"`
+}
+
+// StreamRuleSetObjectFilterInput is an input type that accepts StreamRuleSetObjectFilterArgs and StreamRuleSetObjectFilterOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterInput` via:
+//
+//	StreamRuleSetObjectFilterArgs{...}
+type StreamRuleSetObjectFilterInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterOutput() StreamRuleSetObjectFilterOutput
+	ToStreamRuleSetObjectFilterOutputWithContext(context.Context) StreamRuleSetObjectFilterOutput
+}
+
+type StreamRuleSetObjectFilterArgs struct {
+	// Specific source object identifier.
+	// Structure is documented below.
+	SourceObjectIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierPtrInput `pulumi:"sourceObjectIdentifier"`
+}
+
+func (StreamRuleSetObjectFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilter)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterArgs) ToStreamRuleSetObjectFilterOutput() StreamRuleSetObjectFilterOutput {
+	return i.ToStreamRuleSetObjectFilterOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterArgs) ToStreamRuleSetObjectFilterOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterOutput)
+}
+
+type StreamRuleSetObjectFilterOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilter)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterOutput) ToStreamRuleSetObjectFilterOutput() StreamRuleSetObjectFilterOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterOutput) ToStreamRuleSetObjectFilterOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterOutput {
+	return o
+}
+
+// Specific source object identifier.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterOutput) SourceObjectIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilter) *StreamRuleSetObjectFilterSourceObjectIdentifier {
+		return v.SourceObjectIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifier struct {
+	// A nested object resource.
+	// Structure is documented below.
+	MongodbIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier `pulumi:"mongodbIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	MysqlIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier `pulumi:"mysqlIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	OracleIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier `pulumi:"oracleIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	PostgresqlIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier `pulumi:"postgresqlIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	SalesforceIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier `pulumi:"salesforceIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	SqlServerIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier `pulumi:"sqlServerIdentifier"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierArgs struct {
+	// A nested object resource.
+	// Structure is documented below.
+	MongodbIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrInput `pulumi:"mongodbIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	MysqlIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrInput `pulumi:"mysqlIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	OracleIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrInput `pulumi:"oracleIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	PostgresqlIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrInput `pulumi:"postgresqlIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	SalesforceIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput `pulumi:"salesforceIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	SqlServerIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput `pulumi:"sqlServerIdentifier"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) MongodbIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier {
+		return v.MongodbIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) MysqlIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
+		return v.MysqlIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) OracleIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier {
+		return v.OracleIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) PostgresqlIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier {
+		return v.PostgresqlIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) SalesforceIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
+		return v.SalesforceIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) SqlServerIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier {
+		return v.SqlServerIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) MongodbIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.MongodbIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) MysqlIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.MysqlIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) OracleIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.OracleIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) PostgresqlIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) SalesforceIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.SalesforceIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) SqlServerIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.SqlServerIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier struct {
+	// The MongoDB collection name.
+	Collection string `pulumi:"collection"`
+	// The MongoDB database name.
+	Database string `pulumi:"database"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs struct {
+	// The MongoDB collection name.
+	Collection pulumi.StringInput `pulumi:"collection"`
+	// The MongoDB database name.
+	Database pulumi.StringInput `pulumi:"database"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput)
+}
+
+// The MongoDB collection name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput) Collection() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier) string { return v.Collection }).(pulumi.StringOutput)
+}
+
+// The MongoDB database name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier) string { return v.Database }).(pulumi.StringOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput)
+}
+
+// The MongoDB collection name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput) Collection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Collection
+	}).(pulumi.StringPtrOutput)
+}
+
+// The MongoDB database name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier struct {
+	// The database name.
+	Database string `pulumi:"database"`
+	// The table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs struct {
+	// The database name.
+	Database pulumi.StringInput `pulumi:"database"`
+	// The table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput)
+}
+
+// The database name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput)
+}
+
+// The database name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier struct {
+	// The schema name.
+	Schema string `pulumi:"schema"`
+	// The table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs struct {
+	// The schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// The table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier struct {
+	// The schema name.
+	Schema string `pulumi:"schema"`
+	// The table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs struct {
+	// The schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// The table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier struct {
+	// The Salesforce object name.
+	ObjectName string `pulumi:"objectName"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs struct {
+	// The Salesforce object name.
+	ObjectName pulumi.StringInput `pulumi:"objectName"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput)
+}
+
+// The Salesforce object name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput) ObjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier) string {
+		return v.ObjectName
+	}).(pulumi.StringOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput)
+}
+
+// The Salesforce object name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput) ObjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectName
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier struct {
+	// The schema name.
+	Schema string `pulumi:"schema"`
+	// The table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs struct {
+	// The schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// The table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
 type StreamSourceConfig struct {
 	// MongoDB source configuration.
 	// Structure is documented below.
@@ -17782,6 +20104,35 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigJsonFileFormatInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrInput)(nil)).Elem(), StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetInput)(nil)).Elem(), StreamRuleSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetArrayInput)(nil)).Elem(), StreamRuleSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleInput)(nil)).Elem(), StreamRuleSetCustomizationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleArrayInput)(nil)).Elem(), StreamRuleSetCustomizationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryClusteringInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryClusteringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryClusteringPtrInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryClusteringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningPtrInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrInput)(nil)).Elem(), StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterInput)(nil)).Elem(), StreamRuleSetObjectFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigInput)(nil)).Elem(), StreamSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMongodbSourceConfigInput)(nil)).Elem(), StreamSourceConfigMongodbSourceConfigArgs{})
@@ -18012,6 +20363,35 @@ func init() {
 	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput{})
 	pulumi.RegisterOutputType(StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetArrayOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleArrayOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryClusteringOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryClusteringPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMongodbSourceConfigOutput{})

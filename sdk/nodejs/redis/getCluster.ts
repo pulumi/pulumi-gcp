@@ -61,6 +61,7 @@ export interface GetClusterResult {
     readonly crossClusterReplicationConfigs: outputs.redis.GetClusterCrossClusterReplicationConfig[];
     readonly deletionProtectionEnabled: boolean;
     readonly discoveryEndpoints: outputs.redis.GetClusterDiscoveryEndpoint[];
+    readonly effectiveLabels: {[key: string]: string};
     readonly effectiveMaintenanceVersion: string;
     readonly gcsSources: outputs.redis.GetClusterGcsSource[];
     /**
@@ -68,6 +69,7 @@ export interface GetClusterResult {
      */
     readonly id: string;
     readonly kmsKey: string;
+    readonly labels: {[key: string]: string};
     readonly maintenancePolicies: outputs.redis.GetClusterMaintenancePolicy[];
     readonly maintenanceSchedules: outputs.redis.GetClusterMaintenanceSchedule[];
     readonly maintenanceVersion: string;
@@ -81,6 +83,7 @@ export interface GetClusterResult {
     readonly pscConfigs: outputs.redis.GetClusterPscConfig[];
     readonly pscConnections: outputs.redis.GetClusterPscConnection[];
     readonly pscServiceAttachments: outputs.redis.GetClusterPscServiceAttachment[];
+    readonly pulumiLabels: {[key: string]: string};
     readonly redisConfigs: {[key: string]: string};
     readonly region?: string;
     readonly replicaCount: number;

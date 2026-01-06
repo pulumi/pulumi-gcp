@@ -57,16 +57,20 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     }
 
     /**
-     * Optional. The minimum number of application instances that will be
-     * kept running at all times. Defaults to 1. Range: [0, 10].
+     * Optional. The maximum number of application instances that can be
+     * launched to handle increased traffic. Defaults to 100.
+     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+     * range is [1, 100].
      * 
      */
     @Import(name="maxInstances")
     private @Nullable Output<Integer> maxInstances;
 
     /**
-     * @return Optional. The minimum number of application instances that will be
-     * kept running at all times. Defaults to 1. Range: [0, 10].
+     * @return Optional. The maximum number of application instances that can be
+     * launched to handle increased traffic. Defaults to 100.
+     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+     * range is [1, 100].
      * 
      */
     public Optional<Output<Integer>> maxInstances() {
@@ -74,20 +78,16 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     }
 
     /**
-     * Optional. The maximum number of application instances that can be
-     * launched to handle increased traffic. Defaults to 100.
-     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
-     * range is [1, 100].
+     * Optional. The minimum number of application instances that will be
+     * kept running at all times. Defaults to 1. Range: [0, 10].
      * 
      */
     @Import(name="minInstances")
     private @Nullable Output<Integer> minInstances;
 
     /**
-     * @return Optional. The maximum number of application instances that can be
-     * launched to handle increased traffic. Defaults to 100.
-     * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
-     * range is [1, 100].
+     * @return Optional. The minimum number of application instances that will be
+     * kept running at all times. Defaults to 1. Range: [0, 10].
      * 
      */
     public Optional<Output<Integer>> minInstances() {
@@ -238,8 +238,10 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param maxInstances Optional. The minimum number of application instances that will be
-         * kept running at all times. Defaults to 1. Range: [0, 10].
+         * @param maxInstances Optional. The maximum number of application instances that can be
+         * launched to handle increased traffic. Defaults to 100.
+         * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+         * range is [1, 100].
          * 
          * @return builder
          * 
@@ -250,8 +252,10 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param maxInstances Optional. The minimum number of application instances that will be
-         * kept running at all times. Defaults to 1. Range: [0, 10].
+         * @param maxInstances Optional. The maximum number of application instances that can be
+         * launched to handle increased traffic. Defaults to 100.
+         * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
+         * range is [1, 100].
          * 
          * @return builder
          * 
@@ -261,10 +265,8 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param minInstances Optional. The maximum number of application instances that can be
-         * launched to handle increased traffic. Defaults to 100.
-         * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
-         * range is [1, 100].
+         * @param minInstances Optional. The minimum number of application instances that will be
+         * kept running at all times. Defaults to 1. Range: [0, 10].
          * 
          * @return builder
          * 
@@ -275,10 +277,8 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
-         * @param minInstances Optional. The maximum number of application instances that can be
-         * launched to handle increased traffic. Defaults to 100.
-         * Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
-         * range is [1, 100].
+         * @param minInstances Optional. The minimum number of application instances that will be
+         * kept running at all times. Defaults to 1. Range: [0, 10].
          * 
          * @return builder
          * 

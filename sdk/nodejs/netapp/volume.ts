@@ -166,7 +166,9 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly hotTierSizeUsedGib: pulumi.Output<string>;
     /**
-     * The Hybrid Replication parameters for the volume.
+     * [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+     * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+     * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      */
     declare public readonly hybridReplicationParameters: pulumi.Output<outputs.netapp.VolumeHybridReplicationParameters | undefined>;
@@ -507,7 +509,9 @@ export interface VolumeState {
      */
     hotTierSizeUsedGib?: pulumi.Input<string>;
     /**
-     * The Hybrid Replication parameters for the volume.
+     * [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+     * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+     * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      */
     hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters>;
@@ -694,7 +698,9 @@ export interface VolumeArgs {
      */
     exportPolicy?: pulumi.Input<inputs.netapp.VolumeExportPolicy>;
     /**
-     * The Hybrid Replication parameters for the volume.
+     * [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+     * [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+     * are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
      * Structure is documented below.
      */
     hybridReplicationParameters?: pulumi.Input<inputs.netapp.VolumeHybridReplicationParameters>;

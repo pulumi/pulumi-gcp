@@ -53,6 +53,8 @@ bigQueryCustomEndpoint: Optional[str]
 
 biglakeCustomEndpoint: Optional[str]
 
+biglakeIcebergCustomEndpoint: Optional[str]
+
 bigqueryAnalyticsHubCustomEndpoint: Optional[str]
 
 bigqueryConnectionCustomEndpoint: Optional[str]

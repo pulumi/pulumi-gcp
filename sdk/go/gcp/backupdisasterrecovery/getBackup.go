@@ -65,15 +65,21 @@ type GetBackupArgs struct {
 
 // A collection of values returned by getBackup.
 type GetBackupResult struct {
-	BackupVaultId string            `pulumi:"backupVaultId"`
-	Backups       []GetBackupBackup `pulumi:"backups"`
-	CreateTime    string            `pulumi:"createTime"`
-	DataSourceId  string            `pulumi:"dataSourceId"`
+	// Name of the Backup Vault associated with Backup.
+	BackupVaultId string `pulumi:"backupVaultId"`
+	// List of all backups under data source. Structure is defined below.
+	Backups []GetBackupBackup `pulumi:"backups"`
+	// The time when the backup was created.
+	CreateTime string `pulumi:"createTime"`
+	// Name of the Data Source associated with Backup.
+	DataSourceId string `pulumi:"dataSourceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Location of the resource.
 	Location string `pulumi:"location"`
-	Name     string `pulumi:"name"`
-	Project  string `pulumi:"project"`
+	// Name of the resource.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
 }
 
 func GetBackupOutput(ctx *pulumi.Context, args GetBackupOutputArgs, opts ...pulumi.InvokeOption) GetBackupResultOutput {
@@ -116,18 +122,22 @@ func (o GetBackupResultOutput) ToGetBackupResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// Name of the Backup Vault associated with Backup.
 func (o GetBackupResultOutput) BackupVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupResult) string { return v.BackupVaultId }).(pulumi.StringOutput)
 }
 
+// List of all backups under data source. Structure is defined below.
 func (o GetBackupResultOutput) Backups() GetBackupBackupArrayOutput {
 	return o.ApplyT(func(v GetBackupResult) []GetBackupBackup { return v.Backups }).(GetBackupBackupArrayOutput)
 }
 
+// The time when the backup was created.
 func (o GetBackupResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Name of the Data Source associated with Backup.
 func (o GetBackupResultOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupResult) string { return v.DataSourceId }).(pulumi.StringOutput)
 }
@@ -137,10 +147,12 @@ func (o GetBackupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the resource.
 func (o GetBackupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Name of the resource.
 func (o GetBackupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -29,7 +29,7 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
      */
     private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
     /**
-     * @return The settings for kernel module loading.
+     * @return Settings for kernel module loading. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
@@ -72,7 +72,7 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
         return Optional.ofNullable(this.hugepagesConfig);
     }
     /**
-     * @return The settings for kernel module loading.
+     * @return Settings for kernel module loading. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoading() {

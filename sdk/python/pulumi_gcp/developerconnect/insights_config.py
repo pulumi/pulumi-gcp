@@ -509,7 +509,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_60646",
+            project_id="dci-tf-_9394",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -586,7 +586,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_9394",
+            application_id="tf-test-example-application_11380",
             scope={
                 "type": "REGIONAL",
             },
@@ -594,7 +594,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic_11380",
+            insights_config_id="tf-test-ic_35305",
             project=project.project_id,
             annotations={},
             labels={},
@@ -680,7 +680,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_60646",
+            project_id="dci-tf-_9394",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -757,7 +757,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_9394",
+            application_id="tf-test-example-application_11380",
             scope={
                 "type": "REGIONAL",
             },
@@ -765,7 +765,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic_11380",
+            insights_config_id="tf-test-ic_35305",
             project=project.project_id,
             annotations={},
             labels={},

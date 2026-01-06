@@ -14,6 +14,12 @@ import (
 
 // Create a multicast domain in the current project.
 //
+// To get more information about MulticastDomain, see:
+//
+// * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomains)
+// * How-to Guides
+//   - [Create Multicast Domain](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#create-domain)
+//
 // ## Example Usage
 //
 // ### Network Services Multicast Domain Basic
@@ -96,7 +102,7 @@ type MulticastDomain struct {
 	// VPC connectivity information.
 	// Structure is documented below.
 	ConnectionConfig MulticastDomainConnectionConfigOutput `pulumi:"connectionConfig"`
-	// [Output only] The timestamp when the multicast domain was created.
+	// The timestamp when the multicast domain was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional text description of the multicast domain.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -127,12 +133,23 @@ type MulticastDomain struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// [Output only] The Google-generated UUID for the resource. This value is
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	States MulticastDomainStateTypeArrayOutput `pulumi:"states"`
+	// The Google-generated UUID for the resource. This value is
 	// unique across all multicast domain resources. If a domain is deleted and
 	// another with the same name is created, the new domain is assigned a
 	// different unique_id.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
-	// [Output only] The timestamp when the multicast domain was most recently
+	// The timestamp when the multicast domain was most recently
 	// updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -191,7 +208,7 @@ type multicastDomainState struct {
 	// VPC connectivity information.
 	// Structure is documented below.
 	ConnectionConfig *MulticastDomainConnectionConfig `pulumi:"connectionConfig"`
-	// [Output only] The timestamp when the multicast domain was created.
+	// The timestamp when the multicast domain was created.
 	CreateTime *string `pulumi:"createTime"`
 	// An optional text description of the multicast domain.
 	Description *string `pulumi:"description"`
@@ -222,12 +239,23 @@ type multicastDomainState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// [Output only] The Google-generated UUID for the resource. This value is
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	States []MulticastDomainStateType `pulumi:"states"`
+	// The Google-generated UUID for the resource. This value is
 	// unique across all multicast domain resources. If a domain is deleted and
 	// another with the same name is created, the new domain is assigned a
 	// different unique_id.
 	UniqueId *string `pulumi:"uniqueId"`
-	// [Output only] The timestamp when the multicast domain was most recently
+	// The timestamp when the multicast domain was most recently
 	// updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -240,7 +268,7 @@ type MulticastDomainState struct {
 	// VPC connectivity information.
 	// Structure is documented below.
 	ConnectionConfig MulticastDomainConnectionConfigPtrInput
-	// [Output only] The timestamp when the multicast domain was created.
+	// The timestamp when the multicast domain was created.
 	CreateTime pulumi.StringPtrInput
 	// An optional text description of the multicast domain.
 	Description pulumi.StringPtrInput
@@ -271,12 +299,23 @@ type MulticastDomainState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// [Output only] The Google-generated UUID for the resource. This value is
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	States MulticastDomainStateTypeArrayInput
+	// The Google-generated UUID for the resource. This value is
 	// unique across all multicast domain resources. If a domain is deleted and
 	// another with the same name is created, the new domain is assigned a
 	// different unique_id.
 	UniqueId pulumi.StringPtrInput
-	// [Output only] The timestamp when the multicast domain was most recently
+	// The timestamp when the multicast domain was most recently
 	// updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -446,7 +485,7 @@ func (o MulticastDomainOutput) ConnectionConfig() MulticastDomainConnectionConfi
 	return o.ApplyT(func(v *MulticastDomain) MulticastDomainConnectionConfigOutput { return v.ConnectionConfig }).(MulticastDomainConnectionConfigOutput)
 }
 
-// [Output only] The timestamp when the multicast domain was created.
+// The timestamp when the multicast domain was created.
 func (o MulticastDomainOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MulticastDomain) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -507,7 +546,21 @@ func (o MulticastDomainOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MulticastDomain) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// [Output only] The Google-generated UUID for the resource. This value is
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastDomainOutput) States() MulticastDomainStateTypeArrayOutput {
+	return o.ApplyT(func(v *MulticastDomain) MulticastDomainStateTypeArrayOutput { return v.States }).(MulticastDomainStateTypeArrayOutput)
+}
+
+// The Google-generated UUID for the resource. This value is
 // unique across all multicast domain resources. If a domain is deleted and
 // another with the same name is created, the new domain is assigned a
 // different unique_id.
@@ -515,7 +568,7 @@ func (o MulticastDomainOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MulticastDomain) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
 }
 
-// [Output only] The timestamp when the multicast domain was most recently
+// The timestamp when the multicast domain was most recently
 // updated.
 func (o MulticastDomainOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MulticastDomain) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)

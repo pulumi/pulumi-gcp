@@ -865,6 +865,69 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Zip Deploy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var sourcebucket = new Gcp.Storage.Bucket("sourcebucket", new()
+    ///     {
+    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-tf-test-gcf-source_21197",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var sourceTar = new Gcp.Storage.BucketObject("source_tar", new()
+    ///     {
+    ///         Name = "function-source.zip",
+    ///         Bucket = sourcebucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/cr-zip-nodejs-hello.tar.gz"),
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-zip-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "scratch",
+    ///                     BaseImageUri = "us-central1-docker.pkg.dev/serverless-runtimes/google-24-full/runtimes/nodejs24",
+    ///                     Commands = new[]
+    ///                     {
+    ///                         "node",
+    ///                     },
+    ///                     Args = new[]
+    ///                     {
+    ///                         "index.js",
+    ///                     },
+    ///                     SourceCode = new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerSourceCodeArgs
+    ///                     {
+    ///                         CloudStorageSource = new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerSourceCodeCloudStorageSourceArgs
+    ///                         {
+    ///                             Bucket = sourcebucket.Name,
+    ///                             Object = sourceTar.Name,
+    ///                             Generation = sourceTar.Generation,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

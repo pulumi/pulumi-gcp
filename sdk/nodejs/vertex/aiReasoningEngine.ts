@@ -17,6 +17,34 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Vertex Ai Reasoning Engine Source Based Deployment
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+ *     displayName: "reasoning-engine",
+ *     description: "A basic reasoning engine",
+ *     region: "us-central1",
+ *     spec: {
+ *         sourceCodeSpec: {
+ *             inlineSource: {
+ *                 sourceArchive: std.filebase64({
+ *                     input: "./test-fixtures/source.tar.gz",
+ *                 }).then(invoke => invoke.result),
+ *             },
+ *             pythonSpec: {
+ *                 entrypointModule: "simple_agent",
+ *                 entrypointObject: "fixed_name_generator",
+ *                 requirementsFile: "./test-fixtures/requirements.txt",
+ *                 version: "3.11",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  * ### Vertex Ai Reasoning Engine Full
  *
  * ```typescript

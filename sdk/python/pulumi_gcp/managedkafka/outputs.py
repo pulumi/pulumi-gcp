@@ -114,8 +114,8 @@ class ClusterBrokerCapacityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "diskSizeGb":
-            suggest = "disk_size_gb"
+        if key == "diskSizeGib":
+            suggest = "disk_size_gib"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterBrokerCapacityConfig. Access the value via the '{suggest}' property getter instead.")
@@ -129,20 +129,20 @@ class ClusterBrokerCapacityConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 disk_size_gb: Optional[_builtins.str] = None):
+                 disk_size_gib: Optional[_builtins.str] = None):
         """
-        :param _builtins.str disk_size_gb: The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        :param _builtins.str disk_size_gib: The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         """
-        if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_size_gib is not None:
+            pulumi.set(__self__, "disk_size_gib", disk_size_gib)
 
     @_builtins.property
-    @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[_builtins.str]:
+    @pulumi.getter(name="diskSizeGib")
+    def disk_size_gib(self) -> Optional[_builtins.str]:
         """
-        The disk to provision for each broker in Gigabytes. Minimum: 100 GB.
+        The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
         """
-        return pulumi.get(self, "disk_size_gb")
+        return pulumi.get(self, "disk_size_gib")
 
 
 @pulumi.output_type

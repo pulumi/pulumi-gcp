@@ -187,6 +187,7 @@ class _MulticastDomainState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MulticastDomainStateArgs']]]] = None,
                  unique_id: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -196,7 +197,7 @@ class _MulticastDomainState:
                `projects/{project}/locations/global/networks/{network}`.
         :param pulumi.Input['MulticastDomainConnectionConfigArgs'] connection_config: VPC connectivity information.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] create_time: [Output only] The timestamp when the multicast domain was created.
+        :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain was created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs.
@@ -217,11 +218,21 @@ class _MulticastDomainState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[_builtins.str] unique_id: [Output only] The Google-generated UUID for the resource. This value is
+        :param pulumi.Input[Sequence[pulumi.Input['MulticastDomainStateArgs']]] states: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is
                unique across all multicast domain resources. If a domain is deleted and
                another with the same name is created, the new domain is assigned a
                different unique_id.
-        :param pulumi.Input[_builtins.str] update_time: [Output only] The timestamp when the multicast domain was most recently
+        :param pulumi.Input[_builtins.str] update_time: The timestamp when the multicast domain was most recently
                updated.
         """
         if admin_network is not None:
@@ -248,6 +259,8 @@ class _MulticastDomainState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if states is not None:
+            pulumi.set(__self__, "states", states)
         if unique_id is not None:
             pulumi.set(__self__, "unique_id", unique_id)
         if update_time is not None:
@@ -284,7 +297,7 @@ class _MulticastDomainState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        [Output only] The timestamp when the multicast domain was created.
+        The timestamp when the multicast domain was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -412,10 +425,31 @@ class _MulticastDomainState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MulticastDomainStateArgs']]]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "states")
+
+    @states.setter
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MulticastDomainStateArgs']]]]):
+        pulumi.set(self, "states", value)
+
+    @_builtins.property
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        [Output only] The Google-generated UUID for the resource. This value is
+        The Google-generated UUID for the resource. This value is
         unique across all multicast domain resources. If a domain is deleted and
         another with the same name is created, the new domain is assigned a
         different unique_id.
@@ -430,7 +464,7 @@ class _MulticastDomainState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        [Output only] The timestamp when the multicast domain was most recently
+        The timestamp when the multicast domain was most recently
         updated.
         """
         return pulumi.get(self, "update_time")
@@ -457,6 +491,12 @@ class MulticastDomain(pulumi.CustomResource):
                  __props__=None):
         """
         Create a multicast domain in the current project.
+
+        To get more information about MulticastDomain, see:
+
+        * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomains)
+        * How-to Guides
+            * [Create Multicast Domain](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#create-domain)
 
         ## Example Usage
 
@@ -539,6 +579,12 @@ class MulticastDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a multicast domain in the current project.
+
+        To get more information about MulticastDomain, see:
+
+        * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomains)
+        * How-to Guides
+            * [Create Multicast Domain](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#create-domain)
 
         ## Example Usage
 
@@ -643,6 +689,7 @@ class MulticastDomain(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["states"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -669,6 +716,7 @@ class MulticastDomain(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainStateArgs', 'MulticastDomainStateArgsDict']]]]] = None,
             unique_id: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'MulticastDomain':
         """
@@ -683,7 +731,7 @@ class MulticastDomain(pulumi.CustomResource):
                `projects/{project}/locations/global/networks/{network}`.
         :param pulumi.Input[Union['MulticastDomainConnectionConfigArgs', 'MulticastDomainConnectionConfigArgsDict']] connection_config: VPC connectivity information.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] create_time: [Output only] The timestamp when the multicast domain was created.
+        :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain was created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs.
@@ -704,11 +752,21 @@ class MulticastDomain(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[_builtins.str] unique_id: [Output only] The Google-generated UUID for the resource. This value is
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainStateArgs', 'MulticastDomainStateArgsDict']]]] states: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is
                unique across all multicast domain resources. If a domain is deleted and
                another with the same name is created, the new domain is assigned a
                different unique_id.
-        :param pulumi.Input[_builtins.str] update_time: [Output only] The timestamp when the multicast domain was most recently
+        :param pulumi.Input[_builtins.str] update_time: The timestamp when the multicast domain was most recently
                updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -727,6 +785,7 @@ class MulticastDomain(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["states"] = states
         __props__.__dict__["unique_id"] = unique_id
         __props__.__dict__["update_time"] = update_time
         return MulticastDomain(resource_name, opts=opts, __props__=__props__)
@@ -754,7 +813,7 @@ class MulticastDomain(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        [Output only] The timestamp when the multicast domain was created.
+        The timestamp when the multicast domain was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -842,10 +901,27 @@ class MulticastDomain(pulumi.CustomResource):
         return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
+    @pulumi.getter
+    def states(self) -> pulumi.Output[Sequence['outputs.MulticastDomainState']]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "states")
+
+    @_builtins.property
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> pulumi.Output[_builtins.str]:
         """
-        [Output only] The Google-generated UUID for the resource. This value is
+        The Google-generated UUID for the resource. This value is
         unique across all multicast domain resources. If a domain is deleted and
         another with the same name is created, the new domain is assigned a
         different unique_id.
@@ -856,7 +932,7 @@ class MulticastDomain(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        [Output only] The timestamp when the multicast domain was most recently
+        The timestamp when the multicast domain was most recently
         updated.
         """
         return pulumi.get(self, "update_time")

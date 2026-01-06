@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about OrganizationSecurityPolicyAssociation, see:
  * 
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies/addAssociation)
  * * How-to Guides
  *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
  * 
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
  *             .displayName("tf-test")
  *             .parent(securityPolicyTarget.name())
- *             .type("FIREWALL")
+ *             .type("CLOUD_ARMOR")
  *             .build());
  * 
  *         var policyOrganizationSecurityPolicyAssociation = new OrganizationSecurityPolicyAssociation("policyOrganizationSecurityPolicyAssociation", OrganizationSecurityPolicyAssociationArgs.builder()

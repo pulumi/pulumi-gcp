@@ -617,7 +617,7 @@ class ConversationProfile(pulumi.CustomResource):
 
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
-            default_language_code="en-us",
+            default_language_code="en",
             time_zone="America/New_York")
         basic_profile = gcp.diagflow.ConversationProfile("basic_profile",
             display_name="dialogflow-profile",
@@ -715,7 +715,7 @@ class ConversationProfile(pulumi.CustomResource):
 
         basic_agent = gcp.diagflow.Agent("basic_agent",
             display_name="example_agent",
-            default_language_code="en-us",
+            default_language_code="en",
             time_zone="America/New_York")
         basic_profile = gcp.diagflow.ConversationProfile("basic_profile",
             display_name="dialogflow-profile",

@@ -27,6 +27,61 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Vertex Ai Reasoning Engine Source Based Deployment
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("reasoning-engine")
+ *             .description("A basic reasoning engine")
+ *             .region("us-central1")
+ *             .spec(AiReasoningEngineSpecArgs.builder()
+ *                 .sourceCodeSpec(AiReasoningEngineSpecSourceCodeSpecArgs.builder()
+ *                     .inlineSource(AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs.builder()
+ *                         .sourceArchive(StdFunctions.filebase64(Filebase64Args.builder()
+ *                             .input("./test-fixtures/source.tar.gz")
+ *                             .build()).result())
+ *                         .build())
+ *                     .pythonSpec(AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs.builder()
+ *                         .entrypointModule("simple_agent")
+ *                         .entrypointObject("fixed_name_generator")
+ *                         .requirementsFile("./test-fixtures/requirements.txt")
+ *                         .version("3.11")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Vertex Ai Reasoning Engine Full
  * 
  * <pre>

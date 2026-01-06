@@ -186,7 +186,9 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> HotTierSizeUsedGib { get; private set; } = null!;
 
         /// <summary>
-        /// The Hybrid Replication parameters for the volume.
+        /// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        /// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+        /// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
         /// Structure is documented below.
         /// </summary>
         [Output("hybridReplicationParameters")]
@@ -502,7 +504,9 @@ namespace Pulumi.Gcp.Netapp
         public Input<Inputs.VolumeExportPolicyArgs>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// The Hybrid Replication parameters for the volume.
+        /// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        /// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+        /// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
         /// Structure is documented below.
         /// </summary>
         [Input("hybridReplicationParameters")]
@@ -777,7 +781,9 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? HotTierSizeUsedGib { get; set; }
 
         /// <summary>
-        /// The Hybrid Replication parameters for the volume.
+        /// [Volume migration](https://docs.cloud.google.com/netapp/volumes/docs/migrate/ontap/overview) and
+        /// [external replication](https://docs.cloud.google.com/netapp/volumes/docs/protect-data/replicate-ontap/overview)
+        /// are two types of Hybrid Replication. This parameter block specifies the parameters for a hybrid replication.
         /// Structure is documented below.
         /// </summary>
         [Input("hybridReplicationParameters")]

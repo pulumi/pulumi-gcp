@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * });
  * const basicAgent = new gcp.diagflow.Agent("basic_agent", {
  *     displayName: "example_agent",
- *     defaultLanguageCode: "en-us",
+ *     defaultLanguageCode: "en",
  *     timeZone: "America/New_York",
  *     project: project.projectId,
  * }, {

@@ -162,15 +162,33 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     [OutputType]
     public sealed class GetBackupResult
     {
+        /// <summary>
+        /// Name of the Backup Vault associated with Backup.
+        /// </summary>
         public readonly string BackupVaultId;
+        /// <summary>
+        /// List of all backups under data source. Structure is defined below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackupBackupResult> Backups;
+        /// <summary>
+        /// The time when the backup was created.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Name of the Data Source associated with Backup.
+        /// </summary>
         public readonly string DataSourceId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Location of the resource.
+        /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
         public readonly string Name;
         public readonly string Project;
 

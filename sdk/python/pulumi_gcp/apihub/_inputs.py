@@ -1054,7 +1054,7 @@ if not MYPY:
         be used.
 
 
-        <a name="nested_actions_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
+        <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
         """
         state: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1094,7 +1094,7 @@ class PluginInstanceActionArgs:
                be used.
                
                
-               <a name="nested_actions_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
+               <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
         :param pulumi.Input[_builtins.str] state: (Output)
                The current state of the plugin action in the plugin instance.
                Possible values:
@@ -1178,7 +1178,7 @@ class PluginInstanceActionArgs:
         be used.
 
 
-        <a name="nested_actions_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
+        <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
         """
         return pulumi.get(self, "schedule_time_zone")
 

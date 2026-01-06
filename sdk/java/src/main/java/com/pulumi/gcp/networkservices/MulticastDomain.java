@@ -9,8 +9,8 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.MulticastDomainArgs;
-import com.pulumi.gcp.networkservices.inputs.MulticastDomainState;
 import com.pulumi.gcp.networkservices.outputs.MulticastDomainConnectionConfig;
+import com.pulumi.gcp.networkservices.outputs.MulticastDomainState;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +19,12 @@ import javax.annotation.Nullable;
 
 /**
  * Create a multicast domain in the current project.
+ * 
+ * To get more information about MulticastDomain, see:
+ * 
+ * * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomains)
+ * * How-to Guides
+ *     * [Create Multicast Domain](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#create-domain)
  * 
  * ## Example Usage
  * 
@@ -137,14 +143,14 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
         return this.connectionConfig;
     }
     /**
-     * [Output only] The timestamp when the multicast domain was created.
+     * The timestamp when the multicast domain was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain was created.
+     * @return The timestamp when the multicast domain was created.
      * 
      */
     public Output<String> createTime() {
@@ -299,7 +305,39 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    @Export(name="states", refs={List.class,MulticastDomainState.class}, tree="[0,1]")
+    private Output<List<MulticastDomainState>> states;
+
+    /**
+     * @return (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    public Output<List<MulticastDomainState>> states() {
+        return this.states;
+    }
+    /**
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
      * another with the same name is created, the new domain is assigned a
      * different unique_id.
@@ -309,7 +347,7 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
     private Output<String> uniqueId;
 
     /**
-     * @return [Output only] The Google-generated UUID for the resource. This value is
+     * @return The Google-generated UUID for the resource. This value is
      * unique across all multicast domain resources. If a domain is deleted and
      * another with the same name is created, the new domain is assigned a
      * different unique_id.
@@ -319,7 +357,7 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
         return this.uniqueId;
     }
     /**
-     * [Output only] The timestamp when the multicast domain was most recently
+     * The timestamp when the multicast domain was most recently
      * updated.
      * 
      */
@@ -327,7 +365,7 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
     private Output<String> updateTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain was most recently
+     * @return The timestamp when the multicast domain was most recently
      * updated.
      * 
      */
@@ -360,7 +398,7 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
         super("gcp:networkservices/multicastDomain:MulticastDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MulticastDomain(java.lang.String name, Output<java.lang.String> id, @Nullable MulticastDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private MulticastDomain(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.networkservices.inputs.MulticastDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/multicastDomain:MulticastDomain", name, state, makeResourceOptions(options, id), false);
     }
 
@@ -391,7 +429,7 @@ public class MulticastDomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MulticastDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable MulticastDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MulticastDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.networkservices.inputs.MulticastDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MulticastDomain(name, id, state, options);
     }
 }

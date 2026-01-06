@@ -8,9 +8,11 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+import com.pulumi.gcp.datastream.inputs.StreamRuleSetArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -237,6 +239,23 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Rule sets to apply to the stream.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="ruleSets")
+    private @Nullable Output<List<StreamRuleSetArgs>> ruleSets;
+
+    /**
+     * @return Rule sets to apply to the stream.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<StreamRuleSetArgs>>> ruleSets() {
+        return Optional.ofNullable(this.ruleSets);
+    }
+
+    /**
      * Source connection profile configuration.
      * Structure is documented below.
      * 
@@ -299,6 +318,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.ruleSets = $.ruleSets;
         this.sourceConfig = $.sourceConfig;
         this.state = $.state;
         this.streamId = $.streamId;
@@ -613,6 +633,40 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param ruleSets Rule sets to apply to the stream.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleSets(@Nullable Output<List<StreamRuleSetArgs>> ruleSets) {
+            $.ruleSets = ruleSets;
+            return this;
+        }
+
+        /**
+         * @param ruleSets Rule sets to apply to the stream.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleSets(List<StreamRuleSetArgs> ruleSets) {
+            return ruleSets(Output.of(ruleSets));
+        }
+
+        /**
+         * @param ruleSets Rule sets to apply to the stream.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleSets(StreamRuleSetArgs... ruleSets) {
+            return ruleSets(List.of(ruleSets));
         }
 
         /**

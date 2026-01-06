@@ -25,7 +25,8 @@ class WorkforcePoolProviderScimTenantArgs:
                  workforce_pool_id: pulumi.Input[_builtins.str],
                  claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 hard_delete: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a WorkforcePoolProviderScimTenant resource.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
@@ -35,6 +36,7 @@ class WorkforcePoolProviderScimTenantArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
+        :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "provider_id", provider_id)
@@ -46,6 +48,8 @@ class WorkforcePoolProviderScimTenantArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if hard_delete is not None:
+            pulumi.set(__self__, "hard_delete", hard_delete)
 
     @_builtins.property
     @pulumi.getter
@@ -131,6 +135,18 @@ class WorkforcePoolProviderScimTenantArgs:
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="hardDelete")
+    def hard_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Deletes the SCIM tenant immediately. This operation cannot be undone.
+        """
+        return pulumi.get(self, "hard_delete")
+
+    @hard_delete.setter
+    def hard_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "hard_delete", value)
+
 
 @pulumi.input_type
 class _WorkforcePoolProviderScimTenantState:
@@ -139,6 +155,7 @@ class _WorkforcePoolProviderScimTenantState:
                  claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 hard_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -157,6 +174,7 @@ class _WorkforcePoolProviderScimTenantState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
+        :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the scim tenant.
                Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
@@ -179,6 +197,8 @@ class _WorkforcePoolProviderScimTenantState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if hard_delete is not None:
+            pulumi.set(__self__, "hard_delete", hard_delete)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -247,6 +267,18 @@ class _WorkforcePoolProviderScimTenantState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hardDelete")
+    def hard_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Deletes the SCIM tenant immediately. This operation cannot be undone.
+        """
+        return pulumi.get(self, "hard_delete")
+
+    @hard_delete.setter
+    def hard_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "hard_delete", value)
 
     @_builtins.property
     @pulumi.getter
@@ -359,6 +391,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                  claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 hard_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -424,7 +457,8 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             claim_mapping={
                 "google.subject": "user.externalId",
                 "google.group": "group.externalId",
-            })
+            },
+            hard_delete=True)
         ```
 
         ## Import
@@ -450,6 +484,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
+        :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] provider_id: The ID of the provider.
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -521,7 +556,8 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             claim_mapping={
                 "google.subject": "user.externalId",
                 "google.group": "group.externalId",
-            })
+            },
+            hard_delete=True)
         ```
 
         ## Import
@@ -560,6 +596,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                  claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 hard_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scim_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -576,6 +613,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             __props__.__dict__["claim_mapping"] = claim_mapping
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["hard_delete"] = hard_delete
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -607,6 +645,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             claim_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            hard_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             provider_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -630,6 +669,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
+        :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
         :param pulumi.Input[_builtins.str] location: The location for the resource.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the scim tenant.
                Format: `locations/{location}/workforcePools/{workforce_pool}/providers/{workforce_pool_provider}/scimTenants/{scim_tenant_id}
@@ -652,6 +692,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         __props__.__dict__["claim_mapping"] = claim_mapping
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["hard_delete"] = hard_delete
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["provider_id"] = provider_id
@@ -697,6 +738,14 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="hardDelete")
+    def hard_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Deletes the SCIM tenant immediately. This operation cannot be undone.
+        """
+        return pulumi.get(self, "hard_delete")
 
     @_builtins.property
     @pulumi.getter

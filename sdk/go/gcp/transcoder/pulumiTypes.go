@@ -911,7 +911,7 @@ type JobConfigElementaryStreamVideoStream struct {
 	// H264 codec settings
 	// Structure is documented below.
 	//
-	// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+	// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 	H264 *JobConfigElementaryStreamVideoStreamH264 `pulumi:"h264"`
 }
 
@@ -930,7 +930,7 @@ type JobConfigElementaryStreamVideoStreamArgs struct {
 	// H264 codec settings
 	// Structure is documented below.
 	//
-	// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+	// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 	H264 JobConfigElementaryStreamVideoStreamH264PtrInput `pulumi:"h264"`
 }
 
@@ -1014,7 +1014,7 @@ func (o JobConfigElementaryStreamVideoStreamOutput) ToJobConfigElementaryStreamV
 // H264 codec settings
 // Structure is documented below.
 //
-// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 func (o JobConfigElementaryStreamVideoStreamOutput) H264() JobConfigElementaryStreamVideoStreamH264PtrOutput {
 	return o.ApplyT(func(v JobConfigElementaryStreamVideoStream) *JobConfigElementaryStreamVideoStreamH264 { return v.H264 }).(JobConfigElementaryStreamVideoStreamH264PtrOutput)
 }
@@ -1046,7 +1046,7 @@ func (o JobConfigElementaryStreamVideoStreamPtrOutput) Elem() JobConfigElementar
 // H264 codec settings
 // Structure is documented below.
 //
-// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 func (o JobConfigElementaryStreamVideoStreamPtrOutput) H264() JobConfigElementaryStreamVideoStreamH264PtrOutput {
 	return o.ApplyT(func(v *JobConfigElementaryStreamVideoStream) *JobConfigElementaryStreamVideoStreamH264 {
 		if v == nil {
@@ -5436,7 +5436,7 @@ type JobTemplateConfigElementaryStreamVideoStream struct {
 	// H264 codec settings
 	// Structure is documented below.
 	//
-	// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+	// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 	H264 *JobTemplateConfigElementaryStreamVideoStreamH264 `pulumi:"h264"`
 }
 
@@ -5455,7 +5455,7 @@ type JobTemplateConfigElementaryStreamVideoStreamArgs struct {
 	// H264 codec settings
 	// Structure is documented below.
 	//
-	// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+	// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 	H264 JobTemplateConfigElementaryStreamVideoStreamH264PtrInput `pulumi:"h264"`
 }
 
@@ -5539,7 +5539,7 @@ func (o JobTemplateConfigElementaryStreamVideoStreamOutput) ToJobTemplateConfigE
 // H264 codec settings
 // Structure is documented below.
 //
-// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 func (o JobTemplateConfigElementaryStreamVideoStreamOutput) H264() JobTemplateConfigElementaryStreamVideoStreamH264PtrOutput {
 	return o.ApplyT(func(v JobTemplateConfigElementaryStreamVideoStream) *JobTemplateConfigElementaryStreamVideoStreamH264 {
 		return v.H264
@@ -5573,7 +5573,7 @@ func (o JobTemplateConfigElementaryStreamVideoStreamPtrOutput) Elem() JobTemplat
 // H264 codec settings
 // Structure is documented below.
 //
-// <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
+// <a name="nestedConfigElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
 func (o JobTemplateConfigElementaryStreamVideoStreamPtrOutput) H264() JobTemplateConfigElementaryStreamVideoStreamH264PtrOutput {
 	return o.ApplyT(func(v *JobTemplateConfigElementaryStreamVideoStream) *JobTemplateConfigElementaryStreamVideoStreamH264 {
 		if v == nil {

@@ -13,6 +13,7 @@ import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodArgs;
 import com.pulumi.gcp.looker.inputs.InstanceEncryptionConfigArgs;
 import com.pulumi.gcp.looker.inputs.InstanceMaintenanceWindowArgs;
 import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+import com.pulumi.gcp.looker.inputs.InstancePeriodicExportConfigArgs;
 import com.pulumi.gcp.looker.inputs.InstancePscConfigArgs;
 import com.pulumi.gcp.looker.inputs.InstanceUserMetadataArgs;
 import java.lang.Boolean;
@@ -256,6 +257,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for periodic export.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="periodicExportConfig")
+    private @Nullable Output<InstancePeriodicExportConfigArgs> periodicExportConfig;
+
+    /**
+     * @return Configuration for periodic export.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePeriodicExportConfigArgs>> periodicExportConfig() {
+        return Optional.ofNullable(this.periodicExportConfig);
+    }
+
+    /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
      * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -452,6 +470,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.maintenanceWindow = $.maintenanceWindow;
         this.name = $.name;
         this.oauthConfig = $.oauthConfig;
+        this.periodicExportConfig = $.periodicExportConfig;
         this.platformEdition = $.platformEdition;
         this.privateIpEnabled = $.privateIpEnabled;
         this.project = $.project;
@@ -786,6 +805,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oauthConfig(InstanceOauthConfigArgs oauthConfig) {
             return oauthConfig(Output.of(oauthConfig));
+        }
+
+        /**
+         * @param periodicExportConfig Configuration for periodic export.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder periodicExportConfig(@Nullable Output<InstancePeriodicExportConfigArgs> periodicExportConfig) {
+            $.periodicExportConfig = periodicExportConfig;
+            return this;
+        }
+
+        /**
+         * @param periodicExportConfig Configuration for periodic export.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder periodicExportConfig(InstancePeriodicExportConfigArgs periodicExportConfig) {
+            return periodicExportConfig(Output.of(periodicExportConfig));
         }
 
         /**

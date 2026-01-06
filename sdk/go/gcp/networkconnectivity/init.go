@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:networkconnectivity/destination:Destination":
+		r = &Destination{}
 	case "gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute":
 		r = &GatewayAdvertisedRoute{}
 	case "gcp:networkconnectivity/group:Group":
@@ -29,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Hub{}
 	case "gcp:networkconnectivity/internalRange:InternalRange":
 		r = &InternalRange{}
+	case "gcp:networkconnectivity/multicloudDataTransferConfig:MulticloudDataTransferConfig":
+		r = &MulticloudDataTransferConfig{}
 	case "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute":
 		r = &PolicyBasedRoute{}
 	case "gcp:networkconnectivity/regionalEndpoint:RegionalEndpoint":
@@ -52,6 +56,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networkconnectivity/destination",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networkconnectivity/gatewayAdvertisedRoute",
 		&module{version},
 	)
@@ -68,6 +77,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networkconnectivity/internalRange",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkconnectivity/multicloudDataTransferConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

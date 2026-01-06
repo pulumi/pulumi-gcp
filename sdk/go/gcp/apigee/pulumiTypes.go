@@ -7845,6 +7845,115 @@ func (o SecurityActionFlagHeaderArrayOutput) Index(i pulumi.IntInput) SecurityAc
 	}).(SecurityActionFlagHeaderOutput)
 }
 
+type SecurityFeedbackFeedbackContext struct {
+	// The attribute the user is providing feedback about.
+	// Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+	Attribute string `pulumi:"attribute"`
+	// The values of the attribute the user is providing feedback about, separated by commas.
+	Values []string `pulumi:"values"`
+}
+
+// SecurityFeedbackFeedbackContextInput is an input type that accepts SecurityFeedbackFeedbackContextArgs and SecurityFeedbackFeedbackContextOutput values.
+// You can construct a concrete instance of `SecurityFeedbackFeedbackContextInput` via:
+//
+//	SecurityFeedbackFeedbackContextArgs{...}
+type SecurityFeedbackFeedbackContextInput interface {
+	pulumi.Input
+
+	ToSecurityFeedbackFeedbackContextOutput() SecurityFeedbackFeedbackContextOutput
+	ToSecurityFeedbackFeedbackContextOutputWithContext(context.Context) SecurityFeedbackFeedbackContextOutput
+}
+
+type SecurityFeedbackFeedbackContextArgs struct {
+	// The attribute the user is providing feedback about.
+	// Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// The values of the attribute the user is providing feedback about, separated by commas.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (SecurityFeedbackFeedbackContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityFeedbackFeedbackContext)(nil)).Elem()
+}
+
+func (i SecurityFeedbackFeedbackContextArgs) ToSecurityFeedbackFeedbackContextOutput() SecurityFeedbackFeedbackContextOutput {
+	return i.ToSecurityFeedbackFeedbackContextOutputWithContext(context.Background())
+}
+
+func (i SecurityFeedbackFeedbackContextArgs) ToSecurityFeedbackFeedbackContextOutputWithContext(ctx context.Context) SecurityFeedbackFeedbackContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityFeedbackFeedbackContextOutput)
+}
+
+// SecurityFeedbackFeedbackContextArrayInput is an input type that accepts SecurityFeedbackFeedbackContextArray and SecurityFeedbackFeedbackContextArrayOutput values.
+// You can construct a concrete instance of `SecurityFeedbackFeedbackContextArrayInput` via:
+//
+//	SecurityFeedbackFeedbackContextArray{ SecurityFeedbackFeedbackContextArgs{...} }
+type SecurityFeedbackFeedbackContextArrayInput interface {
+	pulumi.Input
+
+	ToSecurityFeedbackFeedbackContextArrayOutput() SecurityFeedbackFeedbackContextArrayOutput
+	ToSecurityFeedbackFeedbackContextArrayOutputWithContext(context.Context) SecurityFeedbackFeedbackContextArrayOutput
+}
+
+type SecurityFeedbackFeedbackContextArray []SecurityFeedbackFeedbackContextInput
+
+func (SecurityFeedbackFeedbackContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityFeedbackFeedbackContext)(nil)).Elem()
+}
+
+func (i SecurityFeedbackFeedbackContextArray) ToSecurityFeedbackFeedbackContextArrayOutput() SecurityFeedbackFeedbackContextArrayOutput {
+	return i.ToSecurityFeedbackFeedbackContextArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityFeedbackFeedbackContextArray) ToSecurityFeedbackFeedbackContextArrayOutputWithContext(ctx context.Context) SecurityFeedbackFeedbackContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityFeedbackFeedbackContextArrayOutput)
+}
+
+type SecurityFeedbackFeedbackContextOutput struct{ *pulumi.OutputState }
+
+func (SecurityFeedbackFeedbackContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityFeedbackFeedbackContext)(nil)).Elem()
+}
+
+func (o SecurityFeedbackFeedbackContextOutput) ToSecurityFeedbackFeedbackContextOutput() SecurityFeedbackFeedbackContextOutput {
+	return o
+}
+
+func (o SecurityFeedbackFeedbackContextOutput) ToSecurityFeedbackFeedbackContextOutputWithContext(ctx context.Context) SecurityFeedbackFeedbackContextOutput {
+	return o
+}
+
+// The attribute the user is providing feedback about.
+// Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
+func (o SecurityFeedbackFeedbackContextOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityFeedbackFeedbackContext) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// The values of the attribute the user is providing feedback about, separated by commas.
+func (o SecurityFeedbackFeedbackContextOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityFeedbackFeedbackContext) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type SecurityFeedbackFeedbackContextArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityFeedbackFeedbackContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityFeedbackFeedbackContext)(nil)).Elem()
+}
+
+func (o SecurityFeedbackFeedbackContextArrayOutput) ToSecurityFeedbackFeedbackContextArrayOutput() SecurityFeedbackFeedbackContextArrayOutput {
+	return o
+}
+
+func (o SecurityFeedbackFeedbackContextArrayOutput) ToSecurityFeedbackFeedbackContextArrayOutputWithContext(ctx context.Context) SecurityFeedbackFeedbackContextArrayOutput {
+	return o
+}
+
+func (o SecurityFeedbackFeedbackContextArrayOutput) Index(i pulumi.IntInput) SecurityFeedbackFeedbackContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityFeedbackFeedbackContext {
+		return vs[0].([]SecurityFeedbackFeedbackContext)[vs[1].(int)]
+	}).(SecurityFeedbackFeedbackContextOutput)
+}
+
 type SecurityMonitoringConditionIncludeAllResources struct {
 }
 
@@ -8760,6 +8869,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionFlagPtrInput)(nil)).Elem(), SecurityActionFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionFlagHeaderInput)(nil)).Elem(), SecurityActionFlagHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityActionFlagHeaderArrayInput)(nil)).Elem(), SecurityActionFlagHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityFeedbackFeedbackContextInput)(nil)).Elem(), SecurityFeedbackFeedbackContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityFeedbackFeedbackContextArrayInput)(nil)).Elem(), SecurityFeedbackFeedbackContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResourcesInput)(nil)).Elem(), SecurityMonitoringConditionIncludeAllResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityMonitoringConditionIncludeAllResourcesPtrInput)(nil)).Elem(), SecurityMonitoringConditionIncludeAllResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileV2ProfileAssessmentConfigInput)(nil)).Elem(), SecurityProfileV2ProfileAssessmentConfigArgs{})
@@ -8874,6 +8985,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityActionFlagPtrOutput{})
 	pulumi.RegisterOutputType(SecurityActionFlagHeaderOutput{})
 	pulumi.RegisterOutputType(SecurityActionFlagHeaderArrayOutput{})
+	pulumi.RegisterOutputType(SecurityFeedbackFeedbackContextOutput{})
+	pulumi.RegisterOutputType(SecurityFeedbackFeedbackContextArrayOutput{})
 	pulumi.RegisterOutputType(SecurityMonitoringConditionIncludeAllResourcesOutput{})
 	pulumi.RegisterOutputType(SecurityMonitoringConditionIncludeAllResourcesPtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileV2ProfileAssessmentConfigOutput{})

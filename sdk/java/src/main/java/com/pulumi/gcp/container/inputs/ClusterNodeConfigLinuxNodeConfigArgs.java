@@ -57,14 +57,14 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * The settings for kernel module loading.
+     * Settings for kernel module loading. Structure is documented below.
      * 
      */
     @Import(name="nodeKernelModuleLoading")
     private @Nullable Output<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs> nodeKernelModuleLoading;
 
     /**
-     * @return The settings for kernel module loading.
+     * @return Settings for kernel module loading. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs>> nodeKernelModuleLoading() {
@@ -202,7 +202,7 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * @param nodeKernelModuleLoading Settings for kernel module loading. Structure is documented below.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeKernelModuleLoading The settings for kernel module loading.
+         * @param nodeKernelModuleLoading Settings for kernel module loading. Structure is documented below.
          * 
          * @return builder
          * 

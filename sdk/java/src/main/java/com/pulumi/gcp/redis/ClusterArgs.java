@@ -133,6 +133,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * Maintenance policy for a cluster
      * Structure is documented below.
      * 
@@ -385,6 +404,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.gcsSource = $.gcsSource;
         this.kmsKey = $.kmsKey;
+        this.labels = $.labels;
         this.maintenancePolicy = $.maintenancePolicy;
         this.maintenanceVersion = $.maintenanceVersion;
         this.managedBackupSource = $.managedBackupSource;
@@ -557,6 +577,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsKey(String kmsKey) {
             return kmsKey(Output.of(kmsKey));
+        }
+
+        /**
+         * @param labels Resource labels to represent user provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Resource labels to represent user provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

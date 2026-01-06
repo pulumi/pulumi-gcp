@@ -13951,7 +13951,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions(dict):
                Structure is documented below.
                
                
-               <a name="nested_targets_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
+               <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
         :param _builtins.str min_age: Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
         """
         if amazon_s3_bucket_conditions is not None:
@@ -13967,7 +13967,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions(dict):
         Structure is documented below.
 
 
-        <a name="nested_targets_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
+        <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
         """
         return pulumi.get(self, "amazon_s3_bucket_conditions")
 
@@ -14221,7 +14221,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
                Structure is documented below.
                
                
-               <a name="nested_targets_targets_other_cloud_target_filter_collection_include_regexes_patterns_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
+               <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
         """
         if amazon_s3_bucket_regex is not None:
             pulumi.set(__self__, "amazon_s3_bucket_regex", amazon_s3_bucket_regex)
@@ -14234,7 +14234,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         Structure is documented below.
 
 
-        <a name="nested_targets_targets_other_cloud_target_filter_collection_include_regexes_patterns_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
+        <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
         """
         return pulumi.get(self, "amazon_s3_bucket_regex")
 
@@ -14357,7 +14357,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource(dict):
                Structure is documented below.
                
                
-               <a name="nested_targets_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
+               <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
         """
         if amazon_s3_bucket is not None:
             pulumi.set(__self__, "amazon_s3_bucket", amazon_s3_bucket)
@@ -14370,7 +14370,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource(dict):
         Structure is documented below.
 
 
-        <a name="nested_targets_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
+        <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
         """
         return pulumi.get(self, "amazon_s3_bucket")
 

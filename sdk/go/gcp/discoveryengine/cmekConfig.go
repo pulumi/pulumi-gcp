@@ -94,7 +94,7 @@ type CmekConfig struct {
 	pulumi.CustomResourceState
 
 	// The unique id of the cmek config.
-	CmekConfigId pulumi.StringPtrOutput `pulumi:"cmekConfigId"`
+	CmekConfigId pulumi.StringOutput `pulumi:"cmekConfigId"`
 	// The default CmekConfig for the Customer.
 	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// KMS key resource name which will be used to encrypt resources
@@ -135,6 +135,9 @@ func NewCmekConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CmekConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'CmekConfigId'")
+	}
 	if args.KmsKey == nil {
 		return nil, errors.New("invalid value for required argument 'KmsKey'")
 	}
@@ -241,7 +244,7 @@ func (CmekConfigState) ElementType() reflect.Type {
 
 type cmekConfigArgs struct {
 	// The unique id of the cmek config.
-	CmekConfigId *string `pulumi:"cmekConfigId"`
+	CmekConfigId string `pulumi:"cmekConfigId"`
 	// KMS key resource name which will be used to encrypt resources
 	// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
 	KmsKey string `pulumi:"kmsKey"`
@@ -262,7 +265,7 @@ type cmekConfigArgs struct {
 // The set of arguments for constructing a CmekConfig resource.
 type CmekConfigArgs struct {
 	// The unique id of the cmek config.
-	CmekConfigId pulumi.StringPtrInput
+	CmekConfigId pulumi.StringInput
 	// KMS key resource name which will be used to encrypt resources
 	// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
 	KmsKey pulumi.StringInput
@@ -368,8 +371,8 @@ func (o CmekConfigOutput) ToCmekConfigOutputWithContext(ctx context.Context) Cme
 }
 
 // The unique id of the cmek config.
-func (o CmekConfigOutput) CmekConfigId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CmekConfig) pulumi.StringPtrOutput { return v.CmekConfigId }).(pulumi.StringPtrOutput)
+func (o CmekConfigOutput) CmekConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CmekConfig) pulumi.StringOutput { return v.CmekConfigId }).(pulumi.StringOutput)
 }
 
 // The default CmekConfig for the Customer.

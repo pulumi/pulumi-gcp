@@ -345,7 +345,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_72490",
+    ///         Name = "tf-test-bucket-name-_89605",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -388,16 +388,16 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_89605",
+    ///         Name = "tf-test-bucket-name-_56730",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var tfTestConnection = new Gcp.BigQuery.Connection("tf_test_connection", new()
     ///     {
-    ///         ConnectionId = "tf-test-connection-_56730",
+    ///         ConnectionId = "tf-test-connection-_95154",
     ///         Location = "us-central1",
-    ///         FriendlyName = "tf-test-connection-_95154",
+    ///         FriendlyName = "tf-test-connection-_64336",
     ///         Description = "a bigquery connection for tf test",
     ///         CloudResource = null,
     ///     });
@@ -490,14 +490,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__64336",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__34962",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__34962",
+    ///         TableId = "tf_dataplex_test_table_id__74000",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {

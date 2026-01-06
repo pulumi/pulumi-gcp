@@ -125,7 +125,7 @@ public final class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs ext
      * FAQ
      * CONNECTOR
      * 
-     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
+     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
      * 
      */
     @Import(name="type")
@@ -141,7 +141,7 @@ public final class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs ext
      * FAQ
      * CONNECTOR
      * 
-     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
+     * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
      * 
      */
     public Optional<Output<String>> type() {
@@ -326,7 +326,7 @@ public final class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs ext
          * FAQ
          * CONNECTOR
          * 
-         * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
+         * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs ext
          * FAQ
          * CONNECTOR
          * 
-         * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
+         * &lt;a name=&#34;nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig&#34;&gt;&lt;/a&gt;The `connectorConfig` block contains:
          * 
          * @return builder
          * 

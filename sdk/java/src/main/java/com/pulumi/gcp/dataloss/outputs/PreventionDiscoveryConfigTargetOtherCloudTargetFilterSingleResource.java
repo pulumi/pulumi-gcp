@@ -15,7 +15,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleRe
      * @return Amazon S3 bucket.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
      * 
      */
     private @Nullable PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket amazonS3Bucket;
@@ -25,7 +25,7 @@ public final class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleRe
      * @return Amazon S3 bucket.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nestedTargetsTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
+     * &lt;a name=&#34;nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket&#34;&gt;&lt;/a&gt;The `amazonS3Bucket` block supports:
      * 
      */
     public Optional<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket> amazonS3Bucket() {

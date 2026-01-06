@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about OrganizationSecurityPolicyAssociation, see:
  *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies/addAssociation)
  * * How-to Guides
  *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
  *
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
  *     displayName: "tf-test",
  *     parent: securityPolicyTarget.name,
- *     type: "FIREWALL",
+ *     type: "CLOUD_ARMOR",
  * });
  * const policyOrganizationSecurityPolicyAssociation = new gcp.compute.OrganizationSecurityPolicyAssociation("policy", {
  *     name: "tf-test",

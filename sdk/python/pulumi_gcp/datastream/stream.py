@@ -32,7 +32,8 @@ class StreamArgs:
                  customer_managed_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
                  desired_state: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]] = None):
         """
         The set of arguments for constructing a Stream resource.
         :param pulumi.Input['StreamDestinationConfigArgs'] destination_config: Destination connection profile configuration.
@@ -57,6 +58,8 @@ class StreamArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]] rule_sets: Rule sets to apply to the stream.
+               Structure is documented below.
         """
         pulumi.set(__self__, "destination_config", destination_config)
         pulumi.set(__self__, "display_name", display_name)
@@ -77,6 +80,8 @@ class StreamArgs:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if rule_sets is not None:
+            pulumi.set(__self__, "rule_sets", rule_sets)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfig")
@@ -232,6 +237,19 @@ class StreamArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="ruleSets")
+    def rule_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]:
+        """
+        Rule sets to apply to the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rule_sets")
+
+    @rule_sets.setter
+    def rule_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]):
+        pulumi.set(self, "rule_sets", value)
+
 
 @pulumi.input_type
 class _StreamState:
@@ -249,6 +267,7 @@ class _StreamState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]] = None,
                  source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  stream_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -277,6 +296,8 @@ class _StreamState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]] rule_sets: Rule sets to apply to the stream.
+               Structure is documented below.
         :param pulumi.Input['StreamSourceConfigArgs'] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The state of the stream.
@@ -308,6 +329,8 @@ class _StreamState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if rule_sets is not None:
+            pulumi.set(__self__, "rule_sets", rule_sets)
         if source_config is not None:
             pulumi.set(__self__, "source_config", source_config)
         if state is not None:
@@ -482,6 +505,19 @@ class _StreamState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="ruleSets")
+    def rule_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]:
+        """
+        Rule sets to apply to the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rule_sets")
+
+    @rule_sets.setter
+    def rule_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]):
+        pulumi.set(self, "rule_sets", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceConfig")
     def source_config(self) -> Optional[pulumi.Input['StreamSourceConfigArgs']]:
         """
@@ -535,6 +571,7 @@ class Stream(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
                  source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
                  stream_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -1339,8 +1376,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_41150",
-            name="tf-test_89313",
+            project_id="tf-test_89313",
+            name="tf-test_60646",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1626,6 +1663,87 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+        ### Datastream Stream Rule Sets Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        stream = gcp.datastream.Stream("stream",
+            stream_id="rules-stream",
+            location="us-central1",
+            display_name="BigQuery Stream with Rules",
+            source_config={
+                "source_connection_profile": "rules-source-profile",
+                "mysql_source_config": {
+                    "include_objects": {
+                        "mysql_databases": [{
+                            "database": "my_database",
+                        }],
+                    },
+                    "binary_log_position": {},
+                },
+            },
+            destination_config={
+                "destination_connection_profile": "rules-dest-profile",
+                "bigquery_destination_config": {
+                    "single_target_dataset": {
+                        "dataset_id": "rules-project:rules-dataset",
+                    },
+                },
+            },
+            backfill_none={},
+            rule_sets=[
+                {
+                    "object_filter": {
+                        "source_object_identifier": {
+                            "mysql_identifier": {
+                                "database": "test_database",
+                                "table": "test_table_1",
+                            },
+                        },
+                    },
+                    "customization_rules": [
+                        {
+                            "bigquery_clustering": {
+                                "columns": ["user_id"],
+                            },
+                        },
+                        {
+                            "bigquery_partitioning": {
+                                "ingestion_time_partition": {},
+                            },
+                        },
+                    ],
+                },
+                {
+                    "object_filter": {
+                        "source_object_identifier": {
+                            "mysql_identifier": {
+                                "database": "test_database",
+                                "table": "test_table_2",
+                            },
+                        },
+                    },
+                    "customization_rules": [
+                        {
+                            "bigquery_clustering": {
+                                "columns": ["event_time"],
+                            },
+                        },
+                        {
+                            "bigquery_partitioning": {
+                                "time_unit_partition": {
+                                    "column": "event_time",
+                                    "partitioning_time_granularity": "PARTITIONING_TIME_GRANULARITY_DAY",
+                                },
+                            },
+                        },
+                    ],
+                },
+            ])
+        ```
         ### Datastream Stream Mongodb
 
         ```python
@@ -1723,6 +1841,8 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The name of the location this stream is located in.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]] rule_sets: Rule sets to apply to the stream.
+               Structure is documented below.
         :param pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] stream_id: The stream identifier.
@@ -2534,8 +2654,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_41150",
-            name="tf-test_89313",
+            project_id="tf-test_89313",
+            name="tf-test_60646",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -2821,6 +2941,87 @@ class Stream(pulumi.CustomResource):
             },
             backfill_none={})
         ```
+        ### Datastream Stream Rule Sets Bigquery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        stream = gcp.datastream.Stream("stream",
+            stream_id="rules-stream",
+            location="us-central1",
+            display_name="BigQuery Stream with Rules",
+            source_config={
+                "source_connection_profile": "rules-source-profile",
+                "mysql_source_config": {
+                    "include_objects": {
+                        "mysql_databases": [{
+                            "database": "my_database",
+                        }],
+                    },
+                    "binary_log_position": {},
+                },
+            },
+            destination_config={
+                "destination_connection_profile": "rules-dest-profile",
+                "bigquery_destination_config": {
+                    "single_target_dataset": {
+                        "dataset_id": "rules-project:rules-dataset",
+                    },
+                },
+            },
+            backfill_none={},
+            rule_sets=[
+                {
+                    "object_filter": {
+                        "source_object_identifier": {
+                            "mysql_identifier": {
+                                "database": "test_database",
+                                "table": "test_table_1",
+                            },
+                        },
+                    },
+                    "customization_rules": [
+                        {
+                            "bigquery_clustering": {
+                                "columns": ["user_id"],
+                            },
+                        },
+                        {
+                            "bigquery_partitioning": {
+                                "ingestion_time_partition": {},
+                            },
+                        },
+                    ],
+                },
+                {
+                    "object_filter": {
+                        "source_object_identifier": {
+                            "mysql_identifier": {
+                                "database": "test_database",
+                                "table": "test_table_2",
+                            },
+                        },
+                    },
+                    "customization_rules": [
+                        {
+                            "bigquery_clustering": {
+                                "columns": ["event_time"],
+                            },
+                        },
+                        {
+                            "bigquery_partitioning": {
+                                "time_unit_partition": {
+                                    "column": "event_time",
+                                    "partitioning_time_granularity": "PARTITIONING_TIME_GRANULARITY_DAY",
+                                },
+                            },
+                        },
+                    ],
+                },
+            ])
+        ```
         ### Datastream Stream Mongodb
 
         ```python
@@ -2922,6 +3123,7 @@ class Stream(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
                  source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
                  stream_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -2949,6 +3151,7 @@ class Stream(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["rule_sets"] = rule_sets
             if source_config is None and not opts.urn:
                 raise TypeError("Missing required property 'source_config'")
             __props__.__dict__["source_config"] = source_config
@@ -2984,6 +3187,7 @@ class Stream(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
             source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             stream_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Stream':
@@ -3017,6 +3221,8 @@ class Stream(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]] rule_sets: Rule sets to apply to the stream.
+               Structure is documented below.
         :param pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The state of the stream.
@@ -3039,6 +3245,7 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["rule_sets"] = rule_sets
         __props__.__dict__["source_config"] = source_config
         __props__.__dict__["state"] = state
         __props__.__dict__["stream_id"] = stream_id
@@ -3157,6 +3364,15 @@ class Stream(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleSets")
+    def rule_sets(self) -> pulumi.Output[Optional[Sequence['outputs.StreamRuleSet']]]:
+        """
+        Rule sets to apply to the stream.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rule_sets")
 
     @_builtins.property
     @pulumi.getter(name="sourceConfig")

@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.NetworkServices
     /// <summary>
     /// Create a multicast domain in the current project.
     /// 
+    /// To get more information about MulticastDomain, see:
+    /// 
+    /// * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomains)
+    /// * How-to Guides
+    ///     * [Create Multicast Domain](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#create-domain)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Network Services Multicast Domain Basic
@@ -100,7 +106,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<Outputs.MulticastDomainConnectionConfig> ConnectionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain was created.
+        /// The timestamp when the multicast domain was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -171,7 +177,22 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] The Google-generated UUID for the resource. This value is
+        /// (Output)
+        /// The state of the multicast resource.
+        /// Possible values:
+        /// CREATING
+        /// ACTIVE
+        /// DELETING
+        /// DELETE_FAILED
+        /// UPDATING
+        /// UPDATE_FAILED
+        /// INACTIVE
+        /// </summary>
+        [Output("states")]
+        public Output<ImmutableArray<Outputs.MulticastDomainState>> States { get; private set; } = null!;
+
+        /// <summary>
+        /// The Google-generated UUID for the resource. This value is
         /// unique across all multicast domain resources. If a domain is deleted and
         /// another with the same name is created, the new domain is assigned a
         /// different unique_id.
@@ -180,7 +201,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> UniqueId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain was most recently
+        /// The timestamp when the multicast domain was most recently
         /// updated.
         /// </summary>
         [Output("updateTime")]
@@ -326,7 +347,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<Inputs.MulticastDomainConnectionConfigGetArgs>? ConnectionConfig { get; set; }
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain was created.
+        /// The timestamp when the multicast domain was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -422,8 +443,29 @@ namespace Pulumi.Gcp.NetworkServices
             }
         }
 
+        [Input("states")]
+        private InputList<Inputs.MulticastDomainStateGetArgs>? _states;
+
         /// <summary>
-        /// [Output only] The Google-generated UUID for the resource. This value is
+        /// (Output)
+        /// The state of the multicast resource.
+        /// Possible values:
+        /// CREATING
+        /// ACTIVE
+        /// DELETING
+        /// DELETE_FAILED
+        /// UPDATING
+        /// UPDATE_FAILED
+        /// INACTIVE
+        /// </summary>
+        public InputList<Inputs.MulticastDomainStateGetArgs> States
+        {
+            get => _states ?? (_states = new InputList<Inputs.MulticastDomainStateGetArgs>());
+            set => _states = value;
+        }
+
+        /// <summary>
+        /// The Google-generated UUID for the resource. This value is
         /// unique across all multicast domain resources. If a domain is deleted and
         /// another with the same name is created, the new domain is assigned a
         /// different unique_id.
@@ -432,7 +474,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? UniqueId { get; set; }
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain was most recently
+        /// The timestamp when the multicast domain was most recently
         /// updated.
         /// </summary>
         [Input("updateTime")]

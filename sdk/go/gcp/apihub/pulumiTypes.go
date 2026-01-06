@@ -2040,7 +2040,7 @@ type PluginInstanceAction struct {
 	// The time zone for the schedule cron expression. If not provided, UTC will
 	// be used.
 	//
-	// <a name="nestedActionsActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
+	// <a name="nestedActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
 	ScheduleTimeZone *string `pulumi:"scheduleTimeZone"`
 	// (Output)
 	// The current state of the plugin action in the plugin instance.
@@ -2082,7 +2082,7 @@ type PluginInstanceActionArgs struct {
 	// The time zone for the schedule cron expression. If not provided, UTC will
 	// be used.
 	//
-	// <a name="nestedActionsActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
+	// <a name="nestedActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
 	ScheduleTimeZone pulumi.StringPtrInput `pulumi:"scheduleTimeZone"`
 	// (Output)
 	// The current state of the plugin action in the plugin instance.
@@ -2175,7 +2175,7 @@ func (o PluginInstanceActionOutput) ScheduleCronExpression() pulumi.StringPtrOut
 // The time zone for the schedule cron expression. If not provided, UTC will
 // be used.
 //
-// <a name="nestedActionsActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
+// <a name="nestedActionsHubInstanceAction"></a>The `hubInstanceAction` block contains:
 func (o PluginInstanceActionOutput) ScheduleTimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PluginInstanceAction) *string { return v.ScheduleTimeZone }).(pulumi.StringPtrOutput)
 }

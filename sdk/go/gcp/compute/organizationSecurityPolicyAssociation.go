@@ -16,7 +16,7 @@ import (
 //
 // To get more information about OrganizationSecurityPolicyAssociation, see:
 //
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addAssociation)
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/organizationSecurityPolicies/addAssociation)
 // * How-to Guides
 //   - [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
 //
@@ -48,7 +48,7 @@ import (
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
 //				DisplayName: pulumi.String("tf-test"),
 //				Parent:      securityPolicyTarget.Name,
-//				Type:        pulumi.String("FIREWALL"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
 //			})
 //			if err != nil {
 //				return err

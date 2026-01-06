@@ -88,6 +88,7 @@ namespace Pulumi.Gcp.Iam
     ///             { "google.subject", "user.externalId" },
     ///             { "google.group", "group.externalId" },
     ///         },
+    ///         HardDelete = true,
     ///     });
     /// 
     /// });
@@ -141,6 +142,12 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Deletes the SCIM tenant immediately. This operation cannot be undone.
+        /// </summary>
+        [Output("hardDelete")]
+        public Output<bool?> HardDelete { get; private set; } = null!;
 
         /// <summary>
         /// The location for the resource.
@@ -266,6 +273,12 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Deletes the SCIM tenant immediately. This operation cannot be undone.
+        /// </summary>
+        [Input("hardDelete")]
+        public Input<bool>? HardDelete { get; set; }
+
+        /// <summary>
         /// The location for the resource.
         /// </summary>
         [Input("location", required: true)]
@@ -330,6 +343,12 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Deletes the SCIM tenant immediately. This operation cannot be undone.
+        /// </summary>
+        [Input("hardDelete")]
+        public Input<bool>? HardDelete { get; set; }
 
         /// <summary>
         /// The location for the resource.

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -25,6 +27,7 @@ class InstanceArgs:
                  location: pulumi.Input[_builtins.str],
                  network: pulumi.Input[_builtins.str],
                  per_unit_storage_throughput: pulumi.Input[_builtins.str],
+                 access_rules_options: Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  gke_support_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  kms_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -49,6 +52,9 @@ class InstanceArgs:
                `projects/{project_id}/global/networks/{network_name}`.
         :param pulumi.Input[_builtins.str] per_unit_storage_throughput: The throughput of the instance in MB/s/TiB.
                Valid values are 125, 250, 500, 1000.
+        :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: Access control rules for the Lustre instance. Configures default root
+               squashing behavior and specific access rules based on IP addresses.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
         :param pulumi.Input[_builtins.bool] gke_support_enabled: Indicates whether you want to enable support for GKE clients. By default,
                GKE clients are not supported.
@@ -67,6 +73,8 @@ class InstanceArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "per_unit_storage_throughput", per_unit_storage_throughput)
+        if access_rules_options is not None:
+            pulumi.set(__self__, "access_rules_options", access_rules_options)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if gke_support_enabled is not None:
@@ -163,6 +171,20 @@ class InstanceArgs:
         pulumi.set(self, "per_unit_storage_throughput", value)
 
     @_builtins.property
+    @pulumi.getter(name="accessRulesOptions")
+    def access_rules_options(self) -> Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']]:
+        """
+        Access control rules for the Lustre instance. Configures default root
+        squashing behavior and specific access rules based on IP addresses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_rules_options")
+
+    @access_rules_options.setter
+    def access_rules_options(self, value: Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']]):
+        pulumi.set(self, "access_rules_options", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -243,6 +265,7 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 access_rules_options: Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']] = None,
                  capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -265,6 +288,9 @@ class _InstanceState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input['InstanceAccessRulesOptionsArgs'] access_rules_options: Access control rules for the Lustre instance. Configures default root
+               squashing behavior and specific access rules based on IP addresses.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
                are from `18000` to `954000`, in increments of 9000.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the instance was created.
@@ -303,6 +329,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] state_reason: The reason why the instance is in a certain state.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the instance was last updated.
         """
+        if access_rules_options is not None:
+            pulumi.set(__self__, "access_rules_options", access_rules_options)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
         if create_time is not None:
@@ -343,6 +371,20 @@ class _InstanceState:
             pulumi.set(__self__, "state_reason", state_reason)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRulesOptions")
+    def access_rules_options(self) -> Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']]:
+        """
+        Access control rules for the Lustre instance. Configures default root
+        squashing behavior and specific access rules based on IP addresses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_rules_options")
+
+    @access_rules_options.setter
+    def access_rules_options(self, value: Optional[pulumi.Input['InstanceAccessRulesOptionsArgs']]):
+        pulumi.set(self, "access_rules_options", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
@@ -608,6 +650,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_rules_options: Optional[pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
                  capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
@@ -686,6 +729,9 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: Access control rules for the Lustre instance. Configures default root
+               squashing behavior and specific access rules based on IP addresses.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
                are from `18000` to `954000`, in increments of 9000.
         :param pulumi.Input[_builtins.str] description: A user-readable description of the instance.
@@ -798,6 +844,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_rules_options: Optional[pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
                  capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  filesystem: Optional[pulumi.Input[_builtins.str]] = None,
@@ -819,6 +866,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["access_rules_options"] = access_rules_options
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
@@ -863,6 +911,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_rules_options: Optional[pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']]] = None,
             capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -890,6 +939,9 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceAccessRulesOptionsArgs', 'InstanceAccessRulesOptionsArgsDict']] access_rules_options: Access control rules for the Lustre instance. Configures default root
+               squashing behavior and specific access rules based on IP addresses.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] capacity_gib: The storage capacity of the instance in gibibytes (GiB). Allowed values
                are from `18000` to `954000`, in increments of 9000.
         :param pulumi.Input[_builtins.str] create_time: Timestamp when the instance was created.
@@ -932,6 +984,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["access_rules_options"] = access_rules_options
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -953,6 +1006,16 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["state_reason"] = state_reason
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRulesOptions")
+    def access_rules_options(self) -> pulumi.Output[Optional['outputs.InstanceAccessRulesOptions']]:
+        """
+        Access control rules for the Lustre instance. Configures default root
+        squashing behavior and specific access rules based on IP addresses.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_rules_options")
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")

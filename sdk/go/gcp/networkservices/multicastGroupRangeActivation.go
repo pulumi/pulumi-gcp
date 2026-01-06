@@ -18,7 +18,7 @@ import (
 //
 // * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastGroupRangeActivations)
 // * How-to Guides
-//   - [Create Multicast Producer Association](https://docs.cloud.google.com/vpc/docs/multicast/create-group-ranges#activate_the_group_range)
+//   - [Create Multicast Group Range Activation](https://docs.cloud.google.com/vpc/docs/multicast/create-group-ranges#activate_the_group_range)
 //
 // ## Example Usage
 //

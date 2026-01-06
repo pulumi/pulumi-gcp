@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="NestedTargetsTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsPatternsAmazonS3BucketRegex"&gt;&lt;/a&gt;The `AmazonS3BucketRegex` block supports:
+        /// &lt;a name="NestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"&gt;&lt;/a&gt;The `AmazonS3BucketRegex` block supports:
         /// </summary>
         [Input("amazonS3BucketRegex")]
         public Input<Inputs.PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexGetArgs>? AmazonS3BucketRegex { get; set; }

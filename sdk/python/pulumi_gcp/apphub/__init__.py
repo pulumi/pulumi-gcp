@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .application import *
+from .boundary import *
 from .get_application import *
 from .get_discovered_service import *
 from .get_discovered_workload import *

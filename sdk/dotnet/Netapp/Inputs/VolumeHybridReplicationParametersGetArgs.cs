@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Netapp.Inputs
     public sealed class VolumeHybridReplicationParametersGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.
+        /// Optional. Name of source cluster location associated with the replication. This is a free-form field
+        /// for display purposes only.
         /// </summary>
         [Input("clusterLocation")]
         public Input<string>? ClusterLocation { get; set; }
@@ -25,7 +26,10 @@ namespace Pulumi.Gcp.Netapp.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Optional. Type of the volume's hybrid replication.
+        /// Optional. Type of the hybrid replication. Use `MIGRATION` to create a volume migration
+        /// and `ONPREM_REPLICATION` to create an external replication.
+        /// Other values are read-only. `REVERSE_ONPREM_REPLICATION` is used to represent an external
+        /// replication which got reversed. Default is `MIGRATION`.
         /// Possible values are: `MIGRATION`, `CONTINUOUS_REPLICATION`, `ONPREM_REPLICATION`, `REVERSE_ONPREM_REPLICATION`.
         /// </summary>
         [Input("hybridReplicationType")]
@@ -45,13 +49,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
         }
 
         /// <summary>
-        /// Optional. Constituent volume count for large volume.
+        /// Optional. If the source is a FlexGroup volume, this field needs to match the number of constituents in the FlexGroup.
         /// </summary>
         [Input("largeVolumeConstituentCount")]
         public Input<int>? LargeVolumeConstituentCount { get; set; }
 
         /// <summary>
-        /// Required. Name of the user's local source cluster to be peered with the destination cluster.
+        /// Required. Name of the ONTAP source cluster to be peered with NetApp Volumes.
         /// </summary>
         [Input("peerClusterName")]
         public Input<string>? PeerClusterName { get; set; }
@@ -60,7 +64,7 @@ namespace Pulumi.Gcp.Netapp.Inputs
         private InputList<string>? _peerIpAddresses;
 
         /// <summary>
-        /// Required. List of node ip addresses to be peered with.
+        /// Required. List of all intercluster LIF IP addresses of the ONTAP source cluster.
         /// </summary>
         public InputList<string> PeerIpAddresses
         {
@@ -69,13 +73,13 @@ namespace Pulumi.Gcp.Netapp.Inputs
         }
 
         /// <summary>
-        /// Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.
+        /// Required. Name of the ONTAP source vserver SVM to be peered with NetApp Volumes.
         /// </summary>
         [Input("peerSvmName")]
         public Input<string>? PeerSvmName { get; set; }
 
         /// <summary>
-        /// Required. Name of the user's local source volume to be peered with the destination volume.
+        /// Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
         /// </summary>
         [Input("peerVolumeName")]
         public Input<string>? PeerVolumeName { get; set; }

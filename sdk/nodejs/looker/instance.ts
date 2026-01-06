@@ -388,6 +388,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly oauthConfig: pulumi.Output<outputs.looker.InstanceOauthConfig>;
     /**
+     * Configuration for periodic export.
+     * Structure is documented below.
+     */
+    declare public readonly periodicExportConfig: pulumi.Output<outputs.looker.InstancePeriodicExportConfig | undefined>;
+    /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
      * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
      * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
@@ -484,6 +489,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceWindow"] = state?.maintenanceWindow;
             resourceInputs["name"] = state?.name;
             resourceInputs["oauthConfig"] = state?.oauthConfig;
+            resourceInputs["periodicExportConfig"] = state?.periodicExportConfig;
             resourceInputs["platformEdition"] = state?.platformEdition;
             resourceInputs["privateIpEnabled"] = state?.privateIpEnabled;
             resourceInputs["project"] = state?.project;
@@ -512,6 +518,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
             resourceInputs["name"] = args?.name;
             resourceInputs["oauthConfig"] = args?.oauthConfig;
+            resourceInputs["periodicExportConfig"] = args?.periodicExportConfig;
             resourceInputs["platformEdition"] = args?.platformEdition;
             resourceInputs["privateIpEnabled"] = args?.privateIpEnabled;
             resourceInputs["project"] = args?.project;
@@ -632,6 +639,11 @@ export interface InstanceState {
      * Structure is documented below.
      */
     oauthConfig?: pulumi.Input<inputs.looker.InstanceOauthConfig>;
+    /**
+     * Configuration for periodic export.
+     * Structure is documented below.
+     */
+    periodicExportConfig?: pulumi.Input<inputs.looker.InstancePeriodicExportConfig>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
      * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -771,6 +783,11 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     oauthConfig: pulumi.Input<inputs.looker.InstanceOauthConfig>;
+    /**
+     * Configuration for periodic export.
+     * Structure is documented below.
+     */
+    periodicExportConfig?: pulumi.Input<inputs.looker.InstancePeriodicExportConfig>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
      * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)

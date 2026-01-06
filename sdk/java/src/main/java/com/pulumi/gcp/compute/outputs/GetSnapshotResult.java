@@ -24,6 +24,7 @@ public final class GetSnapshotResult {
     private Integer diskSizeGb;
     private Map<String,String> effectiveLabels;
     private @Nullable String filter;
+    private Boolean guestFlush;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -64,6 +65,9 @@ public final class GetSnapshotResult {
     }
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
+    }
+    public Boolean guestFlush() {
+        return this.guestFlush;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -136,6 +140,7 @@ public final class GetSnapshotResult {
         private Integer diskSizeGb;
         private Map<String,String> effectiveLabels;
         private @Nullable String filter;
+        private Boolean guestFlush;
         private String id;
         private String labelFingerprint;
         private Map<String,String> labels;
@@ -162,6 +167,7 @@ public final class GetSnapshotResult {
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.filter = defaults.filter;
+    	      this.guestFlush = defaults.guestFlush;
     	      this.id = defaults.id;
     	      this.labelFingerprint = defaults.labelFingerprint;
     	      this.labels = defaults.labels;
@@ -225,6 +231,14 @@ public final class GetSnapshotResult {
         public Builder filter(@Nullable String filter) {
 
             this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder guestFlush(Boolean guestFlush) {
+            if (guestFlush == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "guestFlush");
+            }
+            this.guestFlush = guestFlush;
             return this;
         }
         @CustomType.Setter
@@ -377,6 +391,7 @@ public final class GetSnapshotResult {
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.filter = filter;
+            _resultValue.guestFlush = guestFlush;
             _resultValue.id = id;
             _resultValue.labelFingerprint = labelFingerprint;
             _resultValue.labels = labels;

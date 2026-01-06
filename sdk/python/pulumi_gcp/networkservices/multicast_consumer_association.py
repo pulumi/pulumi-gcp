@@ -36,7 +36,7 @@ class MulticastConsumerAssociationArgs:
                character a letter, and the last a letter or a number. The name must not
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of the multicast domain activation that is in the
-               same zone as this multicast producer association.
+               same zone as this multicast consumer association.
                Use the following format:
                // `projects/*/locations/*/multicastDomainActivations/*`.
         :param pulumi.Input[_builtins.str] network: The resource name of the multicast consumer VPC network.
@@ -92,7 +92,7 @@ class MulticastConsumerAssociationArgs:
     def multicast_domain_activation(self) -> pulumi.Input[_builtins.str]:
         """
         The resource name of the multicast domain activation that is in the
-        same zone as this multicast producer association.
+        same zone as this multicast consumer association.
         Use the following format:
         // `projects/*/locations/*/multicastDomainActivations/*`.
         """
@@ -189,7 +189,7 @@ class _MulticastConsumerAssociationState:
                character a letter, and the last a letter or a number. The name must not
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of the multicast domain activation that is in the
-               same zone as this multicast producer association.
+               same zone as this multicast consumer association.
                Use the following format:
                // `projects/*/locations/*/multicastDomainActivations/*`.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the multicast consumer association.
@@ -338,7 +338,7 @@ class _MulticastConsumerAssociationState:
     def multicast_domain_activation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The resource name of the multicast domain activation that is in the
-        same zone as this multicast producer association.
+        same zone as this multicast consumer association.
         Use the following format:
         // `projects/*/locations/*/multicastDomainActivations/*`.
         """
@@ -485,6 +485,12 @@ class MulticastConsumerAssociation(pulumi.CustomResource):
         """
         Create a multicast consumer association in the specified location of the current project.
 
+        To get more information about MulticastConsumerAssociation, see:
+
+        * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastConsumerAssociations)
+        * How-to Guides
+            * [Create Multicast Consumer Association](https://docs.cloud.google.com/vpc/docs/multicast/enable-consumer-network#add-consumer)
+
         ## Example Usage
 
         ### Network Services Multicast Consumer Association Basic
@@ -552,7 +558,7 @@ class MulticastConsumerAssociation(pulumi.CustomResource):
                character a letter, and the last a letter or a number. The name must not
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of the multicast domain activation that is in the
-               same zone as this multicast producer association.
+               same zone as this multicast consumer association.
                Use the following format:
                // `projects/*/locations/*/multicastDomainActivations/*`.
         :param pulumi.Input[_builtins.str] network: The resource name of the multicast consumer VPC network.
@@ -569,6 +575,12 @@ class MulticastConsumerAssociation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a multicast consumer association in the specified location of the current project.
+
+        To get more information about MulticastConsumerAssociation, see:
+
+        * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastConsumerAssociations)
+        * How-to Guides
+            * [Create Multicast Consumer Association](https://docs.cloud.google.com/vpc/docs/multicast/enable-consumer-network#add-consumer)
 
         ## Example Usage
 
@@ -726,7 +738,7 @@ class MulticastConsumerAssociation(pulumi.CustomResource):
                character a letter, and the last a letter or a number. The name must not
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] multicast_domain_activation: The resource name of the multicast domain activation that is in the
-               same zone as this multicast producer association.
+               same zone as this multicast consumer association.
                Use the following format:
                // `projects/*/locations/*/multicastDomainActivations/*`.
         :param pulumi.Input[_builtins.str] name: Identifier. The resource name of the multicast consumer association.
@@ -841,7 +853,7 @@ class MulticastConsumerAssociation(pulumi.CustomResource):
     def multicast_domain_activation(self) -> pulumi.Output[_builtins.str]:
         """
         The resource name of the multicast domain activation that is in the
-        same zone as this multicast producer association.
+        same zone as this multicast consumer association.
         Use the following format:
         // `projects/*/locations/*/multicastDomainActivations/*`.
         """

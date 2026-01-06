@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const destGroup = new gcp.iap.TunnelDestGroup("dest_group", {
  *     region: "us-central1",
- *     groupName: "testgroup_26032",
+ *     groupName: "testgroup_8647",
  *     cidrs: [
  *         "10.1.0.0/16",
  *         "192.168.10.0/24",

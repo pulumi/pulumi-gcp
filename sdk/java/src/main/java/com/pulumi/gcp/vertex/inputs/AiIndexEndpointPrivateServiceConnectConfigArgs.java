@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vertex.inputs.AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -48,11 +49,29 @@ public final class AiIndexEndpointPrivateServiceConnectConfigArgs extends com.pu
         return Optional.ofNullable(this.projectAllowlists);
     }
 
+    /**
+     * List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscAutomationConfigs")
+    private @Nullable Output<List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs>> pscAutomationConfigs;
+
+    /**
+     * @return List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs>>> pscAutomationConfigs() {
+        return Optional.ofNullable(this.pscAutomationConfigs);
+    }
+
     private AiIndexEndpointPrivateServiceConnectConfigArgs() {}
 
     private AiIndexEndpointPrivateServiceConnectConfigArgs(AiIndexEndpointPrivateServiceConnectConfigArgs $) {
         this.enablePrivateServiceConnect = $.enablePrivateServiceConnect;
         this.projectAllowlists = $.projectAllowlists;
+        this.pscAutomationConfigs = $.pscAutomationConfigs;
     }
 
     public static Builder builder() {
@@ -123,6 +142,40 @@ public final class AiIndexEndpointPrivateServiceConnectConfigArgs extends com.pu
          */
         public Builder projectAllowlists(String... projectAllowlists) {
             return projectAllowlists(List.of(projectAllowlists));
+        }
+
+        /**
+         * @param pscAutomationConfigs List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutomationConfigs(@Nullable Output<List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs>> pscAutomationConfigs) {
+            $.pscAutomationConfigs = pscAutomationConfigs;
+            return this;
+        }
+
+        /**
+         * @param pscAutomationConfigs List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutomationConfigs(List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs> pscAutomationConfigs) {
+            return pscAutomationConfigs(Output.of(pscAutomationConfigs));
+        }
+
+        /**
+         * @param pscAutomationConfigs List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutomationConfigs(AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs... pscAutomationConfigs) {
+            return pscAutomationConfigs(List.of(pscAutomationConfigs));
         }
 
         public AiIndexEndpointPrivateServiceConnectConfigArgs build() {

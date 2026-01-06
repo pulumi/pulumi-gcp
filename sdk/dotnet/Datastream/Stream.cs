@@ -1291,8 +1291,8 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var cross_project_dataset = new Gcp.Organizations.Project("cross-project-dataset", new()
     ///     {
-    ///         ProjectId = "tf-test_41150",
-    ///         Name = "tf-test_89313",
+    ///         ProjectId = "tf-test_89313",
+    ///         Name = "tf-test_60646",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -1736,6 +1736,132 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Stream Rule Sets Bigquery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var stream = new Gcp.Datastream.Stream("stream", new()
+    ///     {
+    ///         StreamId = "rules-stream",
+    ///         Location = "us-central1",
+    ///         DisplayName = "BigQuery Stream with Rules",
+    ///         SourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigArgs
+    ///         {
+    ///             SourceConnectionProfile = "rules-source-profile",
+    ///             MysqlSourceConfig = new Gcp.Datastream.Inputs.StreamSourceConfigMysqlSourceConfigArgs
+    ///             {
+    ///                 IncludeObjects = new Gcp.Datastream.Inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs
+    ///                 {
+    ///                     MysqlDatabases = new[]
+    ///                     {
+    ///                         new Gcp.Datastream.Inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs
+    ///                         {
+    ///                             Database = "my_database",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 BinaryLogPosition = null,
+    ///             },
+    ///         },
+    ///         DestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigArgs
+    ///         {
+    ///             DestinationConnectionProfile = "rules-dest-profile",
+    ///             BigqueryDestinationConfig = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigArgs
+    ///             {
+    ///                 SingleTargetDataset = new Gcp.Datastream.Inputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs
+    ///                 {
+    ///                     DatasetId = "rules-project:rules-dataset",
+    ///                 },
+    ///             },
+    ///         },
+    ///         BackfillNone = null,
+    ///         RuleSets = new[]
+    ///         {
+    ///             new Gcp.Datastream.Inputs.StreamRuleSetArgs
+    ///             {
+    ///                 ObjectFilter = new Gcp.Datastream.Inputs.StreamRuleSetObjectFilterArgs
+    ///                 {
+    ///                     SourceObjectIdentifier = new Gcp.Datastream.Inputs.StreamRuleSetObjectFilterSourceObjectIdentifierArgs
+    ///                     {
+    ///                         MysqlIdentifier = new Gcp.Datastream.Inputs.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs
+    ///                         {
+    ///                             Database = "test_database",
+    ///                             Table = "test_table_1",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 CustomizationRules = new[]
+    ///                 {
+    ///                     new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleArgs
+    ///                     {
+    ///                         BigqueryClustering = new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleBigqueryClusteringArgs
+    ///                         {
+    ///                             Columns = new[]
+    ///                             {
+    ///                                 "user_id",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleArgs
+    ///                     {
+    ///                         BigqueryPartitioning = new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleBigqueryPartitioningArgs
+    ///                         {
+    ///                             IngestionTimePartition = null,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Datastream.Inputs.StreamRuleSetArgs
+    ///             {
+    ///                 ObjectFilter = new Gcp.Datastream.Inputs.StreamRuleSetObjectFilterArgs
+    ///                 {
+    ///                     SourceObjectIdentifier = new Gcp.Datastream.Inputs.StreamRuleSetObjectFilterSourceObjectIdentifierArgs
+    ///                     {
+    ///                         MysqlIdentifier = new Gcp.Datastream.Inputs.StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs
+    ///                         {
+    ///                             Database = "test_database",
+    ///                             Table = "test_table_2",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 CustomizationRules = new[]
+    ///                 {
+    ///                     new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleArgs
+    ///                     {
+    ///                         BigqueryClustering = new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleBigqueryClusteringArgs
+    ///                         {
+    ///                             Columns = new[]
+    ///                             {
+    ///                                 "event_time",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleArgs
+    ///                     {
+    ///                         BigqueryPartitioning = new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleBigqueryPartitioningArgs
+    ///                         {
+    ///                             TimeUnitPartition = new Gcp.Datastream.Inputs.StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs
+    ///                             {
+    ///                                 Column = "event_time",
+    ///                                 PartitioningTimeGranularity = "PARTITIONING_TIME_GRANULARITY_DAY",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Stream Mongodb
     /// 
     /// ```csharp
@@ -1942,6 +2068,13 @@ namespace Pulumi.Gcp.Datastream
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Rule sets to apply to the stream.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("ruleSets")]
+        public Output<ImmutableArray<Outputs.StreamRuleSet>> RuleSets { get; private set; } = null!;
+
+        /// <summary>
         /// Source connection profile configuration.
         /// Structure is documented below.
         /// </summary>
@@ -2086,6 +2219,19 @@ namespace Pulumi.Gcp.Datastream
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("ruleSets")]
+        private InputList<Inputs.StreamRuleSetArgs>? _ruleSets;
+
+        /// <summary>
+        /// Rule sets to apply to the stream.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.StreamRuleSetArgs> RuleSets
+        {
+            get => _ruleSets ?? (_ruleSets = new InputList<Inputs.StreamRuleSetArgs>());
+            set => _ruleSets = value;
+        }
+
         /// <summary>
         /// Source connection profile configuration.
         /// Structure is documented below.
@@ -2219,6 +2365,19 @@ namespace Pulumi.Gcp.Datastream
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("ruleSets")]
+        private InputList<Inputs.StreamRuleSetGetArgs>? _ruleSets;
+
+        /// <summary>
+        /// Rule sets to apply to the stream.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.StreamRuleSetGetArgs> RuleSets
+        {
+            get => _ruleSets ?? (_ruleSets = new InputList<Inputs.StreamRuleSetGetArgs>());
+            set => _ruleSets = value;
         }
 
         /// <summary>

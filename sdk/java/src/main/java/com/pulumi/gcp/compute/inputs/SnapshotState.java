@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SnapshotSnapshotEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.SnapshotSourceDiskEncryptionKeyArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -103,6 +104,21 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     * 
+     */
+    @Import(name="guestFlush")
+    private @Nullable Output<Boolean> guestFlush;
+
+    /**
+     * @return Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     * 
+     */
+    public Optional<Output<Boolean>> guestFlush() {
+        return Optional.ofNullable(this.guestFlush);
     }
 
     /**
@@ -398,6 +414,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.diskSizeGb = $.diskSizeGb;
         this.effectiveLabels = $.effectiveLabels;
+        this.guestFlush = $.guestFlush;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.licenses = $.licenses;
@@ -546,6 +563,27 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param guestFlush Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestFlush(@Nullable Output<Boolean> guestFlush) {
+            $.guestFlush = guestFlush;
+            return this;
+        }
+
+        /**
+         * @param guestFlush Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestFlush(Boolean guestFlush) {
+            return guestFlush(Output.of(guestFlush));
         }
 
         /**

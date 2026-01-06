@@ -356,7 +356,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example_dataset = new Dataset("example-dataset", DatasetArgs.builder()
- *             .datasetId("dataset-basic")
+ *             .datasetId("dataset_basic")
  *             .friendlyName("Example Dataset")
  *             .location("us-central1")
  *             .deleteContentsOnDestroy(true)

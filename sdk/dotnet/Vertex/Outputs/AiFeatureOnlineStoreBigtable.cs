@@ -18,11 +18,26 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiFeatureOnlineStoreBigtableAutoScaling AutoScaling;
+        /// <summary>
+        /// Optional. If true, enable direct access to the Bigtable instance.
+        /// </summary>
+        public readonly bool? EnableDirectBigtableAccess;
+        /// <summary>
+        /// The zone where the Bigtable instance will be created.
+        /// </summary>
+        public readonly string? Zone;
 
         [OutputConstructor]
-        private AiFeatureOnlineStoreBigtable(Outputs.AiFeatureOnlineStoreBigtableAutoScaling autoScaling)
+        private AiFeatureOnlineStoreBigtable(
+            Outputs.AiFeatureOnlineStoreBigtableAutoScaling autoScaling,
+
+            bool? enableDirectBigtableAccess,
+
+            string? zone)
         {
             AutoScaling = autoScaling;
+            EnableDirectBigtableAccess = enableDirectBigtableAccess;
+            Zone = zone;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="NestedPlatformConfigBundlesBundlesStatus"&gt;&lt;/a&gt;The `Status` block contains:
+        /// &lt;a name="NestedPlatformConfigBundlesStatus"&gt;&lt;/a&gt;The `Status` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.VmwareAdminClusterPlatformConfigStatus> Statuses;
 
