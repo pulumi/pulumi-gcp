@@ -28,4 +28,4 @@ releaseVerification:
     go: examples/bucket-go
 autoMergeProviderUpgrades: false
 runner:
-  build_sdk: pulumi-ubuntu-8core
+    buildSdk: pulumi-ubuntu-8core
