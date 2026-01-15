@@ -28,7 +28,7 @@ env:
 jobs:
   build_sdk:
     name: build_sdk
-    runs-on: ubuntu-latest
+    runs-on: pulumi-ubuntu-8core
     strategy:
       # We normally fail fast unless this is a PR from Renovate in which case
       # we'll always build all SDKs in case there are any changes to commit.
@@ -74,7 +74,7 @@ jobs:
         env:
           MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          version: 2025.11.6
+          version: 2026.1.1
           github_token: ${{ steps.app-auth.outputs.token }}
           plugin_install: https://github.com/pulumi/vfox-pulumi
           # only saving the cache in the prerequisites job

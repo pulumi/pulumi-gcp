@@ -27,3 +27,5 @@ releaseVerification:
     dotnet: examples/serverless-cs
     go: examples/bucket-go
 autoMergeProviderUpgrades: false
+runner:
+    buildSdk: pulumi-ubuntu-8core

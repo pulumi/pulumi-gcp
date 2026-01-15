@@ -80,7 +80,7 @@ jobs:
       env:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
-        version: 2025.11.6
+        version: 2026.1.1
         github_token: ${{ steps.app-auth.outputs.token }}
         plugin_install: https://github.com/pulumi/vfox-pulumi
         # only saving the cache in the prerequisites job
@@ -112,6 +112,8 @@ jobs:
         CODECOV_TOKEN: ${{ steps.esc-secrets.outputs.CODECOV_TOKEN }}
     - if: inputs.is_pr
       name: Check Schema is Valid
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         {
