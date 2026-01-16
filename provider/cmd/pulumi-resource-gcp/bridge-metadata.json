@@ -2800,6 +2800,212 @@
                     }
                 }
             },
+            "google_backup_dr_restore_workload": {
+                "current": "gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload",
+                "majorVersion": 9,
+                "fields": {
+                    "compute_instance_restore_properties": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "advanced_machine_features": {
+                                    "maxItemsOne": true
+                                },
+                                "allocation_affinity": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "confidential_instance_config": {
+                                    "maxItemsOne": true
+                                },
+                                "disks": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "disk_encryption_key": {
+                                                "maxItemsOne": true
+                                            },
+                                            "guest_os_feature": {
+                                                "maxItemsOne": false
+                                            },
+                                            "initialize_params": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "replica_zones": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "license": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "display_device": {
+                                    "maxItemsOne": true
+                                },
+                                "guest_accelerators": {
+                                    "maxItemsOne": false
+                                },
+                                "instance_encryption_key": {
+                                    "maxItemsOne": true
+                                },
+                                "labels": {
+                                    "maxItemsOne": false
+                                },
+                                "metadata": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "items": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "network_interfaces": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "access_configs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "alias_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6_access_configs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "network_performance_config": {
+                                    "maxItemsOne": true
+                                },
+                                "params": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_manager_tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "resource_policies": {
+                                    "maxItemsOne": false
+                                },
+                                "scheduling": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "local_ssd_recovery_timeout": {
+                                                "maxItemsOne": true
+                                            },
+                                            "max_run_duration": {
+                                                "maxItemsOne": true
+                                            },
+                                            "node_affinities": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "service_accounts": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "scopes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "shielded_instance_config": {
+                                    "maxItemsOne": true
+                                },
+                                "tags": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "items": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "compute_instance_target_environment": {
+                        "maxItemsOne": true
+                    },
+                    "disk_restore_properties": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "disk_encryption_key": {
+                                    "maxItemsOne": true
+                                },
+                                "guest_os_feature": {
+                                    "maxItemsOne": false
+                                },
+                                "labels": {
+                                    "maxItemsOne": false
+                                },
+                                "licenses": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_manager_tags": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_policy": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "disk_target_environment": {
+                        "maxItemsOne": true
+                    },
+                    "region_disk_target_environment": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "replica_zones": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "target_resource": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "gcp_resource": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_backup_dr_service_config": {
                 "current": "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig",
                 "majorVersion": 9
@@ -15621,6 +15827,49 @@
                                                     }
                                                 }
                                             },
+                                            "registry_hosts": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "hosts": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "ca": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "capabilities": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "client": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "cert": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "key": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "header": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "value": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "writable_cgroups": {
                                                 "maxItemsOne": true
                                             }
@@ -15827,6 +16076,49 @@
                                                                                 },
                                                                                 "gcp_secret_manager_certificate_config": {
                                                                                     "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "registry_hosts": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "hosts": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "ca": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "capabilities": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "client": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "cert": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "key": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "header": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "value": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -16066,6 +16358,49 @@
                                                                 }
                                                             }
                                                         },
+                                                        "registry_hosts": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "hosts": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "ca": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "capabilities": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "client": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "cert": {
+                                                                                                "maxItemsOne": true
+                                                                                            },
+                                                                                            "key": {
+                                                                                                "maxItemsOne": true
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "header": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "value": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "writable_cgroups": {
                                                             "maxItemsOne": true
                                                         }
@@ -16265,6 +16600,49 @@
                                                                     },
                                                                     "gcp_secret_manager_certificate_config": {
                                                                         "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "registry_hosts": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "hosts": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "ca": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "capabilities": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "client": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "cert": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "key": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "header": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "value": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -19434,6 +19812,9 @@
                                             "on_demand": {
                                                 "maxItemsOne": true
                                             },
+                                            "one_time": {
+                                                "maxItemsOne": true
+                                            },
                                             "schedule": {
                                                 "maxItemsOne": true
                                             }
@@ -21270,7 +21651,24 @@
                         "maxItemsOne": true
                     },
                     "postgresql_profile": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ssl_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "server_and_client_verification": {
+                                                "maxItemsOne": true
+                                            },
+                                            "server_verification": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "private_connectivity": {
                         "maxItemsOne": true
@@ -31920,6 +32318,9 @@
                                         "fields": {
                                             "forward_headers": {
                                                 "maxItemsOne": false
+                                            },
+                                            "supported_events": {
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -31996,6 +32397,9 @@
                 "current": "gcp:networkservices/multicastDomainActivation:MulticastDomainActivation",
                 "majorVersion": 9,
                 "fields": {
+                    "state": {
+                        "maxItemsOne": false
+                    },
                     "traffic_spec": {
                         "maxItemsOne": true
                     }
@@ -44729,6 +45133,51 @@
                     }
                 }
             },
+            "google_compute_routers": {
+                "current": "gcp:compute/getRouters:getRouters",
+                "majorVersion": 9,
+                "fields": {
+                    "routers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "bgp": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "advertised_groups": {
+                                                "maxItemsOne": false
+                                            },
+                                            "advertised_ip_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "bgp_peers": {
+                                    "maxItemsOne": false
+                                },
+                                "interfaces": {
+                                    "maxItemsOne": false
+                                },
+                                "md5_authentication_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "nats": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "nat_ips": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_compute_security_policy": {
                 "current": "gcp:compute/getSecurityPolicy:getSecurityPolicy",
                 "majorVersion": 9,
@@ -45380,6 +45829,49 @@
                                                     }
                                                 }
                                             },
+                                            "registry_hosts": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "hosts": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "ca": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "capabilities": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "client": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "cert": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "key": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "header": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "value": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "writable_cgroups": {
                                                 "maxItemsOne": false
                                             }
@@ -45586,6 +46078,49 @@
                                                                                 },
                                                                                 "gcp_secret_manager_certificate_config": {
                                                                                     "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "registry_hosts": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "hosts": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "ca": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "capabilities": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "client": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "cert": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "key": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "header": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "value": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -45818,6 +46353,49 @@
                                                                                 },
                                                                                 "gcp_secret_manager_certificate_config": {
                                                                                     "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "registry_hosts": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "hosts": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "ca": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "capabilities": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "client": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "cert": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "key": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "header": {
+                                                                                    "maxItemsOne": false,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "value": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -51568,6 +52146,7 @@
             "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation": 0,
             "gcp:backupdisasterrecovery/backupVault:BackupVault": 0,
             "gcp:backupdisasterrecovery/managementServer:ManagementServer": 0,
+            "gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload": 0,
             "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig": 0,
             "gcp:beyondcorp/appConnection:AppConnection": 0,
             "gcp:beyondcorp/appConnector:AppConnector": 0,
@@ -52923,6 +53502,7 @@
             "gcp:compute/getRouter:getRouter": 0,
             "gcp:compute/getRouterNat:getRouterNat": 0,
             "gcp:compute/getRouterStatus:getRouterStatus": 0,
+            "gcp:compute/getRouters:getRouters": 0,
             "gcp:compute/getSSLPolicy:getSSLPolicy": 0,
             "gcp:compute/getSecurityPolicy:getSecurityPolicy": 0,
             "gcp:compute/getSnapshot:getSnapshot": 0,
