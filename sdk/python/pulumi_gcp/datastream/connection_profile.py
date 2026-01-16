@@ -929,6 +929,64 @@ class ConnectionProfile(pulumi.CustomResource):
                 "database": db.name,
             })
         ```
+        ### Datastream Stream Postgresql Sslconfig Server And Client Verification
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+        import pulumi_std as std
+
+        datastream_ips = gcp.datastream.get_static_ips(location="us-central1")
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
+            database_version="POSTGRES_15",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "authorized_networks": [{"key": k, "value": v} for k, v in datastream_ips.static_ips].apply(lambda entries: [{
+                        "name": std.format(input="datastream-%d",
+                            args=[entry["key"]]).result,
+                        "value": entry["value"],
+                    } for entry in entries]),
+                    "ipv4_enabled": True,
+                    "ssl_mode": "TRUSTED_CLIENT_CERTIFICATE_REQUIRED",
+                },
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        pwd = random.index.Password("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password=pwd["result"])
+        client_cert = gcp.sql.SslCert("client_cert",
+            common_name="client-name",
+            instance=instance.name)
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Connection Profile",
+            location="us-central1",
+            connection_profile_id="profile-id",
+            postgresql_profile={
+                "hostname": instance.public_ip_address,
+                "port": 5432,
+                "username": "user",
+                "password": pwd["result"],
+                "database": db.name,
+                "ssl_config": {
+                    "server_and_client_verification": {
+                        "client_certificate": client_cert.cert,
+                        "client_key": client_cert.private_key,
+                        "ca_certificate": client_cert.server_ca_cert,
+                    },
+                },
+            })
+        ```
         ### Datastream Connection Profile Salesforce
 
         ```python
@@ -1315,6 +1373,64 @@ class ConnectionProfile(pulumi.CustomResource):
                 "username": user.name,
                 "password": user.password,
                 "database": db.name,
+            })
+        ```
+        ### Datastream Stream Postgresql Sslconfig Server And Client Verification
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+        import pulumi_std as std
+
+        datastream_ips = gcp.datastream.get_static_ips(location="us-central1")
+        instance = gcp.sql.DatabaseInstance("instance",
+            name="my-instance",
+            database_version="POSTGRES_15",
+            region="us-central1",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "authorized_networks": [{"key": k, "value": v} for k, v in datastream_ips.static_ips].apply(lambda entries: [{
+                        "name": std.format(input="datastream-%d",
+                            args=[entry["key"]]).result,
+                        "value": entry["value"],
+                    } for entry in entries]),
+                    "ipv4_enabled": True,
+                    "ssl_mode": "TRUSTED_CLIENT_CERTIFICATE_REQUIRED",
+                },
+            },
+            deletion_protection=True)
+        db = gcp.sql.Database("db",
+            instance=instance.name,
+            name="db")
+        pwd = random.index.Password("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            name="user",
+            instance=instance.name,
+            password=pwd["result"])
+        client_cert = gcp.sql.SslCert("client_cert",
+            common_name="client-name",
+            instance=instance.name)
+        default = gcp.datastream.ConnectionProfile("default",
+            display_name="Connection Profile",
+            location="us-central1",
+            connection_profile_id="profile-id",
+            postgresql_profile={
+                "hostname": instance.public_ip_address,
+                "port": 5432,
+                "username": "user",
+                "password": pwd["result"],
+                "database": db.name,
+                "ssl_config": {
+                    "server_and_client_verification": {
+                        "client_certificate": client_cert.cert,
+                        "client_key": client_cert.private_key,
+                        "ca_certificate": client_cert.server_ca_cert,
+                    },
+                },
             })
         ```
         ### Datastream Connection Profile Salesforce

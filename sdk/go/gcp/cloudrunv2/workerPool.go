@@ -654,44 +654,6 @@ import (
 //	}
 //
 // ```
-// ### Cloudrunv2 Worker Pool Custom Audiences
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudrunv2.NewWorkerPool(ctx, "default", &cloudrunv2.WorkerPoolArgs{
-//				Name:               pulumi.String("cloudrun-worker-pool"),
-//				Location:           pulumi.String("us-central1"),
-//				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("BETA"),
-//				CustomAudiences: pulumi.StringArray{
-//					pulumi.String("aud1"),
-//				},
-//				Template: &cloudrunv2.WorkerPoolTemplateArgs{
-//					Containers: cloudrunv2.WorkerPoolTemplateContainerArray{
-//						&cloudrunv2.WorkerPoolTemplateContainerArgs{
-//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/worker-pool"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Cloudrunv2 Worker Pool Startup Liveness Probe
 //
 // ```go
@@ -824,8 +786,13 @@ type WorkerPool struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
+	// (Optional, Deprecated)
 	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
 	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	//
+	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+	//
+	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime         pulumi.StringOutput  `pulumi:"deleteTime"`
@@ -959,8 +926,13 @@ type workerPoolState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator *string `pulumi:"creator"`
+	// (Optional, Deprecated)
 	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
 	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	//
+	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+	//
+	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime         *string `pulumi:"deleteTime"`
@@ -1054,8 +1026,13 @@ type WorkerPoolState struct {
 	CreateTime pulumi.StringPtrInput
 	// Email address of the authenticated creator.
 	Creator pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
 	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	//
+	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+	//
+	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences pulumi.StringArrayInput
 	// The deletion time.
 	DeleteTime         pulumi.StringPtrInput
@@ -1146,8 +1123,13 @@ type workerPoolArgs struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
+	// (Optional, Deprecated)
 	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
 	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	//
+	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+	//
+	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences    []string `pulumi:"customAudiences"`
 	DeletionProtection *bool    `pulumi:"deletionProtection"`
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
@@ -1198,8 +1180,13 @@ type WorkerPoolArgs struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
 	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+	//
+	// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+	//
+	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences    pulumi.StringArrayInput
 	DeletionProtection pulumi.BoolPtrInput
 	// User-provided description of the WorkerPool. This field currently has a 512-character limit.
@@ -1363,8 +1350,13 @@ func (o WorkerPoolOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
 // For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+//
+// > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+//
+// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 func (o WorkerPoolOutput) CustomAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
 }

@@ -131,6 +131,7 @@ class SchemaBundleArgs:
 @pulumi.input_type
 class _SchemaBundleState:
     def __init__(__self__, *,
+                 etag: Optional[pulumi.Input[_builtins.str]] = None,
                  ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -140,6 +141,10 @@ class _SchemaBundleState:
                  table: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SchemaBundle resources.
+        :param pulumi.Input[_builtins.str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
+               updates of a schema bundle from overwriting each other. This may be sent on update and delete
+               requests to ensure the client has an update-to-date value before proceeding. The server returns
+               an ABORTED error on a mismatched etag.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, allow backwards incompatible changes.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the schema bundle within.
         :param pulumi.Input[_builtins.str] name: The unique name of the requested schema bundle. Values are of the form `projects/<project>/instances/<instance>/tables/<table>/schemaBundles/<schemaBundleId>`.
@@ -152,6 +157,8 @@ class _SchemaBundleState:
         :param pulumi.Input[_builtins.str] schema_bundle_id: The unique name of the schema bundle in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         :param pulumi.Input[_builtins.str] table: The name of the table to create the schema bundle within.
         """
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if ignore_warnings is not None:
             pulumi.set(__self__, "ignore_warnings", ignore_warnings)
         if instance is not None:
@@ -166,6 +173,21 @@ class _SchemaBundleState:
             pulumi.set(__self__, "schema_bundle_id", schema_bundle_id)
         if table is not None:
             pulumi.set(__self__, "table", table)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        updates of a schema bundle from overwriting each other. This may be sent on update and delete
+        requests to ensure the client has an update-to-date value before proceeding. The server returns
+        an ABORTED error on a mismatched etag.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreWarnings")
@@ -456,6 +478,7 @@ class SchemaBundle(pulumi.CustomResource):
                 raise TypeError("Missing required property 'schema_bundle_id'")
             __props__.__dict__["schema_bundle_id"] = schema_bundle_id
             __props__.__dict__["table"] = table
+            __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
         super(SchemaBundle, __self__).__init__(
             'gcp:bigtable/schemaBundle:SchemaBundle',
@@ -467,6 +490,7 @@ class SchemaBundle(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            etag: Optional[pulumi.Input[_builtins.str]] = None,
             ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
             instance: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -481,6 +505,10 @@ class SchemaBundle(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
+               updates of a schema bundle from overwriting each other. This may be sent on update and delete
+               requests to ensure the client has an update-to-date value before proceeding. The server returns
+               an ABORTED error on a mismatched etag.
         :param pulumi.Input[_builtins.bool] ignore_warnings: If true, allow backwards incompatible changes.
         :param pulumi.Input[_builtins.str] instance: The name of the instance to create the schema bundle within.
         :param pulumi.Input[_builtins.str] name: The unique name of the requested schema bundle. Values are of the form `projects/<project>/instances/<instance>/tables/<table>/schemaBundles/<schemaBundleId>`.
@@ -497,6 +525,7 @@ class SchemaBundle(pulumi.CustomResource):
 
         __props__ = _SchemaBundleState.__new__(_SchemaBundleState)
 
+        __props__.__dict__["etag"] = etag
         __props__.__dict__["ignore_warnings"] = ignore_warnings
         __props__.__dict__["instance"] = instance
         __props__.__dict__["name"] = name
@@ -505,6 +534,17 @@ class SchemaBundle(pulumi.CustomResource):
         __props__.__dict__["schema_bundle_id"] = schema_bundle_id
         __props__.__dict__["table"] = table
         return SchemaBundle(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[_builtins.str]:
+        """
+        etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        updates of a schema bundle from overwriting each other. This may be sent on update and delete
+        requests to ensure the client has an update-to-date value before proceeding. The server returns
+        an ABORTED error on a mismatched etag.
+        """
+        return pulumi.get(self, "etag")
 
     @_builtins.property
     @pulumi.getter(name="ignoreWarnings")

@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig? PrivateRegistryAccessConfig;
         /// <summary>
+        /// Defines containerd registry host configuration. Each `RegistryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterNodeConfigContainerdConfigRegistryHost> RegistryHosts;
+        /// <summary>
         /// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `WritableCgroups` block supports:
         /// </summary>
         public readonly Outputs.ClusterNodeConfigContainerdConfigWritableCgroups? WritableCgroups;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNodeConfigContainerdConfig(
             Outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig? privateRegistryAccessConfig,
 
+            ImmutableArray<Outputs.ClusterNodeConfigContainerdConfigRegistryHost> registryHosts,
+
             Outputs.ClusterNodeConfigContainerdConfigWritableCgroups? writableCgroups)
         {
             PrivateRegistryAccessConfig = privateRegistryAccessConfig;
+            RegistryHosts = registryHosts;
             WritableCgroups = writableCgroups;
         }
     }

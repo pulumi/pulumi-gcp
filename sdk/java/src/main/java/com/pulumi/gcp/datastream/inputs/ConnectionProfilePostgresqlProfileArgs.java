@@ -6,6 +6,7 @@ package com.pulumi.gcp.datastream.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileSslConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -95,6 +96,23 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
     }
 
     /**
+     * SSL configuration for the PostgreSQL connection.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sslConfig")
+    private @Nullable Output<ConnectionProfilePostgresqlProfileSslConfigArgs> sslConfig;
+
+    /**
+     * @return SSL configuration for the PostgreSQL connection.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfilePostgresqlProfileSslConfigArgs>> sslConfig() {
+        return Optional.ofNullable(this.sslConfig);
+    }
+
+    /**
      * Username for the PostgreSQL connection.
      * 
      */
@@ -117,6 +135,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         this.password = $.password;
         this.port = $.port;
         this.secretManagerStoredPassword = $.secretManagerStoredPassword;
+        this.sslConfig = $.sslConfig;
         this.username = $.username;
     }
 
@@ -243,6 +262,29 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
          */
         public Builder secretManagerStoredPassword(String secretManagerStoredPassword) {
             return secretManagerStoredPassword(Output.of(secretManagerStoredPassword));
+        }
+
+        /**
+         * @param sslConfig SSL configuration for the PostgreSQL connection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslConfig(@Nullable Output<ConnectionProfilePostgresqlProfileSslConfigArgs> sslConfig) {
+            $.sslConfig = sslConfig;
+            return this;
+        }
+
+        /**
+         * @param sslConfig SSL configuration for the PostgreSQL connection.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslConfig(ConnectionProfilePostgresqlProfileSslConfigArgs sslConfig) {
+            return sslConfig(Output.of(sslConfig));
         }
 
         /**

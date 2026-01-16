@@ -6,7 +6,9 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigContainerdConfigRegistryHostArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigContainerdConfigWritableCgroupsArgs;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +34,21 @@ public final class ClusterNodeConfigContainerdConfigArgs extends com.pulumi.reso
     }
 
     /**
+     * Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * 
+     */
+    @Import(name="registryHosts")
+    private @Nullable Output<List<ClusterNodeConfigContainerdConfigRegistryHostArgs>> registryHosts;
+
+    /**
+     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * 
+     */
+    public Optional<Output<List<ClusterNodeConfigContainerdConfigRegistryHostArgs>>> registryHosts() {
+        return Optional.ofNullable(this.registryHosts);
+    }
+
+    /**
      * Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
      * 
      */
@@ -50,6 +67,7 @@ public final class ClusterNodeConfigContainerdConfigArgs extends com.pulumi.reso
 
     private ClusterNodeConfigContainerdConfigArgs(ClusterNodeConfigContainerdConfigArgs $) {
         this.privateRegistryAccessConfig = $.privateRegistryAccessConfig;
+        this.registryHosts = $.registryHosts;
         this.writableCgroups = $.writableCgroups;
     }
 
@@ -90,6 +108,37 @@ public final class ClusterNodeConfigContainerdConfigArgs extends com.pulumi.reso
          */
         public Builder privateRegistryAccessConfig(ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs privateRegistryAccessConfig) {
             return privateRegistryAccessConfig(Output.of(privateRegistryAccessConfig));
+        }
+
+        /**
+         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryHosts(@Nullable Output<List<ClusterNodeConfigContainerdConfigRegistryHostArgs>> registryHosts) {
+            $.registryHosts = registryHosts;
+            return this;
+        }
+
+        /**
+         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryHosts(List<ClusterNodeConfigContainerdConfigRegistryHostArgs> registryHosts) {
+            return registryHosts(Output.of(registryHosts));
+        }
+
+        /**
+         * @param registryHosts Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryHosts(ClusterNodeConfigContainerdConfigRegistryHostArgs... registryHosts) {
+            return registryHosts(List.of(registryHosts));
         }
 
         /**

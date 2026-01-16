@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpecTriggerOnDemand;
+import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpecTriggerOneTime;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpecTriggerSchedule;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,12 @@ public final class DatascanExecutionSpecTrigger {
      * 
      */
     private @Nullable DatascanExecutionSpecTriggerOnDemand onDemand;
+    /**
+     * @return The scan runs once upon DataScan creation.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DatascanExecutionSpecTriggerOneTime oneTime;
     /**
      * @return The scan is scheduled to run periodically.
      * Structure is documented below.
@@ -31,6 +38,14 @@ public final class DatascanExecutionSpecTrigger {
      */
     public Optional<DatascanExecutionSpecTriggerOnDemand> onDemand() {
         return Optional.ofNullable(this.onDemand);
+    }
+    /**
+     * @return The scan runs once upon DataScan creation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DatascanExecutionSpecTriggerOneTime> oneTime() {
+        return Optional.ofNullable(this.oneTime);
     }
     /**
      * @return The scan is scheduled to run periodically.
@@ -51,11 +66,13 @@ public final class DatascanExecutionSpecTrigger {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable DatascanExecutionSpecTriggerOnDemand onDemand;
+        private @Nullable DatascanExecutionSpecTriggerOneTime oneTime;
         private @Nullable DatascanExecutionSpecTriggerSchedule schedule;
         public Builder() {}
         public Builder(DatascanExecutionSpecTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.onDemand = defaults.onDemand;
+    	      this.oneTime = defaults.oneTime;
     	      this.schedule = defaults.schedule;
         }
 
@@ -63,6 +80,12 @@ public final class DatascanExecutionSpecTrigger {
         public Builder onDemand(@Nullable DatascanExecutionSpecTriggerOnDemand onDemand) {
 
             this.onDemand = onDemand;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oneTime(@Nullable DatascanExecutionSpecTriggerOneTime oneTime) {
+
+            this.oneTime = oneTime;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +97,7 @@ public final class DatascanExecutionSpecTrigger {
         public DatascanExecutionSpecTrigger build() {
             final var _resultValue = new DatascanExecutionSpecTrigger();
             _resultValue.onDemand = onDemand;
+            _resultValue.oneTime = oneTime;
             _resultValue.schedule = schedule;
             return _resultValue;
         }

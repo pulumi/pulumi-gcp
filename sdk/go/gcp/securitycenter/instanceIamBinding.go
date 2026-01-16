@@ -234,7 +234,9 @@ import (
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:service-%v@gs-project-accounts.iam.gserviceaccount.com", project.Number),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				cryptoKeyMemberCdfSa,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -246,7 +248,6 @@ import (
 //					KeyReference: cryptoKey.ID(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				cryptoKeyMemberCdfSa,
 //				cryptoKeyMemberGcsSa,
 //			}))
 //			if err != nil {

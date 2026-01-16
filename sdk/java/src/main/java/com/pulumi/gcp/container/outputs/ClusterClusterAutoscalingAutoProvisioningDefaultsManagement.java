@@ -26,7 +26,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
      */
     private @Nullable Boolean autoUpgrade;
     /**
-     * @return Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+     * @return Specifies the Auto Upgrade knobs for the node pool.
      * 
      */
     private @Nullable List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption> upgradeOptions;
@@ -49,7 +49,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
         return Optional.ofNullable(this.autoUpgrade);
     }
     /**
-     * @return Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+     * @return Specifies the Auto Upgrade knobs for the node pool.
      * 
      */
     public List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption> upgradeOptions() {

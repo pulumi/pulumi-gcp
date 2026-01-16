@@ -16,21 +16,9 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindowArgs extends co
 
     public static final ClusterMaintenancePolicyDailyMaintenanceWindowArgs Empty = new ClusterMaintenancePolicyDailyMaintenanceWindowArgs();
 
-    /**
-     * Duration of the time window, automatically chosen to be
-     * smallest possible in the given scenario.
-     * Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;PTnHnMnS&#34;.
-     * 
-     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
-    /**
-     * @return Duration of the time window, automatically chosen to be
-     * smallest possible in the given scenario.
-     * Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;PTnHnMnS&#34;.
-     * 
-     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
@@ -67,27 +55,11 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindowArgs extends co
             $ = new ClusterMaintenancePolicyDailyMaintenanceWindowArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param duration Duration of the time window, automatically chosen to be
-         * smallest possible in the given scenario.
-         * Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;PTnHnMnS&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
-        /**
-         * @param duration Duration of the time window, automatically chosen to be
-         * smallest possible in the given scenario.
-         * Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;PTnHnMnS&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }

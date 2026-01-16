@@ -125,6 +125,8 @@ import com.pulumi.gcp.compute.inputs.GetRouterNatPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterStatusArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterStatusPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+import com.pulumi.gcp.compute.inputs.GetRoutersPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
@@ -210,6 +212,7 @@ import com.pulumi.gcp.compute.outputs.GetResourcePolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRouterNatResult;
 import com.pulumi.gcp.compute.outputs.GetRouterResult;
 import com.pulumi.gcp.compute.outputs.GetRouterStatusResult;
+import com.pulumi.gcp.compute.outputs.GetRoutersResult;
 import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSecurityPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
@@ -15877,6 +15880,300 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRouterStatusResult> getRouterStatusPlain(GetRouterStatusPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRouterStatus:getRouterStatus", TypeShape.of(GetRouterStatusResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of routers. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
+     *             .project(foobar.project())
+     *             .region(foobar.region())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutersResult> getRouters() {
+        return getRouters(GetRoutersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of routers. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
+     *             .project(foobar.project())
+     *             .region(foobar.region())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRoutersResult> getRoutersPlain() {
+        return getRoutersPlain(GetRoutersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of routers. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
+     *             .project(foobar.project())
+     *             .region(foobar.region())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutersResult> getRouters(GetRoutersArgs args) {
+        return getRouters(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of routers. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
+     *             .project(foobar.project())
+     *             .region(foobar.region())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRoutersResult> getRoutersPlain(GetRoutersPlainArgs args) {
+        return getRoutersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of routers. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
+     *             .project(foobar.project())
+     *             .region(foobar.region())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutersResult> getRouters(GetRoutersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRouters:getRouters", TypeShape.of(GetRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of routers. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
+     *             .project(foobar.project())
+     *             .region(foobar.region())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRoutersResult> getRouters(GetRoutersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRouters:getRouters", TypeShape.of(GetRoutersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of routers. For more information see
+     * the official [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/list) documentation.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRoutersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
+     *             .project(foobar.project())
+     *             .region(foobar.region())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRoutersResult> getRoutersPlain(GetRoutersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRouters:getRouters", TypeShape.of(GetRoutersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.

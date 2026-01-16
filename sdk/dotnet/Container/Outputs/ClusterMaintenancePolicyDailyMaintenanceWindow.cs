@@ -13,11 +13,6 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterMaintenancePolicyDailyMaintenanceWindow
     {
-        /// <summary>
-        /// Duration of the time window, automatically chosen to be
-        /// smallest possible in the given scenario.
-        /// Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-        /// </summary>
         public readonly string? Duration;
         public readonly string StartTime;
 

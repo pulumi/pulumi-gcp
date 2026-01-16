@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterEnterpriseConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The effective tier of the cluster.
+        /// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
         /// </summary>
         [Input("clusterTier")]
         public Input<string>? ClusterTier { get; set; }

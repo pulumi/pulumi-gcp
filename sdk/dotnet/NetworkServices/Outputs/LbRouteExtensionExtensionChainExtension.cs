@@ -32,6 +32,14 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ForwardHeaders;
         /// <summary>
+        /// The metadata provided here is included as part of the `MetadataContext` (of type `google.protobuf.Struct`)
+        /// in the `ProcessingRequest` message sent to the extension server.
+        /// The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
+        /// The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+        /// This field must not be set for plugin extensions. Setting it results in a validation error.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Metadata;
+        /// <summary>
         /// The name for this extension. The name is logged as part of the HTTP request logs.
         /// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
         /// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -39,11 +47,36 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// When set to `TRUE`, enables `ObservabilityMode` on the `ExtProc` filter.
+        /// This makes `ExtProc` calls asynchronous. Envoy doesn't check for the response from `ExtProc` calls.
+        /// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+        /// This field is helpful when you want to try out the extension in async log-only mode.
+        /// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+        /// Only `STREAMED` (default) body processing mode is supported.
+        /// </summary>
+        public readonly bool? ObservabilityMode;
+        /// <summary>
+        /// Configures the send mode for request body processing.
+        /// The field can only be set if `SupportedEvents` includes `REQUEST_BODY`.
+        /// If `SupportedEvents` includes `REQUEST_BODY`, but `RequestBodySendMode` is unset, the default value `STREAMED` is used.
+        /// When this field is set to `FULL_DUPLEX_STREAMED`, `SupportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+        /// This field can be set only when the `Service` field of the extension points to a `BackendService`.
+        /// Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+        /// Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+        /// </summary>
+        public readonly string? RequestBodySendMode;
+        /// <summary>
         /// The reference to the service that runs the extension.
         /// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
         /// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
         /// </summary>
         public readonly string Service;
+        /// <summary>
+        /// A set of events during request or response processing for which this extension is called.
+        /// This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+        /// Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+        /// </summary>
+        public readonly ImmutableArray<string> SupportedEvents;
         /// <summary>
         /// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -58,17 +91,29 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
 
             ImmutableArray<string> forwardHeaders,
 
+            ImmutableDictionary<string, string>? metadata,
+
             string name,
 
+            bool? observabilityMode,
+
+            string? requestBodySendMode,
+
             string service,
+
+            ImmutableArray<string> supportedEvents,
 
             string? timeout)
         {
             Authority = authority;
             FailOpen = failOpen;
             ForwardHeaders = forwardHeaders;
+            Metadata = metadata;
             Name = name;
+            ObservabilityMode = observabilityMode;
+            RequestBodySendMode = requestBodySendMode;
             Service = service;
+            SupportedEvents = supportedEvents;
             Timeout = timeout;
         }
     }

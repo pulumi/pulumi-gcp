@@ -12,22 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMaintenancePolicyDailyMaintenanceWindow {
-    /**
-     * @return Duration of the time window, automatically chosen to be
-     * smallest possible in the given scenario.
-     * Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;PTnHnMnS&#34;.
-     * 
-     */
     private @Nullable String duration;
     private String startTime;
 
     private ClusterMaintenancePolicyDailyMaintenanceWindow() {}
-    /**
-     * @return Duration of the time window, automatically chosen to be
-     * smallest possible in the given scenario.
-     * Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;PTnHnMnS&#34;.
-     * 
-     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }

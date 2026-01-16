@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     backupPlanId: "backup-plan-simple-test",
  *     resourceType: "compute.googleapis.com/Instance",
  *     backupVault: myBackupVault.id,
+ *     maxCustomOnDemandRetentionDays: 30,
  *     backupRules: [{
  *         ruleId: "rule-1",
  *         backupRetentionDays: 5,
@@ -64,6 +65,7 @@ import * as utilities from "../utilities";
  *     backupPlanId: "backup-plan-disk-test",
  *     resourceType: "compute.googleapis.com/Disk",
  *     backupVault: myBackupVault.id,
+ *     maxCustomOnDemandRetentionDays: 30,
  *     backupRules: [{
  *         ruleId: "rule-1",
  *         backupRetentionDays: 5,
@@ -198,6 +200,10 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     declare public readonly logRetentionDays: pulumi.Output<number | undefined>;
     /**
+     * The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+     */
+    declare public readonly maxCustomOnDemandRetentionDays: pulumi.Output<number | undefined>;
+    /**
      * The name of backup plan resource created
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
@@ -241,6 +247,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["location"] = state?.location;
             resourceInputs["logRetentionDays"] = state?.logRetentionDays;
+            resourceInputs["maxCustomOnDemandRetentionDays"] = state?.maxCustomOnDemandRetentionDays;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["resourceType"] = state?.resourceType;
@@ -269,6 +276,7 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["location"] = args?.location;
             resourceInputs["logRetentionDays"] = args?.logRetentionDays;
+            resourceInputs["maxCustomOnDemandRetentionDays"] = args?.maxCustomOnDemandRetentionDays;
             resourceInputs["project"] = args?.project;
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["backupVaultServiceAccount"] = undefined /*out*/;
@@ -319,6 +327,10 @@ export interface BackupPlanState {
      * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
      */
     logRetentionDays?: pulumi.Input<number>;
+    /**
+     * The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+     */
+    maxCustomOnDemandRetentionDays?: pulumi.Input<number>;
     /**
      * The name of backup plan resource created
      */
@@ -372,6 +384,10 @@ export interface BackupPlanArgs {
      * This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
      */
     logRetentionDays?: pulumi.Input<number>;
+    /**
+     * The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+     */
+    maxCustomOnDemandRetentionDays?: pulumi.Input<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

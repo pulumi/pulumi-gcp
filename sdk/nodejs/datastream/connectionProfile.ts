@@ -292,6 +292,74 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Stream Postgresql Sslconfig Server And Client Verification
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ *
+ * const datastreamIps = gcp.datastream.getStaticIps({
+ *     location: "us-central1",
+ * });
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     name: "my-instance",
+ *     databaseVersion: "POSTGRES_15",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             authorizedNetworks: std.format({
+ *                 input: "datastream-%d",
+ *                 args: [entry.key],
+ *             }).then(invoke => .map(entry => ({
+ *                 name: invoke.result,
+ *                 value: entry.value,
+ *             }))),
+ *             ipv4Enabled: true,
+ *             sslMode: "TRUSTED_CLIENT_CERTIFICATE_REQUIRED",
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {
+ *     instance: instance.name,
+ *     name: "db",
+ * });
+ * const pwd = new random.index.Password("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     name: "user",
+ *     instance: instance.name,
+ *     password: pwd.result,
+ * });
+ * const clientCert = new gcp.sql.SslCert("client_cert", {
+ *     commonName: "client-name",
+ *     instance: instance.name,
+ * });
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     displayName: "Connection Profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "profile-id",
+ *     postgresqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         port: 5432,
+ *         username: "user",
+ *         password: pwd.result,
+ *         database: db.name,
+ *         sslConfig: {
+ *             serverAndClientVerification: {
+ *                 clientCertificate: clientCert.cert,
+ *                 clientKey: clientCert.privateKey,
+ *                 caCertificate: clientCert.serverCaCert,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  * ### Datastream Connection Profile Salesforce
  *
  * ```typescript

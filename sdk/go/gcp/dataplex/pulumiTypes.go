@@ -7040,6 +7040,9 @@ func (o DatascanExecutionSpecPtrOutput) Trigger() DatascanExecutionSpecTriggerPt
 type DatascanExecutionSpecTrigger struct {
 	// The scan runs once via dataScans.run API.
 	OnDemand *DatascanExecutionSpecTriggerOnDemand `pulumi:"onDemand"`
+	// The scan runs once upon DataScan creation.
+	// Structure is documented below.
+	OneTime *DatascanExecutionSpecTriggerOneTime `pulumi:"oneTime"`
 	// The scan is scheduled to run periodically.
 	// Structure is documented below.
 	Schedule *DatascanExecutionSpecTriggerSchedule `pulumi:"schedule"`
@@ -7059,6 +7062,9 @@ type DatascanExecutionSpecTriggerInput interface {
 type DatascanExecutionSpecTriggerArgs struct {
 	// The scan runs once via dataScans.run API.
 	OnDemand DatascanExecutionSpecTriggerOnDemandPtrInput `pulumi:"onDemand"`
+	// The scan runs once upon DataScan creation.
+	// Structure is documented below.
+	OneTime DatascanExecutionSpecTriggerOneTimePtrInput `pulumi:"oneTime"`
 	// The scan is scheduled to run periodically.
 	// Structure is documented below.
 	Schedule DatascanExecutionSpecTriggerSchedulePtrInput `pulumi:"schedule"`
@@ -7146,6 +7152,12 @@ func (o DatascanExecutionSpecTriggerOutput) OnDemand() DatascanExecutionSpecTrig
 	return o.ApplyT(func(v DatascanExecutionSpecTrigger) *DatascanExecutionSpecTriggerOnDemand { return v.OnDemand }).(DatascanExecutionSpecTriggerOnDemandPtrOutput)
 }
 
+// The scan runs once upon DataScan creation.
+// Structure is documented below.
+func (o DatascanExecutionSpecTriggerOutput) OneTime() DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return o.ApplyT(func(v DatascanExecutionSpecTrigger) *DatascanExecutionSpecTriggerOneTime { return v.OneTime }).(DatascanExecutionSpecTriggerOneTimePtrOutput)
+}
+
 // The scan is scheduled to run periodically.
 // Structure is documented below.
 func (o DatascanExecutionSpecTriggerOutput) Schedule() DatascanExecutionSpecTriggerSchedulePtrOutput {
@@ -7184,6 +7196,17 @@ func (o DatascanExecutionSpecTriggerPtrOutput) OnDemand() DatascanExecutionSpecT
 		}
 		return v.OnDemand
 	}).(DatascanExecutionSpecTriggerOnDemandPtrOutput)
+}
+
+// The scan runs once upon DataScan creation.
+// Structure is documented below.
+func (o DatascanExecutionSpecTriggerPtrOutput) OneTime() DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTrigger) *DatascanExecutionSpecTriggerOneTime {
+		if v == nil {
+			return nil
+		}
+		return v.OneTime
+	}).(DatascanExecutionSpecTriggerOneTimePtrOutput)
 }
 
 // The scan is scheduled to run periodically.
@@ -7313,6 +7336,143 @@ func (o DatascanExecutionSpecTriggerOnDemandPtrOutput) Elem() DatascanExecutionS
 		var ret DatascanExecutionSpecTriggerOnDemand
 		return ret
 	}).(DatascanExecutionSpecTriggerOnDemandOutput)
+}
+
+type DatascanExecutionSpecTriggerOneTime struct {
+	// Time to live for the DataScan and its results after the one-time run completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
+	TtlAfterScanCompletion *string `pulumi:"ttlAfterScanCompletion"`
+}
+
+// DatascanExecutionSpecTriggerOneTimeInput is an input type that accepts DatascanExecutionSpecTriggerOneTimeArgs and DatascanExecutionSpecTriggerOneTimeOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerOneTimeInput` via:
+//
+//	DatascanExecutionSpecTriggerOneTimeArgs{...}
+type DatascanExecutionSpecTriggerOneTimeInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerOneTimeOutput() DatascanExecutionSpecTriggerOneTimeOutput
+	ToDatascanExecutionSpecTriggerOneTimeOutputWithContext(context.Context) DatascanExecutionSpecTriggerOneTimeOutput
+}
+
+type DatascanExecutionSpecTriggerOneTimeArgs struct {
+	// Time to live for the DataScan and its results after the one-time run completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
+	TtlAfterScanCompletion pulumi.StringPtrInput `pulumi:"ttlAfterScanCompletion"`
+}
+
+func (DatascanExecutionSpecTriggerOneTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTriggerOneTime)(nil)).Elem()
+}
+
+func (i DatascanExecutionSpecTriggerOneTimeArgs) ToDatascanExecutionSpecTriggerOneTimeOutput() DatascanExecutionSpecTriggerOneTimeOutput {
+	return i.ToDatascanExecutionSpecTriggerOneTimeOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerOneTimeArgs) ToDatascanExecutionSpecTriggerOneTimeOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOneTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOneTimeOutput)
+}
+
+func (i DatascanExecutionSpecTriggerOneTimeArgs) ToDatascanExecutionSpecTriggerOneTimePtrOutput() DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return i.ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerOneTimeArgs) ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOneTimeOutput).ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionSpecTriggerOneTimePtrInput is an input type that accepts DatascanExecutionSpecTriggerOneTimeArgs, DatascanExecutionSpecTriggerOneTimePtr and DatascanExecutionSpecTriggerOneTimePtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerOneTimePtrInput` via:
+//
+//	        DatascanExecutionSpecTriggerOneTimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionSpecTriggerOneTimePtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerOneTimePtrOutput() DatascanExecutionSpecTriggerOneTimePtrOutput
+	ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(context.Context) DatascanExecutionSpecTriggerOneTimePtrOutput
+}
+
+type datascanExecutionSpecTriggerOneTimePtrType DatascanExecutionSpecTriggerOneTimeArgs
+
+func DatascanExecutionSpecTriggerOneTimePtr(v *DatascanExecutionSpecTriggerOneTimeArgs) DatascanExecutionSpecTriggerOneTimePtrInput {
+	return (*datascanExecutionSpecTriggerOneTimePtrType)(v)
+}
+
+func (*datascanExecutionSpecTriggerOneTimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTriggerOneTime)(nil)).Elem()
+}
+
+func (i *datascanExecutionSpecTriggerOneTimePtrType) ToDatascanExecutionSpecTriggerOneTimePtrOutput() DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return i.ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionSpecTriggerOneTimePtrType) ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOneTimePtrOutput)
+}
+
+type DatascanExecutionSpecTriggerOneTimeOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerOneTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTriggerOneTime)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerOneTimeOutput) ToDatascanExecutionSpecTriggerOneTimeOutput() DatascanExecutionSpecTriggerOneTimeOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOneTimeOutput) ToDatascanExecutionSpecTriggerOneTimeOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOneTimeOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOneTimeOutput) ToDatascanExecutionSpecTriggerOneTimePtrOutput() DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return o.ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionSpecTriggerOneTimeOutput) ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionSpecTriggerOneTime) *DatascanExecutionSpecTriggerOneTime {
+		return &v
+	}).(DatascanExecutionSpecTriggerOneTimePtrOutput)
+}
+
+// Time to live for the DataScan and its results after the one-time run completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
+func (o DatascanExecutionSpecTriggerOneTimeOutput) TtlAfterScanCompletion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionSpecTriggerOneTime) *string { return v.TtlAfterScanCompletion }).(pulumi.StringPtrOutput)
+}
+
+type DatascanExecutionSpecTriggerOneTimePtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerOneTimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTriggerOneTime)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerOneTimePtrOutput) ToDatascanExecutionSpecTriggerOneTimePtrOutput() DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOneTimePtrOutput) ToDatascanExecutionSpecTriggerOneTimePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOneTimePtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOneTimePtrOutput) Elem() DatascanExecutionSpecTriggerOneTimeOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTriggerOneTime) DatascanExecutionSpecTriggerOneTime {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionSpecTriggerOneTime
+		return ret
+	}).(DatascanExecutionSpecTriggerOneTimeOutput)
+}
+
+// Time to live for the DataScan and its results after the one-time run completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
+func (o DatascanExecutionSpecTriggerOneTimePtrOutput) TtlAfterScanCompletion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTriggerOneTime) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TtlAfterScanCompletion
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatascanExecutionSpecTriggerSchedule struct {
@@ -15851,6 +16011,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerPtrInput)(nil)).Elem(), DatascanExecutionSpecTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerOnDemandInput)(nil)).Elem(), DatascanExecutionSpecTriggerOnDemandArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerOnDemandPtrInput)(nil)).Elem(), DatascanExecutionSpecTriggerOnDemandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerOneTimeInput)(nil)).Elem(), DatascanExecutionSpecTriggerOneTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerOneTimePtrInput)(nil)).Elem(), DatascanExecutionSpecTriggerOneTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerScheduleInput)(nil)).Elem(), DatascanExecutionSpecTriggerScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerSchedulePtrInput)(nil)).Elem(), DatascanExecutionSpecTriggerScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionStatusInput)(nil)).Elem(), DatascanExecutionStatusArgs{})
@@ -16048,6 +16210,8 @@ func init() {
 	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerPtrOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOnDemandOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOnDemandPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOneTimeOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOneTimePtrOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerScheduleOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerSchedulePtrOutput{})
 	pulumi.RegisterOutputType(DatascanExecutionStatusOutput{})

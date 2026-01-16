@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHost;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,11 @@ public final class GetClusterNodePoolNodeConfigContainerdConfig {
      * 
      */
     private List<GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts;
     /**
      * @return Parameters for writable cgroups configuration.
      * 
@@ -30,6 +36,13 @@ public final class GetClusterNodePoolNodeConfigContainerdConfig {
      */
     public List<GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs() {
         return this.privateRegistryAccessConfigs;
+    }
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts() {
+        return this.registryHosts;
     }
     /**
      * @return Parameters for writable cgroups configuration.
@@ -49,11 +62,13 @@ public final class GetClusterNodePoolNodeConfigContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+        private List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts;
         private List<GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup> writableCgroups;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfigs = defaults.privateRegistryAccessConfigs;
+    	      this.registryHosts = defaults.registryHosts;
     	      this.writableCgroups = defaults.writableCgroups;
         }
 
@@ -69,6 +84,17 @@ public final class GetClusterNodePoolNodeConfigContainerdConfig {
             return privateRegistryAccessConfigs(List.of(privateRegistryAccessConfigs));
         }
         @CustomType.Setter
+        public Builder registryHosts(List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts) {
+            if (registryHosts == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigContainerdConfig", "registryHosts");
+            }
+            this.registryHosts = registryHosts;
+            return this;
+        }
+        public Builder registryHosts(GetClusterNodePoolNodeConfigContainerdConfigRegistryHost... registryHosts) {
+            return registryHosts(List.of(registryHosts));
+        }
+        @CustomType.Setter
         public Builder writableCgroups(List<GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup> writableCgroups) {
             if (writableCgroups == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigContainerdConfig", "writableCgroups");
@@ -82,6 +108,7 @@ public final class GetClusterNodePoolNodeConfigContainerdConfig {
         public GetClusterNodePoolNodeConfigContainerdConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigContainerdConfig();
             _resultValue.privateRegistryAccessConfigs = privateRegistryAccessConfigs;
+            _resultValue.registryHosts = registryHosts;
             _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }

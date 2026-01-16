@@ -96,18 +96,32 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
+     * &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release. */
     @Import(name="customAudiences")
     private @Nullable Output<List<String>> customAudiences;
 
     /**
-     * @return One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+     * @return (Optional, Deprecated)
+     * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
+     * &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release. */
     public Optional<Output<List<String>>> customAudiences() {
         return Optional.ofNullable(this.customAudiences);
     }
@@ -413,35 +427,56 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customAudiences One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+         * @param customAudiences (Optional, Deprecated)
+         * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
          * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+         * 
+         * &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release. */
         public Builder customAudiences(@Nullable Output<List<String>> customAudiences) {
             $.customAudiences = customAudiences;
             return this;
         }
 
         /**
-         * @param customAudiences One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+         * @param customAudiences (Optional, Deprecated)
+         * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
          * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+         * 
+         * &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release. */
         public Builder customAudiences(List<String> customAudiences) {
             return customAudiences(Output.of(customAudiences));
         }
 
         /**
-         * @param customAudiences One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+         * @param customAudiences (Optional, Deprecated)
+         * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
          * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+         * 
+         * &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release. */
         public Builder customAudiences(String... customAudiences) {
             return customAudiences(List.of(customAudiences));
         }

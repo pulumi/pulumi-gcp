@@ -169,38 +169,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
-//
-// provider value will be used. Examples:
-//
-// * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
-//
-// * `{{project_id}}/{{location}}/{{cluster_id}}`
-//
-// * `{{location}}/{{cluster_id}}`
-//
-// When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
-//
-// ```sh
-// $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
-// ```
-//
-// For example, the following fields will show diffs if set in config:
-//
-// - `min_master_version`
-//
-// - `remove_default_node_pool`
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -356,9 +324,7 @@ type Cluster struct {
 	// the cluster node IPs, which GKE automatically whitelists).
 	// Structure is documented below.
 	MasterAuthorizedNetworksConfig ClusterMasterAuthorizedNetworksConfigOutput `pulumi:"masterAuthorizedNetworksConfig"`
-	// The current version of the master in the cluster. This may
-	// be different than the `minMasterVersion` set in the config if the master
-	// has been updated by GKE.
+	// The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
 	MasterVersion pulumi.StringOutput `pulumi:"masterVersion"`
 	// Structure is documented below.
 	MeshCertificates ClusterMeshCertificatesOutput `pulumi:"meshCertificates"`
@@ -505,23 +471,18 @@ type Cluster struct {
 	SecretSyncConfig ClusterSecretSyncConfigPtrOutput `pulumi:"secretSyncConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
-	// The server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Structure is documented below.
 	ServiceExternalIpsConfig ClusterServiceExternalIpsConfigOutput `pulumi:"serviceExternalIpsConfig"`
-	// The IP address range of the Kubernetes services in this
-	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-	// `/16` from the container CIDR.
+	// The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
 	ServicesIpv4Cidr pulumi.StringOutput `pulumi:"servicesIpv4Cidr"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// TPU configuration for the cluster.
 	TpuConfig ClusterTpuConfigOutput `pulumi:"tpuConfig"`
-	// The IP address range of the Cloud TPUs in this cluster, in
-	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-	// notation (e.g. `1.2.3.4/29`).
+	// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
 	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrOutput `pulumi:"userManagedKeysConfig"`
@@ -723,9 +684,7 @@ type clusterState struct {
 	// the cluster node IPs, which GKE automatically whitelists).
 	// Structure is documented below.
 	MasterAuthorizedNetworksConfig *ClusterMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
-	// The current version of the master in the cluster. This may
-	// be different than the `minMasterVersion` set in the config if the master
-	// has been updated by GKE.
+	// The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
 	MasterVersion *string `pulumi:"masterVersion"`
 	// Structure is documented below.
 	MeshCertificates *ClusterMeshCertificates `pulumi:"meshCertificates"`
@@ -872,23 +831,18 @@ type clusterState struct {
 	SecretSyncConfig *ClusterSecretSyncConfig `pulumi:"secretSyncConfig"`
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
-	// The server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Structure is documented below.
 	ServiceExternalIpsConfig *ClusterServiceExternalIpsConfig `pulumi:"serviceExternalIpsConfig"`
-	// The IP address range of the Kubernetes services in this
-	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-	// `/16` from the container CIDR.
+	// The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
 	ServicesIpv4Cidr *string `pulumi:"servicesIpv4Cidr"`
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// TPU configuration for the cluster.
 	TpuConfig *ClusterTpuConfig `pulumi:"tpuConfig"`
-	// The IP address range of the Cloud TPUs in this cluster, in
-	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-	// notation (e.g. `1.2.3.4/29`).
+	// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
 	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig *ClusterUserManagedKeysConfig `pulumi:"userManagedKeysConfig"`
@@ -1056,9 +1010,7 @@ type ClusterState struct {
 	// the cluster node IPs, which GKE automatically whitelists).
 	// Structure is documented below.
 	MasterAuthorizedNetworksConfig ClusterMasterAuthorizedNetworksConfigPtrInput
-	// The current version of the master in the cluster. This may
-	// be different than the `minMasterVersion` set in the config if the master
-	// has been updated by GKE.
+	// The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
 	MasterVersion pulumi.StringPtrInput
 	// Structure is documented below.
 	MeshCertificates ClusterMeshCertificatesPtrInput
@@ -1205,23 +1157,18 @@ type ClusterState struct {
 	SecretSyncConfig ClusterSecretSyncConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
 	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
-	// The server-defined URL for the resource.
+	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Structure is documented below.
 	ServiceExternalIpsConfig ClusterServiceExternalIpsConfigPtrInput
-	// The IP address range of the Kubernetes services in this
-	// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-	// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-	// `/16` from the container CIDR.
+	// The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
 	ServicesIpv4Cidr pulumi.StringPtrInput
 	// The name or selfLink of the Google Compute Engine
 	// subnetwork in which the cluster's instances are launched.
 	Subnetwork pulumi.StringPtrInput
 	// TPU configuration for the cluster.
 	TpuConfig ClusterTpuConfigPtrInput
-	// The IP address range of the Cloud TPUs in this cluster, in
-	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-	// notation (e.g. `1.2.3.4/29`).
+	// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
 	TpuIpv4CidrBlock pulumi.StringPtrInput
 	// The custom keys configuration of the cluster Structure is documented below.
 	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrInput
@@ -2239,9 +2186,7 @@ func (o ClusterOutput) MasterAuthorizedNetworksConfig() ClusterMasterAuthorizedN
 	return o.ApplyT(func(v *Cluster) ClusterMasterAuthorizedNetworksConfigOutput { return v.MasterAuthorizedNetworksConfig }).(ClusterMasterAuthorizedNetworksConfigOutput)
 }
 
-// The current version of the master in the cluster. This may
-// be different than the `minMasterVersion` set in the config if the master
-// has been updated by GKE.
+// The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
 func (o ClusterOutput) MasterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MasterVersion }).(pulumi.StringOutput)
 }
@@ -2487,7 +2432,7 @@ func (o ClusterOutput) SecurityPostureConfig() ClusterSecurityPostureConfigOutpu
 	return o.ApplyT(func(v *Cluster) ClusterSecurityPostureConfigOutput { return v.SecurityPostureConfig }).(ClusterSecurityPostureConfigOutput)
 }
 
-// The server-defined URL for the resource.
+// Server-defined URL for the resource.
 func (o ClusterOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
@@ -2497,10 +2442,7 @@ func (o ClusterOutput) ServiceExternalIpsConfig() ClusterServiceExternalIpsConfi
 	return o.ApplyT(func(v *Cluster) ClusterServiceExternalIpsConfigOutput { return v.ServiceExternalIpsConfig }).(ClusterServiceExternalIpsConfigOutput)
 }
 
-// The IP address range of the Kubernetes services in this
-// cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-// notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-// `/16` from the container CIDR.
+// The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
 func (o ClusterOutput) ServicesIpv4Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
 }
@@ -2516,9 +2458,7 @@ func (o ClusterOutput) TpuConfig() ClusterTpuConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterTpuConfigOutput { return v.TpuConfig }).(ClusterTpuConfigOutput)
 }
 
-// The IP address range of the Cloud TPUs in this cluster, in
-// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-// notation (e.g. `1.2.3.4/29`).
+// The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
 func (o ClusterOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
 }

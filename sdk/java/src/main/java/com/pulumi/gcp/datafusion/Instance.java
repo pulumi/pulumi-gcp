@@ -268,7 +268,9 @@ import javax.annotation.Nullable;
  *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gs-project-accounts.iam.gserviceaccount.com", project.number()))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyMemberCdfSa)
+ *                 .build());
  * 
  *         var cmek = new Instance("cmek", InstanceArgs.builder()
  *             .name("my-instance")
@@ -278,9 +280,7 @@ import javax.annotation.Nullable;
  *                 .keyReference(cryptoKey.id())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     cryptoKeyMemberCdfSa,
- *                     cryptoKeyMemberGcsSa)
+ *                 .dependsOn(cryptoKeyMemberGcsSa)
  *                 .build());
  * 
  *     }}{@code

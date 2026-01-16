@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataplex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOnDemandArgs;
+import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOneTimeArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerScheduleArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,23 @@ public final class DatascanExecutionSpecTriggerArgs extends com.pulumi.resources
     }
 
     /**
+     * The scan runs once upon DataScan creation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="oneTime")
+    private @Nullable Output<DatascanExecutionSpecTriggerOneTimeArgs> oneTime;
+
+    /**
+     * @return The scan runs once upon DataScan creation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatascanExecutionSpecTriggerOneTimeArgs>> oneTime() {
+        return Optional.ofNullable(this.oneTime);
+    }
+
+    /**
      * The scan is scheduled to run periodically.
      * Structure is documented below.
      * 
@@ -52,6 +70,7 @@ public final class DatascanExecutionSpecTriggerArgs extends com.pulumi.resources
 
     private DatascanExecutionSpecTriggerArgs(DatascanExecutionSpecTriggerArgs $) {
         this.onDemand = $.onDemand;
+        this.oneTime = $.oneTime;
         this.schedule = $.schedule;
     }
 
@@ -92,6 +111,29 @@ public final class DatascanExecutionSpecTriggerArgs extends com.pulumi.resources
          */
         public Builder onDemand(DatascanExecutionSpecTriggerOnDemandArgs onDemand) {
             return onDemand(Output.of(onDemand));
+        }
+
+        /**
+         * @param oneTime The scan runs once upon DataScan creation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneTime(@Nullable Output<DatascanExecutionSpecTriggerOneTimeArgs> oneTime) {
+            $.oneTime = oneTime;
+            return this;
+        }
+
+        /**
+         * @param oneTime The scan runs once upon DataScan creation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneTime(DatascanExecutionSpecTriggerOneTimeArgs oneTime) {
+            return oneTime(Output.of(oneTime));
         }
 
         /**

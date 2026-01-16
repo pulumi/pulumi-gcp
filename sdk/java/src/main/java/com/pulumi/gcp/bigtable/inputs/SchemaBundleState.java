@@ -18,6 +18,27 @@ public final class SchemaBundleState extends com.pulumi.resources.ResourceArgs {
     public static final SchemaBundleState Empty = new SchemaBundleState();
 
     /**
+     * etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a schema bundle from overwriting each other. This may be sent on update and delete
+     * requests to ensure the client has an update-to-date value before proceeding. The server returns
+     * an ABORTED error on a mismatched etag.
+     * 
+     */
+    @Import(name="etag")
+    private @Nullable Output<String> etag;
+
+    /**
+     * @return etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a schema bundle from overwriting each other. This may be sent on update and delete
+     * requests to ensure the client has an update-to-date value before proceeding. The server returns
+     * an ABORTED error on a mismatched etag.
+     * 
+     */
+    public Optional<Output<String>> etag() {
+        return Optional.ofNullable(this.etag);
+    }
+
+    /**
      * If true, allow backwards incompatible changes.
      * 
      */
@@ -133,6 +154,7 @@ public final class SchemaBundleState extends com.pulumi.resources.ResourceArgs {
     private SchemaBundleState() {}
 
     private SchemaBundleState(SchemaBundleState $) {
+        this.etag = $.etag;
         this.ignoreWarnings = $.ignoreWarnings;
         this.instance = $.instance;
         this.name = $.name;
@@ -158,6 +180,33 @@ public final class SchemaBundleState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SchemaBundleState defaults) {
             $ = new SchemaBundleState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param etag etag is used for optimistic concurrency control as a way to help prevent simultaneous
+         * updates of a schema bundle from overwriting each other. This may be sent on update and delete
+         * requests to ensure the client has an update-to-date value before proceeding. The server returns
+         * an ABORTED error on a mismatched etag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(@Nullable Output<String> etag) {
+            $.etag = etag;
+            return this;
+        }
+
+        /**
+         * @param etag etag is used for optimistic concurrency control as a way to help prevent simultaneous
+         * updates of a schema bundle from overwriting each other. This may be sent on update and delete
+         * requests to ensure the client has an update-to-date value before proceeding. The server returns
+         * an ABORTED error on a mismatched etag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder etag(String etag) {
+            return etag(Output.of(etag));
         }
 
         /**

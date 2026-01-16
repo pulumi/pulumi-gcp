@@ -40,6 +40,7 @@ export interface GetBackupPlanResult {
     readonly id: string;
     readonly location: string;
     readonly logRetentionDays: number;
+    readonly maxCustomOnDemandRetentionDays: number;
     readonly name: string;
     readonly project?: string;
     readonly resourceType: string;

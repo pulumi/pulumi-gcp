@@ -35,6 +35,7 @@ class LbRouteExtensionArgs:
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
                Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+               Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forwarding_rules: A list of references to the forwarding rules to which this service extension is attached to.
                At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
@@ -72,6 +73,7 @@ class LbRouteExtensionArgs:
         Match conditions for each extension chain are evaluated in sequence for a given request.
         The first extension chain that has a condition that matches the request is executed.
         Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         Structure is documented below.
         """
         return pulumi.get(self, "extension_chains")
@@ -193,6 +195,7 @@ class _LbRouteExtensionState:
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
                Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+               Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forwarding_rules: A list of references to the forwarding rules to which this service extension is attached to.
                At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
@@ -263,6 +266,7 @@ class _LbRouteExtensionState:
         Match conditions for each extension chain are evaluated in sequence for a given request.
         The first extension chain that has a condition that matches the request is executed.
         Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         Structure is documented below.
         """
         return pulumi.get(self, "extension_chains")
@@ -384,7 +388,7 @@ class LbRouteExtension(pulumi.CustomResource):
 
         To get more information about LbRouteExtension, see:
 
-        * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.lbRouteExtensions)
+        * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1/projects.locations.lbRouteExtensions)
         * How-to Guides
             * [Configure a route extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_route_extension)
 
@@ -421,6 +425,7 @@ class LbRouteExtension(pulumi.CustomResource):
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
                Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+               Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forwarding_rules: A list of references to the forwarding rules to which this service extension is attached to.
                At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
@@ -447,7 +452,7 @@ class LbRouteExtension(pulumi.CustomResource):
 
         To get more information about LbRouteExtension, see:
 
-        * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.lbRouteExtensions)
+        * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1/projects.locations.lbRouteExtensions)
         * How-to Guides
             * [Configure a route extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_route_extension)
 
@@ -562,6 +567,7 @@ class LbRouteExtension(pulumi.CustomResource):
                Match conditions for each extension chain are evaluated in sequence for a given request.
                The first extension chain that has a condition that matches the request is executed.
                Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+               Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forwarding_rules: A list of references to the forwarding rules to which this service extension is attached to.
                At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
@@ -619,6 +625,7 @@ class LbRouteExtension(pulumi.CustomResource):
         Match conditions for each extension chain are evaluated in sequence for a given request.
         The first extension chain that has a condition that matches the request is executed.
         Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         Structure is documented below.
         """
         return pulumi.get(self, "extension_chains")

@@ -5,8 +5,11 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networkservices.inputs.MulticastDomainActivationStateArgs;
 import com.pulumi.gcp.networkservices.inputs.MulticastDomainActivationTrafficSpecArgs;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +21,14 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     public static final MulticastDomainActivationState Empty = new MulticastDomainActivationState();
 
     /**
-     * [Output only] The URL of the admin network.
+     * The URL of the admin network.
      * 
      */
     @Import(name="adminNetwork")
     private @Nullable Output<String> adminNetwork;
 
     /**
-     * @return [Output only] The URL of the admin network.
+     * @return The URL of the admin network.
      * 
      */
     public Optional<Output<String>> adminNetwork() {
@@ -33,7 +36,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     }
 
     /**
-     * [Output only] The timestamp when the multicast domain activation was
+     * The timestamp when the multicast domain activation was
      * created.
      * 
      */
@@ -41,7 +44,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     private @Nullable Output<String> createTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain activation was
+     * @return The timestamp when the multicast domain activation was
      * created.
      * 
      */
@@ -62,6 +65,25 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     * 
+     */
+    @Import(name="disablePlacementPolicy")
+    private @Nullable Output<Boolean> disablePlacementPolicy;
+
+    /**
+     * @return Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     * 
+     */
+    public Optional<Output<Boolean>> disablePlacementPolicy() {
+        return Optional.ofNullable(this.disablePlacementPolicy);
     }
 
     /**
@@ -207,6 +229,39 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     }
 
     /**
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    @Import(name="states")
+    private @Nullable Output<List<MulticastDomainActivationStateArgs>> states;
+
+    /**
+     * @return (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    public Optional<Output<List<MulticastDomainActivationStateArgs>>> states() {
+        return Optional.ofNullable(this.states);
+    }
+
+    /**
      * Specifies the traffic volume and multicast group scale parameters that are
      * used to set up multicast infrastructure for a multicast domain in a zone.
      * Structure is documented below.
@@ -226,7 +281,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     }
 
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain activation resources. If a domain
      * activation is deleted and another with the same name is created, the new
      * domain activation is assigned a different unique_id.
@@ -236,7 +291,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     private @Nullable Output<String> uniqueId;
 
     /**
-     * @return [Output only] The Google-generated UUID for the resource. This value is
+     * @return The Google-generated UUID for the resource. This value is
      * unique across all multicast domain activation resources. If a domain
      * activation is deleted and another with the same name is created, the new
      * domain activation is assigned a different unique_id.
@@ -247,7 +302,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     }
 
     /**
-     * [Output only] The timestamp when the multicast domain activation was most
+     * The timestamp when the multicast domain activation was most
      * recently updated.
      * 
      */
@@ -255,7 +310,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain activation was most
+     * @return The timestamp when the multicast domain activation was most
      * recently updated.
      * 
      */
@@ -269,6 +324,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         this.adminNetwork = $.adminNetwork;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.disablePlacementPolicy = $.disablePlacementPolicy;
         this.effectiveLabels = $.effectiveLabels;
         this.labels = $.labels;
         this.location = $.location;
@@ -277,6 +333,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.states = $.states;
         this.trafficSpec = $.trafficSpec;
         this.uniqueId = $.uniqueId;
         this.updateTime = $.updateTime;
@@ -301,7 +358,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param adminNetwork [Output only] The URL of the admin network.
+         * @param adminNetwork The URL of the admin network.
          * 
          * @return builder
          * 
@@ -312,7 +369,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param adminNetwork [Output only] The URL of the admin network.
+         * @param adminNetwork The URL of the admin network.
          * 
          * @return builder
          * 
@@ -322,7 +379,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param createTime [Output only] The timestamp when the multicast domain activation was
+         * @param createTime The timestamp when the multicast domain activation was
          * created.
          * 
          * @return builder
@@ -334,7 +391,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param createTime [Output only] The timestamp when the multicast domain activation was
+         * @param createTime The timestamp when the multicast domain activation was
          * created.
          * 
          * @return builder
@@ -363,6 +420,31 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disablePlacementPolicy Option to allow disabling placement policy for multicast infrastructure.
+         * Only applicable if the activation is for a domain associating with a
+         * multicast domain group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePlacementPolicy(@Nullable Output<Boolean> disablePlacementPolicy) {
+            $.disablePlacementPolicy = disablePlacementPolicy;
+            return this;
+        }
+
+        /**
+         * @param disablePlacementPolicy Option to allow disabling placement policy for multicast infrastructure.
+         * Only applicable if the activation is for a domain associating with a
+         * multicast domain group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePlacementPolicy(Boolean disablePlacementPolicy) {
+            return disablePlacementPolicy(Output.of(disablePlacementPolicy));
         }
 
         /**
@@ -556,6 +638,64 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
+         * @param states (Output)
+         * The state of the multicast resource.
+         * Possible values:
+         * CREATING
+         * ACTIVE
+         * DELETING
+         * DELETE_FAILED
+         * UPDATING
+         * UPDATE_FAILED
+         * INACTIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder states(@Nullable Output<List<MulticastDomainActivationStateArgs>> states) {
+            $.states = states;
+            return this;
+        }
+
+        /**
+         * @param states (Output)
+         * The state of the multicast resource.
+         * Possible values:
+         * CREATING
+         * ACTIVE
+         * DELETING
+         * DELETE_FAILED
+         * UPDATING
+         * UPDATE_FAILED
+         * INACTIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder states(List<MulticastDomainActivationStateArgs> states) {
+            return states(Output.of(states));
+        }
+
+        /**
+         * @param states (Output)
+         * The state of the multicast resource.
+         * Possible values:
+         * CREATING
+         * ACTIVE
+         * DELETING
+         * DELETE_FAILED
+         * UPDATING
+         * UPDATE_FAILED
+         * INACTIVE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder states(MulticastDomainActivationStateArgs... states) {
+            return states(List.of(states));
+        }
+
+        /**
          * @param trafficSpec Specifies the traffic volume and multicast group scale parameters that are
          * used to set up multicast infrastructure for a multicast domain in a zone.
          * Structure is documented below.
@@ -581,7 +721,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param uniqueId [Output only] The Google-generated UUID for the resource. This value is
+         * @param uniqueId The Google-generated UUID for the resource. This value is
          * unique across all multicast domain activation resources. If a domain
          * activation is deleted and another with the same name is created, the new
          * domain activation is assigned a different unique_id.
@@ -595,7 +735,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param uniqueId [Output only] The Google-generated UUID for the resource. This value is
+         * @param uniqueId The Google-generated UUID for the resource. This value is
          * unique across all multicast domain activation resources. If a domain
          * activation is deleted and another with the same name is created, the new
          * domain activation is assigned a different unique_id.
@@ -608,7 +748,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param updateTime [Output only] The timestamp when the multicast domain activation was most
+         * @param updateTime The timestamp when the multicast domain activation was most
          * recently updated.
          * 
          * @return builder
@@ -620,7 +760,7 @@ public final class MulticastDomainActivationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param updateTime [Output only] The timestamp when the multicast domain activation was most
+         * @param updateTime The timestamp when the multicast domain activation was most
          * recently updated.
          * 
          * @return builder

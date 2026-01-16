@@ -2275,6 +2275,9 @@ type ConnectionProfilePostgresqlProfile struct {
 	Port *int `pulumi:"port"`
 	// A reference to a Secret Manager resource name storing the user's password.
 	SecretManagerStoredPassword *string `pulumi:"secretManagerStoredPassword"`
+	// SSL configuration for the PostgreSQL connection.
+	// Structure is documented below.
+	SslConfig *ConnectionProfilePostgresqlProfileSslConfig `pulumi:"sslConfig"`
 	// Username for the PostgreSQL connection.
 	Username string `pulumi:"username"`
 }
@@ -2302,6 +2305,9 @@ type ConnectionProfilePostgresqlProfileArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// A reference to a Secret Manager resource name storing the user's password.
 	SecretManagerStoredPassword pulumi.StringPtrInput `pulumi:"secretManagerStoredPassword"`
+	// SSL configuration for the PostgreSQL connection.
+	// Structure is documented below.
+	SslConfig ConnectionProfilePostgresqlProfileSslConfigPtrInput `pulumi:"sslConfig"`
 	// Username for the PostgreSQL connection.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -2409,6 +2415,14 @@ func (o ConnectionProfilePostgresqlProfileOutput) SecretManagerStoredPassword() 
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) *string { return v.SecretManagerStoredPassword }).(pulumi.StringPtrOutput)
 }
 
+// SSL configuration for the PostgreSQL connection.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlProfileOutput) SslConfig() ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) *ConnectionProfilePostgresqlProfileSslConfig {
+		return v.SslConfig
+	}).(ConnectionProfilePostgresqlProfileSslConfigPtrOutput)
+}
+
 // Username for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfileOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) string { return v.Username }).(pulumi.StringOutput)
@@ -2489,6 +2503,17 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) SecretManagerStoredPassword
 	}).(pulumi.StringPtrOutput)
 }
 
+// SSL configuration for the PostgreSQL connection.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlProfilePtrOutput) SslConfig() ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfile) *ConnectionProfilePostgresqlProfileSslConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SslConfig
+	}).(ConnectionProfilePostgresqlProfileSslConfigPtrOutput)
+}
+
 // Username for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfilePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfile) *string {
@@ -2496,6 +2521,544 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Username() pulumi.StringPtr
 			return nil
 		}
 		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfig struct {
+	// If this field is set, the communication will be encrypted with TLS encryption
+	// and both the server identity and the client identity will be authenticated.
+	// Structure is documented below.
+	ServerAndClientVerification *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification `pulumi:"serverAndClientVerification"`
+	// If this field is set, the communication will be encrypted with TLS encryption
+	// and the server identity will be authenticated.
+	// Structure is documented below.
+	ServerVerification *ConnectionProfilePostgresqlProfileSslConfigServerVerification `pulumi:"serverVerification"`
+}
+
+// ConnectionProfilePostgresqlProfileSslConfigInput is an input type that accepts ConnectionProfilePostgresqlProfileSslConfigArgs and ConnectionProfilePostgresqlProfileSslConfigOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlProfileSslConfigInput` via:
+//
+//	ConnectionProfilePostgresqlProfileSslConfigArgs{...}
+type ConnectionProfilePostgresqlProfileSslConfigInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlProfileSslConfigOutput() ConnectionProfilePostgresqlProfileSslConfigOutput
+	ToConnectionProfilePostgresqlProfileSslConfigOutputWithContext(context.Context) ConnectionProfilePostgresqlProfileSslConfigOutput
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigArgs struct {
+	// If this field is set, the communication will be encrypted with TLS encryption
+	// and both the server identity and the client identity will be authenticated.
+	// Structure is documented below.
+	ServerAndClientVerification ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrInput `pulumi:"serverAndClientVerification"`
+	// If this field is set, the communication will be encrypted with TLS encryption
+	// and the server identity will be authenticated.
+	// Structure is documented below.
+	ServerVerification ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrInput `pulumi:"serverVerification"`
+}
+
+func (ConnectionProfilePostgresqlProfileSslConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfig)(nil)).Elem()
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigArgs) ToConnectionProfilePostgresqlProfileSslConfigOutput() ConnectionProfilePostgresqlProfileSslConfigOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigArgs) ToConnectionProfilePostgresqlProfileSslConfigOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigOutput)
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigArgs) ToConnectionProfilePostgresqlProfileSslConfigPtrOutput() ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigArgs) ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigOutput).ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfilePostgresqlProfileSslConfigPtrInput is an input type that accepts ConnectionProfilePostgresqlProfileSslConfigArgs, ConnectionProfilePostgresqlProfileSslConfigPtr and ConnectionProfilePostgresqlProfileSslConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlProfileSslConfigPtrInput` via:
+//
+//	        ConnectionProfilePostgresqlProfileSslConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfilePostgresqlProfileSslConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlProfileSslConfigPtrOutput() ConnectionProfilePostgresqlProfileSslConfigPtrOutput
+	ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(context.Context) ConnectionProfilePostgresqlProfileSslConfigPtrOutput
+}
+
+type connectionProfilePostgresqlProfileSslConfigPtrType ConnectionProfilePostgresqlProfileSslConfigArgs
+
+func ConnectionProfilePostgresqlProfileSslConfigPtr(v *ConnectionProfilePostgresqlProfileSslConfigArgs) ConnectionProfilePostgresqlProfileSslConfigPtrInput {
+	return (*connectionProfilePostgresqlProfileSslConfigPtrType)(v)
+}
+
+func (*connectionProfilePostgresqlProfileSslConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlProfileSslConfig)(nil)).Elem()
+}
+
+func (i *connectionProfilePostgresqlProfileSslConfigPtrType) ToConnectionProfilePostgresqlProfileSslConfigPtrOutput() ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfilePostgresqlProfileSslConfigPtrType) ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigPtrOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlProfileSslConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigOutput) ToConnectionProfilePostgresqlProfileSslConfigOutput() ConnectionProfilePostgresqlProfileSslConfigOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigOutput) ToConnectionProfilePostgresqlProfileSslConfigOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigOutput) ToConnectionProfilePostgresqlProfileSslConfigPtrOutput() ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return o.ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigOutput) ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresqlProfileSslConfig) *ConnectionProfilePostgresqlProfileSslConfig {
+		return &v
+	}).(ConnectionProfilePostgresqlProfileSslConfigPtrOutput)
+}
+
+// If this field is set, the communication will be encrypted with TLS encryption
+// and both the server identity and the client identity will be authenticated.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlProfileSslConfigOutput) ServerAndClientVerification() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfileSslConfig) *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification {
+		return v.ServerAndClientVerification
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput)
+}
+
+// If this field is set, the communication will be encrypted with TLS encryption
+// and the server identity will be authenticated.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlProfileSslConfigOutput) ServerVerification() ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfileSslConfig) *ConnectionProfilePostgresqlProfileSslConfigServerVerification {
+		return v.ServerVerification
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlProfileSslConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlProfileSslConfig)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigPtrOutput) ToConnectionProfilePostgresqlProfileSslConfigPtrOutput() ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigPtrOutput) ToConnectionProfilePostgresqlProfileSslConfigPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigPtrOutput) Elem() ConnectionProfilePostgresqlProfileSslConfigOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfig) ConnectionProfilePostgresqlProfileSslConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfilePostgresqlProfileSslConfig
+		return ret
+	}).(ConnectionProfilePostgresqlProfileSslConfigOutput)
+}
+
+// If this field is set, the communication will be encrypted with TLS encryption
+// and both the server identity and the client identity will be authenticated.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlProfileSslConfigPtrOutput) ServerAndClientVerification() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfig) *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification {
+		if v == nil {
+			return nil
+		}
+		return v.ServerAndClientVerification
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput)
+}
+
+// If this field is set, the communication will be encrypted with TLS encryption
+// and the server identity will be authenticated.
+// Structure is documented below.
+func (o ConnectionProfilePostgresqlProfileSslConfigPtrOutput) ServerVerification() ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfig) *ConnectionProfilePostgresqlProfileSslConfigServerVerification {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVerification
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification struct {
+	// PEM-encoded server root CA certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate string `pulumi:"caCertificate"`
+	// PEM-encoded certificate used by the source database to authenticate the
+	// client identity (i.e., the Datastream's identity). This certificate is
+	// signed by either a root certificate trusted by the server or one or more
+	// intermediate certificates (which is stored with the leaf certificate) to
+	// link to this certificate to the trusted root certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientCertificate string `pulumi:"clientCertificate"`
+	// PEM-encoded private key associated with the client certificate.
+	// This value will be used during the SSL/TLS handshake, allowing
+	// the PostgreSQL server to authenticate the client's identity,
+	// i.e. identity of the stream.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientKey string `pulumi:"clientKey"`
+}
+
+// ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationInput is an input type that accepts ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs and ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationInput` via:
+//
+//	ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs{...}
+type ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput
+	ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutputWithContext(context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs struct {
+	// PEM-encoded server root CA certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	// PEM-encoded certificate used by the source database to authenticate the
+	// client identity (i.e., the Datastream's identity). This certificate is
+	// signed by either a root certificate trusted by the server or one or more
+	// intermediate certificates (which is stored with the leaf certificate) to
+	// link to this certificate to the trusted root certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
+	// PEM-encoded private key associated with the client certificate.
+	// This value will be used during the SSL/TLS handshake, allowing
+	// the PostgreSQL server to authenticate the client's identity,
+	// i.e. identity of the stream.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+}
+
+func (ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification)(nil)).Elem()
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput)
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput).ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrInput is an input type that accepts ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs, ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtr and ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrInput` via:
+//
+//	        ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput
+	ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput
+}
+
+type connectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrType ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs
+
+func ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtr(v *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrInput {
+	return (*connectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrType)(v)
+}
+
+func (*connectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification)(nil)).Elem()
+}
+
+func (i *connectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrType) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrType) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return o.ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification {
+		return &v
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput)
+}
+
+// PEM-encoded server root CA certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) string {
+		return v.CaCertificate
+	}).(pulumi.StringOutput)
+}
+
+// PEM-encoded certificate used by the source database to authenticate the
+// client identity (i.e., the Datastream's identity). This certificate is
+// signed by either a root certificate trusted by the server or one or more
+// intermediate certificates (which is stored with the leaf certificate) to
+// link to this certificate to the trusted root certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) ClientCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) string {
+		return v.ClientCertificate
+	}).(pulumi.StringOutput)
+}
+
+// PEM-encoded private key associated with the client certificate.
+// This value will be used during the SSL/TLS handshake, allowing
+// the PostgreSQL server to authenticate the client's identity,
+// i.e. identity of the stream.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) string {
+		return v.ClientKey
+	}).(pulumi.StringOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput) ToConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput) Elem() ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification
+		return ret
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput)
+}
+
+// PEM-encoded server root CA certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM-encoded certificate used by the source database to authenticate the
+// client identity (i.e., the Datastream's identity). This certificate is
+// signed by either a root certificate trusted by the server or one or more
+// intermediate certificates (which is stored with the leaf certificate) to
+// link to this certificate to the trusted root certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM-encoded private key associated with the client certificate.
+// This value will be used during the SSL/TLS handshake, allowing
+// the PostgreSQL server to authenticate the client's identity,
+// i.e. identity of the stream.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerVerification struct {
+	// PEM-encoded server root CA certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate string `pulumi:"caCertificate"`
+}
+
+// ConnectionProfilePostgresqlProfileSslConfigServerVerificationInput is an input type that accepts ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs and ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlProfileSslConfigServerVerificationInput` via:
+//
+//	ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs{...}
+type ConnectionProfilePostgresqlProfileSslConfigServerVerificationInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput
+	ToConnectionProfilePostgresqlProfileSslConfigServerVerificationOutputWithContext(context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs struct {
+	// PEM-encoded server root CA certificate.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+}
+
+func (ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerVerification)(nil)).Elem()
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigServerVerificationOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput)
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput).ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(ctx)
+}
+
+// ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrInput is an input type that accepts ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs, ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtr and ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput values.
+// You can construct a concrete instance of `ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrInput` via:
+//
+//	        ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput
+	ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput
+}
+
+type connectionProfilePostgresqlProfileSslConfigServerVerificationPtrType ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs
+
+func ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtr(v *ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs) ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrInput {
+	return (*connectionProfilePostgresqlProfileSslConfigServerVerificationPtrType)(v)
+}
+
+func (*connectionProfilePostgresqlProfileSslConfigServerVerificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlProfileSslConfigServerVerification)(nil)).Elem()
+}
+
+func (i *connectionProfilePostgresqlProfileSslConfigServerVerificationPtrType) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return i.ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfilePostgresqlProfileSslConfigServerVerificationPtrType) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerVerification)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return o.ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfilePostgresqlProfileSslConfigServerVerification) *ConnectionProfilePostgresqlProfileSslConfigServerVerification {
+		return &v
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput)
+}
+
+// PEM-encoded server root CA certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresqlProfileSslConfigServerVerification) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+type ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfilePostgresqlProfileSslConfigServerVerification)(nil)).Elem()
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput() ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput) ToConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutputWithContext(ctx context.Context) ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput {
+	return o
+}
+
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput) Elem() ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfigServerVerification) ConnectionProfilePostgresqlProfileSslConfigServerVerification {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfilePostgresqlProfileSslConfigServerVerification
+		return ret
+	}).(ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput)
+}
+
+// PEM-encoded server root CA certificate.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfileSslConfigServerVerification) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaCertificate
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20016,6 +20579,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileOracleProfilePtrInput)(nil)).Elem(), ConnectionProfileOracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfilePtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileSslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileSslConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerVerificationInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePrivateConnectivityPtrInput)(nil)).Elem(), ConnectionProfilePrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileInput)(nil)).Elem(), ConnectionProfileSalesforceProfileArgs{})
@@ -20275,6 +20844,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileOracleProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfilePtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileSslConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileSslConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileSslConfigServerVerificationOutput{})
+	pulumi.RegisterOutputType(ConnectionProfilePostgresqlProfileSslConfigServerVerificationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePrivateConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileOutput{})

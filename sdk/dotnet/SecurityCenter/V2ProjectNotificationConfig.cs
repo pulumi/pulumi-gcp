@@ -39,7 +39,6 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     {
     ///         ConfigId = "my-config",
     ///         Project = "my-project-name",
-    ///         Location = "global",
     ///         Description = "My custom Cloud Security Command Center Finding Notification Configuration",
     ///         PubsubTopic = sccV2ProjectNotification.Id,
     ///         StreamingConfig = new Gcp.SecurityCenter.Inputs.V2ProjectNotificationConfigStreamingConfigArgs
@@ -91,7 +90,7 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Location ID of the parent organization. Only global is supported at the moment.
+        /// Location ID for the parent project. Defaults to `Global` if location is not provided.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -190,7 +189,7 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Location ID of the parent organization. Only global is supported at the moment.
+        /// Location ID for the parent project. Defaults to `Global` if location is not provided.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -237,7 +236,7 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Location ID of the parent organization. Only global is supported at the moment.
+        /// Location ID for the parent project. Defaults to `Global` if location is not provided.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -5,7 +5,9 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHost;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigContainerdConfigWritableCgroups;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,11 @@ public final class ClusterNodePoolNodeConfigContainerdConfig {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+    /**
+     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * 
+     */
+    private @Nullable List<ClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts;
     /**
      * @return Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
      * 
@@ -30,6 +37,13 @@ public final class ClusterNodePoolNodeConfigContainerdConfig {
      */
     public Optional<ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfig() {
         return Optional.ofNullable(this.privateRegistryAccessConfig);
+    }
+    /**
+     * @return Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+     * 
+     */
+    public List<ClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts() {
+        return this.registryHosts == null ? List.of() : this.registryHosts;
     }
     /**
      * @return Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
@@ -49,11 +63,13 @@ public final class ClusterNodePoolNodeConfigContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+        private @Nullable List<ClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts;
         private @Nullable ClusterNodePoolNodeConfigContainerdConfigWritableCgroups writableCgroups;
         public Builder() {}
         public Builder(ClusterNodePoolNodeConfigContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfig = defaults.privateRegistryAccessConfig;
+    	      this.registryHosts = defaults.registryHosts;
     	      this.writableCgroups = defaults.writableCgroups;
         }
 
@@ -64,6 +80,15 @@ public final class ClusterNodePoolNodeConfigContainerdConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder registryHosts(@Nullable List<ClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts) {
+
+            this.registryHosts = registryHosts;
+            return this;
+        }
+        public Builder registryHosts(ClusterNodePoolNodeConfigContainerdConfigRegistryHost... registryHosts) {
+            return registryHosts(List.of(registryHosts));
+        }
+        @CustomType.Setter
         public Builder writableCgroups(@Nullable ClusterNodePoolNodeConfigContainerdConfigWritableCgroups writableCgroups) {
 
             this.writableCgroups = writableCgroups;
@@ -72,6 +97,7 @@ public final class ClusterNodePoolNodeConfigContainerdConfig {
         public ClusterNodePoolNodeConfigContainerdConfig build() {
             final var _resultValue = new ClusterNodePoolNodeConfigContainerdConfig();
             _resultValue.privateRegistryAccessConfig = privateRegistryAccessConfig;
+            _resultValue.registryHosts = registryHosts;
             _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }

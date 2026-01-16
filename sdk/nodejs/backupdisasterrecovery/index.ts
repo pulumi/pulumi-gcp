@@ -70,6 +70,11 @@ export type ManagementServer = import("./managementServer").ManagementServer;
 export const ManagementServer: typeof import("./managementServer").ManagementServer = null as any;
 utilities.lazyLoad(exports, ["ManagementServer"], () => require("./managementServer"));
 
+export { RestoreWorkloadArgs, RestoreWorkloadState } from "./restoreWorkload";
+export type RestoreWorkload = import("./restoreWorkload").RestoreWorkload;
+export const RestoreWorkload: typeof import("./restoreWorkload").RestoreWorkload = null as any;
+utilities.lazyLoad(exports, ["RestoreWorkload"], () => require("./restoreWorkload"));
+
 export { ServiceConfigArgs, ServiceConfigState } from "./serviceConfig";
 export type ServiceConfig = import("./serviceConfig").ServiceConfig;
 export const ServiceConfig: typeof import("./serviceConfig").ServiceConfig = null as any;
@@ -88,6 +93,8 @@ const _module = {
                 return new BackupVault(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/managementServer:ManagementServer":
                 return new ManagementServer(name, <any>undefined, { urn })
+            case "gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload":
+                return new RestoreWorkload(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig":
                 return new ServiceConfig(name, <any>undefined, { urn })
             default:
@@ -99,4 +106,5 @@ pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlan"
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlanAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/managementServer", _module)
+pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/restoreWorkload", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/serviceConfig", _module)

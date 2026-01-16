@@ -18,6 +18,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("privateRegistryAccessConfig")]
         public Input<Inputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigGetArgs>? PrivateRegistryAccessConfig { get; set; }
 
+        [Input("registryHosts")]
+        private InputList<Inputs.NodePoolNodeConfigContainerdConfigRegistryHostGetArgs>? _registryHosts;
+
+        /// <summary>
+        /// Configures containerd registry host configuration. Each RegistryHosts entry represents a hosts.toml file.
+        /// </summary>
+        public InputList<Inputs.NodePoolNodeConfigContainerdConfigRegistryHostGetArgs> RegistryHosts
+        {
+            get => _registryHosts ?? (_registryHosts = new InputList<Inputs.NodePoolNodeConfigContainerdConfigRegistryHostGetArgs>());
+            set => _registryHosts = value;
+        }
+
         /// <summary>
         /// Parameters for writable cgroups configuration.
         /// </summary>

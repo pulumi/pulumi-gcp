@@ -22,26 +22,30 @@ __all__ = ['MulticastDomainActivationArgs', 'MulticastDomainActivation']
 class MulticastDomainActivationArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
+                 multicast_domain: pulumi.Input[_builtins.str],
                  multicast_domain_activation_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_placement_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 multicast_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  traffic_spec: Optional[pulumi.Input['MulticastDomainActivationTrafficSpecArgs']] = None):
         """
         The set of arguments for constructing a MulticastDomainActivation resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] multicast_domain: The resource name of the multicast domain to activate.
+               Use the following format:
+               `projects/*/locations/global/multicastDomains/*`.
         :param pulumi.Input[_builtins.str] multicast_domain_activation_id: A unique name for the multicast domain activation.
                The name is restricted to letters, numbers, and hyphen, with the first
                character a letter, and the last a letter or a number. The name must not
                exceed 48 characters.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain activation.
+        :param pulumi.Input[_builtins.bool] disable_placement_policy: Option to allow disabling placement policy for multicast infrastructure.
+               Only applicable if the activation is for a domain associating with a
+               multicast domain group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[_builtins.str] multicast_domain: The resource name of the multicast domain to activate.
-               Use the following format:
-               `projects/*/locations/global/multicastDomains/*`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['MulticastDomainActivationTrafficSpecArgs'] traffic_spec: Specifies the traffic volume and multicast group scale parameters that are
@@ -49,13 +53,14 @@ class MulticastDomainActivationArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "multicast_domain", multicast_domain)
         pulumi.set(__self__, "multicast_domain_activation_id", multicast_domain_activation_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_placement_policy is not None:
+            pulumi.set(__self__, "disable_placement_policy", disable_placement_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if multicast_domain is not None:
-            pulumi.set(__self__, "multicast_domain", multicast_domain)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if traffic_spec is not None:
@@ -72,6 +77,20 @@ class MulticastDomainActivationArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="multicastDomain")
+    def multicast_domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        The resource name of the multicast domain to activate.
+        Use the following format:
+        `projects/*/locations/global/multicastDomains/*`.
+        """
+        return pulumi.get(self, "multicast_domain")
+
+    @multicast_domain.setter
+    def multicast_domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "multicast_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="multicastDomainActivationId")
@@ -101,6 +120,20 @@ class MulticastDomainActivationArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="disablePlacementPolicy")
+    def disable_placement_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Option to allow disabling placement policy for multicast infrastructure.
+        Only applicable if the activation is for a domain associating with a
+        multicast domain group.
+        """
+        return pulumi.get(self, "disable_placement_policy")
+
+    @disable_placement_policy.setter
+    def disable_placement_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_placement_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -113,20 +146,6 @@ class MulticastDomainActivationArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
-
-    @_builtins.property
-    @pulumi.getter(name="multicastDomain")
-    def multicast_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The resource name of the multicast domain to activate.
-        Use the following format:
-        `projects/*/locations/global/multicastDomains/*`.
-        """
-        return pulumi.get(self, "multicast_domain")
-
-    @multicast_domain.setter
-    def multicast_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "multicast_domain", value)
 
     @_builtins.property
     @pulumi.getter
@@ -162,6 +181,7 @@ class _MulticastDomainActivationState:
                  admin_network: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_placement_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -170,15 +190,19 @@ class _MulticastDomainActivationState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MulticastDomainActivationStateArgs']]]] = None,
                  traffic_spec: Optional[pulumi.Input['MulticastDomainActivationTrafficSpecArgs']] = None,
                  unique_id: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastDomainActivation resources.
-        :param pulumi.Input[_builtins.str] admin_network: [Output only] The URL of the admin network.
-        :param pulumi.Input[_builtins.str] create_time: [Output only] The timestamp when the multicast domain activation was
+        :param pulumi.Input[_builtins.str] admin_network: The URL of the admin network.
+        :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain activation was
                created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain activation.
+        :param pulumi.Input[_builtins.bool] disable_placement_policy: Option to allow disabling placement policy for multicast infrastructure.
+               Only applicable if the activation is for a domain associating with a
+               multicast domain group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -198,14 +222,24 @@ class _MulticastDomainActivationState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input['MulticastDomainActivationStateArgs']]] states: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
         :param pulumi.Input['MulticastDomainActivationTrafficSpecArgs'] traffic_spec: Specifies the traffic volume and multicast group scale parameters that are
                used to set up multicast infrastructure for a multicast domain in a zone.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] unique_id: [Output only] The Google-generated UUID for the resource. This value is
+        :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is
                unique across all multicast domain activation resources. If a domain
                activation is deleted and another with the same name is created, the new
                domain activation is assigned a different unique_id.
-        :param pulumi.Input[_builtins.str] update_time: [Output only] The timestamp when the multicast domain activation was most
+        :param pulumi.Input[_builtins.str] update_time: The timestamp when the multicast domain activation was most
                recently updated.
         """
         if admin_network is not None:
@@ -214,6 +248,8 @@ class _MulticastDomainActivationState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_placement_policy is not None:
+            pulumi.set(__self__, "disable_placement_policy", disable_placement_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
@@ -230,6 +266,8 @@ class _MulticastDomainActivationState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if states is not None:
+            pulumi.set(__self__, "states", states)
         if traffic_spec is not None:
             pulumi.set(__self__, "traffic_spec", traffic_spec)
         if unique_id is not None:
@@ -241,7 +279,7 @@ class _MulticastDomainActivationState:
     @pulumi.getter(name="adminNetwork")
     def admin_network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        [Output only] The URL of the admin network.
+        The URL of the admin network.
         """
         return pulumi.get(self, "admin_network")
 
@@ -253,7 +291,7 @@ class _MulticastDomainActivationState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        [Output only] The timestamp when the multicast domain activation was
+        The timestamp when the multicast domain activation was
         created.
         """
         return pulumi.get(self, "create_time")
@@ -273,6 +311,20 @@ class _MulticastDomainActivationState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePlacementPolicy")
+    def disable_placement_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Option to allow disabling placement policy for multicast infrastructure.
+        Only applicable if the activation is for a domain associating with a
+        multicast domain group.
+        """
+        return pulumi.get(self, "disable_placement_policy")
+
+    @disable_placement_policy.setter
+    def disable_placement_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "disable_placement_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -382,6 +434,27 @@ class _MulticastDomainActivationState:
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
+    @pulumi.getter
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MulticastDomainActivationStateArgs']]]]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "states")
+
+    @states.setter
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MulticastDomainActivationStateArgs']]]]):
+        pulumi.set(self, "states", value)
+
+    @_builtins.property
     @pulumi.getter(name="trafficSpec")
     def traffic_spec(self) -> Optional[pulumi.Input['MulticastDomainActivationTrafficSpecArgs']]:
         """
@@ -399,7 +472,7 @@ class _MulticastDomainActivationState:
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        [Output only] The Google-generated UUID for the resource. This value is
+        The Google-generated UUID for the resource. This value is
         unique across all multicast domain activation resources. If a domain
         activation is deleted and another with the same name is created, the new
         domain activation is assigned a different unique_id.
@@ -414,7 +487,7 @@ class _MulticastDomainActivationState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        [Output only] The timestamp when the multicast domain activation was most
+        The timestamp when the multicast domain activation was most
         recently updated.
         """
         return pulumi.get(self, "update_time")
@@ -431,6 +504,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_placement_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  multicast_domain: Optional[pulumi.Input[_builtins.str]] = None,
@@ -440,6 +514,12 @@ class MulticastDomainActivation(pulumi.CustomResource):
                  __props__=None):
         """
         Create a multicast domain activation in the specified location of the current project.
+
+        To get more information about MulticastDomainActivation, see:
+
+        * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomainActivations)
+        * How-to Guides
+            * [Create Multicast Domain Activation](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#activate-domain)
 
         ## Example Usage
 
@@ -493,6 +573,9 @@ class MulticastDomainActivation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain activation.
+        :param pulumi.Input[_builtins.bool] disable_placement_policy: Option to allow disabling placement policy for multicast infrastructure.
+               Only applicable if the activation is for a domain associating with a
+               multicast domain group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -518,6 +601,12 @@ class MulticastDomainActivation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a multicast domain activation in the specified location of the current project.
+
+        To get more information about MulticastDomainActivation, see:
+
+        * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomainActivations)
+        * How-to Guides
+            * [Create Multicast Domain Activation](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#activate-domain)
 
         ## Example Usage
 
@@ -584,6 +673,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_placement_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  multicast_domain: Optional[pulumi.Input[_builtins.str]] = None,
@@ -600,10 +690,13 @@ class MulticastDomainActivation(pulumi.CustomResource):
             __props__ = MulticastDomainActivationArgs.__new__(MulticastDomainActivationArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_placement_policy"] = disable_placement_policy
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if multicast_domain is None and not opts.urn:
+                raise TypeError("Missing required property 'multicast_domain'")
             __props__.__dict__["multicast_domain"] = multicast_domain
             if multicast_domain_activation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'multicast_domain_activation_id'")
@@ -615,6 +708,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["states"] = None
             __props__.__dict__["unique_id"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -632,6 +726,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
             admin_network: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            disable_placement_policy: Optional[pulumi.Input[_builtins.bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
@@ -640,6 +735,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainActivationStateArgs', 'MulticastDomainActivationStateArgsDict']]]]] = None,
             traffic_spec: Optional[pulumi.Input[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict']]] = None,
             unique_id: Optional[pulumi.Input[_builtins.str]] = None,
             update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'MulticastDomainActivation':
@@ -650,10 +746,13 @@ class MulticastDomainActivation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] admin_network: [Output only] The URL of the admin network.
-        :param pulumi.Input[_builtins.str] create_time: [Output only] The timestamp when the multicast domain activation was
+        :param pulumi.Input[_builtins.str] admin_network: The URL of the admin network.
+        :param pulumi.Input[_builtins.str] create_time: The timestamp when the multicast domain activation was
                created.
         :param pulumi.Input[_builtins.str] description: An optional text description of the multicast domain activation.
+        :param pulumi.Input[_builtins.bool] disable_placement_policy: Option to allow disabling placement policy for multicast infrastructure.
+               Only applicable if the activation is for a domain associating with a
+               multicast domain group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key-value pairs
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -673,14 +772,24 @@ class MulticastDomainActivation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MulticastDomainActivationStateArgs', 'MulticastDomainActivationStateArgsDict']]]] states: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
         :param pulumi.Input[Union['MulticastDomainActivationTrafficSpecArgs', 'MulticastDomainActivationTrafficSpecArgsDict']] traffic_spec: Specifies the traffic volume and multicast group scale parameters that are
                used to set up multicast infrastructure for a multicast domain in a zone.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] unique_id: [Output only] The Google-generated UUID for the resource. This value is
+        :param pulumi.Input[_builtins.str] unique_id: The Google-generated UUID for the resource. This value is
                unique across all multicast domain activation resources. If a domain
                activation is deleted and another with the same name is created, the new
                domain activation is assigned a different unique_id.
-        :param pulumi.Input[_builtins.str] update_time: [Output only] The timestamp when the multicast domain activation was most
+        :param pulumi.Input[_builtins.str] update_time: The timestamp when the multicast domain activation was most
                recently updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -690,6 +799,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
         __props__.__dict__["admin_network"] = admin_network
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["disable_placement_policy"] = disable_placement_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -698,6 +808,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["states"] = states
         __props__.__dict__["traffic_spec"] = traffic_spec
         __props__.__dict__["unique_id"] = unique_id
         __props__.__dict__["update_time"] = update_time
@@ -707,7 +818,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
     @pulumi.getter(name="adminNetwork")
     def admin_network(self) -> pulumi.Output[_builtins.str]:
         """
-        [Output only] The URL of the admin network.
+        The URL of the admin network.
         """
         return pulumi.get(self, "admin_network")
 
@@ -715,7 +826,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        [Output only] The timestamp when the multicast domain activation was
+        The timestamp when the multicast domain activation was
         created.
         """
         return pulumi.get(self, "create_time")
@@ -727,6 +838,16 @@ class MulticastDomainActivation(pulumi.CustomResource):
         An optional text description of the multicast domain activation.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePlacementPolicy")
+    def disable_placement_policy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Option to allow disabling placement policy for multicast infrastructure.
+        Only applicable if the activation is for a domain associating with a
+        multicast domain group.
+        """
+        return pulumi.get(self, "disable_placement_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -756,7 +877,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="multicastDomain")
-    def multicast_domain(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def multicast_domain(self) -> pulumi.Output[_builtins.str]:
         """
         The resource name of the multicast domain to activate.
         Use the following format:
@@ -804,6 +925,23 @@ class MulticastDomainActivation(pulumi.CustomResource):
         return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
+    @pulumi.getter
+    def states(self) -> pulumi.Output[Sequence['outputs.MulticastDomainActivationState']]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "states")
+
+    @_builtins.property
     @pulumi.getter(name="trafficSpec")
     def traffic_spec(self) -> pulumi.Output[Optional['outputs.MulticastDomainActivationTrafficSpec']]:
         """
@@ -817,7 +955,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> pulumi.Output[_builtins.str]:
         """
-        [Output only] The Google-generated UUID for the resource. This value is
+        The Google-generated UUID for the resource. This value is
         unique across all multicast domain activation resources. If a domain
         activation is deleted and another with the same name is created, the new
         domain activation is assigned a different unique_id.
@@ -828,7 +966,7 @@ class MulticastDomainActivation(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        [Output only] The timestamp when the multicast domain activation was most
+        The timestamp when the multicast domain activation was most
         recently updated.
         """
         return pulumi.get(self, "update_time")

@@ -401,25 +401,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudrunv2 Worker Pool Custom Audiences
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.cloudrunv2.WorkerPool("default", {
- *     name: "cloudrun-worker-pool",
- *     location: "us-central1",
- *     deletionProtection: false,
- *     launchStage: "BETA",
- *     customAudiences: ["aud1"],
- *     template: {
- *         containers: [{
- *             image: "us-docker.pkg.dev/cloudrun/container/worker-pool",
- *         }],
- *     },
- * });
- * ```
  * ### Cloudrunv2 Worker Pool Startup Liveness Probe
  *
  * ```typescript
@@ -567,8 +548,13 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     *
+     * > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     *
+     * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
      */
     declare public readonly customAudiences: pulumi.Output<string[] | undefined>;
     /**
@@ -825,8 +811,13 @@ export interface WorkerPoolState {
      */
     creator?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     *
+     * > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     *
+     * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -974,8 +965,13 @@ export interface WorkerPoolArgs {
      */
     clientVersion?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     *
+     * > **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     *
+     * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     deletionProtection?: pulumi.Input<boolean>;

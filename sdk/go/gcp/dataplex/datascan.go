@@ -133,6 +133,44 @@ import (
 //	}
 //
 // ```
+// ### Dataplex Datascan Onetime Profile
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewDatascan(ctx, "onetime_profile", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("dataprofile-onetime"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.String("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare"),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OneTime: &dataplex.DatascanExecutionSpecTriggerOneTimeArgs{
+//							TtlAfterScanCompletion: pulumi.String("120s"),
+//						},
+//					},
+//				},
+//				DataProfileSpec: &dataplex.DatascanDataProfileSpecArgs{},
+//				Project:         pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dataplex Datascan Basic Quality
 //
 // ```go
@@ -314,6 +352,55 @@ import (
 //	}
 //
 // ```
+// ### Dataplex Datascan Onetime Quality
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewDatascan(ctx, "onetime_quality", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("dataquality-onetime"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.String("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare"),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OneTime: &dataplex.DatascanExecutionSpecTriggerOneTimeArgs{
+//							TtlAfterScanCompletion: pulumi.String("120s"),
+//						},
+//					},
+//				},
+//				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
+//					Rules: dataplex.DatascanDataQualitySpecRuleArray{
+//						&dataplex.DatascanDataQualitySpecRuleArgs{
+//							Dimension:   pulumi.String("VALIDITY"),
+//							Name:        pulumi.String("rule1"),
+//							Description: pulumi.String("rule 1 for validity dimension"),
+//							TableConditionExpectation: &dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs{
+//								SqlExpression: pulumi.String("COUNT(*) > 0"),
+//							},
+//						},
+//					},
+//				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dataplex Datascan Basic Discovery
 //
 // ```go
@@ -469,6 +556,59 @@ import (
 //	}
 //
 // ```
+// ### Dataplex Datascan Onetime Discovery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("tf-test-bucket-name-_34962"),
+//				Location:                 pulumi.String("us-west1"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "onetime_discovery", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("datadiscovery-onetime"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfTestBucket.Project, tfTestBucket.Name).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						name := _args[1].(string)
+//						return fmt.Sprintf("//storage.googleapis.com/projects/%v/buckets/%v", project, name), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OneTime: &dataplex.DatascanExecutionSpecTriggerOneTimeArgs{
+//							TtlAfterScanCompletion: pulumi.String("120s"),
+//						},
+//					},
+//				},
+//				DataDiscoverySpec: &dataplex.DatascanDataDiscoverySpecArgs{},
+//				Project:           pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dataplex Datascan Documentation
 //
 // ```go
@@ -487,7 +627,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__34962"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__74000"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -495,7 +635,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__74000"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__75125"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -566,6 +706,118 @@ import (
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
 //					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
 //						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
+//					},
+//				},
+//				DataDocumentationSpec: &dataplex.DatascanDataDocumentationSpecArgs{},
+//				Project:               pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataplex Datascan Onetime Documentation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__88722"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
+//				DatasetId:          tfDataplexTestDataset.DatasetId,
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__39249"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Schema: pulumi.String(`    [
+//	    {
+//	      \"name\": \"name\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\"
+//	    },
+//	    {
+//	      \"name\": \"station_id\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The id of the bike station\"
+//	    },
+//	    {
+//	      \"name\": \"address\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The address of the bike station\"
+//	    },
+//	    {
+//	      \"name\": \"power_type\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The powert type of the bike station\"
+//	    },
+//	    {
+//	      \"name\": \"property_type\",
+//	      \"type\": \"STRING\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The type of the property\"
+//	    },
+//	    {
+//	      \"name\": \"number_of_docks\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The number of docks the property have\"
+//	    },
+//	    {
+//	      \"name\": \"footprint_length\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The footpring lenght of the property\"
+//	    },
+//	    {
+//	      \"name\": \"council_district\",
+//	      \"type\": \"INTEGER\",
+//	      \"mode\": \"NULLABLE\",
+//	      \"description\": \"The council district the property is in\"
+//	    }
+//	    ]
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "onetime_documentation", &dataplex.DatascanArgs{
+//				Location:   pulumi.String("us-central1"),
+//				DataScanId: pulumi.String("datadocumentation-onetime"),
+//				Data: &dataplex.DatascanDataArgs{
+//					Resource: pulumi.All(tfDataplexTestDataset.DatasetId, tfDataplexTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						datasetId := _args[0].(string)
+//						tableId := _args[1].(string)
+//						return fmt.Sprintf("//bigquery.googleapis.com/projects/my-project-name/datasets/%v/tables/%v", datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
+//					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
+//						OneTime: &dataplex.DatascanExecutionSpecTriggerOneTimeArgs{
+//							TtlAfterScanCompletion: pulumi.String("120s"),
+//						},
 //					},
 //				},
 //				DataDocumentationSpec: &dataplex.DatascanDataDocumentationSpecArgs{},

@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_85160",
+ *     name: "tf-test-subnet_21563",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,

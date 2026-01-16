@@ -18,16 +18,14 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
     public static final ClusterMasterAuthArgs Empty = new ClusterMasterAuthArgs();
 
     /**
-     * Base64 encoded public certificate
-     * used by clients to authenticate to the cluster endpoint.
+     * Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
      * 
      */
     @Import(name="clientCertificate")
     private @Nullable Output<String> clientCertificate;
 
     /**
-     * @return Base64 encoded public certificate
-     * used by clients to authenticate to the cluster endpoint.
+     * @return Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
      * 
      */
     public Optional<Output<String>> clientCertificate() {
@@ -50,16 +48,14 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Base64 encoded private key used by clients
-     * to authenticate to the cluster endpoint.
+     * Base64 encoded private key used by clients to authenticate to the cluster endpoint.
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return Base64 encoded private key used by clients
-     * to authenticate to the cluster endpoint.
+     * @return Base64 encoded private key used by clients to authenticate to the cluster endpoint.
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -67,16 +63,14 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Base64 encoded public certificate
-     * that is the root certificate of the cluster.
+     * Base64 encoded public certificate that is the root of trust for the cluster.
      * 
      */
     @Import(name="clusterCaCertificate")
     private @Nullable Output<String> clusterCaCertificate;
 
     /**
-     * @return Base64 encoded public certificate
-     * that is the root certificate of the cluster.
+     * @return Base64 encoded public certificate that is the root of trust for the cluster.
      * 
      */
     public Optional<Output<String>> clusterCaCertificate() {
@@ -111,8 +105,7 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientCertificate Base64 encoded public certificate
-         * used by clients to authenticate to the cluster endpoint.
+         * @param clientCertificate Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
          * 
          * @return builder
          * 
@@ -123,8 +116,7 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientCertificate Base64 encoded public certificate
-         * used by clients to authenticate to the cluster endpoint.
+         * @param clientCertificate Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
          * 
          * @return builder
          * 
@@ -155,8 +147,7 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientKey Base64 encoded private key used by clients
-         * to authenticate to the cluster endpoint.
+         * @param clientKey Base64 encoded private key used by clients to authenticate to the cluster endpoint.
          * 
          * @return builder
          * 
@@ -167,8 +158,7 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientKey Base64 encoded private key used by clients
-         * to authenticate to the cluster endpoint.
+         * @param clientKey Base64 encoded private key used by clients to authenticate to the cluster endpoint.
          * 
          * @return builder
          * 
@@ -178,8 +168,7 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clusterCaCertificate Base64 encoded public certificate
-         * that is the root certificate of the cluster.
+         * @param clusterCaCertificate Base64 encoded public certificate that is the root of trust for the cluster.
          * 
          * @return builder
          * 
@@ -190,8 +179,7 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clusterCaCertificate Base64 encoded public certificate
-         * that is the root certificate of the cluster.
+         * @param clusterCaCertificate Base64 encoded public certificate that is the root of trust for the cluster.
          * 
          * @return builder
          * 

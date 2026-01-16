@@ -58,8 +58,22 @@ class AuthzExtensionArgs:
         :param pulumi.Input[_builtins.str] name: Identifier. Name of the AuthzExtension resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        :param pulumi.Input[_builtins.str] wire_format: Specifies the communication protocol used by the callout extension
+               to communicate with its backend service.
+               Supported values:
+               - WIRE_FORMAT_UNSPECIFIED:
+               No wire format is explicitly specified. The backend automatically
+               defaults this value to EXT_PROC_GRPC.
+               - EXT_PROC_GRPC:
+               Uses Envoy's External Processing (ext_proc) gRPC API over a single
+               gRPC stream. The backend service must support HTTP/2 or H2C.
+               All supported events for a client request are sent over the same
+               gRPC stream. This is the default wire format.
+               - EXT_AUTHZ_GRPC:
+               Uses Envoy's external authorization (ext_authz) gRPC API.
+               The backend service must support HTTP/2 or H2C.
+               This option is only supported for regional AuthzExtension resources.
+               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         pulumi.set(__self__, "authority", authority)
         pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
@@ -243,8 +257,22 @@ class AuthzExtensionArgs:
     @pulumi.getter(name="wireFormat")
     def wire_format(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        Specifies the communication protocol used by the callout extension
+        to communicate with its backend service.
+        Supported values:
+        - WIRE_FORMAT_UNSPECIFIED:
+        No wire format is explicitly specified. The backend automatically
+        defaults this value to EXT_PROC_GRPC.
+        - EXT_PROC_GRPC:
+        Uses Envoy's External Processing (ext_proc) gRPC API over a single
+        gRPC stream. The backend service must support HTTP/2 or H2C.
+        All supported events for a client request are sent over the same
+        gRPC stream. This is the default wire format.
+        - EXT_AUTHZ_GRPC:
+        Uses Envoy's external authorization (ext_authz) gRPC API.
+        The backend service must support HTTP/2 or H2C.
+        This option is only supported for regional AuthzExtension resources.
+        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         return pulumi.get(self, "wire_format")
 
@@ -304,8 +332,22 @@ class _AuthzExtensionState:
                https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
         :param pulumi.Input[_builtins.str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
-        :param pulumi.Input[_builtins.str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        :param pulumi.Input[_builtins.str] wire_format: Specifies the communication protocol used by the callout extension
+               to communicate with its backend service.
+               Supported values:
+               - WIRE_FORMAT_UNSPECIFIED:
+               No wire format is explicitly specified. The backend automatically
+               defaults this value to EXT_PROC_GRPC.
+               - EXT_PROC_GRPC:
+               Uses Envoy's External Processing (ext_proc) gRPC API over a single
+               gRPC stream. The backend service must support HTTP/2 or H2C.
+               All supported events for a client request are sent over the same
+               gRPC stream. This is the default wire format.
+               - EXT_AUTHZ_GRPC:
+               Uses Envoy's external authorization (ext_authz) gRPC API.
+               The backend service must support HTTP/2 or H2C.
+               This option is only supported for regional AuthzExtension resources.
+               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
@@ -551,8 +593,22 @@ class _AuthzExtensionState:
     @pulumi.getter(name="wireFormat")
     def wire_format(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        Specifies the communication protocol used by the callout extension
+        to communicate with its backend service.
+        Supported values:
+        - WIRE_FORMAT_UNSPECIFIED:
+        No wire format is explicitly specified. The backend automatically
+        defaults this value to EXT_PROC_GRPC.
+        - EXT_PROC_GRPC:
+        Uses Envoy's External Processing (ext_proc) gRPC API over a single
+        gRPC stream. The backend service must support HTTP/2 or H2C.
+        All supported events for a client request are sent over the same
+        gRPC stream. This is the default wire format.
+        - EXT_AUTHZ_GRPC:
+        Uses Envoy's external authorization (ext_authz) gRPC API.
+        The backend service must support HTTP/2 or H2C.
+        This option is only supported for regional AuthzExtension resources.
+        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         return pulumi.get(self, "wire_format")
 
@@ -609,6 +665,32 @@ class AuthzExtension(pulumi.CustomResource):
             location="us-west1",
             description="my description",
             load_balancing_scheme="INTERNAL_MANAGED",
+            authority="ext11.com",
+            service=default.self_link,
+            timeout="0.1s",
+            fail_open=False,
+            forward_headers=["Authorization"])
+        ```
+        ### Network Services Authz Extension Basic With Auth Grpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="authz-service-grpc",
+            project="my-project-name",
+            region="us-west1",
+            protocol="HTTP2",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_name="grpc")
+        default_authz_extension = gcp.networkservices.AuthzExtension("default",
+            name="my-authz-ext-with-grpc",
+            project="my-project-name",
+            location="us-west1",
+            description="my description",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            wire_format="EXT_AUTHZ_GRPC",
             authority="ext11.com",
             service=default.self_link,
             timeout="0.1s",
@@ -672,8 +754,22 @@ class AuthzExtension(pulumi.CustomResource):
                To configure a callout extension, service must be a fully-qualified reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
                https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
         :param pulumi.Input[_builtins.str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
-        :param pulumi.Input[_builtins.str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        :param pulumi.Input[_builtins.str] wire_format: Specifies the communication protocol used by the callout extension
+               to communicate with its backend service.
+               Supported values:
+               - WIRE_FORMAT_UNSPECIFIED:
+               No wire format is explicitly specified. The backend automatically
+               defaults this value to EXT_PROC_GRPC.
+               - EXT_PROC_GRPC:
+               Uses Envoy's External Processing (ext_proc) gRPC API over a single
+               gRPC stream. The backend service must support HTTP/2 or H2C.
+               All supported events for a client request are sent over the same
+               gRPC stream. This is the default wire format.
+               - EXT_AUTHZ_GRPC:
+               Uses Envoy's external authorization (ext_authz) gRPC API.
+               The backend service must support HTTP/2 or H2C.
+               This option is only supported for regional AuthzExtension resources.
+               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         ...
     @overload
@@ -709,6 +805,32 @@ class AuthzExtension(pulumi.CustomResource):
             location="us-west1",
             description="my description",
             load_balancing_scheme="INTERNAL_MANAGED",
+            authority="ext11.com",
+            service=default.self_link,
+            timeout="0.1s",
+            fail_open=False,
+            forward_headers=["Authorization"])
+        ```
+        ### Network Services Authz Extension Basic With Auth Grpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            name="authz-service-grpc",
+            project="my-project-name",
+            region="us-west1",
+            protocol="HTTP2",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            port_name="grpc")
+        default_authz_extension = gcp.networkservices.AuthzExtension("default",
+            name="my-authz-ext-with-grpc",
+            project="my-project-name",
+            location="us-west1",
+            description="my description",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            wire_format="EXT_AUTHZ_GRPC",
             authority="ext11.com",
             service=default.self_link,
             timeout="0.1s",
@@ -875,8 +997,22 @@ class AuthzExtension(pulumi.CustomResource):
                https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService} or https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}.
         :param pulumi.Input[_builtins.str] timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
         :param pulumi.Input[_builtins.str] update_time: The timestamp when the resource was updated.
-        :param pulumi.Input[_builtins.str] wire_format: The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        :param pulumi.Input[_builtins.str] wire_format: Specifies the communication protocol used by the callout extension
+               to communicate with its backend service.
+               Supported values:
+               - WIRE_FORMAT_UNSPECIFIED:
+               No wire format is explicitly specified. The backend automatically
+               defaults this value to EXT_PROC_GRPC.
+               - EXT_PROC_GRPC:
+               Uses Envoy's External Processing (ext_proc) gRPC API over a single
+               gRPC stream. The backend service must support HTTP/2 or H2C.
+               All supported events for a client request are sent over the same
+               gRPC stream. This is the default wire format.
+               - EXT_AUTHZ_GRPC:
+               Uses Envoy's external authorization (ext_authz) gRPC API.
+               The backend service must support HTTP/2 or H2C.
+               This option is only supported for regional AuthzExtension resources.
+               Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1046,8 +1182,22 @@ class AuthzExtension(pulumi.CustomResource):
     @pulumi.getter(name="wireFormat")
     def wire_format(self) -> pulumi.Output[_builtins.str]:
         """
-        The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        Specifies the communication protocol used by the callout extension
+        to communicate with its backend service.
+        Supported values:
+        - WIRE_FORMAT_UNSPECIFIED:
+        No wire format is explicitly specified. The backend automatically
+        defaults this value to EXT_PROC_GRPC.
+        - EXT_PROC_GRPC:
+        Uses Envoy's External Processing (ext_proc) gRPC API over a single
+        gRPC stream. The backend service must support HTTP/2 or H2C.
+        All supported events for a client request are sent over the same
+        gRPC stream. This is the default wire format.
+        - EXT_AUTHZ_GRPC:
+        Uses Envoy's external authorization (ext_authz) gRPC API.
+        The backend service must support HTTP/2 or H2C.
+        This option is only supported for regional AuthzExtension resources.
+        Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         """
         return pulumi.get(self, "wire_format")
 

@@ -28,6 +28,7 @@ public final class GetBackupPlanResult {
     private String id;
     private String location;
     private Integer logRetentionDays;
+    private Integer maxCustomOnDemandRetentionDays;
     private String name;
     private @Nullable String project;
     private String resourceType;
@@ -66,6 +67,9 @@ public final class GetBackupPlanResult {
     public Integer logRetentionDays() {
         return this.logRetentionDays;
     }
+    public Integer maxCustomOnDemandRetentionDays() {
+        return this.maxCustomOnDemandRetentionDays;
+    }
     public String name() {
         return this.name;
     }
@@ -100,6 +104,7 @@ public final class GetBackupPlanResult {
         private String id;
         private String location;
         private Integer logRetentionDays;
+        private Integer maxCustomOnDemandRetentionDays;
         private String name;
         private @Nullable String project;
         private String resourceType;
@@ -117,6 +122,7 @@ public final class GetBackupPlanResult {
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.logRetentionDays = defaults.logRetentionDays;
+    	      this.maxCustomOnDemandRetentionDays = defaults.maxCustomOnDemandRetentionDays;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.resourceType = defaults.resourceType;
@@ -200,6 +206,14 @@ public final class GetBackupPlanResult {
             return this;
         }
         @CustomType.Setter
+        public Builder maxCustomOnDemandRetentionDays(Integer maxCustomOnDemandRetentionDays) {
+            if (maxCustomOnDemandRetentionDays == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanResult", "maxCustomOnDemandRetentionDays");
+            }
+            this.maxCustomOnDemandRetentionDays = maxCustomOnDemandRetentionDays;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanResult", "name");
@@ -251,6 +265,7 @@ public final class GetBackupPlanResult {
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.logRetentionDays = logRetentionDays;
+            _resultValue.maxCustomOnDemandRetentionDays = maxCustomOnDemandRetentionDays;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.resourceType = resourceType;

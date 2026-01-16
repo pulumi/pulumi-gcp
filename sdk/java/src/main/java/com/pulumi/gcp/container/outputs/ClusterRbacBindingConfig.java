@@ -14,6 +14,11 @@ public final class ClusterRbacBindingConfig {
     /**
      * @return Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
      * 
+     * ## Attributes Reference
+     * 
+     * In addition to the arguments listed above, the following computed attributes are
+     * exported:
+     * 
      */
     private @Nullable Boolean enableInsecureBindingSystemAuthenticated;
     /**
@@ -25,6 +30,11 @@ public final class ClusterRbacBindingConfig {
     private ClusterRbacBindingConfig() {}
     /**
      * @return Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+     * 
+     * ## Attributes Reference
+     * 
+     * In addition to the arguments listed above, the following computed attributes are
+     * exported:
      * 
      */
     public Optional<Boolean> enableInsecureBindingSystemAuthenticated() {

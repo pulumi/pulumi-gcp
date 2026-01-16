@@ -162,6 +162,13 @@ __all__ = [
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig',
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'ClusterNodeConfigContainerdConfigRegistryHost',
+    'ClusterNodeConfigContainerdConfigRegistryHostHost',
+    'ClusterNodeConfigContainerdConfigRegistryHostHostCa',
+    'ClusterNodeConfigContainerdConfigRegistryHostHostClient',
+    'ClusterNodeConfigContainerdConfigRegistryHostHostClientCert',
+    'ClusterNodeConfigContainerdConfigRegistryHostHostClientKey',
+    'ClusterNodeConfigContainerdConfigRegistryHostHostHeader',
     'ClusterNodeConfigContainerdConfigWritableCgroups',
     'ClusterNodeConfigEffectiveTaint',
     'ClusterNodeConfigEphemeralStorageConfig',
@@ -205,6 +212,13 @@ __all__ = [
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups',
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig',
     'ClusterNodePoolManagement',
@@ -221,6 +235,13 @@ __all__ = [
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'ClusterNodePoolNodeConfigContainerdConfigRegistryHost',
+    'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost',
+    'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa',
+    'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient',
+    'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert',
+    'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey',
+    'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader',
     'ClusterNodePoolNodeConfigContainerdConfigWritableCgroups',
     'ClusterNodePoolNodeConfigEffectiveTaint',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
@@ -296,6 +317,13 @@ __all__ = [
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig',
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig',
     'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfig',
+    'NodePoolNodeConfigContainerdConfigRegistryHost',
+    'NodePoolNodeConfigContainerdConfigRegistryHostHost',
+    'NodePoolNodeConfigContainerdConfigRegistryHostHostCa',
+    'NodePoolNodeConfigContainerdConfigRegistryHostHostClient',
+    'NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert',
+    'NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey',
+    'NodePoolNodeConfigContainerdConfigRegistryHostHostHeader',
     'NodePoolNodeConfigContainerdConfigWritableCgroups',
     'NodePoolNodeConfigEffectiveTaint',
     'NodePoolNodeConfigEphemeralStorageConfig',
@@ -409,6 +437,13 @@ __all__ = [
     'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
     'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
     'GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
+    'GetClusterNodeConfigContainerdConfigRegistryHostResult',
+    'GetClusterNodeConfigContainerdConfigRegistryHostHostResult',
+    'GetClusterNodeConfigContainerdConfigRegistryHostHostCaResult',
+    'GetClusterNodeConfigContainerdConfigRegistryHostHostClientResult',
+    'GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertResult',
+    'GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyResult',
+    'GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderResult',
     'GetClusterNodeConfigContainerdConfigWritableCgroupResult',
     'GetClusterNodeConfigEffectiveTaintResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
@@ -452,6 +487,13 @@ __all__ = [
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyResult',
+    'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult',
     'GetClusterNodePoolManagementResult',
@@ -468,6 +510,13 @@ __all__ = [
     'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult',
     'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigResult',
     'GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigGcpSecretManagerCertificateConfigResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigRegistryHostResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCertResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyResult',
+    'GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderResult',
     'GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupResult',
     'GetClusterNodePoolNodeConfigEffectiveTaintResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
@@ -5122,7 +5171,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement(dict):
                
                This block also contains several computed attributes, documented below.
         :param _builtins.bool auto_upgrade: Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
-        :param Sequence['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs'] upgrade_options: Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+        :param Sequence['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs'] upgrade_options: Specifies the Auto Upgrade knobs for the node pool.
         """
         if auto_repair is not None:
             pulumi.set(__self__, "auto_repair", auto_repair)
@@ -5153,7 +5202,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement(dict):
     @pulumi.getter(name="upgradeOptions")
     def upgrade_options(self) -> Optional[Sequence['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption']]:
         """
-        Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+        Specifies the Auto Upgrade knobs for the node pool.
         """
         return pulumi.get(self, "upgrade_options")
 
@@ -5961,7 +6010,7 @@ class ClusterEnterpriseConfig(dict):
                  cluster_tier: Optional[_builtins.str] = None,
                  desired_tier: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cluster_tier: The effective tier of the cluster.
+        :param _builtins.str cluster_tier: Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
         :param _builtins.str desired_tier: (DEPRECATED) Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         if cluster_tier is not None:
@@ -5974,7 +6023,7 @@ class ClusterEnterpriseConfig(dict):
     @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
     def cluster_tier(self) -> Optional[_builtins.str]:
         """
-        The effective tier of the cluster.
+        Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
         """
         return pulumi.get(self, "cluster_tier")
 
@@ -6021,9 +6070,9 @@ class ClusterFleet(dict):
                  pre_registered: Optional[_builtins.bool] = None,
                  project: Optional[_builtins.str] = None):
         """
-        :param _builtins.str membership: The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
-        :param _builtins.str membership_id: The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
-        :param _builtins.str membership_location: The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+        :param _builtins.str membership: Full resource name of the registered fleet membership of the cluster.
+        :param _builtins.str membership_id: Short name of the fleet membership, for example "member-1".
+        :param _builtins.str membership_location: Location of the fleet membership, for example "us-central1".
         :param _builtins.str membership_type: Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
         :param _builtins.bool pre_registered: Whether the cluster has been registered via the fleet API.
         :param _builtins.str project: The name of the Fleet host project where this cluster will be registered.
@@ -6045,7 +6094,7 @@ class ClusterFleet(dict):
     @pulumi.getter
     def membership(self) -> Optional[_builtins.str]:
         """
-        The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+        Full resource name of the registered fleet membership of the cluster.
         """
         return pulumi.get(self, "membership")
 
@@ -6053,7 +6102,7 @@ class ClusterFleet(dict):
     @pulumi.getter(name="membershipId")
     def membership_id(self) -> Optional[_builtins.str]:
         """
-        The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membership_id` under google_gkehub_feature_membership.
+        Short name of the fleet membership, for example "member-1".
         """
         return pulumi.get(self, "membership_id")
 
@@ -6061,7 +6110,7 @@ class ClusterFleet(dict):
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> Optional[_builtins.str]:
         """
-        The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membership_location` under google_gkehub_feature_membership.
+        Location of the fleet membership, for example "us-central1".
         """
         return pulumi.get(self, "membership_location")
 
@@ -6716,11 +6765,6 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
     def __init__(__self__, *,
                  start_time: _builtins.str,
                  duration: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str duration: Duration of the time window, automatically chosen to be
-               smallest possible in the given scenario.
-               Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-        """
         pulumi.set(__self__, "start_time", start_time)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
@@ -6733,11 +6777,6 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
     @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[_builtins.str]:
-        """
-        Duration of the time window, automatically chosen to be
-        smallest possible in the given scenario.
-        Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "PTnHnMnS".
-        """
         return pulumi.get(self, "duration")
 
 
@@ -6995,12 +7034,9 @@ class ClusterMasterAuth(dict):
                  cluster_ca_certificate: Optional[_builtins.str] = None):
         """
         :param 'ClusterMasterAuthClientCertificateConfigArgs' client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
-        :param _builtins.str client_certificate: Base64 encoded public certificate
-               used by clients to authenticate to the cluster endpoint.
-        :param _builtins.str client_key: Base64 encoded private key used by clients
-               to authenticate to the cluster endpoint.
-        :param _builtins.str cluster_ca_certificate: Base64 encoded public certificate
-               that is the root certificate of the cluster.
+        :param _builtins.str client_certificate: Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+        :param _builtins.str client_key: Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+        :param _builtins.str cluster_ca_certificate: Base64 encoded public certificate that is the root of trust for the cluster.
         """
         pulumi.set(__self__, "client_certificate_config", client_certificate_config)
         if client_certificate is not None:
@@ -7022,8 +7058,7 @@ class ClusterMasterAuth(dict):
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[_builtins.str]:
         """
-        Base64 encoded public certificate
-        used by clients to authenticate to the cluster endpoint.
+        Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_certificate")
 
@@ -7031,8 +7066,7 @@ class ClusterMasterAuth(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[_builtins.str]:
         """
-        Base64 encoded private key used by clients
-        to authenticate to the cluster endpoint.
+        Base64 encoded private key used by clients to authenticate to the cluster endpoint.
         """
         return pulumi.get(self, "client_key")
 
@@ -7040,8 +7074,7 @@ class ClusterMasterAuth(dict):
     @pulumi.getter(name="clusterCaCertificate")
     def cluster_ca_certificate(self) -> Optional[_builtins.str]:
         """
-        Base64 encoded public certificate
-        that is the root certificate of the cluster.
+        Base64 encoded public certificate that is the root of trust for the cluster.
         """
         return pulumi.get(self, "cluster_ca_certificate")
 
@@ -7631,7 +7664,7 @@ class ClusterNodeConfig(dict):
                Prefer configuring `boot_disk`.
         :param _builtins.str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
-        :param Sequence['ClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
+        :param Sequence['ClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
         :param _builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -7886,7 +7919,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[Sequence['outputs.ClusterNodeConfigEffectiveTaint']]:
         """
-        List of kubernetes taints applied to each node. Structure is documented above.
+        List of kubernetes taints applied to each node.
         """
         return pulumi.get(self, "effective_taints")
 
@@ -8456,6 +8489,8 @@ class ClusterNodeConfigContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "registryHosts":
+            suggest = "registry_hosts"
         elif key == "writableCgroups":
             suggest = "writable_cgroups"
 
@@ -8472,13 +8507,17 @@ class ClusterNodeConfigContainerdConfig(dict):
 
     def __init__(__self__, *,
                  private_registry_access_config: Optional['outputs.ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 registry_hosts: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHost']] = None,
                  writable_cgroups: Optional['outputs.ClusterNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
         :param 'ClusterNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if registry_hosts is not None:
+            pulumi.set(__self__, "registry_hosts", registry_hosts)
         if writable_cgroups is not None:
             pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
@@ -8489,6 +8528,14 @@ class ClusterNodeConfigContainerdConfig(dict):
         Configuration for private container registries. There are two fields in this config:
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="registryHosts")
+    def registry_hosts(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHost']]:
+        """
+        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        """
+        return pulumi.get(self, "registry_hosts")
 
     @_builtins.property
     @pulumi.getter(name="writableCgroups")
@@ -8625,6 +8672,312 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAut
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigRegistryHost(dict):
+    def __init__(__self__, *,
+                 server: _builtins.str,
+                 hosts: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHost']] = None):
+        """
+        :param _builtins.str server: Defines the host name of the registry server.
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        """
+        pulumi.set(__self__, "server", server)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Defines the host name of the registry server.
+        """
+        return pulumi.get(self, "server")
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHost']]:
+        """
+        Configures a list of host-specific configurations for the server.
+        """
+        return pulumi.get(self, "hosts")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigRegistryHostHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dialTimeout":
+            suggest = "dial_timeout"
+        elif key == "overridePath":
+            suggest = "override_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfigRegistryHostHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 capabilities: Optional[Sequence[_builtins.str]] = None,
+                 cas: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostCa']] = None,
+                 clients: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClient']] = None,
+                 dial_timeout: Optional[_builtins.str] = None,
+                 headers: Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostHeader']] = None,
+                 override_path: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str host: Configures the registry host/mirror.
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
+        :param Sequence['ClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
+        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        pulumi.set(__self__, "host", host)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if cas is not None:
+            pulumi.set(__self__, "cas", cas)
+        if clients is not None:
+            pulumi.set(__self__, "clients", clients)
+        if dial_timeout is not None:
+            pulumi.set(__self__, "dial_timeout", dial_timeout)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if override_path is not None:
+            pulumi.set(__self__, "override_path", override_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Configures the registry host/mirror.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def cas(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostCa']]:
+        """
+        Configures the registry host certificate.
+        """
+        return pulumi.get(self, "cas")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClient']]:
+        """
+        Configures the registry host client certificate and key.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="dialTimeout")
+    def dial_timeout(self) -> Optional[_builtins.str]:
+        """
+        Specifies the maximum duration allowed for a connection attempt to complete.
+        """
+        return pulumi.get(self, "dial_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostHeader']]:
+        """
+        Configures the registry host headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter(name="overridePath")
+    def override_path(self) -> Optional[_builtins.bool]:
+        """
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        return pulumi.get(self, "override_path")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigRegistryHostHostCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfigRegistryHostHostCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigRegistryHostHostClient(dict):
+    def __init__(__self__, *,
+                 cert: 'outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClientCert',
+                 key: Optional['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClientKey'] = None):
+        """
+        :param 'ClusterNodeConfigContainerdConfigRegistryHostHostClientCertArgs' cert: Configures the client certificate.
+        :param 'ClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArgs' key: Configures the client private key.
+        """
+        pulumi.set(__self__, "cert", cert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> 'outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClientCert':
+        """
+        Configures the client certificate.
+        """
+        return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional['outputs.ClusterNodeConfigContainerdConfigRegistryHostHostClientKey']:
+        """
+        Configures the client private key.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigRegistryHostHostClientCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfigRegistryHostHostClientCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the client certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the client certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigRegistryHostHostClientKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigContainerdConfigRegistryHostHostClientKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the private key.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the private key.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodeConfigContainerdConfigRegistryHostHostHeader(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: Configures the header key.
+        :param Sequence[_builtins.str] values: Configures the header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Configures the header key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Configures the header value.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -11088,6 +11441,8 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "registryHosts":
+            suggest = "registry_hosts"
         elif key == "writableCgroups":
             suggest = "writable_cgroups"
 
@@ -11104,13 +11459,17 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
 
     def __init__(__self__, *,
                  private_registry_access_config: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 registry_hosts: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost']] = None,
                  writable_cgroups: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
         :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if registry_hosts is not None:
+            pulumi.set(__self__, "registry_hosts", registry_hosts)
         if writable_cgroups is not None:
             pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
@@ -11121,6 +11480,14 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig(dict):
         Configuration for private container registries. There are two fields in this config:
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="registryHosts")
+    def registry_hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost']]:
+        """
+        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        """
+        return pulumi.get(self, "registry_hosts")
 
     @_builtins.property
     @pulumi.getter(name="writableCgroups")
@@ -11257,6 +11624,312 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHost(dict):
+    def __init__(__self__, *,
+                 server: _builtins.str,
+                 hosts: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost']] = None):
+        """
+        :param _builtins.str server: Defines the host name of the registry server.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        """
+        pulumi.set(__self__, "server", server)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Defines the host name of the registry server.
+        """
+        return pulumi.get(self, "server")
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost']]:
+        """
+        Configures a list of host-specific configurations for the server.
+        """
+        return pulumi.get(self, "hosts")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dialTimeout":
+            suggest = "dial_timeout"
+        elif key == "overridePath":
+            suggest = "override_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 capabilities: Optional[Sequence[_builtins.str]] = None,
+                 cas: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa']] = None,
+                 clients: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient']] = None,
+                 dial_timeout: Optional[_builtins.str] = None,
+                 headers: Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader']] = None,
+                 override_path: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str host: Configures the registry host/mirror.
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
+        :param Sequence['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
+        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        pulumi.set(__self__, "host", host)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if cas is not None:
+            pulumi.set(__self__, "cas", cas)
+        if clients is not None:
+            pulumi.set(__self__, "clients", clients)
+        if dial_timeout is not None:
+            pulumi.set(__self__, "dial_timeout", dial_timeout)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if override_path is not None:
+            pulumi.set(__self__, "override_path", override_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Configures the registry host/mirror.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def cas(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa']]:
+        """
+        Configures the registry host certificate.
+        """
+        return pulumi.get(self, "cas")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient']]:
+        """
+        Configures the registry host client certificate and key.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="dialTimeout")
+    def dial_timeout(self) -> Optional[_builtins.str]:
+        """
+        Specifies the maximum duration allowed for a connection attempt to complete.
+        """
+        return pulumi.get(self, "dial_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader']]:
+        """
+        Configures the registry host headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter(name="overridePath")
+    def override_path(self) -> Optional[_builtins.bool]:
+        """
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        return pulumi.get(self, "override_path")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient(dict):
+    def __init__(__self__, *,
+                 cert: 'outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert',
+                 key: Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey'] = None):
+        """
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCertArgs' cert: Configures the client certificate.
+        :param 'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKeyArgs' key: Configures the client private key.
+        """
+        pulumi.set(__self__, "cert", cert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> 'outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert':
+        """
+        Configures the client certificate.
+        """
+        return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional['outputs.ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey']:
+        """
+        Configures the client private key.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the client certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the client certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the private key.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the private key.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: Configures the header key.
+        :param Sequence[_builtins.str] values: Configures the header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Configures the header key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Configures the header value.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -11809,7 +12482,7 @@ class ClusterNodePoolNodeConfig(dict):
                Prefer configuring `boot_disk`.
         :param _builtins.str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
-        :param Sequence['ClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node. Structure is documented above.
+        :param Sequence['ClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
         :param _builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
@@ -12064,7 +12737,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="effectiveTaints")
     def effective_taints(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigEffectiveTaint']]:
         """
-        List of kubernetes taints applied to each node. Structure is documented above.
+        List of kubernetes taints applied to each node.
         """
         return pulumi.get(self, "effective_taints")
 
@@ -12634,6 +13307,8 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "registryHosts":
+            suggest = "registry_hosts"
         elif key == "writableCgroups":
             suggest = "writable_cgroups"
 
@@ -12650,13 +13325,17 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
 
     def __init__(__self__, *,
                  private_registry_access_config: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 registry_hosts: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHost']] = None,
                  writable_cgroups: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Configuration for private container registries. There are two fields in this config:
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
         :param 'ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if registry_hosts is not None:
+            pulumi.set(__self__, "registry_hosts", registry_hosts)
         if writable_cgroups is not None:
             pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
@@ -12667,6 +13346,14 @@ class ClusterNodePoolNodeConfigContainerdConfig(dict):
         Configuration for private container registries. There are two fields in this config:
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="registryHosts")
+    def registry_hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHost']]:
+        """
+        Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+        """
+        return pulumi.get(self, "registry_hosts")
 
     @_builtins.property
     @pulumi.getter(name="writableCgroups")
@@ -12803,6 +13490,312 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertif
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigRegistryHost(dict):
+    def __init__(__self__, *,
+                 server: _builtins.str,
+                 hosts: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost']] = None):
+        """
+        :param _builtins.str server: Defines the host name of the registry server.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        """
+        pulumi.set(__self__, "server", server)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Defines the host name of the registry server.
+        """
+        return pulumi.get(self, "server")
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost']]:
+        """
+        Configures a list of host-specific configurations for the server.
+        """
+        return pulumi.get(self, "hosts")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dialTimeout":
+            suggest = "dial_timeout"
+        elif key == "overridePath":
+            suggest = "override_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 capabilities: Optional[Sequence[_builtins.str]] = None,
+                 cas: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa']] = None,
+                 clients: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient']] = None,
+                 dial_timeout: Optional[_builtins.str] = None,
+                 headers: Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader']] = None,
+                 override_path: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str host: Configures the registry host/mirror.
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
+        :param Sequence['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
+        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        pulumi.set(__self__, "host", host)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if cas is not None:
+            pulumi.set(__self__, "cas", cas)
+        if clients is not None:
+            pulumi.set(__self__, "clients", clients)
+        if dial_timeout is not None:
+            pulumi.set(__self__, "dial_timeout", dial_timeout)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if override_path is not None:
+            pulumi.set(__self__, "override_path", override_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Configures the registry host/mirror.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def cas(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa']]:
+        """
+        Configures the registry host certificate.
+        """
+        return pulumi.get(self, "cas")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient']]:
+        """
+        Configures the registry host client certificate and key.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="dialTimeout")
+    def dial_timeout(self) -> Optional[_builtins.str]:
+        """
+        Specifies the maximum duration allowed for a connection attempt to complete.
+        """
+        return pulumi.get(self, "dial_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader']]:
+        """
+        Configures the registry host headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter(name="overridePath")
+    def override_path(self) -> Optional[_builtins.bool]:
+        """
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        return pulumi.get(self, "override_path")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient(dict):
+    def __init__(__self__, *,
+                 cert: 'outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert',
+                 key: Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey'] = None):
+        """
+        :param 'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCertArgs' cert: Configures the client certificate.
+        :param 'ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyArgs' key: Configures the client private key.
+        """
+        pulumi.set(__self__, "cert", cert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> 'outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert':
+        """
+        Configures the client certificate.
+        """
+        return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional['outputs.ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey']:
+        """
+        Configures the client private key.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the client certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the client certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the private key.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the private key.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeader(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: Configures the header key.
+        :param Sequence[_builtins.str] values: Configures the header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Configures the header key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Configures the header value.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -15333,6 +16326,12 @@ class ClusterRbacBindingConfig(dict):
                  enable_insecure_binding_system_unauthenticated: Optional[_builtins.bool] = None):
         """
         :param _builtins.bool enable_insecure_binding_system_authenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+               
+               
+               ## Attributes Reference
+               
+               In addition to the arguments listed above, the following computed attributes are
+               exported:
         :param _builtins.bool enable_insecure_binding_system_unauthenticated: Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
         """
         if enable_insecure_binding_system_authenticated is not None:
@@ -15345,6 +16344,12 @@ class ClusterRbacBindingConfig(dict):
     def enable_insecure_binding_system_authenticated(self) -> Optional[_builtins.bool]:
         """
         Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+
+
+        ## Attributes Reference
+
+        In addition to the arguments listed above, the following computed attributes are
+        exported:
         """
         return pulumi.get(self, "enable_insecure_binding_system_authenticated")
 
@@ -17342,6 +18347,8 @@ class NodePoolNodeConfigContainerdConfig(dict):
         suggest = None
         if key == "privateRegistryAccessConfig":
             suggest = "private_registry_access_config"
+        elif key == "registryHosts":
+            suggest = "registry_hosts"
         elif key == "writableCgroups":
             suggest = "writable_cgroups"
 
@@ -17358,13 +18365,17 @@ class NodePoolNodeConfigContainerdConfig(dict):
 
     def __init__(__self__, *,
                  private_registry_access_config: Optional['outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig'] = None,
+                 registry_hosts: Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHost']] = None,
                  writable_cgroups: Optional['outputs.NodePoolNodeConfigContainerdConfigWritableCgroups'] = None):
         """
         :param 'NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs' private_registry_access_config: Parameters for private container registries configuration.
+        :param Sequence['NodePoolNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
         :param 'NodePoolNodeConfigContainerdConfigWritableCgroupsArgs' writable_cgroups: Parameters for writable cgroups configuration.
         """
         if private_registry_access_config is not None:
             pulumi.set(__self__, "private_registry_access_config", private_registry_access_config)
+        if registry_hosts is not None:
+            pulumi.set(__self__, "registry_hosts", registry_hosts)
         if writable_cgroups is not None:
             pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
@@ -17375,6 +18386,14 @@ class NodePoolNodeConfigContainerdConfig(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_config")
+
+    @_builtins.property
+    @pulumi.getter(name="registryHosts")
+    def registry_hosts(self) -> Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHost']]:
+        """
+        Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+        """
+        return pulumi.get(self, "registry_hosts")
 
     @_builtins.property
     @pulumi.getter(name="writableCgroups")
@@ -17511,6 +18530,312 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAu
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigRegistryHost(dict):
+    def __init__(__self__, *,
+                 server: _builtins.str,
+                 hosts: Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHost']] = None):
+        """
+        :param _builtins.str server: Defines the host name of the registry server.
+        :param Sequence['NodePoolNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        """
+        pulumi.set(__self__, "server", server)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Defines the host name of the registry server.
+        """
+        return pulumi.get(self, "server")
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHost']]:
+        """
+        Configures a list of host-specific configurations for the server.
+        """
+        return pulumi.get(self, "hosts")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigRegistryHostHost(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dialTimeout":
+            suggest = "dial_timeout"
+        elif key == "overridePath":
+            suggest = "override_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfigRegistryHostHost. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHost.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 capabilities: Optional[Sequence[_builtins.str]] = None,
+                 cas: Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostCa']] = None,
+                 clients: Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostClient']] = None,
+                 dial_timeout: Optional[_builtins.str] = None,
+                 headers: Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostHeader']] = None,
+                 override_path: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str host: Configures the registry host/mirror.
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        :param Sequence['NodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
+        :param Sequence['NodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
+        :param Sequence['NodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
+        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        pulumi.set(__self__, "host", host)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if cas is not None:
+            pulumi.set(__self__, "cas", cas)
+        if clients is not None:
+            pulumi.set(__self__, "clients", clients)
+        if dial_timeout is not None:
+            pulumi.set(__self__, "dial_timeout", dial_timeout)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if override_path is not None:
+            pulumi.set(__self__, "override_path", override_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Configures the registry host/mirror.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def cas(self) -> Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostCa']]:
+        """
+        Configures the registry host certificate.
+        """
+        return pulumi.get(self, "cas")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostClient']]:
+        """
+        Configures the registry host client certificate and key.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="dialTimeout")
+    def dial_timeout(self) -> Optional[_builtins.str]:
+        """
+        Specifies the maximum duration allowed for a connection attempt to complete.
+        """
+        return pulumi.get(self, "dial_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostHeader']]:
+        """
+        Configures the registry host headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter(name="overridePath")
+    def override_path(self) -> Optional[_builtins.bool]:
+        """
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        return pulumi.get(self, "override_path")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigRegistryHostHostCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfigRegistryHostHostCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHostCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigRegistryHostHostClient(dict):
+    def __init__(__self__, *,
+                 cert: 'outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert',
+                 key: Optional['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey'] = None):
+        """
+        :param 'NodePoolNodeConfigContainerdConfigRegistryHostHostClientCertArgs' cert: Configures the client certificate.
+        :param 'NodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyArgs' key: Configures the client private key.
+        """
+        pulumi.set(__self__, "cert", cert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> 'outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert':
+        """
+        Configures the client certificate.
+        """
+        return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional['outputs.NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey']:
+        """
+        Configures the client private key.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the client certificate.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the client certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the private key.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        URI for the Secret Manager secret that hosts the private key.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigContainerdConfigRegistryHostHostHeader(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: Configures the header key.
+        :param Sequence[_builtins.str] values: Configures the header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Configures the header key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Configures the header value.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -22277,12 +23602,15 @@ class GetClusterNodeConfigConfidentialNodeResult(dict):
 class GetClusterNodeConfigContainerdConfigResult(dict):
     def __init__(__self__, *,
                  private_registry_access_configs: Sequence['outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigResult'],
+                 registry_hosts: Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostResult'],
                  writable_cgroups: Sequence['outputs.GetClusterNodeConfigContainerdConfigWritableCgroupResult']):
         """
         :param Sequence['GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        :param Sequence['GetClusterNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
         :param Sequence['GetClusterNodeConfigContainerdConfigWritableCgroupArgs'] writable_cgroups: Parameters for writable cgroups configuration.
         """
         pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+        pulumi.set(__self__, "registry_hosts", registry_hosts)
         pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
@@ -22292,6 +23620,14 @@ class GetClusterNodeConfigContainerdConfigResult(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="registryHosts")
+    def registry_hosts(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostResult']:
+        """
+        Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+        """
+        return pulumi.get(self, "registry_hosts")
 
     @_builtins.property
     @pulumi.getter(name="writableCgroups")
@@ -22376,6 +23712,231 @@ class GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificate
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigRegistryHostResult(dict):
+    def __init__(__self__, *,
+                 hosts: Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostResult'],
+                 server: _builtins.str):
+        """
+        :param Sequence['GetClusterNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        :param _builtins.str server: Defines the host name of the registry server.
+        """
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "server", server)
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostResult']:
+        """
+        Configures a list of host-specific configurations for the server.
+        """
+        return pulumi.get(self, "hosts")
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Defines the host name of the registry server.
+        """
+        return pulumi.get(self, "server")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigRegistryHostHostResult(dict):
+    def __init__(__self__, *,
+                 capabilities: Sequence[_builtins.str],
+                 cas: Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostCaResult'],
+                 clients: Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostClientResult'],
+                 dial_timeout: _builtins.str,
+                 headers: Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderResult'],
+                 host: _builtins.str,
+                 override_path: _builtins.bool):
+        """
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        :param Sequence['GetClusterNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
+        :param Sequence['GetClusterNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
+        :param Sequence['GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
+        :param _builtins.str host: Configures the registry host/mirror.
+        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "cas", cas)
+        pulumi.set(__self__, "clients", clients)
+        pulumi.set(__self__, "dial_timeout", dial_timeout)
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "override_path", override_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[_builtins.str]:
+        """
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def cas(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostCaResult']:
+        """
+        Configures the registry host certificate.
+        """
+        return pulumi.get(self, "cas")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostClientResult']:
+        """
+        Configures the registry host client certificate and key.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="dialTimeout")
+    def dial_timeout(self) -> _builtins.str:
+        """
+        Specifies the maximum duration allowed for a connection attempt to complete.
+        """
+        return pulumi.get(self, "dial_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderResult']:
+        """
+        Configures the registry host headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Configures the registry host/mirror.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="overridePath")
+    def override_path(self) -> _builtins.bool:
+        """
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        return pulumi.get(self, "override_path")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigRegistryHostHostCaResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the certificate.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigRegistryHostHostClientResult(dict):
+    def __init__(__self__, *,
+                 certs: Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertResult'],
+                 keys: Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyResult']):
+        """
+        :param Sequence['GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertArgs'] certs: Configures the client certificate.
+        :param Sequence['GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArgs'] keys: Configures the client private key.
+        """
+        pulumi.set(__self__, "certs", certs)
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def certs(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertResult']:
+        """
+        Configures the client certificate.
+        """
+        return pulumi.get(self, "certs")
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> Sequence['outputs.GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyResult']:
+        """
+        Configures the client private key.
+        """
+        return pulumi.get(self, "keys")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigRegistryHostHostClientCertResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the client certificate.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the client certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigRegistryHostHostClientKeyResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the private key.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the private key.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigContainerdConfigRegistryHostHostHeaderResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: Configures the header key.
+        :param Sequence[_builtins.str] values: Configures the header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Configures the header key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Configures the header value.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -24004,12 +25565,15 @@ class GetClusterNodePoolDefaultNodeConfigDefaultResult(dict):
 class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(dict):
     def __init__(__self__, *,
                  private_registry_access_configs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult'],
+                 registry_hosts: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostResult'],
                  writable_cgroups: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult']):
         """
         :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostArgs'] registry_hosts: Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
         :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArgs'] writable_cgroups: Parameters for writable cgroups configuration.
         """
         pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+        pulumi.set(__self__, "registry_hosts", registry_hosts)
         pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
@@ -24019,6 +25583,14 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="registryHosts")
+    def registry_hosts(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostResult']:
+        """
+        Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+        """
+        return pulumi.get(self, "registry_hosts")
 
     @_builtins.property
     @pulumi.getter(name="writableCgroups")
@@ -24103,6 +25675,231 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryA
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostResult(dict):
+    def __init__(__self__, *,
+                 hosts: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostResult'],
+                 server: _builtins.str):
+        """
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        :param _builtins.str server: Defines the host name of the registry server.
+        """
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "server", server)
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostResult']:
+        """
+        Configures a list of host-specific configurations for the server.
+        """
+        return pulumi.get(self, "hosts")
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Defines the host name of the registry server.
+        """
+        return pulumi.get(self, "server")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostResult(dict):
+    def __init__(__self__, *,
+                 capabilities: Sequence[_builtins.str],
+                 cas: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaResult'],
+                 clients: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientResult'],
+                 dial_timeout: _builtins.str,
+                 headers: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderResult'],
+                 host: _builtins.str,
+                 override_path: _builtins.bool):
+        """
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
+        :param _builtins.str host: Configures the registry host/mirror.
+        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "cas", cas)
+        pulumi.set(__self__, "clients", clients)
+        pulumi.set(__self__, "dial_timeout", dial_timeout)
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "override_path", override_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[_builtins.str]:
+        """
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def cas(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaResult']:
+        """
+        Configures the registry host certificate.
+        """
+        return pulumi.get(self, "cas")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientResult']:
+        """
+        Configures the registry host client certificate and key.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="dialTimeout")
+    def dial_timeout(self) -> _builtins.str:
+        """
+        Specifies the maximum duration allowed for a connection attempt to complete.
+        """
+        return pulumi.get(self, "dial_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderResult']:
+        """
+        Configures the registry host headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Configures the registry host/mirror.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="overridePath")
+    def override_path(self) -> _builtins.bool:
+        """
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        return pulumi.get(self, "override_path")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostCaResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the certificate.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientResult(dict):
+    def __init__(__self__, *,
+                 certs: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertResult'],
+                 keys: Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyResult']):
+        """
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertArgs'] certs: Configures the client certificate.
+        :param Sequence['GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyArgs'] keys: Configures the client private key.
+        """
+        pulumi.set(__self__, "certs", certs)
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def certs(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertResult']:
+        """
+        Configures the client certificate.
+        """
+        return pulumi.get(self, "certs")
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> Sequence['outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyResult']:
+        """
+        Configures the client private key.
+        """
+        return pulumi.get(self, "keys")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientCertResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the client certificate.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the client certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClientKeyResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the private key.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the private key.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: Configures the header key.
+        :param Sequence[_builtins.str] values: Configures the header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Configures the header key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Configures the header value.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -25012,12 +26809,15 @@ class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
 class GetClusterNodePoolNodeConfigContainerdConfigResult(dict):
     def __init__(__self__, *,
                  private_registry_access_configs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigResult'],
+                 registry_hosts: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostResult'],
                  writable_cgroups: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupResult']):
         """
         :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs'] private_registry_access_configs: Parameters for private container registries configuration.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs'] registry_hosts: Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
         :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigWritableCgroupArgs'] writable_cgroups: Parameters for writable cgroups configuration.
         """
         pulumi.set(__self__, "private_registry_access_configs", private_registry_access_configs)
+        pulumi.set(__self__, "registry_hosts", registry_hosts)
         pulumi.set(__self__, "writable_cgroups", writable_cgroups)
 
     @_builtins.property
@@ -25027,6 +26827,14 @@ class GetClusterNodePoolNodeConfigContainerdConfigResult(dict):
         Parameters for private container registries configuration.
         """
         return pulumi.get(self, "private_registry_access_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="registryHosts")
+    def registry_hosts(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostResult']:
+        """
+        Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
+        """
+        return pulumi.get(self, "registry_hosts")
 
     @_builtins.property
     @pulumi.getter(name="writableCgroups")
@@ -25111,6 +26919,231 @@ class GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCer
         URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.
         """
         return pulumi.get(self, "secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostResult(dict):
+    def __init__(__self__, *,
+                 hosts: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostResult'],
+                 server: _builtins.str):
+        """
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs'] hosts: Configures a list of host-specific configurations for the server.
+        :param _builtins.str server: Defines the host name of the registry server.
+        """
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "server", server)
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostResult']:
+        """
+        Configures a list of host-specific configurations for the server.
+        """
+        return pulumi.get(self, "hosts")
+
+    @_builtins.property
+    @pulumi.getter
+    def server(self) -> _builtins.str:
+        """
+        Defines the host name of the registry server.
+        """
+        return pulumi.get(self, "server")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostResult(dict):
+    def __init__(__self__, *,
+                 capabilities: Sequence[_builtins.str],
+                 cas: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaResult'],
+                 clients: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientResult'],
+                 dial_timeout: _builtins.str,
+                 headers: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderResult'],
+                 host: _builtins.str,
+                 override_path: _builtins.bool):
+        """
+        :param Sequence[_builtins.str] capabilities: Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs'] cas: Configures the registry host certificate.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs'] clients: Configures the registry host client certificate and key.
+        :param _builtins.str dial_timeout: Specifies the maximum duration allowed for a connection attempt to complete.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs'] headers: Configures the registry host headers.
+        :param _builtins.str host: Configures the registry host/mirror.
+        :param _builtins.bool override_path: Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "cas", cas)
+        pulumi.set(__self__, "clients", clients)
+        pulumi.set(__self__, "dial_timeout", dial_timeout)
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "override_path", override_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[_builtins.str]:
+        """
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def cas(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaResult']:
+        """
+        Configures the registry host certificate.
+        """
+        return pulumi.get(self, "cas")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientResult']:
+        """
+        Configures the registry host client certificate and key.
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="dialTimeout")
+    def dial_timeout(self) -> _builtins.str:
+        """
+        Specifies the maximum duration allowed for a connection attempt to complete.
+        """
+        return pulumi.get(self, "dial_timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderResult']:
+        """
+        Configures the registry host headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Configures the registry host/mirror.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="overridePath")
+    def override_path(self) -> _builtins.bool:
+        """
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+        """
+        return pulumi.get(self, "override_path")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the certificate.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientResult(dict):
+    def __init__(__self__, *,
+                 certs: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCertResult'],
+                 keys: Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyResult']):
+        """
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCertArgs'] certs: Configures the client certificate.
+        :param Sequence['GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyArgs'] keys: Configures the client private key.
+        """
+        pulumi.set(__self__, "certs", certs)
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def certs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCertResult']:
+        """
+        Configures the client certificate.
+        """
+        return pulumi.get(self, "certs")
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyResult']:
+        """
+        Configures the client private key.
+        """
+        return pulumi.get(self, "keys")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCertResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the client certificate.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the client certificate.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: URI for the Secret Manager secret that hosts the private key.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        URI for the Secret Manager secret that hosts the private key.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: Configures the header key.
+        :param Sequence[_builtins.str] values: Configures the header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Configures the header key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Configures the header value.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

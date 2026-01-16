@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.datastream.outputs.ConnectionProfilePostgresqlProfileSslConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -39,6 +40,12 @@ public final class ConnectionProfilePostgresqlProfile {
      * 
      */
     private @Nullable String secretManagerStoredPassword;
+    /**
+     * @return SSL configuration for the PostgreSQL connection.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ConnectionProfilePostgresqlProfileSslConfig sslConfig;
     /**
      * @return Username for the PostgreSQL connection.
      * 
@@ -83,6 +90,14 @@ public final class ConnectionProfilePostgresqlProfile {
         return Optional.ofNullable(this.secretManagerStoredPassword);
     }
     /**
+     * @return SSL configuration for the PostgreSQL connection.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ConnectionProfilePostgresqlProfileSslConfig> sslConfig() {
+        return Optional.ofNullable(this.sslConfig);
+    }
+    /**
      * @return Username for the PostgreSQL connection.
      * 
      */
@@ -104,6 +119,7 @@ public final class ConnectionProfilePostgresqlProfile {
         private @Nullable String password;
         private @Nullable Integer port;
         private @Nullable String secretManagerStoredPassword;
+        private @Nullable ConnectionProfilePostgresqlProfileSslConfig sslConfig;
         private String username;
         public Builder() {}
         public Builder(ConnectionProfilePostgresqlProfile defaults) {
@@ -113,6 +129,7 @@ public final class ConnectionProfilePostgresqlProfile {
     	      this.password = defaults.password;
     	      this.port = defaults.port;
     	      this.secretManagerStoredPassword = defaults.secretManagerStoredPassword;
+    	      this.sslConfig = defaults.sslConfig;
     	      this.username = defaults.username;
         }
 
@@ -151,6 +168,12 @@ public final class ConnectionProfilePostgresqlProfile {
             return this;
         }
         @CustomType.Setter
+        public Builder sslConfig(@Nullable ConnectionProfilePostgresqlProfileSslConfig sslConfig) {
+
+            this.sslConfig = sslConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfile", "username");
@@ -165,6 +188,7 @@ public final class ConnectionProfilePostgresqlProfile {
             _resultValue.password = password;
             _resultValue.port = port;
             _resultValue.secretManagerStoredPassword = secretManagerStoredPassword;
+            _resultValue.sslConfig = sslConfig;
             _resultValue.username = username;
             return _resultValue;
         }

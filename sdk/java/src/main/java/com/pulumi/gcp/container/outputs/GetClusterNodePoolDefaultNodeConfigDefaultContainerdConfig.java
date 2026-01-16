@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,11 @@ public final class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
      * 
      */
     private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost> registryHosts;
     /**
      * @return Parameters for writable cgroups configuration.
      * 
@@ -30,6 +36,13 @@ public final class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
      */
     public List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs() {
         return this.privateRegistryAccessConfigs;
+    }
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    public List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost> registryHosts() {
+        return this.registryHosts;
     }
     /**
      * @return Parameters for writable cgroups configuration.
@@ -49,11 +62,13 @@ public final class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+        private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost> registryHosts;
         private List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup> writableCgroups;
         public Builder() {}
         public Builder(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfigs = defaults.privateRegistryAccessConfigs;
+    	      this.registryHosts = defaults.registryHosts;
     	      this.writableCgroups = defaults.writableCgroups;
         }
 
@@ -69,6 +84,17 @@ public final class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
             return privateRegistryAccessConfigs(List.of(privateRegistryAccessConfigs));
         }
         @CustomType.Setter
+        public Builder registryHosts(List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost> registryHosts) {
+            if (registryHosts == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig", "registryHosts");
+            }
+            this.registryHosts = registryHosts;
+            return this;
+        }
+        public Builder registryHosts(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost... registryHosts) {
+            return registryHosts(List.of(registryHosts));
+        }
+        @CustomType.Setter
         public Builder writableCgroups(List<GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroup> writableCgroups) {
             if (writableCgroups == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig", "writableCgroups");
@@ -82,6 +108,7 @@ public final class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
         public GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig build() {
             final var _resultValue = new GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig();
             _resultValue.privateRegistryAccessConfigs = privateRegistryAccessConfigs;
+            _resultValue.registryHosts = registryHosts;
             _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }

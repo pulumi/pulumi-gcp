@@ -127,6 +127,8 @@ import * as utilities from "../utilities";
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gs-project-accounts.iam.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [cryptoKeyMemberCdfSa],
  * });
  * const cmek = new gcp.datafusion.Instance("cmek", {
  *     name: "my-instance",
@@ -136,10 +138,7 @@ import * as utilities from "../utilities";
  *         keyReference: cryptoKey.id,
  *     },
  * }, {
- *     dependsOn: [
- *         cryptoKeyMemberCdfSa,
- *         cryptoKeyMemberGcsSa,
- *     ],
+ *     dependsOn: [cryptoKeyMemberGcsSa],
  * });
  * ```
  * ### Data Fusion Instance Enterprise

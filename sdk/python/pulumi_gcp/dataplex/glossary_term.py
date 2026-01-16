@@ -427,7 +427,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id = gcp.dataplex.Glossary("term_test_id",
-            glossary_id="tf-test-glossary_2067",
+            glossary_id="tf-test-glossary_56529",
             location="us-central1")
         term_test_id_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id",
             parent=pulumi.Output.all(
@@ -437,7 +437,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-basic_40785")
+            term_id="tf-test-term-basic_75413")
         ```
         ### Dataplex Glossary Term Full
 
@@ -446,7 +446,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_79169",
+            glossary_id="tf-test-glossary_55138",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -456,7 +456,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_56529",
+            term_id="tf-test-term-full_37559",
             labels={
                 "tag": "test-tf",
             },
@@ -521,7 +521,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id = gcp.dataplex.Glossary("term_test_id",
-            glossary_id="tf-test-glossary_2067",
+            glossary_id="tf-test-glossary_56529",
             location="us-central1")
         term_test_id_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id",
             parent=pulumi.Output.all(
@@ -531,7 +531,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-basic_40785")
+            term_id="tf-test-term-basic_75413")
         ```
         ### Dataplex Glossary Term Full
 
@@ -540,7 +540,7 @@ class GlossaryTerm(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_79169",
+            glossary_id="tf-test-glossary_55138",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -550,7 +550,7 @@ class GlossaryTerm(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_56529",
+            term_id="tf-test-term-full_37559",
             labels={
                 "tag": "test-tf",
             },

@@ -285,16 +285,44 @@ public final class AuthzExtensionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-     * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+     * Specifies the communication protocol used by the callout extension
+     * to communicate with its backend service.
+     * Supported values:
+     * - WIRE_FORMAT_UNSPECIFIED:
+     *   No wire format is explicitly specified. The backend automatically
+     *   defaults this value to EXT_PROC_GRPC.
+     * - EXT_PROC_GRPC:
+     *   Uses Envoy&#39;s External Processing (ext_proc) gRPC API over a single
+     *   gRPC stream. The backend service must support HTTP/2 or H2C.
+     *   All supported events for a client request are sent over the same
+     *   gRPC stream. This is the default wire format.
+     * - EXT_AUTHZ_GRPC:
+     *   Uses Envoy&#39;s external authorization (ext_authz) gRPC API.
+     *   The backend service must support HTTP/2 or H2C.
+     *   This option is only supported for regional AuthzExtension resources.
+     *   Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
      * 
      */
     @Import(name="wireFormat")
     private @Nullable Output<String> wireFormat;
 
     /**
-     * @return The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-     * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+     * @return Specifies the communication protocol used by the callout extension
+     * to communicate with its backend service.
+     * Supported values:
+     * - WIRE_FORMAT_UNSPECIFIED:
+     *   No wire format is explicitly specified. The backend automatically
+     *   defaults this value to EXT_PROC_GRPC.
+     * - EXT_PROC_GRPC:
+     *   Uses Envoy&#39;s External Processing (ext_proc) gRPC API over a single
+     *   gRPC stream. The backend service must support HTTP/2 or H2C.
+     *   All supported events for a client request are sent over the same
+     *   gRPC stream. This is the default wire format.
+     * - EXT_AUTHZ_GRPC:
+     *   Uses Envoy&#39;s external authorization (ext_authz) gRPC API.
+     *   The backend service must support HTTP/2 or H2C.
+     *   This option is only supported for regional AuthzExtension resources.
+     *   Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
      * 
      */
     public Optional<Output<String>> wireFormat() {
@@ -714,8 +742,22 @@ public final class AuthzExtensionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param wireFormat The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-         * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+         * @param wireFormat Specifies the communication protocol used by the callout extension
+         * to communicate with its backend service.
+         * Supported values:
+         * - WIRE_FORMAT_UNSPECIFIED:
+         *   No wire format is explicitly specified. The backend automatically
+         *   defaults this value to EXT_PROC_GRPC.
+         * - EXT_PROC_GRPC:
+         *   Uses Envoy&#39;s External Processing (ext_proc) gRPC API over a single
+         *   gRPC stream. The backend service must support HTTP/2 or H2C.
+         *   All supported events for a client request are sent over the same
+         *   gRPC stream. This is the default wire format.
+         * - EXT_AUTHZ_GRPC:
+         *   Uses Envoy&#39;s external authorization (ext_authz) gRPC API.
+         *   The backend service must support HTTP/2 or H2C.
+         *   This option is only supported for regional AuthzExtension resources.
+         *   Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
          * 
          * @return builder
          * 
@@ -726,8 +768,22 @@ public final class AuthzExtensionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param wireFormat The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-         * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+         * @param wireFormat Specifies the communication protocol used by the callout extension
+         * to communicate with its backend service.
+         * Supported values:
+         * - WIRE_FORMAT_UNSPECIFIED:
+         *   No wire format is explicitly specified. The backend automatically
+         *   defaults this value to EXT_PROC_GRPC.
+         * - EXT_PROC_GRPC:
+         *   Uses Envoy&#39;s External Processing (ext_proc) gRPC API over a single
+         *   gRPC stream. The backend service must support HTTP/2 or H2C.
+         *   All supported events for a client request are sent over the same
+         *   gRPC stream. This is the default wire format.
+         * - EXT_AUTHZ_GRPC:
+         *   Uses Envoy&#39;s external authorization (ext_authz) gRPC API.
+         *   The backend service must support HTTP/2 or H2C.
+         *   This option is only supported for regional AuthzExtension resources.
+         *   Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
          * 
          * @return builder
          * 

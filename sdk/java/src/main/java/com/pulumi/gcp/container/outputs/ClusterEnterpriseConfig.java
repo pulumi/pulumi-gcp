@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterEnterpriseConfig {
     /**
-     * @return The effective tier of the cluster.
+     * @return Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
      * 
      * @deprecated
      * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release
@@ -32,7 +32,7 @@ public final class ClusterEnterpriseConfig {
 
     private ClusterEnterpriseConfig() {}
     /**
-     * @return The effective tier of the cluster.
+     * @return Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
      * 
      * @deprecated
      * GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release

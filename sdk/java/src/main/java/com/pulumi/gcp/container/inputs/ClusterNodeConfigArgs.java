@@ -156,14 +156,14 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of kubernetes taints applied to each node. Structure is documented above.
+     * List of kubernetes taints applied to each node.
      * 
      */
     @Import(name="effectiveTaints")
     private @Nullable Output<List<ClusterNodeConfigEffectiveTaintArgs>> effectiveTaints;
 
     /**
-     * @return List of kubernetes taints applied to each node. Structure is documented above.
+     * @return List of kubernetes taints applied to each node.
      * 
      */
     public Optional<Output<List<ClusterNodeConfigEffectiveTaintArgs>>> effectiveTaints() {
@@ -1063,7 +1063,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveTaints List of kubernetes taints applied to each node. Structure is documented above.
+         * @param effectiveTaints List of kubernetes taints applied to each node.
          * 
          * @return builder
          * 
@@ -1074,7 +1074,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveTaints List of kubernetes taints applied to each node. Structure is documented above.
+         * @param effectiveTaints List of kubernetes taints applied to each node.
          * 
          * @return builder
          * 
@@ -1084,7 +1084,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveTaints List of kubernetes taints applied to each node. Structure is documented above.
+         * @param effectiveTaints List of kubernetes taints applied to each node.
          * 
          * @return builder
          * 

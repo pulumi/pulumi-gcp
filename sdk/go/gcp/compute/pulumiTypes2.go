@@ -18129,6 +18129,904 @@ func (o GetRouterStatusBestRoutesForRouterWarningDataArrayOutput) Index(i pulumi
 	}).(GetRouterStatusBestRoutesForRouterWarningDataOutput)
 }
 
+type GetRoutersRouter struct {
+	BgpPeers                    []GetRoutersRouterBgpPeer              `pulumi:"bgpPeers"`
+	Bgps                        []GetRoutersRouterBgp                  `pulumi:"bgps"`
+	CreationTimestamp           string                                 `pulumi:"creationTimestamp"`
+	Description                 string                                 `pulumi:"description"`
+	EncryptedInterconnectRouter bool                                   `pulumi:"encryptedInterconnectRouter"`
+	Interfaces                  []GetRoutersRouterInterface            `pulumi:"interfaces"`
+	Md5AuthenticationKeys       []GetRoutersRouterMd5AuthenticationKey `pulumi:"md5AuthenticationKeys"`
+	Name                        string                                 `pulumi:"name"`
+	Nats                        []GetRoutersRouterNat                  `pulumi:"nats"`
+	Network                     string                                 `pulumi:"network"`
+	SelfLink                    string                                 `pulumi:"selfLink"`
+}
+
+// GetRoutersRouterInput is an input type that accepts GetRoutersRouterArgs and GetRoutersRouterOutput values.
+// You can construct a concrete instance of `GetRoutersRouterInput` via:
+//
+//	GetRoutersRouterArgs{...}
+type GetRoutersRouterInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterOutput() GetRoutersRouterOutput
+	ToGetRoutersRouterOutputWithContext(context.Context) GetRoutersRouterOutput
+}
+
+type GetRoutersRouterArgs struct {
+	BgpPeers                    GetRoutersRouterBgpPeerArrayInput              `pulumi:"bgpPeers"`
+	Bgps                        GetRoutersRouterBgpArrayInput                  `pulumi:"bgps"`
+	CreationTimestamp           pulumi.StringInput                             `pulumi:"creationTimestamp"`
+	Description                 pulumi.StringInput                             `pulumi:"description"`
+	EncryptedInterconnectRouter pulumi.BoolInput                               `pulumi:"encryptedInterconnectRouter"`
+	Interfaces                  GetRoutersRouterInterfaceArrayInput            `pulumi:"interfaces"`
+	Md5AuthenticationKeys       GetRoutersRouterMd5AuthenticationKeyArrayInput `pulumi:"md5AuthenticationKeys"`
+	Name                        pulumi.StringInput                             `pulumi:"name"`
+	Nats                        GetRoutersRouterNatArrayInput                  `pulumi:"nats"`
+	Network                     pulumi.StringInput                             `pulumi:"network"`
+	SelfLink                    pulumi.StringInput                             `pulumi:"selfLink"`
+}
+
+func (GetRoutersRouterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouter)(nil)).Elem()
+}
+
+func (i GetRoutersRouterArgs) ToGetRoutersRouterOutput() GetRoutersRouterOutput {
+	return i.ToGetRoutersRouterOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterArgs) ToGetRoutersRouterOutputWithContext(ctx context.Context) GetRoutersRouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterOutput)
+}
+
+// GetRoutersRouterArrayInput is an input type that accepts GetRoutersRouterArray and GetRoutersRouterArrayOutput values.
+// You can construct a concrete instance of `GetRoutersRouterArrayInput` via:
+//
+//	GetRoutersRouterArray{ GetRoutersRouterArgs{...} }
+type GetRoutersRouterArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterArrayOutput() GetRoutersRouterArrayOutput
+	ToGetRoutersRouterArrayOutputWithContext(context.Context) GetRoutersRouterArrayOutput
+}
+
+type GetRoutersRouterArray []GetRoutersRouterInput
+
+func (GetRoutersRouterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouter)(nil)).Elem()
+}
+
+func (i GetRoutersRouterArray) ToGetRoutersRouterArrayOutput() GetRoutersRouterArrayOutput {
+	return i.ToGetRoutersRouterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterArray) ToGetRoutersRouterArrayOutputWithContext(ctx context.Context) GetRoutersRouterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterArrayOutput)
+}
+
+type GetRoutersRouterOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouter)(nil)).Elem()
+}
+
+func (o GetRoutersRouterOutput) ToGetRoutersRouterOutput() GetRoutersRouterOutput {
+	return o
+}
+
+func (o GetRoutersRouterOutput) ToGetRoutersRouterOutputWithContext(ctx context.Context) GetRoutersRouterOutput {
+	return o
+}
+
+func (o GetRoutersRouterOutput) BgpPeers() GetRoutersRouterBgpPeerArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouter) []GetRoutersRouterBgpPeer { return v.BgpPeers }).(GetRoutersRouterBgpPeerArrayOutput)
+}
+
+func (o GetRoutersRouterOutput) Bgps() GetRoutersRouterBgpArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouter) []GetRoutersRouterBgp { return v.Bgps }).(GetRoutersRouterBgpArrayOutput)
+}
+
+func (o GetRoutersRouterOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouter) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterOutput) EncryptedInterconnectRouter() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRoutersRouter) bool { return v.EncryptedInterconnectRouter }).(pulumi.BoolOutput)
+}
+
+func (o GetRoutersRouterOutput) Interfaces() GetRoutersRouterInterfaceArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouter) []GetRoutersRouterInterface { return v.Interfaces }).(GetRoutersRouterInterfaceArrayOutput)
+}
+
+func (o GetRoutersRouterOutput) Md5AuthenticationKeys() GetRoutersRouterMd5AuthenticationKeyArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouter) []GetRoutersRouterMd5AuthenticationKey { return v.Md5AuthenticationKeys }).(GetRoutersRouterMd5AuthenticationKeyArrayOutput)
+}
+
+func (o GetRoutersRouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterOutput) Nats() GetRoutersRouterNatArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouter) []GetRoutersRouterNat { return v.Nats }).(GetRoutersRouterNatArrayOutput)
+}
+
+func (o GetRoutersRouterOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouter) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouter) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+type GetRoutersRouterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouter)(nil)).Elem()
+}
+
+func (o GetRoutersRouterArrayOutput) ToGetRoutersRouterArrayOutput() GetRoutersRouterArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterArrayOutput) ToGetRoutersRouterArrayOutputWithContext(ctx context.Context) GetRoutersRouterArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterArrayOutput) Index(i pulumi.IntInput) GetRoutersRouterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutersRouter {
+		return vs[0].([]GetRoutersRouter)[vs[1].(int)]
+	}).(GetRoutersRouterOutput)
+}
+
+type GetRoutersRouterBgp struct {
+	AdvertiseMode      string                                 `pulumi:"advertiseMode"`
+	AdvertisedGroups   []string                               `pulumi:"advertisedGroups"`
+	AdvertisedIpRanges []GetRoutersRouterBgpAdvertisedIpRange `pulumi:"advertisedIpRanges"`
+	Asn                int                                    `pulumi:"asn"`
+	KeepaliveInterval  int                                    `pulumi:"keepaliveInterval"`
+}
+
+// GetRoutersRouterBgpInput is an input type that accepts GetRoutersRouterBgpArgs and GetRoutersRouterBgpOutput values.
+// You can construct a concrete instance of `GetRoutersRouterBgpInput` via:
+//
+//	GetRoutersRouterBgpArgs{...}
+type GetRoutersRouterBgpInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterBgpOutput() GetRoutersRouterBgpOutput
+	ToGetRoutersRouterBgpOutputWithContext(context.Context) GetRoutersRouterBgpOutput
+}
+
+type GetRoutersRouterBgpArgs struct {
+	AdvertiseMode      pulumi.StringInput                             `pulumi:"advertiseMode"`
+	AdvertisedGroups   pulumi.StringArrayInput                        `pulumi:"advertisedGroups"`
+	AdvertisedIpRanges GetRoutersRouterBgpAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
+	Asn                pulumi.IntInput                                `pulumi:"asn"`
+	KeepaliveInterval  pulumi.IntInput                                `pulumi:"keepaliveInterval"`
+}
+
+func (GetRoutersRouterBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterBgp)(nil)).Elem()
+}
+
+func (i GetRoutersRouterBgpArgs) ToGetRoutersRouterBgpOutput() GetRoutersRouterBgpOutput {
+	return i.ToGetRoutersRouterBgpOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterBgpArgs) ToGetRoutersRouterBgpOutputWithContext(ctx context.Context) GetRoutersRouterBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterBgpOutput)
+}
+
+// GetRoutersRouterBgpArrayInput is an input type that accepts GetRoutersRouterBgpArray and GetRoutersRouterBgpArrayOutput values.
+// You can construct a concrete instance of `GetRoutersRouterBgpArrayInput` via:
+//
+//	GetRoutersRouterBgpArray{ GetRoutersRouterBgpArgs{...} }
+type GetRoutersRouterBgpArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterBgpArrayOutput() GetRoutersRouterBgpArrayOutput
+	ToGetRoutersRouterBgpArrayOutputWithContext(context.Context) GetRoutersRouterBgpArrayOutput
+}
+
+type GetRoutersRouterBgpArray []GetRoutersRouterBgpInput
+
+func (GetRoutersRouterBgpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterBgp)(nil)).Elem()
+}
+
+func (i GetRoutersRouterBgpArray) ToGetRoutersRouterBgpArrayOutput() GetRoutersRouterBgpArrayOutput {
+	return i.ToGetRoutersRouterBgpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterBgpArray) ToGetRoutersRouterBgpArrayOutputWithContext(ctx context.Context) GetRoutersRouterBgpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterBgpArrayOutput)
+}
+
+type GetRoutersRouterBgpOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterBgp)(nil)).Elem()
+}
+
+func (o GetRoutersRouterBgpOutput) ToGetRoutersRouterBgpOutput() GetRoutersRouterBgpOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpOutput) ToGetRoutersRouterBgpOutputWithContext(ctx context.Context) GetRoutersRouterBgpOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpOutput) AdvertiseMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgp) string { return v.AdvertiseMode }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpOutput) AdvertisedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgp) []string { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRoutersRouterBgpOutput) AdvertisedIpRanges() GetRoutersRouterBgpAdvertisedIpRangeArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgp) []GetRoutersRouterBgpAdvertisedIpRange { return v.AdvertisedIpRanges }).(GetRoutersRouterBgpAdvertisedIpRangeArrayOutput)
+}
+
+func (o GetRoutersRouterBgpOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgp) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+func (o GetRoutersRouterBgpOutput) KeepaliveInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgp) int { return v.KeepaliveInterval }).(pulumi.IntOutput)
+}
+
+type GetRoutersRouterBgpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterBgpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterBgp)(nil)).Elem()
+}
+
+func (o GetRoutersRouterBgpArrayOutput) ToGetRoutersRouterBgpArrayOutput() GetRoutersRouterBgpArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpArrayOutput) ToGetRoutersRouterBgpArrayOutputWithContext(ctx context.Context) GetRoutersRouterBgpArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpArrayOutput) Index(i pulumi.IntInput) GetRoutersRouterBgpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutersRouterBgp {
+		return vs[0].([]GetRoutersRouterBgp)[vs[1].(int)]
+	}).(GetRoutersRouterBgpOutput)
+}
+
+type GetRoutersRouterBgpAdvertisedIpRange struct {
+	Description string `pulumi:"description"`
+	Range       string `pulumi:"range"`
+}
+
+// GetRoutersRouterBgpAdvertisedIpRangeInput is an input type that accepts GetRoutersRouterBgpAdvertisedIpRangeArgs and GetRoutersRouterBgpAdvertisedIpRangeOutput values.
+// You can construct a concrete instance of `GetRoutersRouterBgpAdvertisedIpRangeInput` via:
+//
+//	GetRoutersRouterBgpAdvertisedIpRangeArgs{...}
+type GetRoutersRouterBgpAdvertisedIpRangeInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterBgpAdvertisedIpRangeOutput() GetRoutersRouterBgpAdvertisedIpRangeOutput
+	ToGetRoutersRouterBgpAdvertisedIpRangeOutputWithContext(context.Context) GetRoutersRouterBgpAdvertisedIpRangeOutput
+}
+
+type GetRoutersRouterBgpAdvertisedIpRangeArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	Range       pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetRoutersRouterBgpAdvertisedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i GetRoutersRouterBgpAdvertisedIpRangeArgs) ToGetRoutersRouterBgpAdvertisedIpRangeOutput() GetRoutersRouterBgpAdvertisedIpRangeOutput {
+	return i.ToGetRoutersRouterBgpAdvertisedIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterBgpAdvertisedIpRangeArgs) ToGetRoutersRouterBgpAdvertisedIpRangeOutputWithContext(ctx context.Context) GetRoutersRouterBgpAdvertisedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterBgpAdvertisedIpRangeOutput)
+}
+
+// GetRoutersRouterBgpAdvertisedIpRangeArrayInput is an input type that accepts GetRoutersRouterBgpAdvertisedIpRangeArray and GetRoutersRouterBgpAdvertisedIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetRoutersRouterBgpAdvertisedIpRangeArrayInput` via:
+//
+//	GetRoutersRouterBgpAdvertisedIpRangeArray{ GetRoutersRouterBgpAdvertisedIpRangeArgs{...} }
+type GetRoutersRouterBgpAdvertisedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterBgpAdvertisedIpRangeArrayOutput() GetRoutersRouterBgpAdvertisedIpRangeArrayOutput
+	ToGetRoutersRouterBgpAdvertisedIpRangeArrayOutputWithContext(context.Context) GetRoutersRouterBgpAdvertisedIpRangeArrayOutput
+}
+
+type GetRoutersRouterBgpAdvertisedIpRangeArray []GetRoutersRouterBgpAdvertisedIpRangeInput
+
+func (GetRoutersRouterBgpAdvertisedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (i GetRoutersRouterBgpAdvertisedIpRangeArray) ToGetRoutersRouterBgpAdvertisedIpRangeArrayOutput() GetRoutersRouterBgpAdvertisedIpRangeArrayOutput {
+	return i.ToGetRoutersRouterBgpAdvertisedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterBgpAdvertisedIpRangeArray) ToGetRoutersRouterBgpAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) GetRoutersRouterBgpAdvertisedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterBgpAdvertisedIpRangeArrayOutput)
+}
+
+type GetRoutersRouterBgpAdvertisedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterBgpAdvertisedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o GetRoutersRouterBgpAdvertisedIpRangeOutput) ToGetRoutersRouterBgpAdvertisedIpRangeOutput() GetRoutersRouterBgpAdvertisedIpRangeOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpAdvertisedIpRangeOutput) ToGetRoutersRouterBgpAdvertisedIpRangeOutputWithContext(ctx context.Context) GetRoutersRouterBgpAdvertisedIpRangeOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpAdvertisedIpRangeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpAdvertisedIpRange) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpAdvertisedIpRangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpAdvertisedIpRange) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetRoutersRouterBgpAdvertisedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterBgpAdvertisedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterBgpAdvertisedIpRange)(nil)).Elem()
+}
+
+func (o GetRoutersRouterBgpAdvertisedIpRangeArrayOutput) ToGetRoutersRouterBgpAdvertisedIpRangeArrayOutput() GetRoutersRouterBgpAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpAdvertisedIpRangeArrayOutput) ToGetRoutersRouterBgpAdvertisedIpRangeArrayOutputWithContext(ctx context.Context) GetRoutersRouterBgpAdvertisedIpRangeArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpAdvertisedIpRangeArrayOutput) Index(i pulumi.IntInput) GetRoutersRouterBgpAdvertisedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutersRouterBgpAdvertisedIpRange {
+		return vs[0].([]GetRoutersRouterBgpAdvertisedIpRange)[vs[1].(int)]
+	}).(GetRoutersRouterBgpAdvertisedIpRangeOutput)
+}
+
+type GetRoutersRouterBgpPeer struct {
+	AdvertiseMode           string `pulumi:"advertiseMode"`
+	AdvertisedRoutePriority int    `pulumi:"advertisedRoutePriority"`
+	Enable                  string `pulumi:"enable"`
+	EnableIpv6              bool   `pulumi:"enableIpv6"`
+	InterfaceName           string `pulumi:"interfaceName"`
+	IpAddress               string `pulumi:"ipAddress"`
+	ManagementType          string `pulumi:"managementType"`
+	Name                    string `pulumi:"name"`
+	PeerAsn                 int    `pulumi:"peerAsn"`
+	PeerIpAddress           string `pulumi:"peerIpAddress"`
+}
+
+// GetRoutersRouterBgpPeerInput is an input type that accepts GetRoutersRouterBgpPeerArgs and GetRoutersRouterBgpPeerOutput values.
+// You can construct a concrete instance of `GetRoutersRouterBgpPeerInput` via:
+//
+//	GetRoutersRouterBgpPeerArgs{...}
+type GetRoutersRouterBgpPeerInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterBgpPeerOutput() GetRoutersRouterBgpPeerOutput
+	ToGetRoutersRouterBgpPeerOutputWithContext(context.Context) GetRoutersRouterBgpPeerOutput
+}
+
+type GetRoutersRouterBgpPeerArgs struct {
+	AdvertiseMode           pulumi.StringInput `pulumi:"advertiseMode"`
+	AdvertisedRoutePriority pulumi.IntInput    `pulumi:"advertisedRoutePriority"`
+	Enable                  pulumi.StringInput `pulumi:"enable"`
+	EnableIpv6              pulumi.BoolInput   `pulumi:"enableIpv6"`
+	InterfaceName           pulumi.StringInput `pulumi:"interfaceName"`
+	IpAddress               pulumi.StringInput `pulumi:"ipAddress"`
+	ManagementType          pulumi.StringInput `pulumi:"managementType"`
+	Name                    pulumi.StringInput `pulumi:"name"`
+	PeerAsn                 pulumi.IntInput    `pulumi:"peerAsn"`
+	PeerIpAddress           pulumi.StringInput `pulumi:"peerIpAddress"`
+}
+
+func (GetRoutersRouterBgpPeerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterBgpPeer)(nil)).Elem()
+}
+
+func (i GetRoutersRouterBgpPeerArgs) ToGetRoutersRouterBgpPeerOutput() GetRoutersRouterBgpPeerOutput {
+	return i.ToGetRoutersRouterBgpPeerOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterBgpPeerArgs) ToGetRoutersRouterBgpPeerOutputWithContext(ctx context.Context) GetRoutersRouterBgpPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterBgpPeerOutput)
+}
+
+// GetRoutersRouterBgpPeerArrayInput is an input type that accepts GetRoutersRouterBgpPeerArray and GetRoutersRouterBgpPeerArrayOutput values.
+// You can construct a concrete instance of `GetRoutersRouterBgpPeerArrayInput` via:
+//
+//	GetRoutersRouterBgpPeerArray{ GetRoutersRouterBgpPeerArgs{...} }
+type GetRoutersRouterBgpPeerArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterBgpPeerArrayOutput() GetRoutersRouterBgpPeerArrayOutput
+	ToGetRoutersRouterBgpPeerArrayOutputWithContext(context.Context) GetRoutersRouterBgpPeerArrayOutput
+}
+
+type GetRoutersRouterBgpPeerArray []GetRoutersRouterBgpPeerInput
+
+func (GetRoutersRouterBgpPeerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterBgpPeer)(nil)).Elem()
+}
+
+func (i GetRoutersRouterBgpPeerArray) ToGetRoutersRouterBgpPeerArrayOutput() GetRoutersRouterBgpPeerArrayOutput {
+	return i.ToGetRoutersRouterBgpPeerArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterBgpPeerArray) ToGetRoutersRouterBgpPeerArrayOutputWithContext(ctx context.Context) GetRoutersRouterBgpPeerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterBgpPeerArrayOutput)
+}
+
+type GetRoutersRouterBgpPeerOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterBgpPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterBgpPeer)(nil)).Elem()
+}
+
+func (o GetRoutersRouterBgpPeerOutput) ToGetRoutersRouterBgpPeerOutput() GetRoutersRouterBgpPeerOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpPeerOutput) ToGetRoutersRouterBgpPeerOutputWithContext(ctx context.Context) GetRoutersRouterBgpPeerOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpPeerOutput) AdvertiseMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) string { return v.AdvertiseMode }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) AdvertisedRoutePriority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) int { return v.AdvertisedRoutePriority }).(pulumi.IntOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) Enable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) string { return v.Enable }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) bool { return v.EnableIpv6 }).(pulumi.BoolOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) ManagementType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) string { return v.ManagementType }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) PeerAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) int { return v.PeerAsn }).(pulumi.IntOutput)
+}
+
+func (o GetRoutersRouterBgpPeerOutput) PeerIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterBgpPeer) string { return v.PeerIpAddress }).(pulumi.StringOutput)
+}
+
+type GetRoutersRouterBgpPeerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterBgpPeerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterBgpPeer)(nil)).Elem()
+}
+
+func (o GetRoutersRouterBgpPeerArrayOutput) ToGetRoutersRouterBgpPeerArrayOutput() GetRoutersRouterBgpPeerArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpPeerArrayOutput) ToGetRoutersRouterBgpPeerArrayOutputWithContext(ctx context.Context) GetRoutersRouterBgpPeerArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterBgpPeerArrayOutput) Index(i pulumi.IntInput) GetRoutersRouterBgpPeerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutersRouterBgpPeer {
+		return vs[0].([]GetRoutersRouterBgpPeer)[vs[1].(int)]
+	}).(GetRoutersRouterBgpPeerOutput)
+}
+
+type GetRoutersRouterInterface struct {
+	IpRange                      string `pulumi:"ipRange"`
+	LinkedInterconnectAttachment string `pulumi:"linkedInterconnectAttachment"`
+	LinkedVpnTunnel              string `pulumi:"linkedVpnTunnel"`
+	Name                         string `pulumi:"name"`
+	PrivateIpAddress             string `pulumi:"privateIpAddress"`
+	RedundantInterface           string `pulumi:"redundantInterface"`
+	Subnetwork                   string `pulumi:"subnetwork"`
+}
+
+// GetRoutersRouterInterfaceInput is an input type that accepts GetRoutersRouterInterfaceArgs and GetRoutersRouterInterfaceOutput values.
+// You can construct a concrete instance of `GetRoutersRouterInterfaceInput` via:
+//
+//	GetRoutersRouterInterfaceArgs{...}
+type GetRoutersRouterInterfaceInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterInterfaceOutput() GetRoutersRouterInterfaceOutput
+	ToGetRoutersRouterInterfaceOutputWithContext(context.Context) GetRoutersRouterInterfaceOutput
+}
+
+type GetRoutersRouterInterfaceArgs struct {
+	IpRange                      pulumi.StringInput `pulumi:"ipRange"`
+	LinkedInterconnectAttachment pulumi.StringInput `pulumi:"linkedInterconnectAttachment"`
+	LinkedVpnTunnel              pulumi.StringInput `pulumi:"linkedVpnTunnel"`
+	Name                         pulumi.StringInput `pulumi:"name"`
+	PrivateIpAddress             pulumi.StringInput `pulumi:"privateIpAddress"`
+	RedundantInterface           pulumi.StringInput `pulumi:"redundantInterface"`
+	Subnetwork                   pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetRoutersRouterInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterInterface)(nil)).Elem()
+}
+
+func (i GetRoutersRouterInterfaceArgs) ToGetRoutersRouterInterfaceOutput() GetRoutersRouterInterfaceOutput {
+	return i.ToGetRoutersRouterInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterInterfaceArgs) ToGetRoutersRouterInterfaceOutputWithContext(ctx context.Context) GetRoutersRouterInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterInterfaceOutput)
+}
+
+// GetRoutersRouterInterfaceArrayInput is an input type that accepts GetRoutersRouterInterfaceArray and GetRoutersRouterInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetRoutersRouterInterfaceArrayInput` via:
+//
+//	GetRoutersRouterInterfaceArray{ GetRoutersRouterInterfaceArgs{...} }
+type GetRoutersRouterInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterInterfaceArrayOutput() GetRoutersRouterInterfaceArrayOutput
+	ToGetRoutersRouterInterfaceArrayOutputWithContext(context.Context) GetRoutersRouterInterfaceArrayOutput
+}
+
+type GetRoutersRouterInterfaceArray []GetRoutersRouterInterfaceInput
+
+func (GetRoutersRouterInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterInterface)(nil)).Elem()
+}
+
+func (i GetRoutersRouterInterfaceArray) ToGetRoutersRouterInterfaceArrayOutput() GetRoutersRouterInterfaceArrayOutput {
+	return i.ToGetRoutersRouterInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterInterfaceArray) ToGetRoutersRouterInterfaceArrayOutputWithContext(ctx context.Context) GetRoutersRouterInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterInterfaceArrayOutput)
+}
+
+type GetRoutersRouterInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterInterface)(nil)).Elem()
+}
+
+func (o GetRoutersRouterInterfaceOutput) ToGetRoutersRouterInterfaceOutput() GetRoutersRouterInterfaceOutput {
+	return o
+}
+
+func (o GetRoutersRouterInterfaceOutput) ToGetRoutersRouterInterfaceOutputWithContext(ctx context.Context) GetRoutersRouterInterfaceOutput {
+	return o
+}
+
+func (o GetRoutersRouterInterfaceOutput) IpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterInterface) string { return v.IpRange }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterInterfaceOutput) LinkedInterconnectAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterInterface) string { return v.LinkedInterconnectAttachment }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterInterfaceOutput) LinkedVpnTunnel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterInterface) string { return v.LinkedVpnTunnel }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterInterfaceOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterInterface) string { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterInterfaceOutput) RedundantInterface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterInterface) string { return v.RedundantInterface }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetRoutersRouterInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterInterface)(nil)).Elem()
+}
+
+func (o GetRoutersRouterInterfaceArrayOutput) ToGetRoutersRouterInterfaceArrayOutput() GetRoutersRouterInterfaceArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterInterfaceArrayOutput) ToGetRoutersRouterInterfaceArrayOutputWithContext(ctx context.Context) GetRoutersRouterInterfaceArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterInterfaceArrayOutput) Index(i pulumi.IntInput) GetRoutersRouterInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutersRouterInterface {
+		return vs[0].([]GetRoutersRouterInterface)[vs[1].(int)]
+	}).(GetRoutersRouterInterfaceOutput)
+}
+
+type GetRoutersRouterMd5AuthenticationKey struct {
+	Key  string `pulumi:"key"`
+	Name string `pulumi:"name"`
+}
+
+// GetRoutersRouterMd5AuthenticationKeyInput is an input type that accepts GetRoutersRouterMd5AuthenticationKeyArgs and GetRoutersRouterMd5AuthenticationKeyOutput values.
+// You can construct a concrete instance of `GetRoutersRouterMd5AuthenticationKeyInput` via:
+//
+//	GetRoutersRouterMd5AuthenticationKeyArgs{...}
+type GetRoutersRouterMd5AuthenticationKeyInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterMd5AuthenticationKeyOutput() GetRoutersRouterMd5AuthenticationKeyOutput
+	ToGetRoutersRouterMd5AuthenticationKeyOutputWithContext(context.Context) GetRoutersRouterMd5AuthenticationKeyOutput
+}
+
+type GetRoutersRouterMd5AuthenticationKeyArgs struct {
+	Key  pulumi.StringInput `pulumi:"key"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRoutersRouterMd5AuthenticationKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i GetRoutersRouterMd5AuthenticationKeyArgs) ToGetRoutersRouterMd5AuthenticationKeyOutput() GetRoutersRouterMd5AuthenticationKeyOutput {
+	return i.ToGetRoutersRouterMd5AuthenticationKeyOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterMd5AuthenticationKeyArgs) ToGetRoutersRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) GetRoutersRouterMd5AuthenticationKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterMd5AuthenticationKeyOutput)
+}
+
+// GetRoutersRouterMd5AuthenticationKeyArrayInput is an input type that accepts GetRoutersRouterMd5AuthenticationKeyArray and GetRoutersRouterMd5AuthenticationKeyArrayOutput values.
+// You can construct a concrete instance of `GetRoutersRouterMd5AuthenticationKeyArrayInput` via:
+//
+//	GetRoutersRouterMd5AuthenticationKeyArray{ GetRoutersRouterMd5AuthenticationKeyArgs{...} }
+type GetRoutersRouterMd5AuthenticationKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterMd5AuthenticationKeyArrayOutput() GetRoutersRouterMd5AuthenticationKeyArrayOutput
+	ToGetRoutersRouterMd5AuthenticationKeyArrayOutputWithContext(context.Context) GetRoutersRouterMd5AuthenticationKeyArrayOutput
+}
+
+type GetRoutersRouterMd5AuthenticationKeyArray []GetRoutersRouterMd5AuthenticationKeyInput
+
+func (GetRoutersRouterMd5AuthenticationKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (i GetRoutersRouterMd5AuthenticationKeyArray) ToGetRoutersRouterMd5AuthenticationKeyArrayOutput() GetRoutersRouterMd5AuthenticationKeyArrayOutput {
+	return i.ToGetRoutersRouterMd5AuthenticationKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterMd5AuthenticationKeyArray) ToGetRoutersRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) GetRoutersRouterMd5AuthenticationKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterMd5AuthenticationKeyArrayOutput)
+}
+
+type GetRoutersRouterMd5AuthenticationKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterMd5AuthenticationKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o GetRoutersRouterMd5AuthenticationKeyOutput) ToGetRoutersRouterMd5AuthenticationKeyOutput() GetRoutersRouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+func (o GetRoutersRouterMd5AuthenticationKeyOutput) ToGetRoutersRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) GetRoutersRouterMd5AuthenticationKeyOutput {
+	return o
+}
+
+func (o GetRoutersRouterMd5AuthenticationKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterMd5AuthenticationKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterMd5AuthenticationKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterMd5AuthenticationKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRoutersRouterMd5AuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterMd5AuthenticationKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterMd5AuthenticationKey)(nil)).Elem()
+}
+
+func (o GetRoutersRouterMd5AuthenticationKeyArrayOutput) ToGetRoutersRouterMd5AuthenticationKeyArrayOutput() GetRoutersRouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterMd5AuthenticationKeyArrayOutput) ToGetRoutersRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) GetRoutersRouterMd5AuthenticationKeyArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterMd5AuthenticationKeyArrayOutput) Index(i pulumi.IntInput) GetRoutersRouterMd5AuthenticationKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutersRouterMd5AuthenticationKey {
+		return vs[0].([]GetRoutersRouterMd5AuthenticationKey)[vs[1].(int)]
+	}).(GetRoutersRouterMd5AuthenticationKeyOutput)
+}
+
+type GetRoutersRouterNat struct {
+	EnableEndpointIndependentMapping bool     `pulumi:"enableEndpointIndependentMapping"`
+	IcmpIdleTimeoutSec               int      `pulumi:"icmpIdleTimeoutSec"`
+	MinPortsPerVm                    int      `pulumi:"minPortsPerVm"`
+	Name                             string   `pulumi:"name"`
+	NatIpAllocateOption              string   `pulumi:"natIpAllocateOption"`
+	NatIps                           []string `pulumi:"natIps"`
+	SourceSubnetworkIpRangesToNat    string   `pulumi:"sourceSubnetworkIpRangesToNat"`
+	TcpEstablishedIdleTimeoutSec     int      `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	TcpTransitoryIdleTimeoutSec      int      `pulumi:"tcpTransitoryIdleTimeoutSec"`
+	UdpIdleTimeoutSec                int      `pulumi:"udpIdleTimeoutSec"`
+}
+
+// GetRoutersRouterNatInput is an input type that accepts GetRoutersRouterNatArgs and GetRoutersRouterNatOutput values.
+// You can construct a concrete instance of `GetRoutersRouterNatInput` via:
+//
+//	GetRoutersRouterNatArgs{...}
+type GetRoutersRouterNatInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterNatOutput() GetRoutersRouterNatOutput
+	ToGetRoutersRouterNatOutputWithContext(context.Context) GetRoutersRouterNatOutput
+}
+
+type GetRoutersRouterNatArgs struct {
+	EnableEndpointIndependentMapping pulumi.BoolInput        `pulumi:"enableEndpointIndependentMapping"`
+	IcmpIdleTimeoutSec               pulumi.IntInput         `pulumi:"icmpIdleTimeoutSec"`
+	MinPortsPerVm                    pulumi.IntInput         `pulumi:"minPortsPerVm"`
+	Name                             pulumi.StringInput      `pulumi:"name"`
+	NatIpAllocateOption              pulumi.StringInput      `pulumi:"natIpAllocateOption"`
+	NatIps                           pulumi.StringArrayInput `pulumi:"natIps"`
+	SourceSubnetworkIpRangesToNat    pulumi.StringInput      `pulumi:"sourceSubnetworkIpRangesToNat"`
+	TcpEstablishedIdleTimeoutSec     pulumi.IntInput         `pulumi:"tcpEstablishedIdleTimeoutSec"`
+	TcpTransitoryIdleTimeoutSec      pulumi.IntInput         `pulumi:"tcpTransitoryIdleTimeoutSec"`
+	UdpIdleTimeoutSec                pulumi.IntInput         `pulumi:"udpIdleTimeoutSec"`
+}
+
+func (GetRoutersRouterNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterNat)(nil)).Elem()
+}
+
+func (i GetRoutersRouterNatArgs) ToGetRoutersRouterNatOutput() GetRoutersRouterNatOutput {
+	return i.ToGetRoutersRouterNatOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterNatArgs) ToGetRoutersRouterNatOutputWithContext(ctx context.Context) GetRoutersRouterNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterNatOutput)
+}
+
+// GetRoutersRouterNatArrayInput is an input type that accepts GetRoutersRouterNatArray and GetRoutersRouterNatArrayOutput values.
+// You can construct a concrete instance of `GetRoutersRouterNatArrayInput` via:
+//
+//	GetRoutersRouterNatArray{ GetRoutersRouterNatArgs{...} }
+type GetRoutersRouterNatArrayInput interface {
+	pulumi.Input
+
+	ToGetRoutersRouterNatArrayOutput() GetRoutersRouterNatArrayOutput
+	ToGetRoutersRouterNatArrayOutputWithContext(context.Context) GetRoutersRouterNatArrayOutput
+}
+
+type GetRoutersRouterNatArray []GetRoutersRouterNatInput
+
+func (GetRoutersRouterNatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterNat)(nil)).Elem()
+}
+
+func (i GetRoutersRouterNatArray) ToGetRoutersRouterNatArrayOutput() GetRoutersRouterNatArrayOutput {
+	return i.ToGetRoutersRouterNatArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoutersRouterNatArray) ToGetRoutersRouterNatArrayOutputWithContext(ctx context.Context) GetRoutersRouterNatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoutersRouterNatArrayOutput)
+}
+
+type GetRoutersRouterNatOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoutersRouterNat)(nil)).Elem()
+}
+
+func (o GetRoutersRouterNatOutput) ToGetRoutersRouterNatOutput() GetRoutersRouterNatOutput {
+	return o
+}
+
+func (o GetRoutersRouterNatOutput) ToGetRoutersRouterNatOutputWithContext(ctx context.Context) GetRoutersRouterNatOutput {
+	return o
+}
+
+func (o GetRoutersRouterNatOutput) EnableEndpointIndependentMapping() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) bool { return v.EnableEndpointIndependentMapping }).(pulumi.BoolOutput)
+}
+
+func (o GetRoutersRouterNatOutput) IcmpIdleTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) int { return v.IcmpIdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o GetRoutersRouterNatOutput) MinPortsPerVm() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) int { return v.MinPortsPerVm }).(pulumi.IntOutput)
+}
+
+func (o GetRoutersRouterNatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterNatOutput) NatIpAllocateOption() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) string { return v.NatIpAllocateOption }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterNatOutput) NatIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) []string { return v.NatIps }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRoutersRouterNatOutput) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) string { return v.SourceSubnetworkIpRangesToNat }).(pulumi.StringOutput)
+}
+
+func (o GetRoutersRouterNatOutput) TcpEstablishedIdleTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) int { return v.TcpEstablishedIdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o GetRoutersRouterNatOutput) TcpTransitoryIdleTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) int { return v.TcpTransitoryIdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+func (o GetRoutersRouterNatOutput) UdpIdleTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRoutersRouterNat) int { return v.UdpIdleTimeoutSec }).(pulumi.IntOutput)
+}
+
+type GetRoutersRouterNatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoutersRouterNatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoutersRouterNat)(nil)).Elem()
+}
+
+func (o GetRoutersRouterNatArrayOutput) ToGetRoutersRouterNatArrayOutput() GetRoutersRouterNatArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterNatArrayOutput) ToGetRoutersRouterNatArrayOutputWithContext(ctx context.Context) GetRoutersRouterNatArrayOutput {
+	return o
+}
+
+func (o GetRoutersRouterNatArrayOutput) Index(i pulumi.IntInput) GetRoutersRouterNatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoutersRouterNat {
+		return vs[0].([]GetRoutersRouterNat)[vs[1].(int)]
+	}).(GetRoutersRouterNatOutput)
+}
+
 type GetSecurityPolicyAdaptiveProtectionConfig struct {
 	// Auto Deploy Config of this security policy
 	AutoDeployConfigs []GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfig `pulumi:"autoDeployConfigs"`
@@ -22751,6 +23649,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningDataInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterStatusBestRoutesForRouterWarningDataArrayInput)(nil)).Elem(), GetRouterStatusBestRoutesForRouterWarningDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterInput)(nil)).Elem(), GetRoutersRouterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterArrayInput)(nil)).Elem(), GetRoutersRouterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterBgpInput)(nil)).Elem(), GetRoutersRouterBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterBgpArrayInput)(nil)).Elem(), GetRoutersRouterBgpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterBgpAdvertisedIpRangeInput)(nil)).Elem(), GetRoutersRouterBgpAdvertisedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterBgpAdvertisedIpRangeArrayInput)(nil)).Elem(), GetRoutersRouterBgpAdvertisedIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterBgpPeerInput)(nil)).Elem(), GetRoutersRouterBgpPeerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterBgpPeerArrayInput)(nil)).Elem(), GetRoutersRouterBgpPeerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterInterfaceInput)(nil)).Elem(), GetRoutersRouterInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterInterfaceArrayInput)(nil)).Elem(), GetRoutersRouterInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterMd5AuthenticationKeyInput)(nil)).Elem(), GetRoutersRouterMd5AuthenticationKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterMd5AuthenticationKeyArrayInput)(nil)).Elem(), GetRoutersRouterMd5AuthenticationKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterNatInput)(nil)).Elem(), GetRoutersRouterNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutersRouterNatArrayInput)(nil)).Elem(), GetRoutersRouterNatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs{})
@@ -23095,6 +24007,20 @@ func init() {
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningDataOutput{})
 	pulumi.RegisterOutputType(GetRouterStatusBestRoutesForRouterWarningDataArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterBgpOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterBgpArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterBgpAdvertisedIpRangeOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterBgpAdvertisedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterBgpPeerOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterBgpPeerArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterInterfaceOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterMd5AuthenticationKeyOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterMd5AuthenticationKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterNatOutput{})
+	pulumi.RegisterOutputType(GetRoutersRouterNatArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigOutput{})

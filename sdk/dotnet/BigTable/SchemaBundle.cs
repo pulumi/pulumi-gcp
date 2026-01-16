@@ -103,6 +103,15 @@ namespace Pulumi.Gcp.BigTable
     public partial class SchemaBundle : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// updates of a schema bundle from overwriting each other. This may be sent on update and delete
+        /// requests to ensure the client has an update-to-date value before proceeding. The server returns
+        /// an ABORTED error on a mismatched etag.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// If true, allow backwards incompatible changes.
         /// </summary>
         [Output("ignoreWarnings")]
@@ -242,6 +251,15 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class SchemaBundleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// updates of a schema bundle from overwriting each other. This may be sent on update and delete
+        /// requests to ensure the client has an update-to-date value before proceeding. The server returns
+        /// an ABORTED error on a mismatched etag.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
         /// <summary>
         /// If true, allow backwards incompatible changes.
         /// </summary>

@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterFleet
     {
         /// <summary>
-        /// The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+        /// Full resource name of the registered fleet membership of the cluster.
         /// </summary>
         public readonly string? Membership;
         /// <summary>
-        /// The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `MembershipId` under google_gkehub_feature_membership.
+        /// Short name of the fleet membership, for example "member-1".
         /// </summary>
         public readonly string? MembershipId;
         /// <summary>
-        /// The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `MembershipLocation` under google_gkehub_feature_membership.
+        /// Location of the fleet membership, for example "us-central1".
         /// </summary>
         public readonly string? MembershipLocation;
         /// <summary>

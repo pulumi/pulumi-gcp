@@ -17,14 +17,14 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterFleetArgs Empty = new ClusterFleetArgs();
 
     /**
-     * The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+     * Full resource name of the registered fleet membership of the cluster.
      * 
      */
     @Import(name="membership")
     private @Nullable Output<String> membership;
 
     /**
-     * @return The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+     * @return Full resource name of the registered fleet membership of the cluster.
      * 
      */
     public Optional<Output<String>> membership() {
@@ -32,14 +32,14 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
+     * Short name of the fleet membership, for example &#34;member-1&#34;.
      * 
      */
     @Import(name="membershipId")
     private @Nullable Output<String> membershipId;
 
     /**
-     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
      * 
      */
     public Optional<Output<String>> membershipId() {
@@ -47,14 +47,14 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
+     * Location of the fleet membership, for example &#34;us-central1&#34;.
      * 
      */
     @Import(name="membershipLocation")
     private @Nullable Output<String> membershipLocation;
 
     /**
-     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
      * 
      */
     public Optional<Output<String>> membershipLocation() {
@@ -136,7 +136,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membership The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+         * @param membership Full resource name of the registered fleet membership of the cluster.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membership The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+         * @param membership Full resource name of the registered fleet membership of the cluster.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipId The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
+         * @param membershipId Short name of the fleet membership, for example &#34;member-1&#34;.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipId The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
+         * @param membershipId Short name of the fleet membership, for example &#34;member-1&#34;.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipLocation The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
+         * @param membershipLocation Location of the fleet membership, for example &#34;us-central1&#34;.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param membershipLocation The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
+         * @param membershipLocation Location of the fleet membership, for example &#34;us-central1&#34;.
          * 
          * @return builder
          * 

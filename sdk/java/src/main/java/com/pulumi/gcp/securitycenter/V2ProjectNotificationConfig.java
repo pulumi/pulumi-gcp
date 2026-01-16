@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *         var customNotificationConfig = new V2ProjectNotificationConfig("customNotificationConfig", V2ProjectNotificationConfigArgs.builder()
  *             .configId("my-config")
  *             .project("my-project-name")
- *             .location("global")
  *             .description("My custom Cloud Security Command Center Finding Notification Configuration")
  *             .pubsubTopic(sccV2ProjectNotification.id())
  *             .streamingConfig(V2ProjectNotificationConfigStreamingConfigArgs.builder()
@@ -129,14 +128,14 @@ public class V2ProjectNotificationConfig extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.description);
     }
     /**
-     * Location ID of the parent organization. Only global is supported at the moment.
+     * Location ID for the parent project. Defaults to `global` if location is not provided.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return Location ID of the parent organization. Only global is supported at the moment.
+     * @return Location ID for the parent project. Defaults to `global` if location is not provided.
      * 
      */
     public Output<Optional<String>> location() {

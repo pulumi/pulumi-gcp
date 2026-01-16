@@ -28,6 +28,9 @@ __all__ = [
     'ConnectionProfileMysqlProfileSslConfig',
     'ConnectionProfileOracleProfile',
     'ConnectionProfilePostgresqlProfile',
+    'ConnectionProfilePostgresqlProfileSslConfig',
+    'ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification',
+    'ConnectionProfilePostgresqlProfileSslConfigServerVerification',
     'ConnectionProfilePrivateConnectivity',
     'ConnectionProfileSalesforceProfile',
     'ConnectionProfileSalesforceProfileOauth2ClientCredentials',
@@ -1001,6 +1004,8 @@ class ConnectionProfilePostgresqlProfile(dict):
         suggest = None
         if key == "secretManagerStoredPassword":
             suggest = "secret_manager_stored_password"
+        elif key == "sslConfig":
+            suggest = "ssl_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionProfilePostgresqlProfile. Access the value via the '{suggest}' property getter instead.")
@@ -1019,7 +1024,8 @@ class ConnectionProfilePostgresqlProfile(dict):
                  username: _builtins.str,
                  password: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
-                 secret_manager_stored_password: Optional[_builtins.str] = None):
+                 secret_manager_stored_password: Optional[_builtins.str] = None,
+                 ssl_config: Optional['outputs.ConnectionProfilePostgresqlProfileSslConfig'] = None):
         """
         :param _builtins.str database: Database for the PostgreSQL connection.
         :param _builtins.str hostname: Hostname for the PostgreSQL connection.
@@ -1028,6 +1034,8 @@ class ConnectionProfilePostgresqlProfile(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param _builtins.int port: Port for the PostgreSQL connection.
         :param _builtins.str secret_manager_stored_password: A reference to a Secret Manager resource name storing the user's password.
+        :param 'ConnectionProfilePostgresqlProfileSslConfigArgs' ssl_config: SSL configuration for the PostgreSQL connection.
+               Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -1038,6 +1046,8 @@ class ConnectionProfilePostgresqlProfile(dict):
             pulumi.set(__self__, "port", port)
         if secret_manager_stored_password is not None:
             pulumi.set(__self__, "secret_manager_stored_password", secret_manager_stored_password)
+        if ssl_config is not None:
+            pulumi.set(__self__, "ssl_config", ssl_config)
 
     @_builtins.property
     @pulumi.getter
@@ -1087,6 +1097,191 @@ class ConnectionProfilePostgresqlProfile(dict):
         A reference to a Secret Manager resource name storing the user's password.
         """
         return pulumi.get(self, "secret_manager_stored_password")
+
+    @_builtins.property
+    @pulumi.getter(name="sslConfig")
+    def ssl_config(self) -> Optional['outputs.ConnectionProfilePostgresqlProfileSslConfig']:
+        """
+        SSL configuration for the PostgreSQL connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ssl_config")
+
+
+@pulumi.output_type
+class ConnectionProfilePostgresqlProfileSslConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serverAndClientVerification":
+            suggest = "server_and_client_verification"
+        elif key == "serverVerification":
+            suggest = "server_verification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfilePostgresqlProfileSslConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfilePostgresqlProfileSslConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfilePostgresqlProfileSslConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 server_and_client_verification: Optional['outputs.ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification'] = None,
+                 server_verification: Optional['outputs.ConnectionProfilePostgresqlProfileSslConfigServerVerification'] = None):
+        """
+        :param 'ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs' server_and_client_verification: If this field is set, the communication will be encrypted with TLS encryption
+               and both the server identity and the client identity will be authenticated.
+               Structure is documented below.
+        :param 'ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs' server_verification: If this field is set, the communication will be encrypted with TLS encryption
+               and the server identity will be authenticated.
+               Structure is documented below.
+        """
+        if server_and_client_verification is not None:
+            pulumi.set(__self__, "server_and_client_verification", server_and_client_verification)
+        if server_verification is not None:
+            pulumi.set(__self__, "server_verification", server_verification)
+
+    @_builtins.property
+    @pulumi.getter(name="serverAndClientVerification")
+    def server_and_client_verification(self) -> Optional['outputs.ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification']:
+        """
+        If this field is set, the communication will be encrypted with TLS encryption
+        and both the server identity and the client identity will be authenticated.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "server_and_client_verification")
+
+    @_builtins.property
+    @pulumi.getter(name="serverVerification")
+    def server_verification(self) -> Optional['outputs.ConnectionProfilePostgresqlProfileSslConfigServerVerification']:
+        """
+        If this field is set, the communication will be encrypted with TLS encryption
+        and the server identity will be authenticated.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "server_verification")
+
+
+@pulumi.output_type
+class ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: _builtins.str,
+                 client_certificate: _builtins.str,
+                 client_key: _builtins.str):
+        """
+        :param _builtins.str ca_certificate: PEM-encoded server root CA certificate.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str client_certificate: PEM-encoded certificate used by the source database to authenticate the
+               client identity (i.e., the Datastream's identity). This certificate is
+               signed by either a root certificate trusted by the server or one or more
+               intermediate certificates (which is stored with the leaf certificate) to
+               link to this certificate to the trusted root certificate.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str client_key: PEM-encoded private key associated with the client certificate.
+               This value will be used during the SSL/TLS handshake, allowing
+               the PostgreSQL server to authenticate the client's identity,
+               i.e. identity of the stream.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        pulumi.set(__self__, "client_certificate", client_certificate)
+        pulumi.set(__self__, "client_key", client_key)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> _builtins.str:
+        """
+        PEM-encoded server root CA certificate.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "ca_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> _builtins.str:
+        """
+        PEM-encoded certificate used by the source database to authenticate the
+        client identity (i.e., the Datastream's identity). This certificate is
+        signed by either a root certificate trusted by the server or one or more
+        intermediate certificates (which is stored with the leaf certificate) to
+        link to this certificate to the trusted root certificate.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> _builtins.str:
+        """
+        PEM-encoded private key associated with the client certificate.
+        This value will be used during the SSL/TLS handshake, allowing
+        the PostgreSQL server to authenticate the client's identity,
+        i.e. identity of the stream.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_key")
+
+
+@pulumi.output_type
+class ConnectionProfilePostgresqlProfileSslConfigServerVerification(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfilePostgresqlProfileSslConfigServerVerification. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfilePostgresqlProfileSslConfigServerVerification.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfilePostgresqlProfileSslConfigServerVerification.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certificate: _builtins.str):
+        """
+        :param _builtins.str ca_certificate: PEM-encoded server root CA certificate.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        pulumi.set(__self__, "ca_certificate", ca_certificate)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertificate")
+    def ca_certificate(self) -> _builtins.str:
+        """
+        PEM-encoded server root CA certificate.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "ca_certificate")
 
 
 @pulumi.output_type

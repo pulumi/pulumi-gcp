@@ -68,6 +68,7 @@ import javax.annotation.Nullable;
  *             .backupPlanId("backup-plan-simple-test")
  *             .resourceType("compute.googleapis.com/Instance")
  *             .backupVault(myBackupVault.id())
+ *             .maxCustomOnDemandRetentionDays(30)
  *             .backupRules(BackupPlanBackupRuleArgs.builder()
  *                 .ruleId("rule-1")
  *                 .backupRetentionDays(5)
@@ -127,6 +128,7 @@ import javax.annotation.Nullable;
  *             .backupPlanId("backup-plan-disk-test")
  *             .resourceType("compute.googleapis.com/Disk")
  *             .backupVault(myBackupVault.id())
+ *             .maxCustomOnDemandRetentionDays(30)
  *             .backupRules(BackupPlanBackupRuleArgs.builder()
  *                 .ruleId("rule-1")
  *                 .backupRetentionDays(5)
@@ -347,6 +349,20 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> logRetentionDays() {
         return Codegen.optional(this.logRetentionDays);
+    }
+    /**
+     * The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+     * 
+     */
+    @Export(name="maxCustomOnDemandRetentionDays", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxCustomOnDemandRetentionDays;
+
+    /**
+     * @return The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+     * 
+     */
+    public Output<Optional<Integer>> maxCustomOnDemandRetentionDays() {
+        return Codegen.optional(this.maxCustomOnDemandRetentionDays);
     }
     /**
      * The name of backup plan resource created

@@ -33,7 +33,7 @@ class V2ProjectNotificationConfigArgs:
         :param pulumi.Input['V2ProjectNotificationConfigStreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
-        :param pulumi.Input[_builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
+        :param pulumi.Input[_builtins.str] location: Location ID for the parent project. Defaults to `global` if location is not provided.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
@@ -91,7 +91,7 @@ class V2ProjectNotificationConfigArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Location ID of the parent organization. Only global is supported at the moment.
+        Location ID for the parent project. Defaults to `global` if location is not provided.
         """
         return pulumi.get(self, "location")
 
@@ -141,7 +141,7 @@ class _V2ProjectNotificationConfigState:
         Input properties used for looking up and filtering V2ProjectNotificationConfig resources.
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
-        :param pulumi.Input[_builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
+        :param pulumi.Input[_builtins.str] location: Location ID for the parent project. Defaults to `global` if location is not provided.
         :param pulumi.Input[_builtins.str] name: The resource name of this notification config, in the format
                `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -198,7 +198,7 @@ class _V2ProjectNotificationConfigState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Location ID of the parent organization. Only global is supported at the moment.
+        Location ID for the parent project. Defaults to `global` if location is not provided.
         """
         return pulumi.get(self, "location")
 
@@ -306,7 +306,6 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         custom_notification_config = gcp.securitycenter.V2ProjectNotificationConfig("custom_notification_config",
             config_id="my-config",
             project="my-project-name",
-            location="global",
             description="My custom Cloud Security Command Center Finding Notification Configuration",
             pubsub_topic=scc_v2_project_notification.id,
             streaming_config={
@@ -342,7 +341,7 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
-        :param pulumi.Input[_builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
+        :param pulumi.Input[_builtins.str] location: Location ID for the parent project. Defaults to `global` if location is not provided.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
@@ -377,7 +376,6 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         custom_notification_config = gcp.securitycenter.V2ProjectNotificationConfig("custom_notification_config",
             config_id="my-config",
             project="my-project-name",
-            location="global",
             description="My custom Cloud Security Command Center Finding Notification Configuration",
             pubsub_topic=scc_v2_project_notification.id,
             streaming_config={
@@ -478,7 +476,7 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] config_id: This must be unique within the project.
         :param pulumi.Input[_builtins.str] description: The description of the notification config (max of 1024 characters).
-        :param pulumi.Input[_builtins.str] location: Location ID of the parent organization. Only global is supported at the moment.
+        :param pulumi.Input[_builtins.str] location: Location ID for the parent project. Defaults to `global` if location is not provided.
         :param pulumi.Input[_builtins.str] name: The resource name of this notification config, in the format
                `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -524,7 +522,7 @@ class V2ProjectNotificationConfig(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Location ID of the parent organization. Only global is supported at the moment.
+        Location ID for the parent project. Defaults to `global` if location is not provided.
         """
         return pulumi.get(self, "location")
 

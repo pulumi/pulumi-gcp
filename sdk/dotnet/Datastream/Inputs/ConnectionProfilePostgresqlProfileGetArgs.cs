@@ -54,6 +54,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<string>? SecretManagerStoredPassword { get; set; }
 
         /// <summary>
+        /// SSL configuration for the PostgreSQL connection.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sslConfig")]
+        public Input<Inputs.ConnectionProfilePostgresqlProfileSslConfigGetArgs>? SslConfig { get; set; }
+
+        /// <summary>
         /// Username for the PostgreSQL connection.
         /// </summary>
         [Input("username", required: true)]

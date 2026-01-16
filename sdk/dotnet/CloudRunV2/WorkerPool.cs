@@ -651,40 +651,6 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
-    /// ### Cloudrunv2 Worker Pool Custom Audiences
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.CloudRunV2.WorkerPool("default", new()
-    ///     {
-    ///         Name = "cloudrun-worker-pool",
-    ///         Location = "us-central1",
-    ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
-    ///         CustomAudiences = new[]
-    ///         {
-    ///             "aud1",
-    ///         },
-    ///         Template = new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateArgs
-    ///         {
-    ///             Containers = new[]
-    ///             {
-    ///                 new Gcp.CloudRunV2.Inputs.WorkerPoolTemplateContainerArgs
-    ///                 {
-    ///                     Image = "us-docker.pkg.dev/cloudrun/container/worker-pool",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Cloudrunv2 Worker Pool Startup Liveness Probe
     /// 
     /// ```csharp
@@ -846,8 +812,11 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
         /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// 
+        /// &gt; **Warning:** `CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         /// </summary>
         [Output("customAudiences")]
         public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
@@ -1111,9 +1080,13 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<string>? _customAudiences;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
         /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// 
+        /// &gt; **Warning:** `CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         /// </summary>
+        [Obsolete(@"`CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.")]
         public InputList<string> CustomAudiences
         {
             get => _customAudiences ?? (_customAudiences = new InputList<string>());
@@ -1274,9 +1247,13 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<string>? _customAudiences;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
         /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// 
+        /// &gt; **Warning:** `CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
         /// </summary>
+        [Obsolete(@"`CustomAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.")]
         public InputList<string> CustomAudiences
         {
             get => _customAudiences ?? (_customAudiences = new InputList<string>());

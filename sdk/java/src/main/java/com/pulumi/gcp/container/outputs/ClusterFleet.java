@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterFleet {
     /**
-     * @return The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+     * @return Full resource name of the registered fleet membership of the cluster.
      * 
      */
     private @Nullable String membership;
     /**
-     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
      * 
      */
     private @Nullable String membershipId;
     /**
-     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
      * 
      */
     private @Nullable String membershipLocation;
@@ -45,21 +45,21 @@ public final class ClusterFleet {
 
     private ClusterFleet() {}
     /**
-     * @return The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+     * @return Full resource name of the registered fleet membership of the cluster.
      * 
      */
     public Optional<String> membership() {
         return Optional.ofNullable(this.membership);
     }
     /**
-     * @return The short name of the fleet membership, extracted from `fleet.0.membership`. You can use this field to configure `membershipId` under google_gkehub_feature_membership.
+     * @return Short name of the fleet membership, for example &#34;member-1&#34;.
      * 
      */
     public Optional<String> membershipId() {
         return Optional.ofNullable(this.membershipId);
     }
     /**
-     * @return The location of the fleet membership,  extracted from `fleet.0.membership`. You can use this field to configure `membershipLocation` under google_gkehub_feature_membership.
+     * @return Location of the fleet membership, for example &#34;us-central1&#34;.
      * 
      */
     public Optional<String> membershipLocation() {
