@@ -697,6 +697,28 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
+        ### Dataplex Datascan Onetime Profile
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        onetime_profile = gcp.dataplex.Datascan("onetime_profile",
+            location="us-central1",
+            data_scan_id="dataprofile-onetime",
+            data={
+                "resource": "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
+                },
+            },
+            data_profile_spec={},
+            project="my-project-name")
+        ```
         ### Dataplex Datascan Basic Quality
 
         ```python
@@ -842,6 +864,37 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        ### Dataplex Datascan Onetime Quality
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        onetime_quality = gcp.dataplex.Datascan("onetime_quality",
+            location="us-central1",
+            data_scan_id="dataquality-onetime",
+            data={
+                "resource": "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
+                },
+            },
+            data_quality_spec={
+                "rules": [{
+                    "dimension": "VALIDITY",
+                    "name": "rule1",
+                    "description": "rule 1 for validity dimension",
+                    "table_condition_expectation": {
+                        "sql_expression": "COUNT(*) > 0",
+                    },
+                }],
+            },
+            project="my-project-name")
+        ```
         ### Dataplex Datascan Basic Discovery
 
         ```python
@@ -944,6 +997,36 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        ### Dataplex Datascan Onetime Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
+            name="tf-test-bucket-name-_34962",
+            location="us-west1",
+            uniform_bucket_level_access=True)
+        onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
+            location="us-central1",
+            data_scan_id="datadiscovery-onetime",
+            data={
+                "resource": pulumi.Output.all(
+                    project=tf_test_bucket.project,
+                    name=tf_test_bucket.name
+        ).apply(lambda resolved_outputs: f"//storage.googleapis.com/projects/{resolved_outputs['project']}/buckets/{resolved_outputs['name']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
+                },
+            },
+            data_discovery_spec={},
+            project="my-project-name")
+        ```
         ### Dataplex Datascan Documentation
 
         ```python
@@ -951,11 +1034,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__34962",
+            dataset_id="tf_dataplex_test_dataset_id__74000",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__74000",
+            table_id="tf_dataplex_test_table_id__75125",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1020,6 +1103,89 @@ class Datascan(pulumi.CustomResource):
             execution_spec={
                 "trigger": {
                     "on_demand": {},
+                },
+            },
+            data_documentation_spec={},
+            project="my-project-name")
+        ```
+        ### Dataplex Datascan Onetime Documentation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
+            dataset_id="tf_dataplex_test_dataset_id__88722",
+            default_table_expiration_ms=3600000)
+        tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
+            dataset_id=tf_dataplex_test_dataset.dataset_id,
+            table_id="tf_dataplex_test_table_id__39249",
+            deletion_protection=False,
+            schema=\"\"\"    [
+            {
+              \\"name\\": \\"name\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\"
+            },
+            {
+              \\"name\\": \\"station_id\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The id of the bike station\\"
+            },
+            {
+              \\"name\\": \\"address\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The address of the bike station\\"
+            },
+            {
+              \\"name\\": \\"power_type\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The powert type of the bike station\\"
+            },
+            {
+              \\"name\\": \\"property_type\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The type of the property\\"
+            },
+            {
+              \\"name\\": \\"number_of_docks\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The number of docks the property have\\"
+            },
+            {
+              \\"name\\": \\"footprint_length\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The footpring lenght of the property\\"
+            },
+            {
+              \\"name\\": \\"council_district\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The council district the property is in\\"
+            }
+            ]
+        \"\"\")
+        onetime_documentation = gcp.dataplex.Datascan("onetime_documentation",
+            location="us-central1",
+            data_scan_id="datadocumentation-onetime",
+            data={
+                "resource": pulumi.Output.all(
+                    dataset_id=tf_dataplex_test_dataset.dataset_id,
+                    table_id=tf_dataplex_test_table.table_id
+        ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
                 },
             },
             data_documentation_spec={},
@@ -1166,6 +1332,28 @@ class Datascan(pulumi.CustomResource):
             project="my-project-name",
             opts = pulumi.ResourceOptions(depends_on=[source]))
         ```
+        ### Dataplex Datascan Onetime Profile
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        onetime_profile = gcp.dataplex.Datascan("onetime_profile",
+            location="us-central1",
+            data_scan_id="dataprofile-onetime",
+            data={
+                "resource": "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
+                },
+            },
+            data_profile_spec={},
+            project="my-project-name")
+        ```
         ### Dataplex Datascan Basic Quality
 
         ```python
@@ -1311,6 +1499,37 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        ### Dataplex Datascan Onetime Quality
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        onetime_quality = gcp.dataplex.Datascan("onetime_quality",
+            location="us-central1",
+            data_scan_id="dataquality-onetime",
+            data={
+                "resource": "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
+                },
+            },
+            data_quality_spec={
+                "rules": [{
+                    "dimension": "VALIDITY",
+                    "name": "rule1",
+                    "description": "rule 1 for validity dimension",
+                    "table_condition_expectation": {
+                        "sql_expression": "COUNT(*) > 0",
+                    },
+                }],
+            },
+            project="my-project-name")
+        ```
         ### Dataplex Datascan Basic Discovery
 
         ```python
@@ -1413,6 +1632,36 @@ class Datascan(pulumi.CustomResource):
             },
             project="my-project-name")
         ```
+        ### Dataplex Datascan Onetime Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
+            name="tf-test-bucket-name-_34962",
+            location="us-west1",
+            uniform_bucket_level_access=True)
+        onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
+            location="us-central1",
+            data_scan_id="datadiscovery-onetime",
+            data={
+                "resource": pulumi.Output.all(
+                    project=tf_test_bucket.project,
+                    name=tf_test_bucket.name
+        ).apply(lambda resolved_outputs: f"//storage.googleapis.com/projects/{resolved_outputs['project']}/buckets/{resolved_outputs['name']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
+                },
+            },
+            data_discovery_spec={},
+            project="my-project-name")
+        ```
         ### Dataplex Datascan Documentation
 
         ```python
@@ -1420,11 +1669,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__34962",
+            dataset_id="tf_dataplex_test_dataset_id__74000",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__74000",
+            table_id="tf_dataplex_test_table_id__75125",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1489,6 +1738,89 @@ class Datascan(pulumi.CustomResource):
             execution_spec={
                 "trigger": {
                     "on_demand": {},
+                },
+            },
+            data_documentation_spec={},
+            project="my-project-name")
+        ```
+        ### Dataplex Datascan Onetime Documentation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
+            dataset_id="tf_dataplex_test_dataset_id__88722",
+            default_table_expiration_ms=3600000)
+        tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
+            dataset_id=tf_dataplex_test_dataset.dataset_id,
+            table_id="tf_dataplex_test_table_id__39249",
+            deletion_protection=False,
+            schema=\"\"\"    [
+            {
+              \\"name\\": \\"name\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\"
+            },
+            {
+              \\"name\\": \\"station_id\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The id of the bike station\\"
+            },
+            {
+              \\"name\\": \\"address\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The address of the bike station\\"
+            },
+            {
+              \\"name\\": \\"power_type\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The powert type of the bike station\\"
+            },
+            {
+              \\"name\\": \\"property_type\\",
+              \\"type\\": \\"STRING\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The type of the property\\"
+            },
+            {
+              \\"name\\": \\"number_of_docks\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The number of docks the property have\\"
+            },
+            {
+              \\"name\\": \\"footprint_length\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The footpring lenght of the property\\"
+            },
+            {
+              \\"name\\": \\"council_district\\",
+              \\"type\\": \\"INTEGER\\",
+              \\"mode\\": \\"NULLABLE\\",
+              \\"description\\": \\"The council district the property is in\\"
+            }
+            ]
+        \"\"\")
+        onetime_documentation = gcp.dataplex.Datascan("onetime_documentation",
+            location="us-central1",
+            data_scan_id="datadocumentation-onetime",
+            data={
+                "resource": pulumi.Output.all(
+                    dataset_id=tf_dataplex_test_dataset.dataset_id,
+                    table_id=tf_dataplex_test_table.table_id
+        ).apply(lambda resolved_outputs: f"//bigquery.googleapis.com/projects/my-project-name/datasets/{resolved_outputs['dataset_id']}/tables/{resolved_outputs['table_id']}")
+        ,
+            },
+            execution_spec={
+                "trigger": {
+                    "one_time": {
+                        "ttl_after_scan_completion": "120s",
+                    },
                 },
             },
             data_documentation_spec={},

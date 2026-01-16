@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupVault{}
 	case "gcp:backupdisasterrecovery/managementServer:ManagementServer":
 		r = &ManagementServer{}
+	case "gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload":
+		r = &RestoreWorkload{}
 	case "gcp:backupdisasterrecovery/serviceConfig:ServiceConfig":
 		r = &ServiceConfig{}
 	default:
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"backupdisasterrecovery/managementServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"backupdisasterrecovery/restoreWorkload",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

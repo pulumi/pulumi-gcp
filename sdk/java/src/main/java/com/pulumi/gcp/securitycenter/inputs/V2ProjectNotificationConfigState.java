@@ -47,14 +47,14 @@ public final class V2ProjectNotificationConfigState extends com.pulumi.resources
     }
 
     /**
-     * Location ID of the parent organization. Only global is supported at the moment.
+     * Location ID for the parent project. Defaults to `global` if location is not provided.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Location ID of the parent organization. Only global is supported at the moment.
+     * @return Location ID for the parent project. Defaults to `global` if location is not provided.
      * 
      */
     public Optional<Output<String>> location() {
@@ -220,7 +220,7 @@ public final class V2ProjectNotificationConfigState extends com.pulumi.resources
         }
 
         /**
-         * @param location Location ID of the parent organization. Only global is supported at the moment.
+         * @param location Location ID for the parent project. Defaults to `global` if location is not provided.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class V2ProjectNotificationConfigState extends com.pulumi.resources
         }
 
         /**
-         * @param location Location ID of the parent organization. Only global is supported at the moment.
+         * @param location Location ID for the parent project. Defaults to `global` if location is not provided.
          * 
          * @return builder
          * 

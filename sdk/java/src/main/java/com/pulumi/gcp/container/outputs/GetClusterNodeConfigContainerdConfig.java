@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigContainerdConfigRegistryHost;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigContainerdConfigWritableCgroup;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,11 @@ public final class GetClusterNodeConfigContainerdConfig {
      * 
      */
     private List<GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    private List<GetClusterNodeConfigContainerdConfigRegistryHost> registryHosts;
     /**
      * @return Parameters for writable cgroups configuration.
      * 
@@ -30,6 +36,13 @@ public final class GetClusterNodeConfigContainerdConfig {
      */
     public List<GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs() {
         return this.privateRegistryAccessConfigs;
+    }
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    public List<GetClusterNodeConfigContainerdConfigRegistryHost> registryHosts() {
+        return this.registryHosts;
     }
     /**
      * @return Parameters for writable cgroups configuration.
@@ -49,11 +62,13 @@ public final class GetClusterNodeConfigContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+        private List<GetClusterNodeConfigContainerdConfigRegistryHost> registryHosts;
         private List<GetClusterNodeConfigContainerdConfigWritableCgroup> writableCgroups;
         public Builder() {}
         public Builder(GetClusterNodeConfigContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfigs = defaults.privateRegistryAccessConfigs;
+    	      this.registryHosts = defaults.registryHosts;
     	      this.writableCgroups = defaults.writableCgroups;
         }
 
@@ -69,6 +84,17 @@ public final class GetClusterNodeConfigContainerdConfig {
             return privateRegistryAccessConfigs(List.of(privateRegistryAccessConfigs));
         }
         @CustomType.Setter
+        public Builder registryHosts(List<GetClusterNodeConfigContainerdConfigRegistryHost> registryHosts) {
+            if (registryHosts == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigContainerdConfig", "registryHosts");
+            }
+            this.registryHosts = registryHosts;
+            return this;
+        }
+        public Builder registryHosts(GetClusterNodeConfigContainerdConfigRegistryHost... registryHosts) {
+            return registryHosts(List.of(registryHosts));
+        }
+        @CustomType.Setter
         public Builder writableCgroups(List<GetClusterNodeConfigContainerdConfigWritableCgroup> writableCgroups) {
             if (writableCgroups == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfigContainerdConfig", "writableCgroups");
@@ -82,6 +108,7 @@ public final class GetClusterNodeConfigContainerdConfig {
         public GetClusterNodeConfigContainerdConfig build() {
             final var _resultValue = new GetClusterNodeConfigContainerdConfig();
             _resultValue.privateRegistryAccessConfigs = privateRegistryAccessConfigs;
+            _resultValue.registryHosts = registryHosts;
             _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }

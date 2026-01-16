@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult> PrivateRegistryAccessConfigs;
         /// <summary>
+        /// Configures containerd registry host configuration. Each RegistryHosts entry represents a hosts.toml file.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostResult> RegistryHosts;
+        /// <summary>
         /// Parameters for writable cgroups configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult> WritableCgroups;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigResult(
             ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfigResult> privateRegistryAccessConfigs,
 
+            ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostResult> registryHosts,
+
             ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult> writableCgroups)
         {
             PrivateRegistryAccessConfigs = privateRegistryAccessConfigs;
+            RegistryHosts = registryHosts;
             WritableCgroups = writableCgroups;
         }
     }

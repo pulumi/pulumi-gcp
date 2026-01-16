@@ -52,14 +52,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementAr
     }
 
     /**
-     * Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+     * Specifies the Auto Upgrade knobs for the node pool.
      * 
      */
     @Import(name="upgradeOptions")
     private @Nullable Output<List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs>> upgradeOptions;
 
     /**
-     * @return Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+     * @return Specifies the Auto Upgrade knobs for the node pool.
      * 
      */
     public Optional<Output<List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs>>> upgradeOptions() {
@@ -139,7 +139,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementAr
         }
 
         /**
-         * @param upgradeOptions Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+         * @param upgradeOptions Specifies the Auto Upgrade knobs for the node pool.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementAr
         }
 
         /**
-         * @param upgradeOptions Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+         * @param upgradeOptions Specifies the Auto Upgrade knobs for the node pool.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementAr
         }
 
         /**
-         * @param upgradeOptions Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+         * @param upgradeOptions Specifies the Auto Upgrade knobs for the node pool.
          * 
          * @return builder
          * 

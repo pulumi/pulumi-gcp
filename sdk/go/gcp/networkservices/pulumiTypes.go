@@ -11506,6 +11506,7 @@ type LbRouteExtensionExtensionChain struct {
 	// A set of extensions to execute for the matching request.
 	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 	// Structure is documented below.
 	Extensions []LbRouteExtensionExtensionChainExtension `pulumi:"extensions"`
 	// Conditions under which this chain is invoked for a request.
@@ -11533,6 +11534,7 @@ type LbRouteExtensionExtensionChainArgs struct {
 	// A set of extensions to execute for the matching request.
 	// At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 	// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+	// Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 	// Structure is documented below.
 	Extensions LbRouteExtensionExtensionChainExtensionArrayInput `pulumi:"extensions"`
 	// Conditions under which this chain is invoked for a request.
@@ -11599,6 +11601,7 @@ func (o LbRouteExtensionExtensionChainOutput) ToLbRouteExtensionExtensionChainOu
 // A set of extensions to execute for the matching request.
 // At least one extension is required. Up to 3 extensions can be defined for each extension chain for
 // LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+// Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
 // Structure is documented below.
 func (o LbRouteExtensionExtensionChainOutput) Extensions() LbRouteExtensionExtensionChainExtensionArrayOutput {
 	return o.ApplyT(func(v LbRouteExtensionExtensionChain) []LbRouteExtensionExtensionChainExtension { return v.Extensions }).(LbRouteExtensionExtensionChainExtensionArrayOutput)
@@ -11653,15 +11656,40 @@ type LbRouteExtensionExtensionChainExtension struct {
 	// List of the HTTP headers to forward to the extension (from the client or backend).
 	// If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders []string `pulumi:"forwardHeaders"`
+	// The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+	// in the `ProcessingRequest` message sent to the extension server.
+	// The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
+	// The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+	// This field must not be set for plugin extensions. Setting it results in a validation error.
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name for this extension. The name is logged as part of the HTTP request logs.
 	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name string `pulumi:"name"`
+	// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+	// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+	// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+	// This field is helpful when you want to try out the extension in async log-only mode.
+	// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+	// Only `STREAMED` (default) body processing mode is supported.
+	ObservabilityMode *bool `pulumi:"observabilityMode"`
+	// Configures the send mode for request body processing.
+	// The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+	// If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+	// When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+	// This field can be set only when the `service` field of the extension points to a `BackendService`.
+	// Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+	// Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+	RequestBodySendMode *string `pulumi:"requestBodySendMode"`
 	// The reference to the service that runs the extension.
 	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
 	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 	Service string `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+	// Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+	SupportedEvents []string `pulumi:"supportedEvents"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	Timeout *string `pulumi:"timeout"`
@@ -11691,15 +11719,40 @@ type LbRouteExtensionExtensionChainExtensionArgs struct {
 	// List of the HTTP headers to forward to the extension (from the client or backend).
 	// If omitted, all headers are sent. Each element is a string indicating the header name.
 	ForwardHeaders pulumi.StringArrayInput `pulumi:"forwardHeaders"`
+	// The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+	// in the `ProcessingRequest` message sent to the extension server.
+	// The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
+	// The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+	// This field must not be set for plugin extensions. Setting it results in a validation error.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The name for this extension. The name is logged as part of the HTTP request logs.
 	// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 	// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
 	// and the last a letter or a number.
 	Name pulumi.StringInput `pulumi:"name"`
+	// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+	// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+	// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+	// This field is helpful when you want to try out the extension in async log-only mode.
+	// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+	// Only `STREAMED` (default) body processing mode is supported.
+	ObservabilityMode pulumi.BoolPtrInput `pulumi:"observabilityMode"`
+	// Configures the send mode for request body processing.
+	// The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+	// If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+	// When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+	// This field can be set only when the `service` field of the extension points to a `BackendService`.
+	// Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+	// Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+	RequestBodySendMode pulumi.StringPtrInput `pulumi:"requestBodySendMode"`
 	// The reference to the service that runs the extension.
 	// * To configure a callout extension, service must be a fully-qualified reference to a backend service.
 	// * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 	Service pulumi.StringInput `pulumi:"service"`
+	// A set of events during request or response processing for which this extension is called.
+	// This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+	// Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+	SupportedEvents pulumi.StringArrayInput `pulumi:"supportedEvents"`
 	// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
@@ -11777,6 +11830,15 @@ func (o LbRouteExtensionExtensionChainExtensionOutput) ForwardHeaders() pulumi.S
 	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) []string { return v.ForwardHeaders }).(pulumi.StringArrayOutput)
 }
 
+// The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+// in the `ProcessingRequest` message sent to the extension server.
+// The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
+// The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+// This field must not be set for plugin extensions. Setting it results in a validation error.
+func (o LbRouteExtensionExtensionChainExtensionOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
 // The name for this extension. The name is logged as part of the HTTP request logs.
 // The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
 // and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -11785,11 +11847,39 @@ func (o LbRouteExtensionExtensionChainExtensionOutput) Name() pulumi.StringOutpu
 	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+// This makes `extProc` calls asynchronous. Envoy doesn't check for the response from `extProc` calls.
+// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+// This field is helpful when you want to try out the extension in async log-only mode.
+// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+// Only `STREAMED` (default) body processing mode is supported.
+func (o LbRouteExtensionExtensionChainExtensionOutput) ObservabilityMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) *bool { return v.ObservabilityMode }).(pulumi.BoolPtrOutput)
+}
+
+// Configures the send mode for request body processing.
+// The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+// If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+// When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+// This field can be set only when the `service` field of the extension points to a `BackendService`.
+// Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+// Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+func (o LbRouteExtensionExtensionChainExtensionOutput) RequestBodySendMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) *string { return v.RequestBodySendMode }).(pulumi.StringPtrOutput)
+}
+
 // The reference to the service that runs the extension.
 // * To configure a callout extension, service must be a fully-qualified reference to a backend service.
 // * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
 func (o LbRouteExtensionExtensionChainExtensionOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// A set of events during request or response processing for which this extension is called.
+// This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+// Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+func (o LbRouteExtensionExtensionChainExtensionOutput) SupportedEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LbRouteExtensionExtensionChainExtension) []string { return v.SupportedEvents }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
@@ -12398,6 +12488,130 @@ func (o MulticastConsumerAssociationStateTypeArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastConsumerAssociationStateType {
 		return vs[0].([]MulticastConsumerAssociationStateType)[vs[1].(int)]
 	}).(MulticastConsumerAssociationStateTypeOutput)
+}
+
+type MulticastDomainActivationStateType struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State *string `pulumi:"state"`
+}
+
+// MulticastDomainActivationStateTypeInput is an input type that accepts MulticastDomainActivationStateTypeArgs and MulticastDomainActivationStateTypeOutput values.
+// You can construct a concrete instance of `MulticastDomainActivationStateTypeInput` via:
+//
+//	MulticastDomainActivationStateTypeArgs{...}
+type MulticastDomainActivationStateTypeInput interface {
+	pulumi.Input
+
+	ToMulticastDomainActivationStateTypeOutput() MulticastDomainActivationStateTypeOutput
+	ToMulticastDomainActivationStateTypeOutputWithContext(context.Context) MulticastDomainActivationStateTypeOutput
+}
+
+type MulticastDomainActivationStateTypeArgs struct {
+	// (Output)
+	// The state of the multicast resource.
+	// Possible values:
+	// CREATING
+	// ACTIVE
+	// DELETING
+	// DELETE_FAILED
+	// UPDATING
+	// UPDATE_FAILED
+	// INACTIVE
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MulticastDomainActivationStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastDomainActivationStateTypeArgs) ToMulticastDomainActivationStateTypeOutput() MulticastDomainActivationStateTypeOutput {
+	return i.ToMulticastDomainActivationStateTypeOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainActivationStateTypeArgs) ToMulticastDomainActivationStateTypeOutputWithContext(ctx context.Context) MulticastDomainActivationStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainActivationStateTypeOutput)
+}
+
+// MulticastDomainActivationStateTypeArrayInput is an input type that accepts MulticastDomainActivationStateTypeArray and MulticastDomainActivationStateTypeArrayOutput values.
+// You can construct a concrete instance of `MulticastDomainActivationStateTypeArrayInput` via:
+//
+//	MulticastDomainActivationStateTypeArray{ MulticastDomainActivationStateTypeArgs{...} }
+type MulticastDomainActivationStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMulticastDomainActivationStateTypeArrayOutput() MulticastDomainActivationStateTypeArrayOutput
+	ToMulticastDomainActivationStateTypeArrayOutputWithContext(context.Context) MulticastDomainActivationStateTypeArrayOutput
+}
+
+type MulticastDomainActivationStateTypeArray []MulticastDomainActivationStateTypeInput
+
+func (MulticastDomainActivationStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastDomainActivationStateType)(nil)).Elem()
+}
+
+func (i MulticastDomainActivationStateTypeArray) ToMulticastDomainActivationStateTypeArrayOutput() MulticastDomainActivationStateTypeArrayOutput {
+	return i.ToMulticastDomainActivationStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MulticastDomainActivationStateTypeArray) ToMulticastDomainActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastDomainActivationStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MulticastDomainActivationStateTypeArrayOutput)
+}
+
+type MulticastDomainActivationStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainActivationStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MulticastDomainActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastDomainActivationStateTypeOutput) ToMulticastDomainActivationStateTypeOutput() MulticastDomainActivationStateTypeOutput {
+	return o
+}
+
+func (o MulticastDomainActivationStateTypeOutput) ToMulticastDomainActivationStateTypeOutputWithContext(ctx context.Context) MulticastDomainActivationStateTypeOutput {
+	return o
+}
+
+// (Output)
+// The state of the multicast resource.
+// Possible values:
+// CREATING
+// ACTIVE
+// DELETING
+// DELETE_FAILED
+// UPDATING
+// UPDATE_FAILED
+// INACTIVE
+func (o MulticastDomainActivationStateTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MulticastDomainActivationStateType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MulticastDomainActivationStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MulticastDomainActivationStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MulticastDomainActivationStateType)(nil)).Elem()
+}
+
+func (o MulticastDomainActivationStateTypeArrayOutput) ToMulticastDomainActivationStateTypeArrayOutput() MulticastDomainActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastDomainActivationStateTypeArrayOutput) ToMulticastDomainActivationStateTypeArrayOutputWithContext(ctx context.Context) MulticastDomainActivationStateTypeArrayOutput {
+	return o
+}
+
+func (o MulticastDomainActivationStateTypeArrayOutput) Index(i pulumi.IntInput) MulticastDomainActivationStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MulticastDomainActivationStateType {
+		return vs[0].([]MulticastDomainActivationStateType)[vs[1].(int)]
+	}).(MulticastDomainActivationStateTypeOutput)
 }
 
 type MulticastDomainActivationTrafficSpec struct {
@@ -15987,6 +16201,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LbTrafficExtensionExtensionChainMatchConditionInput)(nil)).Elem(), LbTrafficExtensionExtensionChainMatchConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastConsumerAssociationStateTypeInput)(nil)).Elem(), MulticastConsumerAssociationStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastConsumerAssociationStateTypeArrayInput)(nil)).Elem(), MulticastConsumerAssociationStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainActivationStateTypeInput)(nil)).Elem(), MulticastDomainActivationStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainActivationStateTypeArrayInput)(nil)).Elem(), MulticastDomainActivationStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainActivationTrafficSpecInput)(nil)).Elem(), MulticastDomainActivationTrafficSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainActivationTrafficSpecPtrInput)(nil)).Elem(), MulticastDomainActivationTrafficSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MulticastDomainConnectionConfigInput)(nil)).Elem(), MulticastDomainConnectionConfigArgs{})
@@ -16182,6 +16398,8 @@ func init() {
 	pulumi.RegisterOutputType(LbTrafficExtensionExtensionChainMatchConditionOutput{})
 	pulumi.RegisterOutputType(MulticastConsumerAssociationStateTypeOutput{})
 	pulumi.RegisterOutputType(MulticastConsumerAssociationStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(MulticastDomainActivationStateTypeOutput{})
+	pulumi.RegisterOutputType(MulticastDomainActivationStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(MulticastDomainActivationTrafficSpecOutput{})
 	pulumi.RegisterOutputType(MulticastDomainActivationTrafficSpecPtrOutput{})
 	pulumi.RegisterOutputType(MulticastDomainConnectionConfigOutput{})

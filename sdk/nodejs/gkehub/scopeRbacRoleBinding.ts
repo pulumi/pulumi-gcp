@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_3684"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_26032"});
  * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
- *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_10719",
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_8647",
  *     scopeId: scope.scopeId,
  *     user: "test-email@gmail.com",
  *     role: {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_1443"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_50610"});
  * const rbacrolebindingactuation = new gcp.gkehub.Feature("rbacrolebindingactuation", {
  *     name: "rbacrolebindingactuation",
  *     location: "global",
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
- *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_26032",
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_77124",
  *     scopeId: scope.scopeId,
  *     user: "test-email@gmail.com",
  *     role: {

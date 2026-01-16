@@ -5,7 +5,9 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigContainerdConfigRegistryHost;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigContainerdConfigWritableCgroups;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,11 @@ public final class NodePoolNodeConfigContainerdConfig {
      * 
      */
     private @Nullable NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    private @Nullable List<NodePoolNodeConfigContainerdConfigRegistryHost> registryHosts;
     /**
      * @return Parameters for writable cgroups configuration.
      * 
@@ -30,6 +37,13 @@ public final class NodePoolNodeConfigContainerdConfig {
      */
     public Optional<NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfig() {
         return Optional.ofNullable(this.privateRegistryAccessConfig);
+    }
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    public List<NodePoolNodeConfigContainerdConfigRegistryHost> registryHosts() {
+        return this.registryHosts == null ? List.of() : this.registryHosts;
     }
     /**
      * @return Parameters for writable cgroups configuration.
@@ -49,11 +63,13 @@ public final class NodePoolNodeConfigContainerdConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig privateRegistryAccessConfig;
+        private @Nullable List<NodePoolNodeConfigContainerdConfigRegistryHost> registryHosts;
         private @Nullable NodePoolNodeConfigContainerdConfigWritableCgroups writableCgroups;
         public Builder() {}
         public Builder(NodePoolNodeConfigContainerdConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateRegistryAccessConfig = defaults.privateRegistryAccessConfig;
+    	      this.registryHosts = defaults.registryHosts;
     	      this.writableCgroups = defaults.writableCgroups;
         }
 
@@ -64,6 +80,15 @@ public final class NodePoolNodeConfigContainerdConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder registryHosts(@Nullable List<NodePoolNodeConfigContainerdConfigRegistryHost> registryHosts) {
+
+            this.registryHosts = registryHosts;
+            return this;
+        }
+        public Builder registryHosts(NodePoolNodeConfigContainerdConfigRegistryHost... registryHosts) {
+            return registryHosts(List.of(registryHosts));
+        }
+        @CustomType.Setter
         public Builder writableCgroups(@Nullable NodePoolNodeConfigContainerdConfigWritableCgroups writableCgroups) {
 
             this.writableCgroups = writableCgroups;
@@ -72,6 +97,7 @@ public final class NodePoolNodeConfigContainerdConfig {
         public NodePoolNodeConfigContainerdConfig build() {
             final var _resultValue = new NodePoolNodeConfigContainerdConfig();
             _resultValue.privateRegistryAccessConfig = privateRegistryAccessConfig;
+            _resultValue.registryHosts = registryHosts;
             _resultValue.writableCgroups = writableCgroups;
             return _resultValue;
         }

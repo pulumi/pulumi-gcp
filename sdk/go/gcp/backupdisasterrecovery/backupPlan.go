@@ -45,10 +45,11 @@ import (
 //				return err
 //			}
 //			_, err = backupdisasterrecovery.NewBackupPlan(ctx, "my-backup-plan-1", &backupdisasterrecovery.BackupPlanArgs{
-//				Location:     pulumi.String("us-central1"),
-//				BackupPlanId: pulumi.String("backup-plan-simple-test"),
-//				ResourceType: pulumi.String("compute.googleapis.com/Instance"),
-//				BackupVault:  myBackupVault.ID(),
+//				Location:                       pulumi.String("us-central1"),
+//				BackupPlanId:                   pulumi.String("backup-plan-simple-test"),
+//				ResourceType:                   pulumi.String("compute.googleapis.com/Instance"),
+//				BackupVault:                    myBackupVault.ID(),
+//				MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 //						RuleId:              pulumi.String("rule-1"),
@@ -96,10 +97,11 @@ import (
 //				return err
 //			}
 //			_, err = backupdisasterrecovery.NewBackupPlan(ctx, "my-disk-backup-plan-1", &backupdisasterrecovery.BackupPlanArgs{
-//				Location:     pulumi.String("us-central1"),
-//				BackupPlanId: pulumi.String("backup-plan-disk-test"),
-//				ResourceType: pulumi.String("compute.googleapis.com/Disk"),
-//				BackupVault:  myBackupVault.ID(),
+//				Location:                       pulumi.String("us-central1"),
+//				BackupPlanId:                   pulumi.String("backup-plan-disk-test"),
+//				ResourceType:                   pulumi.String("compute.googleapis.com/Disk"),
+//				BackupVault:                    myBackupVault.ID(),
+//				MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 //						RuleId:              pulumi.String("rule-1"),
@@ -220,6 +222,8 @@ type BackupPlan struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
 	LogRetentionDays pulumi.IntPtrOutput `pulumi:"logRetentionDays"`
+	// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+	MaxCustomOnDemandRetentionDays pulumi.IntPtrOutput `pulumi:"maxCustomOnDemandRetentionDays"`
 	// The name of backup plan resource created
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -296,6 +300,8 @@ type backupPlanState struct {
 	Location *string `pulumi:"location"`
 	// This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
 	LogRetentionDays *int `pulumi:"logRetentionDays"`
+	// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+	MaxCustomOnDemandRetentionDays *int `pulumi:"maxCustomOnDemandRetentionDays"`
 	// The name of backup plan resource created
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -328,6 +334,8 @@ type BackupPlanState struct {
 	Location pulumi.StringPtrInput
 	// This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
 	LogRetentionDays pulumi.IntPtrInput
+	// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+	MaxCustomOnDemandRetentionDays pulumi.IntPtrInput
 	// The name of backup plan resource created
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -360,6 +368,8 @@ type backupPlanArgs struct {
 	Location string `pulumi:"location"`
 	// This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
 	LogRetentionDays *int `pulumi:"logRetentionDays"`
+	// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+	MaxCustomOnDemandRetentionDays *int `pulumi:"maxCustomOnDemandRetentionDays"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -383,6 +393,8 @@ type BackupPlanArgs struct {
 	Location pulumi.StringInput
 	// This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
 	LogRetentionDays pulumi.IntPtrInput
+	// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+	MaxCustomOnDemandRetentionDays pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -517,6 +529,11 @@ func (o BackupPlanOutput) Location() pulumi.StringOutput {
 // This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
 func (o BackupPlanOutput) LogRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.IntPtrOutput { return v.LogRetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+func (o BackupPlanOutput) MaxCustomOnDemandRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.IntPtrOutput { return v.MaxCustomOnDemandRetentionDays }).(pulumi.IntPtrOutput)
 }
 
 // The name of backup plan resource created

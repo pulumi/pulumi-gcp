@@ -6,7 +6,9 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigContainerdConfigRegistryHostArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigContainerdConfigWritableCgroupsArgs;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +34,21 @@ public final class NodePoolNodeConfigContainerdConfigArgs extends com.pulumi.res
     }
 
     /**
+     * Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    @Import(name="registryHosts")
+    private @Nullable Output<List<NodePoolNodeConfigContainerdConfigRegistryHostArgs>> registryHosts;
+
+    /**
+     * @return Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+     * 
+     */
+    public Optional<Output<List<NodePoolNodeConfigContainerdConfigRegistryHostArgs>>> registryHosts() {
+        return Optional.ofNullable(this.registryHosts);
+    }
+
+    /**
      * Parameters for writable cgroups configuration.
      * 
      */
@@ -50,6 +67,7 @@ public final class NodePoolNodeConfigContainerdConfigArgs extends com.pulumi.res
 
     private NodePoolNodeConfigContainerdConfigArgs(NodePoolNodeConfigContainerdConfigArgs $) {
         this.privateRegistryAccessConfig = $.privateRegistryAccessConfig;
+        this.registryHosts = $.registryHosts;
         this.writableCgroups = $.writableCgroups;
     }
 
@@ -90,6 +108,37 @@ public final class NodePoolNodeConfigContainerdConfigArgs extends com.pulumi.res
          */
         public Builder privateRegistryAccessConfig(NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs privateRegistryAccessConfig) {
             return privateRegistryAccessConfig(Output.of(privateRegistryAccessConfig));
+        }
+
+        /**
+         * @param registryHosts Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryHosts(@Nullable Output<List<NodePoolNodeConfigContainerdConfigRegistryHostArgs>> registryHosts) {
+            $.registryHosts = registryHosts;
+            return this;
+        }
+
+        /**
+         * @param registryHosts Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryHosts(List<NodePoolNodeConfigContainerdConfigRegistryHostArgs> registryHosts) {
+            return registryHosts(Output.of(registryHosts));
+        }
+
+        /**
+         * @param registryHosts Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder registryHosts(NodePoolNodeConfigContainerdConfigRegistryHostArgs... registryHosts) {
+            return registryHosts(List.of(registryHosts));
         }
 
         /**

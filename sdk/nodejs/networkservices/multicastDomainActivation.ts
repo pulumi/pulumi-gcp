@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Create a multicast domain activation in the specified location of the current project.
  *
+ * To get more information about MulticastDomainActivation, see:
+ *
+ * * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomainActivations)
+ * * How-to Guides
+ *     * [Create Multicast Domain Activation](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#activate-domain)
+ *
  * ## Example Usage
  *
  * ### Network Services Multicast Domain Activation Basic
@@ -91,11 +97,11 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
     }
 
     /**
-     * [Output only] The URL of the admin network.
+     * The URL of the admin network.
      */
     declare public /*out*/ readonly adminNetwork: pulumi.Output<string>;
     /**
-     * [Output only] The timestamp when the multicast domain activation was
+     * The timestamp when the multicast domain activation was
      * created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -103,6 +109,12 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
      * An optional text description of the multicast domain activation.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     */
+    declare public readonly disablePlacementPolicy: pulumi.Output<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -122,7 +134,7 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
      * Use the following format:
      * `projects/*&#47;locations/global/multicastDomains/*`.
      */
-    declare public readonly multicastDomain: pulumi.Output<string | undefined>;
+    declare public readonly multicastDomain: pulumi.Output<string>;
     /**
      * A unique name for the multicast domain activation.
      * The name is restricted to letters, numbers, and hyphen, with the first
@@ -147,20 +159,33 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     */
+    declare public /*out*/ readonly states: pulumi.Output<outputs.networkservices.MulticastDomainActivationState[]>;
+    /**
      * Specifies the traffic volume and multicast group scale parameters that are
      * used to set up multicast infrastructure for a multicast domain in a zone.
      * Structure is documented below.
      */
     declare public readonly trafficSpec: pulumi.Output<outputs.networkservices.MulticastDomainActivationTrafficSpec | undefined>;
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain activation resources. If a domain
      * activation is deleted and another with the same name is created, the new
      * domain activation is assigned a different unique_id.
      */
     declare public /*out*/ readonly uniqueId: pulumi.Output<string>;
     /**
-     * [Output only] The timestamp when the multicast domain activation was most
+     * The timestamp when the multicast domain activation was most
      * recently updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -181,6 +206,7 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
             resourceInputs["adminNetwork"] = state?.adminNetwork;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
+            resourceInputs["disablePlacementPolicy"] = state?.disablePlacementPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
@@ -189,6 +215,7 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["states"] = state?.states;
             resourceInputs["trafficSpec"] = state?.trafficSpec;
             resourceInputs["uniqueId"] = state?.uniqueId;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -197,10 +224,14 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            if (args?.multicastDomain === undefined && !opts.urn) {
+                throw new Error("Missing required property 'multicastDomain'");
+            }
             if (args?.multicastDomainActivationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'multicastDomainActivationId'");
             }
             resourceInputs["description"] = args?.description;
+            resourceInputs["disablePlacementPolicy"] = args?.disablePlacementPolicy;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["multicastDomain"] = args?.multicastDomain;
@@ -212,6 +243,7 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["states"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -227,11 +259,11 @@ export class MulticastDomainActivation extends pulumi.CustomResource {
  */
 export interface MulticastDomainActivationState {
     /**
-     * [Output only] The URL of the admin network.
+     * The URL of the admin network.
      */
     adminNetwork?: pulumi.Input<string>;
     /**
-     * [Output only] The timestamp when the multicast domain activation was
+     * The timestamp when the multicast domain activation was
      * created.
      */
     createTime?: pulumi.Input<string>;
@@ -239,6 +271,12 @@ export interface MulticastDomainActivationState {
      * An optional text description of the multicast domain activation.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     */
+    disablePlacementPolicy?: pulumi.Input<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -283,20 +321,33 @@ export interface MulticastDomainActivationState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     */
+    states?: pulumi.Input<pulumi.Input<inputs.networkservices.MulticastDomainActivationState>[]>;
+    /**
      * Specifies the traffic volume and multicast group scale parameters that are
      * used to set up multicast infrastructure for a multicast domain in a zone.
      * Structure is documented below.
      */
     trafficSpec?: pulumi.Input<inputs.networkservices.MulticastDomainActivationTrafficSpec>;
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain activation resources. If a domain
      * activation is deleted and another with the same name is created, the new
      * domain activation is assigned a different unique_id.
      */
     uniqueId?: pulumi.Input<string>;
     /**
-     * [Output only] The timestamp when the multicast domain activation was most
+     * The timestamp when the multicast domain activation was most
      * recently updated.
      */
     updateTime?: pulumi.Input<string>;
@@ -310,6 +361,12 @@ export interface MulticastDomainActivationArgs {
      * An optional text description of the multicast domain activation.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     */
+    disablePlacementPolicy?: pulumi.Input<boolean>;
     /**
      * Labels as key-value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -325,7 +382,7 @@ export interface MulticastDomainActivationArgs {
      * Use the following format:
      * `projects/*&#47;locations/global/multicastDomains/*`.
      */
-    multicastDomain?: pulumi.Input<string>;
+    multicastDomain: pulumi.Input<string>;
     /**
      * A unique name for the multicast domain activation.
      * The name is restricted to letters, numbers, and hyphen, with the first

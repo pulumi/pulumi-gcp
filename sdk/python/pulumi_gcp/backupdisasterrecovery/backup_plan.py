@@ -28,6 +28,7 @@ class BackupPlanArgs:
                  resource_type: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_custom_on_demand_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
@@ -40,6 +41,7 @@ class BackupPlanArgs:
                Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+        :param pulumi.Input[_builtins.int] max_custom_on_demand_retention_days: The maximum number of days for which an on-demand backup taken with custom retention can be retained.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -52,6 +54,8 @@ class BackupPlanArgs:
             pulumi.set(__self__, "description", description)
         if log_retention_days is not None:
             pulumi.set(__self__, "log_retention_days", log_retention_days)
+        if max_custom_on_demand_retention_days is not None:
+            pulumi.set(__self__, "max_custom_on_demand_retention_days", max_custom_on_demand_retention_days)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -142,6 +146,18 @@ class BackupPlanArgs:
         pulumi.set(self, "log_retention_days", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxCustomOnDemandRetentionDays")
+    def max_custom_on_demand_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+        """
+        return pulumi.get(self, "max_custom_on_demand_retention_days")
+
+    @max_custom_on_demand_retention_days.setter
+    def max_custom_on_demand_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_custom_on_demand_retention_days", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -166,6 +182,7 @@ class _BackupPlanState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_custom_on_demand_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -182,6 +199,7 @@ class _BackupPlanState:
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
         :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+        :param pulumi.Input[_builtins.int] max_custom_on_demand_retention_days: The maximum number of days for which an on-demand backup taken with custom retention can be retained.
         :param pulumi.Input[_builtins.str] name: The name of backup plan resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -206,6 +224,8 @@ class _BackupPlanState:
             pulumi.set(__self__, "location", location)
         if log_retention_days is not None:
             pulumi.set(__self__, "log_retention_days", log_retention_days)
+        if max_custom_on_demand_retention_days is not None:
+            pulumi.set(__self__, "max_custom_on_demand_retention_days", max_custom_on_demand_retention_days)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -315,6 +335,18 @@ class _BackupPlanState:
         pulumi.set(self, "log_retention_days", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxCustomOnDemandRetentionDays")
+    def max_custom_on_demand_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+        """
+        return pulumi.get(self, "max_custom_on_demand_retention_days")
+
+    @max_custom_on_demand_retention_days.setter
+    def max_custom_on_demand_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_custom_on_demand_retention_days", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -389,6 +421,7 @@ class BackupPlan(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_custom_on_demand_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -418,6 +451,7 @@ class BackupPlan(pulumi.CustomResource):
             backup_plan_id="backup-plan-simple-test",
             resource_type="compute.googleapis.com/Instance",
             backup_vault=my_backup_vault.id,
+            max_custom_on_demand_retention_days=30,
             backup_rules=[{
                 "rule_id": "rule-1",
                 "backup_retention_days": 5,
@@ -447,6 +481,7 @@ class BackupPlan(pulumi.CustomResource):
             backup_plan_id="backup-plan-disk-test",
             resource_type="compute.googleapis.com/Disk",
             backup_vault=my_backup_vault.id,
+            max_custom_on_demand_retention_days=30,
             backup_rules=[{
                 "rule_id": "rule-1",
                 "backup_retention_days": 5,
@@ -525,6 +560,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
         :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+        :param pulumi.Input[_builtins.int] max_custom_on_demand_retention_days: The maximum number of days for which an on-demand backup taken with custom retention can be retained.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
@@ -562,6 +598,7 @@ class BackupPlan(pulumi.CustomResource):
             backup_plan_id="backup-plan-simple-test",
             resource_type="compute.googleapis.com/Instance",
             backup_vault=my_backup_vault.id,
+            max_custom_on_demand_retention_days=30,
             backup_rules=[{
                 "rule_id": "rule-1",
                 "backup_retention_days": 5,
@@ -591,6 +628,7 @@ class BackupPlan(pulumi.CustomResource):
             backup_plan_id="backup-plan-disk-test",
             resource_type="compute.googleapis.com/Disk",
             backup_vault=my_backup_vault.id,
+            max_custom_on_demand_retention_days=30,
             backup_rules=[{
                 "rule_id": "rule-1",
                 "backup_retention_days": 5,
@@ -681,6 +719,7 @@ class BackupPlan(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_custom_on_demand_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -706,6 +745,7 @@ class BackupPlan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["log_retention_days"] = log_retention_days
+            __props__.__dict__["max_custom_on_demand_retention_days"] = max_custom_on_demand_retention_days
             __props__.__dict__["project"] = project
             if resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_type'")
@@ -733,6 +773,7 @@ class BackupPlan(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             log_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+            max_custom_on_demand_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             resource_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -754,6 +795,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
         :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
+        :param pulumi.Input[_builtins.int] max_custom_on_demand_retention_days: The maximum number of days for which an on-demand backup taken with custom retention can be retained.
         :param pulumi.Input[_builtins.str] name: The name of backup plan resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -774,6 +816,7 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["location"] = location
         __props__.__dict__["log_retention_days"] = log_retention_days
+        __props__.__dict__["max_custom_on_demand_retention_days"] = max_custom_on_demand_retention_days
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["resource_type"] = resource_type
@@ -845,6 +888,14 @@ class BackupPlan(pulumi.CustomResource):
         This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
         """
         return pulumi.get(self, "log_retention_days")
+
+    @_builtins.property
+    @pulumi.getter(name="maxCustomOnDemandRetentionDays")
+    def max_custom_on_demand_retention_days(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+        """
+        return pulumi.get(self, "max_custom_on_demand_retention_days")
 
     @_builtins.property
     @pulumi.getter

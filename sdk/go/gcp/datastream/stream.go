@@ -1227,8 +1227,8 @@ import (
 //				return err
 //			}
 //			cross_project_dataset, err := organizations.NewProject(ctx, "cross-project-dataset", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_89313"),
-//				Name:           pulumi.String("tf-test_60646"),
+//				ProjectId:      pulumi.String("tf-test_11380"),
+//				Name:           pulumi.String("tf-test_35305"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),

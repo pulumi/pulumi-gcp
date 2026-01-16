@@ -132,6 +132,40 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// ### Dataplex Datascan Onetime Profile
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var onetimeProfile = new Gcp.DataPlex.Datascan("onetime_profile", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "dataprofile-onetime",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OneTime = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerOneTimeArgs
+    ///                 {
+    ///                     TtlAfterScanCompletion = "120s",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DataProfileSpec = null,
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dataplex Datascan Basic Quality
     /// 
     /// ```csharp
@@ -333,6 +367,55 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// ### Dataplex Datascan Onetime Quality
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var onetimeQuality = new Gcp.DataPlex.Datascan("onetime_quality", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "dataquality-onetime",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OneTime = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerOneTimeArgs
+    ///                 {
+    ///                     TtlAfterScanCompletion = "120s",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DataQualitySpec = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
+    ///                 {
+    ///                     Dimension = "VALIDITY",
+    ///                     Name = "rule1",
+    ///                     Description = "rule 1 for validity dimension",
+    ///                     TableConditionExpectation = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs
+    ///                     {
+    ///                         SqlExpression = "COUNT(*) &gt; 0",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dataplex Datascan Basic Discovery
     /// 
     /// ```csharp
@@ -478,6 +561,52 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// });
     /// ```
+    /// ### Dataplex Datascan Onetime Discovery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
+    ///     {
+    ///         Name = "tf-test-bucket-name-_34962",
+    ///         Location = "us-west1",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var onetimeDiscovery = new Gcp.DataPlex.Datascan("onetime_discovery", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "datadiscovery-onetime",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(tfTestBucket.Project, tfTestBucket.Name).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var name = values.Item2;
+    ///                 return $"//storage.googleapis.com/projects/{project}/buckets/{name}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OneTime = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerOneTimeArgs
+    ///                 {
+    ///                     TtlAfterScanCompletion = "120s",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DataDiscoverySpec = null,
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dataplex Datascan Documentation
     /// 
     /// ```csharp
@@ -490,14 +619,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__34962",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__74000",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__74000",
+    ///         TableId = "tf_dataplex_test_table_id__75125",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -569,6 +698,108 @@ namespace Pulumi.Gcp.DataPlex
     ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
     ///             {
     ///                 OnDemand = null,
+    ///             },
+    ///         },
+    ///         DataDocumentationSpec = null,
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataplex Datascan Onetime Documentation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
+    ///     {
+    ///         DatasetId = "tf_dataplex_test_dataset_id__88722",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///     });
+    /// 
+    ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
+    ///     {
+    ///         DatasetId = tfDataplexTestDataset.DatasetId,
+    ///         TableId = "tf_dataplex_test_table_id__39249",
+    ///         DeletionProtection = false,
+    ///         Schema = @"    [
+    ///     {
+    ///       \""name\"": \""name\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""station_id\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The id of the bike station\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""address\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The address of the bike station\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""power_type\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The powert type of the bike station\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""property_type\"",
+    ///       \""type\"": \""STRING\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The type of the property\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""number_of_docks\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The number of docks the property have\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""footprint_length\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The footpring lenght of the property\""
+    ///     },
+    ///     {
+    ///       \""name\"": \""council_district\"",
+    ///       \""type\"": \""INTEGER\"",
+    ///       \""mode\"": \""NULLABLE\"",
+    ///       \""description\"": \""The council district the property is in\""
+    ///     }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var onetimeDocumentation = new Gcp.DataPlex.Datascan("onetime_documentation", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         DataScanId = "datadocumentation-onetime",
+    ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
+    ///         {
+    ///             Resource = Output.Tuple(tfDataplexTestDataset.DatasetId, tfDataplexTestTable.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var datasetId = values.Item1;
+    ///                 var tableId = values.Item2;
+    ///                 return $"//bigquery.googleapis.com/projects/my-project-name/datasets/{datasetId}/tables/{tableId}";
+    ///             }),
+    ///         },
+    ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
+    ///         {
+    ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
+    ///             {
+    ///                 OneTime = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerOneTimeArgs
+    ///                 {
+    ///                     TtlAfterScanCompletion = "120s",
+    ///                 },
     ///             },
     ///         },
     ///         DataDocumentationSpec = null,

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.MulticastDomainActivationTrafficSpecArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -31,6 +32,25 @@ public final class MulticastDomainActivationArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     * 
+     */
+    @Import(name="disablePlacementPolicy")
+    private @Nullable Output<Boolean> disablePlacementPolicy;
+
+    /**
+     * @return Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     * 
+     */
+    public Optional<Output<Boolean>> disablePlacementPolicy() {
+        return Optional.ofNullable(this.disablePlacementPolicy);
     }
 
     /**
@@ -73,8 +93,8 @@ public final class MulticastDomainActivationArgs extends com.pulumi.resources.Re
      * `projects/*&#47;locations/global/multicastDomains/*`.
      * 
      */
-    @Import(name="multicastDomain")
-    private @Nullable Output<String> multicastDomain;
+    @Import(name="multicastDomain", required=true)
+    private Output<String> multicastDomain;
 
     /**
      * @return The resource name of the multicast domain to activate.
@@ -82,8 +102,8 @@ public final class MulticastDomainActivationArgs extends com.pulumi.resources.Re
      * `projects/*&#47;locations/global/multicastDomains/*`.
      * 
      */
-    public Optional<Output<String>> multicastDomain() {
-        return Optional.ofNullable(this.multicastDomain);
+    public Output<String> multicastDomain() {
+        return this.multicastDomain;
     }
 
     /**
@@ -147,6 +167,7 @@ public final class MulticastDomainActivationArgs extends com.pulumi.resources.Re
 
     private MulticastDomainActivationArgs(MulticastDomainActivationArgs $) {
         this.description = $.description;
+        this.disablePlacementPolicy = $.disablePlacementPolicy;
         this.labels = $.labels;
         this.location = $.location;
         this.multicastDomain = $.multicastDomain;
@@ -192,6 +213,31 @@ public final class MulticastDomainActivationArgs extends com.pulumi.resources.Re
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disablePlacementPolicy Option to allow disabling placement policy for multicast infrastructure.
+         * Only applicable if the activation is for a domain associating with a
+         * multicast domain group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePlacementPolicy(@Nullable Output<Boolean> disablePlacementPolicy) {
+            $.disablePlacementPolicy = disablePlacementPolicy;
+            return this;
+        }
+
+        /**
+         * @param disablePlacementPolicy Option to allow disabling placement policy for multicast infrastructure.
+         * Only applicable if the activation is for a domain associating with a
+         * multicast domain group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePlacementPolicy(Boolean disablePlacementPolicy) {
+            return disablePlacementPolicy(Output.of(disablePlacementPolicy));
         }
 
         /**
@@ -248,7 +294,7 @@ public final class MulticastDomainActivationArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder multicastDomain(@Nullable Output<String> multicastDomain) {
+        public Builder multicastDomain(Output<String> multicastDomain) {
             $.multicastDomain = multicastDomain;
             return this;
         }
@@ -343,6 +389,9 @@ public final class MulticastDomainActivationArgs extends com.pulumi.resources.Re
         public MulticastDomainActivationArgs build() {
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("MulticastDomainActivationArgs", "location");
+            }
+            if ($.multicastDomain == null) {
+                throw new MissingRequiredPropertyException("MulticastDomainActivationArgs", "multicastDomain");
             }
             if ($.multicastDomainActivationId == null) {
                 throw new MissingRequiredPropertyException("MulticastDomainActivationArgs", "multicastDomainActivationId");

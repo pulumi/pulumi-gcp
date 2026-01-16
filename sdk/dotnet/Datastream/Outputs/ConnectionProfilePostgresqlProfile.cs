@@ -35,6 +35,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string? SecretManagerStoredPassword;
         /// <summary>
+        /// SSL configuration for the PostgreSQL connection.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectionProfilePostgresqlProfileSslConfig? SslConfig;
+        /// <summary>
         /// Username for the PostgreSQL connection.
         /// </summary>
         public readonly string Username;
@@ -51,6 +56,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             string? secretManagerStoredPassword,
 
+            Outputs.ConnectionProfilePostgresqlProfileSslConfig? sslConfig,
+
             string username)
         {
             Database = database;
@@ -58,6 +65,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
             Password = password;
             Port = port;
             SecretManagerStoredPassword = secretManagerStoredPassword;
+            SslConfig = sslConfig;
             Username = username;
         }
     }

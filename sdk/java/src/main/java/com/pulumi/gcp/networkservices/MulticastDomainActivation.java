@@ -9,8 +9,9 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.MulticastDomainActivationArgs;
-import com.pulumi.gcp.networkservices.inputs.MulticastDomainActivationState;
+import com.pulumi.gcp.networkservices.outputs.MulticastDomainActivationState;
 import com.pulumi.gcp.networkservices.outputs.MulticastDomainActivationTrafficSpec;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,12 @@ import javax.annotation.Nullable;
 
 /**
  * Create a multicast domain activation in the specified location of the current project.
+ * 
+ * To get more information about MulticastDomainActivation, see:
+ * 
+ * * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomainActivations)
+ * * How-to Guides
+ *     * [Create Multicast Domain Activation](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#activate-domain)
  * 
  * ## Example Usage
  * 
@@ -107,21 +114,21 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networkservices/multicastDomainActivation:MulticastDomainActivation")
 public class MulticastDomainActivation extends com.pulumi.resources.CustomResource {
     /**
-     * [Output only] The URL of the admin network.
+     * The URL of the admin network.
      * 
      */
     @Export(name="adminNetwork", refs={String.class}, tree="[0]")
     private Output<String> adminNetwork;
 
     /**
-     * @return [Output only] The URL of the admin network.
+     * @return The URL of the admin network.
      * 
      */
     public Output<String> adminNetwork() {
         return this.adminNetwork;
     }
     /**
-     * [Output only] The timestamp when the multicast domain activation was
+     * The timestamp when the multicast domain activation was
      * created.
      * 
      */
@@ -129,7 +136,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
     private Output<String> createTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain activation was
+     * @return The timestamp when the multicast domain activation was
      * created.
      * 
      */
@@ -149,6 +156,24 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     * 
+     */
+    @Export(name="disablePlacementPolicy", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disablePlacementPolicy;
+
+    /**
+     * @return Option to allow disabling placement policy for multicast infrastructure.
+     * Only applicable if the activation is for a domain associating with a
+     * multicast domain group.
+     * 
+     */
+    public Output<Boolean> disablePlacementPolicy() {
+        return this.disablePlacementPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -203,7 +228,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="multicastDomain", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> multicastDomain;
+    private Output<String> multicastDomain;
 
     /**
      * @return The resource name of the multicast domain to activate.
@@ -211,8 +236,8 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
      * `projects/*&#47;locations/global/multicastDomains/*`.
      * 
      */
-    public Output<Optional<String>> multicastDomain() {
-        return Codegen.optional(this.multicastDomain);
+    public Output<String> multicastDomain() {
+        return this.multicastDomain;
     }
     /**
      * A unique name for the multicast domain activation.
@@ -285,6 +310,38 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
         return this.pulumiLabels;
     }
     /**
+     * (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    @Export(name="states", refs={List.class,MulticastDomainActivationState.class}, tree="[0,1]")
+    private Output<List<MulticastDomainActivationState>> states;
+
+    /**
+     * @return (Output)
+     * The state of the multicast resource.
+     * Possible values:
+     * CREATING
+     * ACTIVE
+     * DELETING
+     * DELETE_FAILED
+     * UPDATING
+     * UPDATE_FAILED
+     * INACTIVE
+     * 
+     */
+    public Output<List<MulticastDomainActivationState>> states() {
+        return this.states;
+    }
+    /**
      * Specifies the traffic volume and multicast group scale parameters that are
      * used to set up multicast infrastructure for a multicast domain in a zone.
      * Structure is documented below.
@@ -303,7 +360,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.trafficSpec);
     }
     /**
-     * [Output only] The Google-generated UUID for the resource. This value is
+     * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain activation resources. If a domain
      * activation is deleted and another with the same name is created, the new
      * domain activation is assigned a different unique_id.
@@ -313,7 +370,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
     private Output<String> uniqueId;
 
     /**
-     * @return [Output only] The Google-generated UUID for the resource. This value is
+     * @return The Google-generated UUID for the resource. This value is
      * unique across all multicast domain activation resources. If a domain
      * activation is deleted and another with the same name is created, the new
      * domain activation is assigned a different unique_id.
@@ -323,7 +380,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
         return this.uniqueId;
     }
     /**
-     * [Output only] The timestamp when the multicast domain activation was most
+     * The timestamp when the multicast domain activation was most
      * recently updated.
      * 
      */
@@ -331,7 +388,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
     private Output<String> updateTime;
 
     /**
-     * @return [Output only] The timestamp when the multicast domain activation was most
+     * @return The timestamp when the multicast domain activation was most
      * recently updated.
      * 
      */
@@ -364,7 +421,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
         super("gcp:networkservices/multicastDomainActivation:MulticastDomainActivation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MulticastDomainActivation(java.lang.String name, Output<java.lang.String> id, @Nullable MulticastDomainActivationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private MulticastDomainActivation(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.networkservices.inputs.MulticastDomainActivationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:networkservices/multicastDomainActivation:MulticastDomainActivation", name, state, makeResourceOptions(options, id), false);
     }
 
@@ -395,7 +452,7 @@ public class MulticastDomainActivation extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MulticastDomainActivation get(java.lang.String name, Output<java.lang.String> id, @Nullable MulticastDomainActivationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MulticastDomainActivation get(java.lang.String name, Output<java.lang.String> id, @Nullable com.pulumi.gcp.networkservices.inputs.MulticastDomainActivationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MulticastDomainActivation(name, id, state, options);
     }
 }

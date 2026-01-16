@@ -306,16 +306,14 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of fields which should be ignored for each column in schema.
-     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     * Mention which fields in schema are to be ignored
      * 
      */
     @Import(name="ignoreSchemaChanges")
     private @Nullable Output<List<String>> ignoreSchemaChanges;
 
     /**
-     * @return A list of fields which should be ignored for each column in schema.
-     * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+     * @return Mention which fields in schema are to be ignored
      * 
      */
     public Optional<Output<List<String>>> ignoreSchemaChanges() {
@@ -1151,8 +1149,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreSchemaChanges A list of fields which should be ignored for each column in schema.
-         * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+         * @param ignoreSchemaChanges Mention which fields in schema are to be ignored
          * 
          * @return builder
          * 
@@ -1163,8 +1160,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreSchemaChanges A list of fields which should be ignored for each column in schema.
-         * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+         * @param ignoreSchemaChanges Mention which fields in schema are to be ignored
          * 
          * @return builder
          * 
@@ -1174,8 +1170,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreSchemaChanges A list of fields which should be ignored for each column in schema.
-         * **NOTE:** Right now only `dataPolicies` field is supported. We might support others in the future.
+         * @param ignoreSchemaChanges Mention which fields in schema are to be ignored
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ import (
 //
 // To get more information about LbRouteExtension, see:
 //
-// * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.lbRouteExtensions)
+// * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1/projects.locations.lbRouteExtensions)
 // * How-to Guides
 //   - [Configure a route extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_route_extension)
 //
@@ -56,6 +56,7 @@ type LbRouteExtension struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains LbRouteExtensionExtensionChainArrayOutput `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -137,6 +138,7 @@ type lbRouteExtensionState struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains []LbRouteExtensionExtensionChain `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -172,6 +174,7 @@ type LbRouteExtensionState struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains LbRouteExtensionExtensionChainArrayInput
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -209,6 +212,7 @@ type lbRouteExtensionArgs struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains []LbRouteExtensionExtensionChain `pulumi:"extensionChains"`
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -240,6 +244,7 @@ type LbRouteExtensionArgs struct {
 	// Match conditions for each extension chain are evaluated in sequence for a given request.
 	// The first extension chain that has a condition that matches the request is executed.
 	// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+	// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 	// Structure is documented below.
 	ExtensionChains LbRouteExtensionExtensionChainArrayInput
 	// A list of references to the forwarding rules to which this service extension is attached to.
@@ -364,6 +369,7 @@ func (o LbRouteExtensionOutput) EffectiveLabels() pulumi.StringMapOutput {
 // Match conditions for each extension chain are evaluated in sequence for a given request.
 // The first extension chain that has a condition that matches the request is executed.
 // Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
 // Structure is documented below.
 func (o LbRouteExtensionOutput) ExtensionChains() LbRouteExtensionExtensionChainArrayOutput {
 	return o.ApplyT(func(v *LbRouteExtension) LbRouteExtensionExtensionChainArrayOutput { return v.ExtensionChains }).(LbRouteExtensionExtensionChainArrayOutput)

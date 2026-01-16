@@ -141,6 +141,21 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+     * 
+     */
+    @Import(name="maxCustomOnDemandRetentionDays")
+    private @Nullable Output<Integer> maxCustomOnDemandRetentionDays;
+
+    /**
+     * @return The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+     * 
+     */
+    public Optional<Output<Integer>> maxCustomOnDemandRetentionDays() {
+        return Optional.ofNullable(this.maxCustomOnDemandRetentionDays);
+    }
+
+    /**
      * The name of backup plan resource created
      * 
      */
@@ -230,6 +245,7 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.location = $.location;
         this.logRetentionDays = $.logRetentionDays;
+        this.maxCustomOnDemandRetentionDays = $.maxCustomOnDemandRetentionDays;
         this.name = $.name;
         this.project = $.project;
         this.resourceType = $.resourceType;
@@ -434,6 +450,27 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder logRetentionDays(Integer logRetentionDays) {
             return logRetentionDays(Output.of(logRetentionDays));
+        }
+
+        /**
+         * @param maxCustomOnDemandRetentionDays The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxCustomOnDemandRetentionDays(@Nullable Output<Integer> maxCustomOnDemandRetentionDays) {
+            $.maxCustomOnDemandRetentionDays = maxCustomOnDemandRetentionDays;
+            return this;
+        }
+
+        /**
+         * @param maxCustomOnDemandRetentionDays The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxCustomOnDemandRetentionDays(Integer maxCustomOnDemandRetentionDays) {
+            return maxCustomOnDemandRetentionDays(Output.of(maxCustomOnDemandRetentionDays));
         }
 
         /**

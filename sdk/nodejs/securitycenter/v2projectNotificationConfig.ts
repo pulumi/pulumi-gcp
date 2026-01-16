@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * const customNotificationConfig = new gcp.securitycenter.V2ProjectNotificationConfig("custom_notification_config", {
  *     configId: "my-config",
  *     project: "my-project-name",
- *     location: "global",
  *     description: "My custom Cloud Security Command Center Finding Notification Configuration",
  *     pubsubTopic: sccV2ProjectNotification.id,
  *     streamingConfig: {
@@ -97,7 +96,7 @@ export class V2ProjectNotificationConfig extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Location ID of the parent organization. Only global is supported at the moment.
+     * Location ID for the parent project. Defaults to `global` if location is not provided.
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
@@ -182,7 +181,7 @@ export interface V2ProjectNotificationConfigState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Location ID of the parent organization. Only global is supported at the moment.
+     * Location ID for the parent project. Defaults to `global` if location is not provided.
      */
     location?: pulumi.Input<string>;
     /**
@@ -225,7 +224,7 @@ export interface V2ProjectNotificationConfigArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Location ID of the parent organization. Only global is supported at the moment.
+     * Location ID for the parent project. Defaults to `global` if location is not provided.
      */
     location?: pulumi.Input<string>;
     /**

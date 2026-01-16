@@ -239,38 +239,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
- * 
- * provider value will be used. Examples:
- * 
- * * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
- * 
- * * `{{project_id}}/{{location}}/{{cluster_id}}`
- * 
- * * `{{location}}/{{cluster_id}}`
- * 
- * When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
- * 
- * ```sh
- * $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
- * ```
- * 
- * For example, the following fields will show diffs if set in config:
- * 
- * - `min_master_version`
- * 
- * - `remove_default_node_pool`
- * 
  */
 @ResourceType(type="gcp:container/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
@@ -1043,18 +1011,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.masterAuthorizedNetworksConfig;
     }
     /**
-     * The current version of the master in the cluster. This may
-     * be different than the `minMasterVersion` set in the config if the master
-     * has been updated by GKE.
+     * The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
      * 
      */
     @Export(name="masterVersion", refs={String.class}, tree="[0]")
     private Output<String> masterVersion;
 
     /**
-     * @return The current version of the master in the cluster. This may
-     * be different than the `minMasterVersion` set in the config if the master
-     * has been updated by GKE.
+     * @return The current version of the master in the cluster. This may be different than the minMasterVersion set in the config if the master has been updated by GKE.
      * 
      */
     public Output<String> masterVersion() {
@@ -1665,14 +1629,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.securityPostureConfig;
     }
     /**
-     * The server-defined URL for the resource.
+     * Server-defined URL for the resource.
      * 
      */
     @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
-     * @return The server-defined URL for the resource.
+     * @return Server-defined URL for the resource.
      * 
      */
     public Output<String> selfLink() {
@@ -1693,20 +1657,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.serviceExternalIpsConfig;
     }
     /**
-     * The IP address range of the Kubernetes services in this
-     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-     * `/16` from the container CIDR.
+     * The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
      * 
      */
     @Export(name="servicesIpv4Cidr", refs={String.class}, tree="[0]")
     private Output<String> servicesIpv4Cidr;
 
     /**
-     * @return The IP address range of the Kubernetes services in this
-     * cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last
-     * `/16` from the container CIDR.
+     * @return The IP address range of the Kubernetes services in this cluster, in CIDR notation (e.g. 1.2.3.4/29). Service addresses are typically put in the last /16 from the container CIDR.
      * 
      */
     public Output<String> servicesIpv4Cidr() {
@@ -1743,18 +1701,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.tpuConfig;
     }
     /**
-     * The IP address range of the Cloud TPUs in this cluster, in
-     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`).
+     * The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
      * 
      */
     @Export(name="tpuIpv4CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> tpuIpv4CidrBlock;
 
     /**
-     * @return The IP address range of the Cloud TPUs in this cluster, in
-     * [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-     * notation (e.g. `1.2.3.4/29`).
+     * @return The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).
      * 
      */
     public Output<String> tpuIpv4CidrBlock() {

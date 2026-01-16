@@ -90,6 +90,29 @@ import * as utilities from "../utilities";
  *     dependsOn: [source],
  * });
  * ```
+ * ### Dataplex Datascan Onetime Profile
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const onetimeProfile = new gcp.dataplex.Datascan("onetime_profile", {
+ *     location: "us-central1",
+ *     dataScanId: "dataprofile-onetime",
+ *     data: {
+ *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             oneTime: {
+ *                 ttlAfterScanCompletion: "120s",
+ *             },
+ *         },
+ *     },
+ *     dataProfileSpec: {},
+ *     project: "my-project-name",
+ * });
+ * ```
  * ### Dataplex Datascan Basic Quality
  *
  * ```typescript
@@ -237,6 +260,38 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * ### Dataplex Datascan Onetime Quality
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const onetimeQuality = new gcp.dataplex.Datascan("onetime_quality", {
+ *     location: "us-central1",
+ *     dataScanId: "dataquality-onetime",
+ *     data: {
+ *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             oneTime: {
+ *                 ttlAfterScanCompletion: "120s",
+ *             },
+ *         },
+ *     },
+ *     dataQualitySpec: {
+ *         rules: [{
+ *             dimension: "VALIDITY",
+ *             name: "rule1",
+ *             description: "rule 1 for validity dimension",
+ *             tableConditionExpectation: {
+ *                 sqlExpression: "COUNT(*) > 0",
+ *             },
+ *         }],
+ *     },
+ *     project: "my-project-name",
+ * });
+ * ```
  * ### Dataplex Datascan Basic Discovery
  *
  * ```typescript
@@ -331,6 +386,34 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * ### Dataplex Datascan Onetime Discovery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
+ *     name: "tf-test-bucket-name-_34962",
+ *     location: "us-west1",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const onetimeDiscovery = new gcp.dataplex.Datascan("onetime_discovery", {
+ *     location: "us-central1",
+ *     dataScanId: "datadiscovery-onetime",
+ *     data: {
+ *         resource: pulumi.interpolate`//storage.googleapis.com/projects/${tfTestBucket.project}/buckets/${tfTestBucket.name}`,
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             oneTime: {
+ *                 ttlAfterScanCompletion: "120s",
+ *             },
+ *         },
+ *     },
+ *     dataDiscoverySpec: {},
+ *     project: "my-project-name",
+ * });
+ * ```
  * ### Dataplex Datascan Documentation
  *
  * ```typescript
@@ -338,12 +421,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__34962",
+ *     datasetId: "tf_dataplex_test_dataset_id__74000",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__74000",
+ *     tableId: "tf_dataplex_test_table_id__75125",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -405,6 +488,88 @@ import * as utilities from "../utilities";
  *     executionSpec: {
  *         trigger: {
  *             onDemand: {},
+ *         },
+ *     },
+ *     dataDocumentationSpec: {},
+ *     project: "my-project-name",
+ * });
+ * ```
+ * ### Dataplex Datascan Onetime Documentation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
+ *     datasetId: "tf_dataplex_test_dataset_id__88722",
+ *     defaultTableExpirationMs: 3600000,
+ * });
+ * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
+ *     datasetId: tfDataplexTestDataset.datasetId,
+ *     tableId: "tf_dataplex_test_table_id__39249",
+ *     deletionProtection: false,
+ *     schema: `    [
+ *     {
+ *       \\"name\\": \\"name\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"station_id\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The id of the bike station\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"address\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The address of the bike station\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"power_type\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The powert type of the bike station\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"property_type\\",
+ *       \\"type\\": \\"STRING\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The type of the property\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"number_of_docks\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The number of docks the property have\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"footprint_length\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The footpring lenght of the property\\"
+ *     },
+ *     {
+ *       \\"name\\": \\"council_district\\",
+ *       \\"type\\": \\"INTEGER\\",
+ *       \\"mode\\": \\"NULLABLE\\",
+ *       \\"description\\": \\"The council district the property is in\\"
+ *     }
+ *     ]
+ * `,
+ * });
+ * const onetimeDocumentation = new gcp.dataplex.Datascan("onetime_documentation", {
+ *     location: "us-central1",
+ *     dataScanId: "datadocumentation-onetime",
+ *     data: {
+ *         resource: pulumi.interpolate`//bigquery.googleapis.com/projects/my-project-name/datasets/${tfDataplexTestDataset.datasetId}/tables/${tfDataplexTestTable.tableId}`,
+ *     },
+ *     executionSpec: {
+ *         trigger: {
+ *             oneTime: {
+ *                 ttlAfterScanCompletion: "120s",
+ *             },
  *         },
  *     },
  *     dataDocumentationSpec: {},

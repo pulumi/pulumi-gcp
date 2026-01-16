@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionGetArgs>? _upgradeOptions;
 
         /// <summary>
-        /// Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
+        /// Specifies the Auto Upgrade knobs for the node pool.
         /// </summary>
         public InputList<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionGetArgs> UpgradeOptions
         {

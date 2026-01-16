@@ -46,7 +46,6 @@ import (
 //			_, err = securitycenter.NewV2ProjectNotificationConfig(ctx, "custom_notification_config", &securitycenter.V2ProjectNotificationConfigArgs{
 //				ConfigId:    pulumi.String("my-config"),
 //				Project:     pulumi.String("my-project-name"),
-//				Location:    pulumi.String("global"),
 //				Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
 //				PubsubTopic: sccV2ProjectNotification.ID(),
 //				StreamingConfig: &securitycenter.V2ProjectNotificationConfigStreamingConfigArgs{
@@ -92,7 +91,7 @@ type V2ProjectNotificationConfig struct {
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Location ID of the parent organization. Only global is supported at the moment.
+	// Location ID for the parent project. Defaults to `global` if location is not provided.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
@@ -151,7 +150,7 @@ type v2projectNotificationConfigState struct {
 	ConfigId *string `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
-	// Location ID of the parent organization. Only global is supported at the moment.
+	// Location ID for the parent project. Defaults to `global` if location is not provided.
 	Location *string `pulumi:"location"`
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
@@ -175,7 +174,7 @@ type V2ProjectNotificationConfigState struct {
 	ConfigId pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
-	// Location ID of the parent organization. Only global is supported at the moment.
+	// Location ID for the parent project. Defaults to `global` if location is not provided.
 	Location pulumi.StringPtrInput
 	// The resource name of this notification config, in the format
 	// `projects/{{projectId}}/locations/{{location}}/notificationConfigs/{{config_id}}`.
@@ -203,7 +202,7 @@ type v2projectNotificationConfigArgs struct {
 	ConfigId string `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
-	// Location ID of the parent organization. Only global is supported at the moment.
+	// Location ID for the parent project. Defaults to `global` if location is not provided.
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -222,7 +221,7 @@ type V2ProjectNotificationConfigArgs struct {
 	ConfigId pulumi.StringInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
-	// Location ID of the parent organization. Only global is supported at the moment.
+	// Location ID for the parent project. Defaults to `global` if location is not provided.
 	Location pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -332,7 +331,7 @@ func (o V2ProjectNotificationConfigOutput) Description() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *V2ProjectNotificationConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Location ID of the parent organization. Only global is supported at the moment.
+// Location ID for the parent project. Defaults to `global` if location is not provided.
 func (o V2ProjectNotificationConfigOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2ProjectNotificationConfig) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }

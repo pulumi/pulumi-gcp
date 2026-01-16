@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<Inputs.DatascanExecutionSpecTriggerOnDemandArgs>? OnDemand { get; set; }
 
         /// <summary>
+        /// The scan runs once upon DataScan creation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("oneTime")]
+        public Input<Inputs.DatascanExecutionSpecTriggerOneTimeArgs>? OneTime { get; set; }
+
+        /// <summary>
         /// The scan is scheduled to run periodically.
         /// Structure is documented below.
         /// </summary>

@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupPlanId = "backup-plan-simple-test",
     ///         ResourceType = "compute.googleapis.com/Instance",
     ///         BackupVault = myBackupVault.Id,
+    ///         MaxCustomOnDemandRetentionDays = 30,
     ///         BackupRules = new[]
     ///         {
     ///             new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleArgs
@@ -89,6 +90,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupPlanId = "backup-plan-disk-test",
     ///         ResourceType = "compute.googleapis.com/Disk",
     ///         BackupVault = myBackupVault.Id,
+    ///         MaxCustomOnDemandRetentionDays = 30,
     ///         BackupRules = new[]
     ///         {
     ///             new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleArgs
@@ -237,6 +239,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<int?> LogRetentionDays { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+        /// </summary>
+        [Output("maxCustomOnDemandRetentionDays")]
+        public Output<int?> MaxCustomOnDemandRetentionDays { get; private set; } = null!;
+
+        /// <summary>
         /// The name of backup plan resource created
         /// </summary>
         [Output("name")]
@@ -358,6 +366,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<int>? LogRetentionDays { get; set; }
 
         /// <summary>
+        /// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+        /// </summary>
+        [Input("maxCustomOnDemandRetentionDays")]
+        public Input<int>? MaxCustomOnDemandRetentionDays { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -433,6 +447,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("logRetentionDays")]
         public Input<int>? LogRetentionDays { get; set; }
+
+        /// <summary>
+        /// The maximum number of days for which an on-demand backup taken with custom retention can be retained.
+        /// </summary>
+        [Input("maxCustomOnDemandRetentionDays")]
+        public Input<int>? MaxCustomOnDemandRetentionDays { get; set; }
 
         /// <summary>
         /// The name of backup plan resource created

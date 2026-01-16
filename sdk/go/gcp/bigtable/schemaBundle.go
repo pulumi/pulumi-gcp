@@ -111,6 +111,11 @@ import (
 type SchemaBundle struct {
 	pulumi.CustomResourceState
 
+	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+	// updates of a schema bundle from overwriting each other. This may be sent on update and delete
+	// requests to ensure the client has an update-to-date value before proceeding. The server returns
+	// an ABORTED error on a mismatched etag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// If true, allow backwards incompatible changes.
 	IgnoreWarnings pulumi.BoolPtrOutput `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the schema bundle within.
@@ -167,6 +172,11 @@ func GetSchemaBundle(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SchemaBundle resources.
 type schemaBundleState struct {
+	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+	// updates of a schema bundle from overwriting each other. This may be sent on update and delete
+	// requests to ensure the client has an update-to-date value before proceeding. The server returns
+	// an ABORTED error on a mismatched etag.
+	Etag *string `pulumi:"etag"`
 	// If true, allow backwards incompatible changes.
 	IgnoreWarnings *bool `pulumi:"ignoreWarnings"`
 	// The name of the instance to create the schema bundle within.
@@ -188,6 +198,11 @@ type schemaBundleState struct {
 }
 
 type SchemaBundleState struct {
+	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+	// updates of a schema bundle from overwriting each other. This may be sent on update and delete
+	// requests to ensure the client has an update-to-date value before proceeding. The server returns
+	// an ABORTED error on a mismatched etag.
+	Etag pulumi.StringPtrInput
 	// If true, allow backwards incompatible changes.
 	IgnoreWarnings pulumi.BoolPtrInput
 	// The name of the instance to create the schema bundle within.
@@ -336,6 +351,14 @@ func (o SchemaBundleOutput) ToSchemaBundleOutput() SchemaBundleOutput {
 
 func (o SchemaBundleOutput) ToSchemaBundleOutputWithContext(ctx context.Context) SchemaBundleOutput {
 	return o
+}
+
+// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+// updates of a schema bundle from overwriting each other. This may be sent on update and delete
+// requests to ensure the client has an update-to-date value before proceeding. The server returns
+// an ABORTED error on a mismatched etag.
+func (o SchemaBundleOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaBundle) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // If true, allow backwards incompatible changes.

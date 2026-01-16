@@ -27,7 +27,7 @@ class GetBackupPlanResult:
     """
     A collection of values returned by getBackupPlan.
     """
-    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, create_time=None, description=None, id=None, location=None, log_retention_days=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
+    def __init__(__self__, backup_plan_id=None, backup_rules=None, backup_vault=None, backup_vault_service_account=None, create_time=None, description=None, id=None, location=None, log_retention_days=None, max_custom_on_demand_retention_days=None, name=None, project=None, resource_type=None, supported_resource_types=None, update_time=None):
         if backup_plan_id and not isinstance(backup_plan_id, str):
             raise TypeError("Expected argument 'backup_plan_id' to be a str")
         pulumi.set(__self__, "backup_plan_id", backup_plan_id)
@@ -55,6 +55,9 @@ class GetBackupPlanResult:
         if log_retention_days and not isinstance(log_retention_days, int):
             raise TypeError("Expected argument 'log_retention_days' to be a int")
         pulumi.set(__self__, "log_retention_days", log_retention_days)
+        if max_custom_on_demand_retention_days and not isinstance(max_custom_on_demand_retention_days, int):
+            raise TypeError("Expected argument 'max_custom_on_demand_retention_days' to be a int")
+        pulumi.set(__self__, "max_custom_on_demand_retention_days", max_custom_on_demand_retention_days)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -120,6 +123,11 @@ class GetBackupPlanResult:
         return pulumi.get(self, "log_retention_days")
 
     @_builtins.property
+    @pulumi.getter(name="maxCustomOnDemandRetentionDays")
+    def max_custom_on_demand_retention_days(self) -> _builtins.int:
+        return pulumi.get(self, "max_custom_on_demand_retention_days")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         return pulumi.get(self, "name")
@@ -160,6 +168,7 @@ class AwaitableGetBackupPlanResult(GetBackupPlanResult):
             id=self.id,
             location=self.location,
             log_retention_days=self.log_retention_days,
+            max_custom_on_demand_retention_days=self.max_custom_on_demand_retention_days,
             name=self.name,
             project=self.project,
             resource_type=self.resource_type,
@@ -191,6 +200,7 @@ def get_backup_plan(backup_plan_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         log_retention_days=pulumi.get(__ret__, 'log_retention_days'),
+        max_custom_on_demand_retention_days=pulumi.get(__ret__, 'max_custom_on_demand_retention_days'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         resource_type=pulumi.get(__ret__, 'resource_type'),
@@ -219,6 +229,7 @@ def get_backup_plan_output(backup_plan_id: Optional[pulumi.Input[_builtins.str]]
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         log_retention_days=pulumi.get(__response__, 'log_retention_days'),
+        max_custom_on_demand_retention_days=pulumi.get(__response__, 'max_custom_on_demand_retention_days'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         resource_type=pulumi.get(__response__, 'resource_type'),

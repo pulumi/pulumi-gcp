@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.NetworkServices
     /// <summary>
     /// Create a multicast domain activation in the specified location of the current project.
     /// 
+    /// To get more information about MulticastDomainActivation, see:
+    /// 
+    /// * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastDomainActivations)
+    /// * How-to Guides
+    ///     * [Create Multicast Domain Activation](https://docs.cloud.google.com/vpc/docs/multicast/create-domains#activate-domain)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Network Services Multicast Domain Activation Basic
@@ -85,13 +91,13 @@ namespace Pulumi.Gcp.NetworkServices
     public partial class MulticastDomainActivation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output only] The URL of the admin network.
+        /// The URL of the admin network.
         /// </summary>
         [Output("adminNetwork")]
         public Output<string> AdminNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain activation was
+        /// The timestamp when the multicast domain activation was
         /// created.
         /// </summary>
         [Output("createTime")]
@@ -102,6 +108,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Option to allow disabling placement policy for multicast infrastructure.
+        /// Only applicable if the activation is for a domain associating with a
+        /// multicast domain group.
+        /// </summary>
+        [Output("disablePlacementPolicy")]
+        public Output<bool> DisablePlacementPolicy { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -129,7 +143,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// `projects/*/locations/global/multicastDomains/*`.
         /// </summary>
         [Output("multicastDomain")]
-        public Output<string?> MulticastDomain { get; private set; } = null!;
+        public Output<string> MulticastDomain { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the multicast domain activation.
@@ -163,6 +177,21 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// The state of the multicast resource.
+        /// Possible values:
+        /// CREATING
+        /// ACTIVE
+        /// DELETING
+        /// DELETE_FAILED
+        /// UPDATING
+        /// UPDATE_FAILED
+        /// INACTIVE
+        /// </summary>
+        [Output("states")]
+        public Output<ImmutableArray<Outputs.MulticastDomainActivationState>> States { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the traffic volume and multicast group scale parameters that are
         /// used to set up multicast infrastructure for a multicast domain in a zone.
         /// Structure is documented below.
@@ -171,7 +200,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<Outputs.MulticastDomainActivationTrafficSpec?> TrafficSpec { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] The Google-generated UUID for the resource. This value is
+        /// The Google-generated UUID for the resource. This value is
         /// unique across all multicast domain activation resources. If a domain
         /// activation is deleted and another with the same name is created, the new
         /// domain activation is assigned a different unique_id.
@@ -180,7 +209,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> UniqueId { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain activation was most
+        /// The timestamp when the multicast domain activation was most
         /// recently updated.
         /// </summary>
         [Output("updateTime")]
@@ -243,6 +272,14 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Option to allow disabling placement policy for multicast infrastructure.
+        /// Only applicable if the activation is for a domain associating with a
+        /// multicast domain group.
+        /// </summary>
+        [Input("disablePlacementPolicy")]
+        public Input<bool>? DisablePlacementPolicy { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -268,8 +305,8 @@ namespace Pulumi.Gcp.NetworkServices
         /// Use the following format:
         /// `projects/*/locations/global/multicastDomains/*`.
         /// </summary>
-        [Input("multicastDomain")]
-        public Input<string>? MulticastDomain { get; set; }
+        [Input("multicastDomain", required: true)]
+        public Input<string> MulticastDomain { get; set; } = null!;
 
         /// <summary>
         /// A unique name for the multicast domain activation.
@@ -304,13 +341,13 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class MulticastDomainActivationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Output only] The URL of the admin network.
+        /// The URL of the admin network.
         /// </summary>
         [Input("adminNetwork")]
         public Input<string>? AdminNetwork { get; set; }
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain activation was
+        /// The timestamp when the multicast domain activation was
         /// created.
         /// </summary>
         [Input("createTime")]
@@ -321,6 +358,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Option to allow disabling placement policy for multicast infrastructure.
+        /// Only applicable if the activation is for a domain associating with a
+        /// multicast domain group.
+        /// </summary>
+        [Input("disablePlacementPolicy")]
+        public Input<bool>? DisablePlacementPolicy { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;
@@ -407,6 +452,27 @@ namespace Pulumi.Gcp.NetworkServices
             }
         }
 
+        [Input("states")]
+        private InputList<Inputs.MulticastDomainActivationStateGetArgs>? _states;
+
+        /// <summary>
+        /// (Output)
+        /// The state of the multicast resource.
+        /// Possible values:
+        /// CREATING
+        /// ACTIVE
+        /// DELETING
+        /// DELETE_FAILED
+        /// UPDATING
+        /// UPDATE_FAILED
+        /// INACTIVE
+        /// </summary>
+        public InputList<Inputs.MulticastDomainActivationStateGetArgs> States
+        {
+            get => _states ?? (_states = new InputList<Inputs.MulticastDomainActivationStateGetArgs>());
+            set => _states = value;
+        }
+
         /// <summary>
         /// Specifies the traffic volume and multicast group scale parameters that are
         /// used to set up multicast infrastructure for a multicast domain in a zone.
@@ -416,7 +482,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<Inputs.MulticastDomainActivationTrafficSpecGetArgs>? TrafficSpec { get; set; }
 
         /// <summary>
-        /// [Output only] The Google-generated UUID for the resource. This value is
+        /// The Google-generated UUID for the resource. This value is
         /// unique across all multicast domain activation resources. If a domain
         /// activation is deleted and another with the same name is created, the new
         /// domain activation is assigned a different unique_id.
@@ -425,7 +491,7 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? UniqueId { get; set; }
 
         /// <summary>
-        /// [Output only] The timestamp when the multicast domain activation was most
+        /// The timestamp when the multicast domain activation was most
         /// recently updated.
         /// </summary>
         [Input("updateTime")]

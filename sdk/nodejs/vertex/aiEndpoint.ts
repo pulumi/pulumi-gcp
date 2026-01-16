@@ -82,10 +82,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.Network("default", {name: "psc-network-_9991"});
+ * const _default = new gcp.compute.Network("default", {name: "psc-network-_89648"});
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_12125",
+ *     name: "endpoint-name_64612",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
- *     name: "endpoint-name_82749",
+ *     name: "endpoint-name_34242",
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",

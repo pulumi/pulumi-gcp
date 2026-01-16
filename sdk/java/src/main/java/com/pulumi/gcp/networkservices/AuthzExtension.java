@@ -78,6 +78,59 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Services Authz Extension Basic With Auth Grpc
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.networkservices.AuthzExtension;
+ * import com.pulumi.gcp.networkservices.AuthzExtensionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("authz-service-grpc")
+ *             .project("my-project-name")
+ *             .region("us-west1")
+ *             .protocol("HTTP2")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .portName("grpc")
+ *             .build());
+ * 
+ *         var defaultAuthzExtension = new AuthzExtension("defaultAuthzExtension", AuthzExtensionArgs.builder()
+ *             .name("my-authz-ext-with-grpc")
+ *             .project("my-project-name")
+ *             .location("us-west1")
+ *             .description("my description")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .wireFormat("EXT_AUTHZ_GRPC")
+ *             .authority("ext11.com")
+ *             .service(default_.selfLink())
+ *             .timeout("0.1s")
+ *             .failOpen(false)
+ *             .forwardHeaders("Authorization")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -363,16 +416,44 @@ public class AuthzExtension extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-     * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+     * Specifies the communication protocol used by the callout extension
+     * to communicate with its backend service.
+     * Supported values:
+     * - WIRE_FORMAT_UNSPECIFIED:
+     *   No wire format is explicitly specified. The backend automatically
+     *   defaults this value to EXT_PROC_GRPC.
+     * - EXT_PROC_GRPC:
+     *   Uses Envoy&#39;s External Processing (ext_proc) gRPC API over a single
+     *   gRPC stream. The backend service must support HTTP/2 or H2C.
+     *   All supported events for a client request are sent over the same
+     *   gRPC stream. This is the default wire format.
+     * - EXT_AUTHZ_GRPC:
+     *   Uses Envoy&#39;s external authorization (ext_authz) gRPC API.
+     *   The backend service must support HTTP/2 or H2C.
+     *   This option is only supported for regional AuthzExtension resources.
+     *   Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
      * 
      */
     @Export(name="wireFormat", refs={String.class}, tree="[0]")
     private Output<String> wireFormat;
 
     /**
-     * @return The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-     * Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+     * @return Specifies the communication protocol used by the callout extension
+     * to communicate with its backend service.
+     * Supported values:
+     * - WIRE_FORMAT_UNSPECIFIED:
+     *   No wire format is explicitly specified. The backend automatically
+     *   defaults this value to EXT_PROC_GRPC.
+     * - EXT_PROC_GRPC:
+     *   Uses Envoy&#39;s External Processing (ext_proc) gRPC API over a single
+     *   gRPC stream. The backend service must support HTTP/2 or H2C.
+     *   All supported events for a client request are sent over the same
+     *   gRPC stream. This is the default wire format.
+     * - EXT_AUTHZ_GRPC:
+     *   Uses Envoy&#39;s external authorization (ext_authz) gRPC API.
+     *   The backend service must support HTTP/2 or H2C.
+     *   This option is only supported for regional AuthzExtension resources.
+     *   Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
      * 
      */
     public Output<String> wireFormat() {

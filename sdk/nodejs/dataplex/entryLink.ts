@@ -25,25 +25,25 @@ import * as utilities from "../utilities";
  *
  * const entry_group_basic = new gcp.dataplex.EntryGroup("entry-group-basic", {
  *     location: "us-central1",
- *     entryGroupId: "tf-test-entry-group_75125",
+ *     entryGroupId: "tf-test-entry-group_74391",
  *     project: "1111111111111",
  * });
  * const entry_type_basic = new gcp.dataplex.EntryType("entry-type-basic", {
- *     entryTypeId: "tf-test-entry-type_39249",
+ *     entryTypeId: "tf-test-entry-type_8493",
  *     location: "us-central1",
  *     project: "1111111111111",
  * });
  * const source = new gcp.dataplex.Entry("source", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryId: "tf-test-source-entry_88722",
+ *     entryId: "tf-test-source-entry_16511",
  *     entryType: entry_type_basic.name,
  *     project: "1111111111111",
  * });
  * const target = new gcp.dataplex.Entry("target", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryId: "tf-test-target-entry_74391",
+ *     entryId: "tf-test-target-entry_9106",
  *     entryType: entry_type_basic.name,
  *     project: "1111111111111",
  * });
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     project: "1111111111111",
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryLinkId: "tf-test-entry-link_16511",
+ *     entryLinkId: "tf-test-entry-link_27169",
  *     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/related",
  *     entryReferences: [
  *         {
@@ -71,30 +71,30 @@ import * as utilities from "../utilities";
  *
  * const entry_group_full = new gcp.dataplex.EntryGroup("entry-group-full", {
  *     location: "us-central1",
- *     entryGroupId: "tf-test-entry-group_8493",
+ *     entryGroupId: "tf-test-entry-group_75223",
  *     project: "1111111111111",
  * });
  * const entry_type_full = new gcp.dataplex.EntryType("entry-type-full", {
- *     entryTypeId: "tf-test-entry-type_27169",
+ *     entryTypeId: "tf-test-entry-type_75092",
  *     location: "us-central1",
  *     project: "1111111111111",
  * });
  * const source = new gcp.dataplex.Entry("source", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_full.entryGroupId,
- *     entryId: "tf-test-source-entry_9106",
+ *     entryId: "tf-test-source-entry_41819",
  *     entryType: entry_type_full.name,
  *     project: "1111111111111",
  * });
  * const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
- *     glossaryId: "tf-test-glossary_75223",
+ *     glossaryId: "tf-test-glossary_2605",
  *     location: "us-central1",
  * });
  * const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
  *     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
  *     glossaryId: termTestIdFull.glossaryId,
  *     location: "us-central1",
- *     termId: "tf-test-term-full_41819",
+ *     termId: "tf-test-term-full_34535",
  *     labels: {
  *         tag: "test-tf",
  *     },
@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  *     project: "1111111111111",
  *     location: "us-central1",
  *     entryGroupId: entry_group_full.entryGroupId,
- *     entryLinkId: "tf-test-entry-link_75092",
+ *     entryLinkId: "tf-test-entry-link_22375",
  *     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/definition",
  *     entryReferences: [
  *         {

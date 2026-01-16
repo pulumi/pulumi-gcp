@@ -169,6 +169,57 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dataplex Datascan Onetime Profile
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOneTimeArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var onetimeProfile = new Datascan("onetimeProfile", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("dataprofile-onetime")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare")
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .oneTime(DatascanExecutionSpecTriggerOneTimeArgs.builder()
+ *                         .ttlAfterScanCompletion("120s")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .dataProfileSpec(DatascanDataProfileSpecArgs.builder()
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Dataplex Datascan Basic Quality
  * 
  * <pre>
@@ -373,6 +424,65 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### Dataplex Datascan Onetime Quality
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOneTimeArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var onetimeQuality = new Datascan("onetimeQuality", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("dataquality-onetime")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare")
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .oneTime(DatascanExecutionSpecTriggerOneTimeArgs.builder()
+ *                         .ttlAfterScanCompletion("120s")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
+ *                 .rules(DatascanDataQualitySpecRuleArgs.builder()
+ *                     .dimension("VALIDITY")
+ *                     .name("rule1")
+ *                     .description("rule 1 for validity dimension")
+ *                     .tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs.builder()
+ *                         .sqlExpression("COUNT(*) > 0")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Dataplex Datascan Basic Discovery
  * 
  * <pre>
@@ -547,6 +657,69 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dataplex Datascan Onetime Discovery
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOneTimeArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDiscoverySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
+ *             .name("tf-test-bucket-name-_34962")
+ *             .location("us-west1")
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var onetimeDiscovery = new Datascan("onetimeDiscovery", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("datadiscovery-onetime")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfTestBucket.project(), tfTestBucket.name()).applyValue(values -> {
+ *                     var project = values.t1;
+ *                     var name = values.t2;
+ *                     return String.format("//storage.googleapis.com/projects/%s/buckets/%s", project,name);
+ *                 }))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .oneTime(DatascanExecutionSpecTriggerOneTimeArgs.builder()
+ *                         .ttlAfterScanCompletion("120s")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .dataDiscoverySpec(DatascanDataDiscoverySpecArgs.builder()
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Dataplex Datascan Documentation
  * 
  * <pre>
@@ -581,13 +754,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__34962")
+ *             .datasetId("tf_dataplex_test_dataset_id__74000")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__74000")
+ *             .tableId("tf_dataplex_test_table_id__75125")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -655,6 +828,127 @@ import javax.annotation.Nullable;
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .onDemand(DatascanExecutionSpecTriggerOnDemandArgs.builder()
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .dataDocumentationSpec(DatascanDataDocumentationSpecArgs.builder()
+ *                 .build())
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Dataplex Datascan Onetime Documentation
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.dataplex.Datascan;
+ * import com.pulumi.gcp.dataplex.DatascanArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerOneTimeArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataDocumentationSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
+ *             .datasetId("tf_dataplex_test_dataset_id__88722")
+ *             .defaultTableExpirationMs(3600000)
+ *             .build());
+ * 
+ *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
+ *             .datasetId(tfDataplexTestDataset.datasetId())
+ *             .tableId("tf_dataplex_test_table_id__39249")
+ *             .deletionProtection(false)
+ *             .schema("""
+ *     [
+ *     {
+ *       \"name\": \"name\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\"
+ *     },
+ *     {
+ *       \"name\": \"station_id\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The id of the bike station\"
+ *     },
+ *     {
+ *       \"name\": \"address\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The address of the bike station\"
+ *     },
+ *     {
+ *       \"name\": \"power_type\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The powert type of the bike station\"
+ *     },
+ *     {
+ *       \"name\": \"property_type\",
+ *       \"type\": \"STRING\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The type of the property\"
+ *     },
+ *     {
+ *       \"name\": \"number_of_docks\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The number of docks the property have\"
+ *     },
+ *     {
+ *       \"name\": \"footprint_length\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The footpring lenght of the property\"
+ *     },
+ *     {
+ *       \"name\": \"council_district\",
+ *       \"type\": \"INTEGER\",
+ *       \"mode\": \"NULLABLE\",
+ *       \"description\": \"The council district the property is in\"
+ *     }
+ *     ]
+ *             """)
+ *             .build());
+ * 
+ *         var onetimeDocumentation = new Datascan("onetimeDocumentation", DatascanArgs.builder()
+ *             .location("us-central1")
+ *             .dataScanId("datadocumentation-onetime")
+ *             .data(DatascanDataArgs.builder()
+ *                 .resource(Output.tuple(tfDataplexTestDataset.datasetId(), tfDataplexTestTable.tableId()).applyValue(values -> {
+ *                     var datasetId = values.t1;
+ *                     var tableId = values.t2;
+ *                     return String.format("//bigquery.googleapis.com/projects/my-project-name/datasets/%s/tables/%s", datasetId,tableId);
+ *                 }))
+ *                 .build())
+ *             .executionSpec(DatascanExecutionSpecArgs.builder()
+ *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
+ *                     .oneTime(DatascanExecutionSpecTriggerOneTimeArgs.builder()
+ *                         .ttlAfterScanCompletion("120s")
  *                         .build())
  *                     .build())
  *                 .build())

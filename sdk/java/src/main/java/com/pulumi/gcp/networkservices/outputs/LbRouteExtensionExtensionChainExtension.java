@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,15 @@ public final class LbRouteExtensionExtensionChainExtension {
      */
     private @Nullable List<String> forwardHeaders;
     /**
+     * @return The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+     * in the `ProcessingRequest` message sent to the extension server.
+     * The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
+     * The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule&#39;s fully qualified resource name.
+     * This field must not be set for plugin extensions. Setting it results in a validation error.
+     * 
+     */
+    private @Nullable Map<String,String> metadata;
+    /**
      * @return The name for this extension. The name is logged as part of the HTTP request logs.
      * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
      * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -44,12 +54,40 @@ public final class LbRouteExtensionExtensionChainExtension {
      */
     private String name;
     /**
+     * @return When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    private @Nullable Boolean observabilityMode;
+    /**
+     * @return Configures the send mode for request body processing.
+     * The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+     * If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+     * When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+     * This field can be set only when the `service` field of the extension points to a `BackendService`.
+     * Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+     * Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+     * 
+     */
+    private @Nullable String requestBodySendMode;
+    /**
      * @return The reference to the service that runs the extension.
      * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
      * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
      * 
      */
     private String service;
+    /**
+     * @return A set of events during request or response processing for which this extension is called.
+     * This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+     * Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+     * 
+     */
+    private @Nullable List<String> supportedEvents;
     /**
      * @return Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -86,6 +124,17 @@ public final class LbRouteExtensionExtensionChainExtension {
         return this.forwardHeaders == null ? List.of() : this.forwardHeaders;
     }
     /**
+     * @return The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+     * in the `ProcessingRequest` message sent to the extension server.
+     * The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
+     * The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule&#39;s fully qualified resource name.
+     * This field must not be set for plugin extensions. Setting it results in a validation error.
+     * 
+     */
+    public Map<String,String> metadata() {
+        return this.metadata == null ? Map.of() : this.metadata;
+    }
+    /**
      * @return The name for this extension. The name is logged as part of the HTTP request logs.
      * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
      * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -96,6 +145,31 @@ public final class LbRouteExtensionExtensionChainExtension {
         return this.name;
     }
     /**
+     * @return When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    public Optional<Boolean> observabilityMode() {
+        return Optional.ofNullable(this.observabilityMode);
+    }
+    /**
+     * @return Configures the send mode for request body processing.
+     * The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+     * If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+     * When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+     * This field can be set only when the `service` field of the extension points to a `BackendService`.
+     * Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+     * Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+     * 
+     */
+    public Optional<String> requestBodySendMode() {
+        return Optional.ofNullable(this.requestBodySendMode);
+    }
+    /**
      * @return The reference to the service that runs the extension.
      * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
      * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -103,6 +177,15 @@ public final class LbRouteExtensionExtensionChainExtension {
      */
     public String service() {
         return this.service;
+    }
+    /**
+     * @return A set of events during request or response processing for which this extension is called.
+     * This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+     * Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+     * 
+     */
+    public List<String> supportedEvents() {
+        return this.supportedEvents == null ? List.of() : this.supportedEvents;
     }
     /**
      * @return Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
@@ -125,8 +208,12 @@ public final class LbRouteExtensionExtensionChainExtension {
         private @Nullable String authority;
         private @Nullable Boolean failOpen;
         private @Nullable List<String> forwardHeaders;
+        private @Nullable Map<String,String> metadata;
         private String name;
+        private @Nullable Boolean observabilityMode;
+        private @Nullable String requestBodySendMode;
         private String service;
+        private @Nullable List<String> supportedEvents;
         private @Nullable String timeout;
         public Builder() {}
         public Builder(LbRouteExtensionExtensionChainExtension defaults) {
@@ -134,8 +221,12 @@ public final class LbRouteExtensionExtensionChainExtension {
     	      this.authority = defaults.authority;
     	      this.failOpen = defaults.failOpen;
     	      this.forwardHeaders = defaults.forwardHeaders;
+    	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
+    	      this.observabilityMode = defaults.observabilityMode;
+    	      this.requestBodySendMode = defaults.requestBodySendMode;
     	      this.service = defaults.service;
+    	      this.supportedEvents = defaults.supportedEvents;
     	      this.timeout = defaults.timeout;
         }
 
@@ -161,11 +252,29 @@ public final class LbRouteExtensionExtensionChainExtension {
             return forwardHeaders(List.of(forwardHeaders));
         }
         @CustomType.Setter
+        public Builder metadata(@Nullable Map<String,String> metadata) {
+
+            this.metadata = metadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("LbRouteExtensionExtensionChainExtension", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder observabilityMode(@Nullable Boolean observabilityMode) {
+
+            this.observabilityMode = observabilityMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder requestBodySendMode(@Nullable String requestBodySendMode) {
+
+            this.requestBodySendMode = requestBodySendMode;
             return this;
         }
         @CustomType.Setter
@@ -175,6 +284,15 @@ public final class LbRouteExtensionExtensionChainExtension {
             }
             this.service = service;
             return this;
+        }
+        @CustomType.Setter
+        public Builder supportedEvents(@Nullable List<String> supportedEvents) {
+
+            this.supportedEvents = supportedEvents;
+            return this;
+        }
+        public Builder supportedEvents(String... supportedEvents) {
+            return supportedEvents(List.of(supportedEvents));
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
@@ -187,8 +305,12 @@ public final class LbRouteExtensionExtensionChainExtension {
             _resultValue.authority = authority;
             _resultValue.failOpen = failOpen;
             _resultValue.forwardHeaders = forwardHeaders;
+            _resultValue.metadata = metadata;
             _resultValue.name = name;
+            _resultValue.observabilityMode = observabilityMode;
+            _resultValue.requestBodySendMode = requestBodySendMode;
             _resultValue.service = service;
+            _resultValue.supportedEvents = supportedEvents;
             _resultValue.timeout = timeout;
             return _resultValue;
         }

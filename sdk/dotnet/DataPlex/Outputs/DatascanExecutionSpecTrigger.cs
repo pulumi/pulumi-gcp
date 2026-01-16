@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly Outputs.DatascanExecutionSpecTriggerOnDemand? OnDemand;
         /// <summary>
+        /// The scan runs once upon DataScan creation.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatascanExecutionSpecTriggerOneTime? OneTime;
+        /// <summary>
         /// The scan is scheduled to run periodically.
         /// Structure is documented below.
         /// </summary>
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         private DatascanExecutionSpecTrigger(
             Outputs.DatascanExecutionSpecTriggerOnDemand? onDemand,
 
+            Outputs.DatascanExecutionSpecTriggerOneTime? oneTime,
+
             Outputs.DatascanExecutionSpecTriggerSchedule? schedule)
         {
             OnDemand = onDemand;
+            OneTime = oneTime;
             Schedule = schedule;
         }
     }

@@ -1274,6 +1274,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "backupdisasterrecovery/restoreWorkload",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/restoreWorkload:RestoreWorkload": "RestoreWorkload"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "backupdisasterrecovery/serviceConfig",
   "fqn": "pulumi_gcp.backupdisasterrecovery",
   "classes": {

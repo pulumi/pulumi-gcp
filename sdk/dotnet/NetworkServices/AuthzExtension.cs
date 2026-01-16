@@ -57,6 +57,46 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Authz Extension Basic With Auth Grpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Name = "authz-service-grpc",
+    ///         Project = "my-project-name",
+    ///         Region = "us-west1",
+    ///         Protocol = "HTTP2",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         PortName = "grpc",
+    ///     });
+    /// 
+    ///     var defaultAuthzExtension = new Gcp.NetworkServices.AuthzExtension("default", new()
+    ///     {
+    ///         Name = "my-authz-ext-with-grpc",
+    ///         Project = "my-project-name",
+    ///         Location = "us-west1",
+    ///         Description = "my description",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         WireFormat = "EXT_AUTHZ_GRPC",
+    ///         Authority = "ext11.com",
+    ///         Service = @default.SelfLink,
+    ///         Timeout = "0.1s",
+    ///         FailOpen = false,
+    ///         ForwardHeaders = new[]
+    ///         {
+    ///             "Authorization",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -201,8 +241,22 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-        /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        /// Specifies the communication protocol used by the callout extension
+        /// to communicate with its backend service.
+        /// Supported values:
+        /// - WIRE_FORMAT_UNSPECIFIED:
+        /// No wire format is explicitly specified. The backend automatically
+        /// defaults this value to EXT_PROC_GRPC.
+        /// - EXT_PROC_GRPC:
+        /// Uses Envoy's External Processing (ext_proc) gRPC API over a single
+        /// gRPC stream. The backend service must support HTTP/2 or H2C.
+        /// All supported events for a client request are sent over the same
+        /// gRPC stream. This is the default wire format.
+        /// - EXT_AUTHZ_GRPC:
+        /// Uses Envoy's external authorization (ext_authz) gRPC API.
+        /// The backend service must support HTTP/2 or H2C.
+        /// This option is only supported for regional AuthzExtension resources.
+        /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         /// </summary>
         [Output("wireFormat")]
         public Output<string> WireFormat { get; private set; } = null!;
@@ -361,8 +415,22 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string> Timeout { get; set; } = null!;
 
         /// <summary>
-        /// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-        /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        /// Specifies the communication protocol used by the callout extension
+        /// to communicate with its backend service.
+        /// Supported values:
+        /// - WIRE_FORMAT_UNSPECIFIED:
+        /// No wire format is explicitly specified. The backend automatically
+        /// defaults this value to EXT_PROC_GRPC.
+        /// - EXT_PROC_GRPC:
+        /// Uses Envoy's External Processing (ext_proc) gRPC API over a single
+        /// gRPC stream. The backend service must support HTTP/2 or H2C.
+        /// All supported events for a client request are sent over the same
+        /// gRPC stream. This is the default wire format.
+        /// - EXT_AUTHZ_GRPC:
+        /// Uses Envoy's external authorization (ext_authz) gRPC API.
+        /// The backend service must support HTTP/2 or H2C.
+        /// This option is only supported for regional AuthzExtension resources.
+        /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         /// </summary>
         [Input("wireFormat")]
         public Input<string>? WireFormat { get; set; }
@@ -523,8 +591,22 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set.
-        /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`.
+        /// Specifies the communication protocol used by the callout extension
+        /// to communicate with its backend service.
+        /// Supported values:
+        /// - WIRE_FORMAT_UNSPECIFIED:
+        /// No wire format is explicitly specified. The backend automatically
+        /// defaults this value to EXT_PROC_GRPC.
+        /// - EXT_PROC_GRPC:
+        /// Uses Envoy's External Processing (ext_proc) gRPC API over a single
+        /// gRPC stream. The backend service must support HTTP/2 or H2C.
+        /// All supported events for a client request are sent over the same
+        /// gRPC stream. This is the default wire format.
+        /// - EXT_AUTHZ_GRPC:
+        /// Uses Envoy's external authorization (ext_authz) gRPC API.
+        /// The backend service must support HTTP/2 or H2C.
+        /// This option is only supported for regional AuthzExtension resources.
+        /// Possible values are: `WIRE_FORMAT_UNSPECIFIED`, `EXT_PROC_GRPC`, `EXT_AUTHZ_GRPC`.
         /// </summary>
         [Input("wireFormat")]
         public Input<string>? WireFormat { get; set; }

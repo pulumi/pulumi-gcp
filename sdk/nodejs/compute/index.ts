@@ -445,6 +445,11 @@ export const getRouterStatus: typeof import("./getRouterStatus").getRouterStatus
 export const getRouterStatusOutput: typeof import("./getRouterStatus").getRouterStatusOutput = null as any;
 utilities.lazyLoad(exports, ["getRouterStatus","getRouterStatusOutput"], () => require("./getRouterStatus"));
 
+export { GetRoutersArgs, GetRoutersResult, GetRoutersOutputArgs } from "./getRouters";
+export const getRouters: typeof import("./getRouters").getRouters = null as any;
+export const getRoutersOutput: typeof import("./getRouters").getRoutersOutput = null as any;
+utilities.lazyLoad(exports, ["getRouters","getRoutersOutput"], () => require("./getRouters"));
+
 export { GetSSLPolicyArgs, GetSSLPolicyResult, GetSSLPolicyOutputArgs } from "./getSSLPolicy";
 export const getSSLPolicy: typeof import("./getSSLPolicy").getSSLPolicy = null as any;
 export const getSSLPolicyOutput: typeof import("./getSSLPolicy").getSSLPolicyOutput = null as any;

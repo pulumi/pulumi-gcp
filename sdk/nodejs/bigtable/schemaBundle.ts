@@ -104,6 +104,13 @@ export class SchemaBundle extends pulumi.CustomResource {
     }
 
     /**
+     * etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a schema bundle from overwriting each other. This may be sent on update and delete
+     * requests to ensure the client has an update-to-date value before proceeding. The server returns
+     * an ABORTED error on a mismatched etag.
+     */
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
+    /**
      * If true, allow backwards incompatible changes.
      */
     declare public readonly ignoreWarnings: pulumi.Output<boolean | undefined>;
@@ -149,6 +156,7 @@ export class SchemaBundle extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaBundleState | undefined;
+            resourceInputs["etag"] = state?.etag;
             resourceInputs["ignoreWarnings"] = state?.ignoreWarnings;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["name"] = state?.name;
@@ -170,6 +178,7 @@ export class SchemaBundle extends pulumi.CustomResource {
             resourceInputs["protoSchema"] = args?.protoSchema;
             resourceInputs["schemaBundleId"] = args?.schemaBundleId;
             resourceInputs["table"] = args?.table;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -181,6 +190,13 @@ export class SchemaBundle extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SchemaBundle resources.
  */
 export interface SchemaBundleState {
+    /**
+     * etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a schema bundle from overwriting each other. This may be sent on update and delete
+     * requests to ensure the client has an update-to-date value before proceeding. The server returns
+     * an ABORTED error on a mismatched etag.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * If true, allow backwards incompatible changes.
      */

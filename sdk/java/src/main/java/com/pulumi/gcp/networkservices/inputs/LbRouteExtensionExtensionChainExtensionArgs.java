@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,29 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
     }
 
     /**
+     * The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+     * in the `ProcessingRequest` message sent to the extension server.
+     * The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
+     * The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule&#39;s fully qualified resource name.
+     * This field must not be set for plugin extensions. Setting it results in a validation error.
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<Map<String,String>> metadata;
+
+    /**
+     * @return The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+     * in the `ProcessingRequest` message sent to the extension server.
+     * The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
+     * The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule&#39;s fully qualified resource name.
+     * This field must not be set for plugin extensions. Setting it results in a validation error.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * The name for this extension. The name is logged as part of the HTTP request logs.
      * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
      * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -97,6 +121,58 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
     }
 
     /**
+     * When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    @Import(name="observabilityMode")
+    private @Nullable Output<Boolean> observabilityMode;
+
+    /**
+     * @return When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+     * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+     * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+     * This field is helpful when you want to try out the extension in async log-only mode.
+     * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+     * Only `STREAMED` (default) body processing mode is supported.
+     * 
+     */
+    public Optional<Output<Boolean>> observabilityMode() {
+        return Optional.ofNullable(this.observabilityMode);
+    }
+
+    /**
+     * Configures the send mode for request body processing.
+     * The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+     * If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+     * When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+     * This field can be set only when the `service` field of the extension points to a `BackendService`.
+     * Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+     * Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+     * 
+     */
+    @Import(name="requestBodySendMode")
+    private @Nullable Output<String> requestBodySendMode;
+
+    /**
+     * @return Configures the send mode for request body processing.
+     * The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+     * If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+     * When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+     * This field can be set only when the `service` field of the extension points to a `BackendService`.
+     * Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+     * Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+     * 
+     */
+    public Optional<Output<String>> requestBodySendMode() {
+        return Optional.ofNullable(this.requestBodySendMode);
+    }
+
+    /**
      * The reference to the service that runs the extension.
      * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
      * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -113,6 +189,25 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
      */
     public Output<String> service() {
         return this.service;
+    }
+
+    /**
+     * A set of events during request or response processing for which this extension is called.
+     * This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+     * Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+     * 
+     */
+    @Import(name="supportedEvents")
+    private @Nullable Output<List<String>> supportedEvents;
+
+    /**
+     * @return A set of events during request or response processing for which this extension is called.
+     * This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+     * Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+     * 
+     */
+    public Optional<Output<List<String>>> supportedEvents() {
+        return Optional.ofNullable(this.supportedEvents);
     }
 
     /**
@@ -138,8 +233,12 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
         this.authority = $.authority;
         this.failOpen = $.failOpen;
         this.forwardHeaders = $.forwardHeaders;
+        this.metadata = $.metadata;
         this.name = $.name;
+        this.observabilityMode = $.observabilityMode;
+        this.requestBodySendMode = $.requestBodySendMode;
         this.service = $.service;
+        this.supportedEvents = $.supportedEvents;
         this.timeout = $.timeout;
     }
 
@@ -248,6 +347,35 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
         }
 
         /**
+         * @param metadata The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+         * in the `ProcessingRequest` message sent to the extension server.
+         * The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
+         * The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule&#39;s fully qualified resource name.
+         * This field must not be set for plugin extensions. Setting it results in a validation error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata The metadata provided here is included as part of the `metadataContext` (of type `google.protobuf.Struct`)
+         * in the `ProcessingRequest` message sent to the extension server.
+         * The metadata is available under the namespace `com.google.lb_route_extension.&lt;resource_name&gt;.&lt;chain_name&gt;.&lt;extension_name&gt;`.
+         * The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule&#39;s fully qualified resource name.
+         * This field must not be set for plugin extensions. Setting it results in a validation error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(Map<String,String> metadata) {
+            return metadata(Output.of(metadata));
+        }
+
+        /**
          * @param name The name for this extension. The name is logged as part of the HTTP request logs.
          * The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
          * and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -275,6 +403,70 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
         }
 
         /**
+         * @param observabilityMode When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+         * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+         * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+         * This field is helpful when you want to try out the extension in async log-only mode.
+         * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+         * Only `STREAMED` (default) body processing mode is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observabilityMode(@Nullable Output<Boolean> observabilityMode) {
+            $.observabilityMode = observabilityMode;
+            return this;
+        }
+
+        /**
+         * @param observabilityMode When set to `TRUE`, enables `observabilityMode` on the `extProc` filter.
+         * This makes `extProc` calls asynchronous. Envoy doesn&#39;t check for the response from `extProc` calls.
+         * For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+         * This field is helpful when you want to try out the extension in async log-only mode.
+         * Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+         * Only `STREAMED` (default) body processing mode is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder observabilityMode(Boolean observabilityMode) {
+            return observabilityMode(Output.of(observabilityMode));
+        }
+
+        /**
+         * @param requestBodySendMode Configures the send mode for request body processing.
+         * The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+         * If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+         * When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+         * This field can be set only when the `service` field of the extension points to a `BackendService`.
+         * Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+         * Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodySendMode(@Nullable Output<String> requestBodySendMode) {
+            $.requestBodySendMode = requestBodySendMode;
+            return this;
+        }
+
+        /**
+         * @param requestBodySendMode Configures the send mode for request body processing.
+         * The field can only be set if `supportedEvents` includes `REQUEST_BODY`.
+         * If `supportedEvents` includes `REQUEST_BODY`, but `requestBodySendMode` is unset, the default value `STREAMED` is used.
+         * When this field is set to `FULL_DUPLEX_STREAMED`, `supportedEvents` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+         * This field can be set only when the `service` field of the extension points to a `BackendService`.
+         * Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+         * Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestBodySendMode(String requestBodySendMode) {
+            return requestBodySendMode(Output.of(requestBodySendMode));
+        }
+
+        /**
          * @param service The reference to the service that runs the extension.
          * * To configure a callout extension, service must be a fully-qualified reference to a backend service.
          * * To configure a plugin extension, service must be a reference to a WasmPlugin resource.
@@ -297,6 +489,43 @@ public final class LbRouteExtensionExtensionChainExtensionArgs extends com.pulum
          */
         public Builder service(String service) {
             return service(Output.of(service));
+        }
+
+        /**
+         * @param supportedEvents A set of events during request or response processing for which this extension is called.
+         * This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+         * Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedEvents(@Nullable Output<List<String>> supportedEvents) {
+            $.supportedEvents = supportedEvents;
+            return this;
+        }
+
+        /**
+         * @param supportedEvents A set of events during request or response processing for which this extension is called.
+         * This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+         * Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedEvents(List<String> supportedEvents) {
+            return supportedEvents(Output.of(supportedEvents));
+        }
+
+        /**
+         * @param supportedEvents A set of events during request or response processing for which this extension is called.
+         * This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+         * Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedEvents(String... supportedEvents) {
+            return supportedEvents(List.of(supportedEvents));
         }
 
         /**

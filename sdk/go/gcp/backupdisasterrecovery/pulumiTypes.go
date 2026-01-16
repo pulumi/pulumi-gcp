@@ -1197,6 +1197,6741 @@ func (o ManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) ManagementS
 	}).(ManagementServerNetworkOutput)
 }
 
+type RestoreWorkloadComputeInstanceRestoreProperties struct {
+	// Optional. Controls for advanced machine-related behavior features.
+	// Structure is documented below.
+	AdvancedMachineFeatures *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	// Optional. Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
+	AllocationAffinity *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity `pulumi:"allocationAffinity"`
+	// Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
+	CanIpForward *bool `pulumi:"canIpForward"`
+	// Optional. Controls Confidential compute options on the instance.
+	// Structure is documented below.
+	ConfidentialInstanceConfig *RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
+	// Optional. Whether the resource should be protected against deletion.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Optional. An optional description of this resource.
+	Description *string `pulumi:"description"`
+	// Optional. Array of disks associated with this instance.
+	// Structure is documented below.
+	Disks []RestoreWorkloadComputeInstanceRestorePropertiesDisk `pulumi:"disks"`
+	// Optional. Enables display device for the instance.
+	// Structure is documented below.
+	DisplayDevice *RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice `pulumi:"displayDevice"`
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
+	// Structure is documented below.
+	GuestAccelerators []RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator `pulumi:"guestAccelerators"`
+	// Optional. Specifies the hostname of the instance.
+	Hostname *string `pulumi:"hostname"`
+	// Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
+	// Structure is documented below.
+	InstanceEncryptionKey *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey `pulumi:"instanceEncryptionKey"`
+	// Optional. KeyRevocationActionType of the instance.
+	// Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
+	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
+	// Optional. Labels to apply to this instance.
+	// Structure is documented below.
+	Labels []RestoreWorkloadComputeInstanceRestorePropertiesLabel `pulumi:"labels"`
+	// Optional. Full or partial URL of the machine type resource to use for this instance.
+	MachineType *string `pulumi:"machineType"`
+	// Optional. This includes custom metadata and predefined keys.
+	// Structure is documented below.
+	Metadata *RestoreWorkloadComputeInstanceRestorePropertiesMetadata `pulumi:"metadata"`
+	// Optional. Minimum CPU platform to use for this instance.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Required. Name of the compute instance.
+	Name string `pulumi:"name"`
+	// Optional. An array of network configurations for this instance.
+	// Structure is documented below.
+	NetworkInterfaces []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface `pulumi:"networkInterfaces"`
+	// Optional. Configure network performance such as egress bandwidth tier.
+	// Structure is documented below.
+	NetworkPerformanceConfig *RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Input only. Additional params passed with the request.
+	// Structure is documented below.
+	Params *RestoreWorkloadComputeInstanceRestorePropertiesParams `pulumi:"params"`
+	// Optional. The private IPv6 google access type for the VM.
+	// Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
+	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
+	// Optional. Resource policies applied to this instance.
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// Optional. Sets the scheduling options for this instance.
+	// Structure is documented below.
+	Scheduling *RestoreWorkloadComputeInstanceRestorePropertiesScheduling `pulumi:"scheduling"`
+	// Optional. A list of service accounts, with their specified scopes, authorized for this instance.
+	// Structure is documented below.
+	ServiceAccounts []RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount `pulumi:"serviceAccounts"`
+	// Optional. Controls Shielded compute options on the instance.
+	// Structure is documented below.
+	ShieldedInstanceConfig *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Optional. Tags to apply to this instance.
+	// Structure is documented below.
+	Tags *RestoreWorkloadComputeInstanceRestorePropertiesTags `pulumi:"tags"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesArgs and RestoreWorkloadComputeInstanceRestorePropertiesOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesOutput() RestoreWorkloadComputeInstanceRestorePropertiesOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesArgs struct {
+	// Optional. Controls for advanced machine-related behavior features.
+	// Structure is documented below.
+	AdvancedMachineFeatures RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	// Optional. Specifies the reservations that this instance can consume from.
+	// Structure is documented below.
+	AllocationAffinity RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrInput `pulumi:"allocationAffinity"`
+	// Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
+	CanIpForward pulumi.BoolPtrInput `pulumi:"canIpForward"`
+	// Optional. Controls Confidential compute options on the instance.
+	// Structure is documented below.
+	ConfidentialInstanceConfig RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
+	// Optional. Whether the resource should be protected against deletion.
+	DeletionProtection pulumi.BoolPtrInput `pulumi:"deletionProtection"`
+	// Optional. An optional description of this resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. Array of disks associated with this instance.
+	// Structure is documented below.
+	Disks RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayInput `pulumi:"disks"`
+	// Optional. Enables display device for the instance.
+	// Structure is documented below.
+	DisplayDevice RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrInput `pulumi:"displayDevice"`
+	// Optional. A list of the type and count of accelerator cards attached to the instance.
+	// Structure is documented below.
+	GuestAccelerators RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	// Optional. Specifies the hostname of the instance.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
+	// Structure is documented below.
+	InstanceEncryptionKey RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrInput `pulumi:"instanceEncryptionKey"`
+	// Optional. KeyRevocationActionType of the instance.
+	// Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
+	KeyRevocationActionType pulumi.StringPtrInput `pulumi:"keyRevocationActionType"`
+	// Optional. Labels to apply to this instance.
+	// Structure is documented below.
+	Labels RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayInput `pulumi:"labels"`
+	// Optional. Full or partial URL of the machine type resource to use for this instance.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Optional. This includes custom metadata and predefined keys.
+	// Structure is documented below.
+	Metadata RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrInput `pulumi:"metadata"`
+	// Optional. Minimum CPU platform to use for this instance.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Required. Name of the compute instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional. An array of network configurations for this instance.
+	// Structure is documented below.
+	NetworkInterfaces RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// Optional. Configure network performance such as egress bandwidth tier.
+	// Structure is documented below.
+	NetworkPerformanceConfig RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
+	// Input only. Additional params passed with the request.
+	// Structure is documented below.
+	Params RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrInput `pulumi:"params"`
+	// Optional. The private IPv6 google access type for the VM.
+	// Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
+	PrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"privateIpv6GoogleAccess"`
+	// Optional. Resource policies applied to this instance.
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
+	// Optional. Sets the scheduling options for this instance.
+	// Structure is documented below.
+	Scheduling RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrInput `pulumi:"scheduling"`
+	// Optional. A list of service accounts, with their specified scopes, authorized for this instance.
+	// Structure is documented below.
+	ServiceAccounts RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayInput `pulumi:"serviceAccounts"`
+	// Optional. Controls Shielded compute options on the instance.
+	// Structure is documented below.
+	ShieldedInstanceConfig RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Optional. Tags to apply to this instance.
+	// Structure is documented below.
+	Tags RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrInput `pulumi:"tags"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestoreProperties)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesOutput() RestoreWorkloadComputeInstanceRestorePropertiesOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesArgs, RestoreWorkloadComputeInstanceRestorePropertiesPtr and RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesPtrType RestoreWorkloadComputeInstanceRestorePropertiesArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesArgs) RestoreWorkloadComputeInstanceRestorePropertiesPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestoreProperties)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestoreProperties)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesOutput() RestoreWorkloadComputeInstanceRestorePropertiesOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestoreProperties {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput)
+}
+
+// Optional. Controls for advanced machine-related behavior features.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) AdvancedMachineFeatures() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
+		return v.AdvancedMachineFeatures
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput)
+}
+
+// Optional. Specifies the reservations that this instance can consume from.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) AllocationAffinity() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
+		return v.AllocationAffinity
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput)
+}
+
+// Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *bool { return v.CanIpForward }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Controls Confidential compute options on the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ConfidentialInstanceConfig() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig {
+		return v.ConfidentialInstanceConfig
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput)
+}
+
+// Optional. Whether the resource should be protected against deletion.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *bool { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. An optional description of this resource.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Array of disks associated with this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Disks() RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesDisk {
+		return v.Disks
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput)
+}
+
+// Optional. Enables display device for the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) DisplayDevice() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
+		return v.DisplayDevice
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput)
+}
+
+// Optional. A list of the type and count of accelerator cards attached to the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) GuestAccelerators() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator {
+		return v.GuestAccelerators
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput)
+}
+
+// Optional. Specifies the hostname of the instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) InstanceEncryptionKey() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey {
+		return v.InstanceEncryptionKey
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput)
+}
+
+// Optional. KeyRevocationActionType of the instance.
+// Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) KeyRevocationActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *string { return v.KeyRevocationActionType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Labels to apply to this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Labels() RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesLabel {
+		return v.Labels
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput)
+}
+
+// Optional. Full or partial URL of the machine type resource to use for this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. This includes custom metadata and predefined keys.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Metadata() RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
+		return v.Metadata
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput)
+}
+
+// Optional. Minimum CPU platform to use for this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the compute instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. An array of network configurations for this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) NetworkInterfaces() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
+		return v.NetworkInterfaces
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput)
+}
+
+// Optional. Configure network performance such as egress bandwidth tier.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) NetworkPerformanceConfig() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
+		return v.NetworkPerformanceConfig
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput)
+}
+
+// Input only. Additional params passed with the request.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Params() RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesParams {
+		return v.Params
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput)
+}
+
+// Optional. The private IPv6 google access type for the VM.
+// Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Resource policies applied to this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Sets the scheduling options for this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Scheduling() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
+		return v.Scheduling
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput)
+}
+
+// Optional. A list of service accounts, with their specified scopes, authorized for this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ServiceAccounts() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
+		return v.ServiceAccounts
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput)
+}
+
+// Optional. Controls Shielded compute options on the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) ShieldedInstanceConfig() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput)
+}
+
+// Optional. Tags to apply to this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesOutput) Tags() RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesTags {
+		return v.Tags
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestoreProperties)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) RestoreWorkloadComputeInstanceRestoreProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestoreProperties
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesOutput)
+}
+
+// Optional. Controls for advanced machine-related behavior features.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) AdvancedMachineFeatures() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput)
+}
+
+// Optional. Specifies the reservations that this instance can consume from.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) AllocationAffinity() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.AllocationAffinity
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput)
+}
+
+// Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) CanIpForward() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanIpForward
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Controls Confidential compute options on the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) ConfidentialInstanceConfig() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceConfig
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput)
+}
+
+// Optional. Whether the resource should be protected against deletion.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. An optional description of this resource.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Array of disks associated with this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Disks() RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesDisk {
+		if v == nil {
+			return nil
+		}
+		return v.Disks
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput)
+}
+
+// Optional. Enables display device for the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) DisplayDevice() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayDevice
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput)
+}
+
+// Optional. A list of the type and count of accelerator cards attached to the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) GuestAccelerators() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator {
+		if v == nil {
+			return nil
+		}
+		return v.GuestAccelerators
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput)
+}
+
+// Optional. Specifies the hostname of the instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) InstanceEncryptionKey() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceEncryptionKey
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput)
+}
+
+// Optional. KeyRevocationActionType of the instance.
+// Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) KeyRevocationActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyRevocationActionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Labels to apply to this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Labels() RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesLabel {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput)
+}
+
+// Optional. Full or partial URL of the machine type resource to use for this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. This includes custom metadata and predefined keys.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Metadata() RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput)
+}
+
+// Optional. Minimum CPU platform to use for this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the compute instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An array of network configurations for this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) NetworkInterfaces() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput)
+}
+
+// Optional. Configure network performance such as egress bandwidth tier.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) NetworkPerformanceConfig() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkPerformanceConfig
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput)
+}
+
+// Input only. Additional params passed with the request.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Params() RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesParams {
+		if v == nil {
+			return nil
+		}
+		return v.Params
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput)
+}
+
+// Optional. The private IPv6 google access type for the VM.
+// Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIpv6GoogleAccess
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Resource policies applied to this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Sets the scheduling options for this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Scheduling() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
+		if v == nil {
+			return nil
+		}
+		return v.Scheduling
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput)
+}
+
+// Optional. A list of service accounts, with their specified scopes, authorized for this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) ServiceAccounts() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) []RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccounts
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput)
+}
+
+// Optional. Controls Shielded compute options on the instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) ShieldedInstanceConfig() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput)
+}
+
+// Optional. Tags to apply to this instance.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput) Tags() RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestoreProperties) *RestoreWorkloadComputeInstanceRestorePropertiesTags {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures struct {
+	// Optional. Whether to enable nested virtualization or not (default is false).
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Optional. Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
+	// Optional. The number of threads per physical core.
+	ThreadsPerCore *int `pulumi:"threadsPerCore"`
+	// Optional. The number of physical cores to expose to an instance.
+	VisibleCoreCount *int `pulumi:"visibleCoreCount"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs and RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs struct {
+	// Optional. Whether to enable nested virtualization or not (default is false).
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Optional. Whether to enable UEFI networking for instance creation.
+	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
+	// Optional. The number of threads per physical core.
+	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
+	// Optional. The number of physical cores to expose to an instance.
+	VisibleCoreCount pulumi.IntPtrInput `pulumi:"visibleCoreCount"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs, RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtr and RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrType RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput)
+}
+
+// Optional. Whether to enable nested virtualization or not (default is false).
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *bool {
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Whether to enable UEFI networking for instance creation.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *bool {
+		return v.EnableUefiNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The number of threads per physical core.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *int {
+		return v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The number of physical cores to expose to an instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput) VisibleCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *int {
+		return v.VisibleCoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput)
+}
+
+// Optional. Whether to enable nested virtualization or not (default is false).
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Whether to enable UEFI networking for instance creation.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) EnableUefiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableUefiNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The number of threads per physical core.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The number of physical cores to expose to an instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput) VisibleCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VisibleCoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity struct {
+	// Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+	ConsumeAllocationType *string `pulumi:"consumeAllocationType"`
+	// (Optional)
+	Key *string `pulumi:"key"`
+	// (Optional)
+	Values []string `pulumi:"values"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs and RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs struct {
+	// Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+	ConsumeAllocationType pulumi.StringPtrInput `pulumi:"consumeAllocationType"`
+	// (Optional)
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (Optional)
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs, RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtr and RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrType RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput)
+}
+
+// Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) ConsumeAllocationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) *string {
+		return v.ConsumeAllocationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput)
+}
+
+// Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput) ConsumeAllocationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumeAllocationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig struct {
+	// Optional. Defines whether the instance should have confidential compute enabled.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs and RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs struct {
+	// Optional. Defines whether the instance should have confidential compute enabled.
+	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs, RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtr and RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrType RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig) *RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput)
+}
+
+// Optional. Defines whether the instance should have confidential compute enabled.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig) *bool {
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig) RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput)
+}
+
+// Optional. Defines whether the instance should have confidential compute enabled.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDisk struct {
+	// Optional. Specifies whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete *bool `pulumi:"autoDelete"`
+	// Optional. Indicates that this is a boot disk.
+	Boot *bool `pulumi:"boot"`
+	// Optional. This is used as an identifier for the disks.
+	DeviceName *string `pulumi:"deviceName"`
+	// Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.
+	// Structure is documented below.
+	DiskEncryptionKey *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// Optional. Specifies the disk interface to use for attaching this disk.
+	// Possible values are: `DISK_INTERFACE_UNSPECIFIED`, `SCSI`, `NVME`, `NVDIMM`, `ISCSI`.
+	DiskInterface *string `pulumi:"diskInterface"`
+	// Optional. The size of the disk in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Output only. The URI of the disk type resource.
+	DiskType *string `pulumi:"diskType"`
+	// Optional. A list of features to enable on the guest operating system.
+	// Structure is documented below.
+	GuestOsFeatures []RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature `pulumi:"guestOsFeatures"`
+	// Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.
+	Index *int `pulumi:"index"`
+	// Optional. Specifies the parameters to initialize this disk.
+	// Structure is documented below.
+	InitializeParams *RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams `pulumi:"initializeParams"`
+	// Optional. Type of the resource.
+	Kind *string `pulumi:"kind"`
+	// Optional. Any valid publicly visible licenses.
+	Licenses []string `pulumi:"licenses"`
+	// Optional. The mode in which to attach this disk.
+	// Possible values are: `DISK_MODE_UNSPECIFIED`, `READ_WRITE`, `READ_ONLY`, `LOCKED`.
+	Mode *string `pulumi:"mode"`
+	// Optional. Specifies the saved state of the disk.
+	// Possible values are: `DISK_SAVED_STATE_UNSPECIFIED`, `PRESERVED`.
+	SavedState *string `pulumi:"savedState"`
+	// Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.
+	Source *string `pulumi:"source"`
+	// Optional. Specifies the type of the disk.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `SCRATCH`, `PERSISTENT`.
+	Type *string `pulumi:"type"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs and RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs struct {
+	// Optional. Specifies whether the disk will be auto-deleted when the instance is deleted.
+	AutoDelete pulumi.BoolPtrInput `pulumi:"autoDelete"`
+	// Optional. Indicates that this is a boot disk.
+	Boot pulumi.BoolPtrInput `pulumi:"boot"`
+	// Optional. This is used as an identifier for the disks.
+	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
+	// Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.
+	// Structure is documented below.
+	DiskEncryptionKey RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrInput `pulumi:"diskEncryptionKey"`
+	// Optional. Specifies the disk interface to use for attaching this disk.
+	// Possible values are: `DISK_INTERFACE_UNSPECIFIED`, `SCSI`, `NVME`, `NVDIMM`, `ISCSI`.
+	DiskInterface pulumi.StringPtrInput `pulumi:"diskInterface"`
+	// Optional. The size of the disk in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Output only. The URI of the disk type resource.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Optional. A list of features to enable on the guest operating system.
+	// Structure is documented below.
+	GuestOsFeatures RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
+	// Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.
+	Index pulumi.IntPtrInput `pulumi:"index"`
+	// Optional. Specifies the parameters to initialize this disk.
+	// Structure is documented below.
+	InitializeParams RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrInput `pulumi:"initializeParams"`
+	// Optional. Type of the resource.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Optional. Any valid publicly visible licenses.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
+	// Optional. The mode in which to attach this disk.
+	// Possible values are: `DISK_MODE_UNSPECIFIED`, `READ_WRITE`, `READ_ONLY`, `LOCKED`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Optional. Specifies the saved state of the disk.
+	// Possible values are: `DISK_SAVED_STATE_UNSPECIFIED`, `PRESERVED`.
+	SavedState pulumi.StringPtrInput `pulumi:"savedState"`
+	// Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Optional. Specifies the type of the disk.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `SCRATCH`, `PERSISTENT`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDisk)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskArray and RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesDiskArray{ RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskArray []RestoreWorkloadComputeInstanceRestorePropertiesDiskInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesDisk)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskArray) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskArray) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDisk)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput {
+	return o
+}
+
+// Optional. Specifies whether the disk will be auto-deleted when the instance is deleted.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) AutoDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *bool { return v.AutoDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Indicates that this is a boot disk.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) Boot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *bool { return v.Boot }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. This is used as an identifier for the disks.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) DeviceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) DiskEncryptionKey() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
+		return v.DiskEncryptionKey
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput)
+}
+
+// Optional. Specifies the disk interface to use for attaching this disk.
+// Possible values are: `DISK_INTERFACE_UNSPECIFIED`, `SCSI`, `NVME`, `NVDIMM`, `ISCSI`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) DiskInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.DiskInterface }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The size of the disk in GB.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Output only. The URI of the disk type resource.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A list of features to enable on the guest operating system.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) GuestOsFeatures() RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) []RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature {
+		return v.GuestOsFeatures
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput)
+}
+
+// Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) Index() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *int { return v.Index }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the parameters to initialize this disk.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) InitializeParams() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
+		return v.InitializeParams
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput)
+}
+
+// Optional. Type of the resource.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Any valid publicly visible licenses.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The mode in which to attach this disk.
+// Possible values are: `DISK_MODE_UNSPECIFIED`, `READ_WRITE`, `READ_ONLY`, `LOCKED`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the saved state of the disk.
+// Possible values are: `DISK_SAVED_STATE_UNSPECIFIED`, `PRESERVED`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) SavedState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.SavedState }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the type of the disk.
+// Possible values are: `DISK_TYPE_UNSPECIFIED`, `SCRATCH`, `PERSISTENT`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesDisk)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesDisk {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesDisk)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey struct {
+	// (Optional)
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// (Optional)
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
+	// (Optional)
+	RawKey *string `pulumi:"rawKey"`
+	// (Optional)
+	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs and RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs struct {
+	// (Optional)
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// (Optional)
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
+	// (Optional)
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// (Optional)
+	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs, RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtr and RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrType RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
+		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature struct {
+	// Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
+	Type *string `pulumi:"type"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs and RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs struct {
+	// Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArray and RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArray{ RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArray []RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArray) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArray) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput {
+	return o
+}
+
+// Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams struct {
+	// Optional. Specifies the disk name.
+	DiskName *string `pulumi:"diskName"`
+	// Optional. URL of the zone where the disk should be created.
+	ReplicaZones []string `pulumi:"replicaZones"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs and RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs struct {
+	// Optional. Specifies the disk name.
+	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
+	// Optional. URL of the zone where the disk should be created.
+	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs, RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtr and RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrType RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams) *RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput)
+}
+
+// Optional. Specifies the disk name.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams) *string { return v.DiskName }).(pulumi.StringPtrOutput)
+}
+
+// Optional. URL of the zone where the disk should be created.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams) []string {
+		return v.ReplicaZones
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams) RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput)
+}
+
+// Optional. Specifies the disk name.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. URL of the zone where the disk should be created.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaZones
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice struct {
+	// Optional. Enables display for the Compute Engine VM.
+	EnableDisplay *bool `pulumi:"enableDisplay"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs and RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs struct {
+	// Optional. Enables display for the Compute Engine VM.
+	EnableDisplay pulumi.BoolPtrInput `pulumi:"enableDisplay"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs, RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtr and RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrType RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtr(v *RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice) *RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput)
+}
+
+// Optional. Enables display for the Compute Engine VM.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput) EnableDisplay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice) *bool { return v.EnableDisplay }).(pulumi.BoolPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice) RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput)
+}
+
+// Optional. Enables display for the Compute Engine VM.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput) EnableDisplay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDisplay
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator struct {
+	// Optional. The number of the guest accelerator cards exposed to this instance.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// Optional. Full or partial URL of the accelerator type resource.
+	AcceleratorType *string `pulumi:"acceleratorType"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs and RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs struct {
+	// Optional. The number of the guest accelerator cards exposed to this instance.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// Optional. Full or partial URL of the accelerator type resource.
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArray and RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArray{ RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArray []RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArray) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArray) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput {
+	return o
+}
+
+// Optional. The number of the guest accelerator cards exposed to this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator) *int {
+		return v.AcceleratorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Full or partial URL of the accelerator type resource.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator) *string {
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey struct {
+	// (Optional)
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// (Optional)
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
+	// (Optional)
+	RawKey *string `pulumi:"rawKey"`
+	// (Optional)
+	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs and RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs struct {
+	// (Optional)
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// (Optional)
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
+	// (Optional)
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// (Optional)
+	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs, RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtr and RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrType RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
+		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesLabel struct {
+	// The identifier for this object. Format specified above.
+	Key string `pulumi:"key"`
+	// (Optional)
+	Value *string `pulumi:"value"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesLabelInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs and RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesLabelInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesLabelInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesLabelOutput() RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesLabelOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs struct {
+	// The identifier for this object. Format specified above.
+	Key pulumi.StringInput `pulumi:"key"`
+	// (Optional)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelOutput() RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesLabelOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesLabelArray and RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesLabelArray{ RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesLabelArray []RestoreWorkloadComputeInstanceRestorePropertiesLabelInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesLabelArray) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesLabelArray) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelOutput() RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesLabel {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesLabel)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadata struct {
+	// Structure is documented below.
+	Items []RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem `pulumi:"items"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesMetadataInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs and RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesMetadataInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs struct {
+	// Structure is documented below.
+	Items RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayInput `pulumi:"items"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadata)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs, RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtr and RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesMetadataPtrType RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs) RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesMetadataPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesMetadata)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesMetadataPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesMetadataPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadata)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesMetadata) *RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput) Items() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesMetadata) []RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem {
+		return v.Items
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesMetadata)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesMetadata) RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesMetadata
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput) Items() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesMetadata) []RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem struct {
+	// (Optional)
+	Key *string `pulumi:"key"`
+	// (Optional)
+	Value *string `pulumi:"value"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs and RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs struct {
+	// (Optional)
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (Optional)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArray and RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArray{ RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArray []RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArray) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArray) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput {
+	return o
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface struct {
+	// Structure is documented below.
+	AccessConfigs []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	// Structure is documented below.
+	AliasIpRanges []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// Optional. The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength *int `pulumi:"internalIpv6PrefixLength"`
+	// Optional. An IPv4 internal IP address to assign to the instance.
+	IpAddress *string `pulumi:"ipAddress"`
+	// Structure is documented below.
+	Ipv6AccessConfigs []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// Possible values are: `UNSPECIFIED_IPV6_ACCESS_TYPE`, `INTERNAL`, `EXTERNAL`.
+	Ipv6AccessType *string `pulumi:"ipv6AccessType"`
+	// Optional. An IPv6 internal network address for this network interface.
+	Ipv6Address *string `pulumi:"ipv6Address"`
+	// Optional. URL of the VPC network resource for this instance.
+	Network *string `pulumi:"network"`
+	// (Optional)
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+	// Possible values are: `NIC_TYPE_UNSPECIFIED`, `VIRTIO_NET`, `GVNIC`.
+	NicType *string `pulumi:"nicType"`
+	// (Optional)
+	QueueCount *int `pulumi:"queueCount"`
+	// Possible values are: `STACK_TYPE_UNSPECIFIED`, `IPV4_ONLY`, `IPV4_IPV6`.
+	StackType *string `pulumi:"stackType"`
+	// Optional. The URL of the Subnetwork resource for this instance.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs struct {
+	// Structure is documented below.
+	AccessConfigs RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// Structure is documented below.
+	AliasIpRanges RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// Optional. The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"internalIpv6PrefixLength"`
+	// Optional. An IPv4 internal IP address to assign to the instance.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// Structure is documented below.
+	Ipv6AccessConfigs RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// Possible values are: `UNSPECIFIED_IPV6_ACCESS_TYPE`, `INTERNAL`, `EXTERNAL`.
+	Ipv6AccessType pulumi.StringPtrInput `pulumi:"ipv6AccessType"`
+	// Optional. An IPv6 internal network address for this network interface.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// Optional. URL of the VPC network resource for this instance.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// (Optional)
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+	// Possible values are: `NIC_TYPE_UNSPECIFIED`, `VIRTIO_NET`, `GVNIC`.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	// (Optional)
+	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
+	// Possible values are: `STACK_TYPE_UNSPECIFIED`, `IPV4_ONLY`, `IPV4_IPV6`.
+	StackType pulumi.StringPtrInput `pulumi:"stackType"`
+	// Optional. The URL of the Subnetwork resource for this instance.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray{ RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput {
+	return o
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) AccessConfigs() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig {
+		return v.AccessConfigs
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) AliasIpRanges() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange {
+		return v.AliasIpRanges
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// Optional. The prefix length of the primary internal IPv6 range.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *int {
+		return v.InternalIpv6PrefixLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. An IPv4 internal IP address to assign to the instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) Ipv6AccessConfigs() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig {
+		return v.Ipv6AccessConfigs
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+// Possible values are: `UNSPECIFIED_IPV6_ACCESS_TYPE`, `INTERNAL`, `EXTERNAL`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string {
+		return v.Ipv6AccessType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An IPv6 internal network address for this network interface.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+// Optional. URL of the VPC network resource for this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string {
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Possible values are: `NIC_TYPE_UNSPECIFIED`, `VIRTIO_NET`, `GVNIC`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
+}
+
+// Possible values are: `STACK_TYPE_UNSPECIFIED`, `IPV4_ONLY`, `IPV4_IPV6`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string { return v.StackType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The URL of the Subnetwork resource for this instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig struct {
+	// (Optional)
+	ExternalIp *string `pulumi:"externalIp"`
+	// (Optional)
+	ExternalIpv6 *string `pulumi:"externalIpv6"`
+	// (Optional)
+	ExternalIpv6PrefixLength *int `pulumi:"externalIpv6PrefixLength"`
+	// Optional. The name of this access configuration.
+	Name *string `pulumi:"name"`
+	// Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
+	NetworkTier *string `pulumi:"networkTier"`
+	// (Optional)
+	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
+	// (Optional)
+	SetPublicPtr *bool `pulumi:"setPublicPtr"`
+	// Optional. The type of configuration.
+	// Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
+	Type *string `pulumi:"type"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs struct {
+	// (Optional)
+	ExternalIp pulumi.StringPtrInput `pulumi:"externalIp"`
+	// (Optional)
+	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
+	// (Optional)
+	ExternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"externalIpv6PrefixLength"`
+	// Optional. The name of this access configuration.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
+	NetworkTier pulumi.StringPtrInput `pulumi:"networkTier"`
+	// (Optional)
+	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
+	// (Optional)
+	SetPublicPtr pulumi.BoolPtrInput `pulumi:"setPublicPtr"`
+	// Optional. The type of configuration.
+	// Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray{ RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *string {
+		return v.ExternalIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *string {
+		return v.ExternalIpv6
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) ExternalIpv6PrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *int {
+		return v.ExternalIpv6PrefixLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The name of this access configuration.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *string {
+		return v.NetworkTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *string {
+		return v.PublicPtrDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) SetPublicPtr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *bool {
+		return v.SetPublicPtr
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The type of configuration.
+// Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange struct {
+	// (Optional)
+	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// (Optional)
+	SubnetworkRangeName *string `pulumi:"subnetworkRangeName"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs struct {
+	// (Optional)
+	IpCidrRange pulumi.StringPtrInput `pulumi:"ipCidrRange"`
+	// (Optional)
+	SubnetworkRangeName pulumi.StringPtrInput `pulumi:"subnetworkRangeName"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArray and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArray{ RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArray []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange) *string {
+		return v.IpCidrRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange) *string {
+		return v.SubnetworkRangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig struct {
+	// (Optional)
+	ExternalIp *string `pulumi:"externalIp"`
+	// (Optional)
+	ExternalIpv6 *string `pulumi:"externalIpv6"`
+	// (Optional)
+	ExternalIpv6PrefixLength *int `pulumi:"externalIpv6PrefixLength"`
+	// Required. The resource name of the backup instance.
+	Name *string `pulumi:"name"`
+	// Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
+	NetworkTier *string `pulumi:"networkTier"`
+	// (Optional)
+	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
+	// (Optional)
+	SetPublicPtr *bool `pulumi:"setPublicPtr"`
+	// Output only. Type of the resource.
+	Type *string `pulumi:"type"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs struct {
+	// (Optional)
+	ExternalIp pulumi.StringPtrInput `pulumi:"externalIp"`
+	// (Optional)
+	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
+	// (Optional)
+	ExternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"externalIpv6PrefixLength"`
+	// Required. The resource name of the backup instance.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
+	NetworkTier pulumi.StringPtrInput `pulumi:"networkTier"`
+	// (Optional)
+	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
+	// (Optional)
+	SetPublicPtr pulumi.BoolPtrInput `pulumi:"setPublicPtr"`
+	// Output only. Type of the resource.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArray and RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArray{ RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArray []RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArray) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *string {
+		return v.ExternalIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *string {
+		return v.ExternalIpv6
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *int {
+		return v.ExternalIpv6PrefixLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. The resource name of the backup instance.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) NetworkTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *string {
+		return v.NetworkTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *string {
+		return v.PublicPtrDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) SetPublicPtr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *bool {
+		return v.SetPublicPtr
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Output only. Type of the resource.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig struct {
+	// Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
+	TotalEgressBandwidthTier *string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs and RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs struct {
+	// Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
+	TotalEgressBandwidthTier pulumi.StringPtrInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs, RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtr and RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrType RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig) *RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput)
+}
+
+// Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig) *string {
+		return v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig) RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput)
+}
+
+// Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParams struct {
+	// Structure is documented below.
+	ResourceManagerTags []RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag `pulumi:"resourceManagerTags"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesParamsInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs and RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesParamsInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs struct {
+	// Structure is documented below.
+	ResourceManagerTags RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayInput `pulumi:"resourceManagerTags"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParams)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesParamsOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs, RestoreWorkloadComputeInstanceRestorePropertiesParamsPtr and RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesParamsPtrType RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesParamsPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs) RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesParamsPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesParams)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesParamsPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesParamsPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParams)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesParams) *RestoreWorkloadComputeInstanceRestorePropertiesParams {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput) ResourceManagerTags() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesParams) []RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag {
+		return v.ResourceManagerTags
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesParams)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesParams) RestoreWorkloadComputeInstanceRestorePropertiesParams {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesParams
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput) ResourceManagerTags() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesParams) []RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag struct {
+	// The identifier for this object. Format specified above.
+	Key string `pulumi:"key"`
+	// (Optional)
+	Value *string `pulumi:"value"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs and RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs struct {
+	// The identifier for this object. Format specified above.
+	Key pulumi.StringInput `pulumi:"key"`
+	// (Optional)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArray and RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArray{ RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArray []RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArray) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArray) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesScheduling struct {
+	// (Optional)
+	AutomaticRestart *bool `pulumi:"automaticRestart"`
+	// Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
+	InstanceTerminationAction *string `pulumi:"instanceTerminationAction"`
+	// A nested object resource.
+	// Structure is documented below.
+	LocalSsdRecoveryTimeout *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeout"`
+	// A nested object resource.
+	// Structure is documented below.
+	MaxRunDuration *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration `pulumi:"maxRunDuration"`
+	// (Optional)
+	MinNodeCpus *int `pulumi:"minNodeCpus"`
+	// Structure is documented below.
+	NodeAffinities []RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity `pulumi:"nodeAffinities"`
+	// Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
+	OnHostMaintenance *string `pulumi:"onHostMaintenance"`
+	// (Optional)
+	Preemptible *bool `pulumi:"preemptible"`
+	// Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
+	ProvisioningModel *string `pulumi:"provisioningModel"`
+	// (Optional)
+	TerminationTime *string `pulumi:"terminationTime"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs struct {
+	// (Optional)
+	AutomaticRestart pulumi.BoolPtrInput `pulumi:"automaticRestart"`
+	// Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
+	InstanceTerminationAction pulumi.StringPtrInput `pulumi:"instanceTerminationAction"`
+	// A nested object resource.
+	// Structure is documented below.
+	LocalSsdRecoveryTimeout RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrInput `pulumi:"localSsdRecoveryTimeout"`
+	// A nested object resource.
+	// Structure is documented below.
+	MaxRunDuration RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrInput `pulumi:"maxRunDuration"`
+	// (Optional)
+	MinNodeCpus pulumi.IntPtrInput `pulumi:"minNodeCpus"`
+	// Structure is documented below.
+	NodeAffinities RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+	// Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
+	OnHostMaintenance pulumi.StringPtrInput `pulumi:"onHostMaintenance"`
+	// (Optional)
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
+	ProvisioningModel pulumi.StringPtrInput `pulumi:"provisioningModel"`
+	// (Optional)
+	TerminationTime pulumi.StringPtrInput `pulumi:"terminationTime"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesScheduling)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs, RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtr and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrType RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesScheduling)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesScheduling)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) AutomaticRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *bool { return v.AutomaticRestart }).(pulumi.BoolPtrOutput)
+}
+
+// Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) InstanceTerminationAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string {
+		return v.InstanceTerminationAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) LocalSsdRecoveryTimeout() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout {
+		return v.LocalSsdRecoveryTimeout
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) MaxRunDuration() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
+		return v.MaxRunDuration
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *int { return v.MinNodeCpus }).(pulumi.IntPtrOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) NodeAffinities() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) []RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity {
+		return v.NodeAffinities
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput)
+}
+
+// Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) OnHostMaintenance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string { return v.OnHostMaintenance }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+}
+
+// Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) ProvisioningModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string { return v.ProvisioningModel }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput) TerminationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string { return v.TerminationTime }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesScheduling)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesScheduling
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) AutomaticRestart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticRestart
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) InstanceTerminationAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceTerminationAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) LocalSsdRecoveryTimeout() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdRecoveryTimeout
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) MaxRunDuration() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRunDuration
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) MinNodeCpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCpus
+	}).(pulumi.IntPtrOutput)
+}
+
+// Structure is documented below.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) NodeAffinities() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) []RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAffinities
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput)
+}
+
+// Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) OnHostMaintenance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnHostMaintenance
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) ProvisioningModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput) TerminationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesScheduling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TerminationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout struct {
+	// (Optional)
+	Nanos *int `pulumi:"nanos"`
+	// (Optional)
+	Seconds *int `pulumi:"seconds"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs struct {
+	// (Optional)
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Optional)
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs, RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtr and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrType RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout) *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout) *int {
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout) *int {
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration struct {
+	// (Optional)
+	Nanos *int `pulumi:"nanos"`
+	// (Optional)
+	Seconds *int `pulumi:"seconds"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs struct {
+	// (Optional)
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// (Optional)
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs, RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtr and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrType RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration) *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity struct {
+	// (Optional)
+	Key *string `pulumi:"key"`
+	// Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
+	Operator *string `pulumi:"operator"`
+	// (Optional)
+	Values []string `pulumi:"values"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs struct {
+	// (Optional)
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// (Optional)
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArray and RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArray{ RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArray []RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArray) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArray) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput {
+	return o
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity) *string {
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity) []string {
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount struct {
+	// (Optional)
+	Email *string `pulumi:"email"`
+	// (Optional)
+	Scopes []string `pulumi:"scopes"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs and RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs struct {
+	// (Optional)
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// (Optional)
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArray and RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArray{ RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs{...} }
+type RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArray []RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountInput
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArray) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArray) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput {
+	return o
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput() RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
+		return vs[0].([]RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount)[vs[1].(int)]
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig struct {
+	// (Optional)
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// (Optional)
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// (Optional)
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs and RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs struct {
+	// (Optional)
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// (Optional)
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// (Optional)
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs, RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtr and RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrType RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) *bool {
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) *bool {
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) *bool {
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesTags struct {
+	// (Optional)
+	Items []string `pulumi:"items"`
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesTagsInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs and RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesTagsInput` via:
+//
+//	RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs{...}
+type RestoreWorkloadComputeInstanceRestorePropertiesTagsInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesTagsOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesTagsOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs struct {
+	// (Optional)
+	Items pulumi.StringArrayInput `pulumi:"items"`
+}
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesTags)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesTagsOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput).ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrInput is an input type that accepts RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs, RestoreWorkloadComputeInstanceRestorePropertiesTagsPtr and RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput
+	ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput
+}
+
+type restoreWorkloadComputeInstanceRestorePropertiesTagsPtrType RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs
+
+func RestoreWorkloadComputeInstanceRestorePropertiesTagsPtr(v *RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs) RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrInput {
+	return (*restoreWorkloadComputeInstanceRestorePropertiesTagsPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceRestorePropertiesTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesTags)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesTagsPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceRestorePropertiesTagsPtrType) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesTags)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceRestorePropertiesTags) *RestoreWorkloadComputeInstanceRestorePropertiesTags {
+		return &v
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput) Items() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceRestorePropertiesTags) []string { return v.Items }).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceRestorePropertiesTags)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput() RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput) ToRestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput) Elem() RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesTags) RestoreWorkloadComputeInstanceRestorePropertiesTags {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceRestorePropertiesTags
+		return ret
+	}).(RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput) Items() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceRestorePropertiesTags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadComputeInstanceTargetEnvironment struct {
+	// Required. Target project for the Compute Engine instance.
+	Project string `pulumi:"project"`
+	// Required. The zone of the Compute Engine instance.
+	Zone string `pulumi:"zone"`
+}
+
+// RestoreWorkloadComputeInstanceTargetEnvironmentInput is an input type that accepts RestoreWorkloadComputeInstanceTargetEnvironmentArgs and RestoreWorkloadComputeInstanceTargetEnvironmentOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceTargetEnvironmentInput` via:
+//
+//	RestoreWorkloadComputeInstanceTargetEnvironmentArgs{...}
+type RestoreWorkloadComputeInstanceTargetEnvironmentInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceTargetEnvironmentOutput() RestoreWorkloadComputeInstanceTargetEnvironmentOutput
+	ToRestoreWorkloadComputeInstanceTargetEnvironmentOutputWithContext(context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentOutput
+}
+
+type RestoreWorkloadComputeInstanceTargetEnvironmentArgs struct {
+	// Required. Target project for the Compute Engine instance.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Required. The zone of the Compute Engine instance.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (RestoreWorkloadComputeInstanceTargetEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceTargetEnvironment)(nil)).Elem()
+}
+
+func (i RestoreWorkloadComputeInstanceTargetEnvironmentArgs) ToRestoreWorkloadComputeInstanceTargetEnvironmentOutput() RestoreWorkloadComputeInstanceTargetEnvironmentOutput {
+	return i.ToRestoreWorkloadComputeInstanceTargetEnvironmentOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceTargetEnvironmentArgs) ToRestoreWorkloadComputeInstanceTargetEnvironmentOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceTargetEnvironmentOutput)
+}
+
+func (i RestoreWorkloadComputeInstanceTargetEnvironmentArgs) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput() RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadComputeInstanceTargetEnvironmentArgs) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceTargetEnvironmentOutput).ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput is an input type that accepts RestoreWorkloadComputeInstanceTargetEnvironmentArgs, RestoreWorkloadComputeInstanceTargetEnvironmentPtr and RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput` via:
+//
+//	        RestoreWorkloadComputeInstanceTargetEnvironmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput() RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput
+	ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput
+}
+
+type restoreWorkloadComputeInstanceTargetEnvironmentPtrType RestoreWorkloadComputeInstanceTargetEnvironmentArgs
+
+func RestoreWorkloadComputeInstanceTargetEnvironmentPtr(v *RestoreWorkloadComputeInstanceTargetEnvironmentArgs) RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput {
+	return (*restoreWorkloadComputeInstanceTargetEnvironmentPtrType)(v)
+}
+
+func (*restoreWorkloadComputeInstanceTargetEnvironmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceTargetEnvironment)(nil)).Elem()
+}
+
+func (i *restoreWorkloadComputeInstanceTargetEnvironmentPtrType) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput() RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return i.ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadComputeInstanceTargetEnvironmentPtrType) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput)
+}
+
+type RestoreWorkloadComputeInstanceTargetEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceTargetEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadComputeInstanceTargetEnvironment)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) ToRestoreWorkloadComputeInstanceTargetEnvironmentOutput() RestoreWorkloadComputeInstanceTargetEnvironmentOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) ToRestoreWorkloadComputeInstanceTargetEnvironmentOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput() RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return o.ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadComputeInstanceTargetEnvironment) *RestoreWorkloadComputeInstanceTargetEnvironment {
+		return &v
+	}).(RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput)
+}
+
+// Required. Target project for the Compute Engine instance.
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceTargetEnvironment) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. The zone of the Compute Engine instance.
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadComputeInstanceTargetEnvironment) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadComputeInstanceTargetEnvironment)(nil)).Elem()
+}
+
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput() RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) ToRestoreWorkloadComputeInstanceTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) Elem() RestoreWorkloadComputeInstanceTargetEnvironmentOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceTargetEnvironment) RestoreWorkloadComputeInstanceTargetEnvironment {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadComputeInstanceTargetEnvironment
+		return ret
+	}).(RestoreWorkloadComputeInstanceTargetEnvironmentOutput)
+}
+
+// Required. Target project for the Compute Engine instance.
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceTargetEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The zone of the Compute Engine instance.
+func (o RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadComputeInstanceTargetEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadDiskRestoreProperties struct {
+	// Optional. The access mode of the disk.
+	// Possible values are: `READ_WRITE_SINGLE`, `READ_WRITE_MANY`, `READ_ONLY_MANY`.
+	AccessMode *string `pulumi:"accessMode"`
+	// Optional. The architecture of the source disk.
+	// Possible values are: `ARCHITECTURE_UNSPECIFIED`, `X86_64`, `ARM64`.
+	Architecture *string `pulumi:"architecture"`
+	// Optional. An optional description of this resource.
+	Description *string `pulumi:"description"`
+	// Optional. Encrypts the disk using a customer-supplied encryption key.
+	// Structure is documented below.
+	DiskEncryptionKey *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// Optional. Indicates whether this disk is using confidential compute mode.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
+	// Optional. A list of features to enable in the guest operating system.
+	// Structure is documented below.
+	GuestOsFeatures []RestoreWorkloadDiskRestorePropertiesGuestOsFeature `pulumi:"guestOsFeatures"`
+	// Optional. Labels to apply to this disk.
+	// Structure is documented below.
+	Labels []RestoreWorkloadDiskRestorePropertiesLabel `pulumi:"labels"`
+	// Optional. A list of publicly available licenses that are applicable to this backup.
+	Licenses []string `pulumi:"licenses"`
+	// Required. Name of the disk.
+	Name string `pulumi:"name"`
+	// Optional. Physical block size of the persistent disk, in bytes.
+	PhysicalBlockSizeBytes *int `pulumi:"physicalBlockSizeBytes"`
+	// Optional. Indicates how many IOPS to provision for the disk.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Optional. Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// Optional. Resource manager tags to be bound to the disk.
+	// Structure is documented below.
+	ResourceManagerTags []RestoreWorkloadDiskRestorePropertiesResourceManagerTag `pulumi:"resourceManagerTags"`
+	// Optional. Resource policies applied to this disk.
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
+	// Required. The size of the disk in GB.
+	SizeGb int `pulumi:"sizeGb"`
+	// Optional. The storage pool in which the new disk is created.
+	StoragePool *string `pulumi:"storagePool"`
+	// Required. URL of the disk type resource describing which disk type to use.
+	Type string `pulumi:"type"`
+}
+
+// RestoreWorkloadDiskRestorePropertiesInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesArgs and RestoreWorkloadDiskRestorePropertiesOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesArgs{...}
+type RestoreWorkloadDiskRestorePropertiesInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesOutput() RestoreWorkloadDiskRestorePropertiesOutput
+	ToRestoreWorkloadDiskRestorePropertiesOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesArgs struct {
+	// Optional. The access mode of the disk.
+	// Possible values are: `READ_WRITE_SINGLE`, `READ_WRITE_MANY`, `READ_ONLY_MANY`.
+	AccessMode pulumi.StringPtrInput `pulumi:"accessMode"`
+	// Optional. The architecture of the source disk.
+	// Possible values are: `ARCHITECTURE_UNSPECIFIED`, `X86_64`, `ARM64`.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// Optional. An optional description of this resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. Encrypts the disk using a customer-supplied encryption key.
+	// Structure is documented below.
+	DiskEncryptionKey RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrInput `pulumi:"diskEncryptionKey"`
+	// Optional. Indicates whether this disk is using confidential compute mode.
+	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
+	// Optional. A list of features to enable in the guest operating system.
+	// Structure is documented below.
+	GuestOsFeatures RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
+	// Optional. Labels to apply to this disk.
+	// Structure is documented below.
+	Labels RestoreWorkloadDiskRestorePropertiesLabelArrayInput `pulumi:"labels"`
+	// Optional. A list of publicly available licenses that are applicable to this backup.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
+	// Required. Name of the disk.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional. Physical block size of the persistent disk, in bytes.
+	PhysicalBlockSizeBytes pulumi.IntPtrInput `pulumi:"physicalBlockSizeBytes"`
+	// Optional. Indicates how many IOPS to provision for the disk.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Optional. Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+	// Optional. Resource manager tags to be bound to the disk.
+	// Structure is documented below.
+	ResourceManagerTags RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayInput `pulumi:"resourceManagerTags"`
+	// Optional. Resource policies applied to this disk.
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
+	// Required. The size of the disk in GB.
+	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
+	// Optional. The storage pool in which the new disk is created.
+	StoragePool pulumi.StringPtrInput `pulumi:"storagePool"`
+	// Required. URL of the disk type resource describing which disk type to use.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RestoreWorkloadDiskRestorePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestoreProperties)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesArgs) ToRestoreWorkloadDiskRestorePropertiesOutput() RestoreWorkloadDiskRestorePropertiesOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesArgs) ToRestoreWorkloadDiskRestorePropertiesOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesOutput)
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesArgs) ToRestoreWorkloadDiskRestorePropertiesPtrOutput() RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesArgs) ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesOutput).ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadDiskRestorePropertiesPtrInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesArgs, RestoreWorkloadDiskRestorePropertiesPtr and RestoreWorkloadDiskRestorePropertiesPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesPtrInput` via:
+//
+//	        RestoreWorkloadDiskRestorePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadDiskRestorePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesPtrOutput() RestoreWorkloadDiskRestorePropertiesPtrOutput
+	ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesPtrOutput
+}
+
+type restoreWorkloadDiskRestorePropertiesPtrType RestoreWorkloadDiskRestorePropertiesArgs
+
+func RestoreWorkloadDiskRestorePropertiesPtr(v *RestoreWorkloadDiskRestorePropertiesArgs) RestoreWorkloadDiskRestorePropertiesPtrInput {
+	return (*restoreWorkloadDiskRestorePropertiesPtrType)(v)
+}
+
+func (*restoreWorkloadDiskRestorePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadDiskRestoreProperties)(nil)).Elem()
+}
+
+func (i *restoreWorkloadDiskRestorePropertiesPtrType) ToRestoreWorkloadDiskRestorePropertiesPtrOutput() RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadDiskRestorePropertiesPtrType) ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestoreProperties)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ToRestoreWorkloadDiskRestorePropertiesOutput() RestoreWorkloadDiskRestorePropertiesOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ToRestoreWorkloadDiskRestorePropertiesOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ToRestoreWorkloadDiskRestorePropertiesPtrOutput() RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return o.ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadDiskRestoreProperties) *RestoreWorkloadDiskRestoreProperties {
+		return &v
+	}).(RestoreWorkloadDiskRestorePropertiesPtrOutput)
+}
+
+// Optional. The access mode of the disk.
+// Possible values are: `READ_WRITE_SINGLE`, `READ_WRITE_MANY`, `READ_ONLY_MANY`.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The architecture of the source disk.
+// Possible values are: `ARCHITECTURE_UNSPECIFIED`, `X86_64`, `ARM64`.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// Optional. An optional description of this resource.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Encrypts the disk using a customer-supplied encryption key.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) DiskEncryptionKey() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
+		return v.DiskEncryptionKey
+	}).(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput)
+}
+
+// Optional. Indicates whether this disk is using confidential compute mode.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *bool { return v.EnableConfidentialCompute }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A list of features to enable in the guest operating system.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) GuestOsFeatures() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) []RestoreWorkloadDiskRestorePropertiesGuestOsFeature {
+		return v.GuestOsFeatures
+	}).(RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput)
+}
+
+// Optional. Labels to apply to this disk.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) Labels() RestoreWorkloadDiskRestorePropertiesLabelArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) []RestoreWorkloadDiskRestorePropertiesLabel {
+		return v.Labels
+	}).(RestoreWorkloadDiskRestorePropertiesLabelArrayOutput)
+}
+
+// Optional. A list of publicly available licenses that are applicable to this backup.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
+// Required. Name of the disk.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Physical block size of the persistent disk, in bytes.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) PhysicalBlockSizeBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *int { return v.PhysicalBlockSizeBytes }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Indicates how many IOPS to provision for the disk.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Indicates how much throughput to provision for the disk.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *int { return v.ProvisionedThroughput }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Resource manager tags to be bound to the disk.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ResourceManagerTags() RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) []RestoreWorkloadDiskRestorePropertiesResourceManagerTag {
+		return v.ResourceManagerTags
+	}).(RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput)
+}
+
+// Optional. Resource policies applied to this disk.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
+// Required. The size of the disk in GB.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) SizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+// Optional. The storage pool in which the new disk is created.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) *string { return v.StoragePool }).(pulumi.StringPtrOutput)
+}
+
+// Required. URL of the disk type resource describing which disk type to use.
+func (o RestoreWorkloadDiskRestorePropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestoreProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadDiskRestoreProperties)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) ToRestoreWorkloadDiskRestorePropertiesPtrOutput() RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) ToRestoreWorkloadDiskRestorePropertiesPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) Elem() RestoreWorkloadDiskRestorePropertiesOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) RestoreWorkloadDiskRestoreProperties {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadDiskRestoreProperties
+		return ret
+	}).(RestoreWorkloadDiskRestorePropertiesOutput)
+}
+
+// Optional. The access mode of the disk.
+// Possible values are: `READ_WRITE_SINGLE`, `READ_WRITE_MANY`, `READ_ONLY_MANY`.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The architecture of the source disk.
+// Possible values are: `ARCHITECTURE_UNSPECIFIED`, `X86_64`, `ARM64`.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. An optional description of this resource.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Encrypts the disk using a customer-supplied encryption key.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) DiskEncryptionKey() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
+		if v == nil {
+			return nil
+		}
+		return v.DiskEncryptionKey
+	}).(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput)
+}
+
+// Optional. Indicates whether this disk is using confidential compute mode.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A list of features to enable in the guest operating system.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) GuestOsFeatures() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) []RestoreWorkloadDiskRestorePropertiesGuestOsFeature {
+		if v == nil {
+			return nil
+		}
+		return v.GuestOsFeatures
+	}).(RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput)
+}
+
+// Optional. Labels to apply to this disk.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) Labels() RestoreWorkloadDiskRestorePropertiesLabelArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) []RestoreWorkloadDiskRestorePropertiesLabel {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(RestoreWorkloadDiskRestorePropertiesLabelArrayOutput)
+}
+
+// Optional. A list of publicly available licenses that are applicable to this backup.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Licenses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. Name of the disk.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Physical block size of the persistent disk, in bytes.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) PhysicalBlockSizeBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PhysicalBlockSizeBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Indicates how many IOPS to provision for the disk.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Indicates how much throughput to provision for the disk.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Resource manager tags to be bound to the disk.
+// Structure is documented below.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) ResourceManagerTags() RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) []RestoreWorkloadDiskRestorePropertiesResourceManagerTag {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput)
+}
+
+// Optional. Resource policies applied to this disk.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePolicies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The size of the disk in GB.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The storage pool in which the new disk is created.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) StoragePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePool
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. URL of the disk type resource describing which disk type to use.
+func (o RestoreWorkloadDiskRestorePropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestoreProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey struct {
+	// (Optional)
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// (Optional)
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
+	// (Optional)
+	RawKey *string `pulumi:"rawKey"`
+	// (Optional)
+	RsaEncryptedKey *string `pulumi:"rsaEncryptedKey"`
+}
+
+// RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs and RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs{...}
+type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput
+	ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs struct {
+	// (Optional)
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// (Optional)
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
+	// (Optional)
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// (Optional)
+	RsaEncryptedKey pulumi.StringPtrInput `pulumi:"rsaEncryptedKey"`
+}
+
+func (RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput)
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput).ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs, RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtr and RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrInput` via:
+//
+//	        RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput
+	ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput
+}
+
+type restoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrType RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs
+
+func RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtr(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrInput {
+	return (*restoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrType)(v)
+}
+
+func (*restoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i *restoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrType) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrType) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return o.ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
+		return &v
+	}).(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string { return v.RsaEncryptedKey }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) ToRestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) Elem() RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey
+		return ret
+	}).(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput) RsaEncryptedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RsaEncryptedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesGuestOsFeature struct {
+	// Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
+	Type *string `pulumi:"type"`
+}
+
+// RestoreWorkloadDiskRestorePropertiesGuestOsFeatureInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs and RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesGuestOsFeatureInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs{...}
+type RestoreWorkloadDiskRestorePropertiesGuestOsFeatureInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput
+	ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs struct {
+	// Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesGuestOsFeature)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput)
+}
+
+// RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArray and RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArray{ RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs{...} }
+type RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput
+	ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArray []RestoreWorkloadDiskRestorePropertiesGuestOsFeatureInput
+
+func (RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadDiskRestorePropertiesGuestOsFeature)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArray) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArray) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesGuestOsFeature)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput {
+	return o
+}
+
+// Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
+func (o RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesGuestOsFeature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadDiskRestorePropertiesGuestOsFeature)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput() RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput) ToRestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadDiskRestorePropertiesGuestOsFeature {
+		return vs[0].([]RestoreWorkloadDiskRestorePropertiesGuestOsFeature)[vs[1].(int)]
+	}).(RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesLabel struct {
+	// The identifier for this object. Format specified above.
+	Key string `pulumi:"key"`
+	// (Optional)
+	Value *string `pulumi:"value"`
+}
+
+// RestoreWorkloadDiskRestorePropertiesLabelInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesLabelArgs and RestoreWorkloadDiskRestorePropertiesLabelOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesLabelInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesLabelArgs{...}
+type RestoreWorkloadDiskRestorePropertiesLabelInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesLabelOutput() RestoreWorkloadDiskRestorePropertiesLabelOutput
+	ToRestoreWorkloadDiskRestorePropertiesLabelOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesLabelOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesLabelArgs struct {
+	// The identifier for this object. Format specified above.
+	Key pulumi.StringInput `pulumi:"key"`
+	// (Optional)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RestoreWorkloadDiskRestorePropertiesLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesLabelArgs) ToRestoreWorkloadDiskRestorePropertiesLabelOutput() RestoreWorkloadDiskRestorePropertiesLabelOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesLabelOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesLabelArgs) ToRestoreWorkloadDiskRestorePropertiesLabelOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesLabelOutput)
+}
+
+// RestoreWorkloadDiskRestorePropertiesLabelArrayInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesLabelArray and RestoreWorkloadDiskRestorePropertiesLabelArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesLabelArrayInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesLabelArray{ RestoreWorkloadDiskRestorePropertiesLabelArgs{...} }
+type RestoreWorkloadDiskRestorePropertiesLabelArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesLabelArrayOutput() RestoreWorkloadDiskRestorePropertiesLabelArrayOutput
+	ToRestoreWorkloadDiskRestorePropertiesLabelArrayOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesLabelArrayOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesLabelArray []RestoreWorkloadDiskRestorePropertiesLabelInput
+
+func (RestoreWorkloadDiskRestorePropertiesLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadDiskRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesLabelArray) ToRestoreWorkloadDiskRestorePropertiesLabelArrayOutput() RestoreWorkloadDiskRestorePropertiesLabelArrayOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesLabelArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesLabelArray) ToRestoreWorkloadDiskRestorePropertiesLabelArrayOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesLabelArrayOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesLabelOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesLabelOutput) ToRestoreWorkloadDiskRestorePropertiesLabelOutput() RestoreWorkloadDiskRestorePropertiesLabelOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesLabelOutput) ToRestoreWorkloadDiskRestorePropertiesLabelOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesLabelOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o RestoreWorkloadDiskRestorePropertiesLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadDiskRestorePropertiesLabel)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesLabelArrayOutput) ToRestoreWorkloadDiskRestorePropertiesLabelArrayOutput() RestoreWorkloadDiskRestorePropertiesLabelArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesLabelArrayOutput) ToRestoreWorkloadDiskRestorePropertiesLabelArrayOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesLabelArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesLabelArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadDiskRestorePropertiesLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadDiskRestorePropertiesLabel {
+		return vs[0].([]RestoreWorkloadDiskRestorePropertiesLabel)[vs[1].(int)]
+	}).(RestoreWorkloadDiskRestorePropertiesLabelOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesResourceManagerTag struct {
+	// The identifier for this object. Format specified above.
+	Key string `pulumi:"key"`
+	// (Optional)
+	Value *string `pulumi:"value"`
+}
+
+// RestoreWorkloadDiskRestorePropertiesResourceManagerTagInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs and RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesResourceManagerTagInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs{...}
+type RestoreWorkloadDiskRestorePropertiesResourceManagerTagInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput() RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput
+	ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs struct {
+	// The identifier for this object. Format specified above.
+	Key pulumi.StringInput `pulumi:"key"`
+	// (Optional)
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesResourceManagerTag)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput() RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput)
+}
+
+// RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayInput is an input type that accepts RestoreWorkloadDiskRestorePropertiesResourceManagerTagArray and RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayInput` via:
+//
+//	RestoreWorkloadDiskRestorePropertiesResourceManagerTagArray{ RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs{...} }
+type RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput() RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput
+	ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutputWithContext(context.Context) RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput
+}
+
+type RestoreWorkloadDiskRestorePropertiesResourceManagerTagArray []RestoreWorkloadDiskRestorePropertiesResourceManagerTagInput
+
+func (RestoreWorkloadDiskRestorePropertiesResourceManagerTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadDiskRestorePropertiesResourceManagerTag)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesResourceManagerTagArray) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput() RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput {
+	return i.ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskRestorePropertiesResourceManagerTagArray) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesResourceManagerTag)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput() RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesResourceManagerTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// (Optional)
+func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskRestorePropertiesResourceManagerTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadDiskRestorePropertiesResourceManagerTag)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput() RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput) ToRestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutputWithContext(ctx context.Context) RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadDiskRestorePropertiesResourceManagerTag {
+		return vs[0].([]RestoreWorkloadDiskRestorePropertiesResourceManagerTag)[vs[1].(int)]
+	}).(RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput)
+}
+
+type RestoreWorkloadDiskTargetEnvironment struct {
+	// Required. Target project for the disk.
+	Project string `pulumi:"project"`
+	// Required. Target zone for the disk.
+	Zone string `pulumi:"zone"`
+}
+
+// RestoreWorkloadDiskTargetEnvironmentInput is an input type that accepts RestoreWorkloadDiskTargetEnvironmentArgs and RestoreWorkloadDiskTargetEnvironmentOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskTargetEnvironmentInput` via:
+//
+//	RestoreWorkloadDiskTargetEnvironmentArgs{...}
+type RestoreWorkloadDiskTargetEnvironmentInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskTargetEnvironmentOutput() RestoreWorkloadDiskTargetEnvironmentOutput
+	ToRestoreWorkloadDiskTargetEnvironmentOutputWithContext(context.Context) RestoreWorkloadDiskTargetEnvironmentOutput
+}
+
+type RestoreWorkloadDiskTargetEnvironmentArgs struct {
+	// Required. Target project for the disk.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Required. Target zone for the disk.
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (RestoreWorkloadDiskTargetEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (i RestoreWorkloadDiskTargetEnvironmentArgs) ToRestoreWorkloadDiskTargetEnvironmentOutput() RestoreWorkloadDiskTargetEnvironmentOutput {
+	return i.ToRestoreWorkloadDiskTargetEnvironmentOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskTargetEnvironmentArgs) ToRestoreWorkloadDiskTargetEnvironmentOutputWithContext(ctx context.Context) RestoreWorkloadDiskTargetEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskTargetEnvironmentOutput)
+}
+
+func (i RestoreWorkloadDiskTargetEnvironmentArgs) ToRestoreWorkloadDiskTargetEnvironmentPtrOutput() RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return i.ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadDiskTargetEnvironmentArgs) ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskTargetEnvironmentOutput).ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadDiskTargetEnvironmentPtrInput is an input type that accepts RestoreWorkloadDiskTargetEnvironmentArgs, RestoreWorkloadDiskTargetEnvironmentPtr and RestoreWorkloadDiskTargetEnvironmentPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadDiskTargetEnvironmentPtrInput` via:
+//
+//	        RestoreWorkloadDiskTargetEnvironmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadDiskTargetEnvironmentPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadDiskTargetEnvironmentPtrOutput() RestoreWorkloadDiskTargetEnvironmentPtrOutput
+	ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(context.Context) RestoreWorkloadDiskTargetEnvironmentPtrOutput
+}
+
+type restoreWorkloadDiskTargetEnvironmentPtrType RestoreWorkloadDiskTargetEnvironmentArgs
+
+func RestoreWorkloadDiskTargetEnvironmentPtr(v *RestoreWorkloadDiskTargetEnvironmentArgs) RestoreWorkloadDiskTargetEnvironmentPtrInput {
+	return (*restoreWorkloadDiskTargetEnvironmentPtrType)(v)
+}
+
+func (*restoreWorkloadDiskTargetEnvironmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (i *restoreWorkloadDiskTargetEnvironmentPtrType) ToRestoreWorkloadDiskTargetEnvironmentPtrOutput() RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return i.ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadDiskTargetEnvironmentPtrType) ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadDiskTargetEnvironmentPtrOutput)
+}
+
+type RestoreWorkloadDiskTargetEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskTargetEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskTargetEnvironmentOutput) ToRestoreWorkloadDiskTargetEnvironmentOutput() RestoreWorkloadDiskTargetEnvironmentOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskTargetEnvironmentOutput) ToRestoreWorkloadDiskTargetEnvironmentOutputWithContext(ctx context.Context) RestoreWorkloadDiskTargetEnvironmentOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskTargetEnvironmentOutput) ToRestoreWorkloadDiskTargetEnvironmentPtrOutput() RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return o.ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadDiskTargetEnvironmentOutput) ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadDiskTargetEnvironment) *RestoreWorkloadDiskTargetEnvironment {
+		return &v
+	}).(RestoreWorkloadDiskTargetEnvironmentPtrOutput)
+}
+
+// Required. Target project for the disk.
+func (o RestoreWorkloadDiskTargetEnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskTargetEnvironment) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. Target zone for the disk.
+func (o RestoreWorkloadDiskTargetEnvironmentOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadDiskTargetEnvironment) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type RestoreWorkloadDiskTargetEnvironmentPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadDiskTargetEnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) ToRestoreWorkloadDiskTargetEnvironmentPtrOutput() RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) ToRestoreWorkloadDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadDiskTargetEnvironmentPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) Elem() RestoreWorkloadDiskTargetEnvironmentOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskTargetEnvironment) RestoreWorkloadDiskTargetEnvironment {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadDiskTargetEnvironment
+		return ret
+	}).(RestoreWorkloadDiskTargetEnvironmentOutput)
+}
+
+// Required. Target project for the disk.
+func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskTargetEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Target zone for the disk.
+func (o RestoreWorkloadDiskTargetEnvironmentPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadDiskTargetEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadRegionDiskTargetEnvironment struct {
+	// Required. Target project for the disk.
+	Project string `pulumi:"project"`
+	// Required. Target region for the disk.
+	Region string `pulumi:"region"`
+	// Required. Target URLs of the replica zones for the disk.
+	ReplicaZones []string `pulumi:"replicaZones"`
+}
+
+// RestoreWorkloadRegionDiskTargetEnvironmentInput is an input type that accepts RestoreWorkloadRegionDiskTargetEnvironmentArgs and RestoreWorkloadRegionDiskTargetEnvironmentOutput values.
+// You can construct a concrete instance of `RestoreWorkloadRegionDiskTargetEnvironmentInput` via:
+//
+//	RestoreWorkloadRegionDiskTargetEnvironmentArgs{...}
+type RestoreWorkloadRegionDiskTargetEnvironmentInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadRegionDiskTargetEnvironmentOutput() RestoreWorkloadRegionDiskTargetEnvironmentOutput
+	ToRestoreWorkloadRegionDiskTargetEnvironmentOutputWithContext(context.Context) RestoreWorkloadRegionDiskTargetEnvironmentOutput
+}
+
+type RestoreWorkloadRegionDiskTargetEnvironmentArgs struct {
+	// Required. Target project for the disk.
+	Project pulumi.StringInput `pulumi:"project"`
+	// Required. Target region for the disk.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Required. Target URLs of the replica zones for the disk.
+	ReplicaZones pulumi.StringArrayInput `pulumi:"replicaZones"`
+}
+
+func (RestoreWorkloadRegionDiskTargetEnvironmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadRegionDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (i RestoreWorkloadRegionDiskTargetEnvironmentArgs) ToRestoreWorkloadRegionDiskTargetEnvironmentOutput() RestoreWorkloadRegionDiskTargetEnvironmentOutput {
+	return i.ToRestoreWorkloadRegionDiskTargetEnvironmentOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadRegionDiskTargetEnvironmentArgs) ToRestoreWorkloadRegionDiskTargetEnvironmentOutputWithContext(ctx context.Context) RestoreWorkloadRegionDiskTargetEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadRegionDiskTargetEnvironmentOutput)
+}
+
+func (i RestoreWorkloadRegionDiskTargetEnvironmentArgs) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutput() RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return i.ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadRegionDiskTargetEnvironmentArgs) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadRegionDiskTargetEnvironmentOutput).ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadRegionDiskTargetEnvironmentPtrInput is an input type that accepts RestoreWorkloadRegionDiskTargetEnvironmentArgs, RestoreWorkloadRegionDiskTargetEnvironmentPtr and RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadRegionDiskTargetEnvironmentPtrInput` via:
+//
+//	        RestoreWorkloadRegionDiskTargetEnvironmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadRegionDiskTargetEnvironmentPtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutput() RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput
+	ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(context.Context) RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput
+}
+
+type restoreWorkloadRegionDiskTargetEnvironmentPtrType RestoreWorkloadRegionDiskTargetEnvironmentArgs
+
+func RestoreWorkloadRegionDiskTargetEnvironmentPtr(v *RestoreWorkloadRegionDiskTargetEnvironmentArgs) RestoreWorkloadRegionDiskTargetEnvironmentPtrInput {
+	return (*restoreWorkloadRegionDiskTargetEnvironmentPtrType)(v)
+}
+
+func (*restoreWorkloadRegionDiskTargetEnvironmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadRegionDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (i *restoreWorkloadRegionDiskTargetEnvironmentPtrType) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutput() RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return i.ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadRegionDiskTargetEnvironmentPtrType) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput)
+}
+
+type RestoreWorkloadRegionDiskTargetEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadRegionDiskTargetEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadRegionDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) ToRestoreWorkloadRegionDiskTargetEnvironmentOutput() RestoreWorkloadRegionDiskTargetEnvironmentOutput {
+	return o
+}
+
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) ToRestoreWorkloadRegionDiskTargetEnvironmentOutputWithContext(ctx context.Context) RestoreWorkloadRegionDiskTargetEnvironmentOutput {
+	return o
+}
+
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutput() RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return o.ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadRegionDiskTargetEnvironment) *RestoreWorkloadRegionDiskTargetEnvironment {
+		return &v
+	}).(RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput)
+}
+
+// Required. Target project for the disk.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadRegionDiskTargetEnvironment) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Required. Target region for the disk.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreWorkloadRegionDiskTargetEnvironment) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Required. Target URLs of the replica zones for the disk.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestoreWorkloadRegionDiskTargetEnvironment) []string { return v.ReplicaZones }).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadRegionDiskTargetEnvironment)(nil)).Elem()
+}
+
+func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutput() RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) ToRestoreWorkloadRegionDiskTargetEnvironmentPtrOutputWithContext(ctx context.Context) RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) Elem() RestoreWorkloadRegionDiskTargetEnvironmentOutput {
+	return o.ApplyT(func(v *RestoreWorkloadRegionDiskTargetEnvironment) RestoreWorkloadRegionDiskTargetEnvironment {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadRegionDiskTargetEnvironment
+		return ret
+	}).(RestoreWorkloadRegionDiskTargetEnvironmentOutput)
+}
+
+// Required. Target project for the disk.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadRegionDiskTargetEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Target region for the disk.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadRegionDiskTargetEnvironment) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Target URLs of the replica zones for the disk.
+func (o RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput) ReplicaZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestoreWorkloadRegionDiskTargetEnvironment) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaZones
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestoreWorkloadTargetResource struct {
+	// Output only. Details of the native Google Cloud resource created as part of restore.
+	// Structure is documented below.
+	GcpResource *RestoreWorkloadTargetResourceGcpResource `pulumi:"gcpResource"`
+}
+
+// RestoreWorkloadTargetResourceInput is an input type that accepts RestoreWorkloadTargetResourceArgs and RestoreWorkloadTargetResourceOutput values.
+// You can construct a concrete instance of `RestoreWorkloadTargetResourceInput` via:
+//
+//	RestoreWorkloadTargetResourceArgs{...}
+type RestoreWorkloadTargetResourceInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadTargetResourceOutput() RestoreWorkloadTargetResourceOutput
+	ToRestoreWorkloadTargetResourceOutputWithContext(context.Context) RestoreWorkloadTargetResourceOutput
+}
+
+type RestoreWorkloadTargetResourceArgs struct {
+	// Output only. Details of the native Google Cloud resource created as part of restore.
+	// Structure is documented below.
+	GcpResource RestoreWorkloadTargetResourceGcpResourcePtrInput `pulumi:"gcpResource"`
+}
+
+func (RestoreWorkloadTargetResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadTargetResource)(nil)).Elem()
+}
+
+func (i RestoreWorkloadTargetResourceArgs) ToRestoreWorkloadTargetResourceOutput() RestoreWorkloadTargetResourceOutput {
+	return i.ToRestoreWorkloadTargetResourceOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadTargetResourceArgs) ToRestoreWorkloadTargetResourceOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadTargetResourceOutput)
+}
+
+// RestoreWorkloadTargetResourceArrayInput is an input type that accepts RestoreWorkloadTargetResourceArray and RestoreWorkloadTargetResourceArrayOutput values.
+// You can construct a concrete instance of `RestoreWorkloadTargetResourceArrayInput` via:
+//
+//	RestoreWorkloadTargetResourceArray{ RestoreWorkloadTargetResourceArgs{...} }
+type RestoreWorkloadTargetResourceArrayInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadTargetResourceArrayOutput() RestoreWorkloadTargetResourceArrayOutput
+	ToRestoreWorkloadTargetResourceArrayOutputWithContext(context.Context) RestoreWorkloadTargetResourceArrayOutput
+}
+
+type RestoreWorkloadTargetResourceArray []RestoreWorkloadTargetResourceInput
+
+func (RestoreWorkloadTargetResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadTargetResource)(nil)).Elem()
+}
+
+func (i RestoreWorkloadTargetResourceArray) ToRestoreWorkloadTargetResourceArrayOutput() RestoreWorkloadTargetResourceArrayOutput {
+	return i.ToRestoreWorkloadTargetResourceArrayOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadTargetResourceArray) ToRestoreWorkloadTargetResourceArrayOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadTargetResourceArrayOutput)
+}
+
+type RestoreWorkloadTargetResourceOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadTargetResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadTargetResource)(nil)).Elem()
+}
+
+func (o RestoreWorkloadTargetResourceOutput) ToRestoreWorkloadTargetResourceOutput() RestoreWorkloadTargetResourceOutput {
+	return o
+}
+
+func (o RestoreWorkloadTargetResourceOutput) ToRestoreWorkloadTargetResourceOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceOutput {
+	return o
+}
+
+// Output only. Details of the native Google Cloud resource created as part of restore.
+// Structure is documented below.
+func (o RestoreWorkloadTargetResourceOutput) GcpResource() RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadTargetResource) *RestoreWorkloadTargetResourceGcpResource { return v.GcpResource }).(RestoreWorkloadTargetResourceGcpResourcePtrOutput)
+}
+
+type RestoreWorkloadTargetResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadTargetResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestoreWorkloadTargetResource)(nil)).Elem()
+}
+
+func (o RestoreWorkloadTargetResourceArrayOutput) ToRestoreWorkloadTargetResourceArrayOutput() RestoreWorkloadTargetResourceArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadTargetResourceArrayOutput) ToRestoreWorkloadTargetResourceArrayOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceArrayOutput {
+	return o
+}
+
+func (o RestoreWorkloadTargetResourceArrayOutput) Index(i pulumi.IntInput) RestoreWorkloadTargetResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreWorkloadTargetResource {
+		return vs[0].([]RestoreWorkloadTargetResource)[vs[1].(int)]
+	}).(RestoreWorkloadTargetResourceOutput)
+}
+
+type RestoreWorkloadTargetResourceGcpResource struct {
+	// Output only. Name of the Google Cloud resource.
+	GcpResourcename *string `pulumi:"gcpResourcename"`
+	// Required. The location for the backup vault.
+	Location *string `pulumi:"location"`
+	// Output only. Type of the resource.
+	Type *string `pulumi:"type"`
+}
+
+// RestoreWorkloadTargetResourceGcpResourceInput is an input type that accepts RestoreWorkloadTargetResourceGcpResourceArgs and RestoreWorkloadTargetResourceGcpResourceOutput values.
+// You can construct a concrete instance of `RestoreWorkloadTargetResourceGcpResourceInput` via:
+//
+//	RestoreWorkloadTargetResourceGcpResourceArgs{...}
+type RestoreWorkloadTargetResourceGcpResourceInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadTargetResourceGcpResourceOutput() RestoreWorkloadTargetResourceGcpResourceOutput
+	ToRestoreWorkloadTargetResourceGcpResourceOutputWithContext(context.Context) RestoreWorkloadTargetResourceGcpResourceOutput
+}
+
+type RestoreWorkloadTargetResourceGcpResourceArgs struct {
+	// Output only. Name of the Google Cloud resource.
+	GcpResourcename pulumi.StringPtrInput `pulumi:"gcpResourcename"`
+	// Required. The location for the backup vault.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Output only. Type of the resource.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RestoreWorkloadTargetResourceGcpResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadTargetResourceGcpResource)(nil)).Elem()
+}
+
+func (i RestoreWorkloadTargetResourceGcpResourceArgs) ToRestoreWorkloadTargetResourceGcpResourceOutput() RestoreWorkloadTargetResourceGcpResourceOutput {
+	return i.ToRestoreWorkloadTargetResourceGcpResourceOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadTargetResourceGcpResourceArgs) ToRestoreWorkloadTargetResourceGcpResourceOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceGcpResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadTargetResourceGcpResourceOutput)
+}
+
+func (i RestoreWorkloadTargetResourceGcpResourceArgs) ToRestoreWorkloadTargetResourceGcpResourcePtrOutput() RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return i.ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(context.Background())
+}
+
+func (i RestoreWorkloadTargetResourceGcpResourceArgs) ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadTargetResourceGcpResourceOutput).ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(ctx)
+}
+
+// RestoreWorkloadTargetResourceGcpResourcePtrInput is an input type that accepts RestoreWorkloadTargetResourceGcpResourceArgs, RestoreWorkloadTargetResourceGcpResourcePtr and RestoreWorkloadTargetResourceGcpResourcePtrOutput values.
+// You can construct a concrete instance of `RestoreWorkloadTargetResourceGcpResourcePtrInput` via:
+//
+//	        RestoreWorkloadTargetResourceGcpResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestoreWorkloadTargetResourceGcpResourcePtrInput interface {
+	pulumi.Input
+
+	ToRestoreWorkloadTargetResourceGcpResourcePtrOutput() RestoreWorkloadTargetResourceGcpResourcePtrOutput
+	ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(context.Context) RestoreWorkloadTargetResourceGcpResourcePtrOutput
+}
+
+type restoreWorkloadTargetResourceGcpResourcePtrType RestoreWorkloadTargetResourceGcpResourceArgs
+
+func RestoreWorkloadTargetResourceGcpResourcePtr(v *RestoreWorkloadTargetResourceGcpResourceArgs) RestoreWorkloadTargetResourceGcpResourcePtrInput {
+	return (*restoreWorkloadTargetResourceGcpResourcePtrType)(v)
+}
+
+func (*restoreWorkloadTargetResourceGcpResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadTargetResourceGcpResource)(nil)).Elem()
+}
+
+func (i *restoreWorkloadTargetResourceGcpResourcePtrType) ToRestoreWorkloadTargetResourceGcpResourcePtrOutput() RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return i.ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *restoreWorkloadTargetResourceGcpResourcePtrType) ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreWorkloadTargetResourceGcpResourcePtrOutput)
+}
+
+type RestoreWorkloadTargetResourceGcpResourceOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadTargetResourceGcpResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreWorkloadTargetResourceGcpResource)(nil)).Elem()
+}
+
+func (o RestoreWorkloadTargetResourceGcpResourceOutput) ToRestoreWorkloadTargetResourceGcpResourceOutput() RestoreWorkloadTargetResourceGcpResourceOutput {
+	return o
+}
+
+func (o RestoreWorkloadTargetResourceGcpResourceOutput) ToRestoreWorkloadTargetResourceGcpResourceOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceGcpResourceOutput {
+	return o
+}
+
+func (o RestoreWorkloadTargetResourceGcpResourceOutput) ToRestoreWorkloadTargetResourceGcpResourcePtrOutput() RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return o.ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(context.Background())
+}
+
+func (o RestoreWorkloadTargetResourceGcpResourceOutput) ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestoreWorkloadTargetResourceGcpResource) *RestoreWorkloadTargetResourceGcpResource {
+		return &v
+	}).(RestoreWorkloadTargetResourceGcpResourcePtrOutput)
+}
+
+// Output only. Name of the Google Cloud resource.
+func (o RestoreWorkloadTargetResourceGcpResourceOutput) GcpResourcename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadTargetResourceGcpResource) *string { return v.GcpResourcename }).(pulumi.StringPtrOutput)
+}
+
+// Required. The location for the backup vault.
+func (o RestoreWorkloadTargetResourceGcpResourceOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadTargetResourceGcpResource) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Output only. Type of the resource.
+func (o RestoreWorkloadTargetResourceGcpResourceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestoreWorkloadTargetResourceGcpResource) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RestoreWorkloadTargetResourceGcpResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (RestoreWorkloadTargetResourceGcpResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreWorkloadTargetResourceGcpResource)(nil)).Elem()
+}
+
+func (o RestoreWorkloadTargetResourceGcpResourcePtrOutput) ToRestoreWorkloadTargetResourceGcpResourcePtrOutput() RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadTargetResourceGcpResourcePtrOutput) ToRestoreWorkloadTargetResourceGcpResourcePtrOutputWithContext(ctx context.Context) RestoreWorkloadTargetResourceGcpResourcePtrOutput {
+	return o
+}
+
+func (o RestoreWorkloadTargetResourceGcpResourcePtrOutput) Elem() RestoreWorkloadTargetResourceGcpResourceOutput {
+	return o.ApplyT(func(v *RestoreWorkloadTargetResourceGcpResource) RestoreWorkloadTargetResourceGcpResource {
+		if v != nil {
+			return *v
+		}
+		var ret RestoreWorkloadTargetResourceGcpResource
+		return ret
+	}).(RestoreWorkloadTargetResourceGcpResourceOutput)
+}
+
+// Output only. Name of the Google Cloud resource.
+func (o RestoreWorkloadTargetResourceGcpResourcePtrOutput) GcpResourcename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadTargetResourceGcpResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpResourcename
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The location for the backup vault.
+func (o RestoreWorkloadTargetResourceGcpResourcePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadTargetResourceGcpResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. Type of the resource.
+func (o RestoreWorkloadTargetResourceGcpResourcePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreWorkloadTargetResourceGcpResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetBackupBackup struct {
 	// Id of the requesting object, Backup.
 	BackupId string `pulumi:"backupId"`
@@ -3755,6 +10490,82 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriArrayInput)(nil)).Elem(), ManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkInput)(nil)).Elem(), ManagementServerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkArrayInput)(nil)).Elem(), ManagementServerNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesLabelInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadataInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParamsInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesTagsInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceTargetEnvironmentInput)(nil)).Elem(), RestoreWorkloadComputeInstanceTargetEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadComputeInstanceTargetEnvironmentPtrInput)(nil)).Elem(), RestoreWorkloadComputeInstanceTargetEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesPtrInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesGuestOsFeatureInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesLabelInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesLabelArrayInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesResourceManagerTagInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayInput)(nil)).Elem(), RestoreWorkloadDiskRestorePropertiesResourceManagerTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskTargetEnvironmentInput)(nil)).Elem(), RestoreWorkloadDiskTargetEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadDiskTargetEnvironmentPtrInput)(nil)).Elem(), RestoreWorkloadDiskTargetEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadRegionDiskTargetEnvironmentInput)(nil)).Elem(), RestoreWorkloadRegionDiskTargetEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadRegionDiskTargetEnvironmentPtrInput)(nil)).Elem(), RestoreWorkloadRegionDiskTargetEnvironmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadTargetResourceInput)(nil)).Elem(), RestoreWorkloadTargetResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadTargetResourceArrayInput)(nil)).Elem(), RestoreWorkloadTargetResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadTargetResourceGcpResourceInput)(nil)).Elem(), RestoreWorkloadTargetResourceGcpResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadTargetResourceGcpResourcePtrInput)(nil)).Elem(), RestoreWorkloadTargetResourceGcpResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupInput)(nil)).Elem(), GetBackupBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupArrayInput)(nil)).Elem(), GetBackupBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArgs{})
@@ -3812,6 +10623,82 @@ func init() {
 	pulumi.RegisterOutputType(ManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevicePtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesLabelOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesLabelArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesMetadataOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesMetadataPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesParamsOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesParamsPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesTagsOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceRestorePropertiesTagsPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceTargetEnvironmentOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadComputeInstanceTargetEnvironmentPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesGuestOsFeatureOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesLabelOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesLabelArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesResourceManagerTagOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskRestorePropertiesResourceManagerTagArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskTargetEnvironmentOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadDiskTargetEnvironmentPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadRegionDiskTargetEnvironmentOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadRegionDiskTargetEnvironmentPtrOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadTargetResourceOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadTargetResourceArrayOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadTargetResourceGcpResourceOutput{})
+	pulumi.RegisterOutputType(RestoreWorkloadTargetResourceGcpResourcePtrOutput{})
 	pulumi.RegisterOutputType(GetBackupBackupOutput{})
 	pulumi.RegisterOutputType(GetBackupBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoOutput{})

@@ -18,12 +18,22 @@ public final class ClusterRbacBindingConfigArgs extends com.pulumi.resources.Res
     /**
      * Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
      * 
+     * ## Attributes Reference
+     * 
+     * In addition to the arguments listed above, the following computed attributes are
+     * exported:
+     * 
      */
     @Import(name="enableInsecureBindingSystemAuthenticated")
     private @Nullable Output<Boolean> enableInsecureBindingSystemAuthenticated;
 
     /**
      * @return Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+     * 
+     * ## Attributes Reference
+     * 
+     * In addition to the arguments listed above, the following computed attributes are
+     * exported:
      * 
      */
     public Optional<Output<Boolean>> enableInsecureBindingSystemAuthenticated() {
@@ -73,6 +83,11 @@ public final class ClusterRbacBindingConfigArgs extends com.pulumi.resources.Res
         /**
          * @param enableInsecureBindingSystemAuthenticated Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
          * 
+         * ## Attributes Reference
+         * 
+         * In addition to the arguments listed above, the following computed attributes are
+         * exported:
+         * 
          * @return builder
          * 
          */
@@ -83,6 +98,11 @@ public final class ClusterRbacBindingConfigArgs extends com.pulumi.resources.Res
 
         /**
          * @param enableInsecureBindingSystemAuthenticated Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
+         * 
+         * ## Attributes Reference
+         * 
+         * In addition to the arguments listed above, the following computed attributes are
+         * exported:
          * 
          * @return builder
          * 

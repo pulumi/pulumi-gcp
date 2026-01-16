@@ -1153,6 +1153,13 @@ __all__ = [
     'GetRouterStatusBestRoutesForRouterParamResult',
     'GetRouterStatusBestRoutesForRouterWarningResult',
     'GetRouterStatusBestRoutesForRouterWarningDataResult',
+    'GetRoutersRouterResult',
+    'GetRoutersRouterBgpResult',
+    'GetRoutersRouterBgpAdvertisedIpRangeResult',
+    'GetRoutersRouterBgpPeerResult',
+    'GetRoutersRouterInterfaceResult',
+    'GetRoutersRouterMd5AuthenticationKeyResult',
+    'GetRoutersRouterNatResult',
     'GetSecurityPolicyAdaptiveProtectionConfigResult',
     'GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResult',
     'GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResult',
@@ -81192,6 +81199,370 @@ class GetRouterStatusBestRoutesForRouterWarningDataResult(dict):
         A warning data value corresponding to the key.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRoutersRouterResult(dict):
+    def __init__(__self__, *,
+                 bgp_peers: Sequence['outputs.GetRoutersRouterBgpPeerResult'],
+                 bgps: Sequence['outputs.GetRoutersRouterBgpResult'],
+                 creation_timestamp: _builtins.str,
+                 description: _builtins.str,
+                 encrypted_interconnect_router: _builtins.bool,
+                 interfaces: Sequence['outputs.GetRoutersRouterInterfaceResult'],
+                 md5_authentication_keys: Sequence['outputs.GetRoutersRouterMd5AuthenticationKeyResult'],
+                 name: _builtins.str,
+                 nats: Sequence['outputs.GetRoutersRouterNatResult'],
+                 network: _builtins.str,
+                 self_link: _builtins.str):
+        pulumi.set(__self__, "bgp_peers", bgp_peers)
+        pulumi.set(__self__, "bgps", bgps)
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encrypted_interconnect_router", encrypted_interconnect_router)
+        pulumi.set(__self__, "interfaces", interfaces)
+        pulumi.set(__self__, "md5_authentication_keys", md5_authentication_keys)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nats", nats)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "self_link", self_link)
+
+    @_builtins.property
+    @pulumi.getter(name="bgpPeers")
+    def bgp_peers(self) -> Sequence['outputs.GetRoutersRouterBgpPeerResult']:
+        return pulumi.get(self, "bgp_peers")
+
+    @_builtins.property
+    @pulumi.getter
+    def bgps(self) -> Sequence['outputs.GetRoutersRouterBgpResult']:
+        return pulumi.get(self, "bgps")
+
+    @_builtins.property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> _builtins.str:
+        return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptedInterconnectRouter")
+    def encrypted_interconnect_router(self) -> _builtins.bool:
+        return pulumi.get(self, "encrypted_interconnect_router")
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.GetRoutersRouterInterfaceResult']:
+        return pulumi.get(self, "interfaces")
+
+    @_builtins.property
+    @pulumi.getter(name="md5AuthenticationKeys")
+    def md5_authentication_keys(self) -> Sequence['outputs.GetRoutersRouterMd5AuthenticationKeyResult']:
+        return pulumi.get(self, "md5_authentication_keys")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nats(self) -> Sequence['outputs.GetRoutersRouterNatResult']:
+        return pulumi.get(self, "nats")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> _builtins.str:
+        return pulumi.get(self, "self_link")
+
+
+@pulumi.output_type
+class GetRoutersRouterBgpResult(dict):
+    def __init__(__self__, *,
+                 advertise_mode: _builtins.str,
+                 advertised_groups: Sequence[_builtins.str],
+                 advertised_ip_ranges: Sequence['outputs.GetRoutersRouterBgpAdvertisedIpRangeResult'],
+                 asn: _builtins.int,
+                 keepalive_interval: _builtins.int):
+        pulumi.set(__self__, "advertise_mode", advertise_mode)
+        pulumi.set(__self__, "advertised_groups", advertised_groups)
+        pulumi.set(__self__, "advertised_ip_ranges", advertised_ip_ranges)
+        pulumi.set(__self__, "asn", asn)
+        pulumi.set(__self__, "keepalive_interval", keepalive_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="advertiseMode")
+    def advertise_mode(self) -> _builtins.str:
+        return pulumi.get(self, "advertise_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="advertisedGroups")
+    def advertised_groups(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "advertised_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="advertisedIpRanges")
+    def advertised_ip_ranges(self) -> Sequence['outputs.GetRoutersRouterBgpAdvertisedIpRangeResult']:
+        return pulumi.get(self, "advertised_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def asn(self) -> _builtins.int:
+        return pulumi.get(self, "asn")
+
+    @_builtins.property
+    @pulumi.getter(name="keepaliveInterval")
+    def keepalive_interval(self) -> _builtins.int:
+        return pulumi.get(self, "keepalive_interval")
+
+
+@pulumi.output_type
+class GetRoutersRouterBgpAdvertisedIpRangeResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 range: _builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetRoutersRouterBgpPeerResult(dict):
+    def __init__(__self__, *,
+                 advertise_mode: _builtins.str,
+                 advertised_route_priority: _builtins.int,
+                 enable: _builtins.str,
+                 enable_ipv6: _builtins.bool,
+                 interface_name: _builtins.str,
+                 ip_address: _builtins.str,
+                 management_type: _builtins.str,
+                 name: _builtins.str,
+                 peer_asn: _builtins.int,
+                 peer_ip_address: _builtins.str):
+        pulumi.set(__self__, "advertise_mode", advertise_mode)
+        pulumi.set(__self__, "advertised_route_priority", advertised_route_priority)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+        pulumi.set(__self__, "interface_name", interface_name)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "management_type", management_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "peer_asn", peer_asn)
+        pulumi.set(__self__, "peer_ip_address", peer_ip_address)
+
+    @_builtins.property
+    @pulumi.getter(name="advertiseMode")
+    def advertise_mode(self) -> _builtins.str:
+        return pulumi.get(self, "advertise_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="advertisedRoutePriority")
+    def advertised_route_priority(self) -> _builtins.int:
+        return pulumi.get(self, "advertised_route_priority")
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> _builtins.str:
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> _builtins.bool:
+        return pulumi.get(self, "enable_ipv6")
+
+    @_builtins.property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> _builtins.str:
+        return pulumi.get(self, "interface_name")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="managementType")
+    def management_type(self) -> _builtins.str:
+        return pulumi.get(self, "management_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="peerAsn")
+    def peer_asn(self) -> _builtins.int:
+        return pulumi.get(self, "peer_asn")
+
+    @_builtins.property
+    @pulumi.getter(name="peerIpAddress")
+    def peer_ip_address(self) -> _builtins.str:
+        return pulumi.get(self, "peer_ip_address")
+
+
+@pulumi.output_type
+class GetRoutersRouterInterfaceResult(dict):
+    def __init__(__self__, *,
+                 ip_range: _builtins.str,
+                 linked_interconnect_attachment: _builtins.str,
+                 linked_vpn_tunnel: _builtins.str,
+                 name: _builtins.str,
+                 private_ip_address: _builtins.str,
+                 redundant_interface: _builtins.str,
+                 subnetwork: _builtins.str):
+        pulumi.set(__self__, "ip_range", ip_range)
+        pulumi.set(__self__, "linked_interconnect_attachment", linked_interconnect_attachment)
+        pulumi.set(__self__, "linked_vpn_tunnel", linked_vpn_tunnel)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_ip_address", private_ip_address)
+        pulumi.set(__self__, "redundant_interface", redundant_interface)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter(name="ipRange")
+    def ip_range(self) -> _builtins.str:
+        return pulumi.get(self, "ip_range")
+
+    @_builtins.property
+    @pulumi.getter(name="linkedInterconnectAttachment")
+    def linked_interconnect_attachment(self) -> _builtins.str:
+        return pulumi.get(self, "linked_interconnect_attachment")
+
+    @_builtins.property
+    @pulumi.getter(name="linkedVpnTunnel")
+    def linked_vpn_tunnel(self) -> _builtins.str:
+        return pulumi.get(self, "linked_vpn_tunnel")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> _builtins.str:
+        return pulumi.get(self, "private_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="redundantInterface")
+    def redundant_interface(self) -> _builtins.str:
+        return pulumi.get(self, "redundant_interface")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnetwork(self) -> _builtins.str:
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class GetRoutersRouterMd5AuthenticationKeyResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 name: _builtins.str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRoutersRouterNatResult(dict):
+    def __init__(__self__, *,
+                 enable_endpoint_independent_mapping: _builtins.bool,
+                 icmp_idle_timeout_sec: _builtins.int,
+                 min_ports_per_vm: _builtins.int,
+                 name: _builtins.str,
+                 nat_ip_allocate_option: _builtins.str,
+                 nat_ips: Sequence[_builtins.str],
+                 source_subnetwork_ip_ranges_to_nat: _builtins.str,
+                 tcp_established_idle_timeout_sec: _builtins.int,
+                 tcp_transitory_idle_timeout_sec: _builtins.int,
+                 udp_idle_timeout_sec: _builtins.int):
+        pulumi.set(__self__, "enable_endpoint_independent_mapping", enable_endpoint_independent_mapping)
+        pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
+        pulumi.set(__self__, "min_ports_per_vm", min_ports_per_vm)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nat_ip_allocate_option", nat_ip_allocate_option)
+        pulumi.set(__self__, "nat_ips", nat_ips)
+        pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
+        pulumi.set(__self__, "tcp_established_idle_timeout_sec", tcp_established_idle_timeout_sec)
+        pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
+        pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="enableEndpointIndependentMapping")
+    def enable_endpoint_independent_mapping(self) -> _builtins.bool:
+        return pulumi.get(self, "enable_endpoint_independent_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="icmpIdleTimeoutSec")
+    def icmp_idle_timeout_sec(self) -> _builtins.int:
+        return pulumi.get(self, "icmp_idle_timeout_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="minPortsPerVm")
+    def min_ports_per_vm(self) -> _builtins.int:
+        return pulumi.get(self, "min_ports_per_vm")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="natIpAllocateOption")
+    def nat_ip_allocate_option(self) -> _builtins.str:
+        return pulumi.get(self, "nat_ip_allocate_option")
+
+    @_builtins.property
+    @pulumi.getter(name="natIps")
+    def nat_ips(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "nat_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceSubnetworkIpRangesToNat")
+    def source_subnetwork_ip_ranges_to_nat(self) -> _builtins.str:
+        return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
+
+    @_builtins.property
+    @pulumi.getter(name="tcpEstablishedIdleTimeoutSec")
+    def tcp_established_idle_timeout_sec(self) -> _builtins.int:
+        return pulumi.get(self, "tcp_established_idle_timeout_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="tcpTransitoryIdleTimeoutSec")
+    def tcp_transitory_idle_timeout_sec(self) -> _builtins.int:
+        return pulumi.get(self, "tcp_transitory_idle_timeout_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="udpIdleTimeoutSec")
+    def udp_idle_timeout_sec(self) -> _builtins.int:
+        return pulumi.get(self, "udp_idle_timeout_sec")
 
 
 @pulumi.output_type

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// To get more information about LbRouteExtension, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1beta1/projects.locations.lbRouteExtensions)
+    /// * [API documentation](https://cloud.google.com/service-extensions/docs/reference/rest/v1/projects.locations.lbRouteExtensions)
     /// * How-to Guides
     ///     * [Configure a route extension](https://cloud.google.com/service-extensions/docs/configure-callout#configure_a_route_extension)
     /// 
@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Match conditions for each extension chain are evaluated in sequence for a given request.
         /// The first extension chain that has a condition that matches the request is executed.
         /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         /// Structure is documented below.
         /// </summary>
         [Output("extensionChains")]
@@ -184,6 +185,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Match conditions for each extension chain are evaluated in sequence for a given request.
         /// The first extension chain that has a condition that matches the request is executed.
         /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.LbRouteExtensionExtensionChainArgs> ExtensionChains
@@ -285,6 +287,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Match conditions for each extension chain are evaluated in sequence for a given request.
         /// The first extension chain that has a condition that matches the request is executed.
         /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
+        /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.LbRouteExtensionExtensionChainGetArgs> ExtensionChains

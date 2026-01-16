@@ -192,6 +192,12 @@ namespace Pulumi.Gcp.SecurityCenter
     ///         CryptoKeyId = cryptoKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gs-project-accounts.iam.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             cryptoKeyMemberCdfSa,
+    ///         },
     ///     });
     /// 
     ///     var cmek = new Gcp.DataFusion.Instance("cmek", new()
@@ -207,7 +213,6 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     {
     ///         DependsOn =
     ///         {
-    ///             cryptoKeyMemberCdfSa,
     ///             cryptoKeyMemberGcsSa,
     ///         },
     ///     });

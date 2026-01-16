@@ -61,6 +61,7 @@ __all__ = [
     'DatascanExecutionSpec',
     'DatascanExecutionSpecTrigger',
     'DatascanExecutionSpecTriggerOnDemand',
+    'DatascanExecutionSpecTriggerOneTime',
     'DatascanExecutionSpecTriggerSchedule',
     'DatascanExecutionStatus',
     'DatascanIamBindingCondition',
@@ -2430,6 +2431,8 @@ class DatascanExecutionSpecTrigger(dict):
         suggest = None
         if key == "onDemand":
             suggest = "on_demand"
+        elif key == "oneTime":
+            suggest = "one_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatascanExecutionSpecTrigger. Access the value via the '{suggest}' property getter instead.")
@@ -2444,14 +2447,19 @@ class DatascanExecutionSpecTrigger(dict):
 
     def __init__(__self__, *,
                  on_demand: Optional['outputs.DatascanExecutionSpecTriggerOnDemand'] = None,
+                 one_time: Optional['outputs.DatascanExecutionSpecTriggerOneTime'] = None,
                  schedule: Optional['outputs.DatascanExecutionSpecTriggerSchedule'] = None):
         """
         :param 'DatascanExecutionSpecTriggerOnDemandArgs' on_demand: The scan runs once via dataScans.run API.
+        :param 'DatascanExecutionSpecTriggerOneTimeArgs' one_time: The scan runs once upon DataScan creation.
+               Structure is documented below.
         :param 'DatascanExecutionSpecTriggerScheduleArgs' schedule: The scan is scheduled to run periodically.
                Structure is documented below.
         """
         if on_demand is not None:
             pulumi.set(__self__, "on_demand", on_demand)
+        if one_time is not None:
+            pulumi.set(__self__, "one_time", one_time)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
 
@@ -2462,6 +2470,15 @@ class DatascanExecutionSpecTrigger(dict):
         The scan runs once via dataScans.run API.
         """
         return pulumi.get(self, "on_demand")
+
+    @_builtins.property
+    @pulumi.getter(name="oneTime")
+    def one_time(self) -> Optional['outputs.DatascanExecutionSpecTriggerOneTime']:
+        """
+        The scan runs once upon DataScan creation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "one_time")
 
     @_builtins.property
     @pulumi.getter
@@ -2477,6 +2494,42 @@ class DatascanExecutionSpecTrigger(dict):
 class DatascanExecutionSpecTriggerOnDemand(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class DatascanExecutionSpecTriggerOneTime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ttlAfterScanCompletion":
+            suggest = "ttl_after_scan_completion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanExecutionSpecTriggerOneTime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanExecutionSpecTriggerOneTime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanExecutionSpecTriggerOneTime.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ttl_after_scan_completion: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ttl_after_scan_completion: Time to live for the DataScan and its results after the one-time run completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
+        """
+        if ttl_after_scan_completion is not None:
+            pulumi.set(__self__, "ttl_after_scan_completion", ttl_after_scan_completion)
+
+    @_builtins.property
+    @pulumi.getter(name="ttlAfterScanCompletion")
+    def ttl_after_scan_completion(self) -> Optional[_builtins.str]:
+        """
+        Time to live for the DataScan and its results after the one-time run completes. Accepts a string with a unit suffix 's' (e.g., '7200s'). Default is 24 hours. Ranges between 0 and 31536000 seconds (1 year).
+        """
+        return pulumi.get(self, "ttl_after_scan_completion")
 
 
 @pulumi.output_type

@@ -417,6 +417,99 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Stream Postgresql Sslconfig Server And Client Verification
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datastreamIps = Gcp.Datastream.GetStaticIps.Invoke(new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         DatabaseVersion = "POSTGRES_15",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = Std.Format.Invoke(new()
+    ///                 {
+    ///                     Input = "datastream-%d",
+    ///                     Args = new[]
+    ///                     {
+    ///                         entry.Key,
+    ///                     },
+    ///                 }).Apply(invoke =&gt; ),
+    ///                 Ipv4Enabled = true,
+    ///                 SslMode = "TRUSTED_CLIENT_CERTIFICATE_REQUIRED",
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Name = "db",
+    ///     });
+    /// 
+    ///     var pwd = new Random.Index.Password("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Name = "user",
+    ///         Instance = instance.Name,
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
+    ///     var clientCert = new Gcp.Sql.SslCert("client_cert", new()
+    ///     {
+    ///         CommonName = "client-name",
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         DisplayName = "Connection Profile",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "profile-id",
+    ///         PostgresqlProfile = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Port = 5432,
+    ///             Username = "user",
+    ///             Password = pwd.Result,
+    ///             Database = db.Name,
+    ///             SslConfig = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileSslConfigArgs
+    ///             {
+    ///                 ServerAndClientVerification = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs
+    ///                 {
+    ///                     ClientCertificate = clientCert.Cert,
+    ///                     ClientKey = clientCert.PrivateKey,
+    ///                     CaCertificate = clientCert.ServerCaCert,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Connection Profile Salesforce
     /// 
     /// ```csharp

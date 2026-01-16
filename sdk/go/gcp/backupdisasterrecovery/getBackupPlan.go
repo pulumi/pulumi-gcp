@@ -37,14 +37,15 @@ type LookupBackupPlanResult struct {
 	CreateTime                string                    `pulumi:"createTime"`
 	Description               string                    `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string   `pulumi:"id"`
-	Location               string   `pulumi:"location"`
-	LogRetentionDays       int      `pulumi:"logRetentionDays"`
-	Name                   string   `pulumi:"name"`
-	Project                *string  `pulumi:"project"`
-	ResourceType           string   `pulumi:"resourceType"`
-	SupportedResourceTypes []string `pulumi:"supportedResourceTypes"`
-	UpdateTime             string   `pulumi:"updateTime"`
+	Id                             string   `pulumi:"id"`
+	Location                       string   `pulumi:"location"`
+	LogRetentionDays               int      `pulumi:"logRetentionDays"`
+	MaxCustomOnDemandRetentionDays int      `pulumi:"maxCustomOnDemandRetentionDays"`
+	Name                           string   `pulumi:"name"`
+	Project                        *string  `pulumi:"project"`
+	ResourceType                   string   `pulumi:"resourceType"`
+	SupportedResourceTypes         []string `pulumi:"supportedResourceTypes"`
+	UpdateTime                     string   `pulumi:"updateTime"`
 }
 
 func LookupBackupPlanOutput(ctx *pulumi.Context, args LookupBackupPlanOutputArgs, opts ...pulumi.InvokeOption) LookupBackupPlanResultOutput {
@@ -117,6 +118,10 @@ func (o LookupBackupPlanResultOutput) Location() pulumi.StringOutput {
 
 func (o LookupBackupPlanResultOutput) LogRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) int { return v.LogRetentionDays }).(pulumi.IntOutput)
+}
+
+func (o LookupBackupPlanResultOutput) MaxCustomOnDemandRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) int { return v.MaxCustomOnDemandRetentionDays }).(pulumi.IntOutput)
 }
 
 func (o LookupBackupPlanResultOutput) Name() pulumi.StringOutput {

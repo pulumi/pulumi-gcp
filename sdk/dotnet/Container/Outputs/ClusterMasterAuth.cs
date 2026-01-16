@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterMasterAuth
     {
         /// <summary>
-        /// Base64 encoded public certificate
-        /// used by clients to authenticate to the cluster endpoint.
+        /// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
         /// </summary>
         public readonly string? ClientCertificate;
         /// <summary>
@@ -23,13 +22,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterMasterAuthClientCertificateConfig ClientCertificateConfig;
         /// <summary>
-        /// Base64 encoded private key used by clients
-        /// to authenticate to the cluster endpoint.
+        /// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>
-        /// Base64 encoded public certificate
-        /// that is the root certificate of the cluster.
+        /// Base64 encoded public certificate that is the root of trust for the cluster.
         /// </summary>
         public readonly string? ClusterCaCertificate;
 

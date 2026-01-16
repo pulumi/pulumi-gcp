@@ -85,7 +85,7 @@ index aecff7dc7..bb6e8c317 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index 617fe0af6..740abcccf 100644
+index f5fbfd432..e6979ad20 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -25,7 +25,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -97,7 +97,7 @@ index 617fe0af6..740abcccf 100644
  It is recommended to not set this field (or set it to true) until you're ready to destroy.
  
  ## Example Usage
-@@ -186,10 +186,8 @@ The following arguments are supported:
+@@ -189,10 +189,8 @@ The following arguments are supported:
  * `materialized_view` - (Optional) If specified, configures this table as a materialized view.
      Structure is [documented below](#nested_materialized_view).
  
@@ -110,7 +110,7 @@ index 617fe0af6..740abcccf 100644
  
  * `table_constraints` - (Optional) Defines the primary key and foreign keys. 
      Structure is [documented below](#nested_table_constraints).
-@@ -316,8 +314,8 @@ The following arguments are supported:
+@@ -319,8 +317,8 @@ The following arguments are supported:
      CSV file. If your data does not contain quoted sections, set the
      property value to an empty string. If your data contains quoted newline
      characters, you must also set the `allow_quoted_newlines` property to true.
@@ -310,14 +310,14 @@ diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/clo
 index 0177e77f0..3bf6d95c9 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
-@@ -33,9 +33,64 @@ To get more information about Service, see:
+@@ -33,8 +33,63 @@ To get more information about Service, see:
  ~> **Warning:** We recommend using the `google_cloud_run_v2_service` resource which offers a better
  developer experience and broader support of Cloud Run features.
  
 -## Example Usage - Cloud Run Service Basic
 +## Example Usage - Cloud Run Service Pubsub
- 
- 
++
++
 +```hcl
 +resource "google_cloud_run_service" "default" {
 +    name     = "cloud_run_service_name"
@@ -370,12 +370,11 @@ index 0177e77f0..3bf6d95c9 100644
 +  }
 +}
 +```
-+
+ 
 +## Example Usage - Cloud Run Service Basic
-+
+ 
  ```hcl
  resource "google_cloud_run_service" "default" {
-   name     = "cloudrun-srv"
 @@ -118,7 +173,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
@@ -1434,7 +1433,7 @@ index b6f867ff6..fe70198ae 100644
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
  [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 24f4364c4..503cbcf61 100644
+index d2fa1b4b6..17168550d 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:

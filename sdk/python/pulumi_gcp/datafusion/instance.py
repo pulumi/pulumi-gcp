@@ -1128,7 +1128,8 @@ class Instance(pulumi.CustomResource):
         crypto_key_member_gcs_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gs-project-accounts.iam.gserviceaccount.com")
+            member=f"serviceAccount:service-{project.number}@gs-project-accounts.iam.gserviceaccount.com",
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_cdf_sa]))
         cmek = gcp.datafusion.Instance("cmek",
             name="my-instance",
             region="us-central1",
@@ -1136,10 +1137,7 @@ class Instance(pulumi.CustomResource):
             crypto_key_config={
                 "key_reference": crypto_key.id,
             },
-            opts = pulumi.ResourceOptions(depends_on=[
-                    crypto_key_member_cdf_sa,
-                    crypto_key_member_gcs_sa,
-                ]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_gcs_sa]))
         ```
         ### Data Fusion Instance Enterprise
 
@@ -1381,7 +1379,8 @@ class Instance(pulumi.CustomResource):
         crypto_key_member_gcs_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gs-project-accounts.iam.gserviceaccount.com")
+            member=f"serviceAccount:service-{project.number}@gs-project-accounts.iam.gserviceaccount.com",
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_cdf_sa]))
         cmek = gcp.datafusion.Instance("cmek",
             name="my-instance",
             region="us-central1",
@@ -1389,10 +1388,7 @@ class Instance(pulumi.CustomResource):
             crypto_key_config={
                 "key_reference": crypto_key.id,
             },
-            opts = pulumi.ResourceOptions(depends_on=[
-                    crypto_key_member_cdf_sa,
-                    crypto_key_member_gcs_sa,
-                ]))
+            opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_gcs_sa]))
         ```
         ### Data Fusion Instance Enterprise
 

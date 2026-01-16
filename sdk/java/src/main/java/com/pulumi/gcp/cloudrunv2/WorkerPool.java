@@ -695,48 +695,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * ### Cloudrunv2 Worker Pool Custom Audiences
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.cloudrunv2.WorkerPool;
- * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
- * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new WorkerPool("default", WorkerPoolArgs.builder()
- *             .name("cloudrun-worker-pool")
- *             .location("us-central1")
- *             .deletionProtection(false)
- *             .launchStage("BETA")
- *             .customAudiences("aud1")
- *             .template(WorkerPoolTemplateArgs.builder()
- *                 .containers(WorkerPoolTemplateContainerArgs.builder()
- *                     .image("us-docker.pkg.dev/cloudrun/container/worker-pool")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * ### Cloudrunv2 Worker Pool Startup Liveness Probe
  * 
  * <pre>
@@ -968,16 +926,26 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
         return this.creator;
     }
     /**
+     * (Optional, Deprecated)
      * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
+     * &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     * 
+     * @deprecated
+     * `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release. */
     @Export(name="customAudiences", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> customAudiences;
 
     /**
-     * @return One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+     * @return (Optional, Deprecated)
+     * One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
      * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * 
+     * &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
      * 
      */
     public Output<Optional<List<String>>> customAudiences() {

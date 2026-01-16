@@ -90,6 +90,7 @@ __all__ = [
     'LbTrafficExtensionExtensionChainExtension',
     'LbTrafficExtensionExtensionChainMatchCondition',
     'MulticastConsumerAssociationState',
+    'MulticastDomainActivationState',
     'MulticastDomainActivationTrafficSpec',
     'MulticastDomainConnectionConfig',
     'MulticastDomainGroupState',
@@ -4875,6 +4876,7 @@ class LbRouteExtensionExtensionChain(dict):
         :param Sequence['LbRouteExtensionExtensionChainExtensionArgs'] extensions: A set of extensions to execute for the matching request.
                At least one extension is required. Up to 3 extensions can be defined for each extension chain for
                LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+               Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
                Structure is documented below.
         :param 'LbRouteExtensionExtensionChainMatchConditionArgs' match_condition: Conditions under which this chain is invoked for a request.
                Structure is documented below.
@@ -4894,6 +4896,7 @@ class LbRouteExtensionExtensionChain(dict):
         A set of extensions to execute for the matching request.
         At least one extension is required. Up to 3 extensions can be defined for each extension chain for
         LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
+        Further documentation can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension
         Structure is documented below.
         """
         return pulumi.get(self, "extensions")
@@ -4928,6 +4931,12 @@ class LbRouteExtensionExtensionChainExtension(dict):
             suggest = "fail_open"
         elif key == "forwardHeaders":
             suggest = "forward_headers"
+        elif key == "observabilityMode":
+            suggest = "observability_mode"
+        elif key == "requestBodySendMode":
+            suggest = "request_body_send_mode"
+        elif key == "supportedEvents":
+            suggest = "supported_events"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LbRouteExtensionExtensionChainExtension. Access the value via the '{suggest}' property getter instead.")
@@ -4946,6 +4955,10 @@ class LbRouteExtensionExtensionChainExtension(dict):
                  authority: Optional[_builtins.str] = None,
                  fail_open: Optional[_builtins.bool] = None,
                  forward_headers: Optional[Sequence[_builtins.str]] = None,
+                 metadata: Optional[Mapping[str, _builtins.str]] = None,
+                 observability_mode: Optional[_builtins.bool] = None,
+                 request_body_send_mode: Optional[_builtins.str] = None,
+                 supported_events: Optional[Sequence[_builtins.str]] = None,
                  timeout: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: The name for this extension. The name is logged as part of the HTTP request logs.
@@ -4964,6 +4977,27 @@ class LbRouteExtensionExtensionChainExtension(dict):
                configuring a custom error response in the load balancer.
         :param Sequence[_builtins.str] forward_headers: List of the HTTP headers to forward to the extension (from the client or backend).
                If omitted, all headers are sent. Each element is a string indicating the header name.
+        :param Mapping[str, _builtins.str] metadata: The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
+               in the `ProcessingRequest` message sent to the extension server.
+               The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
+               The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+               This field must not be set for plugin extensions. Setting it results in a validation error.
+        :param _builtins.bool observability_mode: When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+               This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
+               For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+               This field is helpful when you want to try out the extension in async log-only mode.
+               Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+               Only `STREAMED` (default) body processing mode is supported.
+        :param _builtins.str request_body_send_mode: Configures the send mode for request body processing.
+               The field can only be set if `supported_events` includes `REQUEST_BODY`.
+               If `supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is unset, the default value `STREAMED` is used.
+               When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+               This field can be set only when the `service` field of the extension points to a `BackendService`.
+               Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+               Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+        :param Sequence[_builtins.str] supported_events: A set of events during request or response processing for which this extension is called.
+               This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+               Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
         :param _builtins.str timeout: Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
@@ -4975,6 +5009,14 @@ class LbRouteExtensionExtensionChainExtension(dict):
             pulumi.set(__self__, "fail_open", fail_open)
         if forward_headers is not None:
             pulumi.set(__self__, "forward_headers", forward_headers)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if observability_mode is not None:
+            pulumi.set(__self__, "observability_mode", observability_mode)
+        if request_body_send_mode is not None:
+            pulumi.set(__self__, "request_body_send_mode", request_body_send_mode)
+        if supported_events is not None:
+            pulumi.set(__self__, "supported_events", supported_events)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
 
@@ -5028,6 +5070,55 @@ class LbRouteExtensionExtensionChainExtension(dict):
         If omitted, all headers are sent. Each element is a string indicating the header name.
         """
         return pulumi.get(self, "forward_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
+        in the `ProcessingRequest` message sent to the extension server.
+        The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
+        The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+        This field must not be set for plugin extensions. Setting it results in a validation error.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="observabilityMode")
+    def observability_mode(self) -> Optional[_builtins.bool]:
+        """
+        When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+        This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
+        For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
+        This field is helpful when you want to try out the extension in async log-only mode.
+        Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
+        Only `STREAMED` (default) body processing mode is supported.
+        """
+        return pulumi.get(self, "observability_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="requestBodySendMode")
+    def request_body_send_mode(self) -> Optional[_builtins.str]:
+        """
+        Configures the send mode for request body processing.
+        The field can only be set if `supported_events` includes `REQUEST_BODY`.
+        If `supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is unset, the default value `STREAMED` is used.
+        When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+        This field can be set only when the `service` field of the extension points to a `BackendService`.
+        Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
+        Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
+        """
+        return pulumi.get(self, "request_body_send_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedEvents")
+    def supported_events(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A set of events during request or response processing for which this extension is called.
+        This field is optional for the LbRouteExtension resource. If unspecified, `REQUEST_HEADERS` event is assumed as supported.
+        Possible values: `REQUEST_HEADERS`, `REQUEST_BODY`, `REQUEST_TRAILERS`.
+        """
+        return pulumi.get(self, "supported_events")
 
     @_builtins.property
     @pulumi.getter
@@ -5340,6 +5431,43 @@ class LbTrafficExtensionExtensionChainMatchCondition(dict):
 
 @pulumi.output_type
 class MulticastConsumerAssociationState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the multicast resource.
+               Possible values:
+               CREATING
+               ACTIVE
+               DELETING
+               DELETE_FAILED
+               UPDATING
+               UPDATE_FAILED
+               INACTIVE
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the multicast resource.
+        Possible values:
+        CREATING
+        ACTIVE
+        DELETING
+        DELETE_FAILED
+        UPDATING
+        UPDATE_FAILED
+        INACTIVE
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class MulticastDomainActivationState(dict):
     def __init__(__self__, *,
                  state: Optional[_builtins.str] = None):
         """
