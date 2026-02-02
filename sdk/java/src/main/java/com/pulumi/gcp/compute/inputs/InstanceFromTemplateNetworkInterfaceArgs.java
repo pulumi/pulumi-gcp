@@ -51,6 +51,21 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
     }
 
     /**
+     * Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    @Import(name="igmpQuery")
+    private @Nullable Output<String> igmpQuery;
+
+    /**
+     * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    public Optional<Output<String>> igmpQuery() {
+        return Optional.ofNullable(this.igmpQuery);
+    }
+
+    /**
      * The prefix length of the primary internal IPv6 range.
      * 
      */
@@ -108,6 +123,21 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
      */
     public Optional<Output<String>> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
+    }
+
+    /**
+     * MAC address assigned to this network interface.
+     * 
+     */
+    @Import(name="macAddress")
+    private @Nullable Output<String> macAddress;
+
+    /**
+     * @return MAC address assigned to this network interface.
+     * 
+     */
+    public Optional<Output<String>> macAddress() {
+        return Optional.ofNullable(this.macAddress);
     }
 
     /**
@@ -267,10 +297,12 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
     private InstanceFromTemplateNetworkInterfaceArgs(InstanceFromTemplateNetworkInterfaceArgs $) {
         this.accessConfigs = $.accessConfigs;
         this.aliasIpRanges = $.aliasIpRanges;
+        this.igmpQuery = $.igmpQuery;
         this.internalIpv6PrefixLength = $.internalIpv6PrefixLength;
         this.ipv6AccessConfigs = $.ipv6AccessConfigs;
         this.ipv6AccessType = $.ipv6AccessType;
         this.ipv6Address = $.ipv6Address;
+        this.macAddress = $.macAddress;
         this.name = $.name;
         this.network = $.network;
         this.networkAttachment = $.networkAttachment;
@@ -361,6 +393,27 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
          */
         public Builder aliasIpRanges(InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
+        }
+
+        /**
+         * @param igmpQuery Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder igmpQuery(@Nullable Output<String> igmpQuery) {
+            $.igmpQuery = igmpQuery;
+            return this;
+        }
+
+        /**
+         * @param igmpQuery Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder igmpQuery(String igmpQuery) {
+            return igmpQuery(Output.of(igmpQuery));
         }
 
         /**
@@ -455,6 +508,27 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
          */
         public Builder ipv6Address(String ipv6Address) {
             return ipv6Address(Output.of(ipv6Address));
+        }
+
+        /**
+         * @param macAddress MAC address assigned to this network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder macAddress(@Nullable Output<String> macAddress) {
+            $.macAddress = macAddress;
+            return this;
+        }
+
+        /**
+         * @param macAddress MAC address assigned to this network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder macAddress(String macAddress) {
+            return macAddress(Output.of(macAddress));
         }
 
         /**

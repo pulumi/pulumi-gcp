@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Organizations
     {
         /// <summary>
         /// Retrieve information about a set of folders based on a parent ID. See the
-        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+        /// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
         /// for more details.
         /// 
         /// ## Example Usage
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// Retrieve information about a set of folders based on a parent ID. See the
-        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+        /// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
         /// for more details.
         /// 
         /// ## Example Usage
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// Retrieve information about a set of folders based on a parent ID. See the
-        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+        /// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
         /// for more details.
         /// 
         /// ## Example Usage
@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetFoldersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+        /// A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
         /// </summary>
         [Input("parentId", required: true)]
         public string ParentId { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetFoldersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+        /// A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
         /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myFolder = new gcp.organizations.Folder("my_folder", {
- *     displayName: "my-folder",
+ *     displayName: "folder-faaf",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myFolder = new gcp.organizations.Folder("my_folder", {
- *     displayName: "my-folder",
+ *     displayName: "folder-faak",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

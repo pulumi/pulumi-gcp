@@ -25,6 +25,7 @@ from .membership_iam_member import *
 from .membership_iam_policy import *
 from .membership_rbac_role_binding import *
 from .namespace import *
+from .rollout_sequence import *
 from .scope import *
 from .scope_iam_binding import *
 from .scope_iam_member import *

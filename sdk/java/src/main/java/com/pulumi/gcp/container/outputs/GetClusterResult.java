@@ -26,6 +26,7 @@ import com.pulumi.gcp.container.outputs.GetClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicy;
+import com.pulumi.gcp.container.outputs.GetClusterManagedOpentelemetryConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMeshCertificate;
@@ -114,6 +115,7 @@ public final class GetClusterResult {
     private List<GetClusterLoggingConfig> loggingConfigs;
     private String loggingService;
     private List<GetClusterMaintenancePolicy> maintenancePolicies;
+    private List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs;
     private List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
     private List<GetClusterMasterAuth> masterAuths;
     private String masterVersion;
@@ -302,6 +304,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterMaintenancePolicy> maintenancePolicies() {
         return this.maintenancePolicies;
+    }
+    public List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs() {
+        return this.managedOpentelemetryConfigs;
     }
     public List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs() {
         return this.masterAuthorizedNetworksConfigs;
@@ -494,6 +499,7 @@ public final class GetClusterResult {
         private List<GetClusterLoggingConfig> loggingConfigs;
         private String loggingService;
         private List<GetClusterMaintenancePolicy> maintenancePolicies;
+        private List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs;
         private List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
         private List<GetClusterMasterAuth> masterAuths;
         private String masterVersion;
@@ -588,6 +594,7 @@ public final class GetClusterResult {
     	      this.loggingConfigs = defaults.loggingConfigs;
     	      this.loggingService = defaults.loggingService;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
+    	      this.managedOpentelemetryConfigs = defaults.managedOpentelemetryConfigs;
     	      this.masterAuthorizedNetworksConfigs = defaults.masterAuthorizedNetworksConfigs;
     	      this.masterAuths = defaults.masterAuths;
     	      this.masterVersion = defaults.masterVersion;
@@ -1063,6 +1070,17 @@ public final class GetClusterResult {
         }
         public Builder maintenancePolicies(GetClusterMaintenancePolicy... maintenancePolicies) {
             return maintenancePolicies(List.of(maintenancePolicies));
+        }
+        @CustomType.Setter
+        public Builder managedOpentelemetryConfigs(List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs) {
+            if (managedOpentelemetryConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "managedOpentelemetryConfigs");
+            }
+            this.managedOpentelemetryConfigs = managedOpentelemetryConfigs;
+            return this;
+        }
+        public Builder managedOpentelemetryConfigs(GetClusterManagedOpentelemetryConfig... managedOpentelemetryConfigs) {
+            return managedOpentelemetryConfigs(List.of(managedOpentelemetryConfigs));
         }
         @CustomType.Setter
         public Builder masterAuthorizedNetworksConfigs(List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs) {
@@ -1554,6 +1572,7 @@ public final class GetClusterResult {
             _resultValue.loggingConfigs = loggingConfigs;
             _resultValue.loggingService = loggingService;
             _resultValue.maintenancePolicies = maintenancePolicies;
+            _resultValue.managedOpentelemetryConfigs = managedOpentelemetryConfigs;
             _resultValue.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             _resultValue.masterAuths = masterAuths;
             _resultValue.masterVersion = masterVersion;

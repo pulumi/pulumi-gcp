@@ -3788,6 +3788,170 @@ func (o ConnectionProfileSalesforceProfileUserCredentialsPtrOutput) Username() p
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionProfileSpannerProfile struct {
+	// The full project and resource path for Spanner database. Format:
+	// projects/{project}/instances/{instance}/databases/{database}.
+	Database string `pulumi:"database"`
+	// The regional Spanner endpoint. Format:
+	// https://spanner.{region}.rep.googleapis.com.
+	Host *string `pulumi:"host"`
+}
+
+// ConnectionProfileSpannerProfileInput is an input type that accepts ConnectionProfileSpannerProfileArgs and ConnectionProfileSpannerProfileOutput values.
+// You can construct a concrete instance of `ConnectionProfileSpannerProfileInput` via:
+//
+//	ConnectionProfileSpannerProfileArgs{...}
+type ConnectionProfileSpannerProfileInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSpannerProfileOutput() ConnectionProfileSpannerProfileOutput
+	ToConnectionProfileSpannerProfileOutputWithContext(context.Context) ConnectionProfileSpannerProfileOutput
+}
+
+type ConnectionProfileSpannerProfileArgs struct {
+	// The full project and resource path for Spanner database. Format:
+	// projects/{project}/instances/{instance}/databases/{database}.
+	Database pulumi.StringInput `pulumi:"database"`
+	// The regional Spanner endpoint. Format:
+	// https://spanner.{region}.rep.googleapis.com.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+}
+
+func (ConnectionProfileSpannerProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSpannerProfile)(nil)).Elem()
+}
+
+func (i ConnectionProfileSpannerProfileArgs) ToConnectionProfileSpannerProfileOutput() ConnectionProfileSpannerProfileOutput {
+	return i.ToConnectionProfileSpannerProfileOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSpannerProfileArgs) ToConnectionProfileSpannerProfileOutputWithContext(ctx context.Context) ConnectionProfileSpannerProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSpannerProfileOutput)
+}
+
+func (i ConnectionProfileSpannerProfileArgs) ToConnectionProfileSpannerProfilePtrOutput() ConnectionProfileSpannerProfilePtrOutput {
+	return i.ToConnectionProfileSpannerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionProfileSpannerProfileArgs) ToConnectionProfileSpannerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSpannerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSpannerProfileOutput).ToConnectionProfileSpannerProfilePtrOutputWithContext(ctx)
+}
+
+// ConnectionProfileSpannerProfilePtrInput is an input type that accepts ConnectionProfileSpannerProfileArgs, ConnectionProfileSpannerProfilePtr and ConnectionProfileSpannerProfilePtrOutput values.
+// You can construct a concrete instance of `ConnectionProfileSpannerProfilePtrInput` via:
+//
+//	        ConnectionProfileSpannerProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionProfileSpannerProfilePtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileSpannerProfilePtrOutput() ConnectionProfileSpannerProfilePtrOutput
+	ToConnectionProfileSpannerProfilePtrOutputWithContext(context.Context) ConnectionProfileSpannerProfilePtrOutput
+}
+
+type connectionProfileSpannerProfilePtrType ConnectionProfileSpannerProfileArgs
+
+func ConnectionProfileSpannerProfilePtr(v *ConnectionProfileSpannerProfileArgs) ConnectionProfileSpannerProfilePtrInput {
+	return (*connectionProfileSpannerProfilePtrType)(v)
+}
+
+func (*connectionProfileSpannerProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSpannerProfile)(nil)).Elem()
+}
+
+func (i *connectionProfileSpannerProfilePtrType) ToConnectionProfileSpannerProfilePtrOutput() ConnectionProfileSpannerProfilePtrOutput {
+	return i.ToConnectionProfileSpannerProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionProfileSpannerProfilePtrType) ToConnectionProfileSpannerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSpannerProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileSpannerProfilePtrOutput)
+}
+
+type ConnectionProfileSpannerProfileOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSpannerProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileSpannerProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileSpannerProfileOutput) ToConnectionProfileSpannerProfileOutput() ConnectionProfileSpannerProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileSpannerProfileOutput) ToConnectionProfileSpannerProfileOutputWithContext(ctx context.Context) ConnectionProfileSpannerProfileOutput {
+	return o
+}
+
+func (o ConnectionProfileSpannerProfileOutput) ToConnectionProfileSpannerProfilePtrOutput() ConnectionProfileSpannerProfilePtrOutput {
+	return o.ToConnectionProfileSpannerProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileSpannerProfileOutput) ToConnectionProfileSpannerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSpannerProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileSpannerProfile) *ConnectionProfileSpannerProfile {
+		return &v
+	}).(ConnectionProfileSpannerProfilePtrOutput)
+}
+
+// The full project and resource path for Spanner database. Format:
+// projects/{project}/instances/{instance}/databases/{database}.
+func (o ConnectionProfileSpannerProfileOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionProfileSpannerProfile) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The regional Spanner endpoint. Format:
+// https://spanner.{region}.rep.googleapis.com.
+func (o ConnectionProfileSpannerProfileOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileSpannerProfile) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileSpannerProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileSpannerProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionProfileSpannerProfile)(nil)).Elem()
+}
+
+func (o ConnectionProfileSpannerProfilePtrOutput) ToConnectionProfileSpannerProfilePtrOutput() ConnectionProfileSpannerProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSpannerProfilePtrOutput) ToConnectionProfileSpannerProfilePtrOutputWithContext(ctx context.Context) ConnectionProfileSpannerProfilePtrOutput {
+	return o
+}
+
+func (o ConnectionProfileSpannerProfilePtrOutput) Elem() ConnectionProfileSpannerProfileOutput {
+	return o.ApplyT(func(v *ConnectionProfileSpannerProfile) ConnectionProfileSpannerProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionProfileSpannerProfile
+		return ret
+	}).(ConnectionProfileSpannerProfileOutput)
+}
+
+// The full project and resource path for Spanner database. Format:
+// projects/{project}/instances/{instance}/databases/{database}.
+func (o ConnectionProfileSpannerProfilePtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSpannerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The regional Spanner endpoint. Format:
+// https://spanner.{region}.rep.googleapis.com.
+func (o ConnectionProfileSpannerProfilePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileSpannerProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionProfileSqlServerProfile struct {
 	// Database for the SQL Server connection.
 	Database string `pulumi:"database"`
@@ -4463,6 +4627,9 @@ type StreamBackfillAll struct {
 	// Salesforce objects to avoid backfilling.
 	// Structure is documented below.
 	SalesforceExcludedObjects *StreamBackfillAllSalesforceExcludedObjects `pulumi:"salesforceExcludedObjects"`
+	// Spanner objects to avoid backfilling.
+	// Structure is documented below.
+	SpannerExcludedObjects *StreamBackfillAllSpannerExcludedObjects `pulumi:"spannerExcludedObjects"`
 	// SQL Server data source objects to avoid backfilling.
 	// Structure is documented below.
 	SqlServerExcludedObjects *StreamBackfillAllSqlServerExcludedObjects `pulumi:"sqlServerExcludedObjects"`
@@ -4495,6 +4662,9 @@ type StreamBackfillAllArgs struct {
 	// Salesforce objects to avoid backfilling.
 	// Structure is documented below.
 	SalesforceExcludedObjects StreamBackfillAllSalesforceExcludedObjectsPtrInput `pulumi:"salesforceExcludedObjects"`
+	// Spanner objects to avoid backfilling.
+	// Structure is documented below.
+	SpannerExcludedObjects StreamBackfillAllSpannerExcludedObjectsPtrInput `pulumi:"spannerExcludedObjects"`
 	// SQL Server data source objects to avoid backfilling.
 	// Structure is documented below.
 	SqlServerExcludedObjects StreamBackfillAllSqlServerExcludedObjectsPtrInput `pulumi:"sqlServerExcludedObjects"`
@@ -4611,6 +4781,12 @@ func (o StreamBackfillAllOutput) SalesforceExcludedObjects() StreamBackfillAllSa
 	}).(StreamBackfillAllSalesforceExcludedObjectsPtrOutput)
 }
 
+// Spanner objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllOutput) SpannerExcludedObjects() StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAll) *StreamBackfillAllSpannerExcludedObjects { return v.SpannerExcludedObjects }).(StreamBackfillAllSpannerExcludedObjectsPtrOutput)
+}
+
 // SQL Server data source objects to avoid backfilling.
 // Structure is documented below.
 func (o StreamBackfillAllOutput) SqlServerExcludedObjects() StreamBackfillAllSqlServerExcludedObjectsPtrOutput {
@@ -4696,6 +4872,17 @@ func (o StreamBackfillAllPtrOutput) SalesforceExcludedObjects() StreamBackfillAl
 		}
 		return v.SalesforceExcludedObjects
 	}).(StreamBackfillAllSalesforceExcludedObjectsPtrOutput)
+}
+
+// Spanner objects to avoid backfilling.
+// Structure is documented below.
+func (o StreamBackfillAllPtrOutput) SpannerExcludedObjects() StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamBackfillAll) *StreamBackfillAllSpannerExcludedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.SpannerExcludedObjects
+	}).(StreamBackfillAllSpannerExcludedObjectsPtrOutput)
 }
 
 // SQL Server data source objects to avoid backfilling.
@@ -7185,6 +7372,507 @@ func (o StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput) Index(
 	}).(StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput)
 }
 
+type StreamBackfillAllSpannerExcludedObjects struct {
+	// Spanner schemas in the database
+	// Structure is documented below.
+	Schemas []StreamBackfillAllSpannerExcludedObjectsSchema `pulumi:"schemas"`
+}
+
+// StreamBackfillAllSpannerExcludedObjectsInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsArgs and StreamBackfillAllSpannerExcludedObjectsOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsInput` via:
+//
+//	StreamBackfillAllSpannerExcludedObjectsArgs{...}
+type StreamBackfillAllSpannerExcludedObjectsInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsOutput() StreamBackfillAllSpannerExcludedObjectsOutput
+	ToStreamBackfillAllSpannerExcludedObjectsOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsOutput
+}
+
+type StreamBackfillAllSpannerExcludedObjectsArgs struct {
+	// Spanner schemas in the database
+	// Structure is documented below.
+	Schemas StreamBackfillAllSpannerExcludedObjectsSchemaArrayInput `pulumi:"schemas"`
+}
+
+func (StreamBackfillAllSpannerExcludedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjects)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsArgs) ToStreamBackfillAllSpannerExcludedObjectsOutput() StreamBackfillAllSpannerExcludedObjectsOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsArgs) ToStreamBackfillAllSpannerExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsOutput)
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsArgs) ToStreamBackfillAllSpannerExcludedObjectsPtrOutput() StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsArgs) ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsOutput).ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamBackfillAllSpannerExcludedObjectsPtrInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsArgs, StreamBackfillAllSpannerExcludedObjectsPtr and StreamBackfillAllSpannerExcludedObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsPtrInput` via:
+//
+//	        StreamBackfillAllSpannerExcludedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamBackfillAllSpannerExcludedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsPtrOutput() StreamBackfillAllSpannerExcludedObjectsPtrOutput
+	ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsPtrOutput
+}
+
+type streamBackfillAllSpannerExcludedObjectsPtrType StreamBackfillAllSpannerExcludedObjectsArgs
+
+func StreamBackfillAllSpannerExcludedObjectsPtr(v *StreamBackfillAllSpannerExcludedObjectsArgs) StreamBackfillAllSpannerExcludedObjectsPtrInput {
+	return (*streamBackfillAllSpannerExcludedObjectsPtrType)(v)
+}
+
+func (*streamBackfillAllSpannerExcludedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllSpannerExcludedObjects)(nil)).Elem()
+}
+
+func (i *streamBackfillAllSpannerExcludedObjectsPtrType) ToStreamBackfillAllSpannerExcludedObjectsPtrOutput() StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamBackfillAllSpannerExcludedObjectsPtrType) ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsPtrOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsOutput) ToStreamBackfillAllSpannerExcludedObjectsOutput() StreamBackfillAllSpannerExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsOutput) ToStreamBackfillAllSpannerExcludedObjectsOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsOutput) ToStreamBackfillAllSpannerExcludedObjectsPtrOutput() StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return o.ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsOutput) ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamBackfillAllSpannerExcludedObjects) *StreamBackfillAllSpannerExcludedObjects {
+		return &v
+	}).(StreamBackfillAllSpannerExcludedObjectsPtrOutput)
+}
+
+// Spanner schemas in the database
+// Structure is documented below.
+func (o StreamBackfillAllSpannerExcludedObjectsOutput) Schemas() StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjects) []StreamBackfillAllSpannerExcludedObjectsSchema {
+		return v.Schemas
+	}).(StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamBackfillAllSpannerExcludedObjects)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsPtrOutput) ToStreamBackfillAllSpannerExcludedObjectsPtrOutput() StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsPtrOutput) ToStreamBackfillAllSpannerExcludedObjectsPtrOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsPtrOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsPtrOutput) Elem() StreamBackfillAllSpannerExcludedObjectsOutput {
+	return o.ApplyT(func(v *StreamBackfillAllSpannerExcludedObjects) StreamBackfillAllSpannerExcludedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamBackfillAllSpannerExcludedObjects
+		return ret
+	}).(StreamBackfillAllSpannerExcludedObjectsOutput)
+}
+
+// Spanner schemas in the database
+// Structure is documented below.
+func (o StreamBackfillAllSpannerExcludedObjectsPtrOutput) Schemas() StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamBackfillAllSpannerExcludedObjects) []StreamBackfillAllSpannerExcludedObjectsSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchema struct {
+	// Schema name.
+	Schema string `pulumi:"schema"`
+	// Tables in the schema.
+	// Structure is documented below.
+	Tables []StreamBackfillAllSpannerExcludedObjectsSchemaTable `pulumi:"tables"`
+}
+
+// StreamBackfillAllSpannerExcludedObjectsSchemaInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsSchemaArgs and StreamBackfillAllSpannerExcludedObjectsSchemaOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsSchemaInput` via:
+//
+//	StreamBackfillAllSpannerExcludedObjectsSchemaArgs{...}
+type StreamBackfillAllSpannerExcludedObjectsSchemaInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaOutput() StreamBackfillAllSpannerExcludedObjectsSchemaOutput
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaOutput
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaArgs struct {
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// Tables in the schema.
+	// Structure is documented below.
+	Tables StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayInput `pulumi:"tables"`
+}
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaArgs) ToStreamBackfillAllSpannerExcludedObjectsSchemaOutput() StreamBackfillAllSpannerExcludedObjectsSchemaOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaArgs) ToStreamBackfillAllSpannerExcludedObjectsSchemaOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsSchemaOutput)
+}
+
+// StreamBackfillAllSpannerExcludedObjectsSchemaArrayInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsSchemaArray and StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsSchemaArrayInput` via:
+//
+//	StreamBackfillAllSpannerExcludedObjectsSchemaArray{ StreamBackfillAllSpannerExcludedObjectsSchemaArgs{...} }
+type StreamBackfillAllSpannerExcludedObjectsSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaArrayOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaArray []StreamBackfillAllSpannerExcludedObjectsSchemaInput
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSpannerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaArray) ToStreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaArray) ToStreamBackfillAllSpannerExcludedObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaOutput() StreamBackfillAllSpannerExcludedObjectsSchemaOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaOutput {
+	return o
+}
+
+// Schema name.
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Tables in the schema.
+// Structure is documented below.
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaOutput) Tables() StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchema) []StreamBackfillAllSpannerExcludedObjectsSchemaTable {
+		return v.Tables
+	}).(StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSpannerExcludedObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSpannerExcludedObjectsSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSpannerExcludedObjectsSchema {
+		return vs[0].([]StreamBackfillAllSpannerExcludedObjectsSchema)[vs[1].(int)]
+	}).(StreamBackfillAllSpannerExcludedObjectsSchemaOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTable struct {
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns []StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn `pulumi:"columns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamBackfillAllSpannerExcludedObjectsSchemaTableInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs and StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsSchemaTableInput` via:
+//
+//	StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs{...}
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs struct {
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsSchemaTableOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput)
+}
+
+// StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsSchemaTableArray and StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayInput` via:
+//
+//	StreamBackfillAllSpannerExcludedObjectsSchemaTableArray{ StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs{...} }
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableArray []StreamBackfillAllSpannerExcludedObjectsSchemaTableInput
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSpannerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableArray) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableArray) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput {
+	return o
+}
+
+// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput) Columns() StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchemaTable) []StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn {
+		return v.Columns
+	}).(StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchemaTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSpannerExcludedObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSpannerExcludedObjectsSchemaTable {
+		return vs[0].([]StreamBackfillAllSpannerExcludedObjectsSchemaTable)[vs[1].(int)]
+	}).(StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn struct {
+	// Column name.
+	Column string `pulumi:"column"`
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+	DataType *string `pulumi:"dataType"`
+	// (Output)
+	// Whether the column is a primary key.
+	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+}
+
+// StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs and StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnInput` via:
+//
+//	StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs{...}
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs struct {
+	// Column name.
+	Column pulumi.StringInput `pulumi:"column"`
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
+	// Whether the column is a primary key.
+	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+}
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput)
+}
+
+// StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayInput is an input type that accepts StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArray and StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayInput` via:
+//
+//	StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArray{ StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs{...} }
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput
+	ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutputWithContext(context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArray []StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnInput
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArray) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput {
+	return i.ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArray) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The Spanner data type. Full data types list can be found here:
+// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Whether the column is a primary key.
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ordinal position of the column in the table.
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn) *int { return v.OrdinalPosition }).(pulumi.IntPtrOutput)
+}
+
+type StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput() StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput) ToStreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn {
+		return vs[0].([]StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn)[vs[1].(int)]
+	}).(StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput)
+}
+
 type StreamBackfillAllSqlServerExcludedObjects struct {
 	// SQL Server schemas/databases in the database server
 	// Structure is documented below.
@@ -7331,7 +8019,7 @@ func (o StreamBackfillAllSqlServerExcludedObjectsPtrOutput) Schemas() StreamBack
 type StreamBackfillAllSqlServerExcludedObjectsSchema struct {
 	// Schema name.
 	Schema string `pulumi:"schema"`
-	// Tables in the database.
+	// Tables in the schema.
 	// Structure is documented below.
 	Tables []StreamBackfillAllSqlServerExcludedObjectsSchemaTable `pulumi:"tables"`
 }
@@ -7350,7 +8038,7 @@ type StreamBackfillAllSqlServerExcludedObjectsSchemaInput interface {
 type StreamBackfillAllSqlServerExcludedObjectsSchemaArgs struct {
 	// Schema name.
 	Schema pulumi.StringInput `pulumi:"schema"`
-	// Tables in the database.
+	// Tables in the schema.
 	// Structure is documented below.
 	Tables StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayInput `pulumi:"tables"`
 }
@@ -7411,7 +8099,7 @@ func (o StreamBackfillAllSqlServerExcludedObjectsSchemaOutput) Schema() pulumi.S
 	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
 }
 
-// Tables in the database.
+// Tables in the schema.
 // Structure is documented below.
 func (o StreamBackfillAllSqlServerExcludedObjectsSchemaOutput) Tables() StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput {
 	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchema) []StreamBackfillAllSqlServerExcludedObjectsSchemaTable {
@@ -7440,7 +8128,7 @@ func (o StreamBackfillAllSqlServerExcludedObjectsSchemaArrayOutput) Index(i pulu
 }
 
 type StreamBackfillAllSqlServerExcludedObjectsSchemaTable struct {
-	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	Columns []StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn `pulumi:"columns"`
 	// Table name.
@@ -7459,7 +8147,7 @@ type StreamBackfillAllSqlServerExcludedObjectsSchemaTableInput interface {
 }
 
 type StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs struct {
-	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	Columns StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
 	// Table name.
@@ -7517,7 +8205,7 @@ func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput) ToStreamBack
 	return o
 }
 
-// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableOutput) Columns() StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArrayOutput {
 	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTable) []StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
@@ -7553,8 +8241,9 @@ func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableArrayOutput) Index(i
 type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn struct {
 	// Column name.
 	Column *string `pulumi:"column"`
-	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -7590,8 +8279,9 @@ type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnInput interface {
 type StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs struct {
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
-	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -7669,8 +8359,9 @@ func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) Column
 	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *string { return v.Column }).(pulumi.StringPtrOutput)
 }
 
-// The SQL Server data type. Full data types list can be found here:
-// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+// (Output)
+// The Spanner data type. Full data types list can be found here:
+// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 func (o StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
 }
@@ -10933,6 +11624,9 @@ type StreamRuleSetObjectFilterSourceObjectIdentifier struct {
 	SalesforceIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier `pulumi:"salesforceIdentifier"`
 	// A nested object resource.
 	// Structure is documented below.
+	SpannerIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier `pulumi:"spannerIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
 	SqlServerIdentifier *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier `pulumi:"sqlServerIdentifier"`
 }
 
@@ -10963,6 +11657,9 @@ type StreamRuleSetObjectFilterSourceObjectIdentifierArgs struct {
 	// A nested object resource.
 	// Structure is documented below.
 	SalesforceIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput `pulumi:"salesforceIdentifier"`
+	// A nested object resource.
+	// Structure is documented below.
+	SpannerIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrInput `pulumi:"spannerIdentifier"`
 	// A nested object resource.
 	// Structure is documented below.
 	SqlServerIdentifier StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput `pulumi:"sqlServerIdentifier"`
@@ -11087,6 +11784,14 @@ func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) SalesforceIdentif
 
 // A nested object resource.
 // Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) SpannerIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
+		return v.SpannerIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
 func (o StreamRuleSetObjectFilterSourceObjectIdentifierOutput) SqlServerIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput {
 	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier {
 		return v.SqlServerIdentifier
@@ -11170,6 +11875,17 @@ func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) SalesforceIden
 		}
 		return v.SalesforceIdentifier
 	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput)
+}
+
+// A nested object resource.
+// Structure is documented below.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierPtrOutput) SpannerIdentifier() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
+		if v == nil {
+			return nil
+		}
+		return v.SpannerIdentifier
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput)
 }
 
 // A nested object resource.
@@ -11946,6 +12662,162 @@ func (o StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier struct {
+	// The schema name.
+	Schema *string `pulumi:"schema"`
+	// The table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs and StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierInput` via:
+//
+//	StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs{...}
+type StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs struct {
+	// The schema name.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// The table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier)(nil)).Elem()
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput)
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput).ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(ctx)
+}
+
+// StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrInput is an input type that accepts StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs, StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtr and StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput values.
+// You can construct a concrete instance of `StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrInput` via:
+//
+//	        StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrInput interface {
+	pulumi.Input
+
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput
+	ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput
+}
+
+type streamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrType StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs
+
+func StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtr(v *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrInput {
+	return (*streamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrType)(v)
+}
+
+func (*streamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier)(nil)).Elem()
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return i.ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (i *streamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrType) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return o.ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(context.Background())
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier) *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
+		return &v
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier)(nil)).Elem()
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput) ToStreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutputWithContext(ctx context.Context) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput {
+	return o
+}
+
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput) Elem() StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier) StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier {
+		if v != nil {
+			return *v
+		}
+		var ret StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier
+		return ret
+	}).(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput)
+}
+
+// The schema name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table name.
+func (o StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
 type StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier struct {
 	// The schema name.
 	Schema string `pulumi:"schema"`
@@ -12120,6 +12992,9 @@ type StreamSourceConfig struct {
 	SalesforceSourceConfig *StreamSourceConfigSalesforceSourceConfig `pulumi:"salesforceSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
+	// Spanner data source configuration.
+	// Structure is documented below.
+	SpannerSourceConfig *StreamSourceConfigSpannerSourceConfig `pulumi:"spannerSourceConfig"`
 	// SQL Server data source configuration.
 	// Structure is documented below.
 	SqlServerSourceConfig *StreamSourceConfigSqlServerSourceConfig `pulumi:"sqlServerSourceConfig"`
@@ -12154,6 +13029,9 @@ type StreamSourceConfigArgs struct {
 	SalesforceSourceConfig StreamSourceConfigSalesforceSourceConfigPtrInput `pulumi:"salesforceSourceConfig"`
 	// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
 	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
+	// Spanner data source configuration.
+	// Structure is documented below.
+	SpannerSourceConfig StreamSourceConfigSpannerSourceConfigPtrInput `pulumi:"spannerSourceConfig"`
 	// SQL Server data source configuration.
 	// Structure is documented below.
 	SqlServerSourceConfig StreamSourceConfigSqlServerSourceConfigPtrInput `pulumi:"sqlServerSourceConfig"`
@@ -12271,6 +13149,12 @@ func (o StreamSourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput 
 	return o.ApplyT(func(v StreamSourceConfig) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
 }
 
+// Spanner data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigOutput) SpannerSourceConfig() StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfig) *StreamSourceConfigSpannerSourceConfig { return v.SpannerSourceConfig }).(StreamSourceConfigSpannerSourceConfigPtrOutput)
+}
+
 // SQL Server data source configuration.
 // Structure is documented below.
 func (o StreamSourceConfigOutput) SqlServerSourceConfig() StreamSourceConfigSqlServerSourceConfigPtrOutput {
@@ -12364,6 +13248,17 @@ func (o StreamSourceConfigPtrOutput) SourceConnectionProfile() pulumi.StringPtrO
 		}
 		return &v.SourceConnectionProfile
 	}).(pulumi.StringPtrOutput)
+}
+
+// Spanner data source configuration.
+// Structure is documented below.
+func (o StreamSourceConfigPtrOutput) SpannerSourceConfig() StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfig) *StreamSourceConfigSpannerSourceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SpannerSourceConfig
+	}).(StreamSourceConfigSpannerSourceConfigPtrOutput)
 }
 
 // SQL Server data source configuration.
@@ -18954,6 +19849,1306 @@ func (o StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOu
 	}).(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput)
 }
 
+type StreamSourceConfigSpannerSourceConfig struct {
+	// Whether to use DataBoost for backfill queries.
+	BackfillDataBoostEnabled *bool `pulumi:"backfillDataBoostEnabled"`
+	// The Spanner change stream name to use.
+	ChangeStreamName *string `pulumi:"changeStreamName"`
+	// Spanner objects to retrieve from the source.
+	// Structure is documented below.
+	ExcludeObjects *StreamSourceConfigSpannerSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// The FGAC role to use for Spanner queries.
+	FgacRole *string `pulumi:"fgacRole"`
+	// Spanner objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects *StreamSourceConfigSpannerSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Max concurrent backfill tasks.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
+	// Max concurrent CDC tasks.
+	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
+	// The RPC priority to use for Spanner queries.
+	// Possible values are: `LOW`, `MEDIUM`, `HIGH`.
+	SpannerRpcPriority *string `pulumi:"spannerRpcPriority"`
+}
+
+// StreamSourceConfigSpannerSourceConfigInput is an input type that accepts StreamSourceConfigSpannerSourceConfigArgs and StreamSourceConfigSpannerSourceConfigOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigArgs{...}
+type StreamSourceConfigSpannerSourceConfigInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigOutput() StreamSourceConfigSpannerSourceConfigOutput
+	ToStreamSourceConfigSpannerSourceConfigOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigArgs struct {
+	// Whether to use DataBoost for backfill queries.
+	BackfillDataBoostEnabled pulumi.BoolPtrInput `pulumi:"backfillDataBoostEnabled"`
+	// The Spanner change stream name to use.
+	ChangeStreamName pulumi.StringPtrInput `pulumi:"changeStreamName"`
+	// Spanner objects to retrieve from the source.
+	// Structure is documented below.
+	ExcludeObjects StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// The FGAC role to use for Spanner queries.
+	FgacRole pulumi.StringPtrInput `pulumi:"fgacRole"`
+	// Spanner objects to retrieve from the source.
+	// Structure is documented below.
+	IncludeObjects StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Max concurrent backfill tasks.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
+	// Max concurrent CDC tasks.
+	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
+	// The RPC priority to use for Spanner queries.
+	// Possible values are: `LOW`, `MEDIUM`, `HIGH`.
+	SpannerRpcPriority pulumi.StringPtrInput `pulumi:"spannerRpcPriority"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfig)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigArgs) ToStreamSourceConfigSpannerSourceConfigOutput() StreamSourceConfigSpannerSourceConfigOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigArgs) ToStreamSourceConfigSpannerSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigOutput)
+}
+
+func (i StreamSourceConfigSpannerSourceConfigArgs) ToStreamSourceConfigSpannerSourceConfigPtrOutput() StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigArgs) ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigOutput).ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSpannerSourceConfigPtrInput is an input type that accepts StreamSourceConfigSpannerSourceConfigArgs, StreamSourceConfigSpannerSourceConfigPtr and StreamSourceConfigSpannerSourceConfigPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigPtrInput` via:
+//
+//	        StreamSourceConfigSpannerSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSpannerSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigPtrOutput() StreamSourceConfigSpannerSourceConfigPtrOutput
+	ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigPtrOutput
+}
+
+type streamSourceConfigSpannerSourceConfigPtrType StreamSourceConfigSpannerSourceConfigArgs
+
+func StreamSourceConfigSpannerSourceConfigPtr(v *StreamSourceConfigSpannerSourceConfigArgs) StreamSourceConfigSpannerSourceConfigPtrInput {
+	return (*streamSourceConfigSpannerSourceConfigPtrType)(v)
+}
+
+func (*streamSourceConfigSpannerSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSpannerSourceConfig)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSpannerSourceConfigPtrType) ToStreamSourceConfigSpannerSourceConfigPtrOutput() StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSpannerSourceConfigPtrType) ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigPtrOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigOutput) ToStreamSourceConfigSpannerSourceConfigOutput() StreamSourceConfigSpannerSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigOutput) ToStreamSourceConfigSpannerSourceConfigOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigOutput) ToStreamSourceConfigSpannerSourceConfigPtrOutput() StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return o.ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSpannerSourceConfigOutput) ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSpannerSourceConfig) *StreamSourceConfigSpannerSourceConfig {
+		return &v
+	}).(StreamSourceConfigSpannerSourceConfigPtrOutput)
+}
+
+// Whether to use DataBoost for backfill queries.
+func (o StreamSourceConfigSpannerSourceConfigOutput) BackfillDataBoostEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *bool { return v.BackfillDataBoostEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Spanner change stream name to use.
+func (o StreamSourceConfigSpannerSourceConfigOutput) ChangeStreamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *string { return v.ChangeStreamName }).(pulumi.StringPtrOutput)
+}
+
+// Spanner objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigOutput) ExcludeObjects() StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *StreamSourceConfigSpannerSourceConfigExcludeObjects {
+		return v.ExcludeObjects
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput)
+}
+
+// The FGAC role to use for Spanner queries.
+func (o StreamSourceConfigSpannerSourceConfigOutput) FgacRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *string { return v.FgacRole }).(pulumi.StringPtrOutput)
+}
+
+// Spanner objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigOutput) IncludeObjects() StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *StreamSourceConfigSpannerSourceConfigIncludeObjects {
+		return v.IncludeObjects
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Max concurrent backfill tasks.
+func (o StreamSourceConfigSpannerSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
+// Max concurrent CDC tasks.
+func (o StreamSourceConfigSpannerSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
+}
+
+// The RPC priority to use for Spanner queries.
+// Possible values are: `LOW`, `MEDIUM`, `HIGH`.
+func (o StreamSourceConfigSpannerSourceConfigOutput) SpannerRpcPriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfig) *string { return v.SpannerRpcPriority }).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSpannerSourceConfig)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) ToStreamSourceConfigSpannerSourceConfigPtrOutput() StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) ToStreamSourceConfigSpannerSourceConfigPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) Elem() StreamSourceConfigSpannerSourceConfigOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) StreamSourceConfigSpannerSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSpannerSourceConfig
+		return ret
+	}).(StreamSourceConfigSpannerSourceConfigOutput)
+}
+
+// Whether to use DataBoost for backfill queries.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) BackfillDataBoostEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BackfillDataBoostEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Spanner change stream name to use.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) ChangeStreamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChangeStreamName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spanner objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *StreamSourceConfigSpannerSourceConfigExcludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput)
+}
+
+// The FGAC role to use for Spanner queries.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) FgacRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FgacRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spanner objects to retrieve from the source.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) IncludeObjects() StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *StreamSourceConfigSpannerSourceConfigIncludeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Max concurrent backfill tasks.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max concurrent CDC tasks.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentCdcTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// The RPC priority to use for Spanner queries.
+// Possible values are: `LOW`, `MEDIUM`, `HIGH`.
+func (o StreamSourceConfigSpannerSourceConfigPtrOutput) SpannerRpcPriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpannerRpcPriority
+	}).(pulumi.StringPtrOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjects struct {
+	// Spanner schemas in the database
+	// Structure is documented below.
+	Schemas []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema `pulumi:"schemas"`
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs and StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs{...}
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs struct {
+	// Spanner schemas in the database
+	// Structure is documented below.
+	Schemas StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayInput `pulumi:"schemas"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput)
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput).ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs, StreamSourceConfigSpannerSourceConfigExcludeObjectsPtr and StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput
+}
+
+type streamSourceConfigSpannerSourceConfigExcludeObjectsPtrType StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs
+
+func StreamSourceConfigSpannerSourceConfigExcludeObjectsPtr(v *StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs) StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrInput {
+	return (*streamSourceConfigSpannerSourceConfigExcludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigSpannerSourceConfigExcludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSpannerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSpannerSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSpannerSourceConfigExcludeObjectsPtrType) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSpannerSourceConfigExcludeObjects) *StreamSourceConfigSpannerSourceConfigExcludeObjects {
+		return &v
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput)
+}
+
+// Spanner schemas in the database
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput) Schemas() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjects) []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema {
+		return v.Schemas
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSpannerSourceConfigExcludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput) Elem() StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfigExcludeObjects) StreamSourceConfigSpannerSourceConfigExcludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSpannerSourceConfigExcludeObjects
+		return ret
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput)
+}
+
+// Spanner schemas in the database
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput) Schemas() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfigExcludeObjects) []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema struct {
+	// Schema name.
+	Schema string `pulumi:"schema"`
+	// Tables in the schema.
+	// Structure is documented below.
+	Tables []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable `pulumi:"tables"`
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs and StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs{...}
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs struct {
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// Tables in the schema.
+	// Structure is documented below.
+	Tables StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayInput `pulumi:"tables"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput)
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArray and StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArray{ StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs{...} }
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArray []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaInput
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArray) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArray) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput {
+	return o
+}
+
+// Schema name.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Tables in the schema.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput) Tables() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema) []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable {
+		return v.Tables
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema {
+		return vs[0].([]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema)[vs[1].(int)]
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable struct {
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn `pulumi:"columns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs and StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs{...}
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs struct {
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput)
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArray and StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArray{ StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs{...} }
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArray []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableInput
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArray) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArray) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput {
+	return o
+}
+
+// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput) Columns() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable) []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn {
+		return v.Columns
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable {
+		return vs[0].([]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable)[vs[1].(int)]
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+	DataType *string `pulumi:"dataType"`
+	// (Output)
+	// Whether the column is a primary key.
+	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs and StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs{...}
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
+	// Whether the column is a primary key.
+	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput)
+}
+
+// StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayInput is an input type that accepts StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArray and StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArray{ StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs{...} }
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput
+	ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArray []StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnInput
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Spanner data type. Full data types list can be found here:
+// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Whether the column is a primary key.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn) *bool {
+		return v.IsPrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn {
+		return vs[0].([]StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn)[vs[1].(int)]
+	}).(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjects struct {
+	// Spanner schemas in the database
+	// Structure is documented below.
+	Schemas []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema `pulumi:"schemas"`
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs and StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs{...}
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs struct {
+	// Spanner schemas in the database
+	// Structure is documented below.
+	Schemas StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayInput `pulumi:"schemas"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput)
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput).ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs, StreamSourceConfigSpannerSourceConfigIncludeObjectsPtr and StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrInput` via:
+//
+//	        StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput
+}
+
+type streamSourceConfigSpannerSourceConfigIncludeObjectsPtrType StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs
+
+func StreamSourceConfigSpannerSourceConfigIncludeObjectsPtr(v *StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs) StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrInput {
+	return (*streamSourceConfigSpannerSourceConfigIncludeObjectsPtrType)(v)
+}
+
+func (*streamSourceConfigSpannerSourceConfigIncludeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSpannerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (i *streamSourceConfigSpannerSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigSpannerSourceConfigIncludeObjectsPtrType) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return o.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigSpannerSourceConfigIncludeObjects) *StreamSourceConfigSpannerSourceConfigIncludeObjects {
+		return &v
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Spanner schemas in the database
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput) Schemas() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjects) []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema {
+		return v.Schemas
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigSpannerSourceConfigIncludeObjects)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput) Elem() StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfigIncludeObjects) StreamSourceConfigSpannerSourceConfigIncludeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigSpannerSourceConfigIncludeObjects
+		return ret
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput)
+}
+
+// Spanner schemas in the database
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput) Schemas() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o.ApplyT(func(v *StreamSourceConfigSpannerSourceConfigIncludeObjects) []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema {
+		if v == nil {
+			return nil
+		}
+		return v.Schemas
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema struct {
+	// Schema name.
+	Schema string `pulumi:"schema"`
+	// Tables in the schema.
+	// Structure is documented below.
+	Tables []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable `pulumi:"tables"`
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs and StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs{...}
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs struct {
+	// Schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// Tables in the schema.
+	// Structure is documented below.
+	Tables StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayInput `pulumi:"tables"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput)
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArray and StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArray{ StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs{...} }
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArray []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaInput
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArray) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArray) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput {
+	return o
+}
+
+// Schema name.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// Tables in the schema.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput) Tables() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema) []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable {
+		return v.Tables
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema {
+		return vs[0].([]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema)[vs[1].(int)]
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable struct {
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn `pulumi:"columns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs and StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs{...}
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs struct {
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.
+	Columns StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
+	// Table name.
+	Table pulumi.StringInput `pulumi:"table"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput)
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArray and StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArray{ StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs{...} }
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArray []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableInput
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArray) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArray) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput {
+	return o
+}
+
+// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput) Columns() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable) []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn {
+		return v.Columns
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput)
+}
+
+// Table name.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable {
+		return vs[0].([]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable)[vs[1].(int)]
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+	DataType *string `pulumi:"dataType"`
+	// (Output)
+	// Whether the column is a primary key.
+	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs and StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs{...}
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// (Output)
+	// Whether the column is a primary key.
+	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
+	// (Output)
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+}
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput)
+}
+
+// StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayInput is an input type that accepts StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArray and StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayInput` via:
+//
+//	StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArray{ StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs{...} }
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput
+	ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArray []StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnInput
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return i.ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArray) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return o
+}
+
+// Column name.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Spanner data type. Full data types list can be found here:
+// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn) *string {
+		return v.DataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Whether the column is a primary key.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn) *bool {
+		return v.IsPrimaryKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The ordinal position of the column in the table.
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn) *int {
+		return v.OrdinalPosition
+	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn)(nil)).Elem()
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput() StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) ToStreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutputWithContext(ctx context.Context) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn {
+		return vs[0].([]StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn)[vs[1].(int)]
+	}).(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput)
+}
+
 type StreamSourceConfigSqlServerSourceConfig struct {
 	// CDC reader reads from change tables.
 	ChangeTables *StreamSourceConfigSqlServerSourceConfigChangeTables `pulumi:"changeTables"`
@@ -19321,7 +21516,7 @@ func (o StreamSourceConfigSqlServerSourceConfigChangeTablesPtrOutput) Elem() Str
 }
 
 type StreamSourceConfigSqlServerSourceConfigExcludeObjects struct {
-	// SQL Server schemas/databases in the database server
+	// Spanner schemas in the database
 	// Structure is documented below.
 	Schemas []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema `pulumi:"schemas"`
 }
@@ -19338,7 +21533,7 @@ type StreamSourceConfigSqlServerSourceConfigExcludeObjectsInput interface {
 }
 
 type StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs struct {
-	// SQL Server schemas/databases in the database server
+	// Spanner schemas in the database
 	// Structure is documented below.
 	Schemas StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayInput `pulumi:"schemas"`
 }
@@ -19420,7 +21615,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) ToStreamSou
 	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput)
 }
 
-// SQL Server schemas/databases in the database server
+// Spanner schemas in the database
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput) Schemas() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjects) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
@@ -19452,7 +21647,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) Elem() S
 	}).(StreamSourceConfigSqlServerSourceConfigExcludeObjectsOutput)
 }
 
-// SQL Server schemas/databases in the database server
+// Spanner schemas in the database
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) Schemas() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput {
 	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigExcludeObjects) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
@@ -19466,7 +21661,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsPtrOutput) Schemas(
 type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema struct {
 	// Schema name.
 	Schema string `pulumi:"schema"`
-	// Tables in the database.
+	// Tables in the schema.
 	// Structure is documented below.
 	Tables []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable `pulumi:"tables"`
 }
@@ -19485,7 +21680,7 @@ type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaInput interface 
 type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs struct {
 	// Schema name.
 	Schema pulumi.StringInput `pulumi:"schema"`
-	// Tables in the database.
+	// Tables in the schema.
 	// Structure is documented below.
 	Tables StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayInput `pulumi:"tables"`
 }
@@ -19546,7 +21741,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput) Schem
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
 }
 
-// Tables in the database.
+// Tables in the schema.
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaOutput) Tables() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable {
@@ -19575,7 +21770,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArrayOutput) 
 }
 
 type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable struct {
-	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	Columns []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn `pulumi:"columns"`
 	// Table name.
@@ -19594,7 +21789,7 @@ type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableInput inter
 }
 
 type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs struct {
-	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	Columns StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
 	// Table name.
@@ -19652,7 +21847,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput) 
 	return o
 }
 
-// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableOutput) Columns() StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable) []StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn {
@@ -19688,8 +21883,9 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArrayOut
 type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn struct {
 	// Column name.
 	Column *string `pulumi:"column"`
-	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -19725,8 +21921,9 @@ type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnInput
 type StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs struct {
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
-	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -19806,8 +22003,9 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SQL Server data type. Full data types list can be found here:
-// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+// (Output)
+// The Spanner data type. Full data types list can be found here:
+// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn) *string {
 		return v.DataType
@@ -19879,7 +22077,7 @@ func (o StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnAr
 }
 
 type StreamSourceConfigSqlServerSourceConfigIncludeObjects struct {
-	// SQL Server schemas/databases in the database server
+	// Spanner schemas in the database
 	// Structure is documented below.
 	Schemas []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema `pulumi:"schemas"`
 }
@@ -19896,7 +22094,7 @@ type StreamSourceConfigSqlServerSourceConfigIncludeObjectsInput interface {
 }
 
 type StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs struct {
-	// SQL Server schemas/databases in the database server
+	// Spanner schemas in the database
 	// Structure is documented below.
 	Schemas StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayInput `pulumi:"schemas"`
 }
@@ -19978,7 +22176,7 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) ToStreamSou
 	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput)
 }
 
-// SQL Server schemas/databases in the database server
+// Spanner schemas in the database
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput) Schemas() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjects) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
@@ -20010,7 +22208,7 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) Elem() S
 	}).(StreamSourceConfigSqlServerSourceConfigIncludeObjectsOutput)
 }
 
-// SQL Server schemas/databases in the database server
+// Spanner schemas in the database
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) Schemas() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput {
 	return o.ApplyT(func(v *StreamSourceConfigSqlServerSourceConfigIncludeObjects) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
@@ -20024,7 +22222,7 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsPtrOutput) Schemas(
 type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema struct {
 	// Schema name.
 	Schema string `pulumi:"schema"`
-	// Tables in the database.
+	// Tables in the schema.
 	// Structure is documented below.
 	Tables []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable `pulumi:"tables"`
 }
@@ -20043,7 +22241,7 @@ type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaInput interface 
 type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs struct {
 	// Schema name.
 	Schema pulumi.StringInput `pulumi:"schema"`
-	// Tables in the database.
+	// Tables in the schema.
 	// Structure is documented below.
 	Tables StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayInput `pulumi:"tables"`
 }
@@ -20104,7 +22302,7 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput) Schem
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema) string { return v.Schema }).(pulumi.StringOutput)
 }
 
-// Tables in the database.
+// Tables in the schema.
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaOutput) Tables() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable {
@@ -20133,7 +22331,7 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArrayOutput) 
 }
 
 type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable struct {
-	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	Columns []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn `pulumi:"columns"`
 	// Table name.
@@ -20152,7 +22350,7 @@ type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableInput inter
 }
 
 type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs struct {
-	// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	Columns StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayInput `pulumi:"columns"`
 	// Table name.
@@ -20210,7 +22408,7 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput) 
 	return o
 }
 
-// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableOutput) Columns() StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable) []StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn {
@@ -20246,8 +22444,9 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArrayOut
 type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn struct {
 	// Column name.
 	Column *string `pulumi:"column"`
-	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 	DataType *string `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -20283,8 +22482,9 @@ type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnInput
 type StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs struct {
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
-	// The SQL Server data type. Full data types list can be found here:
-	// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+	// (Output)
+	// The Spanner data type. Full data types list can be found here:
+	// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
 	// Column length.
@@ -20364,8 +22564,9 @@ func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SQL Server data type. Full data types list can be found here:
-// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+// (Output)
+// The Spanner data type. Full data types list can be found here:
+// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
 func (o StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn) *string {
 		return v.DataType
@@ -20593,6 +22794,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrInput)(nil)).Elem(), ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileUserCredentialsInput)(nil)).Elem(), ConnectionProfileSalesforceProfileUserCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSalesforceProfileUserCredentialsPtrInput)(nil)).Elem(), ConnectionProfileSalesforceProfileUserCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSpannerProfileInput)(nil)).Elem(), ConnectionProfileSpannerProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSpannerProfilePtrInput)(nil)).Elem(), ConnectionProfileSpannerProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSqlServerProfileInput)(nil)).Elem(), ConnectionProfileSqlServerProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileSqlServerProfilePtrInput)(nil)).Elem(), ConnectionProfileSqlServerProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorInput)(nil)).Elem(), PrivateConnectionErrorArgs{})
@@ -20641,6 +22844,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectArrayInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectFieldInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayInput)(nil)).Elem(), StreamBackfillAllSalesforceExcludedObjectsObjectFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaArrayInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTableInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayInput)(nil)).Elem(), StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsPtrInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamBackfillAllSqlServerExcludedObjectsSchemaInput)(nil)).Elem(), StreamBackfillAllSqlServerExcludedObjectsSchemaArgs{})
@@ -20700,6 +22911,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrInput)(nil)).Elem(), StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigInput)(nil)).Elem(), StreamSourceConfigArgs{})
@@ -20798,6 +23011,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayInput)(nil)).Elem(), StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayInput)(nil)).Elem(), StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigSqlServerSourceConfigChangeTablesInput)(nil)).Elem(), StreamSourceConfigSqlServerSourceConfigChangeTablesArgs{})
@@ -20858,6 +23089,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileOauth2ClientCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileUserCredentialsOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileSalesforceProfileUserCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSpannerProfileOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileSpannerProfilePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileSqlServerProfileOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileSqlServerProfilePtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorOutput{})
@@ -20906,6 +23139,14 @@ func init() {
 	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsObjectArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsObjectFieldOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSalesforceExcludedObjectsObjectFieldArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsSchemaOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsSchemaTableOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArrayOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsPtrOutput{})
 	pulumi.RegisterOutputType(StreamBackfillAllSqlServerExcludedObjectsSchemaOutput{})
@@ -20965,6 +23206,8 @@ func init() {
 	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierPtrOutput{})
 	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierOutput{})
 	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierPtrOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierOutput{})
+	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierPtrOutput{})
 	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierOutput{})
 	pulumi.RegisterOutputType(StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigOutput{})
@@ -21063,6 +23306,24 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigSqlServerSourceConfigChangeTablesOutput{})

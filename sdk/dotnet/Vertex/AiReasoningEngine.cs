@@ -60,6 +60,146 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Reasoning Engine Psc Interface
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "reasoning-engine",
+    ///         Location = "us-central1",
+    ///         UniformBucketLevelAccess = true,
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var bucketObjRequirementsTxt = new Gcp.Storage.BucketObject("bucket_obj_requirements_txt", new()
+    ///     {
+    ///         Name = "requirements.txt",
+    ///         Bucket = bucket.Id,
+    ///         Source = new FileAsset("./test-fixtures/requirements_adk.txt"),
+    ///     });
+    /// 
+    ///     var bucketObjPickle = new Gcp.Storage.BucketObject("bucket_obj_pickle", new()
+    ///     {
+    ///         Name = "code.pkl",
+    ///         Bucket = bucket.Id,
+    ///         Source = new FileAsset("./test-fixtures/pickle_adk.pkl"),
+    ///     });
+    /// 
+    ///     var bucketObjDependenciesTarGz = new Gcp.Storage.BucketObject("bucket_obj_dependencies_tar_gz", new()
+    ///     {
+    ///         Name = "dependencies.tar.gz",
+    ///         Bucket = bucket.Id,
+    ///         Source = new FileAsset("./test-fixtures/dependencies_adk.tar.gz"),
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "subnetwork",
+    ///         Region = "us-central1",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var networkAttachment = new Gcp.Compute.NetworkAttachment("network_attachment", new()
+    ///     {
+    ///         Name = "network-attachment",
+    ///         Region = "us-central1",
+    ///         ConnectionPreference = "ACCEPT_MANUAL",
+    ///         Subnetworks = new[]
+    ///         {
+    ///             subnetwork.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     // Destroy network attachment 35 minutes after reasoning engine is deleted.
+    ///     // It guarantees that the network attachment has no more active PSC interfaces.
+    ///     var wait35Minutes = new Time.Sleep("wait_35_minutes", new()
+    ///     {
+    ///         DestroyDuration = "35m",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             networkAttachment,
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     // When PSC-I is configured, Agent deletion will fail,
+    ///     // although the agent will be deleted.
+    ///     // Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "reasoning-engine",
+    ///         Description = "A basic reasoning engine",
+    ///         Region = "us-central1",
+    ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+    ///         {
+    ///             AgentFramework = "google-adk",
+    ///             PackageSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecPackageSpecArgs
+    ///             {
+    ///                 PythonVersion = "3.11",
+    ///                 DependencyFilesGcsUri = Output.Tuple(bucket.Url, bucketObjDependenciesTarGz.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var url = values.Item1;
+    ///                     var name = values.Item2;
+    ///                     return $"{url}/{name}";
+    ///                 }),
+    ///                 PickleObjectGcsUri = Output.Tuple(bucket.Url, bucketObjPickle.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var url = values.Item1;
+    ///                     var name = values.Item2;
+    ///                     return $"{url}/{name}";
+    ///                 }),
+    ///                 RequirementsGcsUri = Output.Tuple(bucket.Url, bucketObjRequirementsTxt.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var url = values.Item1;
+    ///                     var name = values.Item2;
+    ///                     return $"{url}/{name}";
+    ///                 }),
+    ///             },
+    ///             DeploymentSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecArgs
+    ///             {
+    ///                 PscInterfaceConfig = new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs
+    ///                 {
+    ///                     NetworkAttachment = networkAttachment.Id,
+    ///                     DnsPeeringConfigs = new[]
+    ///                     {
+    ///                         new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs
+    ///                         {
+    ///                             Domain = "example.com.",
+    ///                             TargetProject = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///                             TargetNetwork = network.Name,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait35Minutes,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Reasoning Engine Full
     /// 
     /// ```csharp

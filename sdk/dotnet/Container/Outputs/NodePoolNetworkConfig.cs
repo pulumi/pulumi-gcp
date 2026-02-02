@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNetworkConfig
     {
         /// <summary>
+        /// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+        /// </summary>
+        public readonly string? AcceleratorNetworkProfile;
+        /// <summary>
         /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
         /// Structure is documented below
         /// </summary>
@@ -54,6 +58,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private NodePoolNetworkConfig(
+            string? acceleratorNetworkProfile,
+
             ImmutableArray<Outputs.NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs,
 
             ImmutableArray<Outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs,
@@ -72,6 +78,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? subnetwork)
         {
+            AcceleratorNetworkProfile = acceleratorNetworkProfile;
             AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
             CreatePodRange = createPodRange;

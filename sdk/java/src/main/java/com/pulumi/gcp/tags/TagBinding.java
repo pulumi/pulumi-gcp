@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
  * 
  * To get more information about TagBinding, see:
  * 
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  * 
  * ## Example Usage
  * 
@@ -82,6 +82,57 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Tag Binding Using Dynamic Tag Value
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagBinding;
+ * import com.pulumi.gcp.tags.TagBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("project_id")
+ *             .name("project_id")
+ *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var key = new TagKey("key", TagKeyArgs.builder()
+ *             .parent("organizations/123456789")
+ *             .shortName("keyname")
+ *             .description("For keyname resources.")
+ *             .allowedValuesRegex("^[a-z]+$")
+ *             .build());
+ * 
+ *         var binding = new TagBinding("binding", TagBindingArgs.builder()
+ *             .parent(project.number().applyValue(_number -> String.format("//cloudresourcemanager.googleapis.com/projects/%s", _number)))
+ *             .tagValue(key.namespacedName().applyValue(_namespacedName -> String.format("%s/test-value", _namespacedName)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -105,14 +156,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:tags/tagBinding:TagBinding")
 public class TagBinding extends com.pulumi.resources.CustomResource {
     /**
-     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+     * The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+     * @return The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      * 
      */
     public Output<String> name() {
@@ -133,14 +184,14 @@ public class TagBinding extends com.pulumi.resources.CustomResource {
         return this.parent;
     }
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      * 
      */
     @Export(name="tagValue", refs={String.class}, tree="[0]")
     private Output<String> tagValue;
 
     /**
-     * @return The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * @return The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      * 
      */
     public Output<String> tagValue() {

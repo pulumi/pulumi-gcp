@@ -174,7 +174,7 @@ class IamMemberRemove(pulumi.CustomResource):
         For more information see
         [the official documentation](https://cloud.google.com/iam/docs/granting-changing-revoking-access)
         and
-        [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
+        [API reference](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
 
         ## Example Usage
 
@@ -225,7 +225,7 @@ class IamMemberRemove(pulumi.CustomResource):
         For more information see
         [the official documentation](https://cloud.google.com/iam/docs/granting-changing-revoking-access)
         and
-        [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
+        [API reference](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
 
         ## Example Usage
 

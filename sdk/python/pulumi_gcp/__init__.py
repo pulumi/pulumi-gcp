@@ -3626,6 +3626,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/regionCompositeHealthCheck",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck": "RegionCompositeHealthCheck"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionDisk",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4658,6 +4666,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/dataProduct",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/dataProduct:DataProduct": "DataProduct"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/datascan",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -5346,6 +5362,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxToolVersion",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxToolVersion:CxToolVersion": "CxToolVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/cxVersion",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -5822,6 +5846,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.filestore",
   "classes": {
    "gcp:filestore/snapshot:Snapshot": "Snapshot"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/aiLogicConfig",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/aiLogicConfig:AiLogicConfig": "AiLogicConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/aiLogicPromptTemplate",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate": "AiLogicPromptTemplate"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/aiLogicPromptTemplateLock",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock": "AiLogicPromptTemplateLock"
   }
  },
  {
@@ -6446,6 +6494,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkehub",
   "classes": {
    "gcp:gkehub/namespace:Namespace": "Namespace"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/rolloutSequence",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/rolloutSequence:RolloutSequence": "RolloutSequence"
   }
  },
  {
@@ -9186,6 +9242,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "saasruntime/unitOperation",
+  "fqn": "pulumi_gcp.saasruntime",
+  "classes": {
+   "gcp:saasruntime/unitOperation:UnitOperation": "UnitOperation"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "secretmanager/regionalSecret",
   "fqn": "pulumi_gcp.secretmanager",
   "classes": {
@@ -10598,6 +10662,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vmwareengine",
   "classes": {
    "gcp:vmwareengine/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vmwareengine/datastore",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/datastore:Datastore": "Datastore"
   }
  },
  {

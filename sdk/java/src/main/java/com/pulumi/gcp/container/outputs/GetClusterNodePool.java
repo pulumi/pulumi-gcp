@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeDrainConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolPlacementPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolUpgradeSetting;
@@ -74,6 +75,11 @@ public final class GetClusterNodePool {
      * 
      */
     private Integer nodeCount;
+    /**
+     * @return Node drain configuration for this NodePool.
+     * 
+     */
+    private List<GetClusterNodePoolNodeDrainConfig> nodeDrainConfigs;
     /**
      * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level nodeLocations will be used.
      * 
@@ -175,6 +181,13 @@ public final class GetClusterNodePool {
         return this.nodeCount;
     }
     /**
+     * @return Node drain configuration for this NodePool.
+     * 
+     */
+    public List<GetClusterNodePoolNodeDrainConfig> nodeDrainConfigs() {
+        return this.nodeDrainConfigs;
+    }
+    /**
      * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level nodeLocations will be used.
      * 
      */
@@ -226,6 +239,7 @@ public final class GetClusterNodePool {
         private List<GetClusterNodePoolNetworkConfig> networkConfigs;
         private List<GetClusterNodePoolNodeConfig> nodeConfigs;
         private Integer nodeCount;
+        private List<GetClusterNodePoolNodeDrainConfig> nodeDrainConfigs;
         private List<String> nodeLocations;
         private List<GetClusterNodePoolPlacementPolicy> placementPolicies;
         private List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings;
@@ -245,6 +259,7 @@ public final class GetClusterNodePool {
     	      this.networkConfigs = defaults.networkConfigs;
     	      this.nodeConfigs = defaults.nodeConfigs;
     	      this.nodeCount = defaults.nodeCount;
+    	      this.nodeDrainConfigs = defaults.nodeDrainConfigs;
     	      this.nodeLocations = defaults.nodeLocations;
     	      this.placementPolicies = defaults.placementPolicies;
     	      this.queuedProvisionings = defaults.queuedProvisionings;
@@ -359,6 +374,17 @@ public final class GetClusterNodePool {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeDrainConfigs(List<GetClusterNodePoolNodeDrainConfig> nodeDrainConfigs) {
+            if (nodeDrainConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "nodeDrainConfigs");
+            }
+            this.nodeDrainConfigs = nodeDrainConfigs;
+            return this;
+        }
+        public Builder nodeDrainConfigs(GetClusterNodePoolNodeDrainConfig... nodeDrainConfigs) {
+            return nodeDrainConfigs(List.of(nodeDrainConfigs));
+        }
+        @CustomType.Setter
         public Builder nodeLocations(List<String> nodeLocations) {
             if (nodeLocations == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePool", "nodeLocations");
@@ -423,6 +449,7 @@ public final class GetClusterNodePool {
             _resultValue.networkConfigs = networkConfigs;
             _resultValue.nodeConfigs = nodeConfigs;
             _resultValue.nodeCount = nodeCount;
+            _resultValue.nodeDrainConfigs = nodeDrainConfigs;
             _resultValue.nodeLocations = nodeLocations;
             _resultValue.placementPolicies = placementPolicies;
             _resultValue.queuedProvisionings = queuedProvisionings;

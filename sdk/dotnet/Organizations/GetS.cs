@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.Organizations
     {
         /// <summary>
         /// Gets a list of all organizations.
-        /// See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-        /// and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+        /// See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+        /// and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
         /// 
         /// ## Example Usage
         /// 
@@ -39,8 +39,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// Gets a list of all organizations.
-        /// See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-        /// and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+        /// See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+        /// and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
         /// 
         /// ## Example Usage
         /// 
@@ -65,8 +65,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// Gets a list of all organizations.
-        /// See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-        /// and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+        /// See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+        /// and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
         /// 
         /// ## Example Usage
         /// 
@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetSArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+        /// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetSInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+        /// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

@@ -15,6 +15,7 @@ import com.pulumi.gcp.datastream.inputs.ConnectionProfileOracleProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileSalesforceProfileArgs;
+import com.pulumi.gcp.datastream.inputs.ConnectionProfileSpannerProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileSqlServerProfileArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -276,6 +277,23 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Spanner profile.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="spannerProfile")
+    private @Nullable Output<ConnectionProfileSpannerProfileArgs> spannerProfile;
+
+    /**
+     * @return Spanner profile.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfileSpannerProfileArgs>> spannerProfile() {
+        return Optional.ofNullable(this.spannerProfile);
+    }
+
+    /**
      * SQL Server database profile.
      * Structure is documented below.
      * 
@@ -310,6 +328,7 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         this.privateConnectivity = $.privateConnectivity;
         this.project = $.project;
         this.salesforceProfile = $.salesforceProfile;
+        this.spannerProfile = $.spannerProfile;
         this.sqlServerProfile = $.sqlServerProfile;
     }
 
@@ -666,6 +685,29 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder salesforceProfile(ConnectionProfileSalesforceProfileArgs salesforceProfile) {
             return salesforceProfile(Output.of(salesforceProfile));
+        }
+
+        /**
+         * @param spannerProfile Spanner profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerProfile(@Nullable Output<ConnectionProfileSpannerProfileArgs> spannerProfile) {
+            $.spannerProfile = spannerProfile;
+            return this;
+        }
+
+        /**
+         * @param spannerProfile Spanner profile.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerProfile(ConnectionProfileSpannerProfileArgs spannerProfile) {
+            return spannerProfile(Output.of(spannerProfile));
         }
 
         /**

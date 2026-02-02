@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string Schema;
         /// <summary>
-        /// Tables in the database.
+        /// Tables in the schema.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable> Tables;

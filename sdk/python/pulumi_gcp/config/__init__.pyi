@@ -197,6 +197,8 @@ externalCredentials: Optional[str]
 
 filestoreCustomEndpoint: Optional[str]
 
+firebaseAiLogicCustomEndpoint: Optional[str]
+
 firebaseAppCheckCustomEndpoint: Optional[str]
 
 firebaseAppHostingCustomEndpoint: Optional[str]

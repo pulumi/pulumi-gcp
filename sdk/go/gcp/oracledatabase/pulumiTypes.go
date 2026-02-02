@@ -3431,6 +3431,162 @@ func (o AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArrayOutput)
 	}).(AutonomousDatabasePropertiesScheduledOperationDetailStopTimeOutput)
 }
 
+type AutonomousDatabaseSourceConfig struct {
+	// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+	AutomaticBackupsReplicationEnabled *bool `pulumi:"automaticBackupsReplicationEnabled"`
+	// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+	AutonomousDatabase *string `pulumi:"autonomousDatabase"`
+}
+
+// AutonomousDatabaseSourceConfigInput is an input type that accepts AutonomousDatabaseSourceConfigArgs and AutonomousDatabaseSourceConfigOutput values.
+// You can construct a concrete instance of `AutonomousDatabaseSourceConfigInput` via:
+//
+//	AutonomousDatabaseSourceConfigArgs{...}
+type AutonomousDatabaseSourceConfigInput interface {
+	pulumi.Input
+
+	ToAutonomousDatabaseSourceConfigOutput() AutonomousDatabaseSourceConfigOutput
+	ToAutonomousDatabaseSourceConfigOutputWithContext(context.Context) AutonomousDatabaseSourceConfigOutput
+}
+
+type AutonomousDatabaseSourceConfigArgs struct {
+	// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+	AutomaticBackupsReplicationEnabled pulumi.BoolPtrInput `pulumi:"automaticBackupsReplicationEnabled"`
+	// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+	AutonomousDatabase pulumi.StringPtrInput `pulumi:"autonomousDatabase"`
+}
+
+func (AutonomousDatabaseSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (i AutonomousDatabaseSourceConfigArgs) ToAutonomousDatabaseSourceConfigOutput() AutonomousDatabaseSourceConfigOutput {
+	return i.ToAutonomousDatabaseSourceConfigOutputWithContext(context.Background())
+}
+
+func (i AutonomousDatabaseSourceConfigArgs) ToAutonomousDatabaseSourceConfigOutputWithContext(ctx context.Context) AutonomousDatabaseSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutonomousDatabaseSourceConfigOutput)
+}
+
+func (i AutonomousDatabaseSourceConfigArgs) ToAutonomousDatabaseSourceConfigPtrOutput() AutonomousDatabaseSourceConfigPtrOutput {
+	return i.ToAutonomousDatabaseSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AutonomousDatabaseSourceConfigArgs) ToAutonomousDatabaseSourceConfigPtrOutputWithContext(ctx context.Context) AutonomousDatabaseSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutonomousDatabaseSourceConfigOutput).ToAutonomousDatabaseSourceConfigPtrOutputWithContext(ctx)
+}
+
+// AutonomousDatabaseSourceConfigPtrInput is an input type that accepts AutonomousDatabaseSourceConfigArgs, AutonomousDatabaseSourceConfigPtr and AutonomousDatabaseSourceConfigPtrOutput values.
+// You can construct a concrete instance of `AutonomousDatabaseSourceConfigPtrInput` via:
+//
+//	        AutonomousDatabaseSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutonomousDatabaseSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAutonomousDatabaseSourceConfigPtrOutput() AutonomousDatabaseSourceConfigPtrOutput
+	ToAutonomousDatabaseSourceConfigPtrOutputWithContext(context.Context) AutonomousDatabaseSourceConfigPtrOutput
+}
+
+type autonomousDatabaseSourceConfigPtrType AutonomousDatabaseSourceConfigArgs
+
+func AutonomousDatabaseSourceConfigPtr(v *AutonomousDatabaseSourceConfigArgs) AutonomousDatabaseSourceConfigPtrInput {
+	return (*autonomousDatabaseSourceConfigPtrType)(v)
+}
+
+func (*autonomousDatabaseSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (i *autonomousDatabaseSourceConfigPtrType) ToAutonomousDatabaseSourceConfigPtrOutput() AutonomousDatabaseSourceConfigPtrOutput {
+	return i.ToAutonomousDatabaseSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *autonomousDatabaseSourceConfigPtrType) ToAutonomousDatabaseSourceConfigPtrOutputWithContext(ctx context.Context) AutonomousDatabaseSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutonomousDatabaseSourceConfigPtrOutput)
+}
+
+type AutonomousDatabaseSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (AutonomousDatabaseSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (o AutonomousDatabaseSourceConfigOutput) ToAutonomousDatabaseSourceConfigOutput() AutonomousDatabaseSourceConfigOutput {
+	return o
+}
+
+func (o AutonomousDatabaseSourceConfigOutput) ToAutonomousDatabaseSourceConfigOutputWithContext(ctx context.Context) AutonomousDatabaseSourceConfigOutput {
+	return o
+}
+
+func (o AutonomousDatabaseSourceConfigOutput) ToAutonomousDatabaseSourceConfigPtrOutput() AutonomousDatabaseSourceConfigPtrOutput {
+	return o.ToAutonomousDatabaseSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AutonomousDatabaseSourceConfigOutput) ToAutonomousDatabaseSourceConfigPtrOutputWithContext(ctx context.Context) AutonomousDatabaseSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutonomousDatabaseSourceConfig) *AutonomousDatabaseSourceConfig {
+		return &v
+	}).(AutonomousDatabaseSourceConfigPtrOutput)
+}
+
+// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+func (o AutonomousDatabaseSourceConfigOutput) AutomaticBackupsReplicationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutonomousDatabaseSourceConfig) *bool { return v.AutomaticBackupsReplicationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+func (o AutonomousDatabaseSourceConfigOutput) AutonomousDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutonomousDatabaseSourceConfig) *string { return v.AutonomousDatabase }).(pulumi.StringPtrOutput)
+}
+
+type AutonomousDatabaseSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AutonomousDatabaseSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (o AutonomousDatabaseSourceConfigPtrOutput) ToAutonomousDatabaseSourceConfigPtrOutput() AutonomousDatabaseSourceConfigPtrOutput {
+	return o
+}
+
+func (o AutonomousDatabaseSourceConfigPtrOutput) ToAutonomousDatabaseSourceConfigPtrOutputWithContext(ctx context.Context) AutonomousDatabaseSourceConfigPtrOutput {
+	return o
+}
+
+func (o AutonomousDatabaseSourceConfigPtrOutput) Elem() AutonomousDatabaseSourceConfigOutput {
+	return o.ApplyT(func(v *AutonomousDatabaseSourceConfig) AutonomousDatabaseSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AutonomousDatabaseSourceConfig
+		return ret
+	}).(AutonomousDatabaseSourceConfigOutput)
+}
+
+// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+func (o AutonomousDatabaseSourceConfigPtrOutput) AutomaticBackupsReplicationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutonomousDatabaseSourceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticBackupsReplicationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+func (o AutonomousDatabaseSourceConfigPtrOutput) AutonomousDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutonomousDatabaseSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutonomousDatabase
+	}).(pulumi.StringPtrOutput)
+}
+
 type CloudExadataInfrastructureProperties struct {
 	// (Output)
 	// The requested number of additional storage servers activated for the
@@ -11950,6 +12106,112 @@ func (o GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeArrayOutput
 	}).(GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeOutput)
 }
 
+type GetAutonomousDatabaseSourceConfig struct {
+	// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+	AutomaticBackupsReplicationEnabled bool `pulumi:"automaticBackupsReplicationEnabled"`
+	// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+	AutonomousDatabase string `pulumi:"autonomousDatabase"`
+}
+
+// GetAutonomousDatabaseSourceConfigInput is an input type that accepts GetAutonomousDatabaseSourceConfigArgs and GetAutonomousDatabaseSourceConfigOutput values.
+// You can construct a concrete instance of `GetAutonomousDatabaseSourceConfigInput` via:
+//
+//	GetAutonomousDatabaseSourceConfigArgs{...}
+type GetAutonomousDatabaseSourceConfigInput interface {
+	pulumi.Input
+
+	ToGetAutonomousDatabaseSourceConfigOutput() GetAutonomousDatabaseSourceConfigOutput
+	ToGetAutonomousDatabaseSourceConfigOutputWithContext(context.Context) GetAutonomousDatabaseSourceConfigOutput
+}
+
+type GetAutonomousDatabaseSourceConfigArgs struct {
+	// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+	AutomaticBackupsReplicationEnabled pulumi.BoolInput `pulumi:"automaticBackupsReplicationEnabled"`
+	// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+	AutonomousDatabase pulumi.StringInput `pulumi:"autonomousDatabase"`
+}
+
+func (GetAutonomousDatabaseSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (i GetAutonomousDatabaseSourceConfigArgs) ToGetAutonomousDatabaseSourceConfigOutput() GetAutonomousDatabaseSourceConfigOutput {
+	return i.ToGetAutonomousDatabaseSourceConfigOutputWithContext(context.Background())
+}
+
+func (i GetAutonomousDatabaseSourceConfigArgs) ToGetAutonomousDatabaseSourceConfigOutputWithContext(ctx context.Context) GetAutonomousDatabaseSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutonomousDatabaseSourceConfigOutput)
+}
+
+// GetAutonomousDatabaseSourceConfigArrayInput is an input type that accepts GetAutonomousDatabaseSourceConfigArray and GetAutonomousDatabaseSourceConfigArrayOutput values.
+// You can construct a concrete instance of `GetAutonomousDatabaseSourceConfigArrayInput` via:
+//
+//	GetAutonomousDatabaseSourceConfigArray{ GetAutonomousDatabaseSourceConfigArgs{...} }
+type GetAutonomousDatabaseSourceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAutonomousDatabaseSourceConfigArrayOutput() GetAutonomousDatabaseSourceConfigArrayOutput
+	ToGetAutonomousDatabaseSourceConfigArrayOutputWithContext(context.Context) GetAutonomousDatabaseSourceConfigArrayOutput
+}
+
+type GetAutonomousDatabaseSourceConfigArray []GetAutonomousDatabaseSourceConfigInput
+
+func (GetAutonomousDatabaseSourceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (i GetAutonomousDatabaseSourceConfigArray) ToGetAutonomousDatabaseSourceConfigArrayOutput() GetAutonomousDatabaseSourceConfigArrayOutput {
+	return i.ToGetAutonomousDatabaseSourceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutonomousDatabaseSourceConfigArray) ToGetAutonomousDatabaseSourceConfigArrayOutputWithContext(ctx context.Context) GetAutonomousDatabaseSourceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutonomousDatabaseSourceConfigArrayOutput)
+}
+
+type GetAutonomousDatabaseSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAutonomousDatabaseSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (o GetAutonomousDatabaseSourceConfigOutput) ToGetAutonomousDatabaseSourceConfigOutput() GetAutonomousDatabaseSourceConfigOutput {
+	return o
+}
+
+func (o GetAutonomousDatabaseSourceConfigOutput) ToGetAutonomousDatabaseSourceConfigOutputWithContext(ctx context.Context) GetAutonomousDatabaseSourceConfigOutput {
+	return o
+}
+
+// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+func (o GetAutonomousDatabaseSourceConfigOutput) AutomaticBackupsReplicationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAutonomousDatabaseSourceConfig) bool { return v.AutomaticBackupsReplicationEnabled }).(pulumi.BoolOutput)
+}
+
+// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+func (o GetAutonomousDatabaseSourceConfigOutput) AutonomousDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabaseSourceConfig) string { return v.AutonomousDatabase }).(pulumi.StringOutput)
+}
+
+type GetAutonomousDatabaseSourceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutonomousDatabaseSourceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (o GetAutonomousDatabaseSourceConfigArrayOutput) ToGetAutonomousDatabaseSourceConfigArrayOutput() GetAutonomousDatabaseSourceConfigArrayOutput {
+	return o
+}
+
+func (o GetAutonomousDatabaseSourceConfigArrayOutput) ToGetAutonomousDatabaseSourceConfigArrayOutputWithContext(ctx context.Context) GetAutonomousDatabaseSourceConfigArrayOutput {
+	return o
+}
+
+func (o GetAutonomousDatabaseSourceConfigArrayOutput) Index(i pulumi.IntInput) GetAutonomousDatabaseSourceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutonomousDatabaseSourceConfig {
+		return vs[0].([]GetAutonomousDatabaseSourceConfig)[vs[1].(int)]
+	}).(GetAutonomousDatabaseSourceConfigOutput)
+}
+
 type GetAutonomousDatabasesAutonomousDatabase struct {
 	// The password for the default ADMIN user.
 	AdminPassword string `pulumi:"adminPassword"`
@@ -11967,6 +12229,8 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           string `pulumi:"database"`
 	DeletionProtection bool   `pulumi:"deletionProtection"`
+	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+	DisasterRecoverySupportedLocations []string `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName     string            `pulumi:"displayName"`
@@ -11999,6 +12263,8 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// IP allocation. Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 	OdbSubnet string `pulumi:"odbSubnet"`
+	// The peer Autonomous Database names of the given Autonomous Database.
+	PeerAutonomousDatabases []string `pulumi:"peerAutonomousDatabases"`
 	// The project to which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project string `pulumi:"project"`
@@ -12007,6 +12273,8 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The source Autonomous Database configuration for the standby Autonomous Database.
+	SourceConfigs []GetAutonomousDatabasesAutonomousDatabaseSourceConfig `pulumi:"sourceConfigs"`
 }
 
 // GetAutonomousDatabasesAutonomousDatabaseInput is an input type that accepts GetAutonomousDatabasesAutonomousDatabaseArgs and GetAutonomousDatabasesAutonomousDatabaseOutput values.
@@ -12037,6 +12305,8 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           pulumi.StringInput `pulumi:"database"`
 	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
+	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+	DisasterRecoverySupportedLocations pulumi.StringArrayInput `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
@@ -12069,6 +12339,8 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// IP allocation. Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 	OdbSubnet pulumi.StringInput `pulumi:"odbSubnet"`
+	// The peer Autonomous Database names of the given Autonomous Database.
+	PeerAutonomousDatabases pulumi.StringArrayInput `pulumi:"peerAutonomousDatabases"`
 	// The project to which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -12077,6 +12349,8 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// The source Autonomous Database configuration for the standby Autonomous Database.
+	SourceConfigs GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayInput `pulumi:"sourceConfigs"`
 }
 
 func (GetAutonomousDatabasesAutonomousDatabaseArgs) ElementType() reflect.Type {
@@ -12164,6 +12438,11 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DeletionProtection() pul
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DisasterRecoverySupportedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) []string { return v.DisasterRecoverySupportedLocations }).(pulumi.StringArrayOutput)
+}
+
 // The display name for the Autonomous Database. The name does not have to
 // be unique within your project.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DisplayName() pulumi.StringOutput {
@@ -12223,6 +12502,11 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) OdbSubnet() pulumi.Strin
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
+// The peer Autonomous Database names of the given Autonomous Database.
+func (o GetAutonomousDatabasesAutonomousDatabaseOutput) PeerAutonomousDatabases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) []string { return v.PeerAutonomousDatabases }).(pulumi.StringArrayOutput)
+}
+
 // The project to which the resource belongs. If it
 // is not provided, the provider project is used.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Project() pulumi.StringOutput {
@@ -12241,6 +12525,13 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Properties() GetAutonomo
 //	and default labels configured on the provider.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The source Autonomous Database configuration for the standby Autonomous Database.
+func (o GetAutonomousDatabasesAutonomousDatabaseOutput) SourceConfigs() GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) []GetAutonomousDatabasesAutonomousDatabaseSourceConfig {
+		return v.SourceConfigs
+	}).(GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput)
 }
 
 type GetAutonomousDatabasesAutonomousDatabaseArrayOutput struct{ *pulumi.OutputState }
@@ -14874,6 +15165,114 @@ func (o GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetail
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTime {
 		return vs[0].([]GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTime)[vs[1].(int)]
 	}).(GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeOutput)
+}
+
+type GetAutonomousDatabasesAutonomousDatabaseSourceConfig struct {
+	// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+	AutomaticBackupsReplicationEnabled bool `pulumi:"automaticBackupsReplicationEnabled"`
+	// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+	AutonomousDatabase string `pulumi:"autonomousDatabase"`
+}
+
+// GetAutonomousDatabasesAutonomousDatabaseSourceConfigInput is an input type that accepts GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs and GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput values.
+// You can construct a concrete instance of `GetAutonomousDatabasesAutonomousDatabaseSourceConfigInput` via:
+//
+//	GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs{...}
+type GetAutonomousDatabasesAutonomousDatabaseSourceConfigInput interface {
+	pulumi.Input
+
+	ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput() GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput
+	ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigOutputWithContext(context.Context) GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput
+}
+
+type GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs struct {
+	// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+	AutomaticBackupsReplicationEnabled pulumi.BoolInput `pulumi:"automaticBackupsReplicationEnabled"`
+	// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+	AutonomousDatabase pulumi.StringInput `pulumi:"autonomousDatabase"`
+}
+
+func (GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (i GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput() GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput {
+	return i.ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigOutputWithContext(context.Background())
+}
+
+func (i GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigOutputWithContext(ctx context.Context) GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput)
+}
+
+// GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayInput is an input type that accepts GetAutonomousDatabasesAutonomousDatabaseSourceConfigArray and GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput values.
+// You can construct a concrete instance of `GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayInput` via:
+//
+//	GetAutonomousDatabasesAutonomousDatabaseSourceConfigArray{ GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs{...} }
+type GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput() GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput
+	ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutputWithContext(context.Context) GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput
+}
+
+type GetAutonomousDatabasesAutonomousDatabaseSourceConfigArray []GetAutonomousDatabasesAutonomousDatabaseSourceConfigInput
+
+func (GetAutonomousDatabasesAutonomousDatabaseSourceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutonomousDatabasesAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (i GetAutonomousDatabasesAutonomousDatabaseSourceConfigArray) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput() GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput {
+	return i.ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutonomousDatabasesAutonomousDatabaseSourceConfigArray) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutputWithContext(ctx context.Context) GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput)
+}
+
+type GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (o GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput() GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput {
+	return o
+}
+
+func (o GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigOutputWithContext(ctx context.Context) GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput {
+	return o
+}
+
+// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+func (o GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput) AutomaticBackupsReplicationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseSourceConfig) bool {
+		return v.AutomaticBackupsReplicationEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+func (o GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput) AutonomousDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabaseSourceConfig) string { return v.AutonomousDatabase }).(pulumi.StringOutput)
+}
+
+type GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutonomousDatabasesAutonomousDatabaseSourceConfig)(nil)).Elem()
+}
+
+func (o GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput() GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput {
+	return o
+}
+
+func (o GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput) ToGetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutputWithContext(ctx context.Context) GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput {
+	return o
+}
+
+func (o GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput) Index(i pulumi.IntInput) GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutonomousDatabasesAutonomousDatabaseSourceConfig {
+		return vs[0].([]GetAutonomousDatabasesAutonomousDatabaseSourceConfig)[vs[1].(int)]
+	}).(GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput)
 }
 
 type GetCloudExadataInfrastructureProperty struct {
@@ -18898,6 +19297,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesScheduledOperationDetailStartTimeArrayInput)(nil)).Elem(), AutonomousDatabasePropertiesScheduledOperationDetailStartTimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesScheduledOperationDetailStopTimeInput)(nil)).Elem(), AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArrayInput)(nil)).Elem(), AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabaseSourceConfigInput)(nil)).Elem(), AutonomousDatabaseSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutonomousDatabaseSourceConfigPtrInput)(nil)).Elem(), AutonomousDatabaseSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesPtrInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudExadataInfrastructurePropertiesCustomerContactInput)(nil)).Elem(), CloudExadataInfrastructurePropertiesCustomerContactArgs{})
@@ -18958,6 +19359,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyScheduledOperationDetailStartTimeArrayInput)(nil)).Elem(), GetAutonomousDatabasePropertyScheduledOperationDetailStartTimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeInput)(nil)).Elem(), GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeArrayInput)(nil)).Elem(), GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabaseSourceConfigInput)(nil)).Elem(), GetAutonomousDatabaseSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabaseSourceConfigArrayInput)(nil)).Elem(), GetAutonomousDatabaseSourceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabaseInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabaseArrayInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabasePropertyInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabasePropertyArgs{})
@@ -18982,6 +19385,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStartTimeArrayInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStartTimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeArrayInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabaseSourceConfigInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayInput)(nil)).Elem(), GetAutonomousDatabasesAutonomousDatabaseSourceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyArrayInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudExadataInfrastructurePropertyCustomerContactInput)(nil)).Elem(), GetCloudExadataInfrastructurePropertyCustomerContactArgs{})
@@ -19040,6 +19445,8 @@ func init() {
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesScheduledOperationDetailStartTimeArrayOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesScheduledOperationDetailStopTimeOutput{})
 	pulumi.RegisterOutputType(AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArrayOutput{})
+	pulumi.RegisterOutputType(AutonomousDatabaseSourceConfigOutput{})
+	pulumi.RegisterOutputType(AutonomousDatabaseSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CloudExadataInfrastructurePropertiesCustomerContactOutput{})
@@ -19100,6 +19507,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyScheduledOperationDetailStartTimeArrayOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetAutonomousDatabaseSourceConfigOutput{})
+	pulumi.RegisterOutputType(GetAutonomousDatabaseSourceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabaseOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabasePropertyOutput{})
@@ -19124,6 +19533,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStartTimeArrayOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeOutput{})
 	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabaseSourceConfigOutput{})
+	pulumi.RegisterOutputType(GetAutonomousDatabasesAutonomousDatabaseSourceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudExadataInfrastructurePropertyCustomerContactOutput{})

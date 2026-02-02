@@ -35,6 +35,7 @@ __all__ = [
     'ConnectionProfileSalesforceProfile',
     'ConnectionProfileSalesforceProfileOauth2ClientCredentials',
     'ConnectionProfileSalesforceProfileUserCredentials',
+    'ConnectionProfileSpannerProfile',
     'ConnectionProfileSqlServerProfile',
     'PrivateConnectionError',
     'PrivateConnectionPscInterfaceConfig',
@@ -59,6 +60,10 @@ __all__ = [
     'StreamBackfillAllSalesforceExcludedObjects',
     'StreamBackfillAllSalesforceExcludedObjectsObject',
     'StreamBackfillAllSalesforceExcludedObjectsObjectField',
+    'StreamBackfillAllSpannerExcludedObjects',
+    'StreamBackfillAllSpannerExcludedObjectsSchema',
+    'StreamBackfillAllSpannerExcludedObjectsSchemaTable',
+    'StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn',
     'StreamBackfillAllSqlServerExcludedObjects',
     'StreamBackfillAllSqlServerExcludedObjectsSchema',
     'StreamBackfillAllSqlServerExcludedObjectsSchemaTable',
@@ -89,6 +94,7 @@ __all__ = [
     'StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier',
     'StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier',
     'StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier',
+    'StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier',
     'StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier',
     'StreamSourceConfig',
     'StreamSourceConfigMongodbSourceConfig',
@@ -138,6 +144,15 @@ __all__ = [
     'StreamSourceConfigSalesforceSourceConfigIncludeObjects',
     'StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject',
     'StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField',
+    'StreamSourceConfigSpannerSourceConfig',
+    'StreamSourceConfigSpannerSourceConfigExcludeObjects',
+    'StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema',
+    'StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable',
+    'StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn',
+    'StreamSourceConfigSpannerSourceConfigIncludeObjects',
+    'StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema',
+    'StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable',
+    'StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn',
     'StreamSourceConfigSqlServerSourceConfig',
     'StreamSourceConfigSqlServerSourceConfigChangeTables',
     'StreamSourceConfigSqlServerSourceConfigExcludeObjects',
@@ -1541,6 +1556,40 @@ class ConnectionProfileSalesforceProfileUserCredentials(dict):
 
 
 @pulumi.output_type
+class ConnectionProfileSpannerProfile(dict):
+    def __init__(__self__, *,
+                 database: _builtins.str,
+                 host: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str database: The full project and resource path for Spanner database. Format:
+               projects/{project}/instances/{instance}/databases/{database}.
+        :param _builtins.str host: The regional Spanner endpoint. Format:
+               https://spanner.{region}.rep.googleapis.com.
+        """
+        pulumi.set(__self__, "database", database)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> _builtins.str:
+        """
+        The full project and resource path for Spanner database. Format:
+        projects/{project}/instances/{instance}/databases/{database}.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The regional Spanner endpoint. Format:
+        https://spanner.{region}.rep.googleapis.com.
+        """
+        return pulumi.get(self, "host")
+
+
+@pulumi.output_type
 class ConnectionProfileSqlServerProfile(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1757,6 +1806,8 @@ class StreamBackfillAll(dict):
             suggest = "postgresql_excluded_objects"
         elif key == "salesforceExcludedObjects":
             suggest = "salesforce_excluded_objects"
+        elif key == "spannerExcludedObjects":
+            suggest = "spanner_excluded_objects"
         elif key == "sqlServerExcludedObjects":
             suggest = "sql_server_excluded_objects"
 
@@ -1777,6 +1828,7 @@ class StreamBackfillAll(dict):
                  oracle_excluded_objects: Optional['outputs.StreamBackfillAllOracleExcludedObjects'] = None,
                  postgresql_excluded_objects: Optional['outputs.StreamBackfillAllPostgresqlExcludedObjects'] = None,
                  salesforce_excluded_objects: Optional['outputs.StreamBackfillAllSalesforceExcludedObjects'] = None,
+                 spanner_excluded_objects: Optional['outputs.StreamBackfillAllSpannerExcludedObjects'] = None,
                  sql_server_excluded_objects: Optional['outputs.StreamBackfillAllSqlServerExcludedObjects'] = None):
         """
         :param 'StreamBackfillAllMongodbExcludedObjectsArgs' mongodb_excluded_objects: MongoDB data source objects to avoid backfilling.
@@ -1788,6 +1840,8 @@ class StreamBackfillAll(dict):
         :param 'StreamBackfillAllPostgresqlExcludedObjectsArgs' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
                Structure is documented below.
         :param 'StreamBackfillAllSalesforceExcludedObjectsArgs' salesforce_excluded_objects: Salesforce objects to avoid backfilling.
+               Structure is documented below.
+        :param 'StreamBackfillAllSpannerExcludedObjectsArgs' spanner_excluded_objects: Spanner objects to avoid backfilling.
                Structure is documented below.
         :param 'StreamBackfillAllSqlServerExcludedObjectsArgs' sql_server_excluded_objects: SQL Server data source objects to avoid backfilling.
                Structure is documented below.
@@ -1802,6 +1856,8 @@ class StreamBackfillAll(dict):
             pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
         if salesforce_excluded_objects is not None:
             pulumi.set(__self__, "salesforce_excluded_objects", salesforce_excluded_objects)
+        if spanner_excluded_objects is not None:
+            pulumi.set(__self__, "spanner_excluded_objects", spanner_excluded_objects)
         if sql_server_excluded_objects is not None:
             pulumi.set(__self__, "sql_server_excluded_objects", sql_server_excluded_objects)
 
@@ -1849,6 +1905,15 @@ class StreamBackfillAll(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "salesforce_excluded_objects")
+
+    @_builtins.property
+    @pulumi.getter(name="spannerExcludedObjects")
+    def spanner_excluded_objects(self) -> Optional['outputs.StreamBackfillAllSpannerExcludedObjects']:
+        """
+        Spanner objects to avoid backfilling.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spanner_excluded_objects")
 
     @_builtins.property
     @pulumi.getter(name="sqlServerExcludedObjects")
@@ -2858,6 +2923,173 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectField(dict):
 
 
 @pulumi.output_type
+class StreamBackfillAllSpannerExcludedObjects(dict):
+    def __init__(__self__, *,
+                 schemas: Sequence['outputs.StreamBackfillAllSpannerExcludedObjectsSchema']):
+        """
+        :param Sequence['StreamBackfillAllSpannerExcludedObjectsSchemaArgs'] schemas: Spanner schemas in the database
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schemas", schemas)
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> Sequence['outputs.StreamBackfillAllSpannerExcludedObjectsSchema']:
+        """
+        Spanner schemas in the database
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schemas")
+
+
+@pulumi.output_type
+class StreamBackfillAllSpannerExcludedObjectsSchema(dict):
+    def __init__(__self__, *,
+                 schema: _builtins.str,
+                 tables: Optional[Sequence['outputs.StreamBackfillAllSpannerExcludedObjectsSchemaTable']] = None):
+        """
+        :param _builtins.str schema: Schema name.
+        :param Sequence['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs'] tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> _builtins.str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.StreamBackfillAllSpannerExcludedObjectsSchemaTable']]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class StreamBackfillAllSpannerExcludedObjectsSchemaTable(dict):
+    def __init__(__self__, *,
+                 table: _builtins.str,
+                 columns: Optional[Sequence['outputs.StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn']] = None):
+        """
+        :param _builtins.str table: Table name.
+        :param Sequence['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs'] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn']]:
+        """
+        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "isPrimaryKey":
+            suggest = "is_primary_key"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: _builtins.str,
+                 data_type: Optional[_builtins.str] = None,
+                 is_primary_key: Optional[_builtins.bool] = None,
+                 ordinal_position: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str column: Column name.
+        :param _builtins.str data_type: (Output)
+               The Spanner data type. Full data types list can be found here:
+               https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+        :param _builtins.bool is_primary_key: (Output)
+               Whether the column is a primary key.
+        :param _builtins.int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        """
+        pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if is_primary_key is not None:
+            pulumi.set(__self__, "is_primary_key", is_primary_key)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> _builtins.str:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The Spanner data type. Full data types list can be found here:
+        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+        """
+        return pulumi.get(self, "data_type")
+
+    @_builtins.property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether the column is a primary key.
+        """
+        return pulumi.get(self, "is_primary_key")
+
+    @_builtins.property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+
+@pulumi.output_type
 class StreamBackfillAllSqlServerExcludedObjects(dict):
     def __init__(__self__, *,
                  schemas: Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchema']):
@@ -2884,7 +3116,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchema(dict):
                  tables: Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTable']] = None):
         """
         :param _builtins.str schema: Schema name.
-        :param Sequence['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs'] tables: Tables in the database.
+        :param Sequence['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs'] tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -2903,7 +3135,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchema(dict):
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTable']]:
         """
-        Tables in the database.
+        Tables in the schema.
         Structure is documented below.
         """
         return pulumi.get(self, "tables")
@@ -2916,7 +3148,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTable(dict):
                  columns: Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn']] = None):
         """
         :param _builtins.str table: Table name.
-        :param Sequence['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs'] columns: SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs'] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2935,7 +3167,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTable(dict):
     @pulumi.getter
     def columns(self) -> Optional[Sequence['outputs.StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn']]:
         """
-        SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
         return pulumi.get(self, "columns")
@@ -2975,8 +3207,9 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn(dict):
                  scale: Optional[_builtins.int] = None):
         """
         :param _builtins.str column: Column name.
-        :param _builtins.str data_type: The SQL Server data type. Full data types list can be found here:
-               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        :param _builtins.str data_type: (Output)
+               The Spanner data type. Full data types list can be found here:
+               https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         :param _builtins.int length: (Output)
                Column length.
         :param _builtins.bool nullable: (Output)
@@ -3019,8 +3252,9 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn(dict):
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[_builtins.str]:
         """
-        The SQL Server data type. Full data types list can be found here:
-        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        (Output)
+        The Spanner data type. Full data types list can be found here:
+        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         """
         return pulumi.get(self, "data_type")
 
@@ -4084,6 +4318,8 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier(dict):
             suggest = "postgresql_identifier"
         elif key == "salesforceIdentifier":
             suggest = "salesforce_identifier"
+        elif key == "spannerIdentifier":
+            suggest = "spanner_identifier"
         elif key == "sqlServerIdentifier":
             suggest = "sql_server_identifier"
 
@@ -4104,6 +4340,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier(dict):
                  oracle_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier'] = None,
                  postgresql_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier'] = None,
                  salesforce_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier'] = None,
+                 spanner_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier'] = None,
                  sql_server_identifier: Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier'] = None):
         """
         :param 'StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs' mongodb_identifier: A nested object resource.
@@ -4115,6 +4352,8 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier(dict):
         :param 'StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs' postgresql_identifier: A nested object resource.
                Structure is documented below.
         :param 'StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs' salesforce_identifier: A nested object resource.
+               Structure is documented below.
+        :param 'StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs' spanner_identifier: A nested object resource.
                Structure is documented below.
         :param 'StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs' sql_server_identifier: A nested object resource.
                Structure is documented below.
@@ -4129,6 +4368,8 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier(dict):
             pulumi.set(__self__, "postgresql_identifier", postgresql_identifier)
         if salesforce_identifier is not None:
             pulumi.set(__self__, "salesforce_identifier", salesforce_identifier)
+        if spanner_identifier is not None:
+            pulumi.set(__self__, "spanner_identifier", spanner_identifier)
         if sql_server_identifier is not None:
             pulumi.set(__self__, "sql_server_identifier", sql_server_identifier)
 
@@ -4176,6 +4417,15 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "salesforce_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="spannerIdentifier")
+    def spanner_identifier(self) -> Optional['outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier']:
+        """
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spanner_identifier")
 
     @_builtins.property
     @pulumi.getter(name="sqlServerIdentifier")
@@ -4339,6 +4589,36 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier(dict):
 
 
 @pulumi.output_type
+class StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier(dict):
+    def __init__(__self__, *,
+                 table: _builtins.str,
+                 schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str table: The table name.
+        :param _builtins.str schema: The schema name.
+        """
+        pulumi.set(__self__, "table", table)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        The table name.
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> Optional[_builtins.str]:
+        """
+        The schema name.
+        """
+        return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
 class StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier(dict):
     def __init__(__self__, *,
                  schema: _builtins.str,
@@ -4384,6 +4664,8 @@ class StreamSourceConfig(dict):
             suggest = "postgresql_source_config"
         elif key == "salesforceSourceConfig":
             suggest = "salesforce_source_config"
+        elif key == "spannerSourceConfig":
+            suggest = "spanner_source_config"
         elif key == "sqlServerSourceConfig":
             suggest = "sql_server_source_config"
 
@@ -4405,6 +4687,7 @@ class StreamSourceConfig(dict):
                  oracle_source_config: Optional['outputs.StreamSourceConfigOracleSourceConfig'] = None,
                  postgresql_source_config: Optional['outputs.StreamSourceConfigPostgresqlSourceConfig'] = None,
                  salesforce_source_config: Optional['outputs.StreamSourceConfigSalesforceSourceConfig'] = None,
+                 spanner_source_config: Optional['outputs.StreamSourceConfigSpannerSourceConfig'] = None,
                  sql_server_source_config: Optional['outputs.StreamSourceConfigSqlServerSourceConfig'] = None):
         """
         :param _builtins.str source_connection_profile: Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
@@ -4417,6 +4700,8 @@ class StreamSourceConfig(dict):
         :param 'StreamSourceConfigPostgresqlSourceConfigArgs' postgresql_source_config: PostgreSQL data source configuration.
                Structure is documented below.
         :param 'StreamSourceConfigSalesforceSourceConfigArgs' salesforce_source_config: Salesforce data source configuration.
+               Structure is documented below.
+        :param 'StreamSourceConfigSpannerSourceConfigArgs' spanner_source_config: Spanner data source configuration.
                Structure is documented below.
         :param 'StreamSourceConfigSqlServerSourceConfigArgs' sql_server_source_config: SQL Server data source configuration.
                Structure is documented below.
@@ -4432,6 +4717,8 @@ class StreamSourceConfig(dict):
             pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
         if salesforce_source_config is not None:
             pulumi.set(__self__, "salesforce_source_config", salesforce_source_config)
+        if spanner_source_config is not None:
+            pulumi.set(__self__, "spanner_source_config", spanner_source_config)
         if sql_server_source_config is not None:
             pulumi.set(__self__, "sql_server_source_config", sql_server_source_config)
 
@@ -4487,6 +4774,15 @@ class StreamSourceConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "salesforce_source_config")
+
+    @_builtins.property
+    @pulumi.getter(name="spannerSourceConfig")
+    def spanner_source_config(self) -> Optional['outputs.StreamSourceConfigSpannerSourceConfig']:
+        """
+        Spanner data source configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spanner_source_config")
 
     @_builtins.property
     @pulumi.getter(name="sqlServerSourceConfig")
@@ -6986,6 +7282,482 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField(dict):
 
 
 @pulumi.output_type
+class StreamSourceConfigSpannerSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backfillDataBoostEnabled":
+            suggest = "backfill_data_boost_enabled"
+        elif key == "changeStreamName":
+            suggest = "change_stream_name"
+        elif key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "fgacRole":
+            suggest = "fgac_role"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
+        elif key == "maxConcurrentCdcTasks":
+            suggest = "max_concurrent_cdc_tasks"
+        elif key == "spannerRpcPriority":
+            suggest = "spanner_rpc_priority"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigSpannerSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigSpannerSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigSpannerSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backfill_data_boost_enabled: Optional[_builtins.bool] = None,
+                 change_stream_name: Optional[_builtins.str] = None,
+                 exclude_objects: Optional['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjects'] = None,
+                 fgac_role: Optional[_builtins.str] = None,
+                 include_objects: Optional['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjects'] = None,
+                 max_concurrent_backfill_tasks: Optional[_builtins.int] = None,
+                 max_concurrent_cdc_tasks: Optional[_builtins.int] = None,
+                 spanner_rpc_priority: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool backfill_data_boost_enabled: Whether to use DataBoost for backfill queries.
+        :param _builtins.str change_stream_name: The Spanner change stream name to use.
+        :param 'StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs' exclude_objects: Spanner objects to retrieve from the source.
+               Structure is documented below.
+        :param _builtins.str fgac_role: The FGAC role to use for Spanner queries.
+        :param 'StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs' include_objects: Spanner objects to retrieve from the source.
+               Structure is documented below.
+        :param _builtins.int max_concurrent_backfill_tasks: Max concurrent backfill tasks.
+        :param _builtins.int max_concurrent_cdc_tasks: Max concurrent CDC tasks.
+        :param _builtins.str spanner_rpc_priority: The RPC priority to use for Spanner queries.
+               Possible values are: `LOW`, `MEDIUM`, `HIGH`.
+        """
+        if backfill_data_boost_enabled is not None:
+            pulumi.set(__self__, "backfill_data_boost_enabled", backfill_data_boost_enabled)
+        if change_stream_name is not None:
+            pulumi.set(__self__, "change_stream_name", change_stream_name)
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if fgac_role is not None:
+            pulumi.set(__self__, "fgac_role", fgac_role)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
+        if max_concurrent_cdc_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+        if spanner_rpc_priority is not None:
+            pulumi.set(__self__, "spanner_rpc_priority", spanner_rpc_priority)
+
+    @_builtins.property
+    @pulumi.getter(name="backfillDataBoostEnabled")
+    def backfill_data_boost_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to use DataBoost for backfill queries.
+        """
+        return pulumi.get(self, "backfill_data_boost_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="changeStreamName")
+    def change_stream_name(self) -> Optional[_builtins.str]:
+        """
+        The Spanner change stream name to use.
+        """
+        return pulumi.get(self, "change_stream_name")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjects']:
+        """
+        Spanner objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @_builtins.property
+    @pulumi.getter(name="fgacRole")
+    def fgac_role(self) -> Optional[_builtins.str]:
+        """
+        The FGAC role to use for Spanner queries.
+        """
+        return pulumi.get(self, "fgac_role")
+
+    @_builtins.property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjects']:
+        """
+        Spanner objects to retrieve from the source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[_builtins.int]:
+        """
+        Max concurrent backfill tasks.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> Optional[_builtins.int]:
+        """
+        Max concurrent CDC tasks.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+    @_builtins.property
+    @pulumi.getter(name="spannerRpcPriority")
+    def spanner_rpc_priority(self) -> Optional[_builtins.str]:
+        """
+        The RPC priority to use for Spanner queries.
+        Possible values are: `LOW`, `MEDIUM`, `HIGH`.
+        """
+        return pulumi.get(self, "spanner_rpc_priority")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigExcludeObjects(dict):
+    def __init__(__self__, *,
+                 schemas: Sequence['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema']):
+        """
+        :param Sequence['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgs'] schemas: Spanner schemas in the database
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schemas", schemas)
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> Sequence['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema']:
+        """
+        Spanner schemas in the database
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema(dict):
+    def __init__(__self__, *,
+                 schema: _builtins.str,
+                 tables: Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable']] = None):
+        """
+        :param _builtins.str schema: Schema name.
+        :param Sequence['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs'] tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> _builtins.str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable']]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable(dict):
+    def __init__(__self__, *,
+                 table: _builtins.str,
+                 columns: Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn']] = None):
+        """
+        :param _builtins.str table: Table name.
+        :param Sequence['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs'] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn']]:
+        """
+        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "isPrimaryKey":
+            suggest = "is_primary_key"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[_builtins.str] = None,
+                 data_type: Optional[_builtins.str] = None,
+                 is_primary_key: Optional[_builtins.bool] = None,
+                 ordinal_position: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str column: Column name.
+        :param _builtins.str data_type: (Output)
+               The Spanner data type. Full data types list can be found here:
+               https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+        :param _builtins.bool is_primary_key: (Output)
+               Whether the column is a primary key.
+        :param _builtins.int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if is_primary_key is not None:
+            pulumi.set(__self__, "is_primary_key", is_primary_key)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> Optional[_builtins.str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The Spanner data type. Full data types list can be found here:
+        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+        """
+        return pulumi.get(self, "data_type")
+
+    @_builtins.property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether the column is a primary key.
+        """
+        return pulumi.get(self, "is_primary_key")
+
+    @_builtins.property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigIncludeObjects(dict):
+    def __init__(__self__, *,
+                 schemas: Sequence['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema']):
+        """
+        :param Sequence['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgs'] schemas: Spanner schemas in the database
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schemas", schemas)
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> Sequence['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema']:
+        """
+        Spanner schemas in the database
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schemas")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema(dict):
+    def __init__(__self__, *,
+                 schema: _builtins.str,
+                 tables: Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable']] = None):
+        """
+        :param _builtins.str schema: Schema name.
+        :param Sequence['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs'] tables: Tables in the schema.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @_builtins.property
+    @pulumi.getter
+    def schema(self) -> _builtins.str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def tables(self) -> Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable']]:
+        """
+        Tables in the schema.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tables")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable(dict):
+    def __init__(__self__, *,
+                 table: _builtins.str,
+                 columns: Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn']] = None):
+        """
+        :param _builtins.str table: Table name.
+        :param Sequence['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs'] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def table(self) -> _builtins.str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> Optional[Sequence['outputs.StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn']]:
+        """
+        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "isPrimaryKey":
+            suggest = "is_primary_key"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: Optional[_builtins.str] = None,
+                 data_type: Optional[_builtins.str] = None,
+                 is_primary_key: Optional[_builtins.bool] = None,
+                 ordinal_position: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str column: Column name.
+        :param _builtins.str data_type: (Output)
+               The Spanner data type. Full data types list can be found here:
+               https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+        :param _builtins.bool is_primary_key: (Output)
+               Whether the column is a primary key.
+        :param _builtins.int ordinal_position: (Output)
+               The ordinal position of the column in the table.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if is_primary_key is not None:
+            pulumi.set(__self__, "is_primary_key", is_primary_key)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> Optional[_builtins.str]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The Spanner data type. Full data types list can be found here:
+        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
+        """
+        return pulumi.get(self, "data_type")
+
+    @_builtins.property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether the column is a primary key.
+        """
+        return pulumi.get(self, "is_primary_key")
+
+    @_builtins.property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+
+@pulumi.output_type
 class StreamSourceConfigSqlServerSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7106,7 +7878,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjects(dict):
     def __init__(__self__, *,
                  schemas: Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema']):
         """
-        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs'] schemas: SQL Server schemas/databases in the database server
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs'] schemas: Spanner schemas in the database
                Structure is documented below.
         """
         pulumi.set(__self__, "schemas", schemas)
@@ -7115,7 +7887,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjects(dict):
     @pulumi.getter
     def schemas(self) -> Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema']:
         """
-        SQL Server schemas/databases in the database server
+        Spanner schemas in the database
         Structure is documented below.
         """
         return pulumi.get(self, "schemas")
@@ -7128,7 +7900,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema(dict):
                  tables: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable']] = None):
         """
         :param _builtins.str schema: Schema name.
-        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs'] tables: Tables in the database.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs'] tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -7147,7 +7919,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema(dict):
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable']]:
         """
-        Tables in the database.
+        Tables in the schema.
         Structure is documented below.
         """
         return pulumi.get(self, "tables")
@@ -7160,7 +7932,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable(dict):
                  columns: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn']] = None):
         """
         :param _builtins.str table: Table name.
-        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs'] columns: SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs'] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -7179,7 +7951,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable(dict):
     @pulumi.getter
     def columns(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn']]:
         """
-        SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
         return pulumi.get(self, "columns")
@@ -7219,8 +7991,9 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn(dic
                  scale: Optional[_builtins.int] = None):
         """
         :param _builtins.str column: Column name.
-        :param _builtins.str data_type: The SQL Server data type. Full data types list can be found here:
-               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        :param _builtins.str data_type: (Output)
+               The Spanner data type. Full data types list can be found here:
+               https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         :param _builtins.int length: (Output)
                Column length.
         :param _builtins.bool nullable: (Output)
@@ -7263,8 +8036,9 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn(dic
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[_builtins.str]:
         """
-        The SQL Server data type. Full data types list can be found here:
-        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        (Output)
+        The Spanner data type. Full data types list can be found here:
+        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         """
         return pulumi.get(self, "data_type")
 
@@ -7328,7 +8102,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjects(dict):
     def __init__(__self__, *,
                  schemas: Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema']):
         """
-        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs'] schemas: SQL Server schemas/databases in the database server
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgs'] schemas: Spanner schemas in the database
                Structure is documented below.
         """
         pulumi.set(__self__, "schemas", schemas)
@@ -7337,7 +8111,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjects(dict):
     @pulumi.getter
     def schemas(self) -> Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema']:
         """
-        SQL Server schemas/databases in the database server
+        Spanner schemas in the database
         Structure is documented below.
         """
         return pulumi.get(self, "schemas")
@@ -7350,7 +8124,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema(dict):
                  tables: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable']] = None):
         """
         :param _builtins.str schema: Schema name.
-        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs'] tables: Tables in the database.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs'] tables: Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -7369,7 +8143,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema(dict):
     @pulumi.getter
     def tables(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable']]:
         """
-        Tables in the database.
+        Tables in the schema.
         Structure is documented below.
         """
         return pulumi.get(self, "tables")
@@ -7382,7 +8156,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable(dict):
                  columns: Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn']] = None):
         """
         :param _builtins.str table: Table name.
-        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs'] columns: SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param Sequence['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs'] columns: Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -7401,7 +8175,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable(dict):
     @pulumi.getter
     def columns(self) -> Optional[Sequence['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn']]:
         """
-        SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
         return pulumi.get(self, "columns")
@@ -7441,8 +8215,9 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn(dic
                  scale: Optional[_builtins.int] = None):
         """
         :param _builtins.str column: Column name.
-        :param _builtins.str data_type: The SQL Server data type. Full data types list can be found here:
-               https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        :param _builtins.str data_type: (Output)
+               The Spanner data type. Full data types list can be found here:
+               https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         :param _builtins.int length: (Output)
                Column length.
         :param _builtins.bool nullable: (Output)
@@ -7485,8 +8260,9 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn(dic
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[_builtins.str]:
         """
-        The SQL Server data type. Full data types list can be found here:
-        https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        (Output)
+        The Spanner data type. Full data types list can be found here:
+        https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         """
         return pulumi.get(self, "data_type")
 

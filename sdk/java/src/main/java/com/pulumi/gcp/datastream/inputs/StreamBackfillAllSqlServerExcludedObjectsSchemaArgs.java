@@ -34,7 +34,7 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs extends c
     }
 
     /**
-     * Tables in the database.
+     * Tables in the schema.
      * Structure is documented below.
      * 
      */
@@ -42,7 +42,7 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs extends c
     private @Nullable Output<List<StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs>> tables;
 
     /**
-     * @return Tables in the database.
+     * @return Tables in the schema.
      * Structure is documented below.
      * 
      */
@@ -97,7 +97,7 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs extends c
         }
 
         /**
-         * @param tables Tables in the database.
+         * @param tables Tables in the schema.
          * Structure is documented below.
          * 
          * @return builder
@@ -109,7 +109,7 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs extends c
         }
 
         /**
-         * @param tables Tables in the database.
+         * @param tables Tables in the schema.
          * Structure is documented below.
          * 
          * @return builder
@@ -120,7 +120,7 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaArgs extends c
         }
 
         /**
-         * @param tables Tables in the database.
+         * @param tables Tables in the schema.
          * Structure is documented below.
          * 
          * @return builder

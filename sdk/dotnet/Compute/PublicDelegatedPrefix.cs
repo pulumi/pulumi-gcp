@@ -220,6 +220,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+        /// Applicable for IPv4 sub-PDPs only.
+        /// </summary>
+        [Output("enableEnhancedIpv4Allocation")]
+        public Output<bool> EnableEnhancedIpv4Allocation { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         [Output("ipCidrRange")]
@@ -430,6 +438,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+        /// Applicable for IPv4 sub-PDPs only.
+        /// </summary>
+        [Input("enableEnhancedIpv4Allocation")]
+        public Input<bool>? EnableEnhancedIpv4Allocation { get; set; }
 
         /// <summary>
         /// The IP address range, in CIDR format, represented by this public delegated prefix.

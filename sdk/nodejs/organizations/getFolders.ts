@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieve information about a set of folders based on a parent ID. See the
- * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+ * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
  * for more details.
  *
  * ## Example Usage
@@ -39,7 +39,7 @@ export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetFoldersArgs {
     /**
-     * A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+     * A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
      */
     parentId: string;
 }
@@ -60,7 +60,7 @@ export interface GetFoldersResult {
 }
 /**
  * Retrieve information about a set of folders based on a parent ID. See the
- * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+ * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
  * for more details.
  *
  * ## Example Usage
@@ -91,7 +91,7 @@ export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.Invok
  */
 export interface GetFoldersOutputArgs {
     /**
-     * A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+     * A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
      */
     parentId: pulumi.Input<string>;
 }

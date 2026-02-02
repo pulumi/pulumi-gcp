@@ -18,13 +18,13 @@ import (
 //
 // To get more information about Organization Policies, see:
 //
-// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy)
+// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy)
 // * How-to Guides
-//   - [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+//   - [Introduction to the Organization Policy Service](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
 //
 // ## Example Usage
 //
-// To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+// To set policy with a [boolean constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
 //
 // ```go
 // package main
@@ -54,7 +54,7 @@ import (
 //
 // ```
 //
-// To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+// To set a policy with a [list constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
 //
 // ```go
 // package main
@@ -173,7 +173,7 @@ type OrganizationPolicy struct {
 
 	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy OrganizationPolicyBooleanPolicyPtrOutput `pulumi:"booleanPolicy"`
-	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	//
 	// ***
 	Constraint pulumi.StringOutput `pulumi:"constraint"`
@@ -235,7 +235,7 @@ func GetOrganizationPolicy(ctx *pulumi.Context,
 type organizationPolicyState struct {
 	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy *OrganizationPolicyBooleanPolicy `pulumi:"booleanPolicy"`
-	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	//
 	// ***
 	Constraint *string `pulumi:"constraint"`
@@ -262,7 +262,7 @@ type organizationPolicyState struct {
 type OrganizationPolicyState struct {
 	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy OrganizationPolicyBooleanPolicyPtrInput
-	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	//
 	// ***
 	Constraint pulumi.StringPtrInput
@@ -293,7 +293,7 @@ func (OrganizationPolicyState) ElementType() reflect.Type {
 type organizationPolicyArgs struct {
 	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy *OrganizationPolicyBooleanPolicy `pulumi:"booleanPolicy"`
-	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	//
 	// ***
 	Constraint string `pulumi:"constraint"`
@@ -317,7 +317,7 @@ type organizationPolicyArgs struct {
 type OrganizationPolicyArgs struct {
 	// A boolean policy is a constraint that is either enforced or not. Structure is documented below.
 	BooleanPolicy OrganizationPolicyBooleanPolicyPtrInput
-	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	//
 	// ***
 	Constraint pulumi.StringInput
@@ -429,7 +429,7 @@ func (o OrganizationPolicyOutput) BooleanPolicy() OrganizationPolicyBooleanPolic
 	return o.ApplyT(func(v *OrganizationPolicy) OrganizationPolicyBooleanPolicyPtrOutput { return v.BooleanPolicy }).(OrganizationPolicyBooleanPolicyPtrOutput)
 }
 
-// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 //
 // ***
 func (o OrganizationPolicyOutput) Constraint() pulumi.StringOutput {

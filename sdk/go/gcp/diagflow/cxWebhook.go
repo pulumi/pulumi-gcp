@@ -312,6 +312,117 @@ import (
 //	}
 //
 // ```
+// ### Dialogflowcx Webhook With Service Account Auth
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("it"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyWebhook"),
+//				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
+//					Uri:         pulumi.String("https://example.googleapis.com"),
+//					WebhookType: pulumi.String("STANDARD"),
+//					ServiceAccountAuthConfig: &diagflow.CxWebhookGenericWebServiceServiceAccountAuthConfigArgs{
+//						ServiceAccount: pulumi.String("my@service-account.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dialogflowcx Webhook Service Directory With Service Account Auth
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("us-central1"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				SupportedLanguageCodes: pulumi.StringArray{
+//					pulumi.String("it"),
+//					pulumi.String("de"),
+//					pulumi.String("es"),
+//				},
+//				TimeZone:                 pulumi.String("America/New_York"),
+//				Description:              pulumi.String("Example description."),
+//				AvatarUri:                pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+//				EnableStackdriverLogging: pulumi.Bool(true),
+//				EnableSpellCorrection:    pulumi.Bool(true),
+//				SpeechToTextSettings: &diagflow.CxAgentSpeechToTextSettingsArgs{
+//					EnableSpeechAdaptation: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
+//				Parent:      agent.ID(),
+//				DisplayName: pulumi.String("MyWebhook"),
+//				ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
+//					Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
+//					GenericWebService: &diagflow.CxWebhookServiceDirectoryGenericWebServiceArgs{
+//						Uri:         pulumi.String("https://example.googleapis.com"),
+//						WebhookType: pulumi.String("STANDARD"),
+//						ServiceAccountAuthConfig: &diagflow.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs{
+//							ServiceAccount: pulumi.String("my@service-account.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

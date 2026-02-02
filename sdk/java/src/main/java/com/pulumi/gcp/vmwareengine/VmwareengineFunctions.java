@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetDatastorePlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRulePlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
@@ -30,6 +32,7 @@ import com.pulumi.gcp.vmwareengine.inputs.GetSubnetPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsPlainArgs;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetDatastoreResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetExternalAccessRuleResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetExternalAddressResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPeeringResult;
@@ -261,6 +264,226 @@ public final class VmwareengineFunctions {
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a datastore resource.
+     * 
+     * To get more information about datastore, see:
+     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .name("example-ds")
+     *             .location("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatastoreResult> getDatastore(GetDatastoreArgs args) {
+        return getDatastore(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a datastore resource.
+     * 
+     * To get more information about datastore, see:
+     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .name("example-ds")
+     *             .location("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDatastoreResult> getDatastorePlain(GetDatastorePlainArgs args) {
+        return getDatastorePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a datastore resource.
+     * 
+     * To get more information about datastore, see:
+     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .name("example-ds")
+     *             .location("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatastoreResult> getDatastore(GetDatastoreArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a datastore resource.
+     * 
+     * To get more information about datastore, see:
+     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .name("example-ds")
+     *             .location("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDatastoreResult> getDatastore(GetDatastoreArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a datastore resource.
+     * 
+     * To get more information about datastore, see:
+     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetDatastoreArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .name("example-ds")
+     *             .location("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDatastoreResult> getDatastorePlain(GetDatastorePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get details about a external access rule resource.

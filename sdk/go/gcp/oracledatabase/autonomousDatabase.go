@@ -213,7 +213,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // AutonomousDatabase can be imported using any of these accepted formats:
@@ -256,6 +255,8 @@ type AutonomousDatabase struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           pulumi.StringOutput  `pulumi:"database"`
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+	DisasterRecoverySupportedLocations pulumi.StringArrayOutput `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -286,6 +287,8 @@ type AutonomousDatabase struct {
 	// IP allocation. Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 	OdbSubnet pulumi.StringOutput `pulumi:"odbSubnet"`
+	// The peer Autonomous Database names of the given Autonomous Database.
+	PeerAutonomousDatabases pulumi.StringArrayOutput `pulumi:"peerAutonomousDatabases"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -295,6 +298,9 @@ type AutonomousDatabase struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The source Autonomous Database configuration for the standby Autonomous Database.
+	// Structure is documented below.
+	SourceConfig AutonomousDatabaseSourceConfigPtrOutput `pulumi:"sourceConfig"`
 }
 
 // NewAutonomousDatabase registers a new resource with the given unique name, arguments, and options.
@@ -307,14 +313,8 @@ func NewAutonomousDatabase(ctx *pulumi.Context,
 	if args.AutonomousDatabaseId == nil {
 		return nil, errors.New("invalid value for required argument 'AutonomousDatabaseId'")
 	}
-	if args.Database == nil {
-		return nil, errors.New("invalid value for required argument 'Database'")
-	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
@@ -360,6 +360,8 @@ type autonomousDatabaseState struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           *string `pulumi:"database"`
 	DeletionProtection *bool   `pulumi:"deletionProtection"`
+	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+	DisasterRecoverySupportedLocations []string `pulumi:"disasterRecoverySupportedLocations"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
@@ -390,6 +392,8 @@ type autonomousDatabaseState struct {
 	// IP allocation. Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 	OdbSubnet *string `pulumi:"odbSubnet"`
+	// The peer Autonomous Database names of the given Autonomous Database.
+	PeerAutonomousDatabases []string `pulumi:"peerAutonomousDatabases"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -399,6 +403,9 @@ type autonomousDatabaseState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The source Autonomous Database configuration for the standby Autonomous Database.
+	// Structure is documented below.
+	SourceConfig *AutonomousDatabaseSourceConfig `pulumi:"sourceConfig"`
 }
 
 type AutonomousDatabaseState struct {
@@ -418,6 +425,8 @@ type AutonomousDatabaseState struct {
 	// contain a maximum of 30 alphanumeric characters.
 	Database           pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
+	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+	DisasterRecoverySupportedLocations pulumi.StringArrayInput
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName pulumi.StringPtrInput
@@ -448,6 +457,8 @@ type AutonomousDatabaseState struct {
 	// IP allocation. Format:
 	// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
 	OdbSubnet pulumi.StringPtrInput
+	// The peer Autonomous Database names of the given Autonomous Database.
+	PeerAutonomousDatabases pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -457,6 +468,9 @@ type AutonomousDatabaseState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The source Autonomous Database configuration for the standby Autonomous Database.
+	// Structure is documented below.
+	SourceConfig AutonomousDatabaseSourceConfigPtrInput
 }
 
 func (AutonomousDatabaseState) ElementType() reflect.Type {
@@ -476,8 +490,8 @@ type autonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           string `pulumi:"database"`
-	DeletionProtection *bool  `pulumi:"deletionProtection"`
+	Database           *string `pulumi:"database"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
@@ -505,7 +519,10 @@ type autonomousDatabaseArgs struct {
 	Project *string `pulumi:"project"`
 	// The properties of an Autonomous Database.
 	// Structure is documented below.
-	Properties AutonomousDatabaseProperties `pulumi:"properties"`
+	Properties *AutonomousDatabaseProperties `pulumi:"properties"`
+	// The source Autonomous Database configuration for the standby Autonomous Database.
+	// Structure is documented below.
+	SourceConfig *AutonomousDatabaseSourceConfig `pulumi:"sourceConfig"`
 }
 
 // The set of arguments for constructing a AutonomousDatabase resource.
@@ -522,7 +539,7 @@ type AutonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database           pulumi.StringInput
+	Database           pulumi.StringPtrInput
 	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
@@ -551,7 +568,10 @@ type AutonomousDatabaseArgs struct {
 	Project pulumi.StringPtrInput
 	// The properties of an Autonomous Database.
 	// Structure is documented below.
-	Properties AutonomousDatabasePropertiesInput
+	Properties AutonomousDatabasePropertiesPtrInput
+	// The source Autonomous Database configuration for the standby Autonomous Database.
+	// Structure is documented below.
+	SourceConfig AutonomousDatabaseSourceConfigPtrInput
 }
 
 func (AutonomousDatabaseArgs) ElementType() reflect.Type {
@@ -675,6 +695,11 @@ func (o AutonomousDatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
+// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+func (o AutonomousDatabaseOutput) DisasterRecoverySupportedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringArrayOutput { return v.DisasterRecoverySupportedLocations }).(pulumi.StringArrayOutput)
+}
+
 // The display name for the Autonomous Database. The name does not have to
 // be unique within your project.
 func (o AutonomousDatabaseOutput) DisplayName() pulumi.StringOutput {
@@ -732,6 +757,11 @@ func (o AutonomousDatabaseOutput) OdbSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
+// The peer Autonomous Database names of the given Autonomous Database.
+func (o AutonomousDatabaseOutput) PeerAutonomousDatabases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringArrayOutput { return v.PeerAutonomousDatabases }).(pulumi.StringArrayOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o AutonomousDatabaseOutput) Project() pulumi.StringOutput {
@@ -748,6 +778,12 @@ func (o AutonomousDatabaseOutput) Properties() AutonomousDatabasePropertiesOutpu
 // and default labels configured on the provider.
 func (o AutonomousDatabaseOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The source Autonomous Database configuration for the standby Autonomous Database.
+// Structure is documented below.
+func (o AutonomousDatabaseOutput) SourceConfig() AutonomousDatabaseSourceConfigPtrOutput {
+	return o.ApplyT(func(v *AutonomousDatabase) AutonomousDatabaseSourceConfigPtrOutput { return v.SourceConfig }).(AutonomousDatabaseSourceConfigPtrOutput)
 }
 
 type AutonomousDatabaseArrayOutput struct{ *pulumi.OutputState }

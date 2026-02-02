@@ -181,6 +181,7 @@ from .region_backend_service_iam_binding import *
 from .region_backend_service_iam_member import *
 from .region_backend_service_iam_policy import *
 from .region_commitment import *
+from .region_composite_health_check import *
 from .region_disk import *
 from .region_disk_iam_binding import *
 from .region_disk_iam_member import *

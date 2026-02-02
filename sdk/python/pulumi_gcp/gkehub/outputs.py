@@ -85,6 +85,8 @@ __all__ = [
     'MembershipRbacRoleBindingRole',
     'MembershipRbacRoleBindingState',
     'NamespaceState',
+    'RolloutSequenceStage',
+    'RolloutSequenceStageClusterSelector',
     'ScopeIamBindingCondition',
     'ScopeIamMemberCondition',
     'ScopeRbacRoleBindingRole',
@@ -3747,6 +3749,112 @@ class NamespaceState(dict):
         Code describes the state of a Namespace resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class RolloutSequenceStage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fleetProjects":
+            suggest = "fleet_projects"
+        elif key == "clusterSelector":
+            suggest = "cluster_selector"
+        elif key == "soakDuration":
+            suggest = "soak_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutSequenceStage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutSequenceStage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutSequenceStage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fleet_projects: Sequence[_builtins.str],
+                 cluster_selector: Optional['outputs.RolloutSequenceStageClusterSelector'] = None,
+                 soak_duration: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] fleet_projects: List of Fleet projects to select the clusters from.
+               Expected format: projects/{project}
+        :param 'RolloutSequenceStageClusterSelectorArgs' cluster_selector: Filter to select a subset of clusters from the specified Fleet projects.
+               If not specified, all clusters in the fleet projects are selected.
+               Structure is documented below.
+        :param _builtins.str soak_duration: Soak time after upgrading all the clusters in the stage, specified in seconds.
+        """
+        pulumi.set(__self__, "fleet_projects", fleet_projects)
+        if cluster_selector is not None:
+            pulumi.set(__self__, "cluster_selector", cluster_selector)
+        if soak_duration is not None:
+            pulumi.set(__self__, "soak_duration", soak_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="fleetProjects")
+    def fleet_projects(self) -> Sequence[_builtins.str]:
+        """
+        List of Fleet projects to select the clusters from.
+        Expected format: projects/{project}
+        """
+        return pulumi.get(self, "fleet_projects")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterSelector")
+    def cluster_selector(self) -> Optional['outputs.RolloutSequenceStageClusterSelector']:
+        """
+        Filter to select a subset of clusters from the specified Fleet projects.
+        If not specified, all clusters in the fleet projects are selected.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cluster_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="soakDuration")
+    def soak_duration(self) -> Optional[_builtins.str]:
+        """
+        Soak time after upgrading all the clusters in the stage, specified in seconds.
+        """
+        return pulumi.get(self, "soak_duration")
+
+
+@pulumi.output_type
+class RolloutSequenceStageClusterSelector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelSelector":
+            suggest = "label_selector"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RolloutSequenceStageClusterSelector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RolloutSequenceStageClusterSelector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RolloutSequenceStageClusterSelector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 label_selector: _builtins.str):
+        """
+        :param _builtins.str label_selector: The label selector must be a valid CEL (Common Expression Language) expression which
+               evaluates resource.labels.
+        """
+        pulumi.set(__self__, "label_selector", label_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> _builtins.str:
+        """
+        The label selector must be a valid CEL (Common Expression Language) expression which
+        evaluates resource.labels.
+        """
+        return pulumi.get(self, "label_selector")
 
 
 @pulumi.output_type

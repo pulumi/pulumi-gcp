@@ -258,14 +258,36 @@ __all__ = [
     'CxToolOpenApiSpecServiceDirectoryConfig',
     'CxToolOpenApiSpecTlsConfig',
     'CxToolOpenApiSpecTlsConfigCaCert',
+    'CxToolVersionTool',
+    'CxToolVersionToolConnectorSpec',
+    'CxToolVersionToolConnectorSpecAction',
+    'CxToolVersionToolConnectorSpecActionEntityOperation',
+    'CxToolVersionToolConnectorSpecEndUserAuthConfig',
+    'CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig',
+    'CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig',
+    'CxToolVersionToolDataStoreSpec',
+    'CxToolVersionToolDataStoreSpecDataStoreConnection',
+    'CxToolVersionToolDataStoreSpecFallbackPrompt',
+    'CxToolVersionToolFunctionSpec',
+    'CxToolVersionToolOpenApiSpec',
+    'CxToolVersionToolOpenApiSpecAuthentication',
+    'CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig',
+    'CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig',
+    'CxToolVersionToolOpenApiSpecAuthenticationOauthConfig',
+    'CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig',
+    'CxToolVersionToolOpenApiSpecServiceDirectoryConfig',
+    'CxToolVersionToolOpenApiSpecTlsConfig',
+    'CxToolVersionToolOpenApiSpecTlsConfigCaCert',
     'CxVersionNluSetting',
     'CxWebhookGenericWebService',
     'CxWebhookGenericWebServiceOauthConfig',
     'CxWebhookGenericWebServiceSecretVersionsForRequestHeader',
+    'CxWebhookGenericWebServiceServiceAccountAuthConfig',
     'CxWebhookServiceDirectory',
     'CxWebhookServiceDirectoryGenericWebService',
     'CxWebhookServiceDirectoryGenericWebServiceOauthConfig',
     'CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader',
+    'CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig',
     'EncryptionSpecEncryptionSpec',
     'EntityTypeEntity',
     'FulfillmentFeature',
@@ -14641,6 +14663,1281 @@ class CxToolOpenApiSpecTlsConfigCaCert(dict):
 
 
 @pulumi.output_type
+class CxToolVersionTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "connectorSpec":
+            suggest = "connector_spec"
+        elif key == "dataStoreSpec":
+            suggest = "data_store_spec"
+        elif key == "functionSpec":
+            suggest = "function_spec"
+        elif key == "openApiSpec":
+            suggest = "open_api_spec"
+        elif key == "toolType":
+            suggest = "tool_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 display_name: _builtins.str,
+                 connector_spec: Optional['outputs.CxToolVersionToolConnectorSpec'] = None,
+                 data_store_spec: Optional['outputs.CxToolVersionToolDataStoreSpec'] = None,
+                 function_spec: Optional['outputs.CxToolVersionToolFunctionSpec'] = None,
+                 name: Optional[_builtins.str] = None,
+                 open_api_spec: Optional['outputs.CxToolVersionToolOpenApiSpec'] = None,
+                 tool_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: High level description of the Tool and its usage.
+        :param _builtins.str display_name: The human-readable name of the tool, unique within the agent.
+        :param 'CxToolVersionToolConnectorSpecArgs' connector_spec: Integration connectors tool specification.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+               Structure is documented below.
+        :param 'CxToolVersionToolDataStoreSpecArgs' data_store_spec: Data store search tool specification.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+               Structure is documented below.
+        :param 'CxToolVersionToolFunctionSpecArgs' function_spec: Client side executed function specification.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+               Structure is documented below.
+        :param _builtins.str name: (Output)
+               The unique identifier of the Tool.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
+        :param 'CxToolVersionToolOpenApiSpecArgs' open_api_spec: OpenAPI specification of the Tool.
+               This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+               Structure is documented below.
+        :param _builtins.str tool_type: (Output)
+               The tool type.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        if connector_spec is not None:
+            pulumi.set(__self__, "connector_spec", connector_spec)
+        if data_store_spec is not None:
+            pulumi.set(__self__, "data_store_spec", data_store_spec)
+        if function_spec is not None:
+            pulumi.set(__self__, "function_spec", function_spec)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if open_api_spec is not None:
+            pulumi.set(__self__, "open_api_spec", open_api_spec)
+        if tool_type is not None:
+            pulumi.set(__self__, "tool_type", tool_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        High level description of the Tool and its usage.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The human-readable name of the tool, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorSpec")
+    def connector_spec(self) -> Optional['outputs.CxToolVersionToolConnectorSpec']:
+        """
+        Integration connectors tool specification.
+        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connector_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="dataStoreSpec")
+    def data_store_spec(self) -> Optional['outputs.CxToolVersionToolDataStoreSpec']:
+        """
+        Data store search tool specification.
+        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_store_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="functionSpec")
+    def function_spec(self) -> Optional['outputs.CxToolVersionToolFunctionSpec']:
+        """
+        Client side executed function specification.
+        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "function_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The unique identifier of the Tool.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="openApiSpec")
+    def open_api_spec(self) -> Optional['outputs.CxToolVersionToolOpenApiSpec']:
+        """
+        OpenAPI specification of the Tool.
+        This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "open_api_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="toolType")
+    def tool_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The tool type.
+        """
+        return pulumi.get(self, "tool_type")
+
+
+@pulumi.output_type
+class CxToolVersionToolConnectorSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endUserAuthConfig":
+            suggest = "end_user_auth_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolConnectorSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolConnectorSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolConnectorSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 actions: Sequence['outputs.CxToolVersionToolConnectorSpecAction'],
+                 name: _builtins.str,
+                 end_user_auth_config: Optional['outputs.CxToolVersionToolConnectorSpecEndUserAuthConfig'] = None):
+        """
+        :param Sequence['CxToolVersionToolConnectorSpecActionArgs'] actions: Actions for the tool to use.
+               Structure is documented below.
+        :param _builtins.str name: The full resource name of the referenced Integration Connectors Connection.
+               Format: projects/*/locations/*/connections/*
+        :param 'CxToolVersionToolConnectorSpecEndUserAuthConfigArgs' end_user_auth_config: Integration Connectors end-user authentication configuration.
+               If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+               and override the admin, default authentication configured for the Connection.
+               Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+               the ConnectorTool creation will fail.
+               See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "name", name)
+        if end_user_auth_config is not None:
+            pulumi.set(__self__, "end_user_auth_config", end_user_auth_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> Sequence['outputs.CxToolVersionToolConnectorSpecAction']:
+        """
+        Actions for the tool to use.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The full resource name of the referenced Integration Connectors Connection.
+        Format: projects/*/locations/*/connections/*
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="endUserAuthConfig")
+    def end_user_auth_config(self) -> Optional['outputs.CxToolVersionToolConnectorSpecEndUserAuthConfig']:
+        """
+        Integration Connectors end-user authentication configuration.
+        If configured, the end-user authentication fields will be passed in the Integration Connectors API request
+        and override the admin, default authentication configured for the Connection.
+        Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise,
+        the ConnectorTool creation will fail.
+        See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_user_auth_config")
+
+
+@pulumi.output_type
+class CxToolVersionToolConnectorSpecAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionActionId":
+            suggest = "connection_action_id"
+        elif key == "entityOperation":
+            suggest = "entity_operation"
+        elif key == "inputFields":
+            suggest = "input_fields"
+        elif key == "outputFields":
+            suggest = "output_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolConnectorSpecAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolConnectorSpecAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolConnectorSpecAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_action_id: Optional[_builtins.str] = None,
+                 entity_operation: Optional['outputs.CxToolVersionToolConnectorSpecActionEntityOperation'] = None,
+                 input_fields: Optional[Sequence[_builtins.str]] = None,
+                 output_fields: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str connection_action_id: ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        :param 'CxToolVersionToolConnectorSpecActionEntityOperationArgs' entity_operation: Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+               Structure is documented below.
+        :param Sequence[_builtins.str] input_fields: Entity fields to use as inputs for the operation.
+               If no fields are specified, all fields of the Entity will be used.
+        :param Sequence[_builtins.str] output_fields: Entity fields to return from the operation.
+               If no fields are specified, all fields of the Entity will be returned.
+        """
+        if connection_action_id is not None:
+            pulumi.set(__self__, "connection_action_id", connection_action_id)
+        if entity_operation is not None:
+            pulumi.set(__self__, "entity_operation", entity_operation)
+        if input_fields is not None:
+            pulumi.set(__self__, "input_fields", input_fields)
+        if output_fields is not None:
+            pulumi.set(__self__, "output_fields", output_fields)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionActionId")
+    def connection_action_id(self) -> Optional[_builtins.str]:
+        """
+        ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
+        """
+        return pulumi.get(self, "connection_action_id")
+
+    @_builtins.property
+    @pulumi.getter(name="entityOperation")
+    def entity_operation(self) -> Optional['outputs.CxToolVersionToolConnectorSpecActionEntityOperation']:
+        """
+        Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "entity_operation")
+
+    @_builtins.property
+    @pulumi.getter(name="inputFields")
+    def input_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity fields to use as inputs for the operation.
+        If no fields are specified, all fields of the Entity will be used.
+        """
+        return pulumi.get(self, "input_fields")
+
+    @_builtins.property
+    @pulumi.getter(name="outputFields")
+    def output_fields(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity fields to return from the operation.
+        If no fields are specified, all fields of the Entity will be returned.
+        """
+        return pulumi.get(self, "output_fields")
+
+
+@pulumi.output_type
+class CxToolVersionToolConnectorSpecActionEntityOperation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityId":
+            suggest = "entity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolConnectorSpecActionEntityOperation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolConnectorSpecActionEntityOperation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolConnectorSpecActionEntityOperation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_id: _builtins.str,
+                 operation: _builtins.str):
+        """
+        :param _builtins.str entity_id: ID of the entity.
+        :param _builtins.str operation: The operation to perform on the entity.
+               Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "operation", operation)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> _builtins.str:
+        """
+        ID of the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> _builtins.str:
+        """
+        The operation to perform on the entity.
+        Possible values are: `LIST`, `CREATE`, `UPDATE`, `DELETE`, `GET`.
+        """
+        return pulumi.get(self, "operation")
+
+
+@pulumi.output_type
+class CxToolVersionToolConnectorSpecEndUserAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2AuthCodeConfig":
+            suggest = "oauth2_auth_code_config"
+        elif key == "oauth2JwtBearerConfig":
+            suggest = "oauth2_jwt_bearer_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolConnectorSpecEndUserAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolConnectorSpecEndUserAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolConnectorSpecEndUserAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth2_auth_code_config: Optional['outputs.CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig'] = None,
+                 oauth2_jwt_bearer_config: Optional['outputs.CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig'] = None):
+        """
+        :param 'CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfigArgs' oauth2_auth_code_config: Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+               Structure is documented below.
+        :param 'CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfigArgs' oauth2_jwt_bearer_config: JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+               Structure is documented below.
+               
+               
+               <a name="nested_tool_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        if oauth2_auth_code_config is not None:
+            pulumi.set(__self__, "oauth2_auth_code_config", oauth2_auth_code_config)
+        if oauth2_jwt_bearer_config is not None:
+            pulumi.set(__self__, "oauth2_jwt_bearer_config", oauth2_jwt_bearer_config)
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2AuthCodeConfig")
+    def oauth2_auth_code_config(self) -> Optional['outputs.CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig']:
+        """
+        Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth2_auth_code_config")
+
+    @_builtins.property
+    @pulumi.getter(name="oauth2JwtBearerConfig")
+    def oauth2_jwt_bearer_config(self) -> Optional['outputs.CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig']:
+        """
+        JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+        Structure is documented below.
+
+
+        <a name="nested_tool_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
+        """
+        return pulumi.get(self, "oauth2_jwt_bearer_config")
+
+
+@pulumi.output_type
+class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauthToken":
+            suggest = "oauth_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oauth_token: _builtins.str):
+        """
+        :param _builtins.str oauth_token: Oauth token value or parameter name to pass it through.
+        """
+        pulumi.set(__self__, "oauth_token", oauth_token)
+
+    @_builtins.property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> _builtins.str:
+        """
+        Oauth token value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "oauth_token")
+
+
+@pulumi.output_type
+class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientKey":
+            suggest = "client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_key: _builtins.str,
+                 issuer: _builtins.str,
+                 subject: _builtins.str):
+        """
+        :param _builtins.str client_key: Client key value or parameter name to pass it through.
+        :param _builtins.str issuer: Issuer value or parameter name to pass it through.
+        :param _builtins.str subject: Subject value or parameter name to pass it through.
+        """
+        pulumi.set(__self__, "client_key", client_key)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> _builtins.str:
+        """
+        Client key value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def issuer(self) -> _builtins.str:
+        """
+        Issuer value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "issuer")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Subject value or parameter name to pass it through.
+        """
+        return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
+class CxToolVersionToolDataStoreSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStoreConnections":
+            suggest = "data_store_connections"
+        elif key == "fallbackPrompt":
+            suggest = "fallback_prompt"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolDataStoreSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolDataStoreSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolDataStoreSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store_connections: Sequence['outputs.CxToolVersionToolDataStoreSpecDataStoreConnection'],
+                 fallback_prompt: 'outputs.CxToolVersionToolDataStoreSpecFallbackPrompt'):
+        """
+        :param Sequence['CxToolVersionToolDataStoreSpecDataStoreConnectionArgs'] data_store_connections: List of data stores to search.
+               Structure is documented below.
+        :param 'CxToolVersionToolDataStoreSpecFallbackPromptArgs' fallback_prompt: Fallback prompt configurations to use.
+        """
+        pulumi.set(__self__, "data_store_connections", data_store_connections)
+        pulumi.set(__self__, "fallback_prompt", fallback_prompt)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStoreConnections")
+    def data_store_connections(self) -> Sequence['outputs.CxToolVersionToolDataStoreSpecDataStoreConnection']:
+        """
+        List of data stores to search.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_store_connections")
+
+    @_builtins.property
+    @pulumi.getter(name="fallbackPrompt")
+    def fallback_prompt(self) -> 'outputs.CxToolVersionToolDataStoreSpecFallbackPrompt':
+        """
+        Fallback prompt configurations to use.
+        """
+        return pulumi.get(self, "fallback_prompt")
+
+
+@pulumi.output_type
+class CxToolVersionToolDataStoreSpecDataStoreConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataStore":
+            suggest = "data_store"
+        elif key == "dataStoreType":
+            suggest = "data_store_type"
+        elif key == "documentProcessingMode":
+            suggest = "document_processing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolDataStoreSpecDataStoreConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolDataStoreSpecDataStoreConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolDataStoreSpecDataStoreConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_store: Optional[_builtins.str] = None,
+                 data_store_type: Optional[_builtins.str] = None,
+                 document_processing_mode: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str data_store: The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+        :param _builtins.str data_store_type: The type of the connected data store.
+               See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
+        :param _builtins.str document_processing_mode: The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+               See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
+        """
+        if data_store is not None:
+            pulumi.set(__self__, "data_store", data_store)
+        if data_store_type is not None:
+            pulumi.set(__self__, "data_store_type", data_store_type)
+        if document_processing_mode is not None:
+            pulumi.set(__self__, "document_processing_mode", document_processing_mode)
+
+    @_builtins.property
+    @pulumi.getter(name="dataStore")
+    def data_store(self) -> Optional[_builtins.str]:
+        """
+        The full name of the referenced data store. Formats: projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore} projects/{project}/locations/{location}/dataStores/{dataStore}
+        """
+        return pulumi.get(self, "data_store")
+
+    @_builtins.property
+    @pulumi.getter(name="dataStoreType")
+    def data_store_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the connected data store.
+        See [DataStoreType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#datastoretype) for valid values.
+        """
+        return pulumi.get(self, "data_store_type")
+
+    @_builtins.property
+    @pulumi.getter(name="documentProcessingMode")
+    def document_processing_mode(self) -> Optional[_builtins.str]:
+        """
+        The document processing mode for the data store connection. Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set it is considered as DOCUMENTS, as this is the legacy mode.
+        See [DocumentProcessingMode](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/DataStoreConnection#documentprocessingmode) for valid values.
+        """
+        return pulumi.get(self, "document_processing_mode")
+
+
+@pulumi.output_type
+class CxToolVersionToolDataStoreSpecFallbackPrompt(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class CxToolVersionToolFunctionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputSchema":
+            suggest = "input_schema"
+        elif key == "outputSchema":
+            suggest = "output_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolFunctionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolFunctionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolFunctionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 input_schema: Optional[_builtins.str] = None,
+                 output_schema: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str input_schema: Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+               This input is a JSON object that contains the function's parameters as properties of the object
+        :param _builtins.str output_schema: Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+               This output is a JSON object that contains the function's parameters as properties of the object
+        """
+        if input_schema is not None:
+            pulumi.set(__self__, "input_schema", input_schema)
+        if output_schema is not None:
+            pulumi.set(__self__, "output_schema", output_schema)
+
+    @_builtins.property
+    @pulumi.getter(name="inputSchema")
+    def input_schema(self) -> Optional[_builtins.str]:
+        """
+        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+        This input is a JSON object that contains the function's parameters as properties of the object
+        """
+        return pulumi.get(self, "input_schema")
+
+    @_builtins.property
+    @pulumi.getter(name="outputSchema")
+    def output_schema(self) -> Optional[_builtins.str]:
+        """
+        Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+        This output is a JSON object that contains the function's parameters as properties of the object
+        """
+        return pulumi.get(self, "output_schema")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "textSchema":
+            suggest = "text_schema"
+        elif key == "serviceDirectoryConfig":
+            suggest = "service_directory_config"
+        elif key == "tlsConfig":
+            suggest = "tls_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 text_schema: _builtins.str,
+                 authentication: Optional['outputs.CxToolVersionToolOpenApiSpecAuthentication'] = None,
+                 service_directory_config: Optional['outputs.CxToolVersionToolOpenApiSpecServiceDirectoryConfig'] = None,
+                 tls_config: Optional['outputs.CxToolVersionToolOpenApiSpecTlsConfig'] = None):
+        """
+        :param _builtins.str text_schema: The OpenAPI schema specified as a text.
+               This field is part of a union field `schema`: only one of `textSchema` may be set.
+        :param 'CxToolVersionToolOpenApiSpecAuthenticationArgs' authentication: Optional. Authentication information required by the API.
+               Structure is documented below.
+        :param 'CxToolVersionToolOpenApiSpecServiceDirectoryConfigArgs' service_directory_config: Optional. Service Directory configuration.
+               Structure is documented below.
+        :param 'CxToolVersionToolOpenApiSpecTlsConfigArgs' tls_config: Optional. TLS configuration for the HTTPS verification.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "text_schema", text_schema)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter(name="textSchema")
+    def text_schema(self) -> _builtins.str:
+        """
+        The OpenAPI schema specified as a text.
+        This field is part of a union field `schema`: only one of `textSchema` may be set.
+        """
+        return pulumi.get(self, "text_schema")
+
+    @_builtins.property
+    @pulumi.getter
+    def authentication(self) -> Optional['outputs.CxToolVersionToolOpenApiSpecAuthentication']:
+        """
+        Optional. Authentication information required by the API.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional['outputs.CxToolVersionToolOpenApiSpecServiceDirectoryConfig']:
+        """
+        Optional. Service Directory configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional['outputs.CxToolVersionToolOpenApiSpecTlsConfig']:
+        """
+        Optional. TLS configuration for the HTTPS verification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tls_config")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKeyConfig":
+            suggest = "api_key_config"
+        elif key == "bearerTokenConfig":
+            suggest = "bearer_token_config"
+        elif key == "oauthConfig":
+            suggest = "oauth_config"
+        elif key == "serviceAgentAuthConfig":
+            suggest = "service_agent_auth_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpecAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpecAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpecAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key_config: Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig'] = None,
+                 bearer_token_config: Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig'] = None,
+                 oauth_config: Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationOauthConfig'] = None,
+                 service_agent_auth_config: Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig'] = None):
+        """
+        :param 'CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfigArgs' api_key_config: Config for API key auth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        :param 'CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfigArgs' bearer_token_config: Config for bearer token auth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        :param 'CxToolVersionToolOpenApiSpecAuthenticationOauthConfigArgs' oauth_config: Config for OAuth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        :param 'CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfigArgs' service_agent_auth_config: Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+               This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+               Structure is documented below.
+        """
+        if api_key_config is not None:
+            pulumi.set(__self__, "api_key_config", api_key_config)
+        if bearer_token_config is not None:
+            pulumi.set(__self__, "bearer_token_config", bearer_token_config)
+        if oauth_config is not None:
+            pulumi.set(__self__, "oauth_config", oauth_config)
+        if service_agent_auth_config is not None:
+            pulumi.set(__self__, "service_agent_auth_config", service_agent_auth_config)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyConfig")
+    def api_key_config(self) -> Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig']:
+        """
+        Config for API key auth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_key_config")
+
+    @_builtins.property
+    @pulumi.getter(name="bearerTokenConfig")
+    def bearer_token_config(self) -> Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig']:
+        """
+        Config for bearer token auth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bearer_token_config")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthConfig")
+    def oauth_config(self) -> Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationOauthConfig']:
+        """
+        Config for OAuth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_config")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentAuthConfig")
+    def service_agent_auth_config(self) -> Optional['outputs.CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig']:
+        """
+        Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
+        This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_agent_auth_config")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyName":
+            suggest = "key_name"
+        elif key == "requestLocation":
+            suggest = "request_location"
+        elif key == "apiKey":
+            suggest = "api_key"
+        elif key == "secretVersionForApiKey":
+            suggest = "secret_version_for_api_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_name: _builtins.str,
+                 request_location: _builtins.str,
+                 api_key: Optional[_builtins.str] = None,
+                 secret_version_for_api_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key_name: The parameter name or the header name of the API key.
+               E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        :param _builtins.str request_location: Key location in the request.
+               See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+        :param _builtins.str api_key: Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str secret_version_for_api_key: Optional. The name of the SecretManager secret version resource storing the API key.
+               If this field is set, the apiKey field will be ignored.
+               Format: projects/{project}/secrets/{secret}/versions/{version}
+        """
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "request_location", request_location)
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if secret_version_for_api_key is not None:
+            pulumi.set(__self__, "secret_version_for_api_key", secret_version_for_api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> _builtins.str:
+        """
+        The parameter name or the header name of the API key.
+        E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
+        """
+        return pulumi.get(self, "key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="requestLocation")
+    def request_location(self) -> _builtins.str:
+        """
+        Key location in the request.
+        See [RequestLocation](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#requestlocation) for valid values.
+        """
+        return pulumi.get(self, "request_location")
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[_builtins.str]:
+        """
+        Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForApiKey")
+    def secret_version_for_api_key(self) -> Optional[_builtins.str]:
+        """
+        Optional. The name of the SecretManager secret version resource storing the API key.
+        If this field is set, the apiKey field will be ignored.
+        Format: projects/{project}/secrets/{secret}/versions/{version}
+        """
+        return pulumi.get(self, "secret_version_for_api_key")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretVersionForToken":
+            suggest = "secret_version_for_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_version_for_token: Optional[_builtins.str] = None,
+                 token: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str secret_version_for_token: Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+               Format: projects/{project}/secrets/{secret}/versions/{version}
+        :param _builtins.str token: Optional. The text token appended to the text Bearer to the request Authorization header.
+               [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if secret_version_for_token is not None:
+            pulumi.set(__self__, "secret_version_for_token", secret_version_for_token)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForToken")
+    def secret_version_for_token(self) -> Optional[_builtins.str]:
+        """
+        Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
+        Format: projects/{project}/secrets/{secret}/versions/{version}
+        """
+        return pulumi.get(self, "secret_version_for_token")
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[_builtins.str]:
+        """
+        Optional. The text token appended to the text Bearer to the request Authorization header.
+        [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref) can be used to pass the token dynamically, e.g. `$session.params.parameter-id`.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecAuthenticationOauthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "oauthGrantType":
+            suggest = "oauth_grant_type"
+        elif key == "tokenEndpoint":
+            suggest = "token_endpoint"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "secretVersionForClientSecret":
+            suggest = "secret_version_for_client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpecAuthenticationOauthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationOauthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationOauthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 oauth_grant_type: _builtins.str,
+                 token_endpoint: _builtins.str,
+                 client_secret: Optional[_builtins.str] = None,
+                 scopes: Optional[Sequence[_builtins.str]] = None,
+                 secret_version_for_client_secret: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str client_id: The client ID from the OAuth provider.
+        :param _builtins.str oauth_grant_type: OAuth grant types.
+               See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+        :param _builtins.str token_endpoint: The token endpoint in the OAuth provider to exchange for an access token.
+        :param _builtins.str client_secret: Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param Sequence[_builtins.str] scopes: Optional. The OAuth scopes to grant.
+        :param _builtins.str secret_version_for_client_secret: Optional. The name of the SecretManager secret version resource storing the client secret.
+               If this field is set, the clientSecret field will be ignored.
+               Format: projects/{project}/secrets/{secret}/versions/{version}
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "oauth_grant_type", oauth_grant_type)
+        pulumi.set(__self__, "token_endpoint", token_endpoint)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_version_for_client_secret is not None:
+            pulumi.set(__self__, "secret_version_for_client_secret", secret_version_for_client_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The client ID from the OAuth provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="oauthGrantType")
+    def oauth_grant_type(self) -> _builtins.str:
+        """
+        OAuth grant types.
+        See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
+        """
+        return pulumi.get(self, "oauth_grant_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenEndpoint")
+    def token_endpoint(self) -> _builtins.str:
+        """
+        The token endpoint in the OAuth provider to exchange for an access token.
+        """
+        return pulumi.get(self, "token_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[_builtins.str]:
+        """
+        Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. The OAuth scopes to grant.
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter(name="secretVersionForClientSecret")
+    def secret_version_for_client_secret(self) -> Optional[_builtins.str]:
+        """
+        Optional. The name of the SecretManager secret version resource storing the client secret.
+        If this field is set, the clientSecret field will be ignored.
+        Format: projects/{project}/secrets/{secret}/versions/{version}
+        """
+        return pulumi.get(self, "secret_version_for_client_secret")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAgentAuth":
+            suggest = "service_agent_auth"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_agent_auth: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service_agent_auth: Optional. Indicate the auth token type generated from the Diglogflow service agent.
+               The generated token is sent in the Authorization header.
+               See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+        """
+        if service_agent_auth is not None:
+            pulumi.set(__self__, "service_agent_auth", service_agent_auth)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentAuth")
+    def service_agent_auth(self) -> Optional[_builtins.str]:
+        """
+        Optional. Indicate the auth token type generated from the Diglogflow service agent.
+        The generated token is sent in the Authorization header.
+        See [ServiceAgentAuth](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#serviceagentauth) for valid values.
+        """
+        return pulumi.get(self, "service_agent_auth")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecServiceDirectoryConfig(dict):
+    def __init__(__self__, *,
+                 service: _builtins.str):
+        """
+        :param _builtins.str service: The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+               Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
+        Format: projects/<ProjectID>/locations/<LocationID>/namespaces/<NamespaceID>/services/<ServiceID>. LocationID of the service directory must be the same as the location of the agent.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCerts":
+            suggest = "ca_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpecTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpecTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpecTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_certs: Sequence['outputs.CxToolVersionToolOpenApiSpecTlsConfigCaCert']):
+        """
+        :param Sequence['CxToolVersionToolOpenApiSpecTlsConfigCaCertArgs'] ca_certs: Specifies a list of allowed custom CA certificates for HTTPS verification.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "ca_certs", ca_certs)
+
+    @_builtins.property
+    @pulumi.getter(name="caCerts")
+    def ca_certs(self) -> Sequence['outputs.CxToolVersionToolOpenApiSpecTlsConfigCaCert']:
+        """
+        Specifies a list of allowed custom CA certificates for HTTPS verification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ca_certs")
+
+
+@pulumi.output_type
+class CxToolVersionToolOpenApiSpecTlsConfigCaCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxToolVersionToolOpenApiSpecTlsConfigCaCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxToolVersionToolOpenApiSpecTlsConfigCaCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxToolVersionToolOpenApiSpecTlsConfigCaCert.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert: _builtins.str,
+                 display_name: _builtins.str):
+        """
+        :param _builtins.str cert: The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+               If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+               N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+               For instance a certificate can be self-signed using the following command:
+               ```
+               openssl x509 -req -days 200 -in example.com.csr \\
+               -signkey example.com.key \\
+               -out example.com.crt \\
+               -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+               ```
+               A base64-encoded string.
+        :param _builtins.str display_name: The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+        """
+        pulumi.set(__self__, "cert", cert)
+        pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def cert(self) -> _builtins.str:
+        """
+        The allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store.
+        If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates.
+        N.B. Make sure the HTTPS server certificates are signed with "subject alt name".
+        For instance a certificate can be self-signed using the following command:
+        ```
+        openssl x509 -req -days 200 -in example.com.csr \\
+        -signkey example.com.key \\
+        -out example.com.crt \\
+        -extfile <(printf "\\nsubjectAltName='DNS:www.example.com'")
+        ```
+        A base64-encoded string.
+        """
+        return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates.
+        """
+        return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
 class CxVersionNluSetting(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -14739,6 +16036,8 @@ class CxWebhookGenericWebService(dict):
             suggest = "secret_version_for_username_password"
         elif key == "secretVersionsForRequestHeaders":
             suggest = "secret_versions_for_request_headers"
+        elif key == "serviceAccountAuthConfig":
+            suggest = "service_account_auth_config"
         elif key == "serviceAgentAuth":
             suggest = "service_agent_auth"
         elif key == "webhookType":
@@ -14765,6 +16064,7 @@ class CxWebhookGenericWebService(dict):
                  request_headers: Optional[Mapping[str, _builtins.str]] = None,
                  secret_version_for_username_password: Optional[_builtins.str] = None,
                  secret_versions_for_request_headers: Optional[Sequence['outputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeader']] = None,
+                 service_account_auth_config: Optional['outputs.CxWebhookGenericWebServiceServiceAccountAuthConfig'] = None,
                  service_agent_auth: Optional[_builtins.str] = None,
                  webhook_type: Optional[_builtins.str] = None):
         """
@@ -14801,6 +16101,8 @@ class CxWebhookGenericWebService(dict):
                `secret_versions_for_request_headers`, the value in
                `secret_versions_for_request_headers` will be used.
                Structure is documented below.
+        :param 'CxWebhookGenericWebServiceServiceAccountAuthConfigArgs' service_account_auth_config: Configuration for authentication using a service account.
+               Structure is documented below.
         :param _builtins.str service_agent_auth: Indicate the auth token type generated from the [Diglogflow service
                agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
                The generated token is sent in the Authorization header.
@@ -14825,6 +16127,8 @@ class CxWebhookGenericWebService(dict):
             pulumi.set(__self__, "secret_version_for_username_password", secret_version_for_username_password)
         if secret_versions_for_request_headers is not None:
             pulumi.set(__self__, "secret_versions_for_request_headers", secret_versions_for_request_headers)
+        if service_account_auth_config is not None:
+            pulumi.set(__self__, "service_account_auth_config", service_account_auth_config)
         if service_agent_auth is not None:
             pulumi.set(__self__, "service_agent_auth", service_agent_auth)
         if webhook_type is not None:
@@ -14925,6 +16229,15 @@ class CxWebhookGenericWebService(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "secret_versions_for_request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuthConfig")
+    def service_account_auth_config(self) -> Optional['outputs.CxWebhookGenericWebServiceServiceAccountAuthConfig']:
+        """
+        Configuration for authentication using a service account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_auth_config")
 
     @_builtins.property
     @pulumi.getter(name="serviceAgentAuth")
@@ -15096,6 +16409,51 @@ class CxWebhookGenericWebServiceSecretVersionsForRequestHeader(dict):
 
 
 @pulumi.output_type
+class CxWebhookGenericWebServiceServiceAccountAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxWebhookGenericWebServiceServiceAccountAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxWebhookGenericWebServiceServiceAccountAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxWebhookGenericWebServiceServiceAccountAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: _builtins.str):
+        """
+        :param _builtins.str service_account: The email address of the service account used to authenticate the webhook call.
+               Dialogflow uses this service account to exchange an access token and the access
+               token is then sent in the **Authorization** header of the webhook request.
+               The service account must have the **roles/iam.serviceAccountTokenCreator** role
+               granted to the
+               [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> _builtins.str:
+        """
+        The email address of the service account used to authenticate the webhook call.
+        Dialogflow uses this service account to exchange an access token and the access
+        token is then sent in the **Authorization** header of the webhook request.
+        The service account must have the **roles/iam.serviceAccountTokenCreator** role
+        granted to the
+        [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+        """
+        return pulumi.get(self, "service_account")
+
+
+@pulumi.output_type
 class CxWebhookServiceDirectory(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -15165,6 +16523,8 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
             suggest = "secret_version_for_username_password"
         elif key == "secretVersionsForRequestHeaders":
             suggest = "secret_versions_for_request_headers"
+        elif key == "serviceAccountAuthConfig":
+            suggest = "service_account_auth_config"
         elif key == "serviceAgentAuth":
             suggest = "service_agent_auth"
         elif key == "webhookType":
@@ -15191,6 +16551,7 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
                  request_headers: Optional[Mapping[str, _builtins.str]] = None,
                  secret_version_for_username_password: Optional[_builtins.str] = None,
                  secret_versions_for_request_headers: Optional[Sequence['outputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader']] = None,
+                 service_account_auth_config: Optional['outputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig'] = None,
                  service_agent_auth: Optional[_builtins.str] = None,
                  webhook_type: Optional[_builtins.str] = None):
         """
@@ -15227,6 +16588,8 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
                `secret_versions_for_request_headers`, the value in
                `secret_versions_for_request_headers` will be used.
                Structure is documented below.
+        :param 'CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs' service_account_auth_config: Configuration for authentication using a service account.
+               Structure is documented below.
         :param _builtins.str service_agent_auth: Indicate the auth token type generated from the [Diglogflow service
                agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
                The generated token is sent in the Authorization header.
@@ -15251,6 +16614,8 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
             pulumi.set(__self__, "secret_version_for_username_password", secret_version_for_username_password)
         if secret_versions_for_request_headers is not None:
             pulumi.set(__self__, "secret_versions_for_request_headers", secret_versions_for_request_headers)
+        if service_account_auth_config is not None:
+            pulumi.set(__self__, "service_account_auth_config", service_account_auth_config)
         if service_agent_auth is not None:
             pulumi.set(__self__, "service_agent_auth", service_agent_auth)
         if webhook_type is not None:
@@ -15351,6 +16716,15 @@ class CxWebhookServiceDirectoryGenericWebService(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "secret_versions_for_request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountAuthConfig")
+    def service_account_auth_config(self) -> Optional['outputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig']:
+        """
+        Configuration for authentication using a service account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_auth_config")
 
     @_builtins.property
     @pulumi.getter(name="serviceAgentAuth")
@@ -15519,6 +16893,51 @@ class CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader(d
         Format: `projects/{project}/secrets/{secret}/versions/{version}`
         """
         return pulumi.get(self, "secret_version")
+
+
+@pulumi.output_type
+class CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account: _builtins.str):
+        """
+        :param _builtins.str service_account: The email address of the service account used to authenticate the webhook call.
+               Dialogflow uses this service account to exchange an access token and the access
+               token is then sent in the **Authorization** header of the webhook request.
+               The service account must have the **roles/iam.serviceAccountTokenCreator** role
+               granted to the
+               [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+        """
+        pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> _builtins.str:
+        """
+        The email address of the service account used to authenticate the webhook call.
+        Dialogflow uses this service account to exchange an access token and the access
+        token is then sent in the **Authorization** header of the webhook request.
+        The service account must have the **roles/iam.serviceAccountTokenCreator** role
+        granted to the
+        [Dialogflow service agent](https://cloud.google.com/iam/docs/service-agents?_gl=1*1jsujvh*_ga*NjYxMzU3OTg2LjE3Njc3MzQ4NjM.*_ga_WH2QY8WWF5*czE3Njc3MzQ2MjgkbzIkZzEkdDE3Njc3MzQ3NzQkajYwJGwwJGgw#dialogflow-service-agent).
+        """
+        return pulumi.get(self, "service_account")
 
 
 @pulumi.output_type

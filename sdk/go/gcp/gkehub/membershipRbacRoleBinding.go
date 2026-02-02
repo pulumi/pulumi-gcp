@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("tf-test-membership_33052"),
+//				MembershipId: pulumi.String("tf-test-membership_1443"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 //						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewMembershipRbacRoleBinding(ctx, "membership_rbac_role_binding", &gkehub.MembershipRbacRoleBindingArgs{
-//				MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_3684"),
+//				MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_26032"),
 //				MembershipId:                membership.MembershipId,
 //				User:                        pulumi.Sprintf("service-%v@gcp-sa-anthossupport.iam.gserviceaccount.com", project.Number),
 //				Role: &gkehub.MembershipRbacRoleBindingRoleArgs{

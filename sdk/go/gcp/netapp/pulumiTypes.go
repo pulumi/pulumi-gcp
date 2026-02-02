@@ -1223,7 +1223,7 @@ type VolumeExportPolicyRule struct {
 	// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
 	AnonUid *int `pulumi:"anonUid"`
 	// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-	// It's overwritten by the squashMode parameter. Use either squashMode or has_root_access.
+	// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
 	HasRootAccess *string `pulumi:"hasRootAccess"`
 	// If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
 	Kerberos5ReadOnly *bool `pulumi:"kerberos5ReadOnly"`
@@ -1242,7 +1242,7 @@ type VolumeExportPolicyRule struct {
 	// Enable to apply the export rule to NFSV4.1 clients.
 	Nfsv4 *bool `pulumi:"nfsv4"`
 	// SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-	// It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+	// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
 	// Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
 	SquashMode *string `pulumi:"squashMode"`
 }
@@ -1267,7 +1267,7 @@ type VolumeExportPolicyRuleArgs struct {
 	// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squashMode` is `ALL_SQUASH`.
 	AnonUid pulumi.IntPtrInput `pulumi:"anonUid"`
 	// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-	// It's overwritten by the squashMode parameter. Use either squashMode or has_root_access.
+	// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
 	HasRootAccess pulumi.StringPtrInput `pulumi:"hasRootAccess"`
 	// If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
 	Kerberos5ReadOnly pulumi.BoolPtrInput `pulumi:"kerberos5ReadOnly"`
@@ -1286,7 +1286,7 @@ type VolumeExportPolicyRuleArgs struct {
 	// Enable to apply the export rule to NFSV4.1 clients.
 	Nfsv4 pulumi.BoolPtrInput `pulumi:"nfsv4"`
 	// SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-	// It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+	// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
 	// Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
 	SquashMode pulumi.StringPtrInput `pulumi:"squashMode"`
 }
@@ -1359,7 +1359,7 @@ func (o VolumeExportPolicyRuleOutput) AnonUid() pulumi.IntPtrOutput {
 }
 
 // If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-// It's overwritten by the squashMode parameter. Use either squashMode or has_root_access.
+// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
 func (o VolumeExportPolicyRuleOutput) HasRootAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeExportPolicyRule) *string { return v.HasRootAccess }).(pulumi.StringPtrOutput)
 }
@@ -1405,7 +1405,7 @@ func (o VolumeExportPolicyRuleOutput) Nfsv4() pulumi.BoolPtrOutput {
 }
 
 // SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-// It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+// Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
 // Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
 func (o VolumeExportPolicyRuleOutput) SquashMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeExportPolicyRule) *string { return v.SquashMode }).(pulumi.StringPtrOutput)

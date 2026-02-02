@@ -263,7 +263,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
  * ## Import
  * 
  * Address can be imported using any of these accepted formats:
@@ -376,6 +375,34 @@ public class Address extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+     * The PDP must support enhanced IPv4 allocations.
+     * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     * 
+     */
+    @Export(name="ipCollection", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipCollection;
+
+    /**
+     * @return Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+     * The PDP must support enhanced IPv4 allocations.
+     * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     * 
+     */
+    public Output<Optional<String>> ipCollection() {
+        return Codegen.optional(this.ipCollection);
     }
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.

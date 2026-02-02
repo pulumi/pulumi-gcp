@@ -306,6 +306,24 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     * 
+     */
+    @Export(name="enableEnhancedIpv4Allocation", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableEnhancedIpv4Allocation;
+
+    /**
+     * @return (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     * 
+     */
+    public Output<Boolean> enableEnhancedIpv4Allocation() {
+        return this.enableEnhancedIpv4Allocation;
+    }
+    /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
      */

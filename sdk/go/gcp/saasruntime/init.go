@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Unit{}
 	case "gcp:saasruntime/unitKind:UnitKind":
 		r = &UnitKind{}
+	case "gcp:saasruntime/unitOperation:UnitOperation":
+		r = &UnitOperation{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"saasruntime/unitKind",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"saasruntime/unitOperation",
 		&module{version},
 	)
 }

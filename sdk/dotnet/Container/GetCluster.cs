@@ -220,6 +220,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterLoggingConfigResult> LoggingConfigs;
         public readonly string LoggingService;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> MaintenancePolicies;
+        public readonly ImmutableArray<Outputs.GetClusterManagedOpentelemetryConfigResult> ManagedOpentelemetryConfigs;
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigResult> MasterAuthorizedNetworksConfigs;
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthResult> MasterAuths;
         public readonly string MasterVersion;
@@ -360,6 +361,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterMaintenancePolicyResult> maintenancePolicies,
 
+            ImmutableArray<Outputs.GetClusterManagedOpentelemetryConfigResult> managedOpentelemetryConfigs,
+
             ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigResult> masterAuthorizedNetworksConfigs,
 
             ImmutableArray<Outputs.GetClusterMasterAuthResult> masterAuths,
@@ -496,6 +499,7 @@ namespace Pulumi.Gcp.Container
             LoggingConfigs = loggingConfigs;
             LoggingService = loggingService;
             MaintenancePolicies = maintenancePolicies;
+            ManagedOpentelemetryConfigs = managedOpentelemetryConfigs;
             MasterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             MasterAuths = masterAuths;
             MasterVersion = masterVersion;

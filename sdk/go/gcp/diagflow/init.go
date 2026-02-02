@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CxTestCase{}
 	case "gcp:diagflow/cxTool:CxTool":
 		r = &CxTool{}
+	case "gcp:diagflow/cxToolVersion:CxToolVersion":
+		r = &CxToolVersion{}
 	case "gcp:diagflow/cxVersion:CxVersion":
 		r = &CxVersion{}
 	case "gcp:diagflow/cxWebhook:CxWebhook":
@@ -146,6 +148,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"diagflow/cxTool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"diagflow/cxToolVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

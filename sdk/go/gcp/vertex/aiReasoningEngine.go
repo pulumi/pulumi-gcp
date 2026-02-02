@@ -69,6 +69,151 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Reasoning Engine Psc Interface
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("reasoning-engine"),
+//				Location:                 pulumi.String("us-central1"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//				ForceDestroy:             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucketObjRequirementsTxt, err := storage.NewBucketObject(ctx, "bucket_obj_requirements_txt", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("requirements.txt"),
+//				Bucket: bucket.ID(),
+//				Source: pulumi.NewFileAsset("./test-fixtures/requirements_adk.txt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucketObjPickle, err := storage.NewBucketObject(ctx, "bucket_obj_pickle", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("code.pkl"),
+//				Bucket: bucket.ID(),
+//				Source: pulumi.NewFileAsset("./test-fixtures/pickle_adk.pkl"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucketObjDependenciesTarGz, err := storage.NewBucketObject(ctx, "bucket_obj_dependencies_tar_gz", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("dependencies.tar.gz"),
+//				Bucket: bucket.ID(),
+//				Source: pulumi.NewFileAsset("./test-fixtures/dependencies_adk.tar.gz"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("subnetwork"),
+//				Region:      pulumi.String("us-central1"),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Network:     network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			networkAttachment, err := compute.NewNetworkAttachment(ctx, "network_attachment", &compute.NetworkAttachmentArgs{
+//				Name:                 pulumi.String("network-attachment"),
+//				Region:               pulumi.String("us-central1"),
+//				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
+//				Subnetworks: pulumi.StringArray{
+//					subnetwork.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Destroy network attachment 35 minutes after reasoning engine is deleted.
+//			// It guarantees that the network attachment has no more active PSC interfaces.
+//			wait35Minutes, err := time.NewSleep(ctx, "wait_35_minutes", &time.SleepArgs{
+//				DestroyDuration: pulumi.String("35m"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				networkAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// When PSC-I is configured, Agent deletion will fail,
+//			// although the agent will be deleted.
+//			// Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+//			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("reasoning-engine"),
+//				Description: pulumi.String("A basic reasoning engine"),
+//				Region:      pulumi.String("us-central1"),
+//				Spec: &vertex.AiReasoningEngineSpecArgs{
+//					AgentFramework: pulumi.String("google-adk"),
+//					PackageSpec: &vertex.AiReasoningEngineSpecPackageSpecArgs{
+//						PythonVersion: pulumi.String("3.11"),
+//						DependencyFilesGcsUri: pulumi.All(bucket.Url, bucketObjDependenciesTarGz.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							url := _args[0].(string)
+//							name := _args[1].(string)
+//							return fmt.Sprintf("%v/%v", url, name), nil
+//						}).(pulumi.StringOutput),
+//						PickleObjectGcsUri: pulumi.All(bucket.Url, bucketObjPickle.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							url := _args[0].(string)
+//							name := _args[1].(string)
+//							return fmt.Sprintf("%v/%v", url, name), nil
+//						}).(pulumi.StringOutput),
+//						RequirementsGcsUri: pulumi.All(bucket.Url, bucketObjRequirementsTxt.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							url := _args[0].(string)
+//							name := _args[1].(string)
+//							return fmt.Sprintf("%v/%v", url, name), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
+//						PscInterfaceConfig: &vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{
+//							NetworkAttachment: networkAttachment.ID(),
+//							DnsPeeringConfigs: vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray{
+//								&vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{
+//									Domain:        pulumi.String("example.com."),
+//									TargetProject: pulumi.String(project.ProjectId),
+//									TargetNetwork: network.Name,
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait35Minutes,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Vertex Ai Reasoning Engine Full
 //
 // ```go

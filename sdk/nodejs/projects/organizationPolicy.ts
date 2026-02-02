@@ -13,13 +13,13 @@ import * as utilities from "../utilities";
  *
  * To get more information about Organization Policies, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy)
  * * How-to Guides
- *     * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ *     * [Introduction to the Organization Policy Service](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
  *
  * ## Example Usage
  *
- * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+ * To set policy with a [boolean constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+ * To set a policy with a [list constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -141,7 +141,7 @@ export class OrganizationPolicy extends pulumi.CustomResource {
      */
     declare public readonly booleanPolicy: pulumi.Output<outputs.projects.OrganizationPolicyBooleanPolicy | undefined>;
     /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
      * - - -
      */
@@ -228,7 +228,7 @@ export interface OrganizationPolicyState {
      */
     booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy>;
     /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
      * - - -
      */
@@ -273,7 +273,7 @@ export interface OrganizationPolicyArgs {
      */
     booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy>;
     /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
      * - - -
      */

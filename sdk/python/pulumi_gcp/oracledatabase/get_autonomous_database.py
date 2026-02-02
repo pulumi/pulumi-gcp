@@ -27,7 +27,7 @@ class GetAutonomousDatabaseResult:
     """
     A collection of values returned by getAutonomousDatabase.
     """
-    def __init__(__self__, admin_password=None, autonomous_database_id=None, cidr=None, create_time=None, database=None, deletion_protection=None, display_name=None, effective_labels=None, entitlement_id=None, id=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, admin_password=None, autonomous_database_id=None, cidr=None, create_time=None, database=None, deletion_protection=None, disaster_recovery_supported_locations=None, display_name=None, effective_labels=None, entitlement_id=None, id=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, peer_autonomous_databases=None, project=None, properties=None, pulumi_labels=None, source_configs=None):
         if admin_password and not isinstance(admin_password, str):
             raise TypeError("Expected argument 'admin_password' to be a str")
         pulumi.set(__self__, "admin_password", admin_password)
@@ -46,6 +46,9 @@ class GetAutonomousDatabaseResult:
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if disaster_recovery_supported_locations and not isinstance(disaster_recovery_supported_locations, list):
+            raise TypeError("Expected argument 'disaster_recovery_supported_locations' to be a list")
+        pulumi.set(__self__, "disaster_recovery_supported_locations", disaster_recovery_supported_locations)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -76,6 +79,9 @@ class GetAutonomousDatabaseResult:
         if odb_subnet and not isinstance(odb_subnet, str):
             raise TypeError("Expected argument 'odb_subnet' to be a str")
         pulumi.set(__self__, "odb_subnet", odb_subnet)
+        if peer_autonomous_databases and not isinstance(peer_autonomous_databases, list):
+            raise TypeError("Expected argument 'peer_autonomous_databases' to be a list")
+        pulumi.set(__self__, "peer_autonomous_databases", peer_autonomous_databases)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -85,6 +91,9 @@ class GetAutonomousDatabaseResult:
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if source_configs and not isinstance(source_configs, list):
+            raise TypeError("Expected argument 'source_configs' to be a list")
+        pulumi.set(__self__, "source_configs", source_configs)
 
     @_builtins.property
     @pulumi.getter(name="adminPassword")
@@ -115,6 +124,11 @@ class GetAutonomousDatabaseResult:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
         return pulumi.get(self, "deletion_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="disasterRecoverySupportedLocations")
+    def disaster_recovery_supported_locations(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "disaster_recovery_supported_locations")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -170,6 +184,11 @@ class GetAutonomousDatabaseResult:
         return pulumi.get(self, "odb_subnet")
 
     @_builtins.property
+    @pulumi.getter(name="peerAutonomousDatabases")
+    def peer_autonomous_databases(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "peer_autonomous_databases")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "project")
@@ -184,6 +203,11 @@ class GetAutonomousDatabaseResult:
     def pulumi_labels(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "pulumi_labels")
 
+    @_builtins.property
+    @pulumi.getter(name="sourceConfigs")
+    def source_configs(self) -> Sequence['outputs.GetAutonomousDatabaseSourceConfigResult']:
+        return pulumi.get(self, "source_configs")
+
 
 class AwaitableGetAutonomousDatabaseResult(GetAutonomousDatabaseResult):
     # pylint: disable=using-constant-test
@@ -197,6 +221,7 @@ class AwaitableGetAutonomousDatabaseResult(GetAutonomousDatabaseResult):
             create_time=self.create_time,
             database=self.database,
             deletion_protection=self.deletion_protection,
+            disaster_recovery_supported_locations=self.disaster_recovery_supported_locations,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             entitlement_id=self.entitlement_id,
@@ -207,9 +232,11 @@ class AwaitableGetAutonomousDatabaseResult(GetAutonomousDatabaseResult):
             network=self.network,
             odb_network=self.odb_network,
             odb_subnet=self.odb_subnet,
+            peer_autonomous_databases=self.peer_autonomous_databases,
             project=self.project,
             properties=self.properties,
-            pulumi_labels=self.pulumi_labels)
+            pulumi_labels=self.pulumi_labels,
+            source_configs=self.source_configs)
 
 
 def get_autonomous_database(autonomous_database_id: Optional[_builtins.str] = None,
@@ -254,6 +281,7 @@ def get_autonomous_database(autonomous_database_id: Optional[_builtins.str] = No
         create_time=pulumi.get(__ret__, 'create_time'),
         database=pulumi.get(__ret__, 'database'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
+        disaster_recovery_supported_locations=pulumi.get(__ret__, 'disaster_recovery_supported_locations'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         entitlement_id=pulumi.get(__ret__, 'entitlement_id'),
@@ -264,9 +292,11 @@ def get_autonomous_database(autonomous_database_id: Optional[_builtins.str] = No
         network=pulumi.get(__ret__, 'network'),
         odb_network=pulumi.get(__ret__, 'odb_network'),
         odb_subnet=pulumi.get(__ret__, 'odb_subnet'),
+        peer_autonomous_databases=pulumi.get(__ret__, 'peer_autonomous_databases'),
         project=pulumi.get(__ret__, 'project'),
         properties=pulumi.get(__ret__, 'properties'),
-        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'))
+        pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        source_configs=pulumi.get(__ret__, 'source_configs'))
 def get_autonomous_database_output(autonomous_database_id: Optional[pulumi.Input[_builtins.str]] = None,
                                    location: Optional[pulumi.Input[_builtins.str]] = None,
                                    project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -308,6 +338,7 @@ def get_autonomous_database_output(autonomous_database_id: Optional[pulumi.Input
         create_time=pulumi.get(__response__, 'create_time'),
         database=pulumi.get(__response__, 'database'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
+        disaster_recovery_supported_locations=pulumi.get(__response__, 'disaster_recovery_supported_locations'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         entitlement_id=pulumi.get(__response__, 'entitlement_id'),
@@ -318,6 +349,8 @@ def get_autonomous_database_output(autonomous_database_id: Optional[pulumi.Input
         network=pulumi.get(__response__, 'network'),
         odb_network=pulumi.get(__response__, 'odb_network'),
         odb_subnet=pulumi.get(__response__, 'odb_subnet'),
+        peer_autonomous_databases=pulumi.get(__response__, 'peer_autonomous_databases'),
         project=pulumi.get(__response__, 'project'),
         properties=pulumi.get(__response__, 'properties'),
-        pulumi_labels=pulumi.get(__response__, 'pulumi_labels')))
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        source_configs=pulumi.get(__response__, 'source_configs')))

@@ -6,6 +6,7 @@ package com.pulumi.gcp.vertex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -95,6 +96,23 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     }
 
     /**
+     * Optional. Configuration for PSC-Interface.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscInterfaceConfig")
+    private @Nullable Output<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs> pscInterfaceConfig;
+
+    /**
+     * @return Optional. Configuration for PSC-Interface.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs>> pscInterfaceConfig() {
+        return Optional.ofNullable(this.pscInterfaceConfig);
+    }
+
+    /**
      * Optional. Resource limits for each container.
      * Only &#39;cpu&#39; and &#39;memory&#39; keys are supported.
      * Defaults to {&#34;cpu&#34;: &#34;4&#34;, &#34;memory&#34;: &#34;4Gi&#34;}.
@@ -155,6 +173,7 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         this.envs = $.envs;
         this.maxInstances = $.maxInstances;
         this.minInstances = $.minInstances;
+        this.pscInterfaceConfig = $.pscInterfaceConfig;
         this.resourceLimits = $.resourceLimits;
         this.secretEnvs = $.secretEnvs;
     }
@@ -285,6 +304,29 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
          */
         public Builder minInstances(Integer minInstances) {
             return minInstances(Output.of(minInstances));
+        }
+
+        /**
+         * @param pscInterfaceConfig Optional. Configuration for PSC-Interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfig(@Nullable Output<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs> pscInterfaceConfig) {
+            $.pscInterfaceConfig = pscInterfaceConfig;
+            return this;
+        }
+
+        /**
+         * @param pscInterfaceConfig Optional. Configuration for PSC-Interface.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfig(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs pscInterfaceConfig) {
+            return pscInterfaceConfig(Output.of(pscInterfaceConfig));
         }
 
         /**

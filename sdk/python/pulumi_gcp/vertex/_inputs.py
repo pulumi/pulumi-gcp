@@ -235,6 +235,10 @@ __all__ = [
     'AiReasoningEngineSpecDeploymentSpecArgsDict',
     'AiReasoningEngineSpecDeploymentSpecEnvArgs',
     'AiReasoningEngineSpecDeploymentSpecEnvArgsDict',
+    'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs',
+    'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict',
+    'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs',
+    'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgsDict',
     'AiReasoningEngineSpecDeploymentSpecSecretEnvArgs',
     'AiReasoningEngineSpecDeploymentSpecSecretEnvArgsDict',
     'AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs',
@@ -8868,6 +8872,11 @@ if not MYPY:
         Optional. The minimum number of application instances that will be
         kept running at all times. Defaults to 1. Range: [0, 10].
         """
+        psc_interface_config: NotRequired[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict']]
+        """
+        Optional. Configuration for PSC-Interface.
+        Structure is documented below.
+        """
         resource_limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         Optional. Resource limits for each container.
@@ -8898,6 +8907,7 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]] = None,
                  max_instances: Optional[pulumi.Input[_builtins.int]] = None,
                  min_instances: Optional[pulumi.Input[_builtins.int]] = None,
+                 psc_interface_config: Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']] = None,
                  resource_limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  secret_envs: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]] = None):
         """
@@ -8912,6 +8922,8 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
                range is [1, 100].
         :param pulumi.Input[_builtins.int] min_instances: Optional. The minimum number of application instances that will be
                kept running at all times. Defaults to 1. Range: [0, 10].
+        :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs'] psc_interface_config: Optional. Configuration for PSC-Interface.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_limits: Optional. Resource limits for each container.
                Only 'cpu' and 'memory' keys are supported.
                Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -8935,6 +8947,8 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
             pulumi.set(__self__, "max_instances", max_instances)
         if min_instances is not None:
             pulumi.set(__self__, "min_instances", min_instances)
+        if psc_interface_config is not None:
+            pulumi.set(__self__, "psc_interface_config", psc_interface_config)
         if resource_limits is not None:
             pulumi.set(__self__, "resource_limits", resource_limits)
         if secret_envs is not None:
@@ -8994,6 +9008,19 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
     @min_instances.setter
     def min_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "min_instances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscInterfaceConfig")
+    def psc_interface_config(self) -> Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]:
+        """
+        Optional. Configuration for PSC-Interface.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_config")
+
+    @psc_interface_config.setter
+    def psc_interface_config(self, value: Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]):
+        pulumi.set(self, "psc_interface_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceLimits")
@@ -9104,6 +9131,172 @@ class AiReasoningEngineSpecDeploymentSpecEnvArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict(TypedDict):
+        dns_peering_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgsDict']]]]
+        """
+        Optional. DNS peering configurations.
+        When specified, Vertex AI will attempt to configure DNS
+        peering zones in the tenant project VPC to resolve the
+        specified domains using the target network's Cloud DNS.
+        The user must grant the dns.peer role to the Vertex AI
+        service Agent on the target project.
+        Structure is documented below.
+        """
+        network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional. The name of the Compute Engine network attachment
+        to attach to the resource within the region and user project.
+        To specify this field, you must have already created a network attachment.
+        This field is only used for resources using PSC-Interface.
+        """
+elif False:
+    AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs:
+    def __init__(__self__, *,
+                 dns_peering_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]] = None,
+                 network_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]] dns_peering_configs: Optional. DNS peering configurations.
+               When specified, Vertex AI will attempt to configure DNS
+               peering zones in the tenant project VPC to resolve the
+               specified domains using the target network's Cloud DNS.
+               The user must grant the dns.peer role to the Vertex AI
+               service Agent on the target project.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] network_attachment: Optional. The name of the Compute Engine network attachment
+               to attach to the resource within the region and user project.
+               To specify this field, you must have already created a network attachment.
+               This field is only used for resources using PSC-Interface.
+        """
+        if dns_peering_configs is not None:
+            pulumi.set(__self__, "dns_peering_configs", dns_peering_configs)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfigs")
+    def dns_peering_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]:
+        """
+        Optional. DNS peering configurations.
+        When specified, Vertex AI will attempt to configure DNS
+        peering zones in the tenant project VPC to resolve the
+        specified domains using the target network's Cloud DNS.
+        The user must grant the dns.peer role to the Vertex AI
+        service Agent on the target project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_configs")
+
+    @dns_peering_configs.setter
+    def dns_peering_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]):
+        pulumi.set(self, "dns_peering_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The name of the Compute Engine network attachment
+        to attach to the resource within the region and user project.
+        To specify this field, you must have already created a network attachment.
+        This field is only used for resources using PSC-Interface.
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network_attachment", value)
+
+
+if not MYPY:
+    class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgsDict(TypedDict):
+        domain: pulumi.Input[_builtins.str]
+        """
+        Required. The DNS name suffix of the zone being peered
+        to, e.g., "my-internal-domain.corp.".
+        Must end with a dot.
+        """
+        target_network: pulumi.Input[_builtins.str]
+        """
+        Required. The VPC network name in the targetProject
+        where the DNS zone specified by 'domain' is visible.
+        """
+        target_project: pulumi.Input[_builtins.str]
+        """
+        Required. The project id hosting the Cloud DNS managed
+        zone that contains the 'domain'.
+        The Vertex AI service Agent requires the dns.peer role
+        on this project.
+        """
+elif False:
+    AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[_builtins.str],
+                 target_network: pulumi.Input[_builtins.str],
+                 target_project: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] domain: Required. The DNS name suffix of the zone being peered
+               to, e.g., "my-internal-domain.corp.".
+               Must end with a dot.
+        :param pulumi.Input[_builtins.str] target_network: Required. The VPC network name in the targetProject
+               where the DNS zone specified by 'domain' is visible.
+        :param pulumi.Input[_builtins.str] target_project: Required. The project id hosting the Cloud DNS managed
+               zone that contains the 'domain'.
+               The Vertex AI service Agent requires the dns.peer role
+               on this project.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "target_network", target_network)
+        pulumi.set(__self__, "target_project", target_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The DNS name suffix of the zone being peered
+        to, e.g., "my-internal-domain.corp.".
+        Must end with a dot.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The VPC network name in the targetProject
+        where the DNS zone specified by 'domain' is visible.
+        """
+        return pulumi.get(self, "target_network")
+
+    @target_network.setter
+    def target_network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The project id hosting the Cloud DNS managed
+        zone that contains the 'domain'.
+        The Vertex AI service Agent requires the dns.peer role
+        on this project.
+        """
+        return pulumi.get(self, "target_project")
+
+    @target_project.setter
+    def target_project(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_project", value)
 
 
 if not MYPY:

@@ -24,6 +24,11 @@ public final class GetRegionInstanceTemplateNetworkInterface {
      */
     private List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
     /**
+     * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    private String igmpQuery;
+    /**
      * @return The prefix length of the primary internal IPv6 range.
      * 
      */
@@ -102,6 +107,13 @@ public final class GetRegionInstanceTemplateNetworkInterface {
      */
     public List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges;
+    }
+    /**
+     * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    public String igmpQuery() {
+        return this.igmpQuery;
     }
     /**
      * @return The prefix length of the primary internal IPv6 range.
@@ -205,6 +217,7 @@ public final class GetRegionInstanceTemplateNetworkInterface {
     public static final class Builder {
         private List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private String igmpQuery;
         private Integer internalIpv6PrefixLength;
         private List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
         private String ipv6AccessType;
@@ -222,6 +235,7 @@ public final class GetRegionInstanceTemplateNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.igmpQuery = defaults.igmpQuery;
     	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
     	      this.ipv6AccessType = defaults.ipv6AccessType;
@@ -257,6 +271,14 @@ public final class GetRegionInstanceTemplateNetworkInterface {
         }
         public Builder aliasIpRanges(GetRegionInstanceTemplateNetworkInterfaceAliasIpRange... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
+        }
+        @CustomType.Setter
+        public Builder igmpQuery(String igmpQuery) {
+            if (igmpQuery == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "igmpQuery");
+            }
+            this.igmpQuery = igmpQuery;
+            return this;
         }
         @CustomType.Setter
         public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
@@ -361,6 +383,7 @@ public final class GetRegionInstanceTemplateNetworkInterface {
             final var _resultValue = new GetRegionInstanceTemplateNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
             _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.igmpQuery = igmpQuery;
             _resultValue.internalIpv6PrefixLength = internalIpv6PrefixLength;
             _resultValue.ipv6AccessConfigs = ipv6AccessConfigs;
             _resultValue.ipv6AccessType = ipv6AccessType;

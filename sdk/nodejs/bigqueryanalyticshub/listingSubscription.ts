@@ -65,6 +65,41 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Subscription Multiregion
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const subscription = new gcp.bigqueryanalyticshub.DataExchange("subscription", {
+ *     location: "us",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ * });
+ * const subscriptionListing = new gcp.bigqueryanalyticshub.Listing("subscription", {
+ *     location: "us",
+ *     dataExchangeId: subscription.dataExchangeId,
+ *     listingId: "my_listing",
+ *     displayName: "my_listing",
+ *     bigqueryDataset: {
+ *         dataset: "projects/project_id/datasets/my_listing_example2",
+ *         replicaLocations: ["eu"],
+ *     },
+ * });
+ * const subscriptionListingSubscription = new gcp.bigqueryanalyticshub.ListingSubscription("subscription", {
+ *     location: "us",
+ *     dataExchangeId: subscription.dataExchangeId,
+ *     listingId: subscriptionListing.listingId,
+ *     destinationDataset: {
+ *         location: "us",
+ *         datasetReference: {
+ *             projectId: subscription.project,
+ *             datasetId: "destination_dataset",
+ *         },
+ *         replicaLocations: ["eu"],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -16,9 +16,9 @@ import (
 //
 // To get more information about TagValue, see:
 //
-// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues)
+// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagValues)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+//   - [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
 //

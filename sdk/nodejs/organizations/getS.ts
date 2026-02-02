@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * Gets a list of all organizations.
- * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
- * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+ * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+ * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
  *
  * ## Example Usage
  *
@@ -35,7 +35,7 @@ export function getS(args?: GetSArgs, opts?: pulumi.InvokeOptions): Promise<GetS
  */
 export interface GetSArgs {
     /**
-     * An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+     * An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
      */
     filter?: string;
 }
@@ -56,8 +56,8 @@ export interface GetSResult {
 }
 /**
  * Gets a list of all organizations.
- * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
- * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+ * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+ * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
  *
  * ## Example Usage
  *
@@ -83,7 +83,7 @@ export function getSOutput(args?: GetSOutputArgs, opts?: pulumi.InvokeOutputOpti
  */
 export interface GetSOutputArgs {
     /**
-     * An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+     * An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
      */
     filter?: pulumi.Input<string>;
 }

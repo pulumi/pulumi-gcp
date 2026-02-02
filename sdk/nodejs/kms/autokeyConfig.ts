@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * // Create Folder in GCP Organization
  * const autokmsFolder = new gcp.organizations.Folder("autokms_folder", {
- *     displayName: "my-folder",
+ *     displayName: "folder-cfg",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

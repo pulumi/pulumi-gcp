@@ -381,6 +381,23 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Connection Profile Spanner
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
+ *     displayName: "Spanner Source",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     createWithoutValidation: true,
+ *     spannerProfile: {
+ *         database: "projects/example-project/instances/example-instance/databases/example-database",
+ *         host: "https://spanner.example-region.rep.googleapis.com",
+ *     },
+ * });
+ * ```
  * ### Datastream Connection Profile Postgres Secret Manager
  *
  * ```typescript
@@ -562,6 +579,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     declare public readonly salesforceProfile: pulumi.Output<outputs.datastream.ConnectionProfileSalesforceProfile | undefined>;
     /**
+     * Spanner profile.
+     * Structure is documented below.
+     */
+    declare public readonly spannerProfile: pulumi.Output<outputs.datastream.ConnectionProfileSpannerProfile | undefined>;
+    /**
      * SQL Server database profile.
      * Structure is documented below.
      */
@@ -598,6 +620,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["salesforceProfile"] = state?.salesforceProfile;
+            resourceInputs["spannerProfile"] = state?.spannerProfile;
             resourceInputs["sqlServerProfile"] = state?.sqlServerProfile;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
@@ -625,6 +648,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["privateConnectivity"] = args?.privateConnectivity;
             resourceInputs["project"] = args?.project;
             resourceInputs["salesforceProfile"] = args?.salesforceProfile;
+            resourceInputs["spannerProfile"] = args?.spannerProfile;
             resourceInputs["sqlServerProfile"] = args?.sqlServerProfile;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -726,6 +750,11 @@ export interface ConnectionProfileState {
      */
     salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
     /**
+     * Spanner profile.
+     * Structure is documented below.
+     */
+    spannerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSpannerProfile>;
+    /**
      * SQL Server database profile.
      * Structure is documented below.
      */
@@ -807,6 +836,11 @@ export interface ConnectionProfileArgs {
      * Structure is documented below.
      */
     salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
+    /**
+     * Spanner profile.
+     * Structure is documented below.
+     */
+    spannerProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSpannerProfile>;
     /**
      * SQL Server database profile.
      * Structure is documented below.

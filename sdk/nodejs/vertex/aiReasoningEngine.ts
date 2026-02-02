@@ -45,6 +45,86 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Vertex Ai Reasoning Engine Psc Interface
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "reasoning-engine",
+ *     location: "us-central1",
+ *     uniformBucketLevelAccess: true,
+ *     forceDestroy: true,
+ * });
+ * const bucketObjRequirementsTxt = new gcp.storage.BucketObject("bucket_obj_requirements_txt", {
+ *     name: "requirements.txt",
+ *     bucket: bucket.id,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/requirements_adk.txt"),
+ * });
+ * const bucketObjPickle = new gcp.storage.BucketObject("bucket_obj_pickle", {
+ *     name: "code.pkl",
+ *     bucket: bucket.id,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/pickle_adk.pkl"),
+ * });
+ * const bucketObjDependenciesTarGz = new gcp.storage.BucketObject("bucket_obj_dependencies_tar_gz", {
+ *     name: "dependencies.tar.gz",
+ *     bucket: bucket.id,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/dependencies_adk.tar.gz"),
+ * });
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "subnetwork",
+ *     region: "us-central1",
+ *     ipCidrRange: "10.0.0.0/16",
+ *     network: network.id,
+ * });
+ * const networkAttachment = new gcp.compute.NetworkAttachment("network_attachment", {
+ *     name: "network-attachment",
+ *     region: "us-central1",
+ *     connectionPreference: "ACCEPT_MANUAL",
+ *     subnetworks: [subnetwork.id],
+ * });
+ * // Destroy network attachment 35 minutes after reasoning engine is deleted.
+ * // It guarantees that the network attachment has no more active PSC interfaces.
+ * const wait35Minutes = new time.Sleep("wait_35_minutes", {destroyDuration: "35m"}, {
+ *     dependsOn: [networkAttachment],
+ * });
+ * const project = gcp.organizations.getProject({});
+ * // When PSC-I is configured, Agent deletion will fail,
+ * // although the agent will be deleted.
+ * // Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+ * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
+ *     displayName: "reasoning-engine",
+ *     description: "A basic reasoning engine",
+ *     region: "us-central1",
+ *     spec: {
+ *         agentFramework: "google-adk",
+ *         packageSpec: {
+ *             pythonVersion: "3.11",
+ *             dependencyFilesGcsUri: pulumi.interpolate`${bucket.url}/${bucketObjDependenciesTarGz.name}`,
+ *             pickleObjectGcsUri: pulumi.interpolate`${bucket.url}/${bucketObjPickle.name}`,
+ *             requirementsGcsUri: pulumi.interpolate`${bucket.url}/${bucketObjRequirementsTxt.name}`,
+ *         },
+ *         deploymentSpec: {
+ *             pscInterfaceConfig: {
+ *                 networkAttachment: networkAttachment.id,
+ *                 dnsPeeringConfigs: [{
+ *                     domain: "example.com.",
+ *                     targetProject: project.then(project => project.projectId),
+ *                     targetNetwork: network.name,
+ *                 }],
+ *             },
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [wait35Minutes],
+ * });
+ * ```
  * ### Vertex Ai Reasoning Engine Full
  *
  * ```typescript

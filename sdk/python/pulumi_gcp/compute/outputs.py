@@ -293,6 +293,10 @@ __all__ = [
     'InterconnectAttachmentGroupLogicalStructureRegionMetro',
     'InterconnectAttachmentGroupLogicalStructureRegionMetroFacility',
     'InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone',
+    'InterconnectAttachmentL2Forwarding',
+    'InterconnectAttachmentL2ForwardingApplianceMapping',
+    'InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping',
+    'InterconnectAttachmentL2ForwardingGeneveHeader',
     'InterconnectAttachmentPrivateInterconnectInfo',
     'InterconnectCircuitInfo',
     'InterconnectExpectedOutage',
@@ -13115,6 +13119,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "igmpQuery":
+            suggest = "igmp_query"
         elif key == "internalIpv6PrefixLength":
             suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
@@ -13123,6 +13129,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
         elif key == "networkAttachment":
             suggest = "network_attachment"
         elif key == "networkIp":
@@ -13152,10 +13160,12 @@ class InstanceFromMachineImageNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAliasIpRange']] = None,
+                 igmp_query: Optional[_builtins.str] = None,
                  internal_ipv6_prefix_length: Optional[_builtins.int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[_builtins.str] = None,
                  ipv6_address: Optional[_builtins.str] = None,
+                 mac_address: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  network: Optional[_builtins.str] = None,
                  network_attachment: Optional[_builtins.str] = None,
@@ -13169,10 +13179,12 @@ class InstanceFromMachineImageNetworkInterface(dict):
         """
         :param Sequence['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
         :param Sequence['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An array of alias IP ranges for this network interface.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
         :param _builtins.str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        :param _builtins.str mac_address: MAC address assigned to this network interface.
         :param _builtins.str name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param _builtins.str network: The name or self_link of the network attached to this interface.
@@ -13189,6 +13201,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if igmp_query is not None:
+            pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
             pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
@@ -13197,6 +13211,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if ipv6_address is not None:
             pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -13235,6 +13251,14 @@ class InstanceFromMachineImageNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
+
+    @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[_builtins.int]:
         """
@@ -13265,6 +13289,14 @@ class InstanceFromMachineImageNetworkInterface(dict):
         An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "ipv6_address")
+
+    @_builtins.property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[_builtins.str]:
+        """
+        MAC address assigned to this network interface.
+        """
+        return pulumi.get(self, "mac_address")
 
     @_builtins.property
     @pulumi.getter
@@ -15414,6 +15446,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "igmpQuery":
+            suggest = "igmp_query"
         elif key == "internalIpv6PrefixLength":
             suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
@@ -15422,6 +15456,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
         elif key == "networkAttachment":
             suggest = "network_attachment"
         elif key == "networkIp":
@@ -15451,10 +15487,12 @@ class InstanceFromTemplateNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceFromTemplateNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceFromTemplateNetworkInterfaceAliasIpRange']] = None,
+                 igmp_query: Optional[_builtins.str] = None,
                  internal_ipv6_prefix_length: Optional[_builtins.int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[_builtins.str] = None,
                  ipv6_address: Optional[_builtins.str] = None,
+                 mac_address: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  network: Optional[_builtins.str] = None,
                  network_attachment: Optional[_builtins.str] = None,
@@ -15468,10 +15506,12 @@ class InstanceFromTemplateNetworkInterface(dict):
         """
         :param Sequence['InstanceFromTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
         :param Sequence['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An array of alias IP ranges for this network interface.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
         :param _builtins.str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        :param _builtins.str mac_address: MAC address assigned to this network interface.
         :param _builtins.str name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param _builtins.str network: The name or self_link of the network attached to this interface.
@@ -15488,6 +15528,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if igmp_query is not None:
+            pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
             pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
@@ -15496,6 +15538,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if ipv6_address is not None:
             pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -15534,6 +15578,14 @@ class InstanceFromTemplateNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
+
+    @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[_builtins.int]:
         """
@@ -15564,6 +15616,14 @@ class InstanceFromTemplateNetworkInterface(dict):
         An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "ipv6_address")
+
+    @_builtins.property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[_builtins.str]:
+        """
+        MAC address assigned to this network interface.
+        """
+        return pulumi.get(self, "mac_address")
 
     @_builtins.property
     @pulumi.getter
@@ -17894,6 +17954,8 @@ class InstanceNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "igmpQuery":
+            suggest = "igmp_query"
         elif key == "internalIpv6PrefixLength":
             suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
@@ -17902,6 +17964,8 @@ class InstanceNetworkInterface(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
         elif key == "networkAttachment":
             suggest = "network_attachment"
         elif key == "networkIp":
@@ -17931,10 +17995,12 @@ class InstanceNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceNetworkInterfaceAliasIpRange']] = None,
+                 igmp_query: Optional[_builtins.str] = None,
                  internal_ipv6_prefix_length: Optional[_builtins.int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[_builtins.str] = None,
                  ipv6_address: Optional[_builtins.str] = None,
+                 mac_address: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  network: Optional[_builtins.str] = None,
                  network_attachment: Optional[_builtins.str] = None,
@@ -17950,6 +18016,7 @@ class InstanceNetworkInterface(dict):
         :param Sequence['InstanceNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['InstanceNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -17957,6 +18024,7 @@ class InstanceNetworkInterface(dict):
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
                This field is always inherited from its subnetwork.
         :param _builtins.str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        :param _builtins.str mac_address: [Beta] MAC address assigned to this network interface
         :param _builtins.str name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param _builtins.str network: The name or self_link of the network to attach this interface to.
@@ -17985,6 +18053,8 @@ class InstanceNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if igmp_query is not None:
+            pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
             pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
@@ -17993,6 +18063,8 @@ class InstanceNetworkInterface(dict):
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if ipv6_address is not None:
             pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -18033,6 +18105,14 @@ class InstanceNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
+
+    @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[_builtins.int]:
         """
@@ -18066,6 +18146,14 @@ class InstanceNetworkInterface(dict):
         An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "ipv6_address")
+
+    @_builtins.property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[_builtins.str]:
+        """
+        [Beta] MAC address assigned to this network interface
+        """
+        return pulumi.get(self, "mac_address")
 
     @_builtins.property
     @pulumi.getter
@@ -20183,6 +20271,8 @@ class InstanceTemplateNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "igmpQuery":
+            suggest = "igmp_query"
         elif key == "internalIpv6PrefixLength":
             suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
@@ -20218,6 +20308,7 @@ class InstanceTemplateNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceAliasIpRange']] = None,
+                 igmp_query: Optional[_builtins.str] = None,
                  internal_ipv6_prefix_length: Optional[_builtins.int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[_builtins.str] = None,
@@ -20241,6 +20332,7 @@ class InstanceTemplateNetworkInterface(dict):
         :param Sequence['InstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -20268,6 +20360,8 @@ class InstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if igmp_query is not None:
+            pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
             pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
@@ -20317,6 +20411,14 @@ class InstanceTemplateNetworkInterface(dict):
         interfaces on subnet-mode networks. Structure documented below.
         """
         return pulumi.get(self, "alias_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
@@ -22187,18 +22289,27 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility(dict):
 @pulumi.output_type
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
     def __init__(__self__, *,
+                 attachment: Optional[Sequence[_builtins.str]] = None,
                  attachments: Optional[Sequence[_builtins.str]] = None,
                  zone: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] attachments: (Output)
+        :param Sequence[_builtins.str] attachment: (Output, Deprecated)
                URLs of Attachments in the given zone, to the given
                region, on Interconnects in the given facility and metro. Every
                Attachment in the AG has such an entry.
+        :param Sequence[_builtins.str] attachments: Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+               strings. Users are encouraged, but not required, to use their preferred
+               format for resource links as keys.
+               Note that there are add-members and remove-members methods in gcloud.
+               The size of this map is limited by an "Attachments per group" quota.
+               Structure is documented below.
         :param _builtins.str zone: (Output)
                The zones that Attachments in this group are present
                in, in the given facilities.  This is inherited from their
                Interconnects.
         """
+        if attachment is not None:
+            pulumi.set(__self__, "attachment", attachment)
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
         if zone is not None:
@@ -22206,12 +22317,26 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
 
     @_builtins.property
     @pulumi.getter
-    def attachments(self) -> Optional[Sequence[_builtins.str]]:
+    @_utilities.deprecated("""`attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.""")
+    def attachment(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (Output)
+        (Output, Deprecated)
         URLs of Attachments in the given zone, to the given
         region, on Interconnects in the given facility and metro. Every
         Attachment in the AG has such an entry.
+        """
+        return pulumi.get(self, "attachment")
+
+    @_builtins.property
+    @pulumi.getter
+    def attachments(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+        strings. Users are encouraged, but not required, to use their preferred
+        format for resource links as keys.
+        Note that there are add-members and remove-members methods in gcloud.
+        The size of this map is limited by an "Attachments per group" quota.
+        Structure is documented below.
         """
         return pulumi.get(self, "attachments")
 
@@ -22225,6 +22350,245 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone(dict):
         Interconnects.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class InterconnectAttachmentL2Forwarding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applianceMappings":
+            suggest = "appliance_mappings"
+        elif key == "defaultApplianceIpAddress":
+            suggest = "default_appliance_ip_address"
+        elif key == "geneveHeader":
+            suggest = "geneve_header"
+        elif key == "tunnelEndpointIpAddress":
+            suggest = "tunnel_endpoint_ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectAttachmentL2Forwarding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectAttachmentL2Forwarding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectAttachmentL2Forwarding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 appliance_mappings: Optional[Sequence['outputs.InterconnectAttachmentL2ForwardingApplianceMapping']] = None,
+                 default_appliance_ip_address: Optional[_builtins.str] = None,
+                 geneve_header: Optional['outputs.InterconnectAttachmentL2ForwardingGeneveHeader'] = None,
+                 network: Optional[_builtins.str] = None,
+                 tunnel_endpoint_ip_address: Optional[_builtins.str] = None):
+        """
+        :param Sequence['InterconnectAttachmentL2ForwardingApplianceMappingArgs'] appliance_mappings: A map of VLAN tags to appliances and optional inner mapping rules.
+               Structure is documented below.
+        :param _builtins.str default_appliance_ip_address: The default appliance IP address.
+        :param 'InterconnectAttachmentL2ForwardingGeneveHeaderArgs' geneve_header: GeneveHeader related configurations.
+               Structure is documented below.
+        :param _builtins.str network: URL of the network to which this attachment belongs.
+        :param _builtins.str tunnel_endpoint_ip_address: The tunnel endpoint IP address.
+        """
+        if appliance_mappings is not None:
+            pulumi.set(__self__, "appliance_mappings", appliance_mappings)
+        if default_appliance_ip_address is not None:
+            pulumi.set(__self__, "default_appliance_ip_address", default_appliance_ip_address)
+        if geneve_header is not None:
+            pulumi.set(__self__, "geneve_header", geneve_header)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if tunnel_endpoint_ip_address is not None:
+            pulumi.set(__self__, "tunnel_endpoint_ip_address", tunnel_endpoint_ip_address)
+
+    @_builtins.property
+    @pulumi.getter(name="applianceMappings")
+    def appliance_mappings(self) -> Optional[Sequence['outputs.InterconnectAttachmentL2ForwardingApplianceMapping']]:
+        """
+        A map of VLAN tags to appliances and optional inner mapping rules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "appliance_mappings")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultApplianceIpAddress")
+    def default_appliance_ip_address(self) -> Optional[_builtins.str]:
+        """
+        The default appliance IP address.
+        """
+        return pulumi.get(self, "default_appliance_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="geneveHeader")
+    def geneve_header(self) -> Optional['outputs.InterconnectAttachmentL2ForwardingGeneveHeader']:
+        """
+        GeneveHeader related configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "geneve_header")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[_builtins.str]:
+        """
+        URL of the network to which this attachment belongs.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="tunnelEndpointIpAddress")
+    def tunnel_endpoint_ip_address(self) -> Optional[_builtins.str]:
+        """
+        The tunnel endpoint IP address.
+        """
+        return pulumi.get(self, "tunnel_endpoint_ip_address")
+
+
+@pulumi.output_type
+class InterconnectAttachmentL2ForwardingApplianceMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applianceIpAddress":
+            suggest = "appliance_ip_address"
+        elif key == "innerVlanToApplianceMappings":
+            suggest = "inner_vlan_to_appliance_mappings"
+        elif key == "vlanId":
+            suggest = "vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectAttachmentL2ForwardingApplianceMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectAttachmentL2ForwardingApplianceMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectAttachmentL2ForwardingApplianceMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 appliance_ip_address: Optional[_builtins.str] = None,
+                 inner_vlan_to_appliance_mappings: Optional[Sequence['outputs.InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping']] = None,
+                 name: Optional[_builtins.str] = None,
+                 vlan_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str appliance_ip_address: The appliance IP address.
+        :param Sequence['InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMappingArgs'] inner_vlan_to_appliance_mappings: Structure is documented below.
+        :param _builtins.str name: The name of this appliance mapping rule.
+        :param _builtins.str vlan_id: The VLAN tag.
+        """
+        if appliance_ip_address is not None:
+            pulumi.set(__self__, "appliance_ip_address", appliance_ip_address)
+        if inner_vlan_to_appliance_mappings is not None:
+            pulumi.set(__self__, "inner_vlan_to_appliance_mappings", inner_vlan_to_appliance_mappings)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if vlan_id is not None:
+            pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @_builtins.property
+    @pulumi.getter(name="applianceIpAddress")
+    def appliance_ip_address(self) -> Optional[_builtins.str]:
+        """
+        The appliance IP address.
+        """
+        return pulumi.get(self, "appliance_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="innerVlanToApplianceMappings")
+    def inner_vlan_to_appliance_mappings(self) -> Optional[Sequence['outputs.InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping']]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inner_vlan_to_appliance_mappings")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of this appliance mapping rule.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> Optional[_builtins.str]:
+        """
+        The VLAN tag.
+        """
+        return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
+class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "innerApplianceIpAddress":
+            suggest = "inner_appliance_ip_address"
+        elif key == "innerVlanTags":
+            suggest = "inner_vlan_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 inner_appliance_ip_address: Optional[_builtins.str] = None,
+                 inner_vlan_tags: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str inner_appliance_ip_address: The inner appliance IP address.
+        :param Sequence[_builtins.str] inner_vlan_tags: List of inner VLAN tags.
+        """
+        if inner_appliance_ip_address is not None:
+            pulumi.set(__self__, "inner_appliance_ip_address", inner_appliance_ip_address)
+        if inner_vlan_tags is not None:
+            pulumi.set(__self__, "inner_vlan_tags", inner_vlan_tags)
+
+    @_builtins.property
+    @pulumi.getter(name="innerApplianceIpAddress")
+    def inner_appliance_ip_address(self) -> Optional[_builtins.str]:
+        """
+        The inner appliance IP address.
+        """
+        return pulumi.get(self, "inner_appliance_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="innerVlanTags")
+    def inner_vlan_tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of inner VLAN tags.
+        """
+        return pulumi.get(self, "inner_vlan_tags")
+
+
+@pulumi.output_type
+class InterconnectAttachmentL2ForwardingGeneveHeader(dict):
+    def __init__(__self__, *,
+                 vni: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int vni: VNI is a 24-bit unique virtual network identifier.
+        """
+        if vni is not None:
+            pulumi.set(__self__, "vni", vni)
+
+    @_builtins.property
+    @pulumi.getter
+    def vni(self) -> Optional[_builtins.int]:
+        """
+        VNI is a 24-bit unique virtual network identifier.
+        """
+        return pulumi.get(self, "vni")
 
 
 @pulumi.output_type
@@ -26666,6 +27030,8 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix(dict):
             suggest = "allocatable_prefix_length"
         elif key == "delegateeProject":
             suggest = "delegatee_project"
+        elif key == "enableEnhancedIpv4Allocation":
+            suggest = "enable_enhanced_ipv4_allocation"
         elif key == "ipCidrRange":
             suggest = "ip_cidr_range"
         elif key == "ipv6AccessType":
@@ -26688,6 +27054,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix(dict):
                  allocatable_prefix_length: Optional[_builtins.int] = None,
                  delegatee_project: Optional[_builtins.str] = None,
                  description: Optional[_builtins.str] = None,
+                 enable_enhanced_ipv4_allocation: Optional[_builtins.bool] = None,
                  ip_cidr_range: Optional[_builtins.str] = None,
                  ipv6_access_type: Optional[_builtins.str] = None,
                  is_address: Optional[_builtins.bool] = None,
@@ -26699,6 +27066,9 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix(dict):
         :param _builtins.int allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param _builtins.str delegatee_project: Name of the project scoping this PublicDelegatedSubPrefix.
         :param _builtins.str description: An optional description of this resource.
+        :param _builtins.bool enable_enhanced_ipv4_allocation: (Output)
+               Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+               Applicable for IPv4 sub-PDPs only.
         :param _builtins.str ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param _builtins.str ipv6_access_type: (Output)
                The internet access type for IPv6 Public Delegated Prefixes. Inherited
@@ -26731,6 +27101,8 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix(dict):
             pulumi.set(__self__, "delegatee_project", delegatee_project)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_enhanced_ipv4_allocation is not None:
+            pulumi.set(__self__, "enable_enhanced_ipv4_allocation", enable_enhanced_ipv4_allocation)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if ipv6_access_type is not None:
@@ -26769,6 +27141,16 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix(dict):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="enableEnhancedIpv4Allocation")
+    def enable_enhanced_ipv4_allocation(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+        Applicable for IPv4 sub-PDPs only.
+        """
+        return pulumi.get(self, "enable_enhanced_ipv4_allocation")
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
@@ -34112,6 +34494,8 @@ class RegionInstanceTemplateNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "igmpQuery":
+            suggest = "igmp_query"
         elif key == "internalIpv6PrefixLength":
             suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
@@ -34145,6 +34529,7 @@ class RegionInstanceTemplateNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAliasIpRange']] = None,
+                 igmp_query: Optional[_builtins.str] = None,
                  internal_ipv6_prefix_length: Optional[_builtins.int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[_builtins.str] = None,
@@ -34161,6 +34546,7 @@ class RegionInstanceTemplateNetworkInterface(dict):
         :param Sequence['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -34186,6 +34572,8 @@ class RegionInstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if igmp_query is not None:
+            pulumi.set(__self__, "igmp_query", igmp_query)
         if internal_ipv6_prefix_length is not None:
             pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
@@ -34225,6 +34613,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
         interfaces on subnet-mode networks. Structure documented below.
         """
         return pulumi.get(self, "alias_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
@@ -69311,10 +69707,12 @@ class GetInstanceNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetInstanceNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetInstanceNetworkInterfaceAliasIpRangeResult'],
+                 igmp_query: _builtins.str,
                  internal_ipv6_prefix_length: _builtins.int,
                  ipv6_access_configs: Sequence['outputs.GetInstanceNetworkInterfaceIpv6AccessConfigResult'],
                  ipv6_access_type: _builtins.str,
                  ipv6_address: _builtins.str,
+                 mac_address: _builtins.str,
                  name: _builtins.str,
                  network: _builtins.str,
                  network_attachment: _builtins.str,
@@ -69329,10 +69727,12 @@ class GetInstanceNetworkInterfaceResult(dict):
         :param Sequence['GetInstanceNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Structure documented below.
         :param Sequence['GetInstanceNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An array of alias IP ranges for this network interface. Structure documented below.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['GetInstanceNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
         :param _builtins.str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        :param _builtins.str mac_address: MAC address assigned to this network interface.
         :param _builtins.str name: The name of the instance. One of `name` or `self_link` must be provided.
         :param _builtins.str network: The name or self_link of the network attached to this interface.
         :param _builtins.str network_attachment: The URL of the network attachment to this interface.
@@ -69346,10 +69746,12 @@ class GetInstanceNetworkInterfaceResult(dict):
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "igmp_query", igmp_query)
         pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         pulumi.set(__self__, "ipv6_address", ipv6_address)
+        pulumi.set(__self__, "mac_address", mac_address)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_attachment", network_attachment)
@@ -69377,6 +69779,14 @@ class GetInstanceNetworkInterfaceResult(dict):
         An array of alias IP ranges for this network interface. Structure documented below.
         """
         return pulumi.get(self, "alias_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> _builtins.str:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
@@ -69409,6 +69819,14 @@ class GetInstanceNetworkInterfaceResult(dict):
         An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "ipv6_address")
+
+    @_builtins.property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> _builtins.str:
+        """
+        MAC address assigned to this network interface.
+        """
+        return pulumi.get(self, "mac_address")
 
     @_builtins.property
     @pulumi.getter
@@ -70834,6 +71252,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
+                 igmp_query: _builtins.str,
                  internal_ipv6_prefix_length: _builtins.int,
                  ipv6_access_configs: Sequence['outputs.GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult'],
                  ipv6_access_type: _builtins.str,
@@ -70857,6 +71276,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
@@ -70879,6 +71299,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "igmp_query", igmp_query)
         pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
@@ -70915,6 +71336,14 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         interfaces on subnet-mode networks. Structure documented below.
         """
         return pulumi.get(self, "alias_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> _builtins.str:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
@@ -76050,6 +76479,7 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
+                 igmp_query: _builtins.str,
                  internal_ipv6_prefix_length: _builtins.int,
                  ipv6_access_configs: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult'],
                  ipv6_access_type: _builtins.str,
@@ -76066,6 +76496,7 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         :param Sequence['GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param _builtins.str igmp_query: Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
         :param _builtins.int internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param Sequence['GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param _builtins.str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
@@ -76087,6 +76518,7 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "igmp_query", igmp_query)
         pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
@@ -76114,6 +76546,14 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         interfaces on subnet-mode networks. Structure documented below.
         """
         return pulumi.get(self, "alias_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="igmpQuery")
+    def igmp_query(self) -> _builtins.str:
+        """
+        Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        """
+        return pulumi.get(self, "igmp_query")
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")

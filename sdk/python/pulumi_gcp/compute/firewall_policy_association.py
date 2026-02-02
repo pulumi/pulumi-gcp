@@ -185,7 +185,7 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.organizations.Folder("folder",
-            display_name="my-folder",
+            display_name="folder-fpa",
             parent="organizations/123456789",
             deletion_protection=False)
         policy = gcp.compute.FirewallPolicy("policy",
@@ -248,7 +248,7 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.organizations.Folder("folder",
-            display_name="my-folder",
+            display_name="folder-fpa",
             parent="organizations/123456789",
             deletion_protection=False)
         policy = gcp.compute.FirewallPolicy("policy",

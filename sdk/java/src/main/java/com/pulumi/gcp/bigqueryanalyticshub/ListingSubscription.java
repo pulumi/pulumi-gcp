@@ -110,6 +110,72 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Bigquery Analyticshub Listing Subscription Multiregion
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscription;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscriptionArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetDatasetReferenceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var subscription = new DataExchange("subscription", DataExchangeArgs.builder()
+ *             .location("us")
+ *             .dataExchangeId("my_data_exchange")
+ *             .displayName("my_data_exchange")
+ *             .build());
+ * 
+ *         var subscriptionListing = new Listing("subscriptionListing", ListingArgs.builder()
+ *             .location("us")
+ *             .dataExchangeId(subscription.dataExchangeId())
+ *             .listingId("my_listing")
+ *             .displayName("my_listing")
+ *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
+ *                 .dataset("projects/project_id/datasets/my_listing_example2")
+ *                 .replicaLocations("eu")
+ *                 .build())
+ *             .build());
+ * 
+ *         var subscriptionListingSubscription = new ListingSubscription("subscriptionListingSubscription", ListingSubscriptionArgs.builder()
+ *             .location("us")
+ *             .dataExchangeId(subscription.dataExchangeId())
+ *             .listingId(subscriptionListing.listingId())
+ *             .destinationDataset(ListingSubscriptionDestinationDatasetArgs.builder()
+ *                 .location("us")
+ *                 .datasetReference(ListingSubscriptionDestinationDatasetDatasetReferenceArgs.builder()
+ *                     .projectId(subscription.project())
+ *                     .datasetId("destination_dataset")
+ *                     .build())
+ *                 .replicaLocations("eu")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

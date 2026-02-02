@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         private InputList<Inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableGetArgs>? _tables;
 
         /// <summary>
-        /// Tables in the database.
+        /// Tables in the schema.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableGetArgs> Tables

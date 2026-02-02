@@ -165,6 +165,7 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string CreateTime;
         public readonly string Database;
         public readonly bool DeletionProtection;
+        public readonly ImmutableArray<string> DisasterRecoverySupportedLocations;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string EntitlementId;
@@ -178,9 +179,11 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string Network;
         public readonly string OdbNetwork;
         public readonly string OdbSubnet;
+        public readonly ImmutableArray<string> PeerAutonomousDatabases;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetAutonomousDatabasePropertyResult> Properties;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly ImmutableArray<Outputs.GetAutonomousDatabaseSourceConfigResult> SourceConfigs;
 
         [OutputConstructor]
         private GetAutonomousDatabaseResult(
@@ -195,6 +198,8 @@ namespace Pulumi.Gcp.OracleDatabase
             string database,
 
             bool deletionProtection,
+
+            ImmutableArray<string> disasterRecoverySupportedLocations,
 
             string displayName,
 
@@ -216,11 +221,15 @@ namespace Pulumi.Gcp.OracleDatabase
 
             string odbSubnet,
 
+            ImmutableArray<string> peerAutonomousDatabases,
+
             string? project,
 
             ImmutableArray<Outputs.GetAutonomousDatabasePropertyResult> properties,
 
-            ImmutableDictionary<string, string> pulumiLabels)
+            ImmutableDictionary<string, string> pulumiLabels,
+
+            ImmutableArray<Outputs.GetAutonomousDatabaseSourceConfigResult> sourceConfigs)
         {
             AdminPassword = adminPassword;
             AutonomousDatabaseId = autonomousDatabaseId;
@@ -228,6 +237,7 @@ namespace Pulumi.Gcp.OracleDatabase
             CreateTime = createTime;
             Database = database;
             DeletionProtection = deletionProtection;
+            DisasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             EntitlementId = entitlementId;
@@ -238,9 +248,11 @@ namespace Pulumi.Gcp.OracleDatabase
             Network = network;
             OdbNetwork = odbNetwork;
             OdbSubnet = odbSubnet;
+            PeerAutonomousDatabases = peerAutonomousDatabases;
             Project = project;
             Properties = properties;
             PulumiLabels = pulumiLabels;
+            SourceConfigs = sourceConfigs;
         }
     }
 }

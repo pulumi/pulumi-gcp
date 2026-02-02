@@ -447,8 +447,8 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .binaryLogEnabled(true)
  *                     .build())
- *                 .backupdrBackup("backupdr_backup_full_path")
  *                 .build())
+ *             .backupdrBackup("backupdr_backup_full_path")
  *             .build());
  * 
  *     }

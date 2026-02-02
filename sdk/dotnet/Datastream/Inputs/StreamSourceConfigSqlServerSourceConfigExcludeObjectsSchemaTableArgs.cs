@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         private InputList<Inputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs>? _columns;
 
         /// <summary>
-        /// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs> Columns

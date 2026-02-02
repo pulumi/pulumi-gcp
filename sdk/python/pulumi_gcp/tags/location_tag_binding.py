@@ -25,7 +25,7 @@ class LocationTagBindingArgs:
         """
         The set of arguments for constructing a LocationTagBinding resource.
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
-        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
+        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         :param pulumi.Input[_builtins.str] location: Location of the target resource.
                
                - - -
@@ -51,7 +51,7 @@ class LocationTagBindingArgs:
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Input[_builtins.str]:
         """
-        The TagValue of the TagBinding. Must be of the form tagValues/456.
+        The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         """
         return pulumi.get(self, "tag_value")
 
@@ -86,9 +86,9 @@ class _LocationTagBindingState:
         :param pulumi.Input[_builtins.str] location: Location of the target resource.
                
                - - -
-        :param pulumi.Input[_builtins.str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+        :param pulumi.Input[_builtins.str] name: The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
-        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
+        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -117,7 +117,7 @@ class _LocationTagBindingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+        The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         """
         return pulumi.get(self, "name")
 
@@ -141,7 +141,7 @@ class _LocationTagBindingState:
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The TagValue of the TagBinding. Must be of the form tagValues/456.
+        The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         """
         return pulumi.get(self, "tag_value")
 
@@ -165,9 +165,9 @@ class LocationTagBinding(pulumi.CustomResource):
 
         To get more information about LocationTagBinding, see:
 
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
+        * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+            * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -221,6 +221,27 @@ class LocationTagBinding(pulumi.CustomResource):
             location="us-central1-a")
         ```
 
+        ### Compute Instance With Dynamic Tag Value
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
+        key = gcp.tags.TagKey("key",
+            parent="organizations/123456789",
+            short_name="keyname",
+            description="For keyname resources.",
+            allowed_values_regex="^[a-z]+$")
+        binding = gcp.tags.LocationTagBinding("binding",
+            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance['instanceId']}"),
+            tag_value=key.namespaced_name.apply(lambda namespaced_name: f"{namespaced_name}/test-value"),
+            location="us-central1-a")
+        ```
+
         ## Import
 
         LocationTagBinding can be imported using any of these accepted formats:
@@ -239,7 +260,7 @@ class LocationTagBinding(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
-        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
+        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         """
         ...
     @overload
@@ -252,9 +273,9 @@ class LocationTagBinding(pulumi.CustomResource):
 
         To get more information about LocationTagBinding, see:
 
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
+        * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+            * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -305,6 +326,27 @@ class LocationTagBinding(pulumi.CustomResource):
         binding = gcp.tags.LocationTagBinding("binding",
             parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance['instanceId']}"),
             tag_value=value.id,
+            location="us-central1-a")
+        ```
+
+        ### Compute Instance With Dynamic Tag Value
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            project_id="project_id",
+            name="project_id",
+            org_id="123456789")
+        key = gcp.tags.TagKey("key",
+            parent="organizations/123456789",
+            short_name="keyname",
+            description="For keyname resources.",
+            allowed_values_regex="^[a-z]+$")
+        binding = gcp.tags.LocationTagBinding("binding",
+            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance['instanceId']}"),
+            tag_value=key.namespaced_name.apply(lambda namespaced_name: f"{namespaced_name}/test-value"),
             location="us-central1-a")
         ```
 
@@ -379,9 +421,9 @@ class LocationTagBinding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: Location of the target resource.
                
                - - -
-        :param pulumi.Input[_builtins.str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+        :param pulumi.Input[_builtins.str] name: The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
-        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
+        :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -407,7 +449,7 @@ class LocationTagBinding(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+        The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         """
         return pulumi.get(self, "name")
 
@@ -423,7 +465,7 @@ class LocationTagBinding(pulumi.CustomResource):
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Output[_builtins.str]:
         """
-        The TagValue of the TagBinding. Must be of the form tagValues/456.
+        The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         """
         return pulumi.get(self, "tag_value")
 

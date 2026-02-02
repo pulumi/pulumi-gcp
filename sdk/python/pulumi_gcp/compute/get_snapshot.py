@@ -27,7 +27,7 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, guest_flush=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, snapshot_type=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, zone=None):
+    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, guest_flush=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, snapshot_type=None, source_disk=None, source_disk_encryption_keys=None, source_instant_snapshot=None, storage_bytes=None, storage_locations=None, zone=None):
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
@@ -91,6 +91,9 @@ class GetSnapshotResult:
         if source_disk_encryption_keys and not isinstance(source_disk_encryption_keys, list):
             raise TypeError("Expected argument 'source_disk_encryption_keys' to be a list")
         pulumi.set(__self__, "source_disk_encryption_keys", source_disk_encryption_keys)
+        if source_instant_snapshot and not isinstance(source_instant_snapshot, str):
+            raise TypeError("Expected argument 'source_instant_snapshot' to be a str")
+        pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if storage_bytes and not isinstance(storage_bytes, int):
             raise TypeError("Expected argument 'storage_bytes' to be a int")
         pulumi.set(__self__, "storage_bytes", storage_bytes)
@@ -210,6 +213,11 @@ class GetSnapshotResult:
         return pulumi.get(self, "source_disk_encryption_keys")
 
     @_builtins.property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> _builtins.str:
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @_builtins.property
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> _builtins.int:
         return pulumi.get(self, "storage_bytes")
@@ -252,6 +260,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             snapshot_type=self.snapshot_type,
             source_disk=self.source_disk,
             source_disk_encryption_keys=self.source_disk_encryption_keys,
+            source_instant_snapshot=self.source_instant_snapshot,
             storage_bytes=self.storage_bytes,
             storage_locations=self.storage_locations,
             zone=self.zone)
@@ -324,6 +333,7 @@ def get_snapshot(filter: Optional[_builtins.str] = None,
         snapshot_type=pulumi.get(__ret__, 'snapshot_type'),
         source_disk=pulumi.get(__ret__, 'source_disk'),
         source_disk_encryption_keys=pulumi.get(__ret__, 'source_disk_encryption_keys'),
+        source_instant_snapshot=pulumi.get(__ret__, 'source_instant_snapshot'),
         storage_bytes=pulumi.get(__ret__, 'storage_bytes'),
         storage_locations=pulumi.get(__ret__, 'storage_locations'),
         zone=pulumi.get(__ret__, 'zone'))
@@ -393,6 +403,7 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] 
         snapshot_type=pulumi.get(__response__, 'snapshot_type'),
         source_disk=pulumi.get(__response__, 'source_disk'),
         source_disk_encryption_keys=pulumi.get(__response__, 'source_disk_encryption_keys'),
+        source_instant_snapshot=pulumi.get(__response__, 'source_instant_snapshot'),
         storage_bytes=pulumi.get(__response__, 'storage_bytes'),
         storage_locations=pulumi.get(__response__, 'storage_locations'),
         zone=pulumi.get(__response__, 'zone')))

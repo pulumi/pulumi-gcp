@@ -43,6 +43,7 @@ public final class GetSnapshotResult {
     private String snapshotType;
     private String sourceDisk;
     private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
+    private String sourceInstantSnapshot;
     private Integer storageBytes;
     private List<String> storageLocations;
     private String zone;
@@ -115,6 +116,9 @@ public final class GetSnapshotResult {
     public List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys() {
         return this.sourceDiskEncryptionKeys;
     }
+    public String sourceInstantSnapshot() {
+        return this.sourceInstantSnapshot;
+    }
     public Integer storageBytes() {
         return this.storageBytes;
     }
@@ -155,6 +159,7 @@ public final class GetSnapshotResult {
         private String snapshotType;
         private String sourceDisk;
         private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
+        private String sourceInstantSnapshot;
         private Integer storageBytes;
         private List<String> storageLocations;
         private String zone;
@@ -182,6 +187,7 @@ public final class GetSnapshotResult {
     	      this.snapshotType = defaults.snapshotType;
     	      this.sourceDisk = defaults.sourceDisk;
     	      this.sourceDiskEncryptionKeys = defaults.sourceDiskEncryptionKeys;
+    	      this.sourceInstantSnapshot = defaults.sourceInstantSnapshot;
     	      this.storageBytes = defaults.storageBytes;
     	      this.storageLocations = defaults.storageLocations;
     	      this.zone = defaults.zone;
@@ -357,6 +363,14 @@ public final class GetSnapshotResult {
             return sourceDiskEncryptionKeys(List.of(sourceDiskEncryptionKeys));
         }
         @CustomType.Setter
+        public Builder sourceInstantSnapshot(String sourceInstantSnapshot) {
+            if (sourceInstantSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "sourceInstantSnapshot");
+            }
+            this.sourceInstantSnapshot = sourceInstantSnapshot;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageBytes(Integer storageBytes) {
             if (storageBytes == null) {
               throw new MissingRequiredPropertyException("GetSnapshotResult", "storageBytes");
@@ -406,6 +420,7 @@ public final class GetSnapshotResult {
             _resultValue.snapshotType = snapshotType;
             _resultValue.sourceDisk = sourceDisk;
             _resultValue.sourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
+            _resultValue.sourceInstantSnapshot = sourceInstantSnapshot;
             _resultValue.storageBytes = storageBytes;
             _resultValue.storageLocations = storageLocations;
             _resultValue.zone = zone;

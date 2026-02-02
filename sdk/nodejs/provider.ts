@@ -112,6 +112,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly essentialContactsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly eventarcCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly filestoreCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly firebaseAiLogicCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firebaseAppCheckCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firebaseAppHostingCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly firebaseCustomEndpoint: pulumi.Output<string | undefined>;
@@ -321,6 +322,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["eventarcCustomEndpoint"] = args?.eventarcCustomEndpoint;
             resourceInputs["externalCredentials"] = pulumi.output(args?.externalCredentials).apply(JSON.stringify);
             resourceInputs["filestoreCustomEndpoint"] = args?.filestoreCustomEndpoint;
+            resourceInputs["firebaseAiLogicCustomEndpoint"] = args?.firebaseAiLogicCustomEndpoint;
             resourceInputs["firebaseAppCheckCustomEndpoint"] = args?.firebaseAppCheckCustomEndpoint;
             resourceInputs["firebaseAppHostingCustomEndpoint"] = args?.firebaseAppHostingCustomEndpoint;
             resourceInputs["firebaseCustomEndpoint"] = args?.firebaseCustomEndpoint;
@@ -542,6 +544,7 @@ export interface ProviderArgs {
     eventarcCustomEndpoint?: pulumi.Input<string>;
     externalCredentials?: pulumi.Input<inputs.ProviderExternalCredentials>;
     filestoreCustomEndpoint?: pulumi.Input<string>;
+    firebaseAiLogicCustomEndpoint?: pulumi.Input<string>;
     firebaseAppCheckCustomEndpoint?: pulumi.Input<string>;
     firebaseAppHostingCustomEndpoint?: pulumi.Input<string>;
     firebaseCustomEndpoint?: pulumi.Input<string>;

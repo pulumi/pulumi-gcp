@@ -1066,6 +1066,26 @@ class Listing(pulumi.CustomResource):
                 "dataset": listing_dataset.id,
             })
         ```
+        ### Bigquery Analyticshub Listing Multiregion
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="us",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="us",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            bigquery_dataset={
+                "dataset": "projects/project_id/datasets/my_listing_example2",
+                "replica_locations": ["eu"],
+            })
+        ```
 
         ## Import
 
@@ -1416,6 +1436,26 @@ class Listing(pulumi.CustomResource):
             delete_commercial=True,
             bigquery_dataset={
                 "dataset": listing_dataset.id,
+            })
+        ```
+        ### Bigquery Analyticshub Listing Multiregion
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="us",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="us",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            bigquery_dataset={
+                "dataset": "projects/project_id/datasets/my_listing_example2",
+                "replica_locations": ["eu"],
             })
         ```
 

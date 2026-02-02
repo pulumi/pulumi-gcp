@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable {
     /**
-     * @return SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * @return Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTa
 
     private StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable() {}
     /**
-     * @return SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * @return Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */

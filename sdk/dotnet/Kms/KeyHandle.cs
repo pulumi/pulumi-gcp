@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Kms
     ///     // Create Folder in GCP Organization
     ///     var autokmsFolder = new Gcp.Organizations.Folder("autokms_folder", new()
     ///     {
-    ///         DisplayName = "my-folder",
+    ///         DisplayName = "folder-kh",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

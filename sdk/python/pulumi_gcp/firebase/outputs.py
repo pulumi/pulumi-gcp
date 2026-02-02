@@ -16,6 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AiLogicConfigGenerativeLanguageConfig',
+    'AiLogicConfigTelemetryConfig',
     'AppHostingBackendCodebase',
     'AppHostingBackendManagedResource',
     'AppHostingBackendManagedResourceRunService',
@@ -65,6 +67,150 @@ __all__ = [
     'HostingVersionConfigRewrite',
     'HostingVersionConfigRewriteRun',
 ]
+
+@pulumi.output_type
+class AiLogicConfigGenerativeLanguageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "apiKeyWo":
+            suggest = "api_key_wo"
+        elif key == "apiKeyWoVersion":
+            suggest = "api_key_wo_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiLogicConfigGenerativeLanguageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiLogicConfigGenerativeLanguageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiLogicConfigGenerativeLanguageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: Optional[_builtins.str] = None,
+                 api_key_wo: Optional[_builtins.str] = None,
+                 api_key_wo_version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str api_key: The value of the API key. The API key must have
+               'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+               Note that this API is sometimes called the *Generative Language API* in
+               the Google Cloud console.
+               
+               Do **not** add this Gemini API key into your app's codebase
+        :param _builtins.str api_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The value of the API key. The API key must have
+               'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+               Note that this API is sometimes called the *Generative Language API* in
+               the Google Cloud console.
+               
+               Do **not** add this Gemini API key into your app's codebase
+        :param _builtins.str api_key_wo_version: Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if api_key_wo is not None:
+            pulumi.set(__self__, "api_key_wo", api_key_wo)
+        if api_key_wo_version is not None:
+            pulumi.set(__self__, "api_key_wo_version", api_key_wo_version)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[_builtins.str]:
+        """
+        The value of the API key. The API key must have
+        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        Note that this API is sometimes called the *Generative Language API* in
+        the Google Cloud console.
+
+        Do **not** add this Gemini API key into your app's codebase
+        """
+        return pulumi.get(self, "api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyWo")
+    def api_key_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The value of the API key. The API key must have
+        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        Note that this API is sometimes called the *Generative Language API* in
+        the Google Cloud console.
+
+        Do **not** add this Gemini API key into your app's codebase
+        """
+        return pulumi.get(self, "api_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyWoVersion")
+    def api_key_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "api_key_wo_version")
+
+
+@pulumi.output_type
+class AiLogicConfigTelemetryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRate":
+            suggest = "sampling_rate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiLogicConfigTelemetryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiLogicConfigTelemetryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiLogicConfigTelemetryConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode: Optional[_builtins.str] = None,
+                 sampling_rate: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str mode: The current monitoring mode used for this project.
+               Possible values:
+               NONE
+               ALL
+        :param _builtins.float sampling_rate: The percentage of requests to be sampled, expressed as a fraction
+               in the range (0,1]. Note that the actual sampling rate may be lower than
+               the specified value if the system is overloaded. Default is 1.0.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        The current monitoring mode used for this project.
+        Possible values:
+        NONE
+        ALL
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[_builtins.float]:
+        """
+        The percentage of requests to be sampled, expressed as a fraction
+        in the range (0,1]. Note that the actual sampling rate may be lower than
+        the specified value if the system is overloaded. Default is 1.0.
+        """
+        return pulumi.get(self, "sampling_rate")
+
 
 @pulumi.output_type
 class AppHostingBackendCodebase(dict):

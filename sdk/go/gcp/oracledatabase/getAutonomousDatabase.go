@@ -67,26 +67,29 @@ type LookupAutonomousDatabaseArgs struct {
 
 // A collection of values returned by getAutonomousDatabase.
 type LookupAutonomousDatabaseResult struct {
-	AdminPassword        string            `pulumi:"adminPassword"`
-	AutonomousDatabaseId string            `pulumi:"autonomousDatabaseId"`
-	Cidr                 string            `pulumi:"cidr"`
-	CreateTime           string            `pulumi:"createTime"`
-	Database             string            `pulumi:"database"`
-	DeletionProtection   bool              `pulumi:"deletionProtection"`
-	DisplayName          string            `pulumi:"displayName"`
-	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
-	EntitlementId        string            `pulumi:"entitlementId"`
+	AdminPassword                      string            `pulumi:"adminPassword"`
+	AutonomousDatabaseId               string            `pulumi:"autonomousDatabaseId"`
+	Cidr                               string            `pulumi:"cidr"`
+	CreateTime                         string            `pulumi:"createTime"`
+	Database                           string            `pulumi:"database"`
+	DeletionProtection                 bool              `pulumi:"deletionProtection"`
+	DisasterRecoverySupportedLocations []string          `pulumi:"disasterRecoverySupportedLocations"`
+	DisplayName                        string            `pulumi:"displayName"`
+	EffectiveLabels                    map[string]string `pulumi:"effectiveLabels"`
+	EntitlementId                      string            `pulumi:"entitlementId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                          `pulumi:"id"`
-	Labels       map[string]string               `pulumi:"labels"`
-	Location     string                          `pulumi:"location"`
-	Name         string                          `pulumi:"name"`
-	Network      string                          `pulumi:"network"`
-	OdbNetwork   string                          `pulumi:"odbNetwork"`
-	OdbSubnet    string                          `pulumi:"odbSubnet"`
-	Project      *string                         `pulumi:"project"`
-	Properties   []GetAutonomousDatabaseProperty `pulumi:"properties"`
-	PulumiLabels map[string]string               `pulumi:"pulumiLabels"`
+	Id                      string                              `pulumi:"id"`
+	Labels                  map[string]string                   `pulumi:"labels"`
+	Location                string                              `pulumi:"location"`
+	Name                    string                              `pulumi:"name"`
+	Network                 string                              `pulumi:"network"`
+	OdbNetwork              string                              `pulumi:"odbNetwork"`
+	OdbSubnet               string                              `pulumi:"odbSubnet"`
+	PeerAutonomousDatabases []string                            `pulumi:"peerAutonomousDatabases"`
+	Project                 *string                             `pulumi:"project"`
+	Properties              []GetAutonomousDatabaseProperty     `pulumi:"properties"`
+	PulumiLabels            map[string]string                   `pulumi:"pulumiLabels"`
+	SourceConfigs           []GetAutonomousDatabaseSourceConfig `pulumi:"sourceConfigs"`
 }
 
 func LookupAutonomousDatabaseOutput(ctx *pulumi.Context, args LookupAutonomousDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupAutonomousDatabaseResultOutput {
@@ -154,6 +157,10 @@ func (o LookupAutonomousDatabaseResultOutput) DeletionProtection() pulumi.BoolOu
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+func (o LookupAutonomousDatabaseResultOutput) DisasterRecoverySupportedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAutonomousDatabaseResult) []string { return v.DisasterRecoverySupportedLocations }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupAutonomousDatabaseResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -195,6 +202,10 @@ func (o LookupAutonomousDatabaseResultOutput) OdbSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.OdbSubnet }).(pulumi.StringOutput)
 }
 
+func (o LookupAutonomousDatabaseResultOutput) PeerAutonomousDatabases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAutonomousDatabaseResult) []string { return v.PeerAutonomousDatabases }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupAutonomousDatabaseResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -205,6 +216,10 @@ func (o LookupAutonomousDatabaseResultOutput) Properties() GetAutonomousDatabase
 
 func (o LookupAutonomousDatabaseResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupAutonomousDatabaseResultOutput) SourceConfigs() GetAutonomousDatabaseSourceConfigArrayOutput {
+	return o.ApplyT(func(v LookupAutonomousDatabaseResult) []GetAutonomousDatabaseSourceConfig { return v.SourceConfigs }).(GetAutonomousDatabaseSourceConfigArrayOutput)
 }
 
 func init() {

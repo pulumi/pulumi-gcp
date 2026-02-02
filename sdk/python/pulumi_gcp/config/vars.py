@@ -386,6 +386,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('filestoreCustomEndpoint')
 
     @_builtins.property
+    def firebase_ai_logic_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseAiLogicCustomEndpoint')
+
+    @_builtins.property
     def firebase_app_check_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseAppCheckCustomEndpoint')
 

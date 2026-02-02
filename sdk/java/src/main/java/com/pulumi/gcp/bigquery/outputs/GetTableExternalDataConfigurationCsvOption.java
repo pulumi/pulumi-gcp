@@ -38,6 +38,11 @@ public final class GetTableExternalDataConfigurationCsvOption {
      * 
      */
     private Integer skipLeadingRows;
+    /**
+     * @return Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
+     * 
+     */
+    private String sourceColumnMatch;
 
     private GetTableExternalDataConfigurationCsvOption() {}
     /**
@@ -78,6 +83,13 @@ public final class GetTableExternalDataConfigurationCsvOption {
     public Integer skipLeadingRows() {
         return this.skipLeadingRows;
     }
+    /**
+     * @return Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
+     * 
+     */
+    public String sourceColumnMatch() {
+        return this.sourceColumnMatch;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -94,6 +106,7 @@ public final class GetTableExternalDataConfigurationCsvOption {
         private String fieldDelimiter;
         private String quote;
         private Integer skipLeadingRows;
+        private String sourceColumnMatch;
         public Builder() {}
         public Builder(GetTableExternalDataConfigurationCsvOption defaults) {
     	      Objects.requireNonNull(defaults);
@@ -103,6 +116,7 @@ public final class GetTableExternalDataConfigurationCsvOption {
     	      this.fieldDelimiter = defaults.fieldDelimiter;
     	      this.quote = defaults.quote;
     	      this.skipLeadingRows = defaults.skipLeadingRows;
+    	      this.sourceColumnMatch = defaults.sourceColumnMatch;
         }
 
         @CustomType.Setter
@@ -153,6 +167,14 @@ public final class GetTableExternalDataConfigurationCsvOption {
             this.skipLeadingRows = skipLeadingRows;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceColumnMatch(String sourceColumnMatch) {
+            if (sourceColumnMatch == null) {
+              throw new MissingRequiredPropertyException("GetTableExternalDataConfigurationCsvOption", "sourceColumnMatch");
+            }
+            this.sourceColumnMatch = sourceColumnMatch;
+            return this;
+        }
         public GetTableExternalDataConfigurationCsvOption build() {
             final var _resultValue = new GetTableExternalDataConfigurationCsvOption();
             _resultValue.allowJaggedRows = allowJaggedRows;
@@ -161,6 +183,7 @@ public final class GetTableExternalDataConfigurationCsvOption {
             _resultValue.fieldDelimiter = fieldDelimiter;
             _resultValue.quote = quote;
             _resultValue.skipLeadingRows = skipLeadingRows;
+            _resultValue.sourceColumnMatch = sourceColumnMatch;
             return _resultValue;
         }
     }

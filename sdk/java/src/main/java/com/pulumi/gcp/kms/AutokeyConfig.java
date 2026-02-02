@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // Create Folder in GCP Organization
  *         var autokmsFolder = new Folder("autokmsFolder", FolderArgs.builder()
- *             .displayName("my-folder")
+ *             .displayName("folder-cfg")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

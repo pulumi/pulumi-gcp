@@ -55,6 +55,16 @@ public final class TableExternalDataConfigurationCsvOptions {
      * 
      */
     private @Nullable Integer skipLeadingRows;
+    /**
+     * @return Specifies how source columns are matched
+     * to the table schema. Valid values are `POSITION` (columns matched by position,
+     * assuming same ordering as the schema) or `NAME` (columns matched by name,
+     * reads the header row and reorders columns to align with schema field names).
+     * If not set, a default is chosen based on how the schema is provided: when
+     * autodetect is used, columns are matched by name; otherwise, by position.
+     * 
+     */
+    private @Nullable String sourceColumnMatch;
 
     private TableExternalDataConfigurationCsvOptions() {}
     /**
@@ -110,6 +120,18 @@ public final class TableExternalDataConfigurationCsvOptions {
     public Optional<Integer> skipLeadingRows() {
         return Optional.ofNullable(this.skipLeadingRows);
     }
+    /**
+     * @return Specifies how source columns are matched
+     * to the table schema. Valid values are `POSITION` (columns matched by position,
+     * assuming same ordering as the schema) or `NAME` (columns matched by name,
+     * reads the header row and reorders columns to align with schema field names).
+     * If not set, a default is chosen based on how the schema is provided: when
+     * autodetect is used, columns are matched by name; otherwise, by position.
+     * 
+     */
+    public Optional<String> sourceColumnMatch() {
+        return Optional.ofNullable(this.sourceColumnMatch);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -126,6 +148,7 @@ public final class TableExternalDataConfigurationCsvOptions {
         private @Nullable String fieldDelimiter;
         private String quote;
         private @Nullable Integer skipLeadingRows;
+        private @Nullable String sourceColumnMatch;
         public Builder() {}
         public Builder(TableExternalDataConfigurationCsvOptions defaults) {
     	      Objects.requireNonNull(defaults);
@@ -135,6 +158,7 @@ public final class TableExternalDataConfigurationCsvOptions {
     	      this.fieldDelimiter = defaults.fieldDelimiter;
     	      this.quote = defaults.quote;
     	      this.skipLeadingRows = defaults.skipLeadingRows;
+    	      this.sourceColumnMatch = defaults.sourceColumnMatch;
         }
 
         @CustomType.Setter
@@ -175,6 +199,12 @@ public final class TableExternalDataConfigurationCsvOptions {
             this.skipLeadingRows = skipLeadingRows;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceColumnMatch(@Nullable String sourceColumnMatch) {
+
+            this.sourceColumnMatch = sourceColumnMatch;
+            return this;
+        }
         public TableExternalDataConfigurationCsvOptions build() {
             final var _resultValue = new TableExternalDataConfigurationCsvOptions();
             _resultValue.allowJaggedRows = allowJaggedRows;
@@ -183,6 +213,7 @@ public final class TableExternalDataConfigurationCsvOptions {
             _resultValue.fieldDelimiter = fieldDelimiter;
             _resultValue.quote = quote;
             _resultValue.skipLeadingRows = skipLeadingRows;
+            _resultValue.sourceColumnMatch = sourceColumnMatch;
             return _resultValue;
         }
     }

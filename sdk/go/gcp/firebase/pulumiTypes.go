@@ -13,6 +13,401 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AiLogicConfigGenerativeLanguageConfig struct {
+	// The value of the API key. The API key must have
+	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// Note that this API is sometimes called the *Generative Language API* in
+	// the Google Cloud console.
+	//
+	// Do **not** add this Gemini API key into your app's codebase
+	ApiKey *string `pulumi:"apiKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The value of the API key. The API key must have
+	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// Note that this API is sometimes called the *Generative Language API* in
+	// the Google Cloud console.
+	//
+	// Do **not** add this Gemini API key into your app's codebase
+	ApiKeyWo *string `pulumi:"apiKeyWo"`
+	// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	ApiKeyWoVersion *string `pulumi:"apiKeyWoVersion"`
+}
+
+// AiLogicConfigGenerativeLanguageConfigInput is an input type that accepts AiLogicConfigGenerativeLanguageConfigArgs and AiLogicConfigGenerativeLanguageConfigOutput values.
+// You can construct a concrete instance of `AiLogicConfigGenerativeLanguageConfigInput` via:
+//
+//	AiLogicConfigGenerativeLanguageConfigArgs{...}
+type AiLogicConfigGenerativeLanguageConfigInput interface {
+	pulumi.Input
+
+	ToAiLogicConfigGenerativeLanguageConfigOutput() AiLogicConfigGenerativeLanguageConfigOutput
+	ToAiLogicConfigGenerativeLanguageConfigOutputWithContext(context.Context) AiLogicConfigGenerativeLanguageConfigOutput
+}
+
+type AiLogicConfigGenerativeLanguageConfigArgs struct {
+	// The value of the API key. The API key must have
+	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// Note that this API is sometimes called the *Generative Language API* in
+	// the Google Cloud console.
+	//
+	// Do **not** add this Gemini API key into your app's codebase
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The value of the API key. The API key must have
+	// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+	// Note that this API is sometimes called the *Generative Language API* in
+	// the Google Cloud console.
+	//
+	// Do **not** add this Gemini API key into your app's codebase
+	ApiKeyWo pulumi.StringPtrInput `pulumi:"apiKeyWo"`
+	// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	ApiKeyWoVersion pulumi.StringPtrInput `pulumi:"apiKeyWoVersion"`
+}
+
+func (AiLogicConfigGenerativeLanguageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiLogicConfigGenerativeLanguageConfig)(nil)).Elem()
+}
+
+func (i AiLogicConfigGenerativeLanguageConfigArgs) ToAiLogicConfigGenerativeLanguageConfigOutput() AiLogicConfigGenerativeLanguageConfigOutput {
+	return i.ToAiLogicConfigGenerativeLanguageConfigOutputWithContext(context.Background())
+}
+
+func (i AiLogicConfigGenerativeLanguageConfigArgs) ToAiLogicConfigGenerativeLanguageConfigOutputWithContext(ctx context.Context) AiLogicConfigGenerativeLanguageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigGenerativeLanguageConfigOutput)
+}
+
+func (i AiLogicConfigGenerativeLanguageConfigArgs) ToAiLogicConfigGenerativeLanguageConfigPtrOutput() AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return i.ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiLogicConfigGenerativeLanguageConfigArgs) ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigGenerativeLanguageConfigOutput).ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(ctx)
+}
+
+// AiLogicConfigGenerativeLanguageConfigPtrInput is an input type that accepts AiLogicConfigGenerativeLanguageConfigArgs, AiLogicConfigGenerativeLanguageConfigPtr and AiLogicConfigGenerativeLanguageConfigPtrOutput values.
+// You can construct a concrete instance of `AiLogicConfigGenerativeLanguageConfigPtrInput` via:
+//
+//	        AiLogicConfigGenerativeLanguageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiLogicConfigGenerativeLanguageConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiLogicConfigGenerativeLanguageConfigPtrOutput() AiLogicConfigGenerativeLanguageConfigPtrOutput
+	ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(context.Context) AiLogicConfigGenerativeLanguageConfigPtrOutput
+}
+
+type aiLogicConfigGenerativeLanguageConfigPtrType AiLogicConfigGenerativeLanguageConfigArgs
+
+func AiLogicConfigGenerativeLanguageConfigPtr(v *AiLogicConfigGenerativeLanguageConfigArgs) AiLogicConfigGenerativeLanguageConfigPtrInput {
+	return (*aiLogicConfigGenerativeLanguageConfigPtrType)(v)
+}
+
+func (*aiLogicConfigGenerativeLanguageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiLogicConfigGenerativeLanguageConfig)(nil)).Elem()
+}
+
+func (i *aiLogicConfigGenerativeLanguageConfigPtrType) ToAiLogicConfigGenerativeLanguageConfigPtrOutput() AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return i.ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiLogicConfigGenerativeLanguageConfigPtrType) ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigGenerativeLanguageConfigPtrOutput)
+}
+
+type AiLogicConfigGenerativeLanguageConfigOutput struct{ *pulumi.OutputState }
+
+func (AiLogicConfigGenerativeLanguageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiLogicConfigGenerativeLanguageConfig)(nil)).Elem()
+}
+
+func (o AiLogicConfigGenerativeLanguageConfigOutput) ToAiLogicConfigGenerativeLanguageConfigOutput() AiLogicConfigGenerativeLanguageConfigOutput {
+	return o
+}
+
+func (o AiLogicConfigGenerativeLanguageConfigOutput) ToAiLogicConfigGenerativeLanguageConfigOutputWithContext(ctx context.Context) AiLogicConfigGenerativeLanguageConfigOutput {
+	return o
+}
+
+func (o AiLogicConfigGenerativeLanguageConfigOutput) ToAiLogicConfigGenerativeLanguageConfigPtrOutput() AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return o.ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiLogicConfigGenerativeLanguageConfigOutput) ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiLogicConfigGenerativeLanguageConfig) *AiLogicConfigGenerativeLanguageConfig {
+		return &v
+	}).(AiLogicConfigGenerativeLanguageConfigPtrOutput)
+}
+
+// The value of the API key. The API key must have
+// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// Note that this API is sometimes called the *Generative Language API* in
+// the Google Cloud console.
+//
+// Do **not** add this Gemini API key into your app's codebase
+func (o AiLogicConfigGenerativeLanguageConfigOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiLogicConfigGenerativeLanguageConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The value of the API key. The API key must have
+// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// Note that this API is sometimes called the *Generative Language API* in
+// the Google Cloud console.
+//
+// Do **not** add this Gemini API key into your app's codebase
+func (o AiLogicConfigGenerativeLanguageConfigOutput) ApiKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiLogicConfigGenerativeLanguageConfig) *string { return v.ApiKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o AiLogicConfigGenerativeLanguageConfigOutput) ApiKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiLogicConfigGenerativeLanguageConfig) *string { return v.ApiKeyWoVersion }).(pulumi.StringPtrOutput)
+}
+
+type AiLogicConfigGenerativeLanguageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiLogicConfigGenerativeLanguageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiLogicConfigGenerativeLanguageConfig)(nil)).Elem()
+}
+
+func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ToAiLogicConfigGenerativeLanguageConfigPtrOutput() AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return o
+}
+
+func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ToAiLogicConfigGenerativeLanguageConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigGenerativeLanguageConfigPtrOutput {
+	return o
+}
+
+func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) Elem() AiLogicConfigGenerativeLanguageConfigOutput {
+	return o.ApplyT(func(v *AiLogicConfigGenerativeLanguageConfig) AiLogicConfigGenerativeLanguageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiLogicConfigGenerativeLanguageConfig
+		return ret
+	}).(AiLogicConfigGenerativeLanguageConfigOutput)
+}
+
+// The value of the API key. The API key must have
+// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// Note that this API is sometimes called the *Generative Language API* in
+// the Google Cloud console.
+//
+// Do **not** add this Gemini API key into your app's codebase
+func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiLogicConfigGenerativeLanguageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The value of the API key. The API key must have
+// 'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+// Note that this API is sometimes called the *Generative Language API* in
+// the Google Cloud console.
+//
+// Do **not** add this Gemini API key into your app's codebase
+func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiLogicConfigGenerativeLanguageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o AiLogicConfigGenerativeLanguageConfigPtrOutput) ApiKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiLogicConfigGenerativeLanguageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKeyWoVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiLogicConfigTelemetryConfig struct {
+	// The current monitoring mode used for this project.
+	// Possible values:
+	// NONE
+	// ALL
+	Mode *string `pulumi:"mode"`
+	// The percentage of requests to be sampled, expressed as a fraction
+	// in the range (0,1]. Note that the actual sampling rate may be lower than
+	// the specified value if the system is overloaded. Default is 1.0.
+	SamplingRate *float64 `pulumi:"samplingRate"`
+}
+
+// AiLogicConfigTelemetryConfigInput is an input type that accepts AiLogicConfigTelemetryConfigArgs and AiLogicConfigTelemetryConfigOutput values.
+// You can construct a concrete instance of `AiLogicConfigTelemetryConfigInput` via:
+//
+//	AiLogicConfigTelemetryConfigArgs{...}
+type AiLogicConfigTelemetryConfigInput interface {
+	pulumi.Input
+
+	ToAiLogicConfigTelemetryConfigOutput() AiLogicConfigTelemetryConfigOutput
+	ToAiLogicConfigTelemetryConfigOutputWithContext(context.Context) AiLogicConfigTelemetryConfigOutput
+}
+
+type AiLogicConfigTelemetryConfigArgs struct {
+	// The current monitoring mode used for this project.
+	// Possible values:
+	// NONE
+	// ALL
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The percentage of requests to be sampled, expressed as a fraction
+	// in the range (0,1]. Note that the actual sampling rate may be lower than
+	// the specified value if the system is overloaded. Default is 1.0.
+	SamplingRate pulumi.Float64PtrInput `pulumi:"samplingRate"`
+}
+
+func (AiLogicConfigTelemetryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiLogicConfigTelemetryConfig)(nil)).Elem()
+}
+
+func (i AiLogicConfigTelemetryConfigArgs) ToAiLogicConfigTelemetryConfigOutput() AiLogicConfigTelemetryConfigOutput {
+	return i.ToAiLogicConfigTelemetryConfigOutputWithContext(context.Background())
+}
+
+func (i AiLogicConfigTelemetryConfigArgs) ToAiLogicConfigTelemetryConfigOutputWithContext(ctx context.Context) AiLogicConfigTelemetryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigTelemetryConfigOutput)
+}
+
+func (i AiLogicConfigTelemetryConfigArgs) ToAiLogicConfigTelemetryConfigPtrOutput() AiLogicConfigTelemetryConfigPtrOutput {
+	return i.ToAiLogicConfigTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiLogicConfigTelemetryConfigArgs) ToAiLogicConfigTelemetryConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigTelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigTelemetryConfigOutput).ToAiLogicConfigTelemetryConfigPtrOutputWithContext(ctx)
+}
+
+// AiLogicConfigTelemetryConfigPtrInput is an input type that accepts AiLogicConfigTelemetryConfigArgs, AiLogicConfigTelemetryConfigPtr and AiLogicConfigTelemetryConfigPtrOutput values.
+// You can construct a concrete instance of `AiLogicConfigTelemetryConfigPtrInput` via:
+//
+//	        AiLogicConfigTelemetryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiLogicConfigTelemetryConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiLogicConfigTelemetryConfigPtrOutput() AiLogicConfigTelemetryConfigPtrOutput
+	ToAiLogicConfigTelemetryConfigPtrOutputWithContext(context.Context) AiLogicConfigTelemetryConfigPtrOutput
+}
+
+type aiLogicConfigTelemetryConfigPtrType AiLogicConfigTelemetryConfigArgs
+
+func AiLogicConfigTelemetryConfigPtr(v *AiLogicConfigTelemetryConfigArgs) AiLogicConfigTelemetryConfigPtrInput {
+	return (*aiLogicConfigTelemetryConfigPtrType)(v)
+}
+
+func (*aiLogicConfigTelemetryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiLogicConfigTelemetryConfig)(nil)).Elem()
+}
+
+func (i *aiLogicConfigTelemetryConfigPtrType) ToAiLogicConfigTelemetryConfigPtrOutput() AiLogicConfigTelemetryConfigPtrOutput {
+	return i.ToAiLogicConfigTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiLogicConfigTelemetryConfigPtrType) ToAiLogicConfigTelemetryConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigTelemetryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiLogicConfigTelemetryConfigPtrOutput)
+}
+
+type AiLogicConfigTelemetryConfigOutput struct{ *pulumi.OutputState }
+
+func (AiLogicConfigTelemetryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiLogicConfigTelemetryConfig)(nil)).Elem()
+}
+
+func (o AiLogicConfigTelemetryConfigOutput) ToAiLogicConfigTelemetryConfigOutput() AiLogicConfigTelemetryConfigOutput {
+	return o
+}
+
+func (o AiLogicConfigTelemetryConfigOutput) ToAiLogicConfigTelemetryConfigOutputWithContext(ctx context.Context) AiLogicConfigTelemetryConfigOutput {
+	return o
+}
+
+func (o AiLogicConfigTelemetryConfigOutput) ToAiLogicConfigTelemetryConfigPtrOutput() AiLogicConfigTelemetryConfigPtrOutput {
+	return o.ToAiLogicConfigTelemetryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiLogicConfigTelemetryConfigOutput) ToAiLogicConfigTelemetryConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigTelemetryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiLogicConfigTelemetryConfig) *AiLogicConfigTelemetryConfig {
+		return &v
+	}).(AiLogicConfigTelemetryConfigPtrOutput)
+}
+
+// The current monitoring mode used for this project.
+// Possible values:
+// NONE
+// ALL
+func (o AiLogicConfigTelemetryConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiLogicConfigTelemetryConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of requests to be sampled, expressed as a fraction
+// in the range (0,1]. Note that the actual sampling rate may be lower than
+// the specified value if the system is overloaded. Default is 1.0.
+func (o AiLogicConfigTelemetryConfigOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiLogicConfigTelemetryConfig) *float64 { return v.SamplingRate }).(pulumi.Float64PtrOutput)
+}
+
+type AiLogicConfigTelemetryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiLogicConfigTelemetryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiLogicConfigTelemetryConfig)(nil)).Elem()
+}
+
+func (o AiLogicConfigTelemetryConfigPtrOutput) ToAiLogicConfigTelemetryConfigPtrOutput() AiLogicConfigTelemetryConfigPtrOutput {
+	return o
+}
+
+func (o AiLogicConfigTelemetryConfigPtrOutput) ToAiLogicConfigTelemetryConfigPtrOutputWithContext(ctx context.Context) AiLogicConfigTelemetryConfigPtrOutput {
+	return o
+}
+
+func (o AiLogicConfigTelemetryConfigPtrOutput) Elem() AiLogicConfigTelemetryConfigOutput {
+	return o.ApplyT(func(v *AiLogicConfigTelemetryConfig) AiLogicConfigTelemetryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiLogicConfigTelemetryConfig
+		return ret
+	}).(AiLogicConfigTelemetryConfigOutput)
+}
+
+// The current monitoring mode used for this project.
+// Possible values:
+// NONE
+// ALL
+func (o AiLogicConfigTelemetryConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiLogicConfigTelemetryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of requests to be sampled, expressed as a fraction
+// in the range (0,1]. Note that the actual sampling rate may be lower than
+// the specified value if the system is overloaded. Default is 1.0.
+func (o AiLogicConfigTelemetryConfigPtrOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiLogicConfigTelemetryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingRate
+	}).(pulumi.Float64PtrOutput)
+}
+
 type AppHostingBackendCodebase struct {
 	// The resource name for the Developer Connect
 	// [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
@@ -7298,6 +7693,10 @@ func (o HostingVersionConfigRewriteRunPtrOutput) ServiceId() pulumi.StringPtrOut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigGenerativeLanguageConfigInput)(nil)).Elem(), AiLogicConfigGenerativeLanguageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigGenerativeLanguageConfigPtrInput)(nil)).Elem(), AiLogicConfigGenerativeLanguageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigTelemetryConfigInput)(nil)).Elem(), AiLogicConfigTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiLogicConfigTelemetryConfigPtrInput)(nil)).Elem(), AiLogicConfigTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendCodebaseInput)(nil)).Elem(), AppHostingBackendCodebaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendCodebasePtrInput)(nil)).Elem(), AppHostingBackendCodebaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppHostingBackendManagedResourceInput)(nil)).Elem(), AppHostingBackendManagedResourceArgs{})
@@ -7394,6 +7793,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteArrayInput)(nil)).Elem(), HostingVersionConfigRewriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunPtrInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
+	pulumi.RegisterOutputType(AiLogicConfigGenerativeLanguageConfigOutput{})
+	pulumi.RegisterOutputType(AiLogicConfigGenerativeLanguageConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiLogicConfigTelemetryConfigOutput{})
+	pulumi.RegisterOutputType(AiLogicConfigTelemetryConfigPtrOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendCodebaseOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendCodebasePtrOutput{})
 	pulumi.RegisterOutputType(AppHostingBackendManagedResourceOutput{})

@@ -21,6 +21,7 @@ class TagKeyArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
                  short_name: pulumi.Input[_builtins.str],
+                 allowed_values_regex: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
                  purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
@@ -29,6 +30,7 @@ class TagKeyArgs:
         :param pulumi.Input[_builtins.str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[_builtins.str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
+        :param pulumi.Input[_builtins.str] allowed_values_regex: Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
         :param pulumi.Input[_builtins.str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
         :param pulumi.Input[_builtins.str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
@@ -38,6 +40,8 @@ class TagKeyArgs:
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "short_name", short_name)
+        if allowed_values_regex is not None:
+            pulumi.set(__self__, "allowed_values_regex", allowed_values_regex)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if purpose is not None:
@@ -69,6 +73,18 @@ class TagKeyArgs:
     @short_name.setter
     def short_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "short_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValuesRegex")
+    def allowed_values_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        """
+        return pulumi.get(self, "allowed_values_regex")
+
+    @allowed_values_regex.setter
+    def allowed_values_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "allowed_values_regex", value)
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +129,7 @@ class TagKeyArgs:
 @pulumi.input_type
 class _TagKeyState:
     def __init__(__self__, *,
+                 allowed_values_regex: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -124,6 +141,7 @@ class _TagKeyState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TagKey resources.
+        :param pulumi.Input[_builtins.str] allowed_values_regex: Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
@@ -140,6 +158,8 @@ class _TagKeyState:
         :param pulumi.Input[_builtins.str] update_time: Output only. Update time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        if allowed_values_regex is not None:
+            pulumi.set(__self__, "allowed_values_regex", allowed_values_regex)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -158,6 +178,18 @@ class _TagKeyState:
             pulumi.set(__self__, "short_name", short_name)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValuesRegex")
+    def allowed_values_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        """
+        return pulumi.get(self, "allowed_values_regex")
+
+    @allowed_values_regex.setter
+    def allowed_values_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "allowed_values_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -280,6 +312,7 @@ class TagKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_values_regex: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
@@ -291,9 +324,9 @@ class TagKey(pulumi.CustomResource):
 
         To get more information about TagKey, see:
 
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+        * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+            * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -329,6 +362,7 @@ class TagKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] allowed_values_regex: Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
         :param pulumi.Input[_builtins.str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
         :param pulumi.Input[_builtins.str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[_builtins.str] purpose: Optional. A purpose cannot be changed once set.
@@ -350,9 +384,9 @@ class TagKey(pulumi.CustomResource):
 
         To get more information about TagKey, see:
 
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+        * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+            * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
 
@@ -401,6 +435,7 @@ class TagKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_values_regex: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  purpose: Optional[pulumi.Input[_builtins.str]] = None,
@@ -415,6 +450,7 @@ class TagKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TagKeyArgs.__new__(TagKeyArgs)
 
+            __props__.__dict__["allowed_values_regex"] = allowed_values_regex
             __props__.__dict__["description"] = description
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
@@ -438,6 +474,7 @@ class TagKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_values_regex: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -454,6 +491,7 @@ class TagKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] allowed_values_regex: Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[_builtins.str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
@@ -474,6 +512,7 @@ class TagKey(pulumi.CustomResource):
 
         __props__ = _TagKeyState.__new__(_TagKeyState)
 
+        __props__.__dict__["allowed_values_regex"] = allowed_values_regex
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
@@ -484,6 +523,14 @@ class TagKey(pulumi.CustomResource):
         __props__.__dict__["short_name"] = short_name
         __props__.__dict__["update_time"] = update_time
         return TagKey(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValuesRegex")
+    def allowed_values_regex(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        """
+        return pulumi.get(self, "allowed_values_regex")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

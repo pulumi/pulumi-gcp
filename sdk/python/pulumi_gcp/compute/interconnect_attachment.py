@@ -21,7 +21,6 @@ __all__ = ['InterconnectAttachmentArgs', 'InterconnectAttachment']
 @pulumi.input_type
 class InterconnectAttachmentArgs:
     def __init__(__self__, *,
-                 router: pulumi.Input[_builtins.str],
                  admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
                  candidate_cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,21 +33,19 @@ class InterconnectAttachmentArgs:
                  encryption: Optional[pulumi.Input[_builtins.str]] = None,
                  interconnect: Optional[pulumi.Input[_builtins.str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
+                 router: Optional[pulumi.Input[_builtins.str]] = None,
                  stack_type: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_length: Optional[pulumi.Input[_builtins.int]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a InterconnectAttachment resource.
-        :param pulumi.Input[_builtins.str] router: URL of the cloud router to be used for dynamic routing. This router must be in
-               the same region as this InterconnectAttachment. The InterconnectAttachment will
-               automatically connect the Interconnect to the network & region within which the
-               Cloud Router is configured.
         :param pulumi.Input[_builtins.bool] admin_enabled: Whether the VLAN attachment is enabled or disabled.  When using
                PARTNER type this will Pre-Activate the interconnect attachment
         :param pulumi.Input[_builtins.str] bandwidth: Provisioned bandwidth capacity for the interconnect attachment.
@@ -110,6 +107,8 @@ class InterconnectAttachmentArgs:
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input['InterconnectAttachmentL2ForwardingArgs'] l2_forwarding: L2 Interconnect Attachment related configuration.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
                method. Each label key/value pair must comply with RFC1035. Label values may be empty.
                
@@ -125,7 +124,15 @@ class InterconnectAttachmentArgs:
                letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               
+               
+               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
+        :param pulumi.Input[_builtins.str] router: URL of the cloud router to be used for dynamic routing. This router must be in
+               the same region as this InterconnectAttachment. The InterconnectAttachment will
+               automatically connect the Interconnect to the network & region within which the
+               Cloud Router is configured.
         :param pulumi.Input[_builtins.str] stack_type: The stack type for this interconnect attachment to identify whether the IPv6
                feature is enabled or not. If not specified, IPV4_ONLY will be used.
                This field can be both set at interconnect attachments creation and update
@@ -139,11 +146,10 @@ class InterconnectAttachmentArgs:
                gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[_builtins.str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
-               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
         :param pulumi.Input[_builtins.int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
-        pulumi.set(__self__, "router", router)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
         if bandwidth is not None:
@@ -168,6 +174,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "interconnect", interconnect)
         if ipsec_internal_addresses is not None:
             pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
+        if l2_forwarding is not None:
+            pulumi.set(__self__, "l2_forwarding", l2_forwarding)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if mtu is not None:
@@ -178,6 +186,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if router is not None:
+            pulumi.set(__self__, "router", router)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnet_length is not None:
@@ -186,21 +196,6 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "type", type)
         if vlan_tag8021q is not None:
             pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
-
-    @_builtins.property
-    @pulumi.getter
-    def router(self) -> pulumi.Input[_builtins.str]:
-        """
-        URL of the cloud router to be used for dynamic routing. This router must be in
-        the same region as this InterconnectAttachment. The InterconnectAttachment will
-        automatically connect the Interconnect to the network & region within which the
-        Cloud Router is configured.
-        """
-        return pulumi.get(self, "router")
-
-    @router.setter
-    def router(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
@@ -396,6 +391,19 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "ipsec_internal_addresses", value)
 
     @_builtins.property
+    @pulumi.getter(name="l2Forwarding")
+    def l2_forwarding(self) -> Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]:
+        """
+        L2 Interconnect Attachment related configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "l2_forwarding")
+
+    @l2_forwarding.setter
+    def l2_forwarding(self, value: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]):
+        pulumi.set(self, "l2_forwarding", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -447,6 +455,10 @@ class InterconnectAttachmentArgs:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
+
+
+
+        <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         """
         return pulumi.get(self, "project")
 
@@ -465,6 +477,21 @@ class InterconnectAttachmentArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the cloud router to be used for dynamic routing. This router must be in
+        the same region as this InterconnectAttachment. The InterconnectAttachment will
+        automatically connect the Interconnect to the network & region within which the
+        Cloud Router is configured.
+        """
+        return pulumi.get(self, "router")
+
+    @router.setter
+    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
@@ -505,7 +532,7 @@ class InterconnectAttachmentArgs:
         """
         The type of InterconnectAttachment you wish to create. Defaults to
         DEDICATED.
-        Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+        Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
         """
         return pulumi.get(self, "type")
 
@@ -550,6 +577,7 @@ class _InterconnectAttachmentState:
                  google_reference_id: Optional[pulumi.Input[_builtins.str]] = None,
                  interconnect: Optional[pulumi.Input[_builtins.str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
@@ -643,6 +671,8 @@ class _InterconnectAttachmentState:
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input['InterconnectAttachmentL2ForwardingArgs'] l2_forwarding: L2 Interconnect Attachment related configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
                of the labels set used for optimistic locking. The fingerprint is initially generated by
                Compute Engine and changes after every request to modify or update labels.
@@ -672,6 +702,10 @@ class _InterconnectAttachmentState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               
+               
+               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
@@ -694,7 +728,7 @@ class _InterconnectAttachmentState:
                gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[_builtins.str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
-               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
         :param pulumi.Input[_builtins.int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
@@ -738,6 +772,8 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "interconnect", interconnect)
         if ipsec_internal_addresses is not None:
             pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
+        if l2_forwarding is not None:
+            pulumi.set(__self__, "l2_forwarding", l2_forwarding)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -1068,6 +1104,19 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "ipsec_internal_addresses", value)
 
     @_builtins.property
+    @pulumi.getter(name="l2Forwarding")
+    def l2_forwarding(self) -> Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]:
+        """
+        L2 Interconnect Attachment related configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "l2_forwarding")
+
+    @l2_forwarding.setter
+    def l2_forwarding(self, value: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]):
+        pulumi.set(self, "l2_forwarding", value)
+
+    @_builtins.property
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1177,6 +1226,10 @@ class _InterconnectAttachmentState:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
+
+
+
+        <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         """
         return pulumi.get(self, "project")
 
@@ -1287,7 +1340,7 @@ class _InterconnectAttachmentState:
         """
         The type of InterconnectAttachment you wish to create. Defaults to
         DEDICATED.
-        Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+        Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
         """
         return pulumi.get(self, "type")
 
@@ -1327,6 +1380,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input[_builtins.str]] = None,
                  interconnect: Optional[pulumi.Input[_builtins.str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: Optional[pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1530,6 +1584,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']] l2_forwarding: L2 Interconnect Attachment related configuration.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
                method. Each label key/value pair must comply with RFC1035. Label values may be empty.
                
@@ -1545,6 +1601,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               
+               
+               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
         :param pulumi.Input[_builtins.str] router: URL of the cloud router to be used for dynamic routing. This router must be in
                the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -1563,7 +1623,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[_builtins.str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
-               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
         :param pulumi.Input[_builtins.int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
@@ -1571,7 +1631,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InterconnectAttachmentArgs,
+                 args: Optional[InterconnectAttachmentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an InterconnectAttachment (VLAN attachment) resource. For more
@@ -1729,6 +1789,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input[_builtins.str]] = None,
                  interconnect: Optional[pulumi.Input[_builtins.str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: Optional[pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1760,13 +1821,12 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["interconnect"] = interconnect
             __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
+            __props__.__dict__["l2_forwarding"] = l2_forwarding
             __props__.__dict__["labels"] = labels
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            if router is None and not opts.urn:
-                raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["subnet_length"] = subnet_length
@@ -1819,6 +1879,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             google_reference_id: Optional[pulumi.Input[_builtins.str]] = None,
             interconnect: Optional[pulumi.Input[_builtins.str]] = None,
             ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            l2_forwarding: Optional[pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
             label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             mtu: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1917,6 +1978,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']] l2_forwarding: L2 Interconnect Attachment related configuration.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
                of the labels set used for optimistic locking. The fingerprint is initially generated by
                Compute Engine and changes after every request to modify or update labels.
@@ -1946,6 +2009,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+               
+               
+               
+               <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: Region where the regional interconnect attachment resides.
@@ -1968,7 +2035,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                gives Google Cloud Support more debugging visibility.
         :param pulumi.Input[_builtins.str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
-               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+               Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
         :param pulumi.Input[_builtins.int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
                using PARTNER type this will be managed upstream.
         """
@@ -1996,6 +2063,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["google_reference_id"] = google_reference_id
         __props__.__dict__["interconnect"] = interconnect
         __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
+        __props__.__dict__["l2_forwarding"] = l2_forwarding
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["mtu"] = mtu
@@ -2230,6 +2298,15 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "ipsec_internal_addresses")
 
     @_builtins.property
+    @pulumi.getter(name="l2Forwarding")
+    def l2_forwarding(self) -> pulumi.Output[Optional['outputs.InterconnectAttachmentL2Forwarding']]:
+        """
+        L2 Interconnect Attachment related configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "l2_forwarding")
+
+    @_builtins.property
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[_builtins.str]:
         """
@@ -2311,6 +2388,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
+
+
+
+        <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
         """
         return pulumi.get(self, "project")
 
@@ -2333,7 +2414,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> pulumi.Output[_builtins.str]:
+    def router(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         URL of the cloud router to be used for dynamic routing. This router must be in
         the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -2389,7 +2470,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         """
         The type of InterconnectAttachment you wish to create. Defaults to
         DEDICATED.
-        Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+        Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
         """
         return pulumi.get(self, "type")
 

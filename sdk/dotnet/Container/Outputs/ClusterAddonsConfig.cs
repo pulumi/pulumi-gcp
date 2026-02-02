@@ -90,8 +90,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// `EnableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
         /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         /// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
-        /// 
-        /// This example `AddonsConfig` disables two addons:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigLustreCsiDriverConfig? LustreCsiDriverConfig;
         /// <summary>
@@ -111,6 +109,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? ParallelstoreCsiDriverConfig;
+        /// <summary>
+        /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        /// 
+        /// This example `AddonsConfig` disables two addons:
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigPodSnapshotConfig? PodSnapshotConfig;
         /// <summary>
         /// . The status of the [Ray Operator
         /// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
@@ -163,6 +167,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig,
 
+            Outputs.ClusterAddonsConfigPodSnapshotConfig? podSnapshotConfig,
+
             ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs,
 
             Outputs.ClusterAddonsConfigStatefulHaConfig? statefulHaConfig)
@@ -181,6 +187,7 @@ namespace Pulumi.Gcp.Container.Outputs
             LustreCsiDriverConfig = lustreCsiDriverConfig;
             NetworkPolicyConfig = networkPolicyConfig;
             ParallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
+            PodSnapshotConfig = podSnapshotConfig;
             RayOperatorConfigs = rayOperatorConfigs;
             StatefulHaConfig = statefulHaConfig;
         }

@@ -111,7 +111,7 @@ def get_ancestry(project: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAncestryResult:
     """
     Retrieve the ancestors for a project.
-    See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+    See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
 
     ## Example Usage
 
@@ -141,7 +141,7 @@ def get_ancestry_output(project: Optional[pulumi.Input[Optional[_builtins.str]]]
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAncestryResult]:
     """
     Retrieve the ancestors for a project.
-    See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+    See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
 
     ## Example Usage
 

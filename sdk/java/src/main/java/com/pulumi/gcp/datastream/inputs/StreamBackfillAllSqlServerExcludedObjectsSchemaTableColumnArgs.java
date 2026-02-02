@@ -33,16 +33,18 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArg
     }
 
     /**
-     * The SQL Server data type. Full data types list can be found here:
-     * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+     * (Output)
+     * The Spanner data type. Full data types list can be found here:
+     * https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
      * 
      */
     @Import(name="dataType")
     private @Nullable Output<String> dataType;
 
     /**
-     * @return The SQL Server data type. Full data types list can be found here:
-     * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+     * @return (Output)
+     * The Spanner data type. Full data types list can be found here:
+     * https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
      * 
      */
     public Optional<Output<String>> dataType() {
@@ -204,8 +206,9 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArg
         }
 
         /**
-         * @param dataType The SQL Server data type. Full data types list can be found here:
-         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         * @param dataType (Output)
+         * The Spanner data type. Full data types list can be found here:
+         * https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
          * 
          * @return builder
          * 
@@ -216,8 +219,9 @@ public final class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArg
         }
 
         /**
-         * @param dataType The SQL Server data type. Full data types list can be found here:
-         * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+         * @param dataType (Output)
+         * The Spanner data type. Full data types list can be found here:
+         * https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
          * 
          * @return builder
          * 

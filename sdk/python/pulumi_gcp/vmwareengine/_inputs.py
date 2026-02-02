@@ -27,6 +27,12 @@ __all__ = [
     'ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict',
     'ClusterNodeTypeConfigArgs',
     'ClusterNodeTypeConfigArgsDict',
+    'DatastoreNfsDatastoreArgs',
+    'DatastoreNfsDatastoreArgsDict',
+    'DatastoreNfsDatastoreGoogleFileServiceArgs',
+    'DatastoreNfsDatastoreGoogleFileServiceArgsDict',
+    'DatastoreNfsDatastoreThirdPartyFileServiceArgs',
+    'DatastoreNfsDatastoreThirdPartyFileServiceArgsDict',
     'ExternalAccessRuleDestinationIpRangeArgs',
     'ExternalAccessRuleDestinationIpRangeArgsDict',
     'ExternalAccessRuleSourceIpRangeArgs',
@@ -574,6 +580,209 @@ class ClusterNodeTypeConfigArgs:
     @custom_core_count.setter
     def custom_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "custom_core_count", value)
+
+
+if not MYPY:
+    class DatastoreNfsDatastoreArgsDict(TypedDict):
+        google_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgsDict']]
+        """
+        Google service file service configuration
+        Structure is documented below.
+        """
+        third_party_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgsDict']]
+        """
+        Third party file service configuration
+        Structure is documented below.
+        """
+elif False:
+    DatastoreNfsDatastoreArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatastoreNfsDatastoreArgs:
+    def __init__(__self__, *,
+                 google_file_service: Optional[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs']] = None,
+                 third_party_file_service: Optional[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgs']] = None):
+        """
+        :param pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs'] google_file_service: Google service file service configuration
+               Structure is documented below.
+        :param pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgs'] third_party_file_service: Third party file service configuration
+               Structure is documented below.
+        """
+        if google_file_service is not None:
+            pulumi.set(__self__, "google_file_service", google_file_service)
+        if third_party_file_service is not None:
+            pulumi.set(__self__, "third_party_file_service", third_party_file_service)
+
+    @_builtins.property
+    @pulumi.getter(name="googleFileService")
+    def google_file_service(self) -> Optional[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs']]:
+        """
+        Google service file service configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_file_service")
+
+    @google_file_service.setter
+    def google_file_service(self, value: Optional[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs']]):
+        pulumi.set(self, "google_file_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyFileService")
+    def third_party_file_service(self) -> Optional[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]:
+        """
+        Third party file service configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "third_party_file_service")
+
+    @third_party_file_service.setter
+    def third_party_file_service(self, value: Optional[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]):
+        pulumi.set(self, "third_party_file_service", value)
+
+
+if not MYPY:
+    class DatastoreNfsDatastoreGoogleFileServiceArgsDict(TypedDict):
+        filestore_instance: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Google filestore instance resource name
+        e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        """
+        netapp_volume: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Google netapp volume resource name
+        e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        """
+elif False:
+    DatastoreNfsDatastoreGoogleFileServiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatastoreNfsDatastoreGoogleFileServiceArgs:
+    def __init__(__self__, *,
+                 filestore_instance: Optional[pulumi.Input[_builtins.str]] = None,
+                 netapp_volume: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] filestore_instance: Google filestore instance resource name
+               e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        :param pulumi.Input[_builtins.str] netapp_volume: Google netapp volume resource name
+               e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        """
+        if filestore_instance is not None:
+            pulumi.set(__self__, "filestore_instance", filestore_instance)
+        if netapp_volume is not None:
+            pulumi.set(__self__, "netapp_volume", netapp_volume)
+
+    @_builtins.property
+    @pulumi.getter(name="filestoreInstance")
+    def filestore_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Google filestore instance resource name
+        e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        """
+        return pulumi.get(self, "filestore_instance")
+
+    @filestore_instance.setter
+    def filestore_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "filestore_instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="netappVolume")
+    def netapp_volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Google netapp volume resource name
+        e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        """
+        return pulumi.get(self, "netapp_volume")
+
+    @netapp_volume.setter
+    def netapp_volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "netapp_volume", value)
+
+
+if not MYPY:
+    class DatastoreNfsDatastoreThirdPartyFileServiceArgsDict(TypedDict):
+        file_share: pulumi.Input[_builtins.str]
+        """
+        Required
+        Mount Folder name
+        """
+        network: pulumi.Input[_builtins.str]
+        """
+        Required to identify vpc peering used for NFS access
+        network name of NFS's vpc
+        e.g. projects/project-id/global/networks/my-network_id
+        """
+        servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Server IP addresses of the NFS file service.
+        NFS v3, provide a single IP address or DNS name.
+        Multiple servers can be supported in future when NFS 4.1 protocol support
+        is enabled.
+        """
+elif False:
+    DatastoreNfsDatastoreThirdPartyFileServiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatastoreNfsDatastoreThirdPartyFileServiceArgs:
+    def __init__(__self__, *,
+                 file_share: pulumi.Input[_builtins.str],
+                 network: pulumi.Input[_builtins.str],
+                 servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] file_share: Required
+               Mount Folder name
+        :param pulumi.Input[_builtins.str] network: Required to identify vpc peering used for NFS access
+               network name of NFS's vpc
+               e.g. projects/project-id/global/networks/my-network_id
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: Server IP addresses of the NFS file service.
+               NFS v3, provide a single IP address or DNS name.
+               Multiple servers can be supported in future when NFS 4.1 protocol support
+               is enabled.
+        """
+        pulumi.set(__self__, "file_share", file_share)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="fileShare")
+    def file_share(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required
+        Mount Folder name
+        """
+        return pulumi.get(self, "file_share")
+
+    @file_share.setter
+    def file_share(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "file_share", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required to identify vpc peering used for NFS access
+        network name of NFS's vpc
+        e.g. projects/project-id/global/networks/my-network_id
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Server IP addresses of the NFS file service.
+        NFS v3, provide a single IP address or DNS name.
+        Multiple servers can be supported in future when NFS 4.1 protocol support
+        is enabled.
+        """
+        return pulumi.get(self, "servers")
+
+    @servers.setter
+    def servers(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "servers", value)
 
 
 if not MYPY:

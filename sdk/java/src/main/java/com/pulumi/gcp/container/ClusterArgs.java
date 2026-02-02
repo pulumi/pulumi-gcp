@@ -26,6 +26,7 @@ import com.pulumi.gcp.container.inputs.ClusterIdentityServiceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyArgs;
+import com.pulumi.gcp.container.inputs.ClusterManagedOpentelemetryConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthArgs;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMeshCertificatesArgs;
@@ -791,6 +792,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterMaintenancePolicyArgs>> maintenancePolicy() {
         return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * 
+     */
+    @Import(name="managedOpentelemetryConfig")
+    private @Nullable Output<ClusterManagedOpentelemetryConfigArgs> managedOpentelemetryConfig;
+
+    /**
+     * @return Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterManagedOpentelemetryConfigArgs>> managedOpentelemetryConfig() {
+        return Optional.ofNullable(this.managedOpentelemetryConfig);
     }
 
     /**
@@ -1613,6 +1629,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.loggingConfig = $.loggingConfig;
         this.loggingService = $.loggingService;
         this.maintenancePolicy = $.maintenancePolicy;
+        this.managedOpentelemetryConfig = $.managedOpentelemetryConfig;
         this.masterAuth = $.masterAuth;
         this.masterAuthorizedNetworksConfig = $.masterAuthorizedNetworksConfig;
         this.meshCertificates = $.meshCertificates;
@@ -2644,6 +2661,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenancePolicy(ClusterMaintenancePolicyArgs maintenancePolicy) {
             return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param managedOpentelemetryConfig Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedOpentelemetryConfig(@Nullable Output<ClusterManagedOpentelemetryConfigArgs> managedOpentelemetryConfig) {
+            $.managedOpentelemetryConfig = managedOpentelemetryConfig;
+            return this;
+        }
+
+        /**
+         * @param managedOpentelemetryConfig Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedOpentelemetryConfig(ClusterManagedOpentelemetryConfigArgs managedOpentelemetryConfig) {
+            return managedOpentelemetryConfig(Output.of(managedOpentelemetryConfig));
         }
 
         /**

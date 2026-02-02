@@ -75,7 +75,7 @@ def get_folders(parent_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFoldersResult:
     """
     Retrieve information about a set of folders based on a parent ID. See the
-    [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+    [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
     for more details.
 
     ## Example Usage
@@ -91,7 +91,7 @@ def get_folders(parent_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str parent_id: A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+    :param _builtins.str parent_id: A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
     """
     __args__ = dict()
     __args__['parentId'] = parent_id
@@ -106,7 +106,7 @@ def get_folders_output(parent_id: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFoldersResult]:
     """
     Retrieve information about a set of folders based on a parent ID. See the
-    [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+    [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
     for more details.
 
     ## Example Usage
@@ -122,7 +122,7 @@ def get_folders_output(parent_id: Optional[pulumi.Input[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str parent_id: A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+    :param _builtins.str parent_id: A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
     """
     __args__ = dict()
     __args__['parentId'] = parent_id

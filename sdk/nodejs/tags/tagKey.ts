@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about TagKey, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
  *
@@ -75,6 +75,10 @@ export class TagKey extends pulumi.CustomResource {
     }
 
     /**
+     * Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     */
+    declare public readonly allowedValuesRegex: pulumi.Output<string | undefined>;
+    /**
      * Output only. Creation time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
@@ -130,6 +134,7 @@ export class TagKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagKeyState | undefined;
+            resourceInputs["allowedValuesRegex"] = state?.allowedValuesRegex;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
@@ -147,6 +152,7 @@ export class TagKey extends pulumi.CustomResource {
             if (args?.shortName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shortName'");
             }
+            resourceInputs["allowedValuesRegex"] = args?.allowedValuesRegex;
             resourceInputs["description"] = args?.description;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["purpose"] = args?.purpose;
@@ -166,6 +172,10 @@ export class TagKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TagKey resources.
  */
 export interface TagKeyState {
+    /**
+     * Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     */
+    allowedValuesRegex?: pulumi.Input<string>;
     /**
      * Output only. Creation time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -214,6 +224,10 @@ export interface TagKeyState {
  * The set of arguments for constructing a TagKey resource.
  */
 export interface TagKeyArgs {
+    /**
+     * Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     */
+    allowedValuesRegex?: pulumi.Input<string>;
     /**
      * User-assigned description of the TagKey. Must not exceed 256 characters.
      */

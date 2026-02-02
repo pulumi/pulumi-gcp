@@ -85,6 +85,61 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Listing Subscription Multiregion
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subscription = new Gcp.BigQueryAnalyticsHub.DataExchange("subscription", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         DisplayName = "my_data_exchange",
+    ///     });
+    /// 
+    ///     var subscriptionListing = new Gcp.BigQueryAnalyticsHub.Listing("subscription", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataExchangeId = subscription.DataExchangeId,
+    ///         ListingId = "my_listing",
+    ///         DisplayName = "my_listing",
+    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
+    ///         {
+    ///             Dataset = "projects/project_id/datasets/my_listing_example2",
+    ///             ReplicaLocations = new[]
+    ///             {
+    ///                 "eu",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var subscriptionListingSubscription = new Gcp.BigQueryAnalyticsHub.ListingSubscription("subscription", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataExchangeId = subscription.DataExchangeId,
+    ///         ListingId = subscriptionListing.ListingId,
+    ///         DestinationDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingSubscriptionDestinationDatasetArgs
+    ///         {
+    ///             Location = "us",
+    ///             DatasetReference = new Gcp.BigQueryAnalyticsHub.Inputs.ListingSubscriptionDestinationDatasetDatasetReferenceArgs
+    ///             {
+    ///                 ProjectId = subscription.Project,
+    ///                 DatasetId = "destination_dataset",
+    ///             },
+    ///             ReplicaLocations = new[]
+    ///             {
+    ///                 "eu",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

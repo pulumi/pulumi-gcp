@@ -496,6 +496,38 @@ import (
 //	}
 //
 // ```
+// ### Datastream Connection Profile Spanner
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datastream.NewConnectionProfile(ctx, "default", &datastream.ConnectionProfileArgs{
+//				DisplayName:             pulumi.String("Spanner Source"),
+//				Location:                pulumi.String("us-central1"),
+//				ConnectionProfileId:     pulumi.String("source-profile"),
+//				CreateWithoutValidation: pulumi.Bool(true),
+//				SpannerProfile: &datastream.ConnectionProfileSpannerProfileArgs{
+//					Database: pulumi.String("projects/example-project/instances/example-instance/databases/example-database"),
+//					Host:     pulumi.String("https://spanner.example-region.rep.googleapis.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Datastream Connection Profile Postgres Secret Manager
 //
 // ```go
@@ -646,6 +678,9 @@ type ConnectionProfile struct {
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile ConnectionProfileSalesforceProfilePtrOutput `pulumi:"salesforceProfile"`
+	// Spanner profile.
+	// Structure is documented below.
+	SpannerProfile ConnectionProfileSpannerProfilePtrOutput `pulumi:"spannerProfile"`
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile ConnectionProfileSqlServerProfilePtrOutput `pulumi:"sqlServerProfile"`
@@ -743,6 +778,9 @@ type connectionProfileState struct {
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile *ConnectionProfileSalesforceProfile `pulumi:"salesforceProfile"`
+	// Spanner profile.
+	// Structure is documented below.
+	SpannerProfile *ConnectionProfileSpannerProfile `pulumi:"spannerProfile"`
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile *ConnectionProfileSqlServerProfile `pulumi:"sqlServerProfile"`
@@ -797,6 +835,9 @@ type ConnectionProfileState struct {
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile ConnectionProfileSalesforceProfilePtrInput
+	// Spanner profile.
+	// Structure is documented below.
+	SpannerProfile ConnectionProfileSpannerProfilePtrInput
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile ConnectionProfileSqlServerProfilePtrInput
@@ -848,6 +889,9 @@ type connectionProfileArgs struct {
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile *ConnectionProfileSalesforceProfile `pulumi:"salesforceProfile"`
+	// Spanner profile.
+	// Structure is documented below.
+	SpannerProfile *ConnectionProfileSpannerProfile `pulumi:"spannerProfile"`
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile *ConnectionProfileSqlServerProfile `pulumi:"sqlServerProfile"`
@@ -896,6 +940,9 @@ type ConnectionProfileArgs struct {
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile ConnectionProfileSalesforceProfilePtrInput
+	// Spanner profile.
+	// Structure is documented below.
+	SpannerProfile ConnectionProfileSpannerProfilePtrInput
 	// SQL Server database profile.
 	// Structure is documented below.
 	SqlServerProfile ConnectionProfileSqlServerProfilePtrInput
@@ -1090,6 +1137,12 @@ func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ConnectionProfileOutput) SalesforceProfile() ConnectionProfileSalesforceProfilePtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileSalesforceProfilePtrOutput { return v.SalesforceProfile }).(ConnectionProfileSalesforceProfilePtrOutput)
+}
+
+// Spanner profile.
+// Structure is documented below.
+func (o ConnectionProfileOutput) SpannerProfile() ConnectionProfileSpannerProfilePtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileSpannerProfilePtrOutput { return v.SpannerProfile }).(ConnectionProfileSpannerProfilePtrOutput)
 }
 
 // SQL Server database profile.

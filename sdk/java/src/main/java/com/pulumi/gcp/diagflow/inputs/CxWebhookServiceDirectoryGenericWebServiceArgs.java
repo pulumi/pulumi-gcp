@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs;
 import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs;
+import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -189,6 +190,23 @@ public final class CxWebhookServiceDirectoryGenericWebServiceArgs extends com.pu
     }
 
     /**
+     * Configuration for authentication using a service account.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceAccountAuthConfig")
+    private @Nullable Output<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs> serviceAccountAuthConfig;
+
+    /**
+     * @return Configuration for authentication using a service account.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs>> serviceAccountAuthConfig() {
+        return Optional.ofNullable(this.serviceAccountAuthConfig);
+    }
+
+    /**
      * Indicate the auth token type generated from the [Diglogflow service
      * agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
      * The generated token is sent in the Authorization header.
@@ -252,6 +270,7 @@ public final class CxWebhookServiceDirectoryGenericWebServiceArgs extends com.pu
         this.requestHeaders = $.requestHeaders;
         this.secretVersionForUsernamePassword = $.secretVersionForUsernamePassword;
         this.secretVersionsForRequestHeaders = $.secretVersionsForRequestHeaders;
+        this.serviceAccountAuthConfig = $.serviceAccountAuthConfig;
         this.serviceAgentAuth = $.serviceAgentAuth;
         this.uri = $.uri;
         this.webhookType = $.webhookType;
@@ -524,6 +543,29 @@ public final class CxWebhookServiceDirectoryGenericWebServiceArgs extends com.pu
          */
         public Builder secretVersionsForRequestHeaders(CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs... secretVersionsForRequestHeaders) {
             return secretVersionsForRequestHeaders(List.of(secretVersionsForRequestHeaders));
+        }
+
+        /**
+         * @param serviceAccountAuthConfig Configuration for authentication using a service account.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountAuthConfig(@Nullable Output<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs> serviceAccountAuthConfig) {
+            $.serviceAccountAuthConfig = serviceAccountAuthConfig;
+            return this;
+        }
+
+        /**
+         * @param serviceAccountAuthConfig Configuration for authentication using a service account.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountAuthConfig(CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs serviceAccountAuthConfig) {
+            return serviceAccountAuthConfig(Output.of(serviceAccountAuthConfig));
         }
 
         /**

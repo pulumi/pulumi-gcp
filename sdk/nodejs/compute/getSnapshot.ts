@@ -97,6 +97,7 @@ export interface GetSnapshotResult {
     readonly snapshotType: string;
     readonly sourceDisk: string;
     readonly sourceDiskEncryptionKeys: outputs.compute.GetSnapshotSourceDiskEncryptionKey[];
+    readonly sourceInstantSnapshot: string;
     readonly storageBytes: number;
     readonly storageLocations: string[];
     readonly zone: string;

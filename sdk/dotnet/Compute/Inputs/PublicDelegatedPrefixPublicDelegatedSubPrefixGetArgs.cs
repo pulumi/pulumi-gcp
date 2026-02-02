@@ -31,6 +31,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+        /// Applicable for IPv4 sub-PDPs only.
+        /// </summary>
+        [Input("enableEnhancedIpv4Allocation")]
+        public Input<bool>? EnableEnhancedIpv4Allocation { get; set; }
+
+        /// <summary>
         /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         [Input("ipCidrRange")]

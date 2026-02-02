@@ -22,6 +22,21 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
     public static final ClusterNodePoolNetworkConfigArgs Empty = new ClusterNodePoolNetworkConfigArgs();
 
     /**
+     * The accelerator network profile to use for this node pool.
+     * 
+     */
+    @Import(name="acceleratorNetworkProfile")
+    private @Nullable Output<String> acceleratorNetworkProfile;
+
+    /**
+     * @return The accelerator network profile to use for this node pool.
+     * 
+     */
+    public Optional<Output<String>> acceleratorNetworkProfile() {
+        return Optional.ofNullable(this.acceleratorNetworkProfile);
+    }
+
+    /**
      * We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
      * 
      */
@@ -161,6 +176,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
     private ClusterNodePoolNetworkConfigArgs() {}
 
     private ClusterNodePoolNetworkConfigArgs(ClusterNodePoolNetworkConfigArgs $) {
+        this.acceleratorNetworkProfile = $.acceleratorNetworkProfile;
         this.additionalNodeNetworkConfigs = $.additionalNodeNetworkConfigs;
         this.additionalPodNetworkConfigs = $.additionalPodNetworkConfigs;
         this.createPodRange = $.createPodRange;
@@ -188,6 +204,27 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
 
         public Builder(ClusterNodePoolNetworkConfigArgs defaults) {
             $ = new ClusterNodePoolNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceleratorNetworkProfile The accelerator network profile to use for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorNetworkProfile(@Nullable Output<String> acceleratorNetworkProfile) {
+            $.acceleratorNetworkProfile = acceleratorNetworkProfile;
+            return this;
+        }
+
+        /**
+         * @param acceleratorNetworkProfile The accelerator network profile to use for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorNetworkProfile(String acceleratorNetworkProfile) {
+            return acceleratorNetworkProfile(Output.of(acceleratorNetworkProfile));
         }
 
         /**

@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecEnv;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv;
 import java.lang.Integer;
 import java.lang.String;
@@ -43,6 +44,12 @@ public final class AiReasoningEngineSpecDeploymentSpec {
      * 
      */
     private @Nullable Integer minInstances;
+    /**
+     * @return Optional. Configuration for PSC-Interface.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig pscInterfaceConfig;
     /**
      * @return Optional. Resource limits for each container.
      * Only &#39;cpu&#39; and &#39;memory&#39; keys are supported.
@@ -103,6 +110,14 @@ public final class AiReasoningEngineSpecDeploymentSpec {
         return Optional.ofNullable(this.minInstances);
     }
     /**
+     * @return Optional. Configuration for PSC-Interface.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig> pscInterfaceConfig() {
+        return Optional.ofNullable(this.pscInterfaceConfig);
+    }
+    /**
      * @return Optional. Resource limits for each container.
      * Only &#39;cpu&#39; and &#39;memory&#39; keys are supported.
      * Defaults to {&#34;cpu&#34;: &#34;4&#34;, &#34;memory&#34;: &#34;4Gi&#34;}.
@@ -142,6 +157,7 @@ public final class AiReasoningEngineSpecDeploymentSpec {
         private @Nullable List<AiReasoningEngineSpecDeploymentSpecEnv> envs;
         private @Nullable Integer maxInstances;
         private @Nullable Integer minInstances;
+        private @Nullable AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig pscInterfaceConfig;
         private @Nullable Map<String,String> resourceLimits;
         private @Nullable List<AiReasoningEngineSpecDeploymentSpecSecretEnv> secretEnvs;
         public Builder() {}
@@ -151,6 +167,7 @@ public final class AiReasoningEngineSpecDeploymentSpec {
     	      this.envs = defaults.envs;
     	      this.maxInstances = defaults.maxInstances;
     	      this.minInstances = defaults.minInstances;
+    	      this.pscInterfaceConfig = defaults.pscInterfaceConfig;
     	      this.resourceLimits = defaults.resourceLimits;
     	      this.secretEnvs = defaults.secretEnvs;
         }
@@ -183,6 +200,12 @@ public final class AiReasoningEngineSpecDeploymentSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder pscInterfaceConfig(@Nullable AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig pscInterfaceConfig) {
+
+            this.pscInterfaceConfig = pscInterfaceConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceLimits(@Nullable Map<String,String> resourceLimits) {
 
             this.resourceLimits = resourceLimits;
@@ -203,6 +226,7 @@ public final class AiReasoningEngineSpecDeploymentSpec {
             _resultValue.envs = envs;
             _resultValue.maxInstances = maxInstances;
             _resultValue.minInstances = minInstances;
+            _resultValue.pscInterfaceConfig = pscInterfaceConfig;
             _resultValue.resourceLimits = resourceLimits;
             _resultValue.secretEnvs = secretEnvs;
             return _resultValue;

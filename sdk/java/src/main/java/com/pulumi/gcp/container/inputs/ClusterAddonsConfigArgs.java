@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigKalmConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigLustreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNetworkPolicyConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigPodSnapshotConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigRayOperatorConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigStatefulHaConfigArgs;
 import java.util.List;
@@ -254,8 +255,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     @Import(name="lustreCsiDriverConfig")
     private @Nullable Output<ClusterAddonsConfigLustreCsiDriverConfigArgs> lustreCsiDriverConfig;
@@ -269,8 +268,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
      * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
-     * 
-     * This example `addonsConfig` disables two addons:
      * 
      */
     public Optional<Output<ClusterAddonsConfigLustreCsiDriverConfigArgs>> lustreCsiDriverConfig() {
@@ -323,6 +320,25 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs>> parallelstoreCsiDriverConfig() {
         return Optional.ofNullable(this.parallelstoreCsiDriverConfig);
+    }
+
+    /**
+     * The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    @Import(name="podSnapshotConfig")
+    private @Nullable Output<ClusterAddonsConfigPodSnapshotConfigArgs> podSnapshotConfig;
+
+    /**
+     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigPodSnapshotConfigArgs>> podSnapshotConfig() {
+        return Optional.ofNullable(this.podSnapshotConfig);
     }
 
     /**
@@ -398,6 +414,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.lustreCsiDriverConfig = $.lustreCsiDriverConfig;
         this.networkPolicyConfig = $.networkPolicyConfig;
         this.parallelstoreCsiDriverConfig = $.parallelstoreCsiDriverConfig;
+        this.podSnapshotConfig = $.podSnapshotConfig;
         this.rayOperatorConfigs = $.rayOperatorConfigs;
         this.statefulHaConfig = $.statefulHaConfig;
     }
@@ -709,8 +726,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
          * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
          * 
-         * This example `addonsConfig` disables two addons:
-         * 
          * @return builder
          * 
          */
@@ -728,8 +743,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * `enableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
          * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
          * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
-         * 
-         * This example `addonsConfig` disables two addons:
          * 
          * @return builder
          * 
@@ -796,6 +809,31 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder parallelstoreCsiDriverConfig(ClusterAddonsConfigParallelstoreCsiDriverConfigArgs parallelstoreCsiDriverConfig) {
             return parallelstoreCsiDriverConfig(Output.of(parallelstoreCsiDriverConfig));
+        }
+
+        /**
+         * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+         * 
+         * This example `addonsConfig` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSnapshotConfig(@Nullable Output<ClusterAddonsConfigPodSnapshotConfigArgs> podSnapshotConfig) {
+            $.podSnapshotConfig = podSnapshotConfig;
+            return this;
+        }
+
+        /**
+         * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+         * 
+         * This example `addonsConfig` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSnapshotConfig(ClusterAddonsConfigPodSnapshotConfigArgs podSnapshotConfig) {
+            return podSnapshotConfig(Output.of(podSnapshotConfig));
         }
 
         /**

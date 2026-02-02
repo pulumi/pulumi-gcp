@@ -24,7 +24,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const agentProject = new gcp.organizations.Project("agent_project", {
+ *     projectId: "my-project",
+ *     name: "my-project",
+ *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const agentProjectService = new gcp.projects.Service("agent_project", {
+ *     project: agentProject.projectId,
+ *     service: "dialogflow.googleapis.com",
+ *     disableDependentServices: false,
+ * });
+ * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflow_service_account", {accountId: "my-account"});
+ * const agentCreate = new gcp.projects.IAMMember("agent_create", {
+ *     project: agentProjectService.project,
+ *     role: "roles/dialogflow.admin",
+ *     member: pulumi.interpolate`serviceAccount:${dialogflowServiceAccount.email}`,
+ * });
  * const fullAgent = new gcp.diagflow.Agent("full_agent", {
+ *     project: agentProject.projectId,
  *     displayName: "dialogflow-agent",
  *     defaultLanguageCode: "en",
  *     supportedLanguageCodes: [

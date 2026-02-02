@@ -20,6 +20,7 @@ from .cx_playbook import *
 from .cx_security_settings import *
 from .cx_test_case import *
 from .cx_tool import *
+from .cx_tool_version import *
 from .cx_version import *
 from .cx_webhook import *
 from .encryption_spec import *

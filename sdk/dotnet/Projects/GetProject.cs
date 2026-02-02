@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// Retrieve information about a set of projects based on a filter. See the
-        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+        /// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
         /// for more details.
         /// 
         /// ## Example Usage
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// Retrieve information about a set of projects based on a filter. See the
-        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+        /// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
         /// for more details.
         /// 
         /// ## Example Usage
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// Retrieve information about a set of projects based on a filter. See the
-        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+        /// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
         /// for more details.
         /// 
         /// ## Example Usage
@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Projects
     public sealed class GetProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
+        /// A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
         /// </summary>
         [Input("filter", required: true)]
         public string Filter { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Projects
     public sealed class GetProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
+        /// A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;

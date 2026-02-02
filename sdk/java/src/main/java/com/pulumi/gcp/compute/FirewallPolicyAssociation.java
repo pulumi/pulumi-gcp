@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var folder = new Folder("folder", FolderArgs.builder()
- *             .displayName("my-folder")
+ *             .displayName("folder-fpa")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

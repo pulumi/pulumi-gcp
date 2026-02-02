@@ -22,32 +22,31 @@ __all__ = ['AutonomousDatabaseArgs', 'AutonomousDatabase']
 class AutonomousDatabaseArgs:
     def __init__(__self__, *,
                  autonomous_database_id: pulumi.Input[_builtins.str],
-                 database: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 properties: pulumi.Input['AutonomousDatabasePropertiesArgs'],
                  admin_password: Optional[pulumi.Input[_builtins.str]] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 database: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  odb_network: Optional[pulumi.Input[_builtins.str]] = None,
                  odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 properties: Optional[pulumi.Input['AutonomousDatabasePropertiesArgs']] = None,
+                 source_config: Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']] = None):
         """
         The set of arguments for constructing a AutonomousDatabase resource.
         :param pulumi.Input[_builtins.str] autonomous_database_id: The ID of the Autonomous Database to create. This value is restricted
                to (^a-z?$) and must be a maximum of 63
                characters in length. The value must start with a letter and end with
                a letter or a number.
+        :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
+        :param pulumi.Input[_builtins.str] admin_password: The password for the default ADMIN user.
+        :param pulumi.Input[_builtins.str] cidr: The subnet CIDR range for the Autonmous Database.
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
-        :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
-        :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
-               Structure is documented below.
-        :param pulumi.Input[_builtins.str] admin_password: The password for the default ADMIN user.
-        :param pulumi.Input[_builtins.str] cidr: The subnet CIDR range for the Autonmous Database.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels or tags associated with the Autonomous Database.
@@ -65,15 +64,19 @@ class AutonomousDatabaseArgs:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
+               Structure is documented below.
+        :param pulumi.Input['AutonomousDatabaseSourceConfigArgs'] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
+               Structure is documented below.
         """
         pulumi.set(__self__, "autonomous_database_id", autonomous_database_id)
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "properties", properties)
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
@@ -88,6 +91,10 @@ class AutonomousDatabaseArgs:
             pulumi.set(__self__, "odb_subnet", odb_subnet)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if source_config is not None:
+            pulumi.set(__self__, "source_config", source_config)
 
     @_builtins.property
     @pulumi.getter(name="autonomousDatabaseId")
@@ -106,20 +113,6 @@ class AutonomousDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the Autonomous Database. The database name must be unique in
-        the project. The name must begin with a letter and can
-        contain a maximum of 30 alphanumeric characters.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "database", value)
-
-    @_builtins.property
-    @pulumi.getter
     def location(self) -> pulumi.Input[_builtins.str]:
         """
         Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
@@ -129,19 +122,6 @@ class AutonomousDatabaseArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def properties(self) -> pulumi.Input['AutonomousDatabasePropertiesArgs']:
-        """
-        The properties of an Autonomous Database.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "properties")
-
-    @properties.setter
-    def properties(self, value: pulumi.Input['AutonomousDatabasePropertiesArgs']):
-        pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="adminPassword")
@@ -166,6 +146,20 @@ class AutonomousDatabaseArgs:
     @cidr.setter
     def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cidr", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the Autonomous Database. The database name must be unique in
+        the project. The name must begin with a letter and can
+        contain a maximum of 30 alphanumeric characters.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -259,6 +253,32 @@ class AutonomousDatabaseArgs:
     def project(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['AutonomousDatabasePropertiesArgs']]:
+        """
+        The properties of an Autonomous Database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['AutonomousDatabasePropertiesArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceConfig")
+    def source_config(self) -> Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']]:
+        """
+        The source Autonomous Database configuration for the standby Autonomous Database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_config")
+
+    @source_config.setter
+    def source_config(self, value: Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']]):
+        pulumi.set(self, "source_config", value)
+
 
 @pulumi.input_type
 class _AutonomousDatabaseState:
@@ -269,6 +289,7 @@ class _AutonomousDatabaseState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  database: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disaster_recovery_supported_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -278,9 +299,11 @@ class _AutonomousDatabaseState:
                  network: Optional[pulumi.Input[_builtins.str]] = None,
                  odb_network: Optional[pulumi.Input[_builtins.str]] = None,
                  odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 peer_autonomous_databases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input['AutonomousDatabasePropertiesArgs']] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 source_config: Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AutonomousDatabase resources.
         :param pulumi.Input[_builtins.str] admin_password: The password for the default ADMIN user.
@@ -293,6 +316,7 @@ class _AutonomousDatabaseState:
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -314,12 +338,15 @@ class _AutonomousDatabaseState:
         :param pulumi.Input[_builtins.str] odb_subnet: The name of the OdbSubnet associated with the Autonomous Database for
                IP allocation. Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_autonomous_databases: The peer Autonomous Database names of the given Autonomous Database.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['AutonomousDatabasePropertiesArgs'] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input['AutonomousDatabaseSourceConfigArgs'] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
+               Structure is documented below.
         """
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
@@ -333,6 +360,8 @@ class _AutonomousDatabaseState:
             pulumi.set(__self__, "database", database)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if disaster_recovery_supported_locations is not None:
+            pulumi.set(__self__, "disaster_recovery_supported_locations", disaster_recovery_supported_locations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -351,12 +380,16 @@ class _AutonomousDatabaseState:
             pulumi.set(__self__, "odb_network", odb_network)
         if odb_subnet is not None:
             pulumi.set(__self__, "odb_subnet", odb_subnet)
+        if peer_autonomous_databases is not None:
+            pulumi.set(__self__, "peer_autonomous_databases", peer_autonomous_databases)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if source_config is not None:
+            pulumi.set(__self__, "source_config", source_config)
 
     @_builtins.property
     @pulumi.getter(name="adminPassword")
@@ -431,6 +464,18 @@ class _AutonomousDatabaseState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disasterRecoverySupportedLocations")
+    def disaster_recovery_supported_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of supported GCP region to clone the Autonomous Database for disaster recovery.
+        """
+        return pulumi.get(self, "disaster_recovery_supported_locations")
+
+    @disaster_recovery_supported_locations.setter
+    def disaster_recovery_supported_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "disaster_recovery_supported_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -553,6 +598,18 @@ class _AutonomousDatabaseState:
         pulumi.set(self, "odb_subnet", value)
 
     @_builtins.property
+    @pulumi.getter(name="peerAutonomousDatabases")
+    def peer_autonomous_databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The peer Autonomous Database names of the given Autonomous Database.
+        """
+        return pulumi.get(self, "peer_autonomous_databases")
+
+    @peer_autonomous_databases.setter
+    def peer_autonomous_databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "peer_autonomous_databases", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -591,6 +648,19 @@ class _AutonomousDatabaseState:
     def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
+    @_builtins.property
+    @pulumi.getter(name="sourceConfig")
+    def source_config(self) -> Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']]:
+        """
+        The source Autonomous Database configuration for the standby Autonomous Database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_config")
+
+    @source_config.setter
+    def source_config(self, value: Optional[pulumi.Input['AutonomousDatabaseSourceConfigArgs']]):
+        pulumi.set(self, "source_config", value)
+
 
 @pulumi.type_token("gcp:oracledatabase/autonomousDatabase:AutonomousDatabase")
 class AutonomousDatabase(pulumi.CustomResource):
@@ -611,6 +681,7 @@ class AutonomousDatabase(pulumi.CustomResource):
                  odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
+                 source_config: Optional[pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']]] = None,
                  __props__=None):
         """
         An AutonomousDatabase resource.
@@ -736,7 +807,6 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
-
         ## Import
 
         AutonomousDatabase can be imported using any of these accepted formats:
@@ -791,6 +861,8 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
+               Structure is documented below.
+        :param pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
                Structure is documented below.
         """
         ...
@@ -923,7 +995,6 @@ class AutonomousDatabase(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
-
         ## Import
 
         AutonomousDatabase can be imported using any of these accepted formats:
@@ -976,6 +1047,7 @@ class AutonomousDatabase(pulumi.CustomResource):
                  odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  properties: Optional[pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
+                 source_config: Optional[pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -990,8 +1062,6 @@ class AutonomousDatabase(pulumi.CustomResource):
                 raise TypeError("Missing required property 'autonomous_database_id'")
             __props__.__dict__["autonomous_database_id"] = autonomous_database_id
             __props__.__dict__["cidr"] = cidr
-            if database is None and not opts.urn:
-                raise TypeError("Missing required property 'database'")
             __props__.__dict__["database"] = database
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
@@ -1003,13 +1073,14 @@ class AutonomousDatabase(pulumi.CustomResource):
             __props__.__dict__["odb_network"] = odb_network
             __props__.__dict__["odb_subnet"] = odb_subnet
             __props__.__dict__["project"] = project
-            if properties is None and not opts.urn:
-                raise TypeError("Missing required property 'properties'")
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["source_config"] = source_config
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["disaster_recovery_supported_locations"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["entitlement_id"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["peer_autonomous_databases"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1029,6 +1100,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             database: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+            disaster_recovery_supported_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             entitlement_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1038,9 +1110,11 @@ class AutonomousDatabase(pulumi.CustomResource):
             network: Optional[pulumi.Input[_builtins.str]] = None,
             odb_network: Optional[pulumi.Input[_builtins.str]] = None,
             odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+            peer_autonomous_databases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             properties: Optional[pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'AutonomousDatabase':
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            source_config: Optional[pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']]] = None) -> 'AutonomousDatabase':
         """
         Get an existing AutonomousDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1058,6 +1132,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1079,12 +1154,15 @@ class AutonomousDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] odb_subnet: The name of the OdbSubnet associated with the Autonomous Database for
                IP allocation. Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peer_autonomous_databases: The peer Autonomous Database names of the given Autonomous Database.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['AutonomousDatabasePropertiesArgs', 'AutonomousDatabasePropertiesArgsDict']] properties: The properties of an Autonomous Database.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Union['AutonomousDatabaseSourceConfigArgs', 'AutonomousDatabaseSourceConfigArgsDict']] source_config: The source Autonomous Database configuration for the standby Autonomous Database.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1096,6 +1174,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["database"] = database
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["disaster_recovery_supported_locations"] = disaster_recovery_supported_locations
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["entitlement_id"] = entitlement_id
@@ -1105,9 +1184,11 @@ class AutonomousDatabase(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["odb_network"] = odb_network
         __props__.__dict__["odb_subnet"] = odb_subnet
+        __props__.__dict__["peer_autonomous_databases"] = peer_autonomous_databases
         __props__.__dict__["project"] = project
         __props__.__dict__["properties"] = properties
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["source_config"] = source_config
         return AutonomousDatabase(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1159,6 +1240,14 @@ class AutonomousDatabase(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         return pulumi.get(self, "deletion_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="disasterRecoverySupportedLocations")
+    def disaster_recovery_supported_locations(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of supported GCP region to clone the Autonomous Database for disaster recovery.
+        """
+        return pulumi.get(self, "disaster_recovery_supported_locations")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -1245,6 +1334,14 @@ class AutonomousDatabase(pulumi.CustomResource):
         return pulumi.get(self, "odb_subnet")
 
     @_builtins.property
+    @pulumi.getter(name="peerAutonomousDatabases")
+    def peer_autonomous_databases(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The peer Autonomous Database names of the given Autonomous Database.
+        """
+        return pulumi.get(self, "peer_autonomous_databases")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1270,4 +1367,13 @@ class AutonomousDatabase(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceConfig")
+    def source_config(self) -> pulumi.Output[Optional['outputs.AutonomousDatabaseSourceConfig']]:
+        """
+        The source Autonomous Database configuration for the standby Autonomous Database.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "source_config")
 

@@ -35,6 +35,11 @@ export type UnitKind = import("./unitKind").UnitKind;
 export const UnitKind: typeof import("./unitKind").UnitKind = null as any;
 utilities.lazyLoad(exports, ["UnitKind"], () => require("./unitKind"));
 
+export { UnitOperationArgs, UnitOperationState } from "./unitOperation";
+export type UnitOperation = import("./unitOperation").UnitOperation;
+export const UnitOperation: typeof import("./unitOperation").UnitOperation = null as any;
+utilities.lazyLoad(exports, ["UnitOperation"], () => require("./unitOperation"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -52,6 +57,8 @@ const _module = {
                 return new Unit(name, <any>undefined, { urn })
             case "gcp:saasruntime/unitKind:UnitKind":
                 return new UnitKind(name, <any>undefined, { urn })
+            case "gcp:saasruntime/unitOperation:UnitOperation":
+                return new UnitOperation(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -63,3 +70,4 @@ pulumi.runtime.registerResourceModule("gcp", "saasruntime/saaS", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/tenant", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/unit", _module)
 pulumi.runtime.registerResourceModule("gcp", "saasruntime/unitKind", _module)
+pulumi.runtime.registerResourceModule("gcp", "saasruntime/unitOperation", _module)

@@ -292,6 +292,9 @@ func GetExternalCredentials(ctx *pulumi.Context) string {
 func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:filestoreCustomEndpoint")
 }
+func GetFirebaseAiLogicCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseAiLogicCustomEndpoint")
+}
 func GetFirebaseAppCheckCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseAppCheckCustomEndpoint")
 }

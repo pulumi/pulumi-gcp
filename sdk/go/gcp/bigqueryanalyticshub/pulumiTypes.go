@@ -1366,6 +1366,13 @@ func (o DataExchangeSubscriptionLinkedResourceArrayOutput) Index(i pulumi.IntInp
 type ListingBigqueryDataset struct {
 	// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
 	Dataset string `pulumi:"dataset"`
+	// (Output, Beta)
+	// Server owned effective state of replicas. Contains both primary and secondary replicas.
+	// Each replica includes a system-computed (output-only) state and primary designation.
+	// Structure is documented below.
+	EffectiveReplicas []ListingBigqueryDatasetEffectiveReplica `pulumi:"effectiveReplicas"`
+	// A list of regions where the publisher has created shared dataset replicas.
+	ReplicaLocations []string `pulumi:"replicaLocations"`
 	// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
 	// Structure is documented below.
 	SelectedResources []ListingBigqueryDatasetSelectedResource `pulumi:"selectedResources"`
@@ -1385,6 +1392,13 @@ type ListingBigqueryDatasetInput interface {
 type ListingBigqueryDatasetArgs struct {
 	// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
 	Dataset pulumi.StringInput `pulumi:"dataset"`
+	// (Output, Beta)
+	// Server owned effective state of replicas. Contains both primary and secondary replicas.
+	// Each replica includes a system-computed (output-only) state and primary designation.
+	// Structure is documented below.
+	EffectiveReplicas ListingBigqueryDatasetEffectiveReplicaArrayInput `pulumi:"effectiveReplicas"`
+	// A list of regions where the publisher has created shared dataset replicas.
+	ReplicaLocations pulumi.StringArrayInput `pulumi:"replicaLocations"`
 	// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
 	// Structure is documented below.
 	SelectedResources ListingBigqueryDatasetSelectedResourceArrayInput `pulumi:"selectedResources"`
@@ -1472,6 +1486,19 @@ func (o ListingBigqueryDatasetOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v ListingBigqueryDataset) string { return v.Dataset }).(pulumi.StringOutput)
 }
 
+// (Output, Beta)
+// Server owned effective state of replicas. Contains both primary and secondary replicas.
+// Each replica includes a system-computed (output-only) state and primary designation.
+// Structure is documented below.
+func (o ListingBigqueryDatasetOutput) EffectiveReplicas() ListingBigqueryDatasetEffectiveReplicaArrayOutput {
+	return o.ApplyT(func(v ListingBigqueryDataset) []ListingBigqueryDatasetEffectiveReplica { return v.EffectiveReplicas }).(ListingBigqueryDatasetEffectiveReplicaArrayOutput)
+}
+
+// A list of regions where the publisher has created shared dataset replicas.
+func (o ListingBigqueryDatasetOutput) ReplicaLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ListingBigqueryDataset) []string { return v.ReplicaLocations }).(pulumi.StringArrayOutput)
+}
+
 // Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
 // Structure is documented below.
 func (o ListingBigqueryDatasetOutput) SelectedResources() ListingBigqueryDatasetSelectedResourceArrayOutput {
@@ -1512,6 +1539,29 @@ func (o ListingBigqueryDatasetPtrOutput) Dataset() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output, Beta)
+// Server owned effective state of replicas. Contains both primary and secondary replicas.
+// Each replica includes a system-computed (output-only) state and primary designation.
+// Structure is documented below.
+func (o ListingBigqueryDatasetPtrOutput) EffectiveReplicas() ListingBigqueryDatasetEffectiveReplicaArrayOutput {
+	return o.ApplyT(func(v *ListingBigqueryDataset) []ListingBigqueryDatasetEffectiveReplica {
+		if v == nil {
+			return nil
+		}
+		return v.EffectiveReplicas
+	}).(ListingBigqueryDatasetEffectiveReplicaArrayOutput)
+}
+
+// A list of regions where the publisher has created shared dataset replicas.
+func (o ListingBigqueryDatasetPtrOutput) ReplicaLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ListingBigqueryDataset) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaLocations
+	}).(pulumi.StringArrayOutput)
+}
+
 // Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
 // Structure is documented below.
 func (o ListingBigqueryDatasetPtrOutput) SelectedResources() ListingBigqueryDatasetSelectedResourceArrayOutput {
@@ -1523,8 +1573,131 @@ func (o ListingBigqueryDatasetPtrOutput) SelectedResources() ListingBigqueryData
 	}).(ListingBigqueryDatasetSelectedResourceArrayOutput)
 }
 
+type ListingBigqueryDatasetEffectiveReplica struct {
+	// The name of the location this data exchange listing.
+	Location *string `pulumi:"location"`
+	// Output-only. Indicates that this replica is the primary replica.
+	// Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+	PrimaryState *string `pulumi:"primaryState"`
+	// Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+	// Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+	ReplicaState *string `pulumi:"replicaState"`
+}
+
+// ListingBigqueryDatasetEffectiveReplicaInput is an input type that accepts ListingBigqueryDatasetEffectiveReplicaArgs and ListingBigqueryDatasetEffectiveReplicaOutput values.
+// You can construct a concrete instance of `ListingBigqueryDatasetEffectiveReplicaInput` via:
+//
+//	ListingBigqueryDatasetEffectiveReplicaArgs{...}
+type ListingBigqueryDatasetEffectiveReplicaInput interface {
+	pulumi.Input
+
+	ToListingBigqueryDatasetEffectiveReplicaOutput() ListingBigqueryDatasetEffectiveReplicaOutput
+	ToListingBigqueryDatasetEffectiveReplicaOutputWithContext(context.Context) ListingBigqueryDatasetEffectiveReplicaOutput
+}
+
+type ListingBigqueryDatasetEffectiveReplicaArgs struct {
+	// The name of the location this data exchange listing.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Output-only. Indicates that this replica is the primary replica.
+	// Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+	PrimaryState pulumi.StringPtrInput `pulumi:"primaryState"`
+	// Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+	// Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+	ReplicaState pulumi.StringPtrInput `pulumi:"replicaState"`
+}
+
+func (ListingBigqueryDatasetEffectiveReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingBigqueryDatasetEffectiveReplica)(nil)).Elem()
+}
+
+func (i ListingBigqueryDatasetEffectiveReplicaArgs) ToListingBigqueryDatasetEffectiveReplicaOutput() ListingBigqueryDatasetEffectiveReplicaOutput {
+	return i.ToListingBigqueryDatasetEffectiveReplicaOutputWithContext(context.Background())
+}
+
+func (i ListingBigqueryDatasetEffectiveReplicaArgs) ToListingBigqueryDatasetEffectiveReplicaOutputWithContext(ctx context.Context) ListingBigqueryDatasetEffectiveReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingBigqueryDatasetEffectiveReplicaOutput)
+}
+
+// ListingBigqueryDatasetEffectiveReplicaArrayInput is an input type that accepts ListingBigqueryDatasetEffectiveReplicaArray and ListingBigqueryDatasetEffectiveReplicaArrayOutput values.
+// You can construct a concrete instance of `ListingBigqueryDatasetEffectiveReplicaArrayInput` via:
+//
+//	ListingBigqueryDatasetEffectiveReplicaArray{ ListingBigqueryDatasetEffectiveReplicaArgs{...} }
+type ListingBigqueryDatasetEffectiveReplicaArrayInput interface {
+	pulumi.Input
+
+	ToListingBigqueryDatasetEffectiveReplicaArrayOutput() ListingBigqueryDatasetEffectiveReplicaArrayOutput
+	ToListingBigqueryDatasetEffectiveReplicaArrayOutputWithContext(context.Context) ListingBigqueryDatasetEffectiveReplicaArrayOutput
+}
+
+type ListingBigqueryDatasetEffectiveReplicaArray []ListingBigqueryDatasetEffectiveReplicaInput
+
+func (ListingBigqueryDatasetEffectiveReplicaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingBigqueryDatasetEffectiveReplica)(nil)).Elem()
+}
+
+func (i ListingBigqueryDatasetEffectiveReplicaArray) ToListingBigqueryDatasetEffectiveReplicaArrayOutput() ListingBigqueryDatasetEffectiveReplicaArrayOutput {
+	return i.ToListingBigqueryDatasetEffectiveReplicaArrayOutputWithContext(context.Background())
+}
+
+func (i ListingBigqueryDatasetEffectiveReplicaArray) ToListingBigqueryDatasetEffectiveReplicaArrayOutputWithContext(ctx context.Context) ListingBigqueryDatasetEffectiveReplicaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingBigqueryDatasetEffectiveReplicaArrayOutput)
+}
+
+type ListingBigqueryDatasetEffectiveReplicaOutput struct{ *pulumi.OutputState }
+
+func (ListingBigqueryDatasetEffectiveReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingBigqueryDatasetEffectiveReplica)(nil)).Elem()
+}
+
+func (o ListingBigqueryDatasetEffectiveReplicaOutput) ToListingBigqueryDatasetEffectiveReplicaOutput() ListingBigqueryDatasetEffectiveReplicaOutput {
+	return o
+}
+
+func (o ListingBigqueryDatasetEffectiveReplicaOutput) ToListingBigqueryDatasetEffectiveReplicaOutputWithContext(ctx context.Context) ListingBigqueryDatasetEffectiveReplicaOutput {
+	return o
+}
+
+// The name of the location this data exchange listing.
+func (o ListingBigqueryDatasetEffectiveReplicaOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingBigqueryDatasetEffectiveReplica) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Output-only. Indicates that this replica is the primary replica.
+// Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+func (o ListingBigqueryDatasetEffectiveReplicaOutput) PrimaryState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingBigqueryDatasetEffectiveReplica) *string { return v.PrimaryState }).(pulumi.StringPtrOutput)
+}
+
+// Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+// Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+func (o ListingBigqueryDatasetEffectiveReplicaOutput) ReplicaState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListingBigqueryDatasetEffectiveReplica) *string { return v.ReplicaState }).(pulumi.StringPtrOutput)
+}
+
+type ListingBigqueryDatasetEffectiveReplicaArrayOutput struct{ *pulumi.OutputState }
+
+func (ListingBigqueryDatasetEffectiveReplicaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListingBigqueryDatasetEffectiveReplica)(nil)).Elem()
+}
+
+func (o ListingBigqueryDatasetEffectiveReplicaArrayOutput) ToListingBigqueryDatasetEffectiveReplicaArrayOutput() ListingBigqueryDatasetEffectiveReplicaArrayOutput {
+	return o
+}
+
+func (o ListingBigqueryDatasetEffectiveReplicaArrayOutput) ToListingBigqueryDatasetEffectiveReplicaArrayOutputWithContext(ctx context.Context) ListingBigqueryDatasetEffectiveReplicaArrayOutput {
+	return o
+}
+
+func (o ListingBigqueryDatasetEffectiveReplicaArrayOutput) Index(i pulumi.IntInput) ListingBigqueryDatasetEffectiveReplicaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListingBigqueryDatasetEffectiveReplica {
+		return vs[0].([]ListingBigqueryDatasetEffectiveReplica)[vs[1].(int)]
+	}).(ListingBigqueryDatasetEffectiveReplicaOutput)
+}
+
 type ListingBigqueryDatasetSelectedResource struct {
 	// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+	//
+	// <a name="nestedBigqueryDatasetEffectiveReplicas"></a>The `effectiveReplicas` block contains:
 	Routine *string `pulumi:"routine"`
 	// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
 	Table *string `pulumi:"table"`
@@ -1543,6 +1716,8 @@ type ListingBigqueryDatasetSelectedResourceInput interface {
 
 type ListingBigqueryDatasetSelectedResourceArgs struct {
 	// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+	//
+	// <a name="nestedBigqueryDatasetEffectiveReplicas"></a>The `effectiveReplicas` block contains:
 	Routine pulumi.StringPtrInput `pulumi:"routine"`
 	// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
 	Table pulumi.StringPtrInput `pulumi:"table"`
@@ -1600,6 +1775,8 @@ func (o ListingBigqueryDatasetSelectedResourceOutput) ToListingBigqueryDatasetSe
 }
 
 // Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+//
+// <a name="nestedBigqueryDatasetEffectiveReplicas"></a>The `effectiveReplicas` block contains:
 func (o ListingBigqueryDatasetSelectedResourceOutput) Routine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListingBigqueryDatasetSelectedResource) *string { return v.Routine }).(pulumi.StringPtrOutput)
 }
@@ -3043,6 +3220,8 @@ type ListingSubscriptionDestinationDataset struct {
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 	Location string `pulumi:"location"`
+	// List of regions where the subscriber wants dataset replicas.
+	ReplicaLocations []string `pulumi:"replicaLocations"`
 }
 
 // ListingSubscriptionDestinationDatasetInput is an input type that accepts ListingSubscriptionDestinationDatasetArgs and ListingSubscriptionDestinationDatasetOutput values.
@@ -3070,6 +3249,8 @@ type ListingSubscriptionDestinationDatasetArgs struct {
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 	Location pulumi.StringInput `pulumi:"location"`
+	// List of regions where the subscriber wants dataset replicas.
+	ReplicaLocations pulumi.StringArrayInput `pulumi:"replicaLocations"`
 }
 
 func (ListingSubscriptionDestinationDatasetArgs) ElementType() reflect.Type {
@@ -3179,6 +3360,11 @@ func (o ListingSubscriptionDestinationDatasetOutput) Location() pulumi.StringOut
 	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// List of regions where the subscriber wants dataset replicas.
+func (o ListingSubscriptionDestinationDatasetOutput) ReplicaLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) []string { return v.ReplicaLocations }).(pulumi.StringArrayOutput)
+}
+
 type ListingSubscriptionDestinationDatasetPtrOutput struct{ *pulumi.OutputState }
 
 func (ListingSubscriptionDestinationDatasetPtrOutput) ElementType() reflect.Type {
@@ -3254,6 +3440,16 @@ func (o ListingSubscriptionDestinationDatasetPtrOutput) Location() pulumi.String
 		}
 		return &v.Location
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of regions where the subscriber wants dataset replicas.
+func (o ListingSubscriptionDestinationDatasetPtrOutput) ReplicaLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaLocations
+	}).(pulumi.StringArrayOutput)
 }
 
 type ListingSubscriptionDestinationDatasetDatasetReference struct {
@@ -3666,6 +3862,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeSubscriptionLinkedResourceArrayInput)(nil)).Elem(), DataExchangeSubscriptionLinkedResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetInput)(nil)).Elem(), ListingBigqueryDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetPtrInput)(nil)).Elem(), ListingBigqueryDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetEffectiveReplicaInput)(nil)).Elem(), ListingBigqueryDatasetEffectiveReplicaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetEffectiveReplicaArrayInput)(nil)).Elem(), ListingBigqueryDatasetEffectiveReplicaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetSelectedResourceInput)(nil)).Elem(), ListingBigqueryDatasetSelectedResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingBigqueryDatasetSelectedResourceArrayInput)(nil)).Elem(), ListingBigqueryDatasetSelectedResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingCommercialInfoInput)(nil)).Elem(), ListingCommercialInfoArgs{})
@@ -3716,6 +3914,8 @@ func init() {
 	pulumi.RegisterOutputType(DataExchangeSubscriptionLinkedResourceArrayOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetPtrOutput{})
+	pulumi.RegisterOutputType(ListingBigqueryDatasetEffectiveReplicaOutput{})
+	pulumi.RegisterOutputType(ListingBigqueryDatasetEffectiveReplicaArrayOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetSelectedResourceOutput{})
 	pulumi.RegisterOutputType(ListingBigqueryDatasetSelectedResourceArrayOutput{})
 	pulumi.RegisterOutputType(ListingCommercialInfoOutput{})

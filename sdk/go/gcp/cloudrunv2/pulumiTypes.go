@@ -835,7 +835,7 @@ type JobTemplate struct {
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
@@ -867,7 +867,7 @@ type JobTemplateArgs struct {
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
@@ -967,7 +967,7 @@ func (o JobTemplateOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 // https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
@@ -1029,7 +1029,7 @@ func (o JobTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 // https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
@@ -6388,7 +6388,7 @@ type ServiceTemplate struct {
 	// Disables health checking containers during deployment.
 	HealthCheckDisabled *bool `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
@@ -6451,7 +6451,7 @@ type ServiceTemplateArgs struct {
 	// Disables health checking containers during deployment.
 	HealthCheckDisabled pulumi.BoolPtrInput `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -6597,7 +6597,7 @@ func (o ServiceTemplateOutput) HealthCheckDisabled() pulumi.BoolPtrOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o ServiceTemplateOutput) Labels() pulumi.StringMapOutput {
@@ -6751,7 +6751,7 @@ func (o ServiceTemplatePtrOutput) HealthCheckDisabled() pulumi.BoolPtrOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o ServiceTemplatePtrOutput) Labels() pulumi.StringMapOutput {
@@ -13624,7 +13624,7 @@ type WorkerPoolTemplate struct {
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled *bool `pulumi:"gpuZonalRedundancyDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
@@ -13674,7 +13674,7 @@ type WorkerPoolTemplateArgs struct {
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled pulumi.BoolPtrInput `pulumi:"gpuZonalRedundancyDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -13807,7 +13807,7 @@ func (o WorkerPoolTemplateOutput) GpuZonalRedundancyDisabled() pulumi.BoolPtrOut
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
 func (o WorkerPoolTemplateOutput) Labels() pulumi.StringMapOutput {
@@ -13933,7 +13933,7 @@ func (o WorkerPoolTemplatePtrOutput) GpuZonalRedundancyDisabled() pulumi.BoolPtr
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
 func (o WorkerPoolTemplatePtrOutput) Labels() pulumi.StringMapOutput {
@@ -18828,7 +18828,7 @@ type GetJobTemplate struct {
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
 	//
 	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
@@ -18862,7 +18862,7 @@ type GetJobTemplateArgs struct {
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 	// https://cloud.google.com/run/docs/configuring/labels.
 	//
 	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
@@ -18938,7 +18938,7 @@ func (o GetJobTemplateOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
-// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+// or break down billing charges by team, component, environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or
 // https://cloud.google.com/run/docs/configuring/labels.
 //
 // Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
@@ -22641,7 +22641,7 @@ type GetServiceTemplate struct {
 	// Disables health checking containers during deployment.
 	HealthCheckDisabled bool `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	//
 	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
@@ -22701,7 +22701,7 @@ type GetServiceTemplateArgs struct {
 	// Disables health checking containers during deployment.
 	HealthCheckDisabled pulumi.BoolInput `pulumi:"healthCheckDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	//
 	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
@@ -22818,7 +22818,7 @@ func (o GetServiceTemplateOutput) HealthCheckDisabled() pulumi.BoolOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 //
 // Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
@@ -27740,7 +27740,7 @@ type GetWorkerPoolTemplate struct {
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled bool `pulumi:"gpuZonalRedundancyDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	//
 	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
@@ -27789,7 +27789,7 @@ type GetWorkerPoolTemplateArgs struct {
 	// True if GPU zonal redundancy is disabled on this revision.
 	GpuZonalRedundancyDisabled pulumi.BoolInput `pulumi:"gpuZonalRedundancyDisabled"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	//
 	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
@@ -27895,7 +27895,7 @@ func (o GetWorkerPoolTemplateOutput) GpuZonalRedundancyDisabled() pulumi.BoolOut
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
-// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 //
 // Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.

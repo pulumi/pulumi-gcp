@@ -14,6 +14,7 @@ from .asset import *
 from .asset_iam_binding import *
 from .asset_iam_member import *
 from .asset_iam_policy import *
+from .data_product import *
 from .datascan import *
 from .datascan_iam_binding import *
 from .datascan_iam_member import *

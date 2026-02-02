@@ -36,6 +36,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
         /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// List of regions where the subscriber wants dataset replicas.
+        /// </summary>
+        public readonly ImmutableArray<string> ReplicaLocations;
 
         [OutputConstructor]
         private ListingSubscriptionDestinationDataset(
@@ -47,13 +51,16 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
 
             ImmutableDictionary<string, string>? labels,
 
-            string location)
+            string location,
+
+            ImmutableArray<string> replicaLocations)
         {
             DatasetReference = datasetReference;
             Description = description;
             FriendlyName = friendlyName;
             Labels = labels;
             Location = location;
+            ReplicaLocations = replicaLocations;
         }
     }
 }

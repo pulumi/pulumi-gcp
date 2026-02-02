@@ -505,11 +505,11 @@ if not MYPY:
         """
         condition: pulumi.Input[_builtins.str]
         """
-        A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         """
         method_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
-        A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+        A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         """
         name: pulumi.Input[_builtins.str]
         """
@@ -543,8 +543,8 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
         """
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
                Possible values are: `ALLOW`, `DENY`.
-        :param pulumi.Input[_builtins.str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+        :param pulumi.Input[_builtins.str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         :param pulumi.Input[_builtins.str] name: Immutable. The name of the custom constraint. This is unique within the organization.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_types: Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
         :param pulumi.Input[_builtins.str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
@@ -577,7 +577,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
     @pulumi.getter
     def condition(self) -> pulumi.Input[_builtins.str]:
         """
-        A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         """
         return pulumi.get(self, "condition")
 
@@ -589,7 +589,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
     @pulumi.getter(name="methodTypes")
     def method_types(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+        A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         """
         return pulumi.get(self, "method_types")
 

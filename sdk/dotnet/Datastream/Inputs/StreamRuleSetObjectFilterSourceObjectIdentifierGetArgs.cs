@@ -51,6 +51,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
+        [Input("spannerIdentifier")]
+        public Input<Inputs.StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierGetArgs>? SpannerIdentifier { get; set; }
+
+        /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
         [Input("sqlServerIdentifier")]
         public Input<Inputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierGetArgs>? SqlServerIdentifier { get; set; }
 

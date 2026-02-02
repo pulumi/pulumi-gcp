@@ -15,14 +15,14 @@ public final class GetSPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSPlainArgs Empty = new GetSPlainArgs();
 
     /**
-     * An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+     * An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
      * 
      */
     @Import(name="filter")
     private @Nullable String filter;
 
     /**
-     * @return An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+     * @return An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
      * 
      */
     public Optional<String> filter() {
@@ -54,7 +54,7 @@ public final class GetSPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param filter An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+         * @param filter An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
          * 
          * @return builder
          * 

@@ -18,6 +18,21 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
     public static final TagKeyArgs Empty = new TagKeyArgs();
 
     /**
+     * Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    @Import(name="allowedValuesRegex")
+    private @Nullable Output<String> allowedValuesRegex;
+
+    /**
+     * @return Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    public Optional<Output<String>> allowedValuesRegex() {
+        return Optional.ofNullable(this.allowedValuesRegex);
+    }
+
+    /**
      * User-assigned description of the TagKey. Must not exceed 256 characters.
      * 
      */
@@ -103,6 +118,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
     private TagKeyArgs() {}
 
     private TagKeyArgs(TagKeyArgs $) {
+        this.allowedValuesRegex = $.allowedValuesRegex;
         this.description = $.description;
         this.parent = $.parent;
         this.purpose = $.purpose;
@@ -126,6 +142,27 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TagKeyArgs defaults) {
             $ = new TagKeyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedValuesRegex Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedValuesRegex(@Nullable Output<String> allowedValuesRegex) {
+            $.allowedValuesRegex = allowedValuesRegex;
+            return this;
+        }
+
+        /**
+         * @param allowedValuesRegex Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedValuesRegex(String allowedValuesRegex) {
+            return allowedValuesRegex(Output.of(allowedValuesRegex));
         }
 
         /**

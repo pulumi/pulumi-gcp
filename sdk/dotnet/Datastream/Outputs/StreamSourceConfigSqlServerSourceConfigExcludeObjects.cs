@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamSourceConfigSqlServerSourceConfigExcludeObjects
     {
         /// <summary>
-        /// SQL Server schemas/databases in the database server
+        /// Spanner schemas in the database
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema> Schemas;

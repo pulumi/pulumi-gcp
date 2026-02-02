@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         private InputList<Inputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs>? _schemas;
 
         /// <summary>
-        /// SQL Server schemas/databases in the database server
+        /// Spanner schemas in the database
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs> Schemas

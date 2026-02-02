@@ -2619,6 +2619,873 @@ func (o UnitMaintenancePtrOutput) PinnedUntilTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type UnitOperationCondition struct {
+	// (Output)
+	// Last time the condition transited from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human readable message indicating details about the last transition.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// Brief reason for the condition's last transition.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// Status of the condition.
+	// Possible values:
+	// STATUS_UNKNOWN
+	// STATUS_TRUE
+	// STATUS_FALSE
+	Status *string `pulumi:"status"`
+	// (Output)
+	// Type of the condition.
+	// Possible values:
+	// TYPE_SCHEDULED
+	// TYPE_RUNNING
+	// TYPE_SUCCEEDED
+	// TYPE_CANCELLED
+	Type *string `pulumi:"type"`
+}
+
+// UnitOperationConditionInput is an input type that accepts UnitOperationConditionArgs and UnitOperationConditionOutput values.
+// You can construct a concrete instance of `UnitOperationConditionInput` via:
+//
+//	UnitOperationConditionArgs{...}
+type UnitOperationConditionInput interface {
+	pulumi.Input
+
+	ToUnitOperationConditionOutput() UnitOperationConditionOutput
+	ToUnitOperationConditionOutputWithContext(context.Context) UnitOperationConditionOutput
+}
+
+type UnitOperationConditionArgs struct {
+	// (Output)
+	// Last time the condition transited from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human readable message indicating details about the last transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// Brief reason for the condition's last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// Status of the condition.
+	// Possible values:
+	// STATUS_UNKNOWN
+	// STATUS_TRUE
+	// STATUS_FALSE
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// (Output)
+	// Type of the condition.
+	// Possible values:
+	// TYPE_SCHEDULED
+	// TYPE_RUNNING
+	// TYPE_SUCCEEDED
+	// TYPE_CANCELLED
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (UnitOperationConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationCondition)(nil)).Elem()
+}
+
+func (i UnitOperationConditionArgs) ToUnitOperationConditionOutput() UnitOperationConditionOutput {
+	return i.ToUnitOperationConditionOutputWithContext(context.Background())
+}
+
+func (i UnitOperationConditionArgs) ToUnitOperationConditionOutputWithContext(ctx context.Context) UnitOperationConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationConditionOutput)
+}
+
+// UnitOperationConditionArrayInput is an input type that accepts UnitOperationConditionArray and UnitOperationConditionArrayOutput values.
+// You can construct a concrete instance of `UnitOperationConditionArrayInput` via:
+//
+//	UnitOperationConditionArray{ UnitOperationConditionArgs{...} }
+type UnitOperationConditionArrayInput interface {
+	pulumi.Input
+
+	ToUnitOperationConditionArrayOutput() UnitOperationConditionArrayOutput
+	ToUnitOperationConditionArrayOutputWithContext(context.Context) UnitOperationConditionArrayOutput
+}
+
+type UnitOperationConditionArray []UnitOperationConditionInput
+
+func (UnitOperationConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOperationCondition)(nil)).Elem()
+}
+
+func (i UnitOperationConditionArray) ToUnitOperationConditionArrayOutput() UnitOperationConditionArrayOutput {
+	return i.ToUnitOperationConditionArrayOutputWithContext(context.Background())
+}
+
+func (i UnitOperationConditionArray) ToUnitOperationConditionArrayOutputWithContext(ctx context.Context) UnitOperationConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationConditionArrayOutput)
+}
+
+type UnitOperationConditionOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationCondition)(nil)).Elem()
+}
+
+func (o UnitOperationConditionOutput) ToUnitOperationConditionOutput() UnitOperationConditionOutput {
+	return o
+}
+
+func (o UnitOperationConditionOutput) ToUnitOperationConditionOutputWithContext(ctx context.Context) UnitOperationConditionOutput {
+	return o
+}
+
+// (Output)
+// Last time the condition transited from one status to another.
+func (o UnitOperationConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human readable message indicating details about the last transition.
+func (o UnitOperationConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Brief reason for the condition's last transition.
+func (o UnitOperationConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Status of the condition.
+// Possible values:
+// STATUS_UNKNOWN
+// STATUS_TRUE
+// STATUS_FALSE
+func (o UnitOperationConditionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Type of the condition.
+// Possible values:
+// TYPE_SCHEDULED
+// TYPE_RUNNING
+// TYPE_SUCCEEDED
+// TYPE_CANCELLED
+func (o UnitOperationConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type UnitOperationConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOperationCondition)(nil)).Elem()
+}
+
+func (o UnitOperationConditionArrayOutput) ToUnitOperationConditionArrayOutput() UnitOperationConditionArrayOutput {
+	return o
+}
+
+func (o UnitOperationConditionArrayOutput) ToUnitOperationConditionArrayOutputWithContext(ctx context.Context) UnitOperationConditionArrayOutput {
+	return o
+}
+
+func (o UnitOperationConditionArrayOutput) Index(i pulumi.IntInput) UnitOperationConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitOperationCondition {
+		return vs[0].([]UnitOperationCondition)[vs[1].(int)]
+	}).(UnitOperationConditionOutput)
+}
+
+type UnitOperationDeprovision struct {
+}
+
+// UnitOperationDeprovisionInput is an input type that accepts UnitOperationDeprovisionArgs and UnitOperationDeprovisionOutput values.
+// You can construct a concrete instance of `UnitOperationDeprovisionInput` via:
+//
+//	UnitOperationDeprovisionArgs{...}
+type UnitOperationDeprovisionInput interface {
+	pulumi.Input
+
+	ToUnitOperationDeprovisionOutput() UnitOperationDeprovisionOutput
+	ToUnitOperationDeprovisionOutputWithContext(context.Context) UnitOperationDeprovisionOutput
+}
+
+type UnitOperationDeprovisionArgs struct {
+}
+
+func (UnitOperationDeprovisionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationDeprovision)(nil)).Elem()
+}
+
+func (i UnitOperationDeprovisionArgs) ToUnitOperationDeprovisionOutput() UnitOperationDeprovisionOutput {
+	return i.ToUnitOperationDeprovisionOutputWithContext(context.Background())
+}
+
+func (i UnitOperationDeprovisionArgs) ToUnitOperationDeprovisionOutputWithContext(ctx context.Context) UnitOperationDeprovisionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationDeprovisionOutput)
+}
+
+func (i UnitOperationDeprovisionArgs) ToUnitOperationDeprovisionPtrOutput() UnitOperationDeprovisionPtrOutput {
+	return i.ToUnitOperationDeprovisionPtrOutputWithContext(context.Background())
+}
+
+func (i UnitOperationDeprovisionArgs) ToUnitOperationDeprovisionPtrOutputWithContext(ctx context.Context) UnitOperationDeprovisionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationDeprovisionOutput).ToUnitOperationDeprovisionPtrOutputWithContext(ctx)
+}
+
+// UnitOperationDeprovisionPtrInput is an input type that accepts UnitOperationDeprovisionArgs, UnitOperationDeprovisionPtr and UnitOperationDeprovisionPtrOutput values.
+// You can construct a concrete instance of `UnitOperationDeprovisionPtrInput` via:
+//
+//	        UnitOperationDeprovisionArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitOperationDeprovisionPtrInput interface {
+	pulumi.Input
+
+	ToUnitOperationDeprovisionPtrOutput() UnitOperationDeprovisionPtrOutput
+	ToUnitOperationDeprovisionPtrOutputWithContext(context.Context) UnitOperationDeprovisionPtrOutput
+}
+
+type unitOperationDeprovisionPtrType UnitOperationDeprovisionArgs
+
+func UnitOperationDeprovisionPtr(v *UnitOperationDeprovisionArgs) UnitOperationDeprovisionPtrInput {
+	return (*unitOperationDeprovisionPtrType)(v)
+}
+
+func (*unitOperationDeprovisionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitOperationDeprovision)(nil)).Elem()
+}
+
+func (i *unitOperationDeprovisionPtrType) ToUnitOperationDeprovisionPtrOutput() UnitOperationDeprovisionPtrOutput {
+	return i.ToUnitOperationDeprovisionPtrOutputWithContext(context.Background())
+}
+
+func (i *unitOperationDeprovisionPtrType) ToUnitOperationDeprovisionPtrOutputWithContext(ctx context.Context) UnitOperationDeprovisionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationDeprovisionPtrOutput)
+}
+
+type UnitOperationDeprovisionOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationDeprovisionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationDeprovision)(nil)).Elem()
+}
+
+func (o UnitOperationDeprovisionOutput) ToUnitOperationDeprovisionOutput() UnitOperationDeprovisionOutput {
+	return o
+}
+
+func (o UnitOperationDeprovisionOutput) ToUnitOperationDeprovisionOutputWithContext(ctx context.Context) UnitOperationDeprovisionOutput {
+	return o
+}
+
+func (o UnitOperationDeprovisionOutput) ToUnitOperationDeprovisionPtrOutput() UnitOperationDeprovisionPtrOutput {
+	return o.ToUnitOperationDeprovisionPtrOutputWithContext(context.Background())
+}
+
+func (o UnitOperationDeprovisionOutput) ToUnitOperationDeprovisionPtrOutputWithContext(ctx context.Context) UnitOperationDeprovisionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitOperationDeprovision) *UnitOperationDeprovision {
+		return &v
+	}).(UnitOperationDeprovisionPtrOutput)
+}
+
+type UnitOperationDeprovisionPtrOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationDeprovisionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitOperationDeprovision)(nil)).Elem()
+}
+
+func (o UnitOperationDeprovisionPtrOutput) ToUnitOperationDeprovisionPtrOutput() UnitOperationDeprovisionPtrOutput {
+	return o
+}
+
+func (o UnitOperationDeprovisionPtrOutput) ToUnitOperationDeprovisionPtrOutputWithContext(ctx context.Context) UnitOperationDeprovisionPtrOutput {
+	return o
+}
+
+func (o UnitOperationDeprovisionPtrOutput) Elem() UnitOperationDeprovisionOutput {
+	return o.ApplyT(func(v *UnitOperationDeprovision) UnitOperationDeprovision {
+		if v != nil {
+			return *v
+		}
+		var ret UnitOperationDeprovision
+		return ret
+	}).(UnitOperationDeprovisionOutput)
+}
+
+type UnitOperationProvision struct {
+	// Set of input variables. Maximum 100. (optional)
+	// Structure is documented below.
+	InputVariables []UnitOperationProvisionInputVariable `pulumi:"inputVariables"`
+	// Reference to the Release object to use for the Unit. (optional).
+	Release *string `pulumi:"release"`
+}
+
+// UnitOperationProvisionInput is an input type that accepts UnitOperationProvisionArgs and UnitOperationProvisionOutput values.
+// You can construct a concrete instance of `UnitOperationProvisionInput` via:
+//
+//	UnitOperationProvisionArgs{...}
+type UnitOperationProvisionInput interface {
+	pulumi.Input
+
+	ToUnitOperationProvisionOutput() UnitOperationProvisionOutput
+	ToUnitOperationProvisionOutputWithContext(context.Context) UnitOperationProvisionOutput
+}
+
+type UnitOperationProvisionArgs struct {
+	// Set of input variables. Maximum 100. (optional)
+	// Structure is documented below.
+	InputVariables UnitOperationProvisionInputVariableArrayInput `pulumi:"inputVariables"`
+	// Reference to the Release object to use for the Unit. (optional).
+	Release pulumi.StringPtrInput `pulumi:"release"`
+}
+
+func (UnitOperationProvisionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationProvision)(nil)).Elem()
+}
+
+func (i UnitOperationProvisionArgs) ToUnitOperationProvisionOutput() UnitOperationProvisionOutput {
+	return i.ToUnitOperationProvisionOutputWithContext(context.Background())
+}
+
+func (i UnitOperationProvisionArgs) ToUnitOperationProvisionOutputWithContext(ctx context.Context) UnitOperationProvisionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationProvisionOutput)
+}
+
+func (i UnitOperationProvisionArgs) ToUnitOperationProvisionPtrOutput() UnitOperationProvisionPtrOutput {
+	return i.ToUnitOperationProvisionPtrOutputWithContext(context.Background())
+}
+
+func (i UnitOperationProvisionArgs) ToUnitOperationProvisionPtrOutputWithContext(ctx context.Context) UnitOperationProvisionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationProvisionOutput).ToUnitOperationProvisionPtrOutputWithContext(ctx)
+}
+
+// UnitOperationProvisionPtrInput is an input type that accepts UnitOperationProvisionArgs, UnitOperationProvisionPtr and UnitOperationProvisionPtrOutput values.
+// You can construct a concrete instance of `UnitOperationProvisionPtrInput` via:
+//
+//	        UnitOperationProvisionArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitOperationProvisionPtrInput interface {
+	pulumi.Input
+
+	ToUnitOperationProvisionPtrOutput() UnitOperationProvisionPtrOutput
+	ToUnitOperationProvisionPtrOutputWithContext(context.Context) UnitOperationProvisionPtrOutput
+}
+
+type unitOperationProvisionPtrType UnitOperationProvisionArgs
+
+func UnitOperationProvisionPtr(v *UnitOperationProvisionArgs) UnitOperationProvisionPtrInput {
+	return (*unitOperationProvisionPtrType)(v)
+}
+
+func (*unitOperationProvisionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitOperationProvision)(nil)).Elem()
+}
+
+func (i *unitOperationProvisionPtrType) ToUnitOperationProvisionPtrOutput() UnitOperationProvisionPtrOutput {
+	return i.ToUnitOperationProvisionPtrOutputWithContext(context.Background())
+}
+
+func (i *unitOperationProvisionPtrType) ToUnitOperationProvisionPtrOutputWithContext(ctx context.Context) UnitOperationProvisionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationProvisionPtrOutput)
+}
+
+type UnitOperationProvisionOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationProvisionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationProvision)(nil)).Elem()
+}
+
+func (o UnitOperationProvisionOutput) ToUnitOperationProvisionOutput() UnitOperationProvisionOutput {
+	return o
+}
+
+func (o UnitOperationProvisionOutput) ToUnitOperationProvisionOutputWithContext(ctx context.Context) UnitOperationProvisionOutput {
+	return o
+}
+
+func (o UnitOperationProvisionOutput) ToUnitOperationProvisionPtrOutput() UnitOperationProvisionPtrOutput {
+	return o.ToUnitOperationProvisionPtrOutputWithContext(context.Background())
+}
+
+func (o UnitOperationProvisionOutput) ToUnitOperationProvisionPtrOutputWithContext(ctx context.Context) UnitOperationProvisionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitOperationProvision) *UnitOperationProvision {
+		return &v
+	}).(UnitOperationProvisionPtrOutput)
+}
+
+// Set of input variables. Maximum 100. (optional)
+// Structure is documented below.
+func (o UnitOperationProvisionOutput) InputVariables() UnitOperationProvisionInputVariableArrayOutput {
+	return o.ApplyT(func(v UnitOperationProvision) []UnitOperationProvisionInputVariable { return v.InputVariables }).(UnitOperationProvisionInputVariableArrayOutput)
+}
+
+// Reference to the Release object to use for the Unit. (optional).
+func (o UnitOperationProvisionOutput) Release() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationProvision) *string { return v.Release }).(pulumi.StringPtrOutput)
+}
+
+type UnitOperationProvisionPtrOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationProvisionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitOperationProvision)(nil)).Elem()
+}
+
+func (o UnitOperationProvisionPtrOutput) ToUnitOperationProvisionPtrOutput() UnitOperationProvisionPtrOutput {
+	return o
+}
+
+func (o UnitOperationProvisionPtrOutput) ToUnitOperationProvisionPtrOutputWithContext(ctx context.Context) UnitOperationProvisionPtrOutput {
+	return o
+}
+
+func (o UnitOperationProvisionPtrOutput) Elem() UnitOperationProvisionOutput {
+	return o.ApplyT(func(v *UnitOperationProvision) UnitOperationProvision {
+		if v != nil {
+			return *v
+		}
+		var ret UnitOperationProvision
+		return ret
+	}).(UnitOperationProvisionOutput)
+}
+
+// Set of input variables. Maximum 100. (optional)
+// Structure is documented below.
+func (o UnitOperationProvisionPtrOutput) InputVariables() UnitOperationProvisionInputVariableArrayOutput {
+	return o.ApplyT(func(v *UnitOperationProvision) []UnitOperationProvisionInputVariable {
+		if v == nil {
+			return nil
+		}
+		return v.InputVariables
+	}).(UnitOperationProvisionInputVariableArrayOutput)
+}
+
+// Reference to the Release object to use for the Unit. (optional).
+func (o UnitOperationProvisionPtrOutput) Release() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitOperationProvision) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Release
+	}).(pulumi.StringPtrOutput)
+}
+
+type UnitOperationProvisionInputVariable struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type *string `pulumi:"type"`
+	// String encoded value for the variable.
+	Value *string `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable string `pulumi:"variable"`
+}
+
+// UnitOperationProvisionInputVariableInput is an input type that accepts UnitOperationProvisionInputVariableArgs and UnitOperationProvisionInputVariableOutput values.
+// You can construct a concrete instance of `UnitOperationProvisionInputVariableInput` via:
+//
+//	UnitOperationProvisionInputVariableArgs{...}
+type UnitOperationProvisionInputVariableInput interface {
+	pulumi.Input
+
+	ToUnitOperationProvisionInputVariableOutput() UnitOperationProvisionInputVariableOutput
+	ToUnitOperationProvisionInputVariableOutputWithContext(context.Context) UnitOperationProvisionInputVariableOutput
+}
+
+type UnitOperationProvisionInputVariableArgs struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String encoded value for the variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (UnitOperationProvisionInputVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationProvisionInputVariable)(nil)).Elem()
+}
+
+func (i UnitOperationProvisionInputVariableArgs) ToUnitOperationProvisionInputVariableOutput() UnitOperationProvisionInputVariableOutput {
+	return i.ToUnitOperationProvisionInputVariableOutputWithContext(context.Background())
+}
+
+func (i UnitOperationProvisionInputVariableArgs) ToUnitOperationProvisionInputVariableOutputWithContext(ctx context.Context) UnitOperationProvisionInputVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationProvisionInputVariableOutput)
+}
+
+// UnitOperationProvisionInputVariableArrayInput is an input type that accepts UnitOperationProvisionInputVariableArray and UnitOperationProvisionInputVariableArrayOutput values.
+// You can construct a concrete instance of `UnitOperationProvisionInputVariableArrayInput` via:
+//
+//	UnitOperationProvisionInputVariableArray{ UnitOperationProvisionInputVariableArgs{...} }
+type UnitOperationProvisionInputVariableArrayInput interface {
+	pulumi.Input
+
+	ToUnitOperationProvisionInputVariableArrayOutput() UnitOperationProvisionInputVariableArrayOutput
+	ToUnitOperationProvisionInputVariableArrayOutputWithContext(context.Context) UnitOperationProvisionInputVariableArrayOutput
+}
+
+type UnitOperationProvisionInputVariableArray []UnitOperationProvisionInputVariableInput
+
+func (UnitOperationProvisionInputVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOperationProvisionInputVariable)(nil)).Elem()
+}
+
+func (i UnitOperationProvisionInputVariableArray) ToUnitOperationProvisionInputVariableArrayOutput() UnitOperationProvisionInputVariableArrayOutput {
+	return i.ToUnitOperationProvisionInputVariableArrayOutputWithContext(context.Background())
+}
+
+func (i UnitOperationProvisionInputVariableArray) ToUnitOperationProvisionInputVariableArrayOutputWithContext(ctx context.Context) UnitOperationProvisionInputVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationProvisionInputVariableArrayOutput)
+}
+
+type UnitOperationProvisionInputVariableOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationProvisionInputVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationProvisionInputVariable)(nil)).Elem()
+}
+
+func (o UnitOperationProvisionInputVariableOutput) ToUnitOperationProvisionInputVariableOutput() UnitOperationProvisionInputVariableOutput {
+	return o
+}
+
+func (o UnitOperationProvisionInputVariableOutput) ToUnitOperationProvisionInputVariableOutputWithContext(ctx context.Context) UnitOperationProvisionInputVariableOutput {
+	return o
+}
+
+// Name of a supported variable type. Supported types are string, int, bool.
+// Possible values:
+// STRING
+// INT
+// BOOL
+func (o UnitOperationProvisionInputVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationProvisionInputVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// String encoded value for the variable.
+func (o UnitOperationProvisionInputVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationProvisionInputVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Name of the variable from actuation configs.
+func (o UnitOperationProvisionInputVariableOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitOperationProvisionInputVariable) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type UnitOperationProvisionInputVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationProvisionInputVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOperationProvisionInputVariable)(nil)).Elem()
+}
+
+func (o UnitOperationProvisionInputVariableArrayOutput) ToUnitOperationProvisionInputVariableArrayOutput() UnitOperationProvisionInputVariableArrayOutput {
+	return o
+}
+
+func (o UnitOperationProvisionInputVariableArrayOutput) ToUnitOperationProvisionInputVariableArrayOutputWithContext(ctx context.Context) UnitOperationProvisionInputVariableArrayOutput {
+	return o
+}
+
+func (o UnitOperationProvisionInputVariableArrayOutput) Index(i pulumi.IntInput) UnitOperationProvisionInputVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitOperationProvisionInputVariable {
+		return vs[0].([]UnitOperationProvisionInputVariable)[vs[1].(int)]
+	}).(UnitOperationProvisionInputVariableOutput)
+}
+
+type UnitOperationUpgrade struct {
+	// Set of input variables. Maximum 100. (optional)
+	// Structure is documented below.
+	InputVariables []UnitOperationUpgradeInputVariable `pulumi:"inputVariables"`
+	// Reference to the Release object to use for the Unit. (optional).
+	Release *string `pulumi:"release"`
+}
+
+// UnitOperationUpgradeInput is an input type that accepts UnitOperationUpgradeArgs and UnitOperationUpgradeOutput values.
+// You can construct a concrete instance of `UnitOperationUpgradeInput` via:
+//
+//	UnitOperationUpgradeArgs{...}
+type UnitOperationUpgradeInput interface {
+	pulumi.Input
+
+	ToUnitOperationUpgradeOutput() UnitOperationUpgradeOutput
+	ToUnitOperationUpgradeOutputWithContext(context.Context) UnitOperationUpgradeOutput
+}
+
+type UnitOperationUpgradeArgs struct {
+	// Set of input variables. Maximum 100. (optional)
+	// Structure is documented below.
+	InputVariables UnitOperationUpgradeInputVariableArrayInput `pulumi:"inputVariables"`
+	// Reference to the Release object to use for the Unit. (optional).
+	Release pulumi.StringPtrInput `pulumi:"release"`
+}
+
+func (UnitOperationUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationUpgrade)(nil)).Elem()
+}
+
+func (i UnitOperationUpgradeArgs) ToUnitOperationUpgradeOutput() UnitOperationUpgradeOutput {
+	return i.ToUnitOperationUpgradeOutputWithContext(context.Background())
+}
+
+func (i UnitOperationUpgradeArgs) ToUnitOperationUpgradeOutputWithContext(ctx context.Context) UnitOperationUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationUpgradeOutput)
+}
+
+func (i UnitOperationUpgradeArgs) ToUnitOperationUpgradePtrOutput() UnitOperationUpgradePtrOutput {
+	return i.ToUnitOperationUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i UnitOperationUpgradeArgs) ToUnitOperationUpgradePtrOutputWithContext(ctx context.Context) UnitOperationUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationUpgradeOutput).ToUnitOperationUpgradePtrOutputWithContext(ctx)
+}
+
+// UnitOperationUpgradePtrInput is an input type that accepts UnitOperationUpgradeArgs, UnitOperationUpgradePtr and UnitOperationUpgradePtrOutput values.
+// You can construct a concrete instance of `UnitOperationUpgradePtrInput` via:
+//
+//	        UnitOperationUpgradeArgs{...}
+//
+//	or:
+//
+//	        nil
+type UnitOperationUpgradePtrInput interface {
+	pulumi.Input
+
+	ToUnitOperationUpgradePtrOutput() UnitOperationUpgradePtrOutput
+	ToUnitOperationUpgradePtrOutputWithContext(context.Context) UnitOperationUpgradePtrOutput
+}
+
+type unitOperationUpgradePtrType UnitOperationUpgradeArgs
+
+func UnitOperationUpgradePtr(v *UnitOperationUpgradeArgs) UnitOperationUpgradePtrInput {
+	return (*unitOperationUpgradePtrType)(v)
+}
+
+func (*unitOperationUpgradePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitOperationUpgrade)(nil)).Elem()
+}
+
+func (i *unitOperationUpgradePtrType) ToUnitOperationUpgradePtrOutput() UnitOperationUpgradePtrOutput {
+	return i.ToUnitOperationUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i *unitOperationUpgradePtrType) ToUnitOperationUpgradePtrOutputWithContext(ctx context.Context) UnitOperationUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationUpgradePtrOutput)
+}
+
+type UnitOperationUpgradeOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationUpgrade)(nil)).Elem()
+}
+
+func (o UnitOperationUpgradeOutput) ToUnitOperationUpgradeOutput() UnitOperationUpgradeOutput {
+	return o
+}
+
+func (o UnitOperationUpgradeOutput) ToUnitOperationUpgradeOutputWithContext(ctx context.Context) UnitOperationUpgradeOutput {
+	return o
+}
+
+func (o UnitOperationUpgradeOutput) ToUnitOperationUpgradePtrOutput() UnitOperationUpgradePtrOutput {
+	return o.ToUnitOperationUpgradePtrOutputWithContext(context.Background())
+}
+
+func (o UnitOperationUpgradeOutput) ToUnitOperationUpgradePtrOutputWithContext(ctx context.Context) UnitOperationUpgradePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UnitOperationUpgrade) *UnitOperationUpgrade {
+		return &v
+	}).(UnitOperationUpgradePtrOutput)
+}
+
+// Set of input variables. Maximum 100. (optional)
+// Structure is documented below.
+func (o UnitOperationUpgradeOutput) InputVariables() UnitOperationUpgradeInputVariableArrayOutput {
+	return o.ApplyT(func(v UnitOperationUpgrade) []UnitOperationUpgradeInputVariable { return v.InputVariables }).(UnitOperationUpgradeInputVariableArrayOutput)
+}
+
+// Reference to the Release object to use for the Unit. (optional).
+func (o UnitOperationUpgradeOutput) Release() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationUpgrade) *string { return v.Release }).(pulumi.StringPtrOutput)
+}
+
+type UnitOperationUpgradePtrOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationUpgradePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnitOperationUpgrade)(nil)).Elem()
+}
+
+func (o UnitOperationUpgradePtrOutput) ToUnitOperationUpgradePtrOutput() UnitOperationUpgradePtrOutput {
+	return o
+}
+
+func (o UnitOperationUpgradePtrOutput) ToUnitOperationUpgradePtrOutputWithContext(ctx context.Context) UnitOperationUpgradePtrOutput {
+	return o
+}
+
+func (o UnitOperationUpgradePtrOutput) Elem() UnitOperationUpgradeOutput {
+	return o.ApplyT(func(v *UnitOperationUpgrade) UnitOperationUpgrade {
+		if v != nil {
+			return *v
+		}
+		var ret UnitOperationUpgrade
+		return ret
+	}).(UnitOperationUpgradeOutput)
+}
+
+// Set of input variables. Maximum 100. (optional)
+// Structure is documented below.
+func (o UnitOperationUpgradePtrOutput) InputVariables() UnitOperationUpgradeInputVariableArrayOutput {
+	return o.ApplyT(func(v *UnitOperationUpgrade) []UnitOperationUpgradeInputVariable {
+		if v == nil {
+			return nil
+		}
+		return v.InputVariables
+	}).(UnitOperationUpgradeInputVariableArrayOutput)
+}
+
+// Reference to the Release object to use for the Unit. (optional).
+func (o UnitOperationUpgradePtrOutput) Release() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnitOperationUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Release
+	}).(pulumi.StringPtrOutput)
+}
+
+type UnitOperationUpgradeInputVariable struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type *string `pulumi:"type"`
+	// String encoded value for the variable.
+	Value *string `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable string `pulumi:"variable"`
+}
+
+// UnitOperationUpgradeInputVariableInput is an input type that accepts UnitOperationUpgradeInputVariableArgs and UnitOperationUpgradeInputVariableOutput values.
+// You can construct a concrete instance of `UnitOperationUpgradeInputVariableInput` via:
+//
+//	UnitOperationUpgradeInputVariableArgs{...}
+type UnitOperationUpgradeInputVariableInput interface {
+	pulumi.Input
+
+	ToUnitOperationUpgradeInputVariableOutput() UnitOperationUpgradeInputVariableOutput
+	ToUnitOperationUpgradeInputVariableOutputWithContext(context.Context) UnitOperationUpgradeInputVariableOutput
+}
+
+type UnitOperationUpgradeInputVariableArgs struct {
+	// Name of a supported variable type. Supported types are string, int, bool.
+	// Possible values:
+	// STRING
+	// INT
+	// BOOL
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// String encoded value for the variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Name of the variable from actuation configs.
+	Variable pulumi.StringInput `pulumi:"variable"`
+}
+
+func (UnitOperationUpgradeInputVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationUpgradeInputVariable)(nil)).Elem()
+}
+
+func (i UnitOperationUpgradeInputVariableArgs) ToUnitOperationUpgradeInputVariableOutput() UnitOperationUpgradeInputVariableOutput {
+	return i.ToUnitOperationUpgradeInputVariableOutputWithContext(context.Background())
+}
+
+func (i UnitOperationUpgradeInputVariableArgs) ToUnitOperationUpgradeInputVariableOutputWithContext(ctx context.Context) UnitOperationUpgradeInputVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationUpgradeInputVariableOutput)
+}
+
+// UnitOperationUpgradeInputVariableArrayInput is an input type that accepts UnitOperationUpgradeInputVariableArray and UnitOperationUpgradeInputVariableArrayOutput values.
+// You can construct a concrete instance of `UnitOperationUpgradeInputVariableArrayInput` via:
+//
+//	UnitOperationUpgradeInputVariableArray{ UnitOperationUpgradeInputVariableArgs{...} }
+type UnitOperationUpgradeInputVariableArrayInput interface {
+	pulumi.Input
+
+	ToUnitOperationUpgradeInputVariableArrayOutput() UnitOperationUpgradeInputVariableArrayOutput
+	ToUnitOperationUpgradeInputVariableArrayOutputWithContext(context.Context) UnitOperationUpgradeInputVariableArrayOutput
+}
+
+type UnitOperationUpgradeInputVariableArray []UnitOperationUpgradeInputVariableInput
+
+func (UnitOperationUpgradeInputVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOperationUpgradeInputVariable)(nil)).Elem()
+}
+
+func (i UnitOperationUpgradeInputVariableArray) ToUnitOperationUpgradeInputVariableArrayOutput() UnitOperationUpgradeInputVariableArrayOutput {
+	return i.ToUnitOperationUpgradeInputVariableArrayOutputWithContext(context.Background())
+}
+
+func (i UnitOperationUpgradeInputVariableArray) ToUnitOperationUpgradeInputVariableArrayOutputWithContext(ctx context.Context) UnitOperationUpgradeInputVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnitOperationUpgradeInputVariableArrayOutput)
+}
+
+type UnitOperationUpgradeInputVariableOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationUpgradeInputVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnitOperationUpgradeInputVariable)(nil)).Elem()
+}
+
+func (o UnitOperationUpgradeInputVariableOutput) ToUnitOperationUpgradeInputVariableOutput() UnitOperationUpgradeInputVariableOutput {
+	return o
+}
+
+func (o UnitOperationUpgradeInputVariableOutput) ToUnitOperationUpgradeInputVariableOutputWithContext(ctx context.Context) UnitOperationUpgradeInputVariableOutput {
+	return o
+}
+
+// Name of a supported variable type. Supported types are string, int, bool.
+// Possible values:
+// STRING
+// INT
+// BOOL
+func (o UnitOperationUpgradeInputVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationUpgradeInputVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// String encoded value for the variable.
+func (o UnitOperationUpgradeInputVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnitOperationUpgradeInputVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Name of the variable from actuation configs.
+func (o UnitOperationUpgradeInputVariableOutput) Variable() pulumi.StringOutput {
+	return o.ApplyT(func(v UnitOperationUpgradeInputVariable) string { return v.Variable }).(pulumi.StringOutput)
+}
+
+type UnitOperationUpgradeInputVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (UnitOperationUpgradeInputVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UnitOperationUpgradeInputVariable)(nil)).Elem()
+}
+
+func (o UnitOperationUpgradeInputVariableArrayOutput) ToUnitOperationUpgradeInputVariableArrayOutput() UnitOperationUpgradeInputVariableArrayOutput {
+	return o
+}
+
+func (o UnitOperationUpgradeInputVariableArrayOutput) ToUnitOperationUpgradeInputVariableArrayOutputWithContext(ctx context.Context) UnitOperationUpgradeInputVariableArrayOutput {
+	return o
+}
+
+func (o UnitOperationUpgradeInputVariableArrayOutput) Index(i pulumi.IntInput) UnitOperationUpgradeInputVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UnitOperationUpgradeInputVariable {
+		return vs[0].([]UnitOperationUpgradeInputVariable)[vs[1].(int)]
+	}).(UnitOperationUpgradeInputVariableOutput)
+}
+
 type UnitOutputVariable struct {
 	// Name of a supported variable type. Supported types are string, int, bool.
 	// Possible values:
@@ -2785,6 +3652,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitKindOutputVariableMappingToPtrInput)(nil)).Elem(), UnitKindOutputVariableMappingToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitMaintenanceInput)(nil)).Elem(), UnitMaintenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitMaintenancePtrInput)(nil)).Elem(), UnitMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationConditionInput)(nil)).Elem(), UnitOperationConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationConditionArrayInput)(nil)).Elem(), UnitOperationConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationDeprovisionInput)(nil)).Elem(), UnitOperationDeprovisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationDeprovisionPtrInput)(nil)).Elem(), UnitOperationDeprovisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationProvisionInput)(nil)).Elem(), UnitOperationProvisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationProvisionPtrInput)(nil)).Elem(), UnitOperationProvisionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationProvisionInputVariableInput)(nil)).Elem(), UnitOperationProvisionInputVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationProvisionInputVariableArrayInput)(nil)).Elem(), UnitOperationProvisionInputVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationUpgradeInput)(nil)).Elem(), UnitOperationUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationUpgradePtrInput)(nil)).Elem(), UnitOperationUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationUpgradeInputVariableInput)(nil)).Elem(), UnitOperationUpgradeInputVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UnitOperationUpgradeInputVariableArrayInput)(nil)).Elem(), UnitOperationUpgradeInputVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitOutputVariableInput)(nil)).Elem(), UnitOutputVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UnitOutputVariableArrayInput)(nil)).Elem(), UnitOutputVariableArray{})
 	pulumi.RegisterOutputType(ReleaseBlueprintOutput{})
@@ -2825,6 +3704,18 @@ func init() {
 	pulumi.RegisterOutputType(UnitKindOutputVariableMappingToPtrOutput{})
 	pulumi.RegisterOutputType(UnitMaintenanceOutput{})
 	pulumi.RegisterOutputType(UnitMaintenancePtrOutput{})
+	pulumi.RegisterOutputType(UnitOperationConditionOutput{})
+	pulumi.RegisterOutputType(UnitOperationConditionArrayOutput{})
+	pulumi.RegisterOutputType(UnitOperationDeprovisionOutput{})
+	pulumi.RegisterOutputType(UnitOperationDeprovisionPtrOutput{})
+	pulumi.RegisterOutputType(UnitOperationProvisionOutput{})
+	pulumi.RegisterOutputType(UnitOperationProvisionPtrOutput{})
+	pulumi.RegisterOutputType(UnitOperationProvisionInputVariableOutput{})
+	pulumi.RegisterOutputType(UnitOperationProvisionInputVariableArrayOutput{})
+	pulumi.RegisterOutputType(UnitOperationUpgradeOutput{})
+	pulumi.RegisterOutputType(UnitOperationUpgradePtrOutput{})
+	pulumi.RegisterOutputType(UnitOperationUpgradeInputVariableOutput{})
+	pulumi.RegisterOutputType(UnitOperationUpgradeInputVariableArrayOutput{})
 	pulumi.RegisterOutputType(UnitOutputVariableOutput{})
 	pulumi.RegisterOutputType(UnitOutputVariableArrayOutput{})
 }

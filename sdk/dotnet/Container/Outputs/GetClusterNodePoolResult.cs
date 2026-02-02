@@ -58,6 +58,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
+        /// Node drain configuration for this NodePool.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeDrainConfigResult> NodeDrainConfigs;
+        /// <summary>
         /// The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level NodeLocations will be used.
         /// </summary>
         public readonly ImmutableArray<string> NodeLocations;
@@ -99,6 +103,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int nodeCount,
 
+            ImmutableArray<Outputs.GetClusterNodePoolNodeDrainConfigResult> nodeDrainConfigs,
+
             ImmutableArray<string> nodeLocations,
 
             ImmutableArray<Outputs.GetClusterNodePoolPlacementPolicyResult> placementPolicies,
@@ -120,6 +126,7 @@ namespace Pulumi.Gcp.Container.Outputs
             NetworkConfigs = networkConfigs;
             NodeConfigs = nodeConfigs;
             NodeCount = nodeCount;
+            NodeDrainConfigs = nodeDrainConfigs;
             NodeLocations = nodeLocations;
             PlacementPolicies = placementPolicies;
             QueuedProvisionings = queuedProvisionings;

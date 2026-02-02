@@ -31,6 +31,7 @@ import com.pulumi.gcp.container.outputs.ClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.ClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicy;
+import com.pulumi.gcp.container.outputs.ClusterManagedOpentelemetryConfig;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuth;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuthorizedNetworksConfig;
 import com.pulumi.gcp.container.outputs.ClusterMeshCertificates;
@@ -963,6 +964,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterMaintenancePolicy>> maintenancePolicy() {
         return Codegen.optional(this.maintenancePolicy);
+    }
+    /**
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * 
+     */
+    @Export(name="managedOpentelemetryConfig", refs={ClusterManagedOpentelemetryConfig.class}, tree="[0]")
+    private Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig;
+
+    /**
+     * @return Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * 
+     */
+    public Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig() {
+        return this.managedOpentelemetryConfig;
     }
     /**
      * The authentication information for accessing the

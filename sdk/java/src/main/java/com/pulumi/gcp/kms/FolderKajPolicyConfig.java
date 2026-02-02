@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create Folder in GCP Organization.
  *         var kajFolder = new Folder("kajFolder", FolderArgs.builder()
- *             .displayName("my-folder")
+ *             .displayName("folder-kajc")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

@@ -51,6 +51,18 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        [Input("replicaLocations")]
+        private InputList<string>? _replicaLocations;
+
+        /// <summary>
+        /// List of regions where the subscriber wants dataset replicas.
+        /// </summary>
+        public InputList<string> ReplicaLocations
+        {
+            get => _replicaLocations ?? (_replicaLocations = new InputList<string>());
+            set => _replicaLocations = value;
+        }
+
         public ListingSubscriptionDestinationDatasetArgs()
         {
         }

@@ -108,6 +108,7 @@ export interface GetClusterResult {
     readonly loggingConfigs: outputs.container.GetClusterLoggingConfig[];
     readonly loggingService: string;
     readonly maintenancePolicies: outputs.container.GetClusterMaintenancePolicy[];
+    readonly managedOpentelemetryConfigs: outputs.container.GetClusterManagedOpentelemetryConfig[];
     readonly masterAuthorizedNetworksConfigs: outputs.container.GetClusterMasterAuthorizedNetworksConfig[];
     readonly masterAuths: outputs.container.GetClusterMasterAuth[];
     readonly masterVersion: string;

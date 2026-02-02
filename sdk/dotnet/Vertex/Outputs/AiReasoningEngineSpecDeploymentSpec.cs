@@ -37,6 +37,11 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly int? MinInstances;
         /// <summary>
+        /// Optional. Configuration for PSC-Interface.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig? PscInterfaceConfig;
+        /// <summary>
         /// Optional. Resource limits for each container.
         /// Only 'cpu' and 'memory' keys are supported.
         /// Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -67,6 +72,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             int? minInstances,
 
+            Outputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig? pscInterfaceConfig,
+
             ImmutableDictionary<string, string>? resourceLimits,
 
             ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv> secretEnvs)
@@ -75,6 +82,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
             Envs = envs;
             MaxInstances = maxInstances;
             MinInstances = minInstances;
+            PscInterfaceConfig = pscInterfaceConfig;
             ResourceLimits = resourceLimits;
             SecretEnvs = secretEnvs;
         }

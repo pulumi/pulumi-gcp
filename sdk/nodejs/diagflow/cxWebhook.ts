@@ -227,6 +227,81 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dialogflowcx Webhook With Service Account Auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "global",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "it",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const webhookUseServiceAccount = new gcp.diagflow.CxWebhook("webhook_use_service_account", {
+ *     parent: agent.id,
+ *     displayName: "MyWebhook",
+ *     genericWebService: {
+ *         uri: "https://example.googleapis.com",
+ *         webhookType: "STANDARD",
+ *         serviceAccountAuthConfig: {
+ *             serviceAccount: "my@service-account.com",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Dialogflowcx Webhook Service Directory With Service Account Auth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "us-central1",
+ *     defaultLanguageCode: "en",
+ *     supportedLanguageCodes: [
+ *         "it",
+ *         "de",
+ *         "es",
+ *     ],
+ *     timeZone: "America/New_York",
+ *     description: "Example description.",
+ *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+ *     enableStackdriverLogging: true,
+ *     enableSpellCorrection: true,
+ *     speechToTextSettings: {
+ *         enableSpeechAdaptation: true,
+ *     },
+ * });
+ * const webhookUseServiceAccount = new gcp.diagflow.CxWebhook("webhook_use_service_account", {
+ *     parent: agent.id,
+ *     displayName: "MyWebhook",
+ *     serviceDirectory: {
+ *         service: "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+ *         genericWebService: {
+ *             uri: "https://example.googleapis.com",
+ *             webhookType: "STANDARD",
+ *             serviceAccountAuthConfig: {
+ *                 serviceAccount: "my@service-account.com",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

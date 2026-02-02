@@ -1443,7 +1443,7 @@ public final class OrganizationsFunctions {
     }
     /**
      * Retrieve information about a set of folders based on a parent ID. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1492,7 +1492,7 @@ public final class OrganizationsFunctions {
     }
     /**
      * Retrieve information about a set of folders based on a parent ID. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1541,7 +1541,7 @@ public final class OrganizationsFunctions {
     }
     /**
      * Retrieve information about a set of folders based on a parent ID. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1590,7 +1590,7 @@ public final class OrganizationsFunctions {
     }
     /**
      * Retrieve information about a set of folders based on a parent ID. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1639,7 +1639,7 @@ public final class OrganizationsFunctions {
     }
     /**
      * Retrieve information about a set of folders based on a parent ID. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
      * for more details.
      * 
      * ## Example Usage
@@ -2610,7 +2610,7 @@ public final class OrganizationsFunctions {
     /**
      * Use this data source to get project details.
      * For more information see
-     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
      * 
@@ -2652,7 +2652,7 @@ public final class OrganizationsFunctions {
     /**
      * Use this data source to get project details.
      * For more information see
-     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
      * 
@@ -2694,7 +2694,7 @@ public final class OrganizationsFunctions {
     /**
      * Use this data source to get project details.
      * For more information see
-     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
      * 
@@ -2736,7 +2736,7 @@ public final class OrganizationsFunctions {
     /**
      * Use this data source to get project details.
      * For more information see
-     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
      * 
@@ -2778,7 +2778,7 @@ public final class OrganizationsFunctions {
     /**
      * Use this data source to get project details.
      * For more information see
-     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
      * 
@@ -2820,7 +2820,7 @@ public final class OrganizationsFunctions {
     /**
      * Use this data source to get project details.
      * For more information see
-     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
      * 
@@ -2862,7 +2862,7 @@ public final class OrganizationsFunctions {
     /**
      * Use this data source to get project details.
      * For more information see
-     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
      * 
      * ## Example Usage
      * 
@@ -2903,8 +2903,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Gets a list of all organizations.
-     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
      * 
      * ## Example Usage
      * 
@@ -2945,8 +2945,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Gets a list of all organizations.
-     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
      * 
      * ## Example Usage
      * 
@@ -2987,8 +2987,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Gets a list of all organizations.
-     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
      * 
      * ## Example Usage
      * 
@@ -3029,8 +3029,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Gets a list of all organizations.
-     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
      * 
      * ## Example Usage
      * 
@@ -3071,8 +3071,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Gets a list of all organizations.
-     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
      * 
      * ## Example Usage
      * 
@@ -3113,8 +3113,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Gets a list of all organizations.
-     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
      * 
      * ## Example Usage
      * 
@@ -3155,8 +3155,8 @@ public final class OrganizationsFunctions {
     }
     /**
      * Gets a list of all organizations.
-     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
      * 
      * ## Example Usage
      * 

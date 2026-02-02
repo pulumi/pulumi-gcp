@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The accelerator network profile to use for this node pool.
+        /// </summary>
+        [Input("acceleratorNetworkProfile")]
+        public Input<string>? AcceleratorNetworkProfile { get; set; }
+
         [Input("additionalNodeNetworkConfigs")]
         private InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>? _additionalNodeNetworkConfigs;
 

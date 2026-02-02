@@ -29,6 +29,13 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
      */
     private @Nullable String description;
     /**
+     * @return (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     * 
+     */
+    private @Nullable Boolean enableEnhancedIpv4Allocation;
+    /**
      * @return The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
      */
@@ -103,6 +110,15 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     * 
+     */
+    public Optional<Boolean> enableEnhancedIpv4Allocation() {
+        return Optional.ofNullable(this.enableEnhancedIpv4Allocation);
     }
     /**
      * @return The IP address range, in CIDR format, represented by this public delegated prefix.
@@ -184,6 +200,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
         private @Nullable Integer allocatablePrefixLength;
         private @Nullable String delegateeProject;
         private @Nullable String description;
+        private @Nullable Boolean enableEnhancedIpv4Allocation;
         private @Nullable String ipCidrRange;
         private @Nullable String ipv6AccessType;
         private @Nullable Boolean isAddress;
@@ -197,6 +214,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
     	      this.allocatablePrefixLength = defaults.allocatablePrefixLength;
     	      this.delegateeProject = defaults.delegateeProject;
     	      this.description = defaults.description;
+    	      this.enableEnhancedIpv4Allocation = defaults.enableEnhancedIpv4Allocation;
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.ipv6AccessType = defaults.ipv6AccessType;
     	      this.isAddress = defaults.isAddress;
@@ -222,6 +240,12 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableEnhancedIpv4Allocation(@Nullable Boolean enableEnhancedIpv4Allocation) {
+
+            this.enableEnhancedIpv4Allocation = enableEnhancedIpv4Allocation;
             return this;
         }
         @CustomType.Setter
@@ -271,6 +295,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefix {
             _resultValue.allocatablePrefixLength = allocatablePrefixLength;
             _resultValue.delegateeProject = delegateeProject;
             _resultValue.description = description;
+            _resultValue.enableEnhancedIpv4Allocation = enableEnhancedIpv4Allocation;
             _resultValue.ipCidrRange = ipCidrRange;
             _resultValue.ipv6AccessType = ipv6AccessType;
             _resultValue.isAddress = isAddress;

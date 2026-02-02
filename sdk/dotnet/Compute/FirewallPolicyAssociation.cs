@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var folder = new Gcp.Organizations.Folder("folder", new()
     ///     {
-    ///         DisplayName = "my-folder",
+    ///         DisplayName = "folder-fpa",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

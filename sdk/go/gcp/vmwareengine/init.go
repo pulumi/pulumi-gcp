@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:vmwareengine/cluster:Cluster":
 		r = &Cluster{}
+	case "gcp:vmwareengine/datastore:Datastore":
+		r = &Datastore{}
 	case "gcp:vmwareengine/externalAccessRule:ExternalAccessRule":
 		r = &ExternalAccessRule{}
 	case "gcp:vmwareengine/externalAddress:ExternalAddress":
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vmwareengine/cluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vmwareengine/datastore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

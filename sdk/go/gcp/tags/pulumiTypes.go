@@ -666,6 +666,8 @@ func (o TagValueIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type GetTagKeysKey struct {
+	// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+	AllowedValuesRegex string `pulumi:"allowedValuesRegex"`
 	// Creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime string `pulumi:"createTime"`
@@ -700,6 +702,8 @@ type GetTagKeysKeyInput interface {
 }
 
 type GetTagKeysKeyArgs struct {
+	// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+	AllowedValuesRegex pulumi.StringInput `pulumi:"allowedValuesRegex"`
 	// Creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
@@ -771,6 +775,11 @@ func (o GetTagKeysKeyOutput) ToGetTagKeysKeyOutput() GetTagKeysKeyOutput {
 
 func (o GetTagKeysKeyOutput) ToGetTagKeysKeyOutputWithContext(ctx context.Context) GetTagKeysKeyOutput {
 	return o
+}
+
+// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+func (o GetTagKeysKeyOutput) AllowedValuesRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagKeysKey) string { return v.AllowedValuesRegex }).(pulumi.StringOutput)
 }
 
 // Creation time.

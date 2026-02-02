@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MembershipRbacRoleBinding{}
 	case "gcp:gkehub/namespace:Namespace":
 		r = &Namespace{}
+	case "gcp:gkehub/rolloutSequence:RolloutSequence":
+		r = &RolloutSequence{}
 	case "gcp:gkehub/scope:Scope":
 		r = &Scope{}
 	case "gcp:gkehub/scopeIamBinding:ScopeIamBinding":
@@ -133,6 +135,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkehub/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/rolloutSequence",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

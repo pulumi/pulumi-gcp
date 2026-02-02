@@ -245,6 +245,12 @@ namespace Pulumi.Gcp.Container
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
+        /// The node drain configuration of the pool. Structure is documented below.
+        /// </summary>
+        [Output("nodeDrainConfigs")]
+        public Output<ImmutableArray<Outputs.NodePoolNodeDrainConfig>> NodeDrainConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// The list of zones in which the node pool's nodes should be located. Nodes must
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -435,6 +441,18 @@ namespace Pulumi.Gcp.Container
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
+        [Input("nodeDrainConfigs")]
+        private InputList<Inputs.NodePoolNodeDrainConfigArgs>? _nodeDrainConfigs;
+
+        /// <summary>
+        /// The node drain configuration of the pool. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodePoolNodeDrainConfigArgs> NodeDrainConfigs
+        {
+            get => _nodeDrainConfigs ?? (_nodeDrainConfigs = new InputList<Inputs.NodePoolNodeDrainConfigArgs>());
+            set => _nodeDrainConfigs = value;
+        }
+
         [Input("nodeLocations")]
         private InputList<string>? _nodeLocations;
 
@@ -614,6 +632,18 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
+
+        [Input("nodeDrainConfigs")]
+        private InputList<Inputs.NodePoolNodeDrainConfigGetArgs>? _nodeDrainConfigs;
+
+        /// <summary>
+        /// The node drain configuration of the pool. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodePoolNodeDrainConfigGetArgs> NodeDrainConfigs
+        {
+            get => _nodeDrainConfigs ?? (_nodeDrainConfigs = new InputList<Inputs.NodePoolNodeDrainConfigGetArgs>());
+            set => _nodeDrainConfigs = value;
+        }
 
         [Input("nodeLocations")]
         private InputList<string>? _nodeLocations;

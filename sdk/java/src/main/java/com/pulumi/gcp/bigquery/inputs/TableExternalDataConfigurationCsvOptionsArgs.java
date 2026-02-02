@@ -130,6 +130,31 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
         return Optional.ofNullable(this.skipLeadingRows);
     }
 
+    /**
+     * Specifies how source columns are matched
+     * to the table schema. Valid values are `POSITION` (columns matched by position,
+     * assuming same ordering as the schema) or `NAME` (columns matched by name,
+     * reads the header row and reorders columns to align with schema field names).
+     * If not set, a default is chosen based on how the schema is provided: when
+     * autodetect is used, columns are matched by name; otherwise, by position.
+     * 
+     */
+    @Import(name="sourceColumnMatch")
+    private @Nullable Output<String> sourceColumnMatch;
+
+    /**
+     * @return Specifies how source columns are matched
+     * to the table schema. Valid values are `POSITION` (columns matched by position,
+     * assuming same ordering as the schema) or `NAME` (columns matched by name,
+     * reads the header row and reorders columns to align with schema field names).
+     * If not set, a default is chosen based on how the schema is provided: when
+     * autodetect is used, columns are matched by name; otherwise, by position.
+     * 
+     */
+    public Optional<Output<String>> sourceColumnMatch() {
+        return Optional.ofNullable(this.sourceColumnMatch);
+    }
+
     private TableExternalDataConfigurationCsvOptionsArgs() {}
 
     private TableExternalDataConfigurationCsvOptionsArgs(TableExternalDataConfigurationCsvOptionsArgs $) {
@@ -139,6 +164,7 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
         this.fieldDelimiter = $.fieldDelimiter;
         this.quote = $.quote;
         this.skipLeadingRows = $.skipLeadingRows;
+        this.sourceColumnMatch = $.sourceColumnMatch;
     }
 
     public static Builder builder() {
@@ -305,6 +331,37 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
          */
         public Builder skipLeadingRows(Integer skipLeadingRows) {
             return skipLeadingRows(Output.of(skipLeadingRows));
+        }
+
+        /**
+         * @param sourceColumnMatch Specifies how source columns are matched
+         * to the table schema. Valid values are `POSITION` (columns matched by position,
+         * assuming same ordering as the schema) or `NAME` (columns matched by name,
+         * reads the header row and reorders columns to align with schema field names).
+         * If not set, a default is chosen based on how the schema is provided: when
+         * autodetect is used, columns are matched by name; otherwise, by position.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceColumnMatch(@Nullable Output<String> sourceColumnMatch) {
+            $.sourceColumnMatch = sourceColumnMatch;
+            return this;
+        }
+
+        /**
+         * @param sourceColumnMatch Specifies how source columns are matched
+         * to the table schema. Valid values are `POSITION` (columns matched by position,
+         * assuming same ordering as the schema) or `NAME` (columns matched by name,
+         * reads the header row and reorders columns to align with schema field names).
+         * If not set, a default is chosen based on how the schema is provided: when
+         * autodetect is used, columns are matched by name; otherwise, by position.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceColumnMatch(String sourceColumnMatch) {
+            return sourceColumnMatch(Output.of(sourceColumnMatch));
         }
 
         public TableExternalDataConfigurationCsvOptionsArgs build() {

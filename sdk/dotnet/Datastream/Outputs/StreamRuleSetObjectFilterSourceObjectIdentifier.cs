@@ -42,6 +42,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
+        public readonly Outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier? SpannerIdentifier;
+        /// <summary>
+        /// A nested object resource.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier? SqlServerIdentifier;
 
         [OutputConstructor]
@@ -56,6 +61,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             Outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier? salesforceIdentifier,
 
+            Outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier? spannerIdentifier,
+
             Outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier? sqlServerIdentifier)
         {
             MongodbIdentifier = mongodbIdentifier;
@@ -63,6 +70,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
             OracleIdentifier = oracleIdentifier;
             PostgresqlIdentifier = postgresqlIdentifier;
             SalesforceIdentifier = salesforceIdentifier;
+            SpannerIdentifier = spannerIdentifier;
             SqlServerIdentifier = sqlServerIdentifier;
         }
     }

@@ -109,6 +109,13 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         }
 
         /// <summary>
+        /// Configuration for authentication using a service account.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceAccountAuthConfig")]
+        public Input<Inputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs>? ServiceAccountAuthConfig { get; set; }
+
+        /// <summary>
         /// Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
         /// The generated token is sent in the Authorization header.

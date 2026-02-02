@@ -5,7 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.inputs.InterconnectAttachmentL2ForwardingArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -299,6 +299,23 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * L2 Interconnect Attachment related configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="l2Forwarding")
+    private @Nullable Output<InterconnectAttachmentL2ForwardingArgs> l2Forwarding;
+
+    /**
+     * @return L2 Interconnect Attachment related configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InterconnectAttachmentL2ForwardingArgs>> l2Forwarding() {
+        return Optional.ofNullable(this.l2Forwarding);
+    }
+
+    /**
      * Labels for this resource. These can only be added or modified by the setLabels
      * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
      * 
@@ -367,6 +384,8 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
+     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
+     * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
@@ -374,6 +393,8 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     /**
      * @return The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
+     * 
+     * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
      * 
      */
     public Optional<Output<String>> project() {
@@ -402,8 +423,8 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
      * Cloud Router is configured.
      * 
      */
-    @Import(name="router", required=true)
-    private Output<String> router;
+    @Import(name="router")
+    private @Nullable Output<String> router;
 
     /**
      * @return URL of the cloud router to be used for dynamic routing. This router must be in
@@ -412,8 +433,8 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
      * Cloud Router is configured.
      * 
      */
-    public Output<String> router() {
-        return this.router;
+    public Optional<Output<String>> router() {
+        return Optional.ofNullable(this.router);
     }
 
     /**
@@ -467,7 +488,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
-     * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+     * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
      * 
      */
     @Import(name="type")
@@ -476,7 +497,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     /**
      * @return The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
-     * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+     * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -515,6 +536,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         this.encryption = $.encryption;
         this.interconnect = $.interconnect;
         this.ipsecInternalAddresses = $.ipsecInternalAddresses;
+        this.l2Forwarding = $.l2Forwarding;
         this.labels = $.labels;
         this.mtu = $.mtu;
         this.name = $.name;
@@ -936,6 +958,29 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param l2Forwarding L2 Interconnect Attachment related configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder l2Forwarding(@Nullable Output<InterconnectAttachmentL2ForwardingArgs> l2Forwarding) {
+            $.l2Forwarding = l2Forwarding;
+            return this;
+        }
+
+        /**
+         * @param l2Forwarding L2 Interconnect Attachment related configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder l2Forwarding(InterconnectAttachmentL2ForwardingArgs l2Forwarding) {
+            return l2Forwarding(Output.of(l2Forwarding));
+        }
+
+        /**
          * @param labels Labels for this resource. These can only be added or modified by the setLabels
          * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
          * 
@@ -1022,6 +1067,8 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
+         * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
+         * 
          * @return builder
          * 
          */
@@ -1033,6 +1080,8 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
+         * 
+         * &lt;a name=&#34;nestedL2Forwarding&#34;&gt;&lt;/a&gt;The `l2Forwarding` block supports:
          * 
          * @return builder
          * 
@@ -1071,7 +1120,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder router(Output<String> router) {
+        public Builder router(@Nullable Output<String> router) {
             $.router = router;
             return this;
         }
@@ -1152,7 +1201,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         /**
          * @param type The type of InterconnectAttachment you wish to create. Defaults to
          * DEDICATED.
-         * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+         * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
          * 
          * @return builder
          * 
@@ -1165,7 +1214,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         /**
          * @param type The type of InterconnectAttachment you wish to create. Defaults to
          * DEDICATED.
-         * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
+         * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`, `L2_DEDICATED`.
          * 
          * @return builder
          * 
@@ -1198,9 +1247,6 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         }
 
         public InterconnectAttachmentArgs build() {
-            if ($.router == null) {
-                throw new MissingRequiredPropertyException("InterconnectAttachmentArgs", "router");
-            }
             return $;
         }
     }

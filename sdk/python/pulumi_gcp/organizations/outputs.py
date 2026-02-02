@@ -550,7 +550,7 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
                  log_type: _builtins.str,
                  exempted_members: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str log_type: Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+        :param _builtins.str log_type: Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
         :param Sequence[_builtins.str] exempted_members: Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
         """
         pulumi.set(__self__, "log_type", log_type)
@@ -561,7 +561,7 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
     @pulumi.getter(name="logType")
     def log_type(self) -> _builtins.str:
         """
-        Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+        Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
         """
         return pulumi.get(self, "log_type")
 

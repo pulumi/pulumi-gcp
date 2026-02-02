@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingBigqueryDatasetEffectiveReplica;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingBigqueryDatasetSelectedResource;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,19 @@ public final class ListingBigqueryDataset {
      */
     private String dataset;
     /**
+     * @return (Output, Beta)
+     * Server owned effective state of replicas. Contains both primary and secondary replicas.
+     * Each replica includes a system-computed (output-only) state and primary designation.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ListingBigqueryDatasetEffectiveReplica> effectiveReplicas;
+    /**
+     * @return A list of regions where the publisher has created shared dataset replicas.
+     * 
+     */
+    private @Nullable List<String> replicaLocations;
+    /**
      * @return Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
      * Structure is documented below.
      * 
@@ -32,6 +46,23 @@ public final class ListingBigqueryDataset {
      */
     public String dataset() {
         return this.dataset;
+    }
+    /**
+     * @return (Output, Beta)
+     * Server owned effective state of replicas. Contains both primary and secondary replicas.
+     * Each replica includes a system-computed (output-only) state and primary designation.
+     * Structure is documented below.
+     * 
+     */
+    public List<ListingBigqueryDatasetEffectiveReplica> effectiveReplicas() {
+        return this.effectiveReplicas == null ? List.of() : this.effectiveReplicas;
+    }
+    /**
+     * @return A list of regions where the publisher has created shared dataset replicas.
+     * 
+     */
+    public List<String> replicaLocations() {
+        return this.replicaLocations == null ? List.of() : this.replicaLocations;
     }
     /**
      * @return Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
@@ -52,11 +83,15 @@ public final class ListingBigqueryDataset {
     @CustomType.Builder
     public static final class Builder {
         private String dataset;
+        private @Nullable List<ListingBigqueryDatasetEffectiveReplica> effectiveReplicas;
+        private @Nullable List<String> replicaLocations;
         private @Nullable List<ListingBigqueryDatasetSelectedResource> selectedResources;
         public Builder() {}
         public Builder(ListingBigqueryDataset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataset = defaults.dataset;
+    	      this.effectiveReplicas = defaults.effectiveReplicas;
+    	      this.replicaLocations = defaults.replicaLocations;
     	      this.selectedResources = defaults.selectedResources;
         }
 
@@ -67,6 +102,24 @@ public final class ListingBigqueryDataset {
             }
             this.dataset = dataset;
             return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveReplicas(@Nullable List<ListingBigqueryDatasetEffectiveReplica> effectiveReplicas) {
+
+            this.effectiveReplicas = effectiveReplicas;
+            return this;
+        }
+        public Builder effectiveReplicas(ListingBigqueryDatasetEffectiveReplica... effectiveReplicas) {
+            return effectiveReplicas(List.of(effectiveReplicas));
+        }
+        @CustomType.Setter
+        public Builder replicaLocations(@Nullable List<String> replicaLocations) {
+
+            this.replicaLocations = replicaLocations;
+            return this;
+        }
+        public Builder replicaLocations(String... replicaLocations) {
+            return replicaLocations(List.of(replicaLocations));
         }
         @CustomType.Setter
         public Builder selectedResources(@Nullable List<ListingBigqueryDatasetSelectedResource> selectedResources) {
@@ -80,6 +133,8 @@ public final class ListingBigqueryDataset {
         public ListingBigqueryDataset build() {
             final var _resultValue = new ListingBigqueryDataset();
             _resultValue.dataset = dataset;
+            _resultValue.effectiveReplicas = effectiveReplicas;
+            _resultValue.replicaLocations = replicaLocations;
             _resultValue.selectedResources = selectedResources;
             return _resultValue;
         }

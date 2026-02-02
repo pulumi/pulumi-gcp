@@ -22,6 +22,7 @@ class AddressArgs:
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  address_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -43,6 +44,14 @@ class AddressArgs:
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               The PDP must support enhanced IPv4 allocations.
+               Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[_builtins.str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
@@ -95,6 +104,8 @@ class AddressArgs:
             pulumi.set(__self__, "address_type", address_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ip_collection is not None:
+            pulumi.set(__self__, "ip_collection", ip_collection)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_endpoint_type is not None:
@@ -158,6 +169,25 @@ class AddressArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipCollection")
+    def ip_collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        The PDP must support enhanced IPv4 allocations.
+        Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+        Full resource URL, as in:
+        * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        Partial URL, as in:
+        * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+        * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        """
+        return pulumi.get(self, "ip_collection")
+
+    @ip_collection.setter
+    def ip_collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
@@ -334,6 +364,7 @@ class _AddressState:
                  creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -361,6 +392,14 @@ class _AddressState:
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               The PDP must support enhanced IPv4 allocations.
+               Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[_builtins.str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
@@ -423,6 +462,8 @@ class _AddressState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if ip_collection is not None:
+            pulumi.set(__self__, "ip_collection", ip_collection)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_endpoint_type is not None:
@@ -518,6 +559,25 @@ class _AddressState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipCollection")
+    def ip_collection(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        The PDP must support enhanced IPv4 allocations.
+        Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+        Full resource URL, as in:
+        * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        Partial URL, as in:
+        * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+        * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        """
+        return pulumi.get(self, "ip_collection")
+
+    @ip_collection.setter
+    def ip_collection(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_collection", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
@@ -745,6 +805,7 @@ class Address(pulumi.CustomResource):
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  address_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -861,7 +922,6 @@ class Address(pulumi.CustomResource):
             prefix_length=29,
             network=network.self_link)
         ```
-
         ## Import
 
         Address can be imported using any of these accepted formats:
@@ -902,6 +962,14 @@ class Address(pulumi.CustomResource):
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               The PDP must support enhanced IPv4 allocations.
+               Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[_builtins.str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
@@ -1058,7 +1126,6 @@ class Address(pulumi.CustomResource):
             prefix_length=29,
             network=network.self_link)
         ```
-
         ## Import
 
         Address can be imported using any of these accepted formats:
@@ -1107,6 +1174,7 @@ class Address(pulumi.CustomResource):
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  address_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1130,6 +1198,7 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["address"] = address
             __props__.__dict__["address_type"] = address_type
             __props__.__dict__["description"] = description
+            __props__.__dict__["ip_collection"] = ip_collection
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["ipv6_endpoint_type"] = ipv6_endpoint_type
             __props__.__dict__["labels"] = labels
@@ -1164,6 +1233,7 @@ class Address(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ip_collection: Optional[pulumi.Input[_builtins.str]] = None,
             ip_version: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
             label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1196,6 +1266,14 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               The PDP must support enhanced IPv4 allocations.
+               Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+               Full resource URL, as in:
+               * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+               Partial URL, as in:
+               * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+               * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
         :param pulumi.Input[_builtins.str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[_builtins.str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
@@ -1257,6 +1335,7 @@ class Address(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["ip_collection"] = ip_collection
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["ipv6_endpoint_type"] = ipv6_endpoint_type
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -1318,6 +1397,21 @@ class Address(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="ipCollection")
+    def ip_collection(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        The PDP must support enhanced IPv4 allocations.
+        Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+        Full resource URL, as in:
+        * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        Partial URL, as in:
+        * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+        * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        """
+        return pulumi.get(self, "ip_collection")
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")

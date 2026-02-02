@@ -73,6 +73,35 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+     * The PDP must support enhanced IPv4 allocations.
+     * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     * 
+     */
+    @Import(name="ipCollection")
+    private @Nullable Output<String> ipCollection;
+
+    /**
+     * @return Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+     * The PDP must support enhanced IPv4 allocations.
+     * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+     * Full resource URL, as in:
+     * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     *   Partial URL, as in:
+     * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+     * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+     * 
+     */
+    public Optional<Output<String>> ipCollection() {
+        return Optional.ofNullable(this.ipCollection);
+    }
+
+    /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      * 
@@ -311,6 +340,7 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
         this.address = $.address;
         this.addressType = $.addressType;
         this.description = $.description;
+        this.ipCollection = $.ipCollection;
         this.ipVersion = $.ipVersion;
         this.ipv6EndpointType = $.ipv6EndpointType;
         this.labels = $.labels;
@@ -413,6 +443,41 @@ public final class AddressArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param ipCollection Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+         * The PDP must support enhanced IPv4 allocations.
+         * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(@Nullable Output<String> ipCollection) {
+            $.ipCollection = ipCollection;
+            return this;
+        }
+
+        /**
+         * @param ipCollection Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+         * The PDP must support enhanced IPv4 allocations.
+         * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+         * Full resource URL, as in:
+         * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+         *   Partial URL, as in:
+         * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+         * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(String ipCollection) {
+            return ipCollection(Output.of(ipCollection));
         }
 
         /**

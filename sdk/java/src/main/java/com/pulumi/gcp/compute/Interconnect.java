@@ -156,20 +156,24 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.applicationAwareInterconnect);
     }
     /**
-     * interconnects.list of features available for this Interconnect connection. Can take the value:
-     * MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
-     * ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
-     * ports and MACsec isn&#39;t supported and enabling MACsec fails).
+     * [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
+     * Possible values include:
+     * - &#39;IF_MACSEC&#39;: Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
+     * - &#39;IF_L2_FORWARDING&#39;: Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
+     * - &#39;IF_CROSS_SITE_NETWORK&#39;: Indicates the Interconnect connection is provisioned for Cross-Site Networking.
+     *   Note: &#39;MACSEC&#39; is a legacy value and has the same meaning as &#39;IF_MACSEC&#39;.
      * 
      */
     @Export(name="availableFeatures", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> availableFeatures;
 
     /**
-     * @return interconnects.list of features available for this Interconnect connection. Can take the value:
-     * MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
-     * ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
-     * ports and MACsec isn&#39;t supported and enabling MACsec fails).
+     * @return [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
+     * Possible values include:
+     * - &#39;IF_MACSEC&#39;: Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
+     * - &#39;IF_L2_FORWARDING&#39;: Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
+     * - &#39;IF_CROSS_SITE_NETWORK&#39;: Indicates the Interconnect connection is provisioned for Cross-Site Networking.
+     *   Note: &#39;MACSEC&#39; is a legacy value and has the same meaning as &#39;IF_MACSEC&#39;.
      * 
      */
     public Output<List<String>> availableFeatures() {
@@ -636,24 +640,26 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.remoteLocation);
     }
     /**
-     * interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-     * If specified then the connection is created on MACsec capable hardware ports. If not
-     * specified, the default value is false, which allocates non-MACsec capable ports first if
-     * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-     * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+     * List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+     * Possible values include:
+     * - &#39;IF_MACSEC&#39;: Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+     * - &#39;IF_L2_FORWARDING&#39;: Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+     * - &#39;IF_CROSS_SITE_NETWORK&#39;: Provisions the connection exclusively for Cross-Site Networking.
+     *   Note: &#39;MACSEC&#39; is a legacy value for compatibility reasons and has the same effect as &#39;IF_MACSEC&#39;. &#39;IF_MACSEC&#39; is preferred.
+     *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      * 
      */
     @Export(name="requestedFeatures", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> requestedFeatures;
 
     /**
-     * @return interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-     * If specified then the connection is created on MACsec capable hardware ports. If not
-     * specified, the default value is false, which allocates non-MACsec capable ports first if
-     * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-     * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+     * @return List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+     * Possible values include:
+     * - &#39;IF_MACSEC&#39;: Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+     * - &#39;IF_L2_FORWARDING&#39;: Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+     * - &#39;IF_CROSS_SITE_NETWORK&#39;: Provisions the connection exclusively for Cross-Site Networking.
+     *   Note: &#39;MACSEC&#39; is a legacy value for compatibility reasons and has the same effect as &#39;IF_MACSEC&#39;. &#39;IF_MACSEC&#39; is preferred.
+     *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      * 
      */
     public Output<Optional<List<String>>> requestedFeatures() {

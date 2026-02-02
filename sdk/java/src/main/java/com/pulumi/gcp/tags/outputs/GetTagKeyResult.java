@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetTagKeyResult {
     /**
+     * @return Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    private String allowedValuesRegex;
+    /**
      * @return Creation time.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -42,6 +47,13 @@ public final class GetTagKeyResult {
     private String updateTime;
 
     private GetTagKeyResult() {}
+    /**
+     * @return Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    public String allowedValuesRegex() {
+        return this.allowedValuesRegex;
+    }
     /**
      * @return Creation time.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
@@ -98,6 +110,7 @@ public final class GetTagKeyResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String allowedValuesRegex;
         private String createTime;
         private String description;
         private String id;
@@ -109,6 +122,7 @@ public final class GetTagKeyResult {
         public Builder() {}
         public Builder(GetTagKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedValuesRegex = defaults.allowedValuesRegex;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
@@ -119,6 +133,14 @@ public final class GetTagKeyResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder allowedValuesRegex(String allowedValuesRegex) {
+            if (allowedValuesRegex == null) {
+              throw new MissingRequiredPropertyException("GetTagKeyResult", "allowedValuesRegex");
+            }
+            this.allowedValuesRegex = allowedValuesRegex;
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -185,6 +207,7 @@ public final class GetTagKeyResult {
         }
         public GetTagKeyResult build() {
             final var _resultValue = new GetTagKeyResult();
+            _resultValue.allowedValuesRegex = allowedValuesRegex;
             _resultValue.createTime = createTime;
             _resultValue.description = description;
             _resultValue.id = id;

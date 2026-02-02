@@ -28,6 +28,8 @@ __all__ = [
     'AssetResourceSpec',
     'AssetResourceStatus',
     'AssetSecurityStatus',
+    'DataProductAccessGroup',
+    'DataProductAccessGroupPrincipal',
     'DatascanData',
     'DatascanDataDiscoverySpec',
     'DatascanDataDiscoverySpecBigqueryPublishingConfig',
@@ -804,6 +806,126 @@ class AssetSecurityStatus(dict):
         Output only. The time when the asset was last updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class DataProductAccessGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "groupId":
+            suggest = "group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataProductAccessGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataProductAccessGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataProductAccessGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 group_id: _builtins.str,
+                 id: _builtins.str,
+                 principal: 'outputs.DataProductAccessGroupPrincipal',
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: User friendly display name.
+        :param _builtins.str group_id: Unique identifier of the access group.
+        :param _builtins.str id: The identifier for this object. Format specified above.
+        :param 'DataProductAccessGroupPrincipalArgs' principal: The principal entity.
+               Structure is documented below.
+        :param _builtins.str description: Description of the access group.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "principal", principal)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        User friendly display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.str:
+        """
+        Unique identifier of the access group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> 'outputs.DataProductAccessGroupPrincipal':
+        """
+        The principal entity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the access group.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class DataProductAccessGroupPrincipal(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleGroup":
+            suggest = "google_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataProductAccessGroupPrincipal. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataProductAccessGroupPrincipal.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataProductAccessGroupPrincipal.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_group: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str google_group: Email of the Google Group.
+        """
+        if google_group is not None:
+            pulumi.set(__self__, "google_group", google_group)
+
+    @_builtins.property
+    @pulumi.getter(name="googleGroup")
+    def google_group(self) -> Optional[_builtins.str]:
+        """
+        Email of the Google Group.
+        """
+        return pulumi.get(self, "google_group")
 
 
 @pulumi.output_type

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -128,6 +127,62 @@ import (
 //					pulumi.String("us-central1"),
 //				},
 //				GuestFlush: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Snapshot Basic Source Instant Snapshot
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-11"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Name:  pulumi.String("debian-disk"),
+//				Image: pulumi.String(debian.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instantSnapshot, err := compute.NewInstantSnapshot(ctx, "instant_snapshot", &compute.InstantSnapshotArgs{
+//				Name:        pulumi.String("my-instant-snapshot"),
+//				SourceDisk:  persistent.SelfLink,
+//				Zone:        persistent.Zone,
+//				Description: pulumi.String("A test snapshot"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+//				Name:                  pulumi.String("my-snapshot"),
+//				Zone:                  pulumi.String("us-central1-a"),
+//				SourceInstantSnapshot: instantSnapshot.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -284,6 +339,8 @@ type Snapshot struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
+	// A reference to the instant snapshot used to create this snapshot.
+	SourceInstantSnapshot pulumi.StringPtrOutput `pulumi:"sourceInstantSnapshot"`
 	// A size of the storage used by the snapshot. As snapshots share
 	// storage, this number is expected to change with snapshot
 	// creation/deletion.
@@ -298,12 +355,9 @@ type Snapshot struct {
 func NewSnapshot(ctx *pulumi.Context,
 	name string, args *SnapshotArgs, opts ...pulumi.ResourceOption) (*Snapshot, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SnapshotArgs{}
 	}
 
-	if args.SourceDisk == nil {
-		return nil, errors.New("invalid value for required argument 'SourceDisk'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",
@@ -401,6 +455,8 @@ type snapshotState struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
+	// A reference to the instant snapshot used to create this snapshot.
+	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
 	// A size of the storage used by the snapshot. As snapshots share
 	// storage, this number is expected to change with snapshot
 	// creation/deletion.
@@ -481,6 +537,8 @@ type SnapshotState struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
+	// A reference to the instant snapshot used to create this snapshot.
+	SourceInstantSnapshot pulumi.StringPtrInput
 	// A size of the storage used by the snapshot. As snapshots share
 	// storage, this number is expected to change with snapshot
 	// creation/deletion.
@@ -538,12 +596,14 @@ type snapshotArgs struct {
 	// Possible values are: `ARCHIVE`, `STANDARD`.
 	SnapshotType *string `pulumi:"snapshotType"`
 	// A reference to the disk used to create this snapshot.
-	SourceDisk string `pulumi:"sourceDisk"`
+	SourceDisk *string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
+	// A reference to the instant snapshot used to create this snapshot.
+	SourceInstantSnapshot *string `pulumi:"sourceInstantSnapshot"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations []string `pulumi:"storageLocations"`
 	// A reference to the zone where the disk is hosted.
@@ -594,12 +654,14 @@ type SnapshotArgs struct {
 	// Possible values are: `ARCHIVE`, `STANDARD`.
 	SnapshotType pulumi.StringPtrInput
 	// A reference to the disk used to create this snapshot.
-	SourceDisk pulumi.StringInput
+	SourceDisk pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
+	// A reference to the instant snapshot used to create this snapshot.
+	SourceInstantSnapshot pulumi.StringPtrInput
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
 	StorageLocations pulumi.StringArrayInput
 	// A reference to the zone where the disk is hosted.
@@ -814,6 +876,11 @@ func (o SnapshotOutput) SourceDisk() pulumi.StringOutput {
 // Structure is documented below.
 func (o SnapshotOutput) SourceDiskEncryptionKey() SnapshotSourceDiskEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *Snapshot) SnapshotSourceDiskEncryptionKeyPtrOutput { return v.SourceDiskEncryptionKey }).(SnapshotSourceDiskEncryptionKeyPtrOutput)
+}
+
+// A reference to the instant snapshot used to create this snapshot.
+func (o SnapshotOutput) SourceInstantSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SourceInstantSnapshot }).(pulumi.StringPtrOutput)
 }
 
 // A size of the storage used by the snapshot. As snapshots share

@@ -227,10 +227,6 @@ namespace Pulumi.Gcp.Monitoring
     ///             Port = 443,
     ///             UseSsl = true,
     ///             ValidateSsl = true,
-    ///             ServiceAgentAuthentication = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs
-    ///             {
-    ///                 Type = "OIDC_TOKEN",
-    ///             },
     ///         },
     ///         MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
     ///         {

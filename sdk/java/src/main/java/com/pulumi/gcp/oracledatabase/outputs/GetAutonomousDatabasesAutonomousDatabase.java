@@ -6,6 +6,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.outputs.GetAutonomousDatabasesAutonomousDatabaseProperty;
+import com.pulumi.gcp.oracledatabase.outputs.GetAutonomousDatabasesAutonomousDatabaseSourceConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -45,6 +46,11 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      */
     private String database;
     private Boolean deletionProtection;
+    /**
+     * @return List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     * 
+     */
+    private List<String> disasterRecoverySupportedLocations;
     /**
      * @return The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
@@ -102,6 +108,11 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      */
     private String odbSubnet;
     /**
+     * @return The peer Autonomous Database names of the given Autonomous Database.
+     * 
+     */
+    private List<String> peerAutonomousDatabases;
+    /**
      * @return The project to which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -118,6 +129,11 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      * 
      */
     private Map<String,String> pulumiLabels;
+    /**
+     * @return The source Autonomous Database configuration for the standby Autonomous Database.
+     * 
+     */
+    private List<GetAutonomousDatabasesAutonomousDatabaseSourceConfig> sourceConfigs;
 
     private GetAutonomousDatabasesAutonomousDatabase() {}
     /**
@@ -162,6 +178,13 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
+    }
+    /**
+     * @return List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     * 
+     */
+    public List<String> disasterRecoverySupportedLocations() {
+        return this.disasterRecoverySupportedLocations;
     }
     /**
      * @return The display name for the Autonomous Database. The name does not have to
@@ -238,6 +261,13 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
         return this.odbSubnet;
     }
     /**
+     * @return The peer Autonomous Database names of the given Autonomous Database.
+     * 
+     */
+    public List<String> peerAutonomousDatabases() {
+        return this.peerAutonomousDatabases;
+    }
+    /**
      * @return The project to which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -260,6 +290,13 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    /**
+     * @return The source Autonomous Database configuration for the standby Autonomous Database.
+     * 
+     */
+    public List<GetAutonomousDatabasesAutonomousDatabaseSourceConfig> sourceConfigs() {
+        return this.sourceConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -276,6 +313,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
         private String createTime;
         private String database;
         private Boolean deletionProtection;
+        private List<String> disasterRecoverySupportedLocations;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String entitlementId;
@@ -285,9 +323,11 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
         private String network;
         private String odbNetwork;
         private String odbSubnet;
+        private List<String> peerAutonomousDatabases;
         private String project;
         private List<GetAutonomousDatabasesAutonomousDatabaseProperty> properties;
         private Map<String,String> pulumiLabels;
+        private List<GetAutonomousDatabasesAutonomousDatabaseSourceConfig> sourceConfigs;
         public Builder() {}
         public Builder(GetAutonomousDatabasesAutonomousDatabase defaults) {
     	      Objects.requireNonNull(defaults);
@@ -297,6 +337,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     	      this.createTime = defaults.createTime;
     	      this.database = defaults.database;
     	      this.deletionProtection = defaults.deletionProtection;
+    	      this.disasterRecoverySupportedLocations = defaults.disasterRecoverySupportedLocations;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.entitlementId = defaults.entitlementId;
@@ -306,9 +347,11 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     	      this.network = defaults.network;
     	      this.odbNetwork = defaults.odbNetwork;
     	      this.odbSubnet = defaults.odbSubnet;
+    	      this.peerAutonomousDatabases = defaults.peerAutonomousDatabases;
     	      this.project = defaults.project;
     	      this.properties = defaults.properties;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.sourceConfigs = defaults.sourceConfigs;
         }
 
         @CustomType.Setter
@@ -358,6 +401,17 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             }
             this.deletionProtection = deletionProtection;
             return this;
+        }
+        @CustomType.Setter
+        public Builder disasterRecoverySupportedLocations(List<String> disasterRecoverySupportedLocations) {
+            if (disasterRecoverySupportedLocations == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "disasterRecoverySupportedLocations");
+            }
+            this.disasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
+            return this;
+        }
+        public Builder disasterRecoverySupportedLocations(String... disasterRecoverySupportedLocations) {
+            return disasterRecoverySupportedLocations(List.of(disasterRecoverySupportedLocations));
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
@@ -432,6 +486,17 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             return this;
         }
         @CustomType.Setter
+        public Builder peerAutonomousDatabases(List<String> peerAutonomousDatabases) {
+            if (peerAutonomousDatabases == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "peerAutonomousDatabases");
+            }
+            this.peerAutonomousDatabases = peerAutonomousDatabases;
+            return this;
+        }
+        public Builder peerAutonomousDatabases(String... peerAutonomousDatabases) {
+            return peerAutonomousDatabases(List.of(peerAutonomousDatabases));
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "project");
@@ -458,6 +523,17 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             this.pulumiLabels = pulumiLabels;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceConfigs(List<GetAutonomousDatabasesAutonomousDatabaseSourceConfig> sourceConfigs) {
+            if (sourceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "sourceConfigs");
+            }
+            this.sourceConfigs = sourceConfigs;
+            return this;
+        }
+        public Builder sourceConfigs(GetAutonomousDatabasesAutonomousDatabaseSourceConfig... sourceConfigs) {
+            return sourceConfigs(List.of(sourceConfigs));
+        }
         public GetAutonomousDatabasesAutonomousDatabase build() {
             final var _resultValue = new GetAutonomousDatabasesAutonomousDatabase();
             _resultValue.adminPassword = adminPassword;
@@ -466,6 +542,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             _resultValue.createTime = createTime;
             _resultValue.database = database;
             _resultValue.deletionProtection = deletionProtection;
+            _resultValue.disasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.entitlementId = entitlementId;
@@ -475,9 +552,11 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             _resultValue.network = network;
             _resultValue.odbNetwork = odbNetwork;
             _resultValue.odbSubnet = odbSubnet;
+            _resultValue.peerAutonomousDatabases = peerAutonomousDatabases;
             _resultValue.project = project;
             _resultValue.properties = properties;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.sourceConfigs = sourceConfigs;
             return _resultValue;
         }
     }

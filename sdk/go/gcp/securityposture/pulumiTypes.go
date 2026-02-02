@@ -802,13 +802,13 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint s
 	// The action to take if the condition is met.
 	// Possible values are: `ALLOW`, `DENY`.
 	ActionType string `pulumi:"actionType"`
-	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 	Condition string `pulumi:"condition"`
 	// A human-friendly description of the constraint to display as an error message when the policy is violated.
 	Description *string `pulumi:"description"`
 	// A human-friendly name for the constraint.
 	DisplayName *string `pulumi:"displayName"`
-	// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+	// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 	MethodTypes []string `pulumi:"methodTypes"`
 	// Immutable. The name of the custom constraint. This is unique within the organization.
 	Name string `pulumi:"name"`
@@ -831,13 +831,13 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintAr
 	// The action to take if the condition is met.
 	// Possible values are: `ALLOW`, `DENY`.
 	ActionType pulumi.StringInput `pulumi:"actionType"`
-	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 	Condition pulumi.StringInput `pulumi:"condition"`
 	// A human-friendly description of the constraint to display as an error message when the policy is violated.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A human-friendly name for the constraint.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+	// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 	MethodTypes pulumi.StringArrayInput `pulumi:"methodTypes"`
 	// Immutable. The name of the custom constraint. This is unique within the organization.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -930,7 +930,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstrain
 	}).(pulumi.StringOutput)
 }
 
-// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint) string {
 		return v.Condition
@@ -951,7 +951,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstrain
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintOutput) MethodTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint) []string {
 		return v.MethodTypes
@@ -1007,7 +1007,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstrain
 	}).(pulumi.StringPtrOutput)
 }
 
-// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintPtrOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint) *string {
 		if v == nil {
@@ -1037,7 +1037,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstrain
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintPtrOutput) MethodTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint) []string {
 		if v == nil {

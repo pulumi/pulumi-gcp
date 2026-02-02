@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// (Output)
+        /// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+        /// Applicable for IPv4 sub-PDPs only.
+        /// </summary>
+        public readonly bool? EnableEnhancedIpv4Allocation;
+        /// <summary>
         /// The IP address range, in CIDR format, represented by this public delegated prefix.
         /// </summary>
         public readonly string? IpCidrRange;
@@ -80,6 +86,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? description,
 
+            bool? enableEnhancedIpv4Allocation,
+
             string? ipCidrRange,
 
             string? ipv6AccessType,
@@ -97,6 +105,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             AllocatablePrefixLength = allocatablePrefixLength;
             DelegateeProject = delegateeProject;
             Description = description;
+            EnableEnhancedIpv4Allocation = enableEnhancedIpv4Allocation;
             IpCidrRange = ipCidrRange;
             Ipv6AccessType = ipv6AccessType;
             IsAddress = isAddress;

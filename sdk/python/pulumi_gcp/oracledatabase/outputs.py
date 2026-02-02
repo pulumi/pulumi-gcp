@@ -27,6 +27,7 @@ __all__ = [
     'AutonomousDatabasePropertiesScheduledOperationDetail',
     'AutonomousDatabasePropertiesScheduledOperationDetailStartTime',
     'AutonomousDatabasePropertiesScheduledOperationDetailStopTime',
+    'AutonomousDatabaseSourceConfig',
     'CloudExadataInfrastructureProperties',
     'CloudExadataInfrastructurePropertiesCustomerContact',
     'CloudExadataInfrastructurePropertiesMaintenanceWindow',
@@ -57,6 +58,7 @@ __all__ = [
     'GetAutonomousDatabasePropertyScheduledOperationDetailResult',
     'GetAutonomousDatabasePropertyScheduledOperationDetailStartTimeResult',
     'GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeResult',
+    'GetAutonomousDatabaseSourceConfigResult',
     'GetAutonomousDatabasesAutonomousDatabaseResult',
     'GetAutonomousDatabasesAutonomousDatabasePropertyResult',
     'GetAutonomousDatabasesAutonomousDatabasePropertyApexDetailResult',
@@ -69,6 +71,7 @@ __all__ = [
     'GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailResult',
     'GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStartTimeResult',
     'GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailStopTimeResult',
+    'GetAutonomousDatabasesAutonomousDatabaseSourceConfigResult',
     'GetCloudExadataInfrastructurePropertyResult',
     'GetCloudExadataInfrastructurePropertyCustomerContactResult',
     'GetCloudExadataInfrastructurePropertyMaintenanceWindowResult',
@@ -2140,6 +2143,56 @@ class AutonomousDatabasePropertiesScheduledOperationDetailStopTime(dict):
         allow the value 60 if it allows leap-seconds.
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class AutonomousDatabaseSourceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automaticBackupsReplicationEnabled":
+            suggest = "automatic_backups_replication_enabled"
+        elif key == "autonomousDatabase":
+            suggest = "autonomous_database"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutonomousDatabaseSourceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutonomousDatabaseSourceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutonomousDatabaseSourceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 automatic_backups_replication_enabled: Optional[_builtins.bool] = None,
+                 autonomous_database: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool automatic_backups_replication_enabled: This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        :param _builtins.str autonomous_database: The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        if automatic_backups_replication_enabled is not None:
+            pulumi.set(__self__, "automatic_backups_replication_enabled", automatic_backups_replication_enabled)
+        if autonomous_database is not None:
+            pulumi.set(__self__, "autonomous_database", autonomous_database)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticBackupsReplicationEnabled")
+    def automatic_backups_replication_enabled(self) -> Optional[_builtins.bool]:
+        """
+        This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        """
+        return pulumi.get(self, "automatic_backups_replication_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="autonomousDatabase")
+    def autonomous_database(self) -> Optional[_builtins.str]:
+        """
+        The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        return pulumi.get(self, "autonomous_database")
 
 
 @pulumi.output_type
@@ -6558,6 +6611,35 @@ class GetAutonomousDatabasePropertyScheduledOperationDetailStopTimeResult(dict):
 
 
 @pulumi.output_type
+class GetAutonomousDatabaseSourceConfigResult(dict):
+    def __init__(__self__, *,
+                 automatic_backups_replication_enabled: _builtins.bool,
+                 autonomous_database: _builtins.str):
+        """
+        :param _builtins.bool automatic_backups_replication_enabled: This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        :param _builtins.str autonomous_database: The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        pulumi.set(__self__, "automatic_backups_replication_enabled", automatic_backups_replication_enabled)
+        pulumi.set(__self__, "autonomous_database", autonomous_database)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticBackupsReplicationEnabled")
+    def automatic_backups_replication_enabled(self) -> _builtins.bool:
+        """
+        This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        """
+        return pulumi.get(self, "automatic_backups_replication_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="autonomousDatabase")
+    def autonomous_database(self) -> _builtins.str:
+        """
+        The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        return pulumi.get(self, "autonomous_database")
+
+
+@pulumi.output_type
 class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
     def __init__(__self__, *,
                  admin_password: _builtins.str,
@@ -6566,6 +6648,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
                  create_time: _builtins.str,
                  database: _builtins.str,
                  deletion_protection: _builtins.bool,
+                 disaster_recovery_supported_locations: Sequence[_builtins.str],
                  display_name: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
                  entitlement_id: _builtins.str,
@@ -6575,9 +6658,11 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
                  network: _builtins.str,
                  odb_network: _builtins.str,
                  odb_subnet: _builtins.str,
+                 peer_autonomous_databases: Sequence[_builtins.str],
                  project: _builtins.str,
                  properties: Sequence['outputs.GetAutonomousDatabasesAutonomousDatabasePropertyResult'],
-                 pulumi_labels: Mapping[str, _builtins.str]):
+                 pulumi_labels: Mapping[str, _builtins.str],
+                 source_configs: Sequence['outputs.GetAutonomousDatabasesAutonomousDatabaseSourceConfigResult']):
         """
         :param _builtins.str admin_password: The password for the default ADMIN user.
         :param _builtins.str autonomous_database_id: The ID of the Autonomous Database to create. This value is restricted
@@ -6589,6 +6674,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         :param _builtins.str database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param Sequence[_builtins.str] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param _builtins.str display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
         :param _builtins.str entitlement_id: The ID of the subscription entitlement associated with the Autonomous
@@ -6612,11 +6698,13 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         :param _builtins.str odb_subnet: The name of the OdbSubnet associated with the Autonomous Database for
                IP allocation. Format:
                projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+        :param Sequence[_builtins.str] peer_autonomous_databases: The peer Autonomous Database names of the given Autonomous Database.
         :param _builtins.str project: The project to which the resource belongs. If it
                is not provided, the provider project is used.
         :param Sequence['GetAutonomousDatabasesAutonomousDatabasePropertyArgs'] properties: The properties of an Autonomous Database.
         :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
+        :param Sequence['GetAutonomousDatabasesAutonomousDatabaseSourceConfigArgs'] source_configs: The source Autonomous Database configuration for the standby Autonomous Database.
         """
         pulumi.set(__self__, "admin_password", admin_password)
         pulumi.set(__self__, "autonomous_database_id", autonomous_database_id)
@@ -6624,6 +6712,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "disaster_recovery_supported_locations", disaster_recovery_supported_locations)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "entitlement_id", entitlement_id)
@@ -6633,9 +6722,11 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "odb_network", odb_network)
         pulumi.set(__self__, "odb_subnet", odb_subnet)
+        pulumi.set(__self__, "peer_autonomous_databases", peer_autonomous_databases)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "properties", properties)
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "source_configs", source_configs)
 
     @_builtins.property
     @pulumi.getter(name="adminPassword")
@@ -6686,6 +6777,14 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> _builtins.bool:
         return pulumi.get(self, "deletion_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="disasterRecoverySupportedLocations")
+    def disaster_recovery_supported_locations(self) -> Sequence[_builtins.str]:
+        """
+        List of supported GCP region to clone the Autonomous Database for disaster recovery.
+        """
+        return pulumi.get(self, "disaster_recovery_supported_locations")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -6772,6 +6871,14 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         return pulumi.get(self, "odb_subnet")
 
     @_builtins.property
+    @pulumi.getter(name="peerAutonomousDatabases")
+    def peer_autonomous_databases(self) -> Sequence[_builtins.str]:
+        """
+        The peer Autonomous Database names of the given Autonomous Database.
+        """
+        return pulumi.get(self, "peer_autonomous_databases")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
@@ -6796,6 +6903,14 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceConfigs")
+    def source_configs(self) -> Sequence['outputs.GetAutonomousDatabasesAutonomousDatabaseSourceConfigResult']:
+        """
+        The source Autonomous Database configuration for the standby Autonomous Database.
+        """
+        return pulumi.get(self, "source_configs")
 
 
 @pulumi.output_type
@@ -8397,6 +8512,35 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyScheduledOperationDetailSt
         allow the value 60 if it allows leap-seconds.
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetAutonomousDatabasesAutonomousDatabaseSourceConfigResult(dict):
+    def __init__(__self__, *,
+                 automatic_backups_replication_enabled: _builtins.bool,
+                 autonomous_database: _builtins.str):
+        """
+        :param _builtins.bool automatic_backups_replication_enabled: This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        :param _builtins.str autonomous_database: The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        pulumi.set(__self__, "automatic_backups_replication_enabled", automatic_backups_replication_enabled)
+        pulumi.set(__self__, "autonomous_database", autonomous_database)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticBackupsReplicationEnabled")
+    def automatic_backups_replication_enabled(self) -> _builtins.bool:
+        """
+        This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        """
+        return pulumi.get(self, "automatic_backups_replication_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="autonomousDatabase")
+    def autonomous_database(self) -> _builtins.str:
+        """
+        The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        return pulumi.get(self, "autonomous_database")
 
 
 @pulumi.output_type

@@ -481,6 +481,38 @@ class ListingSubscription(pulumi.CustomResource):
                 },
             })
         ```
+        ### Bigquery Analyticshub Listing Subscription Multiregion
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        subscription = gcp.bigqueryanalyticshub.DataExchange("subscription",
+            location="us",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange")
+        subscription_listing = gcp.bigqueryanalyticshub.Listing("subscription",
+            location="us",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            bigquery_dataset={
+                "dataset": "projects/project_id/datasets/my_listing_example2",
+                "replica_locations": ["eu"],
+            })
+        subscription_listing_subscription = gcp.bigqueryanalyticshub.ListingSubscription("subscription",
+            location="us",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id=subscription_listing.listing_id,
+            destination_dataset={
+                "location": "us",
+                "dataset_reference": {
+                    "project_id": subscription.project,
+                    "dataset_id": "destination_dataset",
+                },
+                "replica_locations": ["eu"],
+            })
+        ```
 
         ## Import
 
@@ -575,6 +607,38 @@ class ListingSubscription(pulumi.CustomResource):
                     "dataset_id": "destination_dataset",
                     "project_id": subscription_dataset.project,
                 },
+            })
+        ```
+        ### Bigquery Analyticshub Listing Subscription Multiregion
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        subscription = gcp.bigqueryanalyticshub.DataExchange("subscription",
+            location="us",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange")
+        subscription_listing = gcp.bigqueryanalyticshub.Listing("subscription",
+            location="us",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            bigquery_dataset={
+                "dataset": "projects/project_id/datasets/my_listing_example2",
+                "replica_locations": ["eu"],
+            })
+        subscription_listing_subscription = gcp.bigqueryanalyticshub.ListingSubscription("subscription",
+            location="us",
+            data_exchange_id=subscription.data_exchange_id,
+            listing_id=subscription_listing.listing_id,
+            destination_dataset={
+                "location": "us",
+                "dataset_reference": {
+                    "project_id": subscription.project,
+                    "dataset_id": "destination_dataset",
+                },
+                "replica_locations": ["eu"],
             })
         ```
 

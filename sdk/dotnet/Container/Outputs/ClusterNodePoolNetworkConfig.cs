@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNetworkConfig
     {
         /// <summary>
+        /// The accelerator network profile to use for this node pool.
+        /// </summary>
+        public readonly string? AcceleratorNetworkProfile;
+        /// <summary>
         /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> AdditionalNodeNetworkConfigs;
@@ -53,6 +57,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterNodePoolNetworkConfig(
+            string? acceleratorNetworkProfile,
+
             ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs,
 
             ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs,
@@ -71,6 +77,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? subnetwork)
         {
+            AcceleratorNetworkProfile = acceleratorNetworkProfile;
             AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
             CreatePodRange = createPodRange;

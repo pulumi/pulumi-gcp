@@ -8,6 +8,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeDrainConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolPlacementPolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolUpgradeSettings;
@@ -88,6 +89,11 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable Integer nodeCount;
+    /**
+     * @return Node drain configuration for this NodePool.
+     * 
+     */
+    private @Nullable List<ClusterNodePoolNodeDrainConfig> nodeDrainConfigs;
     /**
      * @return The list of zones in which the cluster&#39;s nodes
      * are located. Nodes must be in the region of their regional cluster or in the
@@ -212,6 +218,13 @@ public final class ClusterNodePool {
         return Optional.ofNullable(this.nodeCount);
     }
     /**
+     * @return Node drain configuration for this NodePool.
+     * 
+     */
+    public List<ClusterNodePoolNodeDrainConfig> nodeDrainConfigs() {
+        return this.nodeDrainConfigs == null ? List.of() : this.nodeDrainConfigs;
+    }
+    /**
      * @return The list of zones in which the cluster&#39;s nodes
      * are located. Nodes must be in the region of their regional cluster or in the
      * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
@@ -273,6 +286,7 @@ public final class ClusterNodePool {
         private @Nullable ClusterNodePoolNetworkConfig networkConfig;
         private @Nullable ClusterNodePoolNodeConfig nodeConfig;
         private @Nullable Integer nodeCount;
+        private @Nullable List<ClusterNodePoolNodeDrainConfig> nodeDrainConfigs;
         private @Nullable List<String> nodeLocations;
         private @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
         private @Nullable ClusterNodePoolQueuedProvisioning queuedProvisioning;
@@ -292,6 +306,7 @@ public final class ClusterNodePool {
     	      this.networkConfig = defaults.networkConfig;
     	      this.nodeConfig = defaults.nodeConfig;
     	      this.nodeCount = defaults.nodeCount;
+    	      this.nodeDrainConfigs = defaults.nodeDrainConfigs;
     	      this.nodeLocations = defaults.nodeLocations;
     	      this.placementPolicy = defaults.placementPolicy;
     	      this.queuedProvisioning = defaults.queuedProvisioning;
@@ -372,6 +387,15 @@ public final class ClusterNodePool {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeDrainConfigs(@Nullable List<ClusterNodePoolNodeDrainConfig> nodeDrainConfigs) {
+
+            this.nodeDrainConfigs = nodeDrainConfigs;
+            return this;
+        }
+        public Builder nodeDrainConfigs(ClusterNodePoolNodeDrainConfig... nodeDrainConfigs) {
+            return nodeDrainConfigs(List.of(nodeDrainConfigs));
+        }
+        @CustomType.Setter
         public Builder nodeLocations(@Nullable List<String> nodeLocations) {
 
             this.nodeLocations = nodeLocations;
@@ -417,6 +441,7 @@ public final class ClusterNodePool {
             _resultValue.networkConfig = networkConfig;
             _resultValue.nodeConfig = nodeConfig;
             _resultValue.nodeCount = nodeCount;
+            _resultValue.nodeDrainConfigs = nodeDrainConfigs;
             _resultValue.nodeLocations = nodeLocations;
             _resultValue.placementPolicy = placementPolicy;
             _resultValue.queuedProvisioning = queuedProvisioning;

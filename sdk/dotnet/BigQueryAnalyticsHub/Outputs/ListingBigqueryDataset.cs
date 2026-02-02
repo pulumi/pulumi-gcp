@@ -18,6 +18,17 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         /// </summary>
         public readonly string Dataset;
         /// <summary>
+        /// (Output, Beta)
+        /// Server owned effective state of replicas. Contains both primary and secondary replicas.
+        /// Each replica includes a system-computed (output-only) state and primary designation.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ListingBigqueryDatasetEffectiveReplica> EffectiveReplicas;
+        /// <summary>
+        /// A list of regions where the publisher has created shared dataset replicas.
+        /// </summary>
+        public readonly ImmutableArray<string> ReplicaLocations;
+        /// <summary>
         /// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
         /// Structure is documented below.
         /// </summary>
@@ -27,9 +38,15 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         private ListingBigqueryDataset(
             string dataset,
 
+            ImmutableArray<Outputs.ListingBigqueryDatasetEffectiveReplica> effectiveReplicas,
+
+            ImmutableArray<string> replicaLocations,
+
             ImmutableArray<Outputs.ListingBigqueryDatasetSelectedResource> selectedResources)
         {
             Dataset = dataset;
+            EffectiveReplicas = effectiveReplicas;
+            ReplicaLocations = replicaLocations;
             SelectedResources = selectedResources;
         }
     }

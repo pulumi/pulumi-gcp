@@ -463,6 +463,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// </summary>
+        [Output("managedOpentelemetryConfig")]
+        public Output<Outputs.ClusterManagedOpentelemetryConfig> ManagedOpentelemetryConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The authentication information for accessing the
         /// Kubernetes master. Some values in this block are only returned by the API if
         /// your service account has permission to get credentials for your GKE cluster. If
@@ -1173,6 +1179,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// </summary>
+        [Input("managedOpentelemetryConfig")]
+        public Input<Inputs.ClusterManagedOpentelemetryConfigArgs>? ManagedOpentelemetryConfig { get; set; }
+
+        /// <summary>
         /// The authentication information for accessing the
         /// Kubernetes master. Some values in this block are only returned by the API if
         /// your service account has permission to get credentials for your GKE cluster. If
@@ -1851,6 +1863,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.ClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        /// </summary>
+        [Input("managedOpentelemetryConfig")]
+        public Input<Inputs.ClusterManagedOpentelemetryConfigGetArgs>? ManagedOpentelemetryConfig { get; set; }
 
         /// <summary>
         /// The authentication information for accessing the

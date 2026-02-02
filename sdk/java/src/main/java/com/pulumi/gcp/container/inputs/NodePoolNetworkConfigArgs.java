@@ -22,6 +22,21 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
     public static final NodePoolNetworkConfigArgs Empty = new NodePoolNetworkConfigArgs();
 
     /**
+     * Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+     * 
+     */
+    @Import(name="acceleratorNetworkProfile")
+    private @Nullable Output<String> acceleratorNetworkProfile;
+
+    /**
+     * @return Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+     * 
+     */
+    public Optional<Output<String>> acceleratorNetworkProfile() {
+        return Optional.ofNullable(this.acceleratorNetworkProfile);
+    }
+
+    /**
      * We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
      * Structure is documented below
      * 
@@ -163,6 +178,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
     private NodePoolNetworkConfigArgs() {}
 
     private NodePoolNetworkConfigArgs(NodePoolNetworkConfigArgs $) {
+        this.acceleratorNetworkProfile = $.acceleratorNetworkProfile;
         this.additionalNodeNetworkConfigs = $.additionalNodeNetworkConfigs;
         this.additionalPodNetworkConfigs = $.additionalPodNetworkConfigs;
         this.createPodRange = $.createPodRange;
@@ -190,6 +206,27 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
 
         public Builder(NodePoolNetworkConfigArgs defaults) {
             $ = new NodePoolNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceleratorNetworkProfile Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorNetworkProfile(@Nullable Output<String> acceleratorNetworkProfile) {
+            $.acceleratorNetworkProfile = acceleratorNetworkProfile;
+            return this;
+        }
+
+        /**
+         * @param acceleratorNetworkProfile Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratorNetworkProfile(String acceleratorNetworkProfile) {
+            return acceleratorNetworkProfile(Output.of(acceleratorNetworkProfile));
         }
 
         /**

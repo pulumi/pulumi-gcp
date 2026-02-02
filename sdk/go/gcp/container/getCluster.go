@@ -115,6 +115,7 @@ type LookupClusterResult struct {
 	LoggingConfigs                  []GetClusterLoggingConfig                  `pulumi:"loggingConfigs"`
 	LoggingService                  string                                     `pulumi:"loggingService"`
 	MaintenancePolicies             []GetClusterMaintenancePolicy              `pulumi:"maintenancePolicies"`
+	ManagedOpentelemetryConfigs     []GetClusterManagedOpentelemetryConfig     `pulumi:"managedOpentelemetryConfigs"`
 	MasterAuthorizedNetworksConfigs []GetClusterMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfigs"`
 	MasterAuths                     []GetClusterMasterAuth                     `pulumi:"masterAuths"`
 	MasterVersion                   string                                     `pulumi:"masterVersion"`
@@ -390,6 +391,12 @@ func (o LookupClusterResultOutput) LoggingService() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) MaintenancePolicies() GetClusterMaintenancePolicyArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterMaintenancePolicy { return v.MaintenancePolicies }).(GetClusterMaintenancePolicyArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ManagedOpentelemetryConfigs() GetClusterManagedOpentelemetryConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterManagedOpentelemetryConfig {
+		return v.ManagedOpentelemetryConfigs
+	}).(GetClusterManagedOpentelemetryConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) MasterAuthorizedNetworksConfigs() GetClusterMasterAuthorizedNetworksConfigArrayOutput {

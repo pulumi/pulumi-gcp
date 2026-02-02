@@ -228,9 +228,6 @@ import (
 //					Port:        pulumi.Int(443),
 //					UseSsl:      pulumi.Bool(true),
 //					ValidateSsl: pulumi.Bool(true),
-//					ServiceAgentAuthentication: &monitoring.UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs{
-//						Type: pulumi.String("OIDC_TOKEN"),
-//					},
 //				},
 //				MonitoredResource: &monitoring.UptimeCheckConfigMonitoredResourceArgs{
 //					Type: pulumi.String("uptime_url"),

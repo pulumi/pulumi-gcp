@@ -194,6 +194,7 @@ class _PublicDelegatedPrefixState:
     def __init__(__self__, *,
                  allocatable_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_enhanced_ipv4_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
                  ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
                  is_live_migration: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -208,6 +209,9 @@ class _PublicDelegatedPrefixState:
         Input properties used for looking up and filtering PublicDelegatedPrefix resources.
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.bool] enable_enhanced_ipv4_allocation: (Output)
+               Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+               Applicable for IPv4 sub-PDPs only.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[_builtins.str] ipv6_access_type: (Output)
                The internet access type for IPv6 Public Delegated Prefixes. Inherited
@@ -244,6 +248,8 @@ class _PublicDelegatedPrefixState:
             pulumi.set(__self__, "allocatable_prefix_length", allocatable_prefix_length)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_enhanced_ipv4_allocation is not None:
+            pulumi.set(__self__, "enable_enhanced_ipv4_allocation", enable_enhanced_ipv4_allocation)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if ipv6_access_type is not None:
@@ -288,6 +294,20 @@ class _PublicDelegatedPrefixState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableEnhancedIpv4Allocation")
+    def enable_enhanced_ipv4_allocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        (Output)
+        Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+        Applicable for IPv4 sub-PDPs only.
+        """
+        return pulumi.get(self, "enable_enhanced_ipv4_allocation")
+
+    @enable_enhanced_ipv4_allocation.setter
+    def enable_enhanced_ipv4_allocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_enhanced_ipv4_allocation", value)
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
@@ -808,6 +828,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["enable_enhanced_ipv4_allocation"] = None
             __props__.__dict__["ipv6_access_type"] = None
             __props__.__dict__["public_delegated_sub_prefixs"] = None
             __props__.__dict__["self_link"] = None
@@ -823,6 +844,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allocatable_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            enable_enhanced_ipv4_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
             ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
             ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
             is_live_migration: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -842,6 +864,9 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] allocatable_prefix_length: The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
+        :param pulumi.Input[_builtins.bool] enable_enhanced_ipv4_allocation: (Output)
+               Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+               Applicable for IPv4 sub-PDPs only.
         :param pulumi.Input[_builtins.str] ip_cidr_range: The IP address range, in CIDR format, represented by this public delegated prefix.
         :param pulumi.Input[_builtins.str] ipv6_access_type: (Output)
                The internet access type for IPv6 Public Delegated Prefixes. Inherited
@@ -880,6 +905,7 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
 
         __props__.__dict__["allocatable_prefix_length"] = allocatable_prefix_length
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_enhanced_ipv4_allocation"] = enable_enhanced_ipv4_allocation
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
         __props__.__dict__["ipv6_access_type"] = ipv6_access_type
         __props__.__dict__["is_live_migration"] = is_live_migration
@@ -907,6 +933,16 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="enableEnhancedIpv4Allocation")
+    def enable_enhanced_ipv4_allocation(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (Output)
+        Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+        Applicable for IPv4 sub-PDPs only.
+        """
+        return pulumi.get(self, "enable_enhanced_ipv4_allocation")
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")

@@ -7804,6 +7804,15 @@ if not MYPY:
         The number of rows at the top of a CSV
         file that BigQuery will skip when reading the data.
         """
+        source_column_match: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Specifies how source columns are matched
+        to the table schema. Valid values are `POSITION` (columns matched by position,
+        assuming same ordering as the schema) or `NAME` (columns matched by name,
+        reads the header row and reorders columns to align with schema field names).
+        If not set, a default is chosen based on how the schema is provided: when
+        autodetect is used, columns are matched by name; otherwise, by position.
+        """
 elif False:
     TableExternalDataConfigurationCsvOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7815,7 +7824,8 @@ class TableExternalDataConfigurationCsvOptionsArgs:
                  allow_quoted_newlines: Optional[pulumi.Input[_builtins.bool]] = None,
                  encoding: Optional[pulumi.Input[_builtins.str]] = None,
                  field_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_leading_rows: Optional[pulumi.Input[_builtins.int]] = None):
+                 skip_leading_rows: Optional[pulumi.Input[_builtins.int]] = None,
+                 source_column_match: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] quote: The value that is used to quote data sections in a
                CSV file. If your data does not contain quoted sections, set the
@@ -7834,6 +7844,12 @@ class TableExternalDataConfigurationCsvOptionsArgs:
         :param pulumi.Input[_builtins.str] field_delimiter: The separator for fields in a CSV file.
         :param pulumi.Input[_builtins.int] skip_leading_rows: The number of rows at the top of a CSV
                file that BigQuery will skip when reading the data.
+        :param pulumi.Input[_builtins.str] source_column_match: Specifies how source columns are matched
+               to the table schema. Valid values are `POSITION` (columns matched by position,
+               assuming same ordering as the schema) or `NAME` (columns matched by name,
+               reads the header row and reorders columns to align with schema field names).
+               If not set, a default is chosen based on how the schema is provided: when
+               autodetect is used, columns are matched by name; otherwise, by position.
         """
         pulumi.set(__self__, "quote", quote)
         if allow_jagged_rows is not None:
@@ -7846,6 +7862,8 @@ class TableExternalDataConfigurationCsvOptionsArgs:
             pulumi.set(__self__, "field_delimiter", field_delimiter)
         if skip_leading_rows is not None:
             pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
+        if source_column_match is not None:
+            pulumi.set(__self__, "source_column_match", source_column_match)
 
     @_builtins.property
     @pulumi.getter
@@ -7929,6 +7947,23 @@ class TableExternalDataConfigurationCsvOptionsArgs:
     @skip_leading_rows.setter
     def skip_leading_rows(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "skip_leading_rows", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceColumnMatch")
+    def source_column_match(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies how source columns are matched
+        to the table schema. Valid values are `POSITION` (columns matched by position,
+        assuming same ordering as the schema) or `NAME` (columns matched by name,
+        reads the header row and reorders columns to align with schema field names).
+        If not set, a default is chosen based on how the schema is provided: when
+        autodetect is used, columns are matched by name; otherwise, by position.
+        """
+        return pulumi.get(self, "source_column_match")
+
+    @source_column_match.setter
+    def source_column_match(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_column_match", value)
 
 
 if not MYPY:

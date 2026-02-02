@@ -152,6 +152,67 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Snapshot Basic Source Instant Snapshot
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.InstantSnapshot;
+ * import com.pulumi.gcp.compute.InstantSnapshotArgs;
+ * import com.pulumi.gcp.compute.Snapshot;
+ * import com.pulumi.gcp.compute.SnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-11")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var persistent = new Disk("persistent", DiskArgs.builder()
+ *             .name("debian-disk")
+ *             .image(debian.selfLink())
+ *             .size(10)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var instantSnapshot = new InstantSnapshot("instantSnapshot", InstantSnapshotArgs.builder()
+ *             .name("my-instant-snapshot")
+ *             .sourceDisk(persistent.selfLink())
+ *             .zone(persistent.zone())
+ *             .description("A test snapshot")
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()
+ *             .name("my-snapshot")
+ *             .zone("us-central1-a")
+ *             .sourceInstantSnapshot(instantSnapshot.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Snapshot Chainname
  * 
  * <pre>
@@ -553,6 +614,20 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceDiskEncryptionKey);
     }
     /**
+     * A reference to the instant snapshot used to create this snapshot.
+     * 
+     */
+    @Export(name="sourceInstantSnapshot", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceInstantSnapshot;
+
+    /**
+     * @return A reference to the instant snapshot used to create this snapshot.
+     * 
+     */
+    public Output<Optional<String>> sourceInstantSnapshot() {
+        return Codegen.optional(this.sourceInstantSnapshot);
+    }
+    /**
      * A size of the storage used by the snapshot. As snapshots share
      * storage, this number is expected to change with snapshot
      * creation/deletion.
@@ -611,7 +686,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Snapshot(java.lang.String name, SnapshotArgs args) {
+    public Snapshot(java.lang.String name, @Nullable SnapshotArgs args) {
         this(name, args, null);
     }
     /**
@@ -620,7 +695,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Snapshot(java.lang.String name, SnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Snapshot(java.lang.String name, @Nullable SnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:compute/snapshot:Snapshot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -628,7 +703,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         super("gcp:compute/snapshot:Snapshot", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static SnapshotArgs makeArgs(SnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static SnapshotArgs makeArgs(@Nullable SnapshotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

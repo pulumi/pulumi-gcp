@@ -18,8 +18,9 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string? Column;
         /// <summary>
-        /// The SQL Server data type. Full data types list can be found here:
-        /// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        /// (Output)
+        /// The Spanner data type. Full data types list can be found here:
+        /// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         /// </summary>
         public readonly string? DataType;
         /// <summary>

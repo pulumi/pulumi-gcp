@@ -16,13 +16,13 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// To get more information about Organization Policies, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/setOrgPolicy)
+    /// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/setOrgPolicy)
     /// * How-to Guides
-    ///     * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+    ///     * [Introduction to the Organization Policy Service](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
     /// 
     /// ## Example Usage
     /// 
-    /// To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+    /// To set policy with a [boolean constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Organizations
     /// });
     /// ```
     /// 
-    /// To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+    /// To set a policy with a [list constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<Outputs.PolicyBooleanPolicy?> BooleanPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// 
         /// - - -
         /// </summary>
@@ -251,7 +251,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<Inputs.PolicyBooleanPolicyArgs>? BooleanPolicy { get; set; }
 
         /// <summary>
-        /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// 
         /// - - -
         /// </summary>
@@ -303,7 +303,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<Inputs.PolicyBooleanPolicyGetArgs>? BooleanPolicy { get; set; }
 
         /// <summary>
-        /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// 
         /// - - -
         /// </summary>

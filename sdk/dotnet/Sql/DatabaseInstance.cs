@@ -428,8 +428,8 @@ namespace Pulumi.Gcp.Sql
     ///                 Enabled = true,
     ///                 BinaryLogEnabled = true,
     ///             },
-    ///             BackupdrBackup = "backupdr_backup_full_path",
     ///         },
+    ///         BackupdrBackup = "backupdr_backup_full_path",
     ///     });
     /// 
     /// });

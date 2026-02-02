@@ -14,6 +14,7 @@ import com.pulumi.gcp.container.outputs.NodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.NodePoolManagement;
 import com.pulumi.gcp.container.outputs.NodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeDrainConfig;
 import com.pulumi.gcp.container.outputs.NodePoolPlacementPolicy;
 import com.pulumi.gcp.container.outputs.NodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.NodePoolUpgradeSettings;
@@ -401,6 +402,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> nodeCount() {
         return this.nodeCount;
+    }
+    /**
+     * The node drain configuration of the pool. Structure is documented below.
+     * 
+     */
+    @Export(name="nodeDrainConfigs", refs={List.class,NodePoolNodeDrainConfig.class}, tree="[0,1]")
+    private Output<List<NodePoolNodeDrainConfig>> nodeDrainConfigs;
+
+    /**
+     * @return The node drain configuration of the pool. Structure is documented below.
+     * 
+     */
+    public Output<List<NodePoolNodeDrainConfig>> nodeDrainConfigs() {
+        return this.nodeDrainConfigs;
     }
     /**
      * The list of zones in which the node pool&#39;s nodes should be located. Nodes must

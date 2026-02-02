@@ -1308,8 +1308,8 @@ class DatabaseInstance(pulumi.CustomResource):
                     "enabled": True,
                     "binary_log_enabled": True,
                 },
-                "backupdr_backup": "backupdr_backup_full_path",
-            })
+            },
+            backupdr_backup="backupdr_backup_full_path")
         ```
 
         ### Cloud SQL Instance created using point_in_time_restore
@@ -1677,8 +1677,8 @@ class DatabaseInstance(pulumi.CustomResource):
                     "enabled": True,
                     "binary_log_enabled": True,
                 },
-                "backupdr_backup": "backupdr_backup_full_path",
-            })
+            },
+            backupdr_backup="backupdr_backup_full_path")
         ```
 
         ### Cloud SQL Instance created using point_in_time_restore

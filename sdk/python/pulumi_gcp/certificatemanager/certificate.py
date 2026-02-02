@@ -434,6 +434,12 @@ class Certificate(pulumi.CustomResource):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
 
+        To get more information about Certificate, see:
+
+        * [API documentation](https://docs.cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.certificates)
+        * How-to Guides
+            * [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
+
         ## Example Usage
 
         ### Certificate Manager Google Managed Certificate Dns
@@ -775,6 +781,12 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
+
+        To get more information about Certificate, see:
+
+        * [API documentation](https://docs.cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.certificates)
+        * How-to Guides
+            * [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
 
         ## Example Usage
 

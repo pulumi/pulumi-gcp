@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Capability, see:
  * 
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/manage-applications)
  * 
  * ## Example Usage
  * 
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var folder = new Folder("folder", FolderArgs.builder()
- *             .displayName("my-folder")
+ *             .displayName("folder-cap")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

@@ -334,6 +334,136 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Dialogflowcx Webhook With Service Account Auth
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.diagflow.CxWebhook;
+ * import com.pulumi.gcp.diagflow.CxWebhookArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceServiceAccountAuthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
+ *             .supportedLanguageCodes(            
+ *                 "it",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
+ *             .enableStackdriverLogging(true)
+ *             .enableSpellCorrection(true)
+ *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
+ *                 .enableSpeechAdaptation(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var webhookUseServiceAccount = new CxWebhook("webhookUseServiceAccount", CxWebhookArgs.builder()
+ *             .parent(agent.id())
+ *             .displayName("MyWebhook")
+ *             .genericWebService(CxWebhookGenericWebServiceArgs.builder()
+ *                 .uri("https://example.googleapis.com")
+ *                 .webhookType("STANDARD")
+ *                 .serviceAccountAuthConfig(CxWebhookGenericWebServiceServiceAccountAuthConfigArgs.builder()
+ *                     .serviceAccount("my}{@literal @}{@code service-account.com")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Dialogflowcx Webhook Service Directory With Service Account Auth
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
+ * import com.pulumi.gcp.diagflow.CxWebhook;
+ * import com.pulumi.gcp.diagflow.CxWebhookArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
+ *             .displayName("dialogflowcx-agent")
+ *             .location("us-central1")
+ *             .defaultLanguageCode("en")
+ *             .supportedLanguageCodes(            
+ *                 "it",
+ *                 "de",
+ *                 "es")
+ *             .timeZone("America/New_York")
+ *             .description("Example description.")
+ *             .avatarUri("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png")
+ *             .enableStackdriverLogging(true)
+ *             .enableSpellCorrection(true)
+ *             .speechToTextSettings(CxAgentSpeechToTextSettingsArgs.builder()
+ *                 .enableSpeechAdaptation(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var webhookUseServiceAccount = new CxWebhook("webhookUseServiceAccount", CxWebhookArgs.builder()
+ *             .parent(agent.id())
+ *             .displayName("MyWebhook")
+ *             .serviceDirectory(CxWebhookServiceDirectoryArgs.builder()
+ *                 .service("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service")
+ *                 .genericWebService(CxWebhookServiceDirectoryGenericWebServiceArgs.builder()
+ *                     .uri("https://example.googleapis.com")
+ *                     .webhookType("STANDARD")
+ *                     .serviceAccountAuthConfig(CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs.builder()
+ *                         .serviceAccount("my}{@literal @}{@code service-account.com")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 

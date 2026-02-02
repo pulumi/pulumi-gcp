@@ -35,7 +35,7 @@ public final class OrganizationPolicyState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      * ***
      * 
@@ -44,7 +44,7 @@ public final class OrganizationPolicyState extends com.pulumi.resources.Resource
     private @Nullable Output<String> constraint;
 
     /**
-     * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      * ***
      * 
@@ -208,7 +208,7 @@ public final class OrganizationPolicyState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+         * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
          * 
          * ***
          * 
@@ -221,7 +221,7 @@ public final class OrganizationPolicyState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+         * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
          * 
          * ***
          * 

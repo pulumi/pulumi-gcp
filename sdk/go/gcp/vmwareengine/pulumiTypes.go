@@ -1025,6 +1025,535 @@ func (o ClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeTy
 	}).(ClusterNodeTypeConfigOutput)
 }
 
+type DatastoreNfsDatastore struct {
+	// Google service file service configuration
+	// Structure is documented below.
+	GoogleFileService *DatastoreNfsDatastoreGoogleFileService `pulumi:"googleFileService"`
+	// Third party file service configuration
+	// Structure is documented below.
+	ThirdPartyFileService *DatastoreNfsDatastoreThirdPartyFileService `pulumi:"thirdPartyFileService"`
+}
+
+// DatastoreNfsDatastoreInput is an input type that accepts DatastoreNfsDatastoreArgs and DatastoreNfsDatastoreOutput values.
+// You can construct a concrete instance of `DatastoreNfsDatastoreInput` via:
+//
+//	DatastoreNfsDatastoreArgs{...}
+type DatastoreNfsDatastoreInput interface {
+	pulumi.Input
+
+	ToDatastoreNfsDatastoreOutput() DatastoreNfsDatastoreOutput
+	ToDatastoreNfsDatastoreOutputWithContext(context.Context) DatastoreNfsDatastoreOutput
+}
+
+type DatastoreNfsDatastoreArgs struct {
+	// Google service file service configuration
+	// Structure is documented below.
+	GoogleFileService DatastoreNfsDatastoreGoogleFileServicePtrInput `pulumi:"googleFileService"`
+	// Third party file service configuration
+	// Structure is documented below.
+	ThirdPartyFileService DatastoreNfsDatastoreThirdPartyFileServicePtrInput `pulumi:"thirdPartyFileService"`
+}
+
+func (DatastoreNfsDatastoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (i DatastoreNfsDatastoreArgs) ToDatastoreNfsDatastoreOutput() DatastoreNfsDatastoreOutput {
+	return i.ToDatastoreNfsDatastoreOutputWithContext(context.Background())
+}
+
+func (i DatastoreNfsDatastoreArgs) ToDatastoreNfsDatastoreOutputWithContext(ctx context.Context) DatastoreNfsDatastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreOutput)
+}
+
+func (i DatastoreNfsDatastoreArgs) ToDatastoreNfsDatastorePtrOutput() DatastoreNfsDatastorePtrOutput {
+	return i.ToDatastoreNfsDatastorePtrOutputWithContext(context.Background())
+}
+
+func (i DatastoreNfsDatastoreArgs) ToDatastoreNfsDatastorePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreOutput).ToDatastoreNfsDatastorePtrOutputWithContext(ctx)
+}
+
+// DatastoreNfsDatastorePtrInput is an input type that accepts DatastoreNfsDatastoreArgs, DatastoreNfsDatastorePtr and DatastoreNfsDatastorePtrOutput values.
+// You can construct a concrete instance of `DatastoreNfsDatastorePtrInput` via:
+//
+//	        DatastoreNfsDatastoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatastoreNfsDatastorePtrInput interface {
+	pulumi.Input
+
+	ToDatastoreNfsDatastorePtrOutput() DatastoreNfsDatastorePtrOutput
+	ToDatastoreNfsDatastorePtrOutputWithContext(context.Context) DatastoreNfsDatastorePtrOutput
+}
+
+type datastoreNfsDatastorePtrType DatastoreNfsDatastoreArgs
+
+func DatastoreNfsDatastorePtr(v *DatastoreNfsDatastoreArgs) DatastoreNfsDatastorePtrInput {
+	return (*datastoreNfsDatastorePtrType)(v)
+}
+
+func (*datastoreNfsDatastorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (i *datastoreNfsDatastorePtrType) ToDatastoreNfsDatastorePtrOutput() DatastoreNfsDatastorePtrOutput {
+	return i.ToDatastoreNfsDatastorePtrOutputWithContext(context.Background())
+}
+
+func (i *datastoreNfsDatastorePtrType) ToDatastoreNfsDatastorePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastorePtrOutput)
+}
+
+type DatastoreNfsDatastoreOutput struct{ *pulumi.OutputState }
+
+func (DatastoreNfsDatastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (o DatastoreNfsDatastoreOutput) ToDatastoreNfsDatastoreOutput() DatastoreNfsDatastoreOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreOutput) ToDatastoreNfsDatastoreOutputWithContext(ctx context.Context) DatastoreNfsDatastoreOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreOutput) ToDatastoreNfsDatastorePtrOutput() DatastoreNfsDatastorePtrOutput {
+	return o.ToDatastoreNfsDatastorePtrOutputWithContext(context.Background())
+}
+
+func (o DatastoreNfsDatastoreOutput) ToDatastoreNfsDatastorePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatastoreNfsDatastore) *DatastoreNfsDatastore {
+		return &v
+	}).(DatastoreNfsDatastorePtrOutput)
+}
+
+// Google service file service configuration
+// Structure is documented below.
+func (o DatastoreNfsDatastoreOutput) GoogleFileService() DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return o.ApplyT(func(v DatastoreNfsDatastore) *DatastoreNfsDatastoreGoogleFileService { return v.GoogleFileService }).(DatastoreNfsDatastoreGoogleFileServicePtrOutput)
+}
+
+// Third party file service configuration
+// Structure is documented below.
+func (o DatastoreNfsDatastoreOutput) ThirdPartyFileService() DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return o.ApplyT(func(v DatastoreNfsDatastore) *DatastoreNfsDatastoreThirdPartyFileService {
+		return v.ThirdPartyFileService
+	}).(DatastoreNfsDatastoreThirdPartyFileServicePtrOutput)
+}
+
+type DatastoreNfsDatastorePtrOutput struct{ *pulumi.OutputState }
+
+func (DatastoreNfsDatastorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (o DatastoreNfsDatastorePtrOutput) ToDatastoreNfsDatastorePtrOutput() DatastoreNfsDatastorePtrOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastorePtrOutput) ToDatastoreNfsDatastorePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastorePtrOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastorePtrOutput) Elem() DatastoreNfsDatastoreOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastore) DatastoreNfsDatastore {
+		if v != nil {
+			return *v
+		}
+		var ret DatastoreNfsDatastore
+		return ret
+	}).(DatastoreNfsDatastoreOutput)
+}
+
+// Google service file service configuration
+// Structure is documented below.
+func (o DatastoreNfsDatastorePtrOutput) GoogleFileService() DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastore) *DatastoreNfsDatastoreGoogleFileService {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleFileService
+	}).(DatastoreNfsDatastoreGoogleFileServicePtrOutput)
+}
+
+// Third party file service configuration
+// Structure is documented below.
+func (o DatastoreNfsDatastorePtrOutput) ThirdPartyFileService() DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastore) *DatastoreNfsDatastoreThirdPartyFileService {
+		if v == nil {
+			return nil
+		}
+		return v.ThirdPartyFileService
+	}).(DatastoreNfsDatastoreThirdPartyFileServicePtrOutput)
+}
+
+type DatastoreNfsDatastoreGoogleFileService struct {
+	// Google filestore instance resource name
+	// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+	FilestoreInstance *string `pulumi:"filestoreInstance"`
+	// Google netapp volume resource name
+	// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+	NetappVolume *string `pulumi:"netappVolume"`
+}
+
+// DatastoreNfsDatastoreGoogleFileServiceInput is an input type that accepts DatastoreNfsDatastoreGoogleFileServiceArgs and DatastoreNfsDatastoreGoogleFileServiceOutput values.
+// You can construct a concrete instance of `DatastoreNfsDatastoreGoogleFileServiceInput` via:
+//
+//	DatastoreNfsDatastoreGoogleFileServiceArgs{...}
+type DatastoreNfsDatastoreGoogleFileServiceInput interface {
+	pulumi.Input
+
+	ToDatastoreNfsDatastoreGoogleFileServiceOutput() DatastoreNfsDatastoreGoogleFileServiceOutput
+	ToDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(context.Context) DatastoreNfsDatastoreGoogleFileServiceOutput
+}
+
+type DatastoreNfsDatastoreGoogleFileServiceArgs struct {
+	// Google filestore instance resource name
+	// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+	FilestoreInstance pulumi.StringPtrInput `pulumi:"filestoreInstance"`
+	// Google netapp volume resource name
+	// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+	NetappVolume pulumi.StringPtrInput `pulumi:"netappVolume"`
+}
+
+func (DatastoreNfsDatastoreGoogleFileServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (i DatastoreNfsDatastoreGoogleFileServiceArgs) ToDatastoreNfsDatastoreGoogleFileServiceOutput() DatastoreNfsDatastoreGoogleFileServiceOutput {
+	return i.ToDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(context.Background())
+}
+
+func (i DatastoreNfsDatastoreGoogleFileServiceArgs) ToDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(ctx context.Context) DatastoreNfsDatastoreGoogleFileServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreGoogleFileServiceOutput)
+}
+
+func (i DatastoreNfsDatastoreGoogleFileServiceArgs) ToDatastoreNfsDatastoreGoogleFileServicePtrOutput() DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return i.ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(context.Background())
+}
+
+func (i DatastoreNfsDatastoreGoogleFileServiceArgs) ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreGoogleFileServiceOutput).ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(ctx)
+}
+
+// DatastoreNfsDatastoreGoogleFileServicePtrInput is an input type that accepts DatastoreNfsDatastoreGoogleFileServiceArgs, DatastoreNfsDatastoreGoogleFileServicePtr and DatastoreNfsDatastoreGoogleFileServicePtrOutput values.
+// You can construct a concrete instance of `DatastoreNfsDatastoreGoogleFileServicePtrInput` via:
+//
+//	        DatastoreNfsDatastoreGoogleFileServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatastoreNfsDatastoreGoogleFileServicePtrInput interface {
+	pulumi.Input
+
+	ToDatastoreNfsDatastoreGoogleFileServicePtrOutput() DatastoreNfsDatastoreGoogleFileServicePtrOutput
+	ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(context.Context) DatastoreNfsDatastoreGoogleFileServicePtrOutput
+}
+
+type datastoreNfsDatastoreGoogleFileServicePtrType DatastoreNfsDatastoreGoogleFileServiceArgs
+
+func DatastoreNfsDatastoreGoogleFileServicePtr(v *DatastoreNfsDatastoreGoogleFileServiceArgs) DatastoreNfsDatastoreGoogleFileServicePtrInput {
+	return (*datastoreNfsDatastoreGoogleFileServicePtrType)(v)
+}
+
+func (*datastoreNfsDatastoreGoogleFileServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (i *datastoreNfsDatastoreGoogleFileServicePtrType) ToDatastoreNfsDatastoreGoogleFileServicePtrOutput() DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return i.ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(context.Background())
+}
+
+func (i *datastoreNfsDatastoreGoogleFileServicePtrType) ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreGoogleFileServicePtrOutput)
+}
+
+type DatastoreNfsDatastoreGoogleFileServiceOutput struct{ *pulumi.OutputState }
+
+func (DatastoreNfsDatastoreGoogleFileServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (o DatastoreNfsDatastoreGoogleFileServiceOutput) ToDatastoreNfsDatastoreGoogleFileServiceOutput() DatastoreNfsDatastoreGoogleFileServiceOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreGoogleFileServiceOutput) ToDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(ctx context.Context) DatastoreNfsDatastoreGoogleFileServiceOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreGoogleFileServiceOutput) ToDatastoreNfsDatastoreGoogleFileServicePtrOutput() DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return o.ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(context.Background())
+}
+
+func (o DatastoreNfsDatastoreGoogleFileServiceOutput) ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatastoreNfsDatastoreGoogleFileService) *DatastoreNfsDatastoreGoogleFileService {
+		return &v
+	}).(DatastoreNfsDatastoreGoogleFileServicePtrOutput)
+}
+
+// Google filestore instance resource name
+// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+func (o DatastoreNfsDatastoreGoogleFileServiceOutput) FilestoreInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatastoreNfsDatastoreGoogleFileService) *string { return v.FilestoreInstance }).(pulumi.StringPtrOutput)
+}
+
+// Google netapp volume resource name
+// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+func (o DatastoreNfsDatastoreGoogleFileServiceOutput) NetappVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatastoreNfsDatastoreGoogleFileService) *string { return v.NetappVolume }).(pulumi.StringPtrOutput)
+}
+
+type DatastoreNfsDatastoreGoogleFileServicePtrOutput struct{ *pulumi.OutputState }
+
+func (DatastoreNfsDatastoreGoogleFileServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (o DatastoreNfsDatastoreGoogleFileServicePtrOutput) ToDatastoreNfsDatastoreGoogleFileServicePtrOutput() DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreGoogleFileServicePtrOutput) ToDatastoreNfsDatastoreGoogleFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreGoogleFileServicePtrOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreGoogleFileServicePtrOutput) Elem() DatastoreNfsDatastoreGoogleFileServiceOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastoreGoogleFileService) DatastoreNfsDatastoreGoogleFileService {
+		if v != nil {
+			return *v
+		}
+		var ret DatastoreNfsDatastoreGoogleFileService
+		return ret
+	}).(DatastoreNfsDatastoreGoogleFileServiceOutput)
+}
+
+// Google filestore instance resource name
+// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+func (o DatastoreNfsDatastoreGoogleFileServicePtrOutput) FilestoreInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastoreGoogleFileService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilestoreInstance
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google netapp volume resource name
+// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+func (o DatastoreNfsDatastoreGoogleFileServicePtrOutput) NetappVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastoreGoogleFileService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetappVolume
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatastoreNfsDatastoreThirdPartyFileService struct {
+	// Required
+	// Mount Folder name
+	FileShare string `pulumi:"fileShare"`
+	// Required to identify vpc peering used for NFS access
+	// network name of NFS's vpc
+	// e.g. projects/project-id/global/networks/my-network_id
+	Network string `pulumi:"network"`
+	// Server IP addresses of the NFS file service.
+	// NFS v3, provide a single IP address or DNS name.
+	// Multiple servers can be supported in future when NFS 4.1 protocol support
+	// is enabled.
+	Servers []string `pulumi:"servers"`
+}
+
+// DatastoreNfsDatastoreThirdPartyFileServiceInput is an input type that accepts DatastoreNfsDatastoreThirdPartyFileServiceArgs and DatastoreNfsDatastoreThirdPartyFileServiceOutput values.
+// You can construct a concrete instance of `DatastoreNfsDatastoreThirdPartyFileServiceInput` via:
+//
+//	DatastoreNfsDatastoreThirdPartyFileServiceArgs{...}
+type DatastoreNfsDatastoreThirdPartyFileServiceInput interface {
+	pulumi.Input
+
+	ToDatastoreNfsDatastoreThirdPartyFileServiceOutput() DatastoreNfsDatastoreThirdPartyFileServiceOutput
+	ToDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(context.Context) DatastoreNfsDatastoreThirdPartyFileServiceOutput
+}
+
+type DatastoreNfsDatastoreThirdPartyFileServiceArgs struct {
+	// Required
+	// Mount Folder name
+	FileShare pulumi.StringInput `pulumi:"fileShare"`
+	// Required to identify vpc peering used for NFS access
+	// network name of NFS's vpc
+	// e.g. projects/project-id/global/networks/my-network_id
+	Network pulumi.StringInput `pulumi:"network"`
+	// Server IP addresses of the NFS file service.
+	// NFS v3, provide a single IP address or DNS name.
+	// Multiple servers can be supported in future when NFS 4.1 protocol support
+	// is enabled.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (DatastoreNfsDatastoreThirdPartyFileServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (i DatastoreNfsDatastoreThirdPartyFileServiceArgs) ToDatastoreNfsDatastoreThirdPartyFileServiceOutput() DatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return i.ToDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(context.Background())
+}
+
+func (i DatastoreNfsDatastoreThirdPartyFileServiceArgs) ToDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(ctx context.Context) DatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreThirdPartyFileServiceOutput)
+}
+
+func (i DatastoreNfsDatastoreThirdPartyFileServiceArgs) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutput() DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return i.ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(context.Background())
+}
+
+func (i DatastoreNfsDatastoreThirdPartyFileServiceArgs) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreThirdPartyFileServiceOutput).ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(ctx)
+}
+
+// DatastoreNfsDatastoreThirdPartyFileServicePtrInput is an input type that accepts DatastoreNfsDatastoreThirdPartyFileServiceArgs, DatastoreNfsDatastoreThirdPartyFileServicePtr and DatastoreNfsDatastoreThirdPartyFileServicePtrOutput values.
+// You can construct a concrete instance of `DatastoreNfsDatastoreThirdPartyFileServicePtrInput` via:
+//
+//	        DatastoreNfsDatastoreThirdPartyFileServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatastoreNfsDatastoreThirdPartyFileServicePtrInput interface {
+	pulumi.Input
+
+	ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutput() DatastoreNfsDatastoreThirdPartyFileServicePtrOutput
+	ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(context.Context) DatastoreNfsDatastoreThirdPartyFileServicePtrOutput
+}
+
+type datastoreNfsDatastoreThirdPartyFileServicePtrType DatastoreNfsDatastoreThirdPartyFileServiceArgs
+
+func DatastoreNfsDatastoreThirdPartyFileServicePtr(v *DatastoreNfsDatastoreThirdPartyFileServiceArgs) DatastoreNfsDatastoreThirdPartyFileServicePtrInput {
+	return (*datastoreNfsDatastoreThirdPartyFileServicePtrType)(v)
+}
+
+func (*datastoreNfsDatastoreThirdPartyFileServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (i *datastoreNfsDatastoreThirdPartyFileServicePtrType) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutput() DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return i.ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(context.Background())
+}
+
+func (i *datastoreNfsDatastoreThirdPartyFileServicePtrType) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatastoreNfsDatastoreThirdPartyFileServicePtrOutput)
+}
+
+type DatastoreNfsDatastoreThirdPartyFileServiceOutput struct{ *pulumi.OutputState }
+
+func (DatastoreNfsDatastoreThirdPartyFileServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (o DatastoreNfsDatastoreThirdPartyFileServiceOutput) ToDatastoreNfsDatastoreThirdPartyFileServiceOutput() DatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreThirdPartyFileServiceOutput) ToDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(ctx context.Context) DatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreThirdPartyFileServiceOutput) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutput() DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return o.ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(context.Background())
+}
+
+func (o DatastoreNfsDatastoreThirdPartyFileServiceOutput) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatastoreNfsDatastoreThirdPartyFileService) *DatastoreNfsDatastoreThirdPartyFileService {
+		return &v
+	}).(DatastoreNfsDatastoreThirdPartyFileServicePtrOutput)
+}
+
+// Required
+// Mount Folder name
+func (o DatastoreNfsDatastoreThirdPartyFileServiceOutput) FileShare() pulumi.StringOutput {
+	return o.ApplyT(func(v DatastoreNfsDatastoreThirdPartyFileService) string { return v.FileShare }).(pulumi.StringOutput)
+}
+
+// Required to identify vpc peering used for NFS access
+// network name of NFS's vpc
+// e.g. projects/project-id/global/networks/my-network_id
+func (o DatastoreNfsDatastoreThirdPartyFileServiceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v DatastoreNfsDatastoreThirdPartyFileService) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Server IP addresses of the NFS file service.
+// NFS v3, provide a single IP address or DNS name.
+// Multiple servers can be supported in future when NFS 4.1 protocol support
+// is enabled.
+func (o DatastoreNfsDatastoreThirdPartyFileServiceOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatastoreNfsDatastoreThirdPartyFileService) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type DatastoreNfsDatastoreThirdPartyFileServicePtrOutput struct{ *pulumi.OutputState }
+
+func (DatastoreNfsDatastoreThirdPartyFileServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (o DatastoreNfsDatastoreThirdPartyFileServicePtrOutput) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutput() DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreThirdPartyFileServicePtrOutput) ToDatastoreNfsDatastoreThirdPartyFileServicePtrOutputWithContext(ctx context.Context) DatastoreNfsDatastoreThirdPartyFileServicePtrOutput {
+	return o
+}
+
+func (o DatastoreNfsDatastoreThirdPartyFileServicePtrOutput) Elem() DatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastoreThirdPartyFileService) DatastoreNfsDatastoreThirdPartyFileService {
+		if v != nil {
+			return *v
+		}
+		var ret DatastoreNfsDatastoreThirdPartyFileService
+		return ret
+	}).(DatastoreNfsDatastoreThirdPartyFileServiceOutput)
+}
+
+// Required
+// Mount Folder name
+func (o DatastoreNfsDatastoreThirdPartyFileServicePtrOutput) FileShare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastoreThirdPartyFileService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileShare
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required to identify vpc peering used for NFS access
+// network name of NFS's vpc
+// e.g. projects/project-id/global/networks/my-network_id
+func (o DatastoreNfsDatastoreThirdPartyFileServicePtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastoreThirdPartyFileService) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server IP addresses of the NFS file service.
+// NFS v3, provide a single IP address or DNS name.
+// Multiple servers can be supported in future when NFS 4.1 protocol support
+// is enabled.
+func (o DatastoreNfsDatastoreThirdPartyFileServicePtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatastoreNfsDatastoreThirdPartyFileService) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
 type ExternalAccessRuleDestinationIpRange struct {
 	// The name of an `ExternalAddress` resource.
 	ExternalAddress *string `pulumi:"externalAddress"`
@@ -4613,6 +5142,361 @@ func (o GetClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetCluster
 	}).(GetClusterNodeTypeConfigOutput)
 }
 
+type GetDatastoreNfsDatastore struct {
+	// Google service file service configuration
+	GoogleFileServices []GetDatastoreNfsDatastoreGoogleFileService `pulumi:"googleFileServices"`
+	// Third party file service configuration
+	ThirdPartyFileServices []GetDatastoreNfsDatastoreThirdPartyFileService `pulumi:"thirdPartyFileServices"`
+}
+
+// GetDatastoreNfsDatastoreInput is an input type that accepts GetDatastoreNfsDatastoreArgs and GetDatastoreNfsDatastoreOutput values.
+// You can construct a concrete instance of `GetDatastoreNfsDatastoreInput` via:
+//
+//	GetDatastoreNfsDatastoreArgs{...}
+type GetDatastoreNfsDatastoreInput interface {
+	pulumi.Input
+
+	ToGetDatastoreNfsDatastoreOutput() GetDatastoreNfsDatastoreOutput
+	ToGetDatastoreNfsDatastoreOutputWithContext(context.Context) GetDatastoreNfsDatastoreOutput
+}
+
+type GetDatastoreNfsDatastoreArgs struct {
+	// Google service file service configuration
+	GoogleFileServices GetDatastoreNfsDatastoreGoogleFileServiceArrayInput `pulumi:"googleFileServices"`
+	// Third party file service configuration
+	ThirdPartyFileServices GetDatastoreNfsDatastoreThirdPartyFileServiceArrayInput `pulumi:"thirdPartyFileServices"`
+}
+
+func (GetDatastoreNfsDatastoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (i GetDatastoreNfsDatastoreArgs) ToGetDatastoreNfsDatastoreOutput() GetDatastoreNfsDatastoreOutput {
+	return i.ToGetDatastoreNfsDatastoreOutputWithContext(context.Background())
+}
+
+func (i GetDatastoreNfsDatastoreArgs) ToGetDatastoreNfsDatastoreOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoreNfsDatastoreOutput)
+}
+
+// GetDatastoreNfsDatastoreArrayInput is an input type that accepts GetDatastoreNfsDatastoreArray and GetDatastoreNfsDatastoreArrayOutput values.
+// You can construct a concrete instance of `GetDatastoreNfsDatastoreArrayInput` via:
+//
+//	GetDatastoreNfsDatastoreArray{ GetDatastoreNfsDatastoreArgs{...} }
+type GetDatastoreNfsDatastoreArrayInput interface {
+	pulumi.Input
+
+	ToGetDatastoreNfsDatastoreArrayOutput() GetDatastoreNfsDatastoreArrayOutput
+	ToGetDatastoreNfsDatastoreArrayOutputWithContext(context.Context) GetDatastoreNfsDatastoreArrayOutput
+}
+
+type GetDatastoreNfsDatastoreArray []GetDatastoreNfsDatastoreInput
+
+func (GetDatastoreNfsDatastoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (i GetDatastoreNfsDatastoreArray) ToGetDatastoreNfsDatastoreArrayOutput() GetDatastoreNfsDatastoreArrayOutput {
+	return i.ToGetDatastoreNfsDatastoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatastoreNfsDatastoreArray) ToGetDatastoreNfsDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoreNfsDatastoreArrayOutput)
+}
+
+type GetDatastoreNfsDatastoreOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoreNfsDatastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (o GetDatastoreNfsDatastoreOutput) ToGetDatastoreNfsDatastoreOutput() GetDatastoreNfsDatastoreOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreOutput) ToGetDatastoreNfsDatastoreOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreOutput {
+	return o
+}
+
+// Google service file service configuration
+func (o GetDatastoreNfsDatastoreOutput) GoogleFileServices() GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput {
+	return o.ApplyT(func(v GetDatastoreNfsDatastore) []GetDatastoreNfsDatastoreGoogleFileService {
+		return v.GoogleFileServices
+	}).(GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput)
+}
+
+// Third party file service configuration
+func (o GetDatastoreNfsDatastoreOutput) ThirdPartyFileServices() GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput {
+	return o.ApplyT(func(v GetDatastoreNfsDatastore) []GetDatastoreNfsDatastoreThirdPartyFileService {
+		return v.ThirdPartyFileServices
+	}).(GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput)
+}
+
+type GetDatastoreNfsDatastoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoreNfsDatastoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoreNfsDatastore)(nil)).Elem()
+}
+
+func (o GetDatastoreNfsDatastoreArrayOutput) ToGetDatastoreNfsDatastoreArrayOutput() GetDatastoreNfsDatastoreArrayOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreArrayOutput) ToGetDatastoreNfsDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreArrayOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreArrayOutput) Index(i pulumi.IntInput) GetDatastoreNfsDatastoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatastoreNfsDatastore {
+		return vs[0].([]GetDatastoreNfsDatastore)[vs[1].(int)]
+	}).(GetDatastoreNfsDatastoreOutput)
+}
+
+type GetDatastoreNfsDatastoreGoogleFileService struct {
+	// Google filestore instance resource name
+	// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+	FilestoreInstance string `pulumi:"filestoreInstance"`
+	// Google netapp volume resource name
+	// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+	NetappVolume string `pulumi:"netappVolume"`
+}
+
+// GetDatastoreNfsDatastoreGoogleFileServiceInput is an input type that accepts GetDatastoreNfsDatastoreGoogleFileServiceArgs and GetDatastoreNfsDatastoreGoogleFileServiceOutput values.
+// You can construct a concrete instance of `GetDatastoreNfsDatastoreGoogleFileServiceInput` via:
+//
+//	GetDatastoreNfsDatastoreGoogleFileServiceArgs{...}
+type GetDatastoreNfsDatastoreGoogleFileServiceInput interface {
+	pulumi.Input
+
+	ToGetDatastoreNfsDatastoreGoogleFileServiceOutput() GetDatastoreNfsDatastoreGoogleFileServiceOutput
+	ToGetDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(context.Context) GetDatastoreNfsDatastoreGoogleFileServiceOutput
+}
+
+type GetDatastoreNfsDatastoreGoogleFileServiceArgs struct {
+	// Google filestore instance resource name
+	// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+	FilestoreInstance pulumi.StringInput `pulumi:"filestoreInstance"`
+	// Google netapp volume resource name
+	// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+	NetappVolume pulumi.StringInput `pulumi:"netappVolume"`
+}
+
+func (GetDatastoreNfsDatastoreGoogleFileServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (i GetDatastoreNfsDatastoreGoogleFileServiceArgs) ToGetDatastoreNfsDatastoreGoogleFileServiceOutput() GetDatastoreNfsDatastoreGoogleFileServiceOutput {
+	return i.ToGetDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(context.Background())
+}
+
+func (i GetDatastoreNfsDatastoreGoogleFileServiceArgs) ToGetDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreGoogleFileServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoreNfsDatastoreGoogleFileServiceOutput)
+}
+
+// GetDatastoreNfsDatastoreGoogleFileServiceArrayInput is an input type that accepts GetDatastoreNfsDatastoreGoogleFileServiceArray and GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput values.
+// You can construct a concrete instance of `GetDatastoreNfsDatastoreGoogleFileServiceArrayInput` via:
+//
+//	GetDatastoreNfsDatastoreGoogleFileServiceArray{ GetDatastoreNfsDatastoreGoogleFileServiceArgs{...} }
+type GetDatastoreNfsDatastoreGoogleFileServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetDatastoreNfsDatastoreGoogleFileServiceArrayOutput() GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput
+	ToGetDatastoreNfsDatastoreGoogleFileServiceArrayOutputWithContext(context.Context) GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput
+}
+
+type GetDatastoreNfsDatastoreGoogleFileServiceArray []GetDatastoreNfsDatastoreGoogleFileServiceInput
+
+func (GetDatastoreNfsDatastoreGoogleFileServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (i GetDatastoreNfsDatastoreGoogleFileServiceArray) ToGetDatastoreNfsDatastoreGoogleFileServiceArrayOutput() GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput {
+	return i.ToGetDatastoreNfsDatastoreGoogleFileServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatastoreNfsDatastoreGoogleFileServiceArray) ToGetDatastoreNfsDatastoreGoogleFileServiceArrayOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput)
+}
+
+type GetDatastoreNfsDatastoreGoogleFileServiceOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoreNfsDatastoreGoogleFileServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (o GetDatastoreNfsDatastoreGoogleFileServiceOutput) ToGetDatastoreNfsDatastoreGoogleFileServiceOutput() GetDatastoreNfsDatastoreGoogleFileServiceOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreGoogleFileServiceOutput) ToGetDatastoreNfsDatastoreGoogleFileServiceOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreGoogleFileServiceOutput {
+	return o
+}
+
+// Google filestore instance resource name
+// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+func (o GetDatastoreNfsDatastoreGoogleFileServiceOutput) FilestoreInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoreNfsDatastoreGoogleFileService) string { return v.FilestoreInstance }).(pulumi.StringOutput)
+}
+
+// Google netapp volume resource name
+// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+func (o GetDatastoreNfsDatastoreGoogleFileServiceOutput) NetappVolume() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoreNfsDatastoreGoogleFileService) string { return v.NetappVolume }).(pulumi.StringOutput)
+}
+
+type GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoreNfsDatastoreGoogleFileService)(nil)).Elem()
+}
+
+func (o GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput) ToGetDatastoreNfsDatastoreGoogleFileServiceArrayOutput() GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput) ToGetDatastoreNfsDatastoreGoogleFileServiceArrayOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput) Index(i pulumi.IntInput) GetDatastoreNfsDatastoreGoogleFileServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatastoreNfsDatastoreGoogleFileService {
+		return vs[0].([]GetDatastoreNfsDatastoreGoogleFileService)[vs[1].(int)]
+	}).(GetDatastoreNfsDatastoreGoogleFileServiceOutput)
+}
+
+type GetDatastoreNfsDatastoreThirdPartyFileService struct {
+	// Required
+	// Mount Folder name
+	FileShare string `pulumi:"fileShare"`
+	// Required to identify vpc peering used for NFS access
+	// network name of NFS's vpc
+	// e.g. projects/project-id/global/networks/my-network_id
+	Network string `pulumi:"network"`
+	// Server IP addresses of the NFS file service.
+	// NFS v3, provide a single IP address or DNS name.
+	// Multiple servers can be supported in future when NFS 4.1 protocol support
+	// is enabled.
+	Servers []string `pulumi:"servers"`
+}
+
+// GetDatastoreNfsDatastoreThirdPartyFileServiceInput is an input type that accepts GetDatastoreNfsDatastoreThirdPartyFileServiceArgs and GetDatastoreNfsDatastoreThirdPartyFileServiceOutput values.
+// You can construct a concrete instance of `GetDatastoreNfsDatastoreThirdPartyFileServiceInput` via:
+//
+//	GetDatastoreNfsDatastoreThirdPartyFileServiceArgs{...}
+type GetDatastoreNfsDatastoreThirdPartyFileServiceInput interface {
+	pulumi.Input
+
+	ToGetDatastoreNfsDatastoreThirdPartyFileServiceOutput() GetDatastoreNfsDatastoreThirdPartyFileServiceOutput
+	ToGetDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(context.Context) GetDatastoreNfsDatastoreThirdPartyFileServiceOutput
+}
+
+type GetDatastoreNfsDatastoreThirdPartyFileServiceArgs struct {
+	// Required
+	// Mount Folder name
+	FileShare pulumi.StringInput `pulumi:"fileShare"`
+	// Required to identify vpc peering used for NFS access
+	// network name of NFS's vpc
+	// e.g. projects/project-id/global/networks/my-network_id
+	Network pulumi.StringInput `pulumi:"network"`
+	// Server IP addresses of the NFS file service.
+	// NFS v3, provide a single IP address or DNS name.
+	// Multiple servers can be supported in future when NFS 4.1 protocol support
+	// is enabled.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (GetDatastoreNfsDatastoreThirdPartyFileServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (i GetDatastoreNfsDatastoreThirdPartyFileServiceArgs) ToGetDatastoreNfsDatastoreThirdPartyFileServiceOutput() GetDatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return i.ToGetDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(context.Background())
+}
+
+func (i GetDatastoreNfsDatastoreThirdPartyFileServiceArgs) ToGetDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoreNfsDatastoreThirdPartyFileServiceOutput)
+}
+
+// GetDatastoreNfsDatastoreThirdPartyFileServiceArrayInput is an input type that accepts GetDatastoreNfsDatastoreThirdPartyFileServiceArray and GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput values.
+// You can construct a concrete instance of `GetDatastoreNfsDatastoreThirdPartyFileServiceArrayInput` via:
+//
+//	GetDatastoreNfsDatastoreThirdPartyFileServiceArray{ GetDatastoreNfsDatastoreThirdPartyFileServiceArgs{...} }
+type GetDatastoreNfsDatastoreThirdPartyFileServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput() GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput
+	ToGetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutputWithContext(context.Context) GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput
+}
+
+type GetDatastoreNfsDatastoreThirdPartyFileServiceArray []GetDatastoreNfsDatastoreThirdPartyFileServiceInput
+
+func (GetDatastoreNfsDatastoreThirdPartyFileServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (i GetDatastoreNfsDatastoreThirdPartyFileServiceArray) ToGetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput() GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput {
+	return i.ToGetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatastoreNfsDatastoreThirdPartyFileServiceArray) ToGetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput)
+}
+
+type GetDatastoreNfsDatastoreThirdPartyFileServiceOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoreNfsDatastoreThirdPartyFileServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceOutput) ToGetDatastoreNfsDatastoreThirdPartyFileServiceOutput() GetDatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceOutput) ToGetDatastoreNfsDatastoreThirdPartyFileServiceOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return o
+}
+
+// Required
+// Mount Folder name
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceOutput) FileShare() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoreNfsDatastoreThirdPartyFileService) string { return v.FileShare }).(pulumi.StringOutput)
+}
+
+// Required to identify vpc peering used for NFS access
+// network name of NFS's vpc
+// e.g. projects/project-id/global/networks/my-network_id
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoreNfsDatastoreThirdPartyFileService) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Server IP addresses of the NFS file service.
+// NFS v3, provide a single IP address or DNS name.
+// Multiple servers can be supported in future when NFS 4.1 protocol support
+// is enabled.
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoreNfsDatastoreThirdPartyFileService) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoreNfsDatastoreThirdPartyFileService)(nil)).Elem()
+}
+
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput) ToGetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput() GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput) ToGetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutputWithContext(ctx context.Context) GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput {
+	return o
+}
+
+func (o GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput) Index(i pulumi.IntInput) GetDatastoreNfsDatastoreThirdPartyFileServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatastoreNfsDatastoreThirdPartyFileService {
+		return vs[0].([]GetDatastoreNfsDatastoreThirdPartyFileService)[vs[1].(int)]
+	}).(GetDatastoreNfsDatastoreThirdPartyFileServiceOutput)
+}
+
 type GetExternalAccessRuleDestinationIpRange struct {
 	// The name of an 'ExternalAddress' resource.
 	ExternalAddress string `pulumi:"externalAddress"`
@@ -6834,6 +7718,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigInput)(nil)).Elem(), ClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigArrayInput)(nil)).Elem(), ClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreNfsDatastoreInput)(nil)).Elem(), DatastoreNfsDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreNfsDatastorePtrInput)(nil)).Elem(), DatastoreNfsDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreNfsDatastoreGoogleFileServiceInput)(nil)).Elem(), DatastoreNfsDatastoreGoogleFileServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreNfsDatastoreGoogleFileServicePtrInput)(nil)).Elem(), DatastoreNfsDatastoreGoogleFileServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreNfsDatastoreThirdPartyFileServiceInput)(nil)).Elem(), DatastoreNfsDatastoreThirdPartyFileServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreNfsDatastoreThirdPartyFileServicePtrInput)(nil)).Elem(), DatastoreNfsDatastoreThirdPartyFileServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleDestinationIpRangeInput)(nil)).Elem(), ExternalAccessRuleDestinationIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleDestinationIpRangeArrayInput)(nil)).Elem(), ExternalAccessRuleDestinationIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleSourceIpRangeInput)(nil)).Elem(), ExternalAccessRuleSourceIpRangeArgs{})
@@ -6882,6 +7772,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigInput)(nil)).Elem(), GetClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoreNfsDatastoreInput)(nil)).Elem(), GetDatastoreNfsDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoreNfsDatastoreArrayInput)(nil)).Elem(), GetDatastoreNfsDatastoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoreNfsDatastoreGoogleFileServiceInput)(nil)).Elem(), GetDatastoreNfsDatastoreGoogleFileServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoreNfsDatastoreGoogleFileServiceArrayInput)(nil)).Elem(), GetDatastoreNfsDatastoreGoogleFileServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoreNfsDatastoreThirdPartyFileServiceInput)(nil)).Elem(), GetDatastoreNfsDatastoreThirdPartyFileServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoreNfsDatastoreThirdPartyFileServiceArrayInput)(nil)).Elem(), GetDatastoreNfsDatastoreThirdPartyFileServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleDestinationIpRangeInput)(nil)).Elem(), GetExternalAccessRuleDestinationIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleDestinationIpRangeArrayInput)(nil)).Elem(), GetExternalAccessRuleDestinationIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleSourceIpRangeInput)(nil)).Elem(), GetExternalAccessRuleSourceIpRangeArgs{})
@@ -6930,6 +7826,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(DatastoreNfsDatastoreOutput{})
+	pulumi.RegisterOutputType(DatastoreNfsDatastorePtrOutput{})
+	pulumi.RegisterOutputType(DatastoreNfsDatastoreGoogleFileServiceOutput{})
+	pulumi.RegisterOutputType(DatastoreNfsDatastoreGoogleFileServicePtrOutput{})
+	pulumi.RegisterOutputType(DatastoreNfsDatastoreThirdPartyFileServiceOutput{})
+	pulumi.RegisterOutputType(DatastoreNfsDatastoreThirdPartyFileServicePtrOutput{})
 	pulumi.RegisterOutputType(ExternalAccessRuleDestinationIpRangeOutput{})
 	pulumi.RegisterOutputType(ExternalAccessRuleDestinationIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(ExternalAccessRuleSourceIpRangeOutput{})
@@ -6978,6 +7880,12 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatastoreNfsDatastoreOutput{})
+	pulumi.RegisterOutputType(GetDatastoreNfsDatastoreArrayOutput{})
+	pulumi.RegisterOutputType(GetDatastoreNfsDatastoreGoogleFileServiceOutput{})
+	pulumi.RegisterOutputType(GetDatastoreNfsDatastoreGoogleFileServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetDatastoreNfsDatastoreThirdPartyFileServiceOutput{})
+	pulumi.RegisterOutputType(GetDatastoreNfsDatastoreThirdPartyFileServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetExternalAccessRuleDestinationIpRangeOutput{})
 	pulumi.RegisterOutputType(GetExternalAccessRuleDestinationIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetExternalAccessRuleSourceIpRangeOutput{})

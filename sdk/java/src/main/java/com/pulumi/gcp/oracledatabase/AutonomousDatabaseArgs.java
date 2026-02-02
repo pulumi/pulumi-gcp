@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabaseSourceConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -76,8 +77,8 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      * contain a maximum of 30 alphanumeric characters.
      * 
      */
-    @Import(name="database", required=true)
-    private Output<String> database;
+    @Import(name="database")
+    private @Nullable Output<String> database;
 
     /**
      * @return The name of the Autonomous Database. The database name must be unique in
@@ -85,8 +86,8 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      * contain a maximum of 30 alphanumeric characters.
      * 
      */
-    public Output<String> database() {
-        return this.database;
+    public Optional<Output<String>> database() {
+        return Optional.ofNullable(this.database);
     }
 
     @Import(name="deletionProtection")
@@ -228,16 +229,33 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      * Structure is documented below.
      * 
      */
-    @Import(name="properties", required=true)
-    private Output<AutonomousDatabasePropertiesArgs> properties;
+    @Import(name="properties")
+    private @Nullable Output<AutonomousDatabasePropertiesArgs> properties;
 
     /**
      * @return The properties of an Autonomous Database.
      * Structure is documented below.
      * 
      */
-    public Output<AutonomousDatabasePropertiesArgs> properties() {
-        return this.properties;
+    public Optional<Output<AutonomousDatabasePropertiesArgs>> properties() {
+        return Optional.ofNullable(this.properties);
+    }
+
+    /**
+     * The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceConfig")
+    private @Nullable Output<AutonomousDatabaseSourceConfigArgs> sourceConfig;
+
+    /**
+     * @return The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AutonomousDatabaseSourceConfigArgs>> sourceConfig() {
+        return Optional.ofNullable(this.sourceConfig);
     }
 
     private AutonomousDatabaseArgs() {}
@@ -256,6 +274,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
         this.odbSubnet = $.odbSubnet;
         this.project = $.project;
         this.properties = $.properties;
+        this.sourceConfig = $.sourceConfig;
     }
 
     public static Builder builder() {
@@ -353,7 +372,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder database(Output<String> database) {
+        public Builder database(@Nullable Output<String> database) {
             $.database = database;
             return this;
         }
@@ -555,7 +574,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder properties(Output<AutonomousDatabasePropertiesArgs> properties) {
+        public Builder properties(@Nullable Output<AutonomousDatabasePropertiesArgs> properties) {
             $.properties = properties;
             return this;
         }
@@ -571,18 +590,35 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
             return properties(Output.of(properties));
         }
 
+        /**
+         * @param sourceConfig The source Autonomous Database configuration for the standby Autonomous Database.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceConfig(@Nullable Output<AutonomousDatabaseSourceConfigArgs> sourceConfig) {
+            $.sourceConfig = sourceConfig;
+            return this;
+        }
+
+        /**
+         * @param sourceConfig The source Autonomous Database configuration for the standby Autonomous Database.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceConfig(AutonomousDatabaseSourceConfigArgs sourceConfig) {
+            return sourceConfig(Output.of(sourceConfig));
+        }
+
         public AutonomousDatabaseArgs build() {
             if ($.autonomousDatabaseId == null) {
                 throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "autonomousDatabaseId");
             }
-            if ($.database == null) {
-                throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "database");
-            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "location");
-            }
-            if ($.properties == null) {
-                throw new MissingRequiredPropertyException("AutonomousDatabaseArgs", "properties");
             }
             return $;
         }

@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<string>? Column { get; set; }
 
         /// <summary>
-        /// The SQL Server data type. Full data types list can be found here:
-        /// https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+        /// (Output)
+        /// The Spanner data type. Full data types list can be found here:
+        /// https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
         /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }

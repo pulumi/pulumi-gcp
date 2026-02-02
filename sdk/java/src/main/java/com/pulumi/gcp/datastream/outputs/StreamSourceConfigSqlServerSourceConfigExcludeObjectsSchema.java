@@ -19,7 +19,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
      */
     private String schema;
     /**
-     * @return Tables in the database.
+     * @return Tables in the schema.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema {
         return this.schema;
     }
     /**
-     * @return Tables in the database.
+     * @return Tables in the schema.
      * Structure is documented below.
      * 
      */

@@ -24,6 +24,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceNetworkInterfaceAliasIpRange> AliasIpRanges;
         /// <summary>
+        /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+        /// </summary>
+        public readonly string? IgmpQuery;
+        /// <summary>
         /// The prefix length of the primary internal IPv6 range.
         /// </summary>
         public readonly int? InternalIpv6PrefixLength;
@@ -42,6 +46,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         /// </summary>
         public readonly string? Ipv6Address;
+        /// <summary>
+        /// [Beta] MAC address assigned to this network interface
+        /// </summary>
+        public readonly string? MacAddress;
         /// <summary>
         /// A unique name for the resource, required by GCE.
         /// Changing this forces a new resource to be created.
@@ -102,6 +110,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.InstanceNetworkInterfaceAliasIpRange> aliasIpRanges,
 
+            string? igmpQuery,
+
             int? internalIpv6PrefixLength,
 
             ImmutableArray<Outputs.InstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
@@ -109,6 +119,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             string? ipv6AccessType,
 
             string? ipv6Address,
+
+            string? macAddress,
 
             string? name,
 
@@ -132,10 +144,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            IgmpQuery = igmpQuery;
             InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;
             Ipv6AccessType = ipv6AccessType;
             Ipv6Address = ipv6Address;
+            MacAddress = macAddress;
             Name = name;
             Network = network;
             NetworkAttachment = networkAttachment;

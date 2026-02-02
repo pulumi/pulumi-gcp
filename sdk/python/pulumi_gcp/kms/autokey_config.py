@@ -140,7 +140,7 @@ class AutokeyConfig(pulumi.CustomResource):
 
         # Create Folder in GCP Organization
         autokms_folder = gcp.organizations.Folder("autokms_folder",
-            display_name="my-folder",
+            display_name="folder-cfg",
             parent="organizations/123456789",
             deletion_protection=False)
         # Create the key project
@@ -230,7 +230,7 @@ class AutokeyConfig(pulumi.CustomResource):
 
         # Create Folder in GCP Organization
         autokms_folder = gcp.organizations.Folder("autokms_folder",
-            display_name="my-folder",
+            display_name="folder-cfg",
             parent="organizations/123456789",
             deletion_protection=False)
         # Create the key project

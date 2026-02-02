@@ -110,6 +110,7 @@ class ProviderArgs:
                  eventarc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  external_credentials: Optional[pulumi.Input['ProviderExternalCredentialsArgs']] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 firebase_ai_logic_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -403,6 +404,8 @@ class ProviderArgs:
             pulumi.set(__self__, "external_credentials", external_credentials)
         if filestore_custom_endpoint is not None:
             pulumi.set(__self__, "filestore_custom_endpoint", filestore_custom_endpoint)
+        if firebase_ai_logic_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_ai_logic_custom_endpoint", firebase_ai_logic_custom_endpoint)
         if firebase_app_check_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_app_check_custom_endpoint", firebase_app_check_custom_endpoint)
         if firebase_app_hosting_custom_endpoint is not None:
@@ -1439,6 +1442,15 @@ class ProviderArgs:
     @filestore_custom_endpoint.setter
     def filestore_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "filestore_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firebaseAiLogicCustomEndpoint")
+    def firebase_ai_logic_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "firebase_ai_logic_custom_endpoint")
+
+    @firebase_ai_logic_custom_endpoint.setter
+    def firebase_ai_logic_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firebase_ai_logic_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="firebaseAppCheckCustomEndpoint")
@@ -2527,6 +2539,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  external_credentials: Optional[pulumi.Input[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 firebase_ai_logic_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2764,6 +2777,7 @@ class Provider(pulumi.ProviderResource):
                  eventarc_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  external_credentials: Optional[pulumi.Input[Union['ProviderExternalCredentialsArgs', 'ProviderExternalCredentialsArgsDict']]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 firebase_ai_logic_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_app_check_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_app_hosting_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2973,6 +2987,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
             __props__.__dict__["external_credentials"] = pulumi.Output.from_input(external_credentials).apply(pulumi.runtime.to_json) if external_credentials is not None else None
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
+            __props__.__dict__["firebase_ai_logic_custom_endpoint"] = firebase_ai_logic_custom_endpoint
             __props__.__dict__["firebase_app_check_custom_endpoint"] = firebase_app_check_custom_endpoint
             __props__.__dict__["firebase_app_hosting_custom_endpoint"] = firebase_app_hosting_custom_endpoint
             __props__.__dict__["firebase_custom_endpoint"] = firebase_custom_endpoint
@@ -3521,6 +3536,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="filestoreCustomEndpoint")
     def filestore_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "filestore_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="firebaseAiLogicCustomEndpoint")
+    def firebase_ai_logic_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "firebase_ai_logic_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="firebaseAppCheckCustomEndpoint")

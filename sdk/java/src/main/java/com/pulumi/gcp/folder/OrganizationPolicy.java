@@ -25,13 +25,13 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Organization Policies, see:
  * 
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy)
  * * How-to Guides
- *     * [Introduction to the Organization Policy Service](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ *     * [Introduction to the Organization Policy Service](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
  * 
  * ## Example Usage
  * 
- * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+ * To set policy with a [boolean constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
  * 
  * <pre>
  * {@code
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+ * To set a policy with a [list constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
  * 
  * <pre>
  * {@code
@@ -226,7 +226,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.booleanPolicy);
     }
     /**
-     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      * ***
      * 
@@ -235,7 +235,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> constraint;
 
     /**
-     * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      * ***
      * 

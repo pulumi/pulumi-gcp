@@ -12,7 +12,7 @@ import (
 )
 
 // Retrieve the ancestors for a project.
-// See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+// See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
 //
 // ## Example Usage
 //

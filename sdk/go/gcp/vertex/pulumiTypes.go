@@ -19315,6 +19315,9 @@ type AiReasoningEngineSpecDeploymentSpec struct {
 	// Optional. The minimum number of application instances that will be
 	// kept running at all times. Defaults to 1. Range: [0, 10].
 	MinInstances *int `pulumi:"minInstances"`
+	// Optional. Configuration for PSC-Interface.
+	// Structure is documented below.
+	PscInterfaceConfig *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
 	// Optional. Resource limits for each container.
 	// Only 'cpu' and 'memory' keys are supported.
 	// Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -19360,6 +19363,9 @@ type AiReasoningEngineSpecDeploymentSpecArgs struct {
 	// Optional. The minimum number of application instances that will be
 	// kept running at all times. Defaults to 1. Range: [0, 10].
 	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
+	// Optional. Configuration for PSC-Interface.
+	// Structure is documented below.
+	PscInterfaceConfig AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrInput `pulumi:"pscInterfaceConfig"`
 	// Optional. Resource limits for each container.
 	// Only 'cpu' and 'memory' keys are supported.
 	// Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -19482,6 +19488,14 @@ func (o AiReasoningEngineSpecDeploymentSpecOutput) MinInstances() pulumi.IntPtrO
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
 }
 
+// Optional. Configuration for PSC-Interface.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecOutput) PscInterfaceConfig() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
+		return v.PscInterfaceConfig
+	}).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput)
+}
+
 // Optional. Resource limits for each container.
 // Only 'cpu' and 'memory' keys are supported.
 // Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -19575,6 +19589,17 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) MinInstances() pulumi.IntP
 		}
 		return v.MinInstances
 	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Configuration for PSC-Interface.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) PscInterfaceConfig() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscInterfaceConfig
+	}).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput)
 }
 
 // Optional. Resource limits for each container.
@@ -19737,6 +19762,337 @@ func (o AiReasoningEngineSpecDeploymentSpecEnvArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineSpecDeploymentSpecEnv {
 		return vs[0].([]AiReasoningEngineSpecDeploymentSpecEnv)[vs[1].(int)]
 	}).(AiReasoningEngineSpecDeploymentSpecEnvOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig struct {
+	// Optional. DNS peering configurations.
+	// When specified, Vertex AI will attempt to configure DNS
+	// peering zones in the tenant project VPC to resolve the
+	// specified domains using the target network's Cloud DNS.
+	// The user must grant the dns.peer role to the Vertex AI
+	// service Agent on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs []AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig `pulumi:"dnsPeeringConfigs"`
+	// Optional. The name of the Compute Engine network attachment
+	// to attach to the resource within the region and user project.
+	// To specify this field, you must have already created a network attachment.
+	// This field is only used for resources using PSC-Interface.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+}
+
+// AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs and AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{...}
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs struct {
+	// Optional. DNS peering configurations.
+	// When specified, Vertex AI will attempt to configure DNS
+	// peering zones in the tenant project VPC to resolve the
+	// specified domains using the target network's Cloud DNS.
+	// The user must grant the dns.peer role to the Vertex AI
+	// service Agent on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayInput `pulumi:"dnsPeeringConfigs"`
+	// Optional. The name of the Compute Engine network attachment
+	// to attach to the resource within the region and user project.
+	// To specify this field, you must have already created a network attachment.
+	// This field is only used for resources using PSC-Interface.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+}
+
+func (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput)
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput).ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs, AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtr and AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrInput` via:
+//
+//	        AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput
+}
+
+type aiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrType AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs
+
+func AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtr(v *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrInput {
+	return (*aiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return o.ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig) *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
+		return &v
+	}).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput)
+}
+
+// Optional. DNS peering configurations.
+// When specified, Vertex AI will attempt to configure DNS
+// peering zones in the tenant project VPC to resolve the
+// specified domains using the target network's Cloud DNS.
+// The user must grant the dns.peer role to the Vertex AI
+// service Agent on the target project.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput) DnsPeeringConfigs() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig) []AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig {
+		return v.DnsPeeringConfigs
+	}).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// Optional. The name of the Compute Engine network attachment
+// to attach to the resource within the region and user project.
+// To specify this field, you must have already created a network attachment.
+// This field is only used for resources using PSC-Interface.
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput) Elem() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig
+		return ret
+	}).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput)
+}
+
+// Optional. DNS peering configurations.
+// When specified, Vertex AI will attempt to configure DNS
+// peering zones in the tenant project VPC to resolve the
+// specified domains using the target network's Cloud DNS.
+// The user must grant the dns.peer role to the Vertex AI
+// service Agent on the target project.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput) DnsPeeringConfigs() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig) []AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPeeringConfigs
+	}).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// Optional. The name of the Compute Engine network attachment
+// to attach to the resource within the region and user project.
+// To specify this field, you must have already created a network attachment.
+// This field is only used for resources using PSC-Interface.
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig struct {
+	// Required. The DNS name suffix of the zone being peered
+	// to, e.g., "my-internal-domain.corp.".
+	// Must end with a dot.
+	Domain string `pulumi:"domain"`
+	// Required. The VPC network name in the targetProject
+	// where the DNS zone specified by 'domain' is visible.
+	TargetNetwork string `pulumi:"targetNetwork"`
+	// Required. The project id hosting the Cloud DNS managed
+	// zone that contains the 'domain'.
+	// The Vertex AI service Agent requires the dns.peer role
+	// on this project.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs and AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{...}
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs struct {
+	// Required. The DNS name suffix of the zone being peered
+	// to, e.g., "my-internal-domain.corp.".
+	// Must end with a dot.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Required. The VPC network name in the targetProject
+	// where the DNS zone specified by 'domain' is visible.
+	TargetNetwork pulumi.StringInput `pulumi:"targetNetwork"`
+	// Required. The project id hosting the Cloud DNS managed
+	// zone that contains the 'domain'.
+	// The Vertex AI service Agent requires the dns.peer role
+	// on this project.
+	TargetProject pulumi.StringInput `pulumi:"targetProject"`
+}
+
+func (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+// AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray and AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray{ AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{...} }
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput
+	ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray []AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigInput
+
+func (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+// Required. The DNS name suffix of the zone being peered
+// to, e.g., "my-internal-domain.corp.".
+// Must end with a dot.
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Required. The VPC network name in the targetProject
+// where the DNS zone specified by 'domain' is visible.
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput) TargetNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig) string {
+		return v.TargetNetwork
+	}).(pulumi.StringOutput)
+}
+
+// Required. The project id hosting the Cloud DNS managed
+// zone that contains the 'domain'.
+// The Vertex AI service Agent requires the dns.peer role
+// on this project.
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig) string {
+		return v.TargetProject
+	}).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput() AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput) Index(i pulumi.IntInput) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig {
+		return vs[0].([]AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig)[vs[1].(int)]
+	}).(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput)
 }
 
 type AiReasoningEngineSpecDeploymentSpecSecretEnv struct {
@@ -21969,6 +22325,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecEnvInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecEnvArrayInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecSecretEnvInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecSecretEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecSecretEnvArrayInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecSecretEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs{})
@@ -22218,6 +22578,10 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecEnvOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArrayOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecSecretEnvOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecSecretEnvArrayOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefOutput{})

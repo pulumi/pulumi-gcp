@@ -26,6 +26,7 @@ __all__ = [
     'DataExchangeSubscriptionLinkedDatasetMap',
     'DataExchangeSubscriptionLinkedResource',
     'ListingBigqueryDataset',
+    'ListingBigqueryDatasetEffectiveReplica',
     'ListingBigqueryDatasetSelectedResource',
     'ListingCommercialInfo',
     'ListingCommercialInfoCloudMarketplace',
@@ -435,7 +436,11 @@ class ListingBigqueryDataset(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "selectedResources":
+        if key == "effectiveReplicas":
+            suggest = "effective_replicas"
+        elif key == "replicaLocations":
+            suggest = "replica_locations"
+        elif key == "selectedResources":
             suggest = "selected_resources"
 
         if suggest:
@@ -451,13 +456,24 @@ class ListingBigqueryDataset(dict):
 
     def __init__(__self__, *,
                  dataset: _builtins.str,
+                 effective_replicas: Optional[Sequence['outputs.ListingBigqueryDatasetEffectiveReplica']] = None,
+                 replica_locations: Optional[Sequence[_builtins.str]] = None,
                  selected_resources: Optional[Sequence['outputs.ListingBigqueryDatasetSelectedResource']] = None):
         """
         :param _builtins.str dataset: Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+        :param Sequence['ListingBigqueryDatasetEffectiveReplicaArgs'] effective_replicas: (Output, Beta)
+               Server owned effective state of replicas. Contains both primary and secondary replicas.
+               Each replica includes a system-computed (output-only) state and primary designation.
+               Structure is documented below.
+        :param Sequence[_builtins.str] replica_locations: A list of regions where the publisher has created shared dataset replicas.
         :param Sequence['ListingBigqueryDatasetSelectedResourceArgs'] selected_resources: Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset", dataset)
+        if effective_replicas is not None:
+            pulumi.set(__self__, "effective_replicas", effective_replicas)
+        if replica_locations is not None:
+            pulumi.set(__self__, "replica_locations", replica_locations)
         if selected_resources is not None:
             pulumi.set(__self__, "selected_resources", selected_resources)
 
@@ -470,6 +486,25 @@ class ListingBigqueryDataset(dict):
         return pulumi.get(self, "dataset")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveReplicas")
+    def effective_replicas(self) -> Optional[Sequence['outputs.ListingBigqueryDatasetEffectiveReplica']]:
+        """
+        (Output, Beta)
+        Server owned effective state of replicas. Contains both primary and secondary replicas.
+        Each replica includes a system-computed (output-only) state and primary designation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "effective_replicas")
+
+    @_builtins.property
+    @pulumi.getter(name="replicaLocations")
+    def replica_locations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of regions where the publisher has created shared dataset replicas.
+        """
+        return pulumi.get(self, "replica_locations")
+
+    @_builtins.property
     @pulumi.getter(name="selectedResources")
     def selected_resources(self) -> Optional[Sequence['outputs.ListingBigqueryDatasetSelectedResource']]:
         """
@@ -480,12 +515,80 @@ class ListingBigqueryDataset(dict):
 
 
 @pulumi.output_type
+class ListingBigqueryDatasetEffectiveReplica(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryState":
+            suggest = "primary_state"
+        elif key == "replicaState":
+            suggest = "replica_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingBigqueryDatasetEffectiveReplica. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingBigqueryDatasetEffectiveReplica.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingBigqueryDatasetEffectiveReplica.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 location: Optional[_builtins.str] = None,
+                 primary_state: Optional[_builtins.str] = None,
+                 replica_state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str location: The name of the location this data exchange listing.
+        :param _builtins.str primary_state: Output-only. Indicates that this replica is the primary replica.
+               Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+        :param _builtins.str replica_state: Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+               Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if primary_state is not None:
+            pulumi.set(__self__, "primary_state", primary_state)
+        if replica_state is not None:
+            pulumi.set(__self__, "replica_state", replica_state)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[_builtins.str]:
+        """
+        The name of the location this data exchange listing.
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryState")
+    def primary_state(self) -> Optional[_builtins.str]:
+        """
+        Output-only. Indicates that this replica is the primary replica.
+        Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+        """
+        return pulumi.get(self, "primary_state")
+
+    @_builtins.property
+    @pulumi.getter(name="replicaState")
+    def replica_state(self) -> Optional[_builtins.str]:
+        """
+        Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+        Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+        """
+        return pulumi.get(self, "replica_state")
+
+
+@pulumi.output_type
 class ListingBigqueryDatasetSelectedResource(dict):
     def __init__(__self__, *,
                  routine: Optional[_builtins.str] = None,
                  table: Optional[_builtins.str] = None):
         """
         :param _builtins.str routine: Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+               
+               <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
         :param _builtins.str table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
         """
         if routine is not None:
@@ -498,6 +601,8 @@ class ListingBigqueryDatasetSelectedResource(dict):
     def routine(self) -> Optional[_builtins.str]:
         """
         Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+
+        <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
         """
         return pulumi.get(self, "routine")
 
@@ -935,6 +1040,8 @@ class ListingSubscriptionDestinationDataset(dict):
             suggest = "dataset_reference"
         elif key == "friendlyName":
             suggest = "friendly_name"
+        elif key == "replicaLocations":
+            suggest = "replica_locations"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ListingSubscriptionDestinationDataset. Access the value via the '{suggest}' property getter instead.")
@@ -952,7 +1059,8 @@ class ListingSubscriptionDestinationDataset(dict):
                  location: _builtins.str,
                  description: Optional[_builtins.str] = None,
                  friendly_name: Optional[_builtins.str] = None,
-                 labels: Optional[Mapping[str, _builtins.str]] = None):
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 replica_locations: Optional[Sequence[_builtins.str]] = None):
         """
         :param 'ListingSubscriptionDestinationDatasetDatasetReferenceArgs' dataset_reference: A reference that identifies the destination dataset.
                Structure is documented below.
@@ -962,6 +1070,7 @@ class ListingSubscriptionDestinationDataset(dict):
         :param _builtins.str friendly_name: A descriptive name for the dataset.
         :param Mapping[str, _builtins.str] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets.
+        :param Sequence[_builtins.str] replica_locations: List of regions where the subscriber wants dataset replicas.
         """
         pulumi.set(__self__, "dataset_reference", dataset_reference)
         pulumi.set(__self__, "location", location)
@@ -971,6 +1080,8 @@ class ListingSubscriptionDestinationDataset(dict):
             pulumi.set(__self__, "friendly_name", friendly_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if replica_locations is not None:
+            pulumi.set(__self__, "replica_locations", replica_locations)
 
     @_builtins.property
     @pulumi.getter(name="datasetReference")
@@ -1014,6 +1125,14 @@ class ListingSubscriptionDestinationDataset(dict):
         organize and group your datasets.
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter(name="replicaLocations")
+    def replica_locations(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of regions where the subscriber wants dataset replicas.
+        """
+        return pulumi.get(self, "replica_locations")
 
 
 @pulumi.output_type
