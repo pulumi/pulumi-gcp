@@ -85,7 +85,7 @@ index aecff7dc7..bb6e8c317 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index f5fbfd432..e6979ad20 100644
+index da8f88a07..f7c2c9248 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -25,7 +25,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -122,7 +122,7 @@ index f5fbfd432..e6979ad20 100644
  
  * `allow_jagged_rows` - (Optional) Indicates if BigQuery should accept rows
 diff --git a/website/docs/r/bigtable_instance.html.markdown b/website/docs/r/bigtable_instance.html.markdown
-index 04cfcd468..099403bbb 100644
+index 92264c130..709a1fb73 100644
 --- a/website/docs/r/bigtable_instance.html.markdown
 +++ b/website/docs/r/bigtable_instance.html.markdown
 @@ -1,18 +1,3 @@
@@ -184,7 +184,7 @@ index 04cfcd468..099403bbb 100644
 +* `deletion_protection` - (Optional) Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 +in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
  
- * `labels` - (Optional) A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+ * `labels` - (Optional) A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
  
 @@ -159,8 +132,10 @@ If no value is set, Cloud Bigtable automatically allocates nodes based on your d
  
@@ -238,10 +238,10 @@ index 7ddcf65cf..ba72b1e45 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/certificate_manager_certificate.html.markdown b/website/docs/r/certificate_manager_certificate.html.markdown
-index 1c7d67b17..5cf8377a2 100644
+index 56d33a63b..4598f7719 100644
 --- a/website/docs/r/certificate_manager_certificate.html.markdown
 +++ b/website/docs/r/certificate_manager_certificate.html.markdown
-@@ -158,19 +158,38 @@ resource "google_privateca_certificate_authority" "ca_authority" {
+@@ -163,19 +163,38 @@ resource "google_privateca_certificate_authority" "ca_authority" {
      <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
    </a>
  </div>
@@ -285,7 +285,7 @@ index 1c7d67b17..5cf8377a2 100644
  ```
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=certificate_manager_self_managed_certificate_regional&open_in_editor=main.tf" target="_blank">
-@@ -439,6 +458,7 @@ The following arguments are supported:
+@@ -444,6 +463,7 @@ The following arguments are supported:
    (Optional)
    The certificate chain in PEM-encoded form.
    Leaf certificate comes first, followed by intermediate ones if any.
@@ -601,7 +601,7 @@ index c761850a1..3cc5c8944 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 9bd4841f5..2bbf68119 100644
+index c46cd2ee6..429715902 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -154,7 +154,7 @@ The following arguments are supported:
@@ -745,7 +745,7 @@ index 5938de616..7717ff951 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 0038f6389..61451d3dc 100644
+index 34063fde4..027ec6c7f 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -197,12 +197,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1310,7 +1310,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 50584521d..22390de09 100644
+index 0081ee66f..ebb4b1e22 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -24,7 +24,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1323,7 +1323,7 @@ index 50584521d..22390de09 100644
  ## Example Usage
  
 diff --git a/website/docs/r/compute_snapshot.html.markdown b/website/docs/r/compute_snapshot.html.markdown
-index be5c149e2..d8ac3e805 100644
+index 9512a38b1..db98ace37 100644
 --- a/website/docs/r/compute_snapshot.html.markdown
 +++ b/website/docs/r/compute_snapshot.html.markdown
 @@ -9,7 +9,7 @@
@@ -1433,7 +1433,7 @@ index b6f867ff6..fe70198ae 100644
  ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
  [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index d2fa1b4b6..17168550d 100644
+index d0f88d8ca..812d6efa1 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
@@ -1479,7 +1479,7 @@ index d2fa1b4b6..17168550d 100644
  ## Argument Reference
  
  * `name` - (Required) The name of the cluster, unique within the project and
-@@ -243,8 +259,7 @@ Structure is [documented below](#nested_master_auth).
+@@ -245,8 +261,7 @@ Structure is [documented below](#nested_master_auth).
      If unset, the cluster's version will be set by GKE to the version of the most recent
      official release (which is not necessarily the latest version).  Most users will find
      the `google_container_engine_versions` data source useful - it indicates which versions
@@ -1489,7 +1489,7 @@ index d2fa1b4b6..17168550d 100644
      [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      describe the various acceptable formats for this field.
  
-@@ -274,8 +289,11 @@ region are guaranteed to support the same version.
+@@ -276,8 +291,11 @@ region are guaranteed to support the same version.
  * `node_config` -  (Optional) Parameters used in creating the default node pool.
      Generally, this field should not be used at the same time as a
      `google_container_node_pool` or a `node_pool` block; this configuration
@@ -1503,7 +1503,7 @@ index d2fa1b4b6..17168550d 100644
  
  * `node_pool` - (Optional) List of node pools associated with this cluster.
      See [google_container_node_pool](container_node_pool.html) for schema.
-@@ -294,9 +312,9 @@ region are guaranteed to support the same version.
+@@ -296,9 +314,9 @@ region are guaranteed to support the same version.
      or set to the same value as `min_master_version` on create. Defaults to the default
      version set by GKE which is not necessarily the latest version. This only affects
      nodes in the default node pool. While a fuzzy version can be specified, it's
@@ -1515,7 +1515,7 @@ index d2fa1b4b6..17168550d 100644
      To update nodes in other node pools, use the `version` attribute on the node pool.
  
  * `notification_config` - (Optional) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is [documented below](#nested_notification_config).
-@@ -344,7 +362,7 @@ When updating this field, GKE imposes specific version requirements. See
+@@ -346,7 +364,7 @@ When updating this field, GKE imposes specific version requirements. See
  [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
  for more details; the `google_container_engine_versions` datasource can provide
  the default version for a channel. Note that removing the `release_channel`
@@ -1524,7 +1524,7 @@ index d2fa1b4b6..17168550d 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -988,10 +1006,6 @@ gvnic {
+@@ -996,10 +1014,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1535,7 +1535,7 @@ index d2fa1b4b6..17168550d 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -1018,7 +1032,7 @@ gvnic {
+@@ -1026,7 +1040,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1544,7 +1544,7 @@ index d2fa1b4b6..17168550d 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1043,10 +1057,7 @@ gvnic {
+@@ -1051,10 +1065,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1556,7 +1556,7 @@ index d2fa1b4b6..17168550d 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -1060,13 +1071,14 @@ gvnic {
+@@ -1068,13 +1079,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1578,7 +1578,7 @@ index d2fa1b4b6..17168550d 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1390,7 +1402,7 @@ for more details. This field only applies to private clusters, when
+@@ -1398,7 +1410,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1587,7 +1587,7 @@ index d2fa1b4b6..17168550d 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1498,9 +1510,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1506,9 +1518,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1601,7 +1601,7 @@ index d2fa1b4b6..17168550d 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index 955de92e9..2646064a5 100644
+index 866bbdc47..35c1690de 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -20,14 +20,11 @@ description: |-
@@ -1651,7 +1651,7 @@ index 955de92e9..2646064a5 100644
      auto-generate a unique name.
  
  * `name_prefix` - (Optional) Creates a unique name for the node pool beginning
-@@ -177,9 +174,9 @@ cluster.
+@@ -179,9 +176,9 @@ cluster.
  * `version` - (Optional) The Kubernetes version for the nodes in this pool. Note that if this field
      and `auto_upgrade` are both specified, they will fight each other for what the node version should
      be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
@@ -1902,10 +1902,10 @@ index 1858e1545..9b762d31c 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs.
 diff --git a/website/docs/r/dialogflow_agent.html.markdown b/website/docs/r/dialogflow_agent.html.markdown
-index 37c71e8f9..c254a1215 100644
+index faf966d96..dd5f5d32a 100644
 --- a/website/docs/r/dialogflow_agent.html.markdown
 +++ b/website/docs/r/dialogflow_agent.html.markdown
-@@ -129,8 +129,7 @@ The following arguments are supported:
+@@ -148,8 +148,7 @@ The following arguments are supported:
    * TIER_ENTERPRISE: Enterprise tier (Essentials).
    * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
    NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
@@ -2103,20 +2103,20 @@ index a9a1871e6..a9081e790 100644
  
  ## Attributes Reference
 diff --git a/website/docs/r/google_folder.html.markdown b/website/docs/r/google_folder.html.markdown
-index ddeb18070..92d794b23 100644
+index 56961f9af..8b64c9ea1 100644
 --- a/website/docs/r/google_folder.html.markdown
 +++ b/website/docs/r/google_folder.html.markdown
 @@ -29,7 +29,7 @@ A folder can contain projects, other folders, or a combination of both. You can
  
- Folders created live inside an Organization. See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+ Folders created live inside an Organization. See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
  
 -The service account used to run Terraform when creating a `google_folder`
 +The service account used to run the provider when creating a `google_folder`
  resource must have `roles/resourcemanager.folderCreator`. See the
- [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
+ [Access Control for Folders Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-folders)
  doc for more information.
 diff --git a/website/docs/r/google_folder_iam.html.markdown b/website/docs/r/google_folder_iam.html.markdown
-index f928e6f1c..d20c4a568 100644
+index a694920a7..33822493c 100644
 --- a/website/docs/r/google_folder_iam.html.markdown
 +++ b/website/docs/r/google_folder_iam.html.markdown
 @@ -42,7 +42,7 @@ Four different resources help you manage your IAM policy for a folder. Each of t
@@ -2479,17 +2479,17 @@ index 24eafc971..d80dadc91 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project.html.markdown b/website/docs/r/google_project.html.markdown
-index c4c6fe4d1..1d526c210 100644
+index 8ef027550..ae8f5dbeb 100644
 --- a/website/docs/r/google_project.html.markdown
 +++ b/website/docs/r/google_project.html.markdown
 @@ -25,7 +25,7 @@ Allows creation and management of a Google Cloud Platform project.
  Projects created with this resource must be associated with an Organization.
- See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+ See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
  
 -The user or service account that is running Terraform when creating a `google_project`
 +The user or service account that is running this provider when creating a `google_project`
  resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
- [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
+ [Access Control for Organizations Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-org)
  doc for more information.
 @@ -100,8 +100,8 @@ The following arguments are supported:
     project to be migrated to the newly specified folder.
@@ -2503,7 +2503,7 @@ index c4c6fe4d1..1d526c210 100644
      for more details.
  
 diff --git a/website/docs/r/google_project_iam.html.markdown b/website/docs/r/google_project_iam.html.markdown
-index 4c10f8858..0a3f6d2c9 100644
+index 9e5b4baad..f6c6b0d11 100644
 --- a/website/docs/r/google_project_iam.html.markdown
 +++ b/website/docs/r/google_project_iam.html.markdown
 @@ -41,7 +41,7 @@ Four different resources help you manage your IAM policy for a project. Each of
@@ -3107,7 +3107,7 @@ index 7c5a0fe0d..451daf51f 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 9d8efa2bd..19f32a005 100644
+index 2b4b3718a..d4396c41e 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -30,12 +30,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3254,7 +3254,7 @@ index 94c3db9d4..091d0e9ac 100644
  * `default_time_zone` - (Optional) The default time zone for the database. The default time zone must be a valid name
  from the tz database. Default value is "America/Los_angeles".
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index e28a79b60..ab48e285e 100644
+index cce8f1572..76c39b7a4 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -24,12 +24,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
