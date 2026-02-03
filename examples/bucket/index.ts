@@ -17,28 +17,32 @@ import * as gcp from "@pulumi/gcp";
 let bucket = new gcp.storage.Bucket("test", {
     location: "US"
 });
-bucket.onObjectFinalized("Test-Finalized$", async (data, ctx) => {
+
+// Create functions sequentially to avoid GCP flakiness when configuring
+// multiple Cloud Storage triggers in parallel (causes intermittent
+// "Failed to configure trigger" errors).
+const fn1 = bucket.onObjectFinalized("Test-Finalized$", async (data, ctx) => {
     console.log("Object finalized");
     console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
-})
+});
 
-bucket.onObjectDeleted("Test-Deleted$", async (data, ctx) => {
+const fn2 = bucket.onObjectDeleted("Test-Deleted$", async (data, ctx) => {
     console.log("Object deleted");
     console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
-})
+}, undefined, { dependsOn: [fn1] });
 
-bucket.onObjectArchived("Test-Archived$", async (data, ctx) => {
+const fn3 = bucket.onObjectArchived("Test-Archived$", async (data, ctx) => {
     console.log("Object archived");
     console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
-})
+}, undefined, { dependsOn: [fn2] });
 
 bucket.onObjectMetadataUpdated("Test-Updated$", async (data, ctx) => {
     console.log("Object updated");
     console.log("raw: " + JSON.stringify(data));
     console.log("ctx: " + JSON.stringify(ctx));
-})
+}, undefined, { dependsOn: [fn3] });
 
 export let bucketName = bucket.name;
