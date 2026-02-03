@@ -100,6 +100,11 @@ export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;
 utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
 
+export { RolloutSequenceArgs, RolloutSequenceState } from "./rolloutSequence";
+export type RolloutSequence = import("./rolloutSequence").RolloutSequence;
+export const RolloutSequence: typeof import("./rolloutSequence").RolloutSequence = null as any;
+utilities.lazyLoad(exports, ["RolloutSequence"], () => require("./rolloutSequence"));
+
 export { ScopeArgs, ScopeState } from "./scope";
 export type Scope = import("./scope").Scope;
 export const Scope: typeof import("./scope").Scope = null as any;
@@ -156,6 +161,8 @@ const _module = {
                 return new MembershipRbacRoleBinding(name, <any>undefined, { urn })
             case "gcp:gkehub/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
+            case "gcp:gkehub/rolloutSequence:RolloutSequence":
+                return new RolloutSequence(name, <any>undefined, { urn })
             case "gcp:gkehub/scope:Scope":
                 return new Scope(name, <any>undefined, { urn })
             case "gcp:gkehub/scopeIamBinding:ScopeIamBinding":
@@ -184,6 +191,7 @@ pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamMember", _modu
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipRbacRoleBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/namespace", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/rolloutSequence", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/scope", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/scopeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/scopeIamMember", _module)

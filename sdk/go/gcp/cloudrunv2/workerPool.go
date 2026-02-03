@@ -815,7 +815,7 @@ type WorkerPool struct {
 	// Structure is documented below.
 	InstanceSplits WorkerPoolInstanceSplitArrayOutput `pulumi:"instanceSplits"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -955,7 +955,7 @@ type workerPoolState struct {
 	// Structure is documented below.
 	InstanceSplits []WorkerPoolInstanceSplit `pulumi:"instanceSplits"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1055,7 +1055,7 @@ type WorkerPoolState struct {
 	// Structure is documented below.
 	InstanceSplits WorkerPoolInstanceSplitArrayInput
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1138,7 +1138,7 @@ type workerPoolArgs struct {
 	// Structure is documented below.
 	InstanceSplits []WorkerPoolInstanceSplit `pulumi:"instanceSplits"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1195,7 +1195,7 @@ type WorkerPoolArgs struct {
 	// Structure is documented below.
 	InstanceSplits WorkerPoolInstanceSplitArrayInput
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 WorkerPool.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1412,7 +1412,7 @@ func (o WorkerPoolOutput) InstanceSplits() WorkerPoolInstanceSplitArrayOutput {
 }
 
 // Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
-// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 WorkerPool.
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

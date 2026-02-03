@@ -301,6 +301,7 @@ namespace Pulumi.Gcp.Workbench
     ///             {
     ///                 { "terraform", "true" },
     ///                 { "serial-port-logging-enable", "false" },
+    ///                 { "enable-jupyterlab4", "false" },
     ///             },
     ///             ReservationAffinity = new Gcp.Workbench.Inputs.InstanceGceSetupReservationAffinityArgs
     ///             {

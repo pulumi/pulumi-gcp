@@ -40,6 +40,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         public readonly string Database;
         public readonly bool DeletionProtection;
         /// <summary>
+        /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+        /// </summary>
+        public readonly ImmutableArray<string> DisasterRecoverySupportedLocations;
+        /// <summary>
         /// The display name for the Autonomous Database. The name does not have to
         /// be unique within your project.
         /// </summary>
@@ -88,6 +92,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string OdbSubnet;
         /// <summary>
+        /// The peer Autonomous Database names of the given Autonomous Database.
+        /// </summary>
+        public readonly ImmutableArray<string> PeerAutonomousDatabases;
+        /// <summary>
         /// The project to which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -101,6 +109,10 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         ///  and default labels configured on the provider.
         /// </summary>
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        /// <summary>
+        /// The source Autonomous Database configuration for the standby Autonomous Database.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAutonomousDatabasesAutonomousDatabaseSourceConfigResult> SourceConfigs;
 
         [OutputConstructor]
         private GetAutonomousDatabasesAutonomousDatabaseResult(
@@ -115,6 +127,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             string database,
 
             bool deletionProtection,
+
+            ImmutableArray<string> disasterRecoverySupportedLocations,
 
             string displayName,
 
@@ -134,11 +148,15 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string odbSubnet,
 
+            ImmutableArray<string> peerAutonomousDatabases,
+
             string project,
 
             ImmutableArray<Outputs.GetAutonomousDatabasesAutonomousDatabasePropertyResult> properties,
 
-            ImmutableDictionary<string, string> pulumiLabels)
+            ImmutableDictionary<string, string> pulumiLabels,
+
+            ImmutableArray<Outputs.GetAutonomousDatabasesAutonomousDatabaseSourceConfigResult> sourceConfigs)
         {
             AdminPassword = adminPassword;
             AutonomousDatabaseId = autonomousDatabaseId;
@@ -146,6 +164,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             CreateTime = createTime;
             Database = database;
             DeletionProtection = deletionProtection;
+            DisasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             EntitlementId = entitlementId;
@@ -155,9 +174,11 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             Network = network;
             OdbNetwork = odbNetwork;
             OdbSubnet = odbSubnet;
+            PeerAutonomousDatabases = peerAutonomousDatabases;
             Project = project;
             Properties = properties;
             PulumiLabels = pulumiLabels;
+            SourceConfigs = sourceConfigs;
         }
     }
 }

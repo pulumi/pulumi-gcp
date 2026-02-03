@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingSubscriptionDestinationDatasetDatasetReference;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,6 +43,11 @@ public final class ListingSubscriptionDestinationDataset {
      * 
      */
     private String location;
+    /**
+     * @return List of regions where the subscriber wants dataset replicas.
+     * 
+     */
+    private @Nullable List<String> replicaLocations;
 
     private ListingSubscriptionDestinationDataset() {}
     /**
@@ -82,6 +88,13 @@ public final class ListingSubscriptionDestinationDataset {
     public String location() {
         return this.location;
     }
+    /**
+     * @return List of regions where the subscriber wants dataset replicas.
+     * 
+     */
+    public List<String> replicaLocations() {
+        return this.replicaLocations == null ? List.of() : this.replicaLocations;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -97,6 +110,7 @@ public final class ListingSubscriptionDestinationDataset {
         private @Nullable String friendlyName;
         private @Nullable Map<String,String> labels;
         private String location;
+        private @Nullable List<String> replicaLocations;
         public Builder() {}
         public Builder(ListingSubscriptionDestinationDataset defaults) {
     	      Objects.requireNonNull(defaults);
@@ -105,6 +119,7 @@ public final class ListingSubscriptionDestinationDataset {
     	      this.friendlyName = defaults.friendlyName;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
+    	      this.replicaLocations = defaults.replicaLocations;
         }
 
         @CustomType.Setter
@@ -141,6 +156,15 @@ public final class ListingSubscriptionDestinationDataset {
             this.location = location;
             return this;
         }
+        @CustomType.Setter
+        public Builder replicaLocations(@Nullable List<String> replicaLocations) {
+
+            this.replicaLocations = replicaLocations;
+            return this;
+        }
+        public Builder replicaLocations(String... replicaLocations) {
+            return replicaLocations(List.of(replicaLocations));
+        }
         public ListingSubscriptionDestinationDataset build() {
             final var _resultValue = new ListingSubscriptionDestinationDataset();
             _resultValue.datasetReference = datasetReference;
@@ -148,6 +172,7 @@ public final class ListingSubscriptionDestinationDataset {
             _resultValue.friendlyName = friendlyName;
             _resultValue.labels = labels;
             _resultValue.location = location;
+            _resultValue.replicaLocations = replicaLocations;
             return _resultValue;
         }
     }

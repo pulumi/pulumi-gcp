@@ -11,10 +11,10 @@ import * as utilities from "../utilities";
  *
  * To get more information about Policy, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.policies)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
- *     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+ *     * [Supported Services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
  *
  * ## Example Usage
  *
@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
- *     name: "custom.disableGkeAutoUpgrade_9991",
+ *     name: "custom.disableGkeAutoUpgrade_15022",
  *     parent: "organizations/123456789",
  *     displayName: "Disable GKE auto upgrade",
  *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",

@@ -111,8 +111,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// `EnableLegacyLustrePort` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
         /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         /// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
-        /// 
-        /// This example `AddonsConfig` disables two addons:
         /// </summary>
         [Input("lustreCsiDriverConfig")]
         public Input<Inputs.ClusterAddonsConfigLustreCsiDriverConfigGetArgs>? LustreCsiDriverConfig { get; set; }
@@ -137,6 +135,14 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("parallelstoreCsiDriverConfig")]
         public Input<Inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigGetArgs>? ParallelstoreCsiDriverConfig { get; set; }
+
+        /// <summary>
+        /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        /// 
+        /// This example `AddonsConfig` disables two addons:
+        /// </summary>
+        [Input("podSnapshotConfig")]
+        public Input<Inputs.ClusterAddonsConfigPodSnapshotConfigGetArgs>? PodSnapshotConfig { get; set; }
 
         [Input("rayOperatorConfigs")]
         private InputList<Inputs.ClusterAddonsConfigRayOperatorConfigGetArgs>? _rayOperatorConfigs;

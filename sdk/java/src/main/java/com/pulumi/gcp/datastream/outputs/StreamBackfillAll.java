@@ -9,6 +9,7 @@ import com.pulumi.gcp.datastream.outputs.StreamBackfillAllMysqlExcludedObjects;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAllOracleExcludedObjects;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAllPostgresqlExcludedObjects;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAllSalesforceExcludedObjects;
+import com.pulumi.gcp.datastream.outputs.StreamBackfillAllSpannerExcludedObjects;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAllSqlServerExcludedObjects;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,12 @@ public final class StreamBackfillAll {
      * 
      */
     private @Nullable StreamBackfillAllSalesforceExcludedObjects salesforceExcludedObjects;
+    /**
+     * @return Spanner objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamBackfillAllSpannerExcludedObjects spannerExcludedObjects;
     /**
      * @return SQL Server data source objects to avoid backfilling.
      * Structure is documented below.
@@ -95,6 +102,14 @@ public final class StreamBackfillAll {
         return Optional.ofNullable(this.salesforceExcludedObjects);
     }
     /**
+     * @return Spanner objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamBackfillAllSpannerExcludedObjects> spannerExcludedObjects() {
+        return Optional.ofNullable(this.spannerExcludedObjects);
+    }
+    /**
      * @return SQL Server data source objects to avoid backfilling.
      * Structure is documented below.
      * 
@@ -117,6 +132,7 @@ public final class StreamBackfillAll {
         private @Nullable StreamBackfillAllOracleExcludedObjects oracleExcludedObjects;
         private @Nullable StreamBackfillAllPostgresqlExcludedObjects postgresqlExcludedObjects;
         private @Nullable StreamBackfillAllSalesforceExcludedObjects salesforceExcludedObjects;
+        private @Nullable StreamBackfillAllSpannerExcludedObjects spannerExcludedObjects;
         private @Nullable StreamBackfillAllSqlServerExcludedObjects sqlServerExcludedObjects;
         public Builder() {}
         public Builder(StreamBackfillAll defaults) {
@@ -126,6 +142,7 @@ public final class StreamBackfillAll {
     	      this.oracleExcludedObjects = defaults.oracleExcludedObjects;
     	      this.postgresqlExcludedObjects = defaults.postgresqlExcludedObjects;
     	      this.salesforceExcludedObjects = defaults.salesforceExcludedObjects;
+    	      this.spannerExcludedObjects = defaults.spannerExcludedObjects;
     	      this.sqlServerExcludedObjects = defaults.sqlServerExcludedObjects;
         }
 
@@ -160,6 +177,12 @@ public final class StreamBackfillAll {
             return this;
         }
         @CustomType.Setter
+        public Builder spannerExcludedObjects(@Nullable StreamBackfillAllSpannerExcludedObjects spannerExcludedObjects) {
+
+            this.spannerExcludedObjects = spannerExcludedObjects;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlServerExcludedObjects(@Nullable StreamBackfillAllSqlServerExcludedObjects sqlServerExcludedObjects) {
 
             this.sqlServerExcludedObjects = sqlServerExcludedObjects;
@@ -172,6 +195,7 @@ public final class StreamBackfillAll {
             _resultValue.oracleExcludedObjects = oracleExcludedObjects;
             _resultValue.postgresqlExcludedObjects = postgresqlExcludedObjects;
             _resultValue.salesforceExcludedObjects = salesforceExcludedObjects;
+            _resultValue.spannerExcludedObjects = spannerExcludedObjects;
             _resultValue.sqlServerExcludedObjects = sqlServerExcludedObjects;
             return _resultValue;
         }

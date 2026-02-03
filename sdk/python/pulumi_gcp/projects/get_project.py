@@ -75,7 +75,7 @@ def get_project(filter: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     Retrieve information about a set of projects based on a filter. See the
-    [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+    [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
     for more details.
 
     ## Example Usage
@@ -91,7 +91,7 @@ def get_project(filter: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
+    :param _builtins.str filter: A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -106,7 +106,7 @@ def get_project_output(filter: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Retrieve information about a set of projects based on a filter. See the
-    [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+    [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
     for more details.
 
     ## Example Usage
@@ -122,7 +122,7 @@ def get_project_output(filter: Optional[pulumi.Input[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
+    :param _builtins.str filter: A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
     """
     __args__ = dict()
     __args__['filter'] = filter

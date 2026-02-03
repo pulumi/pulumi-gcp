@@ -19,8 +19,9 @@ public final class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTa
      */
     private @Nullable String column;
     /**
-     * @return The SQL Server data type. Full data types list can be found here:
-     * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+     * @return (Output)
+     * The Spanner data type. Full data types list can be found here:
+     * https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
      * 
      */
     private @Nullable String dataType;
@@ -70,8 +71,9 @@ public final class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTa
         return Optional.ofNullable(this.column);
     }
     /**
-     * @return The SQL Server data type. Full data types list can be found here:
-     * https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
+     * @return (Output)
+     * The Spanner data type. Full data types list can be found here:
+     * https://docs.cloud.google.com/spanner/docs/reference/standard-sql/data-types
      * 
      */
     public Optional<String> dataType() {

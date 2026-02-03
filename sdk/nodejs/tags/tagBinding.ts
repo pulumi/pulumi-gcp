@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about TagBinding, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
  *
@@ -40,6 +40,29 @@ import * as utilities from "../utilities";
  * const binding = new gcp.tags.TagBinding("binding", {
  *     parent: pulumi.interpolate`//cloudresourcemanager.googleapis.com/projects/${project.number}`,
  *     tagValue: value.id,
+ * });
+ * ```
+ * ### Tag Binding Using Dynamic Tag Value
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project_id",
+ *     name: "project_id",
+ *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const key = new gcp.tags.TagKey("key", {
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ *     description: "For keyname resources.",
+ *     allowedValuesRegex: "^[a-z]+$",
+ * });
+ * const binding = new gcp.tags.TagBinding("binding", {
+ *     parent: pulumi.interpolate`//cloudresourcemanager.googleapis.com/projects/${project.number}`,
+ *     tagValue: pulumi.interpolate`${key.namespacedName}/test-value`,
  * });
  * ```
  *
@@ -90,7 +113,7 @@ export class TagBinding extends pulumi.CustomResource {
     }
 
     /**
-     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+     * The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -98,7 +121,7 @@ export class TagBinding extends pulumi.CustomResource {
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      */
     declare public readonly tagValue: pulumi.Output<string>;
 
@@ -140,7 +163,7 @@ export class TagBinding extends pulumi.CustomResource {
  */
 export interface TagBindingState {
     /**
-     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+     * The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      */
     name?: pulumi.Input<string>;
     /**
@@ -148,7 +171,7 @@ export interface TagBindingState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      */
     tagValue?: pulumi.Input<string>;
 }
@@ -162,7 +185,7 @@ export interface TagBindingArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      */
     tagValue: pulumi.Input<string>;
 }

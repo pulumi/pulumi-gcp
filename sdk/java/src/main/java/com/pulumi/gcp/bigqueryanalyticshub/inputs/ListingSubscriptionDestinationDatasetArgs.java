@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationDatasetDatasetReferenceArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -99,6 +100,21 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
         return this.location;
     }
 
+    /**
+     * List of regions where the subscriber wants dataset replicas.
+     * 
+     */
+    @Import(name="replicaLocations")
+    private @Nullable Output<List<String>> replicaLocations;
+
+    /**
+     * @return List of regions where the subscriber wants dataset replicas.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaLocations() {
+        return Optional.ofNullable(this.replicaLocations);
+    }
+
     private ListingSubscriptionDestinationDatasetArgs() {}
 
     private ListingSubscriptionDestinationDatasetArgs(ListingSubscriptionDestinationDatasetArgs $) {
@@ -107,6 +123,7 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
         this.friendlyName = $.friendlyName;
         this.labels = $.labels;
         this.location = $.location;
+        this.replicaLocations = $.replicaLocations;
     }
 
     public static Builder builder() {
@@ -236,6 +253,37 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param replicaLocations List of regions where the subscriber wants dataset replicas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaLocations(@Nullable Output<List<String>> replicaLocations) {
+            $.replicaLocations = replicaLocations;
+            return this;
+        }
+
+        /**
+         * @param replicaLocations List of regions where the subscriber wants dataset replicas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaLocations(List<String> replicaLocations) {
+            return replicaLocations(Output.of(replicaLocations));
+        }
+
+        /**
+         * @param replicaLocations List of regions where the subscriber wants dataset replicas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaLocations(String... replicaLocations) {
+            return replicaLocations(List.of(replicaLocations));
         }
 
         public ListingSubscriptionDestinationDatasetArgs build() {

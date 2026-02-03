@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNetworkConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+        /// </summary>
+        [Input("acceleratorNetworkProfile")]
+        public Input<string>? AcceleratorNetworkProfile { get; set; }
+
         [Input("additionalNodeNetworkConfigs")]
         private InputList<Inputs.NodePoolNetworkConfigAdditionalNodeNetworkConfigGetArgs>? _additionalNodeNetworkConfigs;
 

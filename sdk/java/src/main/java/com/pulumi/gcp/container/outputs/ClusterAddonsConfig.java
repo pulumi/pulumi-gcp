@@ -18,6 +18,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigLustreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigNetworkPolicyConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigRayOperatorConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
@@ -116,8 +117,6 @@ public final class ClusterAddonsConfig {
      * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     private @Nullable ClusterAddonsConfigLustreCsiDriverConfig lustreCsiDriverConfig;
     /**
@@ -139,6 +138,13 @@ public final class ClusterAddonsConfig {
      * 
      */
     private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
+    /**
+     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    private @Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig;
     /**
      * @return . The status of the [Ray Operator
      * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
@@ -275,8 +281,6 @@ public final class ClusterAddonsConfig {
      * This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
      * See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     public Optional<ClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfig() {
         return Optional.ofNullable(this.lustreCsiDriverConfig);
@@ -303,6 +307,15 @@ public final class ClusterAddonsConfig {
      */
     public Optional<ClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfig() {
         return Optional.ofNullable(this.parallelstoreCsiDriverConfig);
+    }
+    /**
+     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    public Optional<ClusterAddonsConfigPodSnapshotConfig> podSnapshotConfig() {
+        return Optional.ofNullable(this.podSnapshotConfig);
     }
     /**
      * @return . The status of the [Ray Operator
@@ -355,6 +368,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigLustreCsiDriverConfig lustreCsiDriverConfig;
         private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
         private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
+        private @Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig;
         private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
         private @Nullable ClusterAddonsConfigStatefulHaConfig statefulHaConfig;
         public Builder() {}
@@ -374,6 +388,7 @@ public final class ClusterAddonsConfig {
     	      this.lustreCsiDriverConfig = defaults.lustreCsiDriverConfig;
     	      this.networkPolicyConfig = defaults.networkPolicyConfig;
     	      this.parallelstoreCsiDriverConfig = defaults.parallelstoreCsiDriverConfig;
+    	      this.podSnapshotConfig = defaults.podSnapshotConfig;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
     	      this.statefulHaConfig = defaults.statefulHaConfig;
         }
@@ -463,6 +478,12 @@ public final class ClusterAddonsConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder podSnapshotConfig(@Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig) {
+
+            this.podSnapshotConfig = podSnapshotConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rayOperatorConfigs(@Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs) {
 
             this.rayOperatorConfigs = rayOperatorConfigs;
@@ -493,6 +514,7 @@ public final class ClusterAddonsConfig {
             _resultValue.lustreCsiDriverConfig = lustreCsiDriverConfig;
             _resultValue.networkPolicyConfig = networkPolicyConfig;
             _resultValue.parallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
+            _resultValue.podSnapshotConfig = podSnapshotConfig;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;
             _resultValue.statefulHaConfig = statefulHaConfig;
             return _resultValue;

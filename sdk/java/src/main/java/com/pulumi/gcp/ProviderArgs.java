@@ -651,6 +651,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filestoreCustomEndpoint);
     }
 
+    @Import(name="firebaseAiLogicCustomEndpoint")
+    private @Nullable Output<String> firebaseAiLogicCustomEndpoint;
+
+    public Optional<Output<String>> firebaseAiLogicCustomEndpoint() {
+        return Optional.ofNullable(this.firebaseAiLogicCustomEndpoint);
+    }
+
     @Import(name="firebaseAppCheckCustomEndpoint")
     private @Nullable Output<String> firebaseAppCheckCustomEndpoint;
 
@@ -1514,6 +1521,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
         this.externalCredentials = $.externalCredentials;
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
+        this.firebaseAiLogicCustomEndpoint = $.firebaseAiLogicCustomEndpoint;
         this.firebaseAppCheckCustomEndpoint = $.firebaseAppCheckCustomEndpoint;
         this.firebaseAppHostingCustomEndpoint = $.firebaseAppHostingCustomEndpoint;
         this.firebaseCustomEndpoint = $.firebaseCustomEndpoint;
@@ -2452,6 +2460,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder filestoreCustomEndpoint(String filestoreCustomEndpoint) {
             return filestoreCustomEndpoint(Output.of(filestoreCustomEndpoint));
+        }
+
+        public Builder firebaseAiLogicCustomEndpoint(@Nullable Output<String> firebaseAiLogicCustomEndpoint) {
+            $.firebaseAiLogicCustomEndpoint = firebaseAiLogicCustomEndpoint;
+            return this;
+        }
+
+        public Builder firebaseAiLogicCustomEndpoint(String firebaseAiLogicCustomEndpoint) {
+            return firebaseAiLogicCustomEndpoint(Output.of(firebaseAiLogicCustomEndpoint));
         }
 
         public Builder firebaseAppCheckCustomEndpoint(@Nullable Output<String> firebaseAppCheckCustomEndpoint) {

@@ -16,9 +16,9 @@ import (
 //
 // To get more information about TagBinding, see:
 //
-// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
+// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+//   - [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 //
 // ## Example Usage
 //
@@ -78,6 +78,57 @@ import (
 //	}
 //
 // ```
+// ### Tag Binding Using Dynamic Tag Value
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("project_id"),
+//				Name:           pulumi.String("project_id"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			key, err := tags.NewTagKey(ctx, "key", &tags.TagKeyArgs{
+//				Parent:             pulumi.String("organizations/123456789"),
+//				ShortName:          pulumi.String("keyname"),
+//				Description:        pulumi.String("For keyname resources."),
+//				AllowedValuesRegex: pulumi.String("^[a-z]+$"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = tags.NewTagBinding(ctx, "binding", &tags.TagBindingArgs{
+//				Parent: project.Number.ApplyT(func(number string) (string, error) {
+//					return fmt.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", number), nil
+//				}).(pulumi.StringOutput),
+//				TagValue: key.NamespacedName.ApplyT(func(namespacedName string) (string, error) {
+//					return fmt.Sprintf("%v/test-value", namespacedName), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -99,11 +150,11 @@ import (
 type TagBinding struct {
 	pulumi.CustomResourceState
 
-	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+	// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
 	TagValue pulumi.StringOutput `pulumi:"tagValue"`
 }
 
@@ -143,20 +194,20 @@ func GetTagBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagBinding resources.
 type tagBindingState struct {
-	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+	// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
 	Name *string `pulumi:"name"`
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent *string `pulumi:"parent"`
-	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
 	TagValue *string `pulumi:"tagValue"`
 }
 
 type TagBindingState struct {
-	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+	// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
 	Name pulumi.StringPtrInput
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringPtrInput
-	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
 	TagValue pulumi.StringPtrInput
 }
 
@@ -167,7 +218,7 @@ func (TagBindingState) ElementType() reflect.Type {
 type tagBindingArgs struct {
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent string `pulumi:"parent"`
-	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
 	TagValue string `pulumi:"tagValue"`
 }
 
@@ -175,7 +226,7 @@ type tagBindingArgs struct {
 type TagBindingArgs struct {
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringInput
-	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
 	TagValue pulumi.StringInput
 }
 
@@ -266,7 +317,7 @@ func (o TagBindingOutput) ToTagBindingOutputWithContext(ctx context.Context) Tag
 	return o
 }
 
-// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
+// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
 func (o TagBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -276,7 +327,7 @@ func (o TagBindingOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagBinding) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// The TagValue of the TagBinding. Must be of the form tagValues/456.
+// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
 func (o TagBindingOutput) TagValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagBinding) pulumi.StringOutput { return v.TagValue }).(pulumi.StringOutput)
 }

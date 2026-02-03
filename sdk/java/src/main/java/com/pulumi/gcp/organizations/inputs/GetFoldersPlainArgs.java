@@ -14,14 +14,14 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFoldersPlainArgs Empty = new GetFoldersPlainArgs();
 
     /**
-     * A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+     * A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
      * 
      */
     @Import(name="parentId", required=true)
     private String parentId;
 
     /**
-     * @return A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+     * @return A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
      * 
      */
     public String parentId() {
@@ -53,7 +53,7 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentId A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+         * @param parentId A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
          * 
          * @return builder
          * 

@@ -32,6 +32,7 @@ class NodePoolArgs:
                  network_config: Optional[pulumi.Input['NodePoolNetworkConfigArgs']] = None,
                  node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_drain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -73,6 +74,7 @@ class NodePoolArgs:
                container.Cluster for schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -119,6 +121,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
+        if node_drain_configs is not None:
+            pulumi.set(__self__, "node_drain_configs", node_drain_configs)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
         if placement_policy is not None:
@@ -287,6 +291,18 @@ class NodePoolArgs:
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeDrainConfigs")
+    def node_drain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]]]:
+        """
+        The node drain configuration of the pool. Structure is documented below.
+        """
+        return pulumi.get(self, "node_drain_configs")
+
+    @node_drain_configs.setter
+    def node_drain_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]]]):
+        pulumi.set(self, "node_drain_configs", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodeLocations")
     def node_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -393,6 +409,7 @@ class _NodePoolState:
                  network_config: Optional[pulumi.Input['NodePoolNetworkConfigArgs']] = None,
                  node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_drain_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  operation: Optional[pulumi.Input[_builtins.str]] = None,
                  placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
@@ -437,6 +454,7 @@ class _NodePoolState:
                container.Cluster for schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -488,6 +506,8 @@ class _NodePoolState:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
+        if node_drain_configs is not None:
+            pulumi.set(__self__, "node_drain_configs", node_drain_configs)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
         if operation is not None:
@@ -682,6 +702,18 @@ class _NodePoolState:
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeDrainConfigs")
+    def node_drain_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]]]:
+        """
+        The node drain configuration of the pool. Structure is documented below.
+        """
+        return pulumi.get(self, "node_drain_configs")
+
+    @node_drain_configs.setter
+    def node_drain_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeDrainConfigArgs']]]]):
+        pulumi.set(self, "node_drain_configs", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodeLocations")
     def node_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -798,6 +830,7 @@ class NodePool(pulumi.CustomResource):
                  network_config: Optional[pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']]] = None,
                  node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_drain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  placement_policy: Optional[pulumi.Input[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -925,6 +958,7 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -1067,6 +1101,7 @@ class NodePool(pulumi.CustomResource):
                  network_config: Optional[pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']]] = None,
                  node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 node_drain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  placement_policy: Optional[pulumi.Input[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1095,6 +1130,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["node_config"] = node_config
             __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["node_drain_configs"] = node_drain_configs
             __props__.__dict__["node_locations"] = node_locations
             __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
@@ -1127,6 +1163,7 @@ class NodePool(pulumi.CustomResource):
             network_config: Optional[pulumi.Input[Union['NodePoolNetworkConfigArgs', 'NodePoolNetworkConfigArgsDict']]] = None,
             node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
             node_count: Optional[pulumi.Input[_builtins.int]] = None,
+            node_drain_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]]] = None,
             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             operation: Optional[pulumi.Input[_builtins.str]] = None,
             placement_policy: Optional[pulumi.Input[Union['NodePoolPlacementPolicyArgs', 'NodePoolPlacementPolicyArgsDict']]] = None,
@@ -1176,6 +1213,7 @@ class NodePool(pulumi.CustomResource):
                container.Cluster for schema.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes per instance group. This field can be used to
                update the number of nodes per instance group but should not be used alongside `autoscaling`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolNodeDrainConfigArgs', 'NodePoolNodeDrainConfigArgsDict']]]] node_drain_configs: The node drain configuration of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must
                be in the region of their regional cluster or in the same region as their
                cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -1218,6 +1256,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["node_count"] = node_count
+        __props__.__dict__["node_drain_configs"] = node_drain_configs
         __props__.__dict__["node_locations"] = node_locations
         __props__.__dict__["operation"] = operation
         __props__.__dict__["placement_policy"] = placement_policy
@@ -1352,6 +1391,14 @@ class NodePool(pulumi.CustomResource):
         update the number of nodes per instance group but should not be used alongside `autoscaling`.
         """
         return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeDrainConfigs")
+    def node_drain_configs(self) -> pulumi.Output[Sequence['outputs.NodePoolNodeDrainConfig']]:
+        """
+        The node drain configuration of the pool. Structure is documented below.
+        """
+        return pulumi.get(self, "node_drain_configs")
 
     @_builtins.property
     @pulumi.getter(name="nodeLocations")

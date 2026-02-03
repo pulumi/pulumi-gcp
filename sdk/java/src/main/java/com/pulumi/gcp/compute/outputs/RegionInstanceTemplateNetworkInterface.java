@@ -25,6 +25,11 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     private @Nullable List<RegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
     /**
+     * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    private @Nullable String igmpQuery;
+    /**
      * @return The prefix length of the primary internal IPv6 range.
      * 
      */
@@ -105,6 +110,13 @@ public final class RegionInstanceTemplateNetworkInterface {
      */
     public List<RegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges == null ? List.of() : this.aliasIpRanges;
+    }
+    /**
+     * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    public Optional<String> igmpQuery() {
+        return Optional.ofNullable(this.igmpQuery);
     }
     /**
      * @return The prefix length of the primary internal IPv6 range.
@@ -210,6 +222,7 @@ public final class RegionInstanceTemplateNetworkInterface {
     public static final class Builder {
         private @Nullable List<RegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private @Nullable List<RegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private @Nullable String igmpQuery;
         private @Nullable Integer internalIpv6PrefixLength;
         private @Nullable List<RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
         private @Nullable String ipv6AccessType;
@@ -227,6 +240,7 @@ public final class RegionInstanceTemplateNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.igmpQuery = defaults.igmpQuery;
     	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
     	      this.ipv6AccessType = defaults.ipv6AccessType;
@@ -258,6 +272,12 @@ public final class RegionInstanceTemplateNetworkInterface {
         }
         public Builder aliasIpRanges(RegionInstanceTemplateNetworkInterfaceAliasIpRange... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
+        }
+        @CustomType.Setter
+        public Builder igmpQuery(@Nullable String igmpQuery) {
+
+            this.igmpQuery = igmpQuery;
+            return this;
         }
         @CustomType.Setter
         public Builder internalIpv6PrefixLength(@Nullable Integer internalIpv6PrefixLength) {
@@ -338,6 +358,7 @@ public final class RegionInstanceTemplateNetworkInterface {
             final var _resultValue = new RegionInstanceTemplateNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
             _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.igmpQuery = igmpQuery;
             _resultValue.internalIpv6PrefixLength = internalIpv6PrefixLength;
             _resultValue.ipv6AccessConfigs = ipv6AccessConfigs;
             _resultValue.ipv6AccessType = ipv6AccessType;

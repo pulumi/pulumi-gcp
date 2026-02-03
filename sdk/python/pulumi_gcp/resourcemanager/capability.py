@@ -140,9 +140,9 @@ class Capability(pulumi.CustomResource):
 
         To get more information about Capability, see:
 
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+        * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+            * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/manage-applications)
 
         ## Example Usage
 
@@ -154,7 +154,7 @@ class Capability(pulumi.CustomResource):
         import pulumiverse_time as time
 
         folder = gcp.organizations.Folder("folder",
-            display_name="my-folder",
+            display_name="folder-cap",
             parent="organizations/123456789",
             deletion_protection=False)
         wait60s = time.Sleep("wait_60s", create_duration="60s",
@@ -201,9 +201,9 @@ class Capability(pulumi.CustomResource):
 
         To get more information about Capability, see:
 
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+        * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+            * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/manage-applications)
 
         ## Example Usage
 
@@ -215,7 +215,7 @@ class Capability(pulumi.CustomResource):
         import pulumiverse_time as time
 
         folder = gcp.organizations.Folder("folder",
-            display_name="my-folder",
+            display_name="folder-cap",
             parent="organizations/123456789",
             deletion_protection=False)
         wait60s = time.Sleep("wait_60s", create_duration="60s",

@@ -27,6 +27,11 @@ public final class GetInstanceNetworkInterface {
      */
     private List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
     /**
+     * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    private String igmpQuery;
+    /**
      * @return The prefix length of the primary internal IPv6 range.
      * 
      */
@@ -46,6 +51,11 @@ public final class GetInstanceNetworkInterface {
      * 
      */
     private String ipv6Address;
+    /**
+     * @return MAC address assigned to this network interface.
+     * 
+     */
+    private String macAddress;
     /**
      * @return The name of the instance. One of `name` or `selfLink` must be provided.
      * 
@@ -114,6 +124,13 @@ public final class GetInstanceNetworkInterface {
         return this.aliasIpRanges;
     }
     /**
+     * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+     * 
+     */
+    public String igmpQuery() {
+        return this.igmpQuery;
+    }
+    /**
      * @return The prefix length of the primary internal IPv6 range.
      * 
      */
@@ -140,6 +157,13 @@ public final class GetInstanceNetworkInterface {
      */
     public String ipv6Address() {
         return this.ipv6Address;
+    }
+    /**
+     * @return MAC address assigned to this network interface.
+     * 
+     */
+    public String macAddress() {
+        return this.macAddress;
     }
     /**
      * @return The name of the instance. One of `name` or `selfLink` must be provided.
@@ -223,10 +247,12 @@ public final class GetInstanceNetworkInterface {
     public static final class Builder {
         private List<GetInstanceNetworkInterfaceAccessConfig> accessConfigs;
         private List<GetInstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private String igmpQuery;
         private Integer internalIpv6PrefixLength;
         private List<GetInstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
         private String ipv6AccessType;
         private String ipv6Address;
+        private String macAddress;
         private String name;
         private String network;
         private String networkAttachment;
@@ -242,10 +268,12 @@ public final class GetInstanceNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.igmpQuery = defaults.igmpQuery;
     	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
     	      this.ipv6AccessType = defaults.ipv6AccessType;
     	      this.ipv6Address = defaults.ipv6Address;
+    	      this.macAddress = defaults.macAddress;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.networkAttachment = defaults.networkAttachment;
@@ -281,6 +309,14 @@ public final class GetInstanceNetworkInterface {
             return aliasIpRanges(List.of(aliasIpRanges));
         }
         @CustomType.Setter
+        public Builder igmpQuery(String igmpQuery) {
+            if (igmpQuery == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterface", "igmpQuery");
+            }
+            this.igmpQuery = igmpQuery;
+            return this;
+        }
+        @CustomType.Setter
         public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
             if (internalIpv6PrefixLength == null) {
               throw new MissingRequiredPropertyException("GetInstanceNetworkInterface", "internalIpv6PrefixLength");
@@ -313,6 +349,14 @@ public final class GetInstanceNetworkInterface {
               throw new MissingRequiredPropertyException("GetInstanceNetworkInterface", "ipv6Address");
             }
             this.ipv6Address = ipv6Address;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder macAddress(String macAddress) {
+            if (macAddress == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterface", "macAddress");
+            }
+            this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
@@ -399,10 +443,12 @@ public final class GetInstanceNetworkInterface {
             final var _resultValue = new GetInstanceNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
             _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.igmpQuery = igmpQuery;
             _resultValue.internalIpv6PrefixLength = internalIpv6PrefixLength;
             _resultValue.ipv6AccessConfigs = ipv6AccessConfigs;
             _resultValue.ipv6AccessType = ipv6AccessType;
             _resultValue.ipv6Address = ipv6Address;
+            _resultValue.macAddress = macAddress;
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.networkAttachment = networkAttachment;

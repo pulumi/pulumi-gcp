@@ -48,6 +48,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// file that BigQuery will skip when reading the data.
         /// </summary>
         public readonly int? SkipLeadingRows;
+        /// <summary>
+        /// Specifies how source columns are matched
+        /// to the table schema. Valid values are `POSITION` (columns matched by position,
+        /// assuming same ordering as the schema) or `NAME` (columns matched by name,
+        /// reads the header row and reorders columns to align with schema field names).
+        /// If not set, a default is chosen based on how the schema is provided: when
+        /// autodetect is used, columns are matched by name; otherwise, by position.
+        /// </summary>
+        public readonly string? SourceColumnMatch;
 
         [OutputConstructor]
         private TableExternalDataConfigurationCsvOptions(
@@ -61,7 +70,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string quote,
 
-            int? skipLeadingRows)
+            int? skipLeadingRows,
+
+            string? sourceColumnMatch)
         {
             AllowJaggedRows = allowJaggedRows;
             AllowQuotedNewlines = allowQuotedNewlines;
@@ -69,6 +80,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             FieldDelimiter = fieldDelimiter;
             Quote = quote;
             SkipLeadingRows = skipLeadingRows;
+            SourceColumnMatch = sourceColumnMatch;
         }
     }
 }

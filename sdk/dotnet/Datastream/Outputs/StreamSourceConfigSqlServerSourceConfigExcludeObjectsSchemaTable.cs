@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable
     {
         /// <summary>
-        /// SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumn> Columns;

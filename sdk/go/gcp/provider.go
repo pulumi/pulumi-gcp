@@ -103,6 +103,7 @@ type Provider struct {
 	EssentialContactsCustomEndpoint        pulumi.StringPtrOutput `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint                pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
+	FirebaseAiLogicCustomEndpoint          pulumi.StringPtrOutput `pulumi:"firebaseAiLogicCustomEndpoint"`
 	FirebaseAppCheckCustomEndpoint         pulumi.StringPtrOutput `pulumi:"firebaseAppCheckCustomEndpoint"`
 	FirebaseAppHostingCustomEndpoint       pulumi.StringPtrOutput `pulumi:"firebaseAppHostingCustomEndpoint"`
 	FirebaseCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"firebaseCustomEndpoint"`
@@ -341,6 +342,7 @@ type providerArgs struct {
 	EventarcCustomEndpoint                 *string                      `pulumi:"eventarcCustomEndpoint"`
 	ExternalCredentials                    *ProviderExternalCredentials `pulumi:"externalCredentials"`
 	FilestoreCustomEndpoint                *string                      `pulumi:"filestoreCustomEndpoint"`
+	FirebaseAiLogicCustomEndpoint          *string                      `pulumi:"firebaseAiLogicCustomEndpoint"`
 	FirebaseAppCheckCustomEndpoint         *string                      `pulumi:"firebaseAppCheckCustomEndpoint"`
 	FirebaseAppHostingCustomEndpoint       *string                      `pulumi:"firebaseAppHostingCustomEndpoint"`
 	FirebaseCustomEndpoint                 *string                      `pulumi:"firebaseCustomEndpoint"`
@@ -545,6 +547,7 @@ type ProviderArgs struct {
 	EventarcCustomEndpoint                 pulumi.StringPtrInput
 	ExternalCredentials                    ProviderExternalCredentialsPtrInput
 	FilestoreCustomEndpoint                pulumi.StringPtrInput
+	FirebaseAiLogicCustomEndpoint          pulumi.StringPtrInput
 	FirebaseAppCheckCustomEndpoint         pulumi.StringPtrInput
 	FirebaseAppHostingCustomEndpoint       pulumi.StringPtrInput
 	FirebaseCustomEndpoint                 pulumi.StringPtrInput
@@ -1055,6 +1058,10 @@ func (o ProviderOutput) EventarcCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) FilestoreCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FilestoreCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) FirebaseAiLogicCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseAiLogicCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) FirebaseAppCheckCustomEndpoint() pulumi.StringPtrOutput {

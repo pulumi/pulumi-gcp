@@ -11118,6 +11118,271 @@ func (o NamespaceStateTypeArrayOutput) Index(i pulumi.IntInput) NamespaceStateTy
 	}).(NamespaceStateTypeOutput)
 }
 
+type RolloutSequenceStage struct {
+	// Filter to select a subset of clusters from the specified Fleet projects.
+	// If not specified, all clusters in the fleet projects are selected.
+	// Structure is documented below.
+	ClusterSelector *RolloutSequenceStageClusterSelector `pulumi:"clusterSelector"`
+	// List of Fleet projects to select the clusters from.
+	// Expected format: projects/{project}
+	FleetProjects []string `pulumi:"fleetProjects"`
+	// Soak time after upgrading all the clusters in the stage, specified in seconds.
+	SoakDuration *string `pulumi:"soakDuration"`
+}
+
+// RolloutSequenceStageInput is an input type that accepts RolloutSequenceStageArgs and RolloutSequenceStageOutput values.
+// You can construct a concrete instance of `RolloutSequenceStageInput` via:
+//
+//	RolloutSequenceStageArgs{...}
+type RolloutSequenceStageInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceStageOutput() RolloutSequenceStageOutput
+	ToRolloutSequenceStageOutputWithContext(context.Context) RolloutSequenceStageOutput
+}
+
+type RolloutSequenceStageArgs struct {
+	// Filter to select a subset of clusters from the specified Fleet projects.
+	// If not specified, all clusters in the fleet projects are selected.
+	// Structure is documented below.
+	ClusterSelector RolloutSequenceStageClusterSelectorPtrInput `pulumi:"clusterSelector"`
+	// List of Fleet projects to select the clusters from.
+	// Expected format: projects/{project}
+	FleetProjects pulumi.StringArrayInput `pulumi:"fleetProjects"`
+	// Soak time after upgrading all the clusters in the stage, specified in seconds.
+	SoakDuration pulumi.StringPtrInput `pulumi:"soakDuration"`
+}
+
+func (RolloutSequenceStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceStage)(nil)).Elem()
+}
+
+func (i RolloutSequenceStageArgs) ToRolloutSequenceStageOutput() RolloutSequenceStageOutput {
+	return i.ToRolloutSequenceStageOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceStageArgs) ToRolloutSequenceStageOutputWithContext(ctx context.Context) RolloutSequenceStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceStageOutput)
+}
+
+// RolloutSequenceStageArrayInput is an input type that accepts RolloutSequenceStageArray and RolloutSequenceStageArrayOutput values.
+// You can construct a concrete instance of `RolloutSequenceStageArrayInput` via:
+//
+//	RolloutSequenceStageArray{ RolloutSequenceStageArgs{...} }
+type RolloutSequenceStageArrayInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceStageArrayOutput() RolloutSequenceStageArrayOutput
+	ToRolloutSequenceStageArrayOutputWithContext(context.Context) RolloutSequenceStageArrayOutput
+}
+
+type RolloutSequenceStageArray []RolloutSequenceStageInput
+
+func (RolloutSequenceStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSequenceStage)(nil)).Elem()
+}
+
+func (i RolloutSequenceStageArray) ToRolloutSequenceStageArrayOutput() RolloutSequenceStageArrayOutput {
+	return i.ToRolloutSequenceStageArrayOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceStageArray) ToRolloutSequenceStageArrayOutputWithContext(ctx context.Context) RolloutSequenceStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceStageArrayOutput)
+}
+
+type RolloutSequenceStageOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceStage)(nil)).Elem()
+}
+
+func (o RolloutSequenceStageOutput) ToRolloutSequenceStageOutput() RolloutSequenceStageOutput {
+	return o
+}
+
+func (o RolloutSequenceStageOutput) ToRolloutSequenceStageOutputWithContext(ctx context.Context) RolloutSequenceStageOutput {
+	return o
+}
+
+// Filter to select a subset of clusters from the specified Fleet projects.
+// If not specified, all clusters in the fleet projects are selected.
+// Structure is documented below.
+func (o RolloutSequenceStageOutput) ClusterSelector() RolloutSequenceStageClusterSelectorPtrOutput {
+	return o.ApplyT(func(v RolloutSequenceStage) *RolloutSequenceStageClusterSelector { return v.ClusterSelector }).(RolloutSequenceStageClusterSelectorPtrOutput)
+}
+
+// List of Fleet projects to select the clusters from.
+// Expected format: projects/{project}
+func (o RolloutSequenceStageOutput) FleetProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RolloutSequenceStage) []string { return v.FleetProjects }).(pulumi.StringArrayOutput)
+}
+
+// Soak time after upgrading all the clusters in the stage, specified in seconds.
+func (o RolloutSequenceStageOutput) SoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSequenceStage) *string { return v.SoakDuration }).(pulumi.StringPtrOutput)
+}
+
+type RolloutSequenceStageArrayOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSequenceStage)(nil)).Elem()
+}
+
+func (o RolloutSequenceStageArrayOutput) ToRolloutSequenceStageArrayOutput() RolloutSequenceStageArrayOutput {
+	return o
+}
+
+func (o RolloutSequenceStageArrayOutput) ToRolloutSequenceStageArrayOutputWithContext(ctx context.Context) RolloutSequenceStageArrayOutput {
+	return o
+}
+
+func (o RolloutSequenceStageArrayOutput) Index(i pulumi.IntInput) RolloutSequenceStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolloutSequenceStage {
+		return vs[0].([]RolloutSequenceStage)[vs[1].(int)]
+	}).(RolloutSequenceStageOutput)
+}
+
+type RolloutSequenceStageClusterSelector struct {
+	// The label selector must be a valid CEL (Common Expression Language) expression which
+	// evaluates resource.labels.
+	LabelSelector string `pulumi:"labelSelector"`
+}
+
+// RolloutSequenceStageClusterSelectorInput is an input type that accepts RolloutSequenceStageClusterSelectorArgs and RolloutSequenceStageClusterSelectorOutput values.
+// You can construct a concrete instance of `RolloutSequenceStageClusterSelectorInput` via:
+//
+//	RolloutSequenceStageClusterSelectorArgs{...}
+type RolloutSequenceStageClusterSelectorInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceStageClusterSelectorOutput() RolloutSequenceStageClusterSelectorOutput
+	ToRolloutSequenceStageClusterSelectorOutputWithContext(context.Context) RolloutSequenceStageClusterSelectorOutput
+}
+
+type RolloutSequenceStageClusterSelectorArgs struct {
+	// The label selector must be a valid CEL (Common Expression Language) expression which
+	// evaluates resource.labels.
+	LabelSelector pulumi.StringInput `pulumi:"labelSelector"`
+}
+
+func (RolloutSequenceStageClusterSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceStageClusterSelector)(nil)).Elem()
+}
+
+func (i RolloutSequenceStageClusterSelectorArgs) ToRolloutSequenceStageClusterSelectorOutput() RolloutSequenceStageClusterSelectorOutput {
+	return i.ToRolloutSequenceStageClusterSelectorOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceStageClusterSelectorArgs) ToRolloutSequenceStageClusterSelectorOutputWithContext(ctx context.Context) RolloutSequenceStageClusterSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceStageClusterSelectorOutput)
+}
+
+func (i RolloutSequenceStageClusterSelectorArgs) ToRolloutSequenceStageClusterSelectorPtrOutput() RolloutSequenceStageClusterSelectorPtrOutput {
+	return i.ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceStageClusterSelectorArgs) ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceStageClusterSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceStageClusterSelectorOutput).ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(ctx)
+}
+
+// RolloutSequenceStageClusterSelectorPtrInput is an input type that accepts RolloutSequenceStageClusterSelectorArgs, RolloutSequenceStageClusterSelectorPtr and RolloutSequenceStageClusterSelectorPtrOutput values.
+// You can construct a concrete instance of `RolloutSequenceStageClusterSelectorPtrInput` via:
+//
+//	        RolloutSequenceStageClusterSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type RolloutSequenceStageClusterSelectorPtrInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceStageClusterSelectorPtrOutput() RolloutSequenceStageClusterSelectorPtrOutput
+	ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(context.Context) RolloutSequenceStageClusterSelectorPtrOutput
+}
+
+type rolloutSequenceStageClusterSelectorPtrType RolloutSequenceStageClusterSelectorArgs
+
+func RolloutSequenceStageClusterSelectorPtr(v *RolloutSequenceStageClusterSelectorArgs) RolloutSequenceStageClusterSelectorPtrInput {
+	return (*rolloutSequenceStageClusterSelectorPtrType)(v)
+}
+
+func (*rolloutSequenceStageClusterSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceStageClusterSelector)(nil)).Elem()
+}
+
+func (i *rolloutSequenceStageClusterSelectorPtrType) ToRolloutSequenceStageClusterSelectorPtrOutput() RolloutSequenceStageClusterSelectorPtrOutput {
+	return i.ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *rolloutSequenceStageClusterSelectorPtrType) ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceStageClusterSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceStageClusterSelectorPtrOutput)
+}
+
+type RolloutSequenceStageClusterSelectorOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceStageClusterSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceStageClusterSelector)(nil)).Elem()
+}
+
+func (o RolloutSequenceStageClusterSelectorOutput) ToRolloutSequenceStageClusterSelectorOutput() RolloutSequenceStageClusterSelectorOutput {
+	return o
+}
+
+func (o RolloutSequenceStageClusterSelectorOutput) ToRolloutSequenceStageClusterSelectorOutputWithContext(ctx context.Context) RolloutSequenceStageClusterSelectorOutput {
+	return o
+}
+
+func (o RolloutSequenceStageClusterSelectorOutput) ToRolloutSequenceStageClusterSelectorPtrOutput() RolloutSequenceStageClusterSelectorPtrOutput {
+	return o.ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o RolloutSequenceStageClusterSelectorOutput) ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceStageClusterSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutSequenceStageClusterSelector) *RolloutSequenceStageClusterSelector {
+		return &v
+	}).(RolloutSequenceStageClusterSelectorPtrOutput)
+}
+
+// The label selector must be a valid CEL (Common Expression Language) expression which
+// evaluates resource.labels.
+func (o RolloutSequenceStageClusterSelectorOutput) LabelSelector() pulumi.StringOutput {
+	return o.ApplyT(func(v RolloutSequenceStageClusterSelector) string { return v.LabelSelector }).(pulumi.StringOutput)
+}
+
+type RolloutSequenceStageClusterSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceStageClusterSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolloutSequenceStageClusterSelector)(nil)).Elem()
+}
+
+func (o RolloutSequenceStageClusterSelectorPtrOutput) ToRolloutSequenceStageClusterSelectorPtrOutput() RolloutSequenceStageClusterSelectorPtrOutput {
+	return o
+}
+
+func (o RolloutSequenceStageClusterSelectorPtrOutput) ToRolloutSequenceStageClusterSelectorPtrOutputWithContext(ctx context.Context) RolloutSequenceStageClusterSelectorPtrOutput {
+	return o
+}
+
+func (o RolloutSequenceStageClusterSelectorPtrOutput) Elem() RolloutSequenceStageClusterSelectorOutput {
+	return o.ApplyT(func(v *RolloutSequenceStageClusterSelector) RolloutSequenceStageClusterSelector {
+		if v != nil {
+			return *v
+		}
+		var ret RolloutSequenceStageClusterSelector
+		return ret
+	}).(RolloutSequenceStageClusterSelectorOutput)
+}
+
+// The label selector must be a valid CEL (Common Expression Language) expression which
+// evaluates resource.labels.
+func (o RolloutSequenceStageClusterSelectorPtrOutput) LabelSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSequenceStageClusterSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LabelSelector
+	}).(pulumi.StringPtrOutput)
+}
+
 type ScopeIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -16001,6 +16266,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), MembershipRbacRoleBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeInput)(nil)).Elem(), NamespaceStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeArrayInput)(nil)).Elem(), NamespaceStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageInput)(nil)).Elem(), RolloutSequenceStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageArrayInput)(nil)).Elem(), RolloutSequenceStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageClusterSelectorInput)(nil)).Elem(), RolloutSequenceStageClusterSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageClusterSelectorPtrInput)(nil)).Elem(), RolloutSequenceStageClusterSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeIamBindingConditionInput)(nil)).Elem(), ScopeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeIamBindingConditionPtrInput)(nil)).Elem(), ScopeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeIamMemberConditionInput)(nil)).Elem(), ScopeIamMemberConditionArgs{})
@@ -16219,6 +16488,10 @@ func init() {
 	pulumi.RegisterOutputType(MembershipRbacRoleBindingStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(NamespaceStateTypeOutput{})
 	pulumi.RegisterOutputType(NamespaceStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceStageOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceStageArrayOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceStageClusterSelectorOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceStageClusterSelectorPtrOutput{})
 	pulumi.RegisterOutputType(ScopeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(ScopeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ScopeIamMemberConditionOutput{})

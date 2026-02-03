@@ -65,7 +65,7 @@ import (
 //				Location:     pulumi.String("global"),
 //				CollectionId: pulumi.String("default_collection"),
 //				EngineId:     basicSearchEngine.EngineId,
-//				AssistantId:  pulumi.String("example-assistant-id"),
+//				AssistantId:  pulumi.String("default_assistant"),
 //				DisplayName:  pulumi.String("updated-tf-test-Assistant"),
 //				Description:  pulumi.String("Assistant Description"),
 //				GenerationConfig: &discoveryengine.AssistantGenerationConfigArgs{

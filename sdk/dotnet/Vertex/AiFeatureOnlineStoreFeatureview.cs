@@ -258,8 +258,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_9723",
-    ///         Name = "tf-test_22061",
+    ///         ProjectId = "tf-test_45397",
+    ///         Name = "tf-test_16451",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",

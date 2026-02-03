@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
     {
         /// <summary>
         /// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+        /// 
+        /// &lt;a name="NestedBigqueryDatasetEffectiveReplicas"&gt;&lt;/a&gt;The `EffectiveReplicas` block contains:
         /// </summary>
         [Input("routine")]
         public Input<string>? Routine { get; set; }

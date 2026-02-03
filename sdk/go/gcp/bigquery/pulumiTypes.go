@@ -15195,6 +15195,13 @@ type TableExternalDataConfigurationCsvOptions struct {
 	// The number of rows at the top of a CSV
 	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
+	// Specifies how source columns are matched
+	// to the table schema. Valid values are `POSITION` (columns matched by position,
+	// assuming same ordering as the schema) or `NAME` (columns matched by name,
+	// reads the header row and reorders columns to align with schema field names).
+	// If not set, a default is chosen based on how the schema is provided: when
+	// autodetect is used, columns are matched by name; otherwise, by position.
+	SourceColumnMatch *string `pulumi:"sourceColumnMatch"`
 }
 
 // TableExternalDataConfigurationCsvOptionsInput is an input type that accepts TableExternalDataConfigurationCsvOptionsArgs and TableExternalDataConfigurationCsvOptionsOutput values.
@@ -15232,6 +15239,13 @@ type TableExternalDataConfigurationCsvOptionsArgs struct {
 	// The number of rows at the top of a CSV
 	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
+	// Specifies how source columns are matched
+	// to the table schema. Valid values are `POSITION` (columns matched by position,
+	// assuming same ordering as the schema) or `NAME` (columns matched by name,
+	// reads the header row and reorders columns to align with schema field names).
+	// If not set, a default is chosen based on how the schema is provided: when
+	// autodetect is used, columns are matched by name; otherwise, by position.
+	SourceColumnMatch pulumi.StringPtrInput `pulumi:"sourceColumnMatch"`
 }
 
 func (TableExternalDataConfigurationCsvOptionsArgs) ElementType() reflect.Type {
@@ -15352,6 +15366,16 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) SkipLeadingRows() pulumi
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
 
+// Specifies how source columns are matched
+// to the table schema. Valid values are `POSITION` (columns matched by position,
+// assuming same ordering as the schema) or `NAME` (columns matched by name,
+// reads the header row and reorders columns to align with schema field names).
+// If not set, a default is chosen based on how the schema is provided: when
+// autodetect is used, columns are matched by name; otherwise, by position.
+func (o TableExternalDataConfigurationCsvOptionsOutput) SourceColumnMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *string { return v.SourceColumnMatch }).(pulumi.StringPtrOutput)
+}
+
 type TableExternalDataConfigurationCsvOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (TableExternalDataConfigurationCsvOptionsPtrOutput) ElementType() reflect.Type {
@@ -15445,6 +15469,21 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) SkipLeadingRows() pul
 		}
 		return v.SkipLeadingRows
 	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies how source columns are matched
+// to the table schema. Valid values are `POSITION` (columns matched by position,
+// assuming same ordering as the schema) or `NAME` (columns matched by name,
+// reads the header row and reorders columns to align with schema field names).
+// If not set, a default is chosen based on how the schema is provided: when
+// autodetect is used, columns are matched by name; otherwise, by position.
+func (o TableExternalDataConfigurationCsvOptionsPtrOutput) SourceColumnMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceColumnMatch
+	}).(pulumi.StringPtrOutput)
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptions struct {
@@ -20713,6 +20752,8 @@ type GetTableExternalDataConfigurationCsvOption struct {
 	Quote          string `pulumi:"quote"`
 	// The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
 	SkipLeadingRows int `pulumi:"skipLeadingRows"`
+	// Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
+	SourceColumnMatch string `pulumi:"sourceColumnMatch"`
 }
 
 // GetTableExternalDataConfigurationCsvOptionInput is an input type that accepts GetTableExternalDataConfigurationCsvOptionArgs and GetTableExternalDataConfigurationCsvOptionOutput values.
@@ -20738,6 +20779,8 @@ type GetTableExternalDataConfigurationCsvOptionArgs struct {
 	Quote          pulumi.StringInput `pulumi:"quote"`
 	// The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
 	SkipLeadingRows pulumi.IntInput `pulumi:"skipLeadingRows"`
+	// Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
+	SourceColumnMatch pulumi.StringInput `pulumi:"sourceColumnMatch"`
 }
 
 func (GetTableExternalDataConfigurationCsvOptionArgs) ElementType() reflect.Type {
@@ -20818,6 +20861,11 @@ func (o GetTableExternalDataConfigurationCsvOptionOutput) Quote() pulumi.StringO
 // The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
 func (o GetTableExternalDataConfigurationCsvOptionOutput) SkipLeadingRows() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTableExternalDataConfigurationCsvOption) int { return v.SkipLeadingRows }).(pulumi.IntOutput)
+}
+
+// Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
+func (o GetTableExternalDataConfigurationCsvOptionOutput) SourceColumnMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTableExternalDataConfigurationCsvOption) string { return v.SourceColumnMatch }).(pulumi.StringOutput)
 }
 
 type GetTableExternalDataConfigurationCsvOptionArrayOutput struct{ *pulumi.OutputState }

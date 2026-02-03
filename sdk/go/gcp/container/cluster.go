@@ -311,6 +311,8 @@ type Cluster struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigOutput `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
 	// your service account has permission to get credentials for your GKE cluster. If
@@ -671,6 +673,8 @@ type clusterState struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
 	// your service account has permission to get credentials for your GKE cluster. If
@@ -997,6 +1001,8 @@ type ClusterState struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
 	// your service account has permission to get credentials for your GKE cluster. If
@@ -1321,6 +1327,8 @@ type clusterArgs struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
 	// your service account has permission to get credentials for your GKE cluster. If
@@ -1631,6 +1639,8 @@ type ClusterArgs struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
+	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
 	// your service account has permission to get credentials for your GKE cluster. If
@@ -2165,6 +2175,11 @@ func (o ClusterOutput) LoggingService() pulumi.StringOutput {
 // documented below.
 func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(ClusterMaintenancePolicyPtrOutput)
+}
+
+// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+func (o ClusterOutput) ManagedOpentelemetryConfig() ClusterManagedOpentelemetryConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterManagedOpentelemetryConfigOutput { return v.ManagedOpentelemetryConfig }).(ClusterManagedOpentelemetryConfigOutput)
 }
 
 // The authentication information for accessing the

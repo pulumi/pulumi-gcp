@@ -103,6 +103,7 @@ type LookupSnapshotResult struct {
 	SnapshotType             string                               `pulumi:"snapshotType"`
 	SourceDisk               string                               `pulumi:"sourceDisk"`
 	SourceDiskEncryptionKeys []GetSnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKeys"`
+	SourceInstantSnapshot    string                               `pulumi:"sourceInstantSnapshot"`
 	StorageBytes             int                                  `pulumi:"storageBytes"`
 	StorageLocations         []string                             `pulumi:"storageLocations"`
 	Zone                     string                               `pulumi:"zone"`
@@ -237,6 +238,10 @@ func (o LookupSnapshotResultOutput) SourceDisk() pulumi.StringOutput {
 
 func (o LookupSnapshotResultOutput) SourceDiskEncryptionKeys() GetSnapshotSourceDiskEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) []GetSnapshotSourceDiskEncryptionKey { return v.SourceDiskEncryptionKeys }).(GetSnapshotSourceDiskEncryptionKeyArrayOutput)
+}
+
+func (o LookupSnapshotResultOutput) SourceInstantSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceInstantSnapshot }).(pulumi.StringOutput)
 }
 
 func (o LookupSnapshotResultOutput) StorageBytes() pulumi.IntOutput {

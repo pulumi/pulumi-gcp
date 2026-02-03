@@ -107,9 +107,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
 
     /**
      * The minimum version of SSL protocol that can be used by the clients
-     * to establish a connection with the load balancer.
+     * to establish a connection with the load balancer. When set to
+     * `TLS_1_3`, the profile field must be set to `RESTRICTED`.
      * Default value is `TLS_1_0`.
-     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      * 
      */
     @Import(name="minTlsVersion")
@@ -117,9 +118,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The minimum version of SSL protocol that can be used by the clients
-     * to establish a connection with the load balancer.
+     * to establish a connection with the load balancer. When set to
+     * `TLS_1_3`, the profile field must be set to `RESTRICTED`.
      * Default value is `TLS_1_0`.
-     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      * 
      */
     public Optional<Output<String>> minTlsVersion() {
@@ -161,8 +163,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
      * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+     * If set to `FIPS_202205`, `minTlsVersion` must also be set to
+     * `TLS_1_2`.
      * Default value is `COMPATIBLE`.
-     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
      * 
      */
     @Import(name="profile")
@@ -176,8 +180,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
      * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+     * If set to `FIPS_202205`, `minTlsVersion` must also be set to
+     * `TLS_1_2`.
      * Default value is `COMPATIBLE`.
-     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
      * 
      */
     public Optional<Output<String>> profile() {
@@ -412,9 +418,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param minTlsVersion The minimum version of SSL protocol that can be used by the clients
-         * to establish a connection with the load balancer.
+         * to establish a connection with the load balancer. When set to
+         * `TLS_1_3`, the profile field must be set to `RESTRICTED`.
          * Default value is `TLS_1_0`.
-         * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+         * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
          * 
          * @return builder
          * 
@@ -426,9 +433,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param minTlsVersion The minimum version of SSL protocol that can be used by the clients
-         * to establish a connection with the load balancer.
+         * to establish a connection with the load balancer. When set to
+         * `TLS_1_3`, the profile field must be set to `RESTRICTED`.
          * Default value is `TLS_1_0`.
-         * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+         * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
          * 
          * @return builder
          * 
@@ -478,8 +486,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
          * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
          * for information on what cipher suites each profile provides. If
          * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+         * If set to `FIPS_202205`, `minTlsVersion` must also be set to
+         * `TLS_1_2`.
          * Default value is `COMPATIBLE`.
-         * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+         * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
          * 
          * @return builder
          * 
@@ -497,8 +507,10 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
          * See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
          * for information on what cipher suites each profile provides. If
          * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+         * If set to `FIPS_202205`, `minTlsVersion` must also be set to
+         * `TLS_1_2`.
          * Default value is `COMPATIBLE`.
-         * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+         * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
          * 
          * @return builder
          * 

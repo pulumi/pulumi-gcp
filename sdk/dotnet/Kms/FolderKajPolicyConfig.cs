@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Kms
     ///     // Create Folder in GCP Organization.
     ///     var kajFolder = new Gcp.Organizations.Folder("kaj_folder", new()
     ///     {
-    ///         DisplayName = "my-folder",
+    ///         DisplayName = "folder-kajc",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

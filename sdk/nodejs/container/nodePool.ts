@@ -200,6 +200,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly nodeCount: pulumi.Output<number>;
     /**
+     * The node drain configuration of the pool. Structure is documented below.
+     */
+    declare public readonly nodeDrainConfigs: pulumi.Output<outputs.container.NodePoolNodeDrainConfig[]>;
+    /**
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -269,6 +273,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = state?.networkConfig;
             resourceInputs["nodeConfig"] = state?.nodeConfig;
             resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["nodeDrainConfigs"] = state?.nodeDrainConfigs;
             resourceInputs["nodeLocations"] = state?.nodeLocations;
             resourceInputs["operation"] = state?.operation;
             resourceInputs["placementPolicy"] = state?.placementPolicy;
@@ -292,6 +297,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = args?.networkConfig;
             resourceInputs["nodeConfig"] = args?.nodeConfig;
             resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["nodeDrainConfigs"] = args?.nodeDrainConfigs;
             resourceInputs["nodeLocations"] = args?.nodeLocations;
             resourceInputs["placementPolicy"] = args?.placementPolicy;
             resourceInputs["project"] = args?.project;
@@ -385,6 +391,10 @@ export interface NodePoolState {
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * The node drain configuration of the pool. Structure is documented below.
+     */
+    nodeDrainConfigs?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeDrainConfig>[]>;
     /**
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
@@ -500,6 +510,10 @@ export interface NodePoolArgs {
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * The node drain configuration of the pool. Structure is documented below.
+     */
+    nodeDrainConfigs?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeDrainConfig>[]>;
     /**
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their

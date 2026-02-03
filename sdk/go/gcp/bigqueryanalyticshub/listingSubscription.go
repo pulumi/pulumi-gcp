@@ -95,6 +95,66 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Listing Subscription Multiregion
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			subscription, err := bigqueryanalyticshub.NewDataExchange(ctx, "subscription", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("us"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subscriptionListing, err := bigqueryanalyticshub.NewListing(ctx, "subscription", &bigqueryanalyticshub.ListingArgs{
+//				Location:       pulumi.String("us"),
+//				DataExchangeId: subscription.DataExchangeId,
+//				ListingId:      pulumi.String("my_listing"),
+//				DisplayName:    pulumi.String("my_listing"),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: pulumi.String("projects/project_id/datasets/my_listing_example2"),
+//					ReplicaLocations: pulumi.StringArray{
+//						pulumi.String("eu"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListingSubscription(ctx, "subscription", &bigqueryanalyticshub.ListingSubscriptionArgs{
+//				Location:       pulumi.String("us"),
+//				DataExchangeId: subscription.DataExchangeId,
+//				ListingId:      subscriptionListing.ListingId,
+//				DestinationDataset: &bigqueryanalyticshub.ListingSubscriptionDestinationDatasetArgs{
+//					Location: pulumi.String("us"),
+//					DatasetReference: &bigqueryanalyticshub.ListingSubscriptionDestinationDatasetDatasetReferenceArgs{
+//						ProjectId: subscription.Project,
+//						DatasetId: pulumi.String("destination_dataset"),
+//					},
+//					ReplicaLocations: pulumi.StringArray{
+//						pulumi.String("eu"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

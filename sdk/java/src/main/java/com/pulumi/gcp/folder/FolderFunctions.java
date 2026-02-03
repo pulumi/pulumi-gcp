@@ -221,7 +221,7 @@ public final class FolderFunctions {
     /**
      * Allows management of Organization policies for a Google Folder. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -265,7 +265,7 @@ public final class FolderFunctions {
     /**
      * Allows management of Organization policies for a Google Folder. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -309,7 +309,7 @@ public final class FolderFunctions {
     /**
      * Allows management of Organization policies for a Google Folder. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -353,7 +353,7 @@ public final class FolderFunctions {
     /**
      * Allows management of Organization policies for a Google Folder. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -397,7 +397,7 @@ public final class FolderFunctions {
     /**
      * Allows management of Organization policies for a Google Folder. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 

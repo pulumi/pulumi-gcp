@@ -17,20 +17,53 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
     public static final InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs Empty = new InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs();
 
     /**
-     * (Output)
+     * (Output, Deprecated)
      * URLs of Attachments in the given zone, to the given
      * region, on Interconnects in the given facility and metro. Every
      * Attachment in the AG has such an entry.
+     * 
+     * @deprecated
+     * `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
+     * 
+     */
+    @Deprecated /* `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead. */
+    @Import(name="attachment")
+    private @Nullable Output<List<String>> attachment;
+
+    /**
+     * @return (Output, Deprecated)
+     * URLs of Attachments in the given zone, to the given
+     * region, on Interconnects in the given facility and metro. Every
+     * Attachment in the AG has such an entry.
+     * 
+     * @deprecated
+     * `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
+     * 
+     */
+    @Deprecated /* `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead. */
+    public Optional<Output<List<String>>> attachment() {
+        return Optional.ofNullable(this.attachment);
+    }
+
+    /**
+     * Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     @Import(name="attachments")
     private @Nullable Output<List<String>> attachments;
 
     /**
-     * @return (Output)
-     * URLs of Attachments in the given zone, to the given
-     * region, on Interconnects in the given facility and metro. Every
-     * Attachment in the AG has such an entry.
+     * @return Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+     * strings. Users are encouraged, but not required, to use their preferred
+     * format for resource links as keys.
+     * Note that there are add-members and remove-members methods in gcloud.
+     * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<String>>> attachments() {
@@ -61,6 +94,7 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
     private InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs() {}
 
     private InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs(InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneArgs $) {
+        this.attachment = $.attachment;
         this.attachments = $.attachments;
         this.zone = $.zone;
     }
@@ -84,10 +118,64 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
         }
 
         /**
-         * @param attachments (Output)
+         * @param attachment (Output, Deprecated)
          * URLs of Attachments in the given zone, to the given
          * region, on Interconnects in the given facility and metro. Every
          * Attachment in the AG has such an entry.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
+         * 
+         */
+        @Deprecated /* `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead. */
+        public Builder attachment(@Nullable Output<List<String>> attachment) {
+            $.attachment = attachment;
+            return this;
+        }
+
+        /**
+         * @param attachment (Output, Deprecated)
+         * URLs of Attachments in the given zone, to the given
+         * region, on Interconnects in the given facility and metro. Every
+         * Attachment in the AG has such an entry.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
+         * 
+         */
+        @Deprecated /* `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead. */
+        public Builder attachment(List<String> attachment) {
+            return attachment(Output.of(attachment));
+        }
+
+        /**
+         * @param attachment (Output, Deprecated)
+         * URLs of Attachments in the given zone, to the given
+         * region, on Interconnects in the given facility and metro. Every
+         * Attachment in the AG has such an entry.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead.
+         * 
+         */
+        @Deprecated /* `attachment` is deprecated and will be removed in a future major release. Use `attachments` instead. */
+        public Builder attachment(String... attachment) {
+            return attachment(List.of(attachment));
+        }
+
+        /**
+         * @param attachments Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -98,10 +186,12 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
         }
 
         /**
-         * @param attachments (Output)
-         * URLs of Attachments in the given zone, to the given
-         * region, on Interconnects in the given facility and metro. Every
-         * Attachment in the AG has such an entry.
+         * @param attachments Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -111,10 +201,12 @@ public final class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilit
         }
 
         /**
-         * @param attachments (Output)
-         * URLs of Attachments in the given zone, to the given
-         * region, on Interconnects in the given facility and metro. Every
-         * Attachment in the AG has such an entry.
+         * @param attachments Attachments in the AttachmentGroup. Keys are arbitrary user-specified
+         * strings. Users are encouraged, but not required, to use their preferred
+         * format for resource links as keys.
+         * Note that there are add-members and remove-members methods in gcloud.
+         * The size of this map is limited by an &#34;Attachments per group&#34; quota.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -225,6 +225,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string SnapshotType;
         public readonly string SourceDisk;
         public readonly ImmutableArray<Outputs.GetSnapshotSourceDiskEncryptionKeyResult> SourceDiskEncryptionKeys;
+        public readonly string SourceInstantSnapshot;
         public readonly int StorageBytes;
         public readonly ImmutableArray<string> StorageLocations;
         public readonly string Zone;
@@ -273,6 +274,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetSnapshotSourceDiskEncryptionKeyResult> sourceDiskEncryptionKeys,
 
+            string sourceInstantSnapshot,
+
             int storageBytes,
 
             ImmutableArray<string> storageLocations,
@@ -300,6 +303,7 @@ namespace Pulumi.Gcp.Compute
             SnapshotType = snapshotType;
             SourceDisk = sourceDisk;
             SourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
+            SourceInstantSnapshot = sourceInstantSnapshot;
             StorageBytes = storageBytes;
             StorageLocations = storageLocations;
             Zone = zone;

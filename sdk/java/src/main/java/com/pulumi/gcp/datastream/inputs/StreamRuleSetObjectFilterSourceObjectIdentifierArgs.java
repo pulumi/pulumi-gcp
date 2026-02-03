@@ -10,6 +10,7 @@ import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIde
 import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs;
 import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs;
 import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs;
+import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs;
 import com.pulumi.gcp.datastream.inputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -110,6 +111,23 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifierArgs extends c
      * Structure is documented below.
      * 
      */
+    @Import(name="spannerIdentifier")
+    private @Nullable Output<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs> spannerIdentifier;
+
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs>> spannerIdentifier() {
+        return Optional.ofNullable(this.spannerIdentifier);
+    }
+
+    /**
+     * A nested object resource.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="sqlServerIdentifier")
     private @Nullable Output<StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs> sqlServerIdentifier;
 
@@ -130,6 +148,7 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifierArgs extends c
         this.oracleIdentifier = $.oracleIdentifier;
         this.postgresqlIdentifier = $.postgresqlIdentifier;
         this.salesforceIdentifier = $.salesforceIdentifier;
+        this.spannerIdentifier = $.spannerIdentifier;
         this.sqlServerIdentifier = $.sqlServerIdentifier;
     }
 
@@ -264,6 +283,29 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifierArgs extends c
          */
         public Builder salesforceIdentifier(StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs salesforceIdentifier) {
             return salesforceIdentifier(Output.of(salesforceIdentifier));
+        }
+
+        /**
+         * @param spannerIdentifier A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerIdentifier(@Nullable Output<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs> spannerIdentifier) {
+            $.spannerIdentifier = spannerIdentifier;
+            return this;
+        }
+
+        /**
+         * @param spannerIdentifier A nested object resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerIdentifier(StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs spannerIdentifier) {
+            return spannerIdentifier(Output.of(spannerIdentifier));
         }
 
         /**

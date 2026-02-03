@@ -33,8 +33,36 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var agentProject = new Gcp.Organizations.Project("agent_project", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Name = "my-project",
+    ///         OrgId = "123456789",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var agentProjectService = new Gcp.Projects.Service("agent_project", new()
+    ///     {
+    ///         Project = agentProject.ProjectId,
+    ///         ServiceName = "dialogflow.googleapis.com",
+    ///         DisableDependentServices = false,
+    ///     });
+    /// 
+    ///     var dialogflowServiceAccount = new Gcp.ServiceAccount.Account("dialogflow_service_account", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///     });
+    /// 
+    ///     var agentCreate = new Gcp.Projects.IAMMember("agent_create", new()
+    ///     {
+    ///         Project = agentProjectService.Project,
+    ///         Role = "roles/dialogflow.admin",
+    ///         Member = dialogflowServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
     ///     var fullAgent = new Gcp.Diagflow.Agent("full_agent", new()
     ///     {
+    ///         Project = agentProject.ProjectId,
     ///         DisplayName = "dialogflow-agent",
     ///         DefaultLanguageCode = "en",
     ///         SupportedLanguageCodes = new[]

@@ -75,6 +75,11 @@ export type CxTool = import("./cxTool").CxTool;
 export const CxTool: typeof import("./cxTool").CxTool = null as any;
 utilities.lazyLoad(exports, ["CxTool"], () => require("./cxTool"));
 
+export { CxToolVersionArgs, CxToolVersionState } from "./cxToolVersion";
+export type CxToolVersion = import("./cxToolVersion").CxToolVersion;
+export const CxToolVersion: typeof import("./cxToolVersion").CxToolVersion = null as any;
+utilities.lazyLoad(exports, ["CxToolVersion"], () => require("./cxToolVersion"));
+
 export { CxVersionArgs, CxVersionState } from "./cxVersion";
 export type CxVersion = import("./cxVersion").CxVersion;
 export const CxVersion: typeof import("./cxVersion").CxVersion = null as any;
@@ -148,6 +153,8 @@ const _module = {
                 return new CxTestCase(name, <any>undefined, { urn })
             case "gcp:diagflow/cxTool:CxTool":
                 return new CxTool(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxToolVersion:CxToolVersion":
+                return new CxToolVersion(name, <any>undefined, { urn })
             case "gcp:diagflow/cxVersion:CxVersion":
                 return new CxVersion(name, <any>undefined, { urn })
             case "gcp:diagflow/cxWebhook:CxWebhook":
@@ -183,6 +190,7 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxPlaybook", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxSecuritySettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxTestCase", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxTool", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxToolVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxWebhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/encryptionSpec", _module)

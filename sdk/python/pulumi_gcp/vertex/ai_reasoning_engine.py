@@ -348,6 +348,88 @@ class AiReasoningEngine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Vertex Ai Reasoning Engine Psc Interface
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="reasoning-engine",
+            location="us-central1",
+            uniform_bucket_level_access=True,
+            force_destroy=True)
+        bucket_obj_requirements_txt = gcp.storage.BucketObject("bucket_obj_requirements_txt",
+            name="requirements.txt",
+            bucket=bucket.id,
+            source=pulumi.FileAsset("./test-fixtures/requirements_adk.txt"))
+        bucket_obj_pickle = gcp.storage.BucketObject("bucket_obj_pickle",
+            name="code.pkl",
+            bucket=bucket.id,
+            source=pulumi.FileAsset("./test-fixtures/pickle_adk.pkl"))
+        bucket_obj_dependencies_tar_gz = gcp.storage.BucketObject("bucket_obj_dependencies_tar_gz",
+            name="dependencies.tar.gz",
+            bucket=bucket.id,
+            source=pulumi.FileAsset("./test-fixtures/dependencies_adk.tar.gz"))
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="subnetwork",
+            region="us-central1",
+            ip_cidr_range="10.0.0.0/16",
+            network=network.id)
+        network_attachment = gcp.compute.NetworkAttachment("network_attachment",
+            name="network-attachment",
+            region="us-central1",
+            connection_preference="ACCEPT_MANUAL",
+            subnetworks=[subnetwork.id])
+        # Destroy network attachment 35 minutes after reasoning engine is deleted.
+        # It guarantees that the network attachment has no more active PSC interfaces.
+        wait35_minutes = time.Sleep("wait_35_minutes", destroy_duration="35m",
+        opts = pulumi.ResourceOptions(depends_on=[network_attachment]))
+        project = gcp.organizations.get_project()
+        # When PSC-I is configured, Agent deletion will fail,
+        # although the agent will be deleted.
+        # Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="A basic reasoning engine",
+            region="us-central1",
+            spec={
+                "agent_framework": "google-adk",
+                "package_spec": {
+                    "python_version": "3.11",
+                    "dependency_files_gcs_uri": pulumi.Output.all(
+                        url=bucket.url,
+                        name=bucket_obj_dependencies_tar_gz.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['url']}/{resolved_outputs['name']}")
+        ,
+                    "pickle_object_gcs_uri": pulumi.Output.all(
+                        url=bucket.url,
+                        name=bucket_obj_pickle.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['url']}/{resolved_outputs['name']}")
+        ,
+                    "requirements_gcs_uri": pulumi.Output.all(
+                        url=bucket.url,
+                        name=bucket_obj_requirements_txt.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['url']}/{resolved_outputs['name']}")
+        ,
+                },
+                "deployment_spec": {
+                    "psc_interface_config": {
+                        "network_attachment": network_attachment.id,
+                        "dns_peering_configs": [{
+                            "domain": "example.com.",
+                            "target_project": project.project_id,
+                            "target_network": network.name,
+                        }],
+                    },
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait35_minutes]))
+        ```
         ### Vertex Ai Reasoning Engine Full
 
         ```python
@@ -571,6 +653,88 @@ class AiReasoningEngine(pulumi.CustomResource):
                     },
                 },
             })
+        ```
+        ### Vertex Ai Reasoning Engine Psc Interface
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="reasoning-engine",
+            location="us-central1",
+            uniform_bucket_level_access=True,
+            force_destroy=True)
+        bucket_obj_requirements_txt = gcp.storage.BucketObject("bucket_obj_requirements_txt",
+            name="requirements.txt",
+            bucket=bucket.id,
+            source=pulumi.FileAsset("./test-fixtures/requirements_adk.txt"))
+        bucket_obj_pickle = gcp.storage.BucketObject("bucket_obj_pickle",
+            name="code.pkl",
+            bucket=bucket.id,
+            source=pulumi.FileAsset("./test-fixtures/pickle_adk.pkl"))
+        bucket_obj_dependencies_tar_gz = gcp.storage.BucketObject("bucket_obj_dependencies_tar_gz",
+            name="dependencies.tar.gz",
+            bucket=bucket.id,
+            source=pulumi.FileAsset("./test-fixtures/dependencies_adk.tar.gz"))
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="subnetwork",
+            region="us-central1",
+            ip_cidr_range="10.0.0.0/16",
+            network=network.id)
+        network_attachment = gcp.compute.NetworkAttachment("network_attachment",
+            name="network-attachment",
+            region="us-central1",
+            connection_preference="ACCEPT_MANUAL",
+            subnetworks=[subnetwork.id])
+        # Destroy network attachment 35 minutes after reasoning engine is deleted.
+        # It guarantees that the network attachment has no more active PSC interfaces.
+        wait35_minutes = time.Sleep("wait_35_minutes", destroy_duration="35m",
+        opts = pulumi.ResourceOptions(depends_on=[network_attachment]))
+        project = gcp.organizations.get_project()
+        # When PSC-I is configured, Agent deletion will fail,
+        # although the agent will be deleted.
+        # Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="reasoning-engine",
+            description="A basic reasoning engine",
+            region="us-central1",
+            spec={
+                "agent_framework": "google-adk",
+                "package_spec": {
+                    "python_version": "3.11",
+                    "dependency_files_gcs_uri": pulumi.Output.all(
+                        url=bucket.url,
+                        name=bucket_obj_dependencies_tar_gz.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['url']}/{resolved_outputs['name']}")
+        ,
+                    "pickle_object_gcs_uri": pulumi.Output.all(
+                        url=bucket.url,
+                        name=bucket_obj_pickle.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['url']}/{resolved_outputs['name']}")
+        ,
+                    "requirements_gcs_uri": pulumi.Output.all(
+                        url=bucket.url,
+                        name=bucket_obj_requirements_txt.name
+        ).apply(lambda resolved_outputs: f"{resolved_outputs['url']}/{resolved_outputs['name']}")
+        ,
+                },
+                "deployment_spec": {
+                    "psc_interface_config": {
+                        "network_attachment": network_attachment.id,
+                        "dns_peering_configs": [{
+                            "domain": "example.com.",
+                            "target_project": project.project_id,
+                            "target_network": network.name,
+                        }],
+                    },
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[wait35_minutes]))
         ```
         ### Vertex Ai Reasoning Engine Full
 

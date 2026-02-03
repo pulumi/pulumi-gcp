@@ -119,6 +119,52 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Snapshot Basic Source Instant Snapshot
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-11",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Name = "debian-disk",
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var instantSnapshot = new Gcp.Compute.InstantSnapshot("instant_snapshot", new()
+    ///     {
+    ///         Name = "my-instant-snapshot",
+    ///         SourceDisk = persistent.SelfLink,
+    ///         Zone = persistent.Zone,
+    ///         Description = "A test snapshot",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var snapshot = new Gcp.Compute.Snapshot("snapshot", new()
+    ///     {
+    ///         Name = "my-snapshot",
+    ///         Zone = "us-central1-a",
+    ///         SourceInstantSnapshot = instantSnapshot.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Snapshot Chainname
     /// 
     /// ```csharp
@@ -332,6 +378,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.SnapshotSourceDiskEncryptionKey?> SourceDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// A reference to the instant snapshot used to create this snapshot.
+        /// </summary>
+        [Output("sourceInstantSnapshot")]
+        public Output<string?> SourceInstantSnapshot { get; private set; } = null!;
+
+        /// <summary>
         /// A size of the storage used by the snapshot. As snapshots share
         /// storage, this number is expected to change with snapshot
         /// creation/deletion.
@@ -359,7 +411,7 @@ namespace Pulumi.Gcp.Compute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Snapshot(string name, SnapshotArgs args, CustomResourceOptions? options = null)
+        public Snapshot(string name, SnapshotArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:compute/snapshot:Snapshot", name, args ?? new SnapshotArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -484,8 +536,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A reference to the disk used to create this snapshot.
         /// </summary>
-        [Input("sourceDisk", required: true)]
-        public Input<string> SourceDisk { get; set; } = null!;
+        [Input("sourceDisk")]
+        public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
@@ -495,6 +547,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyArgs>? SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// A reference to the instant snapshot used to create this snapshot.
+        /// </summary>
+        [Input("sourceInstantSnapshot")]
+        public Input<string>? SourceInstantSnapshot { get; set; }
 
         [Input("storageLocations")]
         private InputList<string>? _storageLocations;
@@ -694,6 +752,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceDiskEncryptionKey")]
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyGetArgs>? SourceDiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// A reference to the instant snapshot used to create this snapshot.
+        /// </summary>
+        [Input("sourceInstantSnapshot")]
+        public Input<string>? SourceInstantSnapshot { get; set; }
 
         /// <summary>
         /// A size of the storage used by the snapshot. As snapshots share

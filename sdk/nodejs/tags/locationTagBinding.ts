@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about LocationTagBinding, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  *
  * ## Example Usage
  *
@@ -73,6 +73,30 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Compute Instance With Dynamic Tag Value
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "project_id",
+ *     name: "project_id",
+ *     orgId: "123456789",
+ * });
+ * const key = new gcp.tags.TagKey("key", {
+ *     parent: "organizations/123456789",
+ *     shortName: "keyname",
+ *     description: "For keyname resources.",
+ *     allowedValuesRegex: "^[a-z]+$",
+ * });
+ * const binding = new gcp.tags.LocationTagBinding("binding", {
+ *     parent: pulumi.interpolate`//compute.googleapis.com/projects/${project.number}/zones/us-central1-a/instances/${instance.instanceId}`,
+ *     tagValue: pulumi.interpolate`${key.namespacedName}/test-value`,
+ *     location: "us-central1-a",
+ * });
+ * ```
+ *
  * ## Import
  *
  * LocationTagBinding can be imported using any of these accepted formats:
@@ -120,7 +144,7 @@ export class LocationTagBinding extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
-     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+     * The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -128,7 +152,7 @@ export class LocationTagBinding extends pulumi.CustomResource {
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      */
     declare public readonly tagValue: pulumi.Output<string>;
 
@@ -178,7 +202,7 @@ export interface LocationTagBindingState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+     * The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      */
     name?: pulumi.Input<string>;
     /**
@@ -186,7 +210,7 @@ export interface LocationTagBindingState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      */
     tagValue?: pulumi.Input<string>;
 }
@@ -206,7 +230,7 @@ export interface LocationTagBindingArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      */
     tagValue: pulumi.Input<string>;
 }

@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SnapshotSnapshotEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.SnapshotSourceDiskEncryptionKeyArgs;
 import java.lang.Boolean;
@@ -195,15 +194,15 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
      * A reference to the disk used to create this snapshot.
      * 
      */
-    @Import(name="sourceDisk", required=true)
-    private Output<String> sourceDisk;
+    @Import(name="sourceDisk")
+    private @Nullable Output<String> sourceDisk;
 
     /**
      * @return A reference to the disk used to create this snapshot.
      * 
      */
-    public Output<String> sourceDisk() {
-        return this.sourceDisk;
+    public Optional<Output<String>> sourceDisk() {
+        return Optional.ofNullable(this.sourceDisk);
     }
 
     /**
@@ -225,6 +224,21 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<SnapshotSourceDiskEncryptionKeyArgs>> sourceDiskEncryptionKey() {
         return Optional.ofNullable(this.sourceDiskEncryptionKey);
+    }
+
+    /**
+     * A reference to the instant snapshot used to create this snapshot.
+     * 
+     */
+    @Import(name="sourceInstantSnapshot")
+    private @Nullable Output<String> sourceInstantSnapshot;
+
+    /**
+     * @return A reference to the instant snapshot used to create this snapshot.
+     * 
+     */
+    public Optional<Output<String>> sourceInstantSnapshot() {
+        return Optional.ofNullable(this.sourceInstantSnapshot);
     }
 
     /**
@@ -270,6 +284,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         this.snapshotType = $.snapshotType;
         this.sourceDisk = $.sourceDisk;
         this.sourceDiskEncryptionKey = $.sourceDiskEncryptionKey;
+        this.sourceInstantSnapshot = $.sourceInstantSnapshot;
         this.storageLocations = $.storageLocations;
         this.zone = $.zone;
     }
@@ -516,7 +531,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder sourceDisk(Output<String> sourceDisk) {
+        public Builder sourceDisk(@Nullable Output<String> sourceDisk) {
             $.sourceDisk = sourceDisk;
             return this;
         }
@@ -556,6 +571,27 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceDiskEncryptionKey(SnapshotSourceDiskEncryptionKeyArgs sourceDiskEncryptionKey) {
             return sourceDiskEncryptionKey(Output.of(sourceDiskEncryptionKey));
+        }
+
+        /**
+         * @param sourceInstantSnapshot A reference to the instant snapshot used to create this snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstantSnapshot(@Nullable Output<String> sourceInstantSnapshot) {
+            $.sourceInstantSnapshot = sourceInstantSnapshot;
+            return this;
+        }
+
+        /**
+         * @param sourceInstantSnapshot A reference to the instant snapshot used to create this snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstantSnapshot(String sourceInstantSnapshot) {
+            return sourceInstantSnapshot(Output.of(sourceInstantSnapshot));
         }
 
         /**
@@ -611,9 +647,6 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnapshotArgs build() {
-            if ($.sourceDisk == null) {
-                throw new MissingRequiredPropertyException("SnapshotArgs", "sourceDisk");
-            }
             return $;
         }
     }

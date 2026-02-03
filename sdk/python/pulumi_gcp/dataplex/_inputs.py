@@ -39,6 +39,10 @@ __all__ = [
     'AssetResourceStatusArgsDict',
     'AssetSecurityStatusArgs',
     'AssetSecurityStatusArgsDict',
+    'DataProductAccessGroupArgs',
+    'DataProductAccessGroupArgsDict',
+    'DataProductAccessGroupPrincipalArgs',
+    'DataProductAccessGroupPrincipalArgsDict',
     'DatascanDataArgs',
     'DatascanDataArgsDict',
     'DatascanDataDiscoverySpecArgs',
@@ -1105,6 +1109,149 @@ class AssetSecurityStatusArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "update_time", value)
+
+
+if not MYPY:
+    class DataProductAccessGroupArgsDict(TypedDict):
+        display_name: pulumi.Input[_builtins.str]
+        """
+        User friendly display name.
+        """
+        group_id: pulumi.Input[_builtins.str]
+        """
+        Unique identifier of the access group.
+        """
+        id: pulumi.Input[_builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        principal: pulumi.Input['DataProductAccessGroupPrincipalArgsDict']
+        """
+        The principal entity.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the access group.
+        """
+elif False:
+    DataProductAccessGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataProductAccessGroupArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[_builtins.str],
+                 group_id: pulumi.Input[_builtins.str],
+                 id: pulumi.Input[_builtins.str],
+                 principal: pulumi.Input['DataProductAccessGroupPrincipalArgs'],
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] display_name: User friendly display name.
+        :param pulumi.Input[_builtins.str] group_id: Unique identifier of the access group.
+        :param pulumi.Input[_builtins.str] id: The identifier for this object. Format specified above.
+        :param pulumi.Input['DataProductAccessGroupPrincipalArgs'] principal: The principal entity.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] description: Description of the access group.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "principal", principal)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        User friendly display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Unique identifier of the access group.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> pulumi.Input['DataProductAccessGroupPrincipalArgs']:
+        """
+        The principal entity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input['DataProductAccessGroupPrincipalArgs']):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the access group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class DataProductAccessGroupPrincipalArgsDict(TypedDict):
+        google_group: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Email of the Google Group.
+        """
+elif False:
+    DataProductAccessGroupPrincipalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataProductAccessGroupPrincipalArgs:
+    def __init__(__self__, *,
+                 google_group: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] google_group: Email of the Google Group.
+        """
+        if google_group is not None:
+            pulumi.set(__self__, "google_group", google_group)
+
+    @_builtins.property
+    @pulumi.getter(name="googleGroup")
+    def google_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Email of the Google Group.
+        """
+        return pulumi.get(self, "google_group")
+
+    @google_group.setter
+    def google_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "google_group", value)
 
 
 if not MYPY:

@@ -53,6 +53,18 @@ __all__ = [
     'UnitKindOutputVariableMappingToArgsDict',
     'UnitMaintenanceArgs',
     'UnitMaintenanceArgsDict',
+    'UnitOperationConditionArgs',
+    'UnitOperationConditionArgsDict',
+    'UnitOperationDeprovisionArgs',
+    'UnitOperationDeprovisionArgsDict',
+    'UnitOperationProvisionArgs',
+    'UnitOperationProvisionArgsDict',
+    'UnitOperationProvisionInputVariableArgs',
+    'UnitOperationProvisionInputVariableArgsDict',
+    'UnitOperationUpgradeArgs',
+    'UnitOperationUpgradeArgsDict',
+    'UnitOperationUpgradeInputVariableArgs',
+    'UnitOperationUpgradeInputVariableArgsDict',
     'UnitOutputVariableArgs',
     'UnitOutputVariableArgsDict',
 ]
@@ -1293,6 +1305,448 @@ class UnitMaintenanceArgs:
     @pinned_until_time.setter
     def pinned_until_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pinned_until_time", value)
+
+
+if not MYPY:
+    class UnitOperationConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Last time the condition transited from one status to another.
+        """
+        message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Human readable message indicating details about the last transition.
+        """
+        reason: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Brief reason for the condition's last transition.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Status of the condition.
+        Possible values:
+        STATUS_UNKNOWN
+        STATUS_TRUE
+        STATUS_FALSE
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        Type of the condition.
+        Possible values:
+        TYPE_SCHEDULED
+        TYPE_RUNNING
+        TYPE_SUCCEEDED
+        TYPE_CANCELLED
+        """
+elif False:
+    UnitOperationConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UnitOperationConditionArgs:
+    def __init__(__self__, *,
+                 last_transition_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 message: Optional[pulumi.Input[_builtins.str]] = None,
+                 reason: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] last_transition_time: (Output)
+               Last time the condition transited from one status to another.
+        :param pulumi.Input[_builtins.str] message: (Output)
+               Human readable message indicating details about the last transition.
+        :param pulumi.Input[_builtins.str] reason: (Output)
+               Brief reason for the condition's last transition.
+        :param pulumi.Input[_builtins.str] status: (Output)
+               Status of the condition.
+               Possible values:
+               STATUS_UNKNOWN
+               STATUS_TRUE
+               STATUS_FALSE
+        :param pulumi.Input[_builtins.str] type: (Output)
+               Type of the condition.
+               Possible values:
+               TYPE_SCHEDULED
+               TYPE_RUNNING
+               TYPE_SUCCEEDED
+               TYPE_CANCELLED
+        """
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Last time the condition transited from one status to another.
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @last_transition_time.setter
+    def last_transition_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "last_transition_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Human readable message indicating details about the last transition.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Brief reason for the condition's last transition.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "reason", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Status of the condition.
+        Possible values:
+        STATUS_UNKNOWN
+        STATUS_TRUE
+        STATUS_FALSE
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        Type of the condition.
+        Possible values:
+        TYPE_SCHEDULED
+        TYPE_RUNNING
+        TYPE_SUCCEEDED
+        TYPE_CANCELLED
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class UnitOperationDeprovisionArgsDict(TypedDict):
+        pass
+elif False:
+    UnitOperationDeprovisionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UnitOperationDeprovisionArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class UnitOperationProvisionArgsDict(TypedDict):
+        input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgsDict']]]]
+        """
+        Set of input variables. Maximum 100. (optional)
+        Structure is documented below.
+        """
+        release: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Reference to the Release object to use for the Unit. (optional).
+        """
+elif False:
+    UnitOperationProvisionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UnitOperationProvisionArgs:
+    def __init__(__self__, *,
+                 input_variables: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]] = None,
+                 release: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]] input_variables: Set of input variables. Maximum 100. (optional)
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] release: Reference to the Release object to use for the Unit. (optional).
+        """
+        if input_variables is not None:
+            pulumi.set(__self__, "input_variables", input_variables)
+        if release is not None:
+            pulumi.set(__self__, "release", release)
+
+    @_builtins.property
+    @pulumi.getter(name="inputVariables")
+    def input_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]:
+        """
+        Set of input variables. Maximum 100. (optional)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "input_variables")
+
+    @input_variables.setter
+    def input_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]):
+        pulumi.set(self, "input_variables", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reference to the Release object to use for the Unit. (optional).
+        """
+        return pulumi.get(self, "release")
+
+    @release.setter
+    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "release", value)
+
+
+if not MYPY:
+    class UnitOperationProvisionInputVariableArgsDict(TypedDict):
+        variable: pulumi.Input[_builtins.str]
+        """
+        Name of the variable from actuation configs.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of a supported variable type. Supported types are string, int, bool.
+        Possible values:
+        STRING
+        INT
+        BOOL
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        String encoded value for the variable.
+        """
+elif False:
+    UnitOperationProvisionInputVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UnitOperationProvisionInputVariableArgs:
+    def __init__(__self__, *,
+                 variable: pulumi.Input[_builtins.str],
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
+        :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are string, int, bool.
+               Possible values:
+               STRING
+               INT
+               BOOL
+        :param pulumi.Input[_builtins.str] value: String encoded value for the variable.
+        """
+        pulumi.set(__self__, "variable", variable)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variable(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the variable from actuation configs.
+        """
+        return pulumi.get(self, "variable")
+
+    @variable.setter
+    def variable(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "variable", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of a supported variable type. Supported types are string, int, bool.
+        Possible values:
+        STRING
+        INT
+        BOOL
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        String encoded value for the variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class UnitOperationUpgradeArgsDict(TypedDict):
+        input_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgsDict']]]]
+        """
+        Set of input variables. Maximum 100. (optional)
+        Structure is documented below.
+        """
+        release: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Reference to the Release object to use for the Unit. (optional).
+        """
+elif False:
+    UnitOperationUpgradeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UnitOperationUpgradeArgs:
+    def __init__(__self__, *,
+                 input_variables: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]] = None,
+                 release: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]] input_variables: Set of input variables. Maximum 100. (optional)
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] release: Reference to the Release object to use for the Unit. (optional).
+        """
+        if input_variables is not None:
+            pulumi.set(__self__, "input_variables", input_variables)
+        if release is not None:
+            pulumi.set(__self__, "release", release)
+
+    @_builtins.property
+    @pulumi.getter(name="inputVariables")
+    def input_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]:
+        """
+        Set of input variables. Maximum 100. (optional)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "input_variables")
+
+    @input_variables.setter
+    def input_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]):
+        pulumi.set(self, "input_variables", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reference to the Release object to use for the Unit. (optional).
+        """
+        return pulumi.get(self, "release")
+
+    @release.setter
+    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "release", value)
+
+
+if not MYPY:
+    class UnitOperationUpgradeInputVariableArgsDict(TypedDict):
+        variable: pulumi.Input[_builtins.str]
+        """
+        Name of the variable from actuation configs.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of a supported variable type. Supported types are string, int, bool.
+        Possible values:
+        STRING
+        INT
+        BOOL
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        String encoded value for the variable.
+        """
+elif False:
+    UnitOperationUpgradeInputVariableArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class UnitOperationUpgradeInputVariableArgs:
+    def __init__(__self__, *,
+                 variable: pulumi.Input[_builtins.str],
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] variable: Name of the variable from actuation configs.
+        :param pulumi.Input[_builtins.str] type: Name of a supported variable type. Supported types are string, int, bool.
+               Possible values:
+               STRING
+               INT
+               BOOL
+        :param pulumi.Input[_builtins.str] value: String encoded value for the variable.
+        """
+        pulumi.set(__self__, "variable", variable)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variable(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the variable from actuation configs.
+        """
+        return pulumi.get(self, "variable")
+
+    @variable.setter
+    def variable(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "variable", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of a supported variable type. Supported types are string, int, bool.
+        Possible values:
+        STRING
+        INT
+        BOOL
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        String encoded value for the variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

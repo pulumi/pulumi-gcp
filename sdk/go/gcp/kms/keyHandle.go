@@ -35,7 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create Folder in GCP Organization
 //			autokmsFolder, err := organizations.NewFolder(ctx, "autokms_folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("my-folder"),
+//				DisplayName:        pulumi.String("folder-kh"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})

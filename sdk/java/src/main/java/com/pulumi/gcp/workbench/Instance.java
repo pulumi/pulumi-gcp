@@ -347,7 +347,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .metadata(Map.ofEntries(
  *                     Map.entry("terraform", "true"),
- *                     Map.entry("serial-port-logging-enable", "false")
+ *                     Map.entry("serial-port-logging-enable", "false"),
+ *                     Map.entry("enable-jupyterlab4", "false")
  *                 ))
  *                 .reservationAffinity(InstanceGceSetupReservationAffinityArgs.builder()
  *                     .consumeReservationType("RESERVATION_SPECIFIC")

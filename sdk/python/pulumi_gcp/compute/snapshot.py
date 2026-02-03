@@ -21,7 +21,6 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 @pulumi.input_type
 class SnapshotArgs:
     def __init__(__self__, *,
-                 source_disk: pulumi.Input[_builtins.str],
                  chain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -30,12 +29,13 @@ class SnapshotArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
                  snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
-        :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input[_builtins.str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
                specified name. The chain name must be 1-63 characters long and
                comply with RFC1035. This is an uncommon option only for advanced
@@ -69,14 +69,15 @@ class SnapshotArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] snapshot_type: Indicates the type of the snapshot.
                Possible values are: `ARCHIVE`, `STANDARD`.
+        :param pulumi.Input[_builtins.str] source_disk: A reference to the disk used to create this snapshot.
         :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] source_instant_snapshot: A reference to the instant snapshot used to create this snapshot.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[_builtins.str] zone: A reference to the zone where the disk is hosted.
         """
-        pulumi.set(__self__, "source_disk", source_disk)
         if chain_name is not None:
             pulumi.set(__self__, "chain_name", chain_name)
         if description is not None:
@@ -93,24 +94,16 @@ class SnapshotArgs:
             pulumi.set(__self__, "snapshot_encryption_key", snapshot_encryption_key)
         if snapshot_type is not None:
             pulumi.set(__self__, "snapshot_type", snapshot_type)
+        if source_disk is not None:
+            pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_encryption_key is not None:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if storage_locations is not None:
             pulumi.set(__self__, "storage_locations", storage_locations)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> pulumi.Input[_builtins.str]:
-        """
-        A reference to the disk used to create this snapshot.
-        """
-        return pulumi.get(self, "source_disk")
-
-    @source_disk.setter
-    def source_disk(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "source_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="chainName")
@@ -234,6 +227,18 @@ class SnapshotArgs:
         pulumi.set(self, "snapshot_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the disk used to create this snapshot.
+        """
+        return pulumi.get(self, "source_disk")
+
+    @source_disk.setter
+    def source_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_disk", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceDiskEncryptionKey")
     def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]:
         """
@@ -247,6 +252,18 @@ class SnapshotArgs:
     @source_disk_encryption_key.setter
     def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the instant snapshot used to create this snapshot.
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocations")
@@ -294,6 +311,7 @@ class _SnapshotState:
                  snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
@@ -350,6 +368,7 @@ class _SnapshotState:
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] source_instant_snapshot: A reference to the instant snapshot used to create this snapshot.
         :param pulumi.Input[_builtins.int] storage_bytes: A size of the storage used by the snapshot. As snapshots share
                storage, this number is expected to change with snapshot
                creation/deletion.
@@ -392,6 +411,8 @@ class _SnapshotState:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_encryption_key is not None:
             pulumi.set(__self__, "source_disk_encryption_key", source_disk_encryption_key)
+        if source_instant_snapshot is not None:
+            pulumi.set(__self__, "source_instant_snapshot", source_instant_snapshot)
         if storage_bytes is not None:
             pulumi.set(__self__, "storage_bytes", storage_bytes)
         if storage_locations is not None:
@@ -649,6 +670,18 @@ class _SnapshotState:
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A reference to the instant snapshot used to create this snapshot.
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @source_instant_snapshot.setter
+    def source_instant_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_instant_snapshot", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -703,6 +736,7 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -777,6 +811,33 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"],
             guest_flush=True)
+        ```
+        ### Snapshot Basic Source Instant Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        instant_snapshot = gcp.compute.InstantSnapshot("instant_snapshot",
+            name="my-instant-snapshot",
+            source_disk=persistent.self_link,
+            zone=persistent.zone,
+            description="A test snapshot",
+            labels={
+                "foo": "bar",
+            })
+        snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
+            zone="us-central1-a",
+            source_instant_snapshot=instant_snapshot.id)
         ```
         ### Snapshot Chainname
 
@@ -867,6 +928,7 @@ class Snapshot(pulumi.CustomResource):
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] source_instant_snapshot: A reference to the instant snapshot used to create this snapshot.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[_builtins.str] zone: A reference to the zone where the disk is hosted.
         """
@@ -874,7 +936,7 @@ class Snapshot(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SnapshotArgs,
+                 args: Optional[SnapshotArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Persistent Disk Snapshot resource.
@@ -947,6 +1009,33 @@ class Snapshot(pulumi.CustomResource):
             },
             storage_locations=["us-central1"],
             guest_flush=True)
+        ```
+        ### Snapshot Basic Source Instant Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-11",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="debian-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        instant_snapshot = gcp.compute.InstantSnapshot("instant_snapshot",
+            name="my-instant-snapshot",
+            source_disk=persistent.self_link,
+            zone=persistent.zone,
+            description="A test snapshot",
+            labels={
+                "foo": "bar",
+            })
+        snapshot = gcp.compute.Snapshot("snapshot",
+            name="my-snapshot",
+            zone="us-central1-a",
+            source_instant_snapshot=instant_snapshot.id)
         ```
         ### Snapshot Chainname
 
@@ -1022,6 +1111,7 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk: Optional[pulumi.Input[_builtins.str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -1041,10 +1131,9 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
             __props__.__dict__["snapshot_type"] = snapshot_type
-            if source_disk is None and not opts.urn:
-                raise TypeError("Missing required property 'source_disk'")
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
+            __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
@@ -1086,6 +1175,7 @@ class Snapshot(pulumi.CustomResource):
             snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
             source_disk: Optional[pulumi.Input[_builtins.str]] = None,
             source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+            source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
             storage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
             storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Snapshot':
@@ -1147,6 +1237,7 @@ class Snapshot(pulumi.CustomResource):
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] source_instant_snapshot: A reference to the instant snapshot used to create this snapshot.
         :param pulumi.Input[_builtins.int] storage_bytes: A size of the storage used by the snapshot. As snapshots share
                storage, this number is expected to change with snapshot
                creation/deletion.
@@ -1175,6 +1266,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["snapshot_type"] = snapshot_type
         __props__.__dict__["source_disk"] = source_disk
         __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
+        __props__.__dict__["source_instant_snapshot"] = source_instant_snapshot
         __props__.__dict__["storage_bytes"] = storage_bytes
         __props__.__dict__["storage_locations"] = storage_locations
         __props__.__dict__["zone"] = zone
@@ -1356,6 +1448,14 @@ class Snapshot(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "source_disk_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A reference to the instant snapshot used to create this snapshot.
+        """
+        return pulumi.get(self, "source_instant_snapshot")
 
     @_builtins.property
     @pulumi.getter(name="storageBytes")

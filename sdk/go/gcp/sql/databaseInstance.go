@@ -380,8 +380,8 @@ import (
 //						Enabled:          pulumi.Bool(true),
 //						BinaryLogEnabled: pulumi.Bool(true),
 //					},
-//					BackupdrBackup: "backupdr_backup_full_path",
 //				},
+//				BackupdrBackup: pulumi.String("backupdr_backup_full_path"),
 //			})
 //			if err != nil {
 //				return err

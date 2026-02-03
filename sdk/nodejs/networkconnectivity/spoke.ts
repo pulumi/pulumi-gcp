@@ -106,17 +106,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "tf-test-network_25141",
+ *     name: "tf-test-network_16178",
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_30827",
+ *     name: "tf-test-subnet_26317",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
- *     name: "tf-test-instance_6529",
+ *     name: "tf-test-instance_4866",
  *     machineType: "e2-medium",
  *     canIpForward: true,
  *     zone: "us-central1-a",
@@ -134,14 +134,14 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "tf-test-hub_16178",
+ *     name: "tf-test-hub_12618",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "tf-test-name_26317",
+ *     name: "tf-test-name_32270",
  *     location: "us-central1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
@@ -401,8 +401,8 @@ import * as utilities from "../utilities";
  *     hub: starHub.id,
  *     autoAccept: {
  *         autoAcceptProjects: [
- *             "foo_4866",
- *             "bar_12618",
+ *             "foo_44703",
+ *             "bar_9329",
  *         ],
  *     },
  * });
@@ -465,7 +465,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_32270",
+ *     name: "tf-test-subnet_37135",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
@@ -574,7 +574,7 @@ export class Spoke extends pulumi.CustomResource {
      */
     declare public readonly hub: pulumi.Output<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -739,7 +739,7 @@ export interface SpokeState {
      */
     hub?: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
@@ -828,7 +828,7 @@ export interface SpokeArgs {
      */
     hub: pulumi.Input<string>;
     /**
-     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+     * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */

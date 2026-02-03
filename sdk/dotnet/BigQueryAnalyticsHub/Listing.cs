@@ -453,6 +453,41 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Listing Multiregion
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var listing = new Gcp.BigQueryAnalyticsHub.DataExchange("listing", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         DisplayName = "my_data_exchange",
+    ///     });
+    /// 
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
+    ///     {
+    ///         Location = "us",
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = "my_listing",
+    ///         DisplayName = "my_listing",
+    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
+    ///         {
+    ///             Dataset = "projects/project_id/datasets/my_listing_example2",
+    ///             ReplicaLocations = new[]
+    ///             {
+    ///                 "eu",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

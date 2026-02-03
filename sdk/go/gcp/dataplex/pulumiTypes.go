@@ -1926,6 +1926,194 @@ func (o AssetSecurityStatusArrayOutput) Index(i pulumi.IntInput) AssetSecuritySt
 	}).(AssetSecurityStatusOutput)
 }
 
+type DataProductAccessGroup struct {
+	// Description of the access group.
+	Description *string `pulumi:"description"`
+	// User friendly display name.
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the access group.
+	GroupId string `pulumi:"groupId"`
+	// The identifier for this object. Format specified above.
+	Id string `pulumi:"id"`
+	// The principal entity.
+	// Structure is documented below.
+	Principal DataProductAccessGroupPrincipal `pulumi:"principal"`
+}
+
+// DataProductAccessGroupInput is an input type that accepts DataProductAccessGroupArgs and DataProductAccessGroupOutput values.
+// You can construct a concrete instance of `DataProductAccessGroupInput` via:
+//
+//	DataProductAccessGroupArgs{...}
+type DataProductAccessGroupInput interface {
+	pulumi.Input
+
+	ToDataProductAccessGroupOutput() DataProductAccessGroupOutput
+	ToDataProductAccessGroupOutputWithContext(context.Context) DataProductAccessGroupOutput
+}
+
+type DataProductAccessGroupArgs struct {
+	// Description of the access group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// User friendly display name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the access group.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The identifier for this object. Format specified above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The principal entity.
+	// Structure is documented below.
+	Principal DataProductAccessGroupPrincipalInput `pulumi:"principal"`
+}
+
+func (DataProductAccessGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessGroup)(nil)).Elem()
+}
+
+func (i DataProductAccessGroupArgs) ToDataProductAccessGroupOutput() DataProductAccessGroupOutput {
+	return i.ToDataProductAccessGroupOutputWithContext(context.Background())
+}
+
+func (i DataProductAccessGroupArgs) ToDataProductAccessGroupOutputWithContext(ctx context.Context) DataProductAccessGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessGroupOutput)
+}
+
+// DataProductAccessGroupArrayInput is an input type that accepts DataProductAccessGroupArray and DataProductAccessGroupArrayOutput values.
+// You can construct a concrete instance of `DataProductAccessGroupArrayInput` via:
+//
+//	DataProductAccessGroupArray{ DataProductAccessGroupArgs{...} }
+type DataProductAccessGroupArrayInput interface {
+	pulumi.Input
+
+	ToDataProductAccessGroupArrayOutput() DataProductAccessGroupArrayOutput
+	ToDataProductAccessGroupArrayOutputWithContext(context.Context) DataProductAccessGroupArrayOutput
+}
+
+type DataProductAccessGroupArray []DataProductAccessGroupInput
+
+func (DataProductAccessGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataProductAccessGroup)(nil)).Elem()
+}
+
+func (i DataProductAccessGroupArray) ToDataProductAccessGroupArrayOutput() DataProductAccessGroupArrayOutput {
+	return i.ToDataProductAccessGroupArrayOutputWithContext(context.Background())
+}
+
+func (i DataProductAccessGroupArray) ToDataProductAccessGroupArrayOutputWithContext(ctx context.Context) DataProductAccessGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessGroupArrayOutput)
+}
+
+type DataProductAccessGroupOutput struct{ *pulumi.OutputState }
+
+func (DataProductAccessGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessGroup)(nil)).Elem()
+}
+
+func (o DataProductAccessGroupOutput) ToDataProductAccessGroupOutput() DataProductAccessGroupOutput {
+	return o
+}
+
+func (o DataProductAccessGroupOutput) ToDataProductAccessGroupOutputWithContext(ctx context.Context) DataProductAccessGroupOutput {
+	return o
+}
+
+// Description of the access group.
+func (o DataProductAccessGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataProductAccessGroup) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// User friendly display name.
+func (o DataProductAccessGroupOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductAccessGroup) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the access group.
+func (o DataProductAccessGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductAccessGroup) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o DataProductAccessGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DataProductAccessGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The principal entity.
+// Structure is documented below.
+func (o DataProductAccessGroupOutput) Principal() DataProductAccessGroupPrincipalOutput {
+	return o.ApplyT(func(v DataProductAccessGroup) DataProductAccessGroupPrincipal { return v.Principal }).(DataProductAccessGroupPrincipalOutput)
+}
+
+type DataProductAccessGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (DataProductAccessGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataProductAccessGroup)(nil)).Elem()
+}
+
+func (o DataProductAccessGroupArrayOutput) ToDataProductAccessGroupArrayOutput() DataProductAccessGroupArrayOutput {
+	return o
+}
+
+func (o DataProductAccessGroupArrayOutput) ToDataProductAccessGroupArrayOutputWithContext(ctx context.Context) DataProductAccessGroupArrayOutput {
+	return o
+}
+
+func (o DataProductAccessGroupArrayOutput) Index(i pulumi.IntInput) DataProductAccessGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataProductAccessGroup {
+		return vs[0].([]DataProductAccessGroup)[vs[1].(int)]
+	}).(DataProductAccessGroupOutput)
+}
+
+type DataProductAccessGroupPrincipal struct {
+	// Email of the Google Group.
+	GoogleGroup *string `pulumi:"googleGroup"`
+}
+
+// DataProductAccessGroupPrincipalInput is an input type that accepts DataProductAccessGroupPrincipalArgs and DataProductAccessGroupPrincipalOutput values.
+// You can construct a concrete instance of `DataProductAccessGroupPrincipalInput` via:
+//
+//	DataProductAccessGroupPrincipalArgs{...}
+type DataProductAccessGroupPrincipalInput interface {
+	pulumi.Input
+
+	ToDataProductAccessGroupPrincipalOutput() DataProductAccessGroupPrincipalOutput
+	ToDataProductAccessGroupPrincipalOutputWithContext(context.Context) DataProductAccessGroupPrincipalOutput
+}
+
+type DataProductAccessGroupPrincipalArgs struct {
+	// Email of the Google Group.
+	GoogleGroup pulumi.StringPtrInput `pulumi:"googleGroup"`
+}
+
+func (DataProductAccessGroupPrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessGroupPrincipal)(nil)).Elem()
+}
+
+func (i DataProductAccessGroupPrincipalArgs) ToDataProductAccessGroupPrincipalOutput() DataProductAccessGroupPrincipalOutput {
+	return i.ToDataProductAccessGroupPrincipalOutputWithContext(context.Background())
+}
+
+func (i DataProductAccessGroupPrincipalArgs) ToDataProductAccessGroupPrincipalOutputWithContext(ctx context.Context) DataProductAccessGroupPrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataProductAccessGroupPrincipalOutput)
+}
+
+type DataProductAccessGroupPrincipalOutput struct{ *pulumi.OutputState }
+
+func (DataProductAccessGroupPrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataProductAccessGroupPrincipal)(nil)).Elem()
+}
+
+func (o DataProductAccessGroupPrincipalOutput) ToDataProductAccessGroupPrincipalOutput() DataProductAccessGroupPrincipalOutput {
+	return o
+}
+
+func (o DataProductAccessGroupPrincipalOutput) ToDataProductAccessGroupPrincipalOutputWithContext(ctx context.Context) DataProductAccessGroupPrincipalOutput {
+	return o
+}
+
+// Email of the Google Group.
+func (o DataProductAccessGroupPrincipalOutput) GoogleGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataProductAccessGroupPrincipal) *string { return v.GoogleGroup }).(pulumi.StringPtrOutput)
+}
+
 type DatascanData struct {
 	// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
 	Entity *string `pulumi:"entity"`
@@ -15945,6 +16133,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceStatusArrayInput)(nil)).Elem(), AssetResourceStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusInput)(nil)).Elem(), AssetSecurityStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusArrayInput)(nil)).Elem(), AssetSecurityStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupInput)(nil)).Elem(), DataProductAccessGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupArrayInput)(nil)).Elem(), DataProductAccessGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupPrincipalInput)(nil)).Elem(), DataProductAccessGroupPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataInput)(nil)).Elem(), DatascanDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataPtrInput)(nil)).Elem(), DatascanDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataDiscoverySpecInput)(nil)).Elem(), DatascanDataDiscoverySpecArgs{})
@@ -16144,6 +16335,9 @@ func init() {
 	pulumi.RegisterOutputType(AssetResourceStatusArrayOutput{})
 	pulumi.RegisterOutputType(AssetSecurityStatusOutput{})
 	pulumi.RegisterOutputType(AssetSecurityStatusArrayOutput{})
+	pulumi.RegisterOutputType(DataProductAccessGroupOutput{})
+	pulumi.RegisterOutputType(DataProductAccessGroupArrayOutput{})
+	pulumi.RegisterOutputType(DataProductAccessGroupPrincipalOutput{})
 	pulumi.RegisterOutputType(DatascanDataOutput{})
 	pulumi.RegisterOutputType(DatascanDataPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataDiscoverySpecOutput{})

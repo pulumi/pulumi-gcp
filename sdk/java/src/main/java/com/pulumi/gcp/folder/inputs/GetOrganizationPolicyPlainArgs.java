@@ -14,14 +14,14 @@ public final class GetOrganizationPolicyPlainArgs extends com.pulumi.resources.I
     public static final GetOrganizationPolicyPlainArgs Empty = new GetOrganizationPolicyPlainArgs();
 
     /**
-     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      */
     @Import(name="constraint", required=true)
     private String constraint;
 
     /**
-     * @return (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * @return (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      */
     public String constraint() {
@@ -69,7 +69,7 @@ public final class GetOrganizationPolicyPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param constraint (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+         * @param constraint (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
          * 
          * @return builder
          * 

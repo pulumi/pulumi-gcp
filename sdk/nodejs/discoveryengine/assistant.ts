@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     collectionId: "default_collection",
  *     engineId: basicSearchEngine.engineId,
- *     assistantId: "example-assistant-id",
+ *     assistantId: "default_assistant",
  *     displayName: "updated-tf-test-Assistant",
  *     description: "Assistant Description",
  *     generationConfig: {

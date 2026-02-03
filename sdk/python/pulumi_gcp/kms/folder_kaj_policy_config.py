@@ -131,7 +131,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
 
         # Create Folder in GCP Organization.
         kaj_folder = gcp.organizations.Folder("kaj_folder",
-            display_name="my-folder",
+            display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
         project_suffix = random.index.Id("project_suffix", byte_length=4)
@@ -208,7 +208,7 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
 
         # Create Folder in GCP Organization.
         kaj_folder = gcp.organizations.Folder("kaj_folder",
-            display_name="my-folder",
+            display_name="folder-kajc",
             parent="organizations/123456789",
             deletion_protection=False)
         project_suffix = random.index.Id("project_suffix", byte_length=4)

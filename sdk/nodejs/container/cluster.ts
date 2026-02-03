@@ -358,6 +358,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly maintenancePolicy: pulumi.Output<outputs.container.ClusterMaintenancePolicy | undefined>;
     /**
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     */
+    declare public readonly managedOpentelemetryConfig: pulumi.Output<outputs.container.ClusterManagedOpentelemetryConfig>;
+    /**
      * The authentication information for accessing the
      * Kubernetes master. Some values in this block are only returned by the API if
      * your service account has permission to get credentials for your GKE cluster. If
@@ -688,6 +692,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["loggingConfig"] = state?.loggingConfig;
             resourceInputs["loggingService"] = state?.loggingService;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["managedOpentelemetryConfig"] = state?.managedOpentelemetryConfig;
             resourceInputs["masterAuth"] = state?.masterAuth;
             resourceInputs["masterAuthorizedNetworksConfig"] = state?.masterAuthorizedNetworksConfig;
             resourceInputs["masterVersion"] = state?.masterVersion;
@@ -777,6 +782,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["loggingConfig"] = args?.loggingConfig;
             resourceInputs["loggingService"] = args?.loggingService;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["managedOpentelemetryConfig"] = args?.managedOpentelemetryConfig;
             resourceInputs["masterAuth"] = args?.masterAuth;
             resourceInputs["masterAuthorizedNetworksConfig"] = args?.masterAuthorizedNetworksConfig;
             resourceInputs["meshCertificates"] = args?.meshCertificates;
@@ -1064,6 +1070,10 @@ export interface ClusterState {
      * documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy>;
+    /**
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     */
+    managedOpentelemetryConfig?: pulumi.Input<inputs.container.ClusterManagedOpentelemetryConfig>;
     /**
      * The authentication information for accessing the
      * Kubernetes master. Some values in this block are only returned by the API if
@@ -1557,6 +1567,10 @@ export interface ClusterArgs {
      * documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy>;
+    /**
+     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     */
+    managedOpentelemetryConfig?: pulumi.Input<inputs.container.ClusterManagedOpentelemetryConfig>;
     /**
      * The authentication information for accessing the
      * Kubernetes master. Some values in this block are only returned by the API if

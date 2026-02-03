@@ -321,6 +321,28 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Multiregion
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listing = new gcp.bigqueryanalyticshub.DataExchange("listing", {
+ *     location: "us",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ * });
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
+ *     location: "us",
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: "my_listing",
+ *     displayName: "my_listing",
+ *     bigqueryDataset: {
+ *         dataset: "projects/project_id/datasets/my_listing_example2",
+ *         replicaLocations: ["eu"],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Tags.Outputs
     public sealed class GetTagKeysKeyResult
     {
         /// <summary>
+        /// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        /// </summary>
+        public readonly string AllowedValuesRegex;
+        /// <summary>
         /// Creation time.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
@@ -54,6 +58,8 @@ namespace Pulumi.Gcp.Tags.Outputs
 
         [OutputConstructor]
         private GetTagKeysKeyResult(
+            string allowedValuesRegex,
+
             string createTime,
 
             string description,
@@ -72,6 +78,7 @@ namespace Pulumi.Gcp.Tags.Outputs
 
             string updateTime)
         {
+            AllowedValuesRegex = allowedValuesRegex;
             CreateTime = createTime;
             Description = description;
             Name = name;

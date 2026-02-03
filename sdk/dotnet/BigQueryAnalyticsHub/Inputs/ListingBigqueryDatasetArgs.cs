@@ -18,6 +18,33 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
 
+        [Input("effectiveReplicas")]
+        private InputList<Inputs.ListingBigqueryDatasetEffectiveReplicaArgs>? _effectiveReplicas;
+
+        /// <summary>
+        /// (Output, Beta)
+        /// Server owned effective state of replicas. Contains both primary and secondary replicas.
+        /// Each replica includes a system-computed (output-only) state and primary designation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ListingBigqueryDatasetEffectiveReplicaArgs> EffectiveReplicas
+        {
+            get => _effectiveReplicas ?? (_effectiveReplicas = new InputList<Inputs.ListingBigqueryDatasetEffectiveReplicaArgs>());
+            set => _effectiveReplicas = value;
+        }
+
+        [Input("replicaLocations")]
+        private InputList<string>? _replicaLocations;
+
+        /// <summary>
+        /// A list of regions where the publisher has created shared dataset replicas.
+        /// </summary>
+        public InputList<string> ReplicaLocations
+        {
+            get => _replicaLocations ?? (_replicaLocations = new InputList<string>());
+            set => _replicaLocations = value;
+        }
+
         [Input("selectedResources")]
         private InputList<Inputs.ListingBigqueryDatasetSelectedResourceArgs>? _selectedResources;
 

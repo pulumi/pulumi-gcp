@@ -49,6 +49,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
         [Input("minInstances")]
         public Input<int>? MinInstances { get; set; }
 
+        /// <summary>
+        /// Optional. Configuration for PSC-Interface.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscInterfaceConfig")]
+        public Input<Inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs>? PscInterfaceConfig { get; set; }
+
         [Input("resourceLimits")]
         private InputMap<string>? _resourceLimits;
 

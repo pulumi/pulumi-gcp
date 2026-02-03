@@ -222,7 +222,6 @@ import (
 //	}
 //
 // ```
-//
 // ## Import
 //
 // Address can be imported using any of these accepted formats:
@@ -270,6 +269,15 @@ type Address struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// The PDP must support enhanced IPv4 allocations.
+	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+	// Full resource URL, as in:
+	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	//   Partial URL, as in:
+	// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+	// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	IpCollection pulumi.StringPtrOutput `pulumi:"ipCollection"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
@@ -388,6 +396,15 @@ type addressState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// The PDP must support enhanced IPv4 allocations.
+	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+	// Full resource URL, as in:
+	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	//   Partial URL, as in:
+	// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+	// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	IpCollection *string `pulumi:"ipCollection"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -472,6 +489,15 @@ type AddressState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// The PDP must support enhanced IPv4 allocations.
+	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+	// Full resource URL, as in:
+	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	//   Partial URL, as in:
+	// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+	// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	IpCollection pulumi.StringPtrInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
@@ -556,6 +582,15 @@ type addressArgs struct {
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// The PDP must support enhanced IPv4 allocations.
+	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+	// Full resource URL, as in:
+	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	//   Partial URL, as in:
+	// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+	// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	IpCollection *string `pulumi:"ipCollection"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -627,6 +662,15 @@ type AddressArgs struct {
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// The PDP must support enhanced IPv4 allocations.
+	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+	// Full resource URL, as in:
+	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	//   Partial URL, as in:
+	// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+	// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+	IpCollection pulumi.StringPtrInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
@@ -800,6 +844,18 @@ func (o AddressOutput) Description() pulumi.StringPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o AddressOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+// The PDP must support enhanced IPv4 allocations.
+// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+// Full resource URL, as in:
+//   - `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+//     Partial URL, as in:
+//   - `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+//   - `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+func (o AddressOutput) IpCollection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.IpCollection }).(pulumi.StringPtrOutput)
 }
 
 // The IP Version that will be used by this address. The default value is `IPV4`.

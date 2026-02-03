@@ -450,7 +450,7 @@ class Assistant(pulumi.CustomResource):
             location="global",
             collection_id="default_collection",
             engine_id=basic_search_engine.engine_id,
-            assistant_id="example-assistant-id",
+            assistant_id="default_assistant",
             display_name="updated-tf-test-Assistant",
             description="Assistant Description",
             generation_config={
@@ -553,7 +553,7 @@ class Assistant(pulumi.CustomResource):
             location="global",
             collection_id="default_collection",
             engine_id=basic_search_engine.engine_id,
-            assistant_id="example-assistant-id",
+            assistant_id="default_assistant",
             display_name="updated-tf-test-Assistant",
             description="Assistant Description",
             generation_config={

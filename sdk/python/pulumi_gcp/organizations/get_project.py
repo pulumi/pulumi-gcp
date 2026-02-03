@@ -165,7 +165,7 @@ def get_project(project_id: Optional[_builtins.str] = None,
     """
     Use this data source to get project details.
     For more information see
-    [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+    [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
 
     ## Example Usage
 
@@ -204,7 +204,7 @@ def get_project_output(project_id: Optional[pulumi.Input[Optional[_builtins.str]
     """
     Use this data source to get project details.
     For more information see
-    [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+    [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
 
     ## Example Usage
 

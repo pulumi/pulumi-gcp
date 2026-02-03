@@ -614,7 +614,7 @@ class VolumeExportPolicyRule(dict):
         :param _builtins.str allowed_clients: Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
         :param _builtins.int anon_uid: An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
         :param _builtins.str has_root_access: If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-               It's overwritten by the squash_mode parameter. Use either squash_mode or has_root_access.
+               Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
         :param _builtins.bool kerberos5_read_only: If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
         :param _builtins.bool kerberos5_read_write: If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
         :param _builtins.bool kerberos5i_read_only: If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode.
@@ -624,7 +624,7 @@ class VolumeExportPolicyRule(dict):
         :param _builtins.bool nfsv3: Enable to apply the export rule to NFSV3 clients.
         :param _builtins.bool nfsv4: Enable to apply the export rule to NFSV4.1 clients.
         :param _builtins.str squash_mode: SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-               It overwrites the has_root_access parameter. Use either squash_mode or has_root_access. For ALL_SQUASH, access_type needs to be set to READ_WRITE.
+               Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
                Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
         """
         if access_type is not None:
@@ -684,7 +684,7 @@ class VolumeExportPolicyRule(dict):
     def has_root_access(self) -> Optional[_builtins.str]:
         """
         If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-        It's overwritten by the squash_mode parameter. Use either squash_mode or has_root_access.
+        Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
         """
         return pulumi.get(self, "has_root_access")
 
@@ -757,7 +757,7 @@ class VolumeExportPolicyRule(dict):
     def squash_mode(self) -> Optional[_builtins.str]:
         """
         SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-        It overwrites the has_root_access parameter. Use either squash_mode or has_root_access. For ALL_SQUASH, access_type needs to be set to READ_WRITE.
+        Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
         Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
         """
         return pulumi.get(self, "squash_mode")

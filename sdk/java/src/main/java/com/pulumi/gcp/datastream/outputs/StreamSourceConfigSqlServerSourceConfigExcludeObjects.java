@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
     /**
-     * @return SQL Server schemas/databases in the database server
+     * @return Spanner schemas in the database
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
 
     private StreamSourceConfigSqlServerSourceConfigExcludeObjects() {}
     /**
-     * @return SQL Server schemas/databases in the database server
+     * @return Spanner schemas in the database
      * Structure is documented below.
      * 
      */

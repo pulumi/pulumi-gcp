@@ -10,6 +10,7 @@ import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigSalesforceSourceConfig;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigSpannerSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigSqlServerSourceConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -53,6 +54,12 @@ public final class StreamSourceConfig {
      * 
      */
     private String sourceConnectionProfile;
+    /**
+     * @return Spanner data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamSourceConfigSpannerSourceConfig spannerSourceConfig;
     /**
      * @return SQL Server data source configuration.
      * Structure is documented below.
@@ -109,6 +116,14 @@ public final class StreamSourceConfig {
         return this.sourceConnectionProfile;
     }
     /**
+     * @return Spanner data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<StreamSourceConfigSpannerSourceConfig> spannerSourceConfig() {
+        return Optional.ofNullable(this.spannerSourceConfig);
+    }
+    /**
      * @return SQL Server data source configuration.
      * Structure is documented below.
      * 
@@ -132,6 +147,7 @@ public final class StreamSourceConfig {
         private @Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig;
         private @Nullable StreamSourceConfigSalesforceSourceConfig salesforceSourceConfig;
         private String sourceConnectionProfile;
+        private @Nullable StreamSourceConfigSpannerSourceConfig spannerSourceConfig;
         private @Nullable StreamSourceConfigSqlServerSourceConfig sqlServerSourceConfig;
         public Builder() {}
         public Builder(StreamSourceConfig defaults) {
@@ -142,6 +158,7 @@ public final class StreamSourceConfig {
     	      this.postgresqlSourceConfig = defaults.postgresqlSourceConfig;
     	      this.salesforceSourceConfig = defaults.salesforceSourceConfig;
     	      this.sourceConnectionProfile = defaults.sourceConnectionProfile;
+    	      this.spannerSourceConfig = defaults.spannerSourceConfig;
     	      this.sqlServerSourceConfig = defaults.sqlServerSourceConfig;
         }
 
@@ -184,6 +201,12 @@ public final class StreamSourceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder spannerSourceConfig(@Nullable StreamSourceConfigSpannerSourceConfig spannerSourceConfig) {
+
+            this.spannerSourceConfig = spannerSourceConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlServerSourceConfig(@Nullable StreamSourceConfigSqlServerSourceConfig sqlServerSourceConfig) {
 
             this.sqlServerSourceConfig = sqlServerSourceConfig;
@@ -197,6 +220,7 @@ public final class StreamSourceConfig {
             _resultValue.postgresqlSourceConfig = postgresqlSourceConfig;
             _resultValue.salesforceSourceConfig = salesforceSourceConfig;
             _resultValue.sourceConnectionProfile = sourceConnectionProfile;
+            _resultValue.spannerSourceConfig = spannerSourceConfig;
             _resultValue.sqlServerSourceConfig = sqlServerSourceConfig;
             return _resultValue;
         }

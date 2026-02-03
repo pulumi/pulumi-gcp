@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigLustreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNetworkPolicyConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigRayOperatorConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
@@ -96,6 +97,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs;
+    /**
+     * @return Configuration for the Pod Snapshot feature.
+     * 
+     */
+    private List<GetClusterAddonsConfigPodSnapshotConfig> podSnapshotConfigs;
     /**
      * @return The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
      * 
@@ -207,6 +213,13 @@ public final class GetClusterAddonsConfig {
         return this.parallelstoreCsiDriverConfigs;
     }
     /**
+     * @return Configuration for the Pod Snapshot feature.
+     * 
+     */
+    public List<GetClusterAddonsConfigPodSnapshotConfig> podSnapshotConfigs() {
+        return this.podSnapshotConfigs;
+    }
+    /**
      * @return The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
      * 
      */
@@ -244,6 +257,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfigs;
         private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
         private List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs;
+        private List<GetClusterAddonsConfigPodSnapshotConfig> podSnapshotConfigs;
         private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
         private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
         public Builder() {}
@@ -263,6 +277,7 @@ public final class GetClusterAddonsConfig {
     	      this.lustreCsiDriverConfigs = defaults.lustreCsiDriverConfigs;
     	      this.networkPolicyConfigs = defaults.networkPolicyConfigs;
     	      this.parallelstoreCsiDriverConfigs = defaults.parallelstoreCsiDriverConfigs;
+    	      this.podSnapshotConfigs = defaults.podSnapshotConfigs;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
     	      this.statefulHaConfigs = defaults.statefulHaConfigs;
         }
@@ -422,6 +437,17 @@ public final class GetClusterAddonsConfig {
             return parallelstoreCsiDriverConfigs(List.of(parallelstoreCsiDriverConfigs));
         }
         @CustomType.Setter
+        public Builder podSnapshotConfigs(List<GetClusterAddonsConfigPodSnapshotConfig> podSnapshotConfigs) {
+            if (podSnapshotConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "podSnapshotConfigs");
+            }
+            this.podSnapshotConfigs = podSnapshotConfigs;
+            return this;
+        }
+        public Builder podSnapshotConfigs(GetClusterAddonsConfigPodSnapshotConfig... podSnapshotConfigs) {
+            return podSnapshotConfigs(List.of(podSnapshotConfigs));
+        }
+        @CustomType.Setter
         public Builder rayOperatorConfigs(List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs) {
             if (rayOperatorConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "rayOperatorConfigs");
@@ -459,6 +485,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.lustreCsiDriverConfigs = lustreCsiDriverConfigs;
             _resultValue.networkPolicyConfigs = networkPolicyConfigs;
             _resultValue.parallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
+            _resultValue.podSnapshotConfigs = podSnapshotConfigs;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;
             _resultValue.statefulHaConfigs = statefulHaConfigs;
             return _resultValue;

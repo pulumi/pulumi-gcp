@@ -194,6 +194,7 @@ import * as utilities from "../utilities";
  *         metadata: {
  *             terraform: "true",
  *             "serial-port-logging-enable": "false",
+ *             "enable-jupyterlab4": "false",
  *         },
  *         reservationAffinity: {
  *             consumeReservationType: "RESERVATION_SPECIFIC",

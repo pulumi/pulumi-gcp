@@ -533,6 +533,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> filestoreCustomEndpoint() {
         return Codegen.optional(this.filestoreCustomEndpoint);
     }
+    @Export(name="firebaseAiLogicCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> firebaseAiLogicCustomEndpoint;
+
+    public Output<Optional<String>> firebaseAiLogicCustomEndpoint() {
+        return Codegen.optional(this.firebaseAiLogicCustomEndpoint);
+    }
     @Export(name="firebaseAppCheckCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firebaseAppCheckCustomEndpoint;
 

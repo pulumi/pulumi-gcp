@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { DatastoreArgs, DatastoreState } from "./datastore";
+export type Datastore = import("./datastore").Datastore;
+export const Datastore: typeof import("./datastore").Datastore = null as any;
+utilities.lazyLoad(exports, ["Datastore"], () => require("./datastore"));
+
 export { ExternalAccessRuleArgs, ExternalAccessRuleState } from "./externalAccessRule";
 export type ExternalAccessRule = import("./externalAccessRule").ExternalAccessRule;
 export const ExternalAccessRule: typeof import("./externalAccessRule").ExternalAccessRule = null as any;
@@ -24,6 +29,11 @@ export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getClu
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+
+export { GetDatastoreArgs, GetDatastoreResult, GetDatastoreOutputArgs } from "./getDatastore";
+export const getDatastore: typeof import("./getDatastore").getDatastore = null as any;
+export const getDatastoreOutput: typeof import("./getDatastore").getDatastoreOutput = null as any;
+utilities.lazyLoad(exports, ["getDatastore","getDatastoreOutput"], () => require("./getDatastore"));
 
 export { GetExternalAccessRuleArgs, GetExternalAccessRuleResult, GetExternalAccessRuleOutputArgs } from "./getExternalAccessRule";
 export const getExternalAccessRule: typeof import("./getExternalAccessRule").getExternalAccessRule = null as any;
@@ -102,6 +112,8 @@ const _module = {
         switch (type) {
             case "gcp:vmwareengine/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "gcp:vmwareengine/datastore:Datastore":
+                return new Datastore(name, <any>undefined, { urn })
             case "gcp:vmwareengine/externalAccessRule:ExternalAccessRule":
                 return new ExternalAccessRule(name, <any>undefined, { urn })
             case "gcp:vmwareengine/externalAddress:ExternalAddress":
@@ -122,6 +134,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/cluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/datastore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/externalAccessRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/externalAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/network", _module)

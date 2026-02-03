@@ -100,6 +100,7 @@ __all__ = [
     'ClusterAddonsConfigLustreCsiDriverConfig',
     'ClusterAddonsConfigNetworkPolicyConfig',
     'ClusterAddonsConfigParallelstoreCsiDriverConfig',
+    'ClusterAddonsConfigPodSnapshotConfig',
     'ClusterAddonsConfigRayOperatorConfig',
     'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig',
     'ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig',
@@ -143,6 +144,7 @@ __all__ = [
     'ClusterMaintenancePolicyMaintenanceExclusion',
     'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions',
     'ClusterMaintenancePolicyRecurringWindow',
+    'ClusterManagedOpentelemetryConfig',
     'ClusterMasterAuth',
     'ClusterMasterAuthClientCertificateConfig',
     'ClusterMasterAuthorizedNetworksConfig',
@@ -272,6 +274,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigTaint',
     'ClusterNodePoolNodeConfigWindowsNodeConfig',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfig',
+    'ClusterNodePoolNodeDrainConfig',
     'ClusterNodePoolPlacementPolicy',
     'ClusterNodePoolQueuedProvisioning',
     'ClusterNodePoolUpgradeSettings',
@@ -354,6 +357,7 @@ __all__ = [
     'NodePoolNodeConfigTaint',
     'NodePoolNodeConfigWindowsNodeConfig',
     'NodePoolNodeConfigWorkloadMetadataConfig',
+    'NodePoolNodeDrainConfig',
     'NodePoolPlacementPolicy',
     'NodePoolQueuedProvisioning',
     'NodePoolUpgradeSettings',
@@ -375,6 +379,7 @@ __all__ = [
     'GetClusterAddonsConfigLustreCsiDriverConfigResult',
     'GetClusterAddonsConfigNetworkPolicyConfigResult',
     'GetClusterAddonsConfigParallelstoreCsiDriverConfigResult',
+    'GetClusterAddonsConfigPodSnapshotConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigResult',
@@ -418,6 +423,7 @@ __all__ = [
     'GetClusterMaintenancePolicyMaintenanceExclusionResult',
     'GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult',
     'GetClusterMaintenancePolicyRecurringWindowResult',
+    'GetClusterManagedOpentelemetryConfigResult',
     'GetClusterMasterAuthResult',
     'GetClusterMasterAuthClientCertificateConfigResult',
     'GetClusterMasterAuthorizedNetworksConfigResult',
@@ -547,6 +553,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigTaintResult',
     'GetClusterNodePoolNodeConfigWindowsNodeConfigResult',
     'GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult',
+    'GetClusterNodePoolNodeDrainConfigResult',
     'GetClusterNodePoolPlacementPolicyResult',
     'GetClusterNodePoolQueuedProvisioningResult',
     'GetClusterNodePoolUpgradeSettingResult',
@@ -4035,6 +4042,8 @@ class ClusterAddonsConfig(dict):
             suggest = "network_policy_config"
         elif key == "parallelstoreCsiDriverConfig":
             suggest = "parallelstore_csi_driver_config"
+        elif key == "podSnapshotConfig":
+            suggest = "pod_snapshot_config"
         elif key == "rayOperatorConfigs":
             suggest = "ray_operator_configs"
         elif key == "statefulHaConfig":
@@ -4066,6 +4075,7 @@ class ClusterAddonsConfig(dict):
                  lustre_csi_driver_config: Optional['outputs.ClusterAddonsConfigLustreCsiDriverConfig'] = None,
                  network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None,
                  parallelstore_csi_driver_config: Optional['outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig'] = None,
+                 pod_snapshot_config: Optional['outputs.ClusterAddonsConfigPodSnapshotConfig'] = None,
                  ray_operator_configs: Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']] = None,
                  stateful_ha_config: Optional['outputs.ClusterAddonsConfigStatefulHaConfig'] = None):
         """
@@ -4112,8 +4122,6 @@ class ClusterAddonsConfig(dict):
                `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
                This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
                See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
-               
-               This example `addons_config` disables two addons:
         :param 'ClusterAddonsConfigNetworkPolicyConfigArgs' network_policy_config: Whether we should enable the network policy addon
                for the master.  This must be enabled in order to enable network policy for the nodes.
                To enable this, you must also define a `network_policy` block,
@@ -4125,6 +4133,9 @@ class ClusterAddonsConfig(dict):
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+        :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+               
+               This example `addons_config` disables two addons:
         :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: . The status of the [Ray Operator
                addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
                It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -4169,6 +4180,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "network_policy_config", network_policy_config)
         if parallelstore_csi_driver_config is not None:
             pulumi.set(__self__, "parallelstore_csi_driver_config", parallelstore_csi_driver_config)
+        if pod_snapshot_config is not None:
+            pulumi.set(__self__, "pod_snapshot_config", pod_snapshot_config)
         if ray_operator_configs is not None:
             pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         if stateful_ha_config is not None:
@@ -4298,8 +4311,6 @@ class ClusterAddonsConfig(dict):
         `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
         This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "lustre_csi_driver_config")
 
@@ -4327,6 +4338,16 @@ class ClusterAddonsConfig(dict):
         See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
         """
         return pulumi.get(self, "parallelstore_csi_driver_config")
+
+    @_builtins.property
+    @pulumi.getter(name="podSnapshotConfig")
+    def pod_snapshot_config(self) -> Optional['outputs.ClusterAddonsConfigPodSnapshotConfig']:
+        """
+        The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "pod_snapshot_config")
 
     @_builtins.property
     @pulumi.getter(name="rayOperatorConfigs")
@@ -4647,6 +4668,24 @@ class ClusterAddonsConfigParallelstoreCsiDriverConfig(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigPodSnapshotConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the Pod Snapshot feature is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Pod Snapshot feature is enabled for this cluster.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -7000,6 +7039,25 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class ClusterManagedOpentelemetryConfig(dict):
+    def __init__(__self__, *,
+                 scope: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        """
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> Optional[_builtins.str]:
+        """
+        The scope of the Managed OpenTelemetry pipeline. Supported values include: `SCOPE_UNSPECIFIED`, `NONE`, `COLLECTION_AND_INSTRUMENTATION_COMPONENTS`.
+        """
+        return pulumi.get(self, "scope")
 
 
 @pulumi.output_type
@@ -10749,6 +10807,8 @@ class ClusterNodePool(dict):
             suggest = "node_config"
         elif key == "nodeCount":
             suggest = "node_count"
+        elif key == "nodeDrainConfigs":
+            suggest = "node_drain_configs"
         elif key == "nodeLocations":
             suggest = "node_locations"
         elif key == "placementPolicy":
@@ -10781,6 +10841,7 @@ class ClusterNodePool(dict):
                  network_config: Optional['outputs.ClusterNodePoolNetworkConfig'] = None,
                  node_config: Optional['outputs.ClusterNodePoolNodeConfig'] = None,
                  node_count: Optional[_builtins.int] = None,
+                 node_drain_configs: Optional[Sequence['outputs.ClusterNodePoolNodeDrainConfig']] = None,
                  node_locations: Optional[Sequence[_builtins.str]] = None,
                  placement_policy: Optional['outputs.ClusterNodePoolPlacementPolicy'] = None,
                  queued_provisioning: Optional['outputs.ClusterNodePoolQueuedProvisioning'] = None,
@@ -10811,6 +10872,7 @@ class ClusterNodePool(dict):
                manages the default node pool, which isn't recommended to be used.
                Structure is documented below.
         :param _builtins.int node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+        :param Sequence['ClusterNodePoolNodeDrainConfigArgs'] node_drain_configs: Node drain configuration for this NodePool.
         :param Sequence[_builtins.str] node_locations: The list of zones in which the cluster's nodes
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
@@ -10848,6 +10910,8 @@ class ClusterNodePool(dict):
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
+        if node_drain_configs is not None:
+            pulumi.set(__self__, "node_drain_configs", node_drain_configs)
         if node_locations is not None:
             pulumi.set(__self__, "node_locations", node_locations)
         if placement_policy is not None:
@@ -10959,6 +11023,14 @@ class ClusterNodePool(dict):
         The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
         """
         return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeDrainConfigs")
+    def node_drain_configs(self) -> Optional[Sequence['outputs.ClusterNodePoolNodeDrainConfig']]:
+        """
+        Node drain configuration for this NodePool.
+        """
+        return pulumi.get(self, "node_drain_configs")
 
     @_builtins.property
     @pulumi.getter(name="nodeLocations")
@@ -12027,7 +12099,9 @@ class ClusterNodePoolNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "additionalNodeNetworkConfigs":
+        if key == "acceleratorNetworkProfile":
+            suggest = "accelerator_network_profile"
+        elif key == "additionalNodeNetworkConfigs":
             suggest = "additional_node_network_configs"
         elif key == "additionalPodNetworkConfigs":
             suggest = "additional_pod_network_configs"
@@ -12056,6 +12130,7 @@ class ClusterNodePoolNetworkConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerator_network_profile: Optional[_builtins.str] = None,
                  additional_node_network_configs: Optional[Sequence['outputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig']] = None,
                  additional_pod_network_configs: Optional[Sequence['outputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig']] = None,
                  create_pod_range: Optional[_builtins.bool] = None,
@@ -12066,6 +12141,7 @@ class ClusterNodePoolNetworkConfig(dict):
                  pod_range: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None):
         """
+        :param _builtins.str accelerator_network_profile: The accelerator network profile to use for this node pool.
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param Sequence['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
         :param _builtins.bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
@@ -12077,6 +12153,8 @@ class ClusterNodePoolNetworkConfig(dict):
         :param _builtins.str subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         """
+        if accelerator_network_profile is not None:
+            pulumi.set(__self__, "accelerator_network_profile", accelerator_network_profile)
         if additional_node_network_configs is not None:
             pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
         if additional_pod_network_configs is not None:
@@ -12095,6 +12173,14 @@ class ClusterNodePoolNetworkConfig(dict):
             pulumi.set(__self__, "pod_range", pod_range)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorNetworkProfile")
+    def accelerator_network_profile(self) -> Optional[_builtins.str]:
+        """
+        The accelerator network profile to use for this node pool.
+        """
+        return pulumi.get(self, "accelerator_network_profile")
 
     @_builtins.property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
@@ -15547,6 +15633,42 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolNodeDrainConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "respectPdbDuringNodePoolDeletion":
+            suggest = "respect_pdb_during_node_pool_deletion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeDrainConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeDrainConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeDrainConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 respect_pdb_during_node_pool_deletion: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool respect_pdb_during_node_pool_deletion: Whether to respect PodDisruptionBudget policy during node pool deletion.
+        """
+        if respect_pdb_during_node_pool_deletion is not None:
+            pulumi.set(__self__, "respect_pdb_during_node_pool_deletion", respect_pdb_during_node_pool_deletion)
+
+    @_builtins.property
+    @pulumi.getter(name="respectPdbDuringNodePoolDeletion")
+    def respect_pdb_during_node_pool_deletion(self) -> Optional[_builtins.bool]:
+        """
+        Whether to respect PodDisruptionBudget policy during node pool deletion.
+        """
+        return pulumi.get(self, "respect_pdb_during_node_pool_deletion")
+
+
+@pulumi.output_type
 class ClusterNodePoolPlacementPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17209,7 +17331,9 @@ class NodePoolNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "additionalNodeNetworkConfigs":
+        if key == "acceleratorNetworkProfile":
+            suggest = "accelerator_network_profile"
+        elif key == "additionalNodeNetworkConfigs":
             suggest = "additional_node_network_configs"
         elif key == "additionalPodNetworkConfigs":
             suggest = "additional_pod_network_configs"
@@ -17238,6 +17362,7 @@ class NodePoolNetworkConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerator_network_profile: Optional[_builtins.str] = None,
                  additional_node_network_configs: Optional[Sequence['outputs.NodePoolNetworkConfigAdditionalNodeNetworkConfig']] = None,
                  additional_pod_network_configs: Optional[Sequence['outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig']] = None,
                  create_pod_range: Optional[_builtins.bool] = None,
@@ -17248,6 +17373,7 @@ class NodePoolNetworkConfig(dict):
                  pod_range: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None):
         """
+        :param _builtins.str accelerator_network_profile: Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
         :param Sequence['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
                Structure is documented below
         :param Sequence['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
@@ -17260,6 +17386,8 @@ class NodePoolNetworkConfig(dict):
         :param _builtins.str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         :param _builtins.str subnetwork: The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
         """
+        if accelerator_network_profile is not None:
+            pulumi.set(__self__, "accelerator_network_profile", accelerator_network_profile)
         if additional_node_network_configs is not None:
             pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
         if additional_pod_network_configs is not None:
@@ -17278,6 +17406,14 @@ class NodePoolNetworkConfig(dict):
             pulumi.set(__self__, "pod_range", pod_range)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorNetworkProfile")
+    def accelerator_network_profile(self) -> Optional[_builtins.str]:
+        """
+        Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+        """
+        return pulumi.get(self, "accelerator_network_profile")
 
     @_builtins.property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
@@ -20489,6 +20625,42 @@ class NodePoolNodeConfigWorkloadMetadataConfig(dict):
 
 
 @pulumi.output_type
+class NodePoolNodeDrainConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "respectPdbDuringNodePoolDeletion":
+            suggest = "respect_pdb_during_node_pool_deletion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeDrainConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeDrainConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeDrainConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 respect_pdb_during_node_pool_deletion: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool respect_pdb_during_node_pool_deletion: Whether to respect PodDisruptionBudget policy during node pool deletion.
+        """
+        if respect_pdb_during_node_pool_deletion is not None:
+            pulumi.set(__self__, "respect_pdb_during_node_pool_deletion", respect_pdb_during_node_pool_deletion)
+
+    @_builtins.property
+    @pulumi.getter(name="respectPdbDuringNodePoolDeletion")
+    def respect_pdb_during_node_pool_deletion(self) -> Optional[_builtins.bool]:
+        """
+        Whether to respect PodDisruptionBudget policy during node pool deletion.
+        """
+        return pulumi.get(self, "respect_pdb_during_node_pool_deletion")
+
+
+@pulumi.output_type
 class NodePoolPlacementPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -20848,6 +21020,7 @@ class GetClusterAddonsConfigResult(dict):
                  lustre_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigLustreCsiDriverConfigResult'],
                  network_policy_configs: Sequence['outputs.GetClusterAddonsConfigNetworkPolicyConfigResult'],
                  parallelstore_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult'],
+                 pod_snapshot_configs: Sequence['outputs.GetClusterAddonsConfigPodSnapshotConfigResult'],
                  ray_operator_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigResult'],
                  stateful_ha_configs: Sequence['outputs.GetClusterAddonsConfigStatefulHaConfigResult']):
         """
@@ -20865,6 +21038,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigLustreCsiDriverConfigArgs'] lustre_csi_driver_configs: Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigNetworkPolicyConfigArgs'] network_policy_configs: Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
         :param Sequence['GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs'] parallelstore_csi_driver_configs: The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
+        :param Sequence['GetClusterAddonsConfigPodSnapshotConfigArgs'] pod_snapshot_configs: Configuration for the Pod Snapshot feature.
         :param Sequence['GetClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_configs: The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
         """
@@ -20882,6 +21056,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "lustre_csi_driver_configs", lustre_csi_driver_configs)
         pulumi.set(__self__, "network_policy_configs", network_policy_configs)
         pulumi.set(__self__, "parallelstore_csi_driver_configs", parallelstore_csi_driver_configs)
+        pulumi.set(__self__, "pod_snapshot_configs", pod_snapshot_configs)
         pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         pulumi.set(__self__, "stateful_ha_configs", stateful_ha_configs)
 
@@ -20996,6 +21171,14 @@ class GetClusterAddonsConfigResult(dict):
         The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
         """
         return pulumi.get(self, "parallelstore_csi_driver_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="podSnapshotConfigs")
+    def pod_snapshot_configs(self) -> Sequence['outputs.GetClusterAddonsConfigPodSnapshotConfigResult']:
+        """
+        Configuration for the Pod Snapshot feature.
+        """
+        return pulumi.get(self, "pod_snapshot_configs")
 
     @_builtins.property
     @pulumi.getter(name="rayOperatorConfigs")
@@ -21222,6 +21405,24 @@ class GetClusterAddonsConfigParallelstoreCsiDriverConfigResult(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigPodSnapshotConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the Pod Snapshot feature is enabled for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Pod Snapshot feature is enabled for this cluster.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -22644,6 +22845,24 @@ class GetClusterMaintenancePolicyRecurringWindowResult(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetClusterManagedOpentelemetryConfigResult(dict):
+    def __init__(__self__, *,
+                 scope: _builtins.str):
+        """
+        :param _builtins.str scope: The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+        """
+        pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> _builtins.str:
+        """
+        The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
+        """
+        return pulumi.get(self, "scope")
 
 
 @pulumi.output_type
@@ -25131,6 +25350,7 @@ class GetClusterNodePoolResult(dict):
                  network_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigResult'],
                  node_configs: Sequence['outputs.GetClusterNodePoolNodeConfigResult'],
                  node_count: _builtins.int,
+                 node_drain_configs: Sequence['outputs.GetClusterNodePoolNodeDrainConfigResult'],
                  node_locations: Sequence[_builtins.str],
                  placement_policies: Sequence['outputs.GetClusterNodePoolPlacementPolicyResult'],
                  queued_provisionings: Sequence['outputs.GetClusterNodePoolQueuedProvisioningResult'],
@@ -25148,6 +25368,7 @@ class GetClusterNodePoolResult(dict):
         :param Sequence['GetClusterNodePoolNetworkConfigArgs'] network_configs: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param Sequence['GetClusterNodePoolNodeConfigArgs'] node_configs: The configuration of the nodepool
         :param _builtins.int node_count: The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+        :param Sequence['GetClusterNodePoolNodeDrainConfigArgs'] node_drain_configs: Node drain configuration for this NodePool.
         :param Sequence[_builtins.str] node_locations: The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
         :param Sequence['GetClusterNodePoolPlacementPolicyArgs'] placement_policies: Specifies the node placement policy
         :param Sequence['GetClusterNodePoolQueuedProvisioningArgs'] queued_provisionings: Specifies the configuration of queued provisioning
@@ -25164,6 +25385,7 @@ class GetClusterNodePoolResult(dict):
         pulumi.set(__self__, "network_configs", network_configs)
         pulumi.set(__self__, "node_configs", node_configs)
         pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_drain_configs", node_drain_configs)
         pulumi.set(__self__, "node_locations", node_locations)
         pulumi.set(__self__, "placement_policies", placement_policies)
         pulumi.set(__self__, "queued_provisionings", queued_provisionings)
@@ -25257,6 +25479,14 @@ class GetClusterNodePoolResult(dict):
         The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
         """
         return pulumi.get(self, "node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeDrainConfigs")
+    def node_drain_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeDrainConfigResult']:
+        """
+        Node drain configuration for this NodePool.
+        """
+        return pulumi.get(self, "node_drain_configs")
 
     @_builtins.property
     @pulumi.getter(name="nodeLocations")
@@ -25970,6 +26200,7 @@ class GetClusterNodePoolManagementResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNetworkConfigResult(dict):
     def __init__(__self__, *,
+                 accelerator_network_profile: _builtins.str,
                  additional_node_network_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult'],
                  additional_pod_network_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult'],
                  create_pod_range: _builtins.bool,
@@ -25980,6 +26211,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
                  pod_range: _builtins.str,
                  subnetwork: _builtins.str):
         """
+        :param _builtins.str accelerator_network_profile: The accelerator network profile to use for this node pool.
         :param Sequence['GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
         :param Sequence['GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
         :param _builtins.bool create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
@@ -25990,6 +26222,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         :param _builtins.str pod_range: The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
         :param _builtins.str subnetwork: The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.
         """
+        pulumi.set(__self__, "accelerator_network_profile", accelerator_network_profile)
         pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
         pulumi.set(__self__, "additional_pod_network_configs", additional_pod_network_configs)
         pulumi.set(__self__, "create_pod_range", create_pod_range)
@@ -25999,6 +26232,14 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
         pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorNetworkProfile")
+    def accelerator_network_profile(self) -> _builtins.str:
+        """
+        The accelerator network profile to use for this node pool.
+        """
+        return pulumi.get(self, "accelerator_network_profile")
 
     @_builtins.property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
@@ -28322,6 +28563,24 @@ class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
         Mode is the configuration for how to expose metadata to workloads running on the node.
         """
         return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeDrainConfigResult(dict):
+    def __init__(__self__, *,
+                 respect_pdb_during_node_pool_deletion: _builtins.bool):
+        """
+        :param _builtins.bool respect_pdb_during_node_pool_deletion: Whether to respect PodDisruptionBudget policy during node pool deletion.
+        """
+        pulumi.set(__self__, "respect_pdb_during_node_pool_deletion", respect_pdb_during_node_pool_deletion)
+
+    @_builtins.property
+    @pulumi.getter(name="respectPdbDuringNodePoolDeletion")
+    def respect_pdb_during_node_pool_deletion(self) -> _builtins.bool:
+        """
+        Whether to respect PodDisruptionBudget policy during node pool deletion.
+        """
+        return pulumi.get(self, "respect_pdb_during_node_pool_deletion")
 
 
 @pulumi.output_type

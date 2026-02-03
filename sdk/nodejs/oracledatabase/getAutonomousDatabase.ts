@@ -64,6 +64,7 @@ export interface GetAutonomousDatabaseResult {
     readonly createTime: string;
     readonly database: string;
     readonly deletionProtection: boolean;
+    readonly disasterRecoverySupportedLocations: string[];
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly entitlementId: string;
@@ -77,9 +78,11 @@ export interface GetAutonomousDatabaseResult {
     readonly network: string;
     readonly odbNetwork: string;
     readonly odbSubnet: string;
+    readonly peerAutonomousDatabases: string[];
     readonly project?: string;
     readonly properties: outputs.oracledatabase.GetAutonomousDatabaseProperty[];
     readonly pulumiLabels: {[key: string]: string};
+    readonly sourceConfigs: outputs.oracledatabase.GetAutonomousDatabaseSourceConfig[];
 }
 /**
  * Get information about an AutonomousDatabase.

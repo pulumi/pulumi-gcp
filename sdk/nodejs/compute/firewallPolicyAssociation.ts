@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const folder = new gcp.organizations.Folder("folder", {
- *     displayName: "my-folder",
+ *     displayName: "folder-fpa",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

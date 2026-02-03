@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// Allows management of Organization policies for a Google Folder. For more information see
         /// [the official
-        /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
         /// 
         /// ## Example Usage
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// Allows management of Organization policies for a Google Folder. For more information see
         /// [the official
-        /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
         /// 
         /// ## Example Usage
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Folder
         /// <summary>
         /// Allows management of Organization policies for a Google Folder. For more information see
         /// [the official
-        /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
         /// 
         /// ## Example Usage
         /// 
@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Folder
     public sealed class GetOrganizationPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// </summary>
         [Input("constraint", required: true)]
         public string Constraint { get; set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Folder
     public sealed class GetOrganizationPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+        /// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
         /// </summary>
         [Input("constraint", required: true)]
         public Input<string> Constraint { get; set; } = null!;

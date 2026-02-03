@@ -12,7 +12,7 @@ import (
 )
 
 // Retrieve information about a set of folders based on a parent ID. See the
-// [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list)
 // for more details.
 //
 // ## Example Usage
@@ -62,7 +62,7 @@ func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFolders.
 type GetFoldersArgs struct {
-	// A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+	// A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
 	ParentId string `pulumi:"parentId"`
 }
 
@@ -86,7 +86,7 @@ func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFolders.
 type GetFoldersOutputArgs struct {
-	// A string parent as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
+	// A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
 	ParentId pulumi.StringInput `pulumi:"parentId"`
 }
 

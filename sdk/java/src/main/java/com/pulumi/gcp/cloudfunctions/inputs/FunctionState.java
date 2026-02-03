@@ -274,7 +274,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -284,7 +284,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * @return A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -1007,7 +1007,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
@@ -1021,7 +1021,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+         * @param labels A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
          * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.

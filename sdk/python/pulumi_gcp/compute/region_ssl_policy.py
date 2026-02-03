@@ -37,9 +37,10 @@ class RegionSslPolicyArgs:
                *must not* be present when using any other profile.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer.
+               to establish a connection with the load balancer. When set to
+               `TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
-               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -54,8 +55,10 @@ class RegionSslPolicyArgs:
                See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
+               If set to `FIPS_202205`, `minTlsVersion` must also be set to
+               `TLS_1_2`.
                Default value is `COMPATIBLE`.
-               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the regional SSL policy resides.
@@ -110,9 +113,10 @@ class RegionSslPolicyArgs:
     def min_tls_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer.
+        to establish a connection with the load balancer. When set to
+        `TLS_1_3`, the profile field must be set to `RESTRICTED`.
         Default value is `TLS_1_0`.
-        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
         return pulumi.get(self, "min_tls_version")
 
@@ -149,8 +153,10 @@ class RegionSslPolicyArgs:
         See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
         for information on what cipher suites each profile provides. If
         `CUSTOM` is used, the `custom_features` attribute **must be set**.
+        If set to `FIPS_202205`, `minTlsVersion` must also be set to
+        `TLS_1_2`.
         Default value is `COMPATIBLE`.
-        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
         """
         return pulumi.get(self, "profile")
 
@@ -213,9 +219,10 @@ class _RegionSslPolicyState:
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer.
+               to establish a connection with the load balancer. When set to
+               `TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
-               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -230,8 +237,10 @@ class _RegionSslPolicyState:
                See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
+               If set to `FIPS_202205`, `minTlsVersion` must also be set to
+               `TLS_1_2`.
                Default value is `COMPATIBLE`.
-               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the regional SSL policy resides.
@@ -332,9 +341,10 @@ class _RegionSslPolicyState:
     def min_tls_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer.
+        to establish a connection with the load balancer. When set to
+        `TLS_1_3`, the profile field must be set to `RESTRICTED`.
         Default value is `TLS_1_0`.
-        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
         return pulumi.get(self, "min_tls_version")
 
@@ -371,8 +381,10 @@ class _RegionSslPolicyState:
         See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
         for information on what cipher suites each profile provides. If
         `CUSTOM` is used, the `custom_features` attribute **must be set**.
+        If set to `FIPS_202205`, `minTlsVersion` must also be set to
+        `TLS_1_2`.
         Default value is `COMPATIBLE`.
-        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
         """
         return pulumi.get(self, "profile")
 
@@ -483,9 +495,10 @@ class RegionSslPolicy(pulumi.CustomResource):
                *must not* be present when using any other profile.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer.
+               to establish a connection with the load balancer. When set to
+               `TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
-               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -500,8 +513,10 @@ class RegionSslPolicy(pulumi.CustomResource):
                See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
+               If set to `FIPS_202205`, `minTlsVersion` must also be set to
+               `TLS_1_2`.
                Default value is `COMPATIBLE`.
-               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the regional SSL policy resides.
@@ -635,9 +650,10 @@ class RegionSslPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer.
+               to establish a connection with the load balancer. When set to
+               `TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
-               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -652,8 +668,10 @@ class RegionSslPolicy(pulumi.CustomResource):
                See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
+               If set to `FIPS_202205`, `minTlsVersion` must also be set to
+               `TLS_1_2`.
                Default value is `COMPATIBLE`.
-               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the regional SSL policy resides.
@@ -728,9 +746,10 @@ class RegionSslPolicy(pulumi.CustomResource):
     def min_tls_version(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer.
+        to establish a connection with the load balancer. When set to
+        `TLS_1_3`, the profile field must be set to `RESTRICTED`.
         Default value is `TLS_1_0`.
-        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
         return pulumi.get(self, "min_tls_version")
 
@@ -759,8 +778,10 @@ class RegionSslPolicy(pulumi.CustomResource):
         See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
         for information on what cipher suites each profile provides. If
         `CUSTOM` is used, the `custom_features` attribute **must be set**.
+        If set to `FIPS_202205`, `minTlsVersion` must also be set to
+        `TLS_1_2`.
         Default value is `COMPATIBLE`.
-        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
         """
         return pulumi.get(self, "profile")
 

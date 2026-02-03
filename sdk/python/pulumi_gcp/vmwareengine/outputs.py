@@ -22,6 +22,9 @@ __all__ = [
     'ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds',
     'ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds',
     'ClusterNodeTypeConfig',
+    'DatastoreNfsDatastore',
+    'DatastoreNfsDatastoreGoogleFileService',
+    'DatastoreNfsDatastoreThirdPartyFileService',
     'ExternalAccessRuleDestinationIpRange',
     'ExternalAccessRuleSourceIpRange',
     'NetworkPolicyExternalIp',
@@ -46,6 +49,9 @@ __all__ = [
     'GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdResult',
     'GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdResult',
     'GetClusterNodeTypeConfigResult',
+    'GetDatastoreNfsDatastoreResult',
+    'GetDatastoreNfsDatastoreGoogleFileServiceResult',
+    'GetDatastoreNfsDatastoreThirdPartyFileServiceResult',
     'GetExternalAccessRuleDestinationIpRangeResult',
     'GetExternalAccessRuleSourceIpRangeResult',
     'GetNetworkPolicyExternalIpResult',
@@ -496,6 +502,183 @@ class ClusterNodeTypeConfig(dict):
         Once the customer is created then corecount cannot be changed.
         """
         return pulumi.get(self, "custom_core_count")
+
+
+@pulumi.output_type
+class DatastoreNfsDatastore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleFileService":
+            suggest = "google_file_service"
+        elif key == "thirdPartyFileService":
+            suggest = "third_party_file_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatastoreNfsDatastore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatastoreNfsDatastore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatastoreNfsDatastore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 google_file_service: Optional['outputs.DatastoreNfsDatastoreGoogleFileService'] = None,
+                 third_party_file_service: Optional['outputs.DatastoreNfsDatastoreThirdPartyFileService'] = None):
+        """
+        :param 'DatastoreNfsDatastoreGoogleFileServiceArgs' google_file_service: Google service file service configuration
+               Structure is documented below.
+        :param 'DatastoreNfsDatastoreThirdPartyFileServiceArgs' third_party_file_service: Third party file service configuration
+               Structure is documented below.
+        """
+        if google_file_service is not None:
+            pulumi.set(__self__, "google_file_service", google_file_service)
+        if third_party_file_service is not None:
+            pulumi.set(__self__, "third_party_file_service", third_party_file_service)
+
+    @_builtins.property
+    @pulumi.getter(name="googleFileService")
+    def google_file_service(self) -> Optional['outputs.DatastoreNfsDatastoreGoogleFileService']:
+        """
+        Google service file service configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_file_service")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyFileService")
+    def third_party_file_service(self) -> Optional['outputs.DatastoreNfsDatastoreThirdPartyFileService']:
+        """
+        Third party file service configuration
+        Structure is documented below.
+        """
+        return pulumi.get(self, "third_party_file_service")
+
+
+@pulumi.output_type
+class DatastoreNfsDatastoreGoogleFileService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filestoreInstance":
+            suggest = "filestore_instance"
+        elif key == "netappVolume":
+            suggest = "netapp_volume"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatastoreNfsDatastoreGoogleFileService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatastoreNfsDatastoreGoogleFileService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatastoreNfsDatastoreGoogleFileService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filestore_instance: Optional[_builtins.str] = None,
+                 netapp_volume: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str filestore_instance: Google filestore instance resource name
+               e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        :param _builtins.str netapp_volume: Google netapp volume resource name
+               e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        """
+        if filestore_instance is not None:
+            pulumi.set(__self__, "filestore_instance", filestore_instance)
+        if netapp_volume is not None:
+            pulumi.set(__self__, "netapp_volume", netapp_volume)
+
+    @_builtins.property
+    @pulumi.getter(name="filestoreInstance")
+    def filestore_instance(self) -> Optional[_builtins.str]:
+        """
+        Google filestore instance resource name
+        e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        """
+        return pulumi.get(self, "filestore_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="netappVolume")
+    def netapp_volume(self) -> Optional[_builtins.str]:
+        """
+        Google netapp volume resource name
+        e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        """
+        return pulumi.get(self, "netapp_volume")
+
+
+@pulumi.output_type
+class DatastoreNfsDatastoreThirdPartyFileService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileShare":
+            suggest = "file_share"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatastoreNfsDatastoreThirdPartyFileService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatastoreNfsDatastoreThirdPartyFileService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatastoreNfsDatastoreThirdPartyFileService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_share: _builtins.str,
+                 network: _builtins.str,
+                 servers: Sequence[_builtins.str]):
+        """
+        :param _builtins.str file_share: Required
+               Mount Folder name
+        :param _builtins.str network: Required to identify vpc peering used for NFS access
+               network name of NFS's vpc
+               e.g. projects/project-id/global/networks/my-network_id
+        :param Sequence[_builtins.str] servers: Server IP addresses of the NFS file service.
+               NFS v3, provide a single IP address or DNS name.
+               Multiple servers can be supported in future when NFS 4.1 protocol support
+               is enabled.
+        """
+        pulumi.set(__self__, "file_share", file_share)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="fileShare")
+    def file_share(self) -> _builtins.str:
+        """
+        Required
+        Mount Folder name
+        """
+        return pulumi.get(self, "file_share")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        Required to identify vpc peering used for NFS access
+        network name of NFS's vpc
+        e.g. projects/project-id/global/networks/my-network_id
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        Server IP addresses of the NFS file service.
+        NFS v3, provide a single IP address or DNS name.
+        Multiple servers can be supported in future when NFS 4.1 protocol support
+        is enabled.
+        """
+        return pulumi.get(self, "servers")
 
 
 @pulumi.output_type
@@ -1954,6 +2137,120 @@ class GetClusterNodeTypeConfigResult(dict):
     @pulumi.getter(name="nodeTypeId")
     def node_type_id(self) -> _builtins.str:
         return pulumi.get(self, "node_type_id")
+
+
+@pulumi.output_type
+class GetDatastoreNfsDatastoreResult(dict):
+    def __init__(__self__, *,
+                 google_file_services: Sequence['outputs.GetDatastoreNfsDatastoreGoogleFileServiceResult'],
+                 third_party_file_services: Sequence['outputs.GetDatastoreNfsDatastoreThirdPartyFileServiceResult']):
+        """
+        :param Sequence['GetDatastoreNfsDatastoreGoogleFileServiceArgs'] google_file_services: Google service file service configuration
+        :param Sequence['GetDatastoreNfsDatastoreThirdPartyFileServiceArgs'] third_party_file_services: Third party file service configuration
+        """
+        pulumi.set(__self__, "google_file_services", google_file_services)
+        pulumi.set(__self__, "third_party_file_services", third_party_file_services)
+
+    @_builtins.property
+    @pulumi.getter(name="googleFileServices")
+    def google_file_services(self) -> Sequence['outputs.GetDatastoreNfsDatastoreGoogleFileServiceResult']:
+        """
+        Google service file service configuration
+        """
+        return pulumi.get(self, "google_file_services")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyFileServices")
+    def third_party_file_services(self) -> Sequence['outputs.GetDatastoreNfsDatastoreThirdPartyFileServiceResult']:
+        """
+        Third party file service configuration
+        """
+        return pulumi.get(self, "third_party_file_services")
+
+
+@pulumi.output_type
+class GetDatastoreNfsDatastoreGoogleFileServiceResult(dict):
+    def __init__(__self__, *,
+                 filestore_instance: _builtins.str,
+                 netapp_volume: _builtins.str):
+        """
+        :param _builtins.str filestore_instance: Google filestore instance resource name
+               e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        :param _builtins.str netapp_volume: Google netapp volume resource name
+               e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        """
+        pulumi.set(__self__, "filestore_instance", filestore_instance)
+        pulumi.set(__self__, "netapp_volume", netapp_volume)
+
+    @_builtins.property
+    @pulumi.getter(name="filestoreInstance")
+    def filestore_instance(self) -> _builtins.str:
+        """
+        Google filestore instance resource name
+        e.g. projects/my-project/locations/me-west1-b/instances/my-instance
+        """
+        return pulumi.get(self, "filestore_instance")
+
+    @_builtins.property
+    @pulumi.getter(name="netappVolume")
+    def netapp_volume(self) -> _builtins.str:
+        """
+        Google netapp volume resource name
+        e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
+        """
+        return pulumi.get(self, "netapp_volume")
+
+
+@pulumi.output_type
+class GetDatastoreNfsDatastoreThirdPartyFileServiceResult(dict):
+    def __init__(__self__, *,
+                 file_share: _builtins.str,
+                 network: _builtins.str,
+                 servers: Sequence[_builtins.str]):
+        """
+        :param _builtins.str file_share: Required
+               Mount Folder name
+        :param _builtins.str network: Required to identify vpc peering used for NFS access
+               network name of NFS's vpc
+               e.g. projects/project-id/global/networks/my-network_id
+        :param Sequence[_builtins.str] servers: Server IP addresses of the NFS file service.
+               NFS v3, provide a single IP address or DNS name.
+               Multiple servers can be supported in future when NFS 4.1 protocol support
+               is enabled.
+        """
+        pulumi.set(__self__, "file_share", file_share)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "servers", servers)
+
+    @_builtins.property
+    @pulumi.getter(name="fileShare")
+    def file_share(self) -> _builtins.str:
+        """
+        Required
+        Mount Folder name
+        """
+        return pulumi.get(self, "file_share")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> _builtins.str:
+        """
+        Required to identify vpc peering used for NFS access
+        network name of NFS's vpc
+        e.g. projects/project-id/global/networks/my-network_id
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Sequence[_builtins.str]:
+        """
+        Server IP addresses of the NFS file service.
+        NFS v3, provide a single IP address or DNS name.
+        Multiple servers can be supported in future when NFS 4.1 protocol support
+        is enabled.
+        """
+        return pulumi.get(self, "servers")
 
 
 @pulumi.output_type

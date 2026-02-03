@@ -18,6 +18,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolNetworkConfig {
     /**
+     * @return Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+     * 
+     */
+    private @Nullable String acceleratorNetworkProfile;
+    /**
      * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
      * Structure is documented below
      * 
@@ -66,6 +71,13 @@ public final class NodePoolNetworkConfig {
     private @Nullable String subnetwork;
 
     private NodePoolNetworkConfig() {}
+    /**
+     * @return Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+     * 
+     */
+    public Optional<String> acceleratorNetworkProfile() {
+        return Optional.ofNullable(this.acceleratorNetworkProfile);
+    }
     /**
      * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
      * Structure is documented below
@@ -141,6 +153,7 @@ public final class NodePoolNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String acceleratorNetworkProfile;
         private @Nullable List<NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs;
         private @Nullable List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
         private @Nullable Boolean createPodRange;
@@ -153,6 +166,7 @@ public final class NodePoolNetworkConfig {
         public Builder() {}
         public Builder(NodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratorNetworkProfile = defaults.acceleratorNetworkProfile;
     	      this.additionalNodeNetworkConfigs = defaults.additionalNodeNetworkConfigs;
     	      this.additionalPodNetworkConfigs = defaults.additionalPodNetworkConfigs;
     	      this.createPodRange = defaults.createPodRange;
@@ -164,6 +178,12 @@ public final class NodePoolNetworkConfig {
     	      this.subnetwork = defaults.subnetwork;
         }
 
+        @CustomType.Setter
+        public Builder acceleratorNetworkProfile(@Nullable String acceleratorNetworkProfile) {
+
+            this.acceleratorNetworkProfile = acceleratorNetworkProfile;
+            return this;
+        }
         @CustomType.Setter
         public Builder additionalNodeNetworkConfigs(@Nullable List<NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs) {
 
@@ -226,6 +246,7 @@ public final class NodePoolNetworkConfig {
         }
         public NodePoolNetworkConfig build() {
             final var _resultValue = new NodePoolNetworkConfig();
+            _resultValue.acceleratorNetworkProfile = acceleratorNetworkProfile;
             _resultValue.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             _resultValue.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             _resultValue.createPodRange = createPodRange;

@@ -596,6 +596,77 @@ class CxWebhook(pulumi.CustomResource):
                 },
             })
         ```
+        ### Dialogflowcx Webhook With Service Account Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        webhook_use_service_account = gcp.diagflow.CxWebhook("webhook_use_service_account",
+            parent=agent.id,
+            display_name="MyWebhook",
+            generic_web_service={
+                "uri": "https://example.googleapis.com",
+                "webhook_type": "STANDARD",
+                "service_account_auth_config": {
+                    "service_account": "my@service-account.com",
+                },
+            })
+        ```
+        ### Dialogflowcx Webhook Service Directory With Service Account Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="us-central1",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        webhook_use_service_account = gcp.diagflow.CxWebhook("webhook_use_service_account",
+            parent=agent.id,
+            display_name="MyWebhook",
+            service_directory={
+                "service": "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+                "generic_web_service": {
+                    "uri": "https://example.googleapis.com",
+                    "webhook_type": "STANDARD",
+                    "service_account_auth_config": {
+                        "service_account": "my@service-account.com",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -845,6 +916,77 @@ class CxWebhook(pulumi.CustomResource):
                     "request_body": "{\\"example-key\\": \\"example-value\\"}",
                     "parameter_mapping": {
                         "example-parameter": "examplePath",
+                    },
+                },
+            })
+        ```
+        ### Dialogflowcx Webhook With Service Account Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        webhook_use_service_account = gcp.diagflow.CxWebhook("webhook_use_service_account",
+            parent=agent.id,
+            display_name="MyWebhook",
+            generic_web_service={
+                "uri": "https://example.googleapis.com",
+                "webhook_type": "STANDARD",
+                "service_account_auth_config": {
+                    "service_account": "my@service-account.com",
+                },
+            })
+        ```
+        ### Dialogflowcx Webhook Service Directory With Service Account Auth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="us-central1",
+            default_language_code="en",
+            supported_language_codes=[
+                "it",
+                "de",
+                "es",
+            ],
+            time_zone="America/New_York",
+            description="Example description.",
+            avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+            enable_stackdriver_logging=True,
+            enable_spell_correction=True,
+            speech_to_text_settings={
+                "enable_speech_adaptation": True,
+            })
+        webhook_use_service_account = gcp.diagflow.CxWebhook("webhook_use_service_account",
+            parent=agent.id,
+            display_name="MyWebhook",
+            service_directory={
+                "service": "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+                "generic_web_service": {
+                    "uri": "https://example.googleapis.com",
+                    "webhook_type": "STANDARD",
+                    "service_account_auth_config": {
+                        "service_account": "my@service-account.com",
                     },
                 },
             })

@@ -19,7 +19,7 @@ public final class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTa
     public static final StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs Empty = new StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs();
 
     /**
-     * SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTa
     private @Nullable Output<List<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs>> columns;
 
     /**
-     * @return SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * @return Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
@@ -76,7 +76,7 @@ public final class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTa
         }
 
         /**
-         * @param columns SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * @param columns Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
          * Structure is documented below.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTa
         }
 
         /**
-         * @param columns SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * @param columns Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
          * Structure is documented below.
          * 
          * @return builder
@@ -99,7 +99,7 @@ public final class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTa
         }
 
         /**
-         * @param columns SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * @param columns Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
          * Structure is documented below.
          * 
          * @return builder

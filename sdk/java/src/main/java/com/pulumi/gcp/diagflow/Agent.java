@@ -40,6 +40,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.diagflow.Agent;
  * import com.pulumi.gcp.diagflow.AgentArgs;
  * import java.util.List;
@@ -55,7 +63,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var agentProject = new Project("agentProject", ProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .name("my-project")
+ *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var agentProjectService = new Service("agentProjectService", ServiceArgs.builder()
+ *             .project(agentProject.projectId())
+ *             .service("dialogflow.googleapis.com")
+ *             .disableDependentServices(false)
+ *             .build());
+ * 
+ *         var dialogflowServiceAccount = new Account("dialogflowServiceAccount", AccountArgs.builder()
+ *             .accountId("my-account")
+ *             .build());
+ * 
+ *         var agentCreate = new IAMMember("agentCreate", IAMMemberArgs.builder()
+ *             .project(agentProjectService.project())
+ *             .role("roles/dialogflow.admin")
+ *             .member(dialogflowServiceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
  *         var fullAgent = new Agent("fullAgent", AgentArgs.builder()
+ *             .project(agentProject.projectId())
  *             .displayName("dialogflow-agent")
  *             .defaultLanguageCode("en")
  *             .supportedLanguageCodes(            

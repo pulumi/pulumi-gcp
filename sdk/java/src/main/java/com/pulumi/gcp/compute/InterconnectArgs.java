@@ -332,24 +332,26 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-     * If specified then the connection is created on MACsec capable hardware ports. If not
-     * specified, the default value is false, which allocates non-MACsec capable ports first if
-     * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-     * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+     * List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+     * Possible values include:
+     * - &#39;IF_MACSEC&#39;: Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+     * - &#39;IF_L2_FORWARDING&#39;: Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+     * - &#39;IF_CROSS_SITE_NETWORK&#39;: Provisions the connection exclusively for Cross-Site Networking.
+     *   Note: &#39;MACSEC&#39; is a legacy value for compatibility reasons and has the same effect as &#39;IF_MACSEC&#39;. &#39;IF_MACSEC&#39; is preferred.
+     *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      * 
      */
     @Import(name="requestedFeatures")
     private @Nullable Output<List<String>> requestedFeatures;
 
     /**
-     * @return interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-     * If specified then the connection is created on MACsec capable hardware ports. If not
-     * specified, the default value is false, which allocates non-MACsec capable ports first if
-     * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-     * does not work with the API, and will be removed in an upcoming major version.
-     * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+     * @return List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+     * Possible values include:
+     * - &#39;IF_MACSEC&#39;: Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+     * - &#39;IF_L2_FORWARDING&#39;: Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+     * - &#39;IF_CROSS_SITE_NETWORK&#39;: Provisions the connection exclusively for Cross-Site Networking.
+     *   Note: &#39;MACSEC&#39; is a legacy value for compatibility reasons and has the same effect as &#39;IF_MACSEC&#39;. &#39;IF_MACSEC&#39; is preferred.
+     *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      * 
      */
     public Optional<Output<List<String>>> requestedFeatures() {
@@ -817,12 +819,13 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestedFeatures interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-         * If specified then the connection is created on MACsec capable hardware ports. If not
-         * specified, the default value is false, which allocates non-MACsec capable ports first if
-         * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-         * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+         * @param requestedFeatures List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+         * Possible values include:
+         * - &#39;IF_MACSEC&#39;: Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+         * - &#39;IF_L2_FORWARDING&#39;: Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+         * - &#39;IF_CROSS_SITE_NETWORK&#39;: Provisions the connection exclusively for Cross-Site Networking.
+         *   Note: &#39;MACSEC&#39; is a legacy value for compatibility reasons and has the same effect as &#39;IF_MACSEC&#39;. &#39;IF_MACSEC&#39; is preferred.
+         *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
          * 
          * @return builder
          * 
@@ -833,12 +836,13 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestedFeatures interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-         * If specified then the connection is created on MACsec capable hardware ports. If not
-         * specified, the default value is false, which allocates non-MACsec capable ports first if
-         * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-         * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+         * @param requestedFeatures List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+         * Possible values include:
+         * - &#39;IF_MACSEC&#39;: Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+         * - &#39;IF_L2_FORWARDING&#39;: Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+         * - &#39;IF_CROSS_SITE_NETWORK&#39;: Provisions the connection exclusively for Cross-Site Networking.
+         *   Note: &#39;MACSEC&#39; is a legacy value for compatibility reasons and has the same effect as &#39;IF_MACSEC&#39;. &#39;IF_MACSEC&#39; is preferred.
+         *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
          * 
          * @return builder
          * 
@@ -848,12 +852,13 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestedFeatures interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-         * If specified then the connection is created on MACsec capable hardware ports. If not
-         * specified, the default value is false, which allocates non-MACsec capable ports first if
-         * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-         * does not work with the API, and will be removed in an upcoming major version.
-         * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+         * @param requestedFeatures List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+         * Possible values include:
+         * - &#39;IF_MACSEC&#39;: Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+         * - &#39;IF_L2_FORWARDING&#39;: Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+         * - &#39;IF_CROSS_SITE_NETWORK&#39;: Provisions the connection exclusively for Cross-Site Networking.
+         *   Note: &#39;MACSEC&#39; is a legacy value for compatibility reasons and has the same effect as &#39;IF_MACSEC&#39;. &#39;IF_MACSEC&#39; is preferred.
+         *   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
          * 
          * @return builder
          * 

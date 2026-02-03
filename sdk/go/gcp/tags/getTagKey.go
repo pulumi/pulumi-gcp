@@ -83,6 +83,8 @@ type LookupTagKeyArgs struct {
 
 // A collection of values returned by getTagKey.
 type LookupTagKeyResult struct {
+	// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+	AllowedValuesRegex string `pulumi:"allowedValuesRegex"`
 	// Creation time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime  string `pulumi:"createTime"`
@@ -134,6 +136,11 @@ func (o LookupTagKeyResultOutput) ToLookupTagKeyResultOutput() LookupTagKeyResul
 
 func (o LookupTagKeyResultOutput) ToLookupTagKeyResultOutputWithContext(ctx context.Context) LookupTagKeyResultOutput {
 	return o
+}
+
+// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+func (o LookupTagKeyResultOutput) AllowedValuesRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagKeyResult) string { return v.AllowedValuesRegex }).(pulumi.StringOutput)
 }
 
 // Creation time.

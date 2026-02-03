@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.inputs.NodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.NodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeDrainConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolPlacementPolicyArgs;
 import com.pulumi.gcp.container.inputs.NodePoolQueuedProvisioningArgs;
 import com.pulumi.gcp.container.inputs.NodePoolUpgradeSettingsArgs;
@@ -264,6 +265,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The node drain configuration of the pool. Structure is documented below.
+     * 
+     */
+    @Import(name="nodeDrainConfigs")
+    private @Nullable Output<List<NodePoolNodeDrainConfigArgs>> nodeDrainConfigs;
+
+    /**
+     * @return The node drain configuration of the pool. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<NodePoolNodeDrainConfigArgs>>> nodeDrainConfigs() {
+        return Optional.ofNullable(this.nodeDrainConfigs);
+    }
+
+    /**
      * The list of zones in which the node pool&#39;s nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
      * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
@@ -412,6 +428,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.networkConfig = $.networkConfig;
         this.nodeConfig = $.nodeConfig;
         this.nodeCount = $.nodeCount;
+        this.nodeDrainConfigs = $.nodeDrainConfigs;
         this.nodeLocations = $.nodeLocations;
         this.operation = $.operation;
         this.placementPolicy = $.placementPolicy;
@@ -774,6 +791,37 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeCount(Integer nodeCount) {
             return nodeCount(Output.of(nodeCount));
+        }
+
+        /**
+         * @param nodeDrainConfigs The node drain configuration of the pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeDrainConfigs(@Nullable Output<List<NodePoolNodeDrainConfigArgs>> nodeDrainConfigs) {
+            $.nodeDrainConfigs = nodeDrainConfigs;
+            return this;
+        }
+
+        /**
+         * @param nodeDrainConfigs The node drain configuration of the pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeDrainConfigs(List<NodePoolNodeDrainConfigArgs> nodeDrainConfigs) {
+            return nodeDrainConfigs(Output.of(nodeDrainConfigs));
+        }
+
+        /**
+         * @param nodeDrainConfigs The node drain configuration of the pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeDrainConfigs(NodePoolNodeDrainConfigArgs... nodeDrainConfigs) {
+            return nodeDrainConfigs(List.of(nodeDrainConfigs));
         }
 
         /**

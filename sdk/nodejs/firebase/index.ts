@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AiLogicConfigArgs, AiLogicConfigState } from "./aiLogicConfig";
+export type AiLogicConfig = import("./aiLogicConfig").AiLogicConfig;
+export const AiLogicConfig: typeof import("./aiLogicConfig").AiLogicConfig = null as any;
+utilities.lazyLoad(exports, ["AiLogicConfig"], () => require("./aiLogicConfig"));
+
+export { AiLogicPromptTemplateArgs, AiLogicPromptTemplateState } from "./aiLogicPromptTemplate";
+export type AiLogicPromptTemplate = import("./aiLogicPromptTemplate").AiLogicPromptTemplate;
+export const AiLogicPromptTemplate: typeof import("./aiLogicPromptTemplate").AiLogicPromptTemplate = null as any;
+utilities.lazyLoad(exports, ["AiLogicPromptTemplate"], () => require("./aiLogicPromptTemplate"));
+
+export { AiLogicPromptTemplateLockArgs, AiLogicPromptTemplateLockState } from "./aiLogicPromptTemplateLock";
+export type AiLogicPromptTemplateLock = import("./aiLogicPromptTemplateLock").AiLogicPromptTemplateLock;
+export const AiLogicPromptTemplateLock: typeof import("./aiLogicPromptTemplateLock").AiLogicPromptTemplateLock = null as any;
+utilities.lazyLoad(exports, ["AiLogicPromptTemplateLock"], () => require("./aiLogicPromptTemplateLock"));
+
 export { AndroidAppArgs, AndroidAppState } from "./androidApp";
 export type AndroidApp = import("./androidApp").AndroidApp;
 export const AndroidApp: typeof import("./androidApp").AndroidApp = null as any;
@@ -170,6 +185,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:firebase/aiLogicConfig:AiLogicConfig":
+                return new AiLogicConfig(name, <any>undefined, { urn })
+            case "gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate":
+                return new AiLogicPromptTemplate(name, <any>undefined, { urn })
+            case "gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock":
+                return new AiLogicPromptTemplateLock(name, <any>undefined, { urn })
             case "gcp:firebase/androidApp:AndroidApp":
                 return new AndroidApp(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig":
@@ -225,6 +246,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "firebase/aiLogicConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/aiLogicPromptTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/aiLogicPromptTemplateLock", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckAppAttestConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckDebugToken", _module)

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *         var basic = new Field("basic", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__49082")
+ *             .collection("chatrooms__59033")
  *             .field("basic")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -182,7 +182,7 @@ import javax.annotation.Nullable;
  *         var matchOverride = new Field("matchOverride", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__60365")
+ *             .collection("chatrooms__32081")
  *             .field("field_with_same_configuration_as_ancestor")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -241,7 +241,7 @@ import javax.annotation.Nullable;
  *         var wildcard = new Field("wildcard", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__80215")
+ *             .collection("chatrooms__10393")
  *             .field("*")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                

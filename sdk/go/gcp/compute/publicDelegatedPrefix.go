@@ -251,6 +251,10 @@ type PublicDelegatedPrefix struct {
 	AllocatablePrefixLength pulumi.IntOutput `pulumi:"allocatablePrefixLength"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// (Output)
+	// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+	// Applicable for IPv4 sub-PDPs only.
+	EnableEnhancedIpv4Allocation pulumi.BoolOutput `pulumi:"enableEnhancedIpv4Allocation"`
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// (Output)
@@ -337,6 +341,10 @@ type publicDelegatedPrefixState struct {
 	AllocatablePrefixLength *int `pulumi:"allocatablePrefixLength"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Output)
+	// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+	// Applicable for IPv4 sub-PDPs only.
+	EnableEnhancedIpv4Allocation *bool `pulumi:"enableEnhancedIpv4Allocation"`
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// (Output)
@@ -385,6 +393,10 @@ type PublicDelegatedPrefixState struct {
 	AllocatablePrefixLength pulumi.IntPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Output)
+	// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+	// Applicable for IPv4 sub-PDPs only.
+	EnableEnhancedIpv4Allocation pulumi.BoolPtrInput
 	// The IP address range, in CIDR format, represented by this public delegated prefix.
 	IpCidrRange pulumi.StringPtrInput
 	// (Output)
@@ -592,6 +604,13 @@ func (o PublicDelegatedPrefixOutput) AllocatablePrefixLength() pulumi.IntOutput 
 // An optional description of this resource.
 func (o PublicDelegatedPrefixOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+// Applicable for IPv4 sub-PDPs only.
+func (o PublicDelegatedPrefixOutput) EnableEnhancedIpv4Allocation() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PublicDelegatedPrefix) pulumi.BoolOutput { return v.EnableEnhancedIpv4Allocation }).(pulumi.BoolOutput)
 }
 
 // The IP address range, in CIDR format, represented by this public delegated prefix.

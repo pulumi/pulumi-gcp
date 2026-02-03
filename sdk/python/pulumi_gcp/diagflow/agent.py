@@ -570,7 +570,22 @@ class Agent(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        agent_project = gcp.organizations.Project("agent_project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789",
+            deletion_policy="DELETE")
+        agent_project_service = gcp.projects.Service("agent_project",
+            project=agent_project.project_id,
+            service="dialogflow.googleapis.com",
+            disable_dependent_services=False)
+        dialogflow_service_account = gcp.serviceaccount.Account("dialogflow_service_account", account_id="my-account")
+        agent_create = gcp.projects.IAMMember("agent_create",
+            project=agent_project_service.project,
+            role="roles/dialogflow.admin",
+            member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         full_agent = gcp.diagflow.Agent("full_agent",
+            project=agent_project.project_id,
             display_name="dialogflow-agent",
             default_language_code="en",
             supported_language_codes=[
@@ -666,7 +681,22 @@ class Agent(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        agent_project = gcp.organizations.Project("agent_project",
+            project_id="my-project",
+            name="my-project",
+            org_id="123456789",
+            deletion_policy="DELETE")
+        agent_project_service = gcp.projects.Service("agent_project",
+            project=agent_project.project_id,
+            service="dialogflow.googleapis.com",
+            disable_dependent_services=False)
+        dialogflow_service_account = gcp.serviceaccount.Account("dialogflow_service_account", account_id="my-account")
+        agent_create = gcp.projects.IAMMember("agent_create",
+            project=agent_project_service.project,
+            role="roles/dialogflow.admin",
+            member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
         full_agent = gcp.diagflow.Agent("full_agent",
+            project=agent_project.project_id,
             display_name="dialogflow-agent",
             default_language_code="en",
             supported_language_codes=[

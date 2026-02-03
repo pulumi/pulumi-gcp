@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Folder
     /// {
     ///     var myFolder = new Gcp.Organizations.Folder("my_folder", new()
     ///     {
-    ///         DisplayName = "my-folder",
+    ///         DisplayName = "folder-faaf",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Folder
     /// {
     ///     var myFolder = new Gcp.Organizations.Folder("my_folder", new()
     ///     {
-    ///         DisplayName = "my-folder",
+    ///         DisplayName = "folder-faak",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

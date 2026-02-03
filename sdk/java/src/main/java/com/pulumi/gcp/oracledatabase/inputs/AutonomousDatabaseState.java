@@ -6,8 +6,10 @@ package com.pulumi.gcp.oracledatabase.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabaseSourceConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,6 +110,21 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
 
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
+     * List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     * 
+     */
+    @Import(name="disasterRecoverySupportedLocations")
+    private @Nullable Output<List<String>> disasterRecoverySupportedLocations;
+
+    /**
+     * @return List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     * 
+     */
+    public Optional<Output<List<String>>> disasterRecoverySupportedLocations() {
+        return Optional.ofNullable(this.disasterRecoverySupportedLocations);
     }
 
     /**
@@ -270,6 +287,21 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The peer Autonomous Database names of the given Autonomous Database.
+     * 
+     */
+    @Import(name="peerAutonomousDatabases")
+    private @Nullable Output<List<String>> peerAutonomousDatabases;
+
+    /**
+     * @return The peer Autonomous Database names of the given Autonomous Database.
+     * 
+     */
+    public Optional<Output<List<String>>> peerAutonomousDatabases() {
+        return Optional.ofNullable(this.peerAutonomousDatabases);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -320,6 +352,23 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.pulumiLabels);
     }
 
+    /**
+     * The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sourceConfig")
+    private @Nullable Output<AutonomousDatabaseSourceConfigArgs> sourceConfig;
+
+    /**
+     * @return The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AutonomousDatabaseSourceConfigArgs>> sourceConfig() {
+        return Optional.ofNullable(this.sourceConfig);
+    }
+
     private AutonomousDatabaseState() {}
 
     private AutonomousDatabaseState(AutonomousDatabaseState $) {
@@ -329,6 +378,7 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
         this.createTime = $.createTime;
         this.database = $.database;
         this.deletionProtection = $.deletionProtection;
+        this.disasterRecoverySupportedLocations = $.disasterRecoverySupportedLocations;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
         this.entitlementId = $.entitlementId;
@@ -338,9 +388,11 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
         this.network = $.network;
         this.odbNetwork = $.odbNetwork;
         this.odbSubnet = $.odbSubnet;
+        this.peerAutonomousDatabases = $.peerAutonomousDatabases;
         this.project = $.project;
         this.properties = $.properties;
         this.pulumiLabels = $.pulumiLabels;
+        this.sourceConfig = $.sourceConfig;
     }
 
     public static Builder builder() {
@@ -483,6 +535,37 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
 
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param disasterRecoverySupportedLocations List of supported GCP region to clone the Autonomous Database for disaster recovery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disasterRecoverySupportedLocations(@Nullable Output<List<String>> disasterRecoverySupportedLocations) {
+            $.disasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
+            return this;
+        }
+
+        /**
+         * @param disasterRecoverySupportedLocations List of supported GCP region to clone the Autonomous Database for disaster recovery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disasterRecoverySupportedLocations(List<String> disasterRecoverySupportedLocations) {
+            return disasterRecoverySupportedLocations(Output.of(disasterRecoverySupportedLocations));
+        }
+
+        /**
+         * @param disasterRecoverySupportedLocations List of supported GCP region to clone the Autonomous Database for disaster recovery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disasterRecoverySupportedLocations(String... disasterRecoverySupportedLocations) {
+            return disasterRecoverySupportedLocations(List.of(disasterRecoverySupportedLocations));
         }
 
         /**
@@ -699,6 +782,37 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param peerAutonomousDatabases The peer Autonomous Database names of the given Autonomous Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerAutonomousDatabases(@Nullable Output<List<String>> peerAutonomousDatabases) {
+            $.peerAutonomousDatabases = peerAutonomousDatabases;
+            return this;
+        }
+
+        /**
+         * @param peerAutonomousDatabases The peer Autonomous Database names of the given Autonomous Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerAutonomousDatabases(List<String> peerAutonomousDatabases) {
+            return peerAutonomousDatabases(Output.of(peerAutonomousDatabases));
+        }
+
+        /**
+         * @param peerAutonomousDatabases The peer Autonomous Database names of the given Autonomous Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerAutonomousDatabases(String... peerAutonomousDatabases) {
+            return peerAutonomousDatabases(List.of(peerAutonomousDatabases));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -765,6 +879,29 @@ public final class AutonomousDatabaseState extends com.pulumi.resources.Resource
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param sourceConfig The source Autonomous Database configuration for the standby Autonomous Database.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceConfig(@Nullable Output<AutonomousDatabaseSourceConfigArgs> sourceConfig) {
+            $.sourceConfig = sourceConfig;
+            return this;
+        }
+
+        /**
+         * @param sourceConfig The source Autonomous Database configuration for the standby Autonomous Database.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceConfig(AutonomousDatabaseSourceConfigArgs sourceConfig) {
+            return sourceConfig(Output.of(sourceConfig));
         }
 
         public AutonomousDatabaseState build() {

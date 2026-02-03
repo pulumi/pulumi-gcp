@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
 import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabaseState;
 import com.pulumi.gcp.oracledatabase.outputs.AutonomousDatabaseProperties;
+import com.pulumi.gcp.oracledatabase.outputs.AutonomousDatabaseSourceConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -246,7 +247,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
  * ## Import
  * 
  * AutonomousDatabase can be imported using any of these accepted formats:
@@ -359,6 +359,20 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
+    }
+    /**
+     * List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     * 
+     */
+    @Export(name="disasterRecoverySupportedLocations", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> disasterRecoverySupportedLocations;
+
+    /**
+     * @return List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     * 
+     */
+    public Output<List<String>> disasterRecoverySupportedLocations() {
+        return this.disasterRecoverySupportedLocations;
     }
     /**
      * The display name for the Autonomous Database. The name does not have to
@@ -511,6 +525,20 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
         return this.odbSubnet;
     }
     /**
+     * The peer Autonomous Database names of the given Autonomous Database.
+     * 
+     */
+    @Export(name="peerAutonomousDatabases", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> peerAutonomousDatabases;
+
+    /**
+     * @return The peer Autonomous Database names of the given Autonomous Database.
+     * 
+     */
+    public Output<List<String>> peerAutonomousDatabases() {
+        return this.peerAutonomousDatabases;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -557,6 +585,22 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sourceConfig", refs={AutonomousDatabaseSourceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AutonomousDatabaseSourceConfig> sourceConfig;
+
+    /**
+     * @return The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AutonomousDatabaseSourceConfig>> sourceConfig() {
+        return Codegen.optional(this.sourceConfig);
     }
 
     /**

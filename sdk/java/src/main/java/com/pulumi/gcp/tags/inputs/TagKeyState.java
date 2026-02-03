@@ -17,6 +17,21 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
     public static final TagKeyState Empty = new TagKeyState();
 
     /**
+     * Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    @Import(name="allowedValuesRegex")
+    private @Nullable Output<String> allowedValuesRegex;
+
+    /**
+     * @return Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    public Optional<Output<String>> allowedValuesRegex() {
+        return Optional.ofNullable(this.allowedValuesRegex);
+    }
+
+    /**
      * Output only. Creation time.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
@@ -166,6 +181,7 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
     private TagKeyState() {}
 
     private TagKeyState(TagKeyState $) {
+        this.allowedValuesRegex = $.allowedValuesRegex;
         this.createTime = $.createTime;
         this.description = $.description;
         this.name = $.name;
@@ -193,6 +209,27 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TagKeyState defaults) {
             $ = new TagKeyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedValuesRegex Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedValuesRegex(@Nullable Output<String> allowedValuesRegex) {
+            $.allowedValuesRegex = allowedValuesRegex;
+            return this;
+        }
+
+        /**
+         * @param allowedValuesRegex Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedValuesRegex(String allowedValuesRegex) {
+            return allowedValuesRegex(Output.of(allowedValuesRegex));
         }
 
         /**

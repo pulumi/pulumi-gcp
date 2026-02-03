@@ -115,9 +115,9 @@ type SSLPolicy struct {
 	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer.
+	// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
 	// Default value is `TLS_1_0`.
-	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion pulumi.StringPtrOutput `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -134,8 +134,10 @@ type SSLPolicy struct {
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+	// If set to `FIPS_202205`, `minTlsVersion` must also be set to
+	// `TLS_1_2`.
 	// Default value is `COMPATIBLE`.
-	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
 	Profile pulumi.StringPtrOutput `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -194,9 +196,9 @@ type sslpolicyState struct {
 	// object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer.
+	// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
 	// Default value is `TLS_1_0`.
-	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -213,8 +215,10 @@ type sslpolicyState struct {
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+	// If set to `FIPS_202205`, `minTlsVersion` must also be set to
+	// `TLS_1_2`.
 	// Default value is `COMPATIBLE`.
-	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -244,9 +248,9 @@ type SSLPolicyState struct {
 	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer.
+	// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
 	// Default value is `TLS_1_0`.
-	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -263,8 +267,10 @@ type SSLPolicyState struct {
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+	// If set to `FIPS_202205`, `minTlsVersion` must also be set to
+	// `TLS_1_2`.
 	// Default value is `COMPATIBLE`.
-	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -291,9 +297,9 @@ type sslpolicyArgs struct {
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer.
+	// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
 	// Default value is `TLS_1_0`.
-	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -310,8 +316,10 @@ type sslpolicyArgs struct {
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+	// If set to `FIPS_202205`, `minTlsVersion` must also be set to
+	// `TLS_1_2`.
 	// Default value is `COMPATIBLE`.
-	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -333,9 +341,9 @@ type SSLPolicyArgs struct {
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The minimum version of SSL protocol that can be used by the clients
-	// to establish a connection with the load balancer.
+	// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
 	// Default value is `TLS_1_0`.
-	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -352,8 +360,10 @@ type SSLPolicyArgs struct {
 	// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+	// If set to `FIPS_202205`, `minTlsVersion` must also be set to
+	// `TLS_1_2`.
 	// Default value is `COMPATIBLE`.
-	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -482,9 +492,9 @@ func (o SSLPolicyOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // The minimum version of SSL protocol that can be used by the clients
-// to establish a connection with the load balancer.
+// to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
 // Default value is `TLS_1_0`.
-// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
+// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
 func (o SSLPolicyOutput) MinTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLPolicy) pulumi.StringPtrOutput { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -507,8 +517,10 @@ func (o SSLPolicyOutput) Name() pulumi.StringOutput {
 // See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
 // for information on what cipher suites each profile provides. If
 // `CUSTOM` is used, the `customFeatures` attribute **must be set**.
+// If set to `FIPS_202205`, `minTlsVersion` must also be set to
+// `TLS_1_2`.
 // Default value is `COMPATIBLE`.
-// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
+// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
 func (o SSLPolicyOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLPolicy) pulumi.StringPtrOutput { return v.Profile }).(pulumi.StringPtrOutput)
 }

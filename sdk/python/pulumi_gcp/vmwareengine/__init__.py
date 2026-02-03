@@ -7,9 +7,11 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cluster import *
+from .datastore import *
 from .external_access_rule import *
 from .external_address import *
 from .get_cluster import *
+from .get_datastore import *
 from .get_external_access_rule import *
 from .get_external_address import *
 from .get_network import *

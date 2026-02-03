@@ -82,6 +82,151 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Vertex Ai Reasoning Engine Psc Interface
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkAttachment;
+ * import com.pulumi.gcp.compute.NetworkAttachmentArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("reasoning-engine")
+ *             .location("us-central1")
+ *             .uniformBucketLevelAccess(true)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var bucketObjRequirementsTxt = new BucketObject("bucketObjRequirementsTxt", BucketObjectArgs.builder()
+ *             .name("requirements.txt")
+ *             .bucket(bucket.id())
+ *             .source(new FileAsset("./test-fixtures/requirements_adk.txt"))
+ *             .build());
+ * 
+ *         var bucketObjPickle = new BucketObject("bucketObjPickle", BucketObjectArgs.builder()
+ *             .name("code.pkl")
+ *             .bucket(bucket.id())
+ *             .source(new FileAsset("./test-fixtures/pickle_adk.pkl"))
+ *             .build());
+ * 
+ *         var bucketObjDependenciesTarGz = new BucketObject("bucketObjDependenciesTarGz", BucketObjectArgs.builder()
+ *             .name("dependencies.tar.gz")
+ *             .bucket(bucket.id())
+ *             .source(new FileAsset("./test-fixtures/dependencies_adk.tar.gz"))
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("subnetwork")
+ *             .region("us-central1")
+ *             .ipCidrRange("10.0.0.0/16")
+ *             .network(network.id())
+ *             .build());
+ * 
+ *         var networkAttachment = new NetworkAttachment("networkAttachment", NetworkAttachmentArgs.builder()
+ *             .name("network-attachment")
+ *             .region("us-central1")
+ *             .connectionPreference("ACCEPT_MANUAL")
+ *             .subnetworks(subnetwork.id())
+ *             .build());
+ * 
+ *         // Destroy network attachment 35 minutes after reasoning engine is deleted.
+ *         // It guarantees that the network attachment has no more active PSC interfaces.
+ *         var wait35Minutes = new Sleep("wait35Minutes", SleepArgs.builder()
+ *             .destroyDuration("35m")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(networkAttachment)
+ *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         // When PSC-I is configured, Agent deletion will fail,
+ *         // although the agent will be deleted.
+ *         // Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("reasoning-engine")
+ *             .description("A basic reasoning engine")
+ *             .region("us-central1")
+ *             .spec(AiReasoningEngineSpecArgs.builder()
+ *                 .agentFramework("google-adk")
+ *                 .packageSpec(AiReasoningEngineSpecPackageSpecArgs.builder()
+ *                     .pythonVersion("3.11")
+ *                     .dependencyFilesGcsUri(Output.tuple(bucket.url(), bucketObjDependenciesTarGz.name()).applyValue(values -> {
+ *                         var url = values.t1;
+ *                         var name = values.t2;
+ *                         return String.format("%s/%s", url,name);
+ *                     }))
+ *                     .pickleObjectGcsUri(Output.tuple(bucket.url(), bucketObjPickle.name()).applyValue(values -> {
+ *                         var url = values.t1;
+ *                         var name = values.t2;
+ *                         return String.format("%s/%s", url,name);
+ *                     }))
+ *                     .requirementsGcsUri(Output.tuple(bucket.url(), bucketObjRequirementsTxt.name()).applyValue(values -> {
+ *                         var url = values.t1;
+ *                         var name = values.t2;
+ *                         return String.format("%s/%s", url,name);
+ *                     }))
+ *                     .build())
+ *                 .deploymentSpec(AiReasoningEngineSpecDeploymentSpecArgs.builder()
+ *                     .pscInterfaceConfig(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs.builder()
+ *                         .networkAttachment(networkAttachment.id())
+ *                         .dnsPeeringConfigs(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs.builder()
+ *                             .domain("example.com.")
+ *                             .targetProject(project.projectId())
+ *                             .targetNetwork(network.name())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait35Minutes)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Vertex Ai Reasoning Engine Full
  * 
  * <pre>

@@ -36,7 +36,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create Folder in GCP Organization.
 //			kajFolder, err := organizations.NewFolder(ctx, "kaj_folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("my-folder"),
+//				DisplayName:        pulumi.String("folder-kajc"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})

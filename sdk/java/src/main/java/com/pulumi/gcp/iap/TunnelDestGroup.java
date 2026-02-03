@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var destGroup = new TunnelDestGroup("destGroup", TunnelDestGroupArgs.builder()
  *             .region("us-central1")
- *             .groupName("testgroup_15335")
+ *             .groupName("testgroup_92130")
  *             .cidrs(            
  *                 "10.1.0.0/16",
  *                 "192.168.10.0/24")

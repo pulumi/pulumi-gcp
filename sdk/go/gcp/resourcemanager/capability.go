@@ -16,9 +16,9 @@ import (
 //
 // To get more information about Capability, see:
 //
-// * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+//   - [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/manage-applications)
 //
 // ## Example Usage
 //
@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("my-folder"),
+//				DisplayName:        pulumi.String("folder-cap"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})

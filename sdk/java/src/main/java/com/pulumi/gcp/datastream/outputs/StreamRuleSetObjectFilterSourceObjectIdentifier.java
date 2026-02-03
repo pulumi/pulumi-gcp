@@ -9,6 +9,7 @@ import com.pulumi.gcp.datastream.outputs.StreamRuleSetObjectFilterSourceObjectId
 import com.pulumi.gcp.datastream.outputs.StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier;
 import com.pulumi.gcp.datastream.outputs.StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier;
 import com.pulumi.gcp.datastream.outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier;
+import com.pulumi.gcp.datastream.outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier;
 import com.pulumi.gcp.datastream.outputs.StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,12 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifier {
      * 
      */
     private @Nullable StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier salesforceIdentifier;
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier spannerIdentifier;
     /**
      * @return A nested object resource.
      * Structure is documented below.
@@ -99,6 +106,14 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifier {
      * Structure is documented below.
      * 
      */
+    public Optional<StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier> spannerIdentifier() {
+        return Optional.ofNullable(this.spannerIdentifier);
+    }
+    /**
+     * @return A nested object resource.
+     * Structure is documented below.
+     * 
+     */
     public Optional<StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier> sqlServerIdentifier() {
         return Optional.ofNullable(this.sqlServerIdentifier);
     }
@@ -117,6 +132,7 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifier {
         private @Nullable StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier oracleIdentifier;
         private @Nullable StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifier postgresqlIdentifier;
         private @Nullable StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier salesforceIdentifier;
+        private @Nullable StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier spannerIdentifier;
         private @Nullable StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier sqlServerIdentifier;
         public Builder() {}
         public Builder(StreamRuleSetObjectFilterSourceObjectIdentifier defaults) {
@@ -126,6 +142,7 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifier {
     	      this.oracleIdentifier = defaults.oracleIdentifier;
     	      this.postgresqlIdentifier = defaults.postgresqlIdentifier;
     	      this.salesforceIdentifier = defaults.salesforceIdentifier;
+    	      this.spannerIdentifier = defaults.spannerIdentifier;
     	      this.sqlServerIdentifier = defaults.sqlServerIdentifier;
         }
 
@@ -160,6 +177,12 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifier {
             return this;
         }
         @CustomType.Setter
+        public Builder spannerIdentifier(@Nullable StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifier spannerIdentifier) {
+
+            this.spannerIdentifier = spannerIdentifier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sqlServerIdentifier(@Nullable StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifier sqlServerIdentifier) {
 
             this.sqlServerIdentifier = sqlServerIdentifier;
@@ -172,6 +195,7 @@ public final class StreamRuleSetObjectFilterSourceObjectIdentifier {
             _resultValue.oracleIdentifier = oracleIdentifier;
             _resultValue.postgresqlIdentifier = postgresqlIdentifier;
             _resultValue.salesforceIdentifier = salesforceIdentifier;
+            _resultValue.spannerIdentifier = spannerIdentifier;
             _resultValue.sqlServerIdentifier = sqlServerIdentifier;
             return _resultValue;
         }

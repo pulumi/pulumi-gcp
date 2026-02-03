@@ -128,7 +128,7 @@ def get_organization_policy(constraint: Optional[_builtins.str] = None,
     """
     Allows management of Organization policies for a Google Folder. For more information see
     [the official
-    documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+    documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
 
     ## Example Usage
 
@@ -142,7 +142,7 @@ def get_organization_policy(constraint: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+    :param _builtins.str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param _builtins.str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
     """
     __args__ = dict()
@@ -167,7 +167,7 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[_builtins.s
     """
     Allows management of Organization policies for a Google Folder. For more information see
     [the official
-    documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+    documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
 
     ## Example Usage
 
@@ -181,7 +181,7 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[_builtins.s
     ```
 
 
-    :param _builtins.str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+    :param _builtins.str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param _builtins.str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
     """
     __args__ = dict()

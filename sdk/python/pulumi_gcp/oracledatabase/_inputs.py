@@ -37,6 +37,8 @@ __all__ = [
     'AutonomousDatabasePropertiesScheduledOperationDetailStartTimeArgsDict',
     'AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArgs',
     'AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArgsDict',
+    'AutonomousDatabaseSourceConfigArgs',
+    'AutonomousDatabaseSourceConfigArgsDict',
     'CloudExadataInfrastructurePropertiesArgs',
     'CloudExadataInfrastructurePropertiesArgsDict',
     'CloudExadataInfrastructurePropertiesCustomerContactArgs',
@@ -2984,6 +2986,58 @@ class AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArgs:
     @seconds.setter
     def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "seconds", value)
+
+
+if not MYPY:
+    class AutonomousDatabaseSourceConfigArgsDict(TypedDict):
+        automatic_backups_replication_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        """
+        autonomous_database: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+elif False:
+    AutonomousDatabaseSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AutonomousDatabaseSourceConfigArgs:
+    def __init__(__self__, *,
+                 automatic_backups_replication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 autonomous_database: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] automatic_backups_replication_enabled: This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        :param pulumi.Input[_builtins.str] autonomous_database: The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        if automatic_backups_replication_enabled is not None:
+            pulumi.set(__self__, "automatic_backups_replication_enabled", automatic_backups_replication_enabled)
+        if autonomous_database is not None:
+            pulumi.set(__self__, "autonomous_database", autonomous_database)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticBackupsReplicationEnabled")
+    def automatic_backups_replication_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
+        """
+        return pulumi.get(self, "automatic_backups_replication_enabled")
+
+    @automatic_backups_replication_enabled.setter
+    def automatic_backups_replication_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "automatic_backups_replication_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autonomousDatabase")
+    def autonomous_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
+        """
+        return pulumi.get(self, "autonomous_database")
+
+    @autonomous_database.setter
+    def autonomous_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "autonomous_database", value)
 
 
 if not MYPY:

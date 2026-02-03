@@ -540,6 +540,31 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
+    /// ### Datastream Connection Profile Spanner
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Datastream.ConnectionProfile("default", new()
+    ///     {
+    ///         DisplayName = "Spanner Source",
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "source-profile",
+    ///         CreateWithoutValidation = true,
+    ///         SpannerProfile = new Gcp.Datastream.Inputs.ConnectionProfileSpannerProfileArgs
+    ///         {
+    ///             Database = "projects/example-project/instances/example-instance/databases/example-database",
+    ///             Host = "https://spanner.example-region.rep.googleapis.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Datastream Connection Profile Postgres Secret Manager
     /// 
     /// ```csharp
@@ -752,6 +777,13 @@ namespace Pulumi.Gcp.Datastream
         public Output<Outputs.ConnectionProfileSalesforceProfile?> SalesforceProfile { get; private set; } = null!;
 
         /// <summary>
+        /// Spanner profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("spannerProfile")]
+        public Output<Outputs.ConnectionProfileSpannerProfile?> SpannerProfile { get; private set; } = null!;
+
+        /// <summary>
         /// SQL Server database profile.
         /// Structure is documented below.
         /// </summary>
@@ -917,6 +949,13 @@ namespace Pulumi.Gcp.Datastream
         public Input<Inputs.ConnectionProfileSalesforceProfileArgs>? SalesforceProfile { get; set; }
 
         /// <summary>
+        /// Spanner profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("spannerProfile")]
+        public Input<Inputs.ConnectionProfileSpannerProfileArgs>? SpannerProfile { get; set; }
+
+        /// <summary>
         /// SQL Server database profile.
         /// Structure is documented below.
         /// </summary>
@@ -1076,6 +1115,13 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("salesforceProfile")]
         public Input<Inputs.ConnectionProfileSalesforceProfileGetArgs>? SalesforceProfile { get; set; }
+
+        /// <summary>
+        /// Spanner profile.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("spannerProfile")]
+        public Input<Inputs.ConnectionProfileSpannerProfileGetArgs>? SpannerProfile { get; set; }
 
         /// <summary>
         /// SQL Server database profile.

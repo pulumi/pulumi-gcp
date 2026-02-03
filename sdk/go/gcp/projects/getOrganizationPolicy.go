@@ -13,7 +13,7 @@ import (
 
 // Allows management of Organization policies for a Google Project. For more information see
 // [the official
-// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+// documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
 //
 // ## Example Usage
 //
@@ -54,7 +54,7 @@ func LookupOrganizationPolicy(ctx *pulumi.Context, args *LookupOrganizationPolic
 
 // A collection of arguments for invoking getOrganizationPolicy.
 type LookupOrganizationPolicyArgs struct {
-	// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint string `pulumi:"constraint"`
 	// The project ID.
 	Project string `pulumi:"project"`
@@ -85,7 +85,7 @@ func LookupOrganizationPolicyOutput(ctx *pulumi.Context, args LookupOrganization
 
 // A collection of arguments for invoking getOrganizationPolicy.
 type LookupOrganizationPolicyOutputArgs struct {
-	// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint pulumi.StringInput `pulumi:"constraint"`
 	// The project ID.
 	Project pulumi.StringInput `pulumi:"project"`

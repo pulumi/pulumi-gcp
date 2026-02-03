@@ -167,14 +167,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-network_25141"),
+//				Name:                  pulumi.String("tf-test-network_16178"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_30827"),
+//				Name:        pulumi.String("tf-test-subnet_26317"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -183,7 +183,7 @@ import (
 //				return err
 //			}
 //			instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-//				Name:         pulumi.String("tf-test-instance_6529"),
+//				Name:         pulumi.String("tf-test-instance_4866"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(true),
 //				Zone:         pulumi.String("us-central1-a"),
@@ -208,7 +208,7 @@ import (
 //				return err
 //			}
 //			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
-//				Name:        pulumi.String("tf-test-hub_16178"),
+//				Name:        pulumi.String("tf-test-hub_12618"),
 //				Description: pulumi.String("A sample hub"),
 //				Labels: pulumi.StringMap{
 //					"label-two": pulumi.String("value-one"),
@@ -218,7 +218,7 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-//				Name:        pulumi.String("tf-test-name_26317"),
+//				Name:        pulumi.String("tf-test-name_32270"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
 //				Labels: pulumi.StringMap{
@@ -641,8 +641,8 @@ import (
 //				Hub:  starHub.ID(),
 //				AutoAccept: &networkconnectivity.GroupAutoAcceptArgs{
 //					AutoAcceptProjects: pulumi.StringArray{
-//						pulumi.String("foo_4866"),
-//						pulumi.String("bar_12618"),
+//						pulumi.String("foo_44703"),
+//						pulumi.String("bar_9329"),
 //					},
 //				},
 //			})
@@ -749,7 +749,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_32270"),
+//				Name:        pulumi.String("tf-test-subnet_37135"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -834,7 +834,7 @@ type Spoke struct {
 	Group pulumi.StringOutput `pulumi:"group"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -928,7 +928,7 @@ type spokeState struct {
 	Group *string `pulumi:"group"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -982,7 +982,7 @@ type SpokeState struct {
 	Group pulumi.StringPtrInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -1036,7 +1036,7 @@ type spokeArgs struct {
 	Group *string `pulumi:"group"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub string `pulumi:"hub"`
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -1075,7 +1075,7 @@ type SpokeArgs struct {
 	Group pulumi.StringPtrInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringInput
-	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
@@ -1221,7 +1221,7 @@ func (o SpokeOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
 }
 
-// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SpokeOutput) Labels() pulumi.StringMapOutput {

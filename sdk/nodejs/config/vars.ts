@@ -737,6 +737,14 @@ Object.defineProperty(exports, "filestoreCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const firebaseAiLogicCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseAiLogicCustomEndpoint", {
+    get() {
+        return __config.get("firebaseAiLogicCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const firebaseAppCheckCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseAppCheckCustomEndpoint", {
     get() {

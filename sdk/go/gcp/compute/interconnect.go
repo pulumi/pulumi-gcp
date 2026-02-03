@@ -97,10 +97,12 @@ type Interconnect struct {
 	// Interconnect connection between Google and your on-premises router.
 	// Structure is documented below.
 	ApplicationAwareInterconnect InterconnectApplicationAwareInterconnectPtrOutput `pulumi:"applicationAwareInterconnect"`
-	// interconnects.list of features available for this Interconnect connection. Can take the value:
-	// MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
-	// ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
-	// ports and MACsec isn't supported and enabling MACsec fails).
+	// [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
+	// Possible values include:
+	// - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
+	// - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
+	// - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
 	AvailableFeatures pulumi.StringArrayOutput `pulumi:"availableFeatures"`
 	// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
 	// Structure is documented below.
@@ -202,12 +204,13 @@ type Interconnect struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation pulumi.StringPtrOutput `pulumi:"remoteLocation"`
-	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-	// If specified then the connection is created on MACsec capable hardware ports. If not
-	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+	// List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+	// Possible values include:
+	// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+	// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+	// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+	//   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
 	RequestedFeatures pulumi.StringArrayOutput `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntOutput `pulumi:"requestedLinkCount"`
@@ -283,10 +286,12 @@ type interconnectState struct {
 	// Interconnect connection between Google and your on-premises router.
 	// Structure is documented below.
 	ApplicationAwareInterconnect *InterconnectApplicationAwareInterconnect `pulumi:"applicationAwareInterconnect"`
-	// interconnects.list of features available for this Interconnect connection. Can take the value:
-	// MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
-	// ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
-	// ports and MACsec isn't supported and enabling MACsec fails).
+	// [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
+	// Possible values include:
+	// - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
+	// - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
+	// - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
 	AvailableFeatures []string `pulumi:"availableFeatures"`
 	// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
 	// Structure is documented below.
@@ -388,12 +393,13 @@ type interconnectState struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation *string `pulumi:"remoteLocation"`
-	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-	// If specified then the connection is created on MACsec capable hardware ports. If not
-	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+	// List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+	// Possible values include:
+	// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+	// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+	// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+	//   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
 	RequestedFeatures []string `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
@@ -423,10 +429,12 @@ type InterconnectState struct {
 	// Interconnect connection between Google and your on-premises router.
 	// Structure is documented below.
 	ApplicationAwareInterconnect InterconnectApplicationAwareInterconnectPtrInput
-	// interconnects.list of features available for this Interconnect connection. Can take the value:
-	// MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
-	// ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
-	// ports and MACsec isn't supported and enabling MACsec fails).
+	// [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
+	// Possible values include:
+	// - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
+	// - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
+	// - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
 	AvailableFeatures pulumi.StringArrayInput
 	// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
 	// Structure is documented below.
@@ -528,12 +536,13 @@ type InterconnectState struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation pulumi.StringPtrInput
-	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-	// If specified then the connection is created on MACsec capable hardware ports. If not
-	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+	// List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+	// Possible values include:
+	// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+	// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+	// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+	//   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
 	RequestedFeatures pulumi.StringArrayInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntPtrInput
@@ -623,12 +632,13 @@ type interconnectArgs struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation *string `pulumi:"remoteLocation"`
-	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-	// If specified then the connection is created on MACsec capable hardware ports. If not
-	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+	// List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+	// Possible values include:
+	// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+	// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+	// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+	//   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
 	RequestedFeatures []string `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount int `pulumi:"requestedLinkCount"`
@@ -702,12 +712,13 @@ type InterconnectArgs struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation pulumi.StringPtrInput
-	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-	// If specified then the connection is created on MACsec capable hardware ports. If not
-	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-	// does not work with the API, and will be removed in an upcoming major version.
-	// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+	// List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+	// Possible values include:
+	// - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+	// - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+	// - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
+	//   Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+	//   Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
 	RequestedFeatures pulumi.StringArrayInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntInput
@@ -821,10 +832,12 @@ func (o InterconnectOutput) ApplicationAwareInterconnect() InterconnectApplicati
 	}).(InterconnectApplicationAwareInterconnectPtrOutput)
 }
 
-// interconnects.list of features available for this Interconnect connection. Can take the value:
-// MACSEC. If present then the Interconnect connection is provisioned on MACsec capable hardware
-// ports. If not present then the Interconnect connection is provisioned on non-MACsec capable
-// ports and MACsec isn't supported and enabling MACsec fails).
+// [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
+// Possible values include:
+//   - 'IF_MACSEC': Indicates the Interconnect connection is provisioned on MACsec capable hardware ports. If this feature is not present, the connection does not support MACsec, and any attempt to enable it will fail.
+//   - 'IF_L2_FORWARDING': Indicates the Interconnect connection can be used for Layer 2 (L2) traffic forwarding. If not present, the connection cannot be used with L2 forwarding attachments.
+//   - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
+//     Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
 func (o InterconnectOutput) AvailableFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.AvailableFeatures }).(pulumi.StringArrayOutput)
 }
@@ -1007,12 +1020,13 @@ func (o InterconnectOutput) RemoteLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringPtrOutput { return v.RemoteLocation }).(pulumi.StringPtrOutput)
 }
 
-// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
-// If specified then the connection is created on MACsec capable hardware ports. If not
-// specified, the default value is false, which allocates non-MACsec capable ports first if
-// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
-// does not work with the API, and will be removed in an upcoming major version.
-// Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`.
+// List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
+// Possible values include:
+//   - 'IF_MACSEC': Provisions the connection on hardware ports that support MACsec (Media Access Control Security). If not specified, the system may allocate non-MACsec capable ports if available.
+//   - 'IF_L2_FORWARDING': Provisions the connection for Layer 2 (L2) traffic forwarding. If not specified, the connection defaults to Layer 3 (L3) traffic forwarding.
+//   - 'IF_CROSS_SITE_NETWORK': Provisions the connection exclusively for Cross-Site Networking.
+//     Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
+//     Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
 func (o InterconnectOutput) RequestedFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.RequestedFeatures }).(pulumi.StringArrayOutput)
 }

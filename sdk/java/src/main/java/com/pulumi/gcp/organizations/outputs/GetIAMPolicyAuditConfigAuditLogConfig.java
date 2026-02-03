@@ -18,7 +18,7 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
      */
     private @Nullable List<String> exemptedMembers;
     /**
-     * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+     * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
      * 
      */
     private String logType;
@@ -32,7 +32,7 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
         return this.exemptedMembers == null ? List.of() : this.exemptedMembers;
     }
     /**
-     * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+     * @return Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
      * 
      */
     public String logType() {

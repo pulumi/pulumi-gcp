@@ -799,6 +799,7 @@ class Instance(pulumi.CustomResource):
                 "metadata": {
                     "terraform": "true",
                     "serial-port-logging-enable": "false",
+                    "enable-jupyterlab4": "false",
                 },
                 "reservation_affinity": {
                     "consume_reservation_type": "RESERVATION_SPECIFIC",
@@ -1107,6 +1108,7 @@ class Instance(pulumi.CustomResource):
                 "metadata": {
                     "terraform": "true",
                     "serial-port-logging-enable": "false",
+                    "enable-jupyterlab4": "false",
                 },
                 "reservation_affinity": {
                     "consume_reservation_type": "RESERVATION_SPECIFIC",

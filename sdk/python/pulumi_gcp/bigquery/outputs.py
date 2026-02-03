@@ -6065,6 +6065,8 @@ class TableExternalDataConfigurationCsvOptions(dict):
             suggest = "field_delimiter"
         elif key == "skipLeadingRows":
             suggest = "skip_leading_rows"
+        elif key == "sourceColumnMatch":
+            suggest = "source_column_match"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TableExternalDataConfigurationCsvOptions. Access the value via the '{suggest}' property getter instead.")
@@ -6083,7 +6085,8 @@ class TableExternalDataConfigurationCsvOptions(dict):
                  allow_quoted_newlines: Optional[_builtins.bool] = None,
                  encoding: Optional[_builtins.str] = None,
                  field_delimiter: Optional[_builtins.str] = None,
-                 skip_leading_rows: Optional[_builtins.int] = None):
+                 skip_leading_rows: Optional[_builtins.int] = None,
+                 source_column_match: Optional[_builtins.str] = None):
         """
         :param _builtins.str quote: The value that is used to quote data sections in a
                CSV file. If your data does not contain quoted sections, set the
@@ -6102,6 +6105,12 @@ class TableExternalDataConfigurationCsvOptions(dict):
         :param _builtins.str field_delimiter: The separator for fields in a CSV file.
         :param _builtins.int skip_leading_rows: The number of rows at the top of a CSV
                file that BigQuery will skip when reading the data.
+        :param _builtins.str source_column_match: Specifies how source columns are matched
+               to the table schema. Valid values are `POSITION` (columns matched by position,
+               assuming same ordering as the schema) or `NAME` (columns matched by name,
+               reads the header row and reorders columns to align with schema field names).
+               If not set, a default is chosen based on how the schema is provided: when
+               autodetect is used, columns are matched by name; otherwise, by position.
         """
         pulumi.set(__self__, "quote", quote)
         if allow_jagged_rows is not None:
@@ -6114,6 +6123,8 @@ class TableExternalDataConfigurationCsvOptions(dict):
             pulumi.set(__self__, "field_delimiter", field_delimiter)
         if skip_leading_rows is not None:
             pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
+        if source_column_match is not None:
+            pulumi.set(__self__, "source_column_match", source_column_match)
 
     @_builtins.property
     @pulumi.getter
@@ -6173,6 +6184,19 @@ class TableExternalDataConfigurationCsvOptions(dict):
         file that BigQuery will skip when reading the data.
         """
         return pulumi.get(self, "skip_leading_rows")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceColumnMatch")
+    def source_column_match(self) -> Optional[_builtins.str]:
+        """
+        Specifies how source columns are matched
+        to the table schema. Valid values are `POSITION` (columns matched by position,
+        assuming same ordering as the schema) or `NAME` (columns matched by name,
+        reads the header row and reorders columns to align with schema field names).
+        If not set, a default is chosen based on how the schema is provided: when
+        autodetect is used, columns are matched by name; otherwise, by position.
+        """
+        return pulumi.get(self, "source_column_match")
 
 
 @pulumi.output_type
@@ -8234,13 +8258,15 @@ class GetTableExternalDataConfigurationCsvOptionResult(dict):
                  encoding: _builtins.str,
                  field_delimiter: _builtins.str,
                  quote: _builtins.str,
-                 skip_leading_rows: _builtins.int):
+                 skip_leading_rows: _builtins.int,
+                 source_column_match: _builtins.str):
         """
         :param _builtins.bool allow_jagged_rows: Indicates if BigQuery should accept rows that are missing trailing optional columns.
         :param _builtins.bool allow_quoted_newlines: Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
         :param _builtins.str encoding: The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
         :param _builtins.str field_delimiter: The separator for fields in a CSV file.
         :param _builtins.int skip_leading_rows: The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
+        :param _builtins.str source_column_match: Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
         """
         pulumi.set(__self__, "allow_jagged_rows", allow_jagged_rows)
         pulumi.set(__self__, "allow_quoted_newlines", allow_quoted_newlines)
@@ -8248,6 +8274,7 @@ class GetTableExternalDataConfigurationCsvOptionResult(dict):
         pulumi.set(__self__, "field_delimiter", field_delimiter)
         pulumi.set(__self__, "quote", quote)
         pulumi.set(__self__, "skip_leading_rows", skip_leading_rows)
+        pulumi.set(__self__, "source_column_match", source_column_match)
 
     @_builtins.property
     @pulumi.getter(name="allowJaggedRows")
@@ -8293,6 +8320,14 @@ class GetTableExternalDataConfigurationCsvOptionResult(dict):
         The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
         """
         return pulumi.get(self, "skip_leading_rows")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceColumnMatch")
+    def source_column_match(self) -> _builtins.str:
+        """
+        Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
+        """
+        return pulumi.get(self, "source_column_match")
 
 
 @pulumi.output_type

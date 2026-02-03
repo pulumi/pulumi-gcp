@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AiLogicConfigGenerativeLanguageConfigArgs',
+    'AiLogicConfigGenerativeLanguageConfigArgsDict',
+    'AiLogicConfigTelemetryConfigArgs',
+    'AiLogicConfigTelemetryConfigArgsDict',
     'AppHostingBackendCodebaseArgs',
     'AppHostingBackendCodebaseArgsDict',
     'AppHostingBackendManagedResourceArgs',
@@ -114,6 +118,178 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AiLogicConfigGenerativeLanguageConfigArgsDict(TypedDict):
+        api_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the API key. The API key must have
+        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        Note that this API is sometimes called the *Generative Language API* in
+        the Google Cloud console.
+
+        Do **not** add this Gemini API key into your app's codebase
+        """
+        api_key_wo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The value of the API key. The API key must have
+        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        Note that this API is sometimes called the *Generative Language API* in
+        the Google Cloud console.
+
+        Do **not** add this Gemini API key into your app's codebase
+        """
+        api_key_wo_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+elif False:
+    AiLogicConfigGenerativeLanguageConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiLogicConfigGenerativeLanguageConfigArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key: The value of the API key. The API key must have
+               'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+               Note that this API is sometimes called the *Generative Language API* in
+               the Google Cloud console.
+               
+               Do **not** add this Gemini API key into your app's codebase
+        :param pulumi.Input[_builtins.str] api_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The value of the API key. The API key must have
+               'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+               Note that this API is sometimes called the *Generative Language API* in
+               the Google Cloud console.
+               
+               Do **not** add this Gemini API key into your app's codebase
+        :param pulumi.Input[_builtins.str] api_key_wo_version: Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if api_key_wo is not None:
+            pulumi.set(__self__, "api_key_wo", api_key_wo)
+        if api_key_wo_version is not None:
+            pulumi.set(__self__, "api_key_wo_version", api_key_wo_version)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the API key. The API key must have
+        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        Note that this API is sometimes called the *Generative Language API* in
+        the Google Cloud console.
+
+        Do **not** add this Gemini API key into your app's codebase
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyWo")
+    def api_key_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The value of the API key. The API key must have
+        'generativelanguage.googleapis.com' in its "API restrictions" allowlist.
+        Note that this API is sometimes called the *Generative Language API* in
+        the Google Cloud console.
+
+        Do **not** add this Gemini API key into your app's codebase
+        """
+        return pulumi.get(self, "api_key_wo")
+
+    @api_key_wo.setter
+    def api_key_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyWoVersion")
+    def api_key_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "api_key_wo_version")
+
+    @api_key_wo_version.setter
+    def api_key_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key_wo_version", value)
+
+
+if not MYPY:
+    class AiLogicConfigTelemetryConfigArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The current monitoring mode used for this project.
+        Possible values:
+        NONE
+        ALL
+        """
+        sampling_rate: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The percentage of requests to be sampled, expressed as a fraction
+        in the range (0,1]. Note that the actual sampling rate may be lower than
+        the specified value if the system is overloaded. Default is 1.0.
+        """
+elif False:
+    AiLogicConfigTelemetryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiLogicConfigTelemetryConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 sampling_rate: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: The current monitoring mode used for this project.
+               Possible values:
+               NONE
+               ALL
+        :param pulumi.Input[_builtins.float] sampling_rate: The percentage of requests to be sampled, expressed as a fraction
+               in the range (0,1]. Note that the actual sampling rate may be lower than
+               the specified value if the system is overloaded. Default is 1.0.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The current monitoring mode used for this project.
+        Possible values:
+        NONE
+        ALL
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The percentage of requests to be sampled, expressed as a fraction
+        in the range (0,1]. Note that the actual sampling rate may be lower than
+        the specified value if the system is overloaded. Default is 1.0.
+        """
+        return pulumi.get(self, "sampling_rate")
+
+    @sampling_rate.setter
+    def sampling_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "sampling_rate", value)
+
 
 if not MYPY:
     class AppHostingBackendCodebaseArgsDict(TypedDict):

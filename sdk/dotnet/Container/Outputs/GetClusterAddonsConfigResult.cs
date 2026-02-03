@@ -70,6 +70,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult> ParallelstoreCsiDriverConfigs;
         /// <summary>
+        /// Configuration for the Pod Snapshot feature.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigPodSnapshotConfigResult> PodSnapshotConfigs;
+        /// <summary>
         /// The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigRayOperatorConfigResult> RayOperatorConfigs;
@@ -108,6 +112,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult> parallelstoreCsiDriverConfigs,
 
+            ImmutableArray<Outputs.GetClusterAddonsConfigPodSnapshotConfigResult> podSnapshotConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigRayOperatorConfigResult> rayOperatorConfigs,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigStatefulHaConfigResult> statefulHaConfigs)
@@ -126,6 +132,7 @@ namespace Pulumi.Gcp.Container.Outputs
             LustreCsiDriverConfigs = lustreCsiDriverConfigs;
             NetworkPolicyConfigs = networkPolicyConfigs;
             ParallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
+            PodSnapshotConfigs = podSnapshotConfigs;
             RayOperatorConfigs = rayOperatorConfigs;
             StatefulHaConfigs = statefulHaConfigs;
         }

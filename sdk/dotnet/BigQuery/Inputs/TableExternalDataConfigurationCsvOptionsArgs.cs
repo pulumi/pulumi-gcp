@@ -59,6 +59,17 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("skipLeadingRows")]
         public Input<int>? SkipLeadingRows { get; set; }
 
+        /// <summary>
+        /// Specifies how source columns are matched
+        /// to the table schema. Valid values are `POSITION` (columns matched by position,
+        /// assuming same ordering as the schema) or `NAME` (columns matched by name,
+        /// reads the header row and reorders columns to align with schema field names).
+        /// If not set, a default is chosen based on how the schema is provided: when
+        /// autodetect is used, columns are matched by name; otherwise, by position.
+        /// </summary>
+        [Input("sourceColumnMatch")]
+        public Input<string>? SourceColumnMatch { get; set; }
+
         public TableExternalDataConfigurationCsvOptionsArgs()
         {
         }

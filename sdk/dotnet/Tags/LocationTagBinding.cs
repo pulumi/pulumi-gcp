@@ -14,9 +14,9 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// To get more information about LocationTagBinding, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
+    /// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagBindings)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+    ///     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
     /// 
     /// ## Example Usage
     /// 
@@ -104,6 +104,41 @@ namespace Pulumi.Gcp.Tags
     /// });
     /// ```
     /// 
+    /// ### Compute Instance With Dynamic Tag Value
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "project_id",
+    ///         Name = "project_id",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var key = new Gcp.Tags.TagKey("key", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "keyname",
+    ///         Description = "For keyname resources.",
+    ///         AllowedValuesRegex = "^[a-z]+$",
+    ///     });
+    /// 
+    ///     var binding = new Gcp.Tags.LocationTagBinding("binding", new()
+    ///     {
+    ///         Parent = project.Number.Apply(number =&gt; $"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance.InstanceId}"),
+    ///         TagValue = key.NamespacedName.Apply(namespacedName =&gt; $"{namespacedName}/test-value"),
+    ///         Location = "us-central1-a",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// LocationTagBinding can be imported using any of these accepted formats:
@@ -128,7 +163,7 @@ namespace Pulumi.Gcp.Tags
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+        /// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -140,7 +175,7 @@ namespace Pulumi.Gcp.Tags
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// The TagValue of the TagBinding. Must be of the form tagValues/456.
+        /// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         /// </summary>
         [Output("tagValue")]
         public Output<string> TagValue { get; private set; } = null!;
@@ -206,7 +241,7 @@ namespace Pulumi.Gcp.Tags
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// The TagValue of the TagBinding. Must be of the form tagValues/456.
+        /// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         /// </summary>
         [Input("tagValue", required: true)]
         public Input<string> TagValue { get; set; } = null!;
@@ -228,7 +263,7 @@ namespace Pulumi.Gcp.Tags
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+        /// The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -240,7 +275,7 @@ namespace Pulumi.Gcp.Tags
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// The TagValue of the TagBinding. Must be of the form tagValues/456.
+        /// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
         /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }

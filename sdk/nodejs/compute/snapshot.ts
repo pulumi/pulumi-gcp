@@ -86,6 +86,38 @@ import * as utilities from "../utilities";
  *     guestFlush: true,
  * });
  * ```
+ * ### Snapshot Basic Source Instant Snapshot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     name: "debian-disk",
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const instantSnapshot = new gcp.compute.InstantSnapshot("instant_snapshot", {
+ *     name: "my-instant-snapshot",
+ *     sourceDisk: persistent.selfLink,
+ *     zone: persistent.zone,
+ *     description: "A test snapshot",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const snapshot = new gcp.compute.Snapshot("snapshot", {
+ *     name: "my-snapshot",
+ *     zone: "us-central1-a",
+ *     sourceInstantSnapshot: instantSnapshot.id,
+ * });
+ * ```
  * ### Snapshot Chainname
  *
  * ```typescript
@@ -273,6 +305,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     declare public readonly sourceDiskEncryptionKey: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
     /**
+     * A reference to the instant snapshot used to create this snapshot.
+     */
+    declare public readonly sourceInstantSnapshot: pulumi.Output<string | undefined>;
+    /**
      * A size of the storage used by the snapshot. As snapshots share
      * storage, this number is expected to change with snapshot
      * creation/deletion.
@@ -294,7 +330,7 @@ export class Snapshot extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SnapshotArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: SnapshotArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SnapshotArgs | SnapshotState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -318,14 +354,12 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["snapshotType"] = state?.snapshotType;
             resourceInputs["sourceDisk"] = state?.sourceDisk;
             resourceInputs["sourceDiskEncryptionKey"] = state?.sourceDiskEncryptionKey;
+            resourceInputs["sourceInstantSnapshot"] = state?.sourceInstantSnapshot;
             resourceInputs["storageBytes"] = state?.storageBytes;
             resourceInputs["storageLocations"] = state?.storageLocations;
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if (args?.sourceDisk === undefined && !opts.urn) {
-                throw new Error("Missing required property 'sourceDisk'");
-            }
             resourceInputs["chainName"] = args?.chainName;
             resourceInputs["description"] = args?.description;
             resourceInputs["guestFlush"] = args?.guestFlush;
@@ -336,6 +370,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["snapshotType"] = args?.snapshotType;
             resourceInputs["sourceDisk"] = args?.sourceDisk;
             resourceInputs["sourceDiskEncryptionKey"] = args?.sourceDiskEncryptionKey;
+            resourceInputs["sourceInstantSnapshot"] = args?.sourceInstantSnapshot;
             resourceInputs["storageLocations"] = args?.storageLocations;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -465,6 +500,10 @@ export interface SnapshotState {
      */
     sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
     /**
+     * A reference to the instant snapshot used to create this snapshot.
+     */
+    sourceInstantSnapshot?: pulumi.Input<string>;
+    /**
      * A size of the storage used by the snapshot. As snapshots share
      * storage, this number is expected to change with snapshot
      * creation/deletion.
@@ -544,7 +583,7 @@ export interface SnapshotArgs {
     /**
      * A reference to the disk used to create this snapshot.
      */
-    sourceDisk: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
@@ -552,6 +591,10 @@ export interface SnapshotArgs {
      * Structure is documented below.
      */
     sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
+    /**
+     * A reference to the instant snapshot used to create this snapshot.
+     */
+    sourceInstantSnapshot?: pulumi.Input<string>;
     /**
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      */

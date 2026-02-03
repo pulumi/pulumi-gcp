@@ -35,7 +35,7 @@ import java.util.concurrent.CompletableFuture;
 public final class ProjectsFunctions {
     /**
      * Retrieve the ancestors for a project.
-     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
      * ## Example Usage
      * 
@@ -76,7 +76,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve the ancestors for a project.
-     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
      * ## Example Usage
      * 
@@ -117,7 +117,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve the ancestors for a project.
-     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
      * ## Example Usage
      * 
@@ -158,7 +158,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve the ancestors for a project.
-     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
      * ## Example Usage
      * 
@@ -199,7 +199,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve the ancestors for a project.
-     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
      * ## Example Usage
      * 
@@ -240,7 +240,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve the ancestors for a project.
-     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
      * ## Example Usage
      * 
@@ -281,7 +281,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve the ancestors for a project.
-     * See the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
+     * See the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/getAncestry) for more details.
      * 
      * ## Example Usage
      * 
@@ -1059,7 +1059,7 @@ public final class ProjectsFunctions {
     /**
      * Allows management of Organization policies for a Google Project. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -1103,7 +1103,7 @@ public final class ProjectsFunctions {
     /**
      * Allows management of Organization policies for a Google Project. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -1147,7 +1147,7 @@ public final class ProjectsFunctions {
     /**
      * Allows management of Organization policies for a Google Project. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -1191,7 +1191,7 @@ public final class ProjectsFunctions {
     /**
      * Allows management of Organization policies for a Google Project. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -1235,7 +1235,7 @@ public final class ProjectsFunctions {
     /**
      * Allows management of Organization policies for a Google Project. For more information see
      * [the official
-     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
      * 
      * ## Example Usage
      * 
@@ -1278,7 +1278,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve information about a set of projects based on a filter. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1326,7 +1326,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve information about a set of projects based on a filter. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1374,7 +1374,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve information about a set of projects based on a filter. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1422,7 +1422,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve information about a set of projects based on a filter. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
      * for more details.
      * 
      * ## Example Usage
@@ -1470,7 +1470,7 @@ public final class ProjectsFunctions {
     }
     /**
      * Retrieve information about a set of projects based on a filter. See the
-     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+     * [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
      * for more details.
      * 
      * ## Example Usage

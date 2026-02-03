@@ -206,6 +206,8 @@ type NodePool struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
+	// The node drain configuration of the pool. Structure is documented below.
+	NodeDrainConfigs NodePoolNodeDrainConfigArrayOutput `pulumi:"nodeDrainConfigs"`
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -320,6 +322,8 @@ type nodePoolState struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount *int `pulumi:"nodeCount"`
+	// The node drain configuration of the pool. Structure is documented below.
+	NodeDrainConfigs []NodePoolNodeDrainConfig `pulumi:"nodeDrainConfigs"`
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -402,6 +406,8 @@ type NodePoolState struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntPtrInput
+	// The node drain configuration of the pool. Structure is documented below.
+	NodeDrainConfigs NodePoolNodeDrainConfigArrayInput
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -484,6 +490,8 @@ type nodePoolArgs struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount *int `pulumi:"nodeCount"`
+	// The node drain configuration of the pool. Structure is documented below.
+	NodeDrainConfigs []NodePoolNodeDrainConfig `pulumi:"nodeDrainConfigs"`
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -562,6 +570,8 @@ type NodePoolArgs struct {
 	// The number of nodes per instance group. This field can be used to
 	// update the number of nodes per instance group but should not be used alongside `autoscaling`.
 	NodeCount pulumi.IntPtrInput
+	// The node drain configuration of the pool. Structure is documented below.
+	NodeDrainConfigs NodePoolNodeDrainConfigArrayInput
 	// The list of zones in which the node pool's nodes should be located. Nodes must
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
@@ -766,6 +776,11 @@ func (o NodePoolOutput) NodeConfig() NodePoolNodeConfigOutput {
 // update the number of nodes per instance group but should not be used alongside `autoscaling`.
 func (o NodePoolOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// The node drain configuration of the pool. Structure is documented below.
+func (o NodePoolOutput) NodeDrainConfigs() NodePoolNodeDrainConfigArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolNodeDrainConfigArrayOutput { return v.NodeDrainConfigs }).(NodePoolNodeDrainConfigArrayOutput)
 }
 
 // The list of zones in which the node pool's nodes should be located. Nodes must

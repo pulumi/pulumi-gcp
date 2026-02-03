@@ -35,6 +35,8 @@ __all__ = [
     'DataExchangeSubscriptionLinkedResourceArgsDict',
     'ListingBigqueryDatasetArgs',
     'ListingBigqueryDatasetArgsDict',
+    'ListingBigqueryDatasetEffectiveReplicaArgs',
+    'ListingBigqueryDatasetEffectiveReplicaArgsDict',
     'ListingBigqueryDatasetSelectedResourceArgs',
     'ListingBigqueryDatasetSelectedResourceArgsDict',
     'ListingCommercialInfoArgs',
@@ -572,6 +574,17 @@ if not MYPY:
         """
         Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
         """
+        effective_replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgsDict']]]]
+        """
+        (Output, Beta)
+        Server owned effective state of replicas. Contains both primary and secondary replicas.
+        Each replica includes a system-computed (output-only) state and primary designation.
+        Structure is documented below.
+        """
+        replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of regions where the publisher has created shared dataset replicas.
+        """
         selected_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgsDict']]]]
         """
         Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
@@ -584,13 +597,24 @@ elif False:
 class ListingBigqueryDatasetArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[_builtins.str],
+                 effective_replicas: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]] = None,
+                 replica_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  selected_resources: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] dataset: Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+        :param pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]] effective_replicas: (Output, Beta)
+               Server owned effective state of replicas. Contains both primary and secondary replicas.
+               Each replica includes a system-computed (output-only) state and primary designation.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_locations: A list of regions where the publisher has created shared dataset replicas.
         :param pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]] selected_resources: Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
                Structure is documented below.
         """
         pulumi.set(__self__, "dataset", dataset)
+        if effective_replicas is not None:
+            pulumi.set(__self__, "effective_replicas", effective_replicas)
+        if replica_locations is not None:
+            pulumi.set(__self__, "replica_locations", replica_locations)
         if selected_resources is not None:
             pulumi.set(__self__, "selected_resources", selected_resources)
 
@@ -607,6 +631,33 @@ class ListingBigqueryDatasetArgs:
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveReplicas")
+    def effective_replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]:
+        """
+        (Output, Beta)
+        Server owned effective state of replicas. Contains both primary and secondary replicas.
+        Each replica includes a system-computed (output-only) state and primary designation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "effective_replicas")
+
+    @effective_replicas.setter
+    def effective_replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]):
+        pulumi.set(self, "effective_replicas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replicaLocations")
+    def replica_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of regions where the publisher has created shared dataset replicas.
+        """
+        return pulumi.get(self, "replica_locations")
+
+    @replica_locations.setter
+    def replica_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "replica_locations", value)
+
+    @_builtins.property
     @pulumi.getter(name="selectedResources")
     def selected_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]:
         """
@@ -621,10 +672,90 @@ class ListingBigqueryDatasetArgs:
 
 
 if not MYPY:
+    class ListingBigqueryDatasetEffectiveReplicaArgsDict(TypedDict):
+        location: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the location this data exchange listing.
+        """
+        primary_state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Output-only. Indicates that this replica is the primary replica.
+        Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+        """
+        replica_state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+        Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+        """
+elif False:
+    ListingBigqueryDatasetEffectiveReplicaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListingBigqueryDatasetEffectiveReplicaArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 replica_state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] location: The name of the location this data exchange listing.
+        :param pulumi.Input[_builtins.str] primary_state: Output-only. Indicates that this replica is the primary replica.
+               Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+        :param pulumi.Input[_builtins.str] replica_state: Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+               Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if primary_state is not None:
+            pulumi.set(__self__, "primary_state", primary_state)
+        if replica_state is not None:
+            pulumi.set(__self__, "replica_state", replica_state)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the location this data exchange listing.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryState")
+    def primary_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Output-only. Indicates that this replica is the primary replica.
+        Possible values: PRIMARY_STATE_UNSPECIFIED, PRIMARY_REPLICA
+        """
+        return pulumi.get(self, "primary_state")
+
+    @primary_state.setter
+    def primary_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replicaState")
+    def replica_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
+        Possible values: REPLICA_STATE_UNSPECIFIED, READY_TO_USE, UNAVAILABLE
+        """
+        return pulumi.get(self, "replica_state")
+
+    @replica_state.setter
+    def replica_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "replica_state", value)
+
+
+if not MYPY:
     class ListingBigqueryDatasetSelectedResourceArgsDict(TypedDict):
         routine: NotRequired[pulumi.Input[_builtins.str]]
         """
         Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+
+        <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
         """
         table: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -640,6 +771,8 @@ class ListingBigqueryDatasetSelectedResourceArgs:
                  table: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] routine: Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+               
+               <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
         :param pulumi.Input[_builtins.str] table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
         """
         if routine is not None:
@@ -652,6 +785,8 @@ class ListingBigqueryDatasetSelectedResourceArgs:
     def routine(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+
+        <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
         """
         return pulumi.get(self, "routine")
 
@@ -1194,6 +1329,10 @@ if not MYPY:
         The labels associated with this dataset. You can use these to
         organize and group your datasets.
         """
+        replica_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of regions where the subscriber wants dataset replicas.
+        """
 elif False:
     ListingSubscriptionDestinationDatasetArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1204,7 +1343,8 @@ class ListingSubscriptionDestinationDatasetArgs:
                  location: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 replica_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['ListingSubscriptionDestinationDatasetDatasetReferenceArgs'] dataset_reference: A reference that identifies the destination dataset.
                Structure is documented below.
@@ -1214,6 +1354,7 @@ class ListingSubscriptionDestinationDatasetArgs:
         :param pulumi.Input[_builtins.str] friendly_name: A descriptive name for the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_locations: List of regions where the subscriber wants dataset replicas.
         """
         pulumi.set(__self__, "dataset_reference", dataset_reference)
         pulumi.set(__self__, "location", location)
@@ -1223,6 +1364,8 @@ class ListingSubscriptionDestinationDatasetArgs:
             pulumi.set(__self__, "friendly_name", friendly_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if replica_locations is not None:
+            pulumi.set(__self__, "replica_locations", replica_locations)
 
     @_builtins.property
     @pulumi.getter(name="datasetReference")
@@ -1286,6 +1429,18 @@ class ListingSubscriptionDestinationDatasetArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replicaLocations")
+    def replica_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of regions where the subscriber wants dataset replicas.
+        """
+        return pulumi.get(self, "replica_locations")
+
+    @replica_locations.setter
+    def replica_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "replica_locations", value)
 
 
 if not MYPY:

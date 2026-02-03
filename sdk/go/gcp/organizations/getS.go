@@ -12,8 +12,8 @@ import (
 )
 
 // Gets a list of all organizations.
-// See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
-// and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+// See [the official documentation](https://docs.cloud.google.com/resource-manager/docs/creating-managing-organization)
+// and [API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
 //
 // ## Example Usage
 //
@@ -52,7 +52,7 @@ func GetS(ctx *pulumi.Context, args *GetSArgs, opts ...pulumi.InvokeOption) (*Ge
 
 // A collection of arguments for invoking getS.
 type GetSArgs struct {
-	// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+	// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
 	Filter *string `pulumi:"filter"`
 }
 
@@ -76,7 +76,7 @@ func GetSOutput(ctx *pulumi.Context, args GetSOutputArgs, opts ...pulumi.InvokeO
 
 // A collection of arguments for invoking getS.
 type GetSOutputArgs struct {
-	// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
+	// An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 }
 

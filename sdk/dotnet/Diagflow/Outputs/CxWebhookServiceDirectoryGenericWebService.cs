@@ -70,6 +70,11 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader> SecretVersionsForRequestHeaders;
         /// <summary>
+        /// Configuration for authentication using a service account.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig? ServiceAccountAuthConfig;
+        /// <summary>
         /// Indicate the auth token type generated from the [Diglogflow service
         /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
         /// The generated token is sent in the Authorization header.
@@ -104,6 +109,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
             ImmutableArray<Outputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader> secretVersionsForRequestHeaders,
 
+            Outputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig? serviceAccountAuthConfig,
+
             string? serviceAgentAuth,
 
             string uri,
@@ -118,6 +125,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
             RequestHeaders = requestHeaders;
             SecretVersionForUsernamePassword = secretVersionForUsernamePassword;
             SecretVersionsForRequestHeaders = secretVersionsForRequestHeaders;
+            ServiceAccountAuthConfig = serviceAccountAuthConfig;
             ServiceAgentAuth = serviceAgentAuth;
             Uri = uri;
             WebhookType = webhookType;

@@ -63,6 +63,25 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
     }
 
     /**
+     * (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     * 
+     */
+    @Import(name="enableEnhancedIpv4Allocation")
+    private @Nullable Output<Boolean> enableEnhancedIpv4Allocation;
+
+    /**
+     * @return (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     * 
+     */
+    public Optional<Output<Boolean>> enableEnhancedIpv4Allocation() {
+        return Optional.ofNullable(this.enableEnhancedIpv4Allocation);
+    }
+
+    /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      * 
      */
@@ -209,6 +228,7 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
         this.allocatablePrefixLength = $.allocatablePrefixLength;
         this.delegateeProject = $.delegateeProject;
         this.description = $.description;
+        this.enableEnhancedIpv4Allocation = $.enableEnhancedIpv4Allocation;
         this.ipCidrRange = $.ipCidrRange;
         this.ipv6AccessType = $.ipv6AccessType;
         this.isAddress = $.isAddress;
@@ -297,6 +317,31 @@ public final class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs extends com
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableEnhancedIpv4Allocation (Output)
+         * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+         * Applicable for IPv4 sub-PDPs only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEnhancedIpv4Allocation(@Nullable Output<Boolean> enableEnhancedIpv4Allocation) {
+            $.enableEnhancedIpv4Allocation = enableEnhancedIpv4Allocation;
+            return this;
+        }
+
+        /**
+         * @param enableEnhancedIpv4Allocation (Output)
+         * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+         * Applicable for IPv4 sub-PDPs only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableEnhancedIpv4Allocation(Boolean enableEnhancedIpv4Allocation) {
+            return enableEnhancedIpv4Allocation(Output.of(enableEnhancedIpv4Allocation));
         }
 
         /**

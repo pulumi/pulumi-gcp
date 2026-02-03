@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * // Create Folder in GCP Organization.
  * const kajFolder = new gcp.organizations.Folder("kaj_folder", {
- *     displayName: "my-folder",
+ *     displayName: "folder-kajc",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

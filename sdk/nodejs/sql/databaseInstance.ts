@@ -267,8 +267,8 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *             binaryLogEnabled: true,
  *         },
- *         backupdrBackup: "backupdr_backup_full_path",
  *     },
+ *     backupdrBackup: "backupdr_backup_full_path",
  * });
  * ```
  *

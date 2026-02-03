@@ -308,6 +308,7 @@ import (
 //					Metadata: pulumi.StringMap{
 //						"terraform":                  pulumi.String("true"),
 //						"serial-port-logging-enable": pulumi.String("false"),
+//						"enable-jupyterlab4":         pulumi.String("false"),
 //					},
 //					ReservationAffinity: &workbench.InstanceGceSetupReservationAffinityArgs{
 //						ConsumeReservationType: pulumi.String("RESERVATION_SPECIFIC"),

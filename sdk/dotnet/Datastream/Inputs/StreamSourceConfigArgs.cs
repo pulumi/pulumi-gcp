@@ -54,6 +54,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<string> SourceConnectionProfile { get; set; } = null!;
 
         /// <summary>
+        /// Spanner data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("spannerSourceConfig")]
+        public Input<Inputs.StreamSourceConfigSpannerSourceConfigArgs>? SpannerSourceConfig { get; set; }
+
+        /// <summary>
         /// SQL Server data source configuration.
         /// Structure is documented below.
         /// </summary>

@@ -31,7 +31,7 @@ public final class VolumeExportPolicyRule {
     private @Nullable Integer anonUid;
     /**
      * @return If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-     * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
+     * Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
      * 
      */
     private @Nullable String hasRootAccess;
@@ -77,7 +77,7 @@ public final class VolumeExportPolicyRule {
     private @Nullable Boolean nfsv4;
     /**
      * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-     * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+     * Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
      * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
      * 
      */
@@ -108,7 +108,7 @@ public final class VolumeExportPolicyRule {
     }
     /**
      * @return If enabled, the root user (UID = 0) of the specified clients doesn&#39;t get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-     * It&#39;s overwritten by the squashMode parameter. Use either squashMode or has_root_access.
+     * Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
      * 
      */
     public Optional<String> hasRootAccess() {
@@ -172,7 +172,7 @@ public final class VolumeExportPolicyRule {
     }
     /**
      * @return SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-     * It overwrites the hasRootAccess parameter. Use either squashMode or has_root_access. For ALL_SQUASH, accessType needs to be set to READ_WRITE.
+     * Use either squashMode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
      * Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
      * 
      */

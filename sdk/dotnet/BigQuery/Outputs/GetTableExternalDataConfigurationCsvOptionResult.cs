@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
         /// </summary>
         public readonly int SkipLeadingRows;
+        /// <summary>
+        /// Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
+        /// </summary>
+        public readonly string SourceColumnMatch;
 
         [OutputConstructor]
         private GetTableExternalDataConfigurationCsvOptionResult(
@@ -47,7 +51,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string quote,
 
-            int skipLeadingRows)
+            int skipLeadingRows,
+
+            string sourceColumnMatch)
         {
             AllowJaggedRows = allowJaggedRows;
             AllowQuotedNewlines = allowQuotedNewlines;
@@ -55,6 +61,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             FieldDelimiter = fieldDelimiter;
             Quote = quote;
             SkipLeadingRows = skipLeadingRows;
+            SourceColumnMatch = sourceColumnMatch;
         }
     }
 }

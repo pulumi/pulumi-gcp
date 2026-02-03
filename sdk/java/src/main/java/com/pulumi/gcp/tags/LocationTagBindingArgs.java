@@ -51,14 +51,14 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      * 
      */
     @Import(name="tagValue", required=true)
     private Output<String> tagValue;
 
     /**
-     * @return The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * @return The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      * 
      */
     public Output<String> tagValue() {
@@ -138,7 +138,7 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tagValue The TagValue of the TagBinding. Must be of the form tagValues/456.
+         * @param tagValue The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class LocationTagBindingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tagValue The TagValue of the TagBinding. Must be of the form tagValues/456.
+         * @param tagValue The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
          * 
          * @return builder
          * 

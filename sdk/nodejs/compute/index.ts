@@ -880,6 +880,11 @@ export type RegionCommitment = import("./regionCommitment").RegionCommitment;
 export const RegionCommitment: typeof import("./regionCommitment").RegionCommitment = null as any;
 utilities.lazyLoad(exports, ["RegionCommitment"], () => require("./regionCommitment"));
 
+export { RegionCompositeHealthCheckArgs, RegionCompositeHealthCheckState } from "./regionCompositeHealthCheck";
+export type RegionCompositeHealthCheck = import("./regionCompositeHealthCheck").RegionCompositeHealthCheck;
+export const RegionCompositeHealthCheck: typeof import("./regionCompositeHealthCheck").RegionCompositeHealthCheck = null as any;
+utilities.lazyLoad(exports, ["RegionCompositeHealthCheck"], () => require("./regionCompositeHealthCheck"));
+
 export { RegionDiskArgs, RegionDiskState } from "./regionDisk";
 export type RegionDisk = import("./regionDisk").RegionDisk;
 export const RegionDisk: typeof import("./regionDisk").RegionDisk = null as any;
@@ -1441,6 +1446,8 @@ const _module = {
                 return new RegionBackendServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionCommitment:RegionCommitment":
                 return new RegionCommitment(name, <any>undefined, { urn })
+            case "gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck":
+                return new RegionCompositeHealthCheck(name, <any>undefined, { urn })
             case "gcp:compute/regionDisk:RegionDisk":
                 return new RegionDisk(name, <any>undefined, { urn })
             case "gcp:compute/regionDiskIamBinding:RegionDiskIamBinding":
@@ -1687,6 +1694,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamBin
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionCommitment", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionCompositeHealthCheck", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDisk", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamMember", _module)

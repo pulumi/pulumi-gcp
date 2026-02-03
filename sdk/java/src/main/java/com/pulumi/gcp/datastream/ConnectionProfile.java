@@ -19,6 +19,7 @@ import com.pulumi.gcp.datastream.outputs.ConnectionProfileOracleProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePostgresqlProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfilePrivateConnectivity;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileSalesforceProfile;
+import com.pulumi.gcp.datastream.outputs.ConnectionProfileSpannerProfile;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileSqlServerProfile;
 import java.lang.Boolean;
 import java.lang.String;
@@ -536,6 +537,46 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Datastream Connection Profile Spanner
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileSpannerProfileArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()
+ *             .displayName("Spanner Source")
+ *             .location("us-central1")
+ *             .connectionProfileId("source-profile")
+ *             .createWithoutValidation(true)
+ *             .spannerProfile(ConnectionProfileSpannerProfileArgs.builder()
+ *                 .database("projects/example-project/instances/example-instance/databases/example-database")
+ *                 .host("https://spanner.example-region.rep.googleapis.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Datastream Connection Profile Postgres Secret Manager
  * 
  * <pre>
@@ -929,6 +970,22 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConnectionProfileSalesforceProfile>> salesforceProfile() {
         return Codegen.optional(this.salesforceProfile);
+    }
+    /**
+     * Spanner profile.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="spannerProfile", refs={ConnectionProfileSpannerProfile.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProfileSpannerProfile> spannerProfile;
+
+    /**
+     * @return Spanner profile.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionProfileSpannerProfile>> spannerProfile() {
+        return Codegen.optional(this.spannerProfile);
     }
     /**
      * SQL Server database profile.

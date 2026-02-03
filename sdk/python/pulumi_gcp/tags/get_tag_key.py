@@ -26,7 +26,10 @@ class GetTagKeyResult:
     """
     A collection of values returned by getTagKey.
     """
-    def __init__(__self__, create_time=None, description=None, id=None, name=None, namespaced_name=None, parent=None, short_name=None, update_time=None):
+    def __init__(__self__, allowed_values_regex=None, create_time=None, description=None, id=None, name=None, namespaced_name=None, parent=None, short_name=None, update_time=None):
+        if allowed_values_regex and not isinstance(allowed_values_regex, str):
+            raise TypeError("Expected argument 'allowed_values_regex' to be a str")
+        pulumi.set(__self__, "allowed_values_regex", allowed_values_regex)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -51,6 +54,14 @@ class GetTagKeyResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValuesRegex")
+    def allowed_values_regex(self) -> _builtins.str:
+        """
+        Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        """
+        return pulumi.get(self, "allowed_values_regex")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -116,6 +127,7 @@ class AwaitableGetTagKeyResult(GetTagKeyResult):
         if False:
             yield self
         return GetTagKeyResult(
+            allowed_values_regex=self.allowed_values_regex,
             create_time=self.create_time,
             description=self.description,
             id=self.id,
@@ -160,6 +172,7 @@ def get_tag_key(parent: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:tags/getTagKey:getTagKey', __args__, opts=opts, typ=GetTagKeyResult).value
 
     return AwaitableGetTagKeyResult(
+        allowed_values_regex=pulumi.get(__ret__, 'allowed_values_regex'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
@@ -201,6 +214,7 @@ def get_tag_key_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:tags/getTagKey:getTagKey', __args__, opts=opts, typ=GetTagKeyResult)
     return __ret__.apply(lambda __response__: GetTagKeyResult(
+        allowed_values_regex=pulumi.get(__response__, 'allowed_values_regex'),
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),

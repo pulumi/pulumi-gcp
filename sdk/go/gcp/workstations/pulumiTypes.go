@@ -1616,7 +1616,7 @@ type WorkstationConfigHostGceInstance struct {
 	Tags []string `pulumi:"tags"`
 	// Resource manager tags to be bound to the VM instances backing the Workstations.
 	// Tag keys and values have the same definition as
-	// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+	// https://docs.cloud.google.com/resource-manager/docs/tags/tags-overview
 	// Keys must be in the format `tagKeys/{tag_key_id}`, and
 	// values are in the format `tagValues/456`.
 	VmTags map[string]string `pulumi:"vmTags"`
@@ -1667,7 +1667,7 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Resource manager tags to be bound to the VM instances backing the Workstations.
 	// Tag keys and values have the same definition as
-	// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+	// https://docs.cloud.google.com/resource-manager/docs/tags/tags-overview
 	// Keys must be in the format `tagKeys/{tag_key_id}`, and
 	// values are in the format `tagValues/456`.
 	VmTags pulumi.StringMapInput `pulumi:"vmTags"`
@@ -1830,7 +1830,7 @@ func (o WorkstationConfigHostGceInstanceOutput) Tags() pulumi.StringArrayOutput 
 
 // Resource manager tags to be bound to the VM instances backing the Workstations.
 // Tag keys and values have the same definition as
-// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+// https://docs.cloud.google.com/resource-manager/docs/tags/tags-overview
 // Keys must be in the format `tagKeys/{tag_key_id}`, and
 // values are in the format `tagValues/456`.
 func (o WorkstationConfigHostGceInstanceOutput) VmTags() pulumi.StringMapOutput {
@@ -1998,7 +1998,7 @@ func (o WorkstationConfigHostGceInstancePtrOutput) Tags() pulumi.StringArrayOutp
 
 // Resource manager tags to be bound to the VM instances backing the Workstations.
 // Tag keys and values have the same definition as
-// https://cloud.google.com/resource-manager/docs/tags/tags-overview
+// https://docs.cloud.google.com/resource-manager/docs/tags/tags-overview
 // Keys must be in the format `tagKeys/{tag_key_id}`, and
 // values are in the format `tagValues/456`.
 func (o WorkstationConfigHostGceInstancePtrOutput) VmTags() pulumi.StringMapOutput {

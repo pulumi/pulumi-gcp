@@ -289,6 +289,9 @@ public final class Config {
     public Optional<String> filestoreCustomEndpoint() {
         return Codegen.stringProp("filestoreCustomEndpoint").config(config).get();
     }
+    public Optional<String> firebaseAiLogicCustomEndpoint() {
+        return Codegen.stringProp("firebaseAiLogicCustomEndpoint").config(config).get();
+    }
     public Optional<String> firebaseAppCheckCustomEndpoint() {
         return Codegen.stringProp("firebaseAppCheckCustomEndpoint").config(config).get();
     }

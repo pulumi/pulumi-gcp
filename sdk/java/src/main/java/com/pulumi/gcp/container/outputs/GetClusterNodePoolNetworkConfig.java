@@ -17,6 +17,11 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodePoolNetworkConfig {
     /**
+     * @return The accelerator network profile to use for this node pool.
+     * 
+     */
+    private String acceleratorNetworkProfile;
+    /**
      * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
      * 
      */
@@ -63,6 +68,13 @@ public final class GetClusterNodePoolNetworkConfig {
     private String subnetwork;
 
     private GetClusterNodePoolNetworkConfig() {}
+    /**
+     * @return The accelerator network profile to use for this node pool.
+     * 
+     */
+    public String acceleratorNetworkProfile() {
+        return this.acceleratorNetworkProfile;
+    }
     /**
      * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
      * 
@@ -136,6 +148,7 @@ public final class GetClusterNodePoolNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String acceleratorNetworkProfile;
         private List<GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs;
         private List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
         private Boolean createPodRange;
@@ -148,6 +161,7 @@ public final class GetClusterNodePoolNetworkConfig {
         public Builder() {}
         public Builder(GetClusterNodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratorNetworkProfile = defaults.acceleratorNetworkProfile;
     	      this.additionalNodeNetworkConfigs = defaults.additionalNodeNetworkConfigs;
     	      this.additionalPodNetworkConfigs = defaults.additionalPodNetworkConfigs;
     	      this.createPodRange = defaults.createPodRange;
@@ -159,6 +173,14 @@ public final class GetClusterNodePoolNetworkConfig {
     	      this.subnetwork = defaults.subnetwork;
         }
 
+        @CustomType.Setter
+        public Builder acceleratorNetworkProfile(String acceleratorNetworkProfile) {
+            if (acceleratorNetworkProfile == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "acceleratorNetworkProfile");
+            }
+            this.acceleratorNetworkProfile = acceleratorNetworkProfile;
+            return this;
+        }
         @CustomType.Setter
         public Builder additionalNodeNetworkConfigs(List<GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs) {
             if (additionalNodeNetworkConfigs == null) {
@@ -245,6 +267,7 @@ public final class GetClusterNodePoolNetworkConfig {
         }
         public GetClusterNodePoolNetworkConfig build() {
             final var _resultValue = new GetClusterNodePoolNetworkConfig();
+            _resultValue.acceleratorNetworkProfile = acceleratorNetworkProfile;
             _resultValue.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             _resultValue.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             _resultValue.createPodRange = createPodRange;

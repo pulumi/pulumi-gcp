@@ -252,7 +252,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -545,7 +545,7 @@ namespace Pulumi.Gcp.CloudFunctions
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -808,7 +808,7 @@ namespace Pulumi.Gcp.CloudFunctions
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+        /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field 'effective_labels' for all of the labels present on the resource.

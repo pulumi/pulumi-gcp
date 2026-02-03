@@ -289,7 +289,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_folder = gcp.organizations.Folder("my_folder",
-            display_name="my-folder",
+            display_name="folder-faaf",
             parent="organizations/123456789",
             deletion_protection=False)
         folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
@@ -309,7 +309,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_folder = gcp.organizations.Folder("my_folder",
-            display_name="my-folder",
+            display_name="folder-faak",
             parent="organizations/123456789",
             deletion_protection=False)
         my_project = gcp.organizations.Project("my_project",
@@ -398,7 +398,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_folder = gcp.organizations.Folder("my_folder",
-            display_name="my-folder",
+            display_name="folder-faaf",
             parent="organizations/123456789",
             deletion_protection=False)
         folder_access_approval = gcp.folder.AccessApprovalSettings("folder_access_approval",
@@ -418,7 +418,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_folder = gcp.organizations.Folder("my_folder",
-            display_name="my-folder",
+            display_name="folder-faak",
             parent="organizations/123456789",
             deletion_protection=False)
         my_project = gcp.organizations.Project("my_project",

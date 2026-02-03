@@ -43,6 +43,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string SourceConnectionProfile;
         /// <summary>
+        /// Spanner data source configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigSpannerSourceConfig? SpannerSourceConfig;
+        /// <summary>
         /// SQL Server data source configuration.
         /// Structure is documented below.
         /// </summary>
@@ -62,6 +67,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             string sourceConnectionProfile,
 
+            Outputs.StreamSourceConfigSpannerSourceConfig? spannerSourceConfig,
+
             Outputs.StreamSourceConfigSqlServerSourceConfig? sqlServerSourceConfig)
         {
             MongodbSourceConfig = mongodbSourceConfig;
@@ -70,6 +77,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
             PostgresqlSourceConfig = postgresqlSourceConfig;
             SalesforceSourceConfig = salesforceSourceConfig;
             SourceConnectionProfile = sourceConnectionProfile;
+            SpannerSourceConfig = spannerSourceConfig;
             SqlServerSourceConfig = sqlServerSourceConfig;
         }
     }

@@ -182,7 +182,6 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// AutonomousDatabase can be imported using any of these accepted formats:
@@ -247,6 +246,12 @@ namespace Pulumi.Gcp.OracleDatabase
 
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+        /// </summary>
+        [Output("disasterRecoverySupportedLocations")]
+        public Output<ImmutableArray<string>> DisasterRecoverySupportedLocations { get; private set; } = null!;
 
         /// <summary>
         /// The display name for the Autonomous Database. The name does not have to
@@ -315,6 +320,12 @@ namespace Pulumi.Gcp.OracleDatabase
         public Output<string> OdbSubnet { get; private set; } = null!;
 
         /// <summary>
+        /// The peer Autonomous Database names of the given Autonomous Database.
+        /// </summary>
+        [Output("peerAutonomousDatabases")]
+        public Output<ImmutableArray<string>> PeerAutonomousDatabases { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -334,6 +345,13 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The source Autonomous Database configuration for the standby Autonomous Database.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sourceConfig")]
+        public Output<Outputs.AutonomousDatabaseSourceConfig?> SourceConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -412,8 +430,8 @@ namespace Pulumi.Gcp.OracleDatabase
         /// the project. The name must begin with a letter and can
         /// contain a maximum of 30 alphanumeric characters.
         /// </summary>
-        [Input("database", required: true)]
-        public Input<string> Database { get; set; } = null!;
+        [Input("database")]
+        public Input<string>? Database { get; set; }
 
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -481,8 +499,15 @@ namespace Pulumi.Gcp.OracleDatabase
         /// The properties of an Autonomous Database.
         /// Structure is documented below.
         /// </summary>
-        [Input("properties", required: true)]
-        public Input<Inputs.AutonomousDatabasePropertiesArgs> Properties { get; set; } = null!;
+        [Input("properties")]
+        public Input<Inputs.AutonomousDatabasePropertiesArgs>? Properties { get; set; }
+
+        /// <summary>
+        /// The source Autonomous Database configuration for the standby Autonomous Database.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceConfig")]
+        public Input<Inputs.AutonomousDatabaseSourceConfigArgs>? SourceConfig { get; set; }
 
         public AutonomousDatabaseArgs()
         {
@@ -529,6 +554,18 @@ namespace Pulumi.Gcp.OracleDatabase
 
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        [Input("disasterRecoverySupportedLocations")]
+        private InputList<string>? _disasterRecoverySupportedLocations;
+
+        /// <summary>
+        /// List of supported GCP region to clone the Autonomous Database for disaster recovery.
+        /// </summary>
+        public InputList<string> DisasterRecoverySupportedLocations
+        {
+            get => _disasterRecoverySupportedLocations ?? (_disasterRecoverySupportedLocations = new InputList<string>());
+            set => _disasterRecoverySupportedLocations = value;
+        }
 
         /// <summary>
         /// The display name for the Autonomous Database. The name does not have to
@@ -612,6 +649,18 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("odbSubnet")]
         public Input<string>? OdbSubnet { get; set; }
 
+        [Input("peerAutonomousDatabases")]
+        private InputList<string>? _peerAutonomousDatabases;
+
+        /// <summary>
+        /// The peer Autonomous Database names of the given Autonomous Database.
+        /// </summary>
+        public InputList<string> PeerAutonomousDatabases
+        {
+            get => _peerAutonomousDatabases ?? (_peerAutonomousDatabases = new InputList<string>());
+            set => _peerAutonomousDatabases = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -642,6 +691,13 @@ namespace Pulumi.Gcp.OracleDatabase
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The source Autonomous Database configuration for the standby Autonomous Database.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceConfig")]
+        public Input<Inputs.AutonomousDatabaseSourceConfigGetArgs>? SourceConfig { get; set; }
 
         public AutonomousDatabaseState()
         {

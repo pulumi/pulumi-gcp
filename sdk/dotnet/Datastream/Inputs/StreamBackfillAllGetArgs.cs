@@ -48,6 +48,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<Inputs.StreamBackfillAllSalesforceExcludedObjectsGetArgs>? SalesforceExcludedObjects { get; set; }
 
         /// <summary>
+        /// Spanner objects to avoid backfilling.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("spannerExcludedObjects")]
+        public Input<Inputs.StreamBackfillAllSpannerExcludedObjectsGetArgs>? SpannerExcludedObjects { get; set; }
+
+        /// <summary>
         /// SQL Server data source objects to avoid backfilling.
         /// Structure is documented below.
         /// </summary>

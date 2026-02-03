@@ -358,6 +358,21 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A reference to the instant snapshot used to create this snapshot.
+     * 
+     */
+    @Import(name="sourceInstantSnapshot")
+    private @Nullable Output<String> sourceInstantSnapshot;
+
+    /**
+     * @return A reference to the instant snapshot used to create this snapshot.
+     * 
+     */
+    public Optional<Output<String>> sourceInstantSnapshot() {
+        return Optional.ofNullable(this.sourceInstantSnapshot);
+    }
+
+    /**
      * A size of the storage used by the snapshot. As snapshots share
      * storage, this number is expected to change with snapshot
      * creation/deletion.
@@ -427,6 +442,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         this.snapshotType = $.snapshotType;
         this.sourceDisk = $.sourceDisk;
         this.sourceDiskEncryptionKey = $.sourceDiskEncryptionKey;
+        this.sourceInstantSnapshot = $.sourceInstantSnapshot;
         this.storageBytes = $.storageBytes;
         this.storageLocations = $.storageLocations;
         this.zone = $.zone;
@@ -905,6 +921,27 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceDiskEncryptionKey(SnapshotSourceDiskEncryptionKeyArgs sourceDiskEncryptionKey) {
             return sourceDiskEncryptionKey(Output.of(sourceDiskEncryptionKey));
+        }
+
+        /**
+         * @param sourceInstantSnapshot A reference to the instant snapshot used to create this snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstantSnapshot(@Nullable Output<String> sourceInstantSnapshot) {
+            $.sourceInstantSnapshot = sourceInstantSnapshot;
+            return this;
+        }
+
+        /**
+         * @param sourceInstantSnapshot A reference to the instant snapshot used to create this snapshot.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceInstantSnapshot(String sourceInstantSnapshot) {
+            return sourceInstantSnapshot(Output.of(sourceInstantSnapshot));
         }
 
         /**

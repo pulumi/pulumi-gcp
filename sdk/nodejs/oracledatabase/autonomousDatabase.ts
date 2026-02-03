@@ -138,7 +138,6 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
- *
  * ## Import
  *
  * AutonomousDatabase can be imported using any of these accepted formats:
@@ -218,6 +217,10 @@ export class AutonomousDatabase extends pulumi.CustomResource {
     declare public readonly database: pulumi.Output<string>;
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
     /**
+     * List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     */
+    declare public /*out*/ readonly disasterRecoverySupportedLocations: pulumi.Output<string[]>;
+    /**
      * The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
      */
@@ -266,6 +269,10 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      */
     declare public readonly odbSubnet: pulumi.Output<string>;
     /**
+     * The peer Autonomous Database names of the given Autonomous Database.
+     */
+    declare public /*out*/ readonly peerAutonomousDatabases: pulumi.Output<string[]>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -280,6 +287,11 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      * and default labels configured on the provider.
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     */
+    declare public readonly sourceConfig: pulumi.Output<outputs.oracledatabase.AutonomousDatabaseSourceConfig | undefined>;
 
     /**
      * Create a AutonomousDatabase resource with the given unique name, arguments, and options.
@@ -300,6 +312,7 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["database"] = state?.database;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["disasterRecoverySupportedLocations"] = state?.disasterRecoverySupportedLocations;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["entitlementId"] = state?.entitlementId;
@@ -309,22 +322,18 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["network"] = state?.network;
             resourceInputs["odbNetwork"] = state?.odbNetwork;
             resourceInputs["odbSubnet"] = state?.odbSubnet;
+            resourceInputs["peerAutonomousDatabases"] = state?.peerAutonomousDatabases;
             resourceInputs["project"] = state?.project;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["sourceConfig"] = state?.sourceConfig;
         } else {
             const args = argsOrState as AutonomousDatabaseArgs | undefined;
             if (args?.autonomousDatabaseId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autonomousDatabaseId'");
             }
-            if (args?.database === undefined && !opts.urn) {
-                throw new Error("Missing required property 'database'");
-            }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
-            }
-            if (args?.properties === undefined && !opts.urn) {
-                throw new Error("Missing required property 'properties'");
             }
             resourceInputs["adminPassword"] = args?.adminPassword;
             resourceInputs["autonomousDatabaseId"] = args?.autonomousDatabaseId;
@@ -339,10 +348,13 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["odbSubnet"] = args?.odbSubnet;
             resourceInputs["project"] = args?.project;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["sourceConfig"] = args?.sourceConfig;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["disasterRecoverySupportedLocations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["entitlementId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["peerAutonomousDatabases"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -382,6 +394,10 @@ export interface AutonomousDatabaseState {
      */
     database?: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * List of supported GCP region to clone the Autonomous Database for disaster recovery.
+     */
+    disasterRecoverySupportedLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
@@ -431,6 +447,10 @@ export interface AutonomousDatabaseState {
      */
     odbSubnet?: pulumi.Input<string>;
     /**
+     * The peer Autonomous Database names of the given Autonomous Database.
+     */
+    peerAutonomousDatabases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -445,6 +465,11 @@ export interface AutonomousDatabaseState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     */
+    sourceConfig?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseSourceConfig>;
 }
 
 /**
@@ -471,7 +496,7 @@ export interface AutonomousDatabaseArgs {
      * the project. The name must begin with a letter and can
      * contain a maximum of 30 alphanumeric characters.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the Autonomous Database. The name does not have to
@@ -516,5 +541,10 @@ export interface AutonomousDatabaseArgs {
      * The properties of an Autonomous Database.
      * Structure is documented below.
      */
-    properties: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseProperties>;
+    properties?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseProperties>;
+    /**
+     * The source Autonomous Database configuration for the standby Autonomous Database.
+     * Structure is documented below.
+     */
+    sourceConfig?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseSourceConfig>;
 }

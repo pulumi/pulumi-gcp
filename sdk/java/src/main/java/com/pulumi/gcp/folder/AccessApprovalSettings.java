@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var myFolder = new Folder("myFolder", FolderArgs.builder()
- *             .displayName("my-folder")
+ *             .displayName("folder-faaf")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myFolder = new Folder("myFolder", FolderArgs.builder()
- *             .displayName("my-folder")
+ *             .displayName("folder-faak")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());

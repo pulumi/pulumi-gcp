@@ -728,9 +728,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 "port": 443,
                 "use_ssl": True,
                 "validate_ssl": True,
-                "service_agent_authentication": {
-                    "type": "OIDC_TOKEN",
-                },
             },
             monitored_resource={
                 "type": "uptime_url",
@@ -1025,9 +1022,6 @@ class UptimeCheckConfig(pulumi.CustomResource):
                 "port": 443,
                 "use_ssl": True,
                 "validate_ssl": True,
-                "service_agent_authentication": {
-                    "type": "OIDC_TOKEN",
-                },
             },
             monitored_resource={
                 "type": "uptime_url",

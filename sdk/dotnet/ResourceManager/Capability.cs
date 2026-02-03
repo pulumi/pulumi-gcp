@@ -14,9 +14,9 @@ namespace Pulumi.Gcp.ResourceManager
     /// 
     /// To get more information about Capability, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+    /// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+    ///     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/manage-applications)
     /// 
     /// ## Example Usage
     /// 
@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.ResourceManager
     /// {
     ///     var folder = new Gcp.Organizations.Folder("folder", new()
     ///     {
-    ///         DisplayName = "my-folder",
+    ///         DisplayName = "folder-cap",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

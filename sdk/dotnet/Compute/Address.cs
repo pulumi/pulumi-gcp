@@ -182,7 +182,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
-    /// 
     /// ## Import
     /// 
     /// Address can be imported using any of these accepted formats:
@@ -250,6 +249,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        /// The PDP must support enhanced IPv4 allocations.
+        /// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+        /// Full resource URL, as in:
+        /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        /// Partial URL, as in:
+        /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+        /// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        /// </summary>
+        [Output("ipCollection")]
+        public Output<string?> IpCollection { get; private set; } = null!;
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
@@ -452,6 +464,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        /// The PDP must support enhanced IPv4 allocations.
+        /// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+        /// Full resource URL, as in:
+        /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        /// Partial URL, as in:
+        /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+        /// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        /// </summary>
+        [Input("ipCollection")]
+        public Input<string>? IpCollection { get; set; }
+
+        /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
         /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
@@ -609,6 +634,19 @@ namespace Pulumi.Gcp.Compute
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        /// The PDP must support enhanced IPv4 allocations.
+        /// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
+        /// Full resource URL, as in:
+        /// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        /// Partial URL, as in:
+        /// * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
+        /// * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
+        /// </summary>
+        [Input("ipCollection")]
+        public Input<string>? IpCollection { get; set; }
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.

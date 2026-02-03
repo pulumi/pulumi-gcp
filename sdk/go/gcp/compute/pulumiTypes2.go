@@ -13,6 +13,608 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionBackendServiceOutlierDetection struct {
+	// The base time that a host is ejected for. The real time is equal to the base
+	// time multiplied by the number of times the host has been ejected. Defaults to
+	// 30000ms or 30s.
+	BaseEjectionTimes []GetRegionBackendServiceOutlierDetectionBaseEjectionTime `pulumi:"baseEjectionTimes"`
+	// Number of errors before a host is ejected from the connection pool. When the
+	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+	// Defaults to 5.
+	ConsecutiveErrors int `pulumi:"consecutiveErrors"`
+	// The number of consecutive gateway failures (502, 503, 504 status or connection
+	// errors that are mapped to one of those status codes) before a consecutive
+	// gateway failure ejection occurs. Defaults to 5.
+	ConsecutiveGatewayFailure int `pulumi:"consecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive 5xx. This setting can be used to disable
+	// ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingConsecutiveErrors int `pulumi:"enforcingConsecutiveErrors"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive gateway failures. This setting can be
+	// used to disable ejection or to ramp it up slowly. Defaults to 0.
+	EnforcingConsecutiveGatewayFailure int `pulumi:"enforcingConsecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through success rate statistics. This setting can be used to
+	// disable ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingSuccessRate int `pulumi:"enforcingSuccessRate"`
+	// Time interval between ejection sweep analysis. This can result in both new
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	Intervals []GetRegionBackendServiceOutlierDetectionInterval `pulumi:"intervals"`
+	// Maximum percentage of hosts in the load balancing pool for the backend service
+	// that can be ejected. Defaults to 10%.
+	MaxEjectionPercent int `pulumi:"maxEjectionPercent"`
+	// The number of hosts in a cluster that must have enough request volume to detect
+	// success rate outliers. If the number of hosts is less than this setting, outlier
+	// detection via success rate statistics is not performed for any host in the
+	// cluster. Defaults to 5.
+	SuccessRateMinimumHosts int `pulumi:"successRateMinimumHosts"`
+	// The minimum number of total requests that must be collected in one interval (as
+	// defined by the interval duration above) to include this host in success rate
+	// based outlier detection. If the volume is lower than this setting, outlier
+	// detection via success rate statistics is not performed for that host. Defaults
+	// to 100.
+	SuccessRateRequestVolume int `pulumi:"successRateRequestVolume"`
+	// This factor is used to determine the ejection threshold for success rate outlier
+	// ejection. The ejection threshold is the difference between the mean success
+	// rate, and the product of this factor and the standard deviation of the mean
+	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+	// by a thousand to get a double. That is, if the desired factor is 1.9, the
+	// runtime value should be 1900. Defaults to 1900.
+	SuccessRateStdevFactor int `pulumi:"successRateStdevFactor"`
+}
+
+// GetRegionBackendServiceOutlierDetectionInput is an input type that accepts GetRegionBackendServiceOutlierDetectionArgs and GetRegionBackendServiceOutlierDetectionOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceOutlierDetectionInput` via:
+//
+//	GetRegionBackendServiceOutlierDetectionArgs{...}
+type GetRegionBackendServiceOutlierDetectionInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceOutlierDetectionOutput() GetRegionBackendServiceOutlierDetectionOutput
+	ToGetRegionBackendServiceOutlierDetectionOutputWithContext(context.Context) GetRegionBackendServiceOutlierDetectionOutput
+}
+
+type GetRegionBackendServiceOutlierDetectionArgs struct {
+	// The base time that a host is ejected for. The real time is equal to the base
+	// time multiplied by the number of times the host has been ejected. Defaults to
+	// 30000ms or 30s.
+	BaseEjectionTimes GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayInput `pulumi:"baseEjectionTimes"`
+	// Number of errors before a host is ejected from the connection pool. When the
+	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+	// Defaults to 5.
+	ConsecutiveErrors pulumi.IntInput `pulumi:"consecutiveErrors"`
+	// The number of consecutive gateway failures (502, 503, 504 status or connection
+	// errors that are mapped to one of those status codes) before a consecutive
+	// gateway failure ejection occurs. Defaults to 5.
+	ConsecutiveGatewayFailure pulumi.IntInput `pulumi:"consecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive 5xx. This setting can be used to disable
+	// ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingConsecutiveErrors pulumi.IntInput `pulumi:"enforcingConsecutiveErrors"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive gateway failures. This setting can be
+	// used to disable ejection or to ramp it up slowly. Defaults to 0.
+	EnforcingConsecutiveGatewayFailure pulumi.IntInput `pulumi:"enforcingConsecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through success rate statistics. This setting can be used to
+	// disable ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingSuccessRate pulumi.IntInput `pulumi:"enforcingSuccessRate"`
+	// Time interval between ejection sweep analysis. This can result in both new
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	Intervals GetRegionBackendServiceOutlierDetectionIntervalArrayInput `pulumi:"intervals"`
+	// Maximum percentage of hosts in the load balancing pool for the backend service
+	// that can be ejected. Defaults to 10%.
+	MaxEjectionPercent pulumi.IntInput `pulumi:"maxEjectionPercent"`
+	// The number of hosts in a cluster that must have enough request volume to detect
+	// success rate outliers. If the number of hosts is less than this setting, outlier
+	// detection via success rate statistics is not performed for any host in the
+	// cluster. Defaults to 5.
+	SuccessRateMinimumHosts pulumi.IntInput `pulumi:"successRateMinimumHosts"`
+	// The minimum number of total requests that must be collected in one interval (as
+	// defined by the interval duration above) to include this host in success rate
+	// based outlier detection. If the volume is lower than this setting, outlier
+	// detection via success rate statistics is not performed for that host. Defaults
+	// to 100.
+	SuccessRateRequestVolume pulumi.IntInput `pulumi:"successRateRequestVolume"`
+	// This factor is used to determine the ejection threshold for success rate outlier
+	// ejection. The ejection threshold is the difference between the mean success
+	// rate, and the product of this factor and the standard deviation of the mean
+	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+	// by a thousand to get a double. That is, if the desired factor is 1.9, the
+	// runtime value should be 1900. Defaults to 1900.
+	SuccessRateStdevFactor pulumi.IntInput `pulumi:"successRateStdevFactor"`
+}
+
+func (GetRegionBackendServiceOutlierDetectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceOutlierDetectionArgs) ToGetRegionBackendServiceOutlierDetectionOutput() GetRegionBackendServiceOutlierDetectionOutput {
+	return i.ToGetRegionBackendServiceOutlierDetectionOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceOutlierDetectionArgs) ToGetRegionBackendServiceOutlierDetectionOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceOutlierDetectionOutput)
+}
+
+// GetRegionBackendServiceOutlierDetectionArrayInput is an input type that accepts GetRegionBackendServiceOutlierDetectionArray and GetRegionBackendServiceOutlierDetectionArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceOutlierDetectionArrayInput` via:
+//
+//	GetRegionBackendServiceOutlierDetectionArray{ GetRegionBackendServiceOutlierDetectionArgs{...} }
+type GetRegionBackendServiceOutlierDetectionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceOutlierDetectionArrayOutput() GetRegionBackendServiceOutlierDetectionArrayOutput
+	ToGetRegionBackendServiceOutlierDetectionArrayOutputWithContext(context.Context) GetRegionBackendServiceOutlierDetectionArrayOutput
+}
+
+type GetRegionBackendServiceOutlierDetectionArray []GetRegionBackendServiceOutlierDetectionInput
+
+func (GetRegionBackendServiceOutlierDetectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceOutlierDetectionArray) ToGetRegionBackendServiceOutlierDetectionArrayOutput() GetRegionBackendServiceOutlierDetectionArrayOutput {
+	return i.ToGetRegionBackendServiceOutlierDetectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceOutlierDetectionArray) ToGetRegionBackendServiceOutlierDetectionArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceOutlierDetectionArrayOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceOutlierDetectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceOutlierDetectionOutput) ToGetRegionBackendServiceOutlierDetectionOutput() GetRegionBackendServiceOutlierDetectionOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionOutput) ToGetRegionBackendServiceOutlierDetectionOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionOutput {
+	return o
+}
+
+// The base time that a host is ejected for. The real time is equal to the base
+// time multiplied by the number of times the host has been ejected. Defaults to
+// 30000ms or 30s.
+func (o GetRegionBackendServiceOutlierDetectionOutput) BaseEjectionTimes() GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) []GetRegionBackendServiceOutlierDetectionBaseEjectionTime {
+		return v.BaseEjectionTimes
+	}).(GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput)
+}
+
+// Number of errors before a host is ejected from the connection pool. When the
+// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+// Defaults to 5.
+func (o GetRegionBackendServiceOutlierDetectionOutput) ConsecutiveErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.ConsecutiveErrors }).(pulumi.IntOutput)
+}
+
+// The number of consecutive gateway failures (502, 503, 504 status or connection
+// errors that are mapped to one of those status codes) before a consecutive
+// gateway failure ejection occurs. Defaults to 5.
+func (o GetRegionBackendServiceOutlierDetectionOutput) ConsecutiveGatewayFailure() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.ConsecutiveGatewayFailure }).(pulumi.IntOutput)
+}
+
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through consecutive 5xx. This setting can be used to disable
+// ejection or to ramp it up slowly. Defaults to 100.
+func (o GetRegionBackendServiceOutlierDetectionOutput) EnforcingConsecutiveErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveErrors }).(pulumi.IntOutput)
+}
+
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through consecutive gateway failures. This setting can be
+// used to disable ejection or to ramp it up slowly. Defaults to 0.
+func (o GetRegionBackendServiceOutlierDetectionOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntOutput)
+}
+
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through success rate statistics. This setting can be used to
+// disable ejection or to ramp it up slowly. Defaults to 100.
+func (o GetRegionBackendServiceOutlierDetectionOutput) EnforcingSuccessRate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.EnforcingSuccessRate }).(pulumi.IntOutput)
+}
+
+// Time interval between ejection sweep analysis. This can result in both new
+// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+func (o GetRegionBackendServiceOutlierDetectionOutput) Intervals() GetRegionBackendServiceOutlierDetectionIntervalArrayOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) []GetRegionBackendServiceOutlierDetectionInterval {
+		return v.Intervals
+	}).(GetRegionBackendServiceOutlierDetectionIntervalArrayOutput)
+}
+
+// Maximum percentage of hosts in the load balancing pool for the backend service
+// that can be ejected. Defaults to 10%.
+func (o GetRegionBackendServiceOutlierDetectionOutput) MaxEjectionPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.MaxEjectionPercent }).(pulumi.IntOutput)
+}
+
+// The number of hosts in a cluster that must have enough request volume to detect
+// success rate outliers. If the number of hosts is less than this setting, outlier
+// detection via success rate statistics is not performed for any host in the
+// cluster. Defaults to 5.
+func (o GetRegionBackendServiceOutlierDetectionOutput) SuccessRateMinimumHosts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.SuccessRateMinimumHosts }).(pulumi.IntOutput)
+}
+
+// The minimum number of total requests that must be collected in one interval (as
+// defined by the interval duration above) to include this host in success rate
+// based outlier detection. If the volume is lower than this setting, outlier
+// detection via success rate statistics is not performed for that host. Defaults
+// to 100.
+func (o GetRegionBackendServiceOutlierDetectionOutput) SuccessRateRequestVolume() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.SuccessRateRequestVolume }).(pulumi.IntOutput)
+}
+
+// This factor is used to determine the ejection threshold for success rate outlier
+// ejection. The ejection threshold is the difference between the mean success
+// rate, and the product of this factor and the standard deviation of the mean
+// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+// by a thousand to get a double. That is, if the desired factor is 1.9, the
+// runtime value should be 1900. Defaults to 1900.
+func (o GetRegionBackendServiceOutlierDetectionOutput) SuccessRateStdevFactor() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetection) int { return v.SuccessRateStdevFactor }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceOutlierDetectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceOutlierDetection)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceOutlierDetectionArrayOutput) ToGetRegionBackendServiceOutlierDetectionArrayOutput() GetRegionBackendServiceOutlierDetectionArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionArrayOutput) ToGetRegionBackendServiceOutlierDetectionArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceOutlierDetectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceOutlierDetection {
+		return vs[0].([]GetRegionBackendServiceOutlierDetection)[vs[1].(int)]
+	}).(GetRegionBackendServiceOutlierDetectionOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionBaseEjectionTime struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionBackendServiceOutlierDetectionBaseEjectionTimeInput is an input type that accepts GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs and GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceOutlierDetectionBaseEjectionTimeInput` via:
+//
+//	GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs{...}
+type GetRegionBackendServiceOutlierDetectionBaseEjectionTimeInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput
+	ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(context.Context) GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput
+}
+
+type GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return i.ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput)
+}
+
+// GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayInput is an input type that accepts GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArray and GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayInput` via:
+//
+//	GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArray{ GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs{...} }
+type GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput
+	ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(context.Context) GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput
+}
+
+type GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArray []GetRegionBackendServiceOutlierDetectionBaseEjectionTimeInput
+
+func (GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArray) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return i.ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArray) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput() GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations
+// less than one second are represented with a 0 'seconds' field and a positive
+// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+func (o GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+// inclusive.
+func (o GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceOutlierDetectionBaseEjectionTime)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput() GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) ToGetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceOutlierDetectionBaseEjectionTime {
+		return vs[0].([]GetRegionBackendServiceOutlierDetectionBaseEjectionTime)[vs[1].(int)]
+	}).(GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionInterval struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetRegionBackendServiceOutlierDetectionIntervalInput is an input type that accepts GetRegionBackendServiceOutlierDetectionIntervalArgs and GetRegionBackendServiceOutlierDetectionIntervalOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceOutlierDetectionIntervalInput` via:
+//
+//	GetRegionBackendServiceOutlierDetectionIntervalArgs{...}
+type GetRegionBackendServiceOutlierDetectionIntervalInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceOutlierDetectionIntervalOutput() GetRegionBackendServiceOutlierDetectionIntervalOutput
+	ToGetRegionBackendServiceOutlierDetectionIntervalOutputWithContext(context.Context) GetRegionBackendServiceOutlierDetectionIntervalOutput
+}
+
+type GetRegionBackendServiceOutlierDetectionIntervalArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetRegionBackendServiceOutlierDetectionIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceOutlierDetectionIntervalArgs) ToGetRegionBackendServiceOutlierDetectionIntervalOutput() GetRegionBackendServiceOutlierDetectionIntervalOutput {
+	return i.ToGetRegionBackendServiceOutlierDetectionIntervalOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceOutlierDetectionIntervalArgs) ToGetRegionBackendServiceOutlierDetectionIntervalOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceOutlierDetectionIntervalOutput)
+}
+
+// GetRegionBackendServiceOutlierDetectionIntervalArrayInput is an input type that accepts GetRegionBackendServiceOutlierDetectionIntervalArray and GetRegionBackendServiceOutlierDetectionIntervalArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceOutlierDetectionIntervalArrayInput` via:
+//
+//	GetRegionBackendServiceOutlierDetectionIntervalArray{ GetRegionBackendServiceOutlierDetectionIntervalArgs{...} }
+type GetRegionBackendServiceOutlierDetectionIntervalArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceOutlierDetectionIntervalArrayOutput() GetRegionBackendServiceOutlierDetectionIntervalArrayOutput
+	ToGetRegionBackendServiceOutlierDetectionIntervalArrayOutputWithContext(context.Context) GetRegionBackendServiceOutlierDetectionIntervalArrayOutput
+}
+
+type GetRegionBackendServiceOutlierDetectionIntervalArray []GetRegionBackendServiceOutlierDetectionIntervalInput
+
+func (GetRegionBackendServiceOutlierDetectionIntervalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceOutlierDetectionIntervalArray) ToGetRegionBackendServiceOutlierDetectionIntervalArrayOutput() GetRegionBackendServiceOutlierDetectionIntervalArrayOutput {
+	return i.ToGetRegionBackendServiceOutlierDetectionIntervalArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceOutlierDetectionIntervalArray) ToGetRegionBackendServiceOutlierDetectionIntervalArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionIntervalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceOutlierDetectionIntervalArrayOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionIntervalOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceOutlierDetectionIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceOutlierDetectionIntervalOutput) ToGetRegionBackendServiceOutlierDetectionIntervalOutput() GetRegionBackendServiceOutlierDetectionIntervalOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionIntervalOutput) ToGetRegionBackendServiceOutlierDetectionIntervalOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionIntervalOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations
+// less than one second are represented with a 0 'seconds' field and a positive
+// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+func (o GetRegionBackendServiceOutlierDetectionIntervalOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetectionInterval) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+// inclusive.
+func (o GetRegionBackendServiceOutlierDetectionIntervalOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceOutlierDetectionInterval) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetRegionBackendServiceOutlierDetectionIntervalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceOutlierDetectionIntervalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceOutlierDetectionInterval)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceOutlierDetectionIntervalArrayOutput) ToGetRegionBackendServiceOutlierDetectionIntervalArrayOutput() GetRegionBackendServiceOutlierDetectionIntervalArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionIntervalArrayOutput) ToGetRegionBackendServiceOutlierDetectionIntervalArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceOutlierDetectionIntervalArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceOutlierDetectionIntervalArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceOutlierDetectionIntervalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceOutlierDetectionInterval {
+		return vs[0].([]GetRegionBackendServiceOutlierDetectionInterval)[vs[1].(int)]
+	}).(GetRegionBackendServiceOutlierDetectionIntervalOutput)
+}
+
+type GetRegionBackendServiceParam struct {
+	// Resource manager tags to be bound to the region backend service. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetRegionBackendServiceParamInput is an input type that accepts GetRegionBackendServiceParamArgs and GetRegionBackendServiceParamOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceParamInput` via:
+//
+//	GetRegionBackendServiceParamArgs{...}
+type GetRegionBackendServiceParamInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceParamOutput() GetRegionBackendServiceParamOutput
+	ToGetRegionBackendServiceParamOutputWithContext(context.Context) GetRegionBackendServiceParamOutput
+}
+
+type GetRegionBackendServiceParamArgs struct {
+	// Resource manager tags to be bound to the region backend service. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetRegionBackendServiceParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceParam)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceParamArgs) ToGetRegionBackendServiceParamOutput() GetRegionBackendServiceParamOutput {
+	return i.ToGetRegionBackendServiceParamOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceParamArgs) ToGetRegionBackendServiceParamOutputWithContext(ctx context.Context) GetRegionBackendServiceParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceParamOutput)
+}
+
+// GetRegionBackendServiceParamArrayInput is an input type that accepts GetRegionBackendServiceParamArray and GetRegionBackendServiceParamArrayOutput values.
+// You can construct a concrete instance of `GetRegionBackendServiceParamArrayInput` via:
+//
+//	GetRegionBackendServiceParamArray{ GetRegionBackendServiceParamArgs{...} }
+type GetRegionBackendServiceParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionBackendServiceParamArrayOutput() GetRegionBackendServiceParamArrayOutput
+	ToGetRegionBackendServiceParamArrayOutputWithContext(context.Context) GetRegionBackendServiceParamArrayOutput
+}
+
+type GetRegionBackendServiceParamArray []GetRegionBackendServiceParamInput
+
+func (GetRegionBackendServiceParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceParam)(nil)).Elem()
+}
+
+func (i GetRegionBackendServiceParamArray) ToGetRegionBackendServiceParamArrayOutput() GetRegionBackendServiceParamArrayOutput {
+	return i.ToGetRegionBackendServiceParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionBackendServiceParamArray) ToGetRegionBackendServiceParamArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionBackendServiceParamArrayOutput)
+}
+
+type GetRegionBackendServiceParamOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionBackendServiceParam)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceParamOutput) ToGetRegionBackendServiceParamOutput() GetRegionBackendServiceParamOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceParamOutput) ToGetRegionBackendServiceParamOutputWithContext(ctx context.Context) GetRegionBackendServiceParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the region backend service. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o GetRegionBackendServiceParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionBackendServiceParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetRegionBackendServiceParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionBackendServiceParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionBackendServiceParam)(nil)).Elem()
+}
+
+func (o GetRegionBackendServiceParamArrayOutput) ToGetRegionBackendServiceParamArrayOutput() GetRegionBackendServiceParamArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceParamArrayOutput) ToGetRegionBackendServiceParamArrayOutputWithContext(ctx context.Context) GetRegionBackendServiceParamArrayOutput {
+	return o
+}
+
+func (o GetRegionBackendServiceParamArrayOutput) Index(i pulumi.IntInput) GetRegionBackendServiceParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionBackendServiceParam {
+		return vs[0].([]GetRegionBackendServiceParam)[vs[1].(int)]
+	}).(GetRegionBackendServiceParamOutput)
+}
+
 type GetRegionBackendServiceStrongSessionAffinityCooky struct {
 	// The name of the regional backend service.
 	Name string `pulumi:"name"`
@@ -5611,6 +6213,8 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpRanges []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+	IgmpQuery string `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
 	InternalIpv6PrefixLength int `pulumi:"internalIpv6PrefixLength"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
@@ -5660,6 +6264,8 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
 	AliasIpRanges GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+	IgmpQuery pulumi.StringInput `pulumi:"igmpQuery"`
 	// The prefix length of the primary internal IPv6 range.
 	InternalIpv6PrefixLength pulumi.IntInput `pulumi:"internalIpv6PrefixLength"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
@@ -5756,6 +6362,11 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetRegi
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange {
 		return v.AliasIpRanges
 	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) IgmpQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.IgmpQuery }).(pulumi.StringOutput)
 }
 
 // The prefix length of the primary internal IPv6 range.
@@ -23375,6 +23986,14 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionArrayInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionBaseEjectionTimeInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionIntervalInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceOutlierDetectionIntervalArrayInput)(nil)).Elem(), GetRegionBackendServiceOutlierDetectionIntervalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceParamInput)(nil)).Elem(), GetRegionBackendServiceParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceParamArrayInput)(nil)).Elem(), GetRegionBackendServiceParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyInput)(nil)).Elem(), GetRegionBackendServiceStrongSessionAffinityCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyArrayInput)(nil)).Elem(), GetRegionBackendServiceStrongSessionAffinityCookyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionBackendServiceStrongSessionAffinityCookyTtlInput)(nil)).Elem(), GetRegionBackendServiceStrongSessionAffinityCookyTtlArgs{})
@@ -23733,6 +24352,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionBaseEjectionTimeOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionIntervalOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceOutlierDetectionIntervalArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceParamOutput{})
+	pulumi.RegisterOutputType(GetRegionBackendServiceParamArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceStrongSessionAffinityCookyOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceStrongSessionAffinityCookyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionBackendServiceStrongSessionAffinityCookyTtlOutput{})

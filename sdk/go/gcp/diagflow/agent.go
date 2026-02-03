@@ -32,14 +32,53 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := diagflow.NewAgent(ctx, "full_agent", &diagflow.AgentArgs{
+//			agentProject, err := organizations.NewProject(ctx, "agent_project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("my-project"),
+//				Name:           pulumi.String("my-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			agentProjectService, err := projects.NewService(ctx, "agent_project", &projects.ServiceArgs{
+//				Project:                  agentProject.ProjectId,
+//				Service:                  pulumi.String("dialogflow.googleapis.com"),
+//				DisableDependentServices: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			dialogflowServiceAccount, err := serviceaccount.NewAccount(ctx, "dialogflow_service_account", &serviceaccount.AccountArgs{
+//				AccountId: pulumi.String("my-account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "agent_create", &projects.IAMMemberArgs{
+//				Project: agentProjectService.Project,
+//				Role:    pulumi.String("roles/dialogflow.admin"),
+//				Member: dialogflowServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = diagflow.NewAgent(ctx, "full_agent", &diagflow.AgentArgs{
+//				Project:             agentProject.ProjectId,
 //				DisplayName:         pulumi.String("dialogflow-agent"),
 //				DefaultLanguageCode: pulumi.String("en"),
 //				SupportedLanguageCodes: pulumi.StringArray{

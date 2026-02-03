@@ -10,6 +10,7 @@ import com.pulumi.gcp.datastream.inputs.StreamBackfillAllMysqlExcludedObjectsArg
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllOracleExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllSalesforceExcludedObjectsArgs;
+import com.pulumi.gcp.datastream.inputs.StreamBackfillAllSpannerExcludedObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllSqlServerExcludedObjectsArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -106,6 +107,23 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Spanner objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="spannerExcludedObjects")
+    private @Nullable Output<StreamBackfillAllSpannerExcludedObjectsArgs> spannerExcludedObjects;
+
+    /**
+     * @return Spanner objects to avoid backfilling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamBackfillAllSpannerExcludedObjectsArgs>> spannerExcludedObjects() {
+        return Optional.ofNullable(this.spannerExcludedObjects);
+    }
+
+    /**
      * SQL Server data source objects to avoid backfilling.
      * Structure is documented below.
      * 
@@ -130,6 +148,7 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
         this.oracleExcludedObjects = $.oracleExcludedObjects;
         this.postgresqlExcludedObjects = $.postgresqlExcludedObjects;
         this.salesforceExcludedObjects = $.salesforceExcludedObjects;
+        this.spannerExcludedObjects = $.spannerExcludedObjects;
         this.sqlServerExcludedObjects = $.sqlServerExcludedObjects;
     }
 
@@ -264,6 +283,29 @@ public final class StreamBackfillAllArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder salesforceExcludedObjects(StreamBackfillAllSalesforceExcludedObjectsArgs salesforceExcludedObjects) {
             return salesforceExcludedObjects(Output.of(salesforceExcludedObjects));
+        }
+
+        /**
+         * @param spannerExcludedObjects Spanner objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerExcludedObjects(@Nullable Output<StreamBackfillAllSpannerExcludedObjectsArgs> spannerExcludedObjects) {
+            $.spannerExcludedObjects = spannerExcludedObjects;
+            return this;
+        }
+
+        /**
+         * @param spannerExcludedObjects Spanner objects to avoid backfilling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerExcludedObjects(StreamBackfillAllSpannerExcludedObjectsArgs spannerExcludedObjects) {
+            return spannerExcludedObjects(Output.of(spannerExcludedObjects));
         }
 
         /**

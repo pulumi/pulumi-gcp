@@ -12,7 +12,7 @@ import (
 )
 
 // Retrieve information about a set of projects based on a filter. See the
-// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+// [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list)
 // for more details.
 //
 // ## Example Usage
@@ -61,7 +61,7 @@ func GetProject(ctx *pulumi.Context, args *GetProjectArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getProject.
 type GetProjectArgs struct {
-	// A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
+	// A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
 	Filter string `pulumi:"filter"`
 }
 
@@ -85,7 +85,7 @@ func GetProjectOutput(ctx *pulumi.Context, args GetProjectOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getProject.
 type GetProjectOutputArgs struct {
-	// A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
+	// A string filter as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 

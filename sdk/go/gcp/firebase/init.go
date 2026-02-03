@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:firebase/aiLogicConfig:AiLogicConfig":
+		r = &AiLogicConfig{}
+	case "gcp:firebase/aiLogicPromptTemplate:AiLogicPromptTemplate":
+		r = &AiLogicPromptTemplate{}
+	case "gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock":
+		r = &AiLogicPromptTemplateLock{}
 	case "gcp:firebase/androidApp:AndroidApp":
 		r = &AndroidApp{}
 	case "gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig":
@@ -84,6 +90,21 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/aiLogicConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/aiLogicPromptTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/aiLogicPromptTemplateLock",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/androidApp",

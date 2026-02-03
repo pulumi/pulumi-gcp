@@ -308,6 +308,108 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// });
     /// ```
+    /// ### Dialogflowcx Webhook With Service Account Auth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "it",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var webhookUseServiceAccount = new Gcp.Diagflow.CxWebhook("webhook_use_service_account", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyWebhook",
+    ///         GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceArgs
+    ///         {
+    ///             Uri = "https://example.googleapis.com",
+    ///             WebhookType = "STANDARD",
+    ///             ServiceAccountAuthConfig = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceServiceAccountAuthConfigArgs
+    ///             {
+    ///                 ServiceAccount = "my@service-account.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dialogflowcx Webhook Service Directory With Service Account Auth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "us-central1",
+    ///         DefaultLanguageCode = "en",
+    ///         SupportedLanguageCodes = new[]
+    ///         {
+    ///             "it",
+    ///             "de",
+    ///             "es",
+    ///         },
+    ///         TimeZone = "America/New_York",
+    ///         Description = "Example description.",
+    ///         AvatarUri = "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
+    ///         EnableStackdriverLogging = true,
+    ///         EnableSpellCorrection = true,
+    ///         SpeechToTextSettings = new Gcp.Diagflow.Inputs.CxAgentSpeechToTextSettingsArgs
+    ///         {
+    ///             EnableSpeechAdaptation = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var webhookUseServiceAccount = new Gcp.Diagflow.CxWebhook("webhook_use_service_account", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyWebhook",
+    ///         ServiceDirectory = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryArgs
+    ///         {
+    ///             Service = "projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service",
+    ///             GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceArgs
+    ///             {
+    ///                 Uri = "https://example.googleapis.com",
+    ///                 WebhookType = "STANDARD",
+    ///                 ServiceAccountAuthConfig = new Gcp.Diagflow.Inputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfigArgs
+    ///                 {
+    ///                     ServiceAccount = "my@service-account.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -14,9 +14,9 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// To get more information about TagKey, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+    /// * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+    ///     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
     /// 
     /// ## Example Usage
     /// 
@@ -61,6 +61,12 @@ namespace Pulumi.Gcp.Tags
     [GcpResourceType("gcp:tags/tagKey:TagKey")]
     public partial class TagKey : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        /// </summary>
+        [Output("allowedValuesRegex")]
+        public Output<string?> AllowedValuesRegex { get; private set; } = null!;
+
         /// <summary>
         /// Output only. Creation time.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -168,6 +174,12 @@ namespace Pulumi.Gcp.Tags
     public sealed class TagKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        /// </summary>
+        [Input("allowedValuesRegex")]
+        public Input<string>? AllowedValuesRegex { get; set; }
+
+        /// <summary>
         /// User-assigned description of the TagKey. Must not exceed 256 characters.
         /// </summary>
         [Input("description")]
@@ -215,6 +227,12 @@ namespace Pulumi.Gcp.Tags
 
     public sealed class TagKeyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        /// </summary>
+        [Input("allowedValuesRegex")]
+        public Input<string>? AllowedValuesRegex { get; set; }
+
         /// <summary>
         /// Output only. Creation time.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".

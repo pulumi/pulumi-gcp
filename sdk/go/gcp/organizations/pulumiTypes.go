@@ -1691,7 +1691,7 @@ func (o GetIAMPolicyAuditConfigArrayOutput) Index(i pulumi.IntInput) GetIAMPolic
 type GetIAMPolicyAuditConfigAuditLogConfig struct {
 	// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
-	// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+	// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
 	LogType string `pulumi:"logType"`
 }
 
@@ -1709,7 +1709,7 @@ type GetIAMPolicyAuditConfigAuditLogConfigInput interface {
 type GetIAMPolicyAuditConfigAuditLogConfigArgs struct {
 	// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+	// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
 	LogType pulumi.StringInput `pulumi:"logType"`
 }
 
@@ -1769,7 +1769,7 @@ func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) ExemptedMembers() pulumi.St
 	return o.ApplyT(func(v GetIAMPolicyAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
 }
 
-// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
+// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
 func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) LogType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIAMPolicyAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
 }

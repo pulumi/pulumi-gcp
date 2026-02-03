@@ -103,6 +103,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
+        [Input("nodeDrainConfigs")]
+        private InputList<Inputs.ClusterNodePoolNodeDrainConfigGetArgs>? _nodeDrainConfigs;
+
+        /// <summary>
+        /// Node drain configuration for this NodePool.
+        /// </summary>
+        public InputList<Inputs.ClusterNodePoolNodeDrainConfigGetArgs> NodeDrainConfigs
+        {
+            get => _nodeDrainConfigs ?? (_nodeDrainConfigs = new InputList<Inputs.ClusterNodePoolNodeDrainConfigGetArgs>());
+            set => _nodeDrainConfigs = value;
+        }
+
         [Input("nodeLocations")]
         private InputList<string>? _nodeLocations;
 

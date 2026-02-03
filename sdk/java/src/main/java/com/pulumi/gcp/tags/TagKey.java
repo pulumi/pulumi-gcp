@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
  * 
  * To get more information about TagKey, see:
  * 
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest/v3/tagKeys)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  * 
  * ## Example Usage
  * 
@@ -82,6 +82,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:tags/tagKey:TagKey")
 public class TagKey extends com.pulumi.resources.CustomResource {
+    /**
+     * Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    @Export(name="allowedValuesRegex", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> allowedValuesRegex;
+
+    /**
+     * @return Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+     * 
+     */
+    public Output<Optional<String>> allowedValuesRegex() {
+        return Codegen.optional(this.allowedValuesRegex);
+    }
     /**
      * Output only. Creation time.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.

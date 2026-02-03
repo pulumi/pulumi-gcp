@@ -35,14 +35,14 @@ public final class LocationTagBindingState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+     * The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+     * @return The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -65,14 +65,14 @@ public final class LocationTagBindingState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      * 
      */
     @Import(name="tagValue")
     private @Nullable Output<String> tagValue;
 
     /**
-     * @return The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * @return The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
      * 
      */
     public Optional<Output<String>> tagValue() {
@@ -132,7 +132,7 @@ public final class LocationTagBindingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+         * @param name The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class LocationTagBindingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
+         * @param name The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class LocationTagBindingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tagValue The TagValue of the TagBinding. Must be of the form tagValues/456.
+         * @param tagValue The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class LocationTagBindingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tagValue The TagValue of the TagBinding. Must be of the form tagValues/456.
+         * @param tagValue The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
          * 
          * @return builder
          * 

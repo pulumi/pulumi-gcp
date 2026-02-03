@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         Location = "global",
     ///         CollectionId = "default_collection",
     ///         EngineId = basicSearchEngine.EngineId,
-    ///         AssistantId = "example-assistant-id",
+    ///         AssistantId = "default_assistant",
     ///         DisplayName = "updated-tf-test-Assistant",
     ///         Description = "Assistant Description",
     ///         GenerationConfig = new Gcp.DiscoveryEngine.Inputs.AssistantGenerationConfigArgs

@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeDrainConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolPlacementPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolQueuedProvisioningArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolUpgradeSettingsArgs;
@@ -216,6 +217,21 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Node drain configuration for this NodePool.
+     * 
+     */
+    @Import(name="nodeDrainConfigs")
+    private @Nullable Output<List<ClusterNodePoolNodeDrainConfigArgs>> nodeDrainConfigs;
+
+    /**
+     * @return Node drain configuration for this NodePool.
+     * 
+     */
+    public Optional<Output<List<ClusterNodePoolNodeDrainConfigArgs>>> nodeDrainConfigs() {
+        return Optional.ofNullable(this.nodeDrainConfigs);
+    }
+
+    /**
      * The list of zones in which the cluster&#39;s nodes
      * are located. Nodes must be in the region of their regional cluster or in the
      * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
@@ -316,6 +332,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         this.networkConfig = $.networkConfig;
         this.nodeConfig = $.nodeConfig;
         this.nodeCount = $.nodeCount;
+        this.nodeDrainConfigs = $.nodeDrainConfigs;
         this.nodeLocations = $.nodeLocations;
         this.placementPolicy = $.placementPolicy;
         this.queuedProvisioning = $.queuedProvisioning;
@@ -616,6 +633,37 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder nodeCount(Integer nodeCount) {
             return nodeCount(Output.of(nodeCount));
+        }
+
+        /**
+         * @param nodeDrainConfigs Node drain configuration for this NodePool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeDrainConfigs(@Nullable Output<List<ClusterNodePoolNodeDrainConfigArgs>> nodeDrainConfigs) {
+            $.nodeDrainConfigs = nodeDrainConfigs;
+            return this;
+        }
+
+        /**
+         * @param nodeDrainConfigs Node drain configuration for this NodePool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeDrainConfigs(List<ClusterNodePoolNodeDrainConfigArgs> nodeDrainConfigs) {
+            return nodeDrainConfigs(Output.of(nodeDrainConfigs));
+        }
+
+        /**
+         * @param nodeDrainConfigs Node drain configuration for this NodePool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeDrainConfigs(ClusterNodePoolNodeDrainConfigArgs... nodeDrainConfigs) {
+            return nodeDrainConfigs(List.of(nodeDrainConfigs));
         }
 
         /**

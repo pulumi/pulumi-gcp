@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about Lien, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest)
  * * How-to Guides
- *     * [Create a Lien](https://cloud.google.com/resource-manager/docs/project-liens)
+ *     * [Create a Lien](https://docs.cloud.google.com/resource-manager/docs/project-liens)
  *
  * ## Example Usage
  *

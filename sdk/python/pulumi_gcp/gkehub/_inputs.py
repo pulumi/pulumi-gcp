@@ -153,6 +153,10 @@ __all__ = [
     'MembershipRbacRoleBindingStateArgsDict',
     'NamespaceStateArgs',
     'NamespaceStateArgsDict',
+    'RolloutSequenceStageArgs',
+    'RolloutSequenceStageArgsDict',
+    'RolloutSequenceStageClusterSelectorArgs',
+    'RolloutSequenceStageClusterSelectorArgsDict',
     'ScopeIamBindingConditionArgs',
     'ScopeIamBindingConditionArgsDict',
     'ScopeIamMemberConditionArgs',
@@ -4946,6 +4950,120 @@ class NamespaceStateArgs:
     @code.setter
     def code(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "code", value)
+
+
+if not MYPY:
+    class RolloutSequenceStageArgsDict(TypedDict):
+        fleet_projects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        List of Fleet projects to select the clusters from.
+        Expected format: projects/{project}
+        """
+        cluster_selector: NotRequired[pulumi.Input['RolloutSequenceStageClusterSelectorArgsDict']]
+        """
+        Filter to select a subset of clusters from the specified Fleet projects.
+        If not specified, all clusters in the fleet projects are selected.
+        Structure is documented below.
+        """
+        soak_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Soak time after upgrading all the clusters in the stage, specified in seconds.
+        """
+elif False:
+    RolloutSequenceStageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RolloutSequenceStageArgs:
+    def __init__(__self__, *,
+                 fleet_projects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 cluster_selector: Optional[pulumi.Input['RolloutSequenceStageClusterSelectorArgs']] = None,
+                 soak_duration: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fleet_projects: List of Fleet projects to select the clusters from.
+               Expected format: projects/{project}
+        :param pulumi.Input['RolloutSequenceStageClusterSelectorArgs'] cluster_selector: Filter to select a subset of clusters from the specified Fleet projects.
+               If not specified, all clusters in the fleet projects are selected.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] soak_duration: Soak time after upgrading all the clusters in the stage, specified in seconds.
+        """
+        pulumi.set(__self__, "fleet_projects", fleet_projects)
+        if cluster_selector is not None:
+            pulumi.set(__self__, "cluster_selector", cluster_selector)
+        if soak_duration is not None:
+            pulumi.set(__self__, "soak_duration", soak_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="fleetProjects")
+    def fleet_projects(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of Fleet projects to select the clusters from.
+        Expected format: projects/{project}
+        """
+        return pulumi.get(self, "fleet_projects")
+
+    @fleet_projects.setter
+    def fleet_projects(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "fleet_projects", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterSelector")
+    def cluster_selector(self) -> Optional[pulumi.Input['RolloutSequenceStageClusterSelectorArgs']]:
+        """
+        Filter to select a subset of clusters from the specified Fleet projects.
+        If not specified, all clusters in the fleet projects are selected.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cluster_selector")
+
+    @cluster_selector.setter
+    def cluster_selector(self, value: Optional[pulumi.Input['RolloutSequenceStageClusterSelectorArgs']]):
+        pulumi.set(self, "cluster_selector", value)
+
+    @_builtins.property
+    @pulumi.getter(name="soakDuration")
+    def soak_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Soak time after upgrading all the clusters in the stage, specified in seconds.
+        """
+        return pulumi.get(self, "soak_duration")
+
+    @soak_duration.setter
+    def soak_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "soak_duration", value)
+
+
+if not MYPY:
+    class RolloutSequenceStageClusterSelectorArgsDict(TypedDict):
+        label_selector: pulumi.Input[_builtins.str]
+        """
+        The label selector must be a valid CEL (Common Expression Language) expression which
+        evaluates resource.labels.
+        """
+elif False:
+    RolloutSequenceStageClusterSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RolloutSequenceStageClusterSelectorArgs:
+    def __init__(__self__, *,
+                 label_selector: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] label_selector: The label selector must be a valid CEL (Common Expression Language) expression which
+               evaluates resource.labels.
+        """
+        pulumi.set(__self__, "label_selector", label_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label selector must be a valid CEL (Common Expression Language) expression which
+        evaluates resource.labels.
+        """
+        return pulumi.get(self, "label_selector")
+
+    @label_selector.setter
+    def label_selector(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label_selector", value)
 
 
 if not MYPY:

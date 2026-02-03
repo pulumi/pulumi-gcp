@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Allows management of Organization policies for a Google Folder. For more information see
  * [the official
- * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
  *
  * ## Example Usage
  *
@@ -37,7 +37,7 @@ export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pu
  */
 export interface GetOrganizationPolicyArgs {
     /**
-     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
     constraint: string;
     /**
@@ -66,7 +66,7 @@ export interface GetOrganizationPolicyResult {
 /**
  * Allows management of Organization policies for a Google Folder. For more information see
  * [the official
- * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+ * documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/overview)
  *
  * ## Example Usage
  *
@@ -94,7 +94,7 @@ export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArg
  */
 export interface GetOrganizationPolicyOutputArgs {
     /**
-     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
     constraint: pulumi.Input<string>;
     /**

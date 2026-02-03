@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigqueryanalyticshub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetEffectiveReplicaArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetSelectedResourceArgs;
 import java.lang.String;
 import java.util.List;
@@ -34,6 +35,42 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output, Beta)
+     * Server owned effective state of replicas. Contains both primary and secondary replicas.
+     * Each replica includes a system-computed (output-only) state and primary designation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="effectiveReplicas")
+    private @Nullable Output<List<ListingBigqueryDatasetEffectiveReplicaArgs>> effectiveReplicas;
+
+    /**
+     * @return (Output, Beta)
+     * Server owned effective state of replicas. Contains both primary and secondary replicas.
+     * Each replica includes a system-computed (output-only) state and primary designation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ListingBigqueryDatasetEffectiveReplicaArgs>>> effectiveReplicas() {
+        return Optional.ofNullable(this.effectiveReplicas);
+    }
+
+    /**
+     * A list of regions where the publisher has created shared dataset replicas.
+     * 
+     */
+    @Import(name="replicaLocations")
+    private @Nullable Output<List<String>> replicaLocations;
+
+    /**
+     * @return A list of regions where the publisher has created shared dataset replicas.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaLocations() {
+        return Optional.ofNullable(this.replicaLocations);
+    }
+
+    /**
      * Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
      * Structure is documented below.
      * 
@@ -54,6 +91,8 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
 
     private ListingBigqueryDatasetArgs(ListingBigqueryDatasetArgs $) {
         this.dataset = $.dataset;
+        this.effectiveReplicas = $.effectiveReplicas;
+        this.replicaLocations = $.replicaLocations;
         this.selectedResources = $.selectedResources;
     }
 
@@ -94,6 +133,77 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
          */
         public Builder dataset(String dataset) {
             return dataset(Output.of(dataset));
+        }
+
+        /**
+         * @param effectiveReplicas (Output, Beta)
+         * Server owned effective state of replicas. Contains both primary and secondary replicas.
+         * Each replica includes a system-computed (output-only) state and primary designation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveReplicas(@Nullable Output<List<ListingBigqueryDatasetEffectiveReplicaArgs>> effectiveReplicas) {
+            $.effectiveReplicas = effectiveReplicas;
+            return this;
+        }
+
+        /**
+         * @param effectiveReplicas (Output, Beta)
+         * Server owned effective state of replicas. Contains both primary and secondary replicas.
+         * Each replica includes a system-computed (output-only) state and primary designation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveReplicas(List<ListingBigqueryDatasetEffectiveReplicaArgs> effectiveReplicas) {
+            return effectiveReplicas(Output.of(effectiveReplicas));
+        }
+
+        /**
+         * @param effectiveReplicas (Output, Beta)
+         * Server owned effective state of replicas. Contains both primary and secondary replicas.
+         * Each replica includes a system-computed (output-only) state and primary designation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveReplicas(ListingBigqueryDatasetEffectiveReplicaArgs... effectiveReplicas) {
+            return effectiveReplicas(List.of(effectiveReplicas));
+        }
+
+        /**
+         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaLocations(@Nullable Output<List<String>> replicaLocations) {
+            $.replicaLocations = replicaLocations;
+            return this;
+        }
+
+        /**
+         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaLocations(List<String> replicaLocations) {
+            return replicaLocations(Output.of(replicaLocations));
+        }
+
+        /**
+         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaLocations(String... replicaLocations) {
+            return replicaLocations(List.of(replicaLocations));
         }
 
         /**

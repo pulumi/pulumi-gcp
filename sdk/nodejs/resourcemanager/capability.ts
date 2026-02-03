@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about Capability, see:
  *
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest)
+ * * [API documentation](https://docs.cloud.google.com/resource-manager/reference/rest)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/manage-applications)
+ *     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/manage-applications)
  *
  * ## Example Usage
  *
@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const folder = new gcp.organizations.Folder("folder", {
- *     displayName: "my-folder",
+ *     displayName: "folder-cap",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

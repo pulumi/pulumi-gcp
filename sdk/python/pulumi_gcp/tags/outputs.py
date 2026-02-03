@@ -134,6 +134,7 @@ class TagValueIamMemberCondition(dict):
 @pulumi.output_type
 class GetTagKeysKeyResult(dict):
     def __init__(__self__, *,
+                 allowed_values_regex: _builtins.str,
                  create_time: _builtins.str,
                  description: _builtins.str,
                  name: _builtins.str,
@@ -144,6 +145,7 @@ class GetTagKeysKeyResult(dict):
                  short_name: _builtins.str,
                  update_time: _builtins.str):
         """
+        :param _builtins.str allowed_values_regex: Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
         :param _builtins.str create_time: Creation time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param _builtins.str description: User-assigned description of the TagKey.
@@ -156,6 +158,7 @@ class GetTagKeysKeyResult(dict):
         :param _builtins.str update_time: Update time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
+        pulumi.set(__self__, "allowed_values_regex", allowed_values_regex)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
@@ -165,6 +168,14 @@ class GetTagKeysKeyResult(dict):
         pulumi.set(__self__, "purpose_data", purpose_data)
         pulumi.set(__self__, "short_name", short_name)
         pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValuesRegex")
+    def allowed_values_regex(self) -> _builtins.str:
+        """
+        Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
+        """
+        return pulumi.get(self, "allowed_values_regex")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

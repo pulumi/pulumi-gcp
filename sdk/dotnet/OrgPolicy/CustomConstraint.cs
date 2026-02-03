@@ -14,10 +14,10 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// To get more information about CustomConstraint, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
+    /// * [API documentation](https://docs.cloud.google.com/resource-manager/docs/reference/orgpolicy/rest/v2/organizations.constraints)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
-    ///     * [Supported Services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
+    ///     * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints)
+    ///     * [Supported Services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services)
     /// 
     /// ## Example Usage
     /// 
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.OrgPolicy
         public Output<string> ActionType { get; private set; } = null!;
 
         /// <summary>
-        /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         /// </summary>
         [Output("condition")]
         public Output<string> Condition { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.OrgPolicy
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+        /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         /// </summary>
         [Output("methodTypes")]
         public Output<ImmutableArray<string>> MethodTypes { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.OrgPolicy
         public Input<string> ActionType { get; set; } = null!;
 
         /// <summary>
-        /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         /// </summary>
         [Input("condition", required: true)]
         public Input<string> Condition { get; set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.OrgPolicy
         private InputList<string>? _methodTypes;
 
         /// <summary>
-        /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+        /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         /// </summary>
         public InputList<string> MethodTypes
         {
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.OrgPolicy
         public Input<string>? ActionType { get; set; }
 
         /// <summary>
-        /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        /// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
@@ -312,7 +312,7 @@ namespace Pulumi.Gcp.OrgPolicy
         private InputList<string>? _methodTypes;
 
         /// <summary>
-        /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+        /// A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         /// </summary>
         public InputList<string> MethodTypes
         {

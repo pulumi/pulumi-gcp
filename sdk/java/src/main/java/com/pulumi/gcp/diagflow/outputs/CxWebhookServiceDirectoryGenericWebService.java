@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.outputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfig;
 import com.pulumi.gcp.diagflow.outputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader;
+import com.pulumi.gcp.diagflow.outputs.CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,12 @@ public final class CxWebhookServiceDirectoryGenericWebService {
      * 
      */
     private @Nullable List<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader> secretVersionsForRequestHeaders;
+    /**
+     * @return Configuration for authentication using a service account.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig serviceAccountAuthConfig;
     /**
      * @return Indicate the auth token type generated from the [Diglogflow service
      * agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
@@ -182,6 +189,14 @@ public final class CxWebhookServiceDirectoryGenericWebService {
         return this.secretVersionsForRequestHeaders == null ? List.of() : this.secretVersionsForRequestHeaders;
     }
     /**
+     * @return Configuration for authentication using a service account.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig> serviceAccountAuthConfig() {
+        return Optional.ofNullable(this.serviceAccountAuthConfig);
+    }
+    /**
      * @return Indicate the auth token type generated from the [Diglogflow service
      * agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
      * The generated token is sent in the Authorization header.
@@ -224,6 +239,7 @@ public final class CxWebhookServiceDirectoryGenericWebService {
         private @Nullable Map<String,String> requestHeaders;
         private @Nullable String secretVersionForUsernamePassword;
         private @Nullable List<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader> secretVersionsForRequestHeaders;
+        private @Nullable CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig serviceAccountAuthConfig;
         private @Nullable String serviceAgentAuth;
         private String uri;
         private @Nullable String webhookType;
@@ -238,6 +254,7 @@ public final class CxWebhookServiceDirectoryGenericWebService {
     	      this.requestHeaders = defaults.requestHeaders;
     	      this.secretVersionForUsernamePassword = defaults.secretVersionForUsernamePassword;
     	      this.secretVersionsForRequestHeaders = defaults.secretVersionsForRequestHeaders;
+    	      this.serviceAccountAuthConfig = defaults.serviceAccountAuthConfig;
     	      this.serviceAgentAuth = defaults.serviceAgentAuth;
     	      this.uri = defaults.uri;
     	      this.webhookType = defaults.webhookType;
@@ -298,6 +315,12 @@ public final class CxWebhookServiceDirectoryGenericWebService {
             return secretVersionsForRequestHeaders(List.of(secretVersionsForRequestHeaders));
         }
         @CustomType.Setter
+        public Builder serviceAccountAuthConfig(@Nullable CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig serviceAccountAuthConfig) {
+
+            this.serviceAccountAuthConfig = serviceAccountAuthConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceAgentAuth(@Nullable String serviceAgentAuth) {
 
             this.serviceAgentAuth = serviceAgentAuth;
@@ -327,6 +350,7 @@ public final class CxWebhookServiceDirectoryGenericWebService {
             _resultValue.requestHeaders = requestHeaders;
             _resultValue.secretVersionForUsernamePassword = secretVersionForUsernamePassword;
             _resultValue.secretVersionsForRequestHeaders = secretVersionsForRequestHeaders;
+            _resultValue.serviceAccountAuthConfig = serviceAccountAuthConfig;
             _resultValue.serviceAgentAuth = serviceAgentAuth;
             _resultValue.uri = uri;
             _resultValue.webhookType = webhookType;

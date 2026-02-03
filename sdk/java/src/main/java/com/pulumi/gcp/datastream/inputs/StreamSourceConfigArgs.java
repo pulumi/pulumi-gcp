@@ -11,6 +11,7 @@ import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSalesforceSourceConfigArgs;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSpannerSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -123,6 +124,23 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Spanner data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="spannerSourceConfig")
+    private @Nullable Output<StreamSourceConfigSpannerSourceConfigArgs> spannerSourceConfig;
+
+    /**
+     * @return Spanner data source configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigSpannerSourceConfigArgs>> spannerSourceConfig() {
+        return Optional.ofNullable(this.spannerSourceConfig);
+    }
+
+    /**
      * SQL Server data source configuration.
      * Structure is documented below.
      * 
@@ -148,6 +166,7 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
         this.postgresqlSourceConfig = $.postgresqlSourceConfig;
         this.salesforceSourceConfig = $.salesforceSourceConfig;
         this.sourceConnectionProfile = $.sourceConnectionProfile;
+        this.spannerSourceConfig = $.spannerSourceConfig;
         this.sqlServerSourceConfig = $.sqlServerSourceConfig;
     }
 
@@ -303,6 +322,29 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sourceConnectionProfile(String sourceConnectionProfile) {
             return sourceConnectionProfile(Output.of(sourceConnectionProfile));
+        }
+
+        /**
+         * @param spannerSourceConfig Spanner data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerSourceConfig(@Nullable Output<StreamSourceConfigSpannerSourceConfigArgs> spannerSourceConfig) {
+            $.spannerSourceConfig = spannerSourceConfig;
+            return this;
+        }
+
+        /**
+         * @param spannerSourceConfig Spanner data source configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spannerSourceConfig(StreamSourceConfigSpannerSourceConfigArgs spannerSourceConfig) {
+            return spannerSourceConfig(Output.of(spannerSourceConfig));
         }
 
         /**

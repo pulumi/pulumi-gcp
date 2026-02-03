@@ -196,6 +196,12 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     */
+    declare public /*out*/ readonly enableEnhancedIpv4Allocation: pulumi.Output<boolean>;
+    /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
     declare public readonly ipCidrRange: pulumi.Output<string>;
@@ -272,6 +278,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             const state = argsOrState as PublicDelegatedPrefixState | undefined;
             resourceInputs["allocatablePrefixLength"] = state?.allocatablePrefixLength;
             resourceInputs["description"] = state?.description;
+            resourceInputs["enableEnhancedIpv4Allocation"] = state?.enableEnhancedIpv4Allocation;
             resourceInputs["ipCidrRange"] = state?.ipCidrRange;
             resourceInputs["ipv6AccessType"] = state?.ipv6AccessType;
             resourceInputs["isLiveMigration"] = state?.isLiveMigration;
@@ -302,6 +309,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             resourceInputs["parentPrefix"] = args?.parentPrefix;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
+            resourceInputs["enableEnhancedIpv4Allocation"] = undefined /*out*/;
             resourceInputs["ipv6AccessType"] = undefined /*out*/;
             resourceInputs["publicDelegatedSubPrefixs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -323,6 +331,12 @@ export interface PublicDelegatedPrefixState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * (Output)
+     * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
+     * Applicable for IPv4 sub-PDPs only.
+     */
+    enableEnhancedIpv4Allocation?: pulumi.Input<boolean>;
     /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      */

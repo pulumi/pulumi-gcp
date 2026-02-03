@@ -16,7 +16,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs ext
     public static final StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs Empty = new StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs();
 
     /**
-     * SQL Server schemas/databases in the database server
+     * Spanner schemas in the database
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs ext
     private Output<List<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs>> schemas;
 
     /**
-     * @return SQL Server schemas/databases in the database server
+     * @return Spanner schemas in the database
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs ext
         }
 
         /**
-         * @param schemas SQL Server schemas/databases in the database server
+         * @param schemas Spanner schemas in the database
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs ext
         }
 
         /**
-         * @param schemas SQL Server schemas/databases in the database server
+         * @param schemas Spanner schemas in the database
          * Structure is documented below.
          * 
          * @return builder
@@ -80,7 +80,7 @@ public final class StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs ext
         }
 
         /**
-         * @param schemas SQL Server schemas/databases in the database server
+         * @param schemas Spanner schemas in the database
          * Structure is documented below.
          * 
          * @return builder

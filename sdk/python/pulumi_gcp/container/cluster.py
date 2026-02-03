@@ -63,6 +63,7 @@ class ClusterArgs:
                  logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+                 managed_opentelemetry_config: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']] = None,
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
                  mesh_certificates: Optional[pulumi.Input['ClusterMeshCertificatesArgs']] = None,
@@ -193,6 +194,7 @@ class ClusterArgs:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -415,6 +417,8 @@ class ClusterArgs:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if managed_opentelemetry_config is not None:
+            pulumi.set(__self__, "managed_opentelemetry_config", managed_opentelemetry_config)
         if master_auth is not None:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
@@ -1045,6 +1049,18 @@ class ClusterArgs:
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="managedOpentelemetryConfig")
+    def managed_opentelemetry_config(self) -> Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]:
+        """
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        """
+        return pulumi.get(self, "managed_opentelemetry_config")
+
+    @managed_opentelemetry_config.setter
+    def managed_opentelemetry_config(self, value: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]):
+        pulumi.set(self, "managed_opentelemetry_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="masterAuth")
     def master_auth(self) -> Optional[pulumi.Input['ClusterMasterAuthArgs']]:
         """
@@ -1656,6 +1672,7 @@ class _ClusterState:
                  logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
+                 managed_opentelemetry_config: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']] = None,
                  master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
                  master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
                  master_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1795,6 +1812,7 @@ class _ClusterState:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -2028,6 +2046,8 @@ class _ClusterState:
             pulumi.set(__self__, "logging_service", logging_service)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if managed_opentelemetry_config is not None:
+            pulumi.set(__self__, "managed_opentelemetry_config", managed_opentelemetry_config)
         if master_auth is not None:
             pulumi.set(__self__, "master_auth", master_auth)
         if master_authorized_networks_config is not None:
@@ -2704,6 +2724,18 @@ class _ClusterState:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedOpentelemetryConfig")
+    def managed_opentelemetry_config(self) -> Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]:
+        """
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        """
+        return pulumi.get(self, "managed_opentelemetry_config")
+
+    @managed_opentelemetry_config.setter
+    def managed_opentelemetry_config(self, value: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]):
+        pulumi.set(self, "managed_opentelemetry_config", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAuth")
@@ -3386,6 +3418,7 @@ class Cluster(pulumi.CustomResource):
                  logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
                  master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
                  mesh_certificates: Optional[pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
@@ -3606,6 +3639,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -3893,6 +3927,7 @@ class Cluster(pulumi.CustomResource):
                  logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
                  logging_service: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
                  master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
                  master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
                  mesh_certificates: Optional[pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
@@ -3983,6 +4018,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["managed_opentelemetry_config"] = managed_opentelemetry_config
             __props__.__dict__["master_auth"] = master_auth
             __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
             __props__.__dict__["mesh_certificates"] = mesh_certificates
@@ -4088,6 +4124,7 @@ class Cluster(pulumi.CustomResource):
             logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
             logging_service: Optional[pulumi.Input[_builtins.str]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+            managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
             master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
             master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
             master_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -4232,6 +4269,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -4421,6 +4459,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["logging_config"] = logging_config
         __props__.__dict__["logging_service"] = logging_service
         __props__.__dict__["maintenance_policy"] = maintenance_policy
+        __props__.__dict__["managed_opentelemetry_config"] = managed_opentelemetry_config
         __props__.__dict__["master_auth"] = master_auth
         __props__.__dict__["master_authorized_networks_config"] = master_authorized_networks_config
         __props__.__dict__["master_version"] = master_version
@@ -4873,6 +4912,14 @@ class Cluster(pulumi.CustomResource):
         documented below.
         """
         return pulumi.get(self, "maintenance_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="managedOpentelemetryConfig")
+    def managed_opentelemetry_config(self) -> pulumi.Output['outputs.ClusterManagedOpentelemetryConfig']:
+        """
+        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        """
+        return pulumi.get(self, "managed_opentelemetry_config")
 
     @_builtins.property
     @pulumi.getter(name="masterAuth")

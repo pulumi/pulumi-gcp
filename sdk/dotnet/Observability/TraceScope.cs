@@ -28,8 +28,8 @@ namespace Pulumi.Gcp.Observability
     /// 
     ///     var project_2 = new Gcp.Organizations.Project("project-2", new()
     ///     {
-    ///         ProjectId = "tf-test_37135",
-    ///         Name = "tf-test_42503",
+    ///         ProjectId = "tf-test_12125",
+    ///         Name = "tf-test_82749",
     ///         OrgId = "123456789",
     ///         DeletionPolicy = "DELETE",
     ///     });
