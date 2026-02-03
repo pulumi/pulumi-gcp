@@ -7,8 +7,8 @@ toolchain go1.24.10
 require (
 	github.com/pulumi/providertest v0.6.0
 	github.com/pulumi/pulumi-gcp/sdk/v6 v6.67.0
-	github.com/pulumi/pulumi/pkg/v3 v3.213.0
-	github.com/pulumi/pulumi/sdk/v3 v3.213.0
+	github.com/pulumi/pulumi/pkg/v3 v3.218.0
+	github.com/pulumi/pulumi/sdk/v3 v3.218.0
 	github.com/stretchr/testify v1.10.0
 )
 
@@ -165,17 +165,17 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.37.0 // indirect
 	gocloud.dev/secrets/hashivault v0.37.0 // indirect
-	golang.org/x/crypto v0.45.0 // indirect
+	golang.org/x/crypto v0.47.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
-	golang.org/x/mod v0.29.0 // indirect
-	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/mod v0.31.0 // indirect
+	golang.org/x/net v0.49.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
-	golang.org/x/sync v0.18.0 // indirect
-	golang.org/x/sys v0.38.0 // indirect
-	golang.org/x/term v0.37.0 // indirect
-	golang.org/x/text v0.31.0 // indirect
+	golang.org/x/sync v0.19.0 // indirect
+	golang.org/x/sys v0.40.0 // indirect
+	golang.org/x/term v0.39.0 // indirect
+	golang.org/x/text v0.33.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
-	golang.org/x/tools v0.38.0 // indirect
+	golang.org/x/tools v0.40.0 // indirect
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	google.golang.org/api v0.169.0 // indirect
 	google.golang.org/genproto v0.0.0-20240311173647-c811ad7063a7 // indirect
