@@ -40,6 +40,8 @@ class ClusterArgs:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  psc_config: Optional[pulumi.Input['ClusterPscConfigArgs']] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
+                 restore_backupdr_backup_source: Optional[pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs']] = None,
+                 restore_backupdr_pitr_source: Optional[pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
                  secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None,
                  skip_await_major_version_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -84,9 +86,13 @@ class ClusterArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['ClusterPscConfigArgs'] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
-        :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        :param pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs'] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+               Structure is documented below.
+        :param pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs'] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+               Structure is documented below.
+        :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
         :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
@@ -132,6 +138,10 @@ class ClusterArgs:
             pulumi.set(__self__, "psc_config", psc_config)
         if restore_backup_source is not None:
             pulumi.set(__self__, "restore_backup_source", restore_backup_source)
+        if restore_backupdr_backup_source is not None:
+            pulumi.set(__self__, "restore_backupdr_backup_source", restore_backupdr_backup_source)
+        if restore_backupdr_pitr_source is not None:
+            pulumi.set(__self__, "restore_backupdr_pitr_source", restore_backupdr_pitr_source)
         if restore_continuous_backup_source is not None:
             pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
         if secondary_config is not None:
@@ -379,7 +389,7 @@ class ClusterArgs:
     @pulumi.getter(name="restoreBackupSource")
     def restore_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]:
         """
-        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "restore_backup_source")
@@ -389,10 +399,36 @@ class ClusterArgs:
         pulumi.set(self, "restore_backup_source", value)
 
     @_builtins.property
+    @pulumi.getter(name="restoreBackupdrBackupSource")
+    def restore_backupdr_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs']]:
+        """
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backupdr_backup_source")
+
+    @restore_backupdr_backup_source.setter
+    def restore_backupdr_backup_source(self, value: Optional[pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs']]):
+        pulumi.set(self, "restore_backupdr_backup_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="restoreBackupdrPitrSource")
+    def restore_backupdr_pitr_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs']]:
+        """
+        The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backupdr_pitr_source")
+
+    @restore_backupdr_pitr_source.setter
+    def restore_backupdr_pitr_source(self, value: Optional[pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs']]):
+        pulumi.set(self, "restore_backupdr_pitr_source", value)
+
+    @_builtins.property
     @pulumi.getter(name="restoreContinuousBackupSource")
     def restore_continuous_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']]:
         """
-        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "restore_continuous_backup_source")
@@ -448,6 +484,7 @@ class _ClusterState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]] = None,
+                 backupdr_backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupdrBackupSourceArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
@@ -473,6 +510,8 @@ class _ClusterState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
+                 restore_backupdr_backup_source: Optional[pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs']] = None,
+                 restore_backupdr_pitr_source: Optional[pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
                  secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None,
                  skip_await_major_version_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -490,6 +529,8 @@ class _ClusterState:
         :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]] backup_sources: Cluster created from backup.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBackupdrBackupSourceArgs']]] backupdr_backup_sources: Cluster created from a BackupDR backup.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[_builtins.str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
@@ -536,9 +577,13 @@ class _ClusterState:
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
-        :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        :param pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs'] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+               Structure is documented below.
+        :param pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs'] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+               Structure is documented below.
+        :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
         :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
@@ -558,6 +603,8 @@ class _ClusterState:
             pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
         if backup_sources is not None:
             pulumi.set(__self__, "backup_sources", backup_sources)
+        if backupdr_backup_sources is not None:
+            pulumi.set(__self__, "backupdr_backup_sources", backupdr_backup_sources)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if cluster_type is not None:
@@ -608,6 +655,10 @@ class _ClusterState:
             pulumi.set(__self__, "reconciling", reconciling)
         if restore_backup_source is not None:
             pulumi.set(__self__, "restore_backup_source", restore_backup_source)
+        if restore_backupdr_backup_source is not None:
+            pulumi.set(__self__, "restore_backupdr_backup_source", restore_backupdr_backup_source)
+        if restore_backupdr_pitr_source is not None:
+            pulumi.set(__self__, "restore_backupdr_pitr_source", restore_backupdr_pitr_source)
         if restore_continuous_backup_source is not None:
             pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
         if secondary_config is not None:
@@ -664,6 +715,19 @@ class _ClusterState:
     @backup_sources.setter
     def backup_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]]):
         pulumi.set(self, "backup_sources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackupSources")
+    def backupdr_backup_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupdrBackupSourceArgs']]]]:
+        """
+        Cluster created from a BackupDR backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backupdr_backup_sources")
+
+    @backupdr_backup_sources.setter
+    def backupdr_backup_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupdrBackupSourceArgs']]]]):
+        pulumi.set(self, "backupdr_backup_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -974,7 +1038,7 @@ class _ClusterState:
     @pulumi.getter(name="restoreBackupSource")
     def restore_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]:
         """
-        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "restore_backup_source")
@@ -984,10 +1048,36 @@ class _ClusterState:
         pulumi.set(self, "restore_backup_source", value)
 
     @_builtins.property
+    @pulumi.getter(name="restoreBackupdrBackupSource")
+    def restore_backupdr_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs']]:
+        """
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backupdr_backup_source")
+
+    @restore_backupdr_backup_source.setter
+    def restore_backupdr_backup_source(self, value: Optional[pulumi.Input['ClusterRestoreBackupdrBackupSourceArgs']]):
+        pulumi.set(self, "restore_backupdr_backup_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="restoreBackupdrPitrSource")
+    def restore_backupdr_pitr_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs']]:
+        """
+        The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backupdr_pitr_source")
+
+    @restore_backupdr_pitr_source.setter
+    def restore_backupdr_pitr_source(self, value: Optional[pulumi.Input['ClusterRestoreBackupdrPitrSourceArgs']]):
+        pulumi.set(self, "restore_backupdr_pitr_source", value)
+
+    @_builtins.property
     @pulumi.getter(name="restoreContinuousBackupSource")
     def restore_continuous_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']]:
         """
-        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "restore_continuous_backup_source")
@@ -1099,6 +1189,8 @@ class Cluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
                  restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
+                 restore_backupdr_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']]] = None,
+                 restore_backupdr_pitr_source: Optional[pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
                  secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
                  skip_await_major_version_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1404,9 +1496,13 @@ class Cluster(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']] psc_config: Configuration for Private Service Connect (PSC) for the cluster.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
@@ -1716,6 +1812,8 @@ class Cluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  psc_config: Optional[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]] = None,
                  restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
+                 restore_backupdr_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']]] = None,
+                 restore_backupdr_pitr_source: Optional[pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
                  secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
                  skip_await_major_version_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1752,11 +1850,14 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["psc_config"] = psc_config
             __props__.__dict__["restore_backup_source"] = restore_backup_source
+            __props__.__dict__["restore_backupdr_backup_source"] = restore_backupdr_backup_source
+            __props__.__dict__["restore_backupdr_pitr_source"] = restore_backupdr_pitr_source
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
             __props__.__dict__["secondary_config"] = secondary_config
             __props__.__dict__["skip_await_major_version_upgrade"] = skip_await_major_version_upgrade
             __props__.__dict__["subscription_type"] = subscription_type
             __props__.__dict__["backup_sources"] = None
+            __props__.__dict__["backupdr_backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
@@ -1783,6 +1884,7 @@ class Cluster(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             automated_backup_policy: Optional[pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']]] = None,
             backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict']]]]] = None,
+            backupdr_backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupdrBackupSourceArgs', 'ClusterBackupdrBackupSourceArgsDict']]]]] = None,
             cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
             continuous_backup_config: Optional[pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']]] = None,
@@ -1808,6 +1910,8 @@ class Cluster(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
             restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
+            restore_backupdr_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']]] = None,
+            restore_backupdr_pitr_source: Optional[pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']]] = None,
             restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
             secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
             skip_await_major_version_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1830,6 +1934,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterAutomatedBackupPolicyArgs', 'ClusterAutomatedBackupPolicyArgsDict']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupSourceArgs', 'ClusterBackupSourceArgsDict']]]] backup_sources: Cluster created from backup.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBackupdrBackupSourceArgs', 'ClusterBackupdrBackupSourceArgsDict']]]] backupdr_backup_sources: Cluster created from a BackupDR backup.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[_builtins.str] cluster_type: The type of cluster. If not set, defaults to PRIMARY.
@@ -1876,9 +1982,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] reconciling: Output only. Reconciling (https://google.aip.dev/128#reconciliation).
                Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
                This can happen due to user-triggered updates or system actions like failover or maintenance.
-        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrBackupSourceArgs', 'ClusterRestoreBackupdrBackupSourceArgsDict']] restore_backupdr_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterRestoreBackupdrPitrSourceArgs', 'ClusterRestoreBackupdrPitrSourceArgsDict']] restore_backupdr_pitr_source: The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+               Structure is documented below.
+        :param pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
@@ -1899,6 +2009,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["automated_backup_policy"] = automated_backup_policy
         __props__.__dict__["backup_sources"] = backup_sources
+        __props__.__dict__["backupdr_backup_sources"] = backupdr_backup_sources
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_type"] = cluster_type
         __props__.__dict__["continuous_backup_config"] = continuous_backup_config
@@ -1924,6 +2035,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["restore_backup_source"] = restore_backup_source
+        __props__.__dict__["restore_backupdr_backup_source"] = restore_backupdr_backup_source
+        __props__.__dict__["restore_backupdr_pitr_source"] = restore_backupdr_pitr_source
         __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
         __props__.__dict__["secondary_config"] = secondary_config
         __props__.__dict__["skip_await_major_version_upgrade"] = skip_await_major_version_upgrade
@@ -1962,6 +2075,15 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "backup_sources")
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackupSources")
+    def backupdr_backup_sources(self) -> pulumi.Output[Sequence['outputs.ClusterBackupdrBackupSource']]:
+        """
+        Cluster created from a BackupDR backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backupdr_backup_sources")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -2176,16 +2298,34 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="restoreBackupSource")
     def restore_backup_source(self) -> pulumi.Output[Optional['outputs.ClusterRestoreBackupSource']]:
         """
-        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "restore_backup_source")
 
     @_builtins.property
+    @pulumi.getter(name="restoreBackupdrBackupSource")
+    def restore_backupdr_backup_source(self) -> pulumi.Output[Optional['outputs.ClusterRestoreBackupdrBackupSource']]:
+        """
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backupdr_backup_source")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreBackupdrPitrSource")
+    def restore_backupdr_pitr_source(self) -> pulumi.Output[Optional['outputs.ClusterRestoreBackupdrPitrSource']]:
+        """
+        The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backupdr_pitr_source")
+
+    @_builtins.property
     @pulumi.getter(name="restoreContinuousBackupSource")
     def restore_continuous_backup_source(self) -> pulumi.Output[Optional['outputs.ClusterRestoreContinuousBackupSource']]:
         """
-        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "restore_continuous_backup_source")

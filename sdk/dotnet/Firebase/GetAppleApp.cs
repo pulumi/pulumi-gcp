@@ -11,21 +11,12 @@ namespace Pulumi.Gcp.Firebase
 {
     public static class GetAppleApp
     {
-        /// <summary>
-        /// A Google Cloud Firebase Apple application instance
-        /// </summary>
         public static Task<GetAppleAppResult> InvokeAsync(GetAppleAppArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// A Google Cloud Firebase Apple application instance
-        /// </summary>
         public static Output<GetAppleAppResult> Invoke(GetAppleAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// A Google Cloud Firebase Apple application instance
-        /// </summary>
         public static Output<GetAppleAppResult> Invoke(GetAppleAppInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppInvokeArgs(), options.WithDefaults());
     }

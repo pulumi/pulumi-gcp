@@ -1456,6 +1456,7 @@ if not MYPY:
         """
         enable_secure_private_service_connect: NotRequired[pulumi.Input[_builtins.bool]]
         """
+        (Optional, Beta)
         If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         """
         project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -1479,7 +1480,8 @@ class AiEndpointPrivateServiceConnectConfigArgs:
                  psc_automation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
-        :param pulumi.Input[_builtins.bool] enable_secure_private_service_connect: If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+        :param pulumi.Input[_builtins.bool] enable_secure_private_service_connect: (Optional, Beta)
+               If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
         :param pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]] psc_automation_configs: List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
                Structure is documented below.
@@ -1508,6 +1510,7 @@ class AiEndpointPrivateServiceConnectConfigArgs:
     @pulumi.getter(name="enableSecurePrivateServiceConnect")
     def enable_secure_private_service_connect(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         """
         return pulumi.get(self, "enable_secure_private_service_connect")
@@ -7037,6 +7040,7 @@ if not MYPY:
         """
         monitoring_interval: NotRequired[pulumi.Input[_builtins.str]]
         """
+        (Optional, Beta, Deprecated)
         Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 
@@ -7063,7 +7067,8 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
                  staleness_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
-        :param pulumi.Input[_builtins.str] monitoring_interval: Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+        :param pulumi.Input[_builtins.str] monitoring_interval: (Optional, Beta, Deprecated)
+               Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
                
                > **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
@@ -7100,6 +7105,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     @_utilities.deprecated("""`monitoring_interval` is deprecated and will be removed in a future release.""")
     def monitoring_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta, Deprecated)
         Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 

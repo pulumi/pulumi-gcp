@@ -59,7 +59,6 @@ export interface GetBackupPlanAssociationResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly lastSuccessfulBackupConsistencyTime: string;
     readonly location: string;
     readonly name: string;
     readonly project?: string;

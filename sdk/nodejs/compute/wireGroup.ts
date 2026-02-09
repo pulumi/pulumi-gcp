@@ -163,6 +163,7 @@ export class WireGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly topologies: pulumi.Output<outputs.compute.WireGroupTopology[]>;
     /**
+     * (Optional, Beta)
      * Properties specific to the wire group.
      * Structure is documented below.
      */
@@ -268,6 +269,7 @@ export interface WireGroupState {
      */
     topologies?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupTopology>[]>;
     /**
+     * (Optional, Beta)
      * Properties specific to the wire group.
      * Structure is documented below.
      */
@@ -319,6 +321,7 @@ export interface WireGroupArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Properties specific to the wire group.
      * Structure is documented below.
      */

@@ -33,6 +33,7 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs extend
     }
 
     /**
+     * (Optional, Beta)
      * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
      * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
      * 
@@ -41,7 +42,8 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs extend
     private @Nullable Output<Integer> ttl;
 
     /**
-     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+     * @return (Optional, Beta)
+     * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
      * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
      * 
      */
@@ -98,7 +100,8 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs extend
         }
 
         /**
-         * @param ttl The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * @param ttl (Optional, Beta)
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
          * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
          * 
          * @return builder
@@ -110,7 +113,8 @@ public final class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs extend
         }
 
         /**
-         * @param ttl The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * @param ttl (Optional, Beta)
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
          * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
          * 
          * @return builder

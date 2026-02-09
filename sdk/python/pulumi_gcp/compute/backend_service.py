@@ -93,7 +93,8 @@ class BackendServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
@@ -209,7 +210,8 @@ class BackendServiceArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
@@ -482,6 +484,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="dynamicForwarding")
     def dynamic_forwarding(self) -> Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']]:
         """
+        (Optional, Beta)
         Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         feature which together with Service Extension allows customized and complex routing logic.
         Structure is documented below.
@@ -752,6 +755,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
         """
+        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """
@@ -1010,7 +1014,8 @@ class _BackendServiceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input['BackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
@@ -1129,7 +1134,8 @@ class _BackendServiceState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
@@ -1423,6 +1429,7 @@ class _BackendServiceState:
     @pulumi.getter(name="dynamicForwarding")
     def dynamic_forwarding(self) -> Optional[pulumi.Input['BackendServiceDynamicForwardingArgs']]:
         """
+        (Optional, Beta)
         Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         feature which together with Service Extension allows customized and complex routing logic.
         Structure is documented below.
@@ -1718,6 +1725,7 @@ class _BackendServiceState:
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['BackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
         """
+        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """
@@ -1969,9 +1977,6 @@ class BackendService(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 
         ## Example Usage
 
@@ -2482,7 +2487,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
@@ -2598,7 +2604,8 @@ class BackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
@@ -2659,9 +2666,6 @@ class BackendService(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/v1/backendServices)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
 
         ## Example Usage
 
@@ -3334,7 +3338,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
                responses.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input[Union['BackendServiceDynamicForwardingArgs', 'BackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] edge_security_policy: The resource URL for the edge security policy associated with this backend service.
@@ -3453,7 +3458,8 @@ class BackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-        :param pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['BackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'BackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input[Union['BackendServiceOutlierDetectionArgs', 'BackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                Applicable backend service types can be a global backend service with the
@@ -3662,6 +3668,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="dynamicForwarding")
     def dynamic_forwarding(self) -> pulumi.Output[Optional['outputs.BackendServiceDynamicForwarding']]:
         """
+        (Optional, Beta)
         Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         feature which together with Service Extension allows customized and complex routing logic.
         Structure is documented below.
@@ -3893,6 +3900,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> pulumi.Output[Optional['outputs.BackendServiceNetworkPassThroughLbTrafficPolicy']]:
         """
+        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """

@@ -35,6 +35,7 @@ public final class AiEndpointPrivateServiceConnectConfigArgs extends com.pulumi.
     }
 
     /**
+     * (Optional, Beta)
      * If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
      * 
      */
@@ -42,7 +43,8 @@ public final class AiEndpointPrivateServiceConnectConfigArgs extends com.pulumi.
     private @Nullable Output<Boolean> enableSecurePrivateServiceConnect;
 
     /**
-     * @return If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+     * @return (Optional, Beta)
+     * If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
      * 
      */
     public Optional<Output<Boolean>> enableSecurePrivateServiceConnect() {
@@ -130,7 +132,8 @@ public final class AiEndpointPrivateServiceConnectConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enableSecurePrivateServiceConnect If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+         * @param enableSecurePrivateServiceConnect (Optional, Beta)
+         * If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
          * 
          * @return builder
          * 
@@ -141,7 +144,8 @@ public final class AiEndpointPrivateServiceConnectConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enableSecurePrivateServiceConnect If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+         * @param enableSecurePrivateServiceConnect (Optional, Beta)
+         * If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
          * 
          * @return builder
          * 

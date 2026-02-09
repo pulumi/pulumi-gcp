@@ -245,6 +245,7 @@ export class SecurityProfileGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      */
     declare public readonly urlFilteringProfile: pulumi.Output<string | undefined>;
@@ -365,6 +366,7 @@ export interface SecurityProfileGroupState {
      */
     updateTime?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      */
     urlFilteringProfile?: pulumi.Input<string>;
@@ -412,6 +414,7 @@ export interface SecurityProfileGroupArgs {
      */
     threatPreventionProfile?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      */
     urlFilteringProfile?: pulumi.Input<string>;

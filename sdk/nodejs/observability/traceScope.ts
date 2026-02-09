@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A trace scope is a collection of resources whose traces are queried together
- *
  * ## Example Usage
  *
  * ### Observability Trace Scope Basic
@@ -17,8 +15,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const project_2 = new gcp.organizations.Project("project-2", {
- *     projectId: "tf-test_12125",
- *     name: "tf-test_82749",
+ *     projectId: "tf-test_34242",
+ *     name: "tf-test_9723",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });

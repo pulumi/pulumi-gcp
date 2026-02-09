@@ -21,7 +21,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy
      */
     private String backendService;
     /**
-     * @return The percentage of requests to be mirrored to backendService.
+     * @return (Optional, Beta)
+     * The percentage of requests to be mirrored to backendService.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
@@ -38,7 +39,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy
         return this.backendService;
     }
     /**
-     * @return The percentage of requests to be mirrored to backendService.
+     * @return (Optional, Beta)
+     * The percentage of requests to be mirrored to backendService.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */

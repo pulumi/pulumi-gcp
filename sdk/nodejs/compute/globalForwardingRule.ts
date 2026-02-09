@@ -445,6 +445,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     declare public readonly allowPscGlobalAccess: pulumi.Output<boolean | undefined>;
@@ -781,6 +782,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
  */
 export interface GlobalForwardingRuleState {
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     allowPscGlobalAccess?: pulumi.Input<boolean>;
@@ -1036,6 +1038,7 @@ export interface GlobalForwardingRuleState {
  */
 export interface GlobalForwardingRuleArgs {
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     allowPscGlobalAccess?: pulumi.Input<boolean>;

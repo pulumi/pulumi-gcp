@@ -184,6 +184,20 @@ import * as utilities from "../utilities";
  *     type: "DEVELOPER",
  * });
  * ```
+ * ### Data Fusion Instance Patch Revision
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataFusionInstancePatchRevision = new gcp.datafusion.Instance("data_fusion_instance_patch_revision", {
+ *     name: "my-instance",
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     version: "6.10.1",
+ *     patchRevision: "6.10.1.5",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -326,6 +340,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly p4ServiceAccount: pulumi.Output<string>;
     /**
+     * Current patch revision of the Data Fusion.
+     */
+    declare public readonly patchRevision: pulumi.Output<string>;
+    /**
      * Specifies whether the Data Fusion instance should be private. If set to
      * true, all Data Fusion nodes will have private IP addresses and will not be
      * able to access the public internet.
@@ -346,6 +364,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
+     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      *
      * @deprecated `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
@@ -438,6 +457,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = state?.networkConfig;
             resourceInputs["options"] = state?.options;
             resourceInputs["p4ServiceAccount"] = state?.p4ServiceAccount;
+            resourceInputs["patchRevision"] = state?.patchRevision;
             resourceInputs["privateInstance"] = state?.privateInstance;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
@@ -470,6 +490,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["networkConfig"] = args?.networkConfig;
             resourceInputs["options"] = args?.options;
+            resourceInputs["patchRevision"] = args?.patchRevision;
             resourceInputs["privateInstance"] = args?.privateInstance;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
@@ -584,6 +605,10 @@ export interface InstanceState {
      */
     p4ServiceAccount?: pulumi.Input<string>;
     /**
+     * Current patch revision of the Data Fusion.
+     */
+    patchRevision?: pulumi.Input<string>;
+    /**
      * Specifies whether the Data Fusion instance should be private. If set to
      * true, all Data Fusion nodes will have private IP addresses and will not be
      * able to access the public internet.
@@ -604,6 +629,7 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
+     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      *
      * @deprecated `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
@@ -732,6 +758,10 @@ export interface InstanceArgs {
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Current patch revision of the Data Fusion.
+     */
+    patchRevision?: pulumi.Input<string>;
     /**
      * Specifies whether the Data Fusion instance should be private. If set to
      * true, all Data Fusion nodes will have private IP addresses and will not be

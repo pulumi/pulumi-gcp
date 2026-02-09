@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A rule for the OrganizationSecurityPolicy.
-//
-// To get more information about OrganizationSecurityPolicyRule, see:
-//
-// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/organizationSecurityPolicies/addRule)
-// * How-to Guides
-//   - [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
-//
 // ## Example Usage
 //
 // ### Organization Security Policy Rule Basic

@@ -325,8 +325,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_45397")
- *             .name("tf-test_16451")
+ *             .projectId("tf-test_40472")
+ *             .name("tf-test_44339")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -821,6 +821,7 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
         return this.updateTime;
     }
     /**
+     * (Optional, Beta)
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      * 
@@ -829,7 +830,8 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
     private Output</* @Nullable */ AiFeatureOnlineStoreFeatureviewVectorSearchConfig> vectorSearchConfig;
 
     /**
-     * @return Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * @return (Optional, Beta)
+     * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      * 
      */

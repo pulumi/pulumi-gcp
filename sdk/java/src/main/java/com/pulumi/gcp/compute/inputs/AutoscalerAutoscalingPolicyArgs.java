@@ -168,6 +168,7 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Optional, Beta)
      * Defines scale down controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events
      * Structure is documented below.
@@ -177,7 +178,8 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
     private @Nullable Output<AutoscalerAutoscalingPolicyScaleDownControlArgs> scaleDownControl;
 
     /**
-     * @return Defines scale down controls to reduce the risk of response latency
+     * @return (Optional, Beta)
+     * Defines scale down controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events
      * Structure is documented below.
      * 
@@ -452,7 +454,8 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param scaleDownControl Defines scale down controls to reduce the risk of response latency
+         * @param scaleDownControl (Optional, Beta)
+         * Defines scale down controls to reduce the risk of response latency
          * and outages due to abrupt scale-in events
          * Structure is documented below.
          * 
@@ -465,7 +468,8 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param scaleDownControl Defines scale down controls to reduce the risk of response latency
+         * @param scaleDownControl (Optional, Beta)
+         * Defines scale down controls to reduce the risk of response latency
          * and outages due to abrupt scale-in events
          * Structure is documented below.
          * 

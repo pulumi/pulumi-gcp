@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityProfileCustomMirroringProfile {
     /**
-     * @return The target downstream Mirroring Deployment Groups.
+     * @return (Optional, Beta)
+     * The target downstream Mirroring Deployment Groups.
      * This field is used for Packet Broker mirroring endpoint groups to specify
      * the deployment groups that the packet should be mirrored to by the broker.
      * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
@@ -41,7 +42,8 @@ public final class SecurityProfileCustomMirroringProfile {
 
     private SecurityProfileCustomMirroringProfile() {}
     /**
-     * @return The target downstream Mirroring Deployment Groups.
+     * @return (Optional, Beta)
+     * The target downstream Mirroring Deployment Groups.
      * This field is used for Packet Broker mirroring endpoint groups to specify
      * the deployment groups that the packet should be mirrored to by the broker.
      * Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}

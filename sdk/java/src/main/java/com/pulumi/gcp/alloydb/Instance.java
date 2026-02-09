@@ -553,6 +553,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.networkConfig;
     }
     /**
+     * (Optional, Beta)
      * Configuration for enhanced query insights.
      * Structure is documented below.
      * 
@@ -561,7 +562,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<InstanceObservabilityConfig> observabilityConfig;
 
     /**
-     * @return Configuration for enhanced query insights.
+     * @return (Optional, Beta)
+     * Configuration for enhanced query insights.
      * Structure is documented below.
      * 
      */

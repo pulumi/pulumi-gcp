@@ -214,6 +214,7 @@ export class Router extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
     declare public readonly nccGateway: pulumi.Output<string | undefined>;
@@ -322,6 +323,7 @@ export interface RouterState {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
     nccGateway?: pulumi.Input<string>;
@@ -382,6 +384,7 @@ export interface RouterArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
     nccGateway?: pulumi.Input<string>;

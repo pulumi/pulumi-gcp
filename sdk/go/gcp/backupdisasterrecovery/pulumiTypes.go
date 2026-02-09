@@ -22,6 +22,9 @@ type BackupPlanAssociationRulesConfigInfo struct {
 	// State of last backup taken.
 	LastBackupState *string `pulumi:"lastBackupState"`
 	// (Output)
+	// The point in time when the last successful backup was captured from the source
+	LastSuccessfulBackupConsistencyTime *string `pulumi:"lastSuccessfulBackupConsistencyTime"`
+	// (Output)
 	// Backup Rule id fetched from backup plan.
 	RuleId *string `pulumi:"ruleId"`
 }
@@ -45,6 +48,9 @@ type BackupPlanAssociationRulesConfigInfoArgs struct {
 	// (Output)
 	// State of last backup taken.
 	LastBackupState pulumi.StringPtrInput `pulumi:"lastBackupState"`
+	// (Output)
+	// The point in time when the last successful backup was captured from the source
+	LastSuccessfulBackupConsistencyTime pulumi.StringPtrInput `pulumi:"lastSuccessfulBackupConsistencyTime"`
 	// (Output)
 	// Backup Rule id fetched from backup plan.
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
@@ -114,6 +120,12 @@ func (o BackupPlanAssociationRulesConfigInfoOutput) LastBackupErrors() BackupPla
 // State of last backup taken.
 func (o BackupPlanAssociationRulesConfigInfoOutput) LastBackupState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackupPlanAssociationRulesConfigInfo) *string { return v.LastBackupState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The point in time when the last successful backup was captured from the source
+func (o BackupPlanAssociationRulesConfigInfoOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPlanAssociationRulesConfigInfo) *string { return v.LastSuccessfulBackupConsistencyTime }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -8079,6 +8091,8 @@ type GetBackupPlanAssociationRulesConfigInfo struct {
 	LastBackupErrors []GetBackupPlanAssociationRulesConfigInfoLastBackupError `pulumi:"lastBackupErrors"`
 	// State of last backup taken.
 	LastBackupState string `pulumi:"lastBackupState"`
+	// The point in time when the last successful backup was captured from the source
+	LastSuccessfulBackupConsistencyTime string `pulumi:"lastSuccessfulBackupConsistencyTime"`
 	// Backup Rule id fetched from backup plan.
 	RuleId string `pulumi:"ruleId"`
 }
@@ -8099,6 +8113,8 @@ type GetBackupPlanAssociationRulesConfigInfoArgs struct {
 	LastBackupErrors GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput `pulumi:"lastBackupErrors"`
 	// State of last backup taken.
 	LastBackupState pulumi.StringInput `pulumi:"lastBackupState"`
+	// The point in time when the last successful backup was captured from the source
+	LastSuccessfulBackupConsistencyTime pulumi.StringInput `pulumi:"lastSuccessfulBackupConsistencyTime"`
 	// Backup Rule id fetched from backup plan.
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
 }
@@ -8164,6 +8180,11 @@ func (o GetBackupPlanAssociationRulesConfigInfoOutput) LastBackupErrors() GetBac
 // State of last backup taken.
 func (o GetBackupPlanAssociationRulesConfigInfoOutput) LastBackupState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupPlanAssociationRulesConfigInfo) string { return v.LastBackupState }).(pulumi.StringOutput)
+}
+
+// The point in time when the last successful backup was captured from the source
+func (o GetBackupPlanAssociationRulesConfigInfoOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationRulesConfigInfo) string { return v.LastSuccessfulBackupConsistencyTime }).(pulumi.StringOutput)
 }
 
 // Backup Rule id fetched from backup plan.

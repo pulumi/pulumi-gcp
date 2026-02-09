@@ -96,6 +96,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     }
 
     /**
+     * )
      * Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
      * specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
      * as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
@@ -105,7 +106,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     private @Nullable Output<String> minCpuPlatform;
 
     /**
-     * @return Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+     * @return )
+     * Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
      * specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
      * as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 
@@ -317,7 +319,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param minCpuPlatform Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+         * @param minCpuPlatform )
+         * Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
          * specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
          * as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
          * 
@@ -330,7 +333,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param minCpuPlatform Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+         * @param minCpuPlatform )
+         * Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
          * specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
          * as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
          * 

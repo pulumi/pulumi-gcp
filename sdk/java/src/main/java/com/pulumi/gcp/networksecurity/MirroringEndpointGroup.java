@@ -296,6 +296,7 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.mirroringDeploymentGroup);
     }
     /**
+     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -306,7 +307,8 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ List<String>> mirroringDeploymentGroups;
 
     /**
-     * @return A list of the deployment groups that this BROKER endpoint group is
+     * @return (Optional, Beta)
+     * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
      * See https://google.aip.dev/124.
@@ -428,6 +430,7 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
         return this.state;
     }
     /**
+     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
@@ -439,7 +442,8 @@ public class MirroringEndpointGroup extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The type of the endpoint group.
+     * @return (Optional, Beta)
+     * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
      * DIRECT

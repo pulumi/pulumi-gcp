@@ -628,9 +628,11 @@ type RouterPeer struct {
 	EnableIpv4 pulumi.BoolOutput `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
+	// (Optional, Beta)
 	// routers.list of export policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
 	ExportPolicies pulumi.StringArrayOutput `pulumi:"exportPolicies"`
+	// (Optional, Beta)
 	// routers.list of import policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
 	ImportPolicies pulumi.StringArrayOutput `pulumi:"importPolicies"`
@@ -794,9 +796,11 @@ type routerPeerState struct {
 	EnableIpv4 *bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// (Optional, Beta)
 	// routers.list of export policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
 	ExportPolicies []string `pulumi:"exportPolicies"`
+	// (Optional, Beta)
 	// routers.list of import policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
 	ImportPolicies []string `pulumi:"importPolicies"`
@@ -922,9 +926,11 @@ type RouterPeerState struct {
 	EnableIpv4 pulumi.BoolPtrInput
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// routers.list of export policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
 	ExportPolicies pulumi.StringArrayInput
+	// (Optional, Beta)
 	// routers.list of import policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
 	ImportPolicies pulumi.StringArrayInput
@@ -1054,9 +1060,11 @@ type routerPeerArgs struct {
 	EnableIpv4 *bool `pulumi:"enableIpv4"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
+	// (Optional, Beta)
 	// routers.list of export policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
 	ExportPolicies []string `pulumi:"exportPolicies"`
+	// (Optional, Beta)
 	// routers.list of import policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
 	ImportPolicies []string `pulumi:"importPolicies"`
@@ -1169,9 +1177,11 @@ type RouterPeerArgs struct {
 	EnableIpv4 pulumi.BoolPtrInput
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
 	EnableIpv6 pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// routers.list of export policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
 	ExportPolicies pulumi.StringArrayInput
+	// (Optional, Beta)
 	// routers.list of import policies applied to this peer, in the order they must be evaluated.
 	// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
 	ImportPolicies pulumi.StringArrayInput
@@ -1399,12 +1409,14 @@ func (o RouterPeerOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
 }
 
+// (Optional, Beta)
 // routers.list of export policies applied to this peer, in the order they must be evaluated.
 // The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
 func (o RouterPeerOutput) ExportPolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringArrayOutput { return v.ExportPolicies }).(pulumi.StringArrayOutput)
 }
 
+// (Optional, Beta)
 // routers.list of import policies applied to this peer, in the order they must be evaluated.
 // The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
 func (o RouterPeerOutput) ImportPolicies() pulumi.StringArrayOutput {

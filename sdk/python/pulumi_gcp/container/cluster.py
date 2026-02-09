@@ -125,7 +125,7 @@ class ClusterArgs:
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: Configuration for
+        :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
@@ -194,7 +194,7 @@ class ClusterArgs:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -279,7 +279,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input['ClusterPodAutoscalingArgs'] pod_autoscaling: Configuration for the
                Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -287,7 +287,8 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
+               Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterRbacBindingConfigArgs'] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
                
                <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
@@ -314,7 +315,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: Configuration for the
+        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: ) Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -325,7 +326,8 @@ class ClusterArgs:
         :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+        :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -599,7 +601,7 @@ class ClusterArgs:
     @pulumi.getter(name="clusterTelemetry")
     def cluster_telemetry(self) -> Optional[pulumi.Input['ClusterClusterTelemetryArgs']]:
         """
-        Configuration for
+        ) Configuration for
         [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
         Structure is documented below.
         """
@@ -1052,7 +1054,7 @@ class ClusterArgs:
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]:
         """
-        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -1357,7 +1359,7 @@ class ClusterArgs:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        Configuration for the
+        ) Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -1409,6 +1411,7 @@ class ClusterArgs:
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> Optional[pulumi.Input['ClusterProtectConfigArgs']]:
         """
+        )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "protect_config")
@@ -1513,7 +1516,7 @@ class ClusterArgs:
     @pulumi.getter(name="secretSyncConfig")
     def secret_sync_config(self) -> Optional[pulumi.Input['ClusterSecretSyncConfigArgs']]:
         """
-        Configuration for the
+        ) Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         Structure is documented below.
         """
@@ -1601,6 +1604,7 @@ class ClusterArgs:
     @pulumi.getter(name="workloadAltsConfig")
     def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
         """
+        )
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         """
         return pulumi.get(self, "workload_alts_config")
@@ -1740,7 +1744,7 @@ class _ClusterState:
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: Configuration for
+        :param pulumi.Input['ClusterClusterTelemetryArgs'] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
@@ -1812,7 +1816,7 @@ class _ClusterState:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -1898,7 +1902,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input['ClusterPodAutoscalingArgs'] pod_autoscaling: Configuration for the
                Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -1906,7 +1910,8 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
+               Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['ClusterRbacBindingConfigArgs'] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
                
@@ -1934,7 +1939,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: Configuration for the
+        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: ) Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -1948,7 +1953,8 @@ class _ClusterState:
         :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+        :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -2240,7 +2246,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterTelemetry")
     def cluster_telemetry(self) -> Optional[pulumi.Input['ClusterClusterTelemetryArgs']]:
         """
-        Configuration for
+        ) Configuration for
         [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
         Structure is documented below.
         """
@@ -2729,7 +2735,7 @@ class _ClusterState:
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]:
         """
-        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -3055,7 +3061,7 @@ class _ClusterState:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        Configuration for the
+        ) Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -3107,6 +3113,7 @@ class _ClusterState:
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> Optional[pulumi.Input['ClusterProtectConfigArgs']]:
         """
+        )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "protect_config")
@@ -3223,7 +3230,7 @@ class _ClusterState:
     @pulumi.getter(name="secretSyncConfig")
     def secret_sync_config(self) -> Optional[pulumi.Input['ClusterSecretSyncConfigArgs']]:
         """
-        Configuration for the
+        ) Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         Structure is documented below.
         """
@@ -3347,6 +3354,7 @@ class _ClusterState:
     @pulumi.getter(name="workloadAltsConfig")
     def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
         """
+        )
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         """
         return pulumi.get(self, "workload_alts_config")
@@ -3472,7 +3480,7 @@ class Cluster(pulumi.CustomResource):
         and run `pulumi up` to write the field to state in order to destroy a cluster.
 
         > All arguments and attributes (including certificate outputs) will be stored in the raw state as
-        plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+        plaintext. Read more about sensitive data in state.
 
         ## Example Usage
 
@@ -3570,7 +3578,7 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']] cluster_telemetry: Configuration for
+        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
@@ -3639,7 +3647,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -3724,7 +3732,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: Configuration for the
+        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -3732,7 +3740,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: )
+               Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
                
                <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
@@ -3759,7 +3768,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: Configuration for the
+        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: ) Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -3770,7 +3779,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -3794,7 +3804,7 @@ class Cluster(pulumi.CustomResource):
         and run `pulumi up` to write the field to state in order to destroy a cluster.
 
         > All arguments and attributes (including certificate outputs) will be stored in the raw state as
-        plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+        plaintext. Read more about sensitive data in state.
 
         ## Example Usage
 
@@ -4197,7 +4207,7 @@ class Cluster(pulumi.CustomResource):
                in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
                automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
                default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
-        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']] cluster_telemetry: Configuration for
+        :param pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']] cluster_telemetry: ) Configuration for
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
@@ -4269,7 +4279,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
                your service account has permission to get credentials for your GKE cluster. If
@@ -4355,7 +4365,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']] pod_autoscaling: Configuration for the
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: Configuration for the
+        :param pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']] pod_security_policy_config: ) Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -4363,7 +4373,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: )
+               Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
                
@@ -4391,7 +4402,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: Configuration for the
+        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: ) Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -4405,7 +4416,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster Structure is documented below.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+        :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -4580,7 +4592,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterTelemetry")
     def cluster_telemetry(self) -> pulumi.Output['outputs.ClusterClusterTelemetry']:
         """
-        Configuration for
+        ) Configuration for
         [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
         Structure is documented below.
         """
@@ -4917,7 +4929,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="managedOpentelemetryConfig")
     def managed_opentelemetry_config(self) -> pulumi.Output['outputs.ClusterManagedOpentelemetryConfig']:
         """
-        Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+        ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
@@ -5155,7 +5167,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> pulumi.Output[Optional['outputs.ClusterPodSecurityPolicyConfig']]:
         """
-        Configuration for the
+        ) Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -5191,6 +5203,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> pulumi.Output['outputs.ClusterProtectConfig']:
         """
+        )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "protect_config")
@@ -5275,7 +5288,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="secretSyncConfig")
     def secret_sync_config(self) -> pulumi.Output[Optional['outputs.ClusterSecretSyncConfig']]:
         """
-        Configuration for the
+        ) Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         Structure is documented below.
         """
@@ -5359,6 +5372,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="workloadAltsConfig")
     def workload_alts_config(self) -> pulumi.Output['outputs.ClusterWorkloadAltsConfig']:
         """
+        )
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         """
         return pulumi.get(self, "workload_alts_config")

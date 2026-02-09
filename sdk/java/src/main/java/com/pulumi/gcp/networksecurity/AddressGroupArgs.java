@@ -135,6 +135,7 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      * 
@@ -143,7 +144,8 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> purposes;
 
     /**
-     * @return List of supported purposes of the Address Group.
+     * @return (Optional, Beta)
+     * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      * 
      */
@@ -368,7 +370,8 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposes List of supported purposes of the Address Group.
+         * @param purposes (Optional, Beta)
+         * List of supported purposes of the Address Group.
          * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
          * 
          * @return builder
@@ -380,7 +383,8 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposes List of supported purposes of the Address Group.
+         * @param purposes (Optional, Beta)
+         * List of supported purposes of the Address Group.
          * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
          * 
          * @return builder
@@ -391,7 +395,8 @@ public final class AddressGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposes List of supported purposes of the Address Group.
+         * @param purposes (Optional, Beta)
+         * List of supported purposes of the Address Group.
          * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
          * 
          * @return builder

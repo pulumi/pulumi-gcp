@@ -254,6 +254,7 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * (Optional, Beta)
      * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
      * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
      * required for issuance and rotation of mTLS workload certificates.
@@ -264,7 +265,8 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ WorkloadIdentityPoolInlineCertificateIssuanceConfig> inlineCertificateIssuanceConfig;
 
     /**
-     * @return Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+     * @return (Optional, Beta)
+     * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
      * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
      * required for issuance and rotation of mTLS workload certificates.
      * Structure is documented below.
@@ -274,6 +276,7 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.inlineCertificateIssuanceConfig);
     }
     /**
+     * (Optional, Beta)
      * Represents config to add additional trusted trust domains. Defines configuration for extending
      * trust to additional trust domains. By establishing trust with another domain, the current
      * domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -286,7 +289,8 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ WorkloadIdentityPoolInlineTrustConfig> inlineTrustConfig;
 
     /**
-     * @return Represents config to add additional trusted trust domains. Defines configuration for extending
+     * @return (Optional, Beta)
+     * Represents config to add additional trusted trust domains. Defines configuration for extending
      * trust to additional trust domains. By establishing trust with another domain, the current
      * domain will recognize and accept certificates issued by entities within the trusted domains.
      * Note that a trust domain automatically trusts itself, eliminating the need for explicit
@@ -298,6 +302,7 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.inlineTrustConfig);
     }
     /**
+     * (Optional, Beta)
      * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
      * 
@@ -322,7 +327,8 @@ public class WorkloadIdentityPool extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> mode;
 
     /**
-     * @return The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+     * @return (Optional, Beta)
+     * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
      * 
      * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While

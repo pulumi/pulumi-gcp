@@ -20,8 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
- * 
  * ## Example Usage
  * 
  * ### Saas Runtime Unit Kind Basic

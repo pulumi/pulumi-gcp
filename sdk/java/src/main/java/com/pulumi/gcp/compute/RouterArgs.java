@@ -111,6 +111,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      * 
      */
@@ -118,7 +119,8 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> nccGateway;
 
     /**
-     * @return A URI of an NCC Gateway spoke
+     * @return (Optional, Beta)
+     * A URI of an NCC Gateway spoke
      * 
      */
     public Optional<Output<String>> nccGateway() {
@@ -344,7 +346,8 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nccGateway A URI of an NCC Gateway spoke
+         * @param nccGateway (Optional, Beta)
+         * A URI of an NCC Gateway spoke
          * 
          * @return builder
          * 
@@ -355,7 +358,8 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nccGateway A URI of an NCC Gateway spoke
+         * @param nccGateway (Optional, Beta)
+         * A URI of an NCC Gateway spoke
          * 
          * @return builder
          * 

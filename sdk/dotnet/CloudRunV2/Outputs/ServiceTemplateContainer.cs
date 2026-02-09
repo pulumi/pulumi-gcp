@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerResources? Resources;
         /// <summary>
+        /// (Optional, Beta)
         /// Location of the source.
         /// Structure is documented below.
         /// </summary>

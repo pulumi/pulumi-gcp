@@ -274,6 +274,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Configuration for enhanced query insights.
      * Structure is documented below.
      * 
@@ -282,7 +283,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceObservabilityConfigArgs> observabilityConfig;
 
     /**
-     * @return Configuration for enhanced query insights.
+     * @return (Optional, Beta)
+     * Configuration for enhanced query insights.
      * Structure is documented below.
      * 
      */
@@ -711,7 +713,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observabilityConfig Configuration for enhanced query insights.
+         * @param observabilityConfig (Optional, Beta)
+         * Configuration for enhanced query insights.
          * Structure is documented below.
          * 
          * @return builder
@@ -723,7 +726,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observabilityConfig Configuration for enhanced query insights.
+         * @param observabilityConfig (Optional, Beta)
+         * Configuration for enhanced query insights.
          * Structure is documented below.
          * 
          * @return builder

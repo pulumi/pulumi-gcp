@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to run the query as continuous or a regular query.
         /// </summary>
         [Input("continuous")]

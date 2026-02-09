@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxToolVersionTool
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Integration connectors tool specification.
         /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         /// Structure is documented below.

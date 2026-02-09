@@ -130,14 +130,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     }
 
     /**
-     * Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+     * Set to true to stop syncing configs for a single cluster. Default to false.
      * 
      */
     @Import(name="stopSyncing")
     private @Nullable Output<Boolean> stopSyncing;
 
     /**
-     * @return Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+     * @return Set to true to stop syncing configs for a single cluster. Default to false.
      * 
      */
     public Optional<Output<Boolean>> stopSyncing() {
@@ -337,7 +337,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param stopSyncing Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+         * @param stopSyncing Set to true to stop syncing configs for a single cluster. Default to false.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param stopSyncing Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+         * @param stopSyncing Set to true to stop syncing configs for a single cluster. Default to false.
          * 
          * @return builder
          * 

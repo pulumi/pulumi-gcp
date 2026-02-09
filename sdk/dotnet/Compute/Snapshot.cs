@@ -29,9 +29,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Snapshot Basic
@@ -272,6 +269,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Output("guestFlush")]
@@ -472,6 +470,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Input("guestFlush")]
@@ -626,6 +625,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Input("guestFlush")]

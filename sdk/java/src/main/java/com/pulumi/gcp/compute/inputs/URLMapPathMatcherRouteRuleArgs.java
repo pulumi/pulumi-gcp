@@ -66,6 +66,7 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
     }
 
     /**
+     * (Optional, Beta)
      * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
@@ -77,7 +78,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
     private @Nullable Output<List<URLMapPathMatcherRouteRuleHttpFilterConfigArgs>> httpFilterConfigs;
 
     /**
-     * @return Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+     * @return (Optional, Beta)
+     * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -89,6 +91,7 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
     }
 
     /**
+     * (Optional, Beta)
      * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
@@ -100,7 +103,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
     private @Nullable Output<List<URLMapPathMatcherRouteRuleHttpFilterMetadataArgs>> httpFilterMetadatas;
 
     /**
-     * @return Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+     * @return (Optional, Beta)
+     * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -327,7 +331,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param httpFilterConfigs Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+         * @param httpFilterConfigs (Optional, Beta)
+         * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
          * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * See ForwardingRule for more details.
          * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -342,7 +347,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param httpFilterConfigs Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+         * @param httpFilterConfigs (Optional, Beta)
+         * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
          * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * See ForwardingRule for more details.
          * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -356,7 +362,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param httpFilterConfigs Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+         * @param httpFilterConfigs (Optional, Beta)
+         * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
          * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * See ForwardingRule for more details.
          * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -370,7 +377,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param httpFilterMetadatas Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+         * @param httpFilterMetadatas (Optional, Beta)
+         * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
          * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * See ForwardingRule for more details.
          * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -385,7 +393,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param httpFilterMetadatas Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+         * @param httpFilterMetadatas (Optional, Beta)
+         * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
          * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * See ForwardingRule for more details.
          * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -399,7 +408,8 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param httpFilterMetadatas Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+         * @param httpFilterMetadatas (Optional, Beta)
+         * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
          * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
          * See ForwardingRule for more details.
          * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.

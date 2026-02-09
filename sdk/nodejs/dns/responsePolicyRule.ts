@@ -107,6 +107,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional, Beta)
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     declare public readonly behavior: pulumi.Output<string | undefined>;
@@ -181,6 +182,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
  */
 export interface ResponsePolicyRuleState {
     /**
+     * (Optional, Beta)
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;
@@ -214,6 +216,7 @@ export interface ResponsePolicyRuleState {
  */
 export interface ResponsePolicyRuleArgs {
     /**
+     * (Optional, Beta)
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;

@@ -7,10 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
- * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
- * for more details.
- *
  * ## Example Usage
  *
  * ### Searching For All Projects In An Org
@@ -94,10 +90,6 @@ export interface GetResourcesSearchAllResult {
     readonly scope: string;
 }
 /**
- * Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
- * [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
- * for more details.
- *
  * ## Example Usage
  *
  * ### Searching For All Projects In An Org

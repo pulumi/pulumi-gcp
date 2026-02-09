@@ -62,7 +62,7 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs extends
     }
 
     /**
-     * , Configuration for VM repairs in the MIG. Structure is documented below.
+     * ), Configuration for VM repairs in the MIG. Structure is documented below.
      * ***
      * 
      */
@@ -70,7 +70,7 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs extends
     private @Nullable Output<RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs> onRepair;
 
     /**
-     * @return , Configuration for VM repairs in the MIG. Structure is documented below.
+     * @return ), Configuration for VM repairs in the MIG. Structure is documented below.
      * ***
      * 
      */
@@ -169,7 +169,7 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs extends
         }
 
         /**
-         * @param onRepair , Configuration for VM repairs in the MIG. Structure is documented below.
+         * @param onRepair ), Configuration for VM repairs in the MIG. Structure is documented below.
          * ***
          * 
          * @return builder
@@ -181,7 +181,7 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs extends
         }
 
         /**
-         * @param onRepair , Configuration for VM repairs in the MIG. Structure is documented below.
+         * @param onRepair ), Configuration for VM repairs in the MIG. Structure is documented below.
          * ***
          * 
          * @return builder

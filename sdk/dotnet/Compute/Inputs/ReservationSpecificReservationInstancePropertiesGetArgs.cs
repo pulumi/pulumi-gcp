@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string> MachineType { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies the frequency of planned maintenance events.
         /// Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
         /// </summary>

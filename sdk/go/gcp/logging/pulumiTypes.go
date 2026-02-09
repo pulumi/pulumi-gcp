@@ -4044,6 +4044,442 @@ func (o ProjectSinkExclusionArrayOutput) Index(i pulumi.IntInput) ProjectSinkExc
 	}).(ProjectSinkExclusionOutput)
 }
 
+type SavedQueryLoggingQuery struct {
+	// An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+	// is used to match log entries.
+	Filter string `pulumi:"filter"`
+	// Characters will be counted from the end of the string.
+	SummaryFieldEnd *int `pulumi:"summaryFieldEnd"`
+	// Characters will be counted from the start of the string.
+	SummaryFieldStart *int `pulumi:"summaryFieldStart"`
+	// The names of the fields to display in the summary.
+	// Structure is documented below.
+	SummaryFields []SavedQueryLoggingQuerySummaryField `pulumi:"summaryFields"`
+}
+
+// SavedQueryLoggingQueryInput is an input type that accepts SavedQueryLoggingQueryArgs and SavedQueryLoggingQueryOutput values.
+// You can construct a concrete instance of `SavedQueryLoggingQueryInput` via:
+//
+//	SavedQueryLoggingQueryArgs{...}
+type SavedQueryLoggingQueryInput interface {
+	pulumi.Input
+
+	ToSavedQueryLoggingQueryOutput() SavedQueryLoggingQueryOutput
+	ToSavedQueryLoggingQueryOutputWithContext(context.Context) SavedQueryLoggingQueryOutput
+}
+
+type SavedQueryLoggingQueryArgs struct {
+	// An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+	// is used to match log entries.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// Characters will be counted from the end of the string.
+	SummaryFieldEnd pulumi.IntPtrInput `pulumi:"summaryFieldEnd"`
+	// Characters will be counted from the start of the string.
+	SummaryFieldStart pulumi.IntPtrInput `pulumi:"summaryFieldStart"`
+	// The names of the fields to display in the summary.
+	// Structure is documented below.
+	SummaryFields SavedQueryLoggingQuerySummaryFieldArrayInput `pulumi:"summaryFields"`
+}
+
+func (SavedQueryLoggingQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedQueryLoggingQuery)(nil)).Elem()
+}
+
+func (i SavedQueryLoggingQueryArgs) ToSavedQueryLoggingQueryOutput() SavedQueryLoggingQueryOutput {
+	return i.ToSavedQueryLoggingQueryOutputWithContext(context.Background())
+}
+
+func (i SavedQueryLoggingQueryArgs) ToSavedQueryLoggingQueryOutputWithContext(ctx context.Context) SavedQueryLoggingQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryLoggingQueryOutput)
+}
+
+func (i SavedQueryLoggingQueryArgs) ToSavedQueryLoggingQueryPtrOutput() SavedQueryLoggingQueryPtrOutput {
+	return i.ToSavedQueryLoggingQueryPtrOutputWithContext(context.Background())
+}
+
+func (i SavedQueryLoggingQueryArgs) ToSavedQueryLoggingQueryPtrOutputWithContext(ctx context.Context) SavedQueryLoggingQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryLoggingQueryOutput).ToSavedQueryLoggingQueryPtrOutputWithContext(ctx)
+}
+
+// SavedQueryLoggingQueryPtrInput is an input type that accepts SavedQueryLoggingQueryArgs, SavedQueryLoggingQueryPtr and SavedQueryLoggingQueryPtrOutput values.
+// You can construct a concrete instance of `SavedQueryLoggingQueryPtrInput` via:
+//
+//	        SavedQueryLoggingQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SavedQueryLoggingQueryPtrInput interface {
+	pulumi.Input
+
+	ToSavedQueryLoggingQueryPtrOutput() SavedQueryLoggingQueryPtrOutput
+	ToSavedQueryLoggingQueryPtrOutputWithContext(context.Context) SavedQueryLoggingQueryPtrOutput
+}
+
+type savedQueryLoggingQueryPtrType SavedQueryLoggingQueryArgs
+
+func SavedQueryLoggingQueryPtr(v *SavedQueryLoggingQueryArgs) SavedQueryLoggingQueryPtrInput {
+	return (*savedQueryLoggingQueryPtrType)(v)
+}
+
+func (*savedQueryLoggingQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavedQueryLoggingQuery)(nil)).Elem()
+}
+
+func (i *savedQueryLoggingQueryPtrType) ToSavedQueryLoggingQueryPtrOutput() SavedQueryLoggingQueryPtrOutput {
+	return i.ToSavedQueryLoggingQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *savedQueryLoggingQueryPtrType) ToSavedQueryLoggingQueryPtrOutputWithContext(ctx context.Context) SavedQueryLoggingQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryLoggingQueryPtrOutput)
+}
+
+type SavedQueryLoggingQueryOutput struct{ *pulumi.OutputState }
+
+func (SavedQueryLoggingQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedQueryLoggingQuery)(nil)).Elem()
+}
+
+func (o SavedQueryLoggingQueryOutput) ToSavedQueryLoggingQueryOutput() SavedQueryLoggingQueryOutput {
+	return o
+}
+
+func (o SavedQueryLoggingQueryOutput) ToSavedQueryLoggingQueryOutputWithContext(ctx context.Context) SavedQueryLoggingQueryOutput {
+	return o
+}
+
+func (o SavedQueryLoggingQueryOutput) ToSavedQueryLoggingQueryPtrOutput() SavedQueryLoggingQueryPtrOutput {
+	return o.ToSavedQueryLoggingQueryPtrOutputWithContext(context.Background())
+}
+
+func (o SavedQueryLoggingQueryOutput) ToSavedQueryLoggingQueryPtrOutputWithContext(ctx context.Context) SavedQueryLoggingQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SavedQueryLoggingQuery) *SavedQueryLoggingQuery {
+		return &v
+	}).(SavedQueryLoggingQueryPtrOutput)
+}
+
+// An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+// is used to match log entries.
+func (o SavedQueryLoggingQueryOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedQueryLoggingQuery) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Characters will be counted from the end of the string.
+func (o SavedQueryLoggingQueryOutput) SummaryFieldEnd() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SavedQueryLoggingQuery) *int { return v.SummaryFieldEnd }).(pulumi.IntPtrOutput)
+}
+
+// Characters will be counted from the start of the string.
+func (o SavedQueryLoggingQueryOutput) SummaryFieldStart() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SavedQueryLoggingQuery) *int { return v.SummaryFieldStart }).(pulumi.IntPtrOutput)
+}
+
+// The names of the fields to display in the summary.
+// Structure is documented below.
+func (o SavedQueryLoggingQueryOutput) SummaryFields() SavedQueryLoggingQuerySummaryFieldArrayOutput {
+	return o.ApplyT(func(v SavedQueryLoggingQuery) []SavedQueryLoggingQuerySummaryField { return v.SummaryFields }).(SavedQueryLoggingQuerySummaryFieldArrayOutput)
+}
+
+type SavedQueryLoggingQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (SavedQueryLoggingQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavedQueryLoggingQuery)(nil)).Elem()
+}
+
+func (o SavedQueryLoggingQueryPtrOutput) ToSavedQueryLoggingQueryPtrOutput() SavedQueryLoggingQueryPtrOutput {
+	return o
+}
+
+func (o SavedQueryLoggingQueryPtrOutput) ToSavedQueryLoggingQueryPtrOutputWithContext(ctx context.Context) SavedQueryLoggingQueryPtrOutput {
+	return o
+}
+
+func (o SavedQueryLoggingQueryPtrOutput) Elem() SavedQueryLoggingQueryOutput {
+	return o.ApplyT(func(v *SavedQueryLoggingQuery) SavedQueryLoggingQuery {
+		if v != nil {
+			return *v
+		}
+		var ret SavedQueryLoggingQuery
+		return ret
+	}).(SavedQueryLoggingQueryOutput)
+}
+
+// An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+// is used to match log entries.
+func (o SavedQueryLoggingQueryPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SavedQueryLoggingQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Filter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Characters will be counted from the end of the string.
+func (o SavedQueryLoggingQueryPtrOutput) SummaryFieldEnd() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SavedQueryLoggingQuery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SummaryFieldEnd
+	}).(pulumi.IntPtrOutput)
+}
+
+// Characters will be counted from the start of the string.
+func (o SavedQueryLoggingQueryPtrOutput) SummaryFieldStart() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SavedQueryLoggingQuery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SummaryFieldStart
+	}).(pulumi.IntPtrOutput)
+}
+
+// The names of the fields to display in the summary.
+// Structure is documented below.
+func (o SavedQueryLoggingQueryPtrOutput) SummaryFields() SavedQueryLoggingQuerySummaryFieldArrayOutput {
+	return o.ApplyT(func(v *SavedQueryLoggingQuery) []SavedQueryLoggingQuerySummaryField {
+		if v == nil {
+			return nil
+		}
+		return v.SummaryFields
+	}).(SavedQueryLoggingQuerySummaryFieldArrayOutput)
+}
+
+type SavedQueryLoggingQuerySummaryField struct {
+	// The field from the LogEntry to include in the summary line.
+	Field *string `pulumi:"field"`
+}
+
+// SavedQueryLoggingQuerySummaryFieldInput is an input type that accepts SavedQueryLoggingQuerySummaryFieldArgs and SavedQueryLoggingQuerySummaryFieldOutput values.
+// You can construct a concrete instance of `SavedQueryLoggingQuerySummaryFieldInput` via:
+//
+//	SavedQueryLoggingQuerySummaryFieldArgs{...}
+type SavedQueryLoggingQuerySummaryFieldInput interface {
+	pulumi.Input
+
+	ToSavedQueryLoggingQuerySummaryFieldOutput() SavedQueryLoggingQuerySummaryFieldOutput
+	ToSavedQueryLoggingQuerySummaryFieldOutputWithContext(context.Context) SavedQueryLoggingQuerySummaryFieldOutput
+}
+
+type SavedQueryLoggingQuerySummaryFieldArgs struct {
+	// The field from the LogEntry to include in the summary line.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+}
+
+func (SavedQueryLoggingQuerySummaryFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedQueryLoggingQuerySummaryField)(nil)).Elem()
+}
+
+func (i SavedQueryLoggingQuerySummaryFieldArgs) ToSavedQueryLoggingQuerySummaryFieldOutput() SavedQueryLoggingQuerySummaryFieldOutput {
+	return i.ToSavedQueryLoggingQuerySummaryFieldOutputWithContext(context.Background())
+}
+
+func (i SavedQueryLoggingQuerySummaryFieldArgs) ToSavedQueryLoggingQuerySummaryFieldOutputWithContext(ctx context.Context) SavedQueryLoggingQuerySummaryFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryLoggingQuerySummaryFieldOutput)
+}
+
+// SavedQueryLoggingQuerySummaryFieldArrayInput is an input type that accepts SavedQueryLoggingQuerySummaryFieldArray and SavedQueryLoggingQuerySummaryFieldArrayOutput values.
+// You can construct a concrete instance of `SavedQueryLoggingQuerySummaryFieldArrayInput` via:
+//
+//	SavedQueryLoggingQuerySummaryFieldArray{ SavedQueryLoggingQuerySummaryFieldArgs{...} }
+type SavedQueryLoggingQuerySummaryFieldArrayInput interface {
+	pulumi.Input
+
+	ToSavedQueryLoggingQuerySummaryFieldArrayOutput() SavedQueryLoggingQuerySummaryFieldArrayOutput
+	ToSavedQueryLoggingQuerySummaryFieldArrayOutputWithContext(context.Context) SavedQueryLoggingQuerySummaryFieldArrayOutput
+}
+
+type SavedQueryLoggingQuerySummaryFieldArray []SavedQueryLoggingQuerySummaryFieldInput
+
+func (SavedQueryLoggingQuerySummaryFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SavedQueryLoggingQuerySummaryField)(nil)).Elem()
+}
+
+func (i SavedQueryLoggingQuerySummaryFieldArray) ToSavedQueryLoggingQuerySummaryFieldArrayOutput() SavedQueryLoggingQuerySummaryFieldArrayOutput {
+	return i.ToSavedQueryLoggingQuerySummaryFieldArrayOutputWithContext(context.Background())
+}
+
+func (i SavedQueryLoggingQuerySummaryFieldArray) ToSavedQueryLoggingQuerySummaryFieldArrayOutputWithContext(ctx context.Context) SavedQueryLoggingQuerySummaryFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryLoggingQuerySummaryFieldArrayOutput)
+}
+
+type SavedQueryLoggingQuerySummaryFieldOutput struct{ *pulumi.OutputState }
+
+func (SavedQueryLoggingQuerySummaryFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedQueryLoggingQuerySummaryField)(nil)).Elem()
+}
+
+func (o SavedQueryLoggingQuerySummaryFieldOutput) ToSavedQueryLoggingQuerySummaryFieldOutput() SavedQueryLoggingQuerySummaryFieldOutput {
+	return o
+}
+
+func (o SavedQueryLoggingQuerySummaryFieldOutput) ToSavedQueryLoggingQuerySummaryFieldOutputWithContext(ctx context.Context) SavedQueryLoggingQuerySummaryFieldOutput {
+	return o
+}
+
+// The field from the LogEntry to include in the summary line.
+func (o SavedQueryLoggingQuerySummaryFieldOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SavedQueryLoggingQuerySummaryField) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+type SavedQueryLoggingQuerySummaryFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (SavedQueryLoggingQuerySummaryFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SavedQueryLoggingQuerySummaryField)(nil)).Elem()
+}
+
+func (o SavedQueryLoggingQuerySummaryFieldArrayOutput) ToSavedQueryLoggingQuerySummaryFieldArrayOutput() SavedQueryLoggingQuerySummaryFieldArrayOutput {
+	return o
+}
+
+func (o SavedQueryLoggingQuerySummaryFieldArrayOutput) ToSavedQueryLoggingQuerySummaryFieldArrayOutputWithContext(ctx context.Context) SavedQueryLoggingQuerySummaryFieldArrayOutput {
+	return o
+}
+
+func (o SavedQueryLoggingQuerySummaryFieldArrayOutput) Index(i pulumi.IntInput) SavedQueryLoggingQuerySummaryFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SavedQueryLoggingQuerySummaryField {
+		return vs[0].([]SavedQueryLoggingQuerySummaryField)[vs[1].(int)]
+	}).(SavedQueryLoggingQuerySummaryFieldOutput)
+}
+
+type SavedQueryOpsAnalyticsQuery struct {
+	// A logs analytics SQL query, which generally follows BigQuery format.
+	SqlQueryText string `pulumi:"sqlQueryText"`
+}
+
+// SavedQueryOpsAnalyticsQueryInput is an input type that accepts SavedQueryOpsAnalyticsQueryArgs and SavedQueryOpsAnalyticsQueryOutput values.
+// You can construct a concrete instance of `SavedQueryOpsAnalyticsQueryInput` via:
+//
+//	SavedQueryOpsAnalyticsQueryArgs{...}
+type SavedQueryOpsAnalyticsQueryInput interface {
+	pulumi.Input
+
+	ToSavedQueryOpsAnalyticsQueryOutput() SavedQueryOpsAnalyticsQueryOutput
+	ToSavedQueryOpsAnalyticsQueryOutputWithContext(context.Context) SavedQueryOpsAnalyticsQueryOutput
+}
+
+type SavedQueryOpsAnalyticsQueryArgs struct {
+	// A logs analytics SQL query, which generally follows BigQuery format.
+	SqlQueryText pulumi.StringInput `pulumi:"sqlQueryText"`
+}
+
+func (SavedQueryOpsAnalyticsQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedQueryOpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (i SavedQueryOpsAnalyticsQueryArgs) ToSavedQueryOpsAnalyticsQueryOutput() SavedQueryOpsAnalyticsQueryOutput {
+	return i.ToSavedQueryOpsAnalyticsQueryOutputWithContext(context.Background())
+}
+
+func (i SavedQueryOpsAnalyticsQueryArgs) ToSavedQueryOpsAnalyticsQueryOutputWithContext(ctx context.Context) SavedQueryOpsAnalyticsQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryOpsAnalyticsQueryOutput)
+}
+
+func (i SavedQueryOpsAnalyticsQueryArgs) ToSavedQueryOpsAnalyticsQueryPtrOutput() SavedQueryOpsAnalyticsQueryPtrOutput {
+	return i.ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(context.Background())
+}
+
+func (i SavedQueryOpsAnalyticsQueryArgs) ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) SavedQueryOpsAnalyticsQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryOpsAnalyticsQueryOutput).ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(ctx)
+}
+
+// SavedQueryOpsAnalyticsQueryPtrInput is an input type that accepts SavedQueryOpsAnalyticsQueryArgs, SavedQueryOpsAnalyticsQueryPtr and SavedQueryOpsAnalyticsQueryPtrOutput values.
+// You can construct a concrete instance of `SavedQueryOpsAnalyticsQueryPtrInput` via:
+//
+//	        SavedQueryOpsAnalyticsQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SavedQueryOpsAnalyticsQueryPtrInput interface {
+	pulumi.Input
+
+	ToSavedQueryOpsAnalyticsQueryPtrOutput() SavedQueryOpsAnalyticsQueryPtrOutput
+	ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(context.Context) SavedQueryOpsAnalyticsQueryPtrOutput
+}
+
+type savedQueryOpsAnalyticsQueryPtrType SavedQueryOpsAnalyticsQueryArgs
+
+func SavedQueryOpsAnalyticsQueryPtr(v *SavedQueryOpsAnalyticsQueryArgs) SavedQueryOpsAnalyticsQueryPtrInput {
+	return (*savedQueryOpsAnalyticsQueryPtrType)(v)
+}
+
+func (*savedQueryOpsAnalyticsQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavedQueryOpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (i *savedQueryOpsAnalyticsQueryPtrType) ToSavedQueryOpsAnalyticsQueryPtrOutput() SavedQueryOpsAnalyticsQueryPtrOutput {
+	return i.ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *savedQueryOpsAnalyticsQueryPtrType) ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) SavedQueryOpsAnalyticsQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SavedQueryOpsAnalyticsQueryPtrOutput)
+}
+
+type SavedQueryOpsAnalyticsQueryOutput struct{ *pulumi.OutputState }
+
+func (SavedQueryOpsAnalyticsQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavedQueryOpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (o SavedQueryOpsAnalyticsQueryOutput) ToSavedQueryOpsAnalyticsQueryOutput() SavedQueryOpsAnalyticsQueryOutput {
+	return o
+}
+
+func (o SavedQueryOpsAnalyticsQueryOutput) ToSavedQueryOpsAnalyticsQueryOutputWithContext(ctx context.Context) SavedQueryOpsAnalyticsQueryOutput {
+	return o
+}
+
+func (o SavedQueryOpsAnalyticsQueryOutput) ToSavedQueryOpsAnalyticsQueryPtrOutput() SavedQueryOpsAnalyticsQueryPtrOutput {
+	return o.ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(context.Background())
+}
+
+func (o SavedQueryOpsAnalyticsQueryOutput) ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) SavedQueryOpsAnalyticsQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SavedQueryOpsAnalyticsQuery) *SavedQueryOpsAnalyticsQuery {
+		return &v
+	}).(SavedQueryOpsAnalyticsQueryPtrOutput)
+}
+
+// A logs analytics SQL query, which generally follows BigQuery format.
+func (o SavedQueryOpsAnalyticsQueryOutput) SqlQueryText() pulumi.StringOutput {
+	return o.ApplyT(func(v SavedQueryOpsAnalyticsQuery) string { return v.SqlQueryText }).(pulumi.StringOutput)
+}
+
+type SavedQueryOpsAnalyticsQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (SavedQueryOpsAnalyticsQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavedQueryOpsAnalyticsQuery)(nil)).Elem()
+}
+
+func (o SavedQueryOpsAnalyticsQueryPtrOutput) ToSavedQueryOpsAnalyticsQueryPtrOutput() SavedQueryOpsAnalyticsQueryPtrOutput {
+	return o
+}
+
+func (o SavedQueryOpsAnalyticsQueryPtrOutput) ToSavedQueryOpsAnalyticsQueryPtrOutputWithContext(ctx context.Context) SavedQueryOpsAnalyticsQueryPtrOutput {
+	return o
+}
+
+func (o SavedQueryOpsAnalyticsQueryPtrOutput) Elem() SavedQueryOpsAnalyticsQueryOutput {
+	return o.ApplyT(func(v *SavedQueryOpsAnalyticsQuery) SavedQueryOpsAnalyticsQuery {
+		if v != nil {
+			return *v
+		}
+		var ret SavedQueryOpsAnalyticsQuery
+		return ret
+	}).(SavedQueryOpsAnalyticsQueryOutput)
+}
+
+// A logs analytics SQL query, which generally follows BigQuery format.
+func (o SavedQueryOpsAnalyticsQueryPtrOutput) SqlQueryText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SavedQueryOpsAnalyticsQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlQueryText
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSinkBigqueryOption struct {
 	// Whether [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables) are used.
 	UsePartitionedTables bool `pulumi:"usePartitionedTables"`
@@ -4316,6 +4752,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkBigqueryOptionsPtrInput)(nil)).Elem(), ProjectSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkExclusionInput)(nil)).Elem(), ProjectSinkExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkExclusionArrayInput)(nil)).Elem(), ProjectSinkExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedQueryLoggingQueryInput)(nil)).Elem(), SavedQueryLoggingQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedQueryLoggingQueryPtrInput)(nil)).Elem(), SavedQueryLoggingQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedQueryLoggingQuerySummaryFieldInput)(nil)).Elem(), SavedQueryLoggingQuerySummaryFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedQueryLoggingQuerySummaryFieldArrayInput)(nil)).Elem(), SavedQueryLoggingQuerySummaryFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedQueryOpsAnalyticsQueryInput)(nil)).Elem(), SavedQueryOpsAnalyticsQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SavedQueryOpsAnalyticsQueryPtrInput)(nil)).Elem(), SavedQueryOpsAnalyticsQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSinkBigqueryOptionInput)(nil)).Elem(), GetSinkBigqueryOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSinkBigqueryOptionArrayInput)(nil)).Elem(), GetSinkBigqueryOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSinkExclusionInput)(nil)).Elem(), GetSinkExclusionArgs{})
@@ -4370,6 +4812,12 @@ func init() {
 	pulumi.RegisterOutputType(ProjectSinkBigqueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectSinkExclusionOutput{})
 	pulumi.RegisterOutputType(ProjectSinkExclusionArrayOutput{})
+	pulumi.RegisterOutputType(SavedQueryLoggingQueryOutput{})
+	pulumi.RegisterOutputType(SavedQueryLoggingQueryPtrOutput{})
+	pulumi.RegisterOutputType(SavedQueryLoggingQuerySummaryFieldOutput{})
+	pulumi.RegisterOutputType(SavedQueryLoggingQuerySummaryFieldArrayOutput{})
+	pulumi.RegisterOutputType(SavedQueryOpsAnalyticsQueryOutput{})
+	pulumi.RegisterOutputType(SavedQueryOpsAnalyticsQueryPtrOutput{})
 	pulumi.RegisterOutputType(GetSinkBigqueryOptionOutput{})
 	pulumi.RegisterOutputType(GetSinkBigqueryOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetSinkExclusionOutput{})

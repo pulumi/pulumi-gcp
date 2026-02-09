@@ -24,6 +24,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     public static final InterconnectArgs Empty = new InterconnectArgs();
 
     /**
+     * (Optional, Beta)
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      * 
      */
@@ -31,7 +32,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> aaiEnabled;
 
     /**
-     * @return Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+     * @return (Optional, Beta)
+     * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      * 
      */
     public Optional<Output<Boolean>> aaiEnabled() {
@@ -58,6 +60,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
@@ -67,7 +70,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InterconnectApplicationAwareInterconnectArgs> applicationAwareInterconnect;
 
     /**
-     * @return Configuration that enables Media Access Control security (MACsec) on the Cloud
+     * @return (Optional, Beta)
+     * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      * 
@@ -415,7 +419,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aaiEnabled Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+         * @param aaiEnabled (Optional, Beta)
+         * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
          * 
          * @return builder
          * 
@@ -426,7 +431,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aaiEnabled Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+         * @param aaiEnabled (Optional, Beta)
+         * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
          * 
          * @return builder
          * 
@@ -461,7 +467,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationAwareInterconnect Configuration that enables Media Access Control security (MACsec) on the Cloud
+         * @param applicationAwareInterconnect (Optional, Beta)
+         * Configuration that enables Media Access Control security (MACsec) on the Cloud
          * Interconnect connection between Google and your on-premises router.
          * Structure is documented below.
          * 
@@ -474,7 +481,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationAwareInterconnect Configuration that enables Media Access Control security (MACsec) on the Cloud
+         * @param applicationAwareInterconnect (Optional, Beta)
+         * Configuration that enables Media Access Control security (MACsec) on the Cloud
          * Interconnect connection between Google and your on-premises router.
          * Structure is documented below.
          * 

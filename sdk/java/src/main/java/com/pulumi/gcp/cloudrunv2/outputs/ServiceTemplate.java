@@ -93,7 +93,8 @@ public final class ServiceTemplate {
      */
     private @Nullable String serviceAccount;
     /**
-     * @return Enables Cloud Service Mesh for this Revision.
+     * @return (Optional, Beta)
+     * Enables Cloud Service Mesh for this Revision.
      * Structure is documented below.
      * 
      */
@@ -219,7 +220,8 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.serviceAccount);
     }
     /**
-     * @return Enables Cloud Service Mesh for this Revision.
+     * @return (Optional, Beta)
+     * Enables Cloud Service Mesh for this Revision.
      * Structure is documented below.
      * 
      */

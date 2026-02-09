@@ -12,6 +12,7 @@ import com.pulumi.gcp.alloydb.ClusterArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterState;
 import com.pulumi.gcp.alloydb.outputs.ClusterAutomatedBackupPolicy;
 import com.pulumi.gcp.alloydb.outputs.ClusterBackupSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterBackupdrBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterContinuousBackupConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterContinuousBackupInfo;
 import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionConfig;
@@ -22,6 +23,8 @@ import com.pulumi.gcp.alloydb.outputs.ClusterMigrationSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterPscConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupdrBackupSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupdrPitrSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreContinuousBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterSecondaryConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterTrialMetadata;
@@ -600,6 +603,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.backupSources;
     }
     /**
+     * Cluster created from a BackupDR backup.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="backupdrBackupSources", refs={List.class,ClusterBackupdrBackupSource.class}, tree="[0,1]")
+    private Output<List<ClusterBackupdrBackupSource>> backupdrBackupSources;
+
+    /**
+     * @return Cluster created from a BackupDR backup.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ClusterBackupdrBackupSource>> backupdrBackupSources() {
+        return this.backupdrBackupSources;
+    }
+    /**
      * The ID of the alloydb cluster.
      * 
      */
@@ -966,7 +985,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.reconciling;
     }
     /**
-     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -974,7 +993,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ClusterRestoreBackupSource> restoreBackupSource;
 
     /**
-     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -982,7 +1001,39 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.restoreBackupSource);
     }
     /**
-     * The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;,  &#39;restore_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="restoreBackupdrBackupSource", refs={ClusterRestoreBackupdrBackupSource.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterRestoreBackupdrBackupSource> restoreBackupdrBackupSource;
+
+    /**
+     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;,  &#39;restore_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterRestoreBackupdrBackupSource>> restoreBackupdrBackupSource() {
+        return Codegen.optional(this.restoreBackupdrBackupSource);
+    }
+    /**
+     * The BackupDR source used for point in time recovery. Conflicts with &#39;restore_backupdr_backup_source&#39;, &#39;restore_continuous_backup_source&#39; and &#39;restore_backupdr_backup_source&#39;, they can&#39;t be set togeter.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="restoreBackupdrPitrSource", refs={ClusterRestoreBackupdrPitrSource.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterRestoreBackupdrPitrSource> restoreBackupdrPitrSource;
+
+    /**
+     * @return The BackupDR source used for point in time recovery. Conflicts with &#39;restore_backupdr_backup_source&#39;, &#39;restore_continuous_backup_source&#39; and &#39;restore_backupdr_backup_source&#39;, they can&#39;t be set togeter.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterRestoreBackupdrPitrSource>> restoreBackupdrPitrSource() {
+        return Codegen.optional(this.restoreBackupdrPitrSource);
+    }
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -990,7 +1041,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ClusterRestoreContinuousBackupSource> restoreContinuousBackupSource;
 
     /**
-     * @return The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * @return The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */

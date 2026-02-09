@@ -125,6 +125,7 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     declare public readonly importOnly: pulumi.Output<boolean>;
     /**
+     * (Optional, Beta)
      * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -267,6 +268,7 @@ export interface CryptoKeyState {
      */
     importOnly?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -352,6 +354,7 @@ export interface CryptoKeyArgs {
      */
     importOnly?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and

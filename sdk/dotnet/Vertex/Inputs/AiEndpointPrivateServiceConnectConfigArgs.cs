@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
         public Input<bool> EnablePrivateServiceConnect { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         /// </summary>
         [Input("enableSecurePrivateServiceConnect")]

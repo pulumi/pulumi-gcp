@@ -167,14 +167,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-network_16178"),
+//				Name:                  pulumi.String("tf-test-network_44703"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_26317"),
+//				Name:        pulumi.String("tf-test-subnet_9329"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -183,7 +183,7 @@ import (
 //				return err
 //			}
 //			instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
-//				Name:         pulumi.String("tf-test-instance_4866"),
+//				Name:         pulumi.String("tf-test-instance_37135"),
 //				MachineType:  pulumi.String("e2-medium"),
 //				CanIpForward: pulumi.Bool(true),
 //				Zone:         pulumi.String("us-central1-a"),
@@ -208,7 +208,7 @@ import (
 //				return err
 //			}
 //			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
-//				Name:        pulumi.String("tf-test-hub_12618"),
+//				Name:        pulumi.String("tf-test-hub_42503"),
 //				Description: pulumi.String("A sample hub"),
 //				Labels: pulumi.StringMap{
 //					"label-two": pulumi.String("value-one"),
@@ -218,7 +218,7 @@ import (
 //				return err
 //			}
 //			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
-//				Name:        pulumi.String("tf-test-name_32270"),
+//				Name:        pulumi.String("tf-test-name_9991"),
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
 //				Labels: pulumi.StringMap{
@@ -641,8 +641,8 @@ import (
 //				Hub:  starHub.ID(),
 //				AutoAccept: &networkconnectivity.GroupAutoAcceptArgs{
 //					AutoAcceptProjects: pulumi.StringArray{
-//						pulumi.String("foo_44703"),
-//						pulumi.String("bar_9329"),
+//						pulumi.String("foo_12125"),
+//						pulumi.String("bar_82749"),
 //					},
 //				},
 //			})
@@ -749,7 +749,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_37135"),
+//				Name:        pulumi.String("tf-test-subnet_15022"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -827,6 +827,7 @@ type Spoke struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
 	// This is a gateway that can apply specialized processing to traffic going through it.
 	// Structure is documented below.
 	Gateway SpokeGatewayPtrOutput `pulumi:"gateway"`
@@ -921,6 +922,7 @@ type spokeState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
 	// This is a gateway that can apply specialized processing to traffic going through it.
 	// Structure is documented below.
 	Gateway *SpokeGateway `pulumi:"gateway"`
@@ -975,6 +977,7 @@ type SpokeState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// (Optional, Beta)
 	// This is a gateway that can apply specialized processing to traffic going through it.
 	// Structure is documented below.
 	Gateway SpokeGatewayPtrInput
@@ -1029,6 +1032,7 @@ func (SpokeState) ElementType() reflect.Type {
 type spokeArgs struct {
 	// An optional description of the spoke.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// This is a gateway that can apply specialized processing to traffic going through it.
 	// Structure is documented below.
 	Gateway *SpokeGateway `pulumi:"gateway"`
@@ -1068,6 +1072,7 @@ type spokeArgs struct {
 type SpokeArgs struct {
 	// An optional description of the spoke.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// This is a gateway that can apply specialized processing to traffic going through it.
 	// Structure is documented below.
 	Gateway SpokeGatewayPtrInput
@@ -1205,6 +1210,7 @@ func (o SpokeOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// (Optional, Beta)
 // This is a gateway that can apply specialized processing to traffic going through it.
 // Structure is documented below.
 func (o SpokeOutput) Gateway() SpokeGatewayPtrOutput {

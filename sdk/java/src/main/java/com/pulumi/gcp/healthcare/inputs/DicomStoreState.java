@@ -153,6 +153,7 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
      * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
      * Structure is documented below.
@@ -162,7 +163,8 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<DicomStoreStreamConfigArgs>> streamConfigs;
 
     /**
-     * @return To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+     * @return (Optional, Beta)
+     * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
      * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
      * Structure is documented below.
      * 
@@ -378,7 +380,8 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+         * @param streamConfigs (Optional, Beta)
+         * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
          * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
          * Structure is documented below.
          * 
@@ -391,7 +394,8 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+         * @param streamConfigs (Optional, Beta)
+         * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
          * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
          * Structure is documented below.
          * 
@@ -403,7 +407,8 @@ public final class DicomStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param streamConfigs To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
+         * @param streamConfigs (Optional, Beta)
+         * To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
          * streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
          * Structure is documented below.
          * 

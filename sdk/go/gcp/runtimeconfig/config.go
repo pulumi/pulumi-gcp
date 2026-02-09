@@ -11,14 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a RuntimeConfig resource in Google Cloud.
-//
-// To get more information about RuntimeConfigs, see:
-//
-// * [API documentation](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/v1beta1/projects.configs)
-// * How-to Guides
-//   - [Runtime Configurator Fundamentals](https://cloud.google.com/deployment-manager/runtime-configurator/)
-//
 // ## Example Usage
 //
 // Example creating a RuntimeConfig resource.

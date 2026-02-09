@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CxToolVersionTool {
     /**
-     * @return Integration connectors tool specification.
+     * @return (Optional, Beta)
+     * Integration connectors tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
      * 
@@ -70,7 +71,8 @@ public final class CxToolVersionTool {
 
     private CxToolVersionTool() {}
     /**
-     * @return Integration connectors tool specification.
+     * @return (Optional, Beta)
+     * Integration connectors tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
      * 

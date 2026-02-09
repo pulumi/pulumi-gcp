@@ -297,14 +297,14 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     }
 
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
      */
     @Import(name="params")
     private @Nullable Output<RegionInstanceGroupManagerParamsArgs> params;
 
     /**
-     * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * @return ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerParamsArgs>> params() {
@@ -1008,7 +1008,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         }
 
         /**
-         * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+         * @param params ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
          * 
          * @return builder
          * 
@@ -1019,7 +1019,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         }
 
         /**
-         * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+         * @param params ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
          * 
          * @return builder
          * 

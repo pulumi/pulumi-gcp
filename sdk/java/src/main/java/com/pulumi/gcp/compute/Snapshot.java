@@ -40,9 +40,6 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  * 
- * &gt; **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
- * 
  * ## Example Usage
  * 
  * ### Snapshot Basic
@@ -376,6 +373,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * (Optional, Beta)
      * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      * 
      */
@@ -383,7 +381,8 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> guestFlush;
 
     /**
-     * @return Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     * @return (Optional, Beta)
+     * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      * 
      */
     public Output<Optional<Boolean>> guestFlush() {

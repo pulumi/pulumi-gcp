@@ -44,7 +44,8 @@ class AddressGroupArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the AddressGroup resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: List of supported purposes of the Address Group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: (Optional, Beta)
+               List of supported purposes of the Address Group.
                Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         """
         pulumi.set(__self__, "capacity", capacity)
@@ -169,6 +170,7 @@ class AddressGroupArgs:
     @pulumi.getter
     def purposes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         List of supported purposes of the Address Group.
         Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         """
@@ -215,7 +217,8 @@ class _AddressGroupState:
         :param pulumi.Input[_builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: List of supported purposes of the Address Group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: (Optional, Beta)
+               List of supported purposes of the Address Group.
                Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         :param pulumi.Input[_builtins.str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
@@ -382,6 +385,7 @@ class _AddressGroupState:
     @pulumi.getter
     def purposes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         List of supported purposes of the Address Group.
         Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         """
@@ -531,7 +535,8 @@ class AddressGroup(pulumi.CustomResource):
                The default value is `global`.
         :param pulumi.Input[_builtins.str] name: Name of the AddressGroup resource.
         :param pulumi.Input[_builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: List of supported purposes of the Address Group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: (Optional, Beta)
+               List of supported purposes of the Address Group.
                Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         :param pulumi.Input[_builtins.str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
@@ -726,7 +731,8 @@ class AddressGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: List of supported purposes of the Address Group.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] purposes: (Optional, Beta)
+               List of supported purposes of the Address Group.
                Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         :param pulumi.Input[_builtins.str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
@@ -845,6 +851,7 @@ class AddressGroup(pulumi.CustomResource):
     @pulumi.getter
     def purposes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         List of supported purposes of the Address Group.
         Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         """

@@ -471,6 +471,23 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A list of validations to skip during preflight checks.
+     * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+     * 
+     */
+    @Import(name="skipValidations")
+    private @Nullable Output<List<String>> skipValidations;
+
+    /**
+     * @return A list of validations to skip during preflight checks.
+     * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+     * 
+     */
+    public Optional<Output<List<String>>> skipValidations() {
+        return Optional.ofNullable(this.skipValidations);
+    }
+
+    /**
      * (Output)
      * The lifecycle state of the condition.
      * 
@@ -649,6 +666,7 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
         this.onPremVersion = $.onPremVersion;
         this.project = $.project;
         this.reconciling = $.reconciling;
+        this.skipValidations = $.skipValidations;
         this.state = $.state;
         this.statuses = $.statuses;
         this.storage = $.storage;
@@ -1272,6 +1290,40 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder reconciling(Boolean reconciling) {
             return reconciling(Output.of(reconciling));
+        }
+
+        /**
+         * @param skipValidations A list of validations to skip during preflight checks.
+         * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipValidations(@Nullable Output<List<String>> skipValidations) {
+            $.skipValidations = skipValidations;
+            return this;
+        }
+
+        /**
+         * @param skipValidations A list of validations to skip during preflight checks.
+         * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipValidations(List<String> skipValidations) {
+            return skipValidations(Output.of(skipValidations));
+        }
+
+        /**
+         * @param skipValidations A list of validations to skip during preflight checks.
+         * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipValidations(String... skipValidations) {
+            return skipValidations(List.of(skipValidations));
         }
 
         /**

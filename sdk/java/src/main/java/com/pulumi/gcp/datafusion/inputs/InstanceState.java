@@ -313,6 +313,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Current patch revision of the Data Fusion.
+     * 
+     */
+    @Import(name="patchRevision")
+    private @Nullable Output<String> patchRevision;
+
+    /**
+     * @return Current patch revision of the Data Fusion.
+     * 
+     */
+    public Optional<Output<String>> patchRevision() {
+        return Optional.ofNullable(this.patchRevision);
+    }
+
+    /**
      * Specifies whether the Data Fusion instance should be private. If set to
      * true, all Data Fusion nodes will have private IP addresses and will not be
      * able to access the public internet.
@@ -381,6 +396,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
@@ -392,7 +408,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return Service account which will be used to access resources in the customer project.
+     * @return (Beta, Deprecated)
+     * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
      * `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
@@ -597,6 +614,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.networkConfig = $.networkConfig;
         this.options = $.options;
         this.p4ServiceAccount = $.p4ServiceAccount;
+        this.patchRevision = $.patchRevision;
         this.privateInstance = $.privateInstance;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
@@ -1043,6 +1061,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param patchRevision Current patch revision of the Data Fusion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder patchRevision(@Nullable Output<String> patchRevision) {
+            $.patchRevision = patchRevision;
+            return this;
+        }
+
+        /**
+         * @param patchRevision Current patch revision of the Data Fusion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder patchRevision(String patchRevision) {
+            return patchRevision(Output.of(patchRevision));
+        }
+
+        /**
          * @param privateInstance Specifies whether the Data Fusion instance should be private. If set to
          * true, all Data Fusion nodes will have private IP addresses and will not be
          * able to access the public internet.
@@ -1135,7 +1174,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Service account which will be used to access resources in the customer project.
+         * @param serviceAccount (Beta, Deprecated)
+         * Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 
@@ -1150,7 +1190,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Service account which will be used to access resources in the customer project.
+         * @param serviceAccount (Beta, Deprecated)
+         * Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 

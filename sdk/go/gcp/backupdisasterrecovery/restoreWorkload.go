@@ -12,10 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An imperative resource that triggers a GCBDR restoration event.
-// Creating this resource will initiate a restore operation from a specified backup.
-// The resource represents the restore operation and its result.
-//
 // ## Example Usage
 //
 // ### Backup Dr Restore Workload Compute Instance Basic

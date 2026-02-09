@@ -4710,6 +4710,7 @@ func (o FlexibleAppVersionManualScalingPtrOutput) Instances() pulumi.IntPtrOutpu
 type FlexibleAppVersionNetwork struct {
 	// List of ports, or port pairs, to forward from the virtual machine to the application container.
 	ForwardedPorts []string `pulumi:"forwardedPorts"`
+	// (Optional, Beta)
 	// Prevent instances from receiving an ephemeral external IP address.
 	// Possible values are: `EXTERNAL`, `INTERNAL`.
 	InstanceIpMode *string `pulumi:"instanceIpMode"`
@@ -4741,6 +4742,7 @@ type FlexibleAppVersionNetworkInput interface {
 type FlexibleAppVersionNetworkArgs struct {
 	// List of ports, or port pairs, to forward from the virtual machine to the application container.
 	ForwardedPorts pulumi.StringArrayInput `pulumi:"forwardedPorts"`
+	// (Optional, Beta)
 	// Prevent instances from receiving an ephemeral external IP address.
 	// Possible values are: `EXTERNAL`, `INTERNAL`.
 	InstanceIpMode pulumi.StringPtrInput `pulumi:"instanceIpMode"`
@@ -4840,6 +4842,7 @@ func (o FlexibleAppVersionNetworkOutput) ForwardedPorts() pulumi.StringArrayOutp
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
 }
 
+// (Optional, Beta)
 // Prevent instances from receiving an ephemeral external IP address.
 // Possible values are: `EXTERNAL`, `INTERNAL`.
 func (o FlexibleAppVersionNetworkOutput) InstanceIpMode() pulumi.StringPtrOutput {
@@ -4904,6 +4907,7 @@ func (o FlexibleAppVersionNetworkPtrOutput) ForwardedPorts() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// (Optional, Beta)
 // Prevent instances from receiving an ephemeral external IP address.
 // Possible values are: `EXTERNAL`, `INTERNAL`.
 func (o FlexibleAppVersionNetworkPtrOutput) InstanceIpMode() pulumi.StringPtrOutput {

@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>
+        /// (Optional, Beta)
         /// Enables Cloud Service Mesh for this Revision.
         /// Structure is documented below.
         /// </summary>

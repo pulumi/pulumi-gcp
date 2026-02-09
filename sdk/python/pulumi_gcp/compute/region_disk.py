@@ -73,7 +73,8 @@ class RegionDiskArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -297,6 +298,7 @@ class RegionDiskArgs:
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
     def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -571,7 +573,8 @@ class _RegionDiskState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -861,6 +864,7 @@ class _RegionDiskState:
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
     def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1237,9 +1241,6 @@ class RegionDisk(pulumi.CustomResource):
         * How-to Guides
             * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
-
         ## Example Usage
 
         ### Region Disk Basic
@@ -1401,7 +1402,8 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -1486,9 +1488,6 @@ class RegionDisk(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks)
         * How-to Guides
             * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
 
         ## Example Usage
 
@@ -1785,7 +1784,8 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -2004,6 +2004,7 @@ class RegionDisk(pulumi.CustomResource):
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
     def interface(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.

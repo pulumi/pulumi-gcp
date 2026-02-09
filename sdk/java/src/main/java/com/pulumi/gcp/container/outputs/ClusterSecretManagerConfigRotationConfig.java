@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterSecretManagerConfigRotationConfig {
     /**
-     * @return Enable the roation in Sync as K8s secret feature for this cluster.
+     * @return ) - Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     private Boolean enabled;
     /**
-     * @return The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+     * @return ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
      * 
      */
     private @Nullable String rotationInterval;
 
     private ClusterSecretManagerConfigRotationConfig() {}
     /**
-     * @return Enable the roation in Sync as K8s secret feature for this cluster.
+     * @return ) - Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+     * @return ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
      * 
      */
     public Optional<String> rotationInterval() {

@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterSecretSyncConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the Sync as K8s secret feature for this cluster.
+        /// ) - Enable the Sync as K8s secret feature for this cluster.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// config for secret sync auto rotation. Structure is docuemented below
+        /// ) - config for secret sync auto rotation. Structure is docuemented below
         /// </summary>
         [Input("rotationConfig")]
         public Input<Inputs.ClusterSecretSyncConfigRotationConfigGetArgs>? RotationConfig { get; set; }

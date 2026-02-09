@@ -178,6 +178,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
+     * (Optional, Beta)
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won&#39;t use
      * more than the specified number of slots, even if there is demand and supply (from idle
@@ -216,7 +217,8 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> maxSlots;
 
     /**
-     * @return The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+     * @return (Optional, Beta)
+     * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won&#39;t use
      * more than the specified number of slots, even if there is demand and supply (from idle
      * slots). NOTE: capping a reservation&#39;s idle slot usage is best effort and its usage may
@@ -344,6 +346,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return this.replicationStatuses;
     }
     /**
+     * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Enum values:
@@ -383,7 +386,8 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> scalingMode;
 
     /**
-     * @return The scaling mode for the reservation. If the field is present but maxSlots is not present,
+     * @return (Optional, Beta)
+     * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Enum values:
      * `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.

@@ -248,6 +248,7 @@ export class FhirStore extends pulumi.CustomResource {
      */
     declare public readonly complexDataTypeReferenceParsing: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      */
@@ -295,6 +296,7 @@ export class FhirStore extends pulumi.CustomResource {
      */
     declare public readonly enableHistoryImport: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
@@ -447,6 +449,7 @@ export interface FhirStoreState {
      */
     complexDataTypeReferenceParsing?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      */
@@ -494,6 +497,7 @@ export interface FhirStoreState {
      */
     enableHistoryImport?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
@@ -583,6 +587,7 @@ export interface FhirStoreArgs {
      */
     complexDataTypeReferenceParsing?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      */
@@ -626,6 +631,7 @@ export interface FhirStoreArgs {
      */
     enableHistoryImport?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */

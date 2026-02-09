@@ -128,6 +128,89 @@ import (
 //	}
 //
 // ```
+// ### Backup Dr Bpa Filestore
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myFilestoreInstance, err := filestore.NewInstance(ctx, "my_filestore_instance", &filestore.InstanceArgs{
+//				Name:     pulumi.String("test-instance-bpa"),
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("ENTERPRISE"),
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(1024),
+//					Name:       pulumi.String("share1"),
+//				},
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Network: pulumi.String("default"),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myBackupVault, err := backupdisasterrecovery.NewBackupVault(ctx, "my_backup_vault", &backupdisasterrecovery.BackupVaultArgs{
+//				Location:                               pulumi.String("us-central1"),
+//				BackupVaultId:                          pulumi.String("bv-bpa-filestore"),
+//				BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
+//				ForceDelete:                            pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myBackupPlan, err := backupdisasterrecovery.NewBackupPlan(ctx, "my_backup_plan", &backupdisasterrecovery.BackupPlanArgs{
+//				Location:     pulumi.String("us-central1"),
+//				BackupPlanId: pulumi.String("bp-bpa-filestore"),
+//				ResourceType: pulumi.String("file.googleapis.com/Instance"),
+//				BackupVault:  myBackupVault.ID(),
+//				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
+//					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
+//						RuleId:              pulumi.String("rule-1"),
+//						BackupRetentionDays: pulumi.Int(5),
+//						StandardSchedule: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleArgs{
+//							RecurrenceType:  pulumi.String("HOURLY"),
+//							HourlyFrequency: pulumi.Int(6),
+//							TimeZone:        pulumi.String("UTC"),
+//							BackupWindow: &backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleBackupWindowArgs{
+//								StartHourOfDay: pulumi.Int(0),
+//								EndHourOfDay:   pulumi.Int(6),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = backupdisasterrecovery.NewBackupPlanAssociation(ctx, "my-backup-plan-association-filestore", &backupdisasterrecovery.BackupPlanAssociationArgs{
+//				Location:                pulumi.String("us-central1"),
+//				ResourceType:            pulumi.String("file.googleapis.com/Instance"),
+//				BackupPlanAssociationId: pulumi.String("my-bpa-filestore"),
+//				Resource:                myFilestoreInstance.ID(),
+//				BackupPlan:              myBackupPlan.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -159,6 +242,7 @@ type BackupPlanAssociation struct {
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	BackupPlan pulumi.StringOutput `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringOutput `pulumi:"backupPlanAssociationId"`
@@ -166,8 +250,6 @@ type BackupPlanAssociation struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Resource name of data source which will be used as storage location for backups taken
 	DataSource pulumi.StringOutput `pulumi:"dataSource"`
-	// The point in time when the last successful backup was captured from the source
-	LastSuccessfulBackupConsistencyTime pulumi.StringOutput `pulumi:"lastSuccessfulBackupConsistencyTime"`
 	// The location for the backupplan association
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of backup plan association resource created
@@ -178,7 +260,7 @@ type BackupPlanAssociation struct {
 	// The resource for which BPA needs to be created
 	Resource pulumi.StringOutput `pulumi:"resource"`
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// Message for rules config info
 	// Structure is documented below.
@@ -236,6 +318,7 @@ type backupPlanAssociationState struct {
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	BackupPlan *string `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId *string `pulumi:"backupPlanAssociationId"`
@@ -243,8 +326,6 @@ type backupPlanAssociationState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Resource name of data source which will be used as storage location for backups taken
 	DataSource *string `pulumi:"dataSource"`
-	// The point in time when the last successful backup was captured from the source
-	LastSuccessfulBackupConsistencyTime *string `pulumi:"lastSuccessfulBackupConsistencyTime"`
 	// The location for the backupplan association
 	Location *string `pulumi:"location"`
 	// The name of backup plan association resource created
@@ -255,7 +336,7 @@ type backupPlanAssociationState struct {
 	// The resource for which BPA needs to be created
 	Resource *string `pulumi:"resource"`
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
 	ResourceType *string `pulumi:"resourceType"`
 	// Message for rules config info
 	// Structure is documented below.
@@ -269,6 +350,7 @@ type BackupPlanAssociationState struct {
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	BackupPlan pulumi.StringPtrInput
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringPtrInput
@@ -276,8 +358,6 @@ type BackupPlanAssociationState struct {
 	CreateTime pulumi.StringPtrInput
 	// Resource name of data source which will be used as storage location for backups taken
 	DataSource pulumi.StringPtrInput
-	// The point in time when the last successful backup was captured from the source
-	LastSuccessfulBackupConsistencyTime pulumi.StringPtrInput
 	// The location for the backupplan association
 	Location pulumi.StringPtrInput
 	// The name of backup plan association resource created
@@ -288,7 +368,7 @@ type BackupPlanAssociationState struct {
 	// The resource for which BPA needs to be created
 	Resource pulumi.StringPtrInput
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
 	ResourceType pulumi.StringPtrInput
 	// Message for rules config info
 	// Structure is documented below.
@@ -306,6 +386,7 @@ type backupPlanAssociationArgs struct {
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	BackupPlan string `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId string `pulumi:"backupPlanAssociationId"`
@@ -317,7 +398,7 @@ type backupPlanAssociationArgs struct {
 	// The resource for which BPA needs to be created
 	Resource string `pulumi:"resource"`
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -327,6 +408,7 @@ type BackupPlanAssociationArgs struct {
 	// Note:
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 	BackupPlan pulumi.StringInput
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringInput
@@ -338,7 +420,7 @@ type BackupPlanAssociationArgs struct {
 	// The resource for which BPA needs to be created
 	Resource pulumi.StringInput
 	// The resource type of workload on which backupplan is applied.
-	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+	// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
 	ResourceType pulumi.StringInput
 }
 
@@ -433,6 +515,7 @@ func (o BackupPlanAssociationOutput) ToBackupPlanAssociationOutputWithContext(ct
 // Note:
 // - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 // - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
 func (o BackupPlanAssociationOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.BackupPlan }).(pulumi.StringOutput)
 }
@@ -450,11 +533,6 @@ func (o BackupPlanAssociationOutput) CreateTime() pulumi.StringOutput {
 // Resource name of data source which will be used as storage location for backups taken
 func (o BackupPlanAssociationOutput) DataSource() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.DataSource }).(pulumi.StringOutput)
-}
-
-// The point in time when the last successful backup was captured from the source
-func (o BackupPlanAssociationOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.LastSuccessfulBackupConsistencyTime }).(pulumi.StringOutput)
 }
 
 // The location for the backupplan association
@@ -479,7 +557,7 @@ func (o BackupPlanAssociationOutput) Resource() pulumi.StringOutput {
 }
 
 // The resource type of workload on which backupplan is applied.
-// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
 func (o BackupPlanAssociationOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

@@ -14703,7 +14703,8 @@ class CxToolVersionTool(dict):
         """
         :param _builtins.str description: High level description of the Tool and its usage.
         :param _builtins.str display_name: The human-readable name of the tool, unique within the agent.
-        :param 'CxToolVersionToolConnectorSpecArgs' connector_spec: Integration connectors tool specification.
+        :param 'CxToolVersionToolConnectorSpecArgs' connector_spec: (Optional, Beta)
+               Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
         :param 'CxToolVersionToolDataStoreSpecArgs' data_store_spec: Data store search tool specification.
@@ -14756,6 +14757,7 @@ class CxToolVersionTool(dict):
     @pulumi.getter(name="connectorSpec")
     def connector_spec(self) -> Optional['outputs.CxToolVersionToolConnectorSpec']:
         """
+        (Optional, Beta)
         Integration connectors tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         Structure is documented below.

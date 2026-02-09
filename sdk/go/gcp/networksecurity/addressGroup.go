@@ -197,6 +197,7 @@ type AddressGroup struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
 	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
 	Purposes pulumi.StringArrayOutput `pulumi:"purposes"`
@@ -281,6 +282,7 @@ type addressGroupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
 	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
 	Purposes []string `pulumi:"purposes"`
@@ -322,6 +324,7 @@ type AddressGroupState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
 	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
 	Purposes pulumi.StringArrayInput
@@ -358,6 +361,7 @@ type addressGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent *string `pulumi:"parent"`
+	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
 	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
 	Purposes []string `pulumi:"purposes"`
@@ -387,6 +391,7 @@ type AddressGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
 	Parent pulumi.StringPtrInput
+	// (Optional, Beta)
 	// List of supported purposes of the Address Group.
 	// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
 	Purposes pulumi.StringArrayInput
@@ -540,6 +545,7 @@ func (o AddressGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// (Optional, Beta)
 // List of supported purposes of the Address Group.
 // Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
 func (o AddressGroupOutput) Purposes() pulumi.StringArrayOutput {

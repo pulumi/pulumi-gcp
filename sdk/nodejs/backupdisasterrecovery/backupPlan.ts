@@ -113,6 +113,37 @@ import * as utilities from "../utilities";
  *     logRetentionDays: 4,
  * });
  * ```
+ * ### Backup Dr Backup Plan For Filestore Resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myBackupVault = new gcp.backupdisasterrecovery.BackupVault("my_backup_vault", {
+ *     location: "us-central1",
+ *     backupVaultId: "backup-vault-filestore-test",
+ *     backupMinimumEnforcedRetentionDuration: "100000s",
+ * });
+ * const my_filestore_backup_plan_1 = new gcp.backupdisasterrecovery.BackupPlan("my-filestore-backup-plan-1", {
+ *     location: "us-central1",
+ *     backupPlanId: "backup-plan-filestore-test",
+ *     resourceType: "file.googleapis.com/Instance",
+ *     backupVault: myBackupVault.id,
+ *     backupRules: [{
+ *         ruleId: "rule-1",
+ *         backupRetentionDays: 5,
+ *         standardSchedule: {
+ *             recurrenceType: "HOURLY",
+ *             hourlyFrequency: 6,
+ *             timeZone: "UTC",
+ *             backupWindow: {
+ *                 startHourOfDay: 0,
+ *                 endHourOfDay: 6,
+ *             },
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -214,7 +245,7 @@ export class BackupPlan extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
@@ -342,7 +373,7 @@ export interface BackupPlanState {
     project?: pulumi.Input<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -395,7 +426,7 @@ export interface BackupPlanArgs {
     project?: pulumi.Input<string>;
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
      */
     resourceType: pulumi.Input<string>;
 }

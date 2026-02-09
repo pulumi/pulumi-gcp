@@ -228,6 +228,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Optional, Beta)
      * Enables Cloud Service Mesh for this Revision.
      * Structure is documented below.
      * 
@@ -236,7 +237,8 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<ServiceTemplateServiceMeshArgs> serviceMesh;
 
     /**
-     * @return Enables Cloud Service Mesh for this Revision.
+     * @return (Optional, Beta)
+     * Enables Cloud Service Mesh for this Revision.
      * Structure is documented below.
      * 
      */
@@ -636,7 +638,8 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceMesh Enables Cloud Service Mesh for this Revision.
+         * @param serviceMesh (Optional, Beta)
+         * Enables Cloud Service Mesh for this Revision.
          * Structure is documented below.
          * 
          * @return builder
@@ -648,7 +651,8 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceMesh Enables Cloud Service Mesh for this Revision.
+         * @param serviceMesh (Optional, Beta)
+         * Enables Cloud Service Mesh for this Revision.
          * Structure is documented below.
          * 
          * @return builder

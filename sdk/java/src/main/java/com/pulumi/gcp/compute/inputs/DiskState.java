@@ -279,6 +279,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -292,7 +293,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> interface_;
 
     /**
-     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return (Optional, Beta, Deprecated)
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
@@ -389,6 +391,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      * 
      */
@@ -396,7 +399,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> multiWriter;
 
     /**
-     * @return Indicates whether or not the disk can be read/write attached to more than one instance.
+     * @return (Optional, Beta)
+     * Indicates whether or not the disk can be read/write attached to more than one instance.
      * 
      */
     public Optional<Output<Boolean>> multiWriter() {
@@ -543,6 +547,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~&gt;**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -555,7 +560,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> resourcePolicies;
 
     /**
-     * @return Resource policies applied to this disk for automatic snapshot creations.
+     * @return (Optional, Beta)
+     * Resource policies applied to this disk for automatic snapshot creations.
      * ~&gt;**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
      * one at a time. Use
@@ -1334,7 +1340,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ (Optional, Beta, Deprecated)
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
@@ -1351,7 +1358,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ (Optional, Beta, Deprecated)
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
@@ -1490,7 +1498,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiWriter Indicates whether or not the disk can be read/write attached to more than one instance.
+         * @param multiWriter (Optional, Beta)
+         * Indicates whether or not the disk can be read/write attached to more than one instance.
          * 
          * @return builder
          * 
@@ -1501,7 +1510,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiWriter Indicates whether or not the disk can be read/write attached to more than one instance.
+         * @param multiWriter (Optional, Beta)
+         * Indicates whether or not the disk can be read/write attached to more than one instance.
          * 
          * @return builder
          * 
@@ -1692,7 +1702,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourcePolicies Resource policies applied to this disk for automatic snapshot creations.
+         * @param resourcePolicies (Optional, Beta)
+         * Resource policies applied to this disk for automatic snapshot creations.
          * ~&gt;**NOTE** This value does not support updating the
          * resource policy, as resource policies can not be updated more than
          * one at a time. Use
@@ -1708,7 +1719,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourcePolicies Resource policies applied to this disk for automatic snapshot creations.
+         * @param resourcePolicies (Optional, Beta)
+         * Resource policies applied to this disk for automatic snapshot creations.
          * ~&gt;**NOTE** This value does not support updating the
          * resource policy, as resource policies can not be updated more than
          * one at a time. Use
@@ -1723,7 +1735,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourcePolicies Resource policies applied to this disk for automatic snapshot creations.
+         * @param resourcePolicies (Optional, Beta)
+         * Resource policies applied to this disk for automatic snapshot creations.
          * ~&gt;**NOTE** This value does not support updating the
          * resource policy, as resource policies can not be updated more than
          * one at a time. Use

@@ -188,6 +188,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string?> MirroringDeploymentGroup { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of the deployment groups that this BROKER endpoint group is
         /// connected to, for example:
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -247,6 +248,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The type of the endpoint group.
         /// If left unspecified, defaults to DIRECT.
         /// Possible values:
@@ -353,6 +355,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _mirroringDeploymentGroups;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of the deployment groups that this BROKER endpoint group is
         /// connected to, for example:
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -379,6 +382,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The type of the endpoint group.
         /// If left unspecified, defaults to DIRECT.
         /// Possible values:
@@ -485,6 +489,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _mirroringDeploymentGroups;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of the deployment groups that this BROKER endpoint group is
         /// connected to, for example:
         /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -557,6 +562,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? State { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The type of the endpoint group.
         /// If left unspecified, defaults to DIRECT.
         /// Possible values:

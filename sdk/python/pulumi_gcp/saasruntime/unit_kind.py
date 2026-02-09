@@ -599,8 +599,6 @@ class UnitKind(pulumi.CustomResource):
                  unit_kind_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
-
         ## Example Usage
 
         ### Saas Runtime Unit Kind Basic
@@ -702,8 +700,6 @@ class UnitKind(pulumi.CustomResource):
                  args: UnitKindArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A UnitKind serves as a template or type definition for a group of Units. Units that belong to the same UnitKind are managed together, follow the same release model, and are typically updated together through rollouts.
-
         ## Example Usage
 
         ### Saas Runtime Unit Kind Basic

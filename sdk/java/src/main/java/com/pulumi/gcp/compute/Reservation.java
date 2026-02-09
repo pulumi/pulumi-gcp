@@ -415,6 +415,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * (Optional, Beta)
      * Indicates if this group of VMs have emergent maintenance enabled.
      * 
      */
@@ -422,7 +423,8 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableEmergentMaintenance;
 
     /**
-     * @return Indicates if this group of VMs have emergent maintenance enabled.
+     * @return (Optional, Beta)
+     * Indicates if this group of VMs have emergent maintenance enabled.
      * 
      */
     public Output<Optional<Boolean>> enableEmergentMaintenance() {

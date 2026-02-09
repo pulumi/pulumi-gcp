@@ -11,21 +11,12 @@ namespace Pulumi.Gcp.Firebase
 {
     public static class GetAndroidApp
     {
-        /// <summary>
-        /// A Google Cloud Firebase Android application instance
-        /// </summary>
         public static Task<GetAndroidAppResult> InvokeAsync(GetAndroidAppArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAndroidAppResult>("gcp:firebase/getAndroidApp:getAndroidApp", args ?? new GetAndroidAppArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// A Google Cloud Firebase Android application instance
-        /// </summary>
         public static Output<GetAndroidAppResult> Invoke(GetAndroidAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAndroidAppResult>("gcp:firebase/getAndroidApp:getAndroidApp", args ?? new GetAndroidAppInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// A Google Cloud Firebase Android application instance
-        /// </summary>
         public static Output<GetAndroidAppResult> Invoke(GetAndroidAppInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAndroidAppResult>("gcp:firebase/getAndroidApp:getAndroidApp", args ?? new GetAndroidAppInvokeArgs(), options.WithDefaults());
     }

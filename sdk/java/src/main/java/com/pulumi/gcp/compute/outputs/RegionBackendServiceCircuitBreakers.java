@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionBackendServiceCircuitBreakers {
     /**
-     * @return The timeout for new network connections to hosts.
+     * @return (Optional, Beta)
+     * The timeout for new network connections to hosts.
      * Structure is documented below.
      * 
      */
@@ -53,7 +54,8 @@ public final class RegionBackendServiceCircuitBreakers {
 
     private RegionBackendServiceCircuitBreakers() {}
     /**
-     * @return The timeout for new network connections to hosts.
+     * @return (Optional, Beta)
+     * The timeout for new network connections to hosts.
      * Structure is documented below.
      * 
      */

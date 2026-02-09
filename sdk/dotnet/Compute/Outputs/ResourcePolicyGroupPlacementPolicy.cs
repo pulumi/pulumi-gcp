@@ -31,10 +31,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? GpuTopology;
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies the number of max logical switches.
         /// </summary>
         public readonly int? MaxDistance;
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies the shape of the TPU slice.
         /// </summary>
         public readonly string? TpuTopology;

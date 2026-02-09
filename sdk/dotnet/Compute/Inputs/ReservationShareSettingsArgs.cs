@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _projects;
 
         /// <summary>
+        /// (Optional, Beta)
         /// List of project IDs with which the reservation is shared.
         /// </summary>
         public InputList<string> Projects

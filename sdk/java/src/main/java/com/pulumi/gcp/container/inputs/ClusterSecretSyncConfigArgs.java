@@ -18,14 +18,14 @@ public final class ClusterSecretSyncConfigArgs extends com.pulumi.resources.Reso
     public static final ClusterSecretSyncConfigArgs Empty = new ClusterSecretSyncConfigArgs();
 
     /**
-     * Enable the Sync as K8s secret feature for this cluster.
+     * ) - Enable the Sync as K8s secret feature for this cluster.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the Sync as K8s secret feature for this cluster.
+     * @return ) - Enable the Sync as K8s secret feature for this cluster.
      * 
      */
     public Output<Boolean> enabled() {
@@ -33,14 +33,14 @@ public final class ClusterSecretSyncConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * config for secret sync auto rotation. Structure is docuemented below
+     * ) - config for secret sync auto rotation. Structure is docuemented below
      * 
      */
     @Import(name="rotationConfig")
     private @Nullable Output<ClusterSecretSyncConfigRotationConfigArgs> rotationConfig;
 
     /**
-     * @return config for secret sync auto rotation. Structure is docuemented below
+     * @return ) - config for secret sync auto rotation. Structure is docuemented below
      * 
      */
     public Optional<Output<ClusterSecretSyncConfigRotationConfigArgs>> rotationConfig() {
@@ -73,7 +73,7 @@ public final class ClusterSecretSyncConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enabled Enable the Sync as K8s secret feature for this cluster.
+         * @param enabled ) - Enable the Sync as K8s secret feature for this cluster.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterSecretSyncConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enabled Enable the Sync as K8s secret feature for this cluster.
+         * @param enabled ) - Enable the Sync as K8s secret feature for this cluster.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterSecretSyncConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param rotationConfig config for secret sync auto rotation. Structure is docuemented below
+         * @param rotationConfig ) - config for secret sync auto rotation. Structure is docuemented below
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterSecretSyncConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param rotationConfig config for secret sync auto rotation. Structure is docuemented below
+         * @param rotationConfig ) - config for secret sync auto rotation. Structure is docuemented below
          * 
          * @return builder
          * 

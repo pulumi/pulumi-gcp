@@ -3730,7 +3730,7 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 	PreventDrift *bool `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat *string `pulumi:"sourceFormat"`
-	// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+	// Set to true to stop syncing configs for a single cluster. Default to false.
 	StopSyncing *bool `pulumi:"stopSyncing"`
 }
 
@@ -3762,7 +3762,7 @@ type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	PreventDrift pulumi.BoolPtrInput `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
-	// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+	// Set to true to stop syncing configs for a single cluster. Default to false.
 	StopSyncing pulumi.BoolPtrInput `pulumi:"stopSyncing"`
 }
 
@@ -3886,7 +3886,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) SourceFormat() pulumi
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
 }
 
-// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+// Set to true to stop syncing configs for a single cluster. Default to false.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) StopSyncing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.StopSyncing }).(pulumi.BoolPtrOutput)
 }
@@ -3987,7 +3987,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) SourceFormat() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+// Set to true to stop syncing configs for a single cluster. Default to false.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) StopSyncing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
 		if v == nil {

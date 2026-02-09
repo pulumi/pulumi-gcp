@@ -133,7 +133,7 @@ public final class GetInstanceTemplateResult {
      */
     private String namePrefix;
     /**
-     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
+     * @return (Optional, Beta) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
      * 
      */
     private List<GetInstanceTemplateNetworkInterface> networkInterfaces;
@@ -361,7 +361,7 @@ public final class GetInstanceTemplateResult {
         return this.namePrefix;
     }
     /**
-     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
+     * @return (Optional, Beta) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
      * 
      */
     public List<GetInstanceTemplateNetworkInterface> networkInterfaces() {

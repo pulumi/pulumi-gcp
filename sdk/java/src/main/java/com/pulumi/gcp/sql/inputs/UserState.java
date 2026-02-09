@@ -20,6 +20,21 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     public static final UserState Empty = new UserState();
 
     /**
+     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * 
+     */
+    @Import(name="databaseRoles")
+    private @Nullable Output<List<String>> databaseRoles;
+
+    /**
+     * @return A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * 
+     */
+    public Optional<Output<List<String>>> databaseRoles() {
+        return Optional.ofNullable(this.databaseRoles);
+    }
+
+    /**
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -59,6 +74,21 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
+    }
+
+    /**
+     * The email address for MySQL IAM database users.
+     * 
+     */
+    @Import(name="iamEmail")
+    private @Nullable Output<String> iamEmail;
+
+    /**
+     * @return The email address for MySQL IAM database users.
+     * 
+     */
+    public Optional<Output<String>> iamEmail() {
+        return Optional.ofNullable(this.iamEmail);
     }
 
     /**
@@ -213,8 +243,10 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     private UserState() {}
 
     private UserState(UserState $) {
+        this.databaseRoles = $.databaseRoles;
         this.deletionPolicy = $.deletionPolicy;
         this.host = $.host;
+        this.iamEmail = $.iamEmail;
         this.instance = $.instance;
         this.name = $.name;
         this.password = $.password;
@@ -242,6 +274,37 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(UserState defaults) {
             $ = new UserState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param databaseRoles A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseRoles(@Nullable Output<List<String>> databaseRoles) {
+            $.databaseRoles = databaseRoles;
+            return this;
+        }
+
+        /**
+         * @param databaseRoles A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseRoles(List<String> databaseRoles) {
+            return databaseRoles(Output.of(databaseRoles));
+        }
+
+        /**
+         * @param databaseRoles A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseRoles(String... databaseRoles) {
+            return databaseRoles(List.of(databaseRoles));
         }
 
         /**
@@ -296,6 +359,27 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder host(String host) {
             return host(Output.of(host));
+        }
+
+        /**
+         * @param iamEmail The email address for MySQL IAM database users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamEmail(@Nullable Output<String> iamEmail) {
+            $.iamEmail = iamEmail;
+            return this;
+        }
+
+        /**
+         * @param iamEmail The email address for MySQL IAM database users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamEmail(String iamEmail) {
+            return iamEmail(Output.of(iamEmail));
         }
 
         /**

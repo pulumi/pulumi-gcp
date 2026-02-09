@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionBackendServiceCircuitBreakers
     {
         /// <summary>
+        /// (Optional, Beta)
         /// The timeout for new network connections to hosts.
         /// Structure is documented below.
         /// </summary>

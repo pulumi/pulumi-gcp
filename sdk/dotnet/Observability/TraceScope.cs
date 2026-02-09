@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Observability
 {
     /// <summary>
-    /// A trace scope is a collection of resources whose traces are queried together
-    /// 
     /// ## Example Usage
     /// 
     /// ### Observability Trace Scope Basic
@@ -28,8 +26,8 @@ namespace Pulumi.Gcp.Observability
     /// 
     ///     var project_2 = new Gcp.Organizations.Project("project-2", new()
     ///     {
-    ///         ProjectId = "tf-test_12125",
-    ///         Name = "tf-test_82749",
+    ///         ProjectId = "tf-test_34242",
+    ///         Name = "tf-test_9723",
     ///         OrgId = "123456789",
     ///         DeletionPolicy = "DELETE",
     ///     });

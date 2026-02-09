@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<string>? SourceFormat { get; set; }
 
         /// <summary>
-        /// Set to `True` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `False`.
+        /// Set to true to stop syncing configs for a single cluster. Default to false.
         /// </summary>
         [Input("stopSyncing")]
         public Input<bool>? StopSyncing { get; set; }

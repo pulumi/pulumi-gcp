@@ -597,6 +597,7 @@ type RegionNetworkEndpointGroup struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// (Optional, Beta)
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -684,6 +685,7 @@ type regionNetworkEndpointGroupState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// (Optional, Beta)
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -739,6 +741,7 @@ type RegionNetworkEndpointGroupState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// (Optional, Beta)
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -796,6 +799,7 @@ type regionNetworkEndpointGroupArgs struct {
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// A reference to the region where the regional NEGs reside.
 	Region string `pulumi:"region"`
+	// (Optional, Beta)
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -850,6 +854,7 @@ type RegionNetworkEndpointGroupArgs struct {
 	PscTargetService pulumi.StringPtrInput
 	// A reference to the region where the regional NEGs reside.
 	Region pulumi.StringInput
+	// (Optional, Beta)
 	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -1029,6 +1034,7 @@ func (o RegionNetworkEndpointGroupOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // This field is only used for SERVERLESS NEGs.
 // Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 // Structure is documented below.

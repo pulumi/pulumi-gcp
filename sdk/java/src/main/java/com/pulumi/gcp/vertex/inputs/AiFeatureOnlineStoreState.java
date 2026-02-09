@@ -87,6 +87,7 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Optional, Beta, Deprecated)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
@@ -101,7 +102,8 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     private @Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement;
 
     /**
-     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
+     * @return (Optional, Beta, Deprecated)
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
@@ -418,7 +420,8 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
+         * @param embeddingManagement (Optional, Beta, Deprecated)
+         * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
          * Structure is documented below.
          * 
          * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
@@ -436,7 +439,8 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
+         * @param embeddingManagement (Optional, Beta, Deprecated)
+         * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
          * Structure is documented below.
          * 
          * &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type

@@ -303,6 +303,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NatPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         /// </summary>
         [Output("network")]
@@ -316,6 +317,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Output("securityPolicy")]
@@ -418,6 +420,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NatPolicy { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         /// </summary>
         [Input("network")]
@@ -431,6 +434,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Input("securityPolicy")]
@@ -495,6 +499,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NatPolicy { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         /// </summary>
         [Input("network")]
@@ -508,6 +513,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Input("securityPolicy")]

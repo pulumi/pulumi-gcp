@@ -620,6 +620,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
+     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -650,6 +651,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -792,6 +794,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
@@ -856,6 +859,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly strongSessionAffinityCookie: pulumi.Output<outputs.compute.RegionBackendServiceStrongSessionAffinityCookie | undefined>;
     /**
+     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */
@@ -1005,6 +1009,7 @@ export interface RegionBackendServiceState {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
+     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1035,6 +1040,7 @@ export interface RegionBackendServiceState {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -1177,6 +1183,7 @@ export interface RegionBackendServiceState {
      */
     network?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
@@ -1241,6 +1248,7 @@ export interface RegionBackendServiceState {
      */
     strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie>;
     /**
+     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */
@@ -1294,6 +1302,7 @@ export interface RegionBackendServiceArgs {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number>;
     /**
+     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1320,6 +1329,7 @@ export interface RegionBackendServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -1453,6 +1463,7 @@ export interface RegionBackendServiceArgs {
      */
     network?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
@@ -1513,6 +1524,7 @@ export interface RegionBackendServiceArgs {
      */
     strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie>;
     /**
+     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */

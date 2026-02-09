@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// EntityKey of the member.
         /// Structure is documented below.
         /// </summary>
@@ -261,6 +262,7 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// EntityKey of the member.
         /// Structure is documented below.
         /// </summary>
@@ -315,6 +317,7 @@ namespace Pulumi.Gcp.CloudIdentity
         public Input<string>? Group { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// EntityKey of the member.
         /// Structure is documented below.
         /// </summary>

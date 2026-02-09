@@ -19,8 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
- * 
  * ## Example Usage
  * 
  * Example creating a SQL User.
@@ -237,6 +235,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:sql/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
+     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * 
+     */
+    @Export(name="databaseRoles", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> databaseRoles;
+
+    /**
+     * @return A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     * 
+     */
+    public Output<Optional<List<String>>> databaseRoles() {
+        return Codegen.optional(this.databaseRoles);
+    }
+    /**
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -275,6 +287,20 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<String> host() {
         return this.host;
+    }
+    /**
+     * The email address for MySQL IAM database users.
+     * 
+     */
+    @Export(name="iamEmail", refs={String.class}, tree="[0]")
+    private Output<String> iamEmail;
+
+    /**
+     * @return The email address for MySQL IAM database users.
+     * 
+     */
+    public Output<String> iamEmail() {
+        return this.iamEmail;
     }
     /**
      * The name of the Cloud SQL instance. Changing this

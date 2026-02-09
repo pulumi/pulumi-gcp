@@ -163,7 +163,7 @@ type GlobalAddress struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
-	// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -257,7 +257,7 @@ type globalAddressState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
-	// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
 	Purpose *string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -317,7 +317,7 @@ type GlobalAddressState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
-	// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
 	Purpose pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -371,7 +371,7 @@ type globalAddressArgs struct {
 	Project *string `pulumi:"project"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
-	// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
 	Purpose *string `pulumi:"purpose"`
 }
 
@@ -420,7 +420,7 @@ type GlobalAddressArgs struct {
 	Project pulumi.StringPtrInput
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
-	// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+	// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
 	Purpose pulumi.StringPtrInput
 }
 
@@ -603,7 +603,7 @@ func (o GlobalAddressOutput) PulumiLabels() pulumi.StringMapOutput {
 
 // The purpose of the resource. Possible values include:
 // * VPC_PEERING - for peer networks
-// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
 func (o GlobalAddressOutput) Purpose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.Purpose }).(pulumi.StringPtrOutput)
 }

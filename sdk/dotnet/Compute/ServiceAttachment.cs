@@ -803,7 +803,9 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> SendPropagatedConnectionLimitIfZero { get; private set; } = null!;
 
         /// <summary>
-        /// If true, show NAT IPs of all connected endpoints.
+        /// NOTE: This field is temporarily non-functional due to an underlying API issue.
+        /// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        /// [If true, show NAT IPs of all connected endpoints.]
         /// </summary>
         [Output("showNatIps")]
         public Output<bool?> ShowNatIps { get; private set; } = null!;
@@ -815,6 +817,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> TargetService { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Tunneling configuration for this service attachment.
         /// Structure is documented below.
         /// </summary>
@@ -994,7 +997,9 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? SendPropagatedConnectionLimitIfZero { get; set; }
 
         /// <summary>
-        /// If true, show NAT IPs of all connected endpoints.
+        /// NOTE: This field is temporarily non-functional due to an underlying API issue.
+        /// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        /// [If true, show NAT IPs of all connected endpoints.]
         /// </summary>
         [Input("showNatIps")]
         public Input<bool>? ShowNatIps { get; set; }
@@ -1006,6 +1011,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> TargetService { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Tunneling configuration for this service attachment.
         /// Structure is documented below.
         /// </summary>
@@ -1187,7 +1193,9 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? SendPropagatedConnectionLimitIfZero { get; set; }
 
         /// <summary>
-        /// If true, show NAT IPs of all connected endpoints.
+        /// NOTE: This field is temporarily non-functional due to an underlying API issue.
+        /// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        /// [If true, show NAT IPs of all connected endpoints.]
         /// </summary>
         [Input("showNatIps")]
         public Input<bool>? ShowNatIps { get; set; }
@@ -1199,6 +1207,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? TargetService { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Tunneling configuration for this service attachment.
         /// Structure is documented below.
         /// </summary>

@@ -13,12 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterconnectApplicationAwareInterconnectShapeAveragePercentage {
     /**
-     * @return Bandwidth percentage for a specific traffic class.
+     * @return (Optional, Beta)
+     * Bandwidth percentage for a specific traffic class.
      * 
      */
     private @Nullable Integer percentage;
     /**
-     * @return Enum representing the various traffic classes offered by AAI.
+     * @return (Optional, Beta)
+     * Enum representing the various traffic classes offered by AAI.
      * Default value is `TC_UNSPECIFIED`.
      * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
      * 
@@ -27,14 +29,16 @@ public final class InterconnectApplicationAwareInterconnectShapeAveragePercentag
 
     private InterconnectApplicationAwareInterconnectShapeAveragePercentage() {}
     /**
-     * @return Bandwidth percentage for a specific traffic class.
+     * @return (Optional, Beta)
+     * Bandwidth percentage for a specific traffic class.
      * 
      */
     public Optional<Integer> percentage() {
         return Optional.ofNullable(this.percentage);
     }
     /**
-     * @return Enum representing the various traffic classes offered by AAI.
+     * @return (Optional, Beta)
+     * Enum representing the various traffic classes offered by AAI.
      * Default value is `TC_UNSPECIFIED`.
      * Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
      * 

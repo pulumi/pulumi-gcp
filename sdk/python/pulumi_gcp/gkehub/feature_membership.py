@@ -307,44 +307,6 @@ class FeatureMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
-
-        With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
-        and overseeing the lifecycle of its components.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster = gcp.container.Cluster("cluster",
-            name="my-cluster",
-            location="us-central1-a",
-            initial_node_count=1)
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="my-membership",
-            endpoint={
-                "gke_cluster": {
-                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                },
-            })
-        feature = gcp.gkehub.Feature("feature",
-            name="configmanagement",
-            location="global",
-            labels={
-                "foo": "bar",
-            })
-        feature_member = gcp.gkehub.FeatureMembership("feature_member",
-            location="global",
-            feature=feature.name,
-            membership=membership.membership_id,
-            configmanagement={
-                "management": "MANAGEMENT_AUTOMATIC",
-                "config_sync": {
-                    "enabled": True,
-                },
-            })
-        ```
-
         ### Config Management With Git
 
         ```python
@@ -672,44 +634,6 @@ class FeatureMembership(pulumi.CustomResource):
         Contains information about a GKEHub Feature Memberships. Feature Memberships configure GKEHub Features that apply to specific memberships rather than the project as a whole. The google_gke_hub is the Fleet API.
 
         ## Example Usage
-
-        ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
-
-        With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
-        and overseeing the lifecycle of its components.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster = gcp.container.Cluster("cluster",
-            name="my-cluster",
-            location="us-central1-a",
-            initial_node_count=1)
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="my-membership",
-            endpoint={
-                "gke_cluster": {
-                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                },
-            })
-        feature = gcp.gkehub.Feature("feature",
-            name="configmanagement",
-            location="global",
-            labels={
-                "foo": "bar",
-            })
-        feature_member = gcp.gkehub.FeatureMembership("feature_member",
-            location="global",
-            feature=feature.name,
-            membership=membership.membership_id,
-            configmanagement={
-                "management": "MANAGEMENT_AUTOMATIC",
-                "config_sync": {
-                    "enabled": True,
-                },
-            })
-        ```
 
         ### Config Management With Git
 

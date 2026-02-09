@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? OnFailedHealthCheck { get; set; }
 
         /// <summary>
-        /// , Configuration for VM repairs in the MIG. Structure is documented below.
+        /// ), Configuration for VM repairs in the MIG. Structure is documented below.
         /// - - -
         /// </summary>
         [Input("onRepair")]

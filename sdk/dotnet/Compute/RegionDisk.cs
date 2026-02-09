@@ -32,9 +32,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Region Disk Basic
@@ -305,6 +302,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionDiskGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -613,6 +611,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -866,6 +865,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.

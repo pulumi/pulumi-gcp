@@ -107,6 +107,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      * 
      */
@@ -114,7 +115,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> guestFlush;
 
     /**
-     * @return Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+     * @return (Optional, Beta)
+     * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      * 
      */
     public Optional<Output<Boolean>> guestFlush() {
@@ -582,7 +584,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guestFlush Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+         * @param guestFlush (Optional, Beta)
+         * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
          * 
          * @return builder
          * 
@@ -593,7 +596,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param guestFlush Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+         * @param guestFlush (Optional, Beta)
+         * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
          * 
          * @return builder
          * 

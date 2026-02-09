@@ -33,12 +33,14 @@ public final class ResourcePolicyGroupPlacementPolicy {
      */
     private @Nullable String gpuTopology;
     /**
-     * @return Specifies the number of max logical switches.
+     * @return (Optional, Beta)
+     * Specifies the number of max logical switches.
      * 
      */
     private @Nullable Integer maxDistance;
     /**
-     * @return Specifies the shape of the TPU slice.
+     * @return (Optional, Beta)
+     * Specifies the shape of the TPU slice.
      * 
      */
     private @Nullable String tpuTopology;
@@ -78,14 +80,16 @@ public final class ResourcePolicyGroupPlacementPolicy {
         return Optional.ofNullable(this.gpuTopology);
     }
     /**
-     * @return Specifies the number of max logical switches.
+     * @return (Optional, Beta)
+     * Specifies the number of max logical switches.
      * 
      */
     public Optional<Integer> maxDistance() {
         return Optional.ofNullable(this.maxDistance);
     }
     /**
-     * @return Specifies the shape of the TPU slice.
+     * @return (Optional, Beta)
+     * Specifies the shape of the TPU slice.
      * 
      */
     public Optional<String> tpuTopology() {

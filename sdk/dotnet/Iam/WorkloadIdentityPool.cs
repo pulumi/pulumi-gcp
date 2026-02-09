@@ -191,6 +191,7 @@ namespace Pulumi.Gcp.Iam
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         /// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
         /// required for issuance and rotation of mTLS workload certificates.
@@ -200,6 +201,7 @@ namespace Pulumi.Gcp.Iam
         public Output<Outputs.WorkloadIdentityPoolInlineCertificateIssuanceConfig?> InlineCertificateIssuanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Represents config to add additional trusted trust domains. Defines configuration for extending
         /// trust to additional trust domains. By establishing trust with another domain, the current
         /// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -211,6 +213,7 @@ namespace Pulumi.Gcp.Iam
         public Output<Outputs.WorkloadIdentityPoolInlineTrustConfig?> InlineTrustConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         /// are in `FEDERATION_ONLY` mode.
         /// 
@@ -336,6 +339,7 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         /// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
         /// required for issuance and rotation of mTLS workload certificates.
@@ -345,6 +349,7 @@ namespace Pulumi.Gcp.Iam
         public Input<Inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs>? InlineCertificateIssuanceConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Represents config to add additional trusted trust domains. Defines configuration for extending
         /// trust to additional trust domains. By establishing trust with another domain, the current
         /// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -356,6 +361,7 @@ namespace Pulumi.Gcp.Iam
         public Input<Inputs.WorkloadIdentityPoolInlineTrustConfigArgs>? InlineTrustConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         /// are in `FEDERATION_ONLY` mode.
         /// 
@@ -422,6 +428,7 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         /// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
         /// required for issuance and rotation of mTLS workload certificates.
@@ -431,6 +438,7 @@ namespace Pulumi.Gcp.Iam
         public Input<Inputs.WorkloadIdentityPoolInlineCertificateIssuanceConfigGetArgs>? InlineCertificateIssuanceConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Represents config to add additional trusted trust domains. Defines configuration for extending
         /// trust to additional trust domains. By establishing trust with another domain, the current
         /// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -442,6 +450,7 @@ namespace Pulumi.Gcp.Iam
         public Input<Inputs.WorkloadIdentityPoolInlineTrustConfigGetArgs>? InlineTrustConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         /// are in `FEDERATION_ONLY` mode.
         /// 

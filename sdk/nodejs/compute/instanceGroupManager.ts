@@ -293,7 +293,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     declare public readonly namedPorts: pulumi.Output<outputs.compute.InstanceGroupManagerNamedPort[] | undefined>;
     declare public /*out*/ readonly operation: pulumi.Output<string>;
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
     declare public readonly params: pulumi.Output<outputs.compute.InstanceGroupManagerParams | undefined>;
     /**
@@ -541,7 +541,7 @@ export interface InstanceGroupManagerState {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerNamedPort>[]>;
     operation?: pulumi.Input<string>;
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
     params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
     /**
@@ -684,7 +684,7 @@ export interface InstanceGroupManagerArgs {
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerNamedPort>[]>;
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
     params?: pulumi.Input<inputs.compute.InstanceGroupManagerParams>;
     /**

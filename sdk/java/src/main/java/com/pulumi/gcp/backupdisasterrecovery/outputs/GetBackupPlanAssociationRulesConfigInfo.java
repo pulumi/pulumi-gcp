@@ -23,6 +23,11 @@ public final class GetBackupPlanAssociationRulesConfigInfo {
      */
     private String lastBackupState;
     /**
+     * @return The point in time when the last successful backup was captured from the source
+     * 
+     */
+    private String lastSuccessfulBackupConsistencyTime;
+    /**
      * @return Backup Rule id fetched from backup plan.
      * 
      */
@@ -44,6 +49,13 @@ public final class GetBackupPlanAssociationRulesConfigInfo {
         return this.lastBackupState;
     }
     /**
+     * @return The point in time when the last successful backup was captured from the source
+     * 
+     */
+    public String lastSuccessfulBackupConsistencyTime() {
+        return this.lastSuccessfulBackupConsistencyTime;
+    }
+    /**
      * @return Backup Rule id fetched from backup plan.
      * 
      */
@@ -62,12 +74,14 @@ public final class GetBackupPlanAssociationRulesConfigInfo {
     public static final class Builder {
         private List<GetBackupPlanAssociationRulesConfigInfoLastBackupError> lastBackupErrors;
         private String lastBackupState;
+        private String lastSuccessfulBackupConsistencyTime;
         private String ruleId;
         public Builder() {}
         public Builder(GetBackupPlanAssociationRulesConfigInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lastBackupErrors = defaults.lastBackupErrors;
     	      this.lastBackupState = defaults.lastBackupState;
+    	      this.lastSuccessfulBackupConsistencyTime = defaults.lastSuccessfulBackupConsistencyTime;
     	      this.ruleId = defaults.ruleId;
         }
 
@@ -91,6 +105,14 @@ public final class GetBackupPlanAssociationRulesConfigInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder lastSuccessfulBackupConsistencyTime(String lastSuccessfulBackupConsistencyTime) {
+            if (lastSuccessfulBackupConsistencyTime == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanAssociationRulesConfigInfo", "lastSuccessfulBackupConsistencyTime");
+            }
+            this.lastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ruleId(String ruleId) {
             if (ruleId == null) {
               throw new MissingRequiredPropertyException("GetBackupPlanAssociationRulesConfigInfo", "ruleId");
@@ -102,6 +124,7 @@ public final class GetBackupPlanAssociationRulesConfigInfo {
             final var _resultValue = new GetBackupPlanAssociationRulesConfigInfo();
             _resultValue.lastBackupErrors = lastBackupErrors;
             _resultValue.lastBackupState = lastBackupState;
+            _resultValue.lastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
             _resultValue.ruleId = ruleId;
             return _resultValue;
         }

@@ -704,6 +704,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.determinismLevel);
     }
     /**
+     * (Optional, Beta)
      * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
@@ -713,7 +714,8 @@ public class Routine extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RoutineExternalRuntimeOptions> externalRuntimeOptions;
 
     /**
-     * @return Options for the runtime of the external system.
+     * @return (Optional, Beta)
+     * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
      * 
@@ -786,6 +788,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Optional, Beta)
      * Options for a user-defined Python function.
      * Structure is documented below.
      * 
@@ -794,7 +797,8 @@ public class Routine extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RoutinePythonOptions> pythonOptions;
 
     /**
-     * @return Options for a user-defined Python function.
+     * @return (Optional, Beta)
+     * Options for a user-defined Python function.
      * Structure is documented below.
      * 
      */

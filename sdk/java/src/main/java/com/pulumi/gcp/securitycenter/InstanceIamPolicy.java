@@ -394,6 +394,42 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Data Fusion Instance Patch Revision
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dataFusionInstancePatchRevision = new Instance("dataFusionInstancePatchRevision", InstanceArgs.builder()
+ *             .name("my-instance")
+ *             .region("us-central1")
+ *             .type("BASIC")
+ *             .version("6.10.1")
+ *             .patchRevision("6.10.1.5")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

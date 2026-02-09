@@ -295,7 +295,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerNamedPort>> NamedPorts { get; private set; } = null!;
 
         /// <summary>
-        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         /// </summary>
         [Output("params")]
         public Output<Outputs.RegionInstanceGroupManagerParams?> Params { get; private set; } = null!;
@@ -553,7 +553,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         /// </summary>
         [Input("params")]
         public Input<Inputs.RegionInstanceGroupManagerParamsArgs>? Params { get; set; }
@@ -815,7 +815,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        /// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         /// </summary>
         [Input("params")]
         public Input<Inputs.RegionInstanceGroupManagerParamsGetArgs>? Params { get; set; }

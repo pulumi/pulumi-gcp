@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterProtectConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+        /// ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
         /// </summary>
         [Input("workloadConfig")]
         public Input<Inputs.ClusterProtectConfigWorkloadConfigGetArgs>? WorkloadConfig { get; set; }
 
         /// <summary>
-        /// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+        /// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         /// </summary>
         [Input("workloadVulnerabilityMode")]
         public Input<string>? WorkloadVulnerabilityMode { get; set; }

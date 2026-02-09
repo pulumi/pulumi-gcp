@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
     public sealed class ListingBigqueryDatasetSelectedResourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
         /// 
         /// &lt;a name="NestedBigqueryDatasetEffectiveReplicas"&gt;&lt;/a&gt;The `EffectiveReplicas` block contains:

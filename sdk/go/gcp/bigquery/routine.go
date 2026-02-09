@@ -548,6 +548,7 @@ type Routine struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrOutput `pulumi:"determinismLevel"`
+	// (Optional, Beta)
 	// Options for the runtime of the external system.
 	// This field is only applicable for Python UDFs.
 	// Structure is documented below.
@@ -564,6 +565,7 @@ type Routine struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// (Optional, Beta)
 	// Options for a user-defined Python function.
 	// Structure is documented below.
 	PythonOptions RoutinePythonOptionsPtrOutput `pulumi:"pythonOptions"`
@@ -659,6 +661,7 @@ type routineState struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel *string `pulumi:"determinismLevel"`
+	// (Optional, Beta)
 	// Options for the runtime of the external system.
 	// This field is only applicable for Python UDFs.
 	// Structure is documented below.
@@ -675,6 +678,7 @@ type routineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// Options for a user-defined Python function.
 	// Structure is documented below.
 	PythonOptions *RoutinePythonOptions `pulumi:"pythonOptions"`
@@ -729,6 +733,7 @@ type RoutineState struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Options for the runtime of the external system.
 	// This field is only applicable for Python UDFs.
 	// Structure is documented below.
@@ -745,6 +750,7 @@ type RoutineState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Options for a user-defined Python function.
 	// Structure is documented below.
 	PythonOptions RoutinePythonOptionsPtrInput
@@ -800,6 +806,7 @@ type routineArgs struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel *string `pulumi:"determinismLevel"`
+	// (Optional, Beta)
 	// Options for the runtime of the external system.
 	// This field is only applicable for Python UDFs.
 	// Structure is documented below.
@@ -813,6 +820,7 @@ type routineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// Options for a user-defined Python function.
 	// Structure is documented below.
 	PythonOptions *RoutinePythonOptions `pulumi:"pythonOptions"`
@@ -865,6 +873,7 @@ type RoutineArgs struct {
 	// The determinism level of the JavaScript UDF if defined.
 	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Options for the runtime of the external system.
 	// This field is only applicable for Python UDFs.
 	// Structure is documented below.
@@ -878,6 +887,7 @@ type RoutineArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Options for a user-defined Python function.
 	// Structure is documented below.
 	PythonOptions RoutinePythonOptionsPtrInput
@@ -1039,6 +1049,7 @@ func (o RoutineOutput) DeterminismLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.DeterminismLevel }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Options for the runtime of the external system.
 // This field is only applicable for Python UDFs.
 // Structure is documented below.
@@ -1070,6 +1081,7 @@ func (o RoutineOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // Options for a user-defined Python function.
 // Structure is documented below.
 func (o RoutineOutput) PythonOptions() RoutinePythonOptionsPtrOutput {

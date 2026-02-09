@@ -212,6 +212,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
         return this.group;
     }
     /**
+     * (Optional, Beta)
      * EntityKey of the member.
      * Structure is documented below.
      * 
@@ -220,7 +221,8 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
     private Output<GroupMembershipMemberKey> memberKey;
 
     /**
-     * @return EntityKey of the member.
+     * @return (Optional, Beta)
+     * EntityKey of the member.
      * Structure is documented below.
      * 
      */

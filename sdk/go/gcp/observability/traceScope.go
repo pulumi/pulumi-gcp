@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A trace scope is a collection of resources whose traces are queried together
-//
 // ## Example Usage
 //
 // ### Observability Trace Scope Basic
@@ -38,8 +36,8 @@ import (
 //				return err
 //			}
 //			project_2, err := organizations.NewProject(ctx, "project-2", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_12125"),
-//				Name:           pulumi.String("tf-test_82749"),
+//				ProjectId:      pulumi.String("tf-test_34242"),
+//				Name:           pulumi.String("tf-test_9723"),
 //				OrgId:          pulumi.String("123456789"),
 //				DeletionPolicy: pulumi.String("DELETE"),
 //			})

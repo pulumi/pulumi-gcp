@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.outputs.GetClusterAutomatedBackupPolicy;
 import com.pulumi.gcp.alloydb.outputs.GetClusterBackupSource;
+import com.pulumi.gcp.alloydb.outputs.GetClusterBackupdrBackupSource;
 import com.pulumi.gcp.alloydb.outputs.GetClusterContinuousBackupConfig;
 import com.pulumi.gcp.alloydb.outputs.GetClusterContinuousBackupInfo;
 import com.pulumi.gcp.alloydb.outputs.GetClusterEncryptionConfig;
@@ -17,6 +18,8 @@ import com.pulumi.gcp.alloydb.outputs.GetClusterMigrationSource;
 import com.pulumi.gcp.alloydb.outputs.GetClusterNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.GetClusterPscConfig;
 import com.pulumi.gcp.alloydb.outputs.GetClusterRestoreBackupSource;
+import com.pulumi.gcp.alloydb.outputs.GetClusterRestoreBackupdrBackupSource;
+import com.pulumi.gcp.alloydb.outputs.GetClusterRestoreBackupdrPitrSource;
 import com.pulumi.gcp.alloydb.outputs.GetClusterRestoreContinuousBackupSource;
 import com.pulumi.gcp.alloydb.outputs.GetClusterSecondaryConfig;
 import com.pulumi.gcp.alloydb.outputs.GetClusterTrialMetadata;
@@ -33,6 +36,7 @@ public final class GetClusterResult {
     private Map<String,String> annotations;
     private List<GetClusterAutomatedBackupPolicy> automatedBackupPolicies;
     private List<GetClusterBackupSource> backupSources;
+    private List<GetClusterBackupdrBackupSource> backupdrBackupSources;
     private String clusterId;
     private String clusterType;
     private List<GetClusterContinuousBackupConfig> continuousBackupConfigs;
@@ -63,6 +67,8 @@ public final class GetClusterResult {
     private Map<String,String> pulumiLabels;
     private Boolean reconciling;
     private List<GetClusterRestoreBackupSource> restoreBackupSources;
+    private List<GetClusterRestoreBackupdrBackupSource> restoreBackupdrBackupSources;
+    private List<GetClusterRestoreBackupdrPitrSource> restoreBackupdrPitrSources;
     private List<GetClusterRestoreContinuousBackupSource> restoreContinuousBackupSources;
     private List<GetClusterSecondaryConfig> secondaryConfigs;
     private Boolean skipAwaitMajorVersionUpgrade;
@@ -80,6 +86,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterBackupSource> backupSources() {
         return this.backupSources;
+    }
+    public List<GetClusterBackupdrBackupSource> backupdrBackupSources() {
+        return this.backupdrBackupSources;
     }
     public String clusterId() {
         return this.clusterId;
@@ -163,6 +172,12 @@ public final class GetClusterResult {
     public List<GetClusterRestoreBackupSource> restoreBackupSources() {
         return this.restoreBackupSources;
     }
+    public List<GetClusterRestoreBackupdrBackupSource> restoreBackupdrBackupSources() {
+        return this.restoreBackupdrBackupSources;
+    }
+    public List<GetClusterRestoreBackupdrPitrSource> restoreBackupdrPitrSources() {
+        return this.restoreBackupdrPitrSources;
+    }
     public List<GetClusterRestoreContinuousBackupSource> restoreContinuousBackupSources() {
         return this.restoreContinuousBackupSources;
     }
@@ -197,6 +212,7 @@ public final class GetClusterResult {
         private Map<String,String> annotations;
         private List<GetClusterAutomatedBackupPolicy> automatedBackupPolicies;
         private List<GetClusterBackupSource> backupSources;
+        private List<GetClusterBackupdrBackupSource> backupdrBackupSources;
         private String clusterId;
         private String clusterType;
         private List<GetClusterContinuousBackupConfig> continuousBackupConfigs;
@@ -223,6 +239,8 @@ public final class GetClusterResult {
         private Map<String,String> pulumiLabels;
         private Boolean reconciling;
         private List<GetClusterRestoreBackupSource> restoreBackupSources;
+        private List<GetClusterRestoreBackupdrBackupSource> restoreBackupdrBackupSources;
+        private List<GetClusterRestoreBackupdrPitrSource> restoreBackupdrPitrSources;
         private List<GetClusterRestoreContinuousBackupSource> restoreContinuousBackupSources;
         private List<GetClusterSecondaryConfig> secondaryConfigs;
         private Boolean skipAwaitMajorVersionUpgrade;
@@ -236,6 +254,7 @@ public final class GetClusterResult {
     	      this.annotations = defaults.annotations;
     	      this.automatedBackupPolicies = defaults.automatedBackupPolicies;
     	      this.backupSources = defaults.backupSources;
+    	      this.backupdrBackupSources = defaults.backupdrBackupSources;
     	      this.clusterId = defaults.clusterId;
     	      this.clusterType = defaults.clusterType;
     	      this.continuousBackupConfigs = defaults.continuousBackupConfigs;
@@ -262,6 +281,8 @@ public final class GetClusterResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reconciling = defaults.reconciling;
     	      this.restoreBackupSources = defaults.restoreBackupSources;
+    	      this.restoreBackupdrBackupSources = defaults.restoreBackupdrBackupSources;
+    	      this.restoreBackupdrPitrSources = defaults.restoreBackupdrPitrSources;
     	      this.restoreContinuousBackupSources = defaults.restoreContinuousBackupSources;
     	      this.secondaryConfigs = defaults.secondaryConfigs;
     	      this.skipAwaitMajorVersionUpgrade = defaults.skipAwaitMajorVersionUpgrade;
@@ -300,6 +321,17 @@ public final class GetClusterResult {
         }
         public Builder backupSources(GetClusterBackupSource... backupSources) {
             return backupSources(List.of(backupSources));
+        }
+        @CustomType.Setter
+        public Builder backupdrBackupSources(List<GetClusterBackupdrBackupSource> backupdrBackupSources) {
+            if (backupdrBackupSources == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "backupdrBackupSources");
+            }
+            this.backupdrBackupSources = backupdrBackupSources;
+            return this;
+        }
+        public Builder backupdrBackupSources(GetClusterBackupdrBackupSource... backupdrBackupSources) {
+            return backupdrBackupSources(List.of(backupdrBackupSources));
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
@@ -536,6 +568,28 @@ public final class GetClusterResult {
             return restoreBackupSources(List.of(restoreBackupSources));
         }
         @CustomType.Setter
+        public Builder restoreBackupdrBackupSources(List<GetClusterRestoreBackupdrBackupSource> restoreBackupdrBackupSources) {
+            if (restoreBackupdrBackupSources == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "restoreBackupdrBackupSources");
+            }
+            this.restoreBackupdrBackupSources = restoreBackupdrBackupSources;
+            return this;
+        }
+        public Builder restoreBackupdrBackupSources(GetClusterRestoreBackupdrBackupSource... restoreBackupdrBackupSources) {
+            return restoreBackupdrBackupSources(List.of(restoreBackupdrBackupSources));
+        }
+        @CustomType.Setter
+        public Builder restoreBackupdrPitrSources(List<GetClusterRestoreBackupdrPitrSource> restoreBackupdrPitrSources) {
+            if (restoreBackupdrPitrSources == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "restoreBackupdrPitrSources");
+            }
+            this.restoreBackupdrPitrSources = restoreBackupdrPitrSources;
+            return this;
+        }
+        public Builder restoreBackupdrPitrSources(GetClusterRestoreBackupdrPitrSource... restoreBackupdrPitrSources) {
+            return restoreBackupdrPitrSources(List.of(restoreBackupdrPitrSources));
+        }
+        @CustomType.Setter
         public Builder restoreContinuousBackupSources(List<GetClusterRestoreContinuousBackupSource> restoreContinuousBackupSources) {
             if (restoreContinuousBackupSources == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "restoreContinuousBackupSources");
@@ -605,6 +659,7 @@ public final class GetClusterResult {
             _resultValue.annotations = annotations;
             _resultValue.automatedBackupPolicies = automatedBackupPolicies;
             _resultValue.backupSources = backupSources;
+            _resultValue.backupdrBackupSources = backupdrBackupSources;
             _resultValue.clusterId = clusterId;
             _resultValue.clusterType = clusterType;
             _resultValue.continuousBackupConfigs = continuousBackupConfigs;
@@ -631,6 +686,8 @@ public final class GetClusterResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.reconciling = reconciling;
             _resultValue.restoreBackupSources = restoreBackupSources;
+            _resultValue.restoreBackupdrBackupSources = restoreBackupdrBackupSources;
+            _resultValue.restoreBackupdrPitrSources = restoreBackupdrPitrSources;
             _resultValue.restoreContinuousBackupSources = restoreContinuousBackupSources;
             _resultValue.secondaryConfigs = secondaryConfigs;
             _resultValue.skipAwaitMajorVersionUpgrade = skipAwaitMajorVersionUpgrade;

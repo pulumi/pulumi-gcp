@@ -363,6 +363,7 @@ export class Routine extends pulumi.CustomResource {
      */
     declare public readonly determinismLevel: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
@@ -389,6 +390,7 @@ export class Routine extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Options for a user-defined Python function.
      * Structure is documented below.
      */
@@ -548,6 +550,7 @@ export interface RoutineState {
      */
     determinismLevel?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
@@ -574,6 +577,7 @@ export interface RoutineState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Options for a user-defined Python function.
      * Structure is documented below.
      */
@@ -656,6 +660,7 @@ export interface RoutineArgs {
      */
     determinismLevel?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
@@ -677,6 +682,7 @@ export interface RoutineArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Options for a user-defined Python function.
      * Structure is documented below.
      */

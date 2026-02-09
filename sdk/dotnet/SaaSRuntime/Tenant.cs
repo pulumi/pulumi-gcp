@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SaaSRuntime
 {
     /// <summary>
-    /// The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Saas Runtime Tenant Basic

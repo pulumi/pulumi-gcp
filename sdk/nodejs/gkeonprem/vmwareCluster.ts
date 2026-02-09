@@ -146,6 +146,11 @@ import * as utilities from "../utilities";
  *
  * const cluster_manuallb = new gcp.gkeonprem.VMwareCluster("cluster-manuallb", {
  *     name: "cluster-manuallb",
+ *     skipValidations: [
+ *         "WORKSTATION",
+ *         "CONFIG",
+ *         "DOCKER",
+ *     ],
  *     location: "us-west1",
  *     adminClusterMembership: "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
  *     description: "test cluster",
@@ -424,6 +429,11 @@ export class VMwareCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
+     * A list of validations to skip during preflight checks.
+     * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+     */
+    declare public readonly skipValidations: pulumi.Output<string[] | undefined>;
+    /**
      * (Output)
      * The lifecycle state of the condition.
      */
@@ -506,6 +516,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["onPremVersion"] = state?.onPremVersion;
             resourceInputs["project"] = state?.project;
             resourceInputs["reconciling"] = state?.reconciling;
+            resourceInputs["skipValidations"] = state?.skipValidations;
             resourceInputs["state"] = state?.state;
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["storage"] = state?.storage;
@@ -546,6 +557,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = args?.networkConfig;
             resourceInputs["onPremVersion"] = args?.onPremVersion;
             resourceInputs["project"] = args?.project;
+            resourceInputs["skipValidations"] = args?.skipValidations;
             resourceInputs["storage"] = args?.storage;
             resourceInputs["upgradePolicy"] = args?.upgradePolicy;
             resourceInputs["vcenter"] = args?.vcenter;
@@ -707,6 +719,11 @@ export interface VMwareClusterState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
+     * A list of validations to skip during preflight checks.
+     * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+     */
+    skipValidations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * (Output)
      * The lifecycle state of the condition.
      */
@@ -846,6 +863,11 @@ export interface VMwareClusterArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A list of validations to skip during preflight checks.
+     * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+     */
+    skipValidations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Storage configuration.
      * Structure is documented below.

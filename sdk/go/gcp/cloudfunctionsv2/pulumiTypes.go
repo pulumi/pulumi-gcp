@@ -1986,9 +1986,11 @@ type FunctionServiceConfig struct {
 	AvailableMemory *string `pulumi:"availableMemory"`
 	// The binary authorization policy to be checked when deploying the Cloud Run service.
 	BinaryAuthorizationPolicy *string `pulumi:"binaryAuthorizationPolicy"`
+	// (Optional, Beta)
 	// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
 	// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
 	DirectVpcEgress *string `pulumi:"directVpcEgress"`
+	// (Optional, Beta)
 	// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
 	// Structure is documented below.
 	DirectVpcNetworkInterfaces []FunctionServiceConfigDirectVpcNetworkInterface `pulumi:"directVpcNetworkInterfaces"`
@@ -2056,9 +2058,11 @@ type FunctionServiceConfigArgs struct {
 	AvailableMemory pulumi.StringPtrInput `pulumi:"availableMemory"`
 	// The binary authorization policy to be checked when deploying the Cloud Run service.
 	BinaryAuthorizationPolicy pulumi.StringPtrInput `pulumi:"binaryAuthorizationPolicy"`
+	// (Optional, Beta)
 	// Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
 	// Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
 	DirectVpcEgress pulumi.StringPtrInput `pulumi:"directVpcEgress"`
+	// (Optional, Beta)
 	// The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
 	// Structure is documented below.
 	DirectVpcNetworkInterfaces FunctionServiceConfigDirectVpcNetworkInterfaceArrayInput `pulumi:"directVpcNetworkInterfaces"`
@@ -2203,12 +2207,14 @@ func (o FunctionServiceConfigOutput) BinaryAuthorizationPolicy() pulumi.StringPt
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.BinaryAuthorizationPolicy }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
 // Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
 func (o FunctionServiceConfigOutput) DirectVpcEgress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.DirectVpcEgress }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
 // Structure is documented below.
 func (o FunctionServiceConfigOutput) DirectVpcNetworkInterfaces() FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {
@@ -2367,6 +2373,7 @@ func (o FunctionServiceConfigPtrOutput) BinaryAuthorizationPolicy() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
 // Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
 func (o FunctionServiceConfigPtrOutput) DirectVpcEgress() pulumi.StringPtrOutput {
@@ -2378,6 +2385,7 @@ func (o FunctionServiceConfigPtrOutput) DirectVpcEgress() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
 // Structure is documented below.
 func (o FunctionServiceConfigPtrOutput) DirectVpcNetworkInterfaces() FunctionServiceConfigDirectVpcNetworkInterfaceArrayOutput {

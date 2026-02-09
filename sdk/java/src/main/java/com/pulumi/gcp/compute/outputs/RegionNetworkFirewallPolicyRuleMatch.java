@@ -31,7 +31,8 @@ public final class RegionNetworkFirewallPolicyRuleMatch {
      */
     private @Nullable List<String> destIpRanges;
     /**
-     * @return Network scope of the traffic destination.
+     * @return (Optional, Beta)
+     * Network scope of the traffic destination.
      * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
@@ -68,13 +69,15 @@ public final class RegionNetworkFirewallPolicyRuleMatch {
      */
     private @Nullable List<String> srcIpRanges;
     /**
-     * @return Network scope of the traffic source.
+     * @return (Optional, Beta)
+     * Network scope of the traffic source.
      * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
     private @Nullable String srcNetworkScope;
     /**
-     * @return Networks of the traffic source. It can be either a full or partial url.
+     * @return (Optional, Beta)
+     * Networks of the traffic source. It can be either a full or partial url.
      * 
      */
     private @Nullable List<String> srcNetworks;
@@ -120,7 +123,8 @@ public final class RegionNetworkFirewallPolicyRuleMatch {
         return this.destIpRanges == null ? List.of() : this.destIpRanges;
     }
     /**
-     * @return Network scope of the traffic destination.
+     * @return (Optional, Beta)
+     * Network scope of the traffic destination.
      * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
@@ -171,7 +175,8 @@ public final class RegionNetworkFirewallPolicyRuleMatch {
         return this.srcIpRanges == null ? List.of() : this.srcIpRanges;
     }
     /**
-     * @return Network scope of the traffic source.
+     * @return (Optional, Beta)
+     * Network scope of the traffic source.
      * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
      * 
      */
@@ -179,7 +184,8 @@ public final class RegionNetworkFirewallPolicyRuleMatch {
         return Optional.ofNullable(this.srcNetworkScope);
     }
     /**
-     * @return Networks of the traffic source. It can be either a full or partial url.
+     * @return (Optional, Beta)
+     * Networks of the traffic source. It can be either a full or partial url.
      * 
      */
     public List<String> srcNetworks() {

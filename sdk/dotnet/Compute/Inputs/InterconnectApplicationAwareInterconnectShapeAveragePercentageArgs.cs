@@ -13,12 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Bandwidth percentage for a specific traffic class.
         /// </summary>
         [Input("percentage")]
         public Input<int>? Percentage { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Enum representing the various traffic classes offered by AAI.
         /// Default value is `TC_UNSPECIFIED`.
         /// Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.

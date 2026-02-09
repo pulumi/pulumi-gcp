@@ -16,6 +16,7 @@ public final class BackendServiceDynamicForwardingArgs extends com.pulumi.resour
     public static final BackendServiceDynamicForwardingArgs Empty = new BackendServiceDynamicForwardingArgs();
 
     /**
+     * (Optional, Beta)
      * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
@@ -24,7 +25,8 @@ public final class BackendServiceDynamicForwardingArgs extends com.pulumi.resour
     private @Nullable Output<BackendServiceDynamicForwardingIpPortSelectionArgs> ipPortSelection;
 
     /**
-     * @return IP:PORT based dynamic forwarding configuration.
+     * @return (Optional, Beta)
+     * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
      */
@@ -57,7 +59,8 @@ public final class BackendServiceDynamicForwardingArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipPortSelection IP:PORT based dynamic forwarding configuration.
+         * @param ipPortSelection (Optional, Beta)
+         * IP:PORT based dynamic forwarding configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +72,8 @@ public final class BackendServiceDynamicForwardingArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipPortSelection IP:PORT based dynamic forwarding configuration.
+         * @param ipPortSelection (Optional, Beta)
+         * IP:PORT based dynamic forwarding configuration.
          * Structure is documented below.
          * 
          * @return builder

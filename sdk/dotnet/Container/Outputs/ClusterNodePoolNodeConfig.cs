@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigBootDisk? BootDisk;
         /// <summary>
-        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool? EnableConfidentialStorage;
         /// <summary>
-        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
         /// <summary>
@@ -204,7 +204,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
         /// <summary>
-        /// Sandbox configuration for this node.
+        /// ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `ImageType = "COS_CONTAINERD"` and `NodeVersion = "1.12.7-gke.17"` or later to use it.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>

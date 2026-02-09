@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterSecretSyncConfig
     {
         /// <summary>
-        /// Enable the Sync as K8s secret feature for this cluster.
+        /// ) - Enable the Sync as K8s secret feature for this cluster.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// config for secret sync auto rotation. Structure is docuemented below
+        /// ) - config for secret sync auto rotation. Structure is docuemented below
         /// </summary>
         public readonly Outputs.ClusterSecretSyncConfigRotationConfig? RotationConfig;
 

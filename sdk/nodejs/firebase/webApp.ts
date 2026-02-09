@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A Google Cloud Firebase web application instance
- *
- * To get more information about WebApp, see:
- *
- * * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
- * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/)
- *
  * ## Example Usage
  *
  * ### Firebase Web App Basic

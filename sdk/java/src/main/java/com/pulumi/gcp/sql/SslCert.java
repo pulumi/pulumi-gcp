@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
 /**
  * Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
  * 
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * 
  * Example creating a SQL Client Certificate.

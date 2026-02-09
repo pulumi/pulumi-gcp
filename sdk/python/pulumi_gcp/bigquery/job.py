@@ -50,7 +50,8 @@ class JobArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] reservation: The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+        :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
+               The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
                The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         """
         pulumi.set(__self__, "job_id", job_id)
@@ -193,6 +194,7 @@ class JobArgs:
     @pulumi.getter
     def reservation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
         The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         """
@@ -247,7 +249,8 @@ class _JobState:
                and default labels configured on the provider.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] reservation: The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+        :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
+               The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
                The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
@@ -444,6 +447,7 @@ class _JobState:
     @pulumi.getter
     def reservation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
         The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         """
@@ -926,7 +930,8 @@ class Job(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] reservation: The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+        :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
+               The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
                The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         """
         ...
@@ -1455,7 +1460,8 @@ class Job(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[Union['JobQueryArgs', 'JobQueryArgsDict']] query: Configures a query job.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] reservation: The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+        :param pulumi.Input[_builtins.str] reservation: (Optional, Beta)
+               The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
                The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobStatusArgs', 'JobStatusArgsDict']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
@@ -1594,6 +1600,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def reservation(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Beta)
         The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
         The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         """

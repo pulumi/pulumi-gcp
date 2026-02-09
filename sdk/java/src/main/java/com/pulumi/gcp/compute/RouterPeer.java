@@ -835,6 +835,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableIpv6);
     }
     /**
+     * (Optional, Beta)
      * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      * 
@@ -843,7 +844,8 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> exportPolicies;
 
     /**
-     * @return routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * @return (Optional, Beta)
+     * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      * 
      */
@@ -851,6 +853,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.exportPolicies);
     }
     /**
+     * (Optional, Beta)
      * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      * 
@@ -859,7 +862,8 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> importPolicies;
 
     /**
-     * @return routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * @return (Optional, Beta)
+     * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      * 
      */

@@ -12,11 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An endpoint is a managed mirroring collector that provides enhanced packet
-// enrichment capabilities and support for multiple replica destinations.
-// Endpoints are always part of a global endpoint group which represents a
-// global "mirroring broker" service.
-//
 // ## Example Usage
 //
 // ### Network Security Mirroring Endpoint Basic

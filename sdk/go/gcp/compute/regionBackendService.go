@@ -937,6 +937,7 @@ type RegionBackendService struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrOutput `pulumi:"connectionDrainingTimeoutSec"`
+	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -957,6 +958,7 @@ type RegionBackendService struct {
 	CustomMetrics RegionBackendServiceCustomMetricArrayOutput `pulumi:"customMetrics"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1071,6 +1073,7 @@ type RegionBackendService struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1113,6 +1116,7 @@ type RegionBackendService struct {
 	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
 	// Structure is documented below.
 	StrongSessionAffinityCookie RegionBackendServiceStrongSessionAffinityCookiePtrOutput `pulumi:"strongSessionAffinityCookie"`
+	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrOutput `pulumi:"subsetting"`
@@ -1176,6 +1180,7 @@ type regionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
+	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1196,6 +1201,7 @@ type regionBackendServiceState struct {
 	CustomMetrics []RegionBackendServiceCustomMetric `pulumi:"customMetrics"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1310,6 +1316,7 @@ type regionBackendServiceState struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network *string `pulumi:"network"`
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy *RegionBackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1352,6 +1359,7 @@ type regionBackendServiceState struct {
 	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
 	// Structure is documented below.
 	StrongSessionAffinityCookie *RegionBackendServiceStrongSessionAffinityCookie `pulumi:"strongSessionAffinityCookie"`
+	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
@@ -1386,6 +1394,7 @@ type RegionBackendServiceState struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
+	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1406,6 +1415,7 @@ type RegionBackendServiceState struct {
 	CustomMetrics RegionBackendServiceCustomMetricArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1520,6 +1530,7 @@ type RegionBackendServiceState struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
@@ -1562,6 +1573,7 @@ type RegionBackendServiceState struct {
 	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
 	// Structure is documented below.
 	StrongSessionAffinityCookie RegionBackendServiceStrongSessionAffinityCookiePtrInput
+	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
@@ -1600,6 +1612,7 @@ type regionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec *int `pulumi:"connectionDrainingTimeoutSec"`
+	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1618,6 +1631,7 @@ type regionBackendServiceArgs struct {
 	CustomMetrics []RegionBackendServiceCustomMetric `pulumi:"customMetrics"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1727,6 +1741,7 @@ type regionBackendServiceArgs struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network *string `pulumi:"network"`
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy *RegionBackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1767,6 +1782,7 @@ type regionBackendServiceArgs struct {
 	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
 	// Structure is documented below.
 	StrongSessionAffinityCookie *RegionBackendServiceStrongSessionAffinityCookie `pulumi:"strongSessionAffinityCookie"`
+	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
@@ -1802,6 +1818,7 @@ type RegionBackendServiceArgs struct {
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
 	ConnectionDrainingTimeoutSec pulumi.IntPtrInput
+	// (Optional, Beta)
 	// Connection Tracking configuration for this BackendService.
 	// This is available only for Layer 4 Internal Load Balancing and
 	// Network Load Balancing.
@@ -1820,6 +1837,7 @@ type RegionBackendServiceArgs struct {
 	CustomMetrics RegionBackendServiceCustomMetricArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1929,6 +1947,7 @@ type RegionBackendServiceArgs struct {
 	// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
 	// Changes to this field force recreation of the resource.
 	Network pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
@@ -1969,6 +1988,7 @@ type RegionBackendServiceArgs struct {
 	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
 	// Structure is documented below.
 	StrongSessionAffinityCookie RegionBackendServiceStrongSessionAffinityCookiePtrInput
+	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
@@ -2104,6 +2124,7 @@ func (o RegionBackendServiceOutput) ConnectionDrainingTimeoutSec() pulumi.IntPtr
 	return o.ApplyT(func(v *RegionBackendService) pulumi.IntPtrOutput { return v.ConnectionDrainingTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
+// (Optional, Beta)
 // Connection Tracking configuration for this BackendService.
 // This is available only for Layer 4 Internal Load Balancing and
 // Network Load Balancing.
@@ -2141,6 +2162,7 @@ func (o RegionBackendServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 // feature which together with Service Extension allows customized and complex routing logic.
 // Structure is documented below.
@@ -2299,6 +2321,7 @@ func (o RegionBackendServiceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Configures traffic steering properties of internal passthrough Network Load Balancers.
 // Structure is documented below.
 func (o RegionBackendServiceOutput) NetworkPassThroughLbTrafficPolicy() RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput {
@@ -2378,6 +2401,7 @@ func (o RegionBackendServiceOutput) StrongSessionAffinityCookie() RegionBackendS
 	}).(RegionBackendServiceStrongSessionAffinityCookiePtrOutput)
 }
 
+// (Optional, Beta)
 // Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 // Structure is documented below.
 func (o RegionBackendServiceOutput) Subsetting() RegionBackendServiceSubsettingPtrOutput {

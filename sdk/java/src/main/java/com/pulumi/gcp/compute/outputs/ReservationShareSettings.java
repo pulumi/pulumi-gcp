@@ -20,7 +20,8 @@ public final class ReservationShareSettings {
      */
     private @Nullable List<ReservationShareSettingsProjectMap> projectMaps;
     /**
-     * @return List of project IDs with which the reservation is shared.
+     * @return (Optional, Beta)
+     * List of project IDs with which the reservation is shared.
      * 
      */
     private @Nullable List<String> projects;
@@ -41,7 +42,8 @@ public final class ReservationShareSettings {
         return this.projectMaps == null ? List.of() : this.projectMaps;
     }
     /**
-     * @return List of project IDs with which the reservation is shared.
+     * @return (Optional, Beta)
+     * List of project IDs with which the reservation is shared.
      * 
      */
     public List<String> projects() {

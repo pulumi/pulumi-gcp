@@ -555,7 +555,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      * 
      */
@@ -563,7 +563,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableDisplay;
 
     /**
-     * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * @return ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      * 
      */

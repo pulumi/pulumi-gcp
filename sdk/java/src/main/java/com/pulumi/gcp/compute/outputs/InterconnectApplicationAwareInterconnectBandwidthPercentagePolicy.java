@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
     /**
-     * @return Specify bandwidth percentages for various traffic classes for queuing
+     * @return (Optional, Beta)
+     * Specify bandwidth percentages for various traffic classes for queuing
      * type Bandwidth Percent.
      * Structure is documented below.
      * 
@@ -21,7 +22,8 @@ public final class InterconnectApplicationAwareInterconnectBandwidthPercentagePo
 
     private InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy() {}
     /**
-     * @return Specify bandwidth percentages for various traffic classes for queuing
+     * @return (Optional, Beta)
+     * Specify bandwidth percentages for various traffic classes for queuing
      * type Bandwidth Percent.
      * Structure is documented below.
      * 

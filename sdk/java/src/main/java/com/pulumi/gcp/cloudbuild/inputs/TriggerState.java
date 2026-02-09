@@ -199,7 +199,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      * 
      */
@@ -208,7 +207,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      * 
      */
@@ -347,7 +345,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -357,7 +354,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -410,7 +406,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * This field is used only for those triggers that do not respond to SCM events.
      * Triggers that respond to such events build source at whatever commit caused the event.
      * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -422,7 +417,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * This field is used only for those triggers that do not respond to SCM events.
      * Triggers that respond to such events build source at whatever commit caused the event.
      * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -480,7 +474,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -492,7 +485,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -503,7 +495,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger&#39;s webhook URL.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -513,7 +504,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger&#39;s webhook URL.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      * 
      */
@@ -800,7 +790,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param github Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -813,7 +802,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param github Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1024,7 +1012,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param pubsubConfig PubsubConfig describes the configuration of a trigger that creates
          * a build whenever a Pub/Sub message is published.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1038,7 +1025,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param pubsubConfig PubsubConfig describes the configuration of a trigger that creates
          * a build whenever a Pub/Sub message is published.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1105,7 +1091,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * This field is used only for those triggers that do not respond to SCM events.
          * Triggers that respond to such events build source at whatever commit caused the event.
          * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1121,7 +1106,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * This field is used only for those triggers that do not respond to SCM events.
          * Triggers that respond to such events build source at whatever commit caused the event.
          * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1209,7 +1193,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * Branch and tag names in trigger templates are interpreted as regular
          * expressions. Any branch or tag change that matches that regular
          * expression will trigger a build.
-         * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1225,7 +1208,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          * Branch and tag names in trigger templates are interpreted as regular
          * expressions. Any branch or tag change that matches that regular
          * expression will trigger a build.
-         * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1238,7 +1220,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookConfig WebhookConfig describes the configuration of a trigger that creates
          * a build whenever a webhook is sent to a trigger&#39;s webhook URL.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -1252,7 +1233,6 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webhookConfig WebhookConfig describes the configuration of a trigger that creates
          * a build whenever a webhook is sent to a trigger&#39;s webhook URL.
-         * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
          * Structure is documented below.
          * 
          * @return builder

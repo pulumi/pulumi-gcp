@@ -1068,6 +1068,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Generation { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Used to enable/disable IAP for the service.
         /// </summary>
         [Output("iapEnabled")]
@@ -1355,6 +1356,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Used to enable/disable IAP for the service.
         /// </summary>
         [Input("iapEnabled")]
@@ -1605,6 +1607,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? Generation { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Used to enable/disable IAP for the service.
         /// </summary>
         [Input("iapEnabled")]

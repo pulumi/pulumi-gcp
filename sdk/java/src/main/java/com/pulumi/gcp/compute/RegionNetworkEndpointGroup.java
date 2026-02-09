@@ -837,6 +837,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
+     * (Optional, Beta)
      * This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
@@ -846,7 +847,8 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionNetworkEndpointGroupServerlessDeployment> serverlessDeployment;
 
     /**
-     * @return This field is only used for SERVERLESS NEGs.
+     * @return (Optional, Beta)
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 

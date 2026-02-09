@@ -200,7 +200,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for
+     * ) Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      * 
@@ -209,7 +209,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterClusterTelemetryArgs> clusterTelemetry;
 
     /**
-     * @return Configuration for
+     * @return ) Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      * 
@@ -795,14 +795,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     @Import(name="managedOpentelemetryConfig")
     private @Nullable Output<ClusterManagedOpentelemetryConfigArgs> managedOpentelemetryConfig;
 
     /**
-     * @return Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * @return ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterManagedOpentelemetryConfigArgs>> managedOpentelemetryConfig() {
@@ -1225,7 +1225,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1234,7 +1234,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterPodSecurityPolicyConfigArgs> podSecurityPolicyConfig;
 
     /**
-     * @return Configuration for the
+     * @return ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1293,6 +1293,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
@@ -1300,7 +1301,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterProtectConfigArgs> protectConfig;
 
     /**
-     * @return Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * @return )
+     * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterProtectConfigArgs>> protectConfig() {
@@ -1438,7 +1440,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      * 
@@ -1447,7 +1449,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterSecretSyncConfigArgs> secretSyncConfig;
 
     /**
-     * @return Configuration for the
+     * @return ) Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      * 
@@ -1551,6 +1553,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
      */
@@ -1558,7 +1561,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterWorkloadAltsConfigArgs> workloadAltsConfig;
 
     /**
-     * @return Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     * @return )
+     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
      */
     public Optional<Output<ClusterWorkloadAltsConfigArgs>> workloadAltsConfig() {
@@ -1863,7 +1867,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTelemetry Configuration for
+         * @param clusterTelemetry ) Configuration for
          * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
          * Structure is documented below.
          * 
@@ -1876,7 +1880,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterTelemetry Configuration for
+         * @param clusterTelemetry ) Configuration for
          * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
          * Structure is documented below.
          * 
@@ -2664,7 +2668,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedOpentelemetryConfig Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+         * @param managedOpentelemetryConfig ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
          * 
          * @return builder
          * 
@@ -2675,7 +2679,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedOpentelemetryConfig Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+         * @param managedOpentelemetryConfig ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3249,7 +3253,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podSecurityPolicyConfig Configuration for the
+         * @param podSecurityPolicyConfig ) Configuration for the
          * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
          * Structure is documented below.
          * 
@@ -3262,7 +3266,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podSecurityPolicyConfig Configuration for the
+         * @param podSecurityPolicyConfig ) Configuration for the
          * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
          * Structure is documented below.
          * 
@@ -3341,7 +3345,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectConfig Enable/Disable Protect API features for the cluster. Structure is documented below.
+         * @param protectConfig )
+         * Enable/Disable Protect API features for the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3352,7 +3357,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectConfig Enable/Disable Protect API features for the cluster. Structure is documented below.
+         * @param protectConfig )
+         * Enable/Disable Protect API features for the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3528,7 +3534,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretSyncConfig Configuration for the
+         * @param secretSyncConfig ) Configuration for the
          * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
          * Structure is documented below.
          * 
@@ -3541,7 +3547,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretSyncConfig Configuration for the
+         * @param secretSyncConfig ) Configuration for the
          * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
          * Structure is documented below.
          * 
@@ -3683,7 +3689,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workloadAltsConfig Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+         * @param workloadAltsConfig )
+         * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
          * 
          * @return builder
          * 
@@ -3694,7 +3701,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workloadAltsConfig Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+         * @param workloadAltsConfig )
+         * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
          * 
          * @return builder
          * 

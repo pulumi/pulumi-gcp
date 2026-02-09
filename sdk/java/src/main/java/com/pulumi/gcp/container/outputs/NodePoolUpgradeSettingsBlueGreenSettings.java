@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolUpgradeSettingsBlueGreenSettings {
     /**
-     * @return Autoscaled rollout policy for blue-green upgrade.
+     * @return ) Autoscaled rollout policy for blue-green upgrade.
      * 
      */
     private @Nullable NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy autoscaledRolloutPolicy;
@@ -32,7 +32,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
 
     private NodePoolUpgradeSettingsBlueGreenSettings() {}
     /**
-     * @return Autoscaled rollout policy for blue-green upgrade.
+     * @return ) Autoscaled rollout policy for blue-green upgrade.
      * 
      */
     public Optional<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy> autoscaledRolloutPolicy() {

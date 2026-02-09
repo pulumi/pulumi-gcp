@@ -52,7 +52,7 @@ public final class ClusterClusterAutoscaling {
      * @return Global constraints for machine resources in the
      * cluster. Configuring the `cpu` and `memory` types is required if node
      * auto-provisioning is enabled. These limits will apply to node pool autoscaling
-     * in addition to node auto-provisioning. Structure is documented below.
+     * in addition to node auto-provisioning. Limits can&#39;t be unset entirely, they can only be replaced. Structure is documented below.
      * 
      */
     private @Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits;
@@ -105,7 +105,7 @@ public final class ClusterClusterAutoscaling {
      * @return Global constraints for machine resources in the
      * cluster. Configuring the `cpu` and `memory` types is required if node
      * auto-provisioning is enabled. These limits will apply to node pool autoscaling
-     * in addition to node auto-provisioning. Structure is documented below.
+     * in addition to node auto-provisioning. Limits can&#39;t be unset entirely, they can only be replaced. Structure is documented below.
      * 
      */
     public List<ClusterClusterAutoscalingResourceLimit> resourceLimits() {

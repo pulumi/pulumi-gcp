@@ -12,16 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A `Channel` represents a stream of releases for a site. All sites have a default
-// `live` channel that serves content to the Firebase-provided subdomains and any
-// connected custom domains.
-//
-// To get more information about Channel, see:
-//
-// * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.channels)
-// * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/docs/hosting)
-//
 // ## Example Usage
 //
 // ### Firebasehosting Channel Basic

@@ -67,15 +67,14 @@ type LookupBackupPlanAssociationResult struct {
 	CreateTime              string `pulumi:"createTime"`
 	DataSource              string `pulumi:"dataSource"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                                  string                                    `pulumi:"id"`
-	LastSuccessfulBackupConsistencyTime string                                    `pulumi:"lastSuccessfulBackupConsistencyTime"`
-	Location                            string                                    `pulumi:"location"`
-	Name                                string                                    `pulumi:"name"`
-	Project                             *string                                   `pulumi:"project"`
-	Resource                            string                                    `pulumi:"resource"`
-	ResourceType                        string                                    `pulumi:"resourceType"`
-	RulesConfigInfos                    []GetBackupPlanAssociationRulesConfigInfo `pulumi:"rulesConfigInfos"`
-	UpdateTime                          string                                    `pulumi:"updateTime"`
+	Id               string                                    `pulumi:"id"`
+	Location         string                                    `pulumi:"location"`
+	Name             string                                    `pulumi:"name"`
+	Project          *string                                   `pulumi:"project"`
+	Resource         string                                    `pulumi:"resource"`
+	ResourceType     string                                    `pulumi:"resourceType"`
+	RulesConfigInfos []GetBackupPlanAssociationRulesConfigInfo `pulumi:"rulesConfigInfos"`
+	UpdateTime       string                                    `pulumi:"updateTime"`
 }
 
 func LookupBackupPlanAssociationOutput(ctx *pulumi.Context, args LookupBackupPlanAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupBackupPlanAssociationResultOutput {
@@ -136,10 +135,6 @@ func (o LookupBackupPlanAssociationResultOutput) DataSource() pulumi.StringOutpu
 // The provider-assigned unique ID for this managed resource.
 func (o LookupBackupPlanAssociationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanAssociationResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o LookupBackupPlanAssociationResultOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBackupPlanAssociationResult) string { return v.LastSuccessfulBackupConsistencyTime }).(pulumi.StringOutput)
 }
 
 func (o LookupBackupPlanAssociationResultOutput) Location() pulumi.StringOutput {

@@ -97,9 +97,11 @@ class RouterPeerArgs:
                The default is true.
         :param pulumi.Input[_builtins.bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: (Optional, Beta)
+               routers.list of export policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: (Optional, Beta)
+               routers.list of import policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[_builtins.str] ip_address: IP address of the interface inside Google Cloud Platform.
                Only IPv4 is supported.
@@ -383,6 +385,7 @@ class RouterPeerArgs:
     @pulumi.getter(name="exportPolicies")
     def export_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         routers.list of export policies applied to this peer, in the order they must be evaluated.
         The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
         """
@@ -396,6 +399,7 @@ class RouterPeerArgs:
     @pulumi.getter(name="importPolicies")
     def import_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         routers.list of import policies applied to this peer, in the order they must be evaluated.
         The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         """
@@ -658,9 +662,11 @@ class _RouterPeerState:
                The default is true.
         :param pulumi.Input[_builtins.bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: (Optional, Beta)
+               routers.list of export policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: (Optional, Beta)
+               routers.list of import policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[_builtins.str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[_builtins.str] ip_address: IP address of the interface inside Google Cloud Platform.
@@ -931,6 +937,7 @@ class _RouterPeerState:
     @pulumi.getter(name="exportPolicies")
     def export_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         routers.list of export policies applied to this peer, in the order they must be evaluated.
         The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
         """
@@ -944,6 +951,7 @@ class _RouterPeerState:
     @pulumi.getter(name="importPolicies")
     def import_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         routers.list of import policies applied to this peer, in the order they must be evaluated.
         The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         """
@@ -1628,9 +1636,11 @@ class RouterPeer(pulumi.CustomResource):
                The default is true.
         :param pulumi.Input[_builtins.bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: (Optional, Beta)
+               routers.list of export policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: (Optional, Beta)
+               routers.list of import policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[_builtins.str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[_builtins.str] ip_address: IP address of the interface inside Google Cloud Platform.
@@ -2193,9 +2203,11 @@ class RouterPeer(pulumi.CustomResource):
                The default is true.
         :param pulumi.Input[_builtins.bool] enable_ipv4: Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: routers.list of export policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_policies: (Optional, Beta)
+               routers.list of export policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: routers.list of import policies applied to this peer, in the order they must be evaluated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_policies: (Optional, Beta)
+               routers.list of import policies applied to this peer, in the order they must be evaluated.
                The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         :param pulumi.Input[_builtins.str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[_builtins.str] ip_address: IP address of the interface inside Google Cloud Platform.
@@ -2400,6 +2412,7 @@ class RouterPeer(pulumi.CustomResource):
     @pulumi.getter(name="exportPolicies")
     def export_policies(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
+        (Optional, Beta)
         routers.list of export policies applied to this peer, in the order they must be evaluated.
         The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
         """
@@ -2409,6 +2422,7 @@ class RouterPeer(pulumi.CustomResource):
     @pulumi.getter(name="importPolicies")
     def import_policies(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
+        (Optional, Beta)
         routers.list of import policies applied to this peer, in the order they must be evaluated.
         The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         """

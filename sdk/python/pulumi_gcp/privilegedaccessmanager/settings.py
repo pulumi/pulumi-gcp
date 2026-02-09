@@ -250,15 +250,6 @@ class Settings(pulumi.CustomResource):
                  service_account_approver_settings: Optional[pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
                  __props__=None):
         """
-        Settings resource defines the properties, applied directly to the resource or inherited through the hierarchy, to enable consistent, federated use of PAM.
-
-        To get more information about Settings, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/pam/rest/v1beta/folders.locations/updateSettings)
-        * How-to Guides
-            * [Configure Privileged Access Manager settings](https://cloud.google.com/iam/docs/pam-configure-settings)
-            * [Official Documentation](https://cloud.google.com/iam/docs/pam-overview)
-
         ## Example Usage
 
         ### Privileged Access Manager Settings Basic
@@ -322,15 +313,6 @@ class Settings(pulumi.CustomResource):
                  args: SettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Settings resource defines the properties, applied directly to the resource or inherited through the hierarchy, to enable consistent, federated use of PAM.
-
-        To get more information about Settings, see:
-
-        * [API documentation](https://cloud.google.com/iam/docs/reference/pam/rest/v1beta/folders.locations/updateSettings)
-        * How-to Guides
-            * [Configure Privileged Access Manager settings](https://cloud.google.com/iam/docs/pam-configure-settings)
-            * [Official Documentation](https://cloud.google.com/iam/docs/pam-overview)
-
         ## Example Usage
 
         ### Privileged Access Manager Settings Basic

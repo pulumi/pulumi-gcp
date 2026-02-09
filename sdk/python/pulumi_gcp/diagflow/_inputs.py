@@ -18719,6 +18719,7 @@ if not MYPY:
         """
         connector_spec: NotRequired[pulumi.Input['CxToolVersionToolConnectorSpecArgsDict']]
         """
+        (Optional, Beta)
         Integration connectors tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         Structure is documented below.
@@ -18769,7 +18770,8 @@ class CxToolVersionToolArgs:
         """
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
-        :param pulumi.Input['CxToolVersionToolConnectorSpecArgs'] connector_spec: Integration connectors tool specification.
+        :param pulumi.Input['CxToolVersionToolConnectorSpecArgs'] connector_spec: (Optional, Beta)
+               Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
         :param pulumi.Input['CxToolVersionToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
@@ -18830,6 +18832,7 @@ class CxToolVersionToolArgs:
     @pulumi.getter(name="connectorSpec")
     def connector_spec(self) -> Optional[pulumi.Input['CxToolVersionToolConnectorSpecArgs']]:
         """
+        (Optional, Beta)
         Integration connectors tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         Structure is documented below.

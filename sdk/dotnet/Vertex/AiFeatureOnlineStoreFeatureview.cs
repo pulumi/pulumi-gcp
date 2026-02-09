@@ -258,8 +258,8 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_45397",
-    ///         Name = "tf-test_16451",
+    ///         ProjectId = "tf-test_40472",
+    ///         Name = "tf-test_44339",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -692,6 +692,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         /// Structure is documented below.
         /// </summary>
@@ -811,6 +812,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs>? SyncConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         /// Structure is documented below.
         /// </summary>
@@ -932,6 +934,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         /// Structure is documented below.
         /// </summary>

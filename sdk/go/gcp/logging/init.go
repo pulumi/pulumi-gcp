@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectExclusion{}
 	case "gcp:logging/projectSink:ProjectSink":
 		r = &ProjectSink{}
+	case "gcp:logging/savedQuery:SavedQuery":
+		r = &SavedQuery{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -179,6 +181,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"logging/projectSink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"logging/savedQuery",
 		&module{version},
 	)
 }

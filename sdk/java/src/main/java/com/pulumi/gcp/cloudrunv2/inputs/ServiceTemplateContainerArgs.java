@@ -205,6 +205,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * (Optional, Beta)
      * Location of the source.
      * Structure is documented below.
      * 
@@ -213,7 +214,8 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     private @Nullable Output<ServiceTemplateContainerSourceCodeArgs> sourceCode;
 
     /**
-     * @return Location of the source.
+     * @return (Optional, Beta)
+     * Location of the source.
      * Structure is documented below.
      * 
      */
@@ -607,7 +609,8 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceCode Location of the source.
+         * @param sourceCode (Optional, Beta)
+         * Location of the source.
          * Structure is documented below.
          * 
          * @return builder
@@ -619,7 +622,8 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param sourceCode Location of the source.
+         * @param sourceCode (Optional, Beta)
+         * Location of the source.
          * Structure is documented below.
          * 
          * @return builder

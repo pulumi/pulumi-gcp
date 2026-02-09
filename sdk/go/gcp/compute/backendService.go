@@ -27,9 +27,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 //
-// > **Warning:** All arguments including the following potentially sensitive
-// values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
-//
 // ## Example Usage
 //
 // ### Backend Service Basic
@@ -936,6 +933,7 @@ type BackendService struct {
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1071,6 +1069,7 @@ type BackendService struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy BackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1201,6 +1200,7 @@ type backendServiceState struct {
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1336,6 +1336,7 @@ type backendServiceState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy *BackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1437,6 +1438,7 @@ type BackendServiceState struct {
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1572,6 +1574,7 @@ type BackendServiceState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy BackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
@@ -1675,6 +1678,7 @@ type backendServiceArgs struct {
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -1805,6 +1809,7 @@ type backendServiceArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy *BackendServiceNetworkPassThroughLbTrafficPolicy `pulumi:"networkPassThroughLbTrafficPolicy"`
@@ -1903,6 +1908,7 @@ type BackendServiceArgs struct {
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 	// feature which together with Service Extension allows customized and complex routing logic.
 	// Structure is documented below.
@@ -2033,6 +2039,7 @@ type BackendServiceArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Configures traffic steering properties of internal passthrough Network Load Balancers.
 	// Structure is documented below.
 	NetworkPassThroughLbTrafficPolicy BackendServiceNetworkPassThroughLbTrafficPolicyPtrInput
@@ -2254,6 +2261,7 @@ func (o BackendServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
 // feature which together with Service Extension allows customized and complex routing logic.
 // Structure is documented below.
@@ -2437,6 +2445,7 @@ func (o BackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // Configures traffic steering properties of internal passthrough Network Load Balancers.
 // Structure is documented below.
 func (o BackendServiceOutput) NetworkPassThroughLbTrafficPolicy() BackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput {

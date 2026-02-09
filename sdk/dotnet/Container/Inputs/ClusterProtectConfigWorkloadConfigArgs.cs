@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterProtectConfigWorkloadConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        /// ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
         /// </summary>
         [Input("auditMode", required: true)]
         public Input<string> AuditMode { get; set; } = null!;

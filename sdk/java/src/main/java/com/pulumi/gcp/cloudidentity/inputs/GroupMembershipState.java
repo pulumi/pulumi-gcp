@@ -66,6 +66,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Optional, Beta)
      * EntityKey of the member.
      * Structure is documented below.
      * 
@@ -74,7 +75,8 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<GroupMembershipMemberKeyArgs> memberKey;
 
     /**
-     * @return EntityKey of the member.
+     * @return (Optional, Beta)
+     * EntityKey of the member.
      * Structure is documented below.
      * 
      */
@@ -259,7 +261,8 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param memberKey EntityKey of the member.
+         * @param memberKey (Optional, Beta)
+         * EntityKey of the member.
          * Structure is documented below.
          * 
          * @return builder
@@ -271,7 +274,8 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param memberKey EntityKey of the member.
+         * @param memberKey (Optional, Beta)
+         * EntityKey of the member.
          * Structure is documented below.
          * 
          * @return builder

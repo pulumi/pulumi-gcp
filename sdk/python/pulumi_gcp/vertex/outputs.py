@@ -1161,7 +1161,8 @@ class AiEndpointPrivateServiceConnectConfig(dict):
                  psc_automation_configs: Optional[Sequence['outputs.AiEndpointPrivateServiceConnectConfigPscAutomationConfig']] = None):
         """
         :param _builtins.bool enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
-        :param _builtins.bool enable_secure_private_service_connect: If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+        :param _builtins.bool enable_secure_private_service_connect: (Optional, Beta)
+               If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         :param Sequence[_builtins.str] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
         :param Sequence['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs'] psc_automation_configs: List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
                Structure is documented below.
@@ -1186,6 +1187,7 @@ class AiEndpointPrivateServiceConnectConfig(dict):
     @pulumi.getter(name="enableSecurePrivateServiceConnect")
     def enable_secure_private_service_connect(self) -> Optional[_builtins.bool]:
         """
+        (Optional, Beta)
         If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         """
         return pulumi.get(self, "enable_secure_private_service_connect")
@@ -5301,7 +5303,8 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
                  staleness_days: Optional[_builtins.int] = None):
         """
         :param _builtins.bool disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
-        :param _builtins.str monitoring_interval: Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+        :param _builtins.str monitoring_interval: (Optional, Beta, Deprecated)
+               Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
                
                > **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
@@ -5331,6 +5334,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
     @_utilities.deprecated("""`monitoring_interval` is deprecated and will be removed in a future release.""")
     def monitoring_interval(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta, Deprecated)
         Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 

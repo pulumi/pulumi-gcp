@@ -65,7 +65,7 @@ class GlobalAddressArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -225,7 +225,7 @@ class GlobalAddressArgs:
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
-        * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+        * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 
@@ -294,7 +294,7 @@ class _GlobalAddressState:
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         """
         if address is not None:
@@ -515,7 +515,7 @@ class _GlobalAddressState:
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
-        * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+        * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 
@@ -650,7 +650,7 @@ class GlobalAddress(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         """
         ...
     @overload
@@ -842,7 +842,7 @@ class GlobalAddress(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1001,7 +1001,7 @@ class GlobalAddress(pulumi.CustomResource):
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
-        * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+        * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 

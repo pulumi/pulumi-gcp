@@ -207,6 +207,7 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
         /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
         /// Structure is documented below.
@@ -312,6 +313,7 @@ namespace Pulumi.Gcp.Healthcare
         private InputList<Inputs.DicomStoreStreamConfigArgs>? _streamConfigs;
 
         /// <summary>
+        /// (Optional, Beta)
         /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
         /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
         /// Structure is documented below.
@@ -416,6 +418,7 @@ namespace Pulumi.Gcp.Healthcare
         private InputList<Inputs.DicomStoreStreamConfigGetArgs>? _streamConfigs;
 
         /// <summary>
+        /// (Optional, Beta)
         /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
         /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
         /// Structure is documented below.

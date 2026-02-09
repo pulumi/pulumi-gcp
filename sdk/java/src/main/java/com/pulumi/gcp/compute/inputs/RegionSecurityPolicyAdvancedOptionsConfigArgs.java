@@ -69,6 +69,7 @@ public final class RegionSecurityPolicyAdvancedOptionsConfigArgs extends com.pul
     }
 
     /**
+     * (Optional, Beta)
      * The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
      * Values are case insensitive.
      * Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
@@ -78,7 +79,8 @@ public final class RegionSecurityPolicyAdvancedOptionsConfigArgs extends com.pul
     private @Nullable Output<String> requestBodyInspectionSize;
 
     /**
-     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
+     * @return (Optional, Beta)
+     * The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
      * Values are case insensitive.
      * Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
      * 
@@ -200,7 +202,8 @@ public final class RegionSecurityPolicyAdvancedOptionsConfigArgs extends com.pul
         }
 
         /**
-         * @param requestBodyInspectionSize The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
+         * @param requestBodyInspectionSize (Optional, Beta)
+         * The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
          * Values are case insensitive.
          * Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
          * 
@@ -213,7 +216,8 @@ public final class RegionSecurityPolicyAdvancedOptionsConfigArgs extends com.pul
         }
 
         /**
-         * @param requestBodyInspectionSize The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
+         * @param requestBodyInspectionSize (Optional, Beta)
+         * The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
          * Values are case insensitive.
          * Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
          * 

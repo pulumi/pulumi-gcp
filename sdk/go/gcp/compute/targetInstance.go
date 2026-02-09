@@ -301,11 +301,13 @@ type TargetInstance struct {
 	// Default value is `NO_NAT`.
 	// Possible values are: `NO_NAT`.
 	NatPolicy pulumi.StringPtrOutput `pulumi:"natPolicy"`
+	// (Optional, Beta)
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
@@ -371,11 +373,13 @@ type targetInstanceState struct {
 	// Default value is `NO_NAT`.
 	// Possible values are: `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
+	// (Optional, Beta)
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
@@ -409,11 +413,13 @@ type TargetInstanceState struct {
 	// Default value is `NO_NAT`.
 	// Possible values are: `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
@@ -449,11 +455,13 @@ type targetInstanceArgs struct {
 	// Default value is `NO_NAT`.
 	// Possible values are: `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
+	// (Optional, Beta)
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// URL of the zone where the target instance resides.
@@ -484,11 +492,13 @@ type TargetInstanceArgs struct {
 	// Default value is `NO_NAT`.
 	// Possible values are: `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy pulumi.StringPtrInput
 	// URL of the zone where the target instance resides.
@@ -621,6 +631,7 @@ func (o TargetInstanceOutput) NatPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.NatPolicy }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 func (o TargetInstanceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
@@ -632,6 +643,7 @@ func (o TargetInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // The resource URL for the security policy associated with this target instance.
 func (o TargetInstanceOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)

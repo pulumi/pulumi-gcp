@@ -240,6 +240,7 @@ type Disk struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
+	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -260,6 +261,7 @@ type Disk struct {
 	LastDetachTimestamp pulumi.StringOutput `pulumi:"lastDetachTimestamp"`
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayOutput `pulumi:"licenses"`
+	// (Optional, Beta)
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrOutput `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
@@ -293,6 +295,7 @@ type Disk struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -482,6 +485,7 @@ type diskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
+	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -502,6 +506,7 @@ type diskState struct {
 	LastDetachTimestamp *string `pulumi:"lastDetachTimestamp"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
+	// (Optional, Beta)
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter *bool `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
@@ -535,6 +540,7 @@ type diskState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -690,6 +696,7 @@ type DiskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
+	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -710,6 +717,7 @@ type DiskState struct {
 	LastDetachTimestamp pulumi.StringPtrInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
+	// (Optional, Beta)
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -743,6 +751,7 @@ type DiskState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -896,6 +905,7 @@ type diskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
+	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -909,6 +919,7 @@ type diskArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
+	// (Optional, Beta)
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter *bool `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
@@ -939,6 +950,7 @@ type diskArgs struct {
 	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -1061,6 +1073,7 @@ type DiskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
+	// (Optional, Beta, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1074,6 +1087,7 @@ type DiskArgs struct {
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
+	// (Optional, Beta)
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -1104,6 +1118,7 @@ type DiskArgs struct {
 	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
 	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedThroughput pulumi.IntPtrInput
+	// (Optional, Beta)
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -1356,6 +1371,7 @@ func (o DiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta, Deprecated)
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 //
 // > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1394,6 +1410,7 @@ func (o DiskOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringArrayOutput { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
+// (Optional, Beta)
 // Indicates whether or not the disk can be read/write attached to more than one instance.
 func (o DiskOutput) MultiWriter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.MultiWriter }).(pulumi.BoolPtrOutput)
@@ -1451,6 +1468,7 @@ func (o DiskOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// (Optional, Beta)
 // Resource policies applied to this disk for automatic snapshot creations.
 // ~>**NOTE** This value does not support updating the
 // resource policy, as resource policies can not be updated more than

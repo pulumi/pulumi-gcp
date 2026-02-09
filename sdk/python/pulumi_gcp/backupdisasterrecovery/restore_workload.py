@@ -505,10 +505,6 @@ class RestoreWorkload(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        An imperative resource that triggers a GCBDR restoration event.
-        Creating this resource will initiate a restore operation from a specified backup.
-        The resource represents the restore operation and its result.
-
         ## Example Usage
 
         ### Backup Dr Restore Workload Compute Instance Basic
@@ -742,10 +738,6 @@ class RestoreWorkload(pulumi.CustomResource):
                  args: RestoreWorkloadArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An imperative resource that triggers a GCBDR restoration event.
-        Creating this resource will initiate a restore operation from a specified backup.
-        The resource represents the restore operation and its result.
-
         ## Example Usage
 
         ### Backup Dr Restore Workload Compute Instance Basic

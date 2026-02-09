@@ -28,7 +28,7 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
      */
     private @Nullable String onFailedHealthCheck;
     /**
-     * @return , Configuration for VM repairs in the MIG. Structure is documented below.
+     * @return ), Configuration for VM repairs in the MIG. Structure is documented below.
      * ***
      * 
      */
@@ -57,7 +57,7 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
         return Optional.ofNullable(this.onFailedHealthCheck);
     }
     /**
-     * @return , Configuration for VM repairs in the MIG. Structure is documented below.
+     * @return ), Configuration for VM repairs in the MIG. Structure is documented below.
      * ***
      * 
      */

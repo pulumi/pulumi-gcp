@@ -231,6 +231,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      * 
@@ -239,7 +240,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> exportPolicies;
 
     /**
-     * @return routers.list of export policies applied to this peer, in the order they must be evaluated.
+     * @return (Optional, Beta)
+     * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      * 
      */
@@ -248,6 +250,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      * 
@@ -256,7 +259,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> importPolicies;
 
     /**
-     * @return routers.list of import policies applied to this peer, in the order they must be evaluated.
+     * @return (Optional, Beta)
+     * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      * 
      */
@@ -983,7 +987,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exportPolicies routers.list of export policies applied to this peer, in the order they must be evaluated.
+         * @param exportPolicies (Optional, Beta)
+         * routers.list of export policies applied to this peer, in the order they must be evaluated.
          * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
          * 
          * @return builder
@@ -995,7 +1000,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exportPolicies routers.list of export policies applied to this peer, in the order they must be evaluated.
+         * @param exportPolicies (Optional, Beta)
+         * routers.list of export policies applied to this peer, in the order they must be evaluated.
          * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
          * 
          * @return builder
@@ -1006,7 +1012,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exportPolicies routers.list of export policies applied to this peer, in the order they must be evaluated.
+         * @param exportPolicies (Optional, Beta)
+         * routers.list of export policies applied to this peer, in the order they must be evaluated.
          * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
          * 
          * @return builder
@@ -1017,7 +1024,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importPolicies routers.list of import policies applied to this peer, in the order they must be evaluated.
+         * @param importPolicies (Optional, Beta)
+         * routers.list of import policies applied to this peer, in the order they must be evaluated.
          * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
          * 
          * @return builder
@@ -1029,7 +1037,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importPolicies routers.list of import policies applied to this peer, in the order they must be evaluated.
+         * @param importPolicies (Optional, Beta)
+         * routers.list of import policies applied to this peer, in the order they must be evaluated.
          * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
          * 
          * @return builder
@@ -1040,7 +1049,8 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importPolicies routers.list of import policies applied to this peer, in the order they must be evaluated.
+         * @param importPolicies (Optional, Beta)
+         * routers.list of import policies applied to this peer, in the order they must be evaluated.
          * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
          * 
          * @return builder

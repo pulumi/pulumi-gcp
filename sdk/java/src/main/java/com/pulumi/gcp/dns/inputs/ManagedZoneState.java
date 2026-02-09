@@ -300,6 +300,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
@@ -309,7 +310,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> reverseLookup;
 
     /**
-     * @return Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+     * @return (Optional, Beta)
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      * 
@@ -319,6 +321,7 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      * 
@@ -327,7 +330,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ManagedZoneServiceDirectoryConfigArgs> serviceDirectoryConfig;
 
     /**
-     * @return The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+     * @return (Optional, Beta)
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      * 
      */
@@ -780,7 +784,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reverseLookup Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+         * @param reverseLookup (Optional, Beta)
+         * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
          * lookup queries using automatically configured records for VPC resources. This only applies
          * to networks listed under `privateVisibilityConfig`.
          * 
@@ -793,7 +798,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reverseLookup Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+         * @param reverseLookup (Optional, Beta)
+         * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
          * lookup queries using automatically configured records for VPC resources. This only applies
          * to networks listed under `privateVisibilityConfig`.
          * 
@@ -805,7 +811,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceDirectoryConfig The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+         * @param serviceDirectoryConfig (Optional, Beta)
+         * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
          * Structure is documented below.
          * 
          * @return builder
@@ -817,7 +824,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceDirectoryConfig The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+         * @param serviceDirectoryConfig (Optional, Beta)
+         * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
          * Structure is documented below.
          * 
          * @return builder

@@ -26,9 +26,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Backend Service Basic
@@ -873,6 +870,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         /// feature which together with Service Extension allows customized and complex routing logic.
         /// Structure is documented below.
@@ -1072,6 +1070,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// Structure is documented below.
         /// </summary>
@@ -1338,6 +1337,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         /// feature which together with Service Extension allows customized and complex routing logic.
         /// Structure is documented below.
@@ -1530,6 +1530,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// Structure is documented below.
         /// </summary>
@@ -1758,6 +1759,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         /// feature which together with Service Extension allows customized and complex routing logic.
         /// Structure is documented below.
@@ -1963,6 +1965,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// Structure is documented below.
         /// </summary>

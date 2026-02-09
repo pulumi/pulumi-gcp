@@ -351,6 +351,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * (Optional, Beta)
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      * 
@@ -359,7 +360,8 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
     private Output<List<String>> purposes;
 
     /**
-     * @return List of supported purposes of the Address Group.
+     * @return (Optional, Beta)
+     * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      * 
      */

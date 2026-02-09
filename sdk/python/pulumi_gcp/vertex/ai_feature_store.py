@@ -41,7 +41,8 @@ class AiFeatureStoreArgs:
         :param pulumi.Input[_builtins.str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigArgs'] online_serving_config: Config for online serving resources.
                Structure is documented below.
-        :param pulumi.Input[_builtins.int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
+        :param pulumi.Input[_builtins.int] online_storage_ttl_days: (Optional, Beta)
+               TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the dataset. eg us-central1
@@ -132,6 +133,7 @@ class AiFeatureStoreArgs:
     @pulumi.getter(name="onlineStorageTtlDays")
     def online_storage_ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
+        (Optional, Beta)
         TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         """
         return pulumi.get(self, "online_storage_ttl_days")
@@ -197,7 +199,8 @@ class _AiFeatureStoreState:
         :param pulumi.Input[_builtins.str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigArgs'] online_serving_config: Config for online serving resources.
                Structure is documented below.
-        :param pulumi.Input[_builtins.int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
+        :param pulumi.Input[_builtins.int] online_storage_ttl_days: (Optional, Beta)
+               TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -337,6 +340,7 @@ class _AiFeatureStoreState:
     @pulumi.getter(name="onlineStorageTtlDays")
     def online_storage_ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
+        (Optional, Beta)
         TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         """
         return pulumi.get(self, "online_storage_ttl_days")
@@ -529,7 +533,8 @@ class AiFeatureStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']] online_serving_config: Config for online serving resources.
                Structure is documented below.
-        :param pulumi.Input[_builtins.int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
+        :param pulumi.Input[_builtins.int] online_storage_ttl_days: (Optional, Beta)
+               TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the dataset. eg us-central1
@@ -736,7 +741,8 @@ class AiFeatureStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         :param pulumi.Input[Union['AiFeatureStoreOnlineServingConfigArgs', 'AiFeatureStoreOnlineServingConfigArgsDict']] online_serving_config: Config for online serving resources.
                Structure is documented below.
-        :param pulumi.Input[_builtins.int] online_storage_ttl_days: TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
+        :param pulumi.Input[_builtins.int] online_storage_ttl_days: (Optional, Beta)
+               TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -836,6 +842,7 @@ class AiFeatureStore(pulumi.CustomResource):
     @pulumi.getter(name="onlineStorageTtlDays")
     def online_storage_ttl_days(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
+        (Optional, Beta)
         TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         """
         return pulumi.get(self, "online_storage_ttl_days")

@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Secure Access Connect Realm resource
- *
- * To get more information about SacRealm, see:
- *
- * * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacRealms)
- * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
- *
  * ## Example Usage
  *
  * ### Sac Realm Prisma Access

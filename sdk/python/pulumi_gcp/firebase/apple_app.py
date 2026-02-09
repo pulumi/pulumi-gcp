@@ -309,14 +309,6 @@ class AppleApp(pulumi.CustomResource):
                  team_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A Google Cloud Firebase Apple application instance
-
-        To get more information about AppleApp, see:
-
-        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps)
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/docs/ios/setup)
-
         ## Example Usage
 
         ### Firebase Apple App Basic
@@ -409,14 +401,6 @@ class AppleApp(pulumi.CustomResource):
                  args: AppleAppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Google Cloud Firebase Apple application instance
-
-        To get more information about AppleApp, see:
-
-        * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps)
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/docs/ios/setup)
-
         ## Example Usage
 
         ### Firebase Apple App Basic

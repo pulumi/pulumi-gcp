@@ -341,6 +341,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly backupSources: pulumi.Output<outputs.alloydb.ClusterBackupSource[]>;
     /**
+     * Cluster created from a BackupDR backup.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly backupdrBackupSources: pulumi.Output<outputs.alloydb.ClusterBackupdrBackupSource[]>;
+    /**
      * The ID of the alloydb cluster.
      */
     declare public readonly clusterId: pulumi.Output<string>;
@@ -454,12 +459,22 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly reconciling: pulumi.Output<boolean>;
     /**
-     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
     declare public readonly restoreBackupSource: pulumi.Output<outputs.alloydb.ClusterRestoreBackupSource | undefined>;
     /**
-     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+     * Structure is documented below.
+     */
+    declare public readonly restoreBackupdrBackupSource: pulumi.Output<outputs.alloydb.ClusterRestoreBackupdrBackupSource | undefined>;
+    /**
+     * The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+     * Structure is documented below.
+     */
+    declare public readonly restoreBackupdrPitrSource: pulumi.Output<outputs.alloydb.ClusterRestoreBackupdrPitrSource | undefined>;
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
     declare public readonly restoreContinuousBackupSource: pulumi.Output<outputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
@@ -509,6 +524,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["automatedBackupPolicy"] = state?.automatedBackupPolicy;
             resourceInputs["backupSources"] = state?.backupSources;
+            resourceInputs["backupdrBackupSources"] = state?.backupdrBackupSources;
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["clusterType"] = state?.clusterType;
             resourceInputs["continuousBackupConfig"] = state?.continuousBackupConfig;
@@ -534,6 +550,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["restoreBackupSource"] = state?.restoreBackupSource;
+            resourceInputs["restoreBackupdrBackupSource"] = state?.restoreBackupdrBackupSource;
+            resourceInputs["restoreBackupdrPitrSource"] = state?.restoreBackupdrPitrSource;
             resourceInputs["restoreContinuousBackupSource"] = state?.restoreContinuousBackupSource;
             resourceInputs["secondaryConfig"] = state?.secondaryConfig;
             resourceInputs["skipAwaitMajorVersionUpgrade"] = state?.skipAwaitMajorVersionUpgrade;
@@ -568,11 +586,14 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["pscConfig"] = args?.pscConfig;
             resourceInputs["restoreBackupSource"] = args?.restoreBackupSource;
+            resourceInputs["restoreBackupdrBackupSource"] = args?.restoreBackupdrBackupSource;
+            resourceInputs["restoreBackupdrPitrSource"] = args?.restoreBackupdrPitrSource;
             resourceInputs["restoreContinuousBackupSource"] = args?.restoreContinuousBackupSource;
             resourceInputs["secondaryConfig"] = args?.secondaryConfig;
             resourceInputs["skipAwaitMajorVersionUpgrade"] = args?.skipAwaitMajorVersionUpgrade;
             resourceInputs["subscriptionType"] = args?.subscriptionType;
             resourceInputs["backupSources"] = undefined /*out*/;
+            resourceInputs["backupdrBackupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -614,6 +635,11 @@ export interface ClusterState {
      * Structure is documented below.
      */
     backupSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterBackupSource>[]>;
+    /**
+     * Cluster created from a BackupDR backup.
+     * Structure is documented below.
+     */
+    backupdrBackupSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterBackupdrBackupSource>[]>;
     /**
      * The ID of the alloydb cluster.
      */
@@ -728,12 +754,22 @@ export interface ClusterState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
     restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource>;
     /**
-     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+     * Structure is documented below.
+     */
+    restoreBackupdrBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrBackupSource>;
+    /**
+     * The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+     * Structure is documented below.
+     */
+    restoreBackupdrPitrSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrPitrSource>;
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
     restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
@@ -863,12 +899,22 @@ export interface ClusterArgs {
      */
     pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig>;
     /**
-     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
     restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource>;
     /**
-     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+     * Structure is documented below.
+     */
+    restoreBackupdrBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrBackupSource>;
+    /**
+     * The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+     * Structure is documented below.
+     */
+    restoreBackupdrPitrSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrPitrSource>;
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
     restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;

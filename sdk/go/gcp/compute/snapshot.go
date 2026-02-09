@@ -30,9 +30,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 //
-// > **Warning:** All arguments including the following potentially sensitive
-// values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
-//
 // ## Example Usage
 //
 // ### Snapshot Basic
@@ -285,6 +282,7 @@ type Snapshot struct {
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
 	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrOutput `pulumi:"guestFlush"`
 	// The fingerprint used for optimistic locking of this resource. Used
@@ -401,6 +399,7 @@ type snapshotState struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
 	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush *bool `pulumi:"guestFlush"`
 	// The fingerprint used for optimistic locking of this resource. Used
@@ -483,6 +482,7 @@ type SnapshotState struct {
 	DiskSizeGb pulumi.IntPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// (Optional, Beta)
 	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used
@@ -563,6 +563,7 @@ type snapshotArgs struct {
 	ChainName *string `pulumi:"chainName"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush *bool `pulumi:"guestFlush"`
 	// Labels to apply to this Snapshot.
@@ -621,6 +622,7 @@ type SnapshotArgs struct {
 	ChainName pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrInput
 	// Labels to apply to this Snapshot.
@@ -785,6 +787,7 @@ func (o SnapshotOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// (Optional, Beta)
 // Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 func (o SnapshotOutput) GuestFlush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.GuestFlush }).(pulumi.BoolPtrOutput)

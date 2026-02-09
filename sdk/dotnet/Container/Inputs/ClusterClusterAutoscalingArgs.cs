@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// Global constraints for machine resources in the
         /// cluster. Configuring the `Cpu` and `Memory` types is required if node
         /// auto-provisioning is enabled. These limits will apply to node pool autoscaling
-        /// in addition to node auto-provisioning. Structure is documented below.
+        /// in addition to node auto-provisioning. Limits can't be unset entirely, they can only be replaced. Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterClusterAutoscalingResourceLimitArgs> ResourceLimits
         {

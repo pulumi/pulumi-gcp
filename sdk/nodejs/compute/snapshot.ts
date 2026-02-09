@@ -26,9 +26,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
  *
- * > **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
- *
  * ## Example Usage
  *
  * ### Snapshot Basic
@@ -225,6 +222,7 @@ export class Snapshot extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Optional, Beta)
      * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */
     declare public readonly guestFlush: pulumi.Output<boolean | undefined>;
@@ -420,6 +418,7 @@ export interface SnapshotState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * (Optional, Beta)
      * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */
     guestFlush?: pulumi.Input<boolean>;
@@ -537,6 +536,7 @@ export interface SnapshotArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */
     guestFlush?: pulumi.Input<boolean>;

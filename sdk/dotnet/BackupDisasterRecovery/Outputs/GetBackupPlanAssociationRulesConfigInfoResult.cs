@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string LastBackupState;
         /// <summary>
+        /// The point in time when the last successful backup was captured from the source
+        /// </summary>
+        public readonly string LastSuccessfulBackupConsistencyTime;
+        /// <summary>
         /// Backup Rule id fetched from backup plan.
         /// </summary>
         public readonly string RuleId;
@@ -32,10 +36,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
 
             string lastBackupState,
 
+            string lastSuccessfulBackupConsistencyTime,
+
             string ruleId)
         {
             LastBackupErrors = lastBackupErrors;
             LastBackupState = lastBackupState;
+            LastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
             RuleId = ruleId;
         }
     }

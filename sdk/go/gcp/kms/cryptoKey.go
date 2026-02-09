@@ -131,6 +131,7 @@ type CryptoKey struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
+	// (Optional, Beta)
 	// The policy used for Key Access Justifications Policy Enforcement. If this
 	// field is present and this key is enrolled in Key Access Justifications
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -226,6 +227,7 @@ type cryptoKeyState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
+	// (Optional, Beta)
 	// The policy used for Key Access Justifications Policy Enforcement. If this
 	// field is present and this key is enrolled in Key Access Justifications
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -284,6 +286,7 @@ type CryptoKeyState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// The policy used for Key Access Justifications Policy Enforcement. If this
 	// field is present and this key is enrolled in Key Access Justifications
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -344,6 +347,7 @@ type cryptoKeyArgs struct {
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
+	// (Optional, Beta)
 	// The policy used for Key Access Justifications Policy Enforcement. If this
 	// field is present and this key is enrolled in Key Access Justifications
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -394,6 +398,7 @@ type CryptoKeyArgs struct {
 	DestroyScheduledDuration pulumi.StringPtrInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// The policy used for Key Access Justifications Policy Enforcement. If this
 	// field is present and this key is enrolled in Key Access Justifications
 	// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -543,6 +548,7 @@ func (o CryptoKeyOutput) ImportOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolOutput { return v.ImportOnly }).(pulumi.BoolOutput)
 }
 
+// (Optional, Beta)
 // The policy used for Key Access Justifications Policy Enforcement. If this
 // field is present and this key is enrolled in Key Access Justifications
 // Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and

@@ -179,8 +179,8 @@ import * as utilities from "../utilities";
  *
  * const testProject = gcp.organizations.getProject({});
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_45397",
- *     name: "tf-test_16451",
+ *     projectId: "tf-test_40472",
+ *     name: "tf-test_44339",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -509,6 +509,7 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      */
@@ -627,6 +628,7 @@ export interface AiFeatureOnlineStoreFeatureviewState {
      */
     updateTime?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      */
@@ -677,6 +679,7 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
      */
     syncConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig>;
     /**
+     * (Optional, Beta)
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      */

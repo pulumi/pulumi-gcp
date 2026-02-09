@@ -34,7 +34,7 @@ public final class InstanceGroupManagerUpdatePolicy {
      */
     private @Nullable Integer maxUnavailablePercent;
     /**
-     * @return , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * @return ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     private @Nullable Integer minReadySec;
@@ -90,7 +90,7 @@ public final class InstanceGroupManagerUpdatePolicy {
         return Optional.ofNullable(this.maxUnavailablePercent);
     }
     /**
-     * @return , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * @return ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     public Optional<Integer> minReadySec() {

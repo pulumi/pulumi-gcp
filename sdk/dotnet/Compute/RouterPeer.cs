@@ -622,6 +622,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// routers.list of export policies applied to this peer, in the order they must be evaluated.
         /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
         /// </summary>
@@ -629,6 +630,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> ExportPolicies { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// routers.list of import policies applied to this peer, in the order they must be evaluated.
         /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         /// </summary>
@@ -939,6 +941,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _exportPolicies;
 
         /// <summary>
+        /// (Optional, Beta)
         /// routers.list of export policies applied to this peer, in the order they must be evaluated.
         /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
         /// </summary>
@@ -952,6 +955,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _importPolicies;
 
         /// <summary>
+        /// (Optional, Beta)
         /// routers.list of import policies applied to this peer, in the order they must be evaluated.
         /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         /// </summary>
@@ -1201,6 +1205,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _exportPolicies;
 
         /// <summary>
+        /// (Optional, Beta)
         /// routers.list of export policies applied to this peer, in the order they must be evaluated.
         /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
         /// </summary>
@@ -1214,6 +1219,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _importPolicies;
 
         /// <summary>
+        /// (Optional, Beta)
         /// routers.list of import policies applied to this peer, in the order they must be evaluated.
         /// The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
         /// </summary>

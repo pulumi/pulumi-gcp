@@ -814,9 +814,11 @@ class FunctionServiceConfig(dict):
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
         :param _builtins.str binary_authorization_policy: The binary authorization policy to be checked when deploying the Cloud Run service.
-        :param _builtins.str direct_vpc_egress: Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
+        :param _builtins.str direct_vpc_egress: (Optional, Beta)
+               Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
                Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
-        :param Sequence['FunctionServiceConfigDirectVpcNetworkInterfaceArgs'] direct_vpc_network_interfaces: The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
+        :param Sequence['FunctionServiceConfigDirectVpcNetworkInterfaceArgs'] direct_vpc_network_interfaces: (Optional, Beta)
+               The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
                Structure is documented below.
         :param Mapping[str, _builtins.str] environment_variables: Environment variables that shall be available during function execution.
         :param _builtins.str gcf_uri: (Output)
@@ -924,6 +926,7 @@ class FunctionServiceConfig(dict):
     @pulumi.getter(name="directVpcEgress")
     def direct_vpc_egress(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
         Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
         """
@@ -933,6 +936,7 @@ class FunctionServiceConfig(dict):
     @pulumi.getter(name="directVpcNetworkInterfaces")
     def direct_vpc_network_interfaces(self) -> Optional[Sequence['outputs.FunctionServiceConfigDirectVpcNetworkInterface']]:
         """
+        (Optional, Beta)
         The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
         Structure is documented below.
         """

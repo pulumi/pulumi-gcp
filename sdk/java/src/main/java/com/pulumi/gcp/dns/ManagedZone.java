@@ -796,6 +796,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * (Optional, Beta)
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
@@ -805,7 +806,8 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> reverseLookup;
 
     /**
-     * @return Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+     * @return (Optional, Beta)
+     * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      * 
@@ -814,6 +816,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reverseLookup);
     }
     /**
+     * (Optional, Beta)
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      * 
@@ -822,7 +825,8 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ManagedZoneServiceDirectoryConfig> serviceDirectoryConfig;
 
     /**
-     * @return The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+     * @return (Optional, Beta)
+     * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      * 
      */

@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
- *
  * ## Example Usage
  *
  * Example creating a SQL User.
@@ -158,6 +156,10 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
+     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     */
+    declare public readonly databaseRoles: pulumi.Output<string[] | undefined>;
+    /**
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -171,6 +173,10 @@ export class User extends pulumi.CustomResource {
      * Can be an IP address. Changing this forces a new resource to be created.
      */
     declare public readonly host: pulumi.Output<string>;
+    /**
+     * The email address for MySQL IAM database users.
+     */
+    declare public /*out*/ readonly iamEmail: pulumi.Output<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
@@ -230,8 +236,10 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
+            resourceInputs["databaseRoles"] = state?.databaseRoles;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["host"] = state?.host;
+            resourceInputs["iamEmail"] = state?.iamEmail;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["name"] = state?.name;
             resourceInputs["password"] = state?.password;
@@ -246,6 +254,7 @@ export class User extends pulumi.CustomResource {
             if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
+            resourceInputs["databaseRoles"] = args?.databaseRoles;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["host"] = args?.host;
             resourceInputs["instance"] = args?.instance;
@@ -256,6 +265,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["type"] = args?.type;
+            resourceInputs["iamEmail"] = undefined /*out*/;
             resourceInputs["sqlServerUserDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -270,6 +280,10 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
+     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     */
+    databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -283,6 +297,10 @@ export interface UserState {
      * Can be an IP address. Changing this forces a new resource to be created.
      */
     host?: pulumi.Input<string>;
+    /**
+     * The email address for MySQL IAM database users.
+     */
+    iamEmail?: pulumi.Input<string>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
@@ -334,6 +352,10 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
+    /**
+     * A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+     */
+    databaseRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful

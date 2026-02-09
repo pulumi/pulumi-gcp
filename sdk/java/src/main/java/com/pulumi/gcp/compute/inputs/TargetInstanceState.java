@@ -119,6 +119,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Optional, Beta)
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      * 
      */
@@ -126,7 +127,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> network;
 
     /**
-     * @return The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * @return (Optional, Beta)
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      * 
      */
     public Optional<Output<String>> network() {
@@ -151,6 +153,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      * 
      */
@@ -158,7 +161,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> securityPolicy;
 
     /**
-     * @return The resource URL for the security policy associated with this target instance.
+     * @return (Optional, Beta)
+     * The resource URL for the security policy associated with this target instance.
      * 
      */
     public Optional<Output<String>> securityPolicy() {
@@ -362,7 +366,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param network The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+         * @param network (Optional, Beta)
+         * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
          * 
          * @return builder
          * 
@@ -373,7 +378,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param network The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+         * @param network (Optional, Beta)
+         * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
          * 
          * @return builder
          * 
@@ -406,7 +412,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityPolicy The resource URL for the security policy associated with this target instance.
+         * @param securityPolicy (Optional, Beta)
+         * The resource URL for the security policy associated with this target instance.
          * 
          * @return builder
          * 
@@ -417,7 +424,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityPolicy The resource URL for the security policy associated with this target instance.
+         * @param securityPolicy (Optional, Beta)
+         * The resource URL for the security policy associated with this target instance.
          * 
          * @return builder
          * 

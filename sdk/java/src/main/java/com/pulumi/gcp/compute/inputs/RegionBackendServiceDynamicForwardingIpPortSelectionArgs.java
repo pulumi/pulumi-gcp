@@ -16,6 +16,7 @@ public final class RegionBackendServiceDynamicForwardingIpPortSelectionArgs exte
     public static final RegionBackendServiceDynamicForwardingIpPortSelectionArgs Empty = new RegionBackendServiceDynamicForwardingIpPortSelectionArgs();
 
     /**
+     * (Optional, Beta)
      * A boolean flag enabling IP:PORT based dynamic forwarding.
      * 
      */
@@ -23,7 +24,8 @@ public final class RegionBackendServiceDynamicForwardingIpPortSelectionArgs exte
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return A boolean flag enabling IP:PORT based dynamic forwarding.
+     * @return (Optional, Beta)
+     * A boolean flag enabling IP:PORT based dynamic forwarding.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +57,8 @@ public final class RegionBackendServiceDynamicForwardingIpPortSelectionArgs exte
         }
 
         /**
-         * @param enabled A boolean flag enabling IP:PORT based dynamic forwarding.
+         * @param enabled (Optional, Beta)
+         * A boolean flag enabling IP:PORT based dynamic forwarding.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class RegionBackendServiceDynamicForwardingIpPortSelectionArgs exte
         }
 
         /**
-         * @param enabled A boolean flag enabling IP:PORT based dynamic forwarding.
+         * @param enabled (Optional, Beta)
+         * A boolean flag enabling IP:PORT based dynamic forwarding.
          * 
          * @return builder
          * 

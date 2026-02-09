@@ -119,6 +119,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MaxConnectionsPerInstance { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Defines a maximum number of in-flight requests for the whole NEG
         /// or instance group. Not available if backend's balancingMode is RATE
         /// or CONNECTION.
@@ -127,6 +128,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MaxInFlightRequests { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Defines a maximum number of in-flight requests for a single endpoint.
         /// Not available if backend's balancingMode is RATE or CONNECTION.
         /// </summary>
@@ -134,6 +136,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MaxInFlightRequestsPerEndpoint { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Defines a maximum number of in-flight requests for a single VM.
         /// Not available if backend's balancingMode is RATE or CONNECTION.
         /// </summary>
@@ -180,6 +183,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<double>? MaxUtilization { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// This field specifies how long a connection should be kept alive for:
         /// - LONG: Most of the requests are expected to take more than multiple
         /// seconds to finish.

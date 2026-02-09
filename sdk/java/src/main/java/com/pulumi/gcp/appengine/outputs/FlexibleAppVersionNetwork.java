@@ -20,7 +20,8 @@ public final class FlexibleAppVersionNetwork {
      */
     private @Nullable List<String> forwardedPorts;
     /**
-     * @return Prevent instances from receiving an ephemeral external IP address.
+     * @return (Optional, Beta)
+     * Prevent instances from receiving an ephemeral external IP address.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
@@ -59,7 +60,8 @@ public final class FlexibleAppVersionNetwork {
         return this.forwardedPorts == null ? List.of() : this.forwardedPorts;
     }
     /**
-     * @return Prevent instances from receiving an ephemeral external IP address.
+     * @return (Optional, Beta)
+     * Prevent instances from receiving an ephemeral external IP address.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */

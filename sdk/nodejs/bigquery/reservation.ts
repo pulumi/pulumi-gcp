@@ -113,6 +113,7 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
      * more than the specified number of slots, even if there is demand and supply (from idle
@@ -178,6 +179,7 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly replicationStatuses: pulumi.Output<outputs.bigquery.ReservationReplicationStatus[]>;
     /**
+     * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Enum values:
@@ -307,6 +309,7 @@ export interface ReservationState {
      */
     location?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
      * more than the specified number of slots, even if there is demand and supply (from idle
@@ -372,6 +375,7 @@ export interface ReservationState {
      */
     replicationStatuses?: pulumi.Input<pulumi.Input<inputs.bigquery.ReservationReplicationStatus>[]>;
     /**
+     * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Enum values:
@@ -450,6 +454,7 @@ export interface ReservationArgs {
      */
     location?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
      * more than the specified number of slots, even if there is demand and supply (from idle
@@ -494,6 +499,7 @@ export interface ReservationArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Enum values:

@@ -33,11 +33,12 @@ class BackupPlanAssociationArgs:
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+               - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -57,6 +58,7 @@ class BackupPlanAssociationArgs:
         Note:
         - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+        - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -105,7 +107,7 @@ class BackupPlanAssociationArgs:
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
         The resource type of workload on which backupplan is applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
         """
         return pulumi.get(self, "resource_type")
 
@@ -134,7 +136,6 @@ class _BackupPlanAssociationState:
                  backup_plan_association_id: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  data_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_successful_backup_consistency_time: Optional[pulumi.Input[_builtins.str]] = None,
                  location: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -148,17 +149,17 @@ class _BackupPlanAssociationState:
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+               - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
-        :param pulumi.Input[_builtins.str] last_successful_backup_consistency_time: The point in time when the last successful backup was captured from the source
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] name: The name of backup plan association resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
         :param pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]] rules_config_infos: Message for rules config info
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the instance was updated.
@@ -171,8 +172,6 @@ class _BackupPlanAssociationState:
             pulumi.set(__self__, "create_time", create_time)
         if data_source is not None:
             pulumi.set(__self__, "data_source", data_source)
-        if last_successful_backup_consistency_time is not None:
-            pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -196,6 +195,7 @@ class _BackupPlanAssociationState:
         Note:
         - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+        - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -238,18 +238,6 @@ class _BackupPlanAssociationState:
     @data_source.setter
     def data_source(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "data_source", value)
-
-    @_builtins.property
-    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
-    def last_successful_backup_consistency_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The point in time when the last successful backup was captured from the source
-        """
-        return pulumi.get(self, "last_successful_backup_consistency_time")
-
-    @last_successful_backup_consistency_time.setter
-    def last_successful_backup_consistency_time(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "last_successful_backup_consistency_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -305,7 +293,7 @@ class _BackupPlanAssociationState:
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The resource type of workload on which backupplan is applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
         """
         return pulumi.get(self, "resource_type")
 
@@ -425,6 +413,54 @@ class BackupPlanAssociation(pulumi.CustomResource):
             resource=myinstance.id,
             backup_plan=bp1.name)
         ```
+        ### Backup Dr Bpa Filestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_filestore_instance = gcp.filestore.Instance("my_filestore_instance",
+            name="test-instance-bpa",
+            location="us-central1",
+            tier="ENTERPRISE",
+            file_shares={
+                "capacity_gb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="bv-bpa-filestore",
+            backup_minimum_enforced_retention_duration="100000s",
+            force_delete=True)
+        my_backup_plan = gcp.backupdisasterrecovery.BackupPlan("my_backup_plan",
+            location="us-central1",
+            backup_plan_id="bp-bpa-filestore",
+            resource_type="file.googleapis.com/Instance",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }])
+        my_backup_plan_association_filestore = gcp.backupdisasterrecovery.BackupPlanAssociation("my-backup-plan-association-filestore",
+            location="us-central1",
+            resource_type="file.googleapis.com/Instance",
+            backup_plan_association_id="my-bpa-filestore",
+            resource=my_filestore_instance.id,
+            backup_plan=my_backup_plan.name)
+        ```
 
         ## Import
 
@@ -456,13 +492,14 @@ class BackupPlanAssociation(pulumi.CustomResource):
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+               - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
         """
         ...
     @overload
@@ -543,6 +580,54 @@ class BackupPlanAssociation(pulumi.CustomResource):
             resource=myinstance.id,
             backup_plan=bp1.name)
         ```
+        ### Backup Dr Bpa Filestore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_filestore_instance = gcp.filestore.Instance("my_filestore_instance",
+            name="test-instance-bpa",
+            location="us-central1",
+            tier="ENTERPRISE",
+            file_shares={
+                "capacity_gb": 1024,
+                "name": "share1",
+            },
+            networks=[{
+                "network": "default",
+                "modes": ["MODE_IPV4"],
+            }])
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="bv-bpa-filestore",
+            backup_minimum_enforced_retention_duration="100000s",
+            force_delete=True)
+        my_backup_plan = gcp.backupdisasterrecovery.BackupPlan("my_backup_plan",
+            location="us-central1",
+            backup_plan_id="bp-bpa-filestore",
+            resource_type="file.googleapis.com/Instance",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }])
+        my_backup_plan_association_filestore = gcp.backupdisasterrecovery.BackupPlanAssociation("my-backup-plan-association-filestore",
+            location="us-central1",
+            resource_type="file.googleapis.com/Instance",
+            backup_plan_association_id="my-bpa-filestore",
+            resource=my_filestore_instance.id,
+            backup_plan=my_backup_plan.name)
+        ```
 
         ## Import
 
@@ -616,7 +701,6 @@ class BackupPlanAssociation(pulumi.CustomResource):
             __props__.__dict__["resource_type"] = resource_type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["data_source"] = None
-            __props__.__dict__["last_successful_backup_consistency_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["rules_config_infos"] = None
             __props__.__dict__["update_time"] = None
@@ -634,7 +718,6 @@ class BackupPlanAssociation(pulumi.CustomResource):
             backup_plan_association_id: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             data_source: Optional[pulumi.Input[_builtins.str]] = None,
-            last_successful_backup_consistency_time: Optional[pulumi.Input[_builtins.str]] = None,
             location: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
@@ -653,17 +736,17 @@ class BackupPlanAssociation(pulumi.CustomResource):
                Note:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+               - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
-        :param pulumi.Input[_builtins.str] last_successful_backup_consistency_time: The point in time when the last successful backup was captured from the source
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] name: The name of backup plan association resource created
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
         :param pulumi.Input[_builtins.str] resource_type: The resource type of workload on which backupplan is applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
         :param pulumi.Input[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict']]]] rules_config_infos: Message for rules config info
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The time when the instance was updated.
@@ -676,7 +759,6 @@ class BackupPlanAssociation(pulumi.CustomResource):
         __props__.__dict__["backup_plan_association_id"] = backup_plan_association_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_source"] = data_source
-        __props__.__dict__["last_successful_backup_consistency_time"] = last_successful_backup_consistency_time
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -694,6 +776,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
         Note:
         - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+        - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -720,14 +803,6 @@ class BackupPlanAssociation(pulumi.CustomResource):
         Resource name of data source which will be used as storage location for backups taken
         """
         return pulumi.get(self, "data_source")
-
-    @_builtins.property
-    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
-    def last_successful_backup_consistency_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The point in time when the last successful backup was captured from the source
-        """
-        return pulumi.get(self, "last_successful_backup_consistency_time")
 
     @_builtins.property
     @pulumi.getter
@@ -767,7 +842,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
         The resource type of workload on which backupplan is applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
         """
         return pulumi.get(self, "resource_type")
 

@@ -281,16 +281,11 @@ import * as utilities from "../utilities";
  *
  * const manual_trigger = new gcp.cloudbuild.Trigger("manual-trigger", {
  *     name: "manual-trigger",
- *     sourceToBuild: {
- *         uri: "https://hashicorp/terraform-provider-google-beta",
- *         ref: "refs/heads/main",
- *         repoType: "GITHUB",
- *     },
- *     gitFileSource: {
- *         path: "cloudbuild.yaml",
- *         uri: "https://hashicorp/terraform-provider-google-beta",
- *         revision: "refs/heads/main",
- *         repoType: "GITHUB",
+ *     build: {
+ *         steps: [{
+ *             name: "gcr.io/cloud-builders/gcloud",
+ *             args: ["version"],
+ *         }],
  *     },
  *     approvalConfig: {
  *         approvalRequired: true,
@@ -800,7 +795,6 @@ export class Trigger extends pulumi.CustomResource {
     declare public readonly gitFileSource: pulumi.Output<outputs.cloudbuild.TriggerGitFileSource | undefined>;
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      */
     declare public readonly github: pulumi.Output<outputs.cloudbuild.TriggerGithub | undefined>;
@@ -850,7 +844,6 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     declare public readonly pubsubConfig: pulumi.Output<outputs.cloudbuild.TriggerPubsubConfig | undefined>;
@@ -872,7 +865,6 @@ export class Trigger extends pulumi.CustomResource {
      * This field is used only for those triggers that do not respond to SCM events.
      * Triggers that respond to such events build source at whatever commit caused the event.
      * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     declare public readonly sourceToBuild: pulumi.Output<outputs.cloudbuild.TriggerSourceToBuild | undefined>;
@@ -893,14 +885,12 @@ export class Trigger extends pulumi.CustomResource {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     declare public readonly triggerTemplate: pulumi.Output<outputs.cloudbuild.TriggerTriggerTemplate | undefined>;
     /**
      * WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger's webhook URL.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     declare public readonly webhookConfig: pulumi.Output<outputs.cloudbuild.TriggerWebhookConfig | undefined>;
@@ -1033,7 +1023,6 @@ export interface TriggerState {
     gitFileSource?: pulumi.Input<inputs.cloudbuild.TriggerGitFileSource>;
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      */
     github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
@@ -1083,7 +1072,6 @@ export interface TriggerState {
     /**
      * PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
@@ -1105,7 +1093,6 @@ export interface TriggerState {
      * This field is used only for those triggers that do not respond to SCM events.
      * Triggers that respond to such events build source at whatever commit caused the event.
      * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     sourceToBuild?: pulumi.Input<inputs.cloudbuild.TriggerSourceToBuild>;
@@ -1126,14 +1113,12 @@ export interface TriggerState {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
     /**
      * WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger's webhook URL.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     webhookConfig?: pulumi.Input<inputs.cloudbuild.TriggerWebhookConfig>;
@@ -1190,7 +1175,6 @@ export interface TriggerArgs {
     gitFileSource?: pulumi.Input<inputs.cloudbuild.TriggerGitFileSource>;
     /**
      * Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` or `webhookConfig` must be provided.
      * Structure is documented below.
      */
     github?: pulumi.Input<inputs.cloudbuild.TriggerGithub>;
@@ -1240,7 +1224,6 @@ export interface TriggerArgs {
     /**
      * PubsubConfig describes the configuration of a trigger that creates
      * a build whenever a Pub/Sub message is published.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
@@ -1262,7 +1245,6 @@ export interface TriggerArgs {
      * This field is used only for those triggers that do not respond to SCM events.
      * Triggers that respond to such events build source at whatever commit caused the event.
      * This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     sourceToBuild?: pulumi.Input<inputs.cloudbuild.TriggerSourceToBuild>;
@@ -1279,14 +1261,12 @@ export interface TriggerArgs {
      * Branch and tag names in trigger templates are interpreted as regular
      * expressions. Any branch or tag change that matches that regular
      * expression will trigger a build.
-     * One of `triggerTemplate`, `github`, `pubsubConfig`, `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     triggerTemplate?: pulumi.Input<inputs.cloudbuild.TriggerTriggerTemplate>;
     /**
      * WebhookConfig describes the configuration of a trigger that creates
      * a build whenever a webhook is sent to a trigger's webhook URL.
-     * One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
      * Structure is documented below.
      */
     webhookConfig?: pulumi.Input<inputs.cloudbuild.TriggerWebhookConfig>;

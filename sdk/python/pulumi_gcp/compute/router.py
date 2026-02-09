@@ -46,7 +46,8 @@ class RouterArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
+        :param pulumi.Input[_builtins.str] ncc_gateway: (Optional, Beta)
+               A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input['RouterParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
@@ -147,6 +148,7 @@ class RouterArgs:
     @pulumi.getter(name="nccGateway")
     def ncc_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         A URI of an NCC Gateway spoke
         """
         return pulumi.get(self, "ncc_gateway")
@@ -237,7 +239,8 @@ class _RouterState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
+        :param pulumi.Input[_builtins.str] ncc_gateway: (Optional, Beta)
+               A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input['RouterParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
@@ -355,6 +358,7 @@ class _RouterState:
     @pulumi.getter(name="nccGateway")
     def ncc_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         A URI of an NCC Gateway spoke
         """
         return pulumi.get(self, "ncc_gateway")
@@ -596,7 +600,8 @@ class Router(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
+        :param pulumi.Input[_builtins.str] ncc_gateway: (Optional, Beta)
+               A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
@@ -837,7 +842,8 @@ class Router(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-        :param pulumi.Input[_builtins.str] ncc_gateway: A URI of an NCC Gateway spoke
+        :param pulumi.Input[_builtins.str] ncc_gateway: (Optional, Beta)
+               A URI of an NCC Gateway spoke
         :param pulumi.Input[_builtins.str] network: A reference to the network to which this router belongs.
         :param pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
                Structure is documented below.
@@ -924,6 +930,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter(name="nccGateway")
     def ncc_gateway(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Beta)
         A URI of an NCC Gateway spoke
         """
         return pulumi.get(self, "ncc_gateway")

@@ -18,14 +18,14 @@ public final class ClusterSecretSyncConfigRotationConfigArgs extends com.pulumi.
     public static final ClusterSecretSyncConfigRotationConfigArgs Empty = new ClusterSecretSyncConfigRotationConfigArgs();
 
     /**
-     * Enable the roation in Sync as K8s secret feature for this cluster.
+     * ) - Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the roation in Sync as K8s secret feature for this cluster.
+     * @return ) - Enable the roation in Sync as K8s secret feature for this cluster.
      * 
      */
     public Output<Boolean> enabled() {
@@ -33,14 +33,14 @@ public final class ClusterSecretSyncConfigRotationConfigArgs extends com.pulumi.
     }
 
     /**
-     * The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+     * ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
      * 
      */
     @Import(name="rotationInterval")
     private @Nullable Output<String> rotationInterval;
 
     /**
-     * @return The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+     * @return ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
      * 
      */
     public Optional<Output<String>> rotationInterval() {
@@ -73,7 +73,7 @@ public final class ClusterSecretSyncConfigRotationConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable the roation in Sync as K8s secret feature for this cluster.
+         * @param enabled ) - Enable the roation in Sync as K8s secret feature for this cluster.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterSecretSyncConfigRotationConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable the roation in Sync as K8s secret feature for this cluster.
+         * @param enabled ) - Enable the roation in Sync as K8s secret feature for this cluster.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterSecretSyncConfigRotationConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param rotationInterval The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+         * @param rotationInterval ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterSecretSyncConfigRotationConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param rotationInterval The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+         * @param rotationInterval ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
          * 
          * @return builder
          * 

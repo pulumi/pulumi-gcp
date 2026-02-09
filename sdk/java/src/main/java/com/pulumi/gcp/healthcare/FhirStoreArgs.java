@@ -41,6 +41,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      * 
@@ -49,7 +50,8 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<FhirStoreConsentConfigArgs> consentConfig;
 
     /**
-     * @return Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * @return (Optional, Beta)
+     * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      * 
      */
@@ -169,6 +171,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
@@ -177,7 +180,8 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enableHistoryModifications;
 
     /**
-     * @return Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * @return (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
      */
@@ -436,7 +440,8 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consentConfig Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+         * @param consentConfig (Optional, Beta)
+         * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
          * Structure is documented below.
          * 
          * @return builder
@@ -448,7 +453,8 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consentConfig Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+         * @param consentConfig (Optional, Beta)
+         * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
          * Structure is documented below.
          * 
          * @return builder
@@ -600,7 +606,8 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableHistoryModifications Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+         * @param enableHistoryModifications (Optional, Beta)
+         * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
          * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
          * 
          * @return builder
@@ -612,7 +619,8 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableHistoryModifications Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+         * @param enableHistoryModifications (Optional, Beta)
+         * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
          * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
          * 
          * @return builder

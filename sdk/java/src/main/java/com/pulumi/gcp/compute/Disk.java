@@ -455,6 +455,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.image);
     }
     /**
+     * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -468,7 +469,8 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> interface_;
 
     /**
-     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return (Optional, Beta, Deprecated)
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
@@ -555,6 +557,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.licenses;
     }
     /**
+     * (Optional, Beta)
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      * 
      */
@@ -562,7 +565,8 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> multiWriter;
 
     /**
-     * @return Indicates whether or not the disk can be read/write attached to more than one instance.
+     * @return (Optional, Beta)
+     * Indicates whether or not the disk can be read/write attached to more than one instance.
      * 
      */
     public Output<Optional<Boolean>> multiWriter() {
@@ -701,6 +705,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * (Optional, Beta)
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~&gt;**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -713,7 +718,8 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output<List<String>> resourcePolicies;
 
     /**
-     * @return Resource policies applied to this disk for automatic snapshot creations.
+     * @return (Optional, Beta)
+     * Resource policies applied to this disk for automatic snapshot creations.
      * ~&gt;**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
      * one at a time. Use

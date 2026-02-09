@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.JobQueryConnectionProperty> ConnectionProperties;
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to run the query as continuous or a regular query.
         /// </summary>
         public readonly bool? Continuous;

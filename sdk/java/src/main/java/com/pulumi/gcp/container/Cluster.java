@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * and run `pulumi up` to write the field to state in order to destroy a cluster.
  * 
  * &gt; All arguments and attributes (including certificate outputs) will be stored in the raw state as
- * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+ * plaintext. Read more about sensitive data in state.
  * 
  * ## Example Usage
  * 
@@ -368,7 +368,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterIpv4Cidr;
     }
     /**
-     * Configuration for
+     * ) Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      * 
@@ -377,7 +377,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<ClusterClusterTelemetry> clusterTelemetry;
 
     /**
-     * @return Configuration for
+     * @return ) Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      * 
@@ -966,14 +966,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenancePolicy);
     }
     /**
-     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     @Export(name="managedOpentelemetryConfig", refs={ClusterManagedOpentelemetryConfig.class}, tree="[0]")
     private Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig;
 
     /**
-     * @return Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * @return ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      * 
      */
     public Output<ClusterManagedOpentelemetryConfig> managedOpentelemetryConfig() {
@@ -1396,7 +1396,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.podAutoscaling;
     }
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1405,7 +1405,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ClusterPodSecurityPolicyConfig> podSecurityPolicyConfig;
 
     /**
-     * @return Configuration for the
+     * @return ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1460,6 +1460,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
@@ -1467,7 +1468,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<ClusterProtectConfig> protectConfig;
 
     /**
-     * @return Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * @return )
+     * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
     public Output<ClusterProtectConfig> protectConfig() {
@@ -1612,7 +1614,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secretManagerConfig);
     }
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      * 
@@ -1621,7 +1623,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ClusterSecretSyncConfig> secretSyncConfig;
 
     /**
-     * @return Configuration for the
+     * @return ) Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      * 
@@ -1760,6 +1762,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.verticalPodAutoscaling;
     }
     /**
+     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
      */
@@ -1767,7 +1770,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<ClusterWorkloadAltsConfig> workloadAltsConfig;
 
     /**
-     * @return Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     * @return )
+     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
      */
     public Output<ClusterWorkloadAltsConfig> workloadAltsConfig() {

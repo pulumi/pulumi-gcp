@@ -409,6 +409,7 @@ namespace Pulumi.Gcp.Compute
     public partial class Subnetwork : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Typically packets destined to IPs within the subnetwork range that do not match
         /// existing resources are dropped and prevented from leaving the VPC.
         /// Setting this field to true will allow these packets to match dynamic routes injected
@@ -562,7 +563,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -588,6 +589,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ReservedInternalRange { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// 'Configures subnet mask resolution for this subnetwork.'
         /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         /// </summary>
@@ -702,6 +704,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Typically packets destined to IPs within the subnetwork range that do not match
         /// existing resources are dropped and prevented from leaving the VPC.
         /// Setting this field to true will allow these packets to match dynamic routes injected
@@ -820,7 +823,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -846,6 +849,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// 'Configures subnet mask resolution for this subnetwork.'
         /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         /// </summary>
@@ -907,6 +911,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Typically packets destined to IPs within the subnetwork range that do not match
         /// existing resources are dropped and prevented from leaving the VPC.
         /// Setting this field to true will allow these packets to match dynamic routes injected
@@ -1060,7 +1065,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        /// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -1086,6 +1091,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ReservedInternalRange { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// 'Configures subnet mask resolution for this subnetwork.'
         /// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         /// </summary>

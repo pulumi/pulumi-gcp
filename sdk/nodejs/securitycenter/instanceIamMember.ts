@@ -184,6 +184,20 @@ import * as utilities from "../utilities";
  *     type: "DEVELOPER",
  * });
  * ```
+ * ### Data Fusion Instance Patch Revision
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataFusionInstancePatchRevision = new gcp.datafusion.Instance("data_fusion_instance_patch_revision", {
+ *     name: "my-instance",
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     version: "6.10.1",
+ *     patchRevision: "6.10.1.5",
+ * });
+ * ```
  *
  * ## Import
  *

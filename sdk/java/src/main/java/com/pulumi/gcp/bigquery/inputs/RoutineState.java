@@ -138,6 +138,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
@@ -147,7 +148,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<RoutineExternalRuntimeOptionsArgs> externalRuntimeOptions;
 
     /**
-     * @return Options for the runtime of the external system.
+     * @return (Optional, Beta)
+     * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
      * 
@@ -225,6 +227,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Options for a user-defined Python function.
      * Structure is documented below.
      * 
@@ -233,7 +236,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<RoutinePythonOptionsArgs> pythonOptions;
 
     /**
-     * @return Options for a user-defined Python function.
+     * @return (Optional, Beta)
+     * Options for a user-defined Python function.
      * Structure is documented below.
      * 
      */
@@ -588,7 +592,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalRuntimeOptions Options for the runtime of the external system.
+         * @param externalRuntimeOptions (Optional, Beta)
+         * Options for the runtime of the external system.
          * This field is only applicable for Python UDFs.
          * Structure is documented below.
          * 
@@ -601,7 +606,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalRuntimeOptions Options for the runtime of the external system.
+         * @param externalRuntimeOptions (Optional, Beta)
+         * Options for the runtime of the external system.
          * This field is only applicable for Python UDFs.
          * Structure is documented below.
          * 
@@ -716,7 +722,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pythonOptions Options for a user-defined Python function.
+         * @param pythonOptions (Optional, Beta)
+         * Options for a user-defined Python function.
          * Structure is documented below.
          * 
          * @return builder
@@ -728,7 +735,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pythonOptions Options for a user-defined Python function.
+         * @param pythonOptions (Optional, Beta)
+         * Options for a user-defined Python function.
          * Structure is documented below.
          * 
          * @return builder

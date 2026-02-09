@@ -506,6 +506,7 @@ import (
 type Subnetwork struct {
 	pulumi.CustomResourceState
 
+	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -585,7 +586,7 @@ type Subnetwork struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -599,6 +600,7 @@ type Subnetwork struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrOutput `pulumi:"reservedInternalRange"`
+	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask pulumi.StringPtrOutput `pulumi:"resolveSubnetMask"`
@@ -670,6 +672,7 @@ func GetSubnetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnetwork resources.
 type subnetworkState struct {
+	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -749,7 +752,7 @@ type subnetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -763,6 +766,7 @@ type subnetworkState struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
+	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
@@ -802,6 +806,7 @@ type subnetworkState struct {
 }
 
 type SubnetworkState struct {
+	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -881,7 +886,7 @@ type SubnetworkState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -895,6 +900,7 @@ type SubnetworkState struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
+	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask pulumi.StringPtrInput
@@ -938,6 +944,7 @@ func (SubnetworkState) ElementType() reflect.Type {
 }
 
 type subnetworkArgs struct {
+	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -1000,7 +1007,7 @@ type subnetworkArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -1014,6 +1021,7 @@ type subnetworkArgs struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
+	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask *string `pulumi:"resolveSubnetMask"`
@@ -1045,6 +1053,7 @@ type subnetworkArgs struct {
 
 // The set of arguments for constructing a Subnetwork resource.
 type SubnetworkArgs struct {
+	// (Optional, Beta)
 	// Typically packets destined to IPs within the subnetwork range that do not match
 	// existing resources are dropped and prevented from leaving the VPC.
 	// Setting this field to true will allow these packets to match dynamic routes injected
@@ -1107,7 +1116,7 @@ type SubnetworkArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+	// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
 	// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 	// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 	// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -1121,6 +1130,7 @@ type SubnetworkArgs struct {
 	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
 	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
 	ReservedInternalRange pulumi.StringPtrInput
+	// (Optional, Beta)
 	// 'Configures subnet mask resolution for this subnetwork.'
 	// Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 	ResolveSubnetMask pulumi.StringPtrInput
@@ -1237,6 +1247,7 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
+// (Optional, Beta)
 // Typically packets destined to IPs within the subnetwork range that do not match
 // existing resources are dropped and prevented from leaving the VPC.
 // Setting this field to true will allow these packets to match dynamic routes injected
@@ -1373,7 +1384,7 @@ func (o SubnetworkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+// The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
 // A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
 // A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
 // A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -1396,6 +1407,7 @@ func (o SubnetworkOutput) ReservedInternalRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringPtrOutput { return v.ReservedInternalRange }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // 'Configures subnet mask resolution for this subnetwork.'
 // Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
 func (o SubnetworkOutput) ResolveSubnetMask() pulumi.StringPtrOutput {

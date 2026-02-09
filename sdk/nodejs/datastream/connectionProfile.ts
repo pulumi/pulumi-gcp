@@ -574,11 +574,13 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Optional, Beta)
      * Salesforce profile.
      * Structure is documented below.
      */
     declare public readonly salesforceProfile: pulumi.Output<outputs.datastream.ConnectionProfileSalesforceProfile | undefined>;
     /**
+     * (Optional, Beta)
      * Spanner profile.
      * Structure is documented below.
      */
@@ -745,11 +747,13 @@ export interface ConnectionProfileState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * (Optional, Beta)
      * Salesforce profile.
      * Structure is documented below.
      */
     salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
     /**
+     * (Optional, Beta)
      * Spanner profile.
      * Structure is documented below.
      */
@@ -832,11 +836,13 @@ export interface ConnectionProfileArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Salesforce profile.
      * Structure is documented below.
      */
     salesforceProfile?: pulumi.Input<inputs.datastream.ConnectionProfileSalesforceProfile>;
     /**
+     * (Optional, Beta)
      * Spanner profile.
      * Structure is documented below.
      */

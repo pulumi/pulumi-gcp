@@ -3510,7 +3510,8 @@ class JobQuery(dict):
                directly to connection properties passed to the DriverManager. Under ODBC, these
                correspond to properties in the connection string.
                Structure is documented below.
-        :param _builtins.bool continuous: Whether to run the query as continuous or a regular query.
+        :param _builtins.bool continuous: (Optional, Beta)
+               Whether to run the query as continuous or a regular query.
         :param _builtins.str create_disposition: Specifies whether the job is allowed to create new tables. The following values are supported:
                CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table.
                CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
@@ -3633,6 +3634,7 @@ class JobQuery(dict):
     @pulumi.getter
     def continuous(self) -> Optional[_builtins.bool]:
         """
+        (Optional, Beta)
         Whether to run the query as continuous or a regular query.
         """
         return pulumi.get(self, "continuous")

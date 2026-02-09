@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetMachineTypesMachineTypeBundledLocalSsd {
     /**
-     * @return The default disk interface if the interface is not specified.
+     * @return (Beta) The default disk interface if the interface is not specified.
      * 
      */
     private String defaultInterface;
     /**
-     * @return The number of partitions.
+     * @return (Beta) The number of partitions.
      * 
      */
     private Integer partitionCount;
 
     private GetMachineTypesMachineTypeBundledLocalSsd() {}
     /**
-     * @return The default disk interface if the interface is not specified.
+     * @return (Beta) The default disk interface if the interface is not specified.
      * 
      */
     public String defaultInterface() {
         return this.defaultInterface;
     }
     /**
-     * @return The number of partitions.
+     * @return (Beta) The number of partitions.
      * 
      */
     public Integer partitionCount() {

@@ -555,6 +555,7 @@ namespace Pulumi.Gcp.Dns
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         /// lookup queries using automatically configured records for VPC resources. This only applies
         /// to networks listed under `PrivateVisibilityConfig`.
@@ -563,6 +564,7 @@ namespace Pulumi.Gcp.Dns
         public Output<bool?> ReverseLookup { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
         /// Structure is documented below.
         /// </summary>
@@ -716,6 +718,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         /// lookup queries using automatically configured records for VPC resources. This only applies
         /// to networks listed under `PrivateVisibilityConfig`.
@@ -724,6 +727,7 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
         /// Structure is documented below.
         /// </summary>
@@ -894,6 +898,7 @@ namespace Pulumi.Gcp.Dns
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         /// lookup queries using automatically configured records for VPC resources. This only applies
         /// to networks listed under `PrivateVisibilityConfig`.
@@ -902,6 +907,7 @@ namespace Pulumi.Gcp.Dns
         public Input<bool>? ReverseLookup { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
         /// Structure is documented below.
         /// </summary>

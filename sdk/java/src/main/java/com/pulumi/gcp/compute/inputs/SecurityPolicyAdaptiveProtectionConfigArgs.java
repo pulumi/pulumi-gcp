@@ -17,7 +17,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigArgs extends com.pulumi
     public static final SecurityPolicyAdaptiveProtectionConfigArgs Empty = new SecurityPolicyAdaptiveProtectionConfigArgs();
 
     /**
-     * Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+     * ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
      * 
      * &lt;a name=&#34;nestedLayer7DdosDefenseConfig&#34;&gt;&lt;/a&gt;The `layer7DdosDefenseConfig` block supports:
      * 
@@ -26,7 +26,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigArgs extends com.pulumi
     private @Nullable Output<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs> autoDeployConfig;
 
     /**
-     * @return Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+     * @return ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
      * 
      * &lt;a name=&#34;nestedLayer7DdosDefenseConfig&#34;&gt;&lt;/a&gt;The `layer7DdosDefenseConfig` block supports:
      * 
@@ -76,7 +76,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigArgs extends com.pulumi
         }
 
         /**
-         * @param autoDeployConfig Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+         * @param autoDeployConfig ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
          * 
          * &lt;a name=&#34;nestedLayer7DdosDefenseConfig&#34;&gt;&lt;/a&gt;The `layer7DdosDefenseConfig` block supports:
          * 
@@ -89,7 +89,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigArgs extends com.pulumi
         }
 
         /**
-         * @param autoDeployConfig Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+         * @param autoDeployConfig ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
          * 
          * &lt;a name=&#34;nestedLayer7DdosDefenseConfig&#34;&gt;&lt;/a&gt;The `layer7DdosDefenseConfig` block supports:
          * 

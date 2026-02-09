@@ -32,12 +32,12 @@ public final class InstanceTemplateScheduling {
      */
     private @Nullable Integer availabilityDomain;
     /**
-     * @return Settings for the instance to perform a graceful shutdown. Structure is documented below.
+     * @return Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     private @Nullable InstanceTemplateSchedulingGracefulShutdown gracefulShutdown;
     /**
-     * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * @return Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     private @Nullable Integer hostErrorTimeoutSeconds;
@@ -47,15 +47,12 @@ public final class InstanceTemplateScheduling {
      */
     private @Nullable String instanceTerminationAction;
     /**
-     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * @return (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     private @Nullable List<InstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     private @Nullable String maintenanceInterval;
@@ -105,7 +102,7 @@ public final class InstanceTemplateScheduling {
      */
     private @Nullable String provisioningModel;
     /**
-     * @return Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * @return Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     private @Nullable Boolean skipGuestOsShutdown;
@@ -133,14 +130,14 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.availabilityDomain);
     }
     /**
-     * @return Settings for the instance to perform a graceful shutdown. Structure is documented below.
+     * @return Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     public Optional<InstanceTemplateSchedulingGracefulShutdown> gracefulShutdown() {
         return Optional.ofNullable(this.gracefulShutdown);
     }
     /**
-     * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * @return Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     public Optional<Integer> hostErrorTimeoutSeconds() {
@@ -154,17 +151,14 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
     /**
-     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * @return (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     public List<InstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
         return this.localSsdRecoveryTimeouts == null ? List.of() : this.localSsdRecoveryTimeouts;
     }
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     public Optional<String> maintenanceInterval() {
@@ -230,7 +224,7 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.provisioningModel);
     }
     /**
-     * @return Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * @return Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     public Optional<Boolean> skipGuestOsShutdown() {

@@ -154,8 +154,7 @@ def get_apple_app(app_id: Optional[_builtins.str] = None,
                   project: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppleAppResult:
     """
-    A Google Cloud Firebase Apple application instance
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.str app_id: The app_id of name of the Firebase iosApp.
            
@@ -185,8 +184,7 @@ def get_apple_app_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppleAppResult]:
     """
-    A Google Cloud Firebase Apple application instance
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.str app_id: The app_id of name of the Firebase iosApp.
            

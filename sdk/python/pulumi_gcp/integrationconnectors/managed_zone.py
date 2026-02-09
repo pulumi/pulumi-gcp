@@ -367,8 +367,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_16199",
-            name="tf-test_21563",
+            project_id="tf-test_16178",
+            name="tf-test_26317",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -389,8 +389,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_25141",
-            dns_name="private_30827.example.com.",
+            name="tf-test-dns_4866",
+            dns_name="private_12618.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{
@@ -475,8 +475,8 @@ class ManagedZone(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         target_project = gcp.organizations.Project("target_project",
-            project_id="tf-test_16199",
-            name="tf-test_21563",
+            project_id="tf-test_16178",
+            name="tf-test_26317",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -497,8 +497,8 @@ class ManagedZone(pulumi.CustomResource):
             auto_create_subnetworks=False,
             opts = pulumi.ResourceOptions(depends_on=[compute]))
         zone = gcp.dns.ManagedZone("zone",
-            name="tf-test-dns_25141",
-            dns_name="private_30827.example.com.",
+            name="tf-test-dns_4866",
+            dns_name="private_12618.example.com.",
             visibility="private",
             private_visibility_config={
                 "networks": [{

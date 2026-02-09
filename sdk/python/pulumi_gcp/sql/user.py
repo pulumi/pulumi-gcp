@@ -22,6 +22,7 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[_builtins.str],
+                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,6 +36,7 @@ class UserArgs:
         The set of arguments for constructing a User resource.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -65,6 +67,8 @@ class UserArgs:
                and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
         """
         pulumi.set(__self__, "instance", instance)
+        if database_roles is not None:
+            pulumi.set(__self__, "database_roles", database_roles)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if host is not None:
@@ -96,6 +100,18 @@ class UserArgs:
     @instance.setter
     def instance(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "instance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseRoles")
+    def database_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        """
+        return pulumi.get(self, "database_roles")
+
+    @database_roles.setter
+    def database_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "database_roles", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -226,8 +242,10 @@ class UserArgs:
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
+                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
+                 iam_email: Optional[pulumi.Input[_builtins.str]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -239,6 +257,7 @@ class _UserState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -247,6 +266,7 @@ class _UserState:
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] iam_email: The email address for MySQL IAM database users.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
         :param pulumi.Input[_builtins.str] name: The name of the user. Changing this forces a new resource
@@ -270,10 +290,14 @@ class _UserState:
                [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
                and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
         """
+        if database_roles is not None:
+            pulumi.set(__self__, "database_roles", database_roles)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if iam_email is not None:
+            pulumi.set(__self__, "iam_email", iam_email)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
         if name is not None:
@@ -292,6 +316,18 @@ class _UserState:
             pulumi.set(__self__, "sql_server_user_details", sql_server_user_details)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseRoles")
+    def database_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        """
+        return pulumi.get(self, "database_roles")
+
+    @database_roles.setter
+    def database_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "database_roles", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -322,6 +358,18 @@ class _UserState:
     @host.setter
     def host(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="iamEmail")
+    def iam_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The email address for MySQL IAM database users.
+        """
+        return pulumi.get(self, "iam_email")
+
+    @iam_email.setter
+    def iam_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "iam_email", value)
 
     @_builtins.property
     @pulumi.getter
@@ -447,6 +495,7 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -459,8 +508,6 @@ class User(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
-
         ## Example Usage
 
         Example creating a SQL User.
@@ -574,6 +621,7 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -612,8 +660,6 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
-
         ## Example Usage
 
         Example creating a SQL User.
@@ -740,6 +786,7 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  instance: Optional[pulumi.Input[_builtins.str]] = None,
@@ -759,6 +806,7 @@ class User(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserArgs.__new__(UserArgs)
 
+            __props__.__dict__["database_roles"] = database_roles
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["host"] = host
             if instance is None and not opts.urn:
@@ -771,6 +819,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
+            __props__.__dict__["iam_email"] = None
             __props__.__dict__["sql_server_user_details"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -784,8 +833,10 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
             host: Optional[pulumi.Input[_builtins.str]] = None,
+            iam_email: Optional[pulumi.Input[_builtins.str]] = None,
             instance: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -802,6 +853,7 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] database_roles: A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
                Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -810,6 +862,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
                for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
                Can be an IP address. Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] iam_email: The email address for MySQL IAM database users.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
         :param pulumi.Input[_builtins.str] name: The name of the user. Changing this forces a new resource
@@ -837,8 +890,10 @@ class User(pulumi.CustomResource):
 
         __props__ = _UserState.__new__(_UserState)
 
+        __props__.__dict__["database_roles"] = database_roles
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["host"] = host
+        __props__.__dict__["iam_email"] = iam_email
         __props__.__dict__["instance"] = instance
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
@@ -849,6 +904,14 @@ class User(pulumi.CustomResource):
         __props__.__dict__["sql_server_user_details"] = sql_server_user_details
         __props__.__dict__["type"] = type
         return User(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseRoles")
+    def database_roles(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        """
+        return pulumi.get(self, "database_roles")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -871,6 +934,14 @@ class User(pulumi.CustomResource):
         Can be an IP address. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="iamEmail")
+    def iam_email(self) -> pulumi.Output[_builtins.str]:
+        """
+        The email address for MySQL IAM database users.
+        """
+        return pulumi.get(self, "iam_email")
 
     @_builtins.property
     @pulumi.getter

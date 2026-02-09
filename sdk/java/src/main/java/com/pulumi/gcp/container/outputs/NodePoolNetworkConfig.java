@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolNetworkConfig {
     /**
-     * @return Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+     * @return ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
      * 
      */
     private @Nullable String acceleratorNetworkProfile;
@@ -72,7 +72,7 @@ public final class NodePoolNetworkConfig {
 
     private NodePoolNetworkConfig() {}
     /**
-     * @return Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+     * @return ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `&#34;auto&#34;` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
      * 
      */
     public Optional<String> acceleratorNetworkProfile() {

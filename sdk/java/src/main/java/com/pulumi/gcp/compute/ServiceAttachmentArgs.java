@@ -265,14 +265,18 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If true, show NAT IPs of all connected endpoints.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * [If true, show NAT IPs of all connected endpoints.]
      * 
      */
     @Import(name="showNatIps")
     private @Nullable Output<Boolean> showNatIps;
 
     /**
-     * @return If true, show NAT IPs of all connected endpoints.
+     * @return NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * [If true, show NAT IPs of all connected endpoints.]
      * 
      */
     public Optional<Output<Boolean>> showNatIps() {
@@ -295,6 +299,7 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (Optional, Beta)
      * Tunneling configuration for this service attachment.
      * Structure is documented below.
      * 
@@ -303,7 +308,8 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<ServiceAttachmentTunnelingConfigArgs> tunnelingConfig;
 
     /**
-     * @return Tunneling configuration for this service attachment.
+     * @return (Optional, Beta)
+     * Tunneling configuration for this service attachment.
      * Structure is documented below.
      * 
      */
@@ -718,7 +724,9 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param showNatIps If true, show NAT IPs of all connected endpoints.
+         * @param showNatIps NOTE: This field is temporarily non-functional due to an underlying API issue.
+         * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+         * [If true, show NAT IPs of all connected endpoints.]
          * 
          * @return builder
          * 
@@ -729,7 +737,9 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param showNatIps If true, show NAT IPs of all connected endpoints.
+         * @param showNatIps NOTE: This field is temporarily non-functional due to an underlying API issue.
+         * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+         * [If true, show NAT IPs of all connected endpoints.]
          * 
          * @return builder
          * 
@@ -760,7 +770,8 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tunnelingConfig Tunneling configuration for this service attachment.
+         * @param tunnelingConfig (Optional, Beta)
+         * Tunneling configuration for this service attachment.
          * Structure is documented below.
          * 
          * @return builder
@@ -772,7 +783,8 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tunnelingConfig Tunneling configuration for this service attachment.
+         * @param tunnelingConfig (Optional, Beta)
+         * Tunneling configuration for this service attachment.
          * Structure is documented below.
          * 
          * @return builder

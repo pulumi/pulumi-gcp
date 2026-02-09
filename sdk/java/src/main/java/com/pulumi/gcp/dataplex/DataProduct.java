@@ -19,15 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A data product is a curated collection of data assets, packaged to address
- * specific use cases.
- * 
- * To get more information about DataProduct, see:
- * 
- * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
- * * How-to Guides
- *     * [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
- * 
  * ## Example Usage
  * 
  * ### Dataplex Data Product Basic
@@ -61,13 +52,13 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .dataProductId("data-product-basic")
  *             .displayName("terraform data product")
- *             .ownerEmails("terraform-test}{@literal @}{@code google.com")
+ *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .accessGroups(DataProductAccessGroupArgs.builder()
  *                 .id("analyst")
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_89605}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_74000}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
@@ -108,7 +99,7 @@ import javax.annotation.Nullable;
  *             .dataProductId("data-product-full")
  *             .displayName("DP Full Test: Special Chars !}{@literal @}{@code #$")
  *             .description("Updated with emojis 🚀 and brackets }{{@code test}}{@code ")
- *             .ownerEmails("terraform-test}{@literal @}{@code google.com")
+ *             .ownerEmails("gterraformtestuser}{@literal @}{@code gmail.com")
  *             .labels(Map.of("env", "manual-test"))
  *             .accessGroups(            
  *                 DataProductAccessGroupArgs.builder()
@@ -117,7 +108,7 @@ import javax.annotation.Nullable;
  *                     .displayName("Data Analyst - Updated")
  *                     .description("In-place update verified")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-analysts-_56730}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-analysts-_75125}{@literal @}{@code example.com")
  *                         .build())
  *                     .build(),
  *                 DataProductAccessGroupArgs.builder()
@@ -125,7 +116,7 @@ import javax.annotation.Nullable;
  *                     .groupId("scientist")
  *                     .displayName("Data Scientist")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-scientists-_95154}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-scientists-_88722}{@literal @}{@code example.com")
  *                         .build())
  *                     .build())
  *             .build());
@@ -145,8 +136,6 @@ import javax.annotation.Nullable;
  * 
  * * `{{location}}/{{data_product_id}}`
  * 
- * * `{{data_product_id}}`
- * 
  * When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
  * 
  * ```sh
@@ -159,10 +148,6 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{data_product_id}}
  * ```
  * 
  */

@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? BackendService;
         /// <summary>
+        /// (Optional, Beta)
         /// The percentage of requests to be mirrored to backendService.
         /// The value must be between 0.0 and 100.0 inclusive.
         /// </summary>

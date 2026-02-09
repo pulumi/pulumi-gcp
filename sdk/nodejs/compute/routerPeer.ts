@@ -472,11 +472,13 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional, Beta)
      * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      */
     declare public readonly exportPolicies: pulumi.Output<string[] | undefined>;
     /**
+     * (Optional, Beta)
      * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      */
@@ -757,11 +759,13 @@ export interface RouterPeerState {
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      */
     exportPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Beta)
      * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      */
@@ -951,11 +955,13 @@ export interface RouterPeerArgs {
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * routers.list of export policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.
      */
     exportPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Beta)
      * routers.list of import policies applied to this peer, in the order they must be evaluated.
      * The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.
      */

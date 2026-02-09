@@ -1076,6 +1076,7 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.reconciling;
     }
     /**
+     * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
@@ -1084,7 +1085,8 @@ public class Job extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> runExecutionToken;
 
     /**
-     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+     * @return (Optional, Beta)
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
      */
@@ -1092,6 +1094,7 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runExecutionToken);
     }
     /**
+     * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
@@ -1100,7 +1103,8 @@ public class Job extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> startExecutionToken;
 
     /**
-     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+     * @return (Optional, Beta)
+     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
      */

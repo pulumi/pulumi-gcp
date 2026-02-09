@@ -308,6 +308,7 @@ export class SecurityProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * The url filtering configuration for the security profile.
      * Structure is documented below.
      */
@@ -450,6 +451,7 @@ export interface SecurityProfileState {
      */
     updateTime?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The url filtering configuration for the security profile.
      * Structure is documented below.
      */
@@ -508,6 +510,7 @@ export interface SecurityProfileArgs {
      */
     type: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The url filtering configuration for the security profile.
      * Structure is documented below.
      */

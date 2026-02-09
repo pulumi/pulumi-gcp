@@ -206,6 +206,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiFeatureStoreOnlineServingConfig?> OnlineServingConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         /// </summary>
         [Output("onlineStorageTtlDays")]
@@ -330,6 +331,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureStoreOnlineServingConfigArgs>? OnlineServingConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         /// </summary>
         [Input("onlineStorageTtlDays")]
@@ -426,6 +428,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureStoreOnlineServingConfigGetArgs>? OnlineServingConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
         /// </summary>
         [Input("onlineStorageTtlDays")]

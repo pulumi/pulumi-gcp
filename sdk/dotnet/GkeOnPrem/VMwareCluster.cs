@@ -217,6 +217,12 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///     var cluster_manuallb = new Gcp.GkeOnPrem.VMwareCluster("cluster-manuallb", new()
     ///     {
     ///         Name = "cluster-manuallb",
+    ///         SkipValidations = new[]
+    ///         {
+    ///             "WORKSTATION",
+    ///             "CONFIG",
+    ///             "DOCKER",
+    ///         },
     ///         Location = "us-west1",
     ///         AdminClusterMembership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
     ///         Description = "test cluster",
@@ -564,6 +570,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
+        /// A list of validations to skip during preflight checks.
+        /// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+        /// </summary>
+        [Output("skipValidations")]
+        public Output<ImmutableArray<string>> SkipValidations { get; private set; } = null!;
+
+        /// <summary>
         /// (Output)
         /// The lifecycle state of the condition.
         /// </summary>
@@ -801,6 +814,19 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("skipValidations")]
+        private InputList<string>? _skipValidations;
+
+        /// <summary>
+        /// A list of validations to skip during preflight checks.
+        /// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+        /// </summary>
+        public InputList<string> SkipValidations
+        {
+            get => _skipValidations ?? (_skipValidations = new InputList<string>());
+            set => _skipValidations = value;
+        }
+
         /// <summary>
         /// Storage configuration.
         /// Structure is documented below.
@@ -1036,6 +1062,19 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
+
+        [Input("skipValidations")]
+        private InputList<string>? _skipValidations;
+
+        /// <summary>
+        /// A list of validations to skip during preflight checks.
+        /// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+        /// </summary>
+        public InputList<string> SkipValidations
+        {
+            get => _skipValidations ?? (_skipValidations = new InputList<string>());
+            set => _skipValidations = value;
+        }
 
         /// <summary>
         /// (Output)

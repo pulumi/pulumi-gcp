@@ -6405,6 +6405,7 @@ type ServiceTemplate struct {
 	Scaling *ServiceTemplateScaling `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// (Optional, Beta)
 	// Enables Cloud Service Mesh for this Revision.
 	// Structure is documented below.
 	ServiceMesh *ServiceTemplateServiceMesh `pulumi:"serviceMesh"`
@@ -6468,6 +6469,7 @@ type ServiceTemplateArgs struct {
 	Scaling ServiceTemplateScalingPtrInput `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// (Optional, Beta)
 	// Enables Cloud Service Mesh for this Revision.
 	// Structure is documented below.
 	ServiceMesh ServiceTemplateServiceMeshPtrInput `pulumi:"serviceMesh"`
@@ -6632,6 +6634,7 @@ func (o ServiceTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Enables Cloud Service Mesh for this Revision.
 // Structure is documented below.
 func (o ServiceTemplateOutput) ServiceMesh() ServiceTemplateServiceMeshPtrOutput {
@@ -6816,6 +6819,7 @@ func (o ServiceTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Enables Cloud Service Mesh for this Revision.
 // Structure is documented below.
 func (o ServiceTemplatePtrOutput) ServiceMesh() ServiceTemplateServiceMeshPtrOutput {
@@ -6900,6 +6904,7 @@ type ServiceTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *ServiceTemplateContainerResources `pulumi:"resources"`
+	// (Optional, Beta)
 	// Location of the source.
 	// Structure is documented below.
 	SourceCode *ServiceTemplateContainerSourceCode `pulumi:"sourceCode"`
@@ -6954,6 +6959,7 @@ type ServiceTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources ServiceTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// (Optional, Beta)
 	// Location of the source.
 	// Structure is documented below.
 	SourceCode ServiceTemplateContainerSourceCodePtrInput `pulumi:"sourceCode"`
@@ -7080,6 +7086,7 @@ func (o ServiceTemplateContainerOutput) Resources() ServiceTemplateContainerReso
 	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerResources { return v.Resources }).(ServiceTemplateContainerResourcesPtrOutput)
 }
 
+// (Optional, Beta)
 // Location of the source.
 // Structure is documented below.
 func (o ServiceTemplateContainerOutput) SourceCode() ServiceTemplateContainerSourceCodePtrOutput {

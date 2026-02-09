@@ -35,6 +35,7 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * (Optional, Beta)
      * List of project IDs with which the reservation is shared.
      * 
      */
@@ -42,7 +43,8 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
     private @Nullable Output<List<String>> projects;
 
     /**
-     * @return List of project IDs with which the reservation is shared.
+     * @return (Optional, Beta)
+     * List of project IDs with which the reservation is shared.
      * 
      */
     public Optional<Output<List<String>>> projects() {
@@ -127,7 +129,8 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param projects List of project IDs with which the reservation is shared.
+         * @param projects (Optional, Beta)
+         * List of project IDs with which the reservation is shared.
          * 
          * @return builder
          * 
@@ -138,7 +141,8 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param projects List of project IDs with which the reservation is shared.
+         * @param projects (Optional, Beta)
+         * List of project IDs with which the reservation is shared.
          * 
          * @return builder
          * 
@@ -148,7 +152,8 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param projects List of project IDs with which the reservation is shared.
+         * @param projects (Optional, Beta)
+         * List of project IDs with which the reservation is shared.
          * 
          * @return builder
          * 

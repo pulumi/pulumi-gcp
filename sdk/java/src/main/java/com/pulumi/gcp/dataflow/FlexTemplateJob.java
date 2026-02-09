@@ -19,11 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates a [Flex Template](https://cloud.google.com/dataflow/docs/guides/templates/using-flex-templates)
- * job on Dataflow, which is an implementation of Apache Beam running on Google
- * Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
- * and [Dataflow](https://cloud.google.com/dataflow/).
- * 
  * ## Example Usage
  * 
  * <pre>

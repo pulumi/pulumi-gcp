@@ -14,10 +14,12 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Bandwidth percentage for a specific traffic class.
         /// </summary>
         public readonly int? Percentage;
         /// <summary>
+        /// (Optional, Beta)
         /// Enum representing the various traffic classes offered by AAI.
         /// Default value is `TC_UNSPECIFIED`.
         /// Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.

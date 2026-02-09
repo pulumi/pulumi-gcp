@@ -333,7 +333,7 @@ type InstanceGroupManager struct {
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
 	Operation  pulumi.StringOutput                      `pulumi:"operation"`
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params InstanceGroupManagerParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -465,7 +465,7 @@ type instanceGroupManagerState struct {
 	// for details on configuration.
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
 	Operation  *string                         `pulumi:"operation"`
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -562,7 +562,7 @@ type InstanceGroupManagerState struct {
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
 	Operation  pulumi.StringPtrInput
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -654,7 +654,7 @@ type instanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts []InstanceGroupManagerNamedPort `pulumi:"namedPorts"`
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params *InstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -739,7 +739,7 @@ type InstanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts InstanceGroupManagerNamedPortArrayInput
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params InstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -963,7 +963,7 @@ func (o InstanceGroupManagerOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
 }
 
-// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 func (o InstanceGroupManagerOutput) Params() InstanceGroupManagerParamsPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerParamsPtrOutput { return v.Params }).(InstanceGroupManagerParamsPtrOutput)
 }

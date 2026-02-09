@@ -42,7 +42,8 @@ class ReservationArgs:
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
+        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
+               Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -148,6 +149,7 @@ class ReservationArgs:
     @pulumi.getter(name="enableEmergentMaintenance")
     def enable_emergent_maintenance(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Indicates if this group of VMs have emergent maintenance enabled.
         """
         return pulumi.get(self, "enable_emergent_maintenance")
@@ -263,7 +265,8 @@ class _ReservationState:
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
+        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
+               Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[_builtins.str] kind: Type of the resource. Always compute#reservations for reservations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] linked_commitments: Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -415,6 +418,7 @@ class _ReservationState:
     @pulumi.getter(name="enableEmergentMaintenance")
     def enable_emergent_maintenance(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Indicates if this group of VMs have emergent maintenance enabled.
         """
         return pulumi.get(self, "enable_emergent_maintenance")
@@ -817,7 +821,8 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
+        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
+               Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1137,7 +1142,8 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: Indicates if this group of VMs have emergent maintenance enabled.
+        :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
+               Indicates if this group of VMs have emergent maintenance enabled.
         :param pulumi.Input[_builtins.str] kind: Type of the resource. Always compute#reservations for reservations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] linked_commitments: Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -1249,6 +1255,7 @@ class Reservation(pulumi.CustomResource):
     @pulumi.getter(name="enableEmergentMaintenance")
     def enable_emergent_maintenance(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
+        (Optional, Beta)
         Indicates if this group of VMs have emergent maintenance enabled.
         """
         return pulumi.get(self, "enable_emergent_maintenance")

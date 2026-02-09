@@ -62,10 +62,12 @@ class ManagedZoneArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        :param pulumi.Input[_builtins.bool] reverse_lookup: (Optional, Beta)
+               Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+        :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: (Optional, Beta)
+               The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
@@ -252,6 +254,7 @@ class ManagedZoneArgs:
     @pulumi.getter(name="reverseLookup")
     def reverse_lookup(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         lookup queries using automatically configured records for VPC resources. This only applies
         to networks listed under `private_visibility_config`.
@@ -266,6 +269,7 @@ class ManagedZoneArgs:
     @pulumi.getter(name="serviceDirectoryConfig")
     def service_directory_config(self) -> Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']]:
         """
+        (Optional, Beta)
         The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
         Structure is documented below.
         """
@@ -348,10 +352,12 @@ class _ManagedZoneState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[_builtins.bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        :param pulumi.Input[_builtins.bool] reverse_lookup: (Optional, Beta)
+               Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+        :param pulumi.Input['ManagedZoneServiceDirectoryConfigArgs'] service_directory_config: (Optional, Beta)
+               The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
@@ -612,6 +618,7 @@ class _ManagedZoneState:
     @pulumi.getter(name="reverseLookup")
     def reverse_lookup(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         lookup queries using automatically configured records for VPC resources. This only applies
         to networks listed under `private_visibility_config`.
@@ -626,6 +633,7 @@ class _ManagedZoneState:
     @pulumi.getter(name="serviceDirectoryConfig")
     def service_directory_config(self) -> Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigArgs']]:
         """
+        (Optional, Beta)
         The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
         Structure is documented below.
         """
@@ -979,10 +987,12 @@ class ManagedZone(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        :param pulumi.Input[_builtins.bool] reverse_lookup: (Optional, Beta)
+               Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+        :param pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']] service_directory_config: (Optional, Beta)
+               The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
@@ -1407,10 +1417,12 @@ class ManagedZone(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[_builtins.bool] reverse_lookup: Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
+        :param pulumi.Input[_builtins.bool] reverse_lookup: (Optional, Beta)
+               Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
                lookup queries using automatically configured records for VPC resources. This only applies
                to networks listed under `private_visibility_config`.
-        :param pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']] service_directory_config: The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
+        :param pulumi.Input[Union['ManagedZoneServiceDirectoryConfigArgs', 'ManagedZoneServiceDirectoryConfigArgsDict']] service_directory_config: (Optional, Beta)
+               The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
@@ -1591,6 +1603,7 @@ class ManagedZone(pulumi.CustomResource):
     @pulumi.getter(name="reverseLookup")
     def reverse_lookup(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
+        (Optional, Beta)
         Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
         lookup queries using automatically configured records for VPC resources. This only applies
         to networks listed under `private_visibility_config`.
@@ -1601,6 +1614,7 @@ class ManagedZone(pulumi.CustomResource):
     @pulumi.getter(name="serviceDirectoryConfig")
     def service_directory_config(self) -> pulumi.Output[Optional['outputs.ManagedZoneServiceDirectoryConfig']]:
         """
+        (Optional, Beta)
         The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
         Structure is documented below.
         """

@@ -398,7 +398,7 @@ def get_region_backend_service(name: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionBackendServiceResult:
     """
     Get information about a Regional Backend Service. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+    [the official documentation](https://docs.cloud.google.com/load-balancing/docs/internal) and
     [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
 
     ## Example Usage
@@ -470,7 +470,7 @@ def get_region_backend_service_output(name: Optional[pulumi.Input[_builtins.str]
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionBackendServiceResult]:
     """
     Get information about a Regional Backend Service. For more information see
-    [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+    [the official documentation](https://docs.cloud.google.com/load-balancing/docs/internal) and
     [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
 
     ## Example Usage

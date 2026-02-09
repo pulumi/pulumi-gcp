@@ -11,48 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
- *
- * With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
- * and overseeing the lifecycle of its components.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const cluster = new gcp.container.Cluster("cluster", {
- *     name: "my-cluster",
- *     location: "us-central1-a",
- *     initialNodeCount: 1,
- * });
- * const membership = new gcp.gkehub.Membership("membership", {
- *     membershipId: "my-membership",
- *     endpoint: {
- *         gkeCluster: {
- *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
- *         },
- *     },
- * });
- * const feature = new gcp.gkehub.Feature("feature", {
- *     name: "configmanagement",
- *     location: "global",
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * const featureMember = new gcp.gkehub.FeatureMembership("feature_member", {
- *     location: "global",
- *     feature: feature.name,
- *     membership: membership.membershipId,
- *     configmanagement: {
- *         management: "MANAGEMENT_AUTOMATIC",
- *         configSync: {
- *             enabled: true,
- *         },
- *     },
- * });
- * ```
- *
  * ### Config Management With Git
  *
  * ```typescript

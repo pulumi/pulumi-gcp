@@ -1926,6 +1926,112 @@ func (o AssetSecurityStatusArrayOutput) Index(i pulumi.IntInput) AssetSecuritySt
 	}).(AssetSecurityStatusOutput)
 }
 
+type DataAssetAccessGroupConfig struct {
+	// The identifier for this object. Format specified above.
+	AccessGroup string `pulumi:"accessGroup"`
+	// IAM roles granted on the resource.
+	IamRoles []string `pulumi:"iamRoles"`
+}
+
+// DataAssetAccessGroupConfigInput is an input type that accepts DataAssetAccessGroupConfigArgs and DataAssetAccessGroupConfigOutput values.
+// You can construct a concrete instance of `DataAssetAccessGroupConfigInput` via:
+//
+//	DataAssetAccessGroupConfigArgs{...}
+type DataAssetAccessGroupConfigInput interface {
+	pulumi.Input
+
+	ToDataAssetAccessGroupConfigOutput() DataAssetAccessGroupConfigOutput
+	ToDataAssetAccessGroupConfigOutputWithContext(context.Context) DataAssetAccessGroupConfigOutput
+}
+
+type DataAssetAccessGroupConfigArgs struct {
+	// The identifier for this object. Format specified above.
+	AccessGroup pulumi.StringInput `pulumi:"accessGroup"`
+	// IAM roles granted on the resource.
+	IamRoles pulumi.StringArrayInput `pulumi:"iamRoles"`
+}
+
+func (DataAssetAccessGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAssetAccessGroupConfig)(nil)).Elem()
+}
+
+func (i DataAssetAccessGroupConfigArgs) ToDataAssetAccessGroupConfigOutput() DataAssetAccessGroupConfigOutput {
+	return i.ToDataAssetAccessGroupConfigOutputWithContext(context.Background())
+}
+
+func (i DataAssetAccessGroupConfigArgs) ToDataAssetAccessGroupConfigOutputWithContext(ctx context.Context) DataAssetAccessGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAssetAccessGroupConfigOutput)
+}
+
+// DataAssetAccessGroupConfigArrayInput is an input type that accepts DataAssetAccessGroupConfigArray and DataAssetAccessGroupConfigArrayOutput values.
+// You can construct a concrete instance of `DataAssetAccessGroupConfigArrayInput` via:
+//
+//	DataAssetAccessGroupConfigArray{ DataAssetAccessGroupConfigArgs{...} }
+type DataAssetAccessGroupConfigArrayInput interface {
+	pulumi.Input
+
+	ToDataAssetAccessGroupConfigArrayOutput() DataAssetAccessGroupConfigArrayOutput
+	ToDataAssetAccessGroupConfigArrayOutputWithContext(context.Context) DataAssetAccessGroupConfigArrayOutput
+}
+
+type DataAssetAccessGroupConfigArray []DataAssetAccessGroupConfigInput
+
+func (DataAssetAccessGroupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAssetAccessGroupConfig)(nil)).Elem()
+}
+
+func (i DataAssetAccessGroupConfigArray) ToDataAssetAccessGroupConfigArrayOutput() DataAssetAccessGroupConfigArrayOutput {
+	return i.ToDataAssetAccessGroupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DataAssetAccessGroupConfigArray) ToDataAssetAccessGroupConfigArrayOutputWithContext(ctx context.Context) DataAssetAccessGroupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAssetAccessGroupConfigArrayOutput)
+}
+
+type DataAssetAccessGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (DataAssetAccessGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAssetAccessGroupConfig)(nil)).Elem()
+}
+
+func (o DataAssetAccessGroupConfigOutput) ToDataAssetAccessGroupConfigOutput() DataAssetAccessGroupConfigOutput {
+	return o
+}
+
+func (o DataAssetAccessGroupConfigOutput) ToDataAssetAccessGroupConfigOutputWithContext(ctx context.Context) DataAssetAccessGroupConfigOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o DataAssetAccessGroupConfigOutput) AccessGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAssetAccessGroupConfig) string { return v.AccessGroup }).(pulumi.StringOutput)
+}
+
+// IAM roles granted on the resource.
+func (o DataAssetAccessGroupConfigOutput) IamRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataAssetAccessGroupConfig) []string { return v.IamRoles }).(pulumi.StringArrayOutput)
+}
+
+type DataAssetAccessGroupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAssetAccessGroupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAssetAccessGroupConfig)(nil)).Elem()
+}
+
+func (o DataAssetAccessGroupConfigArrayOutput) ToDataAssetAccessGroupConfigArrayOutput() DataAssetAccessGroupConfigArrayOutput {
+	return o
+}
+
+func (o DataAssetAccessGroupConfigArrayOutput) ToDataAssetAccessGroupConfigArrayOutputWithContext(ctx context.Context) DataAssetAccessGroupConfigArrayOutput {
+	return o
+}
+
+func (o DataAssetAccessGroupConfigArrayOutput) Index(i pulumi.IntInput) DataAssetAccessGroupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAssetAccessGroupConfig {
+		return vs[0].([]DataAssetAccessGroupConfig)[vs[1].(int)]
+	}).(DataAssetAccessGroupConfigOutput)
+}
+
 type DataProductAccessGroup struct {
 	// Description of the access group.
 	Description *string `pulumi:"description"`
@@ -16133,6 +16239,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceStatusArrayInput)(nil)).Elem(), AssetResourceStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusInput)(nil)).Elem(), AssetSecurityStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusArrayInput)(nil)).Elem(), AssetSecurityStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAssetAccessGroupConfigInput)(nil)).Elem(), DataAssetAccessGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAssetAccessGroupConfigArrayInput)(nil)).Elem(), DataAssetAccessGroupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupInput)(nil)).Elem(), DataProductAccessGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupArrayInput)(nil)).Elem(), DataProductAccessGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataProductAccessGroupPrincipalInput)(nil)).Elem(), DataProductAccessGroupPrincipalArgs{})
@@ -16335,6 +16443,8 @@ func init() {
 	pulumi.RegisterOutputType(AssetResourceStatusArrayOutput{})
 	pulumi.RegisterOutputType(AssetSecurityStatusOutput{})
 	pulumi.RegisterOutputType(AssetSecurityStatusArrayOutput{})
+	pulumi.RegisterOutputType(DataAssetAccessGroupConfigOutput{})
+	pulumi.RegisterOutputType(DataAssetAccessGroupConfigArrayOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupArrayOutput{})
 	pulumi.RegisterOutputType(DataProductAccessGroupPrincipalOutput{})

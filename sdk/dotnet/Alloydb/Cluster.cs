@@ -468,6 +468,13 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableArray<Outputs.ClusterBackupSource>> BackupSources { get; private set; } = null!;
 
         /// <summary>
+        /// Cluster created from a BackupDR backup.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("backupdrBackupSources")]
+        public Output<ImmutableArray<Outputs.ClusterBackupdrBackupSource>> BackupdrBackupSources { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the alloydb cluster.
         /// </summary>
         [Output("clusterId")]
@@ -629,14 +636,28 @@ namespace Pulumi.Gcp.Alloydb
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Output("restoreBackupSource")]
         public Output<Outputs.ClusterRestoreBackupSource?> RestoreBackupSource { get; private set; } = null!;
 
         /// <summary>
-        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("restoreBackupdrBackupSource")]
+        public Output<Outputs.ClusterRestoreBackupdrBackupSource?> RestoreBackupdrBackupSource { get; private set; } = null!;
+
+        /// <summary>
+        /// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("restoreBackupdrPitrSource")]
+        public Output<Outputs.ClusterRestoreBackupdrPitrSource?> RestoreBackupdrPitrSource { get; private set; } = null!;
+
+        /// <summary>
+        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Output("restoreContinuousBackupSource")]
@@ -873,14 +894,28 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.ClusterPscConfigArgs>? PscConfig { get; set; }
 
         /// <summary>
-        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Input("restoreBackupSource")]
         public Input<Inputs.ClusterRestoreBackupSourceArgs>? RestoreBackupSource { get; set; }
 
         /// <summary>
-        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreBackupdrBackupSource")]
+        public Input<Inputs.ClusterRestoreBackupdrBackupSourceArgs>? RestoreBackupdrBackupSource { get; set; }
+
+        /// <summary>
+        /// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreBackupdrPitrSource")]
+        public Input<Inputs.ClusterRestoreBackupdrPitrSourceArgs>? RestoreBackupdrPitrSource { get; set; }
+
+        /// <summary>
+        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Input("restoreContinuousBackupSource")]
@@ -950,6 +985,19 @@ namespace Pulumi.Gcp.Alloydb
         {
             get => _backupSources ?? (_backupSources = new InputList<Inputs.ClusterBackupSourceGetArgs>());
             set => _backupSources = value;
+        }
+
+        [Input("backupdrBackupSources")]
+        private InputList<Inputs.ClusterBackupdrBackupSourceGetArgs>? _backupdrBackupSources;
+
+        /// <summary>
+        /// Cluster created from a BackupDR backup.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterBackupdrBackupSourceGetArgs> BackupdrBackupSources
+        {
+            get => _backupdrBackupSources ?? (_backupdrBackupSources = new InputList<Inputs.ClusterBackupdrBackupSourceGetArgs>());
+            set => _backupdrBackupSources = value;
         }
 
         /// <summary>
@@ -1163,14 +1211,28 @@ namespace Pulumi.Gcp.Alloydb
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Input("restoreBackupSource")]
         public Input<Inputs.ClusterRestoreBackupSourceGetArgs>? RestoreBackupSource { get; set; }
 
         /// <summary>
-        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreBackupdrBackupSource")]
+        public Input<Inputs.ClusterRestoreBackupdrBackupSourceGetArgs>? RestoreBackupdrBackupSource { get; set; }
+
+        /// <summary>
+        /// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreBackupdrPitrSource")]
+        public Input<Inputs.ClusterRestoreBackupdrPitrSourceGetArgs>? RestoreBackupdrPitrSource { get; set; }
+
+        /// <summary>
+        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Input("restoreContinuousBackupSource")]

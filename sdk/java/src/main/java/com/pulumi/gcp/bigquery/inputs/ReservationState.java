@@ -104,6 +104,7 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won&#39;t use
      * more than the specified number of slots, even if there is demand and supply (from idle
@@ -142,7 +143,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> maxSlots;
 
     /**
-     * @return The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+     * @return (Optional, Beta)
+     * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
      * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won&#39;t use
      * more than the specified number of slots, even if there is demand and supply (from idle
      * slots). NOTE: capping a reservation&#39;s idle slot usage is best effort and its usage may
@@ -276,6 +278,7 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Enum values:
@@ -315,7 +318,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> scalingMode;
 
     /**
-     * @return The scaling mode for the reservation. If the field is present but maxSlots is not present,
+     * @return (Optional, Beta)
+     * The scaling mode for the reservation. If the field is present but maxSlots is not present,
      * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Enum values:
      * `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
@@ -543,7 +547,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSlots The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+         * @param maxSlots (Optional, Beta)
+         * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
          * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won&#39;t use
          * more than the specified number of slots, even if there is demand and supply (from idle
          * slots). NOTE: capping a reservation&#39;s idle slot usage is best effort and its usage may
@@ -585,7 +590,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSlots The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+         * @param maxSlots (Optional, Beta)
+         * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
          * (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won&#39;t use
          * more than the specified number of slots, even if there is demand and supply (from idle
          * slots). NOTE: capping a reservation&#39;s idle slot usage is best effort and its usage may
@@ -767,7 +773,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingMode The scaling mode for the reservation. If the field is present but maxSlots is not present,
+         * @param scalingMode (Optional, Beta)
+         * The scaling mode for the reservation. If the field is present but maxSlots is not present,
          * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
          * Enum values:
          * `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
@@ -810,7 +817,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingMode The scaling mode for the reservation. If the field is present but maxSlots is not present,
+         * @param scalingMode (Optional, Beta)
+         * The scaling mode for the reservation. If the field is present but maxSlots is not present,
          * requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
          * Enum values:
          * `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.

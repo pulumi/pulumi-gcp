@@ -21,14 +21,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A grouping of workstation configurations and the associated workstations in that region.
- * 
- * To get more information about WorkstationCluster, see:
- * 
- * * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
- * * How-to Guides
- *     * [Workstations](https://cloud.google.com/workstations/docs/)
- * 
  * ## Example Usage
  * 
  * ### Workstation Cluster Basic

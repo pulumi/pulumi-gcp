@@ -22,7 +22,7 @@ public final class GetMachineTypesMachineType {
      */
     private List<GetMachineTypesMachineTypeAccelerator> accelerators;
     /**
-     * @return The configuration of bundled local SSD for the machine type. Structure is documented below.
+     * @return (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
      * 
      */
     private List<GetMachineTypesMachineTypeBundledLocalSsd> bundledLocalSsds;
@@ -81,7 +81,7 @@ public final class GetMachineTypesMachineType {
         return this.accelerators;
     }
     /**
-     * @return The configuration of bundled local SSD for the machine type. Structure is documented below.
+     * @return (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
      * 
      */
     public List<GetMachineTypesMachineTypeBundledLocalSsd> bundledLocalSsds() {

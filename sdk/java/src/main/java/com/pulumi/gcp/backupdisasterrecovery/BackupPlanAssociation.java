@@ -134,6 +134,94 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Backup Dr Bpa Filestore
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.filestore.Instance;
+ * import com.pulumi.gcp.filestore.InstanceArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlan;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanAssociation;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanAssociationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myFilestoreInstance = new Instance("myFilestoreInstance", InstanceArgs.builder()
+ *             .name("test-instance-bpa")
+ *             .location("us-central1")
+ *             .tier("ENTERPRISE")
+ *             .fileShares(InstanceFileSharesArgs.builder()
+ *                 .capacityGb(1024)
+ *                 .name("share1")
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .network("default")
+ *                 .modes("MODE_IPV4")
+ *                 .build())
+ *             .build());
+ * 
+ *         var myBackupVault = new BackupVault("myBackupVault", BackupVaultArgs.builder()
+ *             .location("us-central1")
+ *             .backupVaultId("bv-bpa-filestore")
+ *             .backupMinimumEnforcedRetentionDuration("100000s")
+ *             .forceDelete(true)
+ *             .build());
+ * 
+ *         var myBackupPlan = new BackupPlan("myBackupPlan", BackupPlanArgs.builder()
+ *             .location("us-central1")
+ *             .backupPlanId("bp-bpa-filestore")
+ *             .resourceType("file.googleapis.com/Instance")
+ *             .backupVault(myBackupVault.id())
+ *             .backupRules(BackupPlanBackupRuleArgs.builder()
+ *                 .ruleId("rule-1")
+ *                 .backupRetentionDays(5)
+ *                 .standardSchedule(BackupPlanBackupRuleStandardScheduleArgs.builder()
+ *                     .recurrenceType("HOURLY")
+ *                     .hourlyFrequency(6)
+ *                     .timeZone("UTC")
+ *                     .backupWindow(BackupPlanBackupRuleStandardScheduleBackupWindowArgs.builder()
+ *                         .startHourOfDay(0)
+ *                         .endHourOfDay(6)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_backup_plan_association_filestore = new BackupPlanAssociation("my-backup-plan-association-filestore", BackupPlanAssociationArgs.builder()
+ *             .location("us-central1")
+ *             .resourceType("file.googleapis.com/Instance")
+ *             .backupPlanAssociationId("my-bpa-filestore")
+ *             .resource(myFilestoreInstance.id())
+ *             .backupPlan(myBackupPlan.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -167,6 +255,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
      * Note:
      * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
      * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
+     * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
      * 
      */
     @Export(name="backupPlan", refs={String.class}, tree="[0]")
@@ -177,6 +266,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
      * Note:
      * - A Backup Plan configured for &#39;compute.googleapis.com/Instance&#39;, can only protect instance type resources.
      * - A Backup Plan configured for &#39;compute.googleapis.com/Disk&#39; can be used to protect both standard Disks and Regional Disks resources.
+     * - A Backup Plan configured for &#39;file.googleapis.com/Instance&#39; can only protect Filestore instances.
      * 
      */
     public Output<String> backupPlan() {
@@ -223,20 +313,6 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dataSource() {
         return this.dataSource;
-    }
-    /**
-     * The point in time when the last successful backup was captured from the source
-     * 
-     */
-    @Export(name="lastSuccessfulBackupConsistencyTime", refs={String.class}, tree="[0]")
-    private Output<String> lastSuccessfulBackupConsistencyTime;
-
-    /**
-     * @return The point in time when the last successful backup was captured from the source
-     * 
-     */
-    public Output<String> lastSuccessfulBackupConsistencyTime() {
-        return this.lastSuccessfulBackupConsistencyTime;
     }
     /**
      * The location for the backupplan association
@@ -298,7 +374,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource type of workload on which backupplan is applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -306,7 +382,7 @@ public class BackupPlanAssociation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource type of workload on which backupplan is applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, and &#34;compute.googleapis.com/RegionDisk&#34;
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;compute.googleapis.com/RegionDisk&#34;, and &#34;file.googleapis.com/Instance&#34;
      * 
      */
     public Output<String> resourceType() {

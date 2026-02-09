@@ -352,6 +352,35 @@ import (
 //	}
 //
 // ```
+// ### Data Fusion Instance Patch Revision
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datafusion.NewInstance(ctx, "data_fusion_instance_patch_revision", &datafusion.InstanceArgs{
+//				Name:          pulumi.String("my-instance"),
+//				Region:        pulumi.String("us-central1"),
+//				Type:          pulumi.String("BASIC"),
+//				Version:       pulumi.String("6.10.1"),
+//				PatchRevision: pulumi.String("6.10.1.5"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -431,6 +460,8 @@ type Instance struct {
 	Options pulumi.StringMapOutput `pulumi:"options"`
 	// P4 service account for the customer project.
 	P4ServiceAccount pulumi.StringOutput `pulumi:"p4ServiceAccount"`
+	// Current patch revision of the Data Fusion.
+	PatchRevision pulumi.StringOutput `pulumi:"patchRevision"`
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -443,6 +474,7 @@ type Instance struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
@@ -570,6 +602,8 @@ type instanceState struct {
 	Options map[string]string `pulumi:"options"`
 	// P4 service account for the customer project.
 	P4ServiceAccount *string `pulumi:"p4ServiceAccount"`
+	// Current patch revision of the Data Fusion.
+	PatchRevision *string `pulumi:"patchRevision"`
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -582,6 +616,7 @@ type instanceState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region *string `pulumi:"region"`
+	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
@@ -672,6 +707,8 @@ type InstanceState struct {
 	Options pulumi.StringMapInput
 	// P4 service account for the customer project.
 	P4ServiceAccount pulumi.StringPtrInput
+	// Current patch revision of the Data Fusion.
+	PatchRevision pulumi.StringPtrInput
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -684,6 +721,7 @@ type InstanceState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The region of the Data Fusion instance.
 	Region pulumi.StringPtrInput
+	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.
@@ -768,6 +806,8 @@ type instanceArgs struct {
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options map[string]string `pulumi:"options"`
+	// Current patch revision of the Data Fusion.
+	PatchRevision *string `pulumi:"patchRevision"`
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -838,6 +878,8 @@ type InstanceArgs struct {
 	NetworkConfig InstanceNetworkConfigPtrInput
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapInput
+	// Current patch revision of the Data Fusion.
+	PatchRevision pulumi.StringPtrInput
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -1057,6 +1099,11 @@ func (o InstanceOutput) P4ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.P4ServiceAccount }).(pulumi.StringOutput)
 }
 
+// Current patch revision of the Data Fusion.
+func (o InstanceOutput) PatchRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PatchRevision }).(pulumi.StringOutput)
+}
+
 // Specifies whether the Data Fusion instance should be private. If set to
 // true, all Data Fusion nodes will have private IP addresses and will not be
 // able to access the public internet.
@@ -1081,6 +1128,7 @@ func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// (Beta, Deprecated)
 // Service account which will be used to access resources in the customer project.
 //
 // Deprecated: `serviceAccount` is deprecated and will be removed in a future major release. Instead, use `tenantProjectId` to extract the tenant project ID.

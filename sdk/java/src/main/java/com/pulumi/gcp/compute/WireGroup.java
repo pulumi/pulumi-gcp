@@ -303,6 +303,7 @@ public class WireGroup extends com.pulumi.resources.CustomResource {
         return this.topologies;
     }
     /**
+     * (Optional, Beta)
      * Properties specific to the wire group.
      * Structure is documented below.
      * 
@@ -311,7 +312,8 @@ public class WireGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ WireGroupWireGroupProperties> wireGroupProperties;
 
     /**
-     * @return Properties specific to the wire group.
+     * @return (Optional, Beta)
+     * Properties specific to the wire group.
      * Structure is documented below.
      * 
      */

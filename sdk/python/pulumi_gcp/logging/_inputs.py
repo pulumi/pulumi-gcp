@@ -65,6 +65,12 @@ __all__ = [
     'ProjectSinkBigqueryOptionsArgsDict',
     'ProjectSinkExclusionArgs',
     'ProjectSinkExclusionArgsDict',
+    'SavedQueryLoggingQueryArgs',
+    'SavedQueryLoggingQueryArgsDict',
+    'SavedQueryLoggingQuerySummaryFieldArgs',
+    'SavedQueryLoggingQuerySummaryFieldArgsDict',
+    'SavedQueryOpsAnalyticsQueryArgs',
+    'SavedQueryOpsAnalyticsQueryArgsDict',
 ]
 
 MYPY = False
@@ -1974,5 +1980,165 @@ class ProjectSinkExclusionArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class SavedQueryLoggingQueryArgsDict(TypedDict):
+        filter: pulumi.Input[_builtins.str]
+        """
+        An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+        is used to match log entries.
+        """
+        summary_field_end: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Characters will be counted from the end of the string.
+        """
+        summary_field_start: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Characters will be counted from the start of the string.
+        """
+        summary_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgsDict']]]]
+        """
+        The names of the fields to display in the summary.
+        Structure is documented below.
+        """
+elif False:
+    SavedQueryLoggingQueryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SavedQueryLoggingQueryArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[_builtins.str],
+                 summary_field_end: Optional[pulumi.Input[_builtins.int]] = None,
+                 summary_field_start: Optional[pulumi.Input[_builtins.int]] = None,
+                 summary_fields: Optional[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] filter: An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+               is used to match log entries.
+        :param pulumi.Input[_builtins.int] summary_field_end: Characters will be counted from the end of the string.
+        :param pulumi.Input[_builtins.int] summary_field_start: Characters will be counted from the start of the string.
+        :param pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]] summary_fields: The names of the fields to display in the summary.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "filter", filter)
+        if summary_field_end is not None:
+            pulumi.set(__self__, "summary_field_end", summary_field_end)
+        if summary_field_start is not None:
+            pulumi.set(__self__, "summary_field_start", summary_field_start)
+        if summary_fields is not None:
+            pulumi.set(__self__, "summary_fields", summary_fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[_builtins.str]:
+        """
+        An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+        is used to match log entries.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="summaryFieldEnd")
+    def summary_field_end(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Characters will be counted from the end of the string.
+        """
+        return pulumi.get(self, "summary_field_end")
+
+    @summary_field_end.setter
+    def summary_field_end(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "summary_field_end", value)
+
+    @_builtins.property
+    @pulumi.getter(name="summaryFieldStart")
+    def summary_field_start(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Characters will be counted from the start of the string.
+        """
+        return pulumi.get(self, "summary_field_start")
+
+    @summary_field_start.setter
+    def summary_field_start(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "summary_field_start", value)
+
+    @_builtins.property
+    @pulumi.getter(name="summaryFields")
+    def summary_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]:
+        """
+        The names of the fields to display in the summary.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summary_fields")
+
+    @summary_fields.setter
+    def summary_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]):
+        pulumi.set(self, "summary_fields", value)
+
+
+if not MYPY:
+    class SavedQueryLoggingQuerySummaryFieldArgsDict(TypedDict):
+        field: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The field from the LogEntry to include in the summary line.
+        """
+elif False:
+    SavedQueryLoggingQuerySummaryFieldArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SavedQueryLoggingQuerySummaryFieldArgs:
+    def __init__(__self__, *,
+                 field: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: The field from the LogEntry to include in the summary line.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The field from the LogEntry to include in the summary line.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+
+if not MYPY:
+    class SavedQueryOpsAnalyticsQueryArgsDict(TypedDict):
+        sql_query_text: pulumi.Input[_builtins.str]
+        """
+        A logs analytics SQL query, which generally follows BigQuery format.
+        """
+elif False:
+    SavedQueryOpsAnalyticsQueryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SavedQueryOpsAnalyticsQueryArgs:
+    def __init__(__self__, *,
+                 sql_query_text: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] sql_query_text: A logs analytics SQL query, which generally follows BigQuery format.
+        """
+        pulumi.set(__self__, "sql_query_text", sql_query_text)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlQueryText")
+    def sql_query_text(self) -> pulumi.Input[_builtins.str]:
+        """
+        A logs analytics SQL query, which generally follows BigQuery format.
+        """
+        return pulumi.get(self, "sql_query_text")
+
+    @sql_query_text.setter
+    def sql_query_text(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "sql_query_text", value)
 
 

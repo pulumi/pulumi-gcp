@@ -29,6 +29,7 @@ class IndexArgs:
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Index resource.
@@ -52,6 +53,7 @@ class IndexArgs:
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         pulumi.set(__self__, "collection", collection)
@@ -68,6 +70,8 @@ class IndexArgs:
             pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
+        if skip_wait is not None:
+            pulumi.set(__self__, "skip_wait", skip_wait)
         if unique is not None:
             pulumi.set(__self__, "unique", unique)
 
@@ -180,6 +184,18 @@ class IndexArgs:
         pulumi.set(self, "query_scope", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to skip waiting for the index to be created.
+        """
+        return pulumi.get(self, "skip_wait")
+
+    @skip_wait.setter
+    def skip_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_wait", value)
+
+    @_builtins.property
     @pulumi.getter
     def unique(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -204,6 +220,7 @@ class _IndexState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  unique: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Index resources.
@@ -229,6 +246,7 @@ class _IndexState:
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         if api_scope is not None:
@@ -249,6 +267,8 @@ class _IndexState:
             pulumi.set(__self__, "project", project)
         if query_scope is not None:
             pulumi.set(__self__, "query_scope", query_scope)
+        if skip_wait is not None:
+            pulumi.set(__self__, "skip_wait", skip_wait)
         if unique is not None:
             pulumi.set(__self__, "unique", unique)
 
@@ -374,6 +394,18 @@ class _IndexState:
         pulumi.set(self, "query_scope", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to skip waiting for the index to be created.
+        """
+        return pulumi.get(self, "skip_wait")
+
+    @skip_wait.setter
+    def skip_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_wait", value)
+
+    @_builtins.property
     @pulumi.getter
     def unique(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -400,6 +432,7 @@ class Index(pulumi.CustomResource):
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  unique: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -639,6 +672,35 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Firestore Index Skip Wait
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-skip-wait",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[
+                {
+                    "field_path": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "field_path": "description",
+                    "order": "DESCENDING",
+                },
+            ],
+            skip_wait=True)
+        ```
 
         ## Import
 
@@ -674,6 +736,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         ...
@@ -919,6 +982,35 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Firestore Index Skip Wait
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id-skip-wait",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[
+                {
+                    "field_path": "name",
+                    "order": "ASCENDING",
+                },
+                {
+                    "field_path": "description",
+                    "order": "DESCENDING",
+                },
+            ],
+            skip_wait=True)
+        ```
 
         ## Import
 
@@ -955,6 +1047,7 @@ class Index(pulumi.CustomResource):
                  multikey: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
                  unique: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -977,6 +1070,7 @@ class Index(pulumi.CustomResource):
             __props__.__dict__["multikey"] = multikey
             __props__.__dict__["project"] = project
             __props__.__dict__["query_scope"] = query_scope
+            __props__.__dict__["skip_wait"] = skip_wait
             __props__.__dict__["unique"] = unique
             __props__.__dict__["name"] = None
         super(Index, __self__).__init__(
@@ -998,6 +1092,7 @@ class Index(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             query_scope: Optional[pulumi.Input[_builtins.str]] = None,
+            skip_wait: Optional[pulumi.Input[_builtins.bool]] = None,
             unique: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Index':
         """
         Get an existing Index resource's state with the given name, id, and optional extra
@@ -1028,6 +1123,7 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
                Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the index to be created.
         :param pulumi.Input[_builtins.bool] unique: Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1043,6 +1139,7 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["query_scope"] = query_scope
+        __props__.__dict__["skip_wait"] = skip_wait
         __props__.__dict__["unique"] = unique
         return Index(resource_name, opts=opts, __props__=__props__)
 
@@ -1130,6 +1227,14 @@ class Index(pulumi.CustomResource):
         Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
         """
         return pulumi.get(self, "query_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the index to be created.
+        """
+        return pulumi.get(self, "skip_wait")
 
     @_builtins.property
     @pulumi.getter

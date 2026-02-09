@@ -673,6 +673,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/globalForwardingRule:GlobalForwardingRule")
 public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      * 
      */
@@ -680,7 +681,8 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> allowPscGlobalAccess;
 
     /**
-     * @return This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     * @return (Optional, Beta)
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      * 
      */
     public Output<Optional<Boolean>> allowPscGlobalAccess() {

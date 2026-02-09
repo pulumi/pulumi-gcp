@@ -35,6 +35,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
                  private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -77,6 +78,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[_builtins.str] patch_revision: Current patch revision of the Data Fusion.
         :param pulumi.Input[_builtins.bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
                able to access the public internet.
@@ -117,6 +119,8 @@ class InstanceArgs:
             pulumi.set(__self__, "network_config", network_config)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if patch_revision is not None:
+            pulumi.set(__self__, "patch_revision", patch_revision)
         if private_instance is not None:
             pulumi.set(__self__, "private_instance", private_instance)
         if project is not None:
@@ -319,6 +323,18 @@ class InstanceArgs:
         pulumi.set(self, "options", value)
 
     @_builtins.property
+    @pulumi.getter(name="patchRevision")
+    def patch_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current patch revision of the Data Fusion.
+        """
+        return pulumi.get(self, "patch_revision")
+
+    @patch_revision.setter
+    def patch_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "patch_revision", value)
+
+    @_builtins.property
     @pulumi.getter(name="privateInstance")
     def private_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -418,6 +434,7 @@ class _InstanceState:
                  network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  p4_service_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
                  private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -462,6 +479,7 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[_builtins.str] p4_service_account: P4 service account for the customer project.
+        :param pulumi.Input[_builtins.str] patch_revision: Current patch revision of the Data Fusion.
         :param pulumi.Input[_builtins.bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
                able to access the public internet.
@@ -470,7 +488,8 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the Data Fusion instance.
-        :param pulumi.Input[_builtins.str] service_account: Service account which will be used to access resources in the customer project.
+        :param pulumi.Input[_builtins.str] service_account: (Beta, Deprecated)
+               Service account which will be used to access resources in the customer project.
         :param pulumi.Input[_builtins.str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[_builtins.str] state: The current state of this Data Fusion instance.
                - CREATING: Instance is being created
@@ -536,6 +555,8 @@ class _InstanceState:
             pulumi.set(__self__, "options", options)
         if p4_service_account is not None:
             pulumi.set(__self__, "p4_service_account", p4_service_account)
+        if patch_revision is not None:
+            pulumi.set(__self__, "patch_revision", patch_revision)
         if private_instance is not None:
             pulumi.set(__self__, "private_instance", private_instance)
         if project is not None:
@@ -795,6 +816,18 @@ class _InstanceState:
         pulumi.set(self, "p4_service_account", value)
 
     @_builtins.property
+    @pulumi.getter(name="patchRevision")
+    def patch_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current patch revision of the Data Fusion.
+        """
+        return pulumi.get(self, "patch_revision")
+
+    @patch_revision.setter
+    def patch_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "patch_revision", value)
+
+    @_builtins.property
     @pulumi.getter(name="privateInstance")
     def private_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -851,6 +884,7 @@ class _InstanceState:
     @_utilities.deprecated("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
     def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Beta, Deprecated)
         Service account which will be used to access resources in the customer project.
         """
         return pulumi.get(self, "service_account")
@@ -1006,6 +1040,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
                  private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1179,6 +1214,19 @@ class Instance(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
+        ### Data Fusion Instance Patch Revision
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_fusion_instance_patch_revision = gcp.datafusion.Instance("data_fusion_instance_patch_revision",
+            name="my-instance",
+            region="us-central1",
+            type="BASIC",
+            version="6.10.1",
+            patch_revision="6.10.1.5")
+        ```
 
         ## Import
 
@@ -1235,6 +1283,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
+        :param pulumi.Input[_builtins.str] patch_revision: Current patch revision of the Data Fusion.
         :param pulumi.Input[_builtins.bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
                able to access the public internet.
@@ -1430,6 +1479,19 @@ class Instance(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
+        ### Data Fusion Instance Patch Revision
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_fusion_instance_patch_revision = gcp.datafusion.Instance("data_fusion_instance_patch_revision",
+            name="my-instance",
+            region="us-central1",
+            type="BASIC",
+            version="6.10.1",
+            patch_revision="6.10.1.5")
+        ```
 
         ## Import
 
@@ -1489,6 +1551,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
                  private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1518,6 +1581,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["options"] = options
+            __props__.__dict__["patch_revision"] = patch_revision
             __props__.__dict__["private_instance"] = private_instance
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
@@ -1569,6 +1633,7 @@ class Instance(pulumi.CustomResource):
             network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
             options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             p4_service_account: Optional[pulumi.Input[_builtins.str]] = None,
+            patch_revision: Optional[pulumi.Input[_builtins.str]] = None,
             private_instance: Optional[pulumi.Input[_builtins.bool]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1618,6 +1683,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: Map of additional options used to configure the behavior of Data Fusion instance.
         :param pulumi.Input[_builtins.str] p4_service_account: P4 service account for the customer project.
+        :param pulumi.Input[_builtins.str] patch_revision: Current patch revision of the Data Fusion.
         :param pulumi.Input[_builtins.bool] private_instance: Specifies whether the Data Fusion instance should be private. If set to
                true, all Data Fusion nodes will have private IP addresses and will not be
                able to access the public internet.
@@ -1626,7 +1692,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] region: The region of the Data Fusion instance.
-        :param pulumi.Input[_builtins.str] service_account: Service account which will be used to access resources in the customer project.
+        :param pulumi.Input[_builtins.str] service_account: (Beta, Deprecated)
+               Service account which will be used to access resources in the customer project.
         :param pulumi.Input[_builtins.str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[_builtins.str] state: The current state of this Data Fusion instance.
                - CREATING: Instance is being created
@@ -1678,6 +1745,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["options"] = options
         __props__.__dict__["p4_service_account"] = p4_service_account
+        __props__.__dict__["patch_revision"] = patch_revision
         __props__.__dict__["private_instance"] = private_instance
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -1849,6 +1917,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "p4_service_account")
 
     @_builtins.property
+    @pulumi.getter(name="patchRevision")
+    def patch_revision(self) -> pulumi.Output[_builtins.str]:
+        """
+        Current patch revision of the Data Fusion.
+        """
+        return pulumi.get(self, "patch_revision")
+
+    @_builtins.property
     @pulumi.getter(name="privateInstance")
     def private_instance(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -1889,6 +1965,7 @@ class Instance(pulumi.CustomResource):
     @_utilities.deprecated("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
     def service_account(self) -> pulumi.Output[_builtins.str]:
         """
+        (Beta, Deprecated)
         Service account which will be used to access resources in the customer project.
         """
         return pulumi.get(self, "service_account")

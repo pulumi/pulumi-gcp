@@ -238,7 +238,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     declare public readonly namedPorts: pulumi.Output<outputs.compute.RegionInstanceGroupManagerNamedPort[] | undefined>;
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
     declare public readonly params: pulumi.Output<outputs.compute.RegionInstanceGroupManagerParams | undefined>;
     /**
@@ -494,7 +494,7 @@ export interface RegionInstanceGroupManagerState {
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
     params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
     /**
@@ -644,7 +644,7 @@ export interface RegionInstanceGroupManagerArgs {
      */
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      */
     params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
     /**

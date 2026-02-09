@@ -4110,9 +4110,9 @@ class ClusterAddonsConfig(dict):
         :param 'ClusterAddonsConfigHttpLoadBalancingArgs' http_load_balancing: The status of the HTTP (L7) load balancing
                controller addon, which makes it easy to set up HTTP load balancers for services in a
                cluster. It is enabled by default; set `disabled = true` to disable.
-        :param 'ClusterAddonsConfigIstioConfigArgs' istio_config: .
+        :param 'ClusterAddonsConfigIstioConfigArgs' istio_config: ).
                Structure is documented below.
-        :param 'ClusterAddonsConfigKalmConfigArgs' kalm_config: .
+        :param 'ClusterAddonsConfigKalmConfigArgs' kalm_config: ).
                Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
         :param 'ClusterAddonsConfigLustreCsiDriverConfigArgs' lustre_csi_driver_config: The status of the Lustre CSI driver addon,
                which allows the usage of a Lustre instances as volumes.
@@ -4133,7 +4133,7 @@ class ClusterAddonsConfig(dict):
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-        :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        :param 'ClusterAddonsConfigPodSnapshotConfigArgs' pod_snapshot_config: ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
                
                This example `addons_config` disables two addons:
         :param Sequence['ClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: . The status of the [Ray Operator
@@ -4285,7 +4285,7 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="istioConfig")
     def istio_config(self) -> Optional['outputs.ClusterAddonsConfigIstioConfig']:
         """
-        .
+        ).
         Structure is documented below.
         """
         return pulumi.get(self, "istio_config")
@@ -4294,7 +4294,7 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="kalmConfig")
     def kalm_config(self) -> Optional['outputs.ClusterAddonsConfigKalmConfig']:
         """
-        .
+        ).
         Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
         """
         return pulumi.get(self, "kalm_config")
@@ -4343,7 +4343,7 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="podSnapshotConfig")
     def pod_snapshot_config(self) -> Optional['outputs.ClusterAddonsConfigPodSnapshotConfig']:
         """
-        The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
 
         This example `addons_config` disables two addons:
         """
@@ -4935,7 +4935,7 @@ class ClusterClusterAutoscaling(dict):
         :param Sequence['ClusterClusterAutoscalingResourceLimitArgs'] resource_limits: Global constraints for machine resources in the
                cluster. Configuring the `cpu` and `memory` types is required if node
                auto-provisioning is enabled. These limits will apply to node pool autoscaling
-               in addition to node auto-provisioning. Structure is documented below.
+               in addition to node auto-provisioning. Limits can't be unset entirely, they can only be replaced. Structure is documented below.
         """
         if auto_provisioning_defaults is not None:
             pulumi.set(__self__, "auto_provisioning_defaults", auto_provisioning_defaults)
@@ -5005,7 +5005,7 @@ class ClusterClusterAutoscaling(dict):
         Global constraints for machine resources in the
         cluster. Configuring the `cpu` and `memory` types is required if node
         auto-provisioning is enabled. These limits will apply to node pool autoscaling
-        in addition to node auto-provisioning. Structure is documented below.
+        in addition to node auto-provisioning. Limits can't be unset entirely, they can only be replaced. Structure is documented below.
         """
         return pulumi.get(self, "resource_limits")
 
@@ -5062,7 +5062,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         :param _builtins.str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
         :param _builtins.str image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
-        :param _builtins.str min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+        :param _builtins.str min_cpu_platform: )
+               Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
                specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
                as "Intel Haswell" or "Intel Sandy Bridge".
         :param Sequence[_builtins.str] oauth_scopes: Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
@@ -5137,6 +5138,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[_builtins.str]:
         """
+        )
         Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
         specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
         as "Intel Haswell" or "Intel Sandy Bridge".
@@ -7714,7 +7716,7 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param 'ClusterNodeConfigBootDiskArgs' boot_disk: Configuration of the node pool boot disk. Structure is documented below
-        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified
@@ -7724,7 +7726,7 @@ class ClusterNodeConfig(dict):
                (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         :param Sequence['ClusterNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
         :param _builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
-        :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodeConfigFastSocketArgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
@@ -7796,7 +7798,8 @@ class ClusterNodeConfig(dict):
         :param Mapping[str, _builtins.str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param 'ClusterNodeConfigSandboxConfigArgs' sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               Structure is documented below.
         :param Sequence['ClusterNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param _builtins.str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -7934,7 +7937,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[_builtins.str]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -7993,7 +7996,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional['outputs.ClusterNodeConfigEphemeralStorageConfig']:
         """
-        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         """
         return pulumi.get(self, "ephemeral_storage_config")
 
@@ -8247,7 +8250,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodeConfigSandboxConfig']:
         """
-        Sandbox configuration for this node.
+        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
 
@@ -12560,7 +12564,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigBootDiskArgs' boot_disk: Configuration of the node pool boot disk. Structure is documented below
-        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param _builtins.str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigContainerdConfigArgs' containerd_config: Parameters to customize containerd runtime. Structure is documented below.
         :param _builtins.int disk_size_gb: Size of the disk attached to each node, specified
@@ -12570,7 +12574,7 @@ class ClusterNodePoolNodeConfig(dict):
                (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
         :param Sequence['ClusterNodePoolNodeConfigEffectiveTaintArgs'] effective_taints: List of kubernetes taints applied to each node.
         :param _builtins.bool enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
-        :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigFastSocketArgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
@@ -12642,7 +12646,8 @@ class ClusterNodePoolNodeConfig(dict):
         :param Mapping[str, _builtins.str] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param Mapping[str, _builtins.str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: Sandbox configuration for this node.
+        :param 'ClusterNodePoolNodeConfigSandboxConfigArgs' sandbox_config: ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+               Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigSecondaryBootDiskArgs'] secondary_boot_disks: Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
         :param _builtins.str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
@@ -12780,7 +12785,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[_builtins.str]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -12839,7 +12844,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig']:
         """
-        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         """
         return pulumi.get(self, "ephemeral_storage_config")
 
@@ -13093,7 +13098,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="sandboxConfig")
     def sandbox_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig']:
         """
-        Sandbox configuration for this node.
+        ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
+        Structure is documented below.
         """
         return pulumi.get(self, "sandbox_config")
 
@@ -16362,8 +16368,8 @@ class ClusterProtectConfig(dict):
                  workload_config: Optional['outputs.ClusterProtectConfigWorkloadConfig'] = None,
                  workload_vulnerability_mode: Optional[_builtins.str] = None):
         """
-        :param 'ClusterProtectConfigWorkloadConfigArgs' workload_config: WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
-        :param _builtins.str workload_vulnerability_mode: Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+        :param 'ClusterProtectConfigWorkloadConfigArgs' workload_config: ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+        :param _builtins.str workload_vulnerability_mode: ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         if workload_config is not None:
             pulumi.set(__self__, "workload_config", workload_config)
@@ -16374,7 +16380,7 @@ class ClusterProtectConfig(dict):
     @pulumi.getter(name="workloadConfig")
     def workload_config(self) -> Optional['outputs.ClusterProtectConfigWorkloadConfig']:
         """
-        WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+        ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
         """
         return pulumi.get(self, "workload_config")
 
@@ -16382,7 +16388,7 @@ class ClusterProtectConfig(dict):
     @pulumi.getter(name="workloadVulnerabilityMode")
     def workload_vulnerability_mode(self) -> Optional[_builtins.str]:
         """
-        Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+        ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         return pulumi.get(self, "workload_vulnerability_mode")
 
@@ -16409,7 +16415,7 @@ class ClusterProtectConfigWorkloadConfig(dict):
     def __init__(__self__, *,
                  audit_mode: _builtins.str):
         """
-        :param _builtins.str audit_mode: Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        :param _builtins.str audit_mode: ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
         """
         pulumi.set(__self__, "audit_mode", audit_mode)
 
@@ -16417,7 +16423,7 @@ class ClusterProtectConfigWorkloadConfig(dict):
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> _builtins.str:
         """
-        Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -16696,8 +16702,8 @@ class ClusterSecretManagerConfigRotationConfig(dict):
                  enabled: _builtins.bool,
                  rotation_interval: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool enabled: Enable the roation in Sync as K8s secret feature for this cluster.
-        :param _builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        :param _builtins.bool enabled: ) - Enable the roation in Sync as K8s secret feature for this cluster.
+        :param _builtins.str rotation_interval: ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
         if rotation_interval is not None:
@@ -16707,7 +16713,7 @@ class ClusterSecretManagerConfigRotationConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Enable the roation in Sync as K8s secret feature for this cluster.
+        ) - Enable the roation in Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -16715,7 +16721,7 @@ class ClusterSecretManagerConfigRotationConfig(dict):
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[_builtins.str]:
         """
-        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -16743,8 +16749,8 @@ class ClusterSecretSyncConfig(dict):
                  enabled: _builtins.bool,
                  rotation_config: Optional['outputs.ClusterSecretSyncConfigRotationConfig'] = None):
         """
-        :param _builtins.bool enabled: Enable the Sync as K8s secret feature for this cluster.
-        :param 'ClusterSecretSyncConfigRotationConfigArgs' rotation_config: config for secret sync auto rotation. Structure is docuemented below
+        :param _builtins.bool enabled: ) - Enable the Sync as K8s secret feature for this cluster.
+        :param 'ClusterSecretSyncConfigRotationConfigArgs' rotation_config: ) - config for secret sync auto rotation. Structure is docuemented below
         """
         pulumi.set(__self__, "enabled", enabled)
         if rotation_config is not None:
@@ -16754,7 +16760,7 @@ class ClusterSecretSyncConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Enable the Sync as K8s secret feature for this cluster.
+        ) - Enable the Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -16762,7 +16768,7 @@ class ClusterSecretSyncConfig(dict):
     @pulumi.getter(name="rotationConfig")
     def rotation_config(self) -> Optional['outputs.ClusterSecretSyncConfigRotationConfig']:
         """
-        config for secret sync auto rotation. Structure is docuemented below
+        ) - config for secret sync auto rotation. Structure is docuemented below
         """
         return pulumi.get(self, "rotation_config")
 
@@ -16790,8 +16796,8 @@ class ClusterSecretSyncConfigRotationConfig(dict):
                  enabled: _builtins.bool,
                  rotation_interval: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool enabled: Enable the roation in Sync as K8s secret feature for this cluster.
-        :param _builtins.str rotation_interval: The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        :param _builtins.bool enabled: ) - Enable the roation in Sync as K8s secret feature for this cluster.
+        :param _builtins.str rotation_interval: ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
         if rotation_interval is not None:
@@ -16801,7 +16807,7 @@ class ClusterSecretSyncConfigRotationConfig(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Enable the roation in Sync as K8s secret feature for this cluster.
+        ) - Enable the roation in Sync as K8s secret feature for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -16809,7 +16815,7 @@ class ClusterSecretSyncConfigRotationConfig(dict):
     @pulumi.getter(name="rotationInterval")
     def rotation_interval(self) -> Optional[_builtins.str]:
         """
-        The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -17373,7 +17379,7 @@ class NodePoolNetworkConfig(dict):
                  pod_range: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None):
         """
-        :param _builtins.str accelerator_network_profile: Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+        :param _builtins.str accelerator_network_profile: ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
         :param Sequence['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs'] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
                Structure is documented below
         :param Sequence['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs'] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
@@ -17411,7 +17417,7 @@ class NodePoolNetworkConfig(dict):
     @pulumi.getter(name="acceleratorNetworkProfile")
     def accelerator_network_profile(self) -> Optional[_builtins.str]:
         """
-        Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
+        ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
         """
         return pulumi.get(self, "accelerator_network_profile")
 
@@ -20865,7 +20871,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings(dict):
                  node_pool_soak_duration: Optional[_builtins.str] = None,
                  standard_rollout_policy: Optional['outputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy'] = None):
         """
-        :param 'NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs' autoscaled_rollout_policy: Autoscaled rollout policy for blue-green upgrade.
+        :param 'NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs' autoscaled_rollout_policy: ) Autoscaled rollout policy for blue-green upgrade.
         :param _builtins.str node_pool_soak_duration: Time needed after draining the entire blue pool.
                After this period, the blue pool will be cleaned up.
         :param 'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
@@ -20881,7 +20887,7 @@ class NodePoolUpgradeSettingsBlueGreenSettings(dict):
     @pulumi.getter(name="autoscaledRolloutPolicy")
     def autoscaled_rollout_policy(self) -> Optional['outputs.NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy']:
         """
-        Autoscaled rollout policy for blue-green upgrade.
+        ) Autoscaled rollout policy for blue-green upgrade.
         """
         return pulumi.get(self, "autoscaled_rollout_policy")
 

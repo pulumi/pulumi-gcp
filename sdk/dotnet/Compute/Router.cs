@@ -259,6 +259,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A URI of an NCC Gateway spoke
         /// </summary>
         [Output("nccGateway")]
@@ -381,6 +382,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// A URI of an NCC Gateway spoke
         /// </summary>
         [Input("nccGateway")]
@@ -465,6 +467,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// A URI of an NCC Gateway spoke
         /// </summary>
         [Input("nccGateway")]

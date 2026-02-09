@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get information about a Regional Backend Service. For more information see
-        /// [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+        /// [the official documentation](https://docs.cloud.google.com/load-balancing/docs/internal) and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
         /// 
         /// ## Example Usage
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Get information about a Regional Backend Service. For more information see
-        /// [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+        /// [the official documentation](https://docs.cloud.google.com/load-balancing/docs/internal) and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
         /// 
         /// ## Example Usage
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Get information about a Regional Backend Service. For more information see
-        /// [the official documentation](https://cloud.google.com/compute/docs/load-balancing/internal/backend-service) and
+        /// [the official documentation](https://docs.cloud.google.com/load-balancing/docs/internal) and
         /// [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionBackendServices).
         /// 
         /// ## Example Usage

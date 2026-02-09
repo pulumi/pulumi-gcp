@@ -289,6 +289,7 @@ type Instance struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigOutput `pulumi:"networkConfig"`
+	// (Optional, Beta)
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig InstanceObservabilityConfigOutput `pulumi:"observabilityConfig"`
@@ -425,6 +426,7 @@ type instanceState struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// (Optional, Beta)
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig *InstanceObservabilityConfig `pulumi:"observabilityConfig"`
@@ -518,6 +520,7 @@ type InstanceState struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
+	// (Optional, Beta)
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig InstanceObservabilityConfigPtrInput
@@ -606,6 +609,7 @@ type instanceArgs struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
+	// (Optional, Beta)
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig *InstanceObservabilityConfig `pulumi:"observabilityConfig"`
@@ -672,6 +676,7 @@ type InstanceArgs struct {
 	// Instance level network configuration.
 	// Structure is documented below.
 	NetworkConfig InstanceNetworkConfigPtrInput
+	// (Optional, Beta)
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig InstanceObservabilityConfigPtrInput
@@ -889,6 +894,7 @@ func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkConfigOutput { return v.NetworkConfig }).(InstanceNetworkConfigOutput)
 }
 
+// (Optional, Beta)
 // Configuration for enhanced query insights.
 // Structure is documented below.
 func (o InstanceOutput) ObservabilityConfig() InstanceObservabilityConfigOutput {

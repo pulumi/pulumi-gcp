@@ -34,6 +34,7 @@ public final class FlexibleAppVersionNetworkArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * (Optional, Beta)
      * Prevent instances from receiving an ephemeral external IP address.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
@@ -42,7 +43,8 @@ public final class FlexibleAppVersionNetworkArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> instanceIpMode;
 
     /**
-     * @return Prevent instances from receiving an ephemeral external IP address.
+     * @return (Optional, Beta)
+     * Prevent instances from receiving an ephemeral external IP address.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
@@ -179,7 +181,8 @@ public final class FlexibleAppVersionNetworkArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param instanceIpMode Prevent instances from receiving an ephemeral external IP address.
+         * @param instanceIpMode (Optional, Beta)
+         * Prevent instances from receiving an ephemeral external IP address.
          * Possible values are: `EXTERNAL`, `INTERNAL`.
          * 
          * @return builder
@@ -191,7 +194,8 @@ public final class FlexibleAppVersionNetworkArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param instanceIpMode Prevent instances from receiving an ephemeral external IP address.
+         * @param instanceIpMode (Optional, Beta)
+         * Prevent instances from receiving an ephemeral external IP address.
          * Possible values are: `EXTERNAL`, `INTERNAL`.
          * 
          * @return builder

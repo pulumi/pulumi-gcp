@@ -212,7 +212,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * .
+     * ).
      * Structure is documented below.
      * 
      */
@@ -220,7 +220,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<ClusterAddonsConfigIstioConfigArgs> istioConfig;
 
     /**
-     * @return .
+     * @return ).
      * Structure is documented below.
      * 
      */
@@ -229,7 +229,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * .
+     * ).
      * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -237,7 +237,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<ClusterAddonsConfigKalmConfigArgs> kalmConfig;
 
     /**
-     * @return .
+     * @return ).
      * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -323,7 +323,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 
@@ -332,7 +332,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<ClusterAddonsConfigPodSnapshotConfigArgs> podSnapshotConfig;
 
     /**
-     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * @return ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 
@@ -671,7 +671,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param istioConfig .
+         * @param istioConfig ).
          * Structure is documented below.
          * 
          * @return builder
@@ -683,7 +683,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param istioConfig .
+         * @param istioConfig ).
          * Structure is documented below.
          * 
          * @return builder
@@ -694,7 +694,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kalmConfig .
+         * @param kalmConfig ).
          * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
          * 
          * @return builder
@@ -706,7 +706,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param kalmConfig .
+         * @param kalmConfig ).
          * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
          * 
          * @return builder
@@ -812,7 +812,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+         * @param podSnapshotConfig ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
          * 
          * This example `addonsConfig` disables two addons:
          * 
@@ -825,7 +825,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param podSnapshotConfig The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+         * @param podSnapshotConfig ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
          * 
          * This example `addonsConfig` disables two addons:
          * 

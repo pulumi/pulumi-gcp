@@ -204,7 +204,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkeonprem.NewVMwareCluster(ctx, "cluster-manuallb", &gkeonprem.VMwareClusterArgs{
-//				Name:                   pulumi.String("cluster-manuallb"),
+//				Name: pulumi.String("cluster-manuallb"),
+//				SkipValidations: pulumi.StringArray{
+//					pulumi.String("WORKSTATION"),
+//					pulumi.String("CONFIG"),
+//					pulumi.String("DOCKER"),
+//				},
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				Description:            pulumi.String("test cluster"),
@@ -429,6 +434,9 @@ type VMwareCluster struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware User Cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// A list of validations to skip during preflight checks.
+	// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+	SkipValidations pulumi.StringArrayOutput `pulumi:"skipValidations"`
 	// (Output)
 	// The lifecycle state of the condition.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -584,6 +592,9 @@ type vmwareClusterState struct {
 	Project *string `pulumi:"project"`
 	// If set, there are currently changes in flight to the VMware User Cluster.
 	Reconciling *bool `pulumi:"reconciling"`
+	// A list of validations to skip during preflight checks.
+	// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+	SkipValidations []string `pulumi:"skipValidations"`
 	// (Output)
 	// The lifecycle state of the condition.
 	State *string `pulumi:"state"`
@@ -698,6 +709,9 @@ type VMwareClusterState struct {
 	Project pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the VMware User Cluster.
 	Reconciling pulumi.BoolPtrInput
+	// A list of validations to skip during preflight checks.
+	// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+	SkipValidations pulumi.StringArrayInput
 	// (Output)
 	// The lifecycle state of the condition.
 	State pulumi.StringPtrInput
@@ -787,6 +801,9 @@ type vmwareClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// A list of validations to skip during preflight checks.
+	// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+	SkipValidations []string `pulumi:"skipValidations"`
 	// Storage configuration.
 	// Structure is documented below.
 	Storage *VMwareClusterStorage `pulumi:"storage"`
@@ -859,6 +876,9 @@ type VMwareClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// A list of validations to skip during preflight checks.
+	// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+	SkipValidations pulumi.StringArrayInput
 	// Storage configuration.
 	// Structure is documented below.
 	Storage VMwareClusterStoragePtrInput
@@ -1118,6 +1138,12 @@ func (o VMwareClusterOutput) Project() pulumi.StringOutput {
 // If set, there are currently changes in flight to the VMware User Cluster.
 func (o VMwareClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// A list of validations to skip during preflight checks.
+// Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+func (o VMwareClusterOutput) SkipValidations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VMwareCluster) pulumi.StringArrayOutput { return v.SkipValidations }).(pulumi.StringArrayOutput)
 }
 
 // (Output)

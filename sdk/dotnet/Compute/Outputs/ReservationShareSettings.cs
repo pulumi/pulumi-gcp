@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ReservationShareSettingsProjectMap> ProjectMaps;
         /// <summary>
+        /// (Optional, Beta)
         /// List of project IDs with which the reservation is shared.
         /// </summary>
         public readonly ImmutableArray<string> Projects;

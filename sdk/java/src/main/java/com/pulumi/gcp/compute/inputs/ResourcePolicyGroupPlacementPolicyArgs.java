@@ -72,6 +72,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     }
 
     /**
+     * (Optional, Beta)
      * Specifies the number of max logical switches.
      * 
      */
@@ -79,7 +80,8 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     private @Nullable Output<Integer> maxDistance;
 
     /**
-     * @return Specifies the number of max logical switches.
+     * @return (Optional, Beta)
+     * Specifies the number of max logical switches.
      * 
      */
     public Optional<Output<Integer>> maxDistance() {
@@ -87,6 +89,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     }
 
     /**
+     * (Optional, Beta)
      * Specifies the shape of the TPU slice.
      * 
      */
@@ -94,7 +97,8 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
     private @Nullable Output<String> tpuTopology;
 
     /**
-     * @return Specifies the shape of the TPU slice.
+     * @return (Optional, Beta)
+     * Specifies the shape of the TPU slice.
      * 
      */
     public Optional<Output<String>> tpuTopology() {
@@ -223,7 +227,8 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxDistance Specifies the number of max logical switches.
+         * @param maxDistance (Optional, Beta)
+         * Specifies the number of max logical switches.
          * 
          * @return builder
          * 
@@ -234,7 +239,8 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxDistance Specifies the number of max logical switches.
+         * @param maxDistance (Optional, Beta)
+         * Specifies the number of max logical switches.
          * 
          * @return builder
          * 
@@ -244,7 +250,8 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param tpuTopology Specifies the shape of the TPU slice.
+         * @param tpuTopology (Optional, Beta)
+         * Specifies the shape of the TPU slice.
          * 
          * @return builder
          * 
@@ -255,7 +262,8 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param tpuTopology Specifies the shape of the TPU slice.
+         * @param tpuTopology (Optional, Beta)
+         * Specifies the shape of the TPU slice.
          * 
          * @return builder
          * 

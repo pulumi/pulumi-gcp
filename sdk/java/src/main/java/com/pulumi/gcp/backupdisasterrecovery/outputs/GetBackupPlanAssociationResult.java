@@ -23,7 +23,6 @@ public final class GetBackupPlanAssociationResult {
      * 
      */
     private String id;
-    private String lastSuccessfulBackupConsistencyTime;
     private String location;
     private String name;
     private @Nullable String project;
@@ -51,9 +50,6 @@ public final class GetBackupPlanAssociationResult {
      */
     public String id() {
         return this.id;
-    }
-    public String lastSuccessfulBackupConsistencyTime() {
-        return this.lastSuccessfulBackupConsistencyTime;
     }
     public String location() {
         return this.location;
@@ -91,7 +87,6 @@ public final class GetBackupPlanAssociationResult {
         private String createTime;
         private String dataSource;
         private String id;
-        private String lastSuccessfulBackupConsistencyTime;
         private String location;
         private String name;
         private @Nullable String project;
@@ -107,7 +102,6 @@ public final class GetBackupPlanAssociationResult {
     	      this.createTime = defaults.createTime;
     	      this.dataSource = defaults.dataSource;
     	      this.id = defaults.id;
-    	      this.lastSuccessfulBackupConsistencyTime = defaults.lastSuccessfulBackupConsistencyTime;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
@@ -155,14 +149,6 @@ public final class GetBackupPlanAssociationResult {
               throw new MissingRequiredPropertyException("GetBackupPlanAssociationResult", "id");
             }
             this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder lastSuccessfulBackupConsistencyTime(String lastSuccessfulBackupConsistencyTime) {
-            if (lastSuccessfulBackupConsistencyTime == null) {
-              throw new MissingRequiredPropertyException("GetBackupPlanAssociationResult", "lastSuccessfulBackupConsistencyTime");
-            }
-            this.lastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
             return this;
         }
         @CustomType.Setter
@@ -229,7 +215,6 @@ public final class GetBackupPlanAssociationResult {
             _resultValue.createTime = createTime;
             _resultValue.dataSource = dataSource;
             _resultValue.id = id;
-            _resultValue.lastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.project = project;

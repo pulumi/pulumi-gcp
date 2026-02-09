@@ -486,6 +486,7 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
+     * (Optional, Beta)
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      * 
      */
@@ -493,7 +494,8 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> urlFilteringProfile;
 
     /**
-     * @return Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * @return (Optional, Beta)
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      * 
      */
     public Output<Optional<String>> urlFilteringProfile() {

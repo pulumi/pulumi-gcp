@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// RBACRoleBinding represents a rbacrolebinding across the Fleet.
-//
-// To get more information about MembershipRBACRoleBinding, see:
-//
-// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
-// * How-to Guides
-//   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
-//
 // ## Example Usage
 //
 // ### Gkehub Membership Rbac Role Binding Basic
@@ -52,7 +44,7 @@ import (
 //				return err
 //			}
 //			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("tf-test-membership_1443"),
+//				MembershipId: pulumi.String("tf-test-membership_15335"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 //						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
@@ -71,7 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewMembershipRbacRoleBinding(ctx, "membership_rbac_role_binding", &gkehub.MembershipRbacRoleBindingArgs{
-//				MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_26032"),
+//				MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_20665"),
 //				MembershipId:                membership.MembershipId,
 //				User:                        pulumi.Sprintf("service-%v@gcp-sa-anthossupport.iam.gserviceaccount.com", project.Number),
 //				Role: &gkehub.MembershipRbacRoleBindingRoleArgs{

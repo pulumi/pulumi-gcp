@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ActiveDirectory
 {
     /// <summary>
-    /// Creates a Peering for Managed AD instance.
-    /// 
-    /// To get more information about Peering, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1beta1/projects.locations.global.peerings)
-    /// * How-to Guides
-    ///     * [Active Directory Domain Peering](https://cloud.google.com/managed-microsoft-ad/docs/domain-peering)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Active Directory Peering Basic

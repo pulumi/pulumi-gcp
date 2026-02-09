@@ -311,7 +311,6 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly networkInterfaces: pulumi.Output<outputs.compute.InstanceNetworkInterface[]>;
     /**
-     * (Optional, Beta
      * Configures network performance settings for the instance. Structure is
      * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -667,7 +666,6 @@ export interface InstanceState {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
-     * (Optional, Beta
      * Configures network performance settings for the instance. Structure is
      * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -878,7 +876,6 @@ export interface InstanceArgs {
      */
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
-     * (Optional, Beta
      * Configures network performance settings for the instance. Structure is
      * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

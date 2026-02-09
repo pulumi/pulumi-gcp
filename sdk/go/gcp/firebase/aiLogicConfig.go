@@ -11,17 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configuration for Firebase AI Logic.
-//
-// To get more information about Config, see:
-//
-// * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest)
-// * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/docs/ai-logic)
-//
-// > **Note:**  All arguments marked as write-only values will not be stored in the state: `generative_language_config.api_key_wo`.
-// Read more about Write-only Arguments.
-//
 // ## Example Usage
 //
 // ### Firebaseailogic Config Basic

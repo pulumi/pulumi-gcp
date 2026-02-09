@@ -66,6 +66,7 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Whether to run the query as continuous or a regular query.
      * 
      */
@@ -73,7 +74,8 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> continuous;
 
     /**
-     * @return Whether to run the query as continuous or a regular query.
+     * @return (Optional, Beta)
+     * Whether to run the query as continuous or a regular query.
      * 
      */
     public Optional<Output<Boolean>> continuous() {
@@ -498,7 +500,8 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param continuous Whether to run the query as continuous or a regular query.
+         * @param continuous (Optional, Beta)
+         * Whether to run the query as continuous or a regular query.
          * 
          * @return builder
          * 
@@ -509,7 +512,8 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param continuous Whether to run the query as continuous or a regular query.
+         * @param continuous (Optional, Beta)
+         * Whether to run the query as continuous or a regular query.
          * 
          * @return builder
          * 
