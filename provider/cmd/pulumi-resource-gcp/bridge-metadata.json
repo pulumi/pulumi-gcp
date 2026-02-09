@@ -1063,6 +1063,9 @@
                     "backup_source": {
                         "maxItemsOne": false
                     },
+                    "backupdr_backup_source": {
+                        "maxItemsOne": false
+                    },
                     "continuous_backup_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1136,6 +1139,12 @@
                         "maxItemsOne": true
                     },
                     "restore_backup_source": {
+                        "maxItemsOne": true
+                    },
+                    "restore_backupdr_backup_source": {
+                        "maxItemsOne": true
+                    },
+                    "restore_backupdr_pitr_source": {
                         "maxItemsOne": true
                     },
                     "restore_continuous_backup_source": {
@@ -19701,6 +19710,22 @@
                 "current": "gcp:dataplex/assetIamPolicy:AssetIamPolicy",
                 "majorVersion": 9
             },
+            "google_dataplex_data_asset": {
+                "current": "gcp:dataplex/dataAsset:DataAsset",
+                "majorVersion": 9,
+                "fields": {
+                    "access_group_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "iam_roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_dataplex_data_product": {
                 "current": "gcp:dataplex/dataProduct:DataProduct",
                 "majorVersion": 9,
@@ -27841,6 +27866,9 @@
                             }
                         }
                     },
+                    "skip_validations": {
+                        "maxItemsOne": false
+                    },
                     "status": {
                         "maxItemsOne": false,
                         "elem": {
@@ -30001,6 +30029,25 @@
                     },
                     "exclusions": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_logging_saved_query": {
+                "current": "gcp:logging/savedQuery:SavedQuery",
+                "majorVersion": 9,
+                "fields": {
+                    "logging_query": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "summary_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ops_analytics_query": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -38293,6 +38340,9 @@
                 "current": "gcp:sql/user:User",
                 "majorVersion": 9,
                 "fields": {
+                    "database_roles": {
+                        "maxItemsOne": false
+                    },
                     "password_policy": {
                         "maxItemsOne": true,
                         "elem": {
@@ -40900,6 +40950,9 @@
                     "backup_source": {
                         "maxItemsOne": false
                     },
+                    "backupdr_backup_source": {
+                        "maxItemsOne": false
+                    },
                     "continuous_backup_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -40973,6 +41026,12 @@
                         "maxItemsOne": false
                     },
                     "restore_backup_source": {
+                        "maxItemsOne": false
+                    },
+                    "restore_backupdr_backup_source": {
+                        "maxItemsOne": false
+                    },
+                    "restore_backupdr_pitr_source": {
                         "maxItemsOne": false
                     },
                     "restore_continuous_backup_source": {
@@ -51343,6 +51402,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataplex_data_asset": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataplex_data_product": [
                 "effective_labels",
                 "terraform_labels"
@@ -53038,6 +53101,7 @@
             "gcp:dataplex/assetIamBinding:AssetIamBinding": 0,
             "gcp:dataplex/assetIamMember:AssetIamMember": 0,
             "gcp:dataplex/assetIamPolicy:AssetIamPolicy": 0,
+            "gcp:dataplex/dataAsset:DataAsset": 0,
             "gcp:dataplex/dataProduct:DataProduct": 0,
             "gcp:dataplex/datascan:Datascan": 0,
             "gcp:dataplex/datascanIamBinding:DatascanIamBinding": 0,
@@ -53419,6 +53483,7 @@
             "gcp:logging/projectBucketConfig:ProjectBucketConfig": 0,
             "gcp:logging/projectExclusion:ProjectExclusion": 0,
             "gcp:logging/projectSink:ProjectSink": 0,
+            "gcp:logging/savedQuery:SavedQuery": 0,
             "gcp:looker/instance:Instance": 0,
             "gcp:lustre/instance:Instance": 0,
             "gcp:managedkafka/acl:Acl": 0,

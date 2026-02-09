@@ -40,7 +40,7 @@ index ef2be7ef6..4cb8fc1c2 100644
    authorized_network                   = google_compute_network.apigee_network.id
    runtime_database_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/app_engine_application.html.markdown b/website/docs/r/app_engine_application.html.markdown
-index f79942a5b..60e7469cf 100644
+index 78bf7098c..c145a601c 100644
 --- a/website/docs/r/app_engine_application.html.markdown
 +++ b/website/docs/r/app_engine_application.html.markdown
 @@ -23,9 +23,9 @@ description: |-
@@ -55,9 +55,9 @@ index f79942a5b..60e7469cf 100644
 +   This provider is not able to delete App Engine applications.
  
  ~> **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
- state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
+ state as plain-text. [Read more about sensitive data in state](https://developer.hashicorp.com/terraform/language/manage-sensitive-data).
 diff --git a/website/docs/r/app_engine_flexible_app_version.html.markdown b/website/docs/r/app_engine_flexible_app_version.html.markdown
-index b739bc845..2908180a6 100644
+index 952cc7fd4..c2a5c5a81 100644
 --- a/website/docs/r/app_engine_flexible_app_version.html.markdown
 +++ b/website/docs/r/app_engine_flexible_app_version.html.markdown
 @@ -250,7 +250,7 @@ The following arguments are supported:
@@ -70,7 +70,7 @@ index b739bc845..2908180a6 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index aecff7dc7..bb6e8c317 100644
+index 014869b7d..79b998d64 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
 @@ -784,8 +784,8 @@ The following arguments are supported:
@@ -238,7 +238,7 @@ index 7ddcf65cf..ba72b1e45 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/certificate_manager_certificate.html.markdown b/website/docs/r/certificate_manager_certificate.html.markdown
-index 56d33a63b..4598f7719 100644
+index dd4eea786..e52adcfb7 100644
 --- a/website/docs/r/certificate_manager_certificate.html.markdown
 +++ b/website/docs/r/certificate_manager_certificate.html.markdown
 @@ -163,19 +163,38 @@ resource "google_privateca_certificate_authority" "ca_authority" {
@@ -426,7 +426,7 @@ index 2f31f2949..2454da6e7 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index bf3c3eaf8..3bea5e9ab 100644
+index 871466414..b12e13a4b 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -45,24 +45,21 @@ To get more information about Environments, see:
@@ -492,65 +492,11 @@ index 47be7baa3..a3c9d9f61 100644
  * How-to Guides
      * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  
-diff --git a/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown b/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown
-index 8c5f02037..ead4fc8ea 100644
---- a/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown
-+++ b/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown
-@@ -30,9 +30,8 @@ To get more information about BackendBucketSignedUrlKey, see:
- * How-to Guides
-     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `key_value`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `key_value` will be stored in the raw
-+state as plain-text.
- 
- ## Example Usage - Backend Bucket Signed Url Key
- 
-diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index f77b07e88..9050cff82 100644
---- a/website/docs/r/compute_backend_service.html.markdown
-+++ b/website/docs/r/compute_backend_service.html.markdown
-@@ -41,7 +41,6 @@ To get more information about BackendService, see:
- 
- ~> **Warning:** All arguments including the following potentially sensitive
- values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=backend_service_basic&open_in_editor=main.tf" target="_blank">
-diff --git a/website/docs/r/compute_backend_service_signed_url_key.html.markdown b/website/docs/r/compute_backend_service_signed_url_key.html.markdown
-index c36e0b888..51e1ee16d 100644
---- a/website/docs/r/compute_backend_service_signed_url_key.html.markdown
-+++ b/website/docs/r/compute_backend_service_signed_url_key.html.markdown
-@@ -30,9 +30,8 @@ To get more information about BackendServiceSignedUrlKey, see:
- * How-to Guides
-     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `key_value`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `key_value` will be stored in the raw
-+state as plain-text.
- 
- ## Example Usage - Backend Service Signed Url Key
- 
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index c729e204a..a9625932c 100644
+index 0897832a7..f9b7949bc 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
-@@ -45,9 +45,6 @@ To get more information about Disk, see:
- * How-to Guides
-     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=disk_basic&open_in_editor=main.tf" target="_blank">
-@@ -212,7 +209,7 @@ The following arguments are supported:
+@@ -212,7 +212,7 @@ The following arguments are supported:
    If you specify this field along with `image` or `snapshot`,
    the value must not be less than the size of the image
    or the size of the snapshot.
@@ -601,7 +547,7 @@ index c761850a1..3cc5c8944 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index c46cd2ee6..429715902 100644
+index d66e6a586..aa86b997f 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -154,7 +154,7 @@ The following arguments are supported:
@@ -644,7 +590,7 @@ index c46cd2ee6..429715902 100644
  * `min_cpu_platform` - (Optional) Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
  `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
 diff --git a/website/docs/r/compute_instance_from_machine_image.html.markdown b/website/docs/r/compute_instance_from_machine_image.html.markdown
-index 3b447513a..92c0b5700 100644
+index c9f634e09..b4d484de2 100644
 --- a/website/docs/r/compute_instance_from_machine_image.html.markdown
 +++ b/website/docs/r/compute_instance_from_machine_image.html.markdown
 @@ -75,8 +75,6 @@ from `google_compute_instance` are likewise exported here.
@@ -717,7 +663,7 @@ index d331034d3..c902472f8 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index 6ef7cc350..8bb978354 100644
+index e3365327f..55a2646f7 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
 @@ -234,7 +234,7 @@ The following arguments are supported:
@@ -745,7 +691,7 @@ index 5938de616..7717ff951 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 34063fde4..027ec6c7f 100644
+index 4a38c5b55..91c2f09d0 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -197,12 +197,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -819,7 +765,7 @@ index 34063fde4..027ec6c7f 100644
      on that network). This block can be specified once per `network_interface`. Structure [documented below](#nested_access_config).
  
 diff --git a/website/docs/r/compute_machine_image_iam.html.markdown b/website/docs/r/compute_machine_image_iam.html.markdown
-index 4a50878fe..0bca0f6c7 100644
+index 63eab4f70..648f21928 100644
 --- a/website/docs/r/compute_machine_image_iam.html.markdown
 +++ b/website/docs/r/compute_machine_image_iam.html.markdown
 @@ -192,9 +192,6 @@ The `condition` block supports:
@@ -833,7 +779,7 @@ index 4a50878fe..0bca0f6c7 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/compute_node_group.html.markdown b/website/docs/r/compute_node_group.html.markdown
-index 0b0ddf4e9..9cf71f60b 100644
+index fffbcf0b1..ec148994c 100644
 --- a/website/docs/r/compute_node_group.html.markdown
 +++ b/website/docs/r/compute_node_group.html.markdown
 @@ -30,6 +30,11 @@ To get more information about NodeGroup, see:
@@ -898,7 +844,7 @@ index 8ad96324c..41a279952 100644
    policy_id     = google_compute_organization_security_policy.policy.id
  }
 diff --git a/website/docs/r/compute_organization_security_policy_rule.html.markdown b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-index 7d2be926f..e10730dfb 100644
+index 7b1b475f5..0c7f824c7 100644
 --- a/website/docs/r/compute_organization_security_policy_rule.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_rule.html.markdown
 @@ -38,7 +38,7 @@ To get more information about OrganizationSecurityPolicyRule, see:
@@ -936,18 +882,6 @@ index fd50d7ada..5f5ff68d4 100644
  project metadata map.
  
  ## Example Usage
-diff --git a/website/docs/r/compute_region_disk.html.markdown b/website/docs/r/compute_region_disk.html.markdown
-index d7a302f1d..05edc3046 100644
---- a/website/docs/r/compute_region_disk.html.markdown
-+++ b/website/docs/r/compute_region_disk.html.markdown
-@@ -47,7 +47,6 @@ To get more information about RegionDisk, see:
- 
- ~> **Warning:** All arguments including the following potentially sensitive
- values will be stored in the raw state as plain text: `disk_encryption_key.raw_key`, `disk_encryption_key.rsa_encrypted_key`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=region_disk_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown b/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown
 index 29759b8c5..c55b98cdb 100644
 --- a/website/docs/r/compute_region_disk_resource_policy_attachment.html.markdown
@@ -974,7 +908,7 @@ index 29759b8c5..c55b98cdb 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index 0c20053fd..d78306e4d 100644
+index a9470c82d..bb0c5f432 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
 @@ -179,7 +179,7 @@ The following arguments are supported:
@@ -987,7 +921,7 @@ index 0c20053fd..d78306e4d 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 7621b1266..7c4871eab 100644
+index 4e8791a8e..e5c6084a5 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -25,15 +25,6 @@ description: |-
@@ -1020,22 +954,10 @@ index 1e3372cf3..415c7fcd3 100644
  
    version {
 diff --git a/website/docs/r/compute_region_ssl_certificate.html.markdown b/website/docs/r/compute_region_ssl_certificate.html.markdown
-index a2c853765..b2a5fe3da 100644
+index 278743bbb..0d9814e80 100644
 --- a/website/docs/r/compute_region_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_region_ssl_certificate.html.markdown
-@@ -32,9 +32,8 @@ To get more information about RegionSslCertificate, see:
- * How-to Guides
-     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `certificate`, `private_key`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
-+state as plain-text.
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=region_ssl_certificate_basic&open_in_editor=main.tf" target="_blank">
-@@ -104,7 +103,7 @@ resource "random_id" "certificate" {
+@@ -104,7 +104,7 @@ resource "random_id" "certificate" {
  // Using with Region Target HTTPS Proxies
  //
  // SSL certificates cannot be updated after creation. In order to apply
@@ -1310,7 +1232,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 0081ee66f..ebb4b1e22 100644
+index 6067ce553..19af1a581 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -24,7 +24,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1323,7 +1245,7 @@ index 0081ee66f..ebb4b1e22 100644
  ## Example Usage
  
 diff --git a/website/docs/r/compute_snapshot.html.markdown b/website/docs/r/compute_snapshot.html.markdown
-index 9512a38b1..db98ace37 100644
+index c043eb3dc..a355d1d7f 100644
 --- a/website/docs/r/compute_snapshot.html.markdown
 +++ b/website/docs/r/compute_snapshot.html.markdown
 @@ -9,7 +9,7 @@
@@ -1335,31 +1257,11 @@ index 9512a38b1..db98ace37 100644
  #     DO NOT EDIT this file directly. Any changes made to this file will be
  #     overwritten during the next generation cycle.
  #
-@@ -43,7 +43,6 @@ To get more information about Snapshot, see:
- 
- ~> **Warning:** All arguments including the following potentially sensitive
- values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=snapshot_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/compute_ssl_certificate.html.markdown b/website/docs/r/compute_ssl_certificate.html.markdown
-index f78621541..4052832f2 100644
+index 57e18d953..b384a8daf 100644
 --- a/website/docs/r/compute_ssl_certificate.html.markdown
 +++ b/website/docs/r/compute_ssl_certificate.html.markdown
-@@ -32,9 +32,8 @@ To get more information about SslCertificate, see:
- * How-to Guides
-     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `certificate`, `private_key`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
-+state as plain-text.
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=ssl_certificate_basic&open_in_editor=main.tf" target="_blank">
-@@ -101,12 +100,8 @@ resource "random_id" "certificate" {
+@@ -101,12 +101,8 @@ resource "random_id" "certificate" {
  // Using with Target HTTPS Proxies
  //
  // SSL certificates cannot be updated after creation. In order to apply
@@ -1375,14 +1277,14 @@ index f78621541..4052832f2 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 3a060eee5..50c936acf 100644
+index 503b5ce28..0a9a2c3e0 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -418,9 +418,6 @@ The following arguments are supported:
    contained in this subnetwork. The primary IP of such VM must belong
    to the primary ipCidrRange of the subnetwork. The alias IPs may belong
    to either primary or secondary ranges.
--  **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid
+-  **Note**: This field uses [attr-as-block mode](https://developer.hashicorp.com/terraform/language/attr-as-blocks) to avoid
 -  breaking users during the 0.12 upgrade. To explicitly send a list of zero objects,
 -  set `send_secondary_ip_range_if_empty = true`
    Structure is [documented below](#nested_secondary_ip_range).
@@ -1404,7 +1306,7 @@ index 727680e57..ca13bfba4 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_target_pool.html.markdown b/website/docs/r/compute_target_pool.html.markdown
-index 7b99556ac..e7237015b 100644
+index 19e798c12..35d919713 100644
 --- a/website/docs/r/compute_target_pool.html.markdown
 +++ b/website/docs/r/compute_target_pool.html.markdown
 @@ -74,7 +74,7 @@ The following arguments are supported:
@@ -1416,44 +1318,22 @@ index 7b99556ac..e7237015b 100644
      target pool.
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
-diff --git a/website/docs/r/compute_vpn_tunnel.html.markdown b/website/docs/r/compute_vpn_tunnel.html.markdown
-index b6f867ff6..fe70198ae 100644
---- a/website/docs/r/compute_vpn_tunnel.html.markdown
-+++ b/website/docs/r/compute_vpn_tunnel.html.markdown
-@@ -31,9 +31,8 @@ To get more information about VpnTunnel, see:
-     * [Cloud VPN Overview](https://cloud.google.com/vpn/docs/concepts/overview)
-     * [Networks and Tunnel Routing](https://cloud.google.com/vpn/docs/concepts/choosing-networks-routing)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `shared_secret`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `shared_secret` will be stored in the raw
-+state as plain-text.
- 
- ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `shared_secret_wo`.
- [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index d0f88d8ca..812d6efa1 100644
+index 25ef970f8..0ae0d2781 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
-@@ -27,15 +27,12 @@ To get more information about GKE clusters, see:
+@@ -27,9 +27,7 @@ To get more information about GKE clusters, see:
    * How-to guides
      * [GKE overview](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview)
      * [About cluster configuration choices](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters)
 -  * Terraform guidance
 -    * [Using GKE with Terraform](/docs/providers/google/guides/using_gke_with_terraform.html)
--    * [Provision a GKE Cluster (Google Cloud) Learn tutorial](https://learn.hashicorp.com/tutorials/terraform/gke?in=terraform/kubernetes&utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS)
+-    * [Provision a GKE Cluster (Google Cloud) Learn tutorial](https://developer.hashicorp.com/terraform/tutorials/kubernetes/gke)
++
  
  -> On version 5.0.0+ of the provider, you must explicitly set `deletion_protection = false`
  and run `terraform apply` to write the field to state in order to destroy a cluster.
- 
- ~> All arguments and attributes (including certificate outputs) will be stored in the raw state as
--plaintext. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
- 
- ## Example Usage - with a separately managed node pool (recommended)
- 
-@@ -109,6 +106,25 @@ resource "google_container_cluster" "primary" {
+@@ -109,6 +107,25 @@ resource "google_container_cluster" "primary" {
  }
  ```
  
@@ -1479,7 +1359,7 @@ index d0f88d8ca..812d6efa1 100644
  ## Argument Reference
  
  * `name` - (Required) The name of the cluster, unique within the project and
-@@ -245,8 +261,7 @@ Structure is [documented below](#nested_master_auth).
+@@ -245,8 +262,7 @@ Structure is [documented below](#nested_master_auth).
      If unset, the cluster's version will be set by GKE to the version of the most recent
      official release (which is not necessarily the latest version).  Most users will find
      the `google_container_engine_versions` data source useful - it indicates which versions
@@ -1489,7 +1369,7 @@ index d0f88d8ca..812d6efa1 100644
      [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      describe the various acceptable formats for this field.
  
-@@ -276,8 +291,11 @@ region are guaranteed to support the same version.
+@@ -276,8 +292,11 @@ region are guaranteed to support the same version.
  * `node_config` -  (Optional) Parameters used in creating the default node pool.
      Generally, this field should not be used at the same time as a
      `google_container_node_pool` or a `node_pool` block; this configuration
@@ -1503,7 +1383,7 @@ index d0f88d8ca..812d6efa1 100644
  
  * `node_pool` - (Optional) List of node pools associated with this cluster.
      See [google_container_node_pool](container_node_pool.html) for schema.
-@@ -296,9 +314,9 @@ region are guaranteed to support the same version.
+@@ -296,9 +315,9 @@ region are guaranteed to support the same version.
      or set to the same value as `min_master_version` on create. Defaults to the default
      version set by GKE which is not necessarily the latest version. This only affects
      nodes in the default node pool. While a fuzzy version can be specified, it's
@@ -1515,7 +1395,7 @@ index d0f88d8ca..812d6efa1 100644
      To update nodes in other node pools, use the `version` attribute on the node pool.
  
  * `notification_config` - (Optional) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is [documented below](#nested_notification_config).
-@@ -346,7 +364,7 @@ When updating this field, GKE imposes specific version requirements. See
+@@ -346,7 +365,7 @@ When updating this field, GKE imposes specific version requirements. See
  [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
  for more details; the `google_container_engine_versions` datasource can provide
  the default version for a channel. Note that removing the `release_channel`
@@ -1524,7 +1404,7 @@ index d0f88d8ca..812d6efa1 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -996,10 +1014,6 @@ gvnic {
+@@ -996,10 +1015,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1535,7 +1415,7 @@ index d0f88d8ca..812d6efa1 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -1026,7 +1040,7 @@ gvnic {
+@@ -1026,7 +1041,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1544,19 +1424,7 @@ index d0f88d8ca..812d6efa1 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -1051,10 +1065,7 @@ gvnic {
-     See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
-     for more information. Defaults to false.
- 
--* `sandbox_config` - (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
--    Structure is [documented below](#nested_sandbox_config).
--
--* `boot_disk_kms_key` - (Optional) The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-+* `boot_disk_kms_key` - (Optional) The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
- 
- * `service_account` - (Optional) The service account to be used by the Node VMs.
-     If not specified, the "default" service account is used.
-@@ -1068,13 +1079,14 @@ gvnic {
+@@ -1068,13 +1083,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1578,7 +1446,7 @@ index d0f88d8ca..812d6efa1 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1398,7 +1410,7 @@ for more details. This field only applies to private clusters, when
+@@ -1398,7 +1414,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1587,7 +1455,7 @@ index d0f88d8ca..812d6efa1 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1506,9 +1518,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1506,9 +1522,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1601,7 +1469,7 @@ index d0f88d8ca..812d6efa1 100644
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
-index 866bbdc47..35c1690de 100644
+index de93efb3f..010780ea3 100644
 --- a/website/docs/r/container_node_pool.html.markdown
 +++ b/website/docs/r/container_node_pool.html.markdown
 @@ -20,14 +20,11 @@ description: |-
@@ -1679,7 +1547,7 @@ index 9a67dd89f..ea7981afe 100644
  ```
  
 diff --git a/website/docs/r/dataflow_flex_template_job.html.markdown b/website/docs/r/dataflow_flex_template_job.html.markdown
-index 6f1226e0d..58758638c 100644
+index 5aad523da..5ba3de971 100644
 --- a/website/docs/r/dataflow_flex_template_job.html.markdown
 +++ b/website/docs/r/dataflow_flex_template_job.html.markdown
 @@ -46,7 +46,7 @@ There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -1916,7 +1784,7 @@ index faf966d96..dd5f5d32a 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index 7f67144c8..2ecf47f94 100644
+index 4097b156c..f0f977683 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -44,16 +44,12 @@ To get more information about ManagedZone, see:
@@ -2540,7 +2408,7 @@ index 602e15c69..f124e5525 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project_service.html.markdown b/website/docs/r/google_project_service.html.markdown
-index 87002145e..a35ebb328 100644
+index 79f96126c..b43103997 100644
 --- a/website/docs/r/google_project_service.html.markdown
 +++ b/website/docs/r/google_project_service.html.markdown
 @@ -66,8 +66,8 @@ be `true` in configurations that manage the `google_project` resource itself.
@@ -2553,7 +2421,7 @@ index 87002145e..a35ebb328 100644
 +services depend on this service when destroying it.
  
  * `check_if_service_has_usage_on_destroy` - (Optional)
- [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)
+ [Beta](../guides/provider_versions.html.markdown)
 diff --git a/website/docs/r/google_service_account.html.markdown b/website/docs/r/google_service_account.html.markdown
 index 95dadfe35..4c4bdd429 100644
 --- a/website/docs/r/google_service_account.html.markdown
@@ -2637,62 +2505,6 @@ index aa8421454..f7d0616e8 100644
 -```
 \ No newline at end of file
 +```
-diff --git a/website/docs/r/healthcare_dataset_iam.html.markdown b/website/docs/r/healthcare_dataset_iam.html.markdown
-index 15fe122a2..c73b340b1 100644
---- a/website/docs/r/healthcare_dataset_iam.html.markdown
-+++ b/website/docs/r/healthcare_dataset_iam.html.markdown
-@@ -20,9 +20,6 @@ description: |-
- 
- # IAM policy for Google Cloud Healthcare dataset
- 
--~> **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
- 
- * `google_healthcare_dataset_iam_policy`: Authoritative. Sets the IAM policy for the dataset and replaces any existing policy already attached.
-diff --git a/website/docs/r/healthcare_dicom_store_iam.html.markdown b/website/docs/r/healthcare_dicom_store_iam.html.markdown
-index 79d210916..404927e81 100644
---- a/website/docs/r/healthcare_dicom_store_iam.html.markdown
-+++ b/website/docs/r/healthcare_dicom_store_iam.html.markdown
-@@ -20,9 +20,6 @@ description: |-
- 
- # IAM policy for Google Cloud Healthcare DICOM store
- 
--~> **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
- 
- * `google_healthcare_dicom_store_iam_policy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
-diff --git a/website/docs/r/healthcare_fhir_store_iam.html.markdown b/website/docs/r/healthcare_fhir_store_iam.html.markdown
-index c3fdc5567..9792c8273 100644
---- a/website/docs/r/healthcare_fhir_store_iam.html.markdown
-+++ b/website/docs/r/healthcare_fhir_store_iam.html.markdown
-@@ -20,9 +20,6 @@ description: |-
- 
- # IAM policy for Google Cloud Healthcare FHIR store
- 
--~> **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
- 
- * `google_healthcare_fhir_store_iam_policy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
-diff --git a/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown b/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown
-index 8c2c5aea0..d0e0a9bb3 100644
---- a/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown
-+++ b/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown
-@@ -20,9 +20,6 @@ description: |-
- 
- # IAM policy for Google Cloud Healthcare HL7v2 store
- 
--~> **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
- 
- * `google_healthcare_hl7_v2_store_iam_policy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
 diff --git a/website/docs/r/iap_app_engine_service_iam.html.markdown b/website/docs/r/iap_app_engine_service_iam.html.markdown
 index dd50d89bb..2ef41795f 100644
 --- a/website/docs/r/iap_app_engine_service_iam.html.markdown
@@ -2735,22 +2547,6 @@ index 4af23e896..553cdbadb 100644
  To get more information about Brand, see:
  
  * [API documentation](https://cloud.google.com/iap/docs/reference/rest/v1/projects.brands)
-diff --git a/website/docs/r/iap_client.html.markdown b/website/docs/r/iap_client.html.markdown
-index a07890268..894a7b4cb 100644
---- a/website/docs/r/iap_client.html.markdown
-+++ b/website/docs/r/iap_client.html.markdown
-@@ -35,9 +35,8 @@ To get more information about Client, see:
- * How-to Guides
-     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `secret`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `secret` will be stored in the raw
-+state as plain-text.
- 
- ## Example Usage - Iap Client
- 
 diff --git a/website/docs/r/iap_tunnel_iam.html.markdown b/website/docs/r/iap_tunnel_iam.html.markdown
 index fd2577728..07294a779 100644
 --- a/website/docs/r/iap_tunnel_iam.html.markdown
@@ -2841,7 +2637,7 @@ index a35563903..6046d126e 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index 16dcdb499..1a61a8c35 100644
+index 89bc9bb60..0c982cbf0 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -25,9 +25,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -2881,21 +2677,6 @@ index 1eab09bb7..8453a5ae1 100644
 +Destroying a provider-managed KeyRingImportJob will remove it from state but
  *will not delete the resource from the project.*
  
- 
-diff --git a/website/docs/r/kms_secret_ciphertext.html.markdown b/website/docs/r/kms_secret_ciphertext.html.markdown
-index 7394c0679..04e693ee9 100644
---- a/website/docs/r/kms_secret_ciphertext.html.markdown
-+++ b/website/docs/r/kms_secret_ciphertext.html.markdown
-@@ -36,9 +36,7 @@ To get more information about SecretCiphertext, see:
- * How-to Guides
-     * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `plaintext`, `additional_authenticated_data`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw state as plain-text.
- 
- ## Example Usage - Kms Secret Ciphertext Basic
  
 diff --git a/website/docs/r/logging_billing_account_bucket_config.html.markdown b/website/docs/r/logging_billing_account_bucket_config.html.markdown
 index edf9f986d..1648cbd49 100644
@@ -3015,7 +2796,7 @@ index c2ce72023..23818b46a 100644
  ~> **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
  
 diff --git a/website/docs/r/monitoring_notification_channel.html.markdown b/website/docs/r/monitoring_notification_channel.html.markdown
-index 231a459ce..314430215 100644
+index 28da1f3e9..99620169e 100644
 --- a/website/docs/r/monitoring_notification_channel.html.markdown
 +++ b/website/docs/r/monitoring_notification_channel.html.markdown
 @@ -32,7 +32,7 @@ and labels to configure that channel. Each `type` has specific labels that need
@@ -3027,19 +2808,7 @@ index 231a459ce..314430215 100644
  labels are required.
  
  A list of supported channels per project the `list` endpoint can be
-@@ -47,9 +47,8 @@ To get more information about NotificationChannel, see:
-     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
-     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `sensitive_labels.auth_token`, `sensitive_labels.password`, `sensitive_labels.service_key`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `sensitive_labels.auth_token`, `sensitive_labels.password`, and `sensitive_labels.service_key` will be stored in the raw
-+state as plain-text.
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=notification_channel_basic&open_in_editor=main.tf" target="_blank">
-@@ -100,7 +99,7 @@ The following arguments are supported:
+@@ -100,7 +100,7 @@ The following arguments are supported:
    Configuration fields that define the channel and its behavior. The
    permissible and required labels are specified in the
    NotificationChannelDescriptor corresponding to the type field.
@@ -3106,25 +2875,6 @@ index 7c5a0fe0d..451daf51f 100644
  
    goal = 0.9
    rolling_period_days = 20
-diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 2b4b3718a..d4396c41e 100644
---- a/website/docs/r/monitoring_uptime_check_config.html.markdown
-+++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
-@@ -30,12 +30,8 @@ To get more information about UptimeCheckConfig, see:
- * How-to Guides
-     * [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `http_check.auth_info.password`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
--
--~> **Note:**  All arguments marked as write-only values will not be stored in the state: `http_check.auth_info.password_wo`.
--[Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
-+~> **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
-+state as plain-text.
- 
- ## Example Usage - Uptime Check Config Http
- 
 diff --git a/website/docs/r/notebooks_instance.html.markdown b/website/docs/r/notebooks_instance.html.markdown
 index 20c2cb77d..4f99b12c2 100644
 --- a/website/docs/r/notebooks_instance.html.markdown
@@ -3137,20 +2887,6 @@ index 20c2cb77d..4f99b12c2 100644
    }
    container_image {
      repository = "gcr.io/deeplearning-platform-release/base-cpu"
-diff --git a/website/docs/r/project_service_identity.html.markdown b/website/docs/r/project_service_identity.html.markdown
-index bc1d673a0..a19ec47e2 100644
---- a/website/docs/r/project_service_identity.html.markdown
-+++ b/website/docs/r/project_service_identity.html.markdown
-@@ -20,9 +20,6 @@ description: |-
- 
- # google_project_service_identity
- 
--~> **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- Generate service identity for a service.
- 
- ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
 index cca4f82d8..2eb43efd3 100644
 --- a/website/docs/r/redis_instance.html.markdown
@@ -3173,44 +2909,11 @@ index cca4f82d8..2eb43efd3 100644
  
    depends_on = [google_service_networking_connection.private_service_connection]
  
-diff --git a/website/docs/r/secret_manager_secret_version.html.markdown b/website/docs/r/secret_manager_secret_version.html.markdown
-index ec7b7285a..5220b0320 100644
---- a/website/docs/r/secret_manager_secret_version.html.markdown
-+++ b/website/docs/r/secret_manager_secret_version.html.markdown
-@@ -30,15 +30,8 @@ To get more information about SecretVersion, see:
- * How-to Guides
-     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
- 
--~> **Warning:** The behavior of the `secret_data` field is [force new](https://developer.hashicorp.com/terraform/plugin/sdkv2/schemas/schema-behaviors#forcenew).
--While updating this field, Terraform deletes the existing resource and then creates a new one, which may cause potential outages. To mitigate
--this, use the `create_before_destroy` field within the lifecycle block.
--
--For more details, refer to the [Terraform lifecycle documentation](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#the-lifecycle-meta-argument).
--
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `secret_data`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `payload.secret_data` will be stored in the raw
-+state as plain-text.
- 
- ~> **Note:**  All arguments marked as write-only values will not be stored in the state: `secret_data_wo`.
- [Read more about Write-only Arguments](https://developer.hashicorp.com/terraform/plugin/sdkv2/resources/write-only-arguments).
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
-index 7971e6136..87700c82b 100644
+index 38794a30a..4cb4d9ebb 100644
 --- a/website/docs/r/security_scanner_scan_config.html.markdown
 +++ b/website/docs/r/security_scanner_scan_config.html.markdown
-@@ -32,9 +32,7 @@ To get more information about ScanConfig, see:
- * How-to Guides
-     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `authentication.google_account.password`, `authentication.custom_account.password`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=scan_config_basic&open_in_editor=main.tf" target="_blank">
-@@ -52,7 +50,7 @@ resource "google_compute_address" "scanner_static_ip" {
+@@ -52,7 +52,7 @@ resource "google_compute_address" "scanner_static_ip" {
  
  resource "google_security_scanner_scan_config" "scan-config" {
    provider         = google-beta
@@ -3357,33 +3060,6 @@ index cce8f1572..76c39b7a4 100644
  
  * `psc_service_attachment_link` - the URI that points to the service attachment of the instance.
  
-diff --git a/website/docs/r/sql_ssl_cert.html.markdown b/website/docs/r/sql_ssl_cert.html.markdown
-index af4d54854..aa2c01def 100644
---- a/website/docs/r/sql_ssl_cert.html.markdown
-+++ b/website/docs/r/sql_ssl_cert.html.markdown
-@@ -22,8 +22,7 @@ description: |-
- 
- Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
- 
--~> **Note:** All arguments including the private key will be stored in the raw state as plain-text.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Note:** All arguments including the private key will be stored in the raw state as plain-text
- 
- ## Example Usage
- 
-diff --git a/website/docs/r/sql_user.html.markdown b/website/docs/r/sql_user.html.markdown
-index d3e4a7bb3..48878d436 100644
---- a/website/docs/r/sql_user.html.markdown
-+++ b/website/docs/r/sql_user.html.markdown
-@@ -23,8 +23,6 @@ description: |-
- Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
- 
- ~> **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data). Passwords will not be retrieved when running
--"terraform import".
- 
- ## Example Usage
- 
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
 index 332c19715..7d574d9b2 100644
 --- a/website/docs/r/storage_bucket.html.markdown
@@ -3465,26 +3141,10 @@ index 88716aaac..ad7afa067 100644
  * `source` - (Optional) A path to the data you want to upload. Must be defined
      if `content` is not.
 diff --git a/website/docs/r/storage_hmac_key.html.markdown b/website/docs/r/storage_hmac_key.html.markdown
-index c2cbdebc0..c97c9670c 100644
+index 0b4a1c618..264cbc143 100644
 --- a/website/docs/r/storage_hmac_key.html.markdown
 +++ b/website/docs/r/storage_hmac_key.html.markdown
-@@ -33,12 +33,10 @@ To get more information about HmacKey, see:
-     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
- 
- ~> **Warning:** All arguments including the `secret` value will be stored in the raw
--state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
--On import, the `secret` value will not be retrieved.
-+state as plain-text. On import, the `secret` value will not be retrieved.
- 
--~> **Warning:** All arguments including the following potentially sensitive
--values will be stored in the raw state as plain text: `secret`.
--[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
-+~> **Warning:** All arguments including `secret` will be stored in the raw
-+state as plain-text.
- 
- <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=storage_hmac_key&open_in_editor=main.tf" target="_blank">
-@@ -54,7 +52,7 @@ resource "google_service_account" "service_account" {
+@@ -54,7 +54,7 @@ resource "google_service_account" "service_account" {
    account_id = "my-svc-acc"
  }
  
