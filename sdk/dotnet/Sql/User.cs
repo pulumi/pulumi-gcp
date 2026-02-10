@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql
 {
     /// <summary>
-    /// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
-    /// 
     /// ## Example Usage
     /// 
     /// Example creating a SQL User.
@@ -189,6 +187,12 @@ namespace Pulumi.Gcp.Sql
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        /// </summary>
+        [Output("databaseRoles")]
+        public Output<ImmutableArray<string>> DatabaseRoles { get; private set; } = null!;
+
+        /// <summary>
         /// The deletion policy for the user.
         /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -205,6 +209,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// The email address for MySQL IAM database users.
+        /// </summary>
+        [Output("iamEmail")]
+        public Output<string> IamEmail { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Cloud SQL instance. Changing this
@@ -320,6 +330,18 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
+        [Input("databaseRoles")]
+        private InputList<string>? _databaseRoles;
+
+        /// <summary>
+        /// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        /// </summary>
+        public InputList<string> DatabaseRoles
+        {
+            get => _databaseRoles ?? (_databaseRoles = new InputList<string>());
+            set => _databaseRoles = value;
+        }
+
         /// <summary>
         /// The deletion policy for the user.
         /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -426,6 +448,18 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
+        [Input("databaseRoles")]
+        private InputList<string>? _databaseRoles;
+
+        /// <summary>
+        /// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+        /// </summary>
+        public InputList<string> DatabaseRoles
+        {
+            get => _databaseRoles ?? (_databaseRoles = new InputList<string>());
+            set => _databaseRoles = value;
+        }
+
         /// <summary>
         /// The deletion policy for the user.
         /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -443,6 +477,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// The email address for MySQL IAM database users.
+        /// </summary>
+        [Input("iamEmail")]
+        public Input<string>? IamEmail { get; set; }
 
         /// <summary>
         /// The name of the Cloud SQL instance. Changing this

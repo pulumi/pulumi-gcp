@@ -208,6 +208,65 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Backup Dr Backup Plan For Filestore Resource
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVault;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupVaultArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlan;
+ * import com.pulumi.gcp.backupdisasterrecovery.BackupPlanArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleArgs;
+ * import com.pulumi.gcp.backupdisasterrecovery.inputs.BackupPlanBackupRuleStandardScheduleBackupWindowArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myBackupVault = new BackupVault("myBackupVault", BackupVaultArgs.builder()
+ *             .location("us-central1")
+ *             .backupVaultId("backup-vault-filestore-test")
+ *             .backupMinimumEnforcedRetentionDuration("100000s")
+ *             .build());
+ * 
+ *         var my_filestore_backup_plan_1 = new BackupPlan("my-filestore-backup-plan-1", BackupPlanArgs.builder()
+ *             .location("us-central1")
+ *             .backupPlanId("backup-plan-filestore-test")
+ *             .resourceType("file.googleapis.com/Instance")
+ *             .backupVault(myBackupVault.id())
+ *             .backupRules(BackupPlanBackupRuleArgs.builder()
+ *                 .ruleId("rule-1")
+ *                 .backupRetentionDays(5)
+ *                 .standardSchedule(BackupPlanBackupRuleStandardScheduleArgs.builder()
+ *                     .recurrenceType("HOURLY")
+ *                     .hourlyFrequency(6)
+ *                     .timeZone("UTC")
+ *                     .backupWindow(BackupPlanBackupRuleStandardScheduleBackupWindowArgs.builder()
+ *                         .startHourOfDay(0)
+ *                         .endHourOfDay(6)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -396,7 +455,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -404,7 +463,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource type to which the `BackupPlan` will be applied.
-     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
+     * Examples include, &#34;compute.googleapis.com/Instance&#34;, &#34;compute.googleapis.com/Disk&#34;, &#34;sqladmin.googleapis.com/Instance&#34;, &#34;alloydb.googleapis.com/Cluster&#34;, &#34;file.googleapis.com/Instance&#34; and &#34;storage.googleapis.com/Bucket&#34;.
      * 
      */
     public Output<String> resourceType() {

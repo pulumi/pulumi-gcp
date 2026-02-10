@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterSecretManagerConfigRotationConfig
     {
         /// <summary>
-        /// Enable the roation in Sync as K8s secret feature for this cluster.
+        /// ) - Enable the roation in Sync as K8s secret feature for this cluster.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The interval between two consecutive rotations. Default rotation interval is 2 minutes.
+        /// ) - The interval between two consecutive rotations. Default rotation interval is 2 minutes.
         /// </summary>
         public readonly string? RotationInterval;
 

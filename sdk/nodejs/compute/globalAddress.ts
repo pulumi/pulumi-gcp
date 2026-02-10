@@ -175,7 +175,7 @@ export class GlobalAddress extends pulumi.CustomResource {
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
      */
     declare public readonly purpose: pulumi.Output<string | undefined>;
     /**
@@ -320,7 +320,7 @@ export interface GlobalAddressState {
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
      */
     purpose?: pulumi.Input<string>;
     /**
@@ -395,7 +395,7 @@ export interface GlobalAddressArgs {
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
      */
     purpose?: pulumi.Input<string>;
 }

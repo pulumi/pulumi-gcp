@@ -109,6 +109,7 @@ namespace Pulumi.Gcp.Dns
     public partial class ResponsePolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Output("behavior")]
@@ -194,6 +195,7 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]
@@ -241,6 +243,7 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]

@@ -27,7 +27,9 @@ public final class ServiceAttachmentConnectedEndpoint {
     private @Nullable String endpoint;
     /**
      * @return (Output)
-     * The nat IPs of the connected endpoint.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * &#39;The nat IPs of the connected endpoint.&#39;
      * 
      */
     private @Nullable List<String> natIps;
@@ -70,7 +72,9 @@ public final class ServiceAttachmentConnectedEndpoint {
     }
     /**
      * @return (Output)
-     * The nat IPs of the connected endpoint.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * &#39;The nat IPs of the connected endpoint.&#39;
      * 
      */
     public List<String> natIps() {

@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The resource URL for the security policy associated with this target pool.
+        /// ) The resource URL for the security policy associated with this target pool.
         /// </summary>
         [Output("securityPolicy")]
         public Output<string?> SecurityPolicy { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The resource URL for the security policy associated with this target pool.
+        /// ) The resource URL for the security policy associated with this target pool.
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The resource URL for the security policy associated with this target pool.
+        /// ) The resource URL for the security policy associated with this target pool.
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }

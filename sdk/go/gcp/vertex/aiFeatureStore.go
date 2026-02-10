@@ -187,6 +187,7 @@ type AiFeatureStore struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig AiFeatureStoreOnlineServingConfigPtrOutput `pulumi:"onlineServingConfig"`
+	// (Optional, Beta)
 	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
 	OnlineStorageTtlDays pulumi.IntPtrOutput `pulumi:"onlineStorageTtlDays"`
 	// The ID of the project in which the resource belongs.
@@ -257,6 +258,7 @@ type aiFeatureStoreState struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig *AiFeatureStoreOnlineServingConfig `pulumi:"onlineServingConfig"`
+	// (Optional, Beta)
 	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
 	OnlineStorageTtlDays *int `pulumi:"onlineStorageTtlDays"`
 	// The ID of the project in which the resource belongs.
@@ -293,6 +295,7 @@ type AiFeatureStoreState struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig AiFeatureStoreOnlineServingConfigPtrInput
+	// (Optional, Beta)
 	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
 	OnlineStorageTtlDays pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -327,6 +330,7 @@ type aiFeatureStoreArgs struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig *AiFeatureStoreOnlineServingConfig `pulumi:"onlineServingConfig"`
+	// (Optional, Beta)
 	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
 	OnlineStorageTtlDays *int `pulumi:"onlineStorageTtlDays"`
 	// The ID of the project in which the resource belongs.
@@ -353,6 +357,7 @@ type AiFeatureStoreArgs struct {
 	// Config for online serving resources.
 	// Structure is documented below.
 	OnlineServingConfig AiFeatureStoreOnlineServingConfigPtrInput
+	// (Optional, Beta)
 	// TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
 	OnlineStorageTtlDays pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -494,6 +499,7 @@ func (o AiFeatureStoreOutput) OnlineServingConfig() AiFeatureStoreOnlineServingC
 	return o.ApplyT(func(v *AiFeatureStore) AiFeatureStoreOnlineServingConfigPtrOutput { return v.OnlineServingConfig }).(AiFeatureStoreOnlineServingConfigPtrOutput)
 }
 
+// (Optional, Beta)
 // TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
 func (o AiFeatureStoreOutput) OnlineStorageTtlDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.IntPtrOutput { return v.OnlineStorageTtlDays }).(pulumi.IntPtrOutput)

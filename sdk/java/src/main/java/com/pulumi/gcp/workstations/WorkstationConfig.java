@@ -27,14 +27,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
- * 
- * To get more information about WorkstationConfig, see:
- * 
- * * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs/create)
- * * How-to Guides
- *     * [Workstations](https://cloud.google.com/workstations/docs/)
- * 
  * ## Example Usage
  * 
  * ### Workstation Config Basic

@@ -88,6 +88,7 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
     }
 
     /**
+     * (Optional, Beta)
      * Specifies the frequency of planned maintenance events.
      * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
      * 
@@ -96,7 +97,8 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
     private @Nullable Output<String> maintenanceInterval;
 
     /**
-     * @return Specifies the frequency of planned maintenance events.
+     * @return (Optional, Beta)
+     * Specifies the frequency of planned maintenance events.
      * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
      * 
      */
@@ -270,7 +272,8 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events.
+         * @param maintenanceInterval (Optional, Beta)
+         * Specifies the frequency of planned maintenance events.
          * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
          * 
          * @return builder
@@ -282,7 +285,8 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events.
+         * @param maintenanceInterval (Optional, Beta)
+         * Specifies the frequency of planned maintenance events.
          * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
          * 
          * @return builder

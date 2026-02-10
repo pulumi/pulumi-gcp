@@ -239,6 +239,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Current patch revision of the Data Fusion.
+     * 
+     */
+    @Import(name="patchRevision")
+    private @Nullable Output<String> patchRevision;
+
+    /**
+     * @return Current patch revision of the Data Fusion.
+     * 
+     */
+    public Optional<Output<String>> patchRevision() {
+        return Optional.ofNullable(this.patchRevision);
+    }
+
+    /**
      * Specifies whether the Data Fusion instance should be private. If set to
      * true, all Data Fusion nodes will have private IP addresses and will not be
      * able to access the public internet.
@@ -391,6 +406,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkConfig = $.networkConfig;
         this.options = $.options;
+        this.patchRevision = $.patchRevision;
         this.privateInstance = $.privateInstance;
         this.project = $.project;
         this.region = $.region;
@@ -722,6 +738,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder options(Map<String,String> options) {
             return options(Output.of(options));
+        }
+
+        /**
+         * @param patchRevision Current patch revision of the Data Fusion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder patchRevision(@Nullable Output<String> patchRevision) {
+            $.patchRevision = patchRevision;
+            return this;
+        }
+
+        /**
+         * @param patchRevision Current patch revision of the Data Fusion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder patchRevision(String patchRevision) {
+            return patchRevision(Output.of(patchRevision));
         }
 
         /**

@@ -404,6 +404,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
         return this.complexDataTypeReferenceParsing;
     }
     /**
+     * (Optional, Beta)
      * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      * 
@@ -412,7 +413,8 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ FhirStoreConsentConfig> consentConfig;
 
     /**
-     * @return Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+     * @return (Optional, Beta)
+     * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      * 
      */
@@ -540,6 +542,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableHistoryImport);
     }
     /**
+     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
@@ -548,7 +551,8 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableHistoryModifications;
 
     /**
-     * @return Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * @return (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
      */

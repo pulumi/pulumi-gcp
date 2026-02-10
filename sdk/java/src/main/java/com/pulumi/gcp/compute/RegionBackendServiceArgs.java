@@ -131,6 +131,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -141,7 +142,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<RegionBackendServiceConnectionTrackingPolicyArgs> connectionTrackingPolicy;
 
     /**
-     * @return Connection Tracking configuration for this BackendService.
+     * @return (Optional, Beta)
+     * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
      * Structure is documented below.
@@ -211,6 +213,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -220,7 +223,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<RegionBackendServiceDynamicForwardingArgs> dynamicForwarding;
 
     /**
-     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * @return (Optional, Beta)
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      * 
@@ -561,6 +565,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
@@ -569,7 +574,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy;
 
     /**
-     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * @return (Optional, Beta)
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
      */
@@ -751,6 +757,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      * 
@@ -759,7 +766,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<RegionBackendServiceSubsettingArgs> subsetting;
 
     /**
-     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * @return (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      * 
      */
@@ -999,7 +1007,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
+         * @param connectionTrackingPolicy (Optional, Beta)
+         * Connection Tracking configuration for this BackendService.
          * This is available only for Layer 4 Internal Load Balancing and
          * Network Load Balancing.
          * Structure is documented below.
@@ -1013,7 +1022,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
+         * @param connectionTrackingPolicy (Optional, Beta)
+         * Connection Tracking configuration for this BackendService.
          * This is available only for Layer 4 Internal Load Balancing and
          * Network Load Balancing.
          * Structure is documented below.
@@ -1114,7 +1124,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * @param dynamicForwarding (Optional, Beta)
+         * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
          * feature which together with Service Extension allows customized and complex routing logic.
          * Structure is documented below.
          * 
@@ -1127,7 +1138,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * @param dynamicForwarding (Optional, Beta)
+         * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
          * feature which together with Service Extension allows customized and complex routing logic.
          * Structure is documented below.
          * 
@@ -1536,7 +1548,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * @param networkPassThroughLbTrafficPolicy (Optional, Beta)
+         * Configures traffic steering properties of internal passthrough Network Load Balancers.
          * Structure is documented below.
          * 
          * @return builder
@@ -1548,7 +1561,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * @param networkPassThroughLbTrafficPolicy (Optional, Beta)
+         * Configures traffic steering properties of internal passthrough Network Load Balancers.
          * Structure is documented below.
          * 
          * @return builder
@@ -1786,7 +1800,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+         * @param subsetting (Optional, Beta)
+         * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
          * Structure is documented below.
          * 
          * @return builder
@@ -1798,7 +1813,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+         * @param subsetting (Optional, Beta)
+         * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
          * Structure is documented below.
          * 
          * @return builder

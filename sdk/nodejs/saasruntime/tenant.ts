@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
- *
  * ## Example Usage
  *
  * ### Saas Runtime Tenant Basic

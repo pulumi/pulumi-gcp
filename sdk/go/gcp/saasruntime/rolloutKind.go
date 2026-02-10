@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
-//
 // ## Example Usage
 //
 // ### Saas Runtime Rollout Kind Basic

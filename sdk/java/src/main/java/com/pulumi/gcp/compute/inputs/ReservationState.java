@@ -120,6 +120,7 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Indicates if this group of VMs have emergent maintenance enabled.
      * 
      */
@@ -127,7 +128,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enableEmergentMaintenance;
 
     /**
-     * @return Indicates if this group of VMs have emergent maintenance enabled.
+     * @return (Optional, Beta)
+     * Indicates if this group of VMs have emergent maintenance enabled.
      * 
      */
     public Optional<Output<Boolean>> enableEmergentMaintenance() {
@@ -559,7 +561,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableEmergentMaintenance Indicates if this group of VMs have emergent maintenance enabled.
+         * @param enableEmergentMaintenance (Optional, Beta)
+         * Indicates if this group of VMs have emergent maintenance enabled.
          * 
          * @return builder
          * 
@@ -570,7 +573,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableEmergentMaintenance Indicates if this group of VMs have emergent maintenance enabled.
+         * @param enableEmergentMaintenance (Optional, Beta)
+         * Indicates if this group of VMs have emergent maintenance enabled.
          * 
          * @return builder
          * 

@@ -249,6 +249,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Optional, Beta)
      * Defines a maximum number of in-flight requests for the whole NEG
      * or instance group. Not available if backend&#39;s balancingMode is RATE
      * or CONNECTION.
@@ -258,7 +259,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     private @Nullable Output<Integer> maxInFlightRequests;
 
     /**
-     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for the whole NEG
      * or instance group. Not available if backend&#39;s balancingMode is RATE
      * or CONNECTION.
      * 
@@ -268,6 +270,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Optional, Beta)
      * Defines a maximum number of in-flight requests for a single endpoint.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
@@ -276,7 +279,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     private @Nullable Output<Integer> maxInFlightRequestsPerEndpoint;
 
     /**
-     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for a single endpoint.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
      */
@@ -285,6 +289,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Optional, Beta)
      * Defines a maximum number of in-flight requests for a single VM.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
@@ -293,7 +298,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     private @Nullable Output<Integer> maxInFlightRequestsPerInstance;
 
     /**
-     * @return Defines a maximum number of in-flight requests for a single VM.
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for a single VM.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
      */
@@ -392,6 +398,7 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     }
 
     /**
+     * (Optional, Beta)
      * This field specifies how long a connection should be kept alive for:
      * - LONG: Most of the requests are expected to take more than multiple
      *   seconds to finish.
@@ -403,7 +410,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     private @Nullable Output<String> trafficDuration;
 
     /**
-     * @return This field specifies how long a connection should be kept alive for:
+     * @return (Optional, Beta)
+     * This field specifies how long a connection should be kept alive for:
      * - LONG: Most of the requests are expected to take more than multiple
      *   seconds to finish.
      * - SHORT: Most requests are expected to finish with a sub-second latency.
@@ -747,7 +755,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxInFlightRequests Defines a maximum number of in-flight requests for the whole NEG
+         * @param maxInFlightRequests (Optional, Beta)
+         * Defines a maximum number of in-flight requests for the whole NEG
          * or instance group. Not available if backend&#39;s balancingMode is RATE
          * or CONNECTION.
          * 
@@ -760,7 +769,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxInFlightRequests Defines a maximum number of in-flight requests for the whole NEG
+         * @param maxInFlightRequests (Optional, Beta)
+         * Defines a maximum number of in-flight requests for the whole NEG
          * or instance group. Not available if backend&#39;s balancingMode is RATE
          * or CONNECTION.
          * 
@@ -772,7 +782,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxInFlightRequestsPerEndpoint Defines a maximum number of in-flight requests for a single endpoint.
+         * @param maxInFlightRequestsPerEndpoint (Optional, Beta)
+         * Defines a maximum number of in-flight requests for a single endpoint.
          * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
          * 
          * @return builder
@@ -784,7 +795,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxInFlightRequestsPerEndpoint Defines a maximum number of in-flight requests for a single endpoint.
+         * @param maxInFlightRequestsPerEndpoint (Optional, Beta)
+         * Defines a maximum number of in-flight requests for a single endpoint.
          * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
          * 
          * @return builder
@@ -795,7 +807,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxInFlightRequestsPerInstance Defines a maximum number of in-flight requests for a single VM.
+         * @param maxInFlightRequestsPerInstance (Optional, Beta)
+         * Defines a maximum number of in-flight requests for a single VM.
          * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
          * 
          * @return builder
@@ -807,7 +820,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxInFlightRequestsPerInstance Defines a maximum number of in-flight requests for a single VM.
+         * @param maxInFlightRequestsPerInstance (Optional, Beta)
+         * Defines a maximum number of in-flight requests for a single VM.
          * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
          * 
          * @return builder
@@ -932,7 +946,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param trafficDuration This field specifies how long a connection should be kept alive for:
+         * @param trafficDuration (Optional, Beta)
+         * This field specifies how long a connection should be kept alive for:
          * - LONG: Most of the requests are expected to take more than multiple
          *   seconds to finish.
          * - SHORT: Most requests are expected to finish with a sub-second latency.
@@ -947,7 +962,8 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param trafficDuration This field specifies how long a connection should be kept alive for:
+         * @param trafficDuration (Optional, Beta)
+         * This field specifies how long a connection should be kept alive for:
          * - LONG: Most of the requests are expected to take more than multiple
          *   seconds to finish.
          * - SHORT: Most requests are expected to finish with a sub-second latency.

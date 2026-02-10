@@ -12,16 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Bigquery Analytics Hub Data Exchange subscription
-//
-// To get more information about DataExchangeSubscription, see:
-//
-// * [API documentation](https://cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.subscriptions)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
-//
-// > **Note:** When importing the resource with `pulumi import`, provide the destination/subscriber's project and location
-// in the format projects/{{subscriber_project}}/locations/{{subscriber_location}}/subscriptions/{{subscription_id}}
 // ## Example Usage
 //
 // ### Bigquery Analyticshub Dataexchange Subscription Basic

@@ -802,10 +802,13 @@ type ServiceAttachment struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrOutput `pulumi:"sendPropagatedConnectionLimitIfZero"`
-	// If true, show NAT IPs of all connected endpoints.
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// [If true, show NAT IPs of all connected endpoints.]
 	ShowNatIps pulumi.BoolPtrOutput `pulumi:"showNatIps"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringOutput `pulumi:"targetService"`
+	// (Optional, Beta)
 	// Tunneling configuration for this service attachment.
 	// Structure is documented below.
 	TunnelingConfig ServiceAttachmentTunnelingConfigPtrOutput `pulumi:"tunnelingConfig"`
@@ -915,10 +918,13 @@ type serviceAttachmentState struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero *bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
-	// If true, show NAT IPs of all connected endpoints.
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// [If true, show NAT IPs of all connected endpoints.]
 	ShowNatIps *bool `pulumi:"showNatIps"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService *string `pulumi:"targetService"`
+	// (Optional, Beta)
 	// Tunneling configuration for this service attachment.
 	// Structure is documented below.
 	TunnelingConfig *ServiceAttachmentTunnelingConfig `pulumi:"tunnelingConfig"`
@@ -987,10 +993,13 @@ type ServiceAttachmentState struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrInput
-	// If true, show NAT IPs of all connected endpoints.
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// [If true, show NAT IPs of all connected endpoints.]
 	ShowNatIps pulumi.BoolPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Tunneling configuration for this service attachment.
 	// Structure is documented below.
 	TunnelingConfig ServiceAttachmentTunnelingConfigPtrInput
@@ -1051,10 +1060,13 @@ type serviceAttachmentArgs struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero *bool `pulumi:"sendPropagatedConnectionLimitIfZero"`
-	// If true, show NAT IPs of all connected endpoints.
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// [If true, show NAT IPs of all connected endpoints.]
 	ShowNatIps *bool `pulumi:"showNatIps"`
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService string `pulumi:"targetService"`
+	// (Optional, Beta)
 	// Tunneling configuration for this service attachment.
 	// Structure is documented below.
 	TunnelingConfig *ServiceAttachmentTunnelingConfig `pulumi:"tunnelingConfig"`
@@ -1112,10 +1124,13 @@ type ServiceAttachmentArgs struct {
 	// When true, the provider will set propagatedConnectionLimit to zero.
 	// Defaults to false.
 	SendPropagatedConnectionLimitIfZero pulumi.BoolPtrInput
-	// If true, show NAT IPs of all connected endpoints.
+	// NOTE: This field is temporarily non-functional due to an underlying API issue.
+	// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+	// [If true, show NAT IPs of all connected endpoints.]
 	ShowNatIps pulumi.BoolPtrInput
 	// The URL of a service serving the endpoint identified by this service attachment.
 	TargetService pulumi.StringInput
+	// (Optional, Beta)
 	// Tunneling configuration for this service attachment.
 	// Structure is documented below.
 	TunnelingConfig ServiceAttachmentTunnelingConfigPtrInput
@@ -1325,7 +1340,9 @@ func (o ServiceAttachmentOutput) SendPropagatedConnectionLimitIfZero() pulumi.Bo
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolPtrOutput { return v.SendPropagatedConnectionLimitIfZero }).(pulumi.BoolPtrOutput)
 }
 
-// If true, show NAT IPs of all connected endpoints.
+// NOTE: This field is temporarily non-functional due to an underlying API issue.
+// Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+// [If true, show NAT IPs of all connected endpoints.]
 func (o ServiceAttachmentOutput) ShowNatIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolPtrOutput { return v.ShowNatIps }).(pulumi.BoolPtrOutput)
 }
@@ -1335,6 +1352,7 @@ func (o ServiceAttachmentOutput) TargetService() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.TargetService }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // Tunneling configuration for this service attachment.
 // Structure is documented below.
 func (o ServiceAttachmentOutput) TunnelingConfig() ServiceAttachmentTunnelingConfigPtrOutput {

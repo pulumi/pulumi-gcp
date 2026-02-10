@@ -43,7 +43,8 @@ class SnapshotArgs:
                example, for chargeback tracking.  When you describe your snapshot
                resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        :param pulumi.Input[_builtins.bool] guest_flush: (Optional, Beta)
+               Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -138,6 +139,7 @@ class SnapshotArgs:
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
@@ -327,7 +329,8 @@ class _SnapshotState:
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the snapshot, specified in GB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        :param pulumi.Input[_builtins.bool] guest_flush: (Optional, Beta)
+               Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
@@ -489,6 +492,7 @@ class _SnapshotState:
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
@@ -760,9 +764,6 @@ class Snapshot(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
-
         ## Example Usage
 
         ### Snapshot Basic
@@ -897,7 +898,8 @@ class Snapshot(pulumi.CustomResource):
                example, for chargeback tracking.  When you describe your snapshot
                resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        :param pulumi.Input[_builtins.bool] guest_flush: (Optional, Beta)
+               Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -957,9 +959,6 @@ class Snapshot(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `snapshot_encryption_key.raw_key`, `snapshot_encryption_key.rsa_encrypted_key`, `source_disk_encryption_key.raw_key`, `source_disk_encryption_key.rsa_encrypted_key`.
 
         ## Example Usage
 
@@ -1196,7 +1195,8 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.int] disk_size_gb: Size of the snapshot, specified in GB.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[_builtins.bool] guest_flush: Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
+        :param pulumi.Input[_builtins.bool] guest_flush: (Optional, Beta)
+               Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this Snapshot.
@@ -1321,6 +1321,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
+        (Optional, Beta)
         Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")

@@ -407,11 +407,6 @@ class MirroringEndpoint(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        An endpoint is a managed mirroring collector that provides enhanced packet
-        enrichment capabilities and support for multiple replica destinations.
-        Endpoints are always part of a global endpoint group which represents a
-        global "mirroring broker" service.
-
         ## Example Usage
 
         ### Network Security Mirroring Endpoint Basic
@@ -489,11 +484,6 @@ class MirroringEndpoint(pulumi.CustomResource):
                  args: MirroringEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An endpoint is a managed mirroring collector that provides enhanced packet
-        enrichment capabilities and support for multiple replica destinations.
-        Endpoints are always part of a global endpoint group which represents a
-        global "mirroring broker" service.
-
         ## Example Usage
 
         ### Network Security Mirroring Endpoint Basic

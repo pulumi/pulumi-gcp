@@ -2297,6 +2297,7 @@ func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutpu
 type AiEndpointPrivateServiceConnectConfig struct {
 	// Required. If true, expose the IndexEndpoint via private service connect.
 	EnablePrivateServiceConnect bool `pulumi:"enablePrivateServiceConnect"`
+	// (Optional, Beta)
 	// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
 	EnableSecurePrivateServiceConnect *bool `pulumi:"enableSecurePrivateServiceConnect"`
 	// A list of Projects from which the forwarding rule will target the service attachment.
@@ -2320,6 +2321,7 @@ type AiEndpointPrivateServiceConnectConfigInput interface {
 type AiEndpointPrivateServiceConnectConfigArgs struct {
 	// Required. If true, expose the IndexEndpoint via private service connect.
 	EnablePrivateServiceConnect pulumi.BoolInput `pulumi:"enablePrivateServiceConnect"`
+	// (Optional, Beta)
 	// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
 	EnableSecurePrivateServiceConnect pulumi.BoolPtrInput `pulumi:"enableSecurePrivateServiceConnect"`
 	// A list of Projects from which the forwarding rule will target the service attachment.
@@ -2411,6 +2413,7 @@ func (o AiEndpointPrivateServiceConnectConfigOutput) EnablePrivateServiceConnect
 	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfig) bool { return v.EnablePrivateServiceConnect }).(pulumi.BoolOutput)
 }
 
+// (Optional, Beta)
 // If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
 func (o AiEndpointPrivateServiceConnectConfigOutput) EnableSecurePrivateServiceConnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfig) *bool { return v.EnableSecurePrivateServiceConnect }).(pulumi.BoolPtrOutput)
@@ -2463,6 +2466,7 @@ func (o AiEndpointPrivateServiceConnectConfigPtrOutput) EnablePrivateServiceConn
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Optional, Beta)
 // If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
 func (o AiEndpointPrivateServiceConnectConfigPtrOutput) EnableSecurePrivateServiceConnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiEndpointPrivateServiceConnectConfig) *bool {
@@ -14457,6 +14461,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutpu
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled *bool `pulumi:"disabled"`
+	// (Optional, Beta, Deprecated)
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	//
@@ -14485,6 +14490,7 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput interface {
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// (Optional, Beta, Deprecated)
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	//
@@ -14581,6 +14587,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) Disabled
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// (Optional, Beta, Deprecated)
 // Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 //
@@ -14636,6 +14643,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Disab
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Optional, Beta, Deprecated)
 // Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 //

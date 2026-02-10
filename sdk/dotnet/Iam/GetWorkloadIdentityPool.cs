@@ -12,8 +12,6 @@ namespace Pulumi.Gcp.Iam
     public static class GetWorkloadIdentityPool
     {
         /// <summary>
-        /// Get a IAM workload identity pool from Google Cloud by its id.
-        /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -36,8 +34,6 @@ namespace Pulumi.Gcp.Iam
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get a IAM workload identity pool from Google Cloud by its id.
-        /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,8 +56,6 @@ namespace Pulumi.Gcp.Iam
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkloadIdentityPoolResult>("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args ?? new GetWorkloadIdentityPoolInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get a IAM workload identity pool from Google Cloud by its id.
-        /// &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
         /// ## Example Usage
         /// 
         /// ```csharp

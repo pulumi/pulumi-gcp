@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InterconnectApplicationAwareInterconnectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Bandwidth Percentage policy allows you to have granular control over how your Interconnect
         /// bandwidth is utilized among your workloads mapping to different traffic classes.
         /// Structure is documented below.
@@ -21,6 +22,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyGetArgs>? BandwidthPercentagePolicy { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// A description for the AAI profile on this interconnect.
         /// </summary>
         [Input("profileDescription")]
@@ -30,6 +32,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.InterconnectApplicationAwareInterconnectShapeAveragePercentageGetArgs>? _shapeAveragePercentages;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Optional field to specify a list of shape average percentages to be
         /// applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
         /// Structure is documented below.
@@ -41,6 +44,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specify configuration for StrictPriorityPolicy.
         /// </summary>
         [Input("strictPriorityPolicy")]

@@ -186,6 +186,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         /// Structure is documented below.
         /// 
@@ -331,6 +332,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiFeatureOnlineStoreDedicatedServingEndpointArgs>? DedicatedServingEndpoint { get; set; }
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         /// Structure is documented below.
         /// 
@@ -436,6 +438,7 @@ namespace Pulumi.Gcp.Vertex
         }
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
         /// Structure is documented below.
         /// 

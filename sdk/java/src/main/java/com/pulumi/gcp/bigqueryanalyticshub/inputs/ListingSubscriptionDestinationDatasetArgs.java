@@ -101,6 +101,7 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
     }
 
     /**
+     * (Optional, Beta)
      * List of regions where the subscriber wants dataset replicas.
      * 
      */
@@ -108,7 +109,8 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
     private @Nullable Output<List<String>> replicaLocations;
 
     /**
-     * @return List of regions where the subscriber wants dataset replicas.
+     * @return (Optional, Beta)
+     * List of regions where the subscriber wants dataset replicas.
      * 
      */
     public Optional<Output<List<String>>> replicaLocations() {
@@ -256,7 +258,8 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
         }
 
         /**
-         * @param replicaLocations List of regions where the subscriber wants dataset replicas.
+         * @param replicaLocations (Optional, Beta)
+         * List of regions where the subscriber wants dataset replicas.
          * 
          * @return builder
          * 
@@ -267,7 +270,8 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
         }
 
         /**
-         * @param replicaLocations List of regions where the subscriber wants dataset replicas.
+         * @param replicaLocations (Optional, Beta)
+         * List of regions where the subscriber wants dataset replicas.
          * 
          * @return builder
          * 
@@ -277,7 +281,8 @@ public final class ListingSubscriptionDestinationDatasetArgs extends com.pulumi.
         }
 
         /**
-         * @param replicaLocations List of regions where the subscriber wants dataset replicas.
+         * @param replicaLocations (Optional, Beta)
+         * List of regions where the subscriber wants dataset replicas.
          * 
          * @return builder
          * 

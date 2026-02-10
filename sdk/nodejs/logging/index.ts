@@ -140,6 +140,11 @@ export type ProjectSink = import("./projectSink").ProjectSink;
 export const ProjectSink: typeof import("./projectSink").ProjectSink = null as any;
 utilities.lazyLoad(exports, ["ProjectSink"], () => require("./projectSink"));
 
+export { SavedQueryArgs, SavedQueryState } from "./savedQuery";
+export type SavedQuery = import("./savedQuery").SavedQuery;
+export const SavedQuery: typeof import("./savedQuery").SavedQuery = null as any;
+utilities.lazyLoad(exports, ["SavedQuery"], () => require("./savedQuery"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -187,6 +192,8 @@ const _module = {
                 return new ProjectExclusion(name, <any>undefined, { urn })
             case "gcp:logging/projectSink:ProjectSink":
                 return new ProjectSink(name, <any>undefined, { urn })
+            case "gcp:logging/savedQuery:SavedQuery":
+                return new SavedQuery(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -213,3 +220,4 @@ pulumi.runtime.registerResourceModule("gcp", "logging/organizationSink", _module
 pulumi.runtime.registerResourceModule("gcp", "logging/projectBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/projectExclusion", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/projectSink", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/savedQuery", _module)

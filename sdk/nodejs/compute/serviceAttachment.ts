@@ -603,7 +603,9 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     declare public readonly sendPropagatedConnectionLimitIfZero: pulumi.Output<boolean | undefined>;
     /**
-     * If true, show NAT IPs of all connected endpoints.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * [If true, show NAT IPs of all connected endpoints.]
      */
     declare public readonly showNatIps: pulumi.Output<boolean | undefined>;
     /**
@@ -611,6 +613,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     declare public readonly targetService: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Tunneling configuration for this service attachment.
      * Structure is documented below.
      */
@@ -790,7 +793,9 @@ export interface ServiceAttachmentState {
      */
     sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
     /**
-     * If true, show NAT IPs of all connected endpoints.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * [If true, show NAT IPs of all connected endpoints.]
      */
     showNatIps?: pulumi.Input<boolean>;
     /**
@@ -798,6 +803,7 @@ export interface ServiceAttachmentState {
      */
     targetService?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Tunneling configuration for this service attachment.
      * Structure is documented below.
      */
@@ -885,7 +891,9 @@ export interface ServiceAttachmentArgs {
      */
     sendPropagatedConnectionLimitIfZero?: pulumi.Input<boolean>;
     /**
-     * If true, show NAT IPs of all connected endpoints.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * [If true, show NAT IPs of all connected endpoints.]
      */
     showNatIps?: pulumi.Input<boolean>;
     /**
@@ -893,6 +901,7 @@ export interface ServiceAttachmentArgs {
      */
     targetService: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Tunneling configuration for this service attachment.
      * Structure is documented below.
      */

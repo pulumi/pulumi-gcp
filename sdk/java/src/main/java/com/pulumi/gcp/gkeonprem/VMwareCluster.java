@@ -267,6 +267,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var cluster_manuallb = new VMwareCluster("cluster-manuallb", VMwareClusterArgs.builder()
  *             .name("cluster-manuallb")
+ *             .skipValidations(            
+ *                 "WORKSTATION",
+ *                 "CONFIG",
+ *                 "DOCKER")
  *             .location("us-west1")
  *             .adminClusterMembership("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test")
  *             .description("test cluster")
@@ -803,6 +807,22 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> reconciling() {
         return this.reconciling;
+    }
+    /**
+     * A list of validations to skip during preflight checks.
+     * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+     * 
+     */
+    @Export(name="skipValidations", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> skipValidations;
+
+    /**
+     * @return A list of validations to skip during preflight checks.
+     * Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+     * 
+     */
+    public Output<Optional<List<String>>> skipValidations() {
+        return Codegen.optional(this.skipValidations);
     }
     /**
      * (Output)

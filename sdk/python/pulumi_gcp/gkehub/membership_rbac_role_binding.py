@@ -353,14 +353,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  user: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        RBACRoleBinding represents a rbacrolebinding across the Fleet.
-
-        To get more information about MembershipRBACRoleBinding, see:
-
-        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
-        * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
-
         ## Example Usage
 
         ### Gkehub Membership Rbac Role Binding Basic
@@ -377,7 +369,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_1443",
+            membership_id="tf-test-membership_15335",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -386,7 +378,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_26032",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_20665",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role={
@@ -441,14 +433,6 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
                  args: MembershipRbacRoleBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        RBACRoleBinding represents a rbacrolebinding across the Fleet.
-
-        To get more information about MembershipRBACRoleBinding, see:
-
-        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
-        * How-to Guides
-            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
-
         ## Example Usage
 
         ### Gkehub Membership Rbac Role Binding Basic
@@ -465,7 +449,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_1443",
+            membership_id="tf-test-membership_15335",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
@@ -474,7 +458,7 @@ class MembershipRbacRoleBinding(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[primary]))
         project = gcp.organizations.get_project()
         membership_rbac_role_binding = gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding",
-            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_26032",
+            membership_rbac_role_binding_id="tf-test-membership-rbac-role-binding_20665",
             membership_id=membership.membership_id,
             user=f"service-{project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com",
             role={

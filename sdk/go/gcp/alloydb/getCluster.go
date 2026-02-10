@@ -64,6 +64,7 @@ type LookupClusterResult struct {
 	Annotations             map[string]string                  `pulumi:"annotations"`
 	AutomatedBackupPolicies []GetClusterAutomatedBackupPolicy  `pulumi:"automatedBackupPolicies"`
 	BackupSources           []GetClusterBackupSource           `pulumi:"backupSources"`
+	BackupdrBackupSources   []GetClusterBackupdrBackupSource   `pulumi:"backupdrBackupSources"`
 	ClusterId               string                             `pulumi:"clusterId"`
 	ClusterType             string                             `pulumi:"clusterType"`
 	ContinuousBackupConfigs []GetClusterContinuousBackupConfig `pulumi:"continuousBackupConfigs"`
@@ -91,6 +92,8 @@ type LookupClusterResult struct {
 	PulumiLabels                   map[string]string                         `pulumi:"pulumiLabels"`
 	Reconciling                    bool                                      `pulumi:"reconciling"`
 	RestoreBackupSources           []GetClusterRestoreBackupSource           `pulumi:"restoreBackupSources"`
+	RestoreBackupdrBackupSources   []GetClusterRestoreBackupdrBackupSource   `pulumi:"restoreBackupdrBackupSources"`
+	RestoreBackupdrPitrSources     []GetClusterRestoreBackupdrPitrSource     `pulumi:"restoreBackupdrPitrSources"`
 	RestoreContinuousBackupSources []GetClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSources"`
 	SecondaryConfigs               []GetClusterSecondaryConfig               `pulumi:"secondaryConfigs"`
 	SkipAwaitMajorVersionUpgrade   bool                                      `pulumi:"skipAwaitMajorVersionUpgrade"`
@@ -151,6 +154,10 @@ func (o LookupClusterResultOutput) AutomatedBackupPolicies() GetClusterAutomated
 
 func (o LookupClusterResultOutput) BackupSources() GetClusterBackupSourceArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterBackupSource { return v.BackupSources }).(GetClusterBackupSourceArrayOutput)
+}
+
+func (o LookupClusterResultOutput) BackupdrBackupSources() GetClusterBackupdrBackupSourceArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterBackupdrBackupSource { return v.BackupdrBackupSources }).(GetClusterBackupdrBackupSourceArrayOutput)
 }
 
 func (o LookupClusterResultOutput) ClusterId() pulumi.StringOutput {
@@ -256,6 +263,16 @@ func (o LookupClusterResultOutput) Reconciling() pulumi.BoolOutput {
 
 func (o LookupClusterResultOutput) RestoreBackupSources() GetClusterRestoreBackupSourceArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterRestoreBackupSource { return v.RestoreBackupSources }).(GetClusterRestoreBackupSourceArrayOutput)
+}
+
+func (o LookupClusterResultOutput) RestoreBackupdrBackupSources() GetClusterRestoreBackupdrBackupSourceArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterRestoreBackupdrBackupSource {
+		return v.RestoreBackupdrBackupSources
+	}).(GetClusterRestoreBackupdrBackupSourceArrayOutput)
+}
+
+func (o LookupClusterResultOutput) RestoreBackupdrPitrSources() GetClusterRestoreBackupdrPitrSourceArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterRestoreBackupdrPitrSource { return v.RestoreBackupdrPitrSources }).(GetClusterRestoreBackupdrPitrSourceArrayOutput)
 }
 
 func (o LookupClusterResultOutput) RestoreContinuousBackupSources() GetClusterRestoreContinuousBackupSourceArrayOutput {

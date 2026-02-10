@@ -96,6 +96,7 @@ type Reservation struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// (Optional, Beta)
 	// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
 	// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
 	// more than the specified number of slots, even if there is demand and supply (from idle
@@ -149,6 +150,7 @@ type Reservation struct {
 	// operations on the reservation have succeeded.
 	// Structure is documented below.
 	ReplicationStatuses ReservationReplicationStatusArrayOutput `pulumi:"replicationStatuses"`
+	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Enum values:
@@ -240,6 +242,7 @@ type reservationState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
+	// (Optional, Beta)
 	// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
 	// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
 	// more than the specified number of slots, even if there is demand and supply (from idle
@@ -293,6 +296,7 @@ type reservationState struct {
 	// operations on the reservation have succeeded.
 	// Structure is documented below.
 	ReplicationStatuses []ReservationReplicationStatus `pulumi:"replicationStatuses"`
+	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Enum values:
@@ -352,6 +356,7 @@ type ReservationState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
 	// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
 	// more than the specified number of slots, even if there is demand and supply (from idle
@@ -405,6 +410,7 @@ type ReservationState struct {
 	// operations on the reservation have succeeded.
 	// Structure is documented below.
 	ReplicationStatuses ReservationReplicationStatusArrayInput
+	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Enum values:
@@ -468,6 +474,7 @@ type reservationArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
+	// (Optional, Beta)
 	// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
 	// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
 	// more than the specified number of slots, even if there is demand and supply (from idle
@@ -506,6 +513,7 @@ type reservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Enum values:
@@ -566,6 +574,7 @@ type ReservationArgs struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
 	// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
 	// more than the specified number of slots, even if there is demand and supply (from idle
@@ -604,6 +613,7 @@ type ReservationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The scaling mode for the reservation. If the field is present but maxSlots is not present,
 	// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 	// Enum values:
@@ -764,6 +774,7 @@ func (o ReservationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
 // (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
 // more than the specified number of slots, even if there is demand and supply (from idle
@@ -835,6 +846,7 @@ func (o ReservationOutput) ReplicationStatuses() ReservationReplicationStatusArr
 	return o.ApplyT(func(v *Reservation) ReservationReplicationStatusArrayOutput { return v.ReplicationStatuses }).(ReservationReplicationStatusArrayOutput)
 }
 
+// (Optional, Beta)
 // The scaling mode for the reservation. If the field is present but maxSlots is not present,
 // requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
 // Enum values:

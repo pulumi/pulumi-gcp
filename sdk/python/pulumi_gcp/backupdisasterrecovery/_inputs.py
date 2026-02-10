@@ -126,6 +126,11 @@ if not MYPY:
         (Output)
         State of last backup taken.
         """
+        last_successful_backup_consistency_time: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        (Output)
+        The point in time when the last successful backup was captured from the source
+        """
         rule_id: NotRequired[pulumi.Input[_builtins.str]]
         """
         (Output)
@@ -139,6 +144,7 @@ class BackupPlanAssociationRulesConfigInfoArgs:
     def __init__(__self__, *,
                  last_backup_errors: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]] = None,
                  last_backup_state: Optional[pulumi.Input[_builtins.str]] = None,
+                 last_successful_backup_consistency_time: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]] last_backup_errors: (Output)
@@ -146,6 +152,8 @@ class BackupPlanAssociationRulesConfigInfoArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_backup_state: (Output)
                State of last backup taken.
+        :param pulumi.Input[_builtins.str] last_successful_backup_consistency_time: (Output)
+               The point in time when the last successful backup was captured from the source
         :param pulumi.Input[_builtins.str] rule_id: (Output)
                Backup Rule id fetched from backup plan.
         """
@@ -153,6 +161,8 @@ class BackupPlanAssociationRulesConfigInfoArgs:
             pulumi.set(__self__, "last_backup_errors", last_backup_errors)
         if last_backup_state is not None:
             pulumi.set(__self__, "last_backup_state", last_backup_state)
+        if last_successful_backup_consistency_time is not None:
+            pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
         if rule_id is not None:
             pulumi.set(__self__, "rule_id", rule_id)
 
@@ -182,6 +192,19 @@ class BackupPlanAssociationRulesConfigInfoArgs:
     @last_backup_state.setter
     def last_backup_state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "last_backup_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
+    def last_successful_backup_consistency_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Output)
+        The point in time when the last successful backup was captured from the source
+        """
+        return pulumi.get(self, "last_successful_backup_consistency_time")
+
+    @last_successful_backup_consistency_time.setter
+    def last_successful_backup_consistency_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "last_successful_backup_consistency_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")

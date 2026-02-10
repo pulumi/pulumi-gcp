@@ -325,12 +325,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        An Instance is an installation of an Extension into a user's project.
-
-        To get more information about Instance, see:
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/products/extensions)
-
         ## Example Usage
 
         ### Firebase Extensions Instance Resize Image
@@ -415,12 +409,6 @@ class ExtensionsInstance(pulumi.CustomResource):
                  args: ExtensionsInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        An Instance is an installation of an Extension into a user's project.
-
-        To get more information about Instance, see:
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/products/extensions)
-
         ## Example Usage
 
         ### Firebase Extensions Instance Resize Image

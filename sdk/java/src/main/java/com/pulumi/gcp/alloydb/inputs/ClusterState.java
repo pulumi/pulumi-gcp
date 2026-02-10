@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterBackupSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterBackupdrBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupInfoArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
@@ -17,6 +18,8 @@ import com.pulumi.gcp.alloydb.inputs.ClusterMigrationSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupdrBackupSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupdrPitrSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterTrialMetadataArgs;
@@ -88,6 +91,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<ClusterBackupSourceArgs>>> backupSources() {
         return Optional.ofNullable(this.backupSources);
+    }
+
+    /**
+     * Cluster created from a BackupDR backup.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="backupdrBackupSources")
+    private @Nullable Output<List<ClusterBackupdrBackupSourceArgs>> backupdrBackupSources;
+
+    /**
+     * @return Cluster created from a BackupDR backup.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterBackupdrBackupSourceArgs>>> backupdrBackupSources() {
+        return Optional.ofNullable(this.backupdrBackupSources);
     }
 
     /**
@@ -481,7 +501,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -489,7 +509,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterRestoreBackupSourceArgs> restoreBackupSource;
 
     /**
-     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -498,7 +518,41 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;,  &#39;restore_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restoreBackupdrBackupSource")
+    private @Nullable Output<ClusterRestoreBackupdrBackupSourceArgs> restoreBackupdrBackupSource;
+
+    /**
+     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;,  &#39;restore_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterRestoreBackupdrBackupSourceArgs>> restoreBackupdrBackupSource() {
+        return Optional.ofNullable(this.restoreBackupdrBackupSource);
+    }
+
+    /**
+     * The BackupDR source used for point in time recovery. Conflicts with &#39;restore_backupdr_backup_source&#39;, &#39;restore_continuous_backup_source&#39; and &#39;restore_backupdr_backup_source&#39;, they can&#39;t be set togeter.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restoreBackupdrPitrSource")
+    private @Nullable Output<ClusterRestoreBackupdrPitrSourceArgs> restoreBackupdrPitrSource;
+
+    /**
+     * @return The BackupDR source used for point in time recovery. Conflicts with &#39;restore_backupdr_backup_source&#39;, &#39;restore_continuous_backup_source&#39; and &#39;restore_backupdr_backup_source&#39;, they can&#39;t be set togeter.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterRestoreBackupdrPitrSourceArgs>> restoreBackupdrPitrSource() {
+        return Optional.ofNullable(this.restoreBackupdrPitrSource);
+    }
+
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -506,7 +560,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterRestoreContinuousBackupSourceArgs> restoreContinuousBackupSource;
 
     /**
-     * @return The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * @return The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -620,6 +674,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.automatedBackupPolicy = $.automatedBackupPolicy;
         this.backupSources = $.backupSources;
+        this.backupdrBackupSources = $.backupdrBackupSources;
         this.clusterId = $.clusterId;
         this.clusterType = $.clusterType;
         this.continuousBackupConfig = $.continuousBackupConfig;
@@ -645,6 +700,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.pulumiLabels = $.pulumiLabels;
         this.reconciling = $.reconciling;
         this.restoreBackupSource = $.restoreBackupSource;
+        this.restoreBackupdrBackupSource = $.restoreBackupdrBackupSource;
+        this.restoreBackupdrPitrSource = $.restoreBackupdrPitrSource;
         this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
         this.secondaryConfig = $.secondaryConfig;
         this.skipAwaitMajorVersionUpgrade = $.skipAwaitMajorVersionUpgrade;
@@ -756,6 +813,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupSources(ClusterBackupSourceArgs... backupSources) {
             return backupSources(List.of(backupSources));
+        }
+
+        /**
+         * @param backupdrBackupSources Cluster created from a BackupDR backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupdrBackupSources(@Nullable Output<List<ClusterBackupdrBackupSourceArgs>> backupdrBackupSources) {
+            $.backupdrBackupSources = backupdrBackupSources;
+            return this;
+        }
+
+        /**
+         * @param backupdrBackupSources Cluster created from a BackupDR backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupdrBackupSources(List<ClusterBackupdrBackupSourceArgs> backupdrBackupSources) {
+            return backupdrBackupSources(Output.of(backupdrBackupSources));
+        }
+
+        /**
+         * @param backupdrBackupSources Cluster created from a BackupDR backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupdrBackupSources(ClusterBackupdrBackupSourceArgs... backupdrBackupSources) {
+            return backupdrBackupSources(List.of(backupdrBackupSources));
         }
 
         /**
@@ -1319,7 +1410,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restoreBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+         * @param restoreBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder
@@ -1331,7 +1422,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restoreBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+         * @param restoreBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder
@@ -1342,7 +1433,53 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restoreContinuousBackupSource The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+         * @param restoreBackupdrBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;,  &#39;restore_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreBackupdrBackupSource(@Nullable Output<ClusterRestoreBackupdrBackupSourceArgs> restoreBackupdrBackupSource) {
+            $.restoreBackupdrBackupSource = restoreBackupdrBackupSource;
+            return this;
+        }
+
+        /**
+         * @param restoreBackupdrBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;,  &#39;restore_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreBackupdrBackupSource(ClusterRestoreBackupdrBackupSourceArgs restoreBackupdrBackupSource) {
+            return restoreBackupdrBackupSource(Output.of(restoreBackupdrBackupSource));
+        }
+
+        /**
+         * @param restoreBackupdrPitrSource The BackupDR source used for point in time recovery. Conflicts with &#39;restore_backupdr_backup_source&#39;, &#39;restore_continuous_backup_source&#39; and &#39;restore_backupdr_backup_source&#39;, they can&#39;t be set togeter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreBackupdrPitrSource(@Nullable Output<ClusterRestoreBackupdrPitrSourceArgs> restoreBackupdrPitrSource) {
+            $.restoreBackupdrPitrSource = restoreBackupdrPitrSource;
+            return this;
+        }
+
+        /**
+         * @param restoreBackupdrPitrSource The BackupDR source used for point in time recovery. Conflicts with &#39;restore_backupdr_backup_source&#39;, &#39;restore_continuous_backup_source&#39; and &#39;restore_backupdr_backup_source&#39;, they can&#39;t be set togeter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreBackupdrPitrSource(ClusterRestoreBackupdrPitrSourceArgs restoreBackupdrPitrSource) {
+            return restoreBackupdrPitrSource(Output.of(restoreBackupdrPitrSource));
+        }
+
+        /**
+         * @param restoreContinuousBackupSource The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder
@@ -1354,7 +1491,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restoreContinuousBackupSource The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+         * @param restoreContinuousBackupSource The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, &#39;restore_backupdr_backup_source&#39; and &#39;restore_backupdr_pitr_source&#39;, they can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder

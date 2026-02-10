@@ -3711,6 +3711,7 @@ if not MYPY:
         """
         service_mesh: NotRequired[pulumi.Input['ServiceTemplateServiceMeshArgsDict']]
         """
+        (Optional, Beta)
         Enables Cloud Service Mesh for this Revision.
         Structure is documented below.
         """
@@ -3780,7 +3781,8 @@ class ServiceTemplateArgs:
         :param pulumi.Input['ServiceTemplateScalingArgs'] scaling: Scaling settings for this Revision.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-        :param pulumi.Input['ServiceTemplateServiceMeshArgs'] service_mesh: Enables Cloud Service Mesh for this Revision.
+        :param pulumi.Input['ServiceTemplateServiceMeshArgs'] service_mesh: (Optional, Beta)
+               Enables Cloud Service Mesh for this Revision.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] session_affinity: Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         :param pulumi.Input[_builtins.str] timeout: Max allowed time for an instance to respond to a request.
@@ -3984,6 +3986,7 @@ class ServiceTemplateArgs:
     @pulumi.getter(name="serviceMesh")
     def service_mesh(self) -> Optional[pulumi.Input['ServiceTemplateServiceMeshArgs']]:
         """
+        (Optional, Beta)
         Enables Cloud Service Mesh for this Revision.
         Structure is documented below.
         """
@@ -4100,6 +4103,7 @@ if not MYPY:
         """
         source_code: NotRequired[pulumi.Input['ServiceTemplateContainerSourceCodeArgsDict']]
         """
+        (Optional, Beta)
         Location of the source.
         Structure is documented below.
         """
@@ -4157,7 +4161,8 @@ class ServiceTemplateContainerArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateContainerSourceCodeArgs'] source_code: Location of the source.
+        :param pulumi.Input['ServiceTemplateContainerSourceCodeArgs'] source_code: (Optional, Beta)
+               Location of the source.
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerStartupProbeArgs'] startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
@@ -4338,6 +4343,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter(name="sourceCode")
     def source_code(self) -> Optional[pulumi.Input['ServiceTemplateContainerSourceCodeArgs']]:
         """
+        (Optional, Beta)
         Location of the source.
         Structure is documented below.
         """

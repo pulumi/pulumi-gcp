@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMachineTypesMachineTypeAcceleratorResult> Accelerators;
         /// <summary>
-        /// The configuration of bundled local SSD for the machine type. Structure is documented below.
+        /// (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMachineTypesMachineTypeBundledLocalSsdResult> BundledLocalSsds;
         /// <summary>

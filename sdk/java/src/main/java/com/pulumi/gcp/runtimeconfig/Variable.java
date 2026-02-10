@@ -16,11 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages a RuntimeConfig variable in Google Cloud. For more information, see the
- * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
- * or the
- * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
- * 
  * ## Example Usage
  * 
  * Example creating a RuntimeConfig variable.

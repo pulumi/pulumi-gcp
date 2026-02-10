@@ -144,6 +144,7 @@ export class GroupMembership extends pulumi.CustomResource {
      */
     declare public readonly group: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * EntityKey of the member.
      * Structure is documented below.
      */
@@ -234,6 +235,7 @@ export interface GroupMembershipState {
      */
     group?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * EntityKey of the member.
      * Structure is documented below.
      */
@@ -276,6 +278,7 @@ export interface GroupMembershipArgs {
      */
     group: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * EntityKey of the member.
      * Structure is documented below.
      */

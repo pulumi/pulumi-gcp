@@ -114,7 +114,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
      * Global constraints for machine resources in the
      * cluster. Configuring the `cpu` and `memory` types is required if node
      * auto-provisioning is enabled. These limits will apply to node pool autoscaling
-     * in addition to node auto-provisioning. Structure is documented below.
+     * in addition to node auto-provisioning. Limits can&#39;t be unset entirely, they can only be replaced. Structure is documented below.
      * 
      */
     @Import(name="resourceLimits")
@@ -124,7 +124,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
      * @return Global constraints for machine resources in the
      * cluster. Configuring the `cpu` and `memory` types is required if node
      * auto-provisioning is enabled. These limits will apply to node pool autoscaling
-     * in addition to node auto-provisioning. Structure is documented below.
+     * in addition to node auto-provisioning. Limits can&#39;t be unset entirely, they can only be replaced. Structure is documented below.
      * 
      */
     public Optional<Output<List<ClusterClusterAutoscalingResourceLimitArgs>>> resourceLimits() {
@@ -297,7 +297,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
          * @param resourceLimits Global constraints for machine resources in the
          * cluster. Configuring the `cpu` and `memory` types is required if node
          * auto-provisioning is enabled. These limits will apply to node pool autoscaling
-         * in addition to node auto-provisioning. Structure is documented below.
+         * in addition to node auto-provisioning. Limits can&#39;t be unset entirely, they can only be replaced. Structure is documented below.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
          * @param resourceLimits Global constraints for machine resources in the
          * cluster. Configuring the `cpu` and `memory` types is required if node
          * auto-provisioning is enabled. These limits will apply to node pool autoscaling
-         * in addition to node auto-provisioning. Structure is documented below.
+         * in addition to node auto-provisioning. Limits can&#39;t be unset entirely, they can only be replaced. Structure is documented below.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
          * @param resourceLimits Global constraints for machine resources in the
          * cluster. Configuring the `cpu` and `memory` types is required if node
          * auto-provisioning is enabled. These limits will apply to node pool autoscaling
-         * in addition to node auto-provisioning. Structure is documented below.
+         * in addition to node auto-provisioning. Limits can&#39;t be unset entirely, they can only be replaced. Structure is documented below.
          * 
          * @return builder
          * 

@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Storage
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
     /// 
+    /// On import, the `Secret` value will not be retrieved.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Storage Hmac Key

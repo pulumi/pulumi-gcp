@@ -35,6 +35,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Inputs
 
         /// <summary>
         /// (Output)
+        /// The point in time when the last successful backup was captured from the source
+        /// </summary>
+        [Input("lastSuccessfulBackupConsistencyTime")]
+        public Input<string>? LastSuccessfulBackupConsistencyTime { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// Backup Rule id fetched from backup plan.
         /// </summary>
         [Input("ruleId")]

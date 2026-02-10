@@ -148,13 +148,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "tf-test-network_16178",
+    ///         Name = "tf-test-network_44703",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_26317",
+    ///         Name = "tf-test-subnet_9329",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
-    ///         Name = "tf-test-instance_4866",
+    ///         Name = "tf-test-instance_37135",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
     ///         Zone = "us-central1-a",
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
-    ///         Name = "tf-test-hub_12618",
+    ///         Name = "tf-test-hub_42503",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
-    ///         Name = "tf-test-name_32270",
+    ///         Name = "tf-test-name_9991",
     ///         Location = "us-central1",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 
@@ -594,8 +594,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         {
     ///             AutoAcceptProjects = new[]
     ///             {
-    ///                 "foo_44703",
-    ///                 "bar_9329",
+    ///                 "foo_12125",
+    ///                 "bar_82749",
     ///             },
     ///         },
     ///     });
@@ -686,7 +686,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_37135",
+    ///         Name = "tf-test-subnet_15022",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,
@@ -776,6 +776,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// This is a gateway that can apply specialized processing to traffic going through it.
         /// Structure is documented below.
         /// </summary>
@@ -946,6 +947,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// This is a gateway that can apply specialized processing to traffic going through it.
         /// Structure is documented below.
         /// </summary>
@@ -1069,6 +1071,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// This is a gateway that can apply specialized processing to traffic going through it.
         /// Structure is documented below.
         /// </summary>

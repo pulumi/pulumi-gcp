@@ -7,8 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Get information about a Google Backup DR Management server.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -51,8 +49,6 @@ export interface GetManagementServerResult {
     readonly type: string;
 }
 /**
- * Get information about a Google Backup DR Management server.
- *
  * ## Example Usage
  *
  * ```typescript

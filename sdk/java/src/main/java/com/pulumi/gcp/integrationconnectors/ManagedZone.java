@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var targetProject = new Project("targetProject", ProjectArgs.builder()
- *             .projectId("tf-test_16199")
- *             .name("tf-test_21563")
+ *             .projectId("tf-test_16178")
+ *             .name("tf-test_26317")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -97,8 +97,8 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var zone = new com.pulumi.gcp.dns.ManagedZone("zone", com.pulumi.gcp.dns.ManagedZoneArgs.builder()
- *             .name("tf-test-dns_25141")
- *             .dnsName("private_30827.example.com.")
+ *             .name("tf-test-dns_4866")
+ *             .dnsName("private_12618.example.com.")
  *             .visibility("private")
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
  *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()

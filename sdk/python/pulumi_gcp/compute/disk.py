@@ -93,7 +93,8 @@ class DiskArgs:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -101,7 +102,8 @@ class DiskArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] licenses: Any applicable license URI.
-        :param pulumi.Input[_builtins.bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
+        :param pulumi.Input[_builtins.bool] multi_writer: (Optional, Beta)
+               Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -124,7 +126,8 @@ class DiskArgs:
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
                Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: (Optional, Beta)
+               Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
                one at a time. Use
@@ -403,6 +406,7 @@ class DiskArgs:
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
     def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -444,6 +448,7 @@ class DiskArgs:
     @pulumi.getter(name="multiWriter")
     def multi_writer(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Indicates whether or not the disk can be read/write attached to more than one instance.
         """
         return pulumi.get(self, "multi_writer")
@@ -544,6 +549,7 @@ class DiskArgs:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         Resource policies applied to this disk for automatic snapshot creations.
         ~>**NOTE** This value does not support updating the
         resource policy, as resource policies can not be updated more than
@@ -811,7 +817,8 @@ class _DiskState:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -823,7 +830,8 @@ class _DiskState:
         :param pulumi.Input[_builtins.str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] licenses: Any applicable license URI.
-        :param pulumi.Input[_builtins.bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
+        :param pulumi.Input[_builtins.bool] multi_writer: (Optional, Beta)
+               Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -848,7 +856,8 @@ class _DiskState:
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: (Optional, Beta)
+               Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
                one at a time. Use
@@ -1211,6 +1220,7 @@ class _DiskState:
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
     def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1289,6 +1299,7 @@ class _DiskState:
     @pulumi.getter(name="multiWriter")
     def multi_writer(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Indicates whether or not the disk can be read/write attached to more than one instance.
         """
         return pulumi.get(self, "multi_writer")
@@ -1402,6 +1413,7 @@ class _DiskState:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         Resource policies applied to this disk for automatic snapshot creations.
         ~>**NOTE** This value does not support updating the
         resource policy, as resource policies can not be updated more than
@@ -1864,7 +1876,8 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -1872,7 +1885,8 @@ class Disk(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] licenses: Any applicable license URI.
-        :param pulumi.Input[_builtins.bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
+        :param pulumi.Input[_builtins.bool] multi_writer: (Optional, Beta)
+               Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1895,7 +1909,8 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
                Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: (Optional, Beta)
+               Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
                one at a time. Use
@@ -2283,7 +2298,8 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[_builtins.str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[_builtins.str] interface: (Optional, Beta, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[_builtins.str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -2295,7 +2311,8 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] licenses: Any applicable license URI.
-        :param pulumi.Input[_builtins.bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
+        :param pulumi.Input[_builtins.bool] multi_writer: (Optional, Beta)
+               Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -2320,7 +2337,8 @@ class Disk(pulumi.CustomResource):
                allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: (Optional, Beta)
+               Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
                one at a time. Use
@@ -2589,6 +2607,7 @@ class Disk(pulumi.CustomResource):
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
     def interface(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -2643,6 +2662,7 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="multiWriter")
     def multi_writer(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
+        (Optional, Beta)
         Indicates whether or not the disk can be read/write attached to more than one instance.
         """
         return pulumi.get(self, "multi_writer")
@@ -2724,6 +2744,7 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         Resource policies applied to this disk for automatic snapshot creations.
         ~>**NOTE** This value does not support updating the
         resource policy, as resource policies can not be updated more than

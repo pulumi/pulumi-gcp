@@ -16,6 +16,7 @@ public final class RegionDiskSourceSnapshotEncryptionKeyArgs extends com.pulumi.
     public static final RegionDiskSourceSnapshotEncryptionKeyArgs Empty = new RegionDiskSourceSnapshotEncryptionKeyArgs();
 
     /**
+     * (Optional, Beta)
      * The name of the encryption key that is stored in Google Cloud KMS.
      * 
      */
@@ -23,7 +24,8 @@ public final class RegionDiskSourceSnapshotEncryptionKeyArgs extends com.pulumi.
     private @Nullable Output<String> kmsKeyName;
 
     /**
-     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * @return (Optional, Beta)
+     * The name of the encryption key that is stored in Google Cloud KMS.
      * 
      */
     public Optional<Output<String>> kmsKeyName() {
@@ -93,7 +95,8 @@ public final class RegionDiskSourceSnapshotEncryptionKeyArgs extends com.pulumi.
         }
 
         /**
-         * @param kmsKeyName The name of the encryption key that is stored in Google Cloud KMS.
+         * @param kmsKeyName (Optional, Beta)
+         * The name of the encryption key that is stored in Google Cloud KMS.
          * 
          * @return builder
          * 
@@ -104,7 +107,8 @@ public final class RegionDiskSourceSnapshotEncryptionKeyArgs extends com.pulumi.
         }
 
         /**
-         * @param kmsKeyName The name of the encryption key that is stored in Google Cloud KMS.
+         * @param kmsKeyName (Optional, Beta)
+         * The name of the encryption key that is stored in Google Cloud KMS.
          * 
          * @return builder
          * 

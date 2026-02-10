@@ -243,6 +243,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -252,7 +253,8 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<BackendServiceDynamicForwardingArgs> dynamicForwarding;
 
     /**
-     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * @return (Optional, Beta)
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      * 
@@ -657,6 +659,7 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
@@ -665,7 +668,8 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<BackendServiceNetworkPassThroughLbTrafficPolicyArgs> networkPassThroughLbTrafficPolicy;
 
     /**
-     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * @return (Optional, Beta)
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
      */
@@ -1280,7 +1284,8 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * @param dynamicForwarding (Optional, Beta)
+         * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
          * feature which together with Service Extension allows customized and complex routing logic.
          * Structure is documented below.
          * 
@@ -1293,7 +1298,8 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dynamicForwarding Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+         * @param dynamicForwarding (Optional, Beta)
+         * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
          * feature which together with Service Extension allows customized and complex routing logic.
          * Structure is documented below.
          * 
@@ -1794,7 +1800,8 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * @param networkPassThroughLbTrafficPolicy (Optional, Beta)
+         * Configures traffic steering properties of internal passthrough Network Load Balancers.
          * Structure is documented below.
          * 
          * @return builder
@@ -1806,7 +1813,8 @@ public final class BackendServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param networkPassThroughLbTrafficPolicy Configures traffic steering properties of internal passthrough Network Load Balancers.
+         * @param networkPassThroughLbTrafficPolicy (Optional, Beta)
+         * Configures traffic steering properties of internal passthrough Network Load Balancers.
          * Structure is documented below.
          * 
          * @return builder

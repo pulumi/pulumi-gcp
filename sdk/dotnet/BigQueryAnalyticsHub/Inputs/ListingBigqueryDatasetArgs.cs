@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
         private InputList<string>? _replicaLocations;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of regions where the publisher has created shared dataset replicas.
         /// </summary>
         public InputList<string> ReplicaLocations

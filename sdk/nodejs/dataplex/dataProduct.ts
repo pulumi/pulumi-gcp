@@ -7,15 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A data product is a curated collection of data assets, packaged to address
- * specific use cases.
- *
- * To get more information about DataProduct, see:
- *
- * * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
- * * How-to Guides
- *     * [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
- *
  * ## Example Usage
  *
  * ### Dataplex Data Product Basic
@@ -29,13 +20,13 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     dataProductId: "data-product-basic",
  *     displayName: "terraform data product",
- *     ownerEmails: ["terraform-test@google.com"],
+ *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     accessGroups: [{
  *         id: "analyst",
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_89605@example.com",
+ *             googleGroup: "tf-test-analysts-_74000@example.com",
  *         },
  *     }],
  * });
@@ -52,7 +43,7 @@ import * as utilities from "../utilities";
  *     dataProductId: "data-product-full",
  *     displayName: "DP Full Test: Special Chars !@#$",
  *     description: "Updated with emojis 🚀 and brackets {test}",
- *     ownerEmails: ["terraform-test@google.com"],
+ *     ownerEmails: ["gterraformtestuser@gmail.com"],
  *     labels: {
  *         env: "manual-test",
  *     },
@@ -63,7 +54,7 @@ import * as utilities from "../utilities";
  *             displayName: "Data Analyst - Updated",
  *             description: "In-place update verified",
  *             principal: {
- *                 googleGroup: "tf-test-analysts-_56730@example.com",
+ *                 googleGroup: "tf-test-analysts-_75125@example.com",
  *             },
  *         },
  *         {
@@ -71,7 +62,7 @@ import * as utilities from "../utilities";
  *             groupId: "scientist",
  *             displayName: "Data Scientist",
  *             principal: {
- *                 googleGroup: "tf-test-scientists-_95154@example.com",
+ *                 googleGroup: "tf-test-scientists-_88722@example.com",
  *             },
  *         },
  *     ],
@@ -88,8 +79,6 @@ import * as utilities from "../utilities";
  *
  * * `{{location}}/{{data_product_id}}`
  *
- * * `{{data_product_id}}`
- *
  * When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
  *
  * ```sh
@@ -102,10 +91,6 @@ import * as utilities from "../utilities";
  *
  * ```sh
  * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
- * ```
- *
- * ```sh
- * $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{data_product_id}}
  * ```
  */
 export class DataProduct extends pulumi.CustomResource {

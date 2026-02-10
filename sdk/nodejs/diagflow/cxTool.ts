@@ -321,6 +321,7 @@ export class CxTool extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional, Beta)
      * Integration connectors tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
@@ -417,6 +418,7 @@ export class CxTool extends pulumi.CustomResource {
  */
 export interface CxToolState {
     /**
+     * (Optional, Beta)
      * Integration connectors tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
@@ -469,6 +471,7 @@ export interface CxToolState {
  */
 export interface CxToolArgs {
     /**
+     * (Optional, Beta)
      * Integration connectors tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.

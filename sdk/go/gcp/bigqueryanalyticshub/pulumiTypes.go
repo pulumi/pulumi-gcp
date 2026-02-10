@@ -1371,6 +1371,7 @@ type ListingBigqueryDataset struct {
 	// Each replica includes a system-computed (output-only) state and primary designation.
 	// Structure is documented below.
 	EffectiveReplicas []ListingBigqueryDatasetEffectiveReplica `pulumi:"effectiveReplicas"`
+	// (Optional, Beta)
 	// A list of regions where the publisher has created shared dataset replicas.
 	ReplicaLocations []string `pulumi:"replicaLocations"`
 	// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
@@ -1397,6 +1398,7 @@ type ListingBigqueryDatasetArgs struct {
 	// Each replica includes a system-computed (output-only) state and primary designation.
 	// Structure is documented below.
 	EffectiveReplicas ListingBigqueryDatasetEffectiveReplicaArrayInput `pulumi:"effectiveReplicas"`
+	// (Optional, Beta)
 	// A list of regions where the publisher has created shared dataset replicas.
 	ReplicaLocations pulumi.StringArrayInput `pulumi:"replicaLocations"`
 	// Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
@@ -1494,6 +1496,7 @@ func (o ListingBigqueryDatasetOutput) EffectiveReplicas() ListingBigqueryDataset
 	return o.ApplyT(func(v ListingBigqueryDataset) []ListingBigqueryDatasetEffectiveReplica { return v.EffectiveReplicas }).(ListingBigqueryDatasetEffectiveReplicaArrayOutput)
 }
 
+// (Optional, Beta)
 // A list of regions where the publisher has created shared dataset replicas.
 func (o ListingBigqueryDatasetOutput) ReplicaLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListingBigqueryDataset) []string { return v.ReplicaLocations }).(pulumi.StringArrayOutput)
@@ -1552,6 +1555,7 @@ func (o ListingBigqueryDatasetPtrOutput) EffectiveReplicas() ListingBigqueryData
 	}).(ListingBigqueryDatasetEffectiveReplicaArrayOutput)
 }
 
+// (Optional, Beta)
 // A list of regions where the publisher has created shared dataset replicas.
 func (o ListingBigqueryDatasetPtrOutput) ReplicaLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ListingBigqueryDataset) []string {
@@ -1695,6 +1699,7 @@ func (o ListingBigqueryDatasetEffectiveReplicaArrayOutput) Index(i pulumi.IntInp
 }
 
 type ListingBigqueryDatasetSelectedResource struct {
+	// (Optional, Beta)
 	// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 	//
 	// <a name="nestedBigqueryDatasetEffectiveReplicas"></a>The `effectiveReplicas` block contains:
@@ -1715,6 +1720,7 @@ type ListingBigqueryDatasetSelectedResourceInput interface {
 }
 
 type ListingBigqueryDatasetSelectedResourceArgs struct {
+	// (Optional, Beta)
 	// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 	//
 	// <a name="nestedBigqueryDatasetEffectiveReplicas"></a>The `effectiveReplicas` block contains:
@@ -1774,6 +1780,7 @@ func (o ListingBigqueryDatasetSelectedResourceOutput) ToListingBigqueryDatasetSe
 	return o
 }
 
+// (Optional, Beta)
 // Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 //
 // <a name="nestedBigqueryDatasetEffectiveReplicas"></a>The `effectiveReplicas` block contains:
@@ -3220,6 +3227,7 @@ type ListingSubscriptionDestinationDataset struct {
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 	Location string `pulumi:"location"`
+	// (Optional, Beta)
 	// List of regions where the subscriber wants dataset replicas.
 	ReplicaLocations []string `pulumi:"replicaLocations"`
 }
@@ -3249,6 +3257,7 @@ type ListingSubscriptionDestinationDatasetArgs struct {
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
 	Location pulumi.StringInput `pulumi:"location"`
+	// (Optional, Beta)
 	// List of regions where the subscriber wants dataset replicas.
 	ReplicaLocations pulumi.StringArrayInput `pulumi:"replicaLocations"`
 }
@@ -3360,6 +3369,7 @@ func (o ListingSubscriptionDestinationDatasetOutput) Location() pulumi.StringOut
 	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // List of regions where the subscriber wants dataset replicas.
 func (o ListingSubscriptionDestinationDatasetOutput) ReplicaLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ListingSubscriptionDestinationDataset) []string { return v.ReplicaLocations }).(pulumi.StringArrayOutput)
@@ -3442,6 +3452,7 @@ func (o ListingSubscriptionDestinationDatasetPtrOutput) Location() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // List of regions where the subscriber wants dataset replicas.
 func (o ListingSubscriptionDestinationDatasetPtrOutput) ReplicaLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ListingSubscriptionDestinationDataset) []string {

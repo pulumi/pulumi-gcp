@@ -2835,7 +2835,8 @@ class ServiceTemplate(dict):
         :param 'ServiceTemplateScalingArgs' scaling: Scaling settings for this Revision.
                Structure is documented below.
         :param _builtins.str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-        :param 'ServiceTemplateServiceMeshArgs' service_mesh: Enables Cloud Service Mesh for this Revision.
+        :param 'ServiceTemplateServiceMeshArgs' service_mesh: (Optional, Beta)
+               Enables Cloud Service Mesh for this Revision.
                Structure is documented below.
         :param _builtins.bool session_affinity: Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         :param _builtins.str timeout: Max allowed time for an instance to respond to a request.
@@ -2991,6 +2992,7 @@ class ServiceTemplate(dict):
     @pulumi.getter(name="serviceMesh")
     def service_mesh(self) -> Optional['outputs.ServiceTemplateServiceMesh']:
         """
+        (Optional, Beta)
         Enables Cloud Service Mesh for this Revision.
         Structure is documented below.
         """
@@ -3100,7 +3102,8 @@ class ServiceTemplateContainer(dict):
                Structure is documented below.
         :param 'ServiceTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
-        :param 'ServiceTemplateContainerSourceCodeArgs' source_code: Location of the source.
+        :param 'ServiceTemplateContainerSourceCodeArgs' source_code: (Optional, Beta)
+               Location of the source.
                Structure is documented below.
         :param 'ServiceTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
@@ -3237,6 +3240,7 @@ class ServiceTemplateContainer(dict):
     @pulumi.getter(name="sourceCode")
     def source_code(self) -> Optional['outputs.ServiceTemplateContainerSourceCode']:
         """
+        (Optional, Beta)
         Location of the source.
         Structure is documented below.
         """

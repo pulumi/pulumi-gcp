@@ -1157,6 +1157,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionDrainingTimeoutSec);
     }
     /**
+     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1167,7 +1168,8 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionBackendServiceConnectionTrackingPolicy> connectionTrackingPolicy;
 
     /**
-     * @return Connection Tracking configuration for this BackendService.
+     * @return (Optional, Beta)
+     * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
      * Structure is documented below.
@@ -1247,6 +1249,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -1256,7 +1259,8 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionBackendServiceDynamicForwarding> dynamicForwarding;
 
     /**
-     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * @return (Optional, Beta)
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      * 
@@ -1615,6 +1619,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.network);
     }
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
@@ -1623,7 +1628,8 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicy;
 
     /**
-     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * @return (Optional, Beta)
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
      */
@@ -1809,6 +1815,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.strongSessionAffinityCookie);
     }
     /**
+     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      * 
@@ -1817,7 +1824,8 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionBackendServiceSubsetting> subsetting;
 
     /**
-     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * @return (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      * 
      */

@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A gateway advertised route is a route that a gateway spoke advertises somewhere.
-//
-// To get more information about GatewayAdvertisedRoute, see:
-//
-// * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
-// * How-to Guides
-//   - [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
-//
 // ## Example Usage
 //
 // ### Network Connectivity Gateway Advertised Route Basic
@@ -45,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_6529"),
+//				Name:        pulumi.String("tf-test-subnet_32270"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,

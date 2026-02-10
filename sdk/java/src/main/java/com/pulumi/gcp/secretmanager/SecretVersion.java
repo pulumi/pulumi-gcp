@@ -18,17 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A secret version resource.
- * 
- * To get more information about SecretVersion, see:
- * 
- * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions)
- * * How-to Guides
- *     * [Create and deploy a Secret Version](https://cloud.google.com/secret-manager/docs/add-secret-version)
- * 
- * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `secretDataWo`.
- * Read more about Write-only Arguments.
- * 
  * ## Example Usage
  * 
  * ### Secret Version Basic

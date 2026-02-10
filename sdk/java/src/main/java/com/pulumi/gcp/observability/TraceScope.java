@@ -16,8 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A trace scope is a collection of resources whose traces are queried together
- * 
  * ## Example Usage
  * 
  * ### Observability Trace Scope Basic
@@ -53,8 +51,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project_2 = new Project("project-2", ProjectArgs.builder()
- *             .projectId("tf-test_12125")
- *             .name("tf-test_82749")
+ *             .projectId("tf-test_34242")
+ *             .name("tf-test_9723")
  *             .orgId("123456789")
  *             .deletionPolicy("DELETE")
  *             .build());

@@ -22,7 +22,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     public static final WorkloadIdentityPoolProviderState Empty = new WorkloadIdentityPoolProviderState();
 
     /**
-     * [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+     * [A Common Expression Language](https://github.com/google/cel-spec) expression, in
      * plain text, to restrict what otherwise valid authentication credentials issued by the
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
@@ -33,7 +33,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     private @Nullable Output<String> attributeCondition;
 
     /**
-     * @return [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+     * @return [A Common Expression Language](https://github.com/google/cel-spec) expression, in
      * plain text, to restrict what otherwise valid authentication credentials issued by the
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
@@ -67,7 +67,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
      *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
      * * `attribute.{custom_attribute}`:
      *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-     *   Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+     *   Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
      *   function that maps an identity provider credential to the normalized attribute specified
      *   by the corresponding map key.
      *   You can use the `assertion` keyword in the expression to access a JSON representation of
@@ -110,7 +110,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
      *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
      * * `attribute.{custom_attribute}`:
      *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-     *   Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+     *   Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
      *   function that maps an identity provider credential to the normalized attribute specified
      *   by the corresponding map key.
      *   You can use the `assertion` keyword in the expression to access a JSON representation of
@@ -385,7 +385,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param attributeCondition [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+         * @param attributeCondition [A Common Expression Language](https://github.com/google/cel-spec) expression, in
          * plain text, to restrict what otherwise valid authentication credentials issued by the
          * provider should not be accepted.
          * The expression must output a boolean representing whether to allow the federation.
@@ -400,7 +400,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param attributeCondition [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+         * @param attributeCondition [A Common Expression Language](https://github.com/google/cel-spec) expression, in
          * plain text, to restrict what otherwise valid authentication credentials issued by the
          * provider should not be accepted.
          * The expression must output a boolean representing whether to allow the federation.
@@ -436,7 +436,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
          *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
          * * `attribute.{custom_attribute}`:
          *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-         *   Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+         *   Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
          *   function that maps an identity provider credential to the normalized attribute specified
          *   by the corresponding map key.
          *   You can use the `assertion` keyword in the expression to access a JSON representation of
@@ -483,7 +483,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
          *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
          * * `attribute.{custom_attribute}`:
          *   `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-         *   Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+         *   Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
          *   function that maps an identity provider credential to the normalized attribute specified
          *   by the corresponding map key.
          *   You can use the `assertion` keyword in the expression to access a JSON representation of

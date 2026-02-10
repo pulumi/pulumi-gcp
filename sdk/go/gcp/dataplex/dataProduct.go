@@ -12,15 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A data product is a curated collection of data assets, packaged to address
-// specific use cases.
-//
-// To get more information about DataProduct, see:
-//
-// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts)
-// * How-to Guides
-//   - [Introduction to Data Products](https://cloud.google.com/dataplex/docs/data-products-overview)
-//
 // ## Example Usage
 //
 // ### Dataplex Data Product Basic
@@ -43,7 +34,7 @@ import (
 //				DataProductId: pulumi.String("data-product-basic"),
 //				DisplayName:   pulumi.String("terraform data product"),
 //				OwnerEmails: pulumi.StringArray{
-//					pulumi.String("terraform-test@google.com"),
+//					pulumi.String("gterraformtestuser@gmail.com"),
 //				},
 //				AccessGroups: dataplex.DataProductAccessGroupArray{
 //					&dataplex.DataProductAccessGroupArgs{
@@ -51,7 +42,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_89605@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_74000@example.com"),
 //						},
 //					},
 //				},
@@ -85,7 +76,7 @@ import (
 //				DisplayName:   pulumi.String("DP Full Test: Special Chars !@#$"),
 //				Description:   pulumi.String("Updated with emojis 🚀 and brackets {test}"),
 //				OwnerEmails: pulumi.StringArray{
-//					pulumi.String("terraform-test@google.com"),
+//					pulumi.String("gterraformtestuser@gmail.com"),
 //				},
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("manual-test"),
@@ -97,7 +88,7 @@ import (
 //						DisplayName: pulumi.String("Data Analyst - Updated"),
 //						Description: pulumi.String("In-place update verified"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_56730@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_75125@example.com"),
 //						},
 //					},
 //					&dataplex.DataProductAccessGroupArgs{
@@ -105,7 +96,7 @@ import (
 //						GroupId:     pulumi.String("scientist"),
 //						DisplayName: pulumi.String("Data Scientist"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-scientists-_95154@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-scientists-_88722@example.com"),
 //						},
 //					},
 //				},
@@ -129,8 +120,6 @@ import (
 //
 // * `{{location}}/{{data_product_id}}`
 //
-// * `{{data_product_id}}`
-//
 // When using the `pulumi import` command, DataProduct can be imported using one of the formats above. For example:
 //
 // ```sh
@@ -143,10 +132,6 @@ import (
 //
 // ```sh
 // $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{location}}/{{data_product_id}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:dataplex/dataProduct:DataProduct default {{data_product_id}}
 // ```
 type DataProduct struct {
 	pulumi.CustomResourceState

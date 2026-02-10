@@ -37,7 +37,8 @@ public final class URLMapPathMatcherRouteRule {
      */
     private @Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction;
     /**
-     * @return Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+     * @return (Optional, Beta)
+     * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -46,7 +47,8 @@ public final class URLMapPathMatcherRouteRule {
      */
     private @Nullable List<URLMapPathMatcherRouteRuleHttpFilterConfig> httpFilterConfigs;
     /**
-     * @return Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+     * @return (Optional, Beta)
+     * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -129,7 +131,8 @@ public final class URLMapPathMatcherRouteRule {
         return Optional.ofNullable(this.headerAction);
     }
     /**
-     * @return Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+     * @return (Optional, Beta)
+     * Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -140,7 +143,8 @@ public final class URLMapPathMatcherRouteRule {
         return this.httpFilterConfigs == null ? List.of() : this.httpFilterConfigs;
     }
     /**
-     * @return Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+     * @return (Optional, Beta)
+     * Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
      * httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * See ForwardingRule for more details.
      * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.

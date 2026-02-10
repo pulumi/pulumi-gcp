@@ -217,6 +217,7 @@ public final class AiFeatureOnlineStoreFeatureviewState extends com.pulumi.resou
     }
 
     /**
+     * (Optional, Beta)
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      * 
@@ -225,7 +226,8 @@ public final class AiFeatureOnlineStoreFeatureviewState extends com.pulumi.resou
     private @Nullable Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs> vectorSearchConfig;
 
     /**
-     * @return Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * @return (Optional, Beta)
+     * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      * 
      */
@@ -538,7 +540,8 @@ public final class AiFeatureOnlineStoreFeatureviewState extends com.pulumi.resou
         }
 
         /**
-         * @param vectorSearchConfig Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+         * @param vectorSearchConfig (Optional, Beta)
+         * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
          * Structure is documented below.
          * 
          * @return builder
@@ -550,7 +553,8 @@ public final class AiFeatureOnlineStoreFeatureviewState extends com.pulumi.resou
         }
 
         /**
-         * @param vectorSearchConfig Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+         * @param vectorSearchConfig (Optional, Beta)
+         * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
          * Structure is documented below.
          * 
          * @return builder

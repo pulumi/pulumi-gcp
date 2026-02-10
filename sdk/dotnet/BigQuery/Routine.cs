@@ -505,6 +505,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> DeterminismLevel { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Options for the runtime of the external system.
         /// This field is only applicable for Python UDFs.
         /// Structure is documented below.
@@ -541,6 +542,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Options for a user-defined Python function.
         /// Structure is documented below.
         /// </summary>
@@ -697,6 +699,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? DeterminismLevel { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Options for the runtime of the external system.
         /// This field is only applicable for Python UDFs.
         /// Structure is documented below.
@@ -732,6 +735,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Options for a user-defined Python function.
         /// Structure is documented below.
         /// </summary>
@@ -857,6 +861,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? DeterminismLevel { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Options for the runtime of the external system.
         /// This field is only applicable for Python UDFs.
         /// Structure is documented below.
@@ -899,6 +904,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Options for a user-defined Python function.
         /// Structure is documented below.
         /// </summary>

@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class BackendServiceDynamicForwarding
     {
         /// <summary>
+        /// (Optional, Beta)
         /// IP:PORT based dynamic forwarding configuration.
         /// Structure is documented below.
         /// </summary>

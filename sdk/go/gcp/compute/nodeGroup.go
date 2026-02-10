@@ -248,6 +248,7 @@ type NodeGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrOutput `pulumi:"initialSize"`
+	// (Optional, Beta)
 	// Specifies the frequency of planned maintenance events. Set to one of the following:
 	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
 	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -320,6 +321,7 @@ type nodeGroupState struct {
 	Description *string `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
+	// (Optional, Beta)
 	// Specifies the frequency of planned maintenance events. Set to one of the following:
 	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
 	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -360,6 +362,7 @@ type NodeGroupState struct {
 	Description pulumi.StringPtrInput
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
+	// (Optional, Beta)
 	// Specifies the frequency of planned maintenance events. Set to one of the following:
 	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
 	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -402,6 +405,7 @@ type nodeGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
+	// (Optional, Beta)
 	// Specifies the frequency of planned maintenance events. Set to one of the following:
 	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
 	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -437,6 +441,7 @@ type NodeGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
+	// (Optional, Beta)
 	// Specifies the frequency of planned maintenance events. Set to one of the following:
 	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
 	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -571,6 +576,7 @@ func (o NodeGroupOutput) InitialSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.IntPtrOutput { return v.InitialSize }).(pulumi.IntPtrOutput)
 }
 
+// (Optional, Beta)
 // Specifies the frequency of planned maintenance events. Set to one of the following:
 //   - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
 //   - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.

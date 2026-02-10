@@ -309,6 +309,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         /// </summary>
         [Output("urlFilteringProfile")]
@@ -425,6 +426,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? ThreatPreventionProfile { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         /// </summary>
         [Input("urlFilteringProfile")]
@@ -551,6 +553,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         /// </summary>
         [Input("urlFilteringProfile")]

@@ -150,7 +150,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string LastSuccessfulBackupConsistencyTime;
         public readonly string Location;
         public readonly string Name;
         public readonly string? Project;
@@ -171,8 +170,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string id,
 
-            string lastSuccessfulBackupConsistencyTime,
-
             string location,
 
             string name,
@@ -192,7 +189,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             CreateTime = createTime;
             DataSource = dataSource;
             Id = id;
-            LastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
             Location = location;
             Name = name;
             Project = project;

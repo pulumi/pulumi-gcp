@@ -21,7 +21,8 @@ public final class AiEndpointPrivateServiceConnectConfig {
      */
     private Boolean enablePrivateServiceConnect;
     /**
-     * @return If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+     * @return (Optional, Beta)
+     * If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
      * 
      */
     private @Nullable Boolean enableSecurePrivateServiceConnect;
@@ -46,7 +47,8 @@ public final class AiEndpointPrivateServiceConnectConfig {
         return this.enablePrivateServiceConnect;
     }
     /**
-     * @return If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+     * @return (Optional, Beta)
+     * If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
      * 
      */
     public Optional<Boolean> enableSecurePrivateServiceConnect() {

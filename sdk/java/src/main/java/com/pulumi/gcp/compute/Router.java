@@ -351,6 +351,7 @@ public class Router extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      * 
      */
@@ -358,7 +359,8 @@ public class Router extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> nccGateway;
 
     /**
-     * @return A URI of an NCC Gateway spoke
+     * @return (Optional, Beta)
+     * A URI of an NCC Gateway spoke
      * 
      */
     public Output<Optional<String>> nccGateway() {

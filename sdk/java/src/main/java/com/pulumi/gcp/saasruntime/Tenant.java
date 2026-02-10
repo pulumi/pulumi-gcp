@@ -17,8 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Tenant resource represents the service producer&#39;s view of a service instance created for a consumer. It enables the association between the service producer&#39;s managed resources and the end consumer.
- * 
  * ## Example Usage
  * 
  * ### Saas Runtime Tenant Basic

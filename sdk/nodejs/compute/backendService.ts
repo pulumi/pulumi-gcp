@@ -23,9 +23,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
- * > **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
- *
  * ## Example Usage
  *
  * ### Backend Service Basic
@@ -635,6 +632,7 @@ export class BackendService extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -802,6 +800,7 @@ export class BackendService extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
@@ -1062,6 +1061,7 @@ export interface BackendServiceState {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -1229,6 +1229,7 @@ export interface BackendServiceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */
@@ -1381,6 +1382,7 @@ export interface BackendServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -1539,6 +1541,7 @@ export interface BackendServiceArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      */

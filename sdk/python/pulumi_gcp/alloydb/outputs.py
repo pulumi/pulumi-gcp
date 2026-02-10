@@ -26,6 +26,7 @@ __all__ = [
     'ClusterAutomatedBackupPolicyWeeklySchedule',
     'ClusterAutomatedBackupPolicyWeeklyScheduleStartTime',
     'ClusterBackupSource',
+    'ClusterBackupdrBackupSource',
     'ClusterContinuousBackupConfig',
     'ClusterContinuousBackupConfigEncryptionConfig',
     'ClusterContinuousBackupInfo',
@@ -40,6 +41,8 @@ __all__ = [
     'ClusterNetworkConfig',
     'ClusterPscConfig',
     'ClusterRestoreBackupSource',
+    'ClusterRestoreBackupdrBackupSource',
+    'ClusterRestoreBackupdrPitrSource',
     'ClusterRestoreContinuousBackupSource',
     'ClusterSecondaryConfig',
     'ClusterTrialMetadata',
@@ -62,6 +65,7 @@ __all__ = [
     'GetClusterAutomatedBackupPolicyWeeklyScheduleResult',
     'GetClusterAutomatedBackupPolicyWeeklyScheduleStartTimeResult',
     'GetClusterBackupSourceResult',
+    'GetClusterBackupdrBackupSourceResult',
     'GetClusterContinuousBackupConfigResult',
     'GetClusterContinuousBackupConfigEncryptionConfigResult',
     'GetClusterContinuousBackupInfoResult',
@@ -76,6 +80,8 @@ __all__ = [
     'GetClusterNetworkConfigResult',
     'GetClusterPscConfigResult',
     'GetClusterRestoreBackupSourceResult',
+    'GetClusterRestoreBackupdrBackupSourceResult',
+    'GetClusterRestoreBackupdrPitrSourceResult',
     'GetClusterRestoreContinuousBackupSourceResult',
     'GetClusterSecondaryConfigResult',
     'GetClusterTrialMetadataResult',
@@ -616,6 +622,25 @@ class ClusterBackupSource(dict):
         The name of the backup resource.
         """
         return pulumi.get(self, "backup_name")
+
+
+@pulumi.output_type
+class ClusterBackupdrBackupSource(dict):
+    def __init__(__self__, *,
+                 backup: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str backup: The name of the BackupDR backup resource.
+        """
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> Optional[_builtins.str]:
+        """
+        The name of the BackupDR backup resource.
+        """
+        return pulumi.get(self, "backup")
 
 
 @pulumi.output_type
@@ -1328,6 +1353,72 @@ class ClusterRestoreBackupSource(dict):
         The name of the backup that this cluster is restored from.
         """
         return pulumi.get(self, "backup_name")
+
+
+@pulumi.output_type
+class ClusterRestoreBackupdrBackupSource(dict):
+    def __init__(__self__, *,
+                 backup: _builtins.str):
+        """
+        :param _builtins.str backup: The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> _builtins.str:
+        """
+        The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+        """
+        return pulumi.get(self, "backup")
+
+
+@pulumi.output_type
+class ClusterRestoreBackupdrPitrSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataSource":
+            suggest = "data_source"
+        elif key == "pointInTime":
+            suggest = "point_in_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRestoreBackupdrPitrSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRestoreBackupdrPitrSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRestoreBackupdrPitrSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_source: _builtins.str,
+                 point_in_time: _builtins.str):
+        """
+        :param _builtins.str data_source: The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+        :param _builtins.str point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        pulumi.set(__self__, "data_source", data_source)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> _builtins.str:
+        """
+        The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+        """
+        return pulumi.get(self, "data_source")
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> _builtins.str:
+        """
+        The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        return pulumi.get(self, "point_in_time")
 
 
 @pulumi.output_type
@@ -2598,6 +2689,24 @@ class GetClusterBackupSourceResult(dict):
 
 
 @pulumi.output_type
+class GetClusterBackupdrBackupSourceResult(dict):
+    def __init__(__self__, *,
+                 backup: _builtins.str):
+        """
+        :param _builtins.str backup: The name of the BackupDR backup resource.
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> _builtins.str:
+        """
+        The name of the BackupDR backup resource.
+        """
+        return pulumi.get(self, "backup")
+
+
+@pulumi.output_type
 class GetClusterContinuousBackupConfigResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
@@ -3033,6 +3142,53 @@ class GetClusterRestoreBackupSourceResult(dict):
         The name of the backup that this cluster is restored from.
         """
         return pulumi.get(self, "backup_name")
+
+
+@pulumi.output_type
+class GetClusterRestoreBackupdrBackupSourceResult(dict):
+    def __init__(__self__, *,
+                 backup: _builtins.str):
+        """
+        :param _builtins.str backup: The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> _builtins.str:
+        """
+        The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+        """
+        return pulumi.get(self, "backup")
+
+
+@pulumi.output_type
+class GetClusterRestoreBackupdrPitrSourceResult(dict):
+    def __init__(__self__, *,
+                 data_source: _builtins.str,
+                 point_in_time: _builtins.str):
+        """
+        :param _builtins.str data_source: The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+        :param _builtins.str point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        pulumi.set(__self__, "data_source", data_source)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> _builtins.str:
+        """
+        The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+        """
+        return pulumi.get(self, "data_source")
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> _builtins.str:
+        """
+        The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        return pulumi.get(self, "point_in_time")
 
 
 @pulumi.output_type

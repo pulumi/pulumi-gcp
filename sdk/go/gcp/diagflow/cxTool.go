@@ -429,6 +429,7 @@ import (
 type CxTool struct {
 	pulumi.CustomResourceState
 
+	// (Optional, Beta)
 	// Integration connectors tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 	// Structure is documented below.
@@ -495,6 +496,7 @@ func GetCxTool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxTool resources.
 type cxToolState struct {
+	// (Optional, Beta)
 	// Integration connectors tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 	// Structure is documented below.
@@ -526,6 +528,7 @@ type cxToolState struct {
 }
 
 type CxToolState struct {
+	// (Optional, Beta)
 	// Integration connectors tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 	// Structure is documented below.
@@ -561,6 +564,7 @@ func (CxToolState) ElementType() reflect.Type {
 }
 
 type cxToolArgs struct {
+	// (Optional, Beta)
 	// Integration connectors tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 	// Structure is documented below.
@@ -588,6 +592,7 @@ type cxToolArgs struct {
 
 // The set of arguments for constructing a CxTool resource.
 type CxToolArgs struct {
+	// (Optional, Beta)
 	// Integration connectors tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 	// Structure is documented below.
@@ -700,6 +705,7 @@ func (o CxToolOutput) ToCxToolOutputWithContext(ctx context.Context) CxToolOutpu
 	return o
 }
 
+// (Optional, Beta)
 // Integration connectors tool specification.
 // This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 // Structure is documented below.

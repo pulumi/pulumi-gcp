@@ -27,7 +27,7 @@ class GetBackupPlanAssociationResult:
     """
     A collection of values returned by getBackupPlanAssociation.
     """
-    def __init__(__self__, backup_plan=None, backup_plan_association_id=None, create_time=None, data_source=None, id=None, last_successful_backup_consistency_time=None, location=None, name=None, project=None, resource=None, resource_type=None, rules_config_infos=None, update_time=None):
+    def __init__(__self__, backup_plan=None, backup_plan_association_id=None, create_time=None, data_source=None, id=None, location=None, name=None, project=None, resource=None, resource_type=None, rules_config_infos=None, update_time=None):
         if backup_plan and not isinstance(backup_plan, str):
             raise TypeError("Expected argument 'backup_plan' to be a str")
         pulumi.set(__self__, "backup_plan", backup_plan)
@@ -43,9 +43,6 @@ class GetBackupPlanAssociationResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if last_successful_backup_consistency_time and not isinstance(last_successful_backup_consistency_time, str):
-            raise TypeError("Expected argument 'last_successful_backup_consistency_time' to be a str")
-        pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
@@ -97,11 +94,6 @@ class GetBackupPlanAssociationResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
-    def last_successful_backup_consistency_time(self) -> _builtins.str:
-        return pulumi.get(self, "last_successful_backup_consistency_time")
-
-    @_builtins.property
     @pulumi.getter
     def location(self) -> _builtins.str:
         return pulumi.get(self, "location")
@@ -148,7 +140,6 @@ class AwaitableGetBackupPlanAssociationResult(GetBackupPlanAssociationResult):
             create_time=self.create_time,
             data_source=self.data_source,
             id=self.id,
-            last_successful_backup_consistency_time=self.last_successful_backup_consistency_time,
             location=self.location,
             name=self.name,
             project=self.project,
@@ -194,7 +185,6 @@ def get_backup_plan_association(backup_plan_association_id: Optional[_builtins.s
         create_time=pulumi.get(__ret__, 'create_time'),
         data_source=pulumi.get(__ret__, 'data_source'),
         id=pulumi.get(__ret__, 'id'),
-        last_successful_backup_consistency_time=pulumi.get(__ret__, 'last_successful_backup_consistency_time'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
@@ -237,7 +227,6 @@ def get_backup_plan_association_output(backup_plan_association_id: Optional[pulu
         create_time=pulumi.get(__response__, 'create_time'),
         data_source=pulumi.get(__response__, 'data_source'),
         id=pulumi.get(__response__, 'id'),
-        last_successful_backup_consistency_time=pulumi.get(__response__, 'last_successful_backup_consistency_time'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),

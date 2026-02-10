@@ -10,12 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
-    /// An Instance is an installation of an Extension into a user's project.
-    /// 
-    /// To get more information about Instance, see:
-    /// * How-to Guides
-    ///     * [Official Documentation](https://firebase.google.com/products/extensions)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Firebase Extensions Instance Resize Image

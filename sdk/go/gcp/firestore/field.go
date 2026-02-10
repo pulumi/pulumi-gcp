@@ -59,7 +59,7 @@ import (
 //			_, err = firestore.NewField(ctx, "basic", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__59033"),
+//				Collection: pulumi.String("chatrooms__10719"),
 //				Field:      pulumi.String("basic"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -150,7 +150,7 @@ import (
 //			_, err = firestore.NewField(ctx, "match_override", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__32081"),
+//				Collection: pulumi.String("chatrooms__1443"),
 //				Field:      pulumi.String("field_with_same_configuration_as_ancestor"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -202,7 +202,7 @@ import (
 //			_, err = firestore.NewField(ctx, "wildcard", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__10393"),
+//				Collection: pulumi.String("chatrooms__26032"),
 //				Field:      pulumi.String("*"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{

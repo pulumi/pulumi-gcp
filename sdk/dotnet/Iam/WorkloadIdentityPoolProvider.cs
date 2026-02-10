@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.Iam
     public partial class WorkloadIdentityPoolProvider : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+        /// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
         /// plain text, to restrict what otherwise valid authentication credentials issued by the
         /// provider should not be accepted.
         /// The expression must output a boolean representing whether to allow the federation.
@@ -489,7 +489,7 @@ namespace Pulumi.Gcp.Iam
         /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
         /// * `attribute.{custom_attribute}`:
         /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-        /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+        /// Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
         /// function that maps an identity provider credential to the normalized attribute specified
         /// by the corresponding map key.
         /// You can use the `Assertion` keyword in the expression to access a JSON representation of
@@ -659,7 +659,7 @@ namespace Pulumi.Gcp.Iam
     public sealed class WorkloadIdentityPoolProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+        /// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
         /// plain text, to restrict what otherwise valid authentication credentials issued by the
         /// provider should not be accepted.
         /// The expression must output a boolean representing whether to allow the federation.
@@ -694,7 +694,7 @@ namespace Pulumi.Gcp.Iam
         /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
         /// * `attribute.{custom_attribute}`:
         /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-        /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+        /// Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
         /// function that maps an identity provider credential to the normalized attribute specified
         /// by the corresponding map key.
         /// You can use the `Assertion` keyword in the expression to access a JSON representation of
@@ -810,7 +810,7 @@ namespace Pulumi.Gcp.Iam
     public sealed class WorkloadIdentityPoolProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [A Common Expression Language](https://opensource.google/projects/cel) expression, in
+        /// [A Common Expression Language](https://github.com/google/cel-spec) expression, in
         /// plain text, to restrict what otherwise valid authentication credentials issued by the
         /// provider should not be accepted.
         /// The expression must output a boolean representing whether to allow the federation.
@@ -845,7 +845,7 @@ namespace Pulumi.Gcp.Iam
         /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/group/{value}`
         /// * `attribute.{custom_attribute}`:
         /// `principalSet://iam.googleapis.com/projects/{project}/locations/{location}/workloadIdentityPools/{pool}/attribute.{custom_attribute}/{value}`
-        /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
+        /// Each value must be a [Common Expression Language](https://github.com/google/cel-spec)
         /// function that maps an identity provider credential to the normalized attribute specified
         /// by the corresponding map key.
         /// You can use the `Assertion` keyword in the expression to access a JSON representation of

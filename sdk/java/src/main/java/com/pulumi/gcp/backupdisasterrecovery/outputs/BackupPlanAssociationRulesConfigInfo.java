@@ -28,6 +28,12 @@ public final class BackupPlanAssociationRulesConfigInfo {
     private @Nullable String lastBackupState;
     /**
      * @return (Output)
+     * The point in time when the last successful backup was captured from the source
+     * 
+     */
+    private @Nullable String lastSuccessfulBackupConsistencyTime;
+    /**
+     * @return (Output)
      * Backup Rule id fetched from backup plan.
      * 
      */
@@ -53,6 +59,14 @@ public final class BackupPlanAssociationRulesConfigInfo {
     }
     /**
      * @return (Output)
+     * The point in time when the last successful backup was captured from the source
+     * 
+     */
+    public Optional<String> lastSuccessfulBackupConsistencyTime() {
+        return Optional.ofNullable(this.lastSuccessfulBackupConsistencyTime);
+    }
+    /**
+     * @return (Output)
      * Backup Rule id fetched from backup plan.
      * 
      */
@@ -71,12 +85,14 @@ public final class BackupPlanAssociationRulesConfigInfo {
     public static final class Builder {
         private @Nullable List<BackupPlanAssociationRulesConfigInfoLastBackupError> lastBackupErrors;
         private @Nullable String lastBackupState;
+        private @Nullable String lastSuccessfulBackupConsistencyTime;
         private @Nullable String ruleId;
         public Builder() {}
         public Builder(BackupPlanAssociationRulesConfigInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lastBackupErrors = defaults.lastBackupErrors;
     	      this.lastBackupState = defaults.lastBackupState;
+    	      this.lastSuccessfulBackupConsistencyTime = defaults.lastSuccessfulBackupConsistencyTime;
     	      this.ruleId = defaults.ruleId;
         }
 
@@ -96,6 +112,12 @@ public final class BackupPlanAssociationRulesConfigInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder lastSuccessfulBackupConsistencyTime(@Nullable String lastSuccessfulBackupConsistencyTime) {
+
+            this.lastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ruleId(@Nullable String ruleId) {
 
             this.ruleId = ruleId;
@@ -105,6 +127,7 @@ public final class BackupPlanAssociationRulesConfigInfo {
             final var _resultValue = new BackupPlanAssociationRulesConfigInfo();
             _resultValue.lastBackupErrors = lastBackupErrors;
             _resultValue.lastBackupState = lastBackupState;
+            _resultValue.lastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
             _resultValue.ruleId = ruleId;
             return _resultValue;
         }

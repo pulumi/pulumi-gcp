@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterSecretSyncConfig {
     /**
-     * @return Enable the Sync as K8s secret feature for this cluster.
+     * @return ) - Enable the Sync as K8s secret feature for this cluster.
      * 
      */
     private Boolean enabled;
     /**
-     * @return config for secret sync auto rotation. Structure is docuemented below
+     * @return ) - config for secret sync auto rotation. Structure is docuemented below
      * 
      */
     private @Nullable ClusterSecretSyncConfigRotationConfig rotationConfig;
 
     private ClusterSecretSyncConfig() {}
     /**
-     * @return Enable the Sync as K8s secret feature for this cluster.
+     * @return ) - Enable the Sync as K8s secret feature for this cluster.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return config for secret sync auto rotation. Structure is docuemented below
+     * @return ) - config for secret sync auto rotation. Structure is docuemented below
      * 
      */
     public Optional<ClusterSecretSyncConfigRotationConfig> rotationConfig() {

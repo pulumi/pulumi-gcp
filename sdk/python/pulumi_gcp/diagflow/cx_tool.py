@@ -32,7 +32,8 @@ class CxToolArgs:
         The set of arguments for constructing a CxTool resource.
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
-        :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: Integration connectors tool specification.
+        :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: (Optional, Beta)
+               Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
         :param pulumi.Input['CxToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
@@ -88,6 +89,7 @@ class CxToolArgs:
     @pulumi.getter(name="connectorSpec")
     def connector_spec(self) -> Optional[pulumi.Input['CxToolConnectorSpecArgs']]:
         """
+        (Optional, Beta)
         Integration connectors tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         Structure is documented below.
@@ -168,7 +170,8 @@ class _CxToolState:
                  tool_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxTool resources.
-        :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: Integration connectors tool specification.
+        :param pulumi.Input['CxToolConnectorSpecArgs'] connector_spec: (Optional, Beta)
+               Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
         :param pulumi.Input['CxToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
@@ -211,6 +214,7 @@ class _CxToolState:
     @pulumi.getter(name="connectorSpec")
     def connector_spec(self) -> Optional[pulumi.Input['CxToolConnectorSpecArgs']]:
         """
+        (Optional, Beta)
         Integration connectors tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         Structure is documented below.
@@ -615,7 +619,8 @@ class CxTool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: Integration connectors tool specification.
+        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: (Optional, Beta)
+               Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
@@ -981,7 +986,8 @@ class CxTool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: Integration connectors tool specification.
+        :param pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']] connector_spec: (Optional, Beta)
+               Integration connectors tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
                Structure is documented below.
         :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
@@ -1020,6 +1026,7 @@ class CxTool(pulumi.CustomResource):
     @pulumi.getter(name="connectorSpec")
     def connector_spec(self) -> pulumi.Output[Optional['outputs.CxToolConnectorSpec']]:
         """
+        (Optional, Beta)
         Integration connectors tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         Structure is documented below.

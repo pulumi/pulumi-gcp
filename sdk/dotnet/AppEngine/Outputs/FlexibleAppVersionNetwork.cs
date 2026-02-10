@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ForwardedPorts;
         /// <summary>
+        /// (Optional, Beta)
         /// Prevent instances from receiving an ephemeral external IP address.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>

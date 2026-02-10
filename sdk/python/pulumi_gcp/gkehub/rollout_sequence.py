@@ -355,14 +355,6 @@ class RolloutSequence(pulumi.CustomResource):
                  stages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
                  __props__=None):
         """
-        RolloutSequence defines the desired order of upgrades.
-
-        To get more information about RolloutSequence, see:
-
-        * [API documentation](https://docs.cloud.google.com/kubernetes-engine/fleet-management/docs/reference/rest/v1beta/projects.locations.rolloutSequences)
-        * How-to Guides
-            * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
-
         ## Import
 
         RolloutSequence can be imported using any of these accepted formats:
@@ -407,14 +399,6 @@ class RolloutSequence(pulumi.CustomResource):
                  args: RolloutSequenceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        RolloutSequence defines the desired order of upgrades.
-
-        To get more information about RolloutSequence, see:
-
-        * [API documentation](https://docs.cloud.google.com/kubernetes-engine/fleet-management/docs/reference/rest/v1beta/projects.locations.rolloutSequences)
-        * How-to Guides
-            * [Rollout Sequencing Overview](https://cloud.google.com/kubernetes-engine/docs/concepts/rollout-sequencing-custom-stages/about-rollout-sequencing)
-
         ## Import
 
         RolloutSequence can be imported using any of these accepted formats:

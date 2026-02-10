@@ -2385,6 +2385,7 @@ if not MYPY:
         """
         instance_ip_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
+        (Optional, Beta)
         Prevent instances from receiving an ephemeral external IP address.
         Possible values are: `EXTERNAL`, `INTERNAL`.
         """
@@ -2419,7 +2420,8 @@ class FlexibleAppVersionNetworkArgs:
         """
         :param pulumi.Input[_builtins.str] name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container.
-        :param pulumi.Input[_builtins.str] instance_ip_mode: Prevent instances from receiving an ephemeral external IP address.
+        :param pulumi.Input[_builtins.str] instance_ip_mode: (Optional, Beta)
+               Prevent instances from receiving an ephemeral external IP address.
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] instance_tag: Tag to apply to the instance during creation.
         :param pulumi.Input[_builtins.bool] session_affinity: Enable session affinity.
@@ -2469,6 +2471,7 @@ class FlexibleAppVersionNetworkArgs:
     @pulumi.getter(name="instanceIpMode")
     def instance_ip_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         Prevent instances from receiving an ephemeral external IP address.
         Possible values are: `EXTERNAL`, `INTERNAL`.
         """

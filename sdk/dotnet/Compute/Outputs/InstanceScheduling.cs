@@ -24,11 +24,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? AvailabilityDomain;
         /// <summary>
-        /// Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        /// Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
         /// </summary>
         public readonly Outputs.InstanceSchedulingGracefulShutdown? GracefulShutdown;
         /// <summary>
-        /// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         public readonly int? HostErrorTimeoutSeconds;
         /// <summary>
@@ -36,14 +36,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? InstanceTerminationAction;
         /// <summary>
-        /// Specifies the maximum amount of time a Local Ssd Vm should wait while
-        ///   recovery of the Local Ssd state is attempted. Its value should be in
-        ///   between 0 and 168 hours with hour granularity and the default value being 1
-        ///   hour.
+        /// (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
         /// </summary>
         public readonly Outputs.InstanceSchedulingLocalSsdRecoveryTimeout? LocalSsdRecoveryTimeout;
         /// <summary>
-        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        /// Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         /// </summary>
         public readonly string? MaintenanceInterval;
         /// <summary>
@@ -86,7 +83,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? ProvisioningModel;
         /// <summary>
-        /// Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        /// Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         /// </summary>
         public readonly bool? SkipGuestOsShutdown;
         /// <summary>

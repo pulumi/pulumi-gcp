@@ -319,6 +319,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Indicates if this group of VMs have emergent maintenance enabled.
         /// </summary>
         [Output("enableEmergentMaintenance")]
@@ -489,6 +490,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Indicates if this group of VMs have emergent maintenance enabled.
         /// </summary>
         [Input("enableEmergentMaintenance")]
@@ -602,6 +604,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Indicates if this group of VMs have emergent maintenance enabled.
         /// </summary>
         [Input("enableEmergentMaintenance")]

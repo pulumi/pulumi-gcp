@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Specify bandwidth percentages for various traffic classes for queuing
         /// type Bandwidth Percent.
         /// Structure is documented below.

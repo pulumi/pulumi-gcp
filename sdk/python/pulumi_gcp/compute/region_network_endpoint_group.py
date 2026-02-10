@@ -68,7 +68,8 @@ class RegionNetworkEndpointGroupArgs:
         :param pulumi.Input[_builtins.str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: (Optional, Beta)
+               This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subnetwork: This field is only used for PSC NEGs.
@@ -257,6 +258,7 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
         """
+        (Optional, Beta)
         This field is only used for SERVERLESS NEGs.
         Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         Structure is documented below.
@@ -333,7 +335,8 @@ class _RegionNetworkEndpointGroupState:
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional NEGs reside.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: (Optional, Beta)
+               This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subnetwork: This field is only used for PSC NEGs.
@@ -537,6 +540,7 @@ class _RegionNetworkEndpointGroupState:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
         """
+        (Optional, Beta)
         This field is only used for SERVERLESS NEGs.
         Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         Structure is documented below.
@@ -919,7 +923,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional NEGs reside.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: (Optional, Beta)
+               This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subnetwork: This field is only used for PSC NEGs.
@@ -1352,7 +1357,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                a Google API or a PSC Producer Service Attachment.
         :param pulumi.Input[_builtins.str] region: A reference to the region where the regional NEGs reside.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: This field is only used for SERVERLESS NEGs.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']] serverless_deployment: (Optional, Beta)
+               This field is only used for SERVERLESS NEGs.
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] subnetwork: This field is only used for PSC NEGs.
@@ -1499,6 +1505,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupServerlessDeployment']]:
         """
+        (Optional, Beta)
         This field is only used for SERVERLESS NEGs.
         Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         Structure is documented below.

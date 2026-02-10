@@ -1414,7 +1414,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
                Use either `git` or `oci` config option.
         :param _builtins.bool prevent_drift: Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         :param _builtins.str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
-        :param _builtins.bool stop_syncing: Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+        :param _builtins.bool stop_syncing: Set to true to stop syncing configs for a single cluster. Default to false.
         """
         if deployment_overrides is not None:
             pulumi.set(__self__, "deployment_overrides", deployment_overrides)
@@ -1495,7 +1495,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @pulumi.getter(name="stopSyncing")
     def stop_syncing(self) -> Optional[_builtins.bool]:
         """
-        Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+        Set to true to stop syncing configs for a single cluster. Default to false.
         """
         return pulumi.get(self, "stop_syncing")
 

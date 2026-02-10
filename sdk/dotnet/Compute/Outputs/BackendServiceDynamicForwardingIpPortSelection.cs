@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class BackendServiceDynamicForwardingIpPortSelection
     {
         /// <summary>
+        /// (Optional, Beta)
         /// A boolean flag enabling IP:PORT based dynamic forwarding.
         /// </summary>
         public readonly bool? Enabled;

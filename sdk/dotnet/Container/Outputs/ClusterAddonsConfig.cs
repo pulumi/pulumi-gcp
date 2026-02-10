@@ -72,12 +72,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigHttpLoadBalancing? HttpLoadBalancing;
         /// <summary>
-        /// .
+        /// ).
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigIstioConfig? IstioConfig;
         /// <summary>
-        /// .
+        /// ).
         /// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigKalmConfig? KalmConfig;
@@ -110,7 +110,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? ParallelstoreCsiDriverConfig;
         /// <summary>
-        /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        /// ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
         /// 
         /// This example `AddonsConfig` disables two addons:
         /// </summary>

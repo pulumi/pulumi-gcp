@@ -347,6 +347,49 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Index Skip Wait
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id-skip-wait",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_DISABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var my_index = new Gcp.Firestore.Index("my-index", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "atestcollection",
+    ///         Fields = new[]
+    ///         {
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "name",
+    ///                 Order = "ASCENDING",
+    ///             },
+    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///             {
+    ///                 FieldPath = "description",
+    ///                 Order = "DESCENDING",
+    ///             },
+    ///         },
+    ///         SkipWait = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -429,6 +472,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to skip waiting for the index to be created.
+        /// </summary>
+        [Output("skipWait")]
+        public Output<bool?> SkipWait { get; private set; } = null!;
 
         /// <summary>
         /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
@@ -549,6 +598,12 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? QueryScope { get; set; }
 
         /// <summary>
+        /// Whether to skip waiting for the index to be created.
+        /// </summary>
+        [Input("skipWait")]
+        public Input<bool>? SkipWait { get; set; }
+
+        /// <summary>
         /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
         /// </summary>
         [Input("unique")]
@@ -634,6 +689,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
+
+        /// <summary>
+        /// Whether to skip waiting for the index to be created.
+        /// </summary>
+        [Input("skipWait")]
+        public Input<bool>? SkipWait { get; set; }
 
         /// <summary>
         /// Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.

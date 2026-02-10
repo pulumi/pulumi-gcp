@@ -93,14 +93,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     @Import(name="minReadySec")
     private @Nullable Output<Integer> minReadySec;
 
     /**
-     * @return , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * @return ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     public Optional<Output<Integer>> minReadySec() {
@@ -308,7 +308,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param minReadySec , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * @param minReadySec ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param minReadySec , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * @param minReadySec ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          * 
          * @return builder
          * 

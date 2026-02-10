@@ -167,6 +167,7 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      */
     declare public readonly mirroringDeploymentGroup: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -212,6 +213,7 @@ export class MirroringEndpointGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
@@ -334,6 +336,7 @@ export interface MirroringEndpointGroupState {
      */
     mirroringDeploymentGroup?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -379,6 +382,7 @@ export interface MirroringEndpointGroupState {
      */
     state?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:
@@ -419,6 +423,7 @@ export interface MirroringEndpointGroupArgs {
      */
     mirroringDeploymentGroup?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * A list of the deployment groups that this BROKER endpoint group is
      * connected to, for example:
      * `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -436,6 +441,7 @@ export interface MirroringEndpointGroupArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The type of the endpoint group.
      * If left unspecified, defaults to DIRECT.
      * Possible values:

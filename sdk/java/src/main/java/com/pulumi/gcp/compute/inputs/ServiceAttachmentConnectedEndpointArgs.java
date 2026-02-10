@@ -53,7 +53,9 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
 
     /**
      * (Output)
-     * The nat IPs of the connected endpoint.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * &#39;The nat IPs of the connected endpoint.&#39;
      * 
      */
     @Import(name="natIps")
@@ -61,7 +63,9 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
 
     /**
      * @return (Output)
-     * The nat IPs of the connected endpoint.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * &#39;The nat IPs of the connected endpoint.&#39;
      * 
      */
     public Optional<Output<List<String>>> natIps() {
@@ -198,7 +202,9 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
 
         /**
          * @param natIps (Output)
-         * The nat IPs of the connected endpoint.
+         * NOTE: This field is temporarily non-functional due to an underlying API issue.
+         * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+         * &#39;The nat IPs of the connected endpoint.&#39;
          * 
          * @return builder
          * 
@@ -210,7 +216,9 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
 
         /**
          * @param natIps (Output)
-         * The nat IPs of the connected endpoint.
+         * NOTE: This field is temporarily non-functional due to an underlying API issue.
+         * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+         * &#39;The nat IPs of the connected endpoint.&#39;
          * 
          * @return builder
          * 
@@ -221,7 +229,9 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
 
         /**
          * @param natIps (Output)
-         * The nat IPs of the connected endpoint.
+         * NOTE: This field is temporarily non-functional due to an underlying API issue.
+         * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+         * &#39;The nat IPs of the connected endpoint.&#39;
          * 
          * @return builder
          * 

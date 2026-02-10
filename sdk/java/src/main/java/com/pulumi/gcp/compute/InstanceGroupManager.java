@@ -543,14 +543,14 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.operation;
     }
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
      */
     @Export(name="params", refs={InstanceGroupManagerParams.class}, tree="[0]")
     private Output</* @Nullable */ InstanceGroupManagerParams> params;
 
     /**
-     * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * @return ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
      */
     public Output<Optional<InstanceGroupManagerParams>> params() {

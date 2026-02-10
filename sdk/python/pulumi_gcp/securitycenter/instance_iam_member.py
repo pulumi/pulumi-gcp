@@ -394,6 +394,19 @@ class InstanceIamMember(pulumi.CustomResource):
             zone="us-central1-a",
             type="DEVELOPER")
         ```
+        ### Data Fusion Instance Patch Revision
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_fusion_instance_patch_revision = gcp.datafusion.Instance("data_fusion_instance_patch_revision",
+            name="my-instance",
+            region="us-central1",
+            type="BASIC",
+            version="6.10.1",
+            patch_revision="6.10.1.5")
+        ```
 
         ## Import
 
@@ -602,6 +615,19 @@ class InstanceIamMember(pulumi.CustomResource):
             region="us-central1",
             zone="us-central1-a",
             type="DEVELOPER")
+        ```
+        ### Data Fusion Instance Patch Revision
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_fusion_instance_patch_revision = gcp.datafusion.Instance("data_fusion_instance_patch_revision",
+            name="my-instance",
+            region="us-central1",
+            type="BASIC",
+            version="6.10.1",
+            patch_revision="6.10.1.5")
         ```
 
         ## Import

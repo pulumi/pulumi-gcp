@@ -331,14 +331,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A resource represents a Dataform release configuration
-
-        To get more information about RepositoryReleaseConfig, see:
-
-        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.releaseConfigs)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataform/docs/release-configurations)
-
         ## Example Usage
 
         ### Dataform Repository Release Config
@@ -441,14 +433,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  args: RepositoryReleaseConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A resource represents a Dataform release configuration
-
-        To get more information about RepositoryReleaseConfig, see:
-
-        * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.releaseConfigs)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/dataform/docs/release-configurations)
-
         ## Example Usage
 
         ### Dataform Repository Release Config

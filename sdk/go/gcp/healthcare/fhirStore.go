@@ -366,6 +366,7 @@ type FhirStore struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing pulumi.StringOutput `pulumi:"complexDataTypeReferenceParsing"`
+	// (Optional, Beta)
 	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
 	// Structure is documented below.
 	ConsentConfig FhirStoreConsentConfigPtrOutput `pulumi:"consentConfig"`
@@ -399,6 +400,7 @@ type FhirStore struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrOutput `pulumi:"enableHistoryImport"`
+	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications pulumi.BoolPtrOutput `pulumi:"enableHistoryModifications"`
@@ -498,6 +500,7 @@ type fhirStoreState struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
+	// (Optional, Beta)
 	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
 	// Structure is documented below.
 	ConsentConfig *FhirStoreConsentConfig `pulumi:"consentConfig"`
@@ -531,6 +534,7 @@ type fhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport *bool `pulumi:"enableHistoryImport"`
+	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications *bool `pulumi:"enableHistoryModifications"`
@@ -593,6 +597,7 @@ type FhirStoreState struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
 	// Structure is documented below.
 	ConsentConfig FhirStoreConsentConfigPtrInput
@@ -626,6 +631,7 @@ type FhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications pulumi.BoolPtrInput
@@ -692,6 +698,7 @@ type fhirStoreArgs struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
+	// (Optional, Beta)
 	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
 	// Structure is documented below.
 	ConsentConfig *FhirStoreConsentConfig `pulumi:"consentConfig"`
@@ -723,6 +730,7 @@ type fhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport *bool `pulumi:"enableHistoryImport"`
+	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications *bool `pulumi:"enableHistoryModifications"`
@@ -781,6 +789,7 @@ type FhirStoreArgs struct {
 	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
 	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
 	// Structure is documented below.
 	ConsentConfig FhirStoreConsentConfigPtrInput
@@ -812,6 +821,7 @@ type FhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications pulumi.BoolPtrInput
@@ -958,6 +968,7 @@ func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.ComplexDataTypeReferenceParsing }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
 // Structure is documented below.
 func (o FhirStoreOutput) ConsentConfig() FhirStoreConsentConfigPtrOutput {
@@ -1012,6 +1023,7 @@ func (o FhirStoreOutput) EnableHistoryImport() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.EnableHistoryImport }).(pulumi.BoolPtrOutput)
 }
 
+// (Optional, Beta)
 // Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 // resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 func (o FhirStoreOutput) EnableHistoryModifications() pulumi.BoolPtrOutput {

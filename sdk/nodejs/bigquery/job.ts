@@ -534,6 +534,7 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly query: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
+     * (Optional, Beta)
      * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
      * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
      */
@@ -669,6 +670,7 @@ export interface JobState {
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
+     * (Optional, Beta)
      * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
      * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
      */
@@ -733,6 +735,7 @@ export interface JobArgs {
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
+     * (Optional, Beta)
      * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
      * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
      */

@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies the frequency of planned maintenance events.
         /// Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
         /// </summary>

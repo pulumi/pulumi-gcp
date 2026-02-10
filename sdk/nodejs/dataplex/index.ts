@@ -45,6 +45,11 @@ export type AssetIamPolicy = import("./assetIamPolicy").AssetIamPolicy;
 export const AssetIamPolicy: typeof import("./assetIamPolicy").AssetIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AssetIamPolicy"], () => require("./assetIamPolicy"));
 
+export { DataAssetArgs, DataAssetState } from "./dataAsset";
+export type DataAsset = import("./dataAsset").DataAsset;
+export const DataAsset: typeof import("./dataAsset").DataAsset = null as any;
+utilities.lazyLoad(exports, ["DataAsset"], () => require("./dataAsset"));
+
 export { DataProductArgs, DataProductState } from "./dataProduct";
 export type DataProduct = import("./dataProduct").DataProduct;
 export const DataProduct: typeof import("./dataProduct").DataProduct = null as any;
@@ -281,6 +286,8 @@ const _module = {
                 return new AssetIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/assetIamPolicy:AssetIamPolicy":
                 return new AssetIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/dataAsset:DataAsset":
+                return new DataAsset(name, <any>undefined, { urn })
             case "gcp:dataplex/dataProduct:DataProduct":
                 return new DataProduct(name, <any>undefined, { urn })
             case "gcp:dataplex/datascan:Datascan":
@@ -360,6 +367,7 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/asset", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/dataAsset", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/dataProduct", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascan", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamBinding", _module)

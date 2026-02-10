@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * A Google Cloud Firebase Apple application instance
- */
 export function getAppleApp(args: GetAppleAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppleAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAppleApp:getAppleApp", {
@@ -71,9 +68,6 @@ export interface GetAppleAppResult {
      */
     readonly teamId: string;
 }
-/**
- * A Google Cloud Firebase Apple application instance
- */
 export function getAppleAppOutput(args: GetAppleAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppleAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getAppleApp:getAppleApp", {

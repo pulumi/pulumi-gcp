@@ -1049,14 +1049,18 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sendPropagatedConnectionLimitIfZero);
     }
     /**
-     * If true, show NAT IPs of all connected endpoints.
+     * NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * [If true, show NAT IPs of all connected endpoints.]
      * 
      */
     @Export(name="showNatIps", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showNatIps;
 
     /**
-     * @return If true, show NAT IPs of all connected endpoints.
+     * @return NOTE: This field is temporarily non-functional due to an underlying API issue.
+     * Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+     * [If true, show NAT IPs of all connected endpoints.]
      * 
      */
     public Output<Optional<Boolean>> showNatIps() {
@@ -1077,6 +1081,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
         return this.targetService;
     }
     /**
+     * (Optional, Beta)
      * Tunneling configuration for this service attachment.
      * Structure is documented below.
      * 
@@ -1085,7 +1090,8 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ServiceAttachmentTunnelingConfig> tunnelingConfig;
 
     /**
-     * @return Tunneling configuration for this service attachment.
+     * @return (Optional, Beta)
+     * Tunneling configuration for this service attachment.
      * Structure is documented below.
      * 
      */

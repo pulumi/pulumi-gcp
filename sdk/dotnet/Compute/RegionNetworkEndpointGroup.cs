@@ -574,6 +574,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// Structure is documented below.
@@ -722,6 +723,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// Structure is documented below.
@@ -838,6 +840,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// Structure is documented below.

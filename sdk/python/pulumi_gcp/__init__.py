@@ -4666,6 +4666,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/dataAsset",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/dataAsset:DataAsset": "DataAsset"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/dataProduct",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -7710,6 +7718,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.logging",
   "classes": {
    "gcp:logging/projectSink:ProjectSink": "ProjectSink"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "logging/savedQuery",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/savedQuery:SavedQuery": "SavedQuery"
   }
  },
  {

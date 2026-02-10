@@ -32,7 +32,8 @@ public final class RegionSecurityPolicyAdvancedOptionsConfig {
      */
     private @Nullable String logLevel;
     /**
-     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
+     * @return (Optional, Beta)
+     * The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
      * Values are case insensitive.
      * Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
      * 
@@ -70,7 +71,8 @@ public final class RegionSecurityPolicyAdvancedOptionsConfig {
         return Optional.ofNullable(this.logLevel);
     }
     /**
-     * @return The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
+     * @return (Optional, Beta)
+     * The maximum request size chosen by the customer with Waf enabled. Values supported are &#34;8KB&#34;, &#34;16KB, &#34;32KB&#34;, &#34;48KB&#34; and &#34;64KB&#34;.
      * Values are case insensitive.
      * Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
      * 

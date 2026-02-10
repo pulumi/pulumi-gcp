@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
         /// </summary>
         [Input("customRoutesEnabled")]

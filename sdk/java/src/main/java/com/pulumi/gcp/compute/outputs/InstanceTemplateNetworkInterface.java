@@ -74,7 +74,7 @@ public final class InstanceTemplateNetworkInterface {
      */
     private @Nullable String network;
     /**
-     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * @return ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     private @Nullable String networkAttachment;
@@ -190,7 +190,7 @@ public final class InstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * @return ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     public Optional<String> networkAttachment() {

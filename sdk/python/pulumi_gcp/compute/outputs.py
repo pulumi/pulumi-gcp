@@ -1272,7 +1272,8 @@ class AutoscalerAutoscalingPolicy(dict):
         :param Sequence['AutoscalerAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param _builtins.str mode: Defines operating mode for this policy.
-        :param 'AutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
+        :param 'AutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: (Optional, Beta)
+               Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
         :param 'AutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
@@ -1379,6 +1380,7 @@ class AutoscalerAutoscalingPolicy(dict):
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.AutoscalerAutoscalingPolicyScaleDownControl']:
         """
+        (Optional, Beta)
         Defines scale down controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
         Structure is documented below.
@@ -2511,12 +2513,15 @@ class BackendServiceBackend(dict):
                UTILIZATION balancing modes.
                For CONNECTION mode, either maxConnections or
                maxConnectionsPerInstance must be set.
-        :param _builtins.int max_in_flight_requests: Defines a maximum number of in-flight requests for the whole NEG
+        :param _builtins.int max_in_flight_requests: (Optional, Beta)
+               Defines a maximum number of in-flight requests for the whole NEG
                or instance group. Not available if backend's balancingMode is RATE
                or CONNECTION.
-        :param _builtins.int max_in_flight_requests_per_endpoint: Defines a maximum number of in-flight requests for a single endpoint.
+        :param _builtins.int max_in_flight_requests_per_endpoint: (Optional, Beta)
+               Defines a maximum number of in-flight requests for a single endpoint.
                Not available if backend's balancingMode is RATE or CONNECTION.
-        :param _builtins.int max_in_flight_requests_per_instance: Defines a maximum number of in-flight requests for a single VM.
+        :param _builtins.int max_in_flight_requests_per_instance: (Optional, Beta)
+               Defines a maximum number of in-flight requests for a single VM.
                Not available if backend's balancingMode is RATE or CONNECTION.
         :param _builtins.int max_rate: The max requests per second (RPS) of the group.
                Can be used with either RATE or UTILIZATION balancing modes,
@@ -2540,7 +2545,8 @@ class BackendServiceBackend(dict):
                - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and
                traffic would be assigned based on the load balancing algorithm you use. This is the default
                Possible values are: `PREFERRED`, `DEFAULT`.
-        :param _builtins.str traffic_duration: This field specifies how long a connection should be kept alive for:
+        :param _builtins.str traffic_duration: (Optional, Beta)
+               This field specifies how long a connection should be kept alive for:
                - LONG: Most of the requests are expected to take more than multiple
                seconds to finish.
                - SHORT: Most requests are expected to finish with a sub-second latency.
@@ -2689,6 +2695,7 @@ class BackendServiceBackend(dict):
     @pulumi.getter(name="maxInFlightRequests")
     def max_in_flight_requests(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Defines a maximum number of in-flight requests for the whole NEG
         or instance group. Not available if backend's balancingMode is RATE
         or CONNECTION.
@@ -2699,6 +2706,7 @@ class BackendServiceBackend(dict):
     @pulumi.getter(name="maxInFlightRequestsPerEndpoint")
     def max_in_flight_requests_per_endpoint(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Defines a maximum number of in-flight requests for a single endpoint.
         Not available if backend's balancingMode is RATE or CONNECTION.
         """
@@ -2708,6 +2716,7 @@ class BackendServiceBackend(dict):
     @pulumi.getter(name="maxInFlightRequestsPerInstance")
     def max_in_flight_requests_per_instance(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Defines a maximum number of in-flight requests for a single VM.
         Not available if backend's balancingMode is RATE or CONNECTION.
         """
@@ -2774,6 +2783,7 @@ class BackendServiceBackend(dict):
     @pulumi.getter(name="trafficDuration")
     def traffic_duration(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         This field specifies how long a connection should be kept alive for:
         - LONG: Most of the requests are expected to take more than multiple
         seconds to finish.
@@ -3326,7 +3336,8 @@ class BackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[_builtins.int] = None,
                  max_retries: Optional[_builtins.int] = None):
         """
-        :param 'BackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
+        :param 'BackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: (Optional, Beta)
+               The timeout for new network connections to hosts.
                Structure is documented below.
         :param _builtins.int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
@@ -3358,6 +3369,7 @@ class BackendServiceCircuitBreakers(dict):
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional['outputs.BackendServiceCircuitBreakersConnectTimeout']:
         """
+        (Optional, Beta)
         The timeout for new network connections to hosts.
         Structure is documented below.
         """
@@ -3700,7 +3712,8 @@ class BackendServiceDynamicForwarding(dict):
     def __init__(__self__, *,
                  ip_port_selection: Optional['outputs.BackendServiceDynamicForwardingIpPortSelection'] = None):
         """
-        :param 'BackendServiceDynamicForwardingIpPortSelectionArgs' ip_port_selection: IP:PORT based dynamic forwarding configuration.
+        :param 'BackendServiceDynamicForwardingIpPortSelectionArgs' ip_port_selection: (Optional, Beta)
+               IP:PORT based dynamic forwarding configuration.
                Structure is documented below.
         """
         if ip_port_selection is not None:
@@ -3710,6 +3723,7 @@ class BackendServiceDynamicForwarding(dict):
     @pulumi.getter(name="ipPortSelection")
     def ip_port_selection(self) -> Optional['outputs.BackendServiceDynamicForwardingIpPortSelection']:
         """
+        (Optional, Beta)
         IP:PORT based dynamic forwarding configuration.
         Structure is documented below.
         """
@@ -3721,7 +3735,8 @@ class BackendServiceDynamicForwardingIpPortSelection(dict):
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enabled: A boolean flag enabling IP:PORT based dynamic forwarding.
+        :param _builtins.bool enabled: (Optional, Beta)
+               A boolean flag enabling IP:PORT based dynamic forwarding.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -3730,6 +3745,7 @@ class BackendServiceDynamicForwardingIpPortSelection(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         """
+        (Optional, Beta)
         A boolean flag enabling IP:PORT based dynamic forwarding.
         """
         return pulumi.get(self, "enabled")
@@ -4245,10 +4261,12 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
                  spillover: Optional[_builtins.str] = None,
                  spillover_ratio: Optional[_builtins.float] = None):
         """
-        :param _builtins.str spillover: This field indicates whether zonal affinity is enabled or not.
+        :param _builtins.str spillover: (Optional, Beta)
+               This field indicates whether zonal affinity is enabled or not.
                Default value is `ZONAL_AFFINITY_DISABLED`.
                Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
-        :param _builtins.float spillover_ratio: The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+        :param _builtins.float spillover_ratio: (Optional, Beta)
+               The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
                to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
                distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
                of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
@@ -4263,6 +4281,7 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
     @pulumi.getter
     def spillover(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         This field indicates whether zonal affinity is enabled or not.
         Default value is `ZONAL_AFFINITY_DISABLED`.
         Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
@@ -4273,6 +4292,7 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
     @pulumi.getter(name="spilloverRatio")
     def spillover_ratio(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
         to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
         distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
@@ -5778,16 +5798,19 @@ class FirewallPolicyRuleMatch(dict):
         :param Sequence[_builtins.str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param Sequence[_builtins.str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-        :param _builtins.str dest_network_scope: Network scope of the traffic destination.
+        :param _builtins.str dest_network_scope: (Optional, Beta)
+               Network scope of the traffic destination.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence[_builtins.str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param Sequence[_builtins.str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param Sequence[_builtins.str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-        :param _builtins.str src_network_scope: Network scope of the traffic source.
+        :param _builtins.str src_network_scope: (Optional, Beta)
+               Network scope of the traffic source.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
+        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
+               Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['FirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -5863,6 +5886,7 @@ class FirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic destination.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -5912,6 +5936,7 @@ class FirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic source.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -5921,6 +5946,7 @@ class FirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -7048,7 +7074,8 @@ class FirewallPolicyWithRulesRuleMatch(dict):
                traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
-        :param _builtins.str dest_network_scope: Network scope of the traffic destination.
+        :param _builtins.str dest_network_scope: (Optional, Beta)
+               Network scope of the traffic destination.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination
                of traffic. Should be specified as 2 letter country code defined as per
@@ -7062,9 +7089,11 @@ class FirewallPolicyWithRulesRuleMatch(dict):
                traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: Source IP address range in CIDR format. Required for
                INGRESS rules.
-        :param _builtins.str src_network_scope: Network scope of the traffic source.
+        :param _builtins.str src_network_scope: (Optional, Beta)
+               Network scope of the traffic source.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
+        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
+               Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -7148,6 +7177,7 @@ class FirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic destination.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -7204,6 +7234,7 @@ class FirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic source.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -7213,6 +7244,7 @@ class FirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -16835,7 +16867,7 @@ class InstanceGroupManagerInstanceLifecyclePolicy(dict):
         :param _builtins.str default_action_on_failure: , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         :param _builtins.str force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         :param _builtins.str on_failed_health_check: , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
-        :param 'InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs' on_repair: , Configuration for VM repairs in the MIG. Structure is documented below.
+        :param 'InstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs' on_repair: ), Configuration for VM repairs in the MIG. Structure is documented below.
                - - -
         """
         if default_action_on_failure is not None:
@@ -16875,7 +16907,7 @@ class InstanceGroupManagerInstanceLifecyclePolicy(dict):
     @pulumi.getter(name="onRepair")
     def on_repair(self) -> Optional['outputs.InstanceGroupManagerInstanceLifecyclePolicyOnRepair']:
         """
-        , Configuration for VM repairs in the MIG. Structure is documented below.
+        ), Configuration for VM repairs in the MIG. Structure is documented below.
         - - -
         """
         return pulumi.get(self, "on_repair")
@@ -17527,7 +17559,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
         :param _builtins.int max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         :param _builtins.int max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
         :param _builtins.int max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
-        :param _builtins.int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param _builtins.int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param _builtins.str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param _builtins.str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
@@ -17601,7 +17633,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[_builtins.int]:
         """
-        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 
@@ -18035,7 +18067,7 @@ class InstanceNetworkInterface(dict):
                empty, the address will be automatically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF, MRDMA, IRDMA.
         :param _builtins.int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-        :param _builtins.str security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param _builtins.str security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param _builtins.str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param _builtins.str subnetwork: The name or self_link of the subnetwork to attach this
                interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
@@ -18211,7 +18243,7 @@ class InstanceNetworkInterface(dict):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[_builtins.str]:
         """
-        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         return pulumi.get(self, "security_policy")
 
@@ -18717,14 +18749,11 @@ class InstanceScheduling(dict):
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
         :param _builtins.int availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
-        :param 'InstanceSchedulingGracefulShutdownArgs' graceful_shutdown: Settings for the instance to perform a graceful shutdown. Structure is documented below.
-        :param _builtins.int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        :param 'InstanceSchedulingGracefulShutdownArgs' graceful_shutdown: Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        :param _builtins.int host_error_timeout_seconds: Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param _builtins.str instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param 'InstanceSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
-                 recovery of the Local Ssd state is attempted. Its value should be in
-                 between 0 and 168 hours with hour granularity and the default value being 1
-                 hour.
-        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param 'InstanceSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
+        :param _builtins.str maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param 'InstanceSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
         :param _builtins.int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['InstanceSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
@@ -18743,7 +18772,7 @@ class InstanceScheduling(dict):
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
-        :param _builtins.bool skip_guest_os_shutdown: Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        :param _builtins.bool skip_guest_os_shutdown: Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param _builtins.str termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
@@ -18801,7 +18830,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> Optional['outputs.InstanceSchedulingGracefulShutdown']:
         """
-        Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -18809,7 +18838,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="hostErrorTimeoutSeconds")
     def host_error_timeout_seconds(self) -> Optional[_builtins.int]:
         """
-        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         """
         return pulumi.get(self, "host_error_timeout_seconds")
 
@@ -18825,10 +18854,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="localSsdRecoveryTimeout")
     def local_ssd_recovery_timeout(self) -> Optional['outputs.InstanceSchedulingLocalSsdRecoveryTimeout']:
         """
-        Specifies the maximum amount of time a Local Ssd Vm should wait while
-          recovery of the Local Ssd state is attempted. Its value should be in
-          between 0 and 168 hours with hour granularity and the default value being 1
-          hour.
+        (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
         """
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
@@ -18836,7 +18862,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[_builtins.str]:
         """
-        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -18911,7 +18937,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="skipGuestOsShutdown")
     def skip_guest_os_shutdown(self) -> Optional[_builtins.bool]:
         """
-        Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         """
         return pulumi.get(self, "skip_guest_os_shutdown")
 
@@ -20344,7 +20370,7 @@ class InstanceTemplateNetworkInterface(dict):
         :param _builtins.str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
-        :param _builtins.str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        :param _builtins.str network_attachment: ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param _builtins.str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA.
@@ -20477,7 +20503,7 @@ class InstanceTemplateNetworkInterface(dict):
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[_builtins.str]:
         """
-        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         """
         return pulumi.get(self, "network_attachment")
 
@@ -20936,14 +20962,11 @@ class InstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param _builtins.int availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
-        :param 'InstanceTemplateSchedulingGracefulShutdownArgs' graceful_shutdown: Settings for the instance to perform a graceful shutdown. Structure is documented below.
-        :param _builtins.int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        :param 'InstanceTemplateSchedulingGracefulShutdownArgs' graceful_shutdown: Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        :param _builtins.int host_error_timeout_seconds: Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param _builtins.str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param Sequence['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
-                 recovery of the Local Ssd state is attempted. Its value should be in
-                 between 0 and 168 hours with hour granularity and the default value being 1
-                 hour.
-        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param Sequence['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
+        :param _builtins.str maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
         :param _builtins.int min_node_cpus: Minimum number of cpus for the instance.
         :param Sequence['InstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
@@ -20961,7 +20984,7 @@ class InstanceTemplateScheduling(dict):
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
-        :param _builtins.bool skip_guest_os_shutdown: Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        :param _builtins.bool skip_guest_os_shutdown: Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         :param _builtins.str termination_time: Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
         """
         if automatic_restart is not None:
@@ -21019,7 +21042,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> Optional['outputs.InstanceTemplateSchedulingGracefulShutdown']:
         """
-        Settings for the instance to perform a graceful shutdown. Structure is documented below.
+        Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -21027,7 +21050,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="hostErrorTimeoutSeconds")
     def host_error_timeout_seconds(self) -> Optional[_builtins.int]:
         """
-        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         """
         return pulumi.get(self, "host_error_timeout_seconds")
 
@@ -21043,10 +21066,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="localSsdRecoveryTimeouts")
     def local_ssd_recovery_timeouts(self) -> Optional[Sequence['outputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeout']]:
         """
-        Specifies the maximum amount of time a Local Ssd Vm should wait while
-          recovery of the Local Ssd state is attempted. Its value should be in
-          between 0 and 168 hours with hour granularity and the default value being 1
-          hour.
+        (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
         """
         return pulumi.get(self, "local_ssd_recovery_timeouts")
 
@@ -21054,7 +21074,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[_builtins.str]:
         """
-        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -21128,7 +21148,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="skipGuestOsShutdown")
     def skip_guest_os_shutdown(self) -> Optional[_builtins.bool]:
         """
-        Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+        Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
         """
         return pulumi.get(self, "skip_guest_os_shutdown")
 
@@ -21607,14 +21627,18 @@ class InterconnectApplicationAwareInterconnect(dict):
                  shape_average_percentages: Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectShapeAveragePercentage']] = None,
                  strict_priority_policy: Optional['outputs.InterconnectApplicationAwareInterconnectStrictPriorityPolicy'] = None):
         """
-        :param 'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs' bandwidth_percentage_policy: Bandwidth Percentage policy allows you to have granular control over how your Interconnect
+        :param 'InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyArgs' bandwidth_percentage_policy: (Optional, Beta)
+               Bandwidth Percentage policy allows you to have granular control over how your Interconnect
                bandwidth is utilized among your workloads mapping to different traffic classes.
                Structure is documented below.
-        :param _builtins.str profile_description: A description for the AAI profile on this interconnect.
-        :param Sequence['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs'] shape_average_percentages: Optional field to specify a list of shape average percentages to be
+        :param _builtins.str profile_description: (Optional, Beta)
+               A description for the AAI profile on this interconnect.
+        :param Sequence['InterconnectApplicationAwareInterconnectShapeAveragePercentageArgs'] shape_average_percentages: (Optional, Beta)
+               Optional field to specify a list of shape average percentages to be
                applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
                Structure is documented below.
-        :param 'InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs' strict_priority_policy: Specify configuration for StrictPriorityPolicy.
+        :param 'InterconnectApplicationAwareInterconnectStrictPriorityPolicyArgs' strict_priority_policy: (Optional, Beta)
+               Specify configuration for StrictPriorityPolicy.
         """
         if bandwidth_percentage_policy is not None:
             pulumi.set(__self__, "bandwidth_percentage_policy", bandwidth_percentage_policy)
@@ -21629,6 +21653,7 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="bandwidthPercentagePolicy")
     def bandwidth_percentage_policy(self) -> Optional['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy']:
         """
+        (Optional, Beta)
         Bandwidth Percentage policy allows you to have granular control over how your Interconnect
         bandwidth is utilized among your workloads mapping to different traffic classes.
         Structure is documented below.
@@ -21639,6 +21664,7 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="profileDescription")
     def profile_description(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         A description for the AAI profile on this interconnect.
         """
         return pulumi.get(self, "profile_description")
@@ -21647,6 +21673,7 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="shapeAveragePercentages")
     def shape_average_percentages(self) -> Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectShapeAveragePercentage']]:
         """
+        (Optional, Beta)
         Optional field to specify a list of shape average percentages to be
         applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
         Structure is documented below.
@@ -21657,6 +21684,7 @@ class InterconnectApplicationAwareInterconnect(dict):
     @pulumi.getter(name="strictPriorityPolicy")
     def strict_priority_policy(self) -> Optional['outputs.InterconnectApplicationAwareInterconnectStrictPriorityPolicy']:
         """
+        (Optional, Beta)
         Specify configuration for StrictPriorityPolicy.
         """
         return pulumi.get(self, "strict_priority_policy")
@@ -21684,7 +21712,8 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(dict):
     def __init__(__self__, *,
                  bandwidth_percentages: Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage']] = None):
         """
-        :param Sequence['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs'] bandwidth_percentages: Specify bandwidth percentages for various traffic classes for queuing
+        :param Sequence['InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageArgs'] bandwidth_percentages: (Optional, Beta)
+               Specify bandwidth percentages for various traffic classes for queuing
                type Bandwidth Percent.
                Structure is documented below.
         """
@@ -21695,6 +21724,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy(dict):
     @pulumi.getter(name="bandwidthPercentages")
     def bandwidth_percentages(self) -> Optional[Sequence['outputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage']]:
         """
+        (Optional, Beta)
         Specify bandwidth percentages for various traffic classes for queuing
         type Bandwidth Percent.
         Structure is documented below.
@@ -21725,8 +21755,10 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
                  percentage: Optional[_builtins.int] = None,
                  traffic_class: Optional[_builtins.str] = None):
         """
-        :param _builtins.int percentage: Bandwidth percentage for a specific traffic class.
-        :param _builtins.str traffic_class: Enum representing the various traffic classes offered by AAI.
+        :param _builtins.int percentage: (Optional, Beta)
+               Bandwidth percentage for a specific traffic class.
+        :param _builtins.str traffic_class: (Optional, Beta)
+               Enum representing the various traffic classes offered by AAI.
                Default value is `TC_UNSPECIFIED`.
                Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
         """
@@ -21739,6 +21771,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
     @pulumi.getter
     def percentage(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Bandwidth percentage for a specific traffic class.
         """
         return pulumi.get(self, "percentage")
@@ -21747,6 +21780,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidth
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Enum representing the various traffic classes offered by AAI.
         Default value is `TC_UNSPECIFIED`.
         Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -21777,8 +21811,10 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage(dict):
                  percentage: Optional[_builtins.int] = None,
                  traffic_class: Optional[_builtins.str] = None):
         """
-        :param _builtins.int percentage: Bandwidth percentage for a specific traffic class.
-        :param _builtins.str traffic_class: Enum representing the various traffic classes offered by AAI.
+        :param _builtins.int percentage: (Optional, Beta)
+               Bandwidth percentage for a specific traffic class.
+        :param _builtins.str traffic_class: (Optional, Beta)
+               Enum representing the various traffic classes offered by AAI.
                Default value is `TC_UNSPECIFIED`.
                Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
         """
@@ -21791,6 +21827,7 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage(dict):
     @pulumi.getter
     def percentage(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Bandwidth percentage for a specific traffic class.
         """
         return pulumi.get(self, "percentage")
@@ -21799,6 +21836,7 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage(dict):
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Enum representing the various traffic classes offered by AAI.
         Default value is `TC_UNSPECIFIED`.
         Possible values are: `TC_UNSPECIFIED`, `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
@@ -24146,16 +24184,19 @@ class NetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[_builtins.str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param Sequence[_builtins.str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-        :param _builtins.str dest_network_scope: Network scope of the traffic destination.
+        :param _builtins.str dest_network_scope: (Optional, Beta)
+               Network scope of the traffic destination.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence[_builtins.str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param Sequence[_builtins.str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param Sequence[_builtins.str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-        :param _builtins.str src_network_scope: Network scope of the traffic source.
+        :param _builtins.str src_network_scope: (Optional, Beta)
+               Network scope of the traffic source.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
+        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
+               Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -24231,6 +24272,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic destination.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -24280,6 +24322,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic source.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -24289,6 +24332,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -25376,7 +25420,8 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
                traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
-        :param _builtins.str dest_network_scope: Network scope of the traffic destination.
+        :param _builtins.str dest_network_scope: (Optional, Beta)
+               Network scope of the traffic destination.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination
                of traffic. Should be specified as 2 letter country code defined as per
@@ -25390,9 +25435,11 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
                traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: Source IP address range in CIDR format. Required for
                INGRESS rules.
-        :param _builtins.str src_network_scope: Network scope of the traffic source.
+        :param _builtins.str src_network_scope: (Optional, Beta)
+               Network scope of the traffic source.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
+        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
+               Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -25479,6 +25526,7 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic destination.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -25535,6 +25583,7 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic source.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -25544,6 +25593,7 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -27298,7 +27348,8 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         :param Sequence['RegionAutoscalerAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param _builtins.str mode: Defines operating mode for this policy.
-        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
+        :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: (Optional, Beta)
+               Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
         :param 'RegionAutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
@@ -27405,6 +27456,7 @@ class RegionAutoscalerAutoscalingPolicy(dict):
     @pulumi.getter(name="scaleDownControl")
     def scale_down_control(self) -> Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl']:
         """
+        (Optional, Beta)
         Defines scale down controls to reduce the risk of response latency
         and outages due to abrupt scale-in events
         Structure is documented below.
@@ -28112,12 +28164,15 @@ class RegionBackendServiceBackend(dict):
                Can be used in either CONNECTION or UTILIZATION balancing modes.
                For CONNECTION mode, either maxConnections or
                maxConnectionsPerInstance must be set.
-        :param _builtins.int max_in_flight_requests: Defines a maximum number of in-flight requests for the whole NEG
+        :param _builtins.int max_in_flight_requests: (Optional, Beta)
+               Defines a maximum number of in-flight requests for the whole NEG
                or instance group. Not available if backend's balancingMode is RATE
                or CONNECTION.
-        :param _builtins.int max_in_flight_requests_per_endpoint: Defines a maximum number of in-flight requests for a single endpoint.
+        :param _builtins.int max_in_flight_requests_per_endpoint: (Optional, Beta)
+               Defines a maximum number of in-flight requests for a single endpoint.
                Not available if backend's balancingMode is RATE or CONNECTION.
-        :param _builtins.int max_in_flight_requests_per_instance: Defines a maximum number of in-flight requests for a single VM.
+        :param _builtins.int max_in_flight_requests_per_instance: (Optional, Beta)
+               Defines a maximum number of in-flight requests for a single VM.
                Not available if backend's balancingMode is RATE or CONNECTION.
         :param _builtins.int max_rate: The max requests per second (RPS) of the group. Cannot be set
                for INTERNAL backend services.
@@ -28138,7 +28193,8 @@ class RegionBackendServiceBackend(dict):
         :param _builtins.float max_utilization: Used when balancingMode is UTILIZATION. This ratio defines the
                CPU utilization target for the group. Valid range is [0.0, 1.0].
                Cannot be set for INTERNAL backend services.
-        :param _builtins.str traffic_duration: This field specifies how long a connection should be kept alive for:
+        :param _builtins.str traffic_duration: (Optional, Beta)
+               This field specifies how long a connection should be kept alive for:
                - LONG: Most of the requests are expected to take more than multiple
                seconds to finish.
                - SHORT: Most requests are expected to finish with a sub-second latency.
@@ -28300,6 +28356,7 @@ class RegionBackendServiceBackend(dict):
     @pulumi.getter(name="maxInFlightRequests")
     def max_in_flight_requests(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Defines a maximum number of in-flight requests for the whole NEG
         or instance group. Not available if backend's balancingMode is RATE
         or CONNECTION.
@@ -28310,6 +28367,7 @@ class RegionBackendServiceBackend(dict):
     @pulumi.getter(name="maxInFlightRequestsPerEndpoint")
     def max_in_flight_requests_per_endpoint(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Defines a maximum number of in-flight requests for a single endpoint.
         Not available if backend's balancingMode is RATE or CONNECTION.
         """
@@ -28319,6 +28377,7 @@ class RegionBackendServiceBackend(dict):
     @pulumi.getter(name="maxInFlightRequestsPerInstance")
     def max_in_flight_requests_per_instance(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Defines a maximum number of in-flight requests for a single VM.
         Not available if backend's balancingMode is RATE or CONNECTION.
         """
@@ -28375,6 +28434,7 @@ class RegionBackendServiceBackend(dict):
     @pulumi.getter(name="trafficDuration")
     def traffic_duration(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         This field specifies how long a connection should be kept alive for:
         - LONG: Most of the requests are expected to take more than multiple
         seconds to finish.
@@ -28778,7 +28838,8 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
         """
         :param _builtins.int code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
                can be specified as values, and you cannot specify a status code more than once.
-        :param _builtins.int ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        :param _builtins.int ttl: (Optional, Beta)
+               The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
                (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         """
         if code is not None:
@@ -28799,6 +28860,7 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
     @pulumi.getter
     def ttl(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
         (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         """
@@ -28842,7 +28904,8 @@ class RegionBackendServiceCircuitBreakers(dict):
                  max_requests_per_connection: Optional[_builtins.int] = None,
                  max_retries: Optional[_builtins.int] = None):
         """
-        :param 'RegionBackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: The timeout for new network connections to hosts.
+        :param 'RegionBackendServiceCircuitBreakersConnectTimeoutArgs' connect_timeout: (Optional, Beta)
+               The timeout for new network connections to hosts.
                Structure is documented below.
         :param _builtins.int max_connections: The maximum number of connections to the backend cluster.
                Defaults to 1024.
@@ -28874,6 +28937,7 @@ class RegionBackendServiceCircuitBreakers(dict):
     @pulumi.getter(name="connectTimeout")
     def connect_timeout(self) -> Optional['outputs.RegionBackendServiceCircuitBreakersConnectTimeout']:
         """
+        (Optional, Beta)
         The timeout for new network connections to hosts.
         Structure is documented below.
         """
@@ -29340,7 +29404,8 @@ class RegionBackendServiceDynamicForwarding(dict):
     def __init__(__self__, *,
                  ip_port_selection: Optional['outputs.RegionBackendServiceDynamicForwardingIpPortSelection'] = None):
         """
-        :param 'RegionBackendServiceDynamicForwardingIpPortSelectionArgs' ip_port_selection: IP:PORT based dynamic forwarding configuration.
+        :param 'RegionBackendServiceDynamicForwardingIpPortSelectionArgs' ip_port_selection: (Optional, Beta)
+               IP:PORT based dynamic forwarding configuration.
                Structure is documented below.
         """
         if ip_port_selection is not None:
@@ -29350,6 +29415,7 @@ class RegionBackendServiceDynamicForwarding(dict):
     @pulumi.getter(name="ipPortSelection")
     def ip_port_selection(self) -> Optional['outputs.RegionBackendServiceDynamicForwardingIpPortSelection']:
         """
+        (Optional, Beta)
         IP:PORT based dynamic forwarding configuration.
         Structure is documented below.
         """
@@ -29361,7 +29427,8 @@ class RegionBackendServiceDynamicForwardingIpPortSelection(dict):
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enabled: A boolean flag enabling IP:PORT based dynamic forwarding.
+        :param _builtins.bool enabled: (Optional, Beta)
+               A boolean flag enabling IP:PORT based dynamic forwarding.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -29370,6 +29437,7 @@ class RegionBackendServiceDynamicForwardingIpPortSelection(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         """
+        (Optional, Beta)
         A boolean flag enabling IP:PORT based dynamic forwarding.
         """
         return pulumi.get(self, "enabled")
@@ -29926,10 +29994,12 @@ class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
                  spillover: Optional[_builtins.str] = None,
                  spillover_ratio: Optional[_builtins.float] = None):
         """
-        :param _builtins.str spillover: This field indicates whether zonal affinity is enabled or not.
+        :param _builtins.str spillover: (Optional, Beta)
+               This field indicates whether zonal affinity is enabled or not.
                Default value is `ZONAL_AFFINITY_DISABLED`.
                Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
-        :param _builtins.float spillover_ratio: The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
+        :param _builtins.float spillover_ratio: (Optional, Beta)
+               The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
                to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
                distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
                of healthy backend endpoints in a zone to the count of backend endpoints in that same zone is below this
@@ -29944,6 +30014,7 @@ class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
     @pulumi.getter
     def spillover(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         This field indicates whether zonal affinity is enabled or not.
         Default value is `ZONAL_AFFINITY_DISABLED`.
         Possible values are: `ZONAL_AFFINITY_DISABLED`, `ZONAL_AFFINITY_SPILL_CROSS_ZONE`, `ZONAL_AFFINITY_STAY_WITHIN_ZONE`.
@@ -29954,6 +30025,7 @@ class RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(dict):
     @pulumi.getter(name="spilloverRatio")
     def spillover_ratio(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
         to the count of backend endpoints in that same zone is equal to or above this threshold, the load balancer
         distributes new connections to all healthy endpoints in the local zone only. When the ratio of the count
@@ -30916,7 +30988,8 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
                  raw_key: Optional[_builtins.str] = None,
                  sha256: Optional[_builtins.str] = None):
         """
-        :param _builtins.str kms_key_name: The name of the encryption key that is stored in Google Cloud KMS.
+        :param _builtins.str kms_key_name: (Optional, Beta)
+               The name of the encryption key that is stored in Google Cloud KMS.
         :param _builtins.str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
         :param _builtins.str sha256: (Output)
@@ -30934,6 +31007,7 @@ class RegionDiskSourceSnapshotEncryptionKey(dict):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         The name of the encryption key that is stored in Google Cloud KMS.
         """
         return pulumi.get(self, "kms_key_name")
@@ -32788,7 +32862,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
         :param _builtins.str default_action_on_failure: , Specifies the action that a MIG performs on a failed VM. If the value of the `on_failed_health_check` field is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application fails a health check. Valid options are: `DO_NOTHING`, `REPAIR`. If `DO_NOTHING`, then MIG does not repair a failed VM. If `REPAIR` (default), then MIG automatically repairs a failed VM by recreating it. For more information, see about repairing VMs in a MIG.
         :param _builtins.str force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         :param _builtins.str on_failed_health_check: , Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid options are: `DEFAULT_ACTION`, `DO_NOTHING`, `REPAIR`. If `DEFAULT_ACTION` (default), then MIG uses the same action configured for the  `default_action_on_failure` field. If `DO_NOTHING`, then MIG does not repair unhealthy VM. If `REPAIR`, then MIG automatically repairs an unhealthy VM by recreating it. For more information, see about repairing VMs in a MIG.
-        :param 'RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs' on_repair: , Configuration for VM repairs in the MIG. Structure is documented below.
+        :param 'RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepairArgs' on_repair: ), Configuration for VM repairs in the MIG. Structure is documented below.
                - - -
         """
         if default_action_on_failure is not None:
@@ -32828,7 +32902,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
     @pulumi.getter(name="onRepair")
     def on_repair(self) -> Optional['outputs.RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair']:
         """
-        , Configuration for VM repairs in the MIG. Structure is documented below.
+        ), Configuration for VM repairs in the MIG. Structure is documented below.
         - - -
         """
         return pulumi.get(self, "on_repair")
@@ -33446,7 +33520,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         :param _builtins.int max_surge_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
         :param _builtins.int max_unavailable_fixed: , Specifies a fixed number of VM instances. This must be a positive integer.
         :param _builtins.int max_unavailable_percent: , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%..
-        :param _builtins.int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param _builtins.int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param _builtins.str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param _builtins.str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
@@ -33530,7 +33604,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[_builtins.int]:
         """
-        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 
@@ -35128,7 +35202,7 @@ class RegionInstanceTemplateScheduling(dict):
                terminated by a user). This defaults to true.
         :param _builtins.int availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         :param 'RegionInstanceTemplateSchedulingGracefulShutdownArgs' graceful_shutdown: Settings for the instance to perform a graceful shutdown.
-        :param _builtins.int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        :param _builtins.int host_error_timeout_seconds: Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param _builtins.str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -35218,7 +35292,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="hostErrorTimeoutSeconds")
     def host_error_timeout_seconds(self) -> Optional[_builtins.int]:
         """
-        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         """
         return pulumi.get(self, "host_error_timeout_seconds")
 
@@ -36111,16 +36185,19 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[_builtins.str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param Sequence[_builtins.str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-        :param _builtins.str dest_network_scope: Network scope of the traffic destination.
+        :param _builtins.str dest_network_scope: (Optional, Beta)
+               Network scope of the traffic destination.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param Sequence[_builtins.str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param Sequence[_builtins.str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param Sequence[_builtins.str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-        :param _builtins.str src_network_scope: Network scope of the traffic source.
+        :param _builtins.str src_network_scope: (Optional, Beta)
+               Network scope of the traffic source.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
+        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
+               Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param Sequence['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -36196,6 +36273,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic destination.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -36245,6 +36323,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic source.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -36254,6 +36333,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -37341,7 +37421,8 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
                traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[_builtins.str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
-        :param _builtins.str dest_network_scope: Network scope of the traffic destination.
+        :param _builtins.str dest_network_scope: (Optional, Beta)
+               Network scope of the traffic destination.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param Sequence[_builtins.str] dest_region_codes: Region codes whose IP addresses will be used to match for destination
                of traffic. Should be specified as 2 letter country code defined as per
@@ -37355,9 +37436,11 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
                traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[_builtins.str] src_ip_ranges: Source IP address range in CIDR format. Required for
                INGRESS rules.
-        :param _builtins.str src_network_scope: Network scope of the traffic source.
+        :param _builtins.str src_network_scope: (Optional, Beta)
+               Network scope of the traffic source.
                Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
-        :param Sequence[_builtins.str] src_networks: Networks of the traffic source. It can be either a full or partial url.
+        :param Sequence[_builtins.str] src_networks: (Optional, Beta)
+               Networks of the traffic source. It can be either a full or partial url.
         :param Sequence[_builtins.str] src_region_codes: Region codes whose IP addresses will be used to match for source
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -37444,6 +37527,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="destNetworkScope")
     def dest_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic destination.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -37500,6 +37584,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="srcNetworkScope")
     def src_network_scope(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Network scope of the traffic source.
         Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         """
@@ -37509,6 +37594,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
     @pulumi.getter(name="srcNetworks")
     def src_networks(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         Networks of the traffic source. It can be either a full or partial url.
         """
         return pulumi.get(self, "src_networks")
@@ -39094,7 +39180,8 @@ class RegionSecurityPolicyAdvancedOptionsConfig(dict):
                Possible values are: `DISABLED`, `STANDARD`, `STANDARD_WITH_GRAPHQL`.
         :param _builtins.str log_level: Logging level. Supported values include: "NORMAL", "VERBOSE".
                Possible values are: `NORMAL`, `VERBOSE`.
-        :param _builtins.str request_body_inspection_size: The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
+        :param _builtins.str request_body_inspection_size: (Optional, Beta)
+               The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
                Values are case insensitive.
                Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
         :param Sequence[_builtins.str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
@@ -39141,6 +39228,7 @@ class RegionSecurityPolicyAdvancedOptionsConfig(dict):
     @pulumi.getter(name="requestBodyInspectionSize")
     def request_body_inspection_size(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
         Values are case insensitive.
         Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.
@@ -40945,7 +41033,8 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         if backend_service is not None:
@@ -40967,6 +41056,7 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -42635,7 +42725,8 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -42656,6 +42747,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -44170,7 +44262,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -44191,6 +44284,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -46349,7 +46443,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
         :param _builtins.str backend_service: The full or partial URL to the RegionBackendService resource being mirrored to.
                The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
                Serverless NEG backends are not currently supported as a mirrored backend service.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -46370,6 +46465,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -47712,7 +47808,8 @@ class ReservationShareSettings(dict):
         """
         :param Sequence['ReservationShareSettingsProjectMapArgs'] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
-        :param Sequence[_builtins.str] projects: List of project IDs with which the reservation is shared.
+        :param Sequence[_builtins.str] projects: (Optional, Beta)
+               List of project IDs with which the reservation is shared.
         :param _builtins.str share_type: Type of sharing for this shared-reservation
                Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
         """
@@ -47736,6 +47833,7 @@ class ReservationShareSettings(dict):
     @pulumi.getter
     def projects(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         List of project IDs with which the reservation is shared.
         """
         return pulumi.get(self, "projects")
@@ -47939,7 +48037,8 @@ class ReservationSpecificReservationInstanceProperties(dict):
                Structure is documented below.
         :param _builtins.str location_hint: (Output)
                An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
-        :param _builtins.str maintenance_interval: Specifies the frequency of planned maintenance events.
+        :param _builtins.str maintenance_interval: (Optional, Beta)
+               Specifies the frequency of planned maintenance events.
                Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
         :param _builtins.str min_cpu_platform: The minimum CPU platform for the reservation. For example,
                `"Intel Skylake"`. See
@@ -47998,6 +48097,7 @@ class ReservationSpecificReservationInstanceProperties(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Specifies the frequency of planned maintenance events.
         Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
         """
@@ -49194,8 +49294,10 @@ class ResourcePolicyGroupPlacementPolicy(dict):
                attached.
                Possible values are: `COLLOCATED`.
         :param _builtins.str gpu_topology: Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.
-        :param _builtins.int max_distance: Specifies the number of max logical switches.
-        :param _builtins.str tpu_topology: Specifies the shape of the TPU slice.
+        :param _builtins.int max_distance: (Optional, Beta)
+               Specifies the number of max logical switches.
+        :param _builtins.str tpu_topology: (Optional, Beta)
+               Specifies the shape of the TPU slice.
         :param _builtins.int vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -49246,6 +49348,7 @@ class ResourcePolicyGroupPlacementPolicy(dict):
     @pulumi.getter(name="maxDistance")
     def max_distance(self) -> Optional[_builtins.int]:
         """
+        (Optional, Beta)
         Specifies the number of max logical switches.
         """
         return pulumi.get(self, "max_distance")
@@ -49254,6 +49357,7 @@ class ResourcePolicyGroupPlacementPolicy(dict):
     @pulumi.getter(name="tpuTopology")
     def tpu_topology(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Specifies the shape of the TPU slice.
         """
         return pulumi.get(self, "tpu_topology")
@@ -52113,7 +52217,7 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
                  auto_deploy_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig'] = None,
                  layer7_ddos_defense_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig'] = None):
         """
-        :param 'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs' auto_deploy_config: Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        :param 'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs' auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
                
                <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         :param 'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs' layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -52127,7 +52231,7 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
     @pulumi.getter(name="autoDeployConfig")
     def auto_deploy_config(self) -> Optional['outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig']:
         """
-        Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
 
         <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         """
@@ -54113,7 +54217,9 @@ class ServiceAttachmentConnectedEndpoint(dict):
         :param _builtins.str endpoint: (Output)
                The URL of the consumer forwarding rule.
         :param Sequence[_builtins.str] nat_ips: (Output)
-               The nat IPs of the connected endpoint.
+               NOTE: This field is temporarily non-functional due to an underlying API issue.
+               Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+               'The nat IPs of the connected endpoint.'
         :param _builtins.int propagated_connection_count: (Output)
                The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
         :param _builtins.str psc_connection_id: (Output)
@@ -54158,7 +54264,9 @@ class ServiceAttachmentConnectedEndpoint(dict):
     def nat_ips(self) -> Optional[Sequence[_builtins.str]]:
         """
         (Output)
-        The nat IPs of the connected endpoint.
+        NOTE: This field is temporarily non-functional due to an underlying API issue.
+        Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        'The nat IPs of the connected endpoint.'
         """
         return pulumi.get(self, "nat_ips")
 
@@ -56163,7 +56271,8 @@ class URLMapDefaultRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -56182,6 +56291,7 @@ class URLMapDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -58050,7 +58160,8 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -58069,6 +58180,7 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -59795,7 +59907,8 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -59814,6 +59927,7 @@ class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -60529,12 +60643,14 @@ class URLMapPathMatcherRouteRule(dict):
                the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
                outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherRouteRuleHttpFilterConfigArgs'] http_filter_configs: Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
+        :param Sequence['URLMapPathMatcherRouteRuleHttpFilterConfigArgs'] http_filter_configs: (Optional, Beta)
+               Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
                httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                See ForwardingRule for more details.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
-        :param Sequence['URLMapPathMatcherRouteRuleHttpFilterMetadataArgs'] http_filter_metadatas: Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
+        :param Sequence['URLMapPathMatcherRouteRuleHttpFilterMetadataArgs'] http_filter_metadatas: (Optional, Beta)
+               Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
                httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                See ForwardingRule for more details.
                Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -60623,6 +60739,7 @@ class URLMapPathMatcherRouteRule(dict):
     @pulumi.getter(name="httpFilterConfigs")
     def http_filter_configs(self) -> Optional[Sequence['outputs.URLMapPathMatcherRouteRuleHttpFilterConfig']]:
         """
+        (Optional, Beta)
         Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
         httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         See ForwardingRule for more details.
@@ -60635,6 +60752,7 @@ class URLMapPathMatcherRouteRule(dict):
     @pulumi.getter(name="httpFilterMetadatas")
     def http_filter_metadatas(self) -> Optional[Sequence['outputs.URLMapPathMatcherRouteRuleHttpFilterMetadata']]:
         """
+        (Optional, Beta)
         Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
         httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         See ForwardingRule for more details.
@@ -62374,7 +62492,8 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
                  mirror_percent: Optional[_builtins.float] = None):
         """
         :param _builtins.str backend_service: The full or partial URL to the BackendService resource being mirrored to.
-        :param _builtins.float mirror_percent: The percentage of requests to be mirrored to backendService.
+        :param _builtins.float mirror_percent: (Optional, Beta)
+               The percentage of requests to be mirrored to backendService.
                The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "backend_service", backend_service)
@@ -62393,6 +62512,7 @@ class URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy(dict):
     @pulumi.getter(name="mirrorPercent")
     def mirror_percent(self) -> Optional[_builtins.float]:
         """
+        (Optional, Beta)
         The percentage of requests to be mirrored to backendService.
         The value must be between 0.0 and 100.0 inclusive.
         """
@@ -72344,7 +72464,7 @@ class GetMachineTypesMachineTypeResult(dict):
                  self_link: _builtins.str):
         """
         :param Sequence['GetMachineTypesMachineTypeAcceleratorArgs'] accelerators: A list of accelerator configurations assigned to this machine type. Structure is documented below.
-        :param Sequence['GetMachineTypesMachineTypeBundledLocalSsdArgs'] bundled_local_ssds: The configuration of bundled local SSD for the machine type. Structure is documented below.
+        :param Sequence['GetMachineTypesMachineTypeBundledLocalSsdArgs'] bundled_local_ssds: (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
         :param Sequence['GetMachineTypesMachineTypeDeprecatedArgs'] deprecateds: The deprecation status associated with this machine type. Structure is documented below.
         :param _builtins.str description: A textual description of the machine type.
         :param _builtins.int guest_cpus: The number of virtual CPUs that are available to the instance.
@@ -72379,7 +72499,7 @@ class GetMachineTypesMachineTypeResult(dict):
     @pulumi.getter(name="bundledLocalSsds")
     def bundled_local_ssds(self) -> Sequence['outputs.GetMachineTypesMachineTypeBundledLocalSsdResult']:
         """
-        The configuration of bundled local SSD for the machine type. Structure is documented below.
+        (Beta) The configuration of bundled local SSD for the machine type. Structure is documented below.
         """
         return pulumi.get(self, "bundled_local_ssds")
 
@@ -72491,8 +72611,8 @@ class GetMachineTypesMachineTypeBundledLocalSsdResult(dict):
                  default_interface: _builtins.str,
                  partition_count: _builtins.int):
         """
-        :param _builtins.str default_interface: The default disk interface if the interface is not specified.
-        :param _builtins.int partition_count: The number of partitions.
+        :param _builtins.str default_interface: (Beta) The default disk interface if the interface is not specified.
+        :param _builtins.int partition_count: (Beta) The number of partitions.
         """
         pulumi.set(__self__, "default_interface", default_interface)
         pulumi.set(__self__, "partition_count", partition_count)
@@ -72501,7 +72621,7 @@ class GetMachineTypesMachineTypeBundledLocalSsdResult(dict):
     @pulumi.getter(name="defaultInterface")
     def default_interface(self) -> _builtins.str:
         """
-        The default disk interface if the interface is not specified.
+        (Beta) The default disk interface if the interface is not specified.
         """
         return pulumi.get(self, "default_interface")
 
@@ -72509,7 +72629,7 @@ class GetMachineTypesMachineTypeBundledLocalSsdResult(dict):
     @pulumi.getter(name="partitionCount")
     def partition_count(self) -> _builtins.int:
         """
-        The number of partitions.
+        (Beta) The number of partitions.
         """
         return pulumi.get(self, "partition_count")
 

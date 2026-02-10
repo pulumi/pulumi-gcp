@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterProtectConfig {
     /**
-     * @return WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
+     * @return ) WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
      * 
      */
     private @Nullable ClusterProtectConfigWorkloadConfig workloadConfig;
     /**
-     * @return Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     private @Nullable String workloadVulnerabilityMode;
 
     private ClusterProtectConfig() {}
     /**
-     * @return WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
+     * @return ) WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
      * 
      */
     public Optional<ClusterProtectConfigWorkloadConfig> workloadConfig() {
         return Optional.ofNullable(this.workloadConfig);
     }
     /**
-     * @return Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     public Optional<String> workloadVulnerabilityMode() {

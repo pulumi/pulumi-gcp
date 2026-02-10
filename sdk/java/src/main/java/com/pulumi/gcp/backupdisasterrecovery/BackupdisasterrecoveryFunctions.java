@@ -1165,8 +1165,6 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences", TypeShape.of(GetDataSourceReferencesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Backup DR Management server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1205,8 +1203,6 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServer(args, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Backup DR Management server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1245,8 +1241,6 @@ public final class BackupdisasterrecoveryFunctions {
         return getManagementServerPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information about a Google Backup DR Management server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1285,8 +1279,6 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Backup DR Management server.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -1325,8 +1317,6 @@ public final class BackupdisasterrecoveryFunctions {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information about a Google Backup DR Management server.
-     * 
      * ## Example Usage
      * 
      * <pre>

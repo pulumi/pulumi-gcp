@@ -51,9 +51,6 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  * 
- * &gt; **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`, `security_settings.aws_v4_authentication.access_key`.
- * 
  * ## Example Usage
  * 
  * ### Backend Service Basic
@@ -1242,6 +1239,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * (Optional, Beta)
      * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
@@ -1251,7 +1249,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ BackendServiceDynamicForwarding> dynamicForwarding;
 
     /**
-     * @return Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+     * @return (Optional, Beta)
+     * Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
      * feature which together with Service Extension allows customized and complex routing logic.
      * Structure is documented below.
      * 
@@ -1672,6 +1671,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * (Optional, Beta)
      * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
@@ -1680,7 +1680,8 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ BackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicy;
 
     /**
-     * @return Configures traffic steering properties of internal passthrough Network Load Balancers.
+     * @return (Optional, Beta)
+     * Configures traffic steering properties of internal passthrough Network Load Balancers.
      * Structure is documented below.
      * 
      */

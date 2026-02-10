@@ -428,7 +428,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_64336",
+    ///         Name = "tf-test-bucket-name-_39249",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -471,16 +471,16 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_34962",
+    ///         Name = "tf-test-bucket-name-_74391",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var tfTestConnection = new Gcp.BigQuery.Connection("tf_test_connection", new()
     ///     {
-    ///         ConnectionId = "tf-test-connection-_74000",
+    ///         ConnectionId = "tf-test-connection-_16511",
     ///         Location = "us-central1",
-    ///         FriendlyName = "tf-test-connection-_75125",
+    ///         FriendlyName = "tf-test-connection-_8493",
     ///         Description = "a bigquery connection for tf test",
     ///         CloudResource = null,
     ///     });
@@ -573,7 +573,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_88722",
+    ///         Name = "tf-test-bucket-name-_9106",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -619,14 +619,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__39249",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__27169",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__74391",
+    ///         TableId = "tf_dataplex_test_table_id__75223",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -718,14 +718,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__16511",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__41819",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__8493",
+    ///         TableId = "tf_dataplex_test_table_id__75092",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {

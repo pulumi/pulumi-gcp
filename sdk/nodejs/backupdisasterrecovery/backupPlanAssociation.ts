@@ -84,6 +84,58 @@ import * as utilities from "../utilities";
  *     backupPlan: bp1.name,
  * });
  * ```
+ * ### Backup Dr Bpa Filestore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myFilestoreInstance = new gcp.filestore.Instance("my_filestore_instance", {
+ *     name: "test-instance-bpa",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     fileShares: {
+ *         capacityGb: 1024,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         network: "default",
+ *         modes: ["MODE_IPV4"],
+ *     }],
+ * });
+ * const myBackupVault = new gcp.backupdisasterrecovery.BackupVault("my_backup_vault", {
+ *     location: "us-central1",
+ *     backupVaultId: "bv-bpa-filestore",
+ *     backupMinimumEnforcedRetentionDuration: "100000s",
+ *     forceDelete: true,
+ * });
+ * const myBackupPlan = new gcp.backupdisasterrecovery.BackupPlan("my_backup_plan", {
+ *     location: "us-central1",
+ *     backupPlanId: "bp-bpa-filestore",
+ *     resourceType: "file.googleapis.com/Instance",
+ *     backupVault: myBackupVault.id,
+ *     backupRules: [{
+ *         ruleId: "rule-1",
+ *         backupRetentionDays: 5,
+ *         standardSchedule: {
+ *             recurrenceType: "HOURLY",
+ *             hourlyFrequency: 6,
+ *             timeZone: "UTC",
+ *             backupWindow: {
+ *                 startHourOfDay: 0,
+ *                 endHourOfDay: 6,
+ *             },
+ *         },
+ *     }],
+ * });
+ * const my_backup_plan_association_filestore = new gcp.backupdisasterrecovery.BackupPlanAssociation("my-backup-plan-association-filestore", {
+ *     location: "us-central1",
+ *     resourceType: "file.googleapis.com/Instance",
+ *     backupPlanAssociationId: "my-bpa-filestore",
+ *     resource: myFilestoreInstance.id,
+ *     backupPlan: myBackupPlan.name,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -142,6 +194,7 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
      * Note:
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+     * - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
      */
     declare public readonly backupPlan: pulumi.Output<string>;
     /**
@@ -156,10 +209,6 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
      * Resource name of data source which will be used as storage location for backups taken
      */
     declare public /*out*/ readonly dataSource: pulumi.Output<string>;
-    /**
-     * The point in time when the last successful backup was captured from the source
-     */
-    declare public /*out*/ readonly lastSuccessfulBackupConsistencyTime: pulumi.Output<string>;
     /**
      * The location for the backupplan association
      */
@@ -179,7 +228,7 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
     declare public readonly resource: pulumi.Output<string>;
     /**
      * The resource type of workload on which backupplan is applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
@@ -209,7 +258,6 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
             resourceInputs["backupPlanAssociationId"] = state?.backupPlanAssociationId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataSource"] = state?.dataSource;
-            resourceInputs["lastSuccessfulBackupConsistencyTime"] = state?.lastSuccessfulBackupConsistencyTime;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -242,7 +290,6 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
-            resourceInputs["lastSuccessfulBackupConsistencyTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["rulesConfigInfos"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -261,6 +308,7 @@ export interface BackupPlanAssociationState {
      * Note:
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+     * - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
      */
     backupPlan?: pulumi.Input<string>;
     /**
@@ -275,10 +323,6 @@ export interface BackupPlanAssociationState {
      * Resource name of data source which will be used as storage location for backups taken
      */
     dataSource?: pulumi.Input<string>;
-    /**
-     * The point in time when the last successful backup was captured from the source
-     */
-    lastSuccessfulBackupConsistencyTime?: pulumi.Input<string>;
     /**
      * The location for the backupplan association
      */
@@ -298,7 +342,7 @@ export interface BackupPlanAssociationState {
     resource?: pulumi.Input<string>;
     /**
      * The resource type of workload on which backupplan is applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -321,6 +365,7 @@ export interface BackupPlanAssociationArgs {
      * Note:
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
+     * - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
      */
     backupPlan: pulumi.Input<string>;
     /**
@@ -342,7 +387,7 @@ export interface BackupPlanAssociationArgs {
     resource: pulumi.Input<string>;
     /**
      * The resource type of workload on which backupplan is applied.
-     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
+     * Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
      */
     resourceType: pulumi.Input<string>;
 }

@@ -330,14 +330,6 @@ class SacRealm(pulumi.CustomResource):
                  symantec_options: Optional[pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
                  __props__=None):
         """
-        Secure Access Connect Realm resource
-
-        To get more information about SacRealm, see:
-
-        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacRealms)
-        * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
-
         ## Example Usage
 
         ### Sac Realm Prisma Access
@@ -415,14 +407,6 @@ class SacRealm(pulumi.CustomResource):
                  args: SacRealmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Secure Access Connect Realm resource
-
-        To get more information about SacRealm, see:
-
-        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacRealms)
-        * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
-
         ## Example Usage
 
         ### Sac Realm Prisma Access

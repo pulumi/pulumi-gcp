@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? LogLevel { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
         /// Values are case insensitive.
         /// Possible values are: `8KB`, `16KB`, `32KB`, `48KB`, `64KB`.

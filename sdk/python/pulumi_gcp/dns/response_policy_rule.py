@@ -32,7 +32,8 @@ class ResponsePolicyRuleArgs:
         :param pulumi.Input[_builtins.str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         :param pulumi.Input[_builtins.str] response_policy: Identifies the response policy addressed by this request.
         :param pulumi.Input[_builtins.str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
-        :param pulumi.Input[_builtins.str] behavior: Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        :param pulumi.Input[_builtins.str] behavior: (Optional, Beta)
+               Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         :param pulumi.Input['ResponsePolicyRuleLocalDataArgs'] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
                Structure is documented below.
@@ -89,6 +90,7 @@ class ResponsePolicyRuleArgs:
     @pulumi.getter
     def behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         """
         return pulumi.get(self, "behavior")
@@ -136,7 +138,8 @@ class _ResponsePolicyRuleState:
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResponsePolicyRule resources.
-        :param pulumi.Input[_builtins.str] behavior: Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        :param pulumi.Input[_builtins.str] behavior: (Optional, Beta)
+               Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         :param pulumi.Input[_builtins.str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         :param pulumi.Input['ResponsePolicyRuleLocalDataArgs'] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
@@ -163,6 +166,7 @@ class _ResponsePolicyRuleState:
     @pulumi.getter
     def behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         """
         return pulumi.get(self, "behavior")
@@ -318,7 +322,8 @@ class ResponsePolicyRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] behavior: Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        :param pulumi.Input[_builtins.str] behavior: (Optional, Beta)
+               Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         :param pulumi.Input[_builtins.str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
@@ -467,7 +472,8 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] behavior: Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        :param pulumi.Input[_builtins.str] behavior: (Optional, Beta)
+               Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         :param pulumi.Input[_builtins.str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         :param pulumi.Input[Union['ResponsePolicyRuleLocalDataArgs', 'ResponsePolicyRuleLocalDataArgsDict']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
                in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
@@ -493,6 +499,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def behavior(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Beta)
         Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         """
         return pulumi.get(self, "behavior")

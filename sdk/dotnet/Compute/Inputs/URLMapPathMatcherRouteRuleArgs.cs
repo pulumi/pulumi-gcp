@@ -33,6 +33,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterConfigArgs>? _httpFilterConfigs;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
         /// httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         /// See ForwardingRule for more details.
@@ -49,6 +50,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.URLMapPathMatcherRouteRuleHttpFilterMetadataArgs>? _httpFilterMetadatas;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
         /// httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         /// See ForwardingRule for more details.

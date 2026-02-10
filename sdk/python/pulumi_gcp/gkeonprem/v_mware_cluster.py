@@ -38,6 +38,7 @@ class VMwareClusterArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_validations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
                  upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
                  vcenter: Optional[pulumi.Input['VMwareClusterVcenterArgs']] = None,
@@ -83,6 +84,8 @@ class VMwareClusterArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skip_validations: A list of validations to skip during preflight checks.
+               Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
         :param pulumi.Input['VMwareClusterStorageArgs'] storage: Storage configuration.
                Structure is documented below.
         :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
@@ -122,6 +125,8 @@ class VMwareClusterArgs:
             pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_validations is not None:
+            pulumi.set(__self__, "skip_validations", skip_validations)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
         if upgrade_policy is not None:
@@ -358,6 +363,19 @@ class VMwareClusterArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipValidations")
+    def skip_validations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of validations to skip during preflight checks.
+        Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+        """
+        return pulumi.get(self, "skip_validations")
+
+    @skip_validations.setter
+    def skip_validations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "skip_validations", value)
+
+    @_builtins.property
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input['VMwareClusterStorageArgs']]:
         """
@@ -438,6 +456,7 @@ class _VMwareClusterState:
                  on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_validations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArgs']]]] = None,
                  storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
@@ -509,6 +528,8 @@ class _VMwareClusterState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the VMware User Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skip_validations: A list of validations to skip during preflight checks.
+               Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArgs']]] statuses: (Output)
@@ -577,6 +598,8 @@ class _VMwareClusterState:
             pulumi.set(__self__, "project", project)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
+        if skip_validations is not None:
+            pulumi.set(__self__, "skip_validations", skip_validations)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if statuses is not None:
@@ -930,6 +953,19 @@ class _VMwareClusterState:
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipValidations")
+    def skip_validations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of validations to skip during preflight checks.
+        Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+        """
+        return pulumi.get(self, "skip_validations")
+
+    @skip_validations.setter
+    def skip_validations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "skip_validations", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1069,6 +1105,7 @@ class VMwareCluster(pulumi.CustomResource):
                  network_config: Optional[pulumi.Input[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict']]] = None,
                  on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_validations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  storage: Optional[pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
                  upgrade_policy: Optional[pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
                  vcenter: Optional[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
@@ -1212,6 +1249,11 @@ class VMwareCluster(pulumi.CustomResource):
 
         cluster_manuallb = gcp.gkeonprem.VMwareCluster("cluster-manuallb",
             name="cluster-manuallb",
+            skip_validations=[
+                "WORKSTATION",
+                "CONFIG",
+                "DOCKER",
+            ],
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
@@ -1368,6 +1410,8 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skip_validations: A list of validations to skip during preflight checks.
+               Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
         :param pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']] storage: Storage configuration.
                Structure is documented below.
         :param pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']] upgrade_policy: Specifies upgrade policy for the cluster.
@@ -1521,6 +1565,11 @@ class VMwareCluster(pulumi.CustomResource):
 
         cluster_manuallb = gcp.gkeonprem.VMwareCluster("cluster-manuallb",
             name="cluster-manuallb",
+            skip_validations=[
+                "WORKSTATION",
+                "CONFIG",
+                "DOCKER",
+            ],
             location="us-west1",
             admin_cluster_membership="projects/870316890899/locations/global/memberships/gkeonprem-terraform-test",
             description="test cluster",
@@ -1668,6 +1717,7 @@ class VMwareCluster(pulumi.CustomResource):
                  network_config: Optional[pulumi.Input[Union['VMwareClusterNetworkConfigArgs', 'VMwareClusterNetworkConfigArgsDict']]] = None,
                  on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 skip_validations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  storage: Optional[pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
                  upgrade_policy: Optional[pulumi.Input[Union['VMwareClusterUpgradePolicyArgs', 'VMwareClusterUpgradePolicyArgsDict']]] = None,
                  vcenter: Optional[pulumi.Input[Union['VMwareClusterVcenterArgs', 'VMwareClusterVcenterArgsDict']]] = None,
@@ -1706,6 +1756,7 @@ class VMwareCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'on_prem_version'")
             __props__.__dict__["on_prem_version"] = on_prem_version
             __props__.__dict__["project"] = project
+            __props__.__dict__["skip_validations"] = skip_validations
             __props__.__dict__["storage"] = storage
             __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["vcenter"] = vcenter
@@ -1758,6 +1809,7 @@ class VMwareCluster(pulumi.CustomResource):
             on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
+            skip_validations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterStatusArgs', 'VMwareClusterStatusArgsDict']]]]] = None,
             storage: Optional[pulumi.Input[Union['VMwareClusterStorageArgs', 'VMwareClusterStorageArgsDict']]] = None,
@@ -1834,6 +1886,8 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] reconciling: If set, there are currently changes in flight to the VMware User Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skip_validations: A list of validations to skip during preflight checks.
+               Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
         :param pulumi.Input[_builtins.str] state: (Output)
                The lifecycle state of the condition.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VMwareClusterStatusArgs', 'VMwareClusterStatusArgsDict']]]] statuses: (Output)
@@ -1881,6 +1935,7 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["on_prem_version"] = on_prem_version
         __props__.__dict__["project"] = project
         __props__.__dict__["reconciling"] = reconciling
+        __props__.__dict__["skip_validations"] = skip_validations
         __props__.__dict__["state"] = state
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["storage"] = storage
@@ -2124,6 +2179,15 @@ class VMwareCluster(pulumi.CustomResource):
         If set, there are currently changes in flight to the VMware User Cluster.
         """
         return pulumi.get(self, "reconciling")
+
+    @_builtins.property
+    @pulumi.getter(name="skipValidations")
+    def skip_validations(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of validations to skip during preflight checks.
+        Each value may be one of: `VALIDATION_SKIP_UNSPECIFIED`, `ALL`, `WORKSTATION`, `CONFIG`, `DOCKER`, `INFRA`, `LOAD_BALANCER`, `VIPS`, `NODE_IPS`, `DNS`, `TOD`, `NET_CONFIG`, `STORAGE_DRIVER`, `PROXY`, `INTERNET`, `GCP`, `GKEHUB`, `RESERVED_IPS`, `STACKDRIVER`, `NODEPOOL_AUTOSCALING`, `OS_IMAGES`, `CLUSTER_VERSION`, `CLUSTER_HEALTH`, `WINDOWS`, `HSM_SECRET_ENCRYPTION`, `BACKUP_ADMIN`, `CONNECTIVITY`, `CLUSTER_SECRETS_CONFIG`, `CSI_WORKLOAD`, `VSPHERE_VERSION`, `MIGRATION`.
+        """
+        return pulumi.get(self, "skip_validations")
 
     @_builtins.property
     @pulumi.getter

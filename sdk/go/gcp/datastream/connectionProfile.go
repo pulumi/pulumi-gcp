@@ -675,9 +675,11 @@ type ConnectionProfile struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile ConnectionProfileSalesforceProfilePtrOutput `pulumi:"salesforceProfile"`
+	// (Optional, Beta)
 	// Spanner profile.
 	// Structure is documented below.
 	SpannerProfile ConnectionProfileSpannerProfilePtrOutput `pulumi:"spannerProfile"`
@@ -775,9 +777,11 @@ type connectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile *ConnectionProfileSalesforceProfile `pulumi:"salesforceProfile"`
+	// (Optional, Beta)
 	// Spanner profile.
 	// Structure is documented below.
 	SpannerProfile *ConnectionProfileSpannerProfile `pulumi:"spannerProfile"`
@@ -832,9 +836,11 @@ type ConnectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// (Optional, Beta)
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile ConnectionProfileSalesforceProfilePtrInput
+	// (Optional, Beta)
 	// Spanner profile.
 	// Structure is documented below.
 	SpannerProfile ConnectionProfileSpannerProfilePtrInput
@@ -886,9 +892,11 @@ type connectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile *ConnectionProfileSalesforceProfile `pulumi:"salesforceProfile"`
+	// (Optional, Beta)
 	// Spanner profile.
 	// Structure is documented below.
 	SpannerProfile *ConnectionProfileSpannerProfile `pulumi:"spannerProfile"`
@@ -937,9 +945,11 @@ type ConnectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Salesforce profile.
 	// Structure is documented below.
 	SalesforceProfile ConnectionProfileSalesforceProfilePtrInput
+	// (Optional, Beta)
 	// Spanner profile.
 	// Structure is documented below.
 	SpannerProfile ConnectionProfileSpannerProfilePtrInput
@@ -1133,12 +1143,14 @@ func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// (Optional, Beta)
 // Salesforce profile.
 // Structure is documented below.
 func (o ConnectionProfileOutput) SalesforceProfile() ConnectionProfileSalesforceProfilePtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileSalesforceProfilePtrOutput { return v.SalesforceProfile }).(ConnectionProfileSalesforceProfilePtrOutput)
 }
 
+// (Optional, Beta)
 // Spanner profile.
 // Structure is documented below.
 func (o ConnectionProfileOutput) SpannerProfile() ConnectionProfileSpannerProfilePtrOutput {

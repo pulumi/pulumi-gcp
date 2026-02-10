@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, annotations=None, automated_backup_policies=None, backup_sources=None, cluster_id=None, cluster_type=None, continuous_backup_configs=None, continuous_backup_infos=None, database_version=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_annotations=None, effective_labels=None, encryption_configs=None, encryption_infos=None, etag=None, id=None, initial_users=None, labels=None, location=None, maintenance_update_policies=None, migration_sources=None, name=None, network_configs=None, project=None, psc_configs=None, pulumi_labels=None, reconciling=None, restore_backup_sources=None, restore_continuous_backup_sources=None, secondary_configs=None, skip_await_major_version_upgrade=None, state=None, subscription_type=None, trial_metadatas=None, uid=None):
+    def __init__(__self__, annotations=None, automated_backup_policies=None, backup_sources=None, backupdr_backup_sources=None, cluster_id=None, cluster_type=None, continuous_backup_configs=None, continuous_backup_infos=None, database_version=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_annotations=None, effective_labels=None, encryption_configs=None, encryption_infos=None, etag=None, id=None, initial_users=None, labels=None, location=None, maintenance_update_policies=None, migration_sources=None, name=None, network_configs=None, project=None, psc_configs=None, pulumi_labels=None, reconciling=None, restore_backup_sources=None, restore_backupdr_backup_sources=None, restore_backupdr_pitr_sources=None, restore_continuous_backup_sources=None, secondary_configs=None, skip_await_major_version_upgrade=None, state=None, subscription_type=None, trial_metadatas=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -37,6 +37,9 @@ class GetClusterResult:
         if backup_sources and not isinstance(backup_sources, list):
             raise TypeError("Expected argument 'backup_sources' to be a list")
         pulumi.set(__self__, "backup_sources", backup_sources)
+        if backupdr_backup_sources and not isinstance(backupdr_backup_sources, list):
+            raise TypeError("Expected argument 'backupdr_backup_sources' to be a list")
+        pulumi.set(__self__, "backupdr_backup_sources", backupdr_backup_sources)
         if cluster_id and not isinstance(cluster_id, str):
             raise TypeError("Expected argument 'cluster_id' to be a str")
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -115,6 +118,12 @@ class GetClusterResult:
         if restore_backup_sources and not isinstance(restore_backup_sources, list):
             raise TypeError("Expected argument 'restore_backup_sources' to be a list")
         pulumi.set(__self__, "restore_backup_sources", restore_backup_sources)
+        if restore_backupdr_backup_sources and not isinstance(restore_backupdr_backup_sources, list):
+            raise TypeError("Expected argument 'restore_backupdr_backup_sources' to be a list")
+        pulumi.set(__self__, "restore_backupdr_backup_sources", restore_backupdr_backup_sources)
+        if restore_backupdr_pitr_sources and not isinstance(restore_backupdr_pitr_sources, list):
+            raise TypeError("Expected argument 'restore_backupdr_pitr_sources' to be a list")
+        pulumi.set(__self__, "restore_backupdr_pitr_sources", restore_backupdr_pitr_sources)
         if restore_continuous_backup_sources and not isinstance(restore_continuous_backup_sources, list):
             raise TypeError("Expected argument 'restore_continuous_backup_sources' to be a list")
         pulumi.set(__self__, "restore_continuous_backup_sources", restore_continuous_backup_sources)
@@ -151,6 +160,11 @@ class GetClusterResult:
     @pulumi.getter(name="backupSources")
     def backup_sources(self) -> Sequence['outputs.GetClusterBackupSourceResult']:
         return pulumi.get(self, "backup_sources")
+
+    @_builtins.property
+    @pulumi.getter(name="backupdrBackupSources")
+    def backupdr_backup_sources(self) -> Sequence['outputs.GetClusterBackupdrBackupSourceResult']:
+        return pulumi.get(self, "backupdr_backup_sources")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -286,6 +300,16 @@ class GetClusterResult:
         return pulumi.get(self, "restore_backup_sources")
 
     @_builtins.property
+    @pulumi.getter(name="restoreBackupdrBackupSources")
+    def restore_backupdr_backup_sources(self) -> Sequence['outputs.GetClusterRestoreBackupdrBackupSourceResult']:
+        return pulumi.get(self, "restore_backupdr_backup_sources")
+
+    @_builtins.property
+    @pulumi.getter(name="restoreBackupdrPitrSources")
+    def restore_backupdr_pitr_sources(self) -> Sequence['outputs.GetClusterRestoreBackupdrPitrSourceResult']:
+        return pulumi.get(self, "restore_backupdr_pitr_sources")
+
+    @_builtins.property
     @pulumi.getter(name="restoreContinuousBackupSources")
     def restore_continuous_backup_sources(self) -> Sequence['outputs.GetClusterRestoreContinuousBackupSourceResult']:
         return pulumi.get(self, "restore_continuous_backup_sources")
@@ -330,6 +354,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             annotations=self.annotations,
             automated_backup_policies=self.automated_backup_policies,
             backup_sources=self.backup_sources,
+            backupdr_backup_sources=self.backupdr_backup_sources,
             cluster_id=self.cluster_id,
             cluster_type=self.cluster_type,
             continuous_backup_configs=self.continuous_backup_configs,
@@ -356,6 +381,8 @@ class AwaitableGetClusterResult(GetClusterResult):
             pulumi_labels=self.pulumi_labels,
             reconciling=self.reconciling,
             restore_backup_sources=self.restore_backup_sources,
+            restore_backupdr_backup_sources=self.restore_backupdr_backup_sources,
+            restore_backupdr_pitr_sources=self.restore_backupdr_pitr_sources,
             restore_continuous_backup_sources=self.restore_continuous_backup_sources,
             secondary_configs=self.secondary_configs,
             skip_await_major_version_upgrade=self.skip_await_major_version_upgrade,
@@ -400,6 +427,7 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         annotations=pulumi.get(__ret__, 'annotations'),
         automated_backup_policies=pulumi.get(__ret__, 'automated_backup_policies'),
         backup_sources=pulumi.get(__ret__, 'backup_sources'),
+        backupdr_backup_sources=pulumi.get(__ret__, 'backupdr_backup_sources'),
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         cluster_type=pulumi.get(__ret__, 'cluster_type'),
         continuous_backup_configs=pulumi.get(__ret__, 'continuous_backup_configs'),
@@ -426,6 +454,8 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
         restore_backup_sources=pulumi.get(__ret__, 'restore_backup_sources'),
+        restore_backupdr_backup_sources=pulumi.get(__ret__, 'restore_backupdr_backup_sources'),
+        restore_backupdr_pitr_sources=pulumi.get(__ret__, 'restore_backupdr_pitr_sources'),
         restore_continuous_backup_sources=pulumi.get(__ret__, 'restore_continuous_backup_sources'),
         secondary_configs=pulumi.get(__ret__, 'secondary_configs'),
         skip_await_major_version_upgrade=pulumi.get(__ret__, 'skip_await_major_version_upgrade'),
@@ -467,6 +497,7 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
         annotations=pulumi.get(__response__, 'annotations'),
         automated_backup_policies=pulumi.get(__response__, 'automated_backup_policies'),
         backup_sources=pulumi.get(__response__, 'backup_sources'),
+        backupdr_backup_sources=pulumi.get(__response__, 'backupdr_backup_sources'),
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         cluster_type=pulumi.get(__response__, 'cluster_type'),
         continuous_backup_configs=pulumi.get(__response__, 'continuous_backup_configs'),
@@ -493,6 +524,8 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         reconciling=pulumi.get(__response__, 'reconciling'),
         restore_backup_sources=pulumi.get(__response__, 'restore_backup_sources'),
+        restore_backupdr_backup_sources=pulumi.get(__response__, 'restore_backupdr_backup_sources'),
+        restore_backupdr_pitr_sources=pulumi.get(__response__, 'restore_backupdr_pitr_sources'),
         restore_continuous_backup_sources=pulumi.get(__response__, 'restore_continuous_backup_sources'),
         secondary_configs=pulumi.get(__response__, 'secondary_configs'),
         skip_await_major_version_upgrade=pulumi.get(__response__, 'skip_await_major_version_upgrade'),

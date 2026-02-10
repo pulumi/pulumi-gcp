@@ -16,14 +16,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * RBACRoleBinding represents a rbacrolebinding across the Fleet.
- * 
- * To get more information about MembershipRBACRoleBinding, see:
- * 
- * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.memberships)
- * * How-to Guides
- *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
- * 
  * ## Example Usage
  * 
  * ### Gkehub Membership Rbac Role Binding Basic
@@ -70,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var membership = new Membership("membership", MembershipArgs.builder()
- *             .membershipId("tf-test-membership_1443")
+ *             .membershipId("tf-test-membership_15335")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id().applyValue(_id -> String.format("//container.googleapis.com/%s", _id)))
@@ -84,7 +76,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var membershipRbacRoleBinding = new MembershipRbacRoleBinding("membershipRbacRoleBinding", MembershipRbacRoleBindingArgs.builder()
- *             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_26032")
+ *             .membershipRbacRoleBindingId("tf-test-membership-rbac-role-binding_20665")
  *             .membershipId(membership.membershipId())
  *             .user(String.format("service-%s}{@literal @}{@code gcp-sa-anthossupport.iam.gserviceaccount.com", project.number()))
  *             .role(MembershipRbacRoleBindingRoleArgs.builder()

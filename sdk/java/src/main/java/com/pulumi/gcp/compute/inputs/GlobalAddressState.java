@@ -265,7 +265,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
      * 
      */
     @Import(name="purpose")
@@ -274,7 +274,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -660,7 +660,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param purpose The purpose of the resource. Possible values include:
          * * VPC_PEERING - for peer networks
-         * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+         * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
          * 
          * @return builder
          * 
@@ -673,7 +673,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param purpose The purpose of the resource. Possible values include:
          * * VPC_PEERING - for peer networks
-         * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+         * * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
          * 
          * @return builder
          * 

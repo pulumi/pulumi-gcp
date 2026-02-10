@@ -45,7 +45,8 @@ class ReservationArgs:
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+        :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
+               The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
                (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
                more than the specified number of slots, even if there is demand and supply (from idle
                slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
@@ -80,7 +81,8 @@ class ReservationArgs:
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+        :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
+               The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Enum values:
                `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
@@ -221,6 +223,7 @@ class ReservationArgs:
     @pulumi.getter(name="maxSlots")
     def max_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
+        (Optional, Beta)
         The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
         (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
         more than the specified number of slots, even if there is demand and supply (from idle
@@ -289,6 +292,7 @@ class ReservationArgs:
     @pulumi.getter(name="scalingMode")
     def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         The scaling mode for the reservation. If the field is present but maxSlots is not present,
         requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
         Enum values:
@@ -373,7 +377,8 @@ class _ReservationState:
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+        :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
+               The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
                (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
                more than the specified number of slots, even if there is demand and supply (from idle
                slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
@@ -420,7 +425,8 @@ class _ReservationState:
                either not a DR reservation or the reservation is a DR secondary or that any replication
                operations on the reservation have succeeded.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+        :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
+               The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Enum values:
                `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
@@ -557,6 +563,7 @@ class _ReservationState:
     @pulumi.getter(name="maxSlots")
     def max_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
+        (Optional, Beta)
         The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
         (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
         more than the specified number of slots, even if there is demand and supply (from idle
@@ -670,6 +677,7 @@ class _ReservationState:
     @pulumi.getter(name="scalingMode")
     def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         The scaling mode for the reservation. If the field is present but maxSlots is not present,
         requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
         Enum values:
@@ -821,7 +829,8 @@ class Reservation(pulumi.CustomResource):
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+        :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
+               The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
                (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
                more than the specified number of slots, even if there is demand and supply (from idle
                slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
@@ -856,7 +865,8 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+        :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
+               The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Enum values:
                `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
@@ -1046,7 +1056,8 @@ class Reservation(pulumi.CustomResource):
                capacity specified above at most.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[_builtins.int] max_slots: The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
+        :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
+               The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
                (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
                more than the specified number of slots, even if there is demand and supply (from idle
                slots). NOTE: capping a reservation's idle slot usage is best effort and its usage may
@@ -1093,7 +1104,8 @@ class Reservation(pulumi.CustomResource):
                either not a DR reservation or the reservation is a DR secondary or that any replication
                operations on the reservation have succeeded.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] scaling_mode: The scaling mode for the reservation. If the field is present but maxSlots is not present,
+        :param pulumi.Input[_builtins.str] scaling_mode: (Optional, Beta)
+               The scaling mode for the reservation. If the field is present but maxSlots is not present,
                requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
                Enum values:
                `SCALING_MODE_UNSPECIFIED`: Default value of ScalingMode.
@@ -1201,6 +1213,7 @@ class Reservation(pulumi.CustomResource):
     @pulumi.getter(name="maxSlots")
     def max_slots(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
+        (Optional, Beta)
         The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
         (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
         more than the specified number of slots, even if there is demand and supply (from idle
@@ -1290,6 +1303,7 @@ class Reservation(pulumi.CustomResource):
     @pulumi.getter(name="scalingMode")
     def scaling_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Beta)
         The scaling mode for the reservation. If the field is present but maxSlots is not present,
         requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
         Enum values:

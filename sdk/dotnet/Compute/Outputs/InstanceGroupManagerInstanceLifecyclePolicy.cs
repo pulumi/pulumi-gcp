@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? OnFailedHealthCheck;
         /// <summary>
-        /// , Configuration for VM repairs in the MIG. Structure is documented below.
+        /// ), Configuration for VM repairs in the MIG. Structure is documented below.
         /// - - -
         /// </summary>
         public readonly Outputs.InstanceGroupManagerInstanceLifecyclePolicyOnRepair? OnRepair;

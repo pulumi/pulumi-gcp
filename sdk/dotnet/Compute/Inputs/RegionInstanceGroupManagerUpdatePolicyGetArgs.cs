@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MaxUnavailablePercent { get; set; }
 
         /// <summary>
-        /// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        /// ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         /// </summary>
         [Input("minReadySec")]
         public Input<int>? MinReadySec { get; set; }

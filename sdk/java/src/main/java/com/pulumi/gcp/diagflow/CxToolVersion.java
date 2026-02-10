@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about ToolVersion, see:
  * 
- * * [API documentation](https://cloud.devsite.corp.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools.versions)
+ * * [API documentation](https://docs.cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools.versions)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
  * 

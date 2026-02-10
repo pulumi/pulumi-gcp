@@ -12,15 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a VM instance resource within GCE. For more information see
-// [the official documentation](https://cloud.google.com/compute/docs/instances)
-// and
-// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
-//
-// This resource is specifically to create a compute instance from a given
-// `sourceMachineImage`. To create an instance without a machine image, use the
-// `compute.Instance` resource.
-//
 // ## Example Usage
 //
 // ```go

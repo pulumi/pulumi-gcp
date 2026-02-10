@@ -114,6 +114,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Enables Cloud Service Mesh for this Revision.
         /// Structure is documented below.
         /// </summary>

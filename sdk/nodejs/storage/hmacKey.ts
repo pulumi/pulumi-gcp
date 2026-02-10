@@ -15,6 +15,8 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
  *
+ * On import, the `secret` value will not be retrieved.
+ *
  * ## Example Usage
  *
  * ### Storage Hmac Key

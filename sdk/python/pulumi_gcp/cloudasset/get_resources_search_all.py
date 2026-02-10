@@ -94,10 +94,6 @@ def get_resources_search_all(asset_types: Optional[Sequence[_builtins.str]] = No
                              scope: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourcesSearchAllResult:
     """
-    Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
-    [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
-    for more details.
-
     ## Example Usage
 
     ### Searching For All Projects In An Org
@@ -154,10 +150,6 @@ def get_resources_search_all_output(asset_types: Optional[pulumi.Input[Optional[
                                     scope: Optional[pulumi.Input[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcesSearchAllResult]:
     """
-    Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
-    [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
-    for more details.
-
     ## Example Usage
 
     ### Searching For All Projects In An Org

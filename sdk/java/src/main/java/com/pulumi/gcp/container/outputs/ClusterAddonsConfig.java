@@ -96,13 +96,13 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing;
     /**
-     * @return .
+     * @return ).
      * Structure is documented below.
      * 
      */
     private @Nullable ClusterAddonsConfigIstioConfig istioConfig;
     /**
-     * @return .
+     * @return ).
      * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -139,7 +139,7 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
     /**
-     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * @return ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 
@@ -256,7 +256,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.httpLoadBalancing);
     }
     /**
-     * @return .
+     * @return ).
      * Structure is documented below.
      * 
      */
@@ -264,7 +264,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.istioConfig);
     }
     /**
-     * @return .
+     * @return ).
      * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -309,7 +309,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.parallelstoreCsiDriverConfig);
     }
     /**
-     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * @return ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 

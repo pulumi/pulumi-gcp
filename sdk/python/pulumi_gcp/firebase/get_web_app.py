@@ -124,8 +124,7 @@ def get_web_app(app_id: Optional[_builtins.str] = None,
                 project: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebAppResult:
     """
-    A Google Cloud Firebase web application instance
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.str app_id: The app_ip of name of the Firebase webApp.
            
@@ -153,8 +152,7 @@ def get_web_app_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebAppResult]:
     """
-    A Google Cloud Firebase web application instance
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.str app_id: The app_ip of name of the Firebase webApp.
            

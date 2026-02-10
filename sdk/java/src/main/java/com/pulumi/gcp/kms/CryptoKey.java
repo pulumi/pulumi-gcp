@@ -207,6 +207,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
         return this.importOnly;
     }
     /**
+     * (Optional, Beta)
      * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -222,7 +223,8 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
     private Output<CryptoKeyKeyAccessJustificationsPolicy> keyAccessJustificationsPolicy;
 
     /**
-     * @return The policy used for Key Access Justifications Policy Enforcement. If this
+     * @return (Optional, Beta)
+     * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The

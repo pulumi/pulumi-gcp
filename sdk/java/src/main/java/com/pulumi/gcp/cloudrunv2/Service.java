@@ -1298,6 +1298,7 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.generation;
     }
     /**
+     * (Optional, Beta)
      * Used to enable/disable IAP for the service.
      * 
      */
@@ -1305,7 +1306,8 @@ public class Service extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> iapEnabled;
 
     /**
-     * @return Used to enable/disable IAP for the service.
+     * @return (Optional, Beta)
+     * Used to enable/disable IAP for the service.
      * 
      */
     public Output<Optional<Boolean>> iapEnabled() {

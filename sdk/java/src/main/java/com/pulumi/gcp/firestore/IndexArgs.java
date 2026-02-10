@@ -164,6 +164,21 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to skip waiting for the index to be created.
+     * 
+     */
+    @Import(name="skipWait")
+    private @Nullable Output<Boolean> skipWait;
+
+    /**
+     * @return Whether to skip waiting for the index to be created.
+     * 
+     */
+    public Optional<Output<Boolean>> skipWait() {
+        return Optional.ofNullable(this.skipWait);
+    }
+
+    /**
      * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
      * 
      */
@@ -189,6 +204,7 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         this.multikey = $.multikey;
         this.project = $.project;
         this.queryScope = $.queryScope;
+        this.skipWait = $.skipWait;
         this.unique = $.unique;
     }
 
@@ -416,6 +432,27 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder queryScope(String queryScope) {
             return queryScope(Output.of(queryScope));
+        }
+
+        /**
+         * @param skipWait Whether to skip waiting for the index to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWait(@Nullable Output<Boolean> skipWait) {
+            $.skipWait = skipWait;
+            return this;
+        }
+
+        /**
+         * @param skipWait Whether to skip waiting for the index to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWait(Boolean skipWait) {
+            return skipWait(Output.of(skipWait));
         }
 
         /**

@@ -699,6 +699,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
         /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         /// </summary>
@@ -838,6 +839,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.JobQueryArgs>? Query { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
         /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         /// </summary>
@@ -963,6 +965,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
         /// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
         /// </summary>

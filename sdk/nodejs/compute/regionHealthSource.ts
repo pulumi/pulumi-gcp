@@ -5,16 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A health source resource specifies the source resources and the health
- * aggregation policy applied to the source resources to determine the
- * aggregated health status.
- *
- * To get more information about RegionHealthSource, see:
- *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionHealthSources)
- * * How-to Guides
- *     * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
- *
  * ## Example Usage
  *
  * ### Compute Region Health Source Basic

@@ -169,6 +169,7 @@ type WireGroup struct {
 	// Topology details for the wire group configuration.
 	// Structure is documented below.
 	Topologies WireGroupTopologyArrayOutput `pulumi:"topologies"`
+	// (Optional, Beta)
 	// Properties specific to the wire group.
 	// Structure is documented below.
 	WireGroupProperties WireGroupWireGroupPropertiesPtrOutput `pulumi:"wireGroupProperties"`
@@ -236,6 +237,7 @@ type wireGroupState struct {
 	// Topology details for the wire group configuration.
 	// Structure is documented below.
 	Topologies []WireGroupTopology `pulumi:"topologies"`
+	// (Optional, Beta)
 	// Properties specific to the wire group.
 	// Structure is documented below.
 	WireGroupProperties *WireGroupWireGroupProperties `pulumi:"wireGroupProperties"`
@@ -271,6 +273,7 @@ type WireGroupState struct {
 	// Topology details for the wire group configuration.
 	// Structure is documented below.
 	Topologies WireGroupTopologyArrayInput
+	// (Optional, Beta)
 	// Properties specific to the wire group.
 	// Structure is documented below.
 	WireGroupProperties WireGroupWireGroupPropertiesPtrInput
@@ -305,6 +308,7 @@ type wireGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// Properties specific to the wire group.
 	// Structure is documented below.
 	WireGroupProperties *WireGroupWireGroupProperties `pulumi:"wireGroupProperties"`
@@ -333,6 +337,7 @@ type WireGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Properties specific to the wire group.
 	// Structure is documented below.
 	WireGroupProperties WireGroupWireGroupPropertiesPtrInput
@@ -475,6 +480,7 @@ func (o WireGroupOutput) Topologies() WireGroupTopologyArrayOutput {
 	return o.ApplyT(func(v *WireGroup) WireGroupTopologyArrayOutput { return v.Topologies }).(WireGroupTopologyArrayOutput)
 }
 
+// (Optional, Beta)
 // Properties specific to the wire group.
 // Structure is documented below.
 func (o WireGroupOutput) WireGroupProperties() WireGroupWireGroupPropertiesPtrOutput {

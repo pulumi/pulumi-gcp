@@ -77,7 +77,8 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Instance level network configuration.
                Structure is documented below.
-        :param pulumi.Input['InstanceObservabilityConfigArgs'] observability_config: Configuration for enhanced query insights.
+        :param pulumi.Input['InstanceObservabilityConfigArgs'] observability_config: (Optional, Beta)
+               Configuration for enhanced query insights.
                Structure is documented below.
         :param pulumi.Input['InstancePscInstanceConfigArgs'] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
                Structure is documented below.
@@ -312,6 +313,7 @@ class InstanceArgs:
     @pulumi.getter(name="observabilityConfig")
     def observability_config(self) -> Optional[pulumi.Input['InstanceObservabilityConfigArgs']]:
         """
+        (Optional, Beta)
         Configuration for enhanced query insights.
         Structure is documented below.
         """
@@ -436,7 +438,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] name: The name of the instance resource.
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Instance level network configuration.
                Structure is documented below.
-        :param pulumi.Input['InstanceObservabilityConfigArgs'] observability_config: Configuration for enhanced query insights.
+        :param pulumi.Input['InstanceObservabilityConfigArgs'] observability_config: (Optional, Beta)
+               Configuration for enhanced query insights.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_public_ip_addresses: The outbound public IP addresses for the instance. This is available ONLY when
                networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
@@ -767,6 +770,7 @@ class _InstanceState:
     @pulumi.getter(name="observabilityConfig")
     def observability_config(self) -> Optional[pulumi.Input['InstanceObservabilityConfigArgs']]:
         """
+        (Optional, Beta)
         Configuration for enhanced query insights.
         Structure is documented below.
         """
@@ -1091,7 +1095,8 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Instance level network configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']] observability_config: Configuration for enhanced query insights.
+        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']] observability_config: (Optional, Beta)
+               Configuration for enhanced query insights.
                Structure is documented below.
         :param pulumi.Input[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
                Structure is documented below.
@@ -1396,7 +1401,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the instance resource.
         :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Instance level network configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']] observability_config: Configuration for enhanced query insights.
+        :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']] observability_config: (Optional, Beta)
+               Configuration for enhanced query insights.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_public_ip_addresses: The outbound public IP addresses for the instance. This is available ONLY when
                networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
@@ -1626,6 +1632,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="observabilityConfig")
     def observability_config(self) -> pulumi.Output['outputs.InstanceObservabilityConfig']:
         """
+        (Optional, Beta)
         Configuration for enhanced query insights.
         Structure is documented below.
         """

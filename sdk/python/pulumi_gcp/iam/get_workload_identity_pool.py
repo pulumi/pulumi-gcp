@@ -144,8 +144,6 @@ def get_workload_identity_pool(project: Optional[_builtins.str] = None,
                                workload_identity_pool_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkloadIdentityPoolResult:
     """
-    Get a IAM workload identity pool from Google Cloud by its id.
-    > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
     ## Example Usage
 
     ```python
@@ -185,8 +183,6 @@ def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[_b
                                       workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkloadIdentityPoolResult]:
     """
-    Get a IAM workload identity pool from Google Cloud by its id.
-    > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
     ## Example Usage
 
     ```python

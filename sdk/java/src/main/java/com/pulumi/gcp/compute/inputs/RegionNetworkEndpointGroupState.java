@@ -243,6 +243,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
+     * (Optional, Beta)
      * This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
@@ -252,7 +253,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<RegionNetworkEndpointGroupServerlessDeploymentArgs> serverlessDeployment;
 
     /**
-     * @return This field is only used for SERVERLESS NEGs.
+     * @return (Optional, Beta)
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
@@ -610,7 +612,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param serverlessDeployment This field is only used for SERVERLESS NEGs.
+         * @param serverlessDeployment (Optional, Beta)
+         * This field is only used for SERVERLESS NEGs.
          * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
@@ -623,7 +626,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param serverlessDeployment This field is only used for SERVERLESS NEGs.
+         * @param serverlessDeployment (Optional, Beta)
+         * This field is only used for SERVERLESS NEGs.
          * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 

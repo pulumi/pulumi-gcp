@@ -7,16 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents a namespace for a workload identity pool. Namespaces are used to segment identities
- * within the pool.
- *
- * To get more information about WorkloadIdentityPoolNamespace, see:
- *
- * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.namespaces)
- * * How-to Guides
- *     * [Configure managed workload identity authentication for Compute Engine](https://cloud.google.com/iam/docs/create-managed-workload-identities)
- *     * [Configure managed workload identity authentication for GKE](https://cloud.google.com/iam/docs/create-managed-workload-identities-gke)
- *
  * ## Example Usage
  *
  * ### Iam Workload Identity Pool Namespace Basic

@@ -164,6 +164,7 @@ export class AiFeatureOnlineStore extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Optional, Beta, Deprecated)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      *
@@ -300,6 +301,7 @@ export interface AiFeatureOnlineStoreState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * (Optional, Beta, Deprecated)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      *
@@ -374,6 +376,7 @@ export interface AiFeatureOnlineStoreArgs {
      */
     dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint>;
     /**
+     * (Optional, Beta, Deprecated)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
      * Structure is documented below.
      *

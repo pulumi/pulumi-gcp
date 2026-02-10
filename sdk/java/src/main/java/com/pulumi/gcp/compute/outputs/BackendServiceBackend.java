@@ -98,20 +98,23 @@ public final class BackendServiceBackend {
      */
     private @Nullable Integer maxConnectionsPerInstance;
     /**
-     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for the whole NEG
      * or instance group. Not available if backend&#39;s balancingMode is RATE
      * or CONNECTION.
      * 
      */
     private @Nullable Integer maxInFlightRequests;
     /**
-     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for a single endpoint.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
      */
     private @Nullable Integer maxInFlightRequestsPerEndpoint;
     /**
-     * @return Defines a maximum number of in-flight requests for a single VM.
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for a single VM.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
      */
@@ -159,7 +162,8 @@ public final class BackendServiceBackend {
      */
     private @Nullable String preference;
     /**
-     * @return This field specifies how long a connection should be kept alive for:
+     * @return (Optional, Beta)
+     * This field specifies how long a connection should be kept alive for:
      * - LONG: Most of the requests are expected to take more than multiple
      *   seconds to finish.
      * - SHORT: Most requests are expected to finish with a sub-second latency.
@@ -267,7 +271,8 @@ public final class BackendServiceBackend {
         return Optional.ofNullable(this.maxConnectionsPerInstance);
     }
     /**
-     * @return Defines a maximum number of in-flight requests for the whole NEG
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for the whole NEG
      * or instance group. Not available if backend&#39;s balancingMode is RATE
      * or CONNECTION.
      * 
@@ -276,7 +281,8 @@ public final class BackendServiceBackend {
         return Optional.ofNullable(this.maxInFlightRequests);
     }
     /**
-     * @return Defines a maximum number of in-flight requests for a single endpoint.
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for a single endpoint.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
      */
@@ -284,7 +290,8 @@ public final class BackendServiceBackend {
         return Optional.ofNullable(this.maxInFlightRequestsPerEndpoint);
     }
     /**
-     * @return Defines a maximum number of in-flight requests for a single VM.
+     * @return (Optional, Beta)
+     * Defines a maximum number of in-flight requests for a single VM.
      * Not available if backend&#39;s balancingMode is RATE or CONNECTION.
      * 
      */
@@ -344,7 +351,8 @@ public final class BackendServiceBackend {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return This field specifies how long a connection should be kept alive for:
+     * @return (Optional, Beta)
+     * This field specifies how long a connection should be kept alive for:
      * - LONG: Most of the requests are expected to take more than multiple
      *   seconds to finish.
      * - SHORT: Most requests are expected to finish with a sub-second latency.

@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BackendServiceDynamicForwardingIpPortSelection {
     /**
-     * @return A boolean flag enabling IP:PORT based dynamic forwarding.
+     * @return (Optional, Beta)
+     * A boolean flag enabling IP:PORT based dynamic forwarding.
      * 
      */
     private @Nullable Boolean enabled;
 
     private BackendServiceDynamicForwardingIpPortSelection() {}
     /**
-     * @return A boolean flag enabling IP:PORT based dynamic forwarding.
+     * @return (Optional, Beta)
+     * A boolean flag enabling IP:PORT based dynamic forwarding.
      * 
      */
     public Optional<Boolean> enabled() {

@@ -51,7 +51,7 @@ class TargetPoolArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[_builtins.str] security_policy: The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[_builtins.str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[_builtins.str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
                "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
@@ -189,7 +189,7 @@ class TargetPoolArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The resource URL for the security policy associated with this target pool.
+        ) The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
@@ -248,7 +248,7 @@ class _TargetPoolState:
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[_builtins.str] security_policy: The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[_builtins.str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
@@ -389,7 +389,7 @@ class _TargetPoolState:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The resource URL for the security policy associated with this target pool.
+        ) The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
@@ -520,7 +520,7 @@ class TargetPool(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[_builtins.str] security_policy: The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[_builtins.str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[_builtins.str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
                "CLIENT_IP_PROTO" also includes the protocol (default "NONE").
@@ -681,7 +681,7 @@ class TargetPool(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[_builtins.str] security_policy: The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[_builtins.str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
         :param pulumi.Input[_builtins.str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT_IP" (hash of the source/dest addresses / ports), and
@@ -784,7 +784,7 @@ class TargetPool(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The resource URL for the security policy associated with this target pool.
+        ) The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 

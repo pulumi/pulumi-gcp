@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentageGetArgs>? _bandwidthPercentages;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specify bandwidth percentages for various traffic classes for queuing
         /// type Bandwidth Percent.
         /// Structure is documented below.

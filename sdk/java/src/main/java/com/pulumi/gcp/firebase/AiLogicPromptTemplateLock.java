@@ -15,10 +15,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * A resource that manages the lock state of a PromptTemplate.
- * When this resource is created, the template is locked.
- * When this resource is deleted, the template is unlocked.
- * 
  * ## Example Usage
  * 
  * ### Firebaseailogic Prompt Template Lock Basic

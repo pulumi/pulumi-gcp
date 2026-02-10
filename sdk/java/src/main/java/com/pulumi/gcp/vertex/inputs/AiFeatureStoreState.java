@@ -151,6 +151,7 @@ public final class AiFeatureStoreState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Optional, Beta)
      * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      * 
      */
@@ -158,7 +159,8 @@ public final class AiFeatureStoreState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Integer> onlineStorageTtlDays;
 
     /**
-     * @return TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
+     * @return (Optional, Beta)
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      * 
      */
     public Optional<Output<Integer>> onlineStorageTtlDays() {
@@ -444,7 +446,8 @@ public final class AiFeatureStoreState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param onlineStorageTtlDays TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
+         * @param onlineStorageTtlDays (Optional, Beta)
+         * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
          * 
          * @return builder
          * 
@@ -455,7 +458,8 @@ public final class AiFeatureStoreState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param onlineStorageTtlDays TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
+         * @param onlineStorageTtlDays (Optional, Beta)
+         * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
          * 
          * @return builder
          * 

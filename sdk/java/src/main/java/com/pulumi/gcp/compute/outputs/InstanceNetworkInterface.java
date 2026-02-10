@@ -96,7 +96,7 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable Integer queueCount;
     /**
-     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     private @Nullable String securityPolicy;
@@ -234,7 +234,7 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.queueCount);
     }
     /**
-     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     public Optional<String> securityPolicy() {

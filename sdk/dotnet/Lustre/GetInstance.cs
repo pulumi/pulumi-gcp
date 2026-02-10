@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Lustre
     public static class GetInstance
     {
         /// <summary>
-        /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://cloud.google.com/filestore/docs/lustre/reference/rest/v1/projects.locations.instances).
+        /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
         /// 
         /// ## Example Usage
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Lustre
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:lustre/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://cloud.google.com/filestore/docs/lustre/reference/rest/v1/projects.locations.instances).
+        /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
         /// 
         /// ## Example Usage
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Lustre
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:lustre/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://cloud.google.com/filestore/docs/lustre/reference/rest/v1/projects.locations.instances).
+        /// Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).
         /// 
         /// ## Example Usage
         /// </summary>

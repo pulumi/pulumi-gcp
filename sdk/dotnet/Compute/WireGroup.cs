@@ -188,6 +188,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.WireGroupTopology>> Topologies { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Properties specific to the wire group.
         /// Structure is documented below.
         /// </summary>
@@ -303,6 +304,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Properties specific to the wire group.
         /// Structure is documented below.
         /// </summary>
@@ -392,6 +394,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Properties specific to the wire group.
         /// Structure is documented below.
         /// </summary>

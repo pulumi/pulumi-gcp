@@ -416,12 +416,14 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Optional, Beta)
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      */
     declare public readonly reverseLookup: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional, Beta)
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      */
@@ -584,12 +586,14 @@ export interface ManagedZoneState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * (Optional, Beta)
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      */
     reverseLookup?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      */
@@ -666,12 +670,14 @@ export interface ManagedZoneArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
      * lookup queries using automatically configured records for VPC resources. This only applies
      * to networks listed under `privateVisibilityConfig`.
      */
     reverseLookup?: pulumi.Input<boolean>;
     /**
+     * (Optional, Beta)
      * The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
      * Structure is documented below.
      */

@@ -66,7 +66,6 @@ class TriggerArgs:
         :param pulumi.Input['TriggerGitFileSourceArgs'] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
         :param pulumi.Input['TriggerGithubArgs'] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-               One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
@@ -95,7 +94,6 @@ class TriggerArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['TriggerPubsubConfigArgs'] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input['TriggerRepositoryEventConfigArgs'] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
@@ -108,7 +106,6 @@ class TriggerArgs:
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for annotation of a BuildTrigger
@@ -116,11 +113,9 @@ class TriggerArgs:
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
-               One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input['TriggerWebhookConfigArgs'] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
         if approval_config is not None:
@@ -294,7 +289,6 @@ class TriggerArgs:
     def github(self) -> Optional[pulumi.Input['TriggerGithubArgs']]:
         """
         Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "github")
@@ -400,7 +394,6 @@ class TriggerArgs:
         """
         PubsubConfig describes the configuration of a trigger that creates
         a build whenever a Pub/Sub message is published.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_config")
@@ -446,7 +439,6 @@ class TriggerArgs:
         This field is used only for those triggers that do not respond to SCM events.
         Triggers that respond to such events build source at whatever commit caused the event.
         This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "source_to_build")
@@ -487,7 +479,6 @@ class TriggerArgs:
         Branch and tag names in trigger templates are interpreted as regular
         expressions. Any branch or tag change that matches that regular
         expression will trigger a build.
-        One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "trigger_template")
@@ -502,7 +493,6 @@ class TriggerArgs:
         """
         WebhookConfig describes the configuration of a trigger that creates
         a build whenever a webhook is sent to a trigger's webhook URL.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "webhook_config")
@@ -563,7 +553,6 @@ class _TriggerState:
         :param pulumi.Input['TriggerGitFileSourceArgs'] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
         :param pulumi.Input['TriggerGithubArgs'] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-               One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
@@ -592,7 +581,6 @@ class _TriggerState:
                If it is not provided, the provider project is used.
         :param pulumi.Input['TriggerPubsubConfigArgs'] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input['TriggerRepositoryEventConfigArgs'] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
@@ -605,7 +593,6 @@ class _TriggerState:
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for annotation of a BuildTrigger
@@ -614,11 +601,9 @@ class _TriggerState:
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
-               One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input['TriggerWebhookConfigArgs'] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
         if approval_config is not None:
@@ -808,7 +793,6 @@ class _TriggerState:
     def github(self) -> Optional[pulumi.Input['TriggerGithubArgs']]:
         """
         Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "github")
@@ -914,7 +898,6 @@ class _TriggerState:
         """
         PubsubConfig describes the configuration of a trigger that creates
         a build whenever a Pub/Sub message is published.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_config")
@@ -960,7 +943,6 @@ class _TriggerState:
         This field is used only for those triggers that do not respond to SCM events.
         Triggers that respond to such events build source at whatever commit caused the event.
         This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "source_to_build")
@@ -1013,7 +995,6 @@ class _TriggerState:
         Branch and tag names in trigger templates are interpreted as regular
         expressions. Any branch or tag change that matches that regular
         expression will trigger a build.
-        One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "trigger_template")
@@ -1028,7 +1009,6 @@ class _TriggerState:
         """
         WebhookConfig describes the configuration of a trigger that creates
         a build whenever a webhook is sent to a trigger's webhook URL.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "webhook_config")
@@ -1330,16 +1310,11 @@ class Trigger(pulumi.CustomResource):
 
         manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
             name="manual-trigger",
-            source_to_build={
-                "uri": "https://hashicorp/terraform-provider-google-beta",
-                "ref": "refs/heads/main",
-                "repo_type": "GITHUB",
-            },
-            git_file_source={
-                "path": "cloudbuild.yaml",
-                "uri": "https://hashicorp/terraform-provider-google-beta",
-                "revision": "refs/heads/main",
-                "repo_type": "GITHUB",
+            build={
+                "steps": [{
+                    "name": "gcr.io/cloud-builders/gcloud",
+                    "args": ["version"],
+                }],
             },
             approval_config={
                 "approval_required": True,
@@ -1774,7 +1749,6 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
         :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-               One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
@@ -1803,7 +1777,6 @@ class Trigger(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
@@ -1816,7 +1789,6 @@ class Trigger(pulumi.CustomResource):
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for annotation of a BuildTrigger
@@ -1824,11 +1796,9 @@ class Trigger(pulumi.CustomResource):
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
-               One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
         ...
@@ -2098,16 +2068,11 @@ class Trigger(pulumi.CustomResource):
 
         manual_trigger = gcp.cloudbuild.Trigger("manual-trigger",
             name="manual-trigger",
-            source_to_build={
-                "uri": "https://hashicorp/terraform-provider-google-beta",
-                "ref": "refs/heads/main",
-                "repo_type": "GITHUB",
-            },
-            git_file_source={
-                "path": "cloudbuild.yaml",
-                "uri": "https://hashicorp/terraform-provider-google-beta",
-                "revision": "refs/heads/main",
-                "repo_type": "GITHUB",
+            build={
+                "steps": [{
+                    "name": "gcr.io/cloud-builders/gcloud",
+                    "args": ["version"],
+                }],
             },
             approval_config={
                 "approval_required": True,
@@ -2658,7 +2623,6 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Union['TriggerGitFileSourceArgs', 'TriggerGitFileSourceArgsDict']] git_file_source: The file source describing the local or remote Build template.
                Structure is documented below.
         :param pulumi.Input[Union['TriggerGithubArgs', 'TriggerGithubArgsDict']] github: Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-               One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignored_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
@@ -2687,7 +2651,6 @@ class Trigger(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['TriggerPubsubConfigArgs', 'TriggerPubsubConfigArgsDict']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
                a build whenever a Pub/Sub message is published.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Union['TriggerRepositoryEventConfigArgs', 'TriggerRepositoryEventConfigArgsDict']] repository_event_config: The configuration of a trigger that creates a build whenever an event from Repo API is received.
                Structure is documented below.
@@ -2700,7 +2663,6 @@ class Trigger(pulumi.CustomResource):
                This field is used only for those triggers that do not respond to SCM events.
                Triggers that respond to such events build source at whatever commit caused the event.
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for annotation of a BuildTrigger
@@ -2709,11 +2671,9 @@ class Trigger(pulumi.CustomResource):
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
                expression will trigger a build.
-               One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         :param pulumi.Input[Union['TriggerWebhookConfigArgs', 'TriggerWebhookConfigArgsDict']] webhook_config: WebhookConfig describes the configuration of a trigger that creates
                a build whenever a webhook is sent to a trigger's webhook URL.
-               One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2842,7 +2802,6 @@ class Trigger(pulumi.CustomResource):
     def github(self) -> pulumi.Output[Optional['outputs.TriggerGithub']]:
         """
         Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "github")
@@ -2920,7 +2879,6 @@ class Trigger(pulumi.CustomResource):
         """
         PubsubConfig describes the configuration of a trigger that creates
         a build whenever a Pub/Sub message is published.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "pubsub_config")
@@ -2954,7 +2912,6 @@ class Trigger(pulumi.CustomResource):
         This field is used only for those triggers that do not respond to SCM events.
         Triggers that respond to such events build source at whatever commit caused the event.
         This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "source_to_build")
@@ -2991,7 +2948,6 @@ class Trigger(pulumi.CustomResource):
         Branch and tag names in trigger templates are interpreted as regular
         expressions. Any branch or tag change that matches that regular
         expression will trigger a build.
-        One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "trigger_template")
@@ -3002,7 +2958,6 @@ class Trigger(pulumi.CustomResource):
         """
         WebhookConfig describes the configuration of a trigger that creates
         a build whenever a webhook is sent to a trigger's webhook URL.
-        One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "webhook_config")

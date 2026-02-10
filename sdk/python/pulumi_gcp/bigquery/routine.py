@@ -54,7 +54,8 @@ class RoutineArgs:
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
-        :param pulumi.Input['RoutineExternalRuntimeOptionsArgs'] external_runtime_options: Options for the runtime of the external system.
+        :param pulumi.Input['RoutineExternalRuntimeOptionsArgs'] external_runtime_options: (Optional, Beta)
+               Options for the runtime of the external system.
                This field is only applicable for Python UDFs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
@@ -63,7 +64,8 @@ class RoutineArgs:
                Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['RoutinePythonOptionsArgs'] python_options: Options for a user-defined Python function.
+        :param pulumi.Input['RoutinePythonOptionsArgs'] python_options: (Optional, Beta)
+               Options for a user-defined Python function.
                Structure is documented below.
         :param pulumi.Input['RoutineRemoteFunctionOptionsArgs'] remote_function_options: Remote function specific options.
                Structure is documented below.
@@ -223,6 +225,7 @@ class RoutineArgs:
     @pulumi.getter(name="externalRuntimeOptions")
     def external_runtime_options(self) -> Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']]:
         """
+        (Optional, Beta)
         Options for the runtime of the external system.
         This field is only applicable for Python UDFs.
         Structure is documented below.
@@ -276,6 +279,7 @@ class RoutineArgs:
     @pulumi.getter(name="pythonOptions")
     def python_options(self) -> Optional[pulumi.Input['RoutinePythonOptionsArgs']]:
         """
+        (Optional, Beta)
         Options for a user-defined Python function.
         Structure is documented below.
         """
@@ -397,7 +401,8 @@ class _RoutineState:
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
-        :param pulumi.Input['RoutineExternalRuntimeOptionsArgs'] external_runtime_options: Options for the runtime of the external system.
+        :param pulumi.Input['RoutineExternalRuntimeOptionsArgs'] external_runtime_options: (Optional, Beta)
+               Options for the runtime of the external system.
                This field is only applicable for Python UDFs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
@@ -408,7 +413,8 @@ class _RoutineState:
                epoch.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['RoutinePythonOptionsArgs'] python_options: Options for a user-defined Python function.
+        :param pulumi.Input['RoutinePythonOptionsArgs'] python_options: (Optional, Beta)
+               Options for a user-defined Python function.
                Structure is documented below.
         :param pulumi.Input['RoutineRemoteFunctionOptionsArgs'] remote_function_options: Remote function specific options.
                Structure is documented below.
@@ -567,6 +573,7 @@ class _RoutineState:
     @pulumi.getter(name="externalRuntimeOptions")
     def external_runtime_options(self) -> Optional[pulumi.Input['RoutineExternalRuntimeOptionsArgs']]:
         """
+        (Optional, Beta)
         Options for the runtime of the external system.
         This field is only applicable for Python UDFs.
         Structure is documented below.
@@ -633,6 +640,7 @@ class _RoutineState:
     @pulumi.getter(name="pythonOptions")
     def python_options(self) -> Optional[pulumi.Input['RoutinePythonOptionsArgs']]:
         """
+        (Optional, Beta)
         Options for a user-defined Python function.
         Structure is documented below.
         """
@@ -1062,7 +1070,8 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
-        :param pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']] external_runtime_options: Options for the runtime of the external system.
+        :param pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']] external_runtime_options: (Optional, Beta)
+               Options for the runtime of the external system.
                This field is only applicable for Python UDFs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
@@ -1071,7 +1080,8 @@ class Routine(pulumi.CustomResource):
                Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']] python_options: Options for a user-defined Python function.
+        :param pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']] python_options: (Optional, Beta)
+               Options for a user-defined Python function.
                Structure is documented below.
         :param pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']] remote_function_options: Remote function specific options.
                Structure is documented below.
@@ -1504,7 +1514,8 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
-        :param pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']] external_runtime_options: Options for the runtime of the external system.
+        :param pulumi.Input[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']] external_runtime_options: (Optional, Beta)
+               Options for the runtime of the external system.
                This field is only applicable for Python UDFs.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
@@ -1515,7 +1526,8 @@ class Routine(pulumi.CustomResource):
                epoch.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']] python_options: Options for a user-defined Python function.
+        :param pulumi.Input[Union['RoutinePythonOptionsArgs', 'RoutinePythonOptionsArgsDict']] python_options: (Optional, Beta)
+               Options for a user-defined Python function.
                Structure is documented below.
         :param pulumi.Input[Union['RoutineRemoteFunctionOptionsArgs', 'RoutineRemoteFunctionOptionsArgsDict']] remote_function_options: Remote function specific options.
                Structure is documented below.
@@ -1631,6 +1643,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="externalRuntimeOptions")
     def external_runtime_options(self) -> pulumi.Output[Optional['outputs.RoutineExternalRuntimeOptions']]:
         """
+        (Optional, Beta)
         Options for the runtime of the external system.
         This field is only applicable for Python UDFs.
         Structure is documented below.
@@ -1677,6 +1690,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="pythonOptions")
     def python_options(self) -> pulumi.Output[Optional['outputs.RoutinePythonOptions']]:
         """
+        (Optional, Beta)
         Options for a user-defined Python function.
         Structure is documented below.
         """

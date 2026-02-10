@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
-    /// A resource that manages the lock state of a PromptTemplate.
-    /// When this resource is created, the template is locked.
-    /// When this resource is deleted, the template is unlocked.
-    /// 
     /// ## Example Usage
     /// 
     /// ### Firebaseailogic Prompt Template Lock Basic

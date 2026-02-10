@@ -17,7 +17,7 @@ index 9c6fa017f..4ab1614dc 100644
      * `config.0.gke_cluster` -
      The Kubernetes Engine cluster used to run the environment.
 diff --git a/website/docs/d/compute_instance.html.markdown b/website/docs/d/compute_instance.html.markdown
-index 7aec44a33..97593bce8 100644
+index e2cac6fba..2dbddbfd2 100644
 --- a/website/docs/d/compute_instance.html.markdown
 +++ b/website/docs/d/compute_instance.html.markdown
 @@ -25,7 +25,6 @@ Get information about a VM instance resource within GCE. For more information se
@@ -69,7 +69,7 @@ index 7aec44a33..97593bce8 100644
  <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
  
 diff --git a/website/docs/d/compute_instance_template.html.markdown b/website/docs/d/compute_instance_template.html.markdown
-index 025b1ed2b..c08abfb6d 100644
+index f8887465e..f8fe07746 100644
 --- a/website/docs/d/compute_instance_template.html.markdown
 +++ b/website/docs/d/compute_instance_template.html.markdown
 @@ -79,7 +79,7 @@ The following arguments are supported:
@@ -151,36 +151,11 @@ index 9a6b6c71e..34253e020 100644
  
  * `description` - A textual description field.
  
-diff --git a/website/docs/d/firebase_web_app.html.markdown b/website/docs/d/firebase_web_app.html.markdown
-index 4293e8cbd..147623cdc 100644
---- a/website/docs/d/firebase_web_app.html.markdown
-+++ b/website/docs/d/firebase_web_app.html.markdown
-@@ -22,10 +22,6 @@ description: |-
- 
- A Google Cloud Firebase web application instance
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
--
- ## Argument Reference
- 
- The following arguments are supported:
 diff --git a/website/docs/d/firebase_web_app_config.html.markdown b/website/docs/d/firebase_web_app_config.html.markdown
-index a873e5ebc..a35733b20 100644
+index 9ec6df28d..fe7562a3f 100644
 --- a/website/docs/d/firebase_web_app_config.html.markdown
 +++ b/website/docs/d/firebase_web_app_config.html.markdown
-@@ -22,9 +22,6 @@ description: |-
- 
- A Google Cloud Firebase web application configuration
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
- To get more information about WebApp, see:
- 
- * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
-@@ -74,4 +71,4 @@ In addition to the arguments listed above, the following attributes are exported
+@@ -74,4 +74,4 @@ In addition to the arguments listed above, the following attributes are exported
    This field is only present if the App is linked to a web stream in a Google Analytics App + Web property.
    Learn more about this ID and Google Analytics web streams in the Analytics documentation.
    To generate a measurementId and link the Web App with a Google Analytics web stream,
@@ -188,32 +163,13 @@ index a873e5ebc..a35733b20 100644
 \ No newline at end of file
 +  call projects.addGoogleAnalytics.
 diff --git a/website/docs/d/iam_workload_identity_pool.html.markdown b/website/docs/d/iam_workload_identity_pool.html.markdown
-index b6654af32..dfe2f9f83 100644
+index 608daecbd..0a75d15c3 100644
 --- a/website/docs/d/iam_workload_identity_pool.html.markdown
 +++ b/website/docs/d/iam_workload_identity_pool.html.markdown
-@@ -21,12 +21,7 @@ description: |-
- # google_iam_workload_identity_pool
+@@ -26,7 +26,6 @@ Get a IAM workload identity pool from Google Cloud by its id.
+ See [Provider Versions](../guides/provider_versions.html.markdown) for more details on beta resources.
  
- Get a IAM workload identity pool from Google Cloud by its id.
--
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
--
  ~> **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
--
- ## Example Usage
- 
- ```tf
-diff --git a/website/docs/d/iam_workload_identity_pool_provider.html.markdown b/website/docs/d/iam_workload_identity_pool_provider.html.markdown
-index 06e60fb0f..2c08ff1c4 100644
---- a/website/docs/d/iam_workload_identity_pool_provider.html.markdown
-+++ b/website/docs/d/iam_workload_identity_pool_provider.html.markdown
-@@ -22,9 +22,6 @@ description: |-
- 
- Get a IAM workload identity provider from Google Cloud by its id.
- 
--~> **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
--See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
 -
  ## Example Usage
  

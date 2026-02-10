@@ -21,6 +21,7 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
     public static final CxToolArgs Empty = new CxToolArgs();
 
     /**
+     * (Optional, Beta)
      * Integration connectors tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
@@ -30,7 +31,8 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<CxToolConnectorSpecArgs> connectorSpec;
 
     /**
-     * @return Integration connectors tool specification.
+     * @return (Optional, Beta)
+     * Integration connectors tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
      * 
@@ -174,7 +176,8 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorSpec Integration connectors tool specification.
+         * @param connectorSpec (Optional, Beta)
+         * Integration connectors tool specification.
          * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
          * Structure is documented below.
          * 
@@ -187,7 +190,8 @@ public final class CxToolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorSpec Integration connectors tool specification.
+         * @param connectorSpec (Optional, Beta)
+         * Integration connectors tool specification.
          * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
          * Structure is documented below.
          * 

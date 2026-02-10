@@ -41,7 +41,8 @@ class CryptoKeyArgs:
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
-        :param pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs'] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+        :param pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs'] key_access_justifications_policy: (Optional, Beta)
+               The policy used for Key Access Justifications Policy Enforcement. If this
                field is present and this key is enrolled in Key Access Justifications
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
@@ -147,6 +148,7 @@ class CryptoKeyArgs:
     @pulumi.getter(name="keyAccessJustificationsPolicy")
     def key_access_justifications_policy(self) -> Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
         """
+        (Optional, Beta)
         The policy used for Key Access Justifications Policy Enforcement. If this
         field is present and this key is enrolled in Key Access Justifications
         Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -274,7 +276,8 @@ class _CryptoKeyState:
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
-        :param pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs'] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+        :param pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs'] key_access_justifications_policy: (Optional, Beta)
+               The policy used for Key Access Justifications Policy Enforcement. If this
                field is present and this key is enrolled in Key Access Justifications
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
@@ -393,6 +396,7 @@ class _CryptoKeyState:
     @pulumi.getter(name="keyAccessJustificationsPolicy")
     def key_access_justifications_policy(self) -> Optional[pulumi.Input['CryptoKeyKeyAccessJustificationsPolicyArgs']]:
         """
+        (Optional, Beta)
         The policy used for Key Access Justifications Policy Enforcement. If this
         field is present and this key is enrolled in Key Access Justifications
         Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -628,7 +632,8 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
-        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: (Optional, Beta)
+               The policy used for Key Access Justifications Policy Enforcement. If this
                field is present and this key is enrolled in Key Access Justifications
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
@@ -823,7 +828,8 @@ class CryptoKey(pulumi.CustomResource):
                If not specified at creation time, the default duration is 30 days.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] import_only: Whether this key may contain imported versions only.
-        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: The policy used for Key Access Justifications Policy Enforcement. If this
+        :param pulumi.Input[Union['CryptoKeyKeyAccessJustificationsPolicyArgs', 'CryptoKeyKeyAccessJustificationsPolicyArgsDict']] key_access_justifications_policy: (Optional, Beta)
+               The policy used for Key Access Justifications Policy Enforcement. If this
                field is present and this key is enrolled in Key Access Justifications
                Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
                sign operations, and the operation will fail if rejected by the policy. The
@@ -917,6 +923,7 @@ class CryptoKey(pulumi.CustomResource):
     @pulumi.getter(name="keyAccessJustificationsPolicy")
     def key_access_justifications_policy(self) -> pulumi.Output['outputs.CryptoKeyKeyAccessJustificationsPolicy']:
         """
+        (Optional, Beta)
         The policy used for Key Access Justifications Policy Enforcement. If this
         field is present and this key is enrolled in Key Access Justifications
         Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and

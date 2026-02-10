@@ -438,14 +438,6 @@ class SacAttachment(pulumi.CustomResource):
                  time_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Represents a Secure Access Connect (SAC) attachment resource
-
-        To get more information about SacAttachment, see:
-
-        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
-        * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
-
         ## Example Usage
 
         ### Sac Attachment Prisma Access
@@ -512,14 +504,6 @@ class SacAttachment(pulumi.CustomResource):
                  args: SacAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Represents a Secure Access Connect (SAC) attachment resource
-
-        To get more information about SacAttachment, see:
-
-        * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
-        * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
-
         ## Example Usage
 
         ### Sac Attachment Prisma Access

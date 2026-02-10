@@ -276,6 +276,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -318,6 +319,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> Licenses { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
         /// </summary>
         [Output("multiWriter")]
@@ -383,6 +385,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Resource policies applied to this disk for automatic snapshot creations.
         /// ~&gt;**NOTE** This value does not support updating the
         /// resource policy, as resource policies can not be updated more than
@@ -694,6 +697,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Image { get; set; }
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -729,6 +733,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
         /// </summary>
         [Input("multiWriter")]
@@ -790,6 +795,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Resource policies applied to this disk for automatic snapshot creations.
         /// ~&gt;**NOTE** This value does not support updating the
         /// resource policy, as resource policies can not be updated more than
@@ -1037,6 +1043,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Image { get; set; }
 
         /// <summary>
+        /// (Optional, Beta, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `Interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1091,6 +1098,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
         /// </summary>
         [Input("multiWriter")]
@@ -1169,6 +1177,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _resourcePolicies;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Resource policies applied to this disk for automatic snapshot creations.
         /// ~&gt;**NOTE** This value does not support updating the
         /// resource policy, as resource policies can not be updated more than

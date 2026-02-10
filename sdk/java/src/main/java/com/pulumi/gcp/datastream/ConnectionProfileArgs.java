@@ -260,6 +260,7 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (Optional, Beta)
      * Salesforce profile.
      * Structure is documented below.
      * 
@@ -268,7 +269,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<ConnectionProfileSalesforceProfileArgs> salesforceProfile;
 
     /**
-     * @return Salesforce profile.
+     * @return (Optional, Beta)
+     * Salesforce profile.
      * Structure is documented below.
      * 
      */
@@ -277,6 +279,7 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (Optional, Beta)
      * Spanner profile.
      * Structure is documented below.
      * 
@@ -285,7 +288,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<ConnectionProfileSpannerProfileArgs> spannerProfile;
 
     /**
-     * @return Spanner profile.
+     * @return (Optional, Beta)
+     * Spanner profile.
      * Structure is documented below.
      * 
      */
@@ -665,7 +669,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param salesforceProfile Salesforce profile.
+         * @param salesforceProfile (Optional, Beta)
+         * Salesforce profile.
          * Structure is documented below.
          * 
          * @return builder
@@ -677,7 +682,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param salesforceProfile Salesforce profile.
+         * @param salesforceProfile (Optional, Beta)
+         * Salesforce profile.
          * Structure is documented below.
          * 
          * @return builder
@@ -688,7 +694,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spannerProfile Spanner profile.
+         * @param spannerProfile (Optional, Beta)
+         * Spanner profile.
          * Structure is documented below.
          * 
          * @return builder
@@ -700,7 +707,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spannerProfile Spanner profile.
+         * @param spannerProfile (Optional, Beta)
+         * Spanner profile.
          * Structure is documented below.
          * 
          * @return builder

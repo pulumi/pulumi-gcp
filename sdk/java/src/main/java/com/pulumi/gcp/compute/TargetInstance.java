@@ -402,6 +402,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.natPolicy);
     }
     /**
+     * (Optional, Beta)
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      * 
      */
@@ -409,7 +410,8 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> network;
 
     /**
-     * @return The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+     * @return (Optional, Beta)
+     * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      * 
      */
     public Output<Optional<String>> network() {
@@ -432,6 +434,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      * 
      */
@@ -439,7 +442,8 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
-     * @return The resource URL for the security policy associated with this target instance.
+     * @return (Optional, Beta)
+     * The resource URL for the security policy associated with this target instance.
      * 
      */
     public Output<Optional<String>> securityPolicy() {

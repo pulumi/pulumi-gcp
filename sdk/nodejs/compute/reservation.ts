@@ -258,6 +258,7 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * Indicates if this group of VMs have emergent maintenance enabled.
      */
     declare public readonly enableEmergentMaintenance: pulumi.Output<boolean | undefined>;
@@ -433,6 +434,7 @@ export interface ReservationState {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Indicates if this group of VMs have emergent maintenance enabled.
      */
     enableEmergentMaintenance?: pulumi.Input<boolean>;
@@ -527,6 +529,7 @@ export interface ReservationArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Indicates if this group of VMs have emergent maintenance enabled.
      */
     enableEmergentMaintenance?: pulumi.Input<boolean>;

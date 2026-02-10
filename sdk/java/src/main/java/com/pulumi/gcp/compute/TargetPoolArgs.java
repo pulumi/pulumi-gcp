@@ -162,14 +162,14 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource URL for the security policy associated with this target pool.
+     * ) The resource URL for the security policy associated with this target pool.
      * 
      */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
     /**
-     * @return The resource URL for the security policy associated with this target pool.
+     * @return ) The resource URL for the security policy associated with this target pool.
      * 
      */
     public Optional<Output<String>> securityPolicy() {
@@ -435,7 +435,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicy The resource URL for the security policy associated with this target pool.
+         * @param securityPolicy ) The resource URL for the security policy associated with this target pool.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicy The resource URL for the security policy associated with this target pool.
+         * @param securityPolicy ) The resource URL for the security policy associated with this target pool.
          * 
          * @return builder
          * 

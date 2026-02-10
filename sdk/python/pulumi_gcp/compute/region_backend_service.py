@@ -72,7 +72,8 @@ class RegionBackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: (Optional, Beta)
+               Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -86,7 +87,8 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
@@ -183,7 +185,8 @@ class RegionBackendServiceArgs:
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -213,7 +216,8 @@ class RegionBackendServiceArgs:
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
         :param pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs'] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
                Structure is documented below.
-        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
@@ -365,6 +369,7 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
+        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -423,6 +428,7 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="dynamicForwarding")
     def dynamic_forwarding(self) -> Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']]:
         """
+        (Optional, Beta)
         Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         feature which together with Service Extension allows customized and complex routing logic.
         Structure is documented below.
@@ -652,6 +658,7 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
         """
+        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """
@@ -792,6 +799,7 @@ class RegionBackendServiceArgs:
     @pulumi.getter
     def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
         """
+        (Optional, Beta)
         Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         Structure is documented below.
         """
@@ -888,7 +896,8 @@ class _RegionBackendServiceState:
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: (Optional, Beta)
+               Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -903,7 +912,8 @@ class _RegionBackendServiceState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCustomMetricArgs']]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input['RegionBackendServiceDynamicForwardingArgs'] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
@@ -1003,7 +1013,8 @@ class _RegionBackendServiceState:
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs'] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -1034,7 +1045,8 @@ class _RegionBackendServiceState:
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
         :param pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs'] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
                Structure is documented below.
-        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
@@ -1194,6 +1206,7 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> Optional[pulumi.Input['RegionBackendServiceConnectionTrackingPolicyArgs']]:
         """
+        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -1264,6 +1277,7 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="dynamicForwarding")
     def dynamic_forwarding(self) -> Optional[pulumi.Input['RegionBackendServiceDynamicForwardingArgs']]:
         """
+        (Optional, Beta)
         Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         feature which together with Service Extension allows customized and complex routing logic.
         Structure is documented below.
@@ -1518,6 +1532,7 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> Optional[pulumi.Input['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs']]:
         """
+        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """
@@ -1670,6 +1685,7 @@ class _RegionBackendServiceState:
     @pulumi.getter
     def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
         """
+        (Optional, Beta)
         Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         Structure is documented below.
         """
@@ -2278,7 +2294,8 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: (Optional, Beta)
+               Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -2292,7 +2309,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
@@ -2389,7 +2407,8 @@ class RegionBackendService(pulumi.CustomResource):
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -2419,7 +2438,8 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
         :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
@@ -3112,7 +3132,8 @@ class RegionBackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: Connection Tracking configuration for this BackendService.
+        :param pulumi.Input[Union['RegionBackendServiceConnectionTrackingPolicyArgs', 'RegionBackendServiceConnectionTrackingPolicyArgsDict']] connection_tracking_policy: (Optional, Beta)
+               Connection Tracking configuration for this BackendService.
                This is available only for Layer 4 Internal Load Balancing and
                Network Load Balancing.
                Structure is documented below.
@@ -3127,7 +3148,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionBackendServiceCustomMetricArgs', 'RegionBackendServiceCustomMetricArgsDict']]]] custom_metrics: List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
+        :param pulumi.Input[Union['RegionBackendServiceDynamicForwardingArgs', 'RegionBackendServiceDynamicForwardingArgsDict']] dynamic_forwarding: (Optional, Beta)
+               Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
                feature which together with Service Extension allows customized and complex routing logic.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
@@ -3227,7 +3249,8 @@ class RegionBackendService(pulumi.CustomResource):
                This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
                This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
                Changes to this field force recreation of the resource.
-        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: Configures traffic steering properties of internal passthrough Network Load Balancers.
+        :param pulumi.Input[Union['RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs', 'RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgsDict']] network_pass_through_lb_traffic_policy: (Optional, Beta)
+               Configures traffic steering properties of internal passthrough Network Load Balancers.
                Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceOutlierDetectionArgs', 'RegionBackendServiceOutlierDetectionArgsDict']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the `load_balancing_scheme` is set
@@ -3258,7 +3281,8 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
         :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
@@ -3365,6 +3389,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="connectionTrackingPolicy")
     def connection_tracking_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceConnectionTrackingPolicy']]:
         """
+        (Optional, Beta)
         Connection Tracking configuration for this BackendService.
         This is available only for Layer 4 Internal Load Balancing and
         Network Load Balancing.
@@ -3415,6 +3440,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="dynamicForwarding")
     def dynamic_forwarding(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceDynamicForwarding']]:
         """
+        (Optional, Beta)
         Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         feature which together with Service Extension allows customized and complex routing logic.
         Structure is documented below.
@@ -3613,6 +3639,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="networkPassThroughLbTrafficPolicy")
     def network_pass_through_lb_traffic_policy(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceNetworkPassThroughLbTrafficPolicy']]:
         """
+        (Optional, Beta)
         Configures traffic steering properties of internal passthrough Network Load Balancers.
         Structure is documented below.
         """
@@ -3721,6 +3748,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def subsetting(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceSubsetting']]:
         """
+        (Optional, Beta)
         Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         Structure is documented below.
         """

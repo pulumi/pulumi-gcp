@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class BackendServiceDynamicForwardingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// IP:PORT based dynamic forwarding configuration.
         /// Structure is documented below.
         /// </summary>

@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly bool EnablePrivateServiceConnect;
         /// <summary>
+        /// (Optional, Beta)
         /// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
         /// </summary>
         public readonly bool? EnableSecurePrivateServiceConnect;

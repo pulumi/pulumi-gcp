@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.MetastoreServiceNetworkConfigConsumer> Consumers;
         /// <summary>
+        /// (Optional, Beta)
         /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
         /// </summary>
         public readonly bool? CustomRoutesEnabled;

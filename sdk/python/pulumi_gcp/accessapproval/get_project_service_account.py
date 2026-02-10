@@ -90,7 +90,7 @@ def get_project_service_account(project_id: Optional[_builtins.str] = None,
 
     Each Google Cloud project has a unique service account used by Access Approval.
     When using Access Approval with a
-    [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+    [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
     this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
     Cloud KMS key used to sign approvals.
 
@@ -127,7 +127,7 @@ def get_project_service_account_output(project_id: Optional[pulumi.Input[_builti
 
     Each Google Cloud project has a unique service account used by Access Approval.
     When using Access Approval with a
-    [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+    [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
     this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
     Cloud KMS key used to sign approvals.
 

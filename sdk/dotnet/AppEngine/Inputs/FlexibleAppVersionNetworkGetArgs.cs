@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Prevent instances from receiving an ephemeral external IP address.
         /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>

@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class BackendServiceDynamicForwardingIpPortSelectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// A boolean flag enabling IP:PORT based dynamic forwarding.
         /// </summary>
         [Input("enabled")]

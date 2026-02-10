@@ -242,7 +242,7 @@ type RegionInstanceGroupManager struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayOutput `pulumi:"namedPorts"`
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params RegionInstanceGroupManagerParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -376,7 +376,7 @@ type regionInstanceGroupManagerState struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts []RegionInstanceGroupManagerNamedPort `pulumi:"namedPorts"`
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params *RegionInstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -475,7 +475,7 @@ type RegionInstanceGroupManagerState struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayInput
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params RegionInstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -570,7 +570,7 @@ type regionInstanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts []RegionInstanceGroupManagerNamedPort `pulumi:"namedPorts"`
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params *RegionInstanceGroupManagerParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -658,7 +658,7 @@ type RegionInstanceGroupManagerArgs struct {
 	// The named port configuration. See the section below
 	// for details on configuration.
 	NamedPorts RegionInstanceGroupManagerNamedPortArrayInput
-	// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+	// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 	Params RegionInstanceGroupManagerParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -894,7 +894,7 @@ func (o RegionInstanceGroupManagerOutput) NamedPorts() RegionInstanceGroupManage
 	}).(RegionInstanceGroupManagerNamedPortArrayOutput)
 }
 
-// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
 func (o RegionInstanceGroupManagerOutput) Params() RegionInstanceGroupManagerParamsPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerParamsPtrOutput { return v.Params }).(RegionInstanceGroupManagerParamsPtrOutput)
 }

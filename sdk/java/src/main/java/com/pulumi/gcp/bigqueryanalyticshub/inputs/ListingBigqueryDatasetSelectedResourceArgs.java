@@ -16,6 +16,7 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
     public static final ListingBigqueryDatasetSelectedResourceArgs Empty = new ListingBigqueryDatasetSelectedResourceArgs();
 
     /**
+     * (Optional, Beta)
      * Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
      * 
      * &lt;a name=&#34;nestedBigqueryDatasetEffectiveReplicas&#34;&gt;&lt;/a&gt;The `effectiveReplicas` block contains:
@@ -25,7 +26,8 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
     private @Nullable Output<String> routine;
 
     /**
-     * @return Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+     * @return (Optional, Beta)
+     * Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
      * 
      * &lt;a name=&#34;nestedBigqueryDatasetEffectiveReplicas&#34;&gt;&lt;/a&gt;The `effectiveReplicas` block contains:
      * 
@@ -75,7 +77,8 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
         }
 
         /**
-         * @param routine Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+         * @param routine (Optional, Beta)
+         * Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
          * 
          * &lt;a name=&#34;nestedBigqueryDatasetEffectiveReplicas&#34;&gt;&lt;/a&gt;The `effectiveReplicas` block contains:
          * 
@@ -88,7 +91,8 @@ public final class ListingBigqueryDatasetSelectedResourceArgs extends com.pulumi
         }
 
         /**
-         * @param routine Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
+         * @param routine (Optional, Beta)
+         * Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:&#34;projects/test_project/datasets/test_dataset/routines/test_routine&#34;
          * 
          * &lt;a name=&#34;nestedBigqueryDatasetEffectiveReplicas&#34;&gt;&lt;/a&gt;The `effectiveReplicas` block contains:
          * 

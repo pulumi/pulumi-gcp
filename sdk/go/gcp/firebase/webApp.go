@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Google Cloud Firebase web application instance
-//
-// To get more information about WebApp, see:
-//
-// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
-// * How-to Guides
-//   - [Official Documentation](https://firebase.google.com/)
-//
 // ## Example Usage
 //
 // ### Firebase Web App Basic

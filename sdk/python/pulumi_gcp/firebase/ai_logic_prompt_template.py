@@ -318,14 +318,6 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                  template_string: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The PromptTemplate resource for Firebase AI Logic.
-
-        To get more information about PromptTemplate, see:
-
-        * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/docs/ai-logic)
-
         ## Example Usage
 
         ### Firebaseailogic Prompt Template Basic
@@ -385,14 +377,6 @@ class AiLogicPromptTemplate(pulumi.CustomResource):
                  args: AiLogicPromptTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The PromptTemplate resource for Firebase AI Logic.
-
-        To get more information about PromptTemplate, see:
-
-        * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
-        * How-to Guides
-            * [Official Documentation](https://firebase.google.com/docs/ai-logic)
-
         ## Example Usage
 
         ### Firebaseailogic Prompt Template Basic

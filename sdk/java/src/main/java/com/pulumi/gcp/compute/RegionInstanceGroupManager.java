@@ -479,14 +479,14 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.namedPorts);
     }
     /**
-     * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
      */
     @Export(name="params", refs={RegionInstanceGroupManagerParams.class}, tree="[0]")
     private Output</* @Nullable */ RegionInstanceGroupManagerParams> params;
 
     /**
-     * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+     * @return ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
      */
     public Output<Optional<RegionInstanceGroupManagerParams>> params() {

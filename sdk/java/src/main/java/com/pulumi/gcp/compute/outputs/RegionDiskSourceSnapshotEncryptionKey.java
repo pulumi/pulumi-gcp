@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionDiskSourceSnapshotEncryptionKey {
     /**
-     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * @return (Optional, Beta)
+     * The name of the encryption key that is stored in Google Cloud KMS.
      * 
      */
     private @Nullable String kmsKeyName;
@@ -32,7 +33,8 @@ public final class RegionDiskSourceSnapshotEncryptionKey {
 
     private RegionDiskSourceSnapshotEncryptionKey() {}
     /**
-     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * @return (Optional, Beta)
+     * The name of the encryption key that is stored in Google Cloud KMS.
      * 
      */
     public Optional<String> kmsKeyName() {

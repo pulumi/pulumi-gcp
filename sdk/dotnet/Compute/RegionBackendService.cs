@@ -851,6 +851,7 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> ConnectionDrainingTimeoutSec { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -891,6 +892,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         /// feature which together with Service Extension allows customized and complex routing logic.
         /// Structure is documented below.
@@ -1061,6 +1063,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// Structure is documented below.
         /// </summary>
@@ -1147,6 +1150,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionBackendServiceStrongSessionAffinityCookie?> StrongSessionAffinityCookie { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         /// Structure is documented below.
         /// </summary>
@@ -1262,6 +1266,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -1302,6 +1307,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         /// feature which together with Service Extension allows customized and complex routing logic.
         /// Structure is documented below.
@@ -1459,6 +1465,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// Structure is documented below.
         /// </summary>
@@ -1539,6 +1546,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionBackendServiceStrongSessionAffinityCookieArgs>? StrongSessionAffinityCookie { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         /// Structure is documented below.
         /// </summary>
@@ -1616,6 +1624,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? ConnectionDrainingTimeoutSec { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Connection Tracking configuration for this BackendService.
         /// This is available only for Layer 4 Internal Load Balancing and
         /// Network Load Balancing.
@@ -1662,6 +1671,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
         /// feature which together with Service Extension allows customized and complex routing logic.
         /// Structure is documented below.
@@ -1832,6 +1842,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configures traffic steering properties of internal passthrough Network Load Balancers.
         /// Structure is documented below.
         /// </summary>
@@ -1918,6 +1929,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionBackendServiceStrongSessionAffinityCookieGetArgs>? StrongSessionAffinityCookie { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         /// Structure is documented below.
         /// </summary>

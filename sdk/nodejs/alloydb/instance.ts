@@ -265,6 +265,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly networkConfig: pulumi.Output<outputs.alloydb.InstanceNetworkConfig>;
     /**
+     * (Optional, Beta)
      * Configuration for enhanced query insights.
      * Structure is documented below.
      */
@@ -508,6 +509,7 @@ export interface InstanceState {
      */
     networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
     /**
+     * (Optional, Beta)
      * Configuration for enhanced query insights.
      * Structure is documented below.
      */
@@ -643,6 +645,7 @@ export interface InstanceArgs {
      */
     networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
     /**
+     * (Optional, Beta)
      * Configuration for enhanced query insights.
      * Structure is documented below.
      */

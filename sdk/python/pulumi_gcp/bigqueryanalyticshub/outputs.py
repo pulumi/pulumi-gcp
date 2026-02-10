@@ -465,7 +465,8 @@ class ListingBigqueryDataset(dict):
                Server owned effective state of replicas. Contains both primary and secondary replicas.
                Each replica includes a system-computed (output-only) state and primary designation.
                Structure is documented below.
-        :param Sequence[_builtins.str] replica_locations: A list of regions where the publisher has created shared dataset replicas.
+        :param Sequence[_builtins.str] replica_locations: (Optional, Beta)
+               A list of regions where the publisher has created shared dataset replicas.
         :param Sequence['ListingBigqueryDatasetSelectedResourceArgs'] selected_resources: Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
                Structure is documented below.
         """
@@ -500,6 +501,7 @@ class ListingBigqueryDataset(dict):
     @pulumi.getter(name="replicaLocations")
     def replica_locations(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         A list of regions where the publisher has created shared dataset replicas.
         """
         return pulumi.get(self, "replica_locations")
@@ -586,7 +588,8 @@ class ListingBigqueryDatasetSelectedResource(dict):
                  routine: Optional[_builtins.str] = None,
                  table: Optional[_builtins.str] = None):
         """
-        :param _builtins.str routine: Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
+        :param _builtins.str routine: (Optional, Beta)
+               Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
                
                <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
         :param _builtins.str table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
@@ -600,6 +603,7 @@ class ListingBigqueryDatasetSelectedResource(dict):
     @pulumi.getter
     def routine(self) -> Optional[_builtins.str]:
         """
+        (Optional, Beta)
         Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
 
         <a name="nested_bigquery_dataset_effective_replicas"></a>The `effective_replicas` block contains:
@@ -1070,7 +1074,8 @@ class ListingSubscriptionDestinationDataset(dict):
         :param _builtins.str friendly_name: A descriptive name for the dataset.
         :param Mapping[str, _builtins.str] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets.
-        :param Sequence[_builtins.str] replica_locations: List of regions where the subscriber wants dataset replicas.
+        :param Sequence[_builtins.str] replica_locations: (Optional, Beta)
+               List of regions where the subscriber wants dataset replicas.
         """
         pulumi.set(__self__, "dataset_reference", dataset_reference)
         pulumi.set(__self__, "location", location)
@@ -1130,6 +1135,7 @@ class ListingSubscriptionDestinationDataset(dict):
     @pulumi.getter(name="replicaLocations")
     def replica_locations(self) -> Optional[Sequence[_builtins.str]]:
         """
+        (Optional, Beta)
         List of regions where the subscriber wants dataset replicas.
         """
         return pulumi.get(self, "replica_locations")

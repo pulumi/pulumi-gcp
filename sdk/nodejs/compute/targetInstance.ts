@@ -242,6 +242,7 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     declare public readonly natPolicy: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */
     declare public readonly network: pulumi.Output<string | undefined>;
@@ -251,6 +252,7 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     declare public readonly securityPolicy: pulumi.Output<string | undefined>;
@@ -346,6 +348,7 @@ export interface TargetInstanceState {
      */
     natPolicy?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */
     network?: pulumi.Input<string>;
@@ -355,6 +358,7 @@ export interface TargetInstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     securityPolicy?: pulumi.Input<string>;
@@ -403,6 +407,7 @@ export interface TargetInstanceArgs {
      */
     natPolicy?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */
     network?: pulumi.Input<string>;
@@ -412,6 +417,7 @@ export interface TargetInstanceArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     securityPolicy?: pulumi.Input<string>;

@@ -703,6 +703,7 @@ type Job struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrOutput `pulumi:"query"`
+	// (Optional, Beta)
 	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
 	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
 	Reservation pulumi.StringPtrOutput `pulumi:"reservation"`
@@ -787,6 +788,7 @@ type jobState struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
+	// (Optional, Beta)
 	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
 	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
 	Reservation *string `pulumi:"reservation"`
@@ -834,6 +836,7 @@ type JobState struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrInput
+	// (Optional, Beta)
 	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
 	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
 	Reservation pulumi.StringPtrInput
@@ -875,6 +878,7 @@ type jobArgs struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
+	// (Optional, Beta)
 	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
 	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
 	Reservation *string `pulumi:"reservation"`
@@ -908,6 +912,7 @@ type JobArgs struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrInput
+	// (Optional, Beta)
 	// The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
 	// The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
 	Reservation pulumi.StringPtrInput
@@ -1072,6 +1077,7 @@ func (o JobOutput) Query() JobQueryPtrOutput {
 	return o.ApplyT(func(v *Job) JobQueryPtrOutput { return v.Query }).(JobQueryPtrOutput)
 }
 
+// (Optional, Beta)
 // The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
 // The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
 func (o JobOutput) Reservation() pulumi.StringPtrOutput {

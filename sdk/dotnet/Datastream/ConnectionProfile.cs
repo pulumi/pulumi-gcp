@@ -770,6 +770,7 @@ namespace Pulumi.Gcp.Datastream
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Salesforce profile.
         /// Structure is documented below.
         /// </summary>
@@ -777,6 +778,7 @@ namespace Pulumi.Gcp.Datastream
         public Output<Outputs.ConnectionProfileSalesforceProfile?> SalesforceProfile { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Spanner profile.
         /// Structure is documented below.
         /// </summary>
@@ -942,6 +944,7 @@ namespace Pulumi.Gcp.Datastream
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Salesforce profile.
         /// Structure is documented below.
         /// </summary>
@@ -949,6 +952,7 @@ namespace Pulumi.Gcp.Datastream
         public Input<Inputs.ConnectionProfileSalesforceProfileArgs>? SalesforceProfile { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Spanner profile.
         /// Structure is documented below.
         /// </summary>
@@ -1110,6 +1114,7 @@ namespace Pulumi.Gcp.Datastream
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Salesforce profile.
         /// Structure is documented below.
         /// </summary>
@@ -1117,6 +1122,7 @@ namespace Pulumi.Gcp.Datastream
         public Input<Inputs.ConnectionProfileSalesforceProfileGetArgs>? SalesforceProfile { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Spanner profile.
         /// Structure is documented below.
         /// </summary>

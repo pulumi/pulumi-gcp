@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionBackendServiceDynamicForwarding {
     /**
-     * @return IP:PORT based dynamic forwarding configuration.
+     * @return (Optional, Beta)
+     * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
      */
@@ -20,7 +21,8 @@ public final class RegionBackendServiceDynamicForwarding {
 
     private RegionBackendServiceDynamicForwarding() {}
     /**
-     * @return IP:PORT based dynamic forwarding configuration.
+     * @return (Optional, Beta)
+     * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
      */

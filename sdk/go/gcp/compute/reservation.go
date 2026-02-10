@@ -304,6 +304,7 @@ type Reservation struct {
 	DeleteAtTime pulumi.StringOutput `pulumi:"deleteAtTime"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// (Optional, Beta)
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance pulumi.BoolPtrOutput `pulumi:"enableEmergentMaintenance"`
 	// Type of the resource. Always compute#reservations for reservations.
@@ -401,6 +402,7 @@ type reservationState struct {
 	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance *bool `pulumi:"enableEmergentMaintenance"`
 	// Type of the resource. Always compute#reservations for reservations.
@@ -463,6 +465,7 @@ type ReservationState struct {
 	DeleteAtTime pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance pulumi.BoolPtrInput
 	// Type of the resource. Always compute#reservations for reservations.
@@ -522,6 +525,7 @@ type reservationArgs struct {
 	DeleteAtTime *string `pulumi:"deleteAtTime"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance *bool `pulumi:"enableEmergentMaintenance"`
 	// Name of the resource. Provided by the client when the resource is
@@ -562,6 +566,7 @@ type ReservationArgs struct {
 	DeleteAtTime pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Indicates if this group of VMs have emergent maintenance enabled.
 	EnableEmergentMaintenance pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -712,6 +717,7 @@ func (o ReservationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Indicates if this group of VMs have emergent maintenance enabled.
 func (o ReservationOutput) EnableEmergentMaintenance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolPtrOutput { return v.EnableEmergentMaintenance }).(pulumi.BoolPtrOutput)

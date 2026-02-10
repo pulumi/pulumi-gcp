@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A grouping of workstation configurations and the associated workstations in that region.
- *
- * To get more information about WorkstationCluster, see:
- *
- * * [API documentation](https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters/create)
- * * How-to Guides
- *     * [Workstations](https://cloud.google.com/workstations/docs/)
- *
  * ## Example Usage
  *
  * ### Workstation Cluster Basic

@@ -257,6 +257,37 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Firestore Index Skip Wait
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id-skip-wait",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ *     skipWait: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -348,6 +379,10 @@ export class Index extends pulumi.CustomResource {
      */
     declare public readonly queryScope: pulumi.Output<string | undefined>;
     /**
+     * Whether to skip waiting for the index to be created.
+     */
+    declare public readonly skipWait: pulumi.Output<boolean | undefined>;
+    /**
      * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
      */
     declare public readonly unique: pulumi.Output<boolean>;
@@ -374,6 +409,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["queryScope"] = state?.queryScope;
+            resourceInputs["skipWait"] = state?.skipWait;
             resourceInputs["unique"] = state?.unique;
         } else {
             const args = argsOrState as IndexArgs | undefined;
@@ -391,6 +427,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["multikey"] = args?.multikey;
             resourceInputs["project"] = args?.project;
             resourceInputs["queryScope"] = args?.queryScope;
+            resourceInputs["skipWait"] = args?.skipWait;
             resourceInputs["unique"] = args?.unique;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -453,6 +490,10 @@ export interface IndexState {
      */
     queryScope?: pulumi.Input<string>;
     /**
+     * Whether to skip waiting for the index to be created.
+     */
+    skipWait?: pulumi.Input<boolean>;
+    /**
      * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
      */
     unique?: pulumi.Input<boolean>;
@@ -506,6 +547,10 @@ export interface IndexArgs {
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`, `COLLECTION_RECURSIVE`.
      */
     queryScope?: pulumi.Input<string>;
+    /**
+     * Whether to skip waiting for the index to be created.
+     */
+    skipWait?: pulumi.Input<boolean>;
     /**
      * Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
      */

@@ -5,16 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A composite health check resource specifies the health source resources and
- * the health destination resource to which the aggregated health result from
- * the health source resources is delivered.
- *
- * To get more information about RegionCompositeHealthCheck, see:
- *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionCompositeHealthChecks)
- * * How-to Guides
- *     * [Health checks overview](https://cloud.google.com/load-balancing/docs/health-check-concepts)
- *
  * ## Example Usage
  *
  * ### Compute Region Composite Health Check Basic

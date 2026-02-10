@@ -28,7 +28,8 @@ public final class ListingBigqueryDataset {
      */
     private @Nullable List<ListingBigqueryDatasetEffectiveReplica> effectiveReplicas;
     /**
-     * @return A list of regions where the publisher has created shared dataset replicas.
+     * @return (Optional, Beta)
+     * A list of regions where the publisher has created shared dataset replicas.
      * 
      */
     private @Nullable List<String> replicaLocations;
@@ -58,7 +59,8 @@ public final class ListingBigqueryDataset {
         return this.effectiveReplicas == null ? List.of() : this.effectiveReplicas;
     }
     /**
-     * @return A list of regions where the publisher has created shared dataset replicas.
+     * @return (Optional, Beta)
+     * A list of regions where the publisher has created shared dataset replicas.
      * 
      */
     public List<String> replicaLocations() {

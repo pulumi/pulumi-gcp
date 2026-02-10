@@ -231,6 +231,7 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> InitialSize { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies the frequency of planned maintenance events. Set to one of the following:
         /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -364,6 +365,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? InitialSize { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies the frequency of planned maintenance events. Set to one of the following:
         /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
@@ -453,6 +455,7 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? InitialSize { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies the frequency of planned maintenance events. Set to one of the following:
         /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.

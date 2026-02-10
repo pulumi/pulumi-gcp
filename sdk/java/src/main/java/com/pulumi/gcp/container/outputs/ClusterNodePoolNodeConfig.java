@@ -50,7 +50,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable ClusterNodePoolNodeConfigBootDisk bootDisk;
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
      * 
      */
     private @Nullable String bootDiskKmsKey;
@@ -88,7 +88,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable Boolean enableConfidentialStorage;
     /**
-     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
@@ -255,7 +255,8 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable Map<String,String> resourceManagerTags;
     /**
-     * @return Sandbox configuration for this node.
+     * @return ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
@@ -339,7 +340,7 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.bootDisk);
     }
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
      * 
      */
     public Optional<String> bootDiskKmsKey() {
@@ -391,7 +392,7 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.enableConfidentialStorage);
     }
     /**
-     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfig() {
@@ -610,7 +611,8 @@ public final class ClusterNodePoolNodeConfig {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
-     * @return Sandbox configuration for this node.
+     * @return ) [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = &#34;COS_CONTAINERD&#34;` and `nodeVersion = &#34;1.12.7-gke.17&#34;` or later to use it.
+     * Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolNodeConfigSandboxConfig> sandboxConfig() {

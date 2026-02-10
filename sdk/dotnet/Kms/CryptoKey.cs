@@ -130,6 +130,7 @@ namespace Pulumi.Gcp.Kms
         public Output<bool> ImportOnly { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The policy used for Key Access Justifications Policy Enforcement. If this
         /// field is present and this key is enrolled in Key Access Justifications
         /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -286,6 +287,7 @@ namespace Pulumi.Gcp.Kms
         public Input<bool>? ImportOnly { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The policy used for Key Access Justifications Policy Enforcement. If this
         /// field is present and this key is enrolled in Key Access Justifications
         /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -406,6 +408,7 @@ namespace Pulumi.Gcp.Kms
         public Input<bool>? ImportOnly { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The policy used for Key Access Justifications Policy Enforcement. If this
         /// field is present and this key is enrolled in Key Access Justifications
         /// Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and

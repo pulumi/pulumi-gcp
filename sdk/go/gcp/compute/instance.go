@@ -287,7 +287,6 @@ type Instance struct {
 	//
 	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
 	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -480,7 +479,6 @@ type instanceState struct {
 	//
 	// ***
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
-	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
 	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -630,7 +628,6 @@ type InstanceState struct {
 	//
 	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
-	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
 	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -770,7 +767,6 @@ type instanceArgs struct {
 	//
 	// ***
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
-	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
 	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -901,7 +897,6 @@ type InstanceArgs struct {
 	//
 	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
-	// (Optional, Beta
 	// Configures network performance settings for the instance. Structure is
 	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1215,7 +1210,6 @@ func (o InstanceOutput) NetworkInterfaces() InstanceNetworkInterfaceArrayOutput 
 	return o.ApplyT(func(v *Instance) InstanceNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(InstanceNetworkInterfaceArrayOutput)
 }
 
-// (Optional, Beta
 // Configures network performance settings for the instance. Structure is
 // documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 // the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

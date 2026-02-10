@@ -441,7 +441,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         /// **Note**: `AllowStoppingForUpdate` must be set to true in order to update this field.
         /// </summary>
         [Output("enableDisplay")]
@@ -742,7 +742,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         /// **Note**: `AllowStoppingForUpdate` must be set to true in order to update this field.
         /// </summary>
         [Input("enableDisplay")]
@@ -1027,7 +1027,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        /// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         /// **Note**: `AllowStoppingForUpdate` must be set to true in order to update this field.
         /// </summary>
         [Input("enableDisplay")]

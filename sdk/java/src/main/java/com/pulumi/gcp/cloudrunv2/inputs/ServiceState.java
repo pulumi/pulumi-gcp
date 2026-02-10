@@ -300,6 +300,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Used to enable/disable IAP for the service.
      * 
      */
@@ -307,7 +308,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> iapEnabled;
 
     /**
-     * @return Used to enable/disable IAP for the service.
+     * @return (Optional, Beta)
+     * Used to enable/disable IAP for the service.
      * 
      */
     public Optional<Output<Boolean>> iapEnabled() {
@@ -1161,7 +1163,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iapEnabled Used to enable/disable IAP for the service.
+         * @param iapEnabled (Optional, Beta)
+         * Used to enable/disable IAP for the service.
          * 
          * @return builder
          * 
@@ -1172,7 +1175,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param iapEnabled Used to enable/disable IAP for the service.
+         * @param iapEnabled (Optional, Beta)
+         * Used to enable/disable IAP for the service.
          * 
          * @return builder
          * 

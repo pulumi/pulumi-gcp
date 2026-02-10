@@ -16,6 +16,7 @@ public final class RegionBackendServiceDynamicForwardingArgs extends com.pulumi.
     public static final RegionBackendServiceDynamicForwardingArgs Empty = new RegionBackendServiceDynamicForwardingArgs();
 
     /**
+     * (Optional, Beta)
      * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
@@ -24,7 +25,8 @@ public final class RegionBackendServiceDynamicForwardingArgs extends com.pulumi.
     private @Nullable Output<RegionBackendServiceDynamicForwardingIpPortSelectionArgs> ipPortSelection;
 
     /**
-     * @return IP:PORT based dynamic forwarding configuration.
+     * @return (Optional, Beta)
+     * IP:PORT based dynamic forwarding configuration.
      * Structure is documented below.
      * 
      */
@@ -57,7 +59,8 @@ public final class RegionBackendServiceDynamicForwardingArgs extends com.pulumi.
         }
 
         /**
-         * @param ipPortSelection IP:PORT based dynamic forwarding configuration.
+         * @param ipPortSelection (Optional, Beta)
+         * IP:PORT based dynamic forwarding configuration.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +72,8 @@ public final class RegionBackendServiceDynamicForwardingArgs extends com.pulumi.
         }
 
         /**
-         * @param ipPortSelection IP:PORT based dynamic forwarding configuration.
+         * @param ipPortSelection (Optional, Beta)
+         * IP:PORT based dynamic forwarding configuration.
          * Structure is documented below.
          * 
          * @return builder

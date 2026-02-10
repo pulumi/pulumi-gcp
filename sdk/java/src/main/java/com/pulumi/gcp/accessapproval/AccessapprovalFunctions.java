@@ -566,7 +566,7 @@ public final class AccessapprovalFunctions {
      * 
      * Each Google Cloud project has a unique service account used by Access Approval.
      * When using Access Approval with a
-     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
      * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
      * Cloud KMS key used to sign approvals.
      * 
@@ -620,7 +620,7 @@ public final class AccessapprovalFunctions {
      * 
      * Each Google Cloud project has a unique service account used by Access Approval.
      * When using Access Approval with a
-     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
      * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
      * Cloud KMS key used to sign approvals.
      * 
@@ -674,7 +674,7 @@ public final class AccessapprovalFunctions {
      * 
      * Each Google Cloud project has a unique service account used by Access Approval.
      * When using Access Approval with a
-     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
      * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
      * Cloud KMS key used to sign approvals.
      * 
@@ -728,7 +728,7 @@ public final class AccessapprovalFunctions {
      * 
      * Each Google Cloud project has a unique service account used by Access Approval.
      * When using Access Approval with a
-     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
      * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
      * Cloud KMS key used to sign approvals.
      * 
@@ -782,7 +782,7 @@ public final class AccessapprovalFunctions {
      * 
      * Each Google Cloud project has a unique service account used by Access Approval.
      * When using Access Approval with a
-     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * [custom signing key](https://docs.cloud.google.com/assured-workloads/access-approval/docs/review-approve-access-requests-custom-keys),
      * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
      * Cloud KMS key used to sign approvals.
      * 

@@ -270,8 +270,6 @@ class TraceScope(pulumi.CustomResource):
                  trace_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A trace scope is a collection of resources whose traces are queried together
-
         ## Example Usage
 
         ### Observability Trace Scope Basic
@@ -282,8 +280,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_12125",
-            name="tf-test_82749",
+            project_id="tf-test_34242",
+            name="tf-test_9723",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",
@@ -340,8 +338,6 @@ class TraceScope(pulumi.CustomResource):
                  args: TraceScopeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A trace scope is a collection of resources whose traces are queried together
-
         ## Example Usage
 
         ### Observability Trace Scope Basic
@@ -352,8 +348,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_12125",
-            name="tf-test_82749",
+            project_id="tf-test_34242",
+            name="tf-test_9723",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",

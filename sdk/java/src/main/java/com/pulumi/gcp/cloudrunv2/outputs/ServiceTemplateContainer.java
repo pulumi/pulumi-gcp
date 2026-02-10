@@ -84,7 +84,8 @@ public final class ServiceTemplateContainer {
      */
     private @Nullable ServiceTemplateContainerResources resources;
     /**
-     * @return Location of the source.
+     * @return (Optional, Beta)
+     * Location of the source.
      * Structure is documented below.
      * 
      */
@@ -193,7 +194,8 @@ public final class ServiceTemplateContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
-     * @return Location of the source.
+     * @return (Optional, Beta)
+     * Location of the source.
      * Structure is documented below.
      * 
      */

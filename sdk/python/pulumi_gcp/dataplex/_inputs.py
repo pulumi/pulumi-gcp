@@ -39,6 +39,8 @@ __all__ = [
     'AssetResourceStatusArgsDict',
     'AssetSecurityStatusArgs',
     'AssetSecurityStatusArgsDict',
+    'DataAssetAccessGroupConfigArgs',
+    'DataAssetAccessGroupConfigArgsDict',
     'DataProductAccessGroupArgs',
     'DataProductAccessGroupArgsDict',
     'DataProductAccessGroupPrincipalArgs',
@@ -1109,6 +1111,57 @@ class AssetSecurityStatusArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "update_time", value)
+
+
+if not MYPY:
+    class DataAssetAccessGroupConfigArgsDict(TypedDict):
+        access_group: pulumi.Input[_builtins.str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        iam_roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        IAM roles granted on the resource.
+        """
+elif False:
+    DataAssetAccessGroupConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DataAssetAccessGroupConfigArgs:
+    def __init__(__self__, *,
+                 access_group: pulumi.Input[_builtins.str],
+                 iam_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_group: The identifier for this object. Format specified above.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] iam_roles: IAM roles granted on the resource.
+        """
+        pulumi.set(__self__, "access_group", access_group)
+        if iam_roles is not None:
+            pulumi.set(__self__, "iam_roles", iam_roles)
+
+    @_builtins.property
+    @pulumi.getter(name="accessGroup")
+    def access_group(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "access_group")
+
+    @access_group.setter
+    def access_group(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "access_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="iamRoles")
+    def iam_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        IAM roles granted on the resource.
+        """
+        return pulumi.get(self, "iam_roles")
+
+    @iam_roles.setter
+    def iam_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "iam_roles", value)
 
 
 if not MYPY:

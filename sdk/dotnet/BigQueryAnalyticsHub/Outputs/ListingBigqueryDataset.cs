@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ListingBigqueryDatasetEffectiveReplica> EffectiveReplicas;
         /// <summary>
+        /// (Optional, Beta)
         /// A list of regions where the publisher has created shared dataset replicas.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaLocations;

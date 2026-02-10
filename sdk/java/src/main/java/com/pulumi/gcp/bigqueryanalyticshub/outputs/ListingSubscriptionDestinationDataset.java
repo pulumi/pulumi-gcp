@@ -44,7 +44,8 @@ public final class ListingSubscriptionDestinationDataset {
      */
     private String location;
     /**
-     * @return List of regions where the subscriber wants dataset replicas.
+     * @return (Optional, Beta)
+     * List of regions where the subscriber wants dataset replicas.
      * 
      */
     private @Nullable List<String> replicaLocations;
@@ -89,7 +90,8 @@ public final class ListingSubscriptionDestinationDataset {
         return this.location;
     }
     /**
-     * @return List of regions where the subscriber wants dataset replicas.
+     * @return (Optional, Beta)
+     * List of regions where the subscriber wants dataset replicas.
      * 
      */
     public List<String> replicaLocations() {

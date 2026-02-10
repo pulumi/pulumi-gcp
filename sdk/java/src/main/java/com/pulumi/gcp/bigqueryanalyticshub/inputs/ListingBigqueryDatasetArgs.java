@@ -56,6 +56,7 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Optional, Beta)
      * A list of regions where the publisher has created shared dataset replicas.
      * 
      */
@@ -63,7 +64,8 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> replicaLocations;
 
     /**
-     * @return A list of regions where the publisher has created shared dataset replicas.
+     * @return (Optional, Beta)
+     * A list of regions where the publisher has created shared dataset replicas.
      * 
      */
     public Optional<Output<List<String>>> replicaLocations() {
@@ -176,7 +178,8 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
+         * @param replicaLocations (Optional, Beta)
+         * A list of regions where the publisher has created shared dataset replicas.
          * 
          * @return builder
          * 
@@ -187,7 +190,8 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
+         * @param replicaLocations (Optional, Beta)
+         * A list of regions where the publisher has created shared dataset replicas.
          * 
          * @return builder
          * 
@@ -197,7 +201,8 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param replicaLocations A list of regions where the publisher has created shared dataset replicas.
+         * @param replicaLocations (Optional, Beta)
+         * A list of regions where the publisher has created shared dataset replicas.
          * 
          * @return builder
          * 

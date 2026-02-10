@@ -18,14 +18,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Represents a Secure Access Connect (SAC) attachment resource
- * 
- * To get more information about SacAttachment, see:
- * 
- * * [API documentation](https://cloud.google.com/secure-access-connect/docs/reference/network-security/rest/v1beta1/projects.locations.sacAttachments)
- * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/secure-access-connect/docs/overview)
- * 
  * ## Example Usage
  * 
  * ### Sac Attachment Prisma Access

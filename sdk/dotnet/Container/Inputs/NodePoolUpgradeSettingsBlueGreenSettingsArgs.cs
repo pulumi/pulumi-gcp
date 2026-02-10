@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolUpgradeSettingsBlueGreenSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Autoscaled rollout policy for blue-green upgrade.
+        /// ) Autoscaled rollout policy for blue-green upgrade.
         /// </summary>
         [Input("autoscaledRolloutPolicy")]
         public Input<Inputs.NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs>? AutoscaledRolloutPolicy { get; set; }

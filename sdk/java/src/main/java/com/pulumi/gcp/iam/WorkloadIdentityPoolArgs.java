@@ -69,6 +69,7 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
      * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
      * required for issuance and rotation of mTLS workload certificates.
@@ -79,7 +80,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs> inlineCertificateIssuanceConfig;
 
     /**
-     * @return Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+     * @return (Optional, Beta)
+     * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
      * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
      * required for issuance and rotation of mTLS workload certificates.
      * Structure is documented below.
@@ -90,6 +92,7 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * Represents config to add additional trusted trust domains. Defines configuration for extending
      * trust to additional trust domains. By establishing trust with another domain, the current
      * domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -102,7 +105,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<WorkloadIdentityPoolInlineTrustConfigArgs> inlineTrustConfig;
 
     /**
-     * @return Represents config to add additional trusted trust domains. Defines configuration for extending
+     * @return (Optional, Beta)
+     * Represents config to add additional trusted trust domains. Defines configuration for extending
      * trust to additional trust domains. By establishing trust with another domain, the current
      * domain will recognize and accept certificates issued by entities within the trusted domains.
      * Note that a trust domain automatically trusts itself, eliminating the need for explicit
@@ -115,6 +119,7 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
      * 
@@ -139,7 +144,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> mode;
 
     /**
-     * @return The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+     * @return (Optional, Beta)
+     * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
      * 
      * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
@@ -298,7 +304,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inlineCertificateIssuanceConfig Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+         * @param inlineCertificateIssuanceConfig (Optional, Beta)
+         * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
          * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
          * required for issuance and rotation of mTLS workload certificates.
          * Structure is documented below.
@@ -312,7 +319,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inlineCertificateIssuanceConfig Represents configuration for generating mutual TLS (mTLS) certificates for the identities
+         * @param inlineCertificateIssuanceConfig (Optional, Beta)
+         * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
          * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
          * required for issuance and rotation of mTLS workload certificates.
          * Structure is documented below.
@@ -325,7 +333,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inlineTrustConfig Represents config to add additional trusted trust domains. Defines configuration for extending
+         * @param inlineTrustConfig (Optional, Beta)
+         * Represents config to add additional trusted trust domains. Defines configuration for extending
          * trust to additional trust domains. By establishing trust with another domain, the current
          * domain will recognize and accept certificates issued by entities within the trusted domains.
          * Note that a trust domain automatically trusts itself, eliminating the need for explicit
@@ -341,7 +350,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inlineTrustConfig Represents config to add additional trusted trust domains. Defines configuration for extending
+         * @param inlineTrustConfig (Optional, Beta)
+         * Represents config to add additional trusted trust domains. Defines configuration for extending
          * trust to additional trust domains. By establishing trust with another domain, the current
          * domain will recognize and accept certificates issued by entities within the trusted domains.
          * Note that a trust domain automatically trusts itself, eliminating the need for explicit
@@ -356,7 +366,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mode The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+         * @param mode (Optional, Beta)
+         * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
          * are in `FEDERATION_ONLY` mode.
          * 
          * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While
@@ -384,7 +395,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mode The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
+         * @param mode (Optional, Beta)
+         * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
          * are in `FEDERATION_ONLY` mode.
          * 
          * &gt; **Note** This field cannot be changed after the Workload Identity Pool is created. While

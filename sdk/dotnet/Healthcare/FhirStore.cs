@@ -335,6 +335,7 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> ComplexDataTypeReferenceParsing { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
         /// Structure is documented below.
         /// </summary>
@@ -396,6 +397,7 @@ namespace Pulumi.Gcp.Healthcare
         public Output<bool?> EnableHistoryImport { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         /// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         /// </summary>
@@ -552,6 +554,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? ComplexDataTypeReferenceParsing { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
         /// Structure is documented below.
         /// </summary>
@@ -607,6 +610,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<bool>? EnableHistoryImport { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         /// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         /// </summary>
@@ -725,6 +729,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? ComplexDataTypeReferenceParsing { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
         /// Structure is documented below.
         /// </summary>
@@ -796,6 +801,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<bool>? EnableHistoryImport { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         /// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         /// </summary>

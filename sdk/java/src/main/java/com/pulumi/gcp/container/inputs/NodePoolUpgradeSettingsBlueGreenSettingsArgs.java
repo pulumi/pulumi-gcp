@@ -18,14 +18,14 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
     public static final NodePoolUpgradeSettingsBlueGreenSettingsArgs Empty = new NodePoolUpgradeSettingsBlueGreenSettingsArgs();
 
     /**
-     * Autoscaled rollout policy for blue-green upgrade.
+     * ) Autoscaled rollout policy for blue-green upgrade.
      * 
      */
     @Import(name="autoscaledRolloutPolicy")
     private @Nullable Output<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs> autoscaledRolloutPolicy;
 
     /**
-     * @return Autoscaled rollout policy for blue-green upgrade.
+     * @return ) Autoscaled rollout policy for blue-green upgrade.
      * 
      */
     public Optional<Output<NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs>> autoscaledRolloutPolicy() {
@@ -91,7 +91,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         /**
-         * @param autoscaledRolloutPolicy Autoscaled rollout policy for blue-green upgrade.
+         * @param autoscaledRolloutPolicy ) Autoscaled rollout policy for blue-green upgrade.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         /**
-         * @param autoscaledRolloutPolicy Autoscaled rollout policy for blue-green upgrade.
+         * @param autoscaledRolloutPolicy ) Autoscaled rollout policy for blue-green upgrade.
          * 
          * @return builder
          * 

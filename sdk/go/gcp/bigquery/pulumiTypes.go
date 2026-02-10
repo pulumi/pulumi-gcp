@@ -9347,6 +9347,7 @@ type JobQuery struct {
 	// correspond to properties in the connection string.
 	// Structure is documented below.
 	ConnectionProperties []JobQueryConnectionProperty `pulumi:"connectionProperties"`
+	// (Optional, Beta)
 	// Whether to run the query as continuous or a regular query.
 	Continuous *bool `pulumi:"continuous"`
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -9439,6 +9440,7 @@ type JobQueryArgs struct {
 	// correspond to properties in the connection string.
 	// Structure is documented below.
 	ConnectionProperties JobQueryConnectionPropertyArrayInput `pulumi:"connectionProperties"`
+	// (Optional, Beta)
 	// Whether to run the query as continuous or a regular query.
 	Continuous pulumi.BoolPtrInput `pulumi:"continuous"`
 	// Specifies whether the job is allowed to create new tables. The following values are supported:
@@ -9602,6 +9604,7 @@ func (o JobQueryOutput) ConnectionProperties() JobQueryConnectionPropertyArrayOu
 	return o.ApplyT(func(v JobQuery) []JobQueryConnectionProperty { return v.ConnectionProperties }).(JobQueryConnectionPropertyArrayOutput)
 }
 
+// (Optional, Beta)
 // Whether to run the query as continuous or a regular query.
 func (o JobQueryOutput) Continuous() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobQuery) *bool { return v.Continuous }).(pulumi.BoolPtrOutput)
@@ -9773,6 +9776,7 @@ func (o JobQueryPtrOutput) ConnectionProperties() JobQueryConnectionPropertyArra
 	}).(JobQueryConnectionPropertyArrayOutput)
 }
 
+// (Optional, Beta)
 // Whether to run the query as continuous or a regular query.
 func (o JobQueryPtrOutput) Continuous() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *bool {

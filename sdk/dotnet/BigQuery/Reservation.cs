@@ -109,6 +109,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
         /// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
         /// more than the specified number of slots, even if there is demand and supply (from idle
@@ -186,6 +187,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableArray<Outputs.ReservationReplicationStatus>> ReplicationStatuses { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
         /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
         /// Enum values:
@@ -320,6 +322,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
         /// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
         /// more than the specified number of slots, even if there is demand and supply (from idle
@@ -370,6 +373,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
         /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
         /// Enum values:
@@ -466,6 +470,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
         /// (if ignoreIdleSlots is false) and scaled slots. If present, the reservation won't use
         /// more than the specified number of slots, even if there is demand and supply (from idle
@@ -549,6 +554,7 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The scaling mode for the reservation. If the field is present but maxSlots is not present,
         /// requests will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
         /// Enum values:

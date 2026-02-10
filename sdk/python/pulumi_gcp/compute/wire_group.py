@@ -43,7 +43,8 @@ class WireGroupArgs:
                lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['WireGroupWireGroupPropertiesArgs'] wire_group_properties: Properties specific to the wire group.
+        :param pulumi.Input['WireGroupWireGroupPropertiesArgs'] wire_group_properties: (Optional, Beta)
+               Properties specific to the wire group.
                Structure is documented below.
         :param pulumi.Input['WireGroupWirePropertiesArgs'] wire_properties: Default properties for wires within the group.
                Structure is documented below.
@@ -146,6 +147,7 @@ class WireGroupArgs:
     @pulumi.getter(name="wireGroupProperties")
     def wire_group_properties(self) -> Optional[pulumi.Input['WireGroupWireGroupPropertiesArgs']]:
         """
+        (Optional, Beta)
         Properties specific to the wire group.
         Structure is documented below.
         """
@@ -200,7 +202,8 @@ class _WireGroupState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['WireGroupTopologyArgs']]] topologies: Topology details for the wire group configuration.
                Structure is documented below.
-        :param pulumi.Input['WireGroupWireGroupPropertiesArgs'] wire_group_properties: Properties specific to the wire group.
+        :param pulumi.Input['WireGroupWireGroupPropertiesArgs'] wire_group_properties: (Optional, Beta)
+               Properties specific to the wire group.
                Structure is documented below.
         :param pulumi.Input['WireGroupWirePropertiesArgs'] wire_properties: Default properties for wires within the group.
                Structure is documented below.
@@ -337,6 +340,7 @@ class _WireGroupState:
     @pulumi.getter(name="wireGroupProperties")
     def wire_group_properties(self) -> Optional[pulumi.Input['WireGroupWireGroupPropertiesArgs']]:
         """
+        (Optional, Beta)
         Properties specific to the wire group.
         Structure is documented below.
         """
@@ -485,7 +489,8 @@ class WireGroup(pulumi.CustomResource):
                lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']] wire_group_properties: Properties specific to the wire group.
+        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']] wire_group_properties: (Optional, Beta)
+               Properties specific to the wire group.
                Structure is documented below.
         :param pulumi.Input[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict']] wire_properties: Default properties for wires within the group.
                Structure is documented below.
@@ -667,7 +672,8 @@ class WireGroup(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupTopologyArgs', 'WireGroupTopologyArgsDict']]]] topologies: Topology details for the wire group configuration.
                Structure is documented below.
-        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']] wire_group_properties: Properties specific to the wire group.
+        :param pulumi.Input[Union['WireGroupWireGroupPropertiesArgs', 'WireGroupWireGroupPropertiesArgsDict']] wire_group_properties: (Optional, Beta)
+               Properties specific to the wire group.
                Structure is documented below.
         :param pulumi.Input[Union['WireGroupWirePropertiesArgs', 'WireGroupWirePropertiesArgsDict']] wire_properties: Default properties for wires within the group.
                Structure is documented below.
@@ -766,6 +772,7 @@ class WireGroup(pulumi.CustomResource):
     @pulumi.getter(name="wireGroupProperties")
     def wire_group_properties(self) -> pulumi.Output[Optional['outputs.WireGroupWireGroupProperties']]:
         """
+        (Optional, Beta)
         Properties specific to the wire group.
         Structure is documented below.
         """

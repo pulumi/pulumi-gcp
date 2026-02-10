@@ -352,6 +352,35 @@ import (
 //	}
 //
 // ```
+// ### Data Fusion Instance Patch Revision
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datafusion.NewInstance(ctx, "data_fusion_instance_patch_revision", &datafusion.InstanceArgs{
+//				Name:          pulumi.String("my-instance"),
+//				Region:        pulumi.String("us-central1"),
+//				Type:          pulumi.String("BASIC"),
+//				Version:       pulumi.String("6.10.1"),
+//				PatchRevision: pulumi.String("6.10.1.5"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

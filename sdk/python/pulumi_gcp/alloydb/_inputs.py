@@ -35,6 +35,8 @@ __all__ = [
     'ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgsDict',
     'ClusterBackupSourceArgs',
     'ClusterBackupSourceArgsDict',
+    'ClusterBackupdrBackupSourceArgs',
+    'ClusterBackupdrBackupSourceArgsDict',
     'ClusterContinuousBackupConfigArgs',
     'ClusterContinuousBackupConfigArgsDict',
     'ClusterContinuousBackupConfigEncryptionConfigArgs',
@@ -63,6 +65,10 @@ __all__ = [
     'ClusterPscConfigArgsDict',
     'ClusterRestoreBackupSourceArgs',
     'ClusterRestoreBackupSourceArgsDict',
+    'ClusterRestoreBackupdrBackupSourceArgs',
+    'ClusterRestoreBackupdrBackupSourceArgsDict',
+    'ClusterRestoreBackupdrPitrSourceArgs',
+    'ClusterRestoreBackupdrPitrSourceArgsDict',
     'ClusterRestoreContinuousBackupSourceArgs',
     'ClusterRestoreContinuousBackupSourceArgsDict',
     'ClusterSecondaryConfigArgs',
@@ -713,6 +719,38 @@ class ClusterBackupSourceArgs:
     @backup_name.setter
     def backup_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "backup_name", value)
+
+
+if not MYPY:
+    class ClusterBackupdrBackupSourceArgsDict(TypedDict):
+        backup: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the BackupDR backup resource.
+        """
+elif False:
+    ClusterBackupdrBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterBackupdrBackupSourceArgs:
+    def __init__(__self__, *,
+                 backup: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] backup: The name of the BackupDR backup resource.
+        """
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the BackupDR backup resource.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backup", value)
 
 
 if not MYPY:
@@ -1534,6 +1572,87 @@ class ClusterRestoreBackupSourceArgs:
     @backup_name.setter
     def backup_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "backup_name", value)
+
+
+if not MYPY:
+    class ClusterRestoreBackupdrBackupSourceArgsDict(TypedDict):
+        backup: pulumi.Input[_builtins.str]
+        """
+        The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+        """
+elif False:
+    ClusterRestoreBackupdrBackupSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterRestoreBackupdrBackupSourceArgs:
+    def __init__(__self__, *,
+                 backup: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] backup: The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+        """
+        pulumi.set(__self__, "backup", backup)
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the BackupDR backup that this cluster is restored from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]/backups/[BACKUP_ID]"
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "backup", value)
+
+
+if not MYPY:
+    class ClusterRestoreBackupdrPitrSourceArgsDict(TypedDict):
+        data_source: pulumi.Input[_builtins.str]
+        """
+        The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+        """
+        point_in_time: pulumi.Input[_builtins.str]
+        """
+        The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+elif False:
+    ClusterRestoreBackupdrPitrSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterRestoreBackupdrPitrSourceArgs:
+    def __init__(__self__, *,
+                 data_source: pulumi.Input[_builtins.str],
+                 point_in_time: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] data_source: The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+        :param pulumi.Input[_builtins.str] point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        pulumi.set(__self__, "data_source", data_source)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSource")
+    def data_source(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the BackupDR data source that this cluster is restore from. It must be of the format "projects/[PROJECT]/locations/[LOCATION]/backupVaults/[VAULT_ID]/dataSources/[DATASOURCE_ID]"
+        """
+        return pulumi.get(self, "data_source")
+
+    @data_source.setter
+    def data_source(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> pulumi.Input[_builtins.str]:
+        """
+        The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @point_in_time.setter
+    def point_in_time(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "point_in_time", value)
 
 
 if not MYPY:

@@ -434,7 +434,7 @@ type InstanceTemplate struct {
 	Disks InstanceTemplateDiskArrayOutput `pulumi:"disks"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -589,7 +589,7 @@ type instanceTemplateState struct {
 	Disks []InstanceTemplateDisk `pulumi:"disks"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -704,7 +704,7 @@ type InstanceTemplateState struct {
 	Disks InstanceTemplateDiskArrayInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -819,7 +819,7 @@ type instanceTemplateArgs struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks []InstanceTemplateDisk `pulumi:"disks"`
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -918,7 +918,7 @@ type InstanceTemplateArgs struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks InstanceTemplateDiskArrayInput
-	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -1131,7 +1131,7 @@ func (o InstanceTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 func (o InstanceTemplateOutput) EnableDisplay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.BoolPtrOutput { return v.EnableDisplay }).(pulumi.BoolPtrOutput)

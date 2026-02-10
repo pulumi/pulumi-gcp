@@ -40071,6 +40071,7 @@ func (o CxToolOpenApiSpecTlsConfigCaCertArrayOutput) Index(i pulumi.IntInput) Cx
 }
 
 type CxToolVersionTool struct {
+	// (Optional, Beta)
 	// Integration connectors tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 	// Structure is documented below.
@@ -40112,6 +40113,7 @@ type CxToolVersionToolInput interface {
 }
 
 type CxToolVersionToolArgs struct {
+	// (Optional, Beta)
 	// Integration connectors tool specification.
 	// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 	// Structure is documented below.
@@ -40218,6 +40220,7 @@ func (o CxToolVersionToolOutput) ToCxToolVersionToolPtrOutputWithContext(ctx con
 	}).(CxToolVersionToolPtrOutput)
 }
 
+// (Optional, Beta)
 // Integration connectors tool specification.
 // This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 // Structure is documented below.
@@ -40293,6 +40296,7 @@ func (o CxToolVersionToolPtrOutput) Elem() CxToolVersionToolOutput {
 	}).(CxToolVersionToolOutput)
 }
 
+// (Optional, Beta)
 // Integration connectors tool specification.
 // This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
 // Structure is documented below.

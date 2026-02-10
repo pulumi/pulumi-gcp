@@ -182,14 +182,6 @@ class V2QueuedResource(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A Cloud TPU Queued Resource.
-
-        To get more information about QueuedResource, see:
-
-        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/tpu/docs/)
-
         ## Example Usage
 
         ### Tpu V2 Queued Resource Basic
@@ -298,14 +290,6 @@ class V2QueuedResource(pulumi.CustomResource):
                  args: Optional[V2QueuedResourceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Cloud TPU Queued Resource.
-
-        To get more information about QueuedResource, see:
-
-        * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/tpu/docs/)
-
         ## Example Usage
 
         ### Tpu V2 Queued Resource Basic

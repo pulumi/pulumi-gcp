@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The PromptTemplate resource for Firebase AI Logic.
- *
- * To get more information about PromptTemplate, see:
- *
- * * [API documentation](https://firebase.google.com/docs/reference/ai-logic/rest/v1beta/projects.locations.templates)
- * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/ai-logic)
- *
  * ## Example Usage
  *
  * ### Firebaseailogic Prompt Template Basic

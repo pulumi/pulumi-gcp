@@ -64,9 +64,11 @@ class ConnectionProfileArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['ConnectionProfileSalesforceProfileArgs'] salesforce_profile: Salesforce profile.
+        :param pulumi.Input['ConnectionProfileSalesforceProfileArgs'] salesforce_profile: (Optional, Beta)
+               Salesforce profile.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileSpannerProfileArgs'] spanner_profile: Spanner profile.
+        :param pulumi.Input['ConnectionProfileSpannerProfileArgs'] spanner_profile: (Optional, Beta)
+               Spanner profile.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileSqlServerProfileArgs'] sql_server_profile: SQL Server database profile.
                Structure is documented below.
@@ -285,6 +287,7 @@ class ConnectionProfileArgs:
     @pulumi.getter(name="salesforceProfile")
     def salesforce_profile(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']]:
         """
+        (Optional, Beta)
         Salesforce profile.
         Structure is documented below.
         """
@@ -298,6 +301,7 @@ class ConnectionProfileArgs:
     @pulumi.getter(name="spannerProfile")
     def spanner_profile(self) -> Optional[pulumi.Input['ConnectionProfileSpannerProfileArgs']]:
         """
+        (Optional, Beta)
         Spanner profile.
         Structure is documented below.
         """
@@ -374,9 +378,11 @@ class _ConnectionProfileState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['ConnectionProfileSalesforceProfileArgs'] salesforce_profile: Salesforce profile.
+        :param pulumi.Input['ConnectionProfileSalesforceProfileArgs'] salesforce_profile: (Optional, Beta)
+               Salesforce profile.
                Structure is documented below.
-        :param pulumi.Input['ConnectionProfileSpannerProfileArgs'] spanner_profile: Spanner profile.
+        :param pulumi.Input['ConnectionProfileSpannerProfileArgs'] spanner_profile: (Optional, Beta)
+               Spanner profile.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileSqlServerProfileArgs'] sql_server_profile: SQL Server database profile.
                Structure is documented below.
@@ -641,6 +647,7 @@ class _ConnectionProfileState:
     @pulumi.getter(name="salesforceProfile")
     def salesforce_profile(self) -> Optional[pulumi.Input['ConnectionProfileSalesforceProfileArgs']]:
         """
+        (Optional, Beta)
         Salesforce profile.
         Structure is documented below.
         """
@@ -654,6 +661,7 @@ class _ConnectionProfileState:
     @pulumi.getter(name="spannerProfile")
     def spanner_profile(self) -> Optional[pulumi.Input['ConnectionProfileSpannerProfileArgs']]:
         """
+        (Optional, Beta)
         Spanner profile.
         Structure is documented below.
         """
@@ -1152,9 +1160,11 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: Salesforce profile.
+        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: (Optional, Beta)
+               Salesforce profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']] spanner_profile: Spanner profile.
+        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']] spanner_profile: (Optional, Beta)
+               Spanner profile.
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']] sql_server_profile: SQL Server database profile.
                Structure is documented below.
@@ -1724,9 +1734,11 @@ class ConnectionProfile(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: Salesforce profile.
+        :param pulumi.Input[Union['ConnectionProfileSalesforceProfileArgs', 'ConnectionProfileSalesforceProfileArgsDict']] salesforce_profile: (Optional, Beta)
+               Salesforce profile.
                Structure is documented below.
-        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']] spanner_profile: Spanner profile.
+        :param pulumi.Input[Union['ConnectionProfileSpannerProfileArgs', 'ConnectionProfileSpannerProfileArgsDict']] spanner_profile: (Optional, Beta)
+               Spanner profile.
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionProfileSqlServerProfileArgs', 'ConnectionProfileSqlServerProfileArgsDict']] sql_server_profile: SQL Server database profile.
                Structure is documented below.
@@ -1908,6 +1920,7 @@ class ConnectionProfile(pulumi.CustomResource):
     @pulumi.getter(name="salesforceProfile")
     def salesforce_profile(self) -> pulumi.Output[Optional['outputs.ConnectionProfileSalesforceProfile']]:
         """
+        (Optional, Beta)
         Salesforce profile.
         Structure is documented below.
         """
@@ -1917,6 +1930,7 @@ class ConnectionProfile(pulumi.CustomResource):
     @pulumi.getter(name="spannerProfile")
     def spanner_profile(self) -> pulumi.Output[Optional['outputs.ConnectionProfileSpannerProfile']]:
         """
+        (Optional, Beta)
         Spanner profile.
         Structure is documented below.
         """

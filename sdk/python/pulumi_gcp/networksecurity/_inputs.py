@@ -5103,6 +5103,7 @@ if not MYPY:
         """
         mirroring_deployment_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
+        (Optional, Beta)
         The target downstream Mirroring Deployment Groups.
         This field is used for Packet Broker mirroring endpoint groups to specify
         the deployment groups that the packet should be mirrored to by the broker.
@@ -5130,7 +5131,8 @@ class SecurityProfileCustomMirroringProfileArgs:
                When a mirroring rule with this security profile attached matches a packet,
                a replica will be mirrored to the location-local target in this group.
                Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: The target downstream Mirroring Deployment Groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mirroring_deployment_groups: (Optional, Beta)
+               The target downstream Mirroring Deployment Groups.
                This field is used for Packet Broker mirroring endpoint groups to specify
                the deployment groups that the packet should be mirrored to by the broker.
                Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
@@ -5165,6 +5167,7 @@ class SecurityProfileCustomMirroringProfileArgs:
     @pulumi.getter(name="mirroringDeploymentGroups")
     def mirroring_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
+        (Optional, Beta)
         The target downstream Mirroring Deployment Groups.
         This field is used for Packet Broker mirroring endpoint groups to specify
         the deployment groups that the packet should be mirrored to by the broker.

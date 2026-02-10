@@ -11,21 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
-// Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
-// identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
-// Once Firebase has been added to a Google Project it cannot be removed.
-//
-// To get more information about Project, see:
-//
-// * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects)
-// * How-to Guides
-//   - Official Documentation
-//
-// > **Note:** This resource should usually be used with a provider configuration
-// with `userProjectOverride = true` unless you wish for your quota
-// project to be different from the Firebase project.
-//
 // ## Example Usage
 //
 // ### Firebase Project Basic

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * and run `pulumi up` to write the field to state in order to destroy a cluster.
  *
  * > All arguments and attributes (including certificate outputs) will be stored in the raw state as
- * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+ * plaintext. Read more about sensitive data in state.
  *
  * ## Example Usage
  *
@@ -172,7 +172,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly clusterIpv4Cidr: pulumi.Output<string>;
     /**
-     * Configuration for
+     * ) Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      */
@@ -358,7 +358,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly maintenancePolicy: pulumi.Output<outputs.container.ClusterMaintenancePolicy | undefined>;
     /**
-     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      */
     declare public readonly managedOpentelemetryConfig: pulumi.Output<outputs.container.ClusterManagedOpentelemetryConfig>;
     /**
@@ -508,7 +508,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly podAutoscaling: pulumi.Output<outputs.container.ClusterPodAutoscaling>;
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -528,6 +528,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
     declare public readonly protectConfig: pulumi.Output<outputs.container.ClusterProtectConfig>;
@@ -580,7 +581,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly secretManagerConfig: pulumi.Output<outputs.container.ClusterSecretManagerConfig | undefined>;
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      */
@@ -624,6 +625,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly verticalPodAutoscaling: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling>;
     /**
+     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      */
     declare public readonly workloadAltsConfig: pulumi.Output<outputs.container.ClusterWorkloadAltsConfig>;
@@ -885,7 +887,7 @@ export interface ClusterState {
      */
     clusterIpv4Cidr?: pulumi.Input<string>;
     /**
-     * Configuration for
+     * ) Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      */
@@ -1071,7 +1073,7 @@ export interface ClusterState {
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy>;
     /**
-     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      */
     managedOpentelemetryConfig?: pulumi.Input<inputs.container.ClusterManagedOpentelemetryConfig>;
     /**
@@ -1221,7 +1223,7 @@ export interface ClusterState {
      */
     podAutoscaling?: pulumi.Input<inputs.container.ClusterPodAutoscaling>;
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1241,6 +1243,7 @@ export interface ClusterState {
      */
     project?: pulumi.Input<string>;
     /**
+     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
@@ -1293,7 +1296,7 @@ export interface ClusterState {
      */
     secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig>;
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      */
@@ -1337,6 +1340,7 @@ export interface ClusterState {
      */
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
+     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      */
     workloadAltsConfig?: pulumi.Input<inputs.container.ClusterWorkloadAltsConfig>;
@@ -1394,7 +1398,7 @@ export interface ClusterArgs {
      */
     clusterIpv4Cidr?: pulumi.Input<string>;
     /**
-     * Configuration for
+     * ) Configuration for
      * [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
      * Structure is documented below.
      */
@@ -1568,7 +1572,7 @@ export interface ClusterArgs {
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy>;
     /**
-     * Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+     * ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
      */
     managedOpentelemetryConfig?: pulumi.Input<inputs.container.ClusterManagedOpentelemetryConfig>;
     /**
@@ -1713,7 +1717,7 @@ export interface ClusterArgs {
      */
     podAutoscaling?: pulumi.Input<inputs.container.ClusterPodAutoscaling>;
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1733,6 +1737,7 @@ export interface ClusterArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
@@ -1781,7 +1786,7 @@ export interface ClusterArgs {
      */
     secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig>;
     /**
-     * Configuration for the
+     * ) Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      */
@@ -1813,6 +1818,7 @@ export interface ClusterArgs {
      */
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
+     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      */
     workloadAltsConfig?: pulumi.Input<inputs.container.ClusterWorkloadAltsConfig>;

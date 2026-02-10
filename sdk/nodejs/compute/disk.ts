@@ -239,6 +239,7 @@ export class Disk extends pulumi.CustomResource {
      */
     declare public readonly image: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -271,6 +272,7 @@ export class Disk extends pulumi.CustomResource {
      */
     declare public readonly licenses: pulumi.Output<string[]>;
     /**
+     * (Optional, Beta)
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
     declare public readonly multiWriter: pulumi.Output<boolean | undefined>;
@@ -320,6 +322,7 @@ export class Disk extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Optional, Beta)
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -648,6 +651,7 @@ export interface DiskState {
      */
     image?: pulumi.Input<string>;
     /**
+     * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -680,6 +684,7 @@ export interface DiskState {
      */
     licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Beta)
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
     multiWriter?: pulumi.Input<boolean>;
@@ -729,6 +734,7 @@ export interface DiskState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * (Optional, Beta)
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than
@@ -935,6 +941,7 @@ export interface DiskArgs {
      */
     image?: pulumi.Input<string>;
     /**
+     * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -954,6 +961,7 @@ export interface DiskArgs {
      */
     licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Optional, Beta)
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
     multiWriter?: pulumi.Input<boolean>;
@@ -998,6 +1006,7 @@ export interface DiskArgs {
      */
     provisionedThroughput?: pulumi.Input<number>;
     /**
+     * (Optional, Beta)
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
      * resource policy, as resource policies can not be updated more than

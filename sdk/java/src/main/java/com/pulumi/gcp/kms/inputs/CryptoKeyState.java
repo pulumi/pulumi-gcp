@@ -86,6 +86,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
@@ -101,7 +102,8 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<CryptoKeyKeyAccessJustificationsPolicyArgs> keyAccessJustificationsPolicy;
 
     /**
-     * @return The policy used for Key Access Justifications Policy Enforcement. If this
+     * @return (Optional, Beta)
+     * The policy used for Key Access Justifications Policy Enforcement. If this
      * field is present and this key is enrolled in Key Access Justifications
      * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
      * sign operations, and the operation will fail if rejected by the policy. The
@@ -411,7 +413,8 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyAccessJustificationsPolicy The policy used for Key Access Justifications Policy Enforcement. If this
+         * @param keyAccessJustificationsPolicy (Optional, Beta)
+         * The policy used for Key Access Justifications Policy Enforcement. If this
          * field is present and this key is enrolled in Key Access Justifications
          * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
          * sign operations, and the operation will fail if rejected by the policy. The
@@ -430,7 +433,8 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyAccessJustificationsPolicy The policy used for Key Access Justifications Policy Enforcement. If this
+         * @param keyAccessJustificationsPolicy (Optional, Beta)
+         * The policy used for Key Access Justifications Policy Enforcement. If this
          * field is present and this key is enrolled in Key Access Justifications
          * Policy Enforcement, the policy will be evaluated in encrypt, decrypt, and
          * sign operations, and the operation will fail if rejected by the policy. The

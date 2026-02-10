@@ -7,12 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ServiceLbPolicy holds global load balancing and traffic distribution configuration that can be applied to a BackendService.
- *
- * To get more information about ServiceLbPolicies, see:
- *
- * * [API documentation](https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.serviceLbPolicies)
- *
  * ## Example Usage
  *
  * ### Network Services Service Lb Policies Basic

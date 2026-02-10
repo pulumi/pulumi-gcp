@@ -495,6 +495,9 @@ type Cluster struct {
 	// Cluster created from backup.
 	// Structure is documented below.
 	BackupSources ClusterBackupSourceArrayOutput `pulumi:"backupSources"`
+	// Cluster created from a BackupDR backup.
+	// Structure is documented below.
+	BackupdrBackupSources ClusterBackupdrBackupSourceArrayOutput `pulumi:"backupdrBackupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The type of cluster. If not set, defaults to PRIMARY.
@@ -564,10 +567,16 @@ type Cluster struct {
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource ClusterRestoreBackupSourcePtrOutput `pulumi:"restoreBackupSource"`
-	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+	// Structure is documented below.
+	RestoreBackupdrBackupSource ClusterRestoreBackupdrBackupSourcePtrOutput `pulumi:"restoreBackupdrBackupSource"`
+	// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+	// Structure is documented below.
+	RestoreBackupdrPitrSource ClusterRestoreBackupdrPitrSourcePtrOutput `pulumi:"restoreBackupdrPitrSource"`
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrOutput `pulumi:"restoreContinuousBackupSource"`
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
@@ -642,6 +651,9 @@ type clusterState struct {
 	// Cluster created from backup.
 	// Structure is documented below.
 	BackupSources []ClusterBackupSource `pulumi:"backupSources"`
+	// Cluster created from a BackupDR backup.
+	// Structure is documented below.
+	BackupdrBackupSources []ClusterBackupdrBackupSource `pulumi:"backupdrBackupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// The type of cluster. If not set, defaults to PRIMARY.
@@ -711,10 +723,16 @@ type clusterState struct {
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling *bool `pulumi:"reconciling"`
-	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource *ClusterRestoreBackupSource `pulumi:"restoreBackupSource"`
-	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+	// Structure is documented below.
+	RestoreBackupdrBackupSource *ClusterRestoreBackupdrBackupSource `pulumi:"restoreBackupdrBackupSource"`
+	// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+	// Structure is documented below.
+	RestoreBackupdrPitrSource *ClusterRestoreBackupdrPitrSource `pulumi:"restoreBackupdrPitrSource"`
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
@@ -749,6 +767,9 @@ type ClusterState struct {
 	// Cluster created from backup.
 	// Structure is documented below.
 	BackupSources ClusterBackupSourceArrayInput
+	// Cluster created from a BackupDR backup.
+	// Structure is documented below.
+	BackupdrBackupSources ClusterBackupdrBackupSourceArrayInput
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringPtrInput
 	// The type of cluster. If not set, defaults to PRIMARY.
@@ -818,10 +839,16 @@ type ClusterState struct {
 	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
 	// This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolPtrInput
-	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource ClusterRestoreBackupSourcePtrInput
-	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+	// Structure is documented below.
+	RestoreBackupdrBackupSource ClusterRestoreBackupdrBackupSourcePtrInput
+	// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+	// Structure is documented below.
+	RestoreBackupdrPitrSource ClusterRestoreBackupdrPitrSourcePtrInput
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
@@ -904,10 +931,16 @@ type clusterArgs struct {
 	// Configuration for Private Service Connect (PSC) for the cluster.
 	// Structure is documented below.
 	PscConfig *ClusterPscConfig `pulumi:"pscConfig"`
-	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource *ClusterRestoreBackupSource `pulumi:"restoreBackupSource"`
-	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+	// Structure is documented below.
+	RestoreBackupdrBackupSource *ClusterRestoreBackupdrBackupSource `pulumi:"restoreBackupdrBackupSource"`
+	// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+	// Structure is documented below.
+	RestoreBackupdrPitrSource *ClusterRestoreBackupdrPitrSource `pulumi:"restoreBackupdrPitrSource"`
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
@@ -980,10 +1013,16 @@ type ClusterArgs struct {
 	// Configuration for Private Service Connect (PSC) for the cluster.
 	// Structure is documented below.
 	PscConfig ClusterPscConfigPtrInput
-	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource ClusterRestoreBackupSourcePtrInput
-	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+	// Structure is documented below.
+	RestoreBackupdrBackupSource ClusterRestoreBackupdrBackupSourcePtrInput
+	// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+	// Structure is documented below.
+	RestoreBackupdrPitrSource ClusterRestoreBackupdrPitrSourcePtrInput
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
@@ -1104,6 +1143,12 @@ func (o ClusterOutput) AutomatedBackupPolicy() ClusterAutomatedBackupPolicyOutpu
 // Structure is documented below.
 func (o ClusterOutput) BackupSources() ClusterBackupSourceArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterBackupSourceArrayOutput { return v.BackupSources }).(ClusterBackupSourceArrayOutput)
+}
+
+// Cluster created from a BackupDR backup.
+// Structure is documented below.
+func (o ClusterOutput) BackupdrBackupSources() ClusterBackupdrBackupSourceArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterBackupdrBackupSourceArrayOutput { return v.BackupdrBackupSources }).(ClusterBackupdrBackupSourceArrayOutput)
 }
 
 // The ID of the alloydb cluster.
@@ -1247,13 +1292,25 @@ func (o ClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 // Structure is documented below.
 func (o ClusterOutput) RestoreBackupSource() ClusterRestoreBackupSourcePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterRestoreBackupSourcePtrOutput { return v.RestoreBackupSource }).(ClusterRestoreBackupSourcePtrOutput)
 }
 
-// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
+// Structure is documented below.
+func (o ClusterOutput) RestoreBackupdrBackupSource() ClusterRestoreBackupdrBackupSourcePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRestoreBackupdrBackupSourcePtrOutput { return v.RestoreBackupdrBackupSource }).(ClusterRestoreBackupdrBackupSourcePtrOutput)
+}
+
+// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
+// Structure is documented below.
+func (o ClusterOutput) RestoreBackupdrPitrSource() ClusterRestoreBackupdrPitrSourcePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRestoreBackupdrPitrSourcePtrOutput { return v.RestoreBackupdrPitrSource }).(ClusterRestoreBackupdrPitrSourcePtrOutput)
+}
+
+// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
 // Structure is documented below.
 func (o ClusterOutput) RestoreContinuousBackupSource() ClusterRestoreContinuousBackupSourcePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterRestoreContinuousBackupSourcePtrOutput { return v.RestoreContinuousBackupSource }).(ClusterRestoreContinuousBackupSourcePtrOutput)

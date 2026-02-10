@@ -288,6 +288,27 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// });
     /// ```
+    /// ### Data Fusion Instance Patch Revision
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataFusionInstancePatchRevision = new Gcp.DataFusion.Instance("data_fusion_instance_patch_revision", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         Region = "us-central1",
+    ///         Type = "BASIC",
+    ///         Version = "6.10.1",
+    ///         PatchRevision = "6.10.1.5",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

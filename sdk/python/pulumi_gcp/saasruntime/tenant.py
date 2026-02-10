@@ -450,8 +450,6 @@ class Tenant(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
-
         ## Example Usage
 
         ### Saas Runtime Tenant Basic
@@ -528,8 +526,6 @@ class Tenant(pulumi.CustomResource):
                  args: TenantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Tenant resource represents the service producer's view of a service instance created for a consumer. It enables the association between the service producer's managed resources and the end consumer.
-
         ## Example Usage
 
         ### Saas Runtime Tenant Basic

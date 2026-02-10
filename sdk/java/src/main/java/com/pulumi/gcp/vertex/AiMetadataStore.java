@@ -17,14 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Instance of a metadata store. Contains a set of metadata that can be queried.
- * 
- * To get more information about MetadataStore, see:
- * 
- * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.metadataStores)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
- * 
  * ## Example Usage
  * 
  * ### Vertex Ai Metadata Store

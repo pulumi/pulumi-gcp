@@ -352,6 +352,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.InstanceNetworkConfig> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration for enhanced query insights.
         /// Structure is documented below.
         /// </summary>
@@ -600,6 +601,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.InstanceNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration for enhanced query insights.
         /// Structure is documented below.
         /// </summary>
@@ -800,6 +802,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.InstanceNetworkConfigGetArgs>? NetworkConfig { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Configuration for enhanced query insights.
         /// Structure is documented below.
         /// </summary>

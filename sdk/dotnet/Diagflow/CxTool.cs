@@ -402,6 +402,7 @@ namespace Pulumi.Gcp.Diagflow
     public partial class CxTool : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Integration connectors tool specification.
         /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         /// Structure is documented below.
@@ -512,6 +513,7 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxToolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Integration connectors tool specification.
         /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         /// Structure is documented below.
@@ -571,6 +573,7 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxToolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Integration connectors tool specification.
         /// This field is part of a union field `Specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
         /// Structure is documented below.

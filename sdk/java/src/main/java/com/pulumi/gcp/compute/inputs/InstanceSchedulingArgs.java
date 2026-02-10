@@ -58,14 +58,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Settings for the instance to perform a graceful shutdown. Structure is documented below.
+     * Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     @Import(name="gracefulShutdown")
     private @Nullable Output<InstanceSchedulingGracefulShutdownArgs> gracefulShutdown;
 
     /**
-     * @return Settings for the instance to perform a graceful shutdown. Structure is documented below.
+     * @return Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceSchedulingGracefulShutdownArgs>> gracefulShutdown() {
@@ -73,14 +73,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     @Import(name="hostErrorTimeoutSeconds")
     private @Nullable Output<Integer> hostErrorTimeoutSeconds;
 
     /**
-     * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * @return Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     public Optional<Output<Integer>> hostErrorTimeoutSeconds() {
@@ -103,20 +103,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     @Import(name="localSsdRecoveryTimeout")
     private @Nullable Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout;
 
     /**
-     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
-     *   recovery of the Local Ssd state is attempted. Its value should be in
-     *   between 0 and 168 hours with hour granularity and the default value being 1
-     *   hour.
+     * @return (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
      * 
      */
     public Optional<Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeout() {
@@ -124,14 +118,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     public Optional<Output<String>> maintenanceInterval() {
@@ -266,14 +260,14 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     @Import(name="skipGuestOsShutdown")
     private @Nullable Output<Boolean> skipGuestOsShutdown;
 
     /**
-     * @return Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+     * @return Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
      * 
      */
     public Optional<Output<Boolean>> skipGuestOsShutdown() {
@@ -381,7 +375,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gracefulShutdown Settings for the instance to perform a graceful shutdown. Structure is documented below.
+         * @param gracefulShutdown Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
          * 
          * @return builder
          * 
@@ -392,7 +386,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param gracefulShutdown Settings for the instance to perform a graceful shutdown. Structure is documented below.
+         * @param gracefulShutdown Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
          * 
          * @return builder
          * 
@@ -402,7 +396,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hostErrorTimeoutSeconds Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * @param hostErrorTimeoutSeconds Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          * 
          * @return builder
          * 
@@ -413,7 +407,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hostErrorTimeoutSeconds Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * @param hostErrorTimeoutSeconds Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          * 
          * @return builder
          * 
@@ -444,10 +438,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param localSsdRecoveryTimeout Specifies the maximum amount of time a Local Ssd Vm should wait while
-         *   recovery of the Local Ssd state is attempted. Its value should be in
-         *   between 0 and 168 hours with hour granularity and the default value being 1
-         *   hour.
+         * @param localSsdRecoveryTimeout (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
          * 
          * @return builder
          * 
@@ -458,10 +449,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param localSsdRecoveryTimeout Specifies the maximum amount of time a Local Ssd Vm should wait while
-         *   recovery of the Local Ssd state is attempted. Its value should be in
-         *   between 0 and 168 hours with hour granularity and the default value being 1
-         *   hour.
+         * @param localSsdRecoveryTimeout (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
          * 
          * @return builder
          * 
@@ -471,7 +459,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * @param maintenanceInterval Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * 
          * @return builder
          * 
@@ -482,7 +470,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * @param maintenanceInterval Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * 
          * @return builder
          * 
@@ -675,7 +663,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param skipGuestOsShutdown Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+         * @param skipGuestOsShutdown Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
          * 
          * @return builder
          * 
@@ -686,7 +674,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param skipGuestOsShutdown Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
+         * @param skipGuestOsShutdown Beta Boolean parameter. Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
          * 
          * @return builder
          * 

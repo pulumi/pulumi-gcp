@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Defines scale down controls to reduce the risk of response latency
         /// and outages due to abrupt scale-in events
         /// Structure is documented below.

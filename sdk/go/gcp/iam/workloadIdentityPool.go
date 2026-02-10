@@ -203,11 +203,13 @@ type WorkloadIdentityPool struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// (Optional, Beta)
 	// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
 	// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
 	// required for issuance and rotation of mTLS workload certificates.
 	// Structure is documented below.
 	InlineCertificateIssuanceConfig WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrOutput `pulumi:"inlineCertificateIssuanceConfig"`
+	// (Optional, Beta)
 	// Represents config to add additional trusted trust domains. Defines configuration for extending
 	// trust to additional trust domains. By establishing trust with another domain, the current
 	// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -215,6 +217,7 @@ type WorkloadIdentityPool struct {
 	// configuration.
 	// Structure is documented below.
 	InlineTrustConfig WorkloadIdentityPoolInlineTrustConfigPtrOutput `pulumi:"inlineTrustConfig"`
+	// (Optional, Beta)
 	// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
 	// are in `FEDERATION_ONLY` mode.
 	//
@@ -297,11 +300,13 @@ type workloadIdentityPoolState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// (Optional, Beta)
 	// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
 	// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
 	// required for issuance and rotation of mTLS workload certificates.
 	// Structure is documented below.
 	InlineCertificateIssuanceConfig *WorkloadIdentityPoolInlineCertificateIssuanceConfig `pulumi:"inlineCertificateIssuanceConfig"`
+	// (Optional, Beta)
 	// Represents config to add additional trusted trust domains. Defines configuration for extending
 	// trust to additional trust domains. By establishing trust with another domain, the current
 	// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -309,6 +314,7 @@ type workloadIdentityPoolState struct {
 	// configuration.
 	// Structure is documented below.
 	InlineTrustConfig *WorkloadIdentityPoolInlineTrustConfig `pulumi:"inlineTrustConfig"`
+	// (Optional, Beta)
 	// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
 	// are in `FEDERATION_ONLY` mode.
 	//
@@ -359,11 +365,13 @@ type WorkloadIdentityPoolState struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
 	// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
 	// required for issuance and rotation of mTLS workload certificates.
 	// Structure is documented below.
 	InlineCertificateIssuanceConfig WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrInput
+	// (Optional, Beta)
 	// Represents config to add additional trusted trust domains. Defines configuration for extending
 	// trust to additional trust domains. By establishing trust with another domain, the current
 	// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -371,6 +379,7 @@ type WorkloadIdentityPoolState struct {
 	// configuration.
 	// Structure is documented below.
 	InlineTrustConfig WorkloadIdentityPoolInlineTrustConfigPtrInput
+	// (Optional, Beta)
 	// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
 	// are in `FEDERATION_ONLY` mode.
 	//
@@ -425,11 +434,13 @@ type workloadIdentityPoolArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// (Optional, Beta)
 	// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
 	// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
 	// required for issuance and rotation of mTLS workload certificates.
 	// Structure is documented below.
 	InlineCertificateIssuanceConfig *WorkloadIdentityPoolInlineCertificateIssuanceConfig `pulumi:"inlineCertificateIssuanceConfig"`
+	// (Optional, Beta)
 	// Represents config to add additional trusted trust domains. Defines configuration for extending
 	// trust to additional trust domains. By establishing trust with another domain, the current
 	// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -437,6 +448,7 @@ type workloadIdentityPoolArgs struct {
 	// configuration.
 	// Structure is documented below.
 	InlineTrustConfig *WorkloadIdentityPoolInlineTrustConfig `pulumi:"inlineTrustConfig"`
+	// (Optional, Beta)
 	// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
 	// are in `FEDERATION_ONLY` mode.
 	//
@@ -475,11 +487,13 @@ type WorkloadIdentityPoolArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Represents configuration for generating mutual TLS (mTLS) certificates for the identities
 	// within this pool. Defines the Certificate Authority (CA) pool resources and configurations
 	// required for issuance and rotation of mTLS workload certificates.
 	// Structure is documented below.
 	InlineCertificateIssuanceConfig WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrInput
+	// (Optional, Beta)
 	// Represents config to add additional trusted trust domains. Defines configuration for extending
 	// trust to additional trust domains. By establishing trust with another domain, the current
 	// domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -487,6 +501,7 @@ type WorkloadIdentityPoolArgs struct {
 	// configuration.
 	// Structure is documented below.
 	InlineTrustConfig WorkloadIdentityPoolInlineTrustConfigPtrInput
+	// (Optional, Beta)
 	// The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
 	// are in `FEDERATION_ONLY` mode.
 	//
@@ -619,6 +634,7 @@ func (o WorkloadIdentityPoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Beta)
 // Represents configuration for generating mutual TLS (mTLS) certificates for the identities
 // within this pool. Defines the Certificate Authority (CA) pool resources and configurations
 // required for issuance and rotation of mTLS workload certificates.
@@ -629,6 +645,7 @@ func (o WorkloadIdentityPoolOutput) InlineCertificateIssuanceConfig() WorkloadId
 	}).(WorkloadIdentityPoolInlineCertificateIssuanceConfigPtrOutput)
 }
 
+// (Optional, Beta)
 // Represents config to add additional trusted trust domains. Defines configuration for extending
 // trust to additional trust domains. By establishing trust with another domain, the current
 // domain will recognize and accept certificates issued by entities within the trusted domains.
@@ -641,6 +658,7 @@ func (o WorkloadIdentityPoolOutput) InlineTrustConfig() WorkloadIdentityPoolInli
 	}).(WorkloadIdentityPoolInlineTrustConfigPtrOutput)
 }
 
+// (Optional, Beta)
 // The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
 // are in `FEDERATION_ONLY` mode.
 //

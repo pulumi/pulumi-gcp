@@ -141,6 +141,7 @@ namespace Pulumi.Gcp.Alloydb
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly ImmutableArray<Outputs.GetClusterAutomatedBackupPolicyResult> AutomatedBackupPolicies;
         public readonly ImmutableArray<Outputs.GetClusterBackupSourceResult> BackupSources;
+        public readonly ImmutableArray<Outputs.GetClusterBackupdrBackupSourceResult> BackupdrBackupSources;
         public readonly string ClusterId;
         public readonly string ClusterType;
         public readonly ImmutableArray<Outputs.GetClusterContinuousBackupConfigResult> ContinuousBackupConfigs;
@@ -170,6 +171,8 @@ namespace Pulumi.Gcp.Alloydb
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool Reconciling;
         public readonly ImmutableArray<Outputs.GetClusterRestoreBackupSourceResult> RestoreBackupSources;
+        public readonly ImmutableArray<Outputs.GetClusterRestoreBackupdrBackupSourceResult> RestoreBackupdrBackupSources;
+        public readonly ImmutableArray<Outputs.GetClusterRestoreBackupdrPitrSourceResult> RestoreBackupdrPitrSources;
         public readonly ImmutableArray<Outputs.GetClusterRestoreContinuousBackupSourceResult> RestoreContinuousBackupSources;
         public readonly ImmutableArray<Outputs.GetClusterSecondaryConfigResult> SecondaryConfigs;
         public readonly bool SkipAwaitMajorVersionUpgrade;
@@ -185,6 +188,8 @@ namespace Pulumi.Gcp.Alloydb
             ImmutableArray<Outputs.GetClusterAutomatedBackupPolicyResult> automatedBackupPolicies,
 
             ImmutableArray<Outputs.GetClusterBackupSourceResult> backupSources,
+
+            ImmutableArray<Outputs.GetClusterBackupdrBackupSourceResult> backupdrBackupSources,
 
             string clusterId,
 
@@ -238,6 +243,10 @@ namespace Pulumi.Gcp.Alloydb
 
             ImmutableArray<Outputs.GetClusterRestoreBackupSourceResult> restoreBackupSources,
 
+            ImmutableArray<Outputs.GetClusterRestoreBackupdrBackupSourceResult> restoreBackupdrBackupSources,
+
+            ImmutableArray<Outputs.GetClusterRestoreBackupdrPitrSourceResult> restoreBackupdrPitrSources,
+
             ImmutableArray<Outputs.GetClusterRestoreContinuousBackupSourceResult> restoreContinuousBackupSources,
 
             ImmutableArray<Outputs.GetClusterSecondaryConfigResult> secondaryConfigs,
@@ -255,6 +264,7 @@ namespace Pulumi.Gcp.Alloydb
             Annotations = annotations;
             AutomatedBackupPolicies = automatedBackupPolicies;
             BackupSources = backupSources;
+            BackupdrBackupSources = backupdrBackupSources;
             ClusterId = clusterId;
             ClusterType = clusterType;
             ContinuousBackupConfigs = continuousBackupConfigs;
@@ -281,6 +291,8 @@ namespace Pulumi.Gcp.Alloydb
             PulumiLabels = pulumiLabels;
             Reconciling = reconciling;
             RestoreBackupSources = restoreBackupSources;
+            RestoreBackupdrBackupSources = restoreBackupdrBackupSources;
+            RestoreBackupdrPitrSources = restoreBackupdrPitrSources;
             RestoreContinuousBackupSources = restoreContinuousBackupSources;
             SecondaryConfigs = secondaryConfigs;
             SkipAwaitMajorVersionUpgrade = skipAwaitMajorVersionUpgrade;

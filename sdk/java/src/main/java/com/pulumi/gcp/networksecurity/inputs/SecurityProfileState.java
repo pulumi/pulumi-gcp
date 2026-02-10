@@ -274,6 +274,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Optional, Beta)
      * The url filtering configuration for the security profile.
      * Structure is documented below.
      * 
@@ -282,7 +283,8 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<SecurityProfileUrlFilteringProfileArgs> urlFilteringProfile;
 
     /**
-     * @return The url filtering configuration for the security profile.
+     * @return (Optional, Beta)
+     * The url filtering configuration for the security profile.
      * Structure is documented below.
      * 
      */
@@ -673,7 +675,8 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param urlFilteringProfile The url filtering configuration for the security profile.
+         * @param urlFilteringProfile (Optional, Beta)
+         * The url filtering configuration for the security profile.
          * Structure is documented below.
          * 
          * @return builder
@@ -685,7 +688,8 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param urlFilteringProfile The url filtering configuration for the security profile.
+         * @param urlFilteringProfile (Optional, Beta)
+         * The url filtering configuration for the security profile.
          * Structure is documented below.
          * 
          * @return builder

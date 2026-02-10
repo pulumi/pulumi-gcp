@@ -407,6 +407,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The url filtering configuration for the security profile.
         /// Structure is documented below.
         /// </summary>
@@ -536,6 +537,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The url filtering configuration for the security profile.
         /// Structure is documented below.
         /// </summary>
@@ -681,6 +683,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The url filtering configuration for the security profile.
         /// Structure is documented below.
         /// </summary>

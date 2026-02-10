@@ -173,6 +173,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
      * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
      * 
@@ -181,7 +182,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> reservation;
 
     /**
-     * @return The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+     * @return (Optional, Beta)
+     * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
      * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
      * 
      */
@@ -428,7 +430,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservation The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+         * @param reservation (Optional, Beta)
+         * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
          * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
          * 
          * @return builder
@@ -440,7 +443,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservation The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
+         * @param reservation (Optional, Beta)
+         * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
          * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
          * 
          * @return builder

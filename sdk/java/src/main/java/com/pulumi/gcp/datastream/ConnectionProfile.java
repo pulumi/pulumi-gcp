@@ -956,6 +956,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * (Optional, Beta)
      * Salesforce profile.
      * Structure is documented below.
      * 
@@ -964,7 +965,8 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ConnectionProfileSalesforceProfile> salesforceProfile;
 
     /**
-     * @return Salesforce profile.
+     * @return (Optional, Beta)
+     * Salesforce profile.
      * Structure is documented below.
      * 
      */
@@ -972,6 +974,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.salesforceProfile);
     }
     /**
+     * (Optional, Beta)
      * Spanner profile.
      * Structure is documented below.
      * 
@@ -980,7 +983,8 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ConnectionProfileSpannerProfile> spannerProfile;
 
     /**
-     * @return Spanner profile.
+     * @return (Optional, Beta)
+     * Spanner profile.
      * Structure is documented below.
      * 
      */

@@ -136,7 +136,7 @@ export class TargetPool extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * The resource URL for the security policy associated with this target pool.
+     * ) The resource URL for the security policy associated with this target pool.
      */
     declare public readonly securityPolicy: pulumi.Output<string | undefined>;
     /**
@@ -242,7 +242,7 @@ export interface TargetPoolState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The resource URL for the security policy associated with this target pool.
+     * ) The resource URL for the security policy associated with this target pool.
      */
     securityPolicy?: pulumi.Input<string>;
     /**
@@ -306,7 +306,7 @@ export interface TargetPoolArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * The resource URL for the security policy associated with this target pool.
+     * ) The resource URL for the security policy associated with this target pool.
      */
     securityPolicy?: pulumi.Input<string>;
     /**

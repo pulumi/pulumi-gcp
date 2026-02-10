@@ -124,6 +124,7 @@ public final class WireGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Properties specific to the wire group.
      * Structure is documented below.
      * 
@@ -132,7 +133,8 @@ public final class WireGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<WireGroupWireGroupPropertiesArgs> wireGroupProperties;
 
     /**
-     * @return Properties specific to the wire group.
+     * @return (Optional, Beta)
+     * Properties specific to the wire group.
      * Structure is documented below.
      * 
      */
@@ -338,7 +340,8 @@ public final class WireGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wireGroupProperties Properties specific to the wire group.
+         * @param wireGroupProperties (Optional, Beta)
+         * Properties specific to the wire group.
          * Structure is documented below.
          * 
          * @return builder
@@ -350,7 +353,8 @@ public final class WireGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wireGroupProperties Properties specific to the wire group.
+         * @param wireGroupProperties (Optional, Beta)
+         * Properties specific to the wire group.
          * Structure is documented below.
          * 
          * @return builder

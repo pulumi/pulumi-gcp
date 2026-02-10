@@ -55,6 +55,23 @@ public final class BackupPlanAssociationRulesConfigInfoArgs extends com.pulumi.r
 
     /**
      * (Output)
+     * The point in time when the last successful backup was captured from the source
+     * 
+     */
+    @Import(name="lastSuccessfulBackupConsistencyTime")
+    private @Nullable Output<String> lastSuccessfulBackupConsistencyTime;
+
+    /**
+     * @return (Output)
+     * The point in time when the last successful backup was captured from the source
+     * 
+     */
+    public Optional<Output<String>> lastSuccessfulBackupConsistencyTime() {
+        return Optional.ofNullable(this.lastSuccessfulBackupConsistencyTime);
+    }
+
+    /**
+     * (Output)
      * Backup Rule id fetched from backup plan.
      * 
      */
@@ -75,6 +92,7 @@ public final class BackupPlanAssociationRulesConfigInfoArgs extends com.pulumi.r
     private BackupPlanAssociationRulesConfigInfoArgs(BackupPlanAssociationRulesConfigInfoArgs $) {
         this.lastBackupErrors = $.lastBackupErrors;
         this.lastBackupState = $.lastBackupState;
+        this.lastSuccessfulBackupConsistencyTime = $.lastSuccessfulBackupConsistencyTime;
         this.ruleId = $.ruleId;
     }
 
@@ -154,6 +172,29 @@ public final class BackupPlanAssociationRulesConfigInfoArgs extends com.pulumi.r
          */
         public Builder lastBackupState(String lastBackupState) {
             return lastBackupState(Output.of(lastBackupState));
+        }
+
+        /**
+         * @param lastSuccessfulBackupConsistencyTime (Output)
+         * The point in time when the last successful backup was captured from the source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastSuccessfulBackupConsistencyTime(@Nullable Output<String> lastSuccessfulBackupConsistencyTime) {
+            $.lastSuccessfulBackupConsistencyTime = lastSuccessfulBackupConsistencyTime;
+            return this;
+        }
+
+        /**
+         * @param lastSuccessfulBackupConsistencyTime (Output)
+         * The point in time when the last successful backup was captured from the source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastSuccessfulBackupConsistencyTime(String lastSuccessfulBackupConsistencyTime) {
+            return lastSuccessfulBackupConsistencyTime(Output.of(lastSuccessfulBackupConsistencyTime));
         }
 
         /**

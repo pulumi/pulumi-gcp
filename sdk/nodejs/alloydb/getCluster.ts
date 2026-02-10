@@ -55,6 +55,7 @@ export interface GetClusterResult {
     readonly annotations: {[key: string]: string};
     readonly automatedBackupPolicies: outputs.alloydb.GetClusterAutomatedBackupPolicy[];
     readonly backupSources: outputs.alloydb.GetClusterBackupSource[];
+    readonly backupdrBackupSources: outputs.alloydb.GetClusterBackupdrBackupSource[];
     readonly clusterId: string;
     readonly clusterType: string;
     readonly continuousBackupConfigs: outputs.alloydb.GetClusterContinuousBackupConfig[];
@@ -84,6 +85,8 @@ export interface GetClusterResult {
     readonly pulumiLabels: {[key: string]: string};
     readonly reconciling: boolean;
     readonly restoreBackupSources: outputs.alloydb.GetClusterRestoreBackupSource[];
+    readonly restoreBackupdrBackupSources: outputs.alloydb.GetClusterRestoreBackupdrBackupSource[];
+    readonly restoreBackupdrPitrSources: outputs.alloydb.GetClusterRestoreBackupdrPitrSource[];
     readonly restoreContinuousBackupSources: outputs.alloydb.GetClusterRestoreContinuousBackupSource[];
     readonly secondaryConfigs: outputs.alloydb.GetClusterSecondaryConfig[];
     readonly skipAwaitMajorVersionUpgrade: boolean;

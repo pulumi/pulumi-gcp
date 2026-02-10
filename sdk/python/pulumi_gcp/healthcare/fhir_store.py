@@ -43,7 +43,8 @@ class FhirStoreArgs:
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[_builtins.str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
-        :param pulumi.Input['FhirStoreConsentConfigArgs'] consent_config: Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+        :param pulumi.Input['FhirStoreConsentConfigArgs'] consent_config: (Optional, Beta)
+               Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -66,7 +67,8 @@ class FhirStoreArgs:
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[_builtins.bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[_builtins.bool] enable_history_modifications: (Optional, Beta)
+               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[_builtins.bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -172,6 +174,7 @@ class FhirStoreArgs:
     @pulumi.getter(name="consentConfig")
     def consent_config(self) -> Optional[pulumi.Input['FhirStoreConsentConfigArgs']]:
         """
+        (Optional, Beta)
         Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
         Structure is documented below.
         """
@@ -250,6 +253,7 @@ class FhirStoreArgs:
     @pulumi.getter(name="enableHistoryModifications")
     def enable_history_modifications(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         """
@@ -413,7 +417,8 @@ class _FhirStoreState:
         Input properties used for looking up and filtering FhirStore resources.
         :param pulumi.Input[_builtins.str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
-        :param pulumi.Input['FhirStoreConsentConfigArgs'] consent_config: Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+        :param pulumi.Input['FhirStoreConsentConfigArgs'] consent_config: (Optional, Beta)
+               Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -439,7 +444,8 @@ class _FhirStoreState:
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[_builtins.bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[_builtins.bool] enable_history_modifications: (Optional, Beta)
+               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[_builtins.bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -542,6 +548,7 @@ class _FhirStoreState:
     @pulumi.getter(name="consentConfig")
     def consent_config(self) -> Optional[pulumi.Input['FhirStoreConsentConfigArgs']]:
         """
+        (Optional, Beta)
         Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
         Structure is documented below.
         """
@@ -645,6 +652,7 @@ class _FhirStoreState:
     @pulumi.getter(name="enableHistoryModifications")
     def enable_history_modifications(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         """
@@ -1035,7 +1043,8 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
-        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']] consent_config: Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']] consent_config: (Optional, Beta)
+               Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -1060,7 +1069,8 @@ class FhirStore(pulumi.CustomResource):
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[_builtins.bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[_builtins.bool] enable_history_modifications: (Optional, Beta)
+               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[_builtins.bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -1409,7 +1419,8 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
-        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']] consent_config: Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
+        :param pulumi.Input[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']] consent_config: (Optional, Beta)
+               Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -1435,7 +1446,8 @@ class FhirStore(pulumi.CustomResource):
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[_builtins.bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[_builtins.bool] enable_history_modifications: (Optional, Beta)
+               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[_builtins.bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -1517,6 +1529,7 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter(name="consentConfig")
     def consent_config(self) -> pulumi.Output[Optional['outputs.FhirStoreConsentConfig']]:
         """
+        (Optional, Beta)
         Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
         Structure is documented below.
         """
@@ -1592,6 +1605,7 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter(name="enableHistoryModifications")
     def enable_history_modifications(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
+        (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         """

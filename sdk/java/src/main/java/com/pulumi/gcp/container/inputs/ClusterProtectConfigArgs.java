@@ -17,14 +17,14 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
     public static final ClusterProtectConfigArgs Empty = new ClusterProtectConfigArgs();
 
     /**
-     * WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
+     * ) WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
      * 
      */
     @Import(name="workloadConfig")
     private @Nullable Output<ClusterProtectConfigWorkloadConfigArgs> workloadConfig;
 
     /**
-     * @return WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
+     * @return ) WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
      * 
      */
     public Optional<Output<ClusterProtectConfigWorkloadConfigArgs>> workloadConfig() {
@@ -32,14 +32,14 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+     * ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     @Import(name="workloadVulnerabilityMode")
     private @Nullable Output<String> workloadVulnerabilityMode;
 
     /**
-     * @return Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     public Optional<Output<String>> workloadVulnerabilityMode() {
@@ -72,7 +72,7 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workloadConfig WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
+         * @param workloadConfig ) WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workloadConfig WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
+         * @param workloadConfig ) WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations. Structure is documented below
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workloadVulnerabilityMode Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+         * @param workloadVulnerabilityMode ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workloadVulnerabilityMode Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+         * @param workloadVulnerabilityMode ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
          * 
          * @return builder
          * 

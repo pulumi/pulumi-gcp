@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A `Site` represents a Firebase Hosting site.
- *
- * To get more information about Site, see:
- *
- * * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites)
- * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/hosting)
- *
  * ## Example Usage
  *
  * ### Firebasehosting Site Basic

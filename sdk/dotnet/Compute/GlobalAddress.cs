@@ -199,7 +199,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+        /// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+        /// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
+        /// * PRIVATE_SERVICE_CONNECT - for (Beta) only) Private Service Connect networks
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

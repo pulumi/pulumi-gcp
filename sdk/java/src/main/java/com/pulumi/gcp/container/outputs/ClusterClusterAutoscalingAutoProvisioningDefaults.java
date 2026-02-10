@@ -42,7 +42,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsManagement management;
     /**
-     * @return Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+     * @return )
+     * Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
      * specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
      * as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 
@@ -108,7 +109,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return Optional.ofNullable(this.management);
     }
     /**
-     * @return Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+     * @return )
+     * Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
      * specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
      * as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
      * 

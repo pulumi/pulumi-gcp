@@ -210,6 +210,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// List of supported purposes of the Address Group.
         /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         /// </summary>
@@ -345,6 +346,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _purposes;
 
         /// <summary>
+        /// (Optional, Beta)
         /// List of supported purposes of the Address Group.
         /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         /// </summary>
@@ -473,6 +475,7 @@ namespace Pulumi.Gcp.NetworkSecurity
         private InputList<string>? _purposes;
 
         /// <summary>
+        /// (Optional, Beta)
         /// List of supported purposes of the Address Group.
         /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
         /// </summary>

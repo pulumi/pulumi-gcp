@@ -11,10 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve all the resources within a given accessible CRM scope (project/folder/organization). See the
-// [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1p1beta1/resources/searchAll)
-// for more details.
-//
 // ## Example Usage
 //
 // ### Searching For All Projects In An Org

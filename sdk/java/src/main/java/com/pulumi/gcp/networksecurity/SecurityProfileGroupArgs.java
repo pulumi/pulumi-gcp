@@ -147,6 +147,7 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Optional, Beta)
      * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      * 
      */
@@ -154,7 +155,8 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> urlFilteringProfile;
 
     /**
-     * @return Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+     * @return (Optional, Beta)
+     * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
      * 
      */
     public Optional<Output<String>> urlFilteringProfile() {
@@ -372,7 +374,8 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param urlFilteringProfile Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+         * @param urlFilteringProfile (Optional, Beta)
+         * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
          * 
          * @return builder
          * 
@@ -383,7 +386,8 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param urlFilteringProfile Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
+         * @param urlFilteringProfile (Optional, Beta)
+         * Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
          * 
          * @return builder
          * 

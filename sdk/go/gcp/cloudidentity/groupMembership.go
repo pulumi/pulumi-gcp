@@ -159,6 +159,7 @@ type GroupMembership struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The name of the Group to create this membership in.
 	Group pulumi.StringOutput `pulumi:"group"`
+	// (Optional, Beta)
 	// EntityKey of the member.
 	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyOutput `pulumi:"memberKey"`
@@ -219,6 +220,7 @@ type groupMembershipState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The name of the Group to create this membership in.
 	Group *string `pulumi:"group"`
+	// (Optional, Beta)
 	// EntityKey of the member.
 	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
@@ -244,6 +246,7 @@ type GroupMembershipState struct {
 	CreateTime pulumi.StringPtrInput
 	// The name of the Group to create this membership in.
 	Group pulumi.StringPtrInput
+	// (Optional, Beta)
 	// EntityKey of the member.
 	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
@@ -271,6 +274,7 @@ type groupMembershipArgs struct {
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// The name of the Group to create this membership in.
 	Group string `pulumi:"group"`
+	// (Optional, Beta)
 	// EntityKey of the member.
 	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
@@ -289,6 +293,7 @@ type GroupMembershipArgs struct {
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// The name of the Group to create this membership in.
 	Group pulumi.StringInput
+	// (Optional, Beta)
 	// EntityKey of the member.
 	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
@@ -403,6 +408,7 @@ func (o GroupMembershipOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // EntityKey of the member.
 // Structure is documented below.
 func (o GroupMembershipOutput) MemberKey() GroupMembershipMemberKeyOutput {

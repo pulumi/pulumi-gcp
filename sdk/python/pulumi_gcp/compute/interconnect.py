@@ -55,11 +55,13 @@ class InterconnectArgs:
         :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input[_builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
-        :param pulumi.Input[_builtins.bool] aai_enabled: Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+        :param pulumi.Input[_builtins.bool] aai_enabled: (Optional, Beta)
+               Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         :param pulumi.Input[_builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input['InterconnectApplicationAwareInterconnectArgs'] application_aware_interconnect: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input['InterconnectApplicationAwareInterconnectArgs'] application_aware_interconnect: (Optional, Beta)
+               Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
@@ -195,6 +197,7 @@ class InterconnectArgs:
     @pulumi.getter(name="aaiEnabled")
     def aai_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         """
         return pulumi.get(self, "aai_enabled")
@@ -221,6 +224,7 @@ class InterconnectArgs:
     @pulumi.getter(name="applicationAwareInterconnect")
     def application_aware_interconnect(self) -> Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']]:
         """
+        (Optional, Beta)
         Configuration that enables Media Access Control security (MACsec) on the Cloud
         Interconnect connection between Google and your on-premises router.
         Structure is documented below.
@@ -430,11 +434,13 @@ class _InterconnectState:
                  wire_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Interconnect resources.
-        :param pulumi.Input[_builtins.bool] aai_enabled: Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+        :param pulumi.Input[_builtins.bool] aai_enabled: (Optional, Beta)
+               Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         :param pulumi.Input[_builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input['InterconnectApplicationAwareInterconnectArgs'] application_aware_interconnect: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input['InterconnectApplicationAwareInterconnectArgs'] application_aware_interconnect: (Optional, Beta)
+               Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_features: [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
@@ -611,6 +617,7 @@ class _InterconnectState:
     @pulumi.getter(name="aaiEnabled")
     def aai_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         """
         return pulumi.get(self, "aai_enabled")
@@ -637,6 +644,7 @@ class _InterconnectState:
     @pulumi.getter(name="applicationAwareInterconnect")
     def application_aware_interconnect(self) -> Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']]:
         """
+        (Optional, Beta)
         Configuration that enables Media Access Control security (MACsec) on the Cloud
         Interconnect connection between Google and your on-premises router.
         Structure is documented below.
@@ -1177,11 +1185,13 @@ class Interconnect(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] aai_enabled: Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+        :param pulumi.Input[_builtins.bool] aai_enabled: (Optional, Beta)
+               Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         :param pulumi.Input[_builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']] application_aware_interconnect: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']] application_aware_interconnect: (Optional, Beta)
+               Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
@@ -1433,11 +1443,13 @@ class Interconnect(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] aai_enabled: Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
+        :param pulumi.Input[_builtins.bool] aai_enabled: (Optional, Beta)
+               Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         :param pulumi.Input[_builtins.bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
-        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']] application_aware_interconnect: Configuration that enables Media Access Control security (MACsec) on the Cloud
+        :param pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']] application_aware_interconnect: (Optional, Beta)
+               Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_features: [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
@@ -1584,6 +1596,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="aaiEnabled")
     def aai_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
+        (Optional, Beta)
         Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
         """
         return pulumi.get(self, "aai_enabled")
@@ -1602,6 +1615,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="applicationAwareInterconnect")
     def application_aware_interconnect(self) -> pulumi.Output[Optional['outputs.InterconnectApplicationAwareInterconnect']]:
         """
+        (Optional, Beta)
         Configuration that enables Media Access Control security (MACsec) on the Cloud
         Interconnect connection between Google and your on-premises router.
         Structure is documented below.

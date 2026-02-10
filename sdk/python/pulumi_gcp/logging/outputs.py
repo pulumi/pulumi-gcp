@@ -41,6 +41,9 @@ __all__ = [
     'ProjectBucketConfigIndexConfig',
     'ProjectSinkBigqueryOptions',
     'ProjectSinkExclusion',
+    'SavedQueryLoggingQuery',
+    'SavedQueryLoggingQuerySummaryField',
+    'SavedQueryOpsAnalyticsQuery',
     'GetSinkBigqueryOptionResult',
     'GetSinkExclusionResult',
 ]
@@ -1518,6 +1521,139 @@ class ProjectSinkExclusion(dict):
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class SavedQueryLoggingQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "summaryFieldEnd":
+            suggest = "summary_field_end"
+        elif key == "summaryFieldStart":
+            suggest = "summary_field_start"
+        elif key == "summaryFields":
+            suggest = "summary_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SavedQueryLoggingQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SavedQueryLoggingQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SavedQueryLoggingQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter: _builtins.str,
+                 summary_field_end: Optional[_builtins.int] = None,
+                 summary_field_start: Optional[_builtins.int] = None,
+                 summary_fields: Optional[Sequence['outputs.SavedQueryLoggingQuerySummaryField']] = None):
+        """
+        :param _builtins.str filter: An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+               is used to match log entries.
+        :param _builtins.int summary_field_end: Characters will be counted from the end of the string.
+        :param _builtins.int summary_field_start: Characters will be counted from the start of the string.
+        :param Sequence['SavedQueryLoggingQuerySummaryFieldArgs'] summary_fields: The names of the fields to display in the summary.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "filter", filter)
+        if summary_field_end is not None:
+            pulumi.set(__self__, "summary_field_end", summary_field_end)
+        if summary_field_start is not None:
+            pulumi.set(__self__, "summary_field_start", summary_field_start)
+        if summary_fields is not None:
+            pulumi.set(__self__, "summary_fields", summary_fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> _builtins.str:
+        """
+        An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
+        is used to match log entries.
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter(name="summaryFieldEnd")
+    def summary_field_end(self) -> Optional[_builtins.int]:
+        """
+        Characters will be counted from the end of the string.
+        """
+        return pulumi.get(self, "summary_field_end")
+
+    @_builtins.property
+    @pulumi.getter(name="summaryFieldStart")
+    def summary_field_start(self) -> Optional[_builtins.int]:
+        """
+        Characters will be counted from the start of the string.
+        """
+        return pulumi.get(self, "summary_field_start")
+
+    @_builtins.property
+    @pulumi.getter(name="summaryFields")
+    def summary_fields(self) -> Optional[Sequence['outputs.SavedQueryLoggingQuerySummaryField']]:
+        """
+        The names of the fields to display in the summary.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "summary_fields")
+
+
+@pulumi.output_type
+class SavedQueryLoggingQuerySummaryField(dict):
+    def __init__(__self__, *,
+                 field: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str field: The field from the LogEntry to include in the summary line.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> Optional[_builtins.str]:
+        """
+        The field from the LogEntry to include in the summary line.
+        """
+        return pulumi.get(self, "field")
+
+
+@pulumi.output_type
+class SavedQueryOpsAnalyticsQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sqlQueryText":
+            suggest = "sql_query_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SavedQueryOpsAnalyticsQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SavedQueryOpsAnalyticsQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SavedQueryOpsAnalyticsQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sql_query_text: _builtins.str):
+        """
+        :param _builtins.str sql_query_text: A logs analytics SQL query, which generally follows BigQuery format.
+        """
+        pulumi.set(__self__, "sql_query_text", sql_query_text)
+
+    @_builtins.property
+    @pulumi.getter(name="sqlQueryText")
+    def sql_query_text(self) -> _builtins.str:
+        """
+        A logs analytics SQL query, which generally follows BigQuery format.
+        """
+        return pulumi.get(self, "sql_query_text")
 
 
 @pulumi.output_type

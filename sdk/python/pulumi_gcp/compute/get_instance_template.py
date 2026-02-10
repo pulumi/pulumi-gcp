@@ -327,7 +327,7 @@ class GetInstanceTemplateResult:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.GetInstanceTemplateNetworkInterfaceResult']:
         """
-        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
+        (Optional, Beta) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
         """
         return pulumi.get(self, "network_interfaces")
 

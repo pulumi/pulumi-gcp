@@ -16,14 +16,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Cloud TPU Queued Resource.
- * 
- * To get more information about QueuedResource, see:
- * 
- * * [API documentation](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.queuedResources)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
- * 
  * ## Example Usage
  * 
  * ### Tpu V2 Queued Resource Basic

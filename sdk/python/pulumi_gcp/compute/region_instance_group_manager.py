@@ -83,7 +83,7 @@ class RegionInstanceGroupManagerArgs:
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
-        :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -329,7 +329,7 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
         """
-        Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         """
         return pulumi.get(self, "params")
 
@@ -576,7 +576,7 @@ class _RegionInstanceGroupManagerState:
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
-        :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -875,7 +875,7 @@ class _RegionInstanceGroupManagerState:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
         """
-        Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         """
         return pulumi.get(self, "params")
 
@@ -1273,7 +1273,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
-        :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -1596,7 +1596,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
-        :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -1808,7 +1808,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def params(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerParams']]:
         """
-        Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
+        ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         """
         return pulumi.get(self, "params")
 

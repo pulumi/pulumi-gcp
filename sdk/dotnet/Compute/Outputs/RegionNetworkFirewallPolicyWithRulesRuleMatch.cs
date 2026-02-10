@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
+        /// (Optional, Beta)
         /// Network scope of the traffic destination.
         /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         /// </summary>
@@ -66,11 +67,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
+        /// (Optional, Beta)
         /// Network scope of the traffic source.
         /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         /// </summary>
         public readonly string? SrcNetworkScope;
         /// <summary>
+        /// (Optional, Beta)
         /// Networks of the traffic source. It can be either a full or partial url.
         /// </summary>
         public readonly ImmutableArray<string> SrcNetworks;

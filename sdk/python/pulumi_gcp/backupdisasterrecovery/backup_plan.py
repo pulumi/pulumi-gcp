@@ -38,7 +38,7 @@ class BackupPlanArgs:
         :param pulumi.Input[_builtins.str] backup_vault: Backup vault where the backups gets stored using this Backup plan.
         :param pulumi.Input[_builtins.str] location: The location for the backup plan
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         :param pulumi.Input[_builtins.str] description: The description allows for additional details about `BackupPlan` and its use cases to be provided.
         :param pulumi.Input[_builtins.int] log_retention_days: This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.
         :param pulumi.Input[_builtins.int] max_custom_on_demand_retention_days: The maximum number of days for which an on-demand backup taken with custom retention can be retained.
@@ -113,7 +113,7 @@ class BackupPlanArgs:
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
         The resource type to which the `BackupPlan` will be applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         return pulumi.get(self, "resource_type")
 
@@ -204,7 +204,7 @@ class _BackupPlanState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the `BackupPlan` can be applied.
         :param pulumi.Input[_builtins.str] update_time: When the `BackupPlan` was last updated.
         """
@@ -376,7 +376,7 @@ class _BackupPlanState:
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The resource type to which the `BackupPlan` will be applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         return pulumi.get(self, "resource_type")
 
@@ -526,6 +526,35 @@ class BackupPlan(pulumi.CustomResource):
             }],
             log_retention_days=4)
         ```
+        ### Backup Dr Backup Plan For Filestore Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="backup-vault-filestore-test",
+            backup_minimum_enforced_retention_duration="100000s")
+        my_filestore_backup_plan_1 = gcp.backupdisasterrecovery.BackupPlan("my-filestore-backup-plan-1",
+            location="us-central1",
+            backup_plan_id="backup-plan-filestore-test",
+            resource_type="file.googleapis.com/Instance",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }])
+        ```
 
         ## Import
 
@@ -564,7 +593,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         ...
     @overload
@@ -672,6 +701,35 @@ class BackupPlan(pulumi.CustomResource):
                 },
             }],
             log_retention_days=4)
+        ```
+        ### Backup Dr Backup Plan For Filestore Resource
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
+            location="us-central1",
+            backup_vault_id="backup-vault-filestore-test",
+            backup_minimum_enforced_retention_duration="100000s")
+        my_filestore_backup_plan_1 = gcp.backupdisasterrecovery.BackupPlan("my-filestore-backup-plan-1",
+            location="us-central1",
+            backup_plan_id="backup-plan-filestore-test",
+            resource_type="file.googleapis.com/Instance",
+            backup_vault=my_backup_vault.id,
+            backup_rules=[{
+                "rule_id": "rule-1",
+                "backup_retention_days": 5,
+                "standard_schedule": {
+                    "recurrence_type": "HOURLY",
+                    "hourly_frequency": 6,
+                    "time_zone": "UTC",
+                    "backup_window": {
+                        "start_hour_of_day": 0,
+                        "end_hour_of_day": 6,
+                    },
+                },
+            }])
         ```
 
         ## Import
@@ -800,7 +858,7 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] resource_type: The resource type to which the `BackupPlan` will be applied.
-               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+               Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_resource_types: The list of all resource types to which the `BackupPlan` can be applied.
         :param pulumi.Input[_builtins.str] update_time: When the `BackupPlan` was last updated.
         """
@@ -919,7 +977,7 @@ class BackupPlan(pulumi.CustomResource):
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
         The resource type to which the `BackupPlan` will be applied.
-        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
+        Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "sqladmin.googleapis.com/Instance", "alloydb.googleapis.com/Cluster", "file.googleapis.com/Instance" and "storage.googleapis.com/Bucket".
         """
         return pulumi.get(self, "resource_type")
 

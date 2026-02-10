@@ -47,7 +47,8 @@ class SubnetworkArgs:
         The set of arguments for constructing a Subnetwork resource.
         :param pulumi.Input[_builtins.str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: (Optional, Beta)
+               Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
@@ -93,7 +94,7 @@ class SubnetworkArgs:
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
                A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
                A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -104,7 +105,8 @@ class SubnetworkArgs:
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
+               'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -188,6 +190,7 @@ class SubnetworkArgs:
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Typically packets destined to IPs within the subnetwork range that do not match
         existing resources are dropped and prevented from leaving the VPC.
         Setting this field to true will allow these packets to match dynamic routes injected
@@ -377,7 +380,7 @@ class SubnetworkArgs:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -421,6 +424,7 @@ class SubnetworkArgs:
     @pulumi.getter(name="resolveSubnetMask")
     def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         """
@@ -530,7 +534,8 @@ class _SubnetworkState:
                  subnetwork_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
-        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: (Optional, Beta)
+               Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
@@ -588,7 +593,7 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
                A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
                A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -599,7 +604,8 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
+               'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -696,6 +702,7 @@ class _SubnetworkState:
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
+        (Optional, Beta)
         Typically packets destined to IPs within the subnetwork range that do not match
         existing resources are dropped and prevented from leaving the VPC.
         Setting this field to true will allow these packets to match dynamic routes injected
@@ -964,7 +971,7 @@ class _SubnetworkState:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -1008,6 +1015,7 @@ class _SubnetworkState:
     @pulumi.getter(name="resolveSubnetMask")
     def resolve_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
+        (Optional, Beta)
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         """
@@ -1411,7 +1419,8 @@ class Subnetwork(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: (Optional, Beta)
+               Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
@@ -1459,7 +1468,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
                A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
                A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -1470,7 +1479,8 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
+               'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -1883,7 +1893,8 @@ class Subnetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+        :param pulumi.Input[_builtins.bool] allow_subnet_cidr_routes_overlap: (Optional, Beta)
+               Typically packets destined to IPs within the subnetwork range that do not match
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
@@ -1941,7 +1952,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        :param pulumi.Input[_builtins.str] purpose: The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
                A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
                A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -1952,7 +1963,8 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The GCP region for this subnetwork.
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
-        :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
+        :param pulumi.Input[_builtins.str] resolve_subnet_mask: (Optional, Beta)
+               'Configures subnet mask resolution for this subnetwork.'
                Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -2021,6 +2033,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> pulumi.Output[_builtins.bool]:
         """
+        (Optional, Beta)
         Typically packets destined to IPs within the subnetwork range that do not match
         existing resources are dropped and prevented from leaving the VPC.
         Setting this field to true will allow these packets to match dynamic routes injected
@@ -2213,7 +2226,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def purpose(self) -> pulumi.Output[_builtins.str]:
         """
-        The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`.
+        The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
         A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -2245,6 +2258,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="resolveSubnetMask")
     def resolve_subnet_mask(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Beta)
         'Configures subnet mask resolution for this subnetwork.'
         Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
         """

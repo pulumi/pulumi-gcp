@@ -461,14 +461,6 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
                  spoke: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A gateway advertised route is a route that a gateway spoke advertises somewhere.
-
-        To get more information about GatewayAdvertisedRoute, see:
-
-        * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
-        * How-to Guides
-            * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
-
         ## Example Usage
 
         ### Network Connectivity Gateway Advertised Route Basic
@@ -481,7 +473,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_6529",
+            name="tf-test-subnet_32270",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)
@@ -569,14 +561,6 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
                  args: GatewayAdvertisedRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A gateway advertised route is a route that a gateway spoke advertises somewhere.
-
-        To get more information about GatewayAdvertisedRoute, see:
-
-        * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.spokes.gatewayAdvertisedRoutes)
-        * How-to Guides
-            * [QUICKSTART_TITLE](https://docs.cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/ncc-gateway-overview)
-
         ## Example Usage
 
         ### Network Connectivity Gateway Advertised Route Basic
@@ -589,7 +573,7 @@ class GatewayAdvertisedRoute(pulumi.CustomResource):
             name="net-spoke",
             auto_create_subnetworks=False)
         subnetwork = gcp.compute.Subnetwork("subnetwork",
-            name="tf-test-subnet_6529",
+            name="tf-test-subnet_32270",
             ip_cidr_range="10.0.0.0/28",
             region="us-central1",
             network=network.self_link)

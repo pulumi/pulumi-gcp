@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetMachineTypesMachineTypeBundledLocalSsdResult
     {
         /// <summary>
-        /// The default disk interface if the interface is not specified.
+        /// (Beta) The default disk interface if the interface is not specified.
         /// </summary>
         public readonly string DefaultInterface;
         /// <summary>
-        /// The number of partitions.
+        /// (Beta) The number of partitions.
         /// </summary>
         public readonly int PartitionCount;
 

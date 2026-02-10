@@ -40,7 +40,8 @@ public final class ReservationSpecificReservationInstanceProperties {
      */
     private String machineType;
     /**
-     * @return Specifies the frequency of planned maintenance events.
+     * @return (Optional, Beta)
+     * Specifies the frequency of planned maintenance events.
      * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
      * 
      */
@@ -88,7 +89,8 @@ public final class ReservationSpecificReservationInstanceProperties {
         return this.machineType;
     }
     /**
-     * @return Specifies the frequency of planned maintenance events.
+     * @return (Optional, Beta)
+     * Specifies the frequency of planned maintenance events.
      * Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
      * 
      */

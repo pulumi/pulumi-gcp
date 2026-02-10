@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionBackendServiceCircuitBreakersGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// The timeout for new network connections to hosts.
         /// Structure is documented below.
         /// </summary>

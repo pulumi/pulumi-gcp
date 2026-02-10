@@ -77,8 +77,11 @@ class ServiceAttachmentArgs:
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
-        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
-        :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: Tunneling configuration for this service attachment.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
+               Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+               [If true, show NAT IPs of all connected endpoints.]
+        :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: (Optional, Beta)
+               Tunneling configuration for this service attachment.
                Structure is documented below.
         """
         pulumi.set(__self__, "connection_preference", connection_preference)
@@ -306,7 +309,9 @@ class ServiceAttachmentArgs:
     @pulumi.getter(name="showNatIps")
     def show_nat_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, show NAT IPs of all connected endpoints.
+        NOTE: This field is temporarily non-functional due to an underlying API issue.
+        Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        [If true, show NAT IPs of all connected endpoints.]
         """
         return pulumi.get(self, "show_nat_ips")
 
@@ -318,6 +323,7 @@ class ServiceAttachmentArgs:
     @pulumi.getter(name="tunnelingConfig")
     def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
         """
+        (Optional, Beta)
         Tunneling configuration for this service attachment.
         Structure is documented below.
         """
@@ -398,9 +404,12 @@ class _ServiceAttachmentState:
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
-        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
+               Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+               [If true, show NAT IPs of all connected endpoints.]
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
-        :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: Tunneling configuration for this service attachment.
+        :param pulumi.Input['ServiceAttachmentTunnelingConfigArgs'] tunneling_config: (Optional, Beta)
+               Tunneling configuration for this service attachment.
                Structure is documented below.
         """
         if connected_endpoints is not None:
@@ -680,7 +689,9 @@ class _ServiceAttachmentState:
     @pulumi.getter(name="showNatIps")
     def show_nat_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, show NAT IPs of all connected endpoints.
+        NOTE: This field is temporarily non-functional due to an underlying API issue.
+        Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        [If true, show NAT IPs of all connected endpoints.]
         """
         return pulumi.get(self, "show_nat_ips")
 
@@ -704,6 +715,7 @@ class _ServiceAttachmentState:
     @pulumi.getter(name="tunnelingConfig")
     def tunneling_config(self) -> Optional[pulumi.Input['ServiceAttachmentTunnelingConfigArgs']]:
         """
+        (Optional, Beta)
         Tunneling configuration for this service attachment.
         Structure is documented below.
         """
@@ -1194,9 +1206,12 @@ class ServiceAttachment(pulumi.CustomResource):
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
-        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
+               Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+               [If true, show NAT IPs of all connected endpoints.]
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
-        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: Tunneling configuration for this service attachment.
+        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: (Optional, Beta)
+               Tunneling configuration for this service attachment.
                Structure is documented below.
         """
         ...
@@ -1773,9 +1788,12 @@ class ServiceAttachment(pulumi.CustomResource):
                When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
                When true, the provider will set propagated_connection_limit to zero.
                Defaults to false.
-        :param pulumi.Input[_builtins.bool] show_nat_ips: If true, show NAT IPs of all connected endpoints.
+        :param pulumi.Input[_builtins.bool] show_nat_ips: NOTE: This field is temporarily non-functional due to an underlying API issue.
+               Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+               [If true, show NAT IPs of all connected endpoints.]
         :param pulumi.Input[_builtins.str] target_service: The URL of a service serving the endpoint identified by this service attachment.
-        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: Tunneling configuration for this service attachment.
+        :param pulumi.Input[Union['ServiceAttachmentTunnelingConfigArgs', 'ServiceAttachmentTunnelingConfigArgsDict']] tunneling_config: (Optional, Beta)
+               Tunneling configuration for this service attachment.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1972,7 +1990,9 @@ class ServiceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="showNatIps")
     def show_nat_ips(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If true, show NAT IPs of all connected endpoints.
+        NOTE: This field is temporarily non-functional due to an underlying API issue.
+        Any value provided here will be ignored until the API issue is resolved, expected around 2026-03.
+        [If true, show NAT IPs of all connected endpoints.]
         """
         return pulumi.get(self, "show_nat_ips")
 
@@ -1988,6 +2008,7 @@ class ServiceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="tunnelingConfig")
     def tunneling_config(self) -> pulumi.Output[Optional['outputs.ServiceAttachmentTunnelingConfig']]:
         """
+        (Optional, Beta)
         Tunneling configuration for this service attachment.
         Structure is documented below.
         """

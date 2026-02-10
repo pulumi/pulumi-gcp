@@ -538,10 +538,12 @@ type ManagedZone struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrOutput `pulumi:"reverseLookup"`
+	// (Optional, Beta)
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrOutput `pulumi:"serviceDirectoryConfig"`
@@ -642,10 +644,12 @@ type managedZoneState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
+	// (Optional, Beta)
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
@@ -706,10 +710,12 @@ type ManagedZoneState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
@@ -761,10 +767,12 @@ type managedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup *bool `pulumi:"reverseLookup"`
+	// (Optional, Beta)
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
@@ -813,10 +821,12 @@ type ManagedZoneArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 	// lookup queries using automatically configured records for VPC resources. This only applies
 	// to networks listed under `privateVisibilityConfig`.
 	ReverseLookup pulumi.BoolPtrInput
+	// (Optional, Beta)
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
@@ -1011,6 +1021,7 @@ func (o ManagedZoneOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
+// (Optional, Beta)
 // Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
 // lookup queries using automatically configured records for VPC resources. This only applies
 // to networks listed under `privateVisibilityConfig`.
@@ -1018,6 +1029,7 @@ func (o ManagedZoneOutput) ReverseLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.BoolPtrOutput { return v.ReverseLookup }).(pulumi.BoolPtrOutput)
 }
 
+// (Optional, Beta)
 // The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 // Structure is documented below.
 func (o ManagedZoneOutput) ServiceDirectoryConfig() ManagedZoneServiceDirectoryConfigPtrOutput {

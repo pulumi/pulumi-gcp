@@ -286,8 +286,8 @@ import (
 //				return err
 //			}
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test_45397"),
-//				Name:           pulumi.String("tf-test_16451"),
+//				ProjectId:      pulumi.String("tf-test_40472"),
+//				Name:           pulumi.String("tf-test_44339"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -668,6 +668,7 @@ type AiFeatureOnlineStoreFeatureview struct {
 	SyncConfig AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput `pulumi:"syncConfig"`
 	// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// (Optional, Beta)
 	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
 	// Structure is documented below.
 	VectorSearchConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput `pulumi:"vectorSearchConfig"`
@@ -743,6 +744,7 @@ type aiFeatureOnlineStoreFeatureviewState struct {
 	SyncConfig *AiFeatureOnlineStoreFeatureviewSyncConfig `pulumi:"syncConfig"`
 	// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
+	// (Optional, Beta)
 	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
 	// Structure is documented below.
 	VectorSearchConfig *AiFeatureOnlineStoreFeatureviewVectorSearchConfig `pulumi:"vectorSearchConfig"`
@@ -781,6 +783,7 @@ type AiFeatureOnlineStoreFeatureviewState struct {
 	SyncConfig AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput
 	// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
 	// Structure is documented below.
 	VectorSearchConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput
@@ -814,6 +817,7 @@ type aiFeatureOnlineStoreFeatureviewArgs struct {
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
 	SyncConfig *AiFeatureOnlineStoreFeatureviewSyncConfig `pulumi:"syncConfig"`
+	// (Optional, Beta)
 	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
 	// Structure is documented below.
 	VectorSearchConfig *AiFeatureOnlineStoreFeatureviewVectorSearchConfig `pulumi:"vectorSearchConfig"`
@@ -844,6 +848,7 @@ type AiFeatureOnlineStoreFeatureviewArgs struct {
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
 	SyncConfig AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput
+	// (Optional, Beta)
 	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
 	// Structure is documented below.
 	VectorSearchConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput
@@ -1010,6 +1015,7 @@ func (o AiFeatureOnlineStoreFeatureviewOutput) UpdateTime() pulumi.StringOutput 
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
 // Structure is documented below.
 func (o AiFeatureOnlineStoreFeatureviewOutput) VectorSearchConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {

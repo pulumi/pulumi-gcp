@@ -696,6 +696,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly generation: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Used to enable/disable IAP for the service.
      */
     declare public readonly iapEnabled: pulumi.Output<boolean | undefined>;
@@ -1006,6 +1007,7 @@ export interface ServiceState {
      */
     generation?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Used to enable/disable IAP for the service.
      */
     iapEnabled?: pulumi.Input<boolean>;
@@ -1170,6 +1172,7 @@ export interface ServiceArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Used to enable/disable IAP for the service.
      */
     iapEnabled?: pulumi.Input<boolean>;

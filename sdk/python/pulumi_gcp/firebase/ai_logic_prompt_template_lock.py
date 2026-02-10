@@ -175,10 +175,6 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
                  template_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        A resource that manages the lock state of a PromptTemplate.
-        When this resource is created, the template is locked.
-        When this resource is deleted, the template is unlocked.
-
         ## Example Usage
 
         ### Firebaseailogic Prompt Template Lock Basic
@@ -238,10 +234,6 @@ class AiLogicPromptTemplateLock(pulumi.CustomResource):
                  args: AiLogicPromptTemplateLockArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A resource that manages the lock state of a PromptTemplate.
-        When this resource is created, the template is locked.
-        When this resource is deleted, the template is unlocked.
-
         ## Example Usage
 
         ### Firebaseailogic Prompt Template Lock Basic

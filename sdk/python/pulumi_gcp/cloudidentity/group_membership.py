@@ -33,7 +33,8 @@ class GroupMembershipArgs:
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
-        :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
+        :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: (Optional, Beta)
+               EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
                Structure is documented below.
@@ -89,6 +90,7 @@ class GroupMembershipArgs:
     @pulumi.getter(name="memberKey")
     def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
         """
+        (Optional, Beta)
         EntityKey of the member.
         Structure is documented below.
         """
@@ -129,7 +131,8 @@ class _GroupMembershipState:
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[_builtins.str] create_time: The time when the Membership was created.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
-        :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
+        :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: (Optional, Beta)
+               EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
@@ -199,6 +202,7 @@ class _GroupMembershipState:
     @pulumi.getter(name="memberKey")
     def member_key(self) -> Optional[pulumi.Input['GroupMembershipMemberKeyArgs']]:
         """
+        (Optional, Beta)
         EntityKey of the member.
         Structure is documented below.
         """
@@ -380,7 +384,8 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: EntityKey of the member.
+        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: (Optional, Beta)
+               EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
@@ -557,7 +562,8 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[_builtins.str] create_time: The time when the Membership was created.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
-        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: EntityKey of the member.
+        :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: (Optional, Beta)
+               EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
         :param pulumi.Input[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']] preferred_member_key: EntityKey of the member.
@@ -611,6 +617,7 @@ class GroupMembership(pulumi.CustomResource):
     @pulumi.getter(name="memberKey")
     def member_key(self) -> pulumi.Output['outputs.GroupMembershipMemberKey']:
         """
+        (Optional, Beta)
         EntityKey of the member.
         Structure is documented below.
         """

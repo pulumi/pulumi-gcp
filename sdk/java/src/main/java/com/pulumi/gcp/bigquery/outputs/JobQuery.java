@@ -37,7 +37,8 @@ public final class JobQuery {
      */
     private @Nullable List<JobQueryConnectionProperty> connectionProperties;
     /**
-     * @return Whether to run the query as continuous or a regular query.
+     * @return (Optional, Beta)
+     * Whether to run the query as continuous or a regular query.
      * 
      */
     private @Nullable Boolean continuous;
@@ -178,7 +179,8 @@ public final class JobQuery {
         return this.connectionProperties == null ? List.of() : this.connectionProperties;
     }
     /**
-     * @return Whether to run the query as continuous or a regular query.
+     * @return (Optional, Beta)
+     * Whether to run the query as continuous or a regular query.
      * 
      */
     public Optional<Boolean> continuous() {

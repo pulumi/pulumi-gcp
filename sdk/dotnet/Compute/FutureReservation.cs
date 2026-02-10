@@ -10,22 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Represents a future reservation resource in Compute Engine. Future reservations allow users
-    /// to reserve capacity for a specified time window, ensuring that resources are available
-    /// when needed.
-    /// 
-    /// Reservations apply only to Compute Engine, Cloud Dataproc, and Google
-    /// Kubernetes Engine VM usage.Reservations do not apply to `f1-micro` or
-    /// `g1-small` machine types, preemptible VMs, sole tenant nodes, or other
-    /// services not listed above
-    /// like Cloud SQL and Dataflow.
-    /// 
-    /// To get more information about FutureReservation, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/futureReservations)
-    /// * How-to Guides
-    ///     * [Future Reservations Guide](https://cloud.google.com/compute/docs/instances/future-reservations-overview)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Future Reservation Basic

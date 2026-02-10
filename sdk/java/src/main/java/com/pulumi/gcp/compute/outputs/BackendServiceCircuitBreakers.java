@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BackendServiceCircuitBreakers {
     /**
-     * @return The timeout for new network connections to hosts.
+     * @return (Optional, Beta)
+     * The timeout for new network connections to hosts.
      * Structure is documented below.
      * 
      */
@@ -53,7 +54,8 @@ public final class BackendServiceCircuitBreakers {
 
     private BackendServiceCircuitBreakers() {}
     /**
-     * @return The timeout for new network connections to hosts.
+     * @return (Optional, Beta)
+     * The timeout for new network connections to hosts.
      * Structure is documented below.
      * 
      */

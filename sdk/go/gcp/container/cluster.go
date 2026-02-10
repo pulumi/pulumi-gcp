@@ -23,7 +23,7 @@ import (
 // and run `pulumi up` to write the field to state in order to destroy a cluster.
 //
 // > All arguments and attributes (including certificate outputs) will be stored in the raw state as
-// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+// plaintext. Read more about sensitive data in state.
 //
 // ## Example Usage
 //
@@ -199,7 +199,7 @@ type Cluster struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringOutput `pulumi:"clusterIpv4Cidr"`
-	// Configuration for
+	// ) Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
@@ -311,7 +311,7 @@ type Cluster struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
-	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigOutput `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -419,7 +419,7 @@ type Cluster struct {
 	// Configuration for the
 	// Structure is documented below.
 	PodAutoscaling ClusterPodAutoscalingOutput `pulumi:"podAutoscaling"`
-	// Configuration for the
+	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrOutput `pulumi:"podSecurityPolicyConfig"`
@@ -431,6 +431,7 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigOutput `pulumi:"protectConfig"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -467,7 +468,7 @@ type Cluster struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig ClusterSecretManagerConfigPtrOutput `pulumi:"secretManagerConfig"`
-	// Configuration for the
+	// ) Configuration for the
 	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
 	// Structure is documented below.
 	SecretSyncConfig ClusterSecretSyncConfigPtrOutput `pulumi:"secretSyncConfig"`
@@ -491,6 +492,7 @@ type Cluster struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingOutput `pulumi:"verticalPodAutoscaling"`
+	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	WorkloadAltsConfig ClusterWorkloadAltsConfigOutput `pulumi:"workloadAltsConfig"`
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -561,7 +563,7 @@ type clusterState struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
-	// Configuration for
+	// ) Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
@@ -673,7 +675,7 @@ type clusterState struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
-	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -781,7 +783,7 @@ type clusterState struct {
 	// Configuration for the
 	// Structure is documented below.
 	PodAutoscaling *ClusterPodAutoscaling `pulumi:"podAutoscaling"`
-	// Configuration for the
+	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -793,6 +795,7 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -829,7 +832,7 @@ type clusterState struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig *ClusterSecretManagerConfig `pulumi:"secretManagerConfig"`
-	// Configuration for the
+	// ) Configuration for the
 	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
 	// Structure is documented below.
 	SecretSyncConfig *ClusterSecretSyncConfig `pulumi:"secretSyncConfig"`
@@ -853,6 +856,7 @@ type clusterState struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
+	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	WorkloadAltsConfig *ClusterWorkloadAltsConfig `pulumi:"workloadAltsConfig"`
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -889,7 +893,7 @@ type ClusterState struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringPtrInput
-	// Configuration for
+	// ) Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
@@ -1001,7 +1005,7 @@ type ClusterState struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
-	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1109,7 +1113,7 @@ type ClusterState struct {
 	// Configuration for the
 	// Structure is documented below.
 	PodAutoscaling ClusterPodAutoscalingPtrInput
-	// Configuration for the
+	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1121,6 +1125,7 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -1157,7 +1162,7 @@ type ClusterState struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig ClusterSecretManagerConfigPtrInput
-	// Configuration for the
+	// ) Configuration for the
 	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
 	// Structure is documented below.
 	SecretSyncConfig ClusterSecretSyncConfigPtrInput
@@ -1181,6 +1186,7 @@ type ClusterState struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
+	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	WorkloadAltsConfig ClusterWorkloadAltsConfigPtrInput
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -1221,7 +1227,7 @@ type clusterArgs struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
-	// Configuration for
+	// ) Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
@@ -1327,7 +1333,7 @@ type clusterArgs struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
-	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig *ClusterManagedOpentelemetryConfig `pulumi:"managedOpentelemetryConfig"`
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1432,7 +1438,7 @@ type clusterArgs struct {
 	// Configuration for the
 	// Structure is documented below.
 	PodAutoscaling *ClusterPodAutoscaling `pulumi:"podAutoscaling"`
-	// Configuration for the
+	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -1444,6 +1450,7 @@ type clusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
@@ -1478,7 +1485,7 @@ type clusterArgs struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig *ClusterSecretManagerConfig `pulumi:"secretManagerConfig"`
-	// Configuration for the
+	// ) Configuration for the
 	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
 	// Structure is documented below.
 	SecretSyncConfig *ClusterSecretSyncConfig `pulumi:"secretSyncConfig"`
@@ -1496,6 +1503,7 @@ type clusterArgs struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
+	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	WorkloadAltsConfig *ClusterWorkloadAltsConfig `pulumi:"workloadAltsConfig"`
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -1533,7 +1541,7 @@ type ClusterArgs struct {
 	// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
 	// default a new cluster to routes-based, where `ipAllocationPolicy` is not defined.
 	ClusterIpv4Cidr pulumi.StringPtrInput
-	// Configuration for
+	// ) Configuration for
 	// [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 	// Structure is documented below.
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
@@ -1639,7 +1647,7 @@ type ClusterArgs struct {
 	// The maintenance policy to use for the cluster. Structure is
 	// documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
-	// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+	// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 	ManagedOpentelemetryConfig ClusterManagedOpentelemetryConfigPtrInput
 	// The authentication information for accessing the
 	// Kubernetes master. Some values in this block are only returned by the API if
@@ -1744,7 +1752,7 @@ type ClusterArgs struct {
 	// Configuration for the
 	// Structure is documented below.
 	PodAutoscaling ClusterPodAutoscalingPtrInput
-	// Configuration for the
+	// ) Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1756,6 +1764,7 @@ type ClusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
 	// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
@@ -1790,7 +1799,7 @@ type ClusterArgs struct {
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
 	SecretManagerConfig ClusterSecretManagerConfigPtrInput
-	// Configuration for the
+	// ) Configuration for the
 	// [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
 	// Structure is documented below.
 	SecretSyncConfig ClusterSecretSyncConfigPtrInput
@@ -1808,6 +1817,7 @@ type ClusterArgs struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
+	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	WorkloadAltsConfig ClusterWorkloadAltsConfigPtrInput
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -1951,7 +1961,7 @@ func (o ClusterOutput) ClusterIpv4Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterIpv4Cidr }).(pulumi.StringOutput)
 }
 
-// Configuration for
+// ) Configuration for
 // [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
 // Structure is documented below.
 func (o ClusterOutput) ClusterTelemetry() ClusterClusterTelemetryOutput {
@@ -2177,7 +2187,7 @@ func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(ClusterMaintenancePolicyPtrOutput)
 }
 
-// Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
+// ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
 func (o ClusterOutput) ManagedOpentelemetryConfig() ClusterManagedOpentelemetryConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterManagedOpentelemetryConfigOutput { return v.ManagedOpentelemetryConfig }).(ClusterManagedOpentelemetryConfigOutput)
 }
@@ -2351,7 +2361,7 @@ func (o ClusterOutput) PodAutoscaling() ClusterPodAutoscalingOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPodAutoscalingOutput { return v.PodAutoscaling }).(ClusterPodAutoscalingOutput)
 }
 
-// Configuration for the
+// ) Configuration for the
 // [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 // Structure is documented below.
 func (o ClusterOutput) PodSecurityPolicyConfig() ClusterPodSecurityPolicyConfigPtrOutput {
@@ -2375,6 +2385,7 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// )
 // Enable/Disable Protect API features for the cluster. Structure is documented below.
 func (o ClusterOutput) ProtectConfig() ClusterProtectConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterProtectConfigOutput { return v.ProtectConfig }).(ClusterProtectConfigOutput)
@@ -2435,7 +2446,7 @@ func (o ClusterOutput) SecretManagerConfig() ClusterSecretManagerConfigPtrOutput
 	return o.ApplyT(func(v *Cluster) ClusterSecretManagerConfigPtrOutput { return v.SecretManagerConfig }).(ClusterSecretManagerConfigPtrOutput)
 }
 
-// Configuration for the
+// ) Configuration for the
 // [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
 // Structure is documented below.
 func (o ClusterOutput) SecretSyncConfig() ClusterSecretSyncConfigPtrOutput {
@@ -2489,6 +2500,7 @@ func (o ClusterOutput) VerticalPodAutoscaling() ClusterVerticalPodAutoscalingOut
 	return o.ApplyT(func(v *Cluster) ClusterVerticalPodAutoscalingOutput { return v.VerticalPodAutoscaling }).(ClusterVerticalPodAutoscalingOutput)
 }
 
+// )
 // Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 func (o ClusterOutput) WorkloadAltsConfig() ClusterWorkloadAltsConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterWorkloadAltsConfigOutput { return v.WorkloadAltsConfig }).(ClusterWorkloadAltsConfigOutput)

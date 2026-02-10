@@ -167,6 +167,7 @@ export class AddressGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * (Optional, Beta)
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      */
@@ -294,6 +295,7 @@ export interface AddressGroupState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * (Optional, Beta)
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      */
@@ -349,6 +351,7 @@ export interface AddressGroupArgs {
      */
     parent?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * List of supported purposes of the Address Group.
      * Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
      */

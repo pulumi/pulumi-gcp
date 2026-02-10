@@ -94,6 +94,8 @@ class BackupPlanAssociationRulesConfigInfo(dict):
             suggest = "last_backup_errors"
         elif key == "lastBackupState":
             suggest = "last_backup_state"
+        elif key == "lastSuccessfulBackupConsistencyTime":
+            suggest = "last_successful_backup_consistency_time"
         elif key == "ruleId":
             suggest = "rule_id"
 
@@ -111,6 +113,7 @@ class BackupPlanAssociationRulesConfigInfo(dict):
     def __init__(__self__, *,
                  last_backup_errors: Optional[Sequence['outputs.BackupPlanAssociationRulesConfigInfoLastBackupError']] = None,
                  last_backup_state: Optional[_builtins.str] = None,
+                 last_successful_backup_consistency_time: Optional[_builtins.str] = None,
                  rule_id: Optional[_builtins.str] = None):
         """
         :param Sequence['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs'] last_backup_errors: (Output)
@@ -118,6 +121,8 @@ class BackupPlanAssociationRulesConfigInfo(dict):
                Structure is documented below.
         :param _builtins.str last_backup_state: (Output)
                State of last backup taken.
+        :param _builtins.str last_successful_backup_consistency_time: (Output)
+               The point in time when the last successful backup was captured from the source
         :param _builtins.str rule_id: (Output)
                Backup Rule id fetched from backup plan.
         """
@@ -125,6 +130,8 @@ class BackupPlanAssociationRulesConfigInfo(dict):
             pulumi.set(__self__, "last_backup_errors", last_backup_errors)
         if last_backup_state is not None:
             pulumi.set(__self__, "last_backup_state", last_backup_state)
+        if last_successful_backup_consistency_time is not None:
+            pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
         if rule_id is not None:
             pulumi.set(__self__, "rule_id", rule_id)
 
@@ -146,6 +153,15 @@ class BackupPlanAssociationRulesConfigInfo(dict):
         State of last backup taken.
         """
         return pulumi.get(self, "last_backup_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
+    def last_successful_backup_consistency_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The point in time when the last successful backup was captured from the source
+        """
+        return pulumi.get(self, "last_successful_backup_consistency_time")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
@@ -3557,14 +3573,17 @@ class GetBackupPlanAssociationRulesConfigInfoResult(dict):
     def __init__(__self__, *,
                  last_backup_errors: Sequence['outputs.GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult'],
                  last_backup_state: _builtins.str,
+                 last_successful_backup_consistency_time: _builtins.str,
                  rule_id: _builtins.str):
         """
         :param Sequence['GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs'] last_backup_errors: google.rpc.Status object to store the last backup error
         :param _builtins.str last_backup_state: State of last backup taken.
+        :param _builtins.str last_successful_backup_consistency_time: The point in time when the last successful backup was captured from the source
         :param _builtins.str rule_id: Backup Rule id fetched from backup plan.
         """
         pulumi.set(__self__, "last_backup_errors", last_backup_errors)
         pulumi.set(__self__, "last_backup_state", last_backup_state)
+        pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
         pulumi.set(__self__, "rule_id", rule_id)
 
     @_builtins.property
@@ -3582,6 +3601,14 @@ class GetBackupPlanAssociationRulesConfigInfoResult(dict):
         State of last backup taken.
         """
         return pulumi.get(self, "last_backup_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
+    def last_successful_backup_consistency_time(self) -> _builtins.str:
+        """
+        The point in time when the last successful backup was captured from the source
+        """
+        return pulumi.get(self, "last_successful_backup_consistency_time")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")

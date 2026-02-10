@@ -47,7 +47,8 @@ class AiFeatureOnlineStoreFeatureviewArgs:
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewSyncConfigArgs'] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
-        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs'] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs'] vector_search_config: (Optional, Beta)
+               Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
         pulumi.set(__self__, "feature_online_store", feature_online_store)
@@ -175,6 +176,7 @@ class AiFeatureOnlineStoreFeatureviewArgs:
     @pulumi.getter(name="vectorSearchConfig")
     def vector_search_config(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']]:
         """
+        (Optional, Beta)
         Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         Structure is documented below.
         """
@@ -223,7 +225,8 @@ class _AiFeatureOnlineStoreFeatureviewState:
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewSyncConfigArgs'] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs'] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs'] vector_search_config: (Optional, Beta)
+               Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
         if big_query_source is not None:
@@ -409,6 +412,7 @@ class _AiFeatureOnlineStoreFeatureviewState:
     @pulumi.getter(name="vectorSearchConfig")
     def vector_search_config(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs']]:
         """
+        (Optional, Beta)
         Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         Structure is documented below.
         """
@@ -608,8 +612,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_45397",
-            name="tf-test_16451",
+            project_id="tf-test_40472",
+            name="tf-test_44339",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -861,7 +865,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region for the resource. It should be the same as the featureonlinestore region.
         :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: (Optional, Beta)
+               Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
         ...
@@ -1043,8 +1048,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         test_project = gcp.organizations.get_project()
         project = gcp.organizations.Project("project",
-            project_id="tf-test_45397",
-            name="tf-test_16451",
+            project_id="tf-test_40472",
+            name="tf-test_44339",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1379,7 +1384,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewSyncConfigArgs', 'AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict']] sync_config: Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        :param pulumi.Input[Union['AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs', 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict']] vector_search_config: (Optional, Beta)
+               Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1509,6 +1515,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
     @pulumi.getter(name="vectorSearchConfig")
     def vector_search_config(self) -> pulumi.Output[Optional['outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig']]:
         """
+        (Optional, Beta)
         Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
         Structure is documented below.
         """

@@ -7,10 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * An imperative resource that triggers a GCBDR restoration event.
- * Creating this resource will initiate a restore operation from a specified backup.
- * The resource represents the restore operation and its result.
- *
  * ## Example Usage
  *
  * ### Backup Dr Restore Workload Compute Instance Basic

@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A Release is a particular collection of configurations that is set to be public at a particular time.
- *
- * To get more information about Release, see:
- *
- * * [API documentation](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/sites.releases)
- * * How-to Guides
- *     * [Official Documentation](https://firebase.google.com/docs/hosting)
- *
  * ## Example Usage
  *
  * ### Firebasehosting Release In Site

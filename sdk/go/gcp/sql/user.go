@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
-//
 // ## Example Usage
 //
 // Example creating a SQL User.
@@ -222,6 +220,8 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
+	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	DatabaseRoles pulumi.StringArrayOutput `pulumi:"databaseRoles"`
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -232,6 +232,8 @@ type User struct {
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host pulumi.StringOutput `pulumi:"host"`
+	// The email address for MySQL IAM database users.
+	IamEmail pulumi.StringOutput `pulumi:"iamEmail"`
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
 	Instance pulumi.StringOutput `pulumi:"instance"`
@@ -309,6 +311,8 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
+	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	DatabaseRoles []string `pulumi:"databaseRoles"`
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -319,6 +323,8 @@ type userState struct {
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host *string `pulumi:"host"`
+	// The email address for MySQL IAM database users.
+	IamEmail *string `pulumi:"iamEmail"`
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
 	Instance *string `pulumi:"instance"`
@@ -353,6 +359,8 @@ type userState struct {
 }
 
 type UserState struct {
+	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	DatabaseRoles pulumi.StringArrayInput
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -363,6 +371,8 @@ type UserState struct {
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
 	Host pulumi.StringPtrInput
+	// The email address for MySQL IAM database users.
+	IamEmail pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
 	Instance pulumi.StringPtrInput
@@ -401,6 +411,8 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
+	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	DatabaseRoles []string `pulumi:"databaseRoles"`
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -445,6 +457,8 @@ type userArgs struct {
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
+	// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+	DatabaseRoles pulumi.StringArrayInput
 	// The deletion policy for the user.
 	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -574,6 +588,11 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// A list of database roles to be assigned to the user. This option is only available for MySQL and PostgreSQL instances.
+func (o UserOutput) DatabaseRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.DatabaseRoles }).(pulumi.StringArrayOutput)
+}
+
 // The deletion policy for the user.
 // Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
 // for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
@@ -588,6 +607,11 @@ func (o UserOutput) DeletionPolicy() pulumi.StringPtrOutput {
 // Can be an IP address. Changing this forces a new resource to be created.
 func (o UserOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// The email address for MySQL IAM database users.
+func (o UserOutput) IamEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.IamEmail }).(pulumi.StringOutput)
 }
 
 // The name of the Cloud SQL instance. Changing this

@@ -116,8 +116,6 @@ class AwaitableGetManagementServerResult(GetManagementServerResult):
 def get_management_server(location: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetManagementServerResult:
     """
-    Get information about a Google Backup DR Management server.
-
     ## Example Usage
 
     ```python
@@ -144,8 +142,6 @@ def get_management_server(location: Optional[_builtins.str] = None,
 def get_management_server_output(location: Optional[pulumi.Input[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagementServerResult]:
     """
-    Get information about a Google Backup DR Management server.
-
     ## Example Usage
 
     ```python
